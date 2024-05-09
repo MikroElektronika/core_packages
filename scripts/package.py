@@ -3,13 +3,20 @@ import shutil
 import re
 
 def find_cmake_files(directory):
-    """ Return a list of .cmake files in the directory ending with _package_x.cmake where x is a number """
+    """ Return a list of .cmake files in the directory, excluding specific files """
     cmake_files = []
-    file_pattern = re.compile(r'_package_\d+\.cmake$')  # Regular expression to match file names
+    excluded_files = {
+        'coreUtils.cmake',
+        'ExportConfig.cmake.in',
+        'InstallHeaders.cmake.in',
+        'mikroeExportConfig.cmake.in'
+    }
+
     for root, dirs, files in os.walk(directory):
         for file in files:
-            if file_pattern.search(file):  # Check if the file matches the pattern
-                cmake_files.append(os.path.join(root, file))
+            if file.endswith(".cmake") and not 'delays' in root:
+                if file not in excluded_files:  # Check if the file is not in the excluded list
+                    cmake_files.append(os.path.join(root, file))
     return cmake_files
 
 def parse_files_for_paths(cmake_files, source_dir):
@@ -68,7 +75,7 @@ def copy_matched_directories(regex, directory, output_dir, base_path):
                 full_path = os.path.join(directory, dir_name)
                 dest_path = os.path.join(output_dir, base_path, dir_name)
                 if os.path.exists(full_path):
-                    shutil.copytree(full_path, dest_path)
+                    shutil.copytree(full_path, dest_path, dirs_exist_ok=True)
 
 def copy_interrupt_files(source_dir, output_dir):
     """ Copy specific interrupt files that should be included in every package """
@@ -88,16 +95,22 @@ def copy_files_from_def(source_dir, output_dir, regex):
     """ Copy files from source_dir/def that match a regex to output_dir/def maintaining the folder structure """
     def_dir = os.path.join(source_dir, 'def')
     output_def_dir = os.path.join(output_dir, 'def')
-    regex_pattern = re.compile(regex, re.IGNORECASE)
+    if (regex):
+        regex_pattern = re.compile(regex, re.IGNORECASE)
 
-    for root, dirs, files in os.walk(def_dir):
-        for file in files:
-            if regex_pattern.match(file):
-                full_source_path = os.path.join(root, file)
-                relative_path = os.path.relpath(full_source_path, start=def_dir)
-                full_dest_path = os.path.join(output_def_dir, relative_path)
-                os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
-                shutil.copy(full_source_path, full_dest_path)
+        for root, dirs, files in os.walk(def_dir):
+            for file in files:
+                if os.path.basename(file) == 'mcu.h':
+                    if regex_pattern.match(os.path.basename(root)):
+                        relative_path = os.path.relpath(root, start=def_dir)
+                        full_dest_path = os.path.join(output_def_dir, relative_path)
+                        shutil.copytree(root, full_dest_path)
+                if regex_pattern.match(file):
+                    full_source_path = os.path.join(root, file)
+                    relative_path = os.path.relpath(full_source_path, start=def_dir)
+                    full_dest_path = os.path.join(output_def_dir, relative_path)
+                    os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
+                    shutil.copy(full_source_path, full_dest_path)
 
 def copy_cmake_files(cmake_file, source_dir, output_dir):
     """ Copy the .cmake file to the output directory maintaining the same folder structure """
@@ -105,12 +118,23 @@ def copy_cmake_files(cmake_file, source_dir, output_dir):
     destination_path = os.path.join(output_dir, relative_path)
     os.makedirs(os.path.dirname(destination_path), exist_ok=True)
     shutil.copy(cmake_file, destination_path)
-    shutil.copy(os.path.join(source_dir, "cmake/coreUtils.cmake"), os.path.join(output_dir, "cmake"))
-    shutil.copy(os.path.join(source_dir, "cmake/mikroeExportConfig.cmake.in"), os.path.join(output_dir, "cmake"))
 
+    # Copy coreUtils.cmake
+    shutil.copy(os.path.join(source_dir, "cmake/coreUtils.cmake"), os.path.join(output_dir, "cmake"))
+
+    # Copy either mikroeExportConfig.cmake.in or ExportConfig.cmake.in depending on which exists
+    export_config_path = os.path.join(source_dir, "cmake/mikroeExportConfig.cmake.in")
+    fallback_config_path = os.path.join(source_dir, "cmake/ExportConfig.cmake.in")
+    install_headers_path = os.path.join(source_dir, "cmake/InstallHeaders.cmake.in")
+    if os.path.exists(export_config_path):
+        shutil.copy(export_config_path, os.path.join(output_dir, "cmake"))
+    elif os.path.exists(fallback_config_path):
+        shutil.copy(fallback_config_path, os.path.join(output_dir, "cmake"))
+    if os.path.exists(install_headers_path):
+        shutil.copy(install_headers_path, os.path.join(output_dir, "cmake"))
 
 def main(source_dir, output_dir):
-    cmake_files = find_cmake_files(source_dir)
+    cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir)
     for cmake_file, data in file_paths.items():
         base_output_dir = os.path.join(output_dir, cmake_file)  # Subdirectory for this .cmake file
@@ -128,13 +152,15 @@ def main(source_dir, output_dir):
             # After handling all cmake specific tasks, perform the def file copying
         copy_files_from_def(source_dir, base_output_dir, data['regex'])
         #copy std_library to every package
-        shutil.copytree(os.path.join(source_dir, 'std_library'), os.path.join(base_output_dir, "std_library"))
+        std_library_path = os.path.join(source_dir, 'std_library')
+        if os.path.exists(std_library_path):
+            shutil.copytree(std_library_path, os.path.join(base_output_dir, "std_library"))
         #copy common to every package
         shutil.copytree(os.path.join(source_dir, 'common'), os.path.join(base_output_dir, "common"))
         #copy base CMakeLists.txt to every package
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
 
 # Usage
-source_directory = '/home/software/GIT/core_packages/ARM/mikroC'
-output_directory = '/home/software/test_dir'
+source_directory = '/home/software/GIT/core_packages/ARM/gcc_clang'
+output_directory = '/home/software/test_dir/ARM/gcc_clang'
 main(source_directory, output_directory)
