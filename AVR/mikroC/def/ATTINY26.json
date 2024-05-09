@@ -1,0 +1,707 @@
+{
+    "avr_core": "avr2",
+    "eeprom": {
+        "max_addr": "0x007F",
+        "min_addr": "0x0000"
+    },
+    "fuse": {
+        "high": {
+            "fuse0": {
+                "default": "1",
+                "name": "BODLEVEL0",
+                "text": "Brown out detector trigger level"
+            },
+            "fuse1": {
+                "default": "1",
+                "name": "BODLEVEL1",
+                "text": "Brown out detector trigger level"
+            },
+            "fuse2": {
+                "default": "1",
+                "name": "EESAVE",
+                "text": "EEPROM memory is preserved through the Chip Erase"
+            },
+            "fuse3": {
+                "default": "0",
+                "name": "SPIEN",
+                "text": "Enable Serial Program and Data Downloading"
+            },
+            "fuse4": {
+                "default": "1",
+                "name": "RSTDISBL",
+                "text": "Select if PB/ is I/O pin or RESET pin"
+            },
+            "nmb_fuse_bits": "5",
+            "nmb_text": "6",
+            "text1": {
+                "mask": "0x10",
+            "text": "Reset Disabled (Enable PB7 as i/o pin); [RSTDISBL=0]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x08",
+            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "value": "0x00"
+            },
+            "text3": {
+                "mask": "0x04",
+            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "value": "0x00"
+            },
+            "text4": {
+                "mask": "0x03",
+            "text": "BOD disabled; [BODLEVEL=11]",
+                "value": "0x01"
+            },
+            "text5": {
+                "mask": "0x03",
+            "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=10]",
+                "value": "0x02"
+            },
+            "text6": {
+                "mask": "0x03",
+            "text": "Brown-out detection level at VCC=4.0 V; [BODLEVEL=00]",
+                "value": "0x00"
+            }
+        },
+    "list": "[LOW:HIGH]",
+        "low": {
+            "fuse0": {
+                "default": "1",
+                "name": "CKSEL0",
+                "text": "Select Clock Source"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "CKSEL1",
+                "text": "Select Clock Source"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "CKSEL2",
+                "text": "Select Clock Source"
+            },
+            "fuse3": {
+                "default": "1",
+                "name": "CKSEL3",
+                "text": "Select Clock Source"
+            },
+            "fuse4": {
+                "default": "1",
+                "name": "SUT0",
+                "text": "Select start-up time"
+            },
+            "fuse5": {
+                "default": "1",
+                "name": "SUT1",
+                "text": "Select start-up time"
+            },
+            "fuse6": {
+                "default": "1",
+                "name": "CKOPT",
+                "text": "Oscillator options"
+            },
+            "fuse7": {
+                "default": "1",
+                "name": "PLLCK",
+                "text": "Use PLL for internal clock"
+            },
+            "nmb_fuse_bits": "8",
+            "nmb_text": "63",
+            "text1": {
+                "mask": "0x40",
+            "text": "CKOPT fuse (operation dependent of CKSEL fuses); [CKOPT=0]",
+                "value": "0x00"
+            },
+            "text10": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0001 SUT=01]",
+                "value": "0x91"
+            },
+            "text11": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0001 SUT=10]; default value",
+                "value": "0xA1"
+            },
+            "text12": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0010 SUT=00]",
+                "value": "0x82"
+            },
+            "text13": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0010 SUT=01]",
+                "value": "0x92"
+            },
+            "text14": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0010 SUT=10]",
+                "value": "0xA2"
+            },
+            "text15": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0011 SUT=00]",
+                "value": "0x83"
+            },
+            "text16": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0011 SUT=01]",
+                "value": "0x93"
+            },
+            "text17": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0011 SUT=10]",
+                "value": "0xA3"
+            },
+            "text18": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0100 SUT=00]",
+                "value": "0x84"
+            },
+            "text19": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0100 SUT=01]",
+                "value": "0x94"
+            },
+            "text2": {
+                "mask": "0xBF",
+            "text": "PLL Clock; Start-up time: 1K CK + 0 ms; [CKSEL=0001 SUT=00]",
+                "value": "0x01"
+            },
+            "text20": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0100 SUT=10]",
+                "value": "0xA4"
+            },
+            "text21": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0101 SUT=00]",
+                "value": "0x85"
+            },
+            "text22": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0101 SUT=01]",
+                "value": "0x95"
+            },
+            "text23": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0101 SUT=10]",
+                "value": "0xA5"
+            },
+            "text24": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0101 SUT=11]",
+                "value": "0xB5"
+            },
+            "text25": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0110 SUT=00]",
+                "value": "0x86"
+            },
+            "text26": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0110 SUT=01]",
+                "value": "0x96"
+            },
+            "text27": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0110 SUT=10]",
+                "value": "0xA6"
+            },
+            "text28": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0110 SUT=11]",
+                "value": "0xB6"
+            },
+            "text29": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0111 SUT=00]",
+                "value": "0x87"
+            },
+            "text3": {
+                "mask": "0xBF",
+            "text": "PLL Clock; Start-up time: 1K CK + 4 ms; [CKSEL=0001 SUT=01]",
+                "value": "0x11"
+            },
+            "text30": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0111 SUT=01]",
+                "value": "0x97"
+            },
+            "text31": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0111 SUT=10]",
+                "value": "0xA7"
+            },
+            "text32": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0111 SUT=11]",
+                "value": "0xB7"
+            },
+            "text33": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=1000 SUT=00]",
+                "value": "0x88"
+            },
+            "text34": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=1000 SUT=01]",
+                "value": "0x98"
+            },
+            "text35": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=1000 SUT=10]",
+                "value": "0xA8"
+            },
+            "text36": {
+                "mask": "0xBF",
+            "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=1000 SUT=11]",
+                "value": "0xB8"
+            },
+            "text37": {
+                "mask": "0xBF",
+            "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 4 ms; [CKSEL=1001 SUT=00]",
+                "value": "0x89"
+            },
+            "text38": {
+                "mask": "0xBF",
+            "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 64 ms; [CKSEL=1001 SUT=01]",
+                "value": "0x99"
+            },
+            "text39": {
+                "mask": "0xBF",
+            "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 64 ms; [CKSEL=1001 SUT=10]",
+                "value": "0xA9"
+            },
+            "text4": {
+                "mask": "0xBF",
+            "text": "PLL Clock; Start-up time: 1K CK + 64 ms; [CKSEL=0001 SUT=10]",
+                "value": "0x21"
+            },
+            "text40": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1010 SUT=00]",
+                "value": "0x8A"
+            },
+            "text41": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1010 SUT=01]",
+                "value": "0x9A"
+            },
+            "text42": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1010 SUT=10]",
+                "value": "0xAA"
+            },
+            "text43": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1010 SUT=11]",
+                "value": "0xBA"
+            },
+            "text44": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1011 SUT=00]",
+                "value": "0x8B"
+            },
+            "text45": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1011 SUT=01]",
+                "value": "0x9B"
+            },
+            "text46": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1011 SUT=10]",
+                "value": "0xAB"
+            },
+            "text47": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 64 ms; [CKSEL=1011 SUT=11]",
+                "value": "0xBB"
+            },
+            "text48": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1100 SUT=00]",
+                "value": "0x8C"
+            },
+            "text49": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1100 SUT=01]",
+                "value": "0x9C"
+            },
+            "text5": {
+                "mask": "0xBF",
+            "text": "PLL Clock; Start-up time: 16K CK + 64 ms; [CKSEL=0001 SUT=11]",
+                "value": "0x31"
+            },
+            "text50": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1100 SUT=10]",
+                "value": "0xAC"
+            },
+            "text51": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1100 SUT=11]",
+                "value": "0xBC"
+            },
+            "text52": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1101 SUT=00]",
+                "value": "0x8D"
+            },
+            "text53": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1101 SUT=01]",
+                "value": "0x9D"
+            },
+            "text54": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1101 SUT=10]",
+                "value": "0xAD"
+            },
+            "text55": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 64 ms; [CKSEL=1101 SUT=11]",
+                "value": "0xBD"
+            },
+            "text56": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1110 SUT=00]",
+                "value": "0x8E"
+            },
+            "text57": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1110 SUT=01]",
+                "value": "0x9E"
+            },
+            "text58": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1110 SUT=10]",
+                "value": "0xAE"
+            },
+            "text59": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1110 SUT=11]",
+                "value": "0xBE"
+            },
+            "text6": {
+                "mask": "0xBF",
+            "text": "Ext. Clock; Start-up time: 6 CK + 0 ms; [CKSEL=0000 SUT=00]",
+                "value": "0x80"
+            },
+            "text60": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1111 SUT=00]",
+                "value": "0x8F"
+            },
+            "text61": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1111 SUT=01]",
+                "value": "0x9F"
+            },
+            "text62": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1111 SUT=10]",
+                "value": "0xAF"
+            },
+            "text63": {
+                "mask": "0xBF",
+            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 64 ms; [CKSEL=1111 SUT=11]",
+                "value": "0xBF"
+            },
+            "text7": {
+                "mask": "0xBF",
+            "text": "Ext. Clock; Start-up time: 6 CK + 4 ms; [CKSEL=0000 SUT=01]",
+                "value": "0x90"
+            },
+            "text8": {
+                "mask": "0xBF",
+            "text": "Ext. Clock; Start-up time: 6 CK + 64 ms; [CKSEL=0000 SUT=10]",
+                "value": "0xA0"
+            },
+            "text9": {
+                "mask": "0xBF",
+            "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0001 SUT=00]",
+                "value": "0x81"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x000B",
+            "desc": "ADC Conversion Complete",
+            "name": "ADC"
+        },
+        {
+            "address": "0x000A",
+            "desc": "Analog Comparator",
+            "name": "ANA_COMP"
+        },
+        {
+            "address": "0x0009",
+            "desc": "EEPROM Ready",
+            "name": "EE_RDY"
+        },
+        {
+            "address": "0x0008",
+            "desc": "USI Overflow",
+            "name": "USI_OVF"
+        },
+        {
+            "address": "0x0007",
+            "desc": "USI Start",
+            "name": "USI_STRT"
+        },
+        {
+            "address": "0x0006",
+            "desc": "Timer/Counter0 Overflow",
+            "name": "TIMER0,OVF0"
+        },
+        {
+            "address": "0x0005",
+            "desc": "Timer/Counter1 Overflow",
+            "name": "TIMER1,OVF1"
+        },
+        {
+            "address": "0x0004",
+            "desc": "Timer/Counter1 Compare Match 1B",
+            "name": "TIMER1,CMPB"
+        },
+        {
+            "address": "0x0003",
+            "desc": "Timer/Counter1 Compare Match 1A",
+            "name": "TIMER1,CMPA"
+        },
+        {
+            "address": "0x0002",
+            "desc": "External Interrupt Request 0",
+            "name": "I/O_PINS"
+        },
+        {
+            "address": "0x0001",
+            "desc": "External Interrupt 0",
+            "name": "INT0"
+        }
+    ],
+    "mcu": "ATTINY26",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "package": {
+    "packages": "[PDIP:SOIC]",
+        "pdip": {
+            "nmb_pin": "20",
+            "pin1": {
+            "name": "[MOSI:DI:SDA:'OC1A:PCINT0:PB0]",
+                "text": "DI: Data input in USI 3-wire mode. USI 3-wire mode does not override normal port functions., so pin must be configure as an input. SDA: Serial data in USI 2-wire mode. Serial data pin is bi-directional and uses open-col-lector output. The SDA pin is enabled by setting the pin as an output. The pin is pulled low when the PORTB0 or USI shiftregister is zero when DDB0 is set (one). Pull-up is disabled in USI 2-wire mode. OC1A: Inverted Timer/Counter1 PWM Output A: The PB0 pin can serve as an Inverted output for the PWM mode if not used in programming or USI. The PB0 pin has to be configured as an output (DDB0 set (one)) to serve this function. For further reading on PCINT0 please refer to the manual"
+            },
+            "pin10": {
+            "name": "[ADC10:'RESET:PCINT1:PB7]",
+                "text": "ADC10: ADC input channel 10. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter. RESET: External Reset Input is active low and enabled by unprogramming (“1”) the RSTDISBL fuse. Pullup is activated and output driver and digital input are deactivated when the pin is used as the RESET pin. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the pin usage as RESET. Digital input is enabled on pin PB7 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functi"
+            },
+            "pin11": {
+            "name": "[ADC6:AIN1:PA7]",
+                "text": "AIN1: Analog Comparator Negative Input and ADC6: ADC input channel 6. Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator or analog to digital converter. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the analog comparator.Digital input is enabled on pin PA7 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functio"
+            },
+            "pin12": {
+            "name": "[ADC5:AIN0:PA6]",
+                "text": "AIN0: Analog Comparator Positive Input and ADC5: ADC input channel 5. Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator or analog to digital converter. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the analog comparator.Digital input is enabled on pin PA6 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functio"
+            },
+            "pin13": {
+            "name": "[ADC4:PA5]",
+                "text": "ADC4/ADC3: ADC input channel 4 and 3. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter."
+            },
+            "pin14": {
+            "name": "[ADC3:PA4]",
+                "text": "ADC4/ADC3: ADC input channel 4 and 3. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter."
+            },
+            "pin15": {
+            "name": "[AVCC]"
+            },
+            "pin16": {
+            "name": "[AGND]"
+            },
+            "pin17": {
+            "name": "[AREF:PA3]",
+                "text": "AREF: External reference for ADC. Pullup and output driver are disabled on PA3 when the pin is used as an external reference or Internal Voltage Reference (2.56V) with external capacitor at the AREF pin by setting (one) the bit REFS0 in the ADC Multiplexer Selection Register (ADMUX). PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the pin usage as an analog refer-ence for the ADC. Digital input is enabled on pin PA3 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate function. Please refer to the manual for further details"
+            },
+            "pin18": {
+            "name": "[ADC2:PA2]"
+            },
+            "pin19": {
+            "name": "[ADC1:PA1]"
+            },
+            "pin2": {
+            "name": "[MISO:DO:OC1A:PCINT0:PB1]",
+                "text": "DO: Data output in USI 3-wire mode. Data output (DO) overrides PORTB1 value and it is driven to the port when the data direction bit DDB1 is set (one). However the PORTB1 bit still controls the pullup, enabling pullup if direction is input and PORTB1 is set(one). OC1A: Output compare match output: The PB1 pin can serve as an output for the Timer/Counter1 compare match A. The PB1 pin has to be configured as an output (DDB3 set (one)) to serve this function. The OC1B pin is also the output pin for the PWM mode timer function if not used in programming or USI. PCINT0: Pin Change Interrupt 0 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate functions are the output compare match out-put OC1A and data output DO in USI 3-wire mode. Digital input is enabled on pin PB4 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate function"
+            },
+            "pin20": {
+            "name": "[ADC0:PA0]"
+            },
+            "pin3": {
+            "name": "[SCK:SCL:'OC1B:PCINT0:PB2]",
+                "text": "SCK: Clock input or output in USI 3-wire mode. When the SPI is enabled this pin is con-figured"
+            },
+            "pin4": {
+            "name": "[OC1B:PCINT0:PB3]",
+                "text": "OC1B: Output compare match output: The PB3 pin can serve as an output for the Timer/Counter1 compare match B. The PB3 pin has to be configured as an output (DDB3 set (one)) to serve this function. The OC1B pin is also the output pin for the PWM mode. PCINT0: Pin Change Interrupt 0 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate function is the output compare match output OC1B. Digital input is enabled on pin PB3 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate function"
+            },
+            "pin5": {
+            "name": "[VCC]"
+            },
+            "pin6": {
+            "name": "[GND]"
+            },
+            "pin7": {
+            "name": "[ADC7:XTAL1:PCINT1:PB4]",
+                "text": "ADC7: ADC input channel 7. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the ana-log to digital converter. XTAL1: Chip clock oscillator pin 1. Used for all chip clock sources except internal cali-brateble RC oscillator and PLL clock. When used as a clock pin, the pin can not be used as an I/O pin. When using internal calibratable RC oscillator or PLL clock as chip clock sources, PB4 serves as an ordinary I/O pin. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate functions are the XTAL1 inputs. Digital input is enabled on pin PB4 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functions"
+            },
+            "pin8": {
+            "name": "[ADC8:XTAL2:PCINT1:PB5]",
+                "text": "ADC8: ADC input channel 8. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the ana-log to digital converter. XTAL2: Chip clock oscillator pin 2. Used as clock pin for all chip clock sources except internal calibrateble RC oscillator, external clock and PLL clock. When used as a clock pin, the pin can not be used as an I/O pin. When using internal calibratable RC oscillator, external clock or PLL clock as chip clock sources, PB5 serves as an ordinary I/O pin. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate functions are the XTAL2 outputs. Digital input is enabled on pin PB5 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate function"
+            },
+            "pin9": {
+            "name": "[ADC9:INT0:T0:PCINT1:PB6]",
+                "text": "ADC9: ADC input channel 9. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter. INT0: External Interrupt source 0: The PB6 pin can serve as an external interrupt source enabled by setting (one) the bit INT0 in the general input mask register (GIMSK). T0: Timer/Counter0 External Counter Clock Input is enabled by setting (one) the bits CS02 and CS01 in the Timer/Counter0 control register (TCCR0). PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate functions are the external low level Interrupt source 0 (INT0) and the Timer/Counter0 external counter clock input (T0). Digital input is enabled on pin PB6 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functio"
+            }
+        }
+    },
+    "ram": {
+        "max_addr": "0x00DF",
+        "min_addr": "0x0060"
+    },
+    "rom": {
+        "max_addr": "0x03FF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "RJMP",
+        "RCALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "LD",
+        "ST",
+        "MOV",
+        "LDI",
+        "IN",
+        "OUT",
+        "LPM",
+        "SBI",
+        "CBI",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "BSET",
+        "BCLR",
+        "BST",
+        "BLD",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "NOP",
+        "SLEEP",
+        "WDR",
+        "ADIW",
+        "SBIW",
+        "IJMP",
+        "ICALL",
+        "LDD",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDS",
+        "STD",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STS",
+        "PUSH",
+        "POP",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi"
+    ]
+}

@@ -1,0 +1,384 @@
+{
+    "avr_core": "avr2",
+    "eeprom": {
+        "max_addr": "0x007F",
+        "min_addr": "0x0000"
+    },
+    "fuse": {
+    "list": "[LOW]",
+        "low": {
+            "fuse0": {
+                "default": "1",
+                "name": "FSTRT",
+                "text": "Short Start-up time selected"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "SPIEN",
+                "text": "Enable Serial programming and Data Downloading"
+            },
+            "nmb_fuse_bits": "2",
+            "nmb_text": "2",
+            "text1": {
+                "mask": "0x20",
+            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x01",
+            "text": "Short start-up time enabled; [FSTRT=1]",
+                "value": "0x00"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x000A",
+            "desc": "Analog Comparator",
+            "name": "ANA COMP"
+        },
+        {
+            "address": "0x0009",
+            "desc": "UART, Tx Complete",
+            "name": "UART, TX"
+        },
+        {
+            "address": "0x0008",
+            "desc": "UART Data Register Empty",
+            "name": "UART, UDRE"
+        },
+        {
+            "address": "0x0007",
+            "desc": "UART, Rx Complete",
+            "name": "UART, RX"
+        },
+        {
+            "address": "0x0006",
+            "desc": "Timer/Counter0 Overflow",
+            "name": "TIMER0 OVF0"
+        },
+        {
+            "address": "0x0005",
+            "desc": "Timer/Counter1 Overflow",
+            "name": "TIMER1 OVF1"
+        },
+        {
+            "address": "0x0004",
+            "desc": "Timer/Counter1 Compare Match",
+            "name": "TIMER1 COMP1"
+        },
+        {
+            "address": "0x0003",
+            "desc": "Timer/Counter1 Capture Event",
+            "name": "TIMER1 CAPT1"
+        },
+        {
+            "address": "0x0002",
+            "desc": "External Interrupt Request 1",
+            "name": "INT1"
+        },
+        {
+            "address": "0x0001",
+            "desc": "External Interrupt Request 0",
+            "name": "INT0"
+        }
+    ],
+    "mcu": "AT90S2313",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "package": {
+        "dip": {
+            "nmb_pin": "20",
+            "pin1": {
+            "name": "['RESET]"
+            },
+            "pin10": {
+            "name": "[GND]"
+            },
+            "pin11": {
+            "name": "[PD6:ICP]",
+                "text": "Timer/Counter1 Input Capture pin. See the Timer/Counter1 description for further details."
+            },
+            "pin12": {
+            "name": "[PB0:AIN0]",
+            "text": "AIN0, Analog Comparator Positive Input. When configured as an input (DDB0 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB0 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
+            },
+            "pin13": {
+            "name": "[PB1:AIN1]",
+            "text": "AIN1, Analog Comparator Negative Input. When configured as an input (DDB1 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB1 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
+            },
+            "pin14": {
+            "name": "[PB2]"
+            },
+            "pin15": {
+            "name": "[PB3:OC1]",
+            "text": "OC1, Output Compare Match Output. The PB3 pin can serve as an external output for timer 1 compare match. The PB3 pin has to be configured as an output (DDB3 is set [one]) to serve this function. See the timer description for further details, and how to enable the output."
+            },
+            "pin16": {
+            "name": "[PB4]"
+            },
+            "pin17": {
+            "name": "[PB5:MOSI]",
+                "text": "MOSI, Data input pin for memory downloading."
+            },
+            "pin18": {
+            "name": "[PB6:MISO]",
+                "text": "MISO, Data output pin for memory uploading."
+            },
+            "pin19": {
+            "name": "[PB7:SCK]",
+                "text": "SCK, Clock input pin for memory up/downloading."
+            },
+            "pin2": {
+            "name": "[PD0:RXD]",
+                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical “1” in PORTD0 will turn on the internal pull-up."
+            },
+            "pin20": {
+                "name": "VCC"
+            },
+            "pin3": {
+            "name": "[PD1:TXD]",
+                "text": "Transmit Data (data output pin for the UART). When the UART transmitter is enabled, this pin is configured as an output, regardless of the value of DDRD1."
+            },
+            "pin4": {
+            "name": "[XTAL2]"
+            },
+            "pin5": {
+            "name": "[XTAL1]"
+            },
+            "pin6": {
+            "name": "[PD2:INT0]",
+                "text": "INT0: External Interrupt source 0. The PD2 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
+            },
+            "pin7": {
+            "name": "[PD3:INT1]",
+                "text": "INT1: External Interrupt source 1. The PD3 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
+            },
+            "pin8": {
+            "name": "[PD4:T0]",
+                "text": "T0, Timer/Counter0 clock source. See the Timer description for further details."
+            },
+            "pin9": {
+            "name": "[PD5:T1]",
+                "text": "T1, Timer 1 clock source. See the Timer description for further details."
+            }
+        },
+    "packages": "[DIP:SOIC]",
+        "sioc": {
+            "nmb_pin": "20",
+            "pin1": {
+            "name": "['RESET]"
+            },
+            "pin10": {
+            "name": "[GND]"
+            },
+            "pin11": {
+            "name": "[PD6:ICP]",
+                "text": "Timer/Counter1 Input Capture pin. See the Timer/Counter1 description for further details."
+            },
+            "pin12": {
+            "name": "[PB0:AIN0]",
+            "text": "AIN0, Analog Comparator Positive Input. When configured as an input (DDB0 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB0 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
+            },
+            "pin13": {
+            "name": "[PB1:AIN1]",
+            "text": "AIN1, Analog Comparator Negative Input. When configured as an input (DDB1 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB1 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
+            },
+            "pin14": {
+            "name": "[PB2]"
+            },
+            "pin15": {
+            "name": "[PB3:OC1]",
+            "text": "OC1, Output Compare Match Output. The PB3 pin can serve as an external output for timer 1 compare match. The PB3 pin has to be configured as an output (DDB3 is set [one]) to serve this function. See the timer description for further details, and how to enable the output."
+            },
+            "pin16": {
+            "name": "[PB4]"
+            },
+            "pin17": {
+            "name": "[PB5:MOSI]",
+                "text": "MOSI, Data input pin for memory downloading."
+            },
+            "pin18": {
+            "name": "[PB6:MISO]",
+                "text": "MISO, Data output pin for memory uploading."
+            },
+            "pin19": {
+            "name": "[PB7:SCK]",
+                "text": "SCK, Clock input pin for memory up/downloading."
+            },
+            "pin2": {
+            "name": "[PD0:RXD]",
+                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical “1” in PORTD0 will turn on the internal pull-up."
+            },
+            "pin20": {
+                "name": "VCC"
+            },
+            "pin3": {
+            "name": "[PD1:TXD]",
+                "text": "Transmit Data (data output pin for the UART). When the UART transmitter is enabled, this pin is configured as an output, regardless of the value of DDRD1."
+            },
+            "pin4": {
+            "name": "[XTAL2]"
+            },
+            "pin5": {
+            "name": "[XTAL1]"
+            },
+            "pin6": {
+            "name": "[PD2:INT0]",
+                "text": "INT0: External Interrupt source 0. The PD2 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
+            },
+            "pin7": {
+            "name": "[PD3:INT1]",
+                "text": "INT1: External Interrupt source 1. The PD3 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
+            },
+            "pin8": {
+            "name": "[PD4:T0]",
+                "text": "T0, Timer/Counter0 clock source. See the Timer description for further details."
+            },
+            "pin9": {
+            "name": "[PD5:T1]",
+                "text": "T1, Timer 1 clock source. See the Timer description for further details."
+            }
+        }
+    },
+    "ram": {
+        "max_addr": "0x00DF",
+        "min_addr": "0x0060"
+    },
+    "rom": {
+        "max_addr": "0x03FF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "RJMP",
+        "RCALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "LD",
+        "ST",
+        "MOV",
+        "LDI",
+        "IN",
+        "OUT",
+        "LPM",
+        "SBI",
+        "CBI",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "BSET",
+        "BCLR",
+        "BST",
+        "BLD",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "NOP",
+        "SLEEP",
+        "WDR",
+        "ADIW",
+        "SBIW",
+        "IJMP",
+        "ICALL",
+        "LDD",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDS",
+        "STD",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STS",
+        "PUSH",
+        "POP",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi"
+    ]
+}

@@ -1,0 +1,104 @@
+{
+    "config_words": [
+        {
+            "init": "RC,_RC_OSC",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator",
+                    "value": "RC,_RC_OSC"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BOREN_ON,_BODEN_ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bit",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON,_BOREN_ON,_BODEN_ON"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF,_BOREN_OFF,_BODEN_OFF"
+                }
+            ]
+        },
+        {
+            "init": "40,_VBOR_40",
+            "key": "BODENV",
+            "label": "Brown-out Reset Voltage bit",
+            "settings": [
+                {
+                    "label": "VBOR set to 4.0V",
+                    "value": "40,_VBOR_40"
+                },
+                {
+                    "label": "VBOR set to 2.5V",
+                    "value": "25,_VBOR_25"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protect",
+            "settings": [
+                {
+                    "label": "Program memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory code protection is enabled",
+                    "value": "ON,_CP_ALL"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F716",
+    "clock": 1
+}

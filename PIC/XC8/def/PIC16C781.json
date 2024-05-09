@@ -1,0 +1,143 @@
+{
+    "config_words": [
+        {
+            "init": "ER_CLKOUT,_ER_OSC_CLKOUT",
+            "key": "FOSC",
+            "label": "Oscillator selection bits",
+            "settings": [
+                {
+                    "label": "RC CLKOUT",
+                    "value": "ER_CLKOUT,_ER_OSC_CLKOUT"
+                },
+                {
+                    "label": "RC I/O",
+                    "value": "ER_NOCLKOUT,_ER_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "INTRC, clockout on OSC2",
+                    "value": "INTRCCLK,_INTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "INTRC, OSC2 is I/O",
+                    "value": "INTRCIO,_INTRC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "EC I/O",
+                    "value": "EXTCLK,_EXTCLK_OSC"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "Master Clear Enable",
+            "settings": [
+                {
+                    "label": "External",
+                    "value": "ON"
+                },
+                {
+                    "label": "Internal",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BODEN_ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bit",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON,_BODEN_ON"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF,_BODEN_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protecton bit",
+            "settings": [
+                {
+                    "label": "Code protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "All memory is code protected",
+                    "value": "ALL"
+                }
+            ]
+        },
+        {
+            "init": "25,_VBOR_25",
+            "key": "BODENV",
+            "label": "Brown Out Voltage",
+            "settings": [
+                {
+                    "label": "VBOR set to 2.5V",
+                    "value": "25,_VBOR_25"
+                },
+                {
+                    "label": "VBOR set to 2.7V",
+                    "value": "27,_VBOR_27"
+                },
+                {
+                    "label": "VBOR set to 4.2V",
+                    "value": "42,_VBOR_42"
+                },
+                {
+                    "label": "VBOR set to 4.5V",
+                    "value": "45,_VBOR_45"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16C781",
+    "clock": 1
+}

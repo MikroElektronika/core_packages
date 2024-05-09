@@ -1,0 +1,1891 @@
+{
+    "config_words": [
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Overflow/Underflow Reset",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "XINST",
+            "label": "Extended Instruction Set",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "BOREN",
+            "label": "Brown-Out Reset Enable",
+            "settings": [
+                {
+                    "label": "Controlled with SBOREN bit, disabled in Deep Sleep",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled in hardware",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "1",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage",
+            "settings": [
+                {
+                    "label": "1.8V",
+                    "value": "1"
+                },
+                {
+                    "label": "2.0V",
+                    "value": "0"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP0",
+            "label": "Code Protect",
+            "settings": [
+                {
+                    "label": "Program memory is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIV",
+            "key": "FOSC",
+            "label": "Oscillator",
+            "settings": [
+                {
+                    "label": "Fast RC Oscillator with Postscaler (FRCDIV)",
+                    "value": "FRCDIV"
+                },
+                {
+                    "label": "Fast RC Oscillator divided by 16 (500 kHz)",
+                    "value": "FRC500KHZ"
+                },
+                {
+                    "label": "Low-Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Secondary Oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Primary Oscillator with PLL module (XTPLL,HSPLL,ECPLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Fast RC Oscillator with PLL module (FRCPLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Fast RC Oscillator (FRC)",
+                    "value": "FRC"
+                }
+            ]
+        },
+        {
+            "init": "LOW",
+            "key": "SOSCSEL",
+            "label": "T1OSC/SOSC Power Selection Bits",
+            "settings": [
+                {
+                    "label": "Low Power T1OSC/SOSC circuit selected",
+                    "value": "LOW"
+                },
+                {
+                    "label": "Digital (SCLKI) mode",
+                    "value": "DIG"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "CLKOEN",
+            "label": "Clock Out Enable Bit",
+            "settings": [
+                {
+                    "label": "CLKO output enabled on the RA6 pin",
+                    "value": "ON"
+                },
+                {
+                    "label": "CLKO output disabled on the RA6 pin",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Oscillator Switch Over Mode",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "NOPLL",
+            "key": "PLLDIV",
+            "label": "PLL Frequency Multiplier Select bits",
+            "settings": [
+                {
+                    "label": "No PLL used - PLLGO bit not available to user",
+                    "value": "NOPLL"
+                },
+                {
+                    "label": "8x PLL selected",
+                    "value": "PLL8X"
+                },
+                {
+                    "label": "6x PLL selected",
+                    "value": "PLL6X"
+                },
+                {
+                    "label": "4x PLL selected",
+                    "value": "PLL4X"
+                },
+                {
+                    "label": "96 MHz PLL selected; Oscillator divided by 12 (48 MHz input)",
+                    "value": "DIV12"
+                },
+                {
+                    "label": "96 MHz PLL selected; Oscillator divided by 10 (40 MHz input)",
+                    "value": "DIV10"
+                },
+                {
+                    "label": "96 MHz PLL selected; Oscillator divided by 6 (24 MHz input)",
+                    "value": "DIV6"
+                },
+                {
+                    "label": "96 MHz PLL selected; Oscillator divided by 5 (20 MHz input)",
+                    "value": "DIV5"
+                },
+                {
+                    "label": "96 MHz PLL selected; Oscillator divided by 4 (16 MHz input)",
+                    "value": "DIV4"
+                },
+                {
+                    "label": "96 MHz PLL selected; Oscillator divided by 3 (12 MHz input)",
+                    "value": "DIV3"
+                },
+                {
+                    "label": "96 MHz PLL selected; Oscillator divided by 2 (8 MHz input)",
+                    "value": "DIV2"
+                },
+                {
+                    "label": "96 MHz PLL selected; No divide - Oscillator used directly (4 MHz input)",
+                    "value": "NODIV"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "POSCMD",
+            "label": "Primary Oscillator Select",
+            "settings": [
+                {
+                    "label": "Primary oscillator disabled",
+                    "value": "NONE"
+                },
+                {
+                    "label": "HS oscillator mode selected(10 MHz - 40 MHz)",
+                    "value": "HS"
+                },
+                {
+                    "label": "MS oscillator mode selected(3.5 MHz -10 MHz)",
+                    "value": "MS"
+                },
+                {
+                    "label": "External clock mode selected",
+                    "value": "EC"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FSCM",
+            "label": "Clock Switching and Monitor Selection Configuration bits",
+            "settings": [
+                {
+                    "label": "Clock switching is disabled, fail safe clock monitor is disabled",
+                    "value": "CSDCMD"
+                },
+                {
+                    "label": "Clock switching is enabled, fail safe clock monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Clock switching is enabled, fail safe clock monitor is enabled",
+                    "value": "CSECME"
+                }
+            ]
+        },
+        {
+            "init": "WPFP255",
+            "key": "WPFP",
+            "label": "Write/Erase Protect Page Start/End Boundary",
+            "settings": [
+                {
+                    "label": "Write Protect Program Flash Page 0",
+                    "value": "WPFP0"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 1",
+                    "value": "WPFP1"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 2",
+                    "value": "WPFP2"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 3",
+                    "value": "WPFP3"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 4",
+                    "value": "WPFP4"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 5",
+                    "value": "WPFP5"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 6",
+                    "value": "WPFP6"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 7",
+                    "value": "WPFP7"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 8",
+                    "value": "WPFP8"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 9",
+                    "value": "WPFP9"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 10",
+                    "value": "WPFP10"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 11",
+                    "value": "WPFP11"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 12",
+                    "value": "WPFP12"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 13",
+                    "value": "WPFP13"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 14",
+                    "value": "WPFP14"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 15",
+                    "value": "WPFP15"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 16",
+                    "value": "WPFP16"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 17",
+                    "value": "WPFP17"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 18",
+                    "value": "WPFP18"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 19",
+                    "value": "WPFP19"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 20",
+                    "value": "WPFP20"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 21",
+                    "value": "WPFP21"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 22",
+                    "value": "WPFP22"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 23",
+                    "value": "WPFP23"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 24",
+                    "value": "WPFP24"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 25",
+                    "value": "WPFP25"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 26",
+                    "value": "WPFP26"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 27",
+                    "value": "WPFP27"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 28",
+                    "value": "WPFP28"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 29",
+                    "value": "WPFP29"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 30",
+                    "value": "WPFP30"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 31",
+                    "value": "WPFP31"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 32",
+                    "value": "WPFP32"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 33",
+                    "value": "WPFP33"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 34",
+                    "value": "WPFP34"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 35",
+                    "value": "WPFP35"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 36",
+                    "value": "WPFP36"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 37",
+                    "value": "WPFP37"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 38",
+                    "value": "WPFP38"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 39",
+                    "value": "WPFP39"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 40",
+                    "value": "WPFP40"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 41",
+                    "value": "WPFP41"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 42",
+                    "value": "WPFP42"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 43",
+                    "value": "WPFP43"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 44",
+                    "value": "WPFP44"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 45",
+                    "value": "WPFP45"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 46",
+                    "value": "WPFP46"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 47",
+                    "value": "WPFP47"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 48",
+                    "value": "WPFP48"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 49",
+                    "value": "WPFP49"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 50",
+                    "value": "WPFP50"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 51",
+                    "value": "WPFP51"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 52",
+                    "value": "WPFP52"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 53",
+                    "value": "WPFP53"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 54",
+                    "value": "WPFP54"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 55",
+                    "value": "WPFP55"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 56",
+                    "value": "WPFP56"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 57",
+                    "value": "WPFP57"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 58",
+                    "value": "WPFP58"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 59",
+                    "value": "WPFP59"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 60",
+                    "value": "WPFP60"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 61",
+                    "value": "WPFP61"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 62",
+                    "value": "WPFP62"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 63",
+                    "value": "WPFP63"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 64",
+                    "value": "WPFP64"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 65",
+                    "value": "WPFP65"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 66",
+                    "value": "WPFP66"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 67",
+                    "value": "WPFP67"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 68",
+                    "value": "WPFP68"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 69",
+                    "value": "WPFP69"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 70",
+                    "value": "WPFP70"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 71",
+                    "value": "WPFP71"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 72",
+                    "value": "WPFP72"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 73",
+                    "value": "WPFP73"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 74",
+                    "value": "WPFP74"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 75",
+                    "value": "WPFP75"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 76",
+                    "value": "WPFP76"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 77",
+                    "value": "WPFP77"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 78",
+                    "value": "WPFP78"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 79",
+                    "value": "WPFP79"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 80",
+                    "value": "WPFP80"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 81",
+                    "value": "WPFP81"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 82",
+                    "value": "WPFP82"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 83",
+                    "value": "WPFP83"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 84",
+                    "value": "WPFP84"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 85",
+                    "value": "WPFP85"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 86",
+                    "value": "WPFP86"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 87",
+                    "value": "WPFP87"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 88",
+                    "value": "WPFP88"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 89",
+                    "value": "WPFP89"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 90",
+                    "value": "WPFP90"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 91",
+                    "value": "WPFP91"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 92",
+                    "value": "WPFP92"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 93",
+                    "value": "WPFP93"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 94",
+                    "value": "WPFP94"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 95",
+                    "value": "WPFP95"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 96",
+                    "value": "WPFP96"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 97",
+                    "value": "WPFP97"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 98",
+                    "value": "WPFP98"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 99",
+                    "value": "WPFP99"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 100",
+                    "value": "WPFP100"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 101",
+                    "value": "WPFP101"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 102",
+                    "value": "WPFP102"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 103",
+                    "value": "WPFP103"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 104",
+                    "value": "WPFP104"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 105",
+                    "value": "WPFP105"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 106",
+                    "value": "WPFP106"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 107",
+                    "value": "WPFP107"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 108",
+                    "value": "WPFP108"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 109",
+                    "value": "WPFP109"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 110",
+                    "value": "WPFP110"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 111",
+                    "value": "WPFP111"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 112",
+                    "value": "WPFP112"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 113",
+                    "value": "WPFP113"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 114",
+                    "value": "WPFP114"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 115",
+                    "value": "WPFP115"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 116",
+                    "value": "WPFP116"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 117",
+                    "value": "WPFP117"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 118",
+                    "value": "WPFP118"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 119",
+                    "value": "WPFP119"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 120",
+                    "value": "WPFP120"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 121",
+                    "value": "WPFP121"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 122",
+                    "value": "WPFP122"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 123",
+                    "value": "WPFP123"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 124",
+                    "value": "WPFP124"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 125",
+                    "value": "WPFP125"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 126",
+                    "value": "WPFP126"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 127",
+                    "value": "WPFP127"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 128",
+                    "value": "WPFP128"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 129",
+                    "value": "WPFP129"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 130",
+                    "value": "WPFP130"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 131",
+                    "value": "WPFP131"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 132",
+                    "value": "WPFP132"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 133",
+                    "value": "WPFP133"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 134",
+                    "value": "WPFP134"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 135",
+                    "value": "WPFP135"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 136",
+                    "value": "WPFP136"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 137",
+                    "value": "WPFP137"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 138",
+                    "value": "WPFP138"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 139",
+                    "value": "WPFP139"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 140",
+                    "value": "WPFP140"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 141",
+                    "value": "WPFP141"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 142",
+                    "value": "WPFP142"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 143",
+                    "value": "WPFP143"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 144",
+                    "value": "WPFP144"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 145",
+                    "value": "WPFP145"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 146",
+                    "value": "WPFP146"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 147",
+                    "value": "WPFP147"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 148",
+                    "value": "WPFP148"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 149",
+                    "value": "WPFP149"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 150",
+                    "value": "WPFP150"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 151",
+                    "value": "WPFP151"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 152",
+                    "value": "WPFP152"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 153",
+                    "value": "WPFP153"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 154",
+                    "value": "WPFP154"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 155",
+                    "value": "WPFP155"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 156",
+                    "value": "WPFP156"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 157",
+                    "value": "WPFP157"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 158",
+                    "value": "WPFP158"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 159",
+                    "value": "WPFP159"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 160",
+                    "value": "WPFP160"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 161",
+                    "value": "WPFP161"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 162",
+                    "value": "WPFP162"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 163",
+                    "value": "WPFP163"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 164",
+                    "value": "WPFP164"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 165",
+                    "value": "WPFP165"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 166",
+                    "value": "WPFP166"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 167",
+                    "value": "WPFP167"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 168",
+                    "value": "WPFP168"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 169",
+                    "value": "WPFP169"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 170",
+                    "value": "WPFP170"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 171",
+                    "value": "WPFP171"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 172",
+                    "value": "WPFP172"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 173",
+                    "value": "WPFP173"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 174",
+                    "value": "WPFP174"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 175",
+                    "value": "WPFP175"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 176",
+                    "value": "WPFP176"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 177",
+                    "value": "WPFP177"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 178",
+                    "value": "WPFP178"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 179",
+                    "value": "WPFP179"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 180",
+                    "value": "WPFP180"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 181",
+                    "value": "WPFP181"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 182",
+                    "value": "WPFP182"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 183",
+                    "value": "WPFP183"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 184",
+                    "value": "WPFP184"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 185",
+                    "value": "WPFP185"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 186",
+                    "value": "WPFP186"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 187",
+                    "value": "WPFP187"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 188",
+                    "value": "WPFP188"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 189",
+                    "value": "WPFP189"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 190",
+                    "value": "WPFP190"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 191",
+                    "value": "WPFP191"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 192",
+                    "value": "WPFP192"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 193",
+                    "value": "WPFP193"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 194",
+                    "value": "WPFP194"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 195",
+                    "value": "WPFP195"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 196",
+                    "value": "WPFP196"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 197",
+                    "value": "WPFP197"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 198",
+                    "value": "WPFP198"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 199",
+                    "value": "WPFP199"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 200",
+                    "value": "WPFP200"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 201",
+                    "value": "WPFP201"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 202",
+                    "value": "WPFP202"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 203",
+                    "value": "WPFP203"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 204",
+                    "value": "WPFP204"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 205",
+                    "value": "WPFP205"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 206",
+                    "value": "WPFP206"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 207",
+                    "value": "WPFP207"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 208",
+                    "value": "WPFP208"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 209",
+                    "value": "WPFP209"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 210",
+                    "value": "WPFP210"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 211",
+                    "value": "WPFP211"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 212",
+                    "value": "WPFP212"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 213",
+                    "value": "WPFP213"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 214",
+                    "value": "WPFP214"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 215",
+                    "value": "WPFP215"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 216",
+                    "value": "WPFP216"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 217",
+                    "value": "WPFP217"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 218",
+                    "value": "WPFP218"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 219",
+                    "value": "WPFP219"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 220",
+                    "value": "WPFP220"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 221",
+                    "value": "WPFP221"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 222",
+                    "value": "WPFP222"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 223",
+                    "value": "WPFP223"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 224",
+                    "value": "WPFP224"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 225",
+                    "value": "WPFP225"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 226",
+                    "value": "WPFP226"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 227",
+                    "value": "WPFP227"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 228",
+                    "value": "WPFP228"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 229",
+                    "value": "WPFP229"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 230",
+                    "value": "WPFP230"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 231",
+                    "value": "WPFP231"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 232",
+                    "value": "WPFP232"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 233",
+                    "value": "WPFP233"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 234",
+                    "value": "WPFP234"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 235",
+                    "value": "WPFP235"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 236",
+                    "value": "WPFP236"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 237",
+                    "value": "WPFP237"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 238",
+                    "value": "WPFP238"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 239",
+                    "value": "WPFP239"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 240",
+                    "value": "WPFP240"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 241",
+                    "value": "WPFP241"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 242",
+                    "value": "WPFP242"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 243",
+                    "value": "WPFP243"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 244",
+                    "value": "WPFP244"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 245",
+                    "value": "WPFP245"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 246",
+                    "value": "WPFP246"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 247",
+                    "value": "WPFP247"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 248",
+                    "value": "WPFP248"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 249",
+                    "value": "WPFP249"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 250",
+                    "value": "WPFP250"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 251",
+                    "value": "WPFP251"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 252",
+                    "value": "WPFP252"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 253",
+                    "value": "WPFP253"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 254",
+                    "value": "WPFP254"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 255",
+                    "value": "WPFP255"
+                }
+            ]
+        },
+        {
+            "init": "WPDIS",
+            "key": "WPDIS",
+            "label": "Segment Write Protection Disable",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "WPDIS"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "WPEN"
+                }
+            ]
+        },
+        {
+            "init": "WPENDMEM",
+            "key": "WPEND",
+            "label": "Segment Write Protection End Page Select",
+            "settings": [
+                {
+                    "label": "Write Protect from WPFP to the last page of memory",
+                    "value": "WPENDMEM"
+                },
+                {
+                    "label": "write Protect from page 0 to WPFP",
+                    "value": "WPSTARTMEM"
+                }
+            ]
+        },
+        {
+            "init": "WPCFGDIS",
+            "key": "WPCFG",
+            "label": "Write Protect Configuration Page Select",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "WPCFGDIS"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "WPCFGEN"
+                }
+            ]
+        },
+        {
+            "init": "T5G",
+            "key": "T5GSEL",
+            "label": "TMR5 Gate Select bit",
+            "settings": [
+                {
+                    "label": "TMR5 Gate is driven by the T5G input",
+                    "value": "T5G"
+                },
+                {
+                    "label": "TMR5 Gate is driven by the T3G input",
+                    "value": "T3G"
+                }
+            ]
+        },
+        {
+            "init": "DEFAULT",
+            "key": "CINASEL",
+            "label": "CxINA Gate Select bit",
+            "settings": [
+                {
+                    "label": "C1INA and C3INA are on their default pin locations",
+                    "value": "DEFAULT"
+                },
+                {
+                    "label": "C1INA and C3INA are all re-mapped to pin RA5",
+                    "value": "RA5"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "EASHFT",
+            "label": "External Address Shift bit",
+            "settings": [
+                {
+                    "label": "Address Shifting enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Address Shifting disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "MM",
+            "key": "ABW",
+            "label": "Address Bus Width Select bits",
+            "settings": [
+                {
+                    "label": "8-bit address bus",
+                    "value": "MM"
+                },
+                {
+                    "label": "12-bit address bus",
+                    "value": "XM12"
+                },
+                {
+                    "label": "16-bit address bus",
+                    "value": "XM16"
+                },
+                {
+                    "label": "20-bit address bus",
+                    "value": "XM20"
+                }
+            ]
+        },
+        {
+            "init": "16",
+            "key": "BW",
+            "label": "Data Bus Width",
+            "settings": [
+                {
+                    "label": "16-bit external bus mode",
+                    "value": "16"
+                },
+                {
+                    "label": "8-bit external bus mode",
+                    "value": "8"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WAIT",
+            "label": "External Bus Wait",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "IOLOCK One-Way Set Enable bit",
+            "settings": [
+                {
+                    "label": "Once set, the IOLOCK bit cannot be cleared",
+                    "value": "ON"
+                },
+                {
+                    "label": "the IOLOCK bit can be set and cleared using the unlock sequence",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "SYSX2",
+            "key": "LS48MHZ",
+            "label": "USB Low Speed Clock Select bit",
+            "settings": [
+                {
+                    "label": "Divide-by-2 (System clock must be 12 MHz)",
+                    "value": "SYSX2"
+                },
+                {
+                    "label": "Divide-by-1 (System clock must be 6 MHz)",
+                    "value": "SYSX1"
+                }
+            ]
+        },
+        {
+            "init": "MSK7",
+            "key": "MSSPMSK2",
+            "label": "MSSP2 7-Bit Address Masking Mode Enable bit",
+            "settings": [
+                {
+                    "label": "7 Bit address masking mode",
+                    "value": "MSK7"
+                },
+                {
+                    "label": "5 Bit address masking mode",
+                    "value": "MSK5"
+                }
+            ]
+        },
+        {
+            "init": "MSK7",
+            "key": "MSSPMSK1",
+            "label": "MSSP1 7-Bit Address Masking Mode Enable bit",
+            "settings": [
+                {
+                    "label": "7 Bit address masking mode",
+                    "value": "MSK7"
+                },
+                {
+                    "label": "5 bit address masking mode",
+                    "value": "MSK5"
+                }
+            ]
+        },
+        {
+            "init": "PS25_0",
+            "key": "WDTWIN",
+            "label": "Watch Dog Timer Window",
+            "settings": [
+                {
+                    "label": "Watch Dog Timer Window Width is 25 percent",
+                    "value": "PS25_0"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 37.5 percent",
+                    "value": "PS37_5"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 50 percent",
+                    "value": "PS50_0"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 75 percent",
+                    "value": "PS75_0"
+                }
+            ]
+        },
+        {
+            "init": "FRC",
+            "key": "WDTCLK",
+            "label": "Watch Dog Timer Clock Source",
+            "settings": [
+                {
+                    "label": "Use FRC when WINDIS = 0, system clock is not INTOSC/LPRC and device is not in Sleep; otherwise, use INTOSC/LPRC",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Always use INTOSC/LPRC",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Always use SOSC",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Use FOSC/4 when system clock is not INTOSC/LPRC and device is not in Sleep; otherwise, use INTOSC/LPRC",
+                    "value": "SYS"
+                }
+            ]
+        },
+        {
+            "init": "32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscale",
+            "settings": [
+                {
+                    "label": "1:32768",
+                    "value": "32768"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "16384"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "8192"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "4096"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "2048"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "1024"
+                },
+                {
+                    "label": "1:512",
+                    "value": "512"
+                },
+                {
+                    "label": "1:256",
+                    "value": "256"
+                },
+                {
+                    "label": "1:128",
+                    "value": "128"
+                },
+                {
+                    "label": "1:64",
+                    "value": "64"
+                },
+                {
+                    "label": "1:32",
+                    "value": "32"
+                },
+                {
+                    "label": "1:16",
+                    "value": "16"
+                },
+                {
+                    "label": "1:8",
+                    "value": "8"
+                },
+                {
+                    "label": "1:4",
+                    "value": "4"
+                },
+                {
+                    "label": "1:2",
+                    "value": "2"
+                },
+                {
+                    "label": "1:1",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "init": "SWDTDIS",
+            "key": "WDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "WDT enabled in hardware; SWDTEN bit disabled",
+                    "value": "SWDTDIS"
+                },
+                {
+                    "label": "WDT controlled by SWDTEN bit setting",
+                    "value": "ON"
+                },
+                {
+                    "label": "WDT enabled only while device is active and disabled in Sleep mode; SWDTEN bit disabled",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "WDT disabled in hardware; SWDTEN bit disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "WDTSTD",
+            "key": "WINDIS",
+            "label": "Windowed Watchdog Timer Disable",
+            "settings": [
+                {
+                    "label": "Standard WDT selected; windowed WDT disabled",
+                    "value": "WDTSTD"
+                },
+                {
+                    "label": "Windowed WDT enabled",
+                    "value": "WDTWIN"
+                }
+            ]
+        },
+        {
+            "init": "128",
+            "key": "WPSA",
+            "label": "WDT Prescaler",
+            "settings": [
+                {
+                    "label": "WDT prescaler ratio of 1:128",
+                    "value": "128"
+                },
+                {
+                    "label": "WDT prescaler ratio of 1:32",
+                    "value": "32"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "RETEN",
+            "label": "Retention Voltage Regulator Control Enable",
+            "settings": [
+                {
+                    "label": "Retention not available",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Retention controlled by SRETEN during Sleep",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "VBTBOR",
+            "label": "VBAT BOR Enable",
+            "settings": [
+                {
+                    "label": "VBAT BOR is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "VBAT BOR is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSBOREN",
+            "label": "Deep Sleep BOR Enable",
+            "settings": [
+                {
+                    "label": "BOR enabled in Deep Sleep",
+                    "value": "ON"
+                },
+                {
+                    "label": "BOR disabled in Deep Sleep (does not affect operation in non-Deep Sleep modes)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSBITEN",
+            "label": "DSEN Bit Enable bit",
+            "settings": [
+                {
+                    "label": "Deep Sleep is controlled by the register bit DSEN",
+                    "value": "ON"
+                },
+                {
+                    "label": "Deep Sleep operation is always disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DSWDTPS1F",
+            "key": "DSWDTPS",
+            "label": "Deep Sleep Watchdog Timer Postscale Select",
+            "settings": [
+                {
+                    "label": "1:68719476736 (25.7 Days)",
+                    "value": "DSWDTPS1F"
+                },
+                {
+                    "label": "1:34359738368 (12.8  Days)",
+                    "value": "DSWDTPS1E"
+                },
+                {
+                    "label": "1:17179869184 (6.4 Days)",
+                    "value": "DSWDTPS1D"
+                },
+                {
+                    "label": "1:8589934592 (77 Hours)",
+                    "value": "DSWDTPS1C"
+                },
+                {
+                    "label": "1:4294967296 (38.5 Hours)",
+                    "value": "DSWDTPS1B"
+                },
+                {
+                    "label": "1:2147483648 (19.2 Hours)",
+                    "value": "DSWDTPS1A"
+                },
+                {
+                    "label": "1:1073741824 (9.6 Hours)",
+                    "value": "DSWDTPS19"
+                },
+                {
+                    "label": "1:536870912 (4.8 Hours)",
+                    "value": "DSWDTPS18"
+                },
+                {
+                    "label": "1:268435456 (2.4 Hours)",
+                    "value": "DSWDTPS17"
+                },
+                {
+                    "label": "1:134217728 (72.2 Minutes)",
+                    "value": "DSWDTPS16"
+                },
+                {
+                    "label": "1:67108864 (36.1 Minutes)",
+                    "value": "DSWDTPS15"
+                },
+                {
+                    "label": "1:33554432 (18 Minutes)",
+                    "value": "DSWDTPS14"
+                },
+                {
+                    "label": "1:16777216 (9 Minutes)",
+                    "value": "DSWDTPS13"
+                },
+                {
+                    "label": "1:8388608 (4.5 Minutes)",
+                    "value": "DSWDTPS12"
+                },
+                {
+                    "label": "1:4194304 (135.3 Secs)",
+                    "value": "DSWDTPS11"
+                },
+                {
+                    "label": "1:2097152 (67.7 Secs)",
+                    "value": "DSWDTPS10"
+                },
+                {
+                    "label": "1:1048576 (33.825 Secs)",
+                    "value": "DSWDTPSF"
+                },
+                {
+                    "label": "1:524288 (16.912 Secs)",
+                    "value": "DSWDTPSE"
+                },
+                {
+                    "label": "1:262114 (8.456 Secs)",
+                    "value": "DSWDTPSD"
+                },
+                {
+                    "label": "1:131072 (4.228 Secs)",
+                    "value": "DSWDTPSC"
+                },
+                {
+                    "label": "1:65536 (2.114 Secs)",
+                    "value": "DSWDTPSB"
+                },
+                {
+                    "label": "1:32768 (1.057 Secs)",
+                    "value": "DSWDTPSA"
+                },
+                {
+                    "label": "1:16384 (528.5 mS)",
+                    "value": "DSWDTPS9"
+                },
+                {
+                    "label": "1:8192 (264.3 mS)",
+                    "value": "DSWDTPS8"
+                },
+                {
+                    "label": "1:4096 (132.1 mS)",
+                    "value": "DSWDTPS7"
+                },
+                {
+                    "label": "1:2048 (66.1 mS)",
+                    "value": "DSWDTPS6"
+                },
+                {
+                    "label": "1:1024 (33 mS)",
+                    "value": "DSWDTPS5"
+                },
+                {
+                    "label": "1:512 (16.5 mS)",
+                    "value": "DSWDTPS4"
+                },
+                {
+                    "label": "1: 256 (8.3 mS)",
+                    "value": "DSWDTPS3"
+                },
+                {
+                    "label": "1:128 (4.1 mS)",
+                    "value": "DSWDTPS2"
+                },
+                {
+                    "label": "1:64 (2.1 mS)",
+                    "value": "DSWDTPS1"
+                },
+                {
+                    "label": "1:32 (1 mS)",
+                    "value": "DSWDTPS0"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSWDTEN",
+            "label": "Deep Sleep Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "DSWDT Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "DSWDT Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "LPRC",
+            "key": "DSWDTOSC",
+            "label": "DSWDT Reference Clock Select",
+            "settings": [
+                {
+                    "label": "DSWDT uses LPRC as reference clock",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "DSWDT uses SOSC as reference clock",
+                    "value": "SOSC"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18F85J94",
+    "clock": 1
+}

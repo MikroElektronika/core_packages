@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "(^STM32G0[3-4|7-8][0-1][CFGERJKY][648B]$)")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/system_stm32g_0xx.c)
+    list(APPEND local_list_include system/inc/${vendor}/system_stm32g_0xx.h)
+    list(APPEND local_list_install system/inc/${vendor}/system_stm32g_0xx.h)
+endif()

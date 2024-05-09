@@ -1,0 +1,287 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc-arm-none-eabi/core/def/MK51DN256XXX10.json",
+    "flash": 262143,
+    "ram": 32767,
+    "settings": {
+        "clock": "96",
+        "scheme": "MK51DN256XXX10_USB",
+        "mcu": "MK51DN256XXX10",
+        "core": "M4DSP",
+        "delay_src_path": "delays/m4ef/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": {
+                    "key": "ERCLKEN",
+                    "value": "00000000"
+                },
+                "key": "OSC_CR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "OSC32KSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "OSC32KOUT",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "SIM_SOPT1"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "USBSRC",
+                        "value": "00040000"
+                    },
+                    {
+                        "key": "PLLFLLSEL",
+                        "value": "00010000"
+                    },
+                    {
+                        "key": "CLKOUTSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RTCCLKOUTSEL",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "SIM_SOPT2"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "OUTDIV4",
+                        "value": "00030000"
+                    },
+                    {
+                        "key": "OUTDIV3",
+                        "value": "00100000"
+                    },
+                    {
+                        "key": "OUTDIV2",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "OUTDIV1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "SIM_CLKDIV1"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CLKS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FRDIV",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "IREFS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "IRCLKEN",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "MCG_C1"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "RANGE",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "EREFS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "IRCS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "VBAT",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "MCG_C2"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "DMX32",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DRST_DRS",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "MCG_C4"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "PLLCLKEN",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "PRDIV",
+                        "value": "00000003"
+                    }
+                ],
+                "key": "MCG_C5"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "PLLS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "VDIV",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "MCG_C6"
+            },
+            {
+                "fields": {
+                    "key": "FCRDIV",
+                    "value": "00000002"
+                },
+                "key": "MCG_SC"
+            },
+            {
+                "fields": {
+                    "key": "OSCSEL",
+                    "value": "00000000"
+                },
+                "key": "MCG_C7"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "USBDIV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "USBFRAC",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "SIM_CLKDIV2"
+            },
+            {
+                "fields": {
+                    "key": "WDOGEN",
+                    "value": "00000000"
+                },
+                "key": "WDOG_STCTRLH"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MCGMODE",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "HSRUN_MODE",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "MCG_MODE"
+            },
+            {
+                "fields": {
+                    "key": "PROT",
+                    "value": "000000FF"
+                },
+                "key": "FPROT0"
+            },
+            {
+                "fields": {
+                    "key": "PROT",
+                    "value": "000000FF"
+                },
+                "key": "FPROT1"
+            },
+            {
+                "fields": {
+                    "key": "PROT",
+                    "value": "000000FF"
+                },
+                "key": "FPROT2"
+            },
+            {
+                "fields": {
+                    "key": "PROT",
+                    "value": "000000FF"
+                },
+                "key": "FPROT3"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "KEYEN",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "MEEN",
+                        "value": "00000030"
+                    },
+                    {
+                        "key": "FSLACC",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "SEC",
+                        "value": "00000002"
+                    }
+                ],
+                "key": "FSEC"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "NMI_DIS",
+                        "value": "000000FC"
+                    },
+                    {
+                        "key": "EZPORT_DIS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPBOOT",
+                        "value": "00000001"
+                    }
+                ],
+                "key": "FOPT"
+            },
+            {
+                "fields": {
+                    "key": "EPROT",
+                    "value": "000000FF"
+                },
+                "key": "FEPROT"
+            },
+            {
+                "fields": {
+                    "key": "DPROT",
+                    "value": "000000FF"
+                },
+                "key": "FDPROT"
+            }
+        ]
+    }
+}

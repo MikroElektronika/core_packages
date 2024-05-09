@@ -1,0 +1,725 @@
+{
+    "eeprom": {
+        "max_addr": "0x01FF",
+        "min_addr": "0x0000"
+    },
+    "eio": {
+        "max_addr": "0x00FF",
+        "min_addr": "0x60"
+    },
+    "fuse": {
+        "high": {
+            "fuse0": {
+                "default": "0",
+                "name": "JTAGEN",
+                "text": "Enable JTAG"
+            },
+            "fuse1": {
+                "default": "1",
+                "name": "OCDEN",
+                "text": "Enable OCD"
+            },
+            "nmb_fuse_bits": "2",
+            "nmb_text": "2",
+            "text1": {
+                "mask": "0x02",
+            "text": "On-Chip Debug Enabled; [OCDEN=0]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x01",
+            "text": "JTAG Interface Enabled; [JTAGEN=0]",
+                "value": "0x00"
+            }
+        },
+    "list": "[LOW:HIGH]",
+        "low": {
+            "fuse0": {
+                "default": "1",
+                "name": "CKSEL",
+                "text": "Clock Selection"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "SUT0",
+                "text": "Select start-up time"
+            },
+            "fuse2": {
+                "default": "1",
+                "name": "SUT1",
+                "text": "Select start-up time"
+            },
+            "fuse3": {
+                "default": "1",
+                "name": "BOOTRST",
+                "text": "Select reset vector"
+            },
+            "fuse4": {
+                "default": "0",
+                "name": "BOOTSZ0",
+                "text": "Select boot size"
+            },
+            "fuse5": {
+                "default": "0",
+                "name": "BOOTSZ1",
+                "text": "Select boot size"
+            },
+            "fuse6": {
+                "default": "1",
+                "name": "EESAVE",
+                "text": "EEPROM memory is preserved through the chip erase"
+            },
+            "fuse7": {
+                "default": "1",
+                "name": "WDTON",
+                "text": "Watchdog Timer Always On"
+            },
+            "nmb_fuse_bits": "8",
+            "nmb_text": "13",
+            "text1": {
+                "mask": "0x80",
+            "text": "Watchdog timer always on; [WDTON=0]",
+                "value": "0x00"
+            },
+            "text10": {
+                "mask": "0x07",
+            "text": "CKSEL; Start-up time: 14 CK + 62.5 ms;  [CKSEL=0 SUT=10]",
+                "value": "0x04"
+            },
+            "text11": {
+                "mask": "0x07",
+            "text": "CKSEL; Start-up time: 14 CK + 0 ms;   [CKSEL=1 SUT=00]",
+                "value": "0x01"
+            },
+            "text12": {
+                "mask": "0x07",
+            "text": "CKSEL; Start-up time: 14 CK + 3.9 ms; [CKSEL=1 SUT=01]",
+                "value": "0x03"
+            },
+            "text13": {
+                "mask": "0x07",
+            "text": "CKSEL; Start-up time: 14 CK + 62.5 ms;  [CKSEL=1 SUT=10]",
+                "value": "0x05"
+            },
+            "text2": {
+                "mask": "0x40",
+            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "value": "0x00"
+            },
+            "text3": {
+                "mask": "0x30",
+            "text": "Boot Flash section size=256 words; Boot start address=$4F00; [BOOTSZ=11]",
+                "value": "0x30"
+            },
+            "text4": {
+                "mask": "0x30",
+            "text": "Boot Flash section size=512 words; Boot start address=$4E00; [BOOTSZ=10]",
+                "value": "0x20"
+            },
+            "text5": {
+                "mask": "0x30",
+            "text": "Boot Flash section size=1024 words; Boot start address=$4C00; [BOOTSZ=01]",
+                "value": "0x10"
+            },
+            "text6": {
+                "mask": "0x30",
+            "text": "Boot Flash section size=2048 words; Boot start address=$4800; [BOOTSZ=00] ; default value",
+                "value": "0x00"
+            },
+            "text7": {
+                "mask": "0x08",
+            "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
+                "value": "0x00"
+            },
+            "text8": {
+                "mask": "0x07",
+            "text": "CKSEL; Start-up time: 14 CK + 0 ms;   [CKSEL=0 SUT=00]",
+                "value": "0x00"
+            },
+            "text9": {
+                "mask": "0x07",
+            "text": "CKSEL; Start-up time: 14 CK + 3.9 ms; [CKSEL=0 SUT=01]",
+                "value": "0x02"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x002C",
+            "desc": "Store Program Memory Ready",
+            "name": "SPM READY"
+        },
+        {
+            "address": "0x002A",
+            "desc": "EEPROM Ready",
+            "name": "EE READY"
+        },
+        {
+            "address": "0x0028",
+            "desc": "Coloumb Counter ADC Accumulator",
+            "name": "CCADC_ACC"
+        },
+        {
+            "address": "0x0026",
+            "desc": "Coloumb Counter ADC Regular Current",
+            "name": "CCADC_REG_CUR"
+        },
+        {
+            "address": "0x0024",
+            "desc": "Coulomb Counter ADC Conversion Complete",
+            "name": "CCADC_CONV"
+        },
+        {
+            "address": "0x0022",
+            "desc": "Voltage ADC Conversion Complete",
+            "name": "VADC"
+        },
+        {
+            "address": "0x0020",
+            "desc": "Two-Wire Serial Interface",
+            "name": "TWI"
+        },
+        {
+            "address": "0x001E",
+            "desc": "Two-Wire Bus Connect/Disconnect",
+            "name": "TWI_BUS_CD"
+        },
+        {
+            "address": "0x001C",
+            "desc": "Timer/Counter0 Overflow",
+            "name": "TIM0_OVF"
+        },
+        {
+            "address": "0x001A",
+            "desc": "Timer/Counter0 Compare B Match",
+            "name": "TIM0_COMPB"
+        },
+        {
+            "address": "0x0018",
+            "desc": "Timer/Counter0 Compare A Match",
+            "name": "TIM0_COMPA"
+        },
+        {
+            "address": "0x0016",
+            "desc": "Timer/Counter 1 Overflow",
+            "name": "TIM1_OVF"
+        },
+        {
+            "address": "0x0014",
+            "desc": "Timer/Counter 1 Compare Match",
+            "name": "TIM1_COMP"
+        },
+        {
+            "address": "0x0012",
+            "desc": "Wakeup timer overflow",
+            "name": "WAKE_UP"
+        },
+        {
+            "address": "0x0010",
+            "desc": "Watchdog Timeout Interrupt",
+            "name": "WDT"
+        },
+        {
+            "address": "0x000E",
+            "desc": "Pin Change Interrupt 1",
+            "name": "PCINT1"
+        },
+        {
+            "address": "0x000C",
+            "desc": "Pin Change Interrupt 0",
+            "name": "PCINT0"
+        },
+        {
+            "address": "0x000A",
+            "desc": "External Interrupt Request 3",
+            "name": "INT3"
+        },
+        {
+            "address": "0x0008",
+            "desc": "External Interrupt Request 2",
+            "name": "INT2"
+        },
+        {
+            "address": "0x0006",
+            "desc": "External Interrupt Request 1",
+            "name": "INT1"
+        },
+        {
+            "address": "0x0004",
+            "desc": "External Interrupt Request 0",
+            "name": "INT0"
+        },
+        {
+            "address": "0x0002",
+            "desc": "Battery Protection Interrupt",
+            "name": "BPINT"
+        }
+    ],
+    "mcu": "ATMEGA406",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "package": {
+        "lqfp": {
+            "nmb_pin": "48",
+            "pin1": {
+            "name": "[SGND]"
+            },
+            "pin10": {
+            "name": "[PA5:INT1:PCINT5]"
+            },
+            "pin11": {
+            "name": "[PA6:INT2:PCINT6]"
+            },
+            "pin12": {
+            "name": "[PA7:INT3:PCINT7]"
+            },
+            "pin13": {
+            "name": "['RESET]"
+            },
+            "pin14": {
+            "name": "[XTAL1]"
+            },
+            "pin15": {
+            "name": "[XTAL2]"
+            },
+            "pin16": {
+            "name": "[GND]"
+            },
+            "pin17": {
+            "name": "[PB0:TDO:PCINT8]"
+            },
+            "pin18": {
+            "name": "[PB1:TDI:PCINT9]"
+            },
+            "pin19": {
+            "name": "[PB2:TMS:PCINT10]"
+            },
+            "pin2": {
+            "name": "[PA0:ADC0:PCINT0]"
+            },
+            "pin20": {
+            "name": "[PB3:TCK:PCINT11]"
+            },
+            "pin21": {
+            "name": "[PB4:PCINT12]"
+            },
+            "pin22": {
+            "name": "[PB5:PCINT13]"
+            },
+            "pin23": {
+            "name": "[SCL]"
+            },
+            "pin24": {
+            "name": "[SDA]"
+            },
+            "pin25": {
+            "name": "[PB6:OC0A:PCINT14]"
+            },
+            "pin26": {
+            "name": "[PB7:OC0B:PCINT15]"
+            },
+            "pin27": {
+            "name": "[PD0:T0]"
+            },
+            "pin28": {
+            "name": "[PD1]"
+            },
+            "pin29": {
+            "name": "[GND]"
+            },
+            "pin3": {
+            "name": "[PA1:ADC1:PCINT1]"
+            },
+            "pin30": {
+            "name": "[PC0]"
+            },
+            "pin31": {
+            "name": "[BATT]"
+            },
+            "pin32": {
+            "name": "[OPC]"
+            },
+            "pin33": {
+            "name": "[OC]"
+            },
+            "pin34": {
+            "name": "[VFET]"
+            },
+            "pin35": {
+            "name": "[OD]"
+            },
+            "pin36": {
+            "name": "[PVT]"
+            },
+            "pin37": {
+            "name": "[GND]"
+            },
+            "pin38": {
+            "name": "[PV4]"
+            },
+            "pin39": {
+            "name": "[PV3]"
+            },
+            "pin4": {
+            "name": "[PA2:ADC2:PCINT2]"
+            },
+            "pin40": {
+            "name": "[PV2]"
+            },
+            "pin41": {
+            "name": "[PV1]"
+            },
+            "pin42": {
+            "name": "[NV]"
+            },
+            "pin43": {
+            "name": "[VREF]"
+            },
+            "pin44": {
+            "name": "[VREFGND]"
+            },
+            "pin45": {
+            "name": "[PPI]"
+            },
+            "pin46": {
+            "name": "[PI]"
+            },
+            "pin47": {
+            "name": "[NI]"
+            },
+            "pin48": {
+            "name": "[NNI]"
+            },
+            "pin5": {
+            "name": "[PA3:ADC3:PCINT3]"
+            },
+            "pin6": {
+            "name": "[VREG]"
+            },
+            "pin7": {
+            "name": "[VCC]"
+            },
+            "pin8": {
+            "name": "[GND]"
+            },
+            "pin9": {
+            "name": "[PA4:ADC4:INT0:PCINT4]"
+            }
+        },
+    "packages": "[LQFP]"
+    },
+    "ram": {
+        "max_addr": "0x08FF",
+        "min_addr": "0x0100"
+    },
+    "rom": {
+        "max_addr": "0x4FFF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "ADIW",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "SBIW",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "MUL",
+        "MULS",
+        "MULSU",
+        "FMUL",
+        "FMULS",
+        "FMULSU",
+        "RJMP",
+        "IJMP",
+        "JMP",
+        "RCALL",
+        "ICALL",
+        "CALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "MOV",
+        "MOVW",
+        "LDI",
+        "LDS",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LDD_Y",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDD_Z",
+        "STS",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "STD_Y",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STD_Z",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi",
+        "ELPM_Z",
+        "ELPM_Zi",
+        "SPM",
+        "IN",
+        "OUT",
+        "PUSH",
+        "POP",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "SBI",
+        "CBI",
+        "BST",
+        "BLD",
+        "BSET",
+        "BCLR",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "BREAK",
+        "NOP",
+        "SLEEP",
+        "WDR"
+    ],
+    "config_registers": [
+        {
+            "address": "820000",
+            "default": "000000CD",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "SUT_CKSEL",
+                    "label": "Clock Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Start-up time: 14 CK + 0 ms",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Start-up time: 14 CK + 3.9 ms",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Start-up time: 14 CK + 62.5 ms",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Start-up time: 14 CK + 0 ms",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Start-up time: 14 CK + 3.9 ms",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Start-up time: 14 CK + 62.5 ms",
+                            "value": "00000005"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "BOOTRST",
+                    "label": "Boot Reset vector Enabled",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "BOOTSZ",
+                    "label": "Select boot size",
+                    "mask": "00000030",
+                    "settings": [
+                        {
+                            "label": "Boot Flash size=256 words Boot address=$4F00",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Boot Flash size=512 words Boot address=$4E00",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Boot Flash size=1024 words Boot address=$4C00",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Boot Flash size=2048 words Boot address=$4800",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "40",
+                    "key": "EESAVE",
+                    "label": "Preserve EEPROM through the Chip Erase cycle",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000040"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "WDTON",
+                    "label": "Watchdog timer always on",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "LOW",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "820001",
+            "default": "000000FE",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "JTAGEN",
+                    "label": "JTAG Interface Enabled",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "OCDEN",
+                    "label": "On-Chip Debug Enabled",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ],
+            "key": "HIGH",
+            "unused": "FFFFFF00"
+        }
+    ],
+    "avr_core": "avr5"
+}

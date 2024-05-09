@@ -1,0 +1,752 @@
+{
+    "config_words": [
+        {
+            "init": "ON",
+            "key": "PMDL1WAY",
+            "label": "Peripheral Module Disable Configuration",
+            "settings": [
+                {
+                    "label": "Allow multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow only one reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "Peripheral Pin Select Configuration",
+            "settings": [
+                {
+                    "label": "Allow multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow only one reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FUSBIDIO",
+            "label": "USB USID Selection",
+            "settings": [
+                {
+                    "label": "Controlled by Port Function",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Controlled by the USB Module",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FVBUSONIO",
+            "label": "USB VBUS ON Selection",
+            "settings": [
+                {
+                    "label": "Controlled by Port Function",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Controlled by USB Module",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "DIV_12",
+            "key": "FPLLIDIV",
+            "label": "PLL Input Divider",
+            "settings": [
+                {
+                    "label": "1x Divider",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "2x Divider",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "3x Divider",
+                    "value": "DIV_3"
+                },
+                {
+                    "label": "4x Divider",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "5x Divider",
+                    "value": "DIV_5"
+                },
+                {
+                    "label": "6x Divider",
+                    "value": "DIV_6"
+                },
+                {
+                    "label": "10x Divider",
+                    "value": "DIV_10"
+                },
+                {
+                    "label": "12x Divider",
+                    "value": "DIV_12"
+                }
+            ]
+        },
+        {
+            "init": "MUL_24",
+            "key": "FPLLMUL",
+            "label": "PLL Multiplier",
+            "settings": [
+                {
+                    "label": "15x Multiplier",
+                    "value": "MUL_15"
+                },
+                {
+                    "label": "16x Multiplier",
+                    "value": "MUL_16"
+                },
+                {
+                    "label": "17x Multiplier",
+                    "value": "MUL_17"
+                },
+                {
+                    "label": "18x Multiplier",
+                    "value": "MUL_18"
+                },
+                {
+                    "label": "19x Multiplier",
+                    "value": "MUL_19"
+                },
+                {
+                    "label": "20x Multiplier",
+                    "value": "MUL_20"
+                },
+                {
+                    "label": "21x Multiplier",
+                    "value": "MUL_21"
+                },
+                {
+                    "label": "24x Multiplier",
+                    "value": "MUL_24"
+                }
+            ]
+        },
+        {
+            "init": "DIV_12",
+            "key": "UPLLIDIV",
+            "label": "USB PLL Input Divider",
+            "settings": [
+                {
+                    "label": "1x Divider",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "2x Divider",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "3x Divider",
+                    "value": "DIV_3"
+                },
+                {
+                    "label": "4x Divider",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "5x Divider",
+                    "value": "DIV_5"
+                },
+                {
+                    "label": "6x Divider",
+                    "value": "DIV_6"
+                },
+                {
+                    "label": "10x Divider",
+                    "value": "DIV_10"
+                },
+                {
+                    "label": "12x Divider",
+                    "value": "DIV_12"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "UPLLEN",
+            "label": "USB PLL Enable",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled and Bypassed",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DIV_256",
+            "key": "FPLLODIV",
+            "label": "System PLL Output Clock Divider",
+            "settings": [
+                {
+                    "label": "PLL Divide by 1",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "PLL Divide by 2",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "PLL Divide by 4",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "PLL Divide by 8",
+                    "value": "DIV_8"
+                },
+                {
+                    "label": "PLL Divide by 16",
+                    "value": "DIV_16"
+                },
+                {
+                    "label": "PLL Divide by 32",
+                    "value": "DIV_32"
+                },
+                {
+                    "label": "PLL Divide by 64",
+                    "value": "DIV_64"
+                },
+                {
+                    "label": "PLL Divide by 256",
+                    "value": "DIV_256"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIV",
+            "key": "FNOSC",
+            "label": "Oscillator Selection Bits",
+            "settings": [
+                {
+                    "label": "Fast RC Osc (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC Osc with PLL",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Osc (XT,HS,EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Osc w/PLL (XT+,HS+,EC+PLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Low Power Secondary Osc (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low Power RC Osc (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Fast RC Osc w/Div-by-16 (FRC/16)",
+                    "value": "FRCDIV16"
+                },
+                {
+                    "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
+                    "value": "FRCDIV"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FSOSCEN",
+            "label": "Secondary Oscillator Enable",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal/External Switch Over",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "POSCMOD",
+            "label": "Primary Oscillator Configuration",
+            "settings": [
+                {
+                    "label": "External clock mode",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT osc mode",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS osc mode",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary osc disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "CLKO Output Signal Active on the OSCO Pin",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DIV_8",
+            "key": "FPBDIV",
+            "label": "Peripheral Clock Divisor",
+            "settings": [
+                {
+                    "label": "Pb_Clk is Sys_Clk/1",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "Pb_Clk is Sys_Clk/2",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "Pb_Clk is Sys_Clk/4",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "Pb_Clk is Sys_Clk/8",
+                    "value": "DIV_8"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor Selection",
+            "settings": [
+                {
+                    "label": "Clock Switch Enable, FSCM Enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock Switch Enable, FSCM Disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Clock Switch Disable, FSCM Disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "PS1048576",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32768",
+                    "value": "PS32768"
+                },
+                {
+                    "label": "1:65536",
+                    "value": "PS65536"
+                },
+                {
+                    "label": "1:131072",
+                    "value": "PS131072"
+                },
+                {
+                    "label": "1:262144",
+                    "value": "PS262144"
+                },
+                {
+                    "label": "1:524288",
+                    "value": "PS524288"
+                },
+                {
+                    "label": "1:1048576",
+                    "value": "PS1048576"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window Enable",
+            "settings": [
+                {
+                    "label": "Watchdog Timer is in Window Mode",
+                    "value": "ON"
+                },
+                {
+                    "label": "Watchdog Timer is in Non-Window Mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "WDT Disabled (SWDTEN Bit Controls)",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WINSZ_25",
+            "key": "FWDTWINSZ",
+            "label": "Watchdog Timer Window Size",
+            "settings": [
+                {
+                    "label": "Window Size is 75%",
+                    "value": "WINSZ_75"
+                },
+                {
+                    "label": "Window Size is 50%",
+                    "value": "WINSZ_50"
+                },
+                {
+                    "label": "Window Size is 37.5%",
+                    "value": "WINSZ_37"
+                },
+                {
+                    "label": "Window Size is 25%",
+                    "value": "WINSZ_25"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DEBUG",
+            "label": "Background Debugger Enable",
+            "settings": [
+                {
+                    "label": "Debugger is Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Debugger is Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "JTAGEN",
+            "label": "JTAG Enable",
+            "settings": [
+                {
+                    "label": "JTAG Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "JTAG Port Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ICS_PGx1",
+            "key": "ICESEL",
+            "label": "ICE/ICD Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Reserved",
+                    "value": "RESERVED"
+                },
+                {
+                    "label": "Communicate on PGEC3/PGED3",
+                    "value": "ICS_PGx3"
+                },
+                {
+                    "label": "Communicate on PGEC2/PGED2",
+                    "value": "ICS_PGx2"
+                },
+                {
+                    "label": "Communicate on PGEC1/PGED1",
+                    "value": "ICS_PGx1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWP",
+            "label": "Program Flash Write Protect",
+            "settings": [
+                {
+                    "label": "First 32K",
+                    "value": "PWP32K"
+                },
+                {
+                    "label": "First 31K",
+                    "value": "PWP31K"
+                },
+                {
+                    "label": "First 30K",
+                    "value": "PWP30K"
+                },
+                {
+                    "label": "First 29K",
+                    "value": "PWP29K"
+                },
+                {
+                    "label": "First 28K",
+                    "value": "PWP28K"
+                },
+                {
+                    "label": "First 27K",
+                    "value": "PWP27K"
+                },
+                {
+                    "label": "First 26K",
+                    "value": "PWP26K"
+                },
+                {
+                    "label": "First 25K",
+                    "value": "PWP25K"
+                },
+                {
+                    "label": "First 24K",
+                    "value": "PWP24K"
+                },
+                {
+                    "label": "First 23K",
+                    "value": "PWP23K"
+                },
+                {
+                    "label": "First 22K",
+                    "value": "PWP22K"
+                },
+                {
+                    "label": "First 21K",
+                    "value": "PWP21K"
+                },
+                {
+                    "label": "First 20K",
+                    "value": "PWP20K"
+                },
+                {
+                    "label": "First 19K",
+                    "value": "PWP19K"
+                },
+                {
+                    "label": "First 18K",
+                    "value": "PWP18K"
+                },
+                {
+                    "label": "First 17K",
+                    "value": "PWP17K"
+                },
+                {
+                    "label": "First 16K",
+                    "value": "PWP16K"
+                },
+                {
+                    "label": "First 15K",
+                    "value": "PWP15K"
+                },
+                {
+                    "label": "First 14K",
+                    "value": "PWP14K"
+                },
+                {
+                    "label": "First 13K",
+                    "value": "PWP13K"
+                },
+                {
+                    "label": "First 12K",
+                    "value": "PWP12K"
+                },
+                {
+                    "label": "First 11K",
+                    "value": "PWP11K"
+                },
+                {
+                    "label": "First 10K",
+                    "value": "PWP10K"
+                },
+                {
+                    "label": "First 9K",
+                    "value": "PWP9K"
+                },
+                {
+                    "label": "First 8K",
+                    "value": "PWP8K"
+                },
+                {
+                    "label": "First 7K",
+                    "value": "PWP7K"
+                },
+                {
+                    "label": "First 6K",
+                    "value": "PWP6K"
+                },
+                {
+                    "label": "First 5K",
+                    "value": "PWP5K"
+                },
+                {
+                    "label": "First 4K",
+                    "value": "PWP4K"
+                },
+                {
+                    "label": "First 3K",
+                    "value": "PWP3K"
+                },
+                {
+                    "label": "First 2K",
+                    "value": "PWP2K"
+                },
+                {
+                    "label": "First 1K",
+                    "value": "PWP1K"
+                },
+                {
+                    "label": "Disable",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BWP",
+            "label": "Boot Flash Write Protect bit",
+            "settings": [
+                {
+                    "label": "Protection Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Protection Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protect",
+            "settings": [
+                {
+                    "label": "Protection Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Protection Disabled",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC32MX210F016D",
+    "clock": 1
+}

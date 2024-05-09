@@ -1,0 +1,224 @@
+{
+    "avr_core": "avr2",
+    "eeprom": {
+        "max_addr": "0x007F",
+        "min_addr": "0x0000"
+    },
+    "fuse": {
+    "list": "[LOW]",
+        "low": {
+            "fuse0": {
+                "default": "0",
+                "name": "RCEN",
+                "text": "Select Clock Source"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "SPIEN",
+                "text": "Enable Serial programming and Data Downloading"
+            },
+            "nmb_fuse_bits": "2",
+            "nmb_text": "3",
+            "text1": {
+                "mask": "0x20",
+            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x01",
+            "text": "Internal RC oscillator enabled; [RCEN=0]",
+                "value": "0x00"
+            },
+            "text3": {
+                "mask": "0x01",
+            "text": "External clock enabled; [RCEN=1]",
+                "value": "0x01"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x0002",
+            "desc": "Timer/Counter0 Overflow",
+            "name": "TIMER0_OVF0"
+        },
+        {
+            "address": "0x0001",
+            "desc": "External Interrupt 0",
+            "name": "INT0"
+        }
+    ],
+    "mcu": "AT90S2343",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "package": {
+        "dip": {
+            "nmb_pin": "8",
+            "pin1": {
+            "name": "[RESET]"
+            },
+            "pin2": {
+            "name": "[PB3:CLOCK]"
+            },
+            "pin3": {
+            "name": "[PB4]"
+            },
+            "pin4": {
+            "name": "[GND]"
+            },
+            "pin5": {
+            "name": "[PB0:MOSI]"
+            },
+            "pin6": {
+            "name": "[PB1:MISO:INT0]"
+            },
+            "pin7": {
+            "name": "[PB2:SCK:T0]"
+            },
+            "pin8": {
+            "name": "[VCC]"
+            }
+        },
+    "packages": "[DIP]"
+    },
+    "ram": {
+        "max_addr": "0x00DF",
+        "min_addr": "0x0060"
+    },
+    "rom": {
+        "max_addr": "0x03FF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "RJMP",
+        "RCALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "LD",
+        "ST",
+        "MOV",
+        "LDI",
+        "IN",
+        "OUT",
+        "LPM",
+        "SBI",
+        "CBI",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "BSET",
+        "BCLR",
+        "BST",
+        "BLD",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "NOP",
+        "SLEEP",
+        "WDR",
+        "ADIW",
+        "SBIW",
+        "IJMP",
+        "ICALL",
+        "LDD",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDS",
+        "STD",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STS",
+        "PUSH",
+        "POP",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi"
+    ]
+}

@@ -1,0 +1,109 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC32/XC32/core/def/PIC32MX564F064L.json",
+    "flash": 65536,
+    "ram": 16384,
+    "settings": {
+        "clock": "1",
+        "scheme": "PIC32MX564F064L_CAN",
+        "mcu": "PIC32MX564F064L",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "FSRSSEL",
+                "value": "PRIORITY_7"
+            },
+            {
+                "key": "FCANIO",
+                "value": "ON"
+            },
+            {
+                "key": "FUSBIDIO",
+                "value": "ON"
+            },
+            {
+                "key": "FVBUSONIO",
+                "value": "ON"
+            },
+            {
+                "key": "FPLLIDIV",
+                "value": "DIV_12"
+            },
+            {
+                "key": "FPLLMUL",
+                "value": "MUL_24"
+            },
+            {
+                "key": "UPLLIDIV",
+                "value": "DIV_12"
+            },
+            {
+                "key": "UPLLEN",
+                "value": "OFF"
+            },
+            {
+                "key": "FPLLODIV",
+                "value": "DIV_256"
+            },
+            {
+                "key": "FNOSC",
+                "value": "FRCDIV"
+            },
+            {
+                "key": "FSOSCEN",
+                "value": "ON"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "POSCMOD",
+                "value": "OFF"
+            },
+            {
+                "key": "OSCIOFNC",
+                "value": "OFF"
+            },
+            {
+                "key": "FPBDIV",
+                "value": "DIV_8"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSDCMD"
+            },
+            {
+                "key": "WDTPS",
+                "value": "PS1048576"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "ON"
+            },
+            {
+                "key": "DEBUG",
+                "value": "OFF"
+            },
+            {
+                "key": "ICESEL",
+                "value": "ICS_PGx2"
+            },
+            {
+                "key": "PWP",
+                "value": "OFF"
+            },
+            {
+                "key": "BWP",
+                "value": "OFF"
+            },
+            {
+                "key": "CP",
+                "value": "OFF"
+            }
+        ]
+    }
+}

@@ -1,0 +1,188 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRCCLK,_EXTRC_OSC_CLKOUT",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator: CLKOUT function on RA4/T1G/OSC2/CLKOUT pin, RC on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "EXTRCCLK,_EXTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "RCIO oscillator: I/O function on RA4/T1G/OSC2/CLKOUT pin, RC on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "EXTRCIO,_EXTRC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "INTOSC oscillator: CLKOUT function on RA4/T1G/OSC2/CLKOUT pin, I/O function on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "INTOSCCLK,_INTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "INTOSCIO oscillator: I/O function on RA4/T1G/OSC2/CLKOUT pin, I/O function on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "INTOSCIO,_INTRC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "EC: I/O function on RA4/T1G/OSC2/CLKOUT, CLKIN on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "EC,_EC_OSC"
+                },
+                {
+                    "label": "HS oscillator: High-speed crystal/resonator on RA5/T1CKI/OSC1/CLKIN and RA4/T1G/OSC2/CLKOUT",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator: Crystal/resonator on RA5/T1CKI/OSC1/CLKIN and RA4/T1G/OSC2/CLKOUT",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator: Low-power crystal on RA5/T1CKI/OSC1/CLKIN and RA4/T1G/OSC2/CLKOUT",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "MCLR pin function select bit",
+            "settings": [
+                {
+                    "label": "MCLR pin is MCLR function and weak internal pull-up is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "MCLR pin function is alternate function, MCLR function is internally disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bit",
+            "settings": [
+                {
+                    "label": "Program memory is not code protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory is external read and write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "Data Code Protection bit",
+            "settings": [
+                {
+                    "label": "Data memory is not code protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data memory is external read protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BOD_ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Selection bits",
+            "settings": [
+                {
+                    "label": "BOD enabled and SBOdEN bit disabled",
+                    "value": "ON,_BOD_ON"
+                },
+                {
+                    "label": "BOD enabled while running and disabled in Sleep. SBODEN bit disabled.",
+                    "value": "NSLEEP,_BOD_NSLEEP"
+                },
+                {
+                    "label": "SBODEN controls BOD function",
+                    "value": "SBODEN,_BOD_SBODEN"
+                },
+                {
+                    "label": "BOD and SBODEN disabled",
+                    "value": "OFF,_BOD_OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal-External Switchover bit",
+            "settings": [
+                {
+                    "label": "Internal External Switchover mode enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Internal External Switchover mode disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enable bit",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF,_WUREN_OFF",
+            "key": "WURE",
+            "label": "Wake-Up Reset Enable bit",
+            "settings": [
+                {
+                    "label": "Standard wake-up and continue enabled",
+                    "value": "OFF,_WUREN_OFF"
+                },
+                {
+                    "label": "Wake-up and Reset enabled",
+                    "value": "ON,_WUREN_ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F639",
+    "clock": 1
+}

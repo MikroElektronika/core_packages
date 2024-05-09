@@ -1,0 +1,2643 @@
+{
+    "config_registers": [
+        {
+            "address": "40021000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "IRC8MEN",
+                    "label": "Internal 8MHz RC oscillator Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Internal 8 MHz RC oscillator disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Internal 8 MHz RC oscillator enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "IRC8MADJ",
+                    "label": "Internal 8MHz RC Oscillator clock trim adjust value",
+                    "mask": "000000F8",
+                    "settings": [
+                        {
+                            "label": "Trim adjust value - None",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Trim adjust value - 1",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Trim adjust value - 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Trim adjust value - 3",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Trim adjust value - 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Trim adjust value - 5",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Trim adjust value - 6",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Trim adjust value - 7",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Trim adjust value - 8",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Trim adjust value - 9",
+                            "value": "00000048"
+                        },
+                        {
+                            "label": "Trim adjust value - 10",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Trim adjust value - 11",
+                            "value": "00000058"
+                        },
+                        {
+                            "label": "Trim adjust value - 12",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "Trim adjust value - 13",
+                            "value": "00000068"
+                        },
+                        {
+                            "label": "Trim adjust value - 14",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "Trim adjust value - 15",
+                            "value": "00000078"
+                        },
+                        {
+                            "label": "Trim adjust value - 16",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Trim adjust value - 17",
+                            "value": "00000088"
+                        },
+                        {
+                            "label": "Trim adjust value - 18",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "Trim adjust value - 19",
+                            "value": "00000098"
+                        },
+                        {
+                            "label": "Trim adjust value - 20",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "Trim adjust value - 21",
+                            "value": "000000A8"
+                        },
+                        {
+                            "label": "Trim adjust value - 22",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "Trim adjust value - 23",
+                            "value": "000000B8"
+                        },
+                        {
+                            "label": "Trim adjust value - 24",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "Trim adjust value - 25",
+                            "value": "000000C8"
+                        },
+                        {
+                            "label": "Trim adjust value - 26",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "Trim adjust value - 27",
+                            "value": "000000D8"
+                        },
+                        {
+                            "label": "Trim adjust value - 28",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "Trim adjust value - 29",
+                            "value": "000000E8"
+                        },
+                        {
+                            "label": "Trim adjust value - 30",
+                            "value": "000000F0"
+                        },
+                        {
+                            "label": "Trim adjust value - 31",
+                            "value": "000000F8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HXTALEN",
+                    "label": "External High Speed oscillator Enable",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "High speed 4 to 32 MHz crystal oscillator (HXTAL) disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "High speed 4 to 32 MHz crystal oscillator (HXTAL) enabled",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HXTALBPS",
+                    "label": "High speed crystal oscillator (HXTAL) clock bypass mode enable",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "Disable the HXTAL Bypass mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable the HXTAL Bypass mode - HXTAL output equals input clock",
+                            "value": "00040000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00080000",
+                    "key": "CKMEN",
+                    "label": "HXTAL Clock Monitor Enable",
+                    "mask": "00080000",
+                    "settings": [
+                        {
+                            "label": "Disable the High speed 4 to 32 MHz crystal oscillator (HXTAL) clock monitor",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable the High speed 4 to 32 MHz crystal oscillator (HXTAL) clock monitor",
+                            "value": "00080000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "01000000",
+                    "key": "PLLEN",
+                    "label": "PLL enable",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "PLL is switched off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL is switched on",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLL1EN",
+                    "label": "PLL1 enable",
+                    "mask": "04000000",
+                    "settings": [
+                        {
+                            "label": "PLL1 is switched off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL1 is switched on",
+                            "value": "04000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLL2EN",
+                    "label": "PLL2 enable",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "PLL2 is switched off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL2 is switched on",
+                            "value": "10000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCU_CTL",
+            "unused": "EAF2FF06"
+        },
+        {
+            "address": "40021004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "SCS",
+                    "label": "System clock switch",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "System clock source - IRC8M(internal 8MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "System clock source - HXTAL(external 4MHz to 32MHz)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "System clock source - PLL",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "AHBPSC",
+                    "label": "AHB prescaler selection",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "System clock - no division",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "System clock divided by 2",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "System clock divided by 4",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "System clock divided by 8",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "System clock divided by 16",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "System clock divided by 64",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "System clock divided by 128",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "System clock divided by 256",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "System clock divided by 512",
+                            "value": "000000F0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000400",
+                    "key": "APB1PSC",
+                    "label": "APB1 prescaler selection",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "AHB clock - no division",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "AHB clock divided by 2",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "AHB clock divided by 4",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "AHB clock divided by 8",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "AHB clock divided by 16",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "APB2PSC",
+                    "label": "APB2 prescaler selection",
+                    "mask": "00003800",
+                    "settings": [
+                        {
+                            "label": "AHB clock - no division",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "AHB clock divided by 2",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "AHB clock divided by 4",
+                            "value": "00002800"
+                        },
+                        {
+                            "label": "AHB clock divided by 8",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": "AHB clock divided by 16",
+                            "value": "00003800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00004000",
+                    "key": "ADCPSC",
+                    "label": "ADC clock prescaler selection",
+                    "mask": "1000C000",
+                    "settings": [
+                        {
+                            "label": "APB2 clock divided by 2 selected(CK_APB2 / 2)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "APB2 clock divided by 4 selected(CK_APB2 / 4)",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "APB2 clock divided by 6 selected(CK_APB2 / 6)",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "APB2 clock divided by 8 selected(CK_APB2 / 8)",
+                            "value": "0000C000"
+                        },
+                        {
+                            "label": "APB2 clock divided by 12 selected(CK_APB2 / 12)",
+                            "value": "10004000"
+                        },
+                        {
+                            "label": "APB2 clock divided by 16 selected(CK_APB2 / 16)",
+                            "value": "1000C000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLSEL",
+                    "label": "PLL Clock Source Selection",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "Internal clock divided by 2 selected as source clock of PLL(IRC8M / 2)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HXTAL selected as source clock of PLL",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "201C0000",
+                    "key": "PLLMF",
+                    "label": "The PLL clock multiplication factor",
+                    "mask": "203C0000",
+                    "settings": [
+                        {
+                            "label": "PLL source clock x 2",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL source clock x 3",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "PLL source clock x 4",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "PLL source clock x 5",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "PLL source clock x 6",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "PLL source clock x 6.5",
+                            "value": "00340000"
+                        },
+                        {
+                            "label": "PLL source clock x 7",
+                            "value": "00140000"
+                        },
+                        {
+                            "label": "PLL source clock x 8",
+                            "value": "00180000"
+                        },
+                        {
+                            "label": "PLL source clock x 9",
+                            "value": "001C0000"
+                        },
+                        {
+                            "label": "PLL source clock x 10",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "PLL source clock x 11",
+                            "value": "00240000"
+                        },
+                        {
+                            "label": "PLL source clock x 12",
+                            "value": "00280000"
+                        },
+                        {
+                            "label": "PLL source clock x 13",
+                            "value": "002C0000"
+                        },
+                        {
+                            "label": "PLL source clock x 14",
+                            "value": "00300000"
+                        },
+                        {
+                            "label": "PLL source clock x 16",
+                            "value": "00380000"
+                        },
+                        {
+                            "label": "PLL source clock x 17",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "PLL source clock x 18",
+                            "value": "20040000"
+                        },
+                        {
+                            "label": "PLL source clock x 19",
+                            "value": "20080000"
+                        },
+                        {
+                            "label": "PLL source clock x 20",
+                            "value": "200C0000"
+                        },
+                        {
+                            "label": "PLL source clock x 21",
+                            "value": "20100000"
+                        },
+                        {
+                            "label": "PLL source clock x 22",
+                            "value": "20140000"
+                        },
+                        {
+                            "label": "PLL source clock x 23",
+                            "value": "20180000"
+                        },
+                        {
+                            "label": "PLL source clock x 24",
+                            "value": "201C0000"
+                        },
+                        {
+                            "label": "PLL source clock x 25",
+                            "value": "20200000"
+                        },
+                        {
+                            "label": "PLL source clock x 26",
+                            "value": "20240000"
+                        },
+                        {
+                            "label": "PLL source clock x 27",
+                            "value": "20280000"
+                        },
+                        {
+                            "label": "PLL source clock x 28",
+                            "value": "202C0000"
+                        },
+                        {
+                            "label": "PLL source clock x 29",
+                            "value": "20300000"
+                        },
+                        {
+                            "label": "PLL source clock x 30",
+                            "value": "20340000"
+                        },
+                        {
+                            "label": "PLL source clock x 31",
+                            "value": "20380000"
+                        },
+                        {
+                            "label": "PLL source clock x 32",
+                            "value": "203C0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00C00000",
+                    "key": "USBFSPSC",
+                    "label": "USBFS clock prescaler selection",
+                    "mask": "00C00000",
+                    "settings": [
+                        {
+                            "label": "PLL clock divided by 1.5(CK_PLL / 1.5)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL clock - no division(CK_PLL)",
+                            "value": "00400000"
+                        },
+                        {
+                            "label": "PLL clock divided by 2.5(CK_PLL / 2.5)",
+                            "value": "00800000"
+                        },
+                        {
+                            "label": "PLL clock divided by 2(CK_PLL / 2)",
+                            "value": "00C00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CKOUT0SEL",
+                    "label": "CKOUT0 Clock Source Selection",
+                    "mask": "0F000000",
+                    "settings": [
+                        {
+                            "label": "No clock selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "System clock selected",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "High Speed 8MHz Internal Oscillator clock selected",
+                            "value": "05000000"
+                        },
+                        {
+                            "label": "External High Speed oscillator clock selected",
+                            "value": "06000000"
+                        },
+                        {
+                            "label": "PLL divided by 2 clock selected(CK_PLL / 2)",
+                            "value": "07000000"
+                        },
+                        {
+                            "label": "PLL1 clock selected(CK_PLL1)",
+                            "value": "08000000"
+                        },
+                        {
+                            "label": "PLL2 clock divided by 2 selected(CK_PLL2 / 2)",
+                            "value": "09000000"
+                        },
+                        {
+                            "label": "EXT1 selected",
+                            "value": "0A000000"
+                        },
+                        {
+                            "label": "PLL2 clock selected(CK_PLL2)",
+                            "value": "0B000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCU_CFG0",
+            "unused": "C002000C"
+        },
+        {
+            "address": "40021020",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "LXTALEN",
+                    "label": "LXTAL enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disable LXTAL",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable LXTAL",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "LXTALBPS",
+                    "label": "LXTAL bypass mode enable",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Disable the LXTAL Bypass mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable the LXTAL Bypass mode",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "RTCSRC",
+                    "label": "RTC clock entry selection",
+                    "mask": "00000300",
+                    "settings": [
+                        {
+                            "label": "No clock selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CK_LXTAL selected as RTC source clock",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "CK_IRC40K selected as RTC source clock",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "(CK_HXTAL / 128) selected as RTC source clock",
+                            "value": "00000300"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "RTCEN",
+                    "label": "RTC clock enable",
+                    "mask": "00008000",
+                    "settings": [
+                        {
+                            "label": "Disable RTC clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable RTC clock",
+                            "value": "00008000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCU_BDCTL",
+            "unused": "FFFF7CFA"
+        },
+        {
+            "address": "40021024",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "IRC40KEN",
+                    "label": "IRC40K enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disable IRC40K",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable IRC40K",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCU_RSTSCK",
+            "unused": "FFFFFFFE"
+        },
+        {
+            "address": "4002102C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PREDV0",
+                    "label": "PREDV0 division factor",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "PREDV0 input source clock - no division",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 3",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 4",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 5",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 6",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 7",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 8",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 9",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 10",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 11",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 12",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 13",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 14",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 15",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "PREDV0 input source clock divided by 16",
+                            "value": "0000000F"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PREDV1",
+                    "label": "PREDV1 division factor",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "PREDV1 input source clock - no division",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 3",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 4",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 5",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 6",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 7",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 8",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 9",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 10",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 11",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 12",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 13",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 14",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 15",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "PREDV1 input source clock divided by 16",
+                            "value": "000000F0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000600",
+                    "key": "PLL1MF",
+                    "label": "The PLL1 clock multiplication factor",
+                    "mask": "00000F00",
+                    "settings": [
+                        {
+                            "label": "PLL1 source clock x 8",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1 source clock x 9",
+                            "value": "00000700"
+                        },
+                        {
+                            "label": "PLL1 source clock x 10",
+                            "value": "00000800"
+                        },
+                        {
+                            "label": "PLL1 source clock x 11",
+                            "value": "00000900"
+                        },
+                        {
+                            "label": "PLL1 source clock x 12",
+                            "value": "00000A00"
+                        },
+                        {
+                            "label": "PLL1 source clock x 13",
+                            "value": "00000B00"
+                        },
+                        {
+                            "label": "PLL1 source clock x 14",
+                            "value": "00000C00"
+                        },
+                        {
+                            "label": "PLL1 source clock x 15",
+                            "value": "00000D00"
+                        },
+                        {
+                            "label": "PLL1 source clock x 16",
+                            "value": "00000E00"
+                        },
+                        {
+                            "label": "PLL1 source clock x 20",
+                            "value": "00000F00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00006000",
+                    "key": "PLL2MF",
+                    "label": "The PLL2 clock multiplication factor",
+                    "mask": "0000F000",
+                    "settings": [
+                        {
+                            "label": "PLL2 source clock x 8",
+                            "value": "00006000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 9",
+                            "value": "00007000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 10",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 11",
+                            "value": "00009000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 12",
+                            "value": "0000A000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 13",
+                            "value": "0000B000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 14",
+                            "value": "0000C000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 15",
+                            "value": "0000D000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 16",
+                            "value": "0000E000"
+                        },
+                        {
+                            "label": "PLL2 source clock x 20",
+                            "value": "0000F000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PREDV0SEL",
+                    "label": "PREDV0 input Clock Source Selection",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "HXTAL selected as PREDV0 input source clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CK_PLL1 selected as PREDV0 input source clock",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "I2S1SEL",
+                    "label": "I2S1 Clock Source Selection",
+                    "mask": "00020000",
+                    "settings": [
+                        {
+                            "label": "System clock selected as I2S1 source clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL2 multiplied by 2 selected as I2S1 source clock(CK_PLL2 x 2)",
+                            "value": "00020000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "I2S2SEL",
+                    "label": "I2S2 Clock Source Selection",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "System clock selected as I2S2 source clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL2 multiplied by 2 selected as I2S2 source clock(CK_PLL2 x 2)",
+                            "value": "00040000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCU_CFG1",
+            "unused": "FFF80000"
+        },
+        {
+            "address": "40021034",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DSLPVS",
+                    "label": "Deep-sleep mode voltage select",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "The core voltage is 1.2V in Deep-sleep mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The core voltage is 1.1V in Deep-sleep mode",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "The core voltage is 1.0V in Deep-sleep mode",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "The core voltage is 0.9V in Deep-sleep mode",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCU_DSV",
+            "unused": "FFFFFFFC"
+        }
+    ],
+    "core": "RISCV",
+    "info": {
+    },
+    "ivt": [
+        {
+            "name": "IVT_INT_RESERVED2",
+            "vector": 2
+        },
+        {
+            "name": "IVT_INT_CLIC_INT_SFT",
+            "vector": 3
+        },
+        {
+            "name": "IVT_INT_RESERVED3",
+            "vector": 4
+        },
+        {
+            "name": "IVT_INT_RESERVED4",
+            "vector": 5
+        },
+        {
+            "name": "IVT_INT_RESERVED5",
+            "vector": 6
+        },
+        {
+            "name": "IVT_INT_CLIC_INT_TMR",
+            "vector": 7
+        },
+        {
+            "name": "IVT_INT_RESERVED6",
+            "vector": 8
+        },
+        {
+            "name": "IVT_INT_RESERVED7",
+            "vector": 9
+        },
+        {
+            "name": "IVT_INT_RESERVED8",
+            "vector": 10
+        },
+        {
+            "name": "IVT_INT_RESERVED9",
+            "vector": 11
+        },
+        {
+            "name": "IVT_INT_RESERVED10",
+            "vector": 12
+        },
+        {
+            "name": "IVT_INT_RESERVED11",
+            "vector": 13
+        },
+        {
+            "name": "IVT_INT_RESERVED12",
+            "vector": 14
+        },
+        {
+            "name": "IVT_INT_RESERVED13",
+            "vector": 15
+        },
+        {
+            "name": "IVT_INT_RESERVED14",
+            "vector": 16
+        },
+        {
+            "name": "IVT_INT_CLIC_INT_BWEI",
+            "vector": 17
+        },
+        {
+            "name": "IVT_INT_CLIC_INT_PMOVI",
+            "vector": 18
+        },
+        {
+            "name": "IVT_INT_WWDGT_INTERRUPT",
+            "vector": 19
+        },
+        {
+            "name": "IVT_INT_LVD_FROM_EXTI_INTERRUPT",
+            "vector": 20
+        },
+        {
+            "name": "IVT_INT_TAMPER_INTERRUPT",
+            "vector": 21
+        },
+        {
+            "name": "IVT_INT_RTC_GLOBAL_INTERRUPT",
+            "vector": 22
+        },
+        {
+            "name": "IVT_INT_FMC_GLOBAL_INTERRUPT",
+            "vector": 23
+        },
+        {
+            "name": "IVT_INT_RCU_GLOBAL_INTERRUPT",
+            "vector": 24
+        },
+        {
+            "name": "IVT_INT_EXTI_LINE0_INTERRUPT",
+            "vector": 25
+        },
+        {
+            "name": "IVT_INT_EXTI_LINE1_INTERRUPT",
+            "vector": 26
+        },
+        {
+            "name": "IVT_INT_EXTI_LINE2_INTERRUPT",
+            "vector": 27
+        },
+        {
+            "name": "IVT_INT_EXTI_LINE3_INTERRUPT",
+            "vector": 28
+        },
+        {
+            "name": "IVT_INT_EXTI_LINE4_INTERRUPT",
+            "vector": 29
+        },
+        {
+            "name": "IVT_INT_DMA0_CHANNEL0_GLOBAL_INTERRUPT",
+            "vector": 30
+        },
+        {
+            "name": "IVT_INT_DMA0_CHANNEL1_GLOBAL_INTERRUPT",
+            "vector": 31
+        },
+        {
+            "name": "IVT_INT_DMA0_CHANNEL2_GLOBAL_INTERRUPT",
+            "vector": 32
+        },
+        {
+            "name": "IVT_INT_DMA0_CHANNEL3_GLOBAL_INTERRUPT",
+            "vector": 33
+        },
+        {
+            "name": "IVT_INT_DMA0_CHANNEL4_GLOBAL_INTERRUPT",
+            "vector": 34
+        },
+        {
+            "name": "IVT_INT_DMA0_CHANNEL5_GLOBAL_INTERRUPT",
+            "vector": 35
+        },
+        {
+            "name": "IVT_INT_DMA0_CHANNEL6_GLOBAL_INTERRUPT",
+            "vector": 36
+        },
+        {
+            "name": "IVT_INT_ADC0_AND_ADC1_GLOBAL_INTERRUPT",
+            "vector": 37
+        },
+        {
+            "name": "IVT_INT_CAN0_TX_INTERRUPTS",
+            "vector": 38
+        },
+        {
+            "name": "IVT_INT_CAN0_RX0_INTERRUPTS",
+            "vector": 39
+        },
+        {
+            "name": "IVT_INT_CAN0_RX1_INTERRUPTS",
+            "vector": 40
+        },
+        {
+            "name": "IVT_INT_CAN0_EWMC_INTERRUPTS",
+            "vector": 41
+        },
+        {
+            "name": "IVT_INT_EXTI_LINE_9_TO_5_INTERRUPTS",
+            "vector": 42
+        },
+        {
+            "name": "IVT_INT_TIMER0_BREAK_INTERRUPT",
+            "vector": 43
+        },
+        {
+            "name": "IVT_INT_TIMER0_UPDATE_INTERRUPT",
+            "vector": 44
+        },
+        {
+            "name": "IVT_INT_TIMER0_TRIGGER_AND_CHANNEL_COMMUTATION_INTERRUPTS",
+            "vector": 45
+        },
+        {
+            "name": "IVT_INT_TIMER0_CHANNEL_CAPTURE_COMPARE_INTERRUPT",
+            "vector": 46
+        },
+        {
+            "name": "IVT_INT_TIMER1_GLOBAL_INTERRUPT",
+            "vector": 47
+        },
+        {
+            "name": "IVT_INT_TIMER2_GLOBAL_INTERRUPT",
+            "vector": 48
+        },
+        {
+            "name": "IVT_INT_TIMER3_GLOBAL_INTERRUPT",
+            "vector": 49
+        },
+        {
+            "name": "IVT_INT_I2C0_EVENT_INTERRUPT",
+            "vector": 50
+        },
+        {
+            "name": "IVT_INT_I2C0_ERROR_INTERRUPT",
+            "vector": 51
+        },
+        {
+            "name": "IVT_INT_I2C1_EVENT_INTERRUPT",
+            "vector": 52
+        },
+        {
+            "name": "IVT_INT_I2C1_ERROR_INTERRUPT",
+            "vector": 53
+        },
+        {
+            "name": "IVT_INT_SPI0_GLOBAL_INTERRUPT",
+            "vector": 54
+        },
+        {
+            "name": "IVT_INT_SPI1_GLOBAL_INTERRUPT",
+            "vector": 55
+        },
+        {
+            "name": "IVT_INT_USART0_GLOBAL_INTERRUPT",
+            "vector": 56
+        },
+        {
+            "name": "IVT_INT_USART1_GLOBAL_INTERRUPT",
+            "vector": 57
+        },
+        {
+            "name": "IVT_INT_USART2_GLOBAL_INTERRUPT",
+            "vector": 58
+        },
+        {
+            "name": "IVT_INT_EXTI_LINE_15_TO_10_INTERRUPTS",
+            "vector": 59
+        },
+        {
+            "name": "IVT_INT_RTC_ALARM_FROM_EXTI_INTERRUPT",
+            "vector": 60
+        },
+        {
+            "name": "IVT_INT_USBFS_WAKEUP_FROM_EXTI_INTERRUPT",
+            "vector": 61
+        },
+        {
+            "name": "IVT_INT_RESERVED15",
+            "vector": 62
+        },
+        {
+            "name": "IVT_INT_RESERVED16",
+            "vector": 63
+        },
+        {
+            "name": "IVT_INT_RESERVED17",
+            "vector": 64
+        },
+        {
+            "name": "IVT_INT_RESERVED18",
+            "vector": 65
+        },
+        {
+            "name": "IVT_INT_RESERVED19",
+            "vector": 66
+        },
+        {
+            "name": "IVT_INT_RESERVED20",
+            "vector": 67
+        },
+        {
+            "name": "IVT_INT_RESERVED21",
+            "vector": 68
+        },
+        {
+            "name": "IVT_INT_TIMER4_GLOBAL_INTERRUPT",
+            "vector": 69
+        },
+        {
+            "name": "IVT_INT_SPI2_GLOBAL_INTERRUPT",
+            "vector": 70
+        },
+        {
+            "name": "IVT_INT_UART3_GLOBAL_INTERRUPT",
+            "vector": 71
+        },
+        {
+            "name": "IVT_INT_UART4_GLOBAL_INTERRUPT",
+            "vector": 72
+        },
+        {
+            "name": "IVT_INT_TIMER5_GLOBAL_INTERRUPT",
+            "vector": 73
+        },
+        {
+            "name": "IVT_INT_TIMER6_GLOBAL_INTERRUPT",
+            "vector": 74
+        },
+        {
+            "name": "IVT_INT_DMA1_CHANNEL0_GLOBAL_INTERRUPT",
+            "vector": 75
+        },
+        {
+            "name": "IVT_INT_DMA1_CHANNEL1_GLOBAL_INTERRUPT",
+            "vector": 76
+        },
+        {
+            "name": "IVT_INT_DMA1_CHANNEL2_GLOBAL_INTERRUPT",
+            "vector": 77
+        },
+        {
+            "name": "IVT_INT_DMA1_CHANNEL3_GLOBAL_INTERRUPT",
+            "vector": 78
+        },
+        {
+            "name": "IVT_INT_DMA1_CHANNEL4_GLOBAL_INTERRUPT",
+            "vector": 79
+        },
+        {
+            "name": "IVT_INT_RESERVED22",
+            "vector": 80
+        },
+        {
+            "name": "IVT_INT_RESERVED23",
+            "vector": 81
+        },
+        {
+            "name": "IVT_INT_CAN1_TX_INTERRUPT",
+            "vector": 82
+        },
+        {
+            "name": "IVT_INT_CAN1_RX0_INTERRUPT",
+            "vector": 83
+        },
+        {
+            "name": "IVT_INT_CAN1_RX1_INTERRUPT",
+            "vector": 84
+        },
+        {
+            "name": "IVT_INT_CAN1_EWMC_INTERRUPT",
+            "vector": 85
+        },
+        {
+            "name": "IVT_INT_USBFS_GLOBAL_INTERRUPT",
+            "vector": 86
+        }
+    ],
+    "mcu": "GD32VF103TBU6",
+    "ram": {
+        "max_address": "0x20007FFF",
+        "min_address": "0x20000000"
+    },
+    "rom": {
+        "max_address": "0x0001FFFF",
+        "min_address": "0x00000000"
+    },
+    "rx": {
+        "max_address": "0x003F",
+        "min_address": "0x0000"
+    },
+    "sfr": [
+        {
+            "max_address": "0x40000001",
+            "min_address": "0x40000000"
+        },
+        {
+            "max_address": "0x40000005",
+            "min_address": "0x40000004"
+        },
+        {
+            "max_address": "0x40000009",
+            "min_address": "0x40000008"
+        },
+        {
+            "max_address": "0x4000000D",
+            "min_address": "0x4000000C"
+        },
+        {
+            "max_address": "0x40000011",
+            "min_address": "0x40000010"
+        },
+        {
+            "max_address": "0x40000015",
+            "min_address": "0x40000014"
+        },
+        {
+            "max_address": "0x40000019",
+            "min_address": "0x40000018"
+        },
+        {
+            "max_address": "0x4000001D",
+            "min_address": "0x4000001C"
+        },
+        {
+            "max_address": "0x40000021",
+            "min_address": "0x40000020"
+        },
+        {
+            "max_address": "0x40000025",
+            "min_address": "0x40000024"
+        },
+        {
+            "max_address": "0x40000029",
+            "min_address": "0x40000028"
+        },
+        {
+            "max_address": "0x4000002D",
+            "min_address": "0x4000002C"
+        },
+        {
+            "max_address": "0x40000043",
+            "min_address": "0x40000034"
+        },
+        {
+            "max_address": "0x40000049",
+            "min_address": "0x40000048"
+        },
+        {
+            "max_address": "0x4000004F",
+            "min_address": "0x4000004C"
+        },
+        {
+            "max_address": "0x40000401",
+            "min_address": "0x40000400"
+        },
+        {
+            "max_address": "0x40000405",
+            "min_address": "0x40000404"
+        },
+        {
+            "max_address": "0x40000409",
+            "min_address": "0x40000408"
+        },
+        {
+            "max_address": "0x4000040D",
+            "min_address": "0x4000040C"
+        },
+        {
+            "max_address": "0x40000411",
+            "min_address": "0x40000410"
+        },
+        {
+            "max_address": "0x40000415",
+            "min_address": "0x40000414"
+        },
+        {
+            "max_address": "0x40000419",
+            "min_address": "0x40000418"
+        },
+        {
+            "max_address": "0x4000041D",
+            "min_address": "0x4000041C"
+        },
+        {
+            "max_address": "0x40000421",
+            "min_address": "0x40000420"
+        },
+        {
+            "max_address": "0x40000425",
+            "min_address": "0x40000424"
+        },
+        {
+            "max_address": "0x40000429",
+            "min_address": "0x40000428"
+        },
+        {
+            "max_address": "0x4000042D",
+            "min_address": "0x4000042C"
+        },
+        {
+            "max_address": "0x40000443",
+            "min_address": "0x40000434"
+        },
+        {
+            "max_address": "0x40000449",
+            "min_address": "0x40000448"
+        },
+        {
+            "max_address": "0x4000044F",
+            "min_address": "0x4000044C"
+        },
+        {
+            "max_address": "0x40000801",
+            "min_address": "0x40000800"
+        },
+        {
+            "max_address": "0x40000805",
+            "min_address": "0x40000804"
+        },
+        {
+            "max_address": "0x40000809",
+            "min_address": "0x40000808"
+        },
+        {
+            "max_address": "0x4000080D",
+            "min_address": "0x4000080C"
+        },
+        {
+            "max_address": "0x40000811",
+            "min_address": "0x40000810"
+        },
+        {
+            "max_address": "0x40000815",
+            "min_address": "0x40000814"
+        },
+        {
+            "max_address": "0x40000819",
+            "min_address": "0x40000818"
+        },
+        {
+            "max_address": "0x4000081D",
+            "min_address": "0x4000081C"
+        },
+        {
+            "max_address": "0x40000821",
+            "min_address": "0x40000820"
+        },
+        {
+            "max_address": "0x40000825",
+            "min_address": "0x40000824"
+        },
+        {
+            "max_address": "0x40000829",
+            "min_address": "0x40000828"
+        },
+        {
+            "max_address": "0x4000082D",
+            "min_address": "0x4000082C"
+        },
+        {
+            "max_address": "0x40000843",
+            "min_address": "0x40000834"
+        },
+        {
+            "max_address": "0x40000849",
+            "min_address": "0x40000848"
+        },
+        {
+            "max_address": "0x4000084F",
+            "min_address": "0x4000084C"
+        },
+        {
+            "max_address": "0x40000C01",
+            "min_address": "0x40000C00"
+        },
+        {
+            "max_address": "0x40000C05",
+            "min_address": "0x40000C04"
+        },
+        {
+            "max_address": "0x40000C09",
+            "min_address": "0x40000C08"
+        },
+        {
+            "max_address": "0x40000C0D",
+            "min_address": "0x40000C0C"
+        },
+        {
+            "max_address": "0x40000C11",
+            "min_address": "0x40000C10"
+        },
+        {
+            "max_address": "0x40000C15",
+            "min_address": "0x40000C14"
+        },
+        {
+            "max_address": "0x40000C19",
+            "min_address": "0x40000C18"
+        },
+        {
+            "max_address": "0x40000C1D",
+            "min_address": "0x40000C1C"
+        },
+        {
+            "max_address": "0x40000C21",
+            "min_address": "0x40000C20"
+        },
+        {
+            "max_address": "0x40000C25",
+            "min_address": "0x40000C24"
+        },
+        {
+            "max_address": "0x40000C29",
+            "min_address": "0x40000C28"
+        },
+        {
+            "max_address": "0x40000C2D",
+            "min_address": "0x40000C2C"
+        },
+        {
+            "max_address": "0x40000C43",
+            "min_address": "0x40000C34"
+        },
+        {
+            "max_address": "0x40000C49",
+            "min_address": "0x40000C48"
+        },
+        {
+            "max_address": "0x40000C4F",
+            "min_address": "0x40000C4C"
+        },
+        {
+            "max_address": "0x40001001",
+            "min_address": "0x40001000"
+        },
+        {
+            "max_address": "0x40001005",
+            "min_address": "0x40001004"
+        },
+        {
+            "max_address": "0x4000100D",
+            "min_address": "0x4000100C"
+        },
+        {
+            "max_address": "0x40001011",
+            "min_address": "0x40001010"
+        },
+        {
+            "max_address": "0x40001015",
+            "min_address": "0x40001014"
+        },
+        {
+            "max_address": "0x40001025",
+            "min_address": "0x40001024"
+        },
+        {
+            "max_address": "0x40001029",
+            "min_address": "0x40001028"
+        },
+        {
+            "max_address": "0x4000102D",
+            "min_address": "0x4000102C"
+        },
+        {
+            "max_address": "0x40001401",
+            "min_address": "0x40001400"
+        },
+        {
+            "max_address": "0x40001405",
+            "min_address": "0x40001404"
+        },
+        {
+            "max_address": "0x4000140D",
+            "min_address": "0x4000140C"
+        },
+        {
+            "max_address": "0x40001411",
+            "min_address": "0x40001410"
+        },
+        {
+            "max_address": "0x40001415",
+            "min_address": "0x40001414"
+        },
+        {
+            "max_address": "0x40001425",
+            "min_address": "0x40001424"
+        },
+        {
+            "max_address": "0x40001429",
+            "min_address": "0x40001428"
+        },
+        {
+            "max_address": "0x4000142D",
+            "min_address": "0x4000142C"
+        },
+        {
+            "max_address": "0x40002827",
+            "min_address": "0x40002800"
+        },
+        {
+            "max_address": "0x40002C0B",
+            "min_address": "0x40002C00"
+        },
+        {
+            "max_address": "0x4000300F",
+            "min_address": "0x40003000"
+        },
+        {
+            "max_address": "0x40003801",
+            "min_address": "0x40003800"
+        },
+        {
+            "max_address": "0x40003805",
+            "min_address": "0x40003804"
+        },
+        {
+            "max_address": "0x40003809",
+            "min_address": "0x40003808"
+        },
+        {
+            "max_address": "0x4000380D",
+            "min_address": "0x4000380C"
+        },
+        {
+            "max_address": "0x40003811",
+            "min_address": "0x40003810"
+        },
+        {
+            "max_address": "0x40003815",
+            "min_address": "0x40003814"
+        },
+        {
+            "max_address": "0x40003819",
+            "min_address": "0x40003818"
+        },
+        {
+            "max_address": "0x4000381D",
+            "min_address": "0x4000381C"
+        },
+        {
+            "max_address": "0x40003821",
+            "min_address": "0x40003820"
+        },
+        {
+            "max_address": "0x40003C01",
+            "min_address": "0x40003C00"
+        },
+        {
+            "max_address": "0x40003C05",
+            "min_address": "0x40003C04"
+        },
+        {
+            "max_address": "0x40003C09",
+            "min_address": "0x40003C08"
+        },
+        {
+            "max_address": "0x40003C0D",
+            "min_address": "0x40003C0C"
+        },
+        {
+            "max_address": "0x40003C11",
+            "min_address": "0x40003C10"
+        },
+        {
+            "max_address": "0x40003C15",
+            "min_address": "0x40003C14"
+        },
+        {
+            "max_address": "0x40003C19",
+            "min_address": "0x40003C18"
+        },
+        {
+            "max_address": "0x40003C1D",
+            "min_address": "0x40003C1C"
+        },
+        {
+            "max_address": "0x40003C21",
+            "min_address": "0x40003C20"
+        },
+        {
+            "max_address": "0x4000441B",
+            "min_address": "0x40004400"
+        },
+        {
+            "max_address": "0x4000481B",
+            "min_address": "0x40004800"
+        },
+        {
+            "max_address": "0x40004C1B",
+            "min_address": "0x40004C00"
+        },
+        {
+            "max_address": "0x4000501B",
+            "min_address": "0x40005000"
+        },
+        {
+            "max_address": "0x40005401",
+            "min_address": "0x40005400"
+        },
+        {
+            "max_address": "0x40005405",
+            "min_address": "0x40005404"
+        },
+        {
+            "max_address": "0x40005409",
+            "min_address": "0x40005408"
+        },
+        {
+            "max_address": "0x4000540D",
+            "min_address": "0x4000540C"
+        },
+        {
+            "max_address": "0x40005411",
+            "min_address": "0x40005410"
+        },
+        {
+            "max_address": "0x40005415",
+            "min_address": "0x40005414"
+        },
+        {
+            "max_address": "0x40005419",
+            "min_address": "0x40005418"
+        },
+        {
+            "max_address": "0x4000541D",
+            "min_address": "0x4000541C"
+        },
+        {
+            "max_address": "0x40005421",
+            "min_address": "0x40005420"
+        },
+        {
+            "max_address": "0x40005801",
+            "min_address": "0x40005800"
+        },
+        {
+            "max_address": "0x40005805",
+            "min_address": "0x40005804"
+        },
+        {
+            "max_address": "0x40005809",
+            "min_address": "0x40005808"
+        },
+        {
+            "max_address": "0x4000580D",
+            "min_address": "0x4000580C"
+        },
+        {
+            "max_address": "0x40005811",
+            "min_address": "0x40005810"
+        },
+        {
+            "max_address": "0x40005815",
+            "min_address": "0x40005814"
+        },
+        {
+            "max_address": "0x40005819",
+            "min_address": "0x40005818"
+        },
+        {
+            "max_address": "0x4000581D",
+            "min_address": "0x4000581C"
+        },
+        {
+            "max_address": "0x40005821",
+            "min_address": "0x40005820"
+        },
+        {
+            "max_address": "0x4000641F",
+            "min_address": "0x40006400"
+        },
+        {
+            "max_address": "0x400065CF",
+            "min_address": "0x40006580"
+        },
+        {
+            "max_address": "0x40006607",
+            "min_address": "0x40006600"
+        },
+        {
+            "max_address": "0x4000660F",
+            "min_address": "0x4000660C"
+        },
+        {
+            "max_address": "0x40006617",
+            "min_address": "0x40006614"
+        },
+        {
+            "max_address": "0x4000661F",
+            "min_address": "0x4000661C"
+        },
+        {
+            "max_address": "0x4000671F",
+            "min_address": "0x40006640"
+        },
+        {
+            "max_address": "0x4000681F",
+            "min_address": "0x40006800"
+        },
+        {
+            "max_address": "0x400069CF",
+            "min_address": "0x40006980"
+        },
+        {
+            "max_address": "0x40006A07",
+            "min_address": "0x40006A00"
+        },
+        {
+            "max_address": "0x40006A0F",
+            "min_address": "0x40006A0C"
+        },
+        {
+            "max_address": "0x40006A17",
+            "min_address": "0x40006A14"
+        },
+        {
+            "max_address": "0x40006A1F",
+            "min_address": "0x40006A1C"
+        },
+        {
+            "max_address": "0x40006B1F",
+            "min_address": "0x40006A40"
+        },
+        {
+            "max_address": "0x40006C05",
+            "min_address": "0x40006C04"
+        },
+        {
+            "max_address": "0x40006C09",
+            "min_address": "0x40006C08"
+        },
+        {
+            "max_address": "0x40006C0D",
+            "min_address": "0x40006C0C"
+        },
+        {
+            "max_address": "0x40006C11",
+            "min_address": "0x40006C10"
+        },
+        {
+            "max_address": "0x40006C15",
+            "min_address": "0x40006C14"
+        },
+        {
+            "max_address": "0x40006C19",
+            "min_address": "0x40006C18"
+        },
+        {
+            "max_address": "0x40006C1D",
+            "min_address": "0x40006C1C"
+        },
+        {
+            "max_address": "0x40006C21",
+            "min_address": "0x40006C20"
+        },
+        {
+            "max_address": "0x40006C25",
+            "min_address": "0x40006C24"
+        },
+        {
+            "max_address": "0x40006C29",
+            "min_address": "0x40006C28"
+        },
+        {
+            "max_address": "0x40006C2D",
+            "min_address": "0x40006C2C"
+        },
+        {
+            "max_address": "0x40006C31",
+            "min_address": "0x40006C30"
+        },
+        {
+            "max_address": "0x40006C35",
+            "min_address": "0x40006C34"
+        },
+        {
+            "max_address": "0x40006C41",
+            "min_address": "0x40006C40"
+        },
+        {
+            "max_address": "0x40006C45",
+            "min_address": "0x40006C44"
+        },
+        {
+            "max_address": "0x40006C49",
+            "min_address": "0x40006C48"
+        },
+        {
+            "max_address": "0x40006C4D",
+            "min_address": "0x40006C4C"
+        },
+        {
+            "max_address": "0x40006C51",
+            "min_address": "0x40006C50"
+        },
+        {
+            "max_address": "0x40006C55",
+            "min_address": "0x40006C54"
+        },
+        {
+            "max_address": "0x40006C59",
+            "min_address": "0x40006C58"
+        },
+        {
+            "max_address": "0x40006C5D",
+            "min_address": "0x40006C5C"
+        },
+        {
+            "max_address": "0x40006C61",
+            "min_address": "0x40006C60"
+        },
+        {
+            "max_address": "0x40006C65",
+            "min_address": "0x40006C64"
+        },
+        {
+            "max_address": "0x40006C69",
+            "min_address": "0x40006C68"
+        },
+        {
+            "max_address": "0x40006C6D",
+            "min_address": "0x40006C6C"
+        },
+        {
+            "max_address": "0x40006C71",
+            "min_address": "0x40006C70"
+        },
+        {
+            "max_address": "0x40006C75",
+            "min_address": "0x40006C74"
+        },
+        {
+            "max_address": "0x40006C79",
+            "min_address": "0x40006C78"
+        },
+        {
+            "max_address": "0x40006C7D",
+            "min_address": "0x40006C7C"
+        },
+        {
+            "max_address": "0x40006C81",
+            "min_address": "0x40006C80"
+        },
+        {
+            "max_address": "0x40006C85",
+            "min_address": "0x40006C84"
+        },
+        {
+            "max_address": "0x40006C89",
+            "min_address": "0x40006C88"
+        },
+        {
+            "max_address": "0x40006C8D",
+            "min_address": "0x40006C8C"
+        },
+        {
+            "max_address": "0x40006C91",
+            "min_address": "0x40006C90"
+        },
+        {
+            "max_address": "0x40006C95",
+            "min_address": "0x40006C94"
+        },
+        {
+            "max_address": "0x40006C99",
+            "min_address": "0x40006C98"
+        },
+        {
+            "max_address": "0x40006C9D",
+            "min_address": "0x40006C9C"
+        },
+        {
+            "max_address": "0x40006CA1",
+            "min_address": "0x40006CA0"
+        },
+        {
+            "max_address": "0x40006CA5",
+            "min_address": "0x40006CA4"
+        },
+        {
+            "max_address": "0x40006CA9",
+            "min_address": "0x40006CA8"
+        },
+        {
+            "max_address": "0x40006CAD",
+            "min_address": "0x40006CAC"
+        },
+        {
+            "max_address": "0x40006CB1",
+            "min_address": "0x40006CB0"
+        },
+        {
+            "max_address": "0x40006CB5",
+            "min_address": "0x40006CB4"
+        },
+        {
+            "max_address": "0x40006CB9",
+            "min_address": "0x40006CB8"
+        },
+        {
+            "max_address": "0x40006CBD",
+            "min_address": "0x40006CBC"
+        },
+        {
+            "max_address": "0x40007007",
+            "min_address": "0x40007000"
+        },
+        {
+            "max_address": "0x40007433",
+            "min_address": "0x40007400"
+        },
+        {
+            "max_address": "0x40010017",
+            "min_address": "0x40010000"
+        },
+        {
+            "max_address": "0x4001001F",
+            "min_address": "0x4001001C"
+        },
+        {
+            "max_address": "0x40010417",
+            "min_address": "0x40010400"
+        },
+        {
+            "max_address": "0x4001081B",
+            "min_address": "0x40010800"
+        },
+        {
+            "max_address": "0x40010C1B",
+            "min_address": "0x40010C00"
+        },
+        {
+            "max_address": "0x4001101B",
+            "min_address": "0x40011000"
+        },
+        {
+            "max_address": "0x4001141B",
+            "min_address": "0x40011400"
+        },
+        {
+            "max_address": "0x4001181B",
+            "min_address": "0x40011800"
+        },
+        {
+            "max_address": "0x4001244F",
+            "min_address": "0x40012400"
+        },
+        {
+            "max_address": "0x40012483",
+            "min_address": "0x40012480"
+        },
+        {
+            "max_address": "0x4001284F",
+            "min_address": "0x40012800"
+        },
+        {
+            "max_address": "0x40012C01",
+            "min_address": "0x40012C00"
+        },
+        {
+            "max_address": "0x40012C05",
+            "min_address": "0x40012C04"
+        },
+        {
+            "max_address": "0x40012C09",
+            "min_address": "0x40012C08"
+        },
+        {
+            "max_address": "0x40012C0D",
+            "min_address": "0x40012C0C"
+        },
+        {
+            "max_address": "0x40012C11",
+            "min_address": "0x40012C10"
+        },
+        {
+            "max_address": "0x40012C15",
+            "min_address": "0x40012C14"
+        },
+        {
+            "max_address": "0x40012C19",
+            "min_address": "0x40012C18"
+        },
+        {
+            "max_address": "0x40012C1D",
+            "min_address": "0x40012C1C"
+        },
+        {
+            "max_address": "0x40012C21",
+            "min_address": "0x40012C20"
+        },
+        {
+            "max_address": "0x40012C25",
+            "min_address": "0x40012C24"
+        },
+        {
+            "max_address": "0x40012C29",
+            "min_address": "0x40012C28"
+        },
+        {
+            "max_address": "0x40012C2D",
+            "min_address": "0x40012C2C"
+        },
+        {
+            "max_address": "0x40012C31",
+            "min_address": "0x40012C30"
+        },
+        {
+            "max_address": "0x40012C35",
+            "min_address": "0x40012C34"
+        },
+        {
+            "max_address": "0x40012C39",
+            "min_address": "0x40012C38"
+        },
+        {
+            "max_address": "0x40012C3D",
+            "min_address": "0x40012C3C"
+        },
+        {
+            "max_address": "0x40012C41",
+            "min_address": "0x40012C40"
+        },
+        {
+            "max_address": "0x40012C45",
+            "min_address": "0x40012C44"
+        },
+        {
+            "max_address": "0x40012C49",
+            "min_address": "0x40012C48"
+        },
+        {
+            "max_address": "0x40012C4D",
+            "min_address": "0x40012C4C"
+        },
+        {
+            "max_address": "0x40013001",
+            "min_address": "0x40013000"
+        },
+        {
+            "max_address": "0x40013005",
+            "min_address": "0x40013004"
+        },
+        {
+            "max_address": "0x40013009",
+            "min_address": "0x40013008"
+        },
+        {
+            "max_address": "0x4001300D",
+            "min_address": "0x4001300C"
+        },
+        {
+            "max_address": "0x40013011",
+            "min_address": "0x40013010"
+        },
+        {
+            "max_address": "0x40013015",
+            "min_address": "0x40013014"
+        },
+        {
+            "max_address": "0x40013019",
+            "min_address": "0x40013018"
+        },
+        {
+            "max_address": "0x4001301D",
+            "min_address": "0x4001301C"
+        },
+        {
+            "max_address": "0x40013021",
+            "min_address": "0x40013020"
+        },
+        {
+            "max_address": "0x4001381B",
+            "min_address": "0x40013800"
+        },
+        {
+            "max_address": "0x40020017",
+            "min_address": "0x40020000"
+        },
+        {
+            "max_address": "0x4002002B",
+            "min_address": "0x4002001C"
+        },
+        {
+            "max_address": "0x4002003F",
+            "min_address": "0x40020030"
+        },
+        {
+            "max_address": "0x40020053",
+            "min_address": "0x40020044"
+        },
+        {
+            "max_address": "0x40020067",
+            "min_address": "0x40020058"
+        },
+        {
+            "max_address": "0x4002007B",
+            "min_address": "0x4002006C"
+        },
+        {
+            "max_address": "0x4002008F",
+            "min_address": "0x40020080"
+        },
+        {
+            "max_address": "0x4002102F",
+            "min_address": "0x40021000"
+        },
+        {
+            "max_address": "0x40021037",
+            "min_address": "0x40021034"
+        },
+        {
+            "max_address": "0x40022017",
+            "min_address": "0x40022000"
+        },
+        {
+            "max_address": "0x40022023",
+            "min_address": "0x4002201C"
+        },
+        {
+            "max_address": "0x40022103",
+            "min_address": "0x40022100"
+        },
+        {
+            "max_address": "0x4002300B",
+            "min_address": "0x40023000"
+        },
+        {
+            "max_address": "0x5000002F",
+            "min_address": "0x50000000"
+        },
+        {
+            "max_address": "0x5000003F",
+            "min_address": "0x50000038"
+        },
+        {
+            "max_address": "0x5000010F",
+            "min_address": "0x50000100"
+        },
+        {
+            "max_address": "0x5000040B",
+            "min_address": "0x50000400"
+        },
+        {
+            "max_address": "0x5000041B",
+            "min_address": "0x50000410"
+        },
+        {
+            "max_address": "0x50000443",
+            "min_address": "0x50000440"
+        },
+        {
+            "max_address": "0x50000503",
+            "min_address": "0x50000500"
+        },
+        {
+            "max_address": "0x50000513",
+            "min_address": "0x50000508"
+        },
+        {
+            "max_address": "0x50000523",
+            "min_address": "0x50000520"
+        },
+        {
+            "max_address": "0x50000533",
+            "min_address": "0x50000528"
+        },
+        {
+            "max_address": "0x50000543",
+            "min_address": "0x50000540"
+        },
+        {
+            "max_address": "0x50000553",
+            "min_address": "0x50000548"
+        },
+        {
+            "max_address": "0x50000563",
+            "min_address": "0x50000560"
+        },
+        {
+            "max_address": "0x50000573",
+            "min_address": "0x50000568"
+        },
+        {
+            "max_address": "0x50000583",
+            "min_address": "0x50000580"
+        },
+        {
+            "max_address": "0x50000593",
+            "min_address": "0x50000588"
+        },
+        {
+            "max_address": "0x500005A3",
+            "min_address": "0x500005A0"
+        },
+        {
+            "max_address": "0x500005B3",
+            "min_address": "0x500005A8"
+        },
+        {
+            "max_address": "0x500005C3",
+            "min_address": "0x500005C0"
+        },
+        {
+            "max_address": "0x500005D3",
+            "min_address": "0x500005C8"
+        },
+        {
+            "max_address": "0x500005E3",
+            "min_address": "0x500005E0"
+        },
+        {
+            "max_address": "0x500005F3",
+            "min_address": "0x500005E8"
+        },
+        {
+            "max_address": "0x5000080B",
+            "min_address": "0x50000800"
+        },
+        {
+            "max_address": "0x5000081F",
+            "min_address": "0x50000810"
+        },
+        {
+            "max_address": "0x5000082F",
+            "min_address": "0x50000828"
+        },
+        {
+            "max_address": "0x50000837",
+            "min_address": "0x50000834"
+        },
+        {
+            "max_address": "0x50000903",
+            "min_address": "0x50000900"
+        },
+        {
+            "max_address": "0x5000090B",
+            "min_address": "0x50000908"
+        },
+        {
+            "max_address": "0x50000913",
+            "min_address": "0x50000910"
+        },
+        {
+            "max_address": "0x5000091B",
+            "min_address": "0x50000918"
+        },
+        {
+            "max_address": "0x50000923",
+            "min_address": "0x50000920"
+        },
+        {
+            "max_address": "0x5000092B",
+            "min_address": "0x50000928"
+        },
+        {
+            "max_address": "0x50000933",
+            "min_address": "0x50000930"
+        },
+        {
+            "max_address": "0x5000093B",
+            "min_address": "0x50000938"
+        },
+        {
+            "max_address": "0x50000943",
+            "min_address": "0x50000940"
+        },
+        {
+            "max_address": "0x5000094B",
+            "min_address": "0x50000948"
+        },
+        {
+            "max_address": "0x50000953",
+            "min_address": "0x50000950"
+        },
+        {
+            "max_address": "0x5000095B",
+            "min_address": "0x50000958"
+        },
+        {
+            "max_address": "0x50000963",
+            "min_address": "0x50000960"
+        },
+        {
+            "max_address": "0x5000096B",
+            "min_address": "0x50000968"
+        },
+        {
+            "max_address": "0x50000973",
+            "min_address": "0x50000970"
+        },
+        {
+            "max_address": "0x5000097B",
+            "min_address": "0x50000978"
+        },
+        {
+            "max_address": "0x50000B03",
+            "min_address": "0x50000B00"
+        },
+        {
+            "max_address": "0x50000B0B",
+            "min_address": "0x50000B08"
+        },
+        {
+            "max_address": "0x50000B13",
+            "min_address": "0x50000B10"
+        },
+        {
+            "max_address": "0x50000B23",
+            "min_address": "0x50000B20"
+        },
+        {
+            "max_address": "0x50000B2B",
+            "min_address": "0x50000B28"
+        },
+        {
+            "max_address": "0x50000B33",
+            "min_address": "0x50000B30"
+        },
+        {
+            "max_address": "0x50000B43",
+            "min_address": "0x50000B40"
+        },
+        {
+            "max_address": "0x50000B4B",
+            "min_address": "0x50000B48"
+        },
+        {
+            "max_address": "0x50000B53",
+            "min_address": "0x50000B50"
+        },
+        {
+            "max_address": "0x50000B63",
+            "min_address": "0x50000B60"
+        },
+        {
+            "max_address": "0x50000B6B",
+            "min_address": "0x50000B68"
+        },
+        {
+            "max_address": "0x50000B73",
+            "min_address": "0x50000B70"
+        },
+        {
+            "max_address": "0x50000E03",
+            "min_address": "0x50000E00"
+        },
+        {
+            "max_address": "0xA000000B",
+            "min_address": "0xA0000000"
+        },
+        {
+            "max_address": "0xD2000000",
+            "min_address": "0xD2000000"
+        },
+        {
+            "max_address": "0xD2000007",
+            "min_address": "0xD2000004"
+        },
+        {
+            "max_address": "0xD200000B",
+            "min_address": "0xD200000B"
+        },
+        {
+            "max_address": "0xD2001153",
+            "min_address": "0xD2001000"
+        },
+        {
+            "max_address": "0xD200115C",
+            "min_address": "0xD2001155"
+        },
+        {
+            "max_address": "0xE0042007",
+            "min_address": "0xE0042000"
+        }
+    ],
+    "clock": "96"
+}

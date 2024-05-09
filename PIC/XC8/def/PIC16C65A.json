@@ -1,0 +1,97 @@
+{
+    "config_words": [
+        {
+            "init": "RC,_RC_OSC",
+            "key": "FOSC",
+            "label": "Oscillator selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator",
+                    "value": "RC,_RC_OSC"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bits",
+            "settings": [
+                {
+                    "label": "Code protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "0800h-0FFFh code protected",
+                    "value": "50"
+                },
+                {
+                    "label": "0400h-0FFFh code protected",
+                    "value": "75"
+                },
+                {
+                    "label": "All memory is code protected",
+                    "value": "ALL"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BODEN_ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bit",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON,_BODEN_ON"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF,_BODEN_OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16C65A",
+    "clock": 1
+}

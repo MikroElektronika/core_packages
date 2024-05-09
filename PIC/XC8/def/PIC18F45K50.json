@@ -1,0 +1,772 @@
+{
+    "config_words": [
+        {
+            "init": "PLL4X",
+            "key": "PLLSEL",
+            "label": "PLL Selection",
+            "settings": [
+                {
+                    "label": "3x clock multiplier",
+                    "value": "PLL3X"
+                },
+                {
+                    "label": "4x clock multiplier",
+                    "value": "PLL4X"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CFGPLLEN",
+            "label": "PLL Enable Configuration bit",
+            "settings": [
+                {
+                    "label": "PLL Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "PLL Disabled (firmware controlled)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "NOCLKDIV",
+            "key": "CPUDIV",
+            "label": "CPU System Clock Postscaler",
+            "settings": [
+                {
+                    "label": "CPU uses system clock divided by 6",
+                    "value": "CLKDIV6"
+                },
+                {
+                    "label": "CPU uses system clock divided by 3",
+                    "value": "CLKDIV3"
+                },
+                {
+                    "label": "CPU uses system clock divided by 2",
+                    "value": "CLKDIV2"
+                },
+                {
+                    "label": "CPU uses system clock (no divide)",
+                    "value": "NOCLKDIV"
+                }
+            ]
+        },
+        {
+            "init": "SYS24X4",
+            "key": "LS48MHZ",
+            "label": "Low Speed USB mode with 48 MHz system clock",
+            "settings": [
+                {
+                    "label": "System clock at 48 MHz, USB clock divider is set to 8",
+                    "value": "SYS48X8"
+                },
+                {
+                    "label": "System clock at 24 MHz, USB clock divider is set to 4",
+                    "value": "SYS24X4"
+                }
+            ]
+        },
+        {
+            "init": "ECHIO",
+            "key": "FOSC",
+            "label": "Oscillator Selection",
+            "settings": [
+                {
+                    "label": "EC oscillator, low power <4MHz",
+                    "value": "ECLIO"
+                },
+                {
+                    "label": "EC oscillator, low power <4MHz, clock output on OSC2",
+                    "value": "ECLCLKO"
+                },
+                {
+                    "label": "EC oscillator, medium power 4MHz to 16MHz",
+                    "value": "ECMIO"
+                },
+                {
+                    "label": "EC oscillator, medium power 4MHz to 16MHz, clock output on OSC2",
+                    "value": "ECMCLKO"
+                },
+                {
+                    "label": "EC oscillator, high power 16MHz to 48MHz",
+                    "value": "ECHIO"
+                },
+                {
+                    "label": "EC oscillator, high power 16MHz to 48MHz, clock output on OSC2",
+                    "value": "ECHCLKO"
+                },
+                {
+                    "label": "External RC oscillator",
+                    "value": "RCIO"
+                },
+                {
+                    "label": "External RC oscillator, clock output on OSC2",
+                    "value": "RCCLKO"
+                },
+                {
+                    "label": "Internal oscillator",
+                    "value": "INTOSCIO"
+                },
+                {
+                    "label": "Internal oscillator, clock output on OSC2",
+                    "value": "INTOSCCLKO"
+                },
+                {
+                    "label": "HS oscillator, medium power 4MHz to 16MHz",
+                    "value": "HSM"
+                },
+                {
+                    "label": "HS oscillator, high power 16MHz to 25MHz",
+                    "value": "HSH"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PCLKEN",
+            "label": "Primary Oscillator Shutdown",
+            "settings": [
+                {
+                    "label": "Primary oscillator enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Primary oscillator shutdown firmware controlled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "IESO",
+            "label": "Internal/External Oscillator Switchover",
+            "settings": [
+                {
+                    "label": "Oscillator Switchover mode enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Oscillator Switchover mode disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "nPWRTEN",
+            "label": "Power-up Timer Enable",
+            "settings": [
+                {
+                    "label": "Power up timer disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Power up timer enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "SBORDIS",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable",
+            "settings": [
+                {
+                    "label": "BOR enabled in hardware (SBOREN is ignored)",
+                    "value": "SBORDIS"
+                },
+                {
+                    "label": "BOR enabled in hardware, disabled in Sleep mode (SBOREN is ignored)",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "BOR controlled by firmware (SBOREN is enabled)",
+                    "value": "ON"
+                },
+                {
+                    "label": "BOR disabled in hardware (SBOREN is ignored)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "190",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage",
+            "settings": [
+                {
+                    "label": "BOR set to 1.9V nominal",
+                    "value": "190"
+                },
+                {
+                    "label": "BOR set to 2.2V nominal",
+                    "value": "220"
+                },
+                {
+                    "label": "BOR set to 2.5V nominal",
+                    "value": "250"
+                },
+                {
+                    "label": "BOR set to 2.85V nominal",
+                    "value": "285"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "nLPBOR",
+            "label": "Low-Power Brown-out Reset",
+            "settings": [
+                {
+                    "label": "Low-Power Brown-out Reset disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Low-Power Brown-out Reset enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDTEN",
+            "label": "Watchdog Timer Enable bits",
+            "settings": [
+                {
+                    "label": "WDT enabled in hardware (SWDTEN ignored)",
+                    "value": "ON"
+                },
+                {
+                    "label": "WDT controlled by firmware (SWDTEN enabled)",
+                    "value": "SWON"
+                },
+                {
+                    "label": "WDT enabled in hardware, disabled in Sleep mode (SWDTEN ignored)",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "WDT disabled in hardware (SWDTEN ignored)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:32768",
+                    "value": "32768"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "16384"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "8192"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "4096"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "2048"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "1024"
+                },
+                {
+                    "label": "1:512",
+                    "value": "512"
+                },
+                {
+                    "label": "1:256",
+                    "value": "256"
+                },
+                {
+                    "label": "1:128",
+                    "value": "128"
+                },
+                {
+                    "label": "1:64",
+                    "value": "64"
+                },
+                {
+                    "label": "1:32",
+                    "value": "32"
+                },
+                {
+                    "label": "1:16",
+                    "value": "16"
+                },
+                {
+                    "label": "1:8",
+                    "value": "8"
+                },
+                {
+                    "label": "1:4",
+                    "value": "4"
+                },
+                {
+                    "label": "1:2",
+                    "value": "2"
+                },
+                {
+                    "label": "1:1",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "init": "RC1",
+            "key": "CCP2MX",
+            "label": "CCP2 MUX bit",
+            "settings": [
+                {
+                    "label": "CCP2 input/output is multiplexed with RC1",
+                    "value": "RC1"
+                },
+                {
+                    "label": "CCP2 input/output is multiplexed with RB3",
+                    "value": "RB3"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PBADEN",
+            "label": "PORTB A/D Enable bit",
+            "settings": [
+                {
+                    "label": "PORTB<5:0> pins are configured as analog input channels on Reset",
+                    "value": "ON"
+                },
+                {
+                    "label": "PORTB<5:0> pins are configured as digital I/O on Reset",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "RC0",
+            "key": "T3CMX",
+            "label": "Timer3 Clock Input MUX bit",
+            "settings": [
+                {
+                    "label": "T3CKI function is on RC0",
+                    "value": "RC0"
+                },
+                {
+                    "label": "T3CKI function is on RB5",
+                    "value": "RB5"
+                }
+            ]
+        },
+        {
+            "init": "RB3",
+            "key": "SDOMX",
+            "label": "SDO Output MUX bit",
+            "settings": [
+                {
+                    "label": "SDO function is on RB3",
+                    "value": "RB3"
+                },
+                {
+                    "label": "SDO function is on RC7",
+                    "value": "RC7"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "Master Clear Reset Pin Enable",
+            "settings": [
+                {
+                    "label": "MCLR pin enabled; RE3 input disabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "RE3 input pin enabled; external MCLR disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Full/Underflow Reset",
+            "settings": [
+                {
+                    "label": "Stack full/underflow will cause Reset",
+                    "value": "ON"
+                },
+                {
+                    "label": "Stack full/underflow will not cause Reset",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LVP",
+            "label": "Single-Supply ICSP Enable bit",
+            "settings": [
+                {
+                    "label": "Single-Supply ICSP enabled if MCLRE is also 1",
+                    "value": "ON"
+                },
+                {
+                    "label": "Single-Supply ICSP disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "ICPRT",
+            "label": "Dedicated In-Circuit Debug/Programming Port Enable",
+            "settings": [
+                {
+                    "label": "ICPORT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "ICPORT disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "XINST",
+            "label": "Extended Instruction Set Enable bit",
+            "settings": [
+                {
+                    "label": "Instruction set extension and Indexed Addressing mode enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Instruction set extension and Indexed Addressing mode disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Background Debugger Enable bit",
+            "settings": [
+                {
+                    "label": "Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Background debugger enabled, RB6 and RB7 are dedicated to In-Circuit Debug",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP0",
+            "label": "Block 0 Code Protect",
+            "settings": [
+                {
+                    "label": "Block 0 is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 0 is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP1",
+            "label": "Block 1 Code Protect",
+            "settings": [
+                {
+                    "label": "Block 1 is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 1 is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP2",
+            "label": "Block 2 Code Protect",
+            "settings": [
+                {
+                    "label": "Block 2 is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 2 is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP3",
+            "label": "Block 3 Code Protect",
+            "settings": [
+                {
+                    "label": "Block 3 is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 3 is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPB",
+            "label": "Boot Block Code Protect",
+            "settings": [
+                {
+                    "label": "Boot block is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot block is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "Data EEPROM Code Protect",
+            "settings": [
+                {
+                    "label": "Data EEPROM is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data EEPROM is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT0",
+            "label": "Block 0 Write Protect",
+            "settings": [
+                {
+                    "label": "Block 0 (0800-1FFFh) is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 0 (0800-1FFFh) is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT1",
+            "label": "Block 1 Write Protect",
+            "settings": [
+                {
+                    "label": "Block 1 (2000-3FFFh) is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 1 (2000-3FFFh) is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT2",
+            "label": "Block 2 Write Protect",
+            "settings": [
+                {
+                    "label": "Block 2 (04000-5FFFh) is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 2 (04000-5FFFh) is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT3",
+            "label": "Block 3 Write Protect",
+            "settings": [
+                {
+                    "label": "Block 3 (06000-7FFFh) is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 3 (06000-7FFFh) is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTC",
+            "label": "Configuration Registers Write Protect",
+            "settings": [
+                {
+                    "label": "Configuration registers (300000-3000FFh) are not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Configuration registers (300000-3000FFh) are write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTB",
+            "label": "Boot Block Write Protect",
+            "settings": [
+                {
+                    "label": "Boot block (0000-7FFh) is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot block (0000-7FFh) is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTD",
+            "label": "Data EEPROM Write Protect",
+            "settings": [
+                {
+                    "label": "Data EEPROM is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data EEPROM is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR0",
+            "label": "Block 0 Table Read Protect",
+            "settings": [
+                {
+                    "label": "Block 0 is not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 0 is protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR1",
+            "label": "Block 1 Table Read Protect",
+            "settings": [
+                {
+                    "label": "Block 1 is not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 1 is protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR2",
+            "label": "Block 2 Table Read Protect",
+            "settings": [
+                {
+                    "label": "Block 2 is not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 2 is protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR3",
+            "label": "Block 3 Table Read Protect",
+            "settings": [
+                {
+                    "label": "Block 3 is not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 3 is protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTRB",
+            "label": "Boot Block Table Read Protect",
+            "settings": [
+                {
+                    "label": "Boot block is not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot block is protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18F45K50",
+    "clock": 1
+}

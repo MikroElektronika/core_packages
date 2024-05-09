@@ -1,0 +1,241 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRC_CLKOUT,_EXTRC_OSC_CLKOUT,_EXTRC",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN",
+                    "value": "EXTRC_CLKOUT,_EXTRC_OSC_CLKOUT,_EXTRC"
+                },
+                {
+                    "label": "RCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN",
+                    "value": "EXTRC_NOCLKOUT,_EXTRC_OSC_NOCLKOUT,_EXTRCIO"
+                },
+                {
+                    "label": "INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN",
+                    "value": "INTRC_CLKOUT,_INTRC_OSC_CLKOUT,_INTOSC"
+                },
+                {
+                    "label": "INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN",
+                    "value": "INTRC_NOCLKOUT,_INTRC_OSC_NOCLKOUT,_INTOSCIO"
+                },
+                {
+                    "label": "EC: I/O function on RA6/OSC2/CLKOUT pin, CLKIN on RA7/OSC1/CLKIN",
+                    "value": "EC,_EC_OSC"
+                },
+                {
+                    "label": "HS oscillator: High-speed crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator: Low-power crystal on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "RE3/MCLR pin function select bit",
+            "settings": [
+                {
+                    "label": "RE3/MCLR pin function is MCLR",
+                    "value": "ON"
+                },
+                {
+                    "label": "RE3/MCLR pin function is digital input, MCLR internally tied to VDD",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bit",
+            "settings": [
+                {
+                    "label": "Program memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "Data Code Protection bit",
+            "settings": [
+                {
+                    "label": "Data memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BOR_ON",
+            "key": "BOREN",
+            "label": "Brown Out Reset Selection bits",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON,_BOR_ON"
+                },
+                {
+                    "label": "BOR enabled during operation and disabled in Sleep",
+                    "value": "NSLEEP,_BOR_NSLEEP"
+                },
+                {
+                    "label": "BOR controlled by SBOREN bit of the PCON register",
+                    "value": "SBODEN,_BOR_SBODEN"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF,_BOR_OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switchover bit",
+            "settings": [
+                {
+                    "label": "Internal/External Switchover mode is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Internal/External Switchover mode is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enabled bit",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LVP",
+            "label": "Low Voltage Programming Enable bit",
+            "settings": [
+                {
+                    "label": "RB3/PGM pin has PGM function, low voltage programming enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "RB3 pin has digital I/O, HV on MCLR must be used for programming",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "In-Circuit Debugger Mode bit",
+            "settings": [
+                {
+                    "label": "In-Circuit Debugger disabled, RB6/ICSPCLK and RB7/ICSPDAT are general purpose I/O pins",
+                    "value": "OFF"
+                },
+                {
+                    "label": "In_Circuit Debugger enabled, RB6/ICSPCLK and RB7/ICSPDAT are dedicated to the debugger",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "BOR40V,_BOR40V",
+            "key": "BOR4V",
+            "label": "Brown-out Reset Selection bit",
+            "settings": [
+                {
+                    "label": "Brown-out Reset set to 2.1V",
+                    "value": "BOR21V,_BOR21V"
+                },
+                {
+                    "label": "Brown-out Reset set to 4.0V",
+                    "value": "BOR40V,_BOR40V"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT",
+            "label": "Flash Program Memory Self Write Enable bits",
+            "settings": [
+                {
+                    "label": "0000h to 07FFh write protected, 0800h to 0FFFh may be modified by EECON control",
+                    "value": "HALF"
+                },
+                {
+                    "label": "0000h to 03FFh write protected, 0400h to 0FFFh may be modified by EECON control",
+                    "value": "1FOURTH"
+                },
+                {
+                    "label": "0000h to 00FFh write protected, 0100h to 0FFFh may be modified by EECON control",
+                    "value": "256"
+                },
+                {
+                    "label": "Write protection off",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F883",
+    "clock": 1
+}

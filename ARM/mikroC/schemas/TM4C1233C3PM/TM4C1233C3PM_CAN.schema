@@ -1,0 +1,15 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc-arm-none-eabi/core/def/TM4C1233C3PM.json",
+    "flash": 32767,
+    "ram": 12287,
+    "settings": {
+        "clock": "80",
+        "scheme": "TM4C1233C3PM_CAN",
+        "mcu": "TM4C1233C3PM",
+        "core": "M4EF",
+        "delay_src_path": "delays/m4ef/__lib_delays.c",
+        "name": null
+    }
+}

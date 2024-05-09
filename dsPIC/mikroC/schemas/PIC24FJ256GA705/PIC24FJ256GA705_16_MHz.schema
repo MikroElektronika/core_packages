@@ -1,0 +1,195 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/mikroC/core/def/PIC24FJ256GA705.json",
+    "flash": 256,
+    "ram": 16384,
+    "settings": {
+        "clock": "16",
+        "scheme": "PIC24FJ256GA705_16_MHz",
+        "mcu": "PIC24FJ256GA705",
+        "core": "DSPIC",
+        "delay_src_path": "delays/dspic/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    }
+                ],
+                "key": "FSEC"
+            },
+            {
+                "fields": {
+                    "key": "BSLIM",
+                    "value": "00001FFD"
+                },
+                "key": "FBSLIM"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FNOSC",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000060"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSCSEL"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSC"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    }
+                ],
+                "key": "FWDT"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    }
+                ],
+                "key": "FPOR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FICD"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FDEVOPT1"
+            }
+        ]
+    }
+}

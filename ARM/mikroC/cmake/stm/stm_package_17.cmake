@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "(^STM32F7(.+)$)")
+    set(SYSTEM_LIB_SOURCE "system/ST/M7/src/__Lib_System_F7XX.c")
+    set(SYSTEM_LIB_INCLUDE_DIR "system/ST/M7/include")
+    set(MATH_LIB_SOURCE "math/M7/__Lib_Math.c")
+    set(MATH_DOUBLE_SOURCE "math_double/M7/__Lib_MathDouble.c")
+    set(DELAY_SOURCE "delay/m4ef/__lib_delays.c")
+endif()

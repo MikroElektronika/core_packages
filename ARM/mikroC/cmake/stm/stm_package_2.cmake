@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "(^STM32G0[3-4|7-8][0-1][CFGERJKY][648B]$)")
+    set(SYSTEM_LIB_SOURCE "system/ST/M0/src/__Lib_System_G0xx.c")
+    set(SYSTEM_LIB_INCLUDE_DIR "system/ST/M0/include")
+    set(MATH_LIB_SOURCE "math/M0/__Lib_Math.c")
+    set(MATH_DOUBLE_SOURCE "math_double/M0/__Lib_MathDouble.c")
+    set(DELAY_SOURCE "delay/m0/__lib_delays.c")
+endif()

@@ -1,0 +1,1284 @@
+{
+    "config_words": [
+        {
+            "init": "DSWDTPS1F",
+            "key": "DSWDTPS",
+            "label": "Deep Sleep Watchdog Timer Postscale Select bits",
+            "settings": [
+                {
+                    "label": "1:32 (1 mS)",
+                    "value": "DSWDTPS0"
+                },
+                {
+                    "label": "1:64 (2.1 mS)",
+                    "value": "DSWDTPS1"
+                },
+                {
+                    "label": "1:128 (4.1 mS)",
+                    "value": "DSWDTPS2"
+                },
+                {
+                    "label": "1: 256 (8.3 mS)",
+                    "value": "DSWDTPS3"
+                },
+                {
+                    "label": "1:512 (16.5 mS)",
+                    "value": "DSWDTPS4"
+                },
+                {
+                    "label": "1:1024 (33 mS)",
+                    "value": "DSWDTPS5"
+                },
+                {
+                    "label": "1:2048 (66.1 mS)",
+                    "value": "DSWDTPS6"
+                },
+                {
+                    "label": "1:4096 (132.1 mS)",
+                    "value": "DSWDTPS7"
+                },
+                {
+                    "label": "1:8192 (264.3 mS)",
+                    "value": "DSWDTPS8"
+                },
+                {
+                    "label": "1:16384 (528.5 mS)",
+                    "value": "DSWDTPS9"
+                },
+                {
+                    "label": "1:32768 (1.057 Secs)",
+                    "value": "DSWDTPSA"
+                },
+                {
+                    "label": "1:65536 (2.114 Secs)",
+                    "value": "DSWDTPSB"
+                },
+                {
+                    "label": "1:131072 (4.228 Secs)",
+                    "value": "DSWDTPSC"
+                },
+                {
+                    "label": "1:262114 (8.456 Secs)",
+                    "value": "DSWDTPSD"
+                },
+                {
+                    "label": "1:524288 (16.912 Secs)",
+                    "value": "DSWDTPSE"
+                },
+                {
+                    "label": "1:1048576 (33.825 Secs)",
+                    "value": "DSWDTPSF"
+                },
+                {
+                    "label": "1:2097152 (67.7 Secs)",
+                    "value": "DSWDTPS10"
+                },
+                {
+                    "label": "1:4194304 (135.3 Secs)",
+                    "value": "DSWDTPS11"
+                },
+                {
+                    "label": "1:8388608 (4.5 Minutes)",
+                    "value": "DSWDTPS12"
+                },
+                {
+                    "label": "1:16777216 (9 Minutes)",
+                    "value": "DSWDTPS13"
+                },
+                {
+                    "label": "1:33554432 (18 Minutes)",
+                    "value": "DSWDTPS14"
+                },
+                {
+                    "label": "1:67108864 (36.1 Minutes)",
+                    "value": "DSWDTPS15"
+                },
+                {
+                    "label": "1:134217728 (72.2 Minutes)",
+                    "value": "DSWDTPS16"
+                },
+                {
+                    "label": "1:268435456 (2.4 Hours)",
+                    "value": "DSWDTPS17"
+                },
+                {
+                    "label": "1:536870912 (4.8 Hours)",
+                    "value": "DSWDTPS18"
+                },
+                {
+                    "label": "1:1073741824 (9.6 Hours)",
+                    "value": "DSWDTPS19"
+                },
+                {
+                    "label": "1:2147483648 (19.2 Hours)",
+                    "value": "DSWDTPS1A"
+                },
+                {
+                    "label": "1:4294967296 (38.5 Hours)",
+                    "value": "DSWDTPS1B"
+                },
+                {
+                    "label": "1:8589934592 (77 Hours)",
+                    "value": "DSWDTPS1C"
+                },
+                {
+                    "label": "1:17179869184 (6.4 Days)",
+                    "value": "DSWDTPS1D"
+                },
+                {
+                    "label": "1:34359738368 (12.8  Days)",
+                    "value": "DSWDTPS1E"
+                },
+                {
+                    "label": "1:68719476736 (25.7 Days)",
+                    "value": "DSWDTPS1F"
+                }
+            ]
+        },
+        {
+            "init": "LPRC",
+            "key": "DSWDTOSC",
+            "label": "DSWDT Reference Clock Select",
+            "settings": [
+                {
+                    "label": "DSWDT uses SOSC as reference clock",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "DSWDT uses LPRC as reference clock",
+                    "value": "LPRC"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSBOREN",
+            "label": "Deep Sleep BOR Enable bit",
+            "settings": [
+                {
+                    "label": "DSBOR Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "DSBOR Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSWDTEN",
+            "label": "Deep Sleep Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "DSWDT Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "DSWDT Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSSWEN",
+            "label": "DSEN Bit Enable",
+            "settings": [
+                {
+                    "label": "Deep Sleep operation is always disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Deep Sleep is controlled by the register bit DSEN",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "RTCBAT",
+            "label": "RTC Battery Operation Enable",
+            "settings": [
+                {
+                    "label": "RTC operation is discontinued in VBAT",
+                    "value": "OFF"
+                },
+                {
+                    "label": "RTC operation is continued through VBAT",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "DIS",
+            "key": "PLLDIV",
+            "label": "PLL Input Prescaler Select bits",
+            "settings": [
+                {
+                    "label": "Oscillator used directly (4 MHz input)",
+                    "value": "NODIV"
+                },
+                {
+                    "label": "Oscillator divided by 2 (8 MHz input)",
+                    "value": "DIV2"
+                },
+                {
+                    "label": "Oscillator divided by 3 (12 MHz input)",
+                    "value": "DIV3"
+                },
+                {
+                    "label": "Oscillator divided by 4 (16 MHz input)",
+                    "value": "DIV4"
+                },
+                {
+                    "label": "Oscillator divided by 5 (20 MHz input)",
+                    "value": "DIV5"
+                },
+                {
+                    "label": "Oscillator divided by 6 (24 MHz input)",
+                    "value": "DIV6"
+                },
+                {
+                    "label": "Oscillator divided by 8 (32 MHz input)",
+                    "value": "DIV8"
+                },
+                {
+                    "label": "Oscillator input divided by 12 (48MHz input)",
+                    "value": "DIV12"
+                },
+                {
+                    "label": "PLL is disabled",
+                    "value": "DIS"
+                }
+            ]
+        },
+        {
+            "init": "PRI",
+            "key": "I2C2SEL",
+            "label": "Alternate I2C2 Location Select bit",
+            "settings": [
+                {
+                    "label": "I2C2 is multiplexed to SDA2/RF4 and SCL2/RF5",
+                    "value": "SEC"
+                },
+                {
+                    "label": "I2C2 is multiplexed to SDA2/RA3 and SCL2/RA2",
+                    "value": "PRI"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "PPS IOLOCK Set Only Once Enable bit",
+            "settings": [
+                {
+                    "label": "The IOLOCK bit can be set and cleared using the unlock sequence",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Once set, the IOLOCK bit cannot be cleared",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WPFP127",
+            "key": "WPFP",
+            "label": "Write Protection Flash Page Segment Boundary",
+            "settings": [
+                {
+                    "label": "Page 0 (0x00)",
+                    "value": "WPFP0"
+                },
+                {
+                    "label": "Page 1 (0x400)",
+                    "value": "WPFP1"
+                },
+                {
+                    "label": "Page 2 (0x800)",
+                    "value": "WPFP2"
+                },
+                {
+                    "label": "Page 3 (0xC00)",
+                    "value": "WPFP3"
+                },
+                {
+                    "label": "Page 4 (0x1000)",
+                    "value": "WPFP4"
+                },
+                {
+                    "label": "Page 5 (0x1400)",
+                    "value": "WPFP5"
+                },
+                {
+                    "label": "Page 6 (0x1800)",
+                    "value": "WPFP6"
+                },
+                {
+                    "label": "Page 7 (0x1C00)",
+                    "value": "WPFP7"
+                },
+                {
+                    "label": "Page 8 (0x2000)",
+                    "value": "WPFP8"
+                },
+                {
+                    "label": "Page 9 (0x2400)",
+                    "value": "WPFP9"
+                },
+                {
+                    "label": "Page 10 (0x2800)",
+                    "value": "WPFP10"
+                },
+                {
+                    "label": "Page 11 (0x2C00)",
+                    "value": "WPFP11"
+                },
+                {
+                    "label": "Page 12 (0x3000)",
+                    "value": "WPFP12"
+                },
+                {
+                    "label": "Page 13 (0x3400)",
+                    "value": "WPFP13"
+                },
+                {
+                    "label": "Page 14 (0x3800)",
+                    "value": "WPFP14"
+                },
+                {
+                    "label": "Page 15 (0x3C00)",
+                    "value": "WPFP15"
+                },
+                {
+                    "label": "Page 16 (0x4000)",
+                    "value": "WPFP16"
+                },
+                {
+                    "label": "Page 17 (0x4400)",
+                    "value": "WPFP17"
+                },
+                {
+                    "label": "Page 18 (0x4800)",
+                    "value": "WPFP18"
+                },
+                {
+                    "label": "Page 19 (0x4C00)",
+                    "value": "WPFP19"
+                },
+                {
+                    "label": "Page 20 (0x5000)",
+                    "value": "WPFP20"
+                },
+                {
+                    "label": "Page 21 (0x5400)",
+                    "value": "WPFP21"
+                },
+                {
+                    "label": "Page 22 (0x5800)",
+                    "value": "WPFP22"
+                },
+                {
+                    "label": "Page 23 (0x5C00)",
+                    "value": "WPFP23"
+                },
+                {
+                    "label": "Page 24 (0x6000)",
+                    "value": "WPFP24"
+                },
+                {
+                    "label": "Page 25 (0x6400)",
+                    "value": "WPFP25"
+                },
+                {
+                    "label": "Page 26 (0x6800)",
+                    "value": "WPFP26"
+                },
+                {
+                    "label": "Page 27 (0x6C00)",
+                    "value": "WPFP27"
+                },
+                {
+                    "label": "Page 28 (0x7000)",
+                    "value": "WPFP28"
+                },
+                {
+                    "label": "Page 29 (0x7400)",
+                    "value": "WPFP29"
+                },
+                {
+                    "label": "Page 30 (0x7800)",
+                    "value": "WPFP30"
+                },
+                {
+                    "label": "Page 31 (0x7C00)",
+                    "value": "WPFP31"
+                },
+                {
+                    "label": "Page 32 (0x8000)",
+                    "value": "WPFP32"
+                },
+                {
+                    "label": "Page 33 (0x8400)",
+                    "value": "WPFP33"
+                },
+                {
+                    "label": "Page 34 (0x8800)",
+                    "value": "WPFP34"
+                },
+                {
+                    "label": "Page 35 (0x8C00)",
+                    "value": "WPFP35"
+                },
+                {
+                    "label": "Page 36 (0x9000)",
+                    "value": "WPFP36"
+                },
+                {
+                    "label": "Page 37 (0x9400)",
+                    "value": "WPFP37"
+                },
+                {
+                    "label": "Page 38 (0x9800)",
+                    "value": "WPFP38"
+                },
+                {
+                    "label": "Page 39 (0x9C00)",
+                    "value": "WPFP39"
+                },
+                {
+                    "label": "Page 40 (0xA000)",
+                    "value": "WPFP40"
+                },
+                {
+                    "label": "Page 41 (0xA400)",
+                    "value": "WPFP41"
+                },
+                {
+                    "label": "Page 42 (0xA800)",
+                    "value": "WPFP42"
+                },
+                {
+                    "label": "Page 43 (0xAC00)",
+                    "value": "WPFP43"
+                },
+                {
+                    "label": "Page 44 (0xB000)",
+                    "value": "WPFP44"
+                },
+                {
+                    "label": "Page 45 (0xB400)",
+                    "value": "WPFP45"
+                },
+                {
+                    "label": "Page 46 (0xB800)",
+                    "value": "WPFP46"
+                },
+                {
+                    "label": "Page 47 (0xBC00)",
+                    "value": "WPFP47"
+                },
+                {
+                    "label": "Page 48 (0xC000)",
+                    "value": "WPFP48"
+                },
+                {
+                    "label": "Page 49 (0xC400)",
+                    "value": "WPFP49"
+                },
+                {
+                    "label": "Page 50 (0xC800)",
+                    "value": "WPFP50"
+                },
+                {
+                    "label": "Page 51 (0xCC00)",
+                    "value": "WPFP51"
+                },
+                {
+                    "label": "Page 52 (0xD000)",
+                    "value": "WPFP52"
+                },
+                {
+                    "label": "Page 53 (0xD400)",
+                    "value": "WPFP53"
+                },
+                {
+                    "label": "Page 54 (0xD800)",
+                    "value": "WPFP54"
+                },
+                {
+                    "label": "Page 55 (0xDC00)",
+                    "value": "WPFP55"
+                },
+                {
+                    "label": "Page 56 (0xE000)",
+                    "value": "WPFP56"
+                },
+                {
+                    "label": "Page 57 (0xE400)",
+                    "value": "WPFP57"
+                },
+                {
+                    "label": "Page 58 (0xE800)",
+                    "value": "WPFP58"
+                },
+                {
+                    "label": "Page 59 (0xEC00)",
+                    "value": "WPFP59"
+                },
+                {
+                    "label": "Page 60 (0xF000)",
+                    "value": "WPFP60"
+                },
+                {
+                    "label": "Page 61 (0xF400)",
+                    "value": "WPFP61"
+                },
+                {
+                    "label": "Page 62 (0xF800)",
+                    "value": "WPFP62"
+                },
+                {
+                    "label": "Page 63 (0xFC00)",
+                    "value": "WPFP63"
+                },
+                {
+                    "label": "Page 64 (0x10000)",
+                    "value": "WPFP64"
+                },
+                {
+                    "label": "Page 65 (0x10400)",
+                    "value": "WPFP65"
+                },
+                {
+                    "label": "Page 66 (0x10800)",
+                    "value": "WPFP66"
+                },
+                {
+                    "label": "Page 67 (0x10C00)",
+                    "value": "WPFP67"
+                },
+                {
+                    "label": "Page 68 (0x11000)",
+                    "value": "WPFP68"
+                },
+                {
+                    "label": "Page 69 (0x11400)",
+                    "value": "WPFP69"
+                },
+                {
+                    "label": "Page 70 (0x11800)",
+                    "value": "WPFP70"
+                },
+                {
+                    "label": "Page 71 (0x11C00)",
+                    "value": "WPFP71"
+                },
+                {
+                    "label": "Page 72 (0x12000)",
+                    "value": "WPFP72"
+                },
+                {
+                    "label": "Page 73 (0x12400)",
+                    "value": "WPFP73"
+                },
+                {
+                    "label": "Page 74 (0x12800)",
+                    "value": "WPFP74"
+                },
+                {
+                    "label": "Page 75 (0x12C00)",
+                    "value": "WPFP75"
+                },
+                {
+                    "label": "Page 76 (0x13000)",
+                    "value": "WPFP76"
+                },
+                {
+                    "label": "Page 77 (0x13400)",
+                    "value": "WPFP77"
+                },
+                {
+                    "label": "Page 78 (0x13800)",
+                    "value": "WPFP78"
+                },
+                {
+                    "label": "Page 79 (0x13C00)",
+                    "value": "WPFP79"
+                },
+                {
+                    "label": "Page 80 (0x14000)",
+                    "value": "WPFP80"
+                },
+                {
+                    "label": "Page 81 (0x14400)",
+                    "value": "WPFP81"
+                },
+                {
+                    "label": "Page 82 (0x14800)",
+                    "value": "WPFP82"
+                },
+                {
+                    "label": "Page 83 (0x14C00)",
+                    "value": "WPFP83"
+                },
+                {
+                    "label": "Page 84 (0x15000)",
+                    "value": "WPFP84"
+                },
+                {
+                    "label": "Page 85 (0x15400)",
+                    "value": "WPFP85"
+                },
+                {
+                    "label": "Page 86 (0x15800)",
+                    "value": "WPFP86"
+                },
+                {
+                    "label": "Page 87 (0x15C00)",
+                    "value": "WPFP87"
+                },
+                {
+                    "label": "Page 88 (0x16000)",
+                    "value": "WPFP88"
+                },
+                {
+                    "label": "Page 89 (0x16400)",
+                    "value": "WPFP89"
+                },
+                {
+                    "label": "Page 90 (0x16800)",
+                    "value": "WPFP90"
+                },
+                {
+                    "label": "Page 91 (0x16C00)",
+                    "value": "WPFP91"
+                },
+                {
+                    "label": "Page 92 (0x17000)",
+                    "value": "WPFP92"
+                },
+                {
+                    "label": "Page 93 (0x17400)",
+                    "value": "WPFP93"
+                },
+                {
+                    "label": "Page 94 (0x17800)",
+                    "value": "WPFP94"
+                },
+                {
+                    "label": "Page 95 (0x17C00)",
+                    "value": "WPFP95"
+                },
+                {
+                    "label": "Page 96 (0x18000)",
+                    "value": "WPFP96"
+                },
+                {
+                    "label": "Page 97 (0x18400)",
+                    "value": "WPFP97"
+                },
+                {
+                    "label": "Page 98 (0x18800)",
+                    "value": "WPFP98"
+                },
+                {
+                    "label": "Page 99 (0x18C00)",
+                    "value": "WPFP99"
+                },
+                {
+                    "label": "Page 100 (0x19000)",
+                    "value": "WPFP100"
+                },
+                {
+                    "label": "Page 101 (0x19400)",
+                    "value": "WPFP101"
+                },
+                {
+                    "label": "Page 102 (0x19800)",
+                    "value": "WPFP102"
+                },
+                {
+                    "label": "Page 103 (0x19C00)",
+                    "value": "WPFP103"
+                },
+                {
+                    "label": "Page 104 (0x1A000)",
+                    "value": "WPFP104"
+                },
+                {
+                    "label": "Page 105 (0x1A400)",
+                    "value": "WPFP105"
+                },
+                {
+                    "label": "Page 106 (0x1A800)",
+                    "value": "WPFP106"
+                },
+                {
+                    "label": "Page 107 (0x1AC00)",
+                    "value": "WPFP107"
+                },
+                {
+                    "label": "Page 108 (0x1B000)",
+                    "value": "WPFP108"
+                },
+                {
+                    "label": "Page 109 (0x1B400)",
+                    "value": "WPFP109"
+                },
+                {
+                    "label": "Page 110 (0x1B800)",
+                    "value": "WPFP110"
+                },
+                {
+                    "label": "Page 111 (0x1BC00)",
+                    "value": "WPFP111"
+                },
+                {
+                    "label": "Page 112 (0x1C000)",
+                    "value": "WPFP112"
+                },
+                {
+                    "label": "Page 113 (0x1C400)",
+                    "value": "WPFP113"
+                },
+                {
+                    "label": "Page 114 (0x1C800)",
+                    "value": "WPFP114"
+                },
+                {
+                    "label": "Page 115 (0x1CC00)",
+                    "value": "WPFP115"
+                },
+                {
+                    "label": "Page 116 (0x1D000)",
+                    "value": "WPFP116"
+                },
+                {
+                    "label": "Page 117 (0x1D400)",
+                    "value": "WPFP117"
+                },
+                {
+                    "label": "Page 118 (0x1D800)",
+                    "value": "WPFP118"
+                },
+                {
+                    "label": "Page 119 (0x1DC00)",
+                    "value": "WPFP119"
+                },
+                {
+                    "label": "Page 120 (0x1E000)",
+                    "value": "WPFP120"
+                },
+                {
+                    "label": "Page 121 (0x1E400)",
+                    "value": "WPFP121"
+                },
+                {
+                    "label": "Page 122 (0x1E800)",
+                    "value": "WPFP122"
+                },
+                {
+                    "label": "Page 123 (0x1EC00)",
+                    "value": "WPFP123"
+                },
+                {
+                    "label": "Page 124 (0x1F000)",
+                    "value": "WPFP124"
+                },
+                {
+                    "label": "Page 125 (0x1F400)",
+                    "value": "WPFP125"
+                },
+                {
+                    "label": "Page 126 (0x1F800)",
+                    "value": "WPFP126"
+                },
+                {
+                    "label": "Page 127 (0x1FC00)",
+                    "value": "WPFP127"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "SOSCSEL",
+            "label": "SOSC Selection bits",
+            "settings": [
+                {
+                    "label": "Digital (SCLKI) mode",
+                    "value": "OFF"
+                },
+                {
+                    "label": "SOSC circuit selected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PS25_0",
+            "key": "WDTWIN",
+            "label": "Window Mode Watchdog Timer Window Width Select",
+            "settings": [
+                {
+                    "label": "Watch Dog Timer Window Width is 75 percent",
+                    "value": "PS75_0"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 50 percent",
+                    "value": "PS50_0"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 37.5 percent",
+                    "value": "PS37_5"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 25 percent",
+                    "value": "PS25_0"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable",
+            "settings": [
+                {
+                    "label": "Brown-out Reset Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Brown-out Reset Enable",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WPDIS",
+            "key": "WPDIS",
+            "label": "Segment Write Protection Disable",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "WPEN"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "WPDIS"
+                }
+            ]
+        },
+        {
+            "init": "WPCFGDIS",
+            "key": "WPCFG",
+            "label": "Write Protect Configuration Page Select",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "WPCFGEN"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "WPCFGDIS"
+                }
+            ]
+        },
+        {
+            "init": "WPENDMEM",
+            "key": "WPEND",
+            "label": "Segment Write Protection End Page Select",
+            "settings": [
+                {
+                    "label": "Write Protect from page 0 to WPFP",
+                    "value": "WPSTARTMEM"
+                },
+                {
+                    "label": "Write Protect from WPFP to the last page of memory",
+                    "value": "WPENDMEM"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "POSCMD",
+            "label": "Primary Oscillator Select",
+            "settings": [
+                {
+                    "label": "External-Clock Mode Enabled",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT Oscillator Enabled",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS Oscillator Enabled",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary Oscillator Disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "LPRC",
+            "key": "WDTCLK",
+            "label": "WDT Clock Source Select bits",
+            "settings": [
+                {
+                    "label": "WDT uses system clock when active, LPRC while in Sleep mode",
+                    "value": "SYSCLK"
+                },
+                {
+                    "label": "WDT uses SOSC input",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "WDT uses 31 kHz source from FRC when active in Windowed WDT",
+                    "value": "FRC"
+                },
+                {
+                    "label": "WDT uses LPRC",
+                    "value": "LPRC"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFCN",
+            "label": "OSCO Pin Configuration",
+            "settings": [
+                {
+                    "label": "OSCO/CLKO/RC15 functions as port I/O (RC15)",
+                    "value": "ON"
+                },
+                {
+                    "label": "OSCO/CLKO/RC15 functions as CLKO (FOSC/2)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching and Fail-Safe Clock Monitor Configuration bits",
+            "settings": [
+                {
+                    "label": "Clock switching is enabled, Fail-Safe Clock Monitor is enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock switching is enabled, Fail-Safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Clock switching and Fail-Safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIV",
+            "key": "FNOSC",
+            "label": "Initial Oscillator Select",
+            "settings": [
+                {
+                    "label": "Fast RC Oscillator (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC Oscillator with PLL module (FRCPLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Oscillator with PLL module (XTPLL,HSPLL, ECPLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Secondary Oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low-Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Fast RC Oscillator with Postscaler (FRCDIV)",
+                    "value": "FRCDIV"
+                }
+            ]
+        },
+        {
+            "init": "AVREF_RA",
+            "key": "ALTADREF",
+            "label": "External 12-Bit A/D Reference Location Select bit",
+            "settings": [
+                {
+                    "label": "AVREF+/AVREF- are mapped to RB0/RB1",
+                    "value": "AVREF_RB"
+                },
+                {
+                    "label": "AVREF+/AVREF- are mapped to RA9/RA10",
+                    "value": "AVREF_RA"
+                }
+            ]
+        },
+        {
+            "init": "CVREF_RA",
+            "key": "ALTCVREF",
+            "label": "External Comparator Reference Location Select bit",
+            "settings": [
+                {
+                    "label": "CVREF+/CVREF- are mapped to RB0/RB1",
+                    "value": "CVREF_RB"
+                },
+                {
+                    "label": "CVREF+/CVREF- are mapped to RA9/RA10",
+                    "value": "CVREF_RA"
+                }
+            ]
+        },
+        {
+            "init": "WDTCLK",
+            "key": "WDTCMX",
+            "label": "WDT Clock Source Select bits",
+            "settings": [
+                {
+                    "label": "WDT always uses LPRC as its clock source",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "WDT clock source is determined by the WDTCLK Configuration bits",
+                    "value": "WDTCLK"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switchover",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscaler Select",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "FWPSA",
+            "label": "WDT Prescaler Ratio Select",
+            "settings": [
+                {
+                    "label": "1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Windowed WDT Disable",
+            "settings": [
+                {
+                    "label": "Windowed Watchdog Timer",
+                    "value": "ON"
+                },
+                {
+                    "label": "Standard Watchdog Timer",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "WDT_HW",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "WDT disabled in hardware; SWDTEN bit disabled",
+                    "value": "WDT_DIS"
+                },
+                {
+                    "label": "WDT enabled only while device active and disabled in Sleep",
+                    "value": "WDT_ACT"
+                },
+                {
+                    "label": "WDT controlled with the SWDTEN bit",
+                    "value": "WDT_SW"
+                },
+                {
+                    "label": "WDT enabled in hardware",
+                    "value": "WDT_HW"
+                }
+            ]
+        },
+        {
+            "init": "PGx1",
+            "key": "ICS",
+            "label": "Emulator Pin Placement Select bits",
+            "settings": [
+                {
+                    "label": "Emulator functions are shared with PGEC3/PGED3",
+                    "value": "PGx3"
+                },
+                {
+                    "label": "Emulator functions are shared with PGEC2/PGED2",
+                    "value": "PGx2"
+                },
+                {
+                    "label": "Emulator functions are shared with PGEC1/PGED1",
+                    "value": "PGx1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "LPCFG",
+            "label": "Low power regulator control",
+            "settings": [
+                {
+                    "label": "Low voltage regulator controlled in sw by RETEN bit",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled - regardless of RETEN",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GCP",
+            "label": "General Segment Code Protect",
+            "settings": [
+                {
+                    "label": "Code protection is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Code protection is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "JTAGEN",
+            "label": "JTAG Port Enable",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC24FJ128GC010",
+    "clock": 1
+}

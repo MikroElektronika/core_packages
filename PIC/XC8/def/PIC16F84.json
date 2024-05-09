@@ -1,0 +1,74 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRC,_RC_OSC",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator",
+                    "value": "EXTRC,_RC_OSC"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "Power-up Timer is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Power-up Timer is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bit",
+            "settings": [
+                {
+                    "label": "Code protection disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "All program memory is code protected",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F84",
+    "clock": 1
+}

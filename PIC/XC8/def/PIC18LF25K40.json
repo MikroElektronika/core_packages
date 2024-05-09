@@ -1,0 +1,739 @@
+{
+    "config_words": [
+        {
+            "init": "ECH",
+            "key": "FEXTOSC",
+            "label": "External Oscillator mode Selection bits",
+            "settings": [
+                {
+                    "label": "LP (crystal oscillator) optimized for 32.768 kHz; PFM set to low power",
+                    "value": "LP"
+                },
+                {
+                    "label": "XT (crystal oscillator) above 100 kHz, below 8 MHz; PFM set to medium power",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS (crystal oscillator) above 8 MHz; PFM set to high power",
+                    "value": "HS"
+                },
+                {
+                    "label": "Oscillator not enabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "EC (external clock) below 100 kHz; PFM set to low power",
+                    "value": "ECL"
+                },
+                {
+                    "label": "EC (external clock) for 500 kHz to 8 MHz; PFM set to medium power",
+                    "value": "ECM"
+                },
+                {
+                    "label": "EC (external clock) above 8 MHz; PFM set to high power",
+                    "value": "ECH"
+                }
+            ]
+        },
+        {
+            "init": "EXTOSC",
+            "key": "RSTOSC",
+            "label": "Power-up default value for COSC bits",
+            "settings": [
+                {
+                    "label": "HFINTOSC with HFFRQ = 64 MHz and CDIV = 1:1",
+                    "value": "HFINTOSC_64MHZ"
+                },
+                {
+                    "label": "EXTOSC with 4x PLL, with EXTOSC operating per FEXTOSC bits",
+                    "value": "EXTOSC_4PLL"
+                },
+                {
+                    "label": "Secondary Oscillator",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low-Frequency Oscillator",
+                    "value": "LFINTOSC"
+                },
+                {
+                    "label": "HFINTOSC with HFFRQ = 4 MHz and CDIV = 4:1",
+                    "value": "HFINTOSC_1MHZ"
+                },
+                {
+                    "label": "EXTOSC operating per FEXTOSC bits (device manufacturing default)",
+                    "value": "EXTOSC"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CLKOUTEN",
+            "label": "Clock Out Enable bit",
+            "settings": [
+                {
+                    "label": "CLKOUT function is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "CLKOUT function is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "CSWEN",
+            "label": "Clock Switch Enable bit",
+            "settings": [
+                {
+                    "label": "The NOSC and NDIV bits cannot be changed by user software",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Writing to NOSC and NDIV is allowed",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enable bit",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "EXTMCLR",
+            "key": "MCLRE",
+            "label": "Master Clear Enable bit",
+            "settings": [
+                {
+                    "label": "If LVP = 0, MCLR pin is MCLR; If LVP = 1, RE3 pin function is MCLR",
+                    "value": "EXTMCLR"
+                },
+                {
+                    "label": "If LVP = 0, MCLR pin function is port defined function; If LVP =1, RE3 pin fuction is MCLR",
+                    "value": "INTMCLR"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "Power up timer enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Power up timer disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "LPBOREN",
+            "label": "Low-power BOR enable bit",
+            "settings": [
+                {
+                    "label": "ULPBOR disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "ULPBOR enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "SBORDIS",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset enabled , SBOREN bit is ignored",
+                    "value": "SBORDIS"
+                },
+                {
+                    "label": "Brown-out Reset enabled while running, disabled in Sleep; SBOREN is ignored",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "Brown-out Reset enabled according to SBOREN",
+                    "value": "ON"
+                },
+                {
+                    "label": "Brown-out Reset disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "VBOR_190",
+            "key": "BORV",
+            "label": "Brown Out Reset Voltage selection bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 1.90V",
+                    "value": "VBOR_190"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 2.45V",
+                    "value": "VBOR_245"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 2.70V",
+                    "value": "VBOR_270"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 2.85V",
+                    "value": "VBOR_285"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "ZCD",
+            "label": "ZCD Disable bit",
+            "settings": [
+                {
+                    "label": "ZCD disabled. ZCD can be enabled by setting the ZCDSEN bit of ZCDCON",
+                    "value": "OFF"
+                },
+                {
+                    "label": "ZCD always enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PPS1WAY",
+            "label": "PPSLOCK bit One-Way Set Enable bit",
+            "settings": [
+                {
+                    "label": "PPSLOCK bit can be cleared and set only once; PPS registers remain locked after one clear/set cycle",
+                    "value": "ON"
+                },
+                {
+                    "label": "PPSLOCK bit can be set and cleared repeatedly (subject to the unlock sequence)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Full/Underflow Reset Enable bit",
+            "settings": [
+                {
+                    "label": "Stack full/underflow will cause Reset",
+                    "value": "ON"
+                },
+                {
+                    "label": "Stack full/underflow will not cause Reset",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Debugger Enable bit",
+            "settings": [
+                {
+                    "label": "Background debugger disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Background debugger enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "XINST",
+            "label": "Extended Instruction Set Enable bit",
+            "settings": [
+                {
+                    "label": "Extended Instruction Set and Indexed Addressing Mode disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Extended Instruction Set and Indexed Addressing Mode enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WDTCPS_31",
+            "key": "WDTCPS",
+            "label": "WDT Period Select bits",
+            "settings": [
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_0"
+                },
+                {
+                    "label": "Divider ratio 1:64",
+                    "value": "WDTCPS_1"
+                },
+                {
+                    "label": "Divider ratio 1:128",
+                    "value": "WDTCPS_2"
+                },
+                {
+                    "label": "Divider ratio 1:256",
+                    "value": "WDTCPS_3"
+                },
+                {
+                    "label": "Divider ratio 1:512",
+                    "value": "WDTCPS_4"
+                },
+                {
+                    "label": "Divider ratio 1:1024",
+                    "value": "WDTCPS_5"
+                },
+                {
+                    "label": "Divider ratio 1:2048",
+                    "value": "WDTCPS_6"
+                },
+                {
+                    "label": "Divider ratio 1:4096",
+                    "value": "WDTCPS_7"
+                },
+                {
+                    "label": "Divider ratio 1:8192",
+                    "value": "WDTCPS_8"
+                },
+                {
+                    "label": "Divider ratio 1:16384",
+                    "value": "WDTCPS_9"
+                },
+                {
+                    "label": "Divider ratio 1:32768",
+                    "value": "WDTCPS_10"
+                },
+                {
+                    "label": "Divider ratio 1:65536",
+                    "value": "WDTCPS_11"
+                },
+                {
+                    "label": "Divider ratio 1:131072",
+                    "value": "WDTCPS_12"
+                },
+                {
+                    "label": "Divider ratio 1:262144",
+                    "value": "WDTCPS_13"
+                },
+                {
+                    "label": "Divider ratio 1:524299",
+                    "value": "WDTCPS_14"
+                },
+                {
+                    "label": "Divider ratio 1:1048576",
+                    "value": "WDTCPS_15"
+                },
+                {
+                    "label": "Divider ratio 1:2097152",
+                    "value": "WDTCPS_16"
+                },
+                {
+                    "label": "Divider ratio 1:4194304",
+                    "value": "WDTCPS_17"
+                },
+                {
+                    "label": "Divider ratio 1:8388608",
+                    "value": "WDTCPS_18"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_19"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_20"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_21"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_22"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_23"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_24"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_25"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_26"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_27"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_28"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_29"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_30"
+                },
+                {
+                    "label": "Divider ratio 1:65536; software control of WDTPS",
+                    "value": "WDTCPS_31"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDTE",
+            "label": "WDT operating mode",
+            "settings": [
+                {
+                    "label": "WDT Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT enabled/disabled by SWDTEN bit",
+                    "value": "SWDTEN"
+                },
+                {
+                    "label": "WDT enabled while sleep=0, suspended when sleep=1",
+                    "value": "NSLEEP"
+                },
+                {
+                    "label": "WDT enabled regardless of sleep",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WDTCWS_7",
+            "key": "WDTCWS",
+            "label": "WDT Window Select bits",
+            "settings": [
+                {
+                    "label": "window delay = 87.5; no software control; keyed access required",
+                    "value": "WDTCWS_0"
+                },
+                {
+                    "label": "window delay = 75 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_1"
+                },
+                {
+                    "label": "window delay = 62.5 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_2"
+                },
+                {
+                    "label": "window delay = 50 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_3"
+                },
+                {
+                    "label": "window delay = 37.5 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_4"
+                },
+                {
+                    "label": "window delay = 25 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_5"
+                },
+                {
+                    "label": "window always open (100%); no software control; keyed access required",
+                    "value": "WDTCWS_6"
+                },
+                {
+                    "label": "window always open (100%); software control; keyed access not required",
+                    "value": "WDTCWS_7"
+                }
+            ]
+        },
+        {
+            "init": "SC",
+            "key": "WDTCCS",
+            "label": "WDT input clock selector",
+            "settings": [
+                {
+                    "label": "WDT reference clock is the 31.2kHz HFINTOSC output",
+                    "value": "HFINTOSC"
+                },
+                {
+                    "label": "WDT reference clock is the 31.0 kHz LFINTOSC",
+                    "value": "LFINTOSC"
+                },
+                {
+                    "label": "Software Control",
+                    "value": "SC"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT0",
+            "label": "Write Protection Block 0",
+            "settings": [
+                {
+                    "label": "Block 0 (000800-001FFFh) not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 0 (000800-001FFFh) write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT1",
+            "label": "Write Protection Block 1",
+            "settings": [
+                {
+                    "label": "Block 1 (002000-003FFFh) not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 1 (002000-003FFFh) write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT2",
+            "label": "Write Protection Block 2",
+            "settings": [
+                {
+                    "label": "Block 2 (004000-005FFFh) not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 2 (004000-005FFFh) write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT3",
+            "label": "Write Protection Block 3",
+            "settings": [
+                {
+                    "label": "Block 3 (006000-007FFFh) not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 3 (006000-007FFFh) write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTC",
+            "label": "Configuration Register Write Protection bit",
+            "settings": [
+                {
+                    "label": "Configuration registers (300000-30000Bh) not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Configuration registers (300000-30000Bh) write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTB",
+            "label": "Boot Block Write Protection bit",
+            "settings": [
+                {
+                    "label": "Boot Block (000000-0007FFh) not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot Block (000000-0007FFh) write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTD",
+            "label": "Data EEPROM Write Protection bit",
+            "settings": [
+                {
+                    "label": "Data EEPROM not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data EEPROM write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "SCANE",
+            "label": "Scanner Enable bit",
+            "settings": [
+                {
+                    "label": "Scanner module is NOT available for use, SCANMD bit is ignored",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Scanner module is available for use, SCANMD bit can control the module",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LVP",
+            "label": "Low Voltage Programming Enable bit",
+            "settings": [
+                {
+                    "label": "HV on MCLR/VPP must be used for programming",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Low voltage programming enabled. MCLR/VPP pin function is MCLR. MCLRE configuration bit is ignored",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "UserNVM Program Memory Code Protection bit",
+            "settings": [
+                {
+                    "label": "UserNVM code protection disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "UserNVM code protection enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "DataNVM Memory Code Protection bit",
+            "settings": [
+                {
+                    "label": "DataNVM code protection disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "DataNVM code protection enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR0",
+            "label": "Table Read Protection Block 0",
+            "settings": [
+                {
+                    "label": "Block 0 (000800-001FFFh) not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 0 (000800-001FFFh) protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR1",
+            "label": "Table Read Protection Block 1",
+            "settings": [
+                {
+                    "label": "Block 1 (002000-003FFFh) not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 1 (002000-003FFFh) protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR2",
+            "label": "Table Read Protection Block 2",
+            "settings": [
+                {
+                    "label": "Block 2 (004000-005FFFh) not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 2 (004000-005FFFh) protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR3",
+            "label": "Table Read Protection Block 3",
+            "settings": [
+                {
+                    "label": "Block 3 (006000-007FFFh) not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 3 (006000-007FFFh) protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTRB",
+            "label": "Boot Block Table Read Protection bit",
+            "settings": [
+                {
+                    "label": "Boot Block (000000-0007FFh) not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot Block (000000-0007FFh) protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18LF25K40",
+    "clock": 1
+}

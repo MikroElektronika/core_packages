@@ -1,0 +1,556 @@
+{
+    "config_words": [
+        {
+            "init": "RCIO",
+            "key": "OSC",
+            "label": "Oscillator",
+            "settings": [
+                {
+                    "label": "Internal oscillator, CLKO function on RA6, port function on RA7",
+                    "value": "INTIO1"
+                },
+                {
+                    "label": "Internal oscillator, port function on RA6 and RA7",
+                    "value": "INTIO2"
+                },
+                {
+                    "label": "External RC oscillator, port function on RA6",
+                    "value": "RCIO"
+                },
+                {
+                    "label": "HS oscillator, PLL enabled (Clock Frequency = 4 x FOSC1)",
+                    "value": "HSPLL"
+                },
+                {
+                    "label": "EC oscillator, port function on RA6",
+                    "value": "ECIO"
+                },
+                {
+                    "label": "EC oscillator, CLKO function on RA6",
+                    "value": "EC"
+                },
+                {
+                    "label": "External RC oscillator, CLKO function on RA6",
+                    "value": "RC"
+                },
+                {
+                    "label": "HS Oscillator",
+                    "value": "HS"
+                },
+                {
+                    "label": "XT Oscillator",
+                    "value": "XT"
+                },
+                {
+                    "label": "LP Oscillator",
+                    "value": "LP"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enable bit",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "IESO",
+            "label": "Internal/External Oscillator Switchover bit",
+            "settings": [
+                {
+                    "label": "Oscillator Switchover mode enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Oscillator Switchover mode disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRT",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "BOHW",
+            "key": "BOR",
+            "label": "Brown-out Reset Enable bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset enabled in hardware only (SBOREN is disabled)",
+                    "value": "BOHW"
+                },
+                {
+                    "label": "Brown-out Reset enabled in hardware only and disabled in Sleep mode (SBOREN is disabled)",
+                    "value": "BOACTIVE"
+                },
+                {
+                    "label": "Brown-out Reset enabled and controlled by software (SBOREN is enabled)",
+                    "value": "SBORENCTRL"
+                },
+                {
+                    "label": "Brown-out Reset disabled in hardware and software",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "3",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage bits",
+            "settings": [
+                {
+                    "label": "Minimum setting",
+                    "value": "3"
+                },
+                {
+                    "label": "Maximum setting",
+                    "value": "0"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDT",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "WDT disabled (control is placed on the SWDTEN bit)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscale Select bits",
+            "settings": [
+                {
+                    "label": "1:32768",
+                    "value": "32768"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "16384"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "8192"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "4096"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "2048"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "1024"
+                },
+                {
+                    "label": "1:512",
+                    "value": "512"
+                },
+                {
+                    "label": "1:256",
+                    "value": "256"
+                },
+                {
+                    "label": "1:128",
+                    "value": "128"
+                },
+                {
+                    "label": "1:64",
+                    "value": "64"
+                },
+                {
+                    "label": "1:32",
+                    "value": "32"
+                },
+                {
+                    "label": "1:16",
+                    "value": "16"
+                },
+                {
+                    "label": "1:8",
+                    "value": "8"
+                },
+                {
+                    "label": "1:4",
+                    "value": "4"
+                },
+                {
+                    "label": "1:2",
+                    "value": "2"
+                },
+                {
+                    "label": "1:1",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWMPIN",
+            "label": "PWM Output Pins Reset State Control bit",
+            "settings": [
+                {
+                    "label": "PWM outputs disabled upon Reset",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWM outputs drive active states upon Reset",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "HIGH",
+            "key": "LPOL",
+            "label": "Low-Side Transistors Polarity bit (Even PWM Output Polarity Control bit)",
+            "settings": [
+                {
+                    "label": "PWM0, PWM2 and PWM4 are active-high (default)",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "PWM0, PWM2 and PWM4 are active-low",
+                    "value": "LOW"
+                }
+            ]
+        },
+        {
+            "init": "HIGH",
+            "key": "HPOL",
+            "label": "High Side Transistors Polarity bit (Odd PWM Output Polarity Control bit)",
+            "settings": [
+                {
+                    "label": "PWM1, PWM3 and PWM5 are active-high (default)",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "PWM1, PWM3 and PWM5 are active-low",
+                    "value": "LOW"
+                }
+            ]
+        },
+        {
+            "init": "RA5",
+            "key": "FLTAMX",
+            "label": "FLTA Mux bit",
+            "settings": [
+                {
+                    "label": "FLTA input is muxed onto RA5",
+                    "value": "RA5"
+                },
+                {
+                    "label": "FLTA input is muxed onto RA7",
+                    "value": "RA7"
+                }
+            ]
+        },
+        {
+            "init": "LOW",
+            "key": "T1OSCMX",
+            "label": "T1OSO/T1CKI MUX bit",
+            "settings": [
+                {
+                    "label": "T1OSO/T1CKI pin resides on RA6",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "T1OSO/T1CKI pin resides on RB2",
+                    "value": "LOW"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "Master Clear Enable bit",
+            "settings": [
+                {
+                    "label": "MCLR pin enabled, RA5 input pin disabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "RA5 input pin enabled, MCLR pin disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Overflow/Underflow Reset Enable bit",
+            "settings": [
+                {
+                    "label": "Reset on stack overflow/underflow enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Reset on stack overflow/underflow disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "BB256",
+            "key": "BBSIZ",
+            "label": "Boot Block Size Select bits",
+            "settings": [
+                {
+                    "label": "1K Words (2048 Bytes) Boot Block size",
+                    "value": "BB1K"
+                },
+                {
+                    "label": "512 Words (1024 Bytes) Boot Block size",
+                    "value": "BB512"
+                },
+                {
+                    "label": "256 Words (512 Bytes) Boot Block size",
+                    "value": "BB256"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "XINST",
+            "label": "Extended Instruction Set Enable bit",
+            "settings": [
+                {
+                    "label": "Instruction set extension and Indexed Addressing mode enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Instruction set extension and Indexed Addressing mode disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Background Debugger Enable bit",
+            "settings": [
+                {
+                    "label": "Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Background debugger enabled, RB6 and RB7 are dedicated to In-Circuit Debug",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP0",
+            "label": "Code Protection bit Block 0 (000800-000FFF)",
+            "settings": [
+                {
+                    "label": "Block 0 is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 0 is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP1",
+            "label": "Code Protection bit Block 1 (001000-001FFF)",
+            "settings": [
+                {
+                    "label": "Block 1 is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 1 is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPB",
+            "label": "Code Protection bit (Boot Block Memory Area)",
+            "settings": [
+                {
+                    "label": "Boot Block is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot Block is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "Code Protection bit (Data EEPROM)",
+            "settings": [
+                {
+                    "label": "Data EEPROM is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data EEPROM is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT0",
+            "label": "Write Protection bit Block 0 (000800-000FFF)",
+            "settings": [
+                {
+                    "label": "Block 0 is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 0 is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT1",
+            "label": "Write Protection bit Block 1 (001000-001FFF)",
+            "settings": [
+                {
+                    "label": "Block 1 is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 1 is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTC",
+            "label": "Write Protection bit (Configuration Registers)",
+            "settings": [
+                {
+                    "label": "Configuration registers are not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Configuration registers are write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTB",
+            "label": "Write Protection bit (Boot Block Memory Area)",
+            "settings": [
+                {
+                    "label": "Boot Block is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot Block is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTD",
+            "label": "Write Protection bit (Data EEPROM)",
+            "settings": [
+                {
+                    "label": "Data EEPROM is not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data EEPROM is write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR0",
+            "label": "Table Read Protection bit Block 0 (000800-000FFF)",
+            "settings": [
+                {
+                    "label": "Block 0 is not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 0 is protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR1",
+            "label": "Table Read Protection bit Block 1 (001000-001FFF)",
+            "settings": [
+                {
+                    "label": "Block 1 is not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Block 1 is protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTRB",
+            "label": "Table Read Protection bit (Boot Block Memory Area)",
+            "settings": [
+                {
+                    "label": "Boot Block is not protected from table reads executed in other blocks",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot Block is protected from table reads executed in other blocks",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18F1330",
+    "clock": 1
+}

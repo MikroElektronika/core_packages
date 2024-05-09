@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^MK6[56]F[XN]1.+")
+    set(${linkerScript} linker_scripts/${vendor}/mk65_mk66_fn1m0xxx18xx.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/mk65_mk66_fxxx18.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/system_nxp_mk65fxx_mk66fxx.c)
+    list(APPEND local_list_include system/inc/${vendor}/system_nxp_mk65fxx_mk66fxx.h)
+    list(APPEND local_list_install system/inc/${vendor}/system_nxp_mk65fxx_mk66fxx.h)
+endif()

@@ -1,0 +1,138 @@
+{
+    "config_words": [
+        {
+            "init": "EC",
+            "key": "FOSC0",
+            "label": "FOSC: Oscillator Selection bit",
+            "settings": [
+                {
+                    "label": "EC oscillator mode.  CLKIN function on RA5/CLKIN",
+                    "value": "EC"
+                },
+                {
+                    "label": "Internal oscillator mode.  I/O function on RA5/CLKIN",
+                    "value": "INT"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "Watchdog Timer enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Watchdog Timer disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "Power-up Timer disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Power-up Timer enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "MCLR/VPP Pin Function Select bit",
+            "settings": [
+                {
+                    "label": "MCLR pin is MCLR function with internal weak pullup",
+                    "value": "ON"
+                },
+                {
+                    "label": "MCLR pin is alternate function",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bit",
+            "settings": [
+                {
+                    "label": "Program memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "EN",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bits",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "EN"
+                },
+                {
+                    "label": "BOR enabled during operation and disabled in Sleep",
+                    "value": "SLEEP_DIS"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "DIS"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT",
+            "label": "Flash Program Memory Self Write Enable bit",
+            "settings": [
+                {
+                    "label": "Flash self-write protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "000h to 0FFh self-write protected",
+                    "value": "FOURTH"
+                },
+                {
+                    "label": "000h to 1FFh self-write protected",
+                    "value": "HALF"
+                },
+                {
+                    "label": "000h to 3FFh self-write protected",
+                    "value": "ALL"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CLKOUTEN",
+            "label": "Clock Out Enable bit",
+            "settings": [
+                {
+                    "label": "CLKOUT function disabled.  CLKOUT pin acts as I/O",
+                    "value": "OFF"
+                },
+                {
+                    "label": "CLKOUT function enabled.  CLKOUT pin is CLKOUT",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F753",
+    "clock": 1
+}

@@ -1,0 +1,180 @@
+{
+    "config_words": [
+        {
+            "init": "EC",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "INTOSC oscillator: CLKIN function disabled",
+                    "value": "INTOSC"
+                },
+                {
+                    "label": "EC: CLKIN function enabled",
+                    "value": "EC"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable",
+            "settings": [
+                {
+                    "label": "Brown-out Reset enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Brown-out Reset enabled while running and disabled in Sleep",
+                    "value": "NSLEEP"
+                },
+                {
+                    "label": "Brown-out Reset controlled by the SBOREN bit in the BORCON register",
+                    "value": "SBODEN"
+                },
+                {
+                    "label": "Brown-out Reset disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "WDT enabled while running and disabled in Sleep",
+                    "value": "NSLEEP"
+                },
+                {
+                    "label": "WDT controlled by the SWDTEN bit in the WDTCON register",
+                    "value": "SWDTEN"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "MCLR Pin Function Select bit",
+            "settings": [
+                {
+                    "label": "MCLR pin function is MCLR",
+                    "value": "ON"
+                },
+                {
+                    "label": "MCLR pin function is digital input, MCLR internally tied to VDD",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bit",
+            "settings": [
+                {
+                    "label": "Program memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LVP",
+            "label": "Low-Voltage Programming Enable",
+            "settings": [
+                {
+                    "label": "Low-voltage programming enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "High-voltage on MCLR/VPP must be used for programming",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LPBOR",
+            "label": "Brown-out Reset Selection bits",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "LO,_BORV_19",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage Selection",
+            "settings": [
+                {
+                    "label": "Brown-out Reset Voltage (Vbor), low trip point selected.",
+                    "value": "LO,_BORV_19"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (Vbor), high trip point selected.",
+                    "value": "HI,_BORV_27"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT",
+            "label": "Flash Memory Self-Write Protection",
+            "settings": [
+                {
+                    "label": "Write protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "000h to 03Fh write protected, 040h to 0FFh may be modified by PMCON control",
+                    "value": "BOOT"
+                },
+                {
+                    "label": "000h to 07Fh write protected, 080h to 0FFh may be modified by PMCON control",
+                    "value": "HALF"
+                },
+                {
+                    "label": "000h to 0FFh write protected, no addresses may be modified by PMCON control",
+                    "value": "ALL"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC10LF320",
+    "clock": 1
+}

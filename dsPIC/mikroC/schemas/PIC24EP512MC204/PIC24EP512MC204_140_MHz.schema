@@ -1,0 +1,151 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/mikroC/core/def/PIC24EP512MC204.json",
+    "flash": 524288,
+    "ram": 49152,
+    "settings": {
+        "clock": "140",
+        "scheme": "PIC24EP512MC204_140_MHz",
+        "mcu": "PIC24EP512MC204",
+        "core": "DSPIC",
+        "delay_src_path": "delays/dspic_ep/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": null,
+                "key": "Reserved"
+            },
+            {
+                "fields": null,
+                "key": "Reserved"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "ATMOD8",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FICD"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "ALTI2C2",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "000000C0"
+                    }
+                ],
+                "key": "FPOR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "PLLKEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FWDT"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSC"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FNOSC",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "PWMLOCK",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSCSEL"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GCP",
+                        "value": "00000002"
+                    }
+                ],
+                "key": "FGS"
+            },
+            {
+                "fields": null,
+                "key": "Reserved"
+            },
+            {
+                "fields": null,
+                "key": "Reserved"
+            }
+        ]
+    }
+}

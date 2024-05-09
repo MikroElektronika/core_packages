@@ -1,0 +1,417 @@
+{
+    "badram": [
+        {
+            "max_addr": "0xef",
+            "min_addr": "0xc0"
+        },
+        {
+            "max_addr": "0x9",
+            "min_addr": "0x6"
+        },
+        {
+            "max_addr": "0x1d",
+            "min_addr": "0xd"
+        },
+        {
+            "max_addr": "0x89",
+            "min_addr": "0x86"
+        },
+        {
+            "max_addr": "0x8d",
+            "min_addr": "0x8d"
+        },
+        {
+            "max_addr": "0x9e",
+            "min_addr": "0x90"
+        }
+    ],
+    "bank": [
+        {
+            "max_addr": "0x007F",
+            "min_addr": "0x0000",
+            "number": "0"
+        },
+        {
+            "max_addr": "0x00FF",
+            "min_addr": "0x0080",
+            "number": "1"
+        },
+        {
+            "max_addr": "0x017F",
+            "min_addr": "0x0100",
+            "number": "2"
+        },
+        {
+            "max_addr": "0x01FF",
+            "min_addr": "0x0180",
+            "number": "3"
+        },
+        {
+            "max_addr": "0x027F",
+            "min_addr": "0x0200",
+            "number": "4"
+        },
+        {
+            "max_addr": "0x02FF",
+            "min_addr": "0x0280",
+            "number": "5"
+        },
+        {
+            "max_addr": "0x037F",
+            "min_addr": "0x0300",
+            "number": "6"
+        },
+        {
+            "max_addr": "0x03FF",
+            "min_addr": "0x0380",
+            "number": "7"
+        },
+        {
+            "max_addr": "0x047F",
+            "min_addr": "0x0400",
+            "number": "8"
+        },
+        {
+            "max_addr": "0x04FF",
+            "min_addr": "0x0480",
+            "number": "9"
+        },
+        {
+            "max_addr": "0x057F",
+            "min_addr": "0x0500",
+            "number": "10"
+        },
+        {
+            "max_addr": "0x05FF",
+            "min_addr": "0x0580",
+            "number": "11"
+        },
+        {
+            "max_addr": "0x067F",
+            "min_addr": "0x0600",
+            "number": "12"
+        },
+        {
+            "max_addr": "0x06FF",
+            "min_addr": "0x0680",
+            "number": "13"
+        },
+        {
+            "max_addr": "0x077F",
+            "min_addr": "0x0700",
+            "number": "14"
+        },
+        {
+            "max_addr": "0x07FF",
+            "min_addr": "0x0780",
+            "number": "15"
+        },
+        {
+            "max_addr": "0x087F",
+            "min_addr": "0x0800",
+            "number": "16"
+        },
+        {
+            "max_addr": "0x08FF",
+            "min_addr": "0x0880",
+            "number": "17"
+        },
+        {
+            "max_addr": "0x097F",
+            "min_addr": "0x0900",
+            "number": "18"
+        },
+        {
+            "max_addr": "0x09FF",
+            "min_addr": "0x0980",
+            "number": "19"
+        },
+        {
+            "max_addr": "0x0A7F",
+            "min_addr": "0x0A00",
+            "number": "20"
+        },
+        {
+            "max_addr": "0x0AFF",
+            "min_addr": "0x0A80",
+            "number": "21"
+        },
+        {
+            "max_addr": "0x0B7F",
+            "min_addr": "0x0B00",
+            "number": "22"
+        },
+        {
+            "max_addr": "0x0BFF",
+            "min_addr": "0x0B80",
+            "number": "23"
+        },
+        {
+            "max_addr": "0x0C7F",
+            "min_addr": "0x0C00",
+            "number": "24"
+        },
+        {
+            "max_addr": "0x0CFF",
+            "min_addr": "0x0C80",
+            "number": "25"
+        },
+        {
+            "max_addr": "0x0D7F",
+            "min_addr": "0x0D00",
+            "number": "26"
+        },
+        {
+            "max_addr": "0x0DFF",
+            "min_addr": "0x0D80",
+            "number": "27"
+        },
+        {
+            "max_addr": "0x0E7F",
+            "min_addr": "0x0E00",
+            "number": "28"
+        },
+        {
+            "max_addr": "0x0EFF",
+            "min_addr": "0x0E80",
+            "number": "29"
+        },
+        {
+            "max_addr": "0x0F7F",
+            "min_addr": "0x0F00",
+            "number": "30"
+        },
+        {
+            "max_addr": "0x0FFF",
+            "min_addr": "0x0F80",
+            "number": "31"
+        }
+    ],
+    "callstack": {
+        "max": "0x8"
+    },
+    "config_registers": [
+        {
+            "address": "00002007",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000007",
+                    "key": "FOSC",
+                    "label": "Oscillator Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "EXTRC, clockout on OSC2",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "EXTRC, OSC2 is I/O",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "INTRC, clockout on OSC2",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "INTRC, OSC2 is I/O",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "EC I/O",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "HS oscillator",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "XT oscillator",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "LP oscillator",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "WDTE",
+                    "label": "Watchdog Timer",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "PWRTE",
+                    "label": "Power-up Timer",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003F60",
+                    "key": "CP",
+                    "label": "Code Protection",
+                    "mask": "00003F60",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00003F60"
+                        },
+                        {
+                            "label": "0400h-07FEh code protected",
+                            "value": "00002A40"
+                        },
+                        {
+                            "label": "0200h-07FEh code protected",
+                            "value": "00001520"
+                        },
+                        {
+                            "label": "All memory is code protected",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "MCLRE",
+                    "label": "Master Clear",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1",
+            "unused": "00000000"
+        }
+    ],
+    "core": "P16",
+    "delay_src_path": "delays/p16/__lib_delays.c",
+    "ivt": {
+        "address": "0x0004",
+        "ilevel": "0x0000",
+        "name": "Interrupt"
+    },
+    "mappedmemory": [
+        {
+            "map": [
+                {
+                    "max_addr": "0xb",
+                    "min_addr": "0xa"
+                },
+                {
+                    "max_addr": "0x8b",
+                    "min_addr": "0x8a"
+                }
+            ]
+        },
+        {
+            "map": [
+                {
+                    "max_addr": "0x4",
+                    "min_addr": "0x2"
+                },
+                {
+                    "max_addr": "0x84",
+                    "min_addr": "0x82"
+                }
+            ]
+        },
+        {
+            "map": [
+                {
+                    "max_addr": "0x0",
+                    "min_addr": "0x0"
+                },
+                {
+                    "max_addr": "0x80",
+                    "min_addr": "0x80"
+                }
+            ]
+        },
+        {
+            "map": [
+                {
+                    "max_addr": "0x7f",
+                    "min_addr": "0x70"
+                },
+                {
+                    "max_addr": "0xff",
+                    "min_addr": "0xf0"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16C433",
+    "prog_options": {
+        "codegrip": {
+            "debugging": "False",
+            "programming": "False"
+        },
+        "mikroprog": {
+            "debugging": "False",
+            "programming": "False"
+        }
+    },
+    "ram": {
+        "data": [
+            {
+                "max_addr": "0x006F",
+                "min_addr": "0x0020"
+            },
+            {
+                "max_addr": "0x00EF",
+                "min_addr": "0x00A0"
+            }
+        ]
+    },
+    "rom": {
+        "max_addr": "0x7ff",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x007F",
+        "min_addr": "0x0070"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "5.000",
+        "range": {
+            "max_value": "5.500",
+            "min_value": "3.000"
+        }
+    },
+    "clock": "1"
+}

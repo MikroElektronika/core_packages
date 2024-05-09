@@ -1,0 +1,128 @@
+{
+    "config_words": [
+        {
+            "init": "RC,_RC_OSC_1H",
+            "key": "OSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC Oscillator",
+                    "value": "RC,_RC_OSC_1H"
+                },
+                {
+                    "label": "HS Oscillator",
+                    "value": "HS,_HS_OSC_1H"
+                },
+                {
+                    "label": "EC Oscillator",
+                    "value": "EC,_EC_OSC_1H"
+                },
+                {
+                    "label": "LP Oscillator",
+                    "value": "LP,_LP_OSC_1H"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRT",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "16,_BW_16_BIT_2L",
+            "key": "BW",
+            "label": "External Bus Data Width bit",
+            "settings": [
+                {
+                    "label": "16-bit External Bus mode",
+                    "value": "16,_BW_16_BIT_2L"
+                },
+                {
+                    "label": "8-bit External Bus mode",
+                    "value": "8,_BW_8_BIT_2L"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDT",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "WDT disabled (control is placed on the SWDTEN bit)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "128",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscale Select bits",
+            "settings": [
+                {
+                    "label": "1:128",
+                    "value": "128"
+                },
+                {
+                    "label": "1:64",
+                    "value": "64"
+                },
+                {
+                    "label": "1:32",
+                    "value": "32"
+                },
+                {
+                    "label": "1:16",
+                    "value": "16"
+                },
+                {
+                    "label": "1:8",
+                    "value": "8"
+                },
+                {
+                    "label": "1:4",
+                    "value": "4"
+                },
+                {
+                    "label": "1:2",
+                    "value": "2"
+                },
+                {
+                    "label": "1:1",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVR",
+            "label": "Stack Full/Underflow RESET Enable bit",
+            "settings": [
+                {
+                    "label": "Stack Full/Underflow will cause RESET",
+                    "value": "ON"
+                },
+                {
+                    "label": "Stack Full/Underflow will not cause RESET",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18C601",
+    "clock": 1
+}

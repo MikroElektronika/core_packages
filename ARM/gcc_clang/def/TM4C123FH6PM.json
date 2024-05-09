@@ -1,0 +1,2774 @@
+{
+    "config_registers": [
+        {
+            "address": "400FE060",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "OSCSCR",
+                    "label": "Oscillator Source",
+                    "mask": "00000030",
+                    "settings": [
+                        {
+                            "label": "MOSC Main Oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "IOSC Internal Oscillator(default)",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "IOSC/4 Internal Oscillator/4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "30kHz internal oscillator",
+                            "value": "00000030"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000680",
+                    "key": "XTAL",
+                    "label": "Crystal Value",
+                    "mask": "000007C0",
+                    "settings": [
+                        {
+                            "label": "4 MHz (no PLL option)",
+                            "value": "00000180"
+                        },
+                        {
+                            "label": "4.096 MHz (no PLL option)",
+                            "value": "000001C0"
+                        },
+                        {
+                            "label": "4.9152 MHz (no PLL option)",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "5 MHz (USB)",
+                            "value": "00000240"
+                        },
+                        {
+                            "label": "5.12 MHz MHz",
+                            "value": "00000280"
+                        },
+                        {
+                            "label": "6 MHz (USB)",
+                            "value": "000002C0"
+                        },
+                        {
+                            "label": "6.144 MHz",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "7.3728 MHz",
+                            "value": "00000340"
+                        },
+                        {
+                            "label": "8 MHz (USB)",
+                            "value": "00000380"
+                        },
+                        {
+                            "label": "8.192 MHz",
+                            "value": "000003C0"
+                        },
+                        {
+                            "label": "10.0 MHz (USB)",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "12.0 MHz (USB)",
+                            "value": "00000440"
+                        },
+                        {
+                            "label": "12.288 MHz",
+                            "value": "00000480"
+                        },
+                        {
+                            "label": "13.56 MHz",
+                            "value": "000004C0"
+                        },
+                        {
+                            "label": "14.31818 MHz",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "16.0 MHz (reset value)(USB)",
+                            "value": "00000540"
+                        },
+                        {
+                            "label": "16.384 MHz",
+                            "value": "00000580"
+                        },
+                        {
+                            "label": "18.0 MHz (USB)",
+                            "value": "000005C0"
+                        },
+                        {
+                            "label": "20.0 MHz (USB)",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "24.0 MHz (USB)",
+                            "value": "00000640"
+                        },
+                        {
+                            "label": "25.0 MHz (USB)",
+                            "value": "00000680"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00400000",
+                    "key": "USESYSDIV",
+                    "label": "Enable System Clock Divider",
+                    "mask": "00400000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SYSDIV",
+                    "label": "System Clock Divisor",
+                    "mask": "07800000",
+                    "settings": [
+                        {
+                            "label": "0x00",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "0x01",
+                            "value": "00800000"
+                        },
+                        {
+                            "label": "0x02",
+                            "value": "01000000"
+                        },
+                        {
+                            "label": "0x03",
+                            "value": "01800000"
+                        },
+                        {
+                            "label": "0x04",
+                            "value": "02000000"
+                        },
+                        {
+                            "label": "0x05",
+                            "value": "02800000"
+                        },
+                        {
+                            "label": "0x06",
+                            "value": "03000000"
+                        },
+                        {
+                            "label": "0x07",
+                            "value": "03800000"
+                        },
+                        {
+                            "label": "0x08",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "0x09",
+                            "value": "04800000"
+                        },
+                        {
+                            "label": "0x0A",
+                            "value": "05000000"
+                        },
+                        {
+                            "label": "0x0B",
+                            "value": "05800000"
+                        },
+                        {
+                            "label": "0x0C",
+                            "value": "06000000"
+                        },
+                        {
+                            "label": "0x0D",
+                            "value": "06800000"
+                        },
+                        {
+                            "label": "0x0E",
+                            "value": "07000000"
+                        },
+                        {
+                            "label": "0x0F",
+                            "value": "07800000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00002000",
+                    "key": "PWRDN",
+                    "label": "PLL Power Down",
+                    "mask": "00002000",
+                    "settings": [
+                        {
+                            "label": "PLL Power Down is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL Power Down is enabled",
+                            "value": "00002000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000800",
+                    "key": "BYPASS",
+                    "label": "PLL Bypass",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "use PLL",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL is bypassed",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "IOSCDIS",
+                    "label": "Internal Oscillator Disable",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Internal Oscillator(IOSC) is enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Internal Oscillator(IOSC) is disabled",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCDIS",
+                    "label": "Main Oscillator Disable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Main Oscillator(MOSC) is enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Oscillator (MOSC) is disabled",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ACG",
+                    "label": "Auto Clock Gating",
+                    "mask": "08000000",
+                    "settings": [
+                        {
+                            "label": "Run-Mode Clock Gating Control used",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Sleep-Mode Clock Gating Control used",
+                            "value": "08000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00001000",
+                    "key": "RESERVED",
+                    "label": "reserved",
+                    "mask": "00001000",
+                    "settings": [
+                        {
+                            "label": "reserved",
+                            "value": "00001000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC",
+            "unused": "00000000"
+        },
+        {
+            "address": "400FE070",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "80000000",
+                    "key": "USERCC2",
+                    "label": "System clock Switch",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": "Do not use RCC2",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Use RCC2 (overrides the RCC register fields)",
+                            "value": "80000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OSCSCR2",
+                    "label": "Oscillator Source 2",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "MOSC Main Oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "IOSC Internal Oscillator(default)",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "IOSC/4 Internal Oscillator/4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "30kHz internal oscillator",
+                            "value": "00000030"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "01000000",
+                    "key": "SYSDIV2",
+                    "label": "System Clock Divisor 2",
+                    "mask": "1F800000",
+                    "settings": [
+                        {
+                            "label": "0x00",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "0x01",
+                            "value": "00800000"
+                        },
+                        {
+                            "label": "0x02",
+                            "value": "01000000"
+                        },
+                        {
+                            "label": "0x03",
+                            "value": "01800000"
+                        },
+                        {
+                            "label": "0x04",
+                            "value": "02000000"
+                        },
+                        {
+                            "label": "0x05",
+                            "value": "02800000"
+                        },
+                        {
+                            "label": "0x06",
+                            "value": "03000000"
+                        },
+                        {
+                            "label": "0x07",
+                            "value": "03800000"
+                        },
+                        {
+                            "label": "0x08",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "0x09",
+                            "value": "04800000"
+                        },
+                        {
+                            "label": "0x0A",
+                            "value": "05000000"
+                        },
+                        {
+                            "label": "0x0B",
+                            "value": "05800000"
+                        },
+                        {
+                            "label": "0x0C",
+                            "value": "06000000"
+                        },
+                        {
+                            "label": "0x0D",
+                            "value": "06800000"
+                        },
+                        {
+                            "label": "0x0E",
+                            "value": "07000000"
+                        },
+                        {
+                            "label": "0x0F",
+                            "value": "07800000"
+                        },
+                        {
+                            "label": "0x10",
+                            "value": "08000000"
+                        },
+                        {
+                            "label": "0x11",
+                            "value": "08800000"
+                        },
+                        {
+                            "label": "0x12",
+                            "value": "09000000"
+                        },
+                        {
+                            "label": "0x13",
+                            "value": "09800000"
+                        },
+                        {
+                            "label": "0x14",
+                            "value": "0A000000"
+                        },
+                        {
+                            "label": "0x15",
+                            "value": "0A800000"
+                        },
+                        {
+                            "label": "0x16",
+                            "value": "0B000000"
+                        },
+                        {
+                            "label": "0x17",
+                            "value": "0B800000"
+                        },
+                        {
+                            "label": "0x18",
+                            "value": "0C000000"
+                        },
+                        {
+                            "label": "0x19",
+                            "value": "0C800000"
+                        },
+                        {
+                            "label": "0x1A",
+                            "value": "0D000000"
+                        },
+                        {
+                            "label": "0x1B",
+                            "value": "0D800000"
+                        },
+                        {
+                            "label": "0x1C",
+                            "value": "0E000000"
+                        },
+                        {
+                            "label": "0x1D",
+                            "value": "0E800000"
+                        },
+                        {
+                            "label": "0x1E",
+                            "value": "0F000000"
+                        },
+                        {
+                            "label": "0x1F",
+                            "value": "0F800000"
+                        },
+                        {
+                            "label": "0x20",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "0x21",
+                            "value": "10800000"
+                        },
+                        {
+                            "label": "0x22",
+                            "value": "11000000"
+                        },
+                        {
+                            "label": "0x23",
+                            "value": "11800000"
+                        },
+                        {
+                            "label": "0x24",
+                            "value": "12000000"
+                        },
+                        {
+                            "label": "0x25",
+                            "value": "12800000"
+                        },
+                        {
+                            "label": "0x26",
+                            "value": "13000000"
+                        },
+                        {
+                            "label": "0x27",
+                            "value": "13800000"
+                        },
+                        {
+                            "label": "0x28",
+                            "value": "14000000"
+                        },
+                        {
+                            "label": "0x29",
+                            "value": "14800000"
+                        },
+                        {
+                            "label": "0x2A",
+                            "value": "15000000"
+                        },
+                        {
+                            "label": "0x2B",
+                            "value": "15800000"
+                        },
+                        {
+                            "label": "0x2C",
+                            "value": "16000000"
+                        },
+                        {
+                            "label": "0x2D",
+                            "value": "16800000"
+                        },
+                        {
+                            "label": "0x2E",
+                            "value": "17000000"
+                        },
+                        {
+                            "label": "0x2F",
+                            "value": "17800000"
+                        },
+                        {
+                            "label": "0x30",
+                            "value": "18000000"
+                        },
+                        {
+                            "label": "0x31",
+                            "value": "18800000"
+                        },
+                        {
+                            "label": "0x32",
+                            "value": "19000000"
+                        },
+                        {
+                            "label": "0x33",
+                            "value": "19800000"
+                        },
+                        {
+                            "label": "0x34",
+                            "value": "1A000000"
+                        },
+                        {
+                            "label": "0x35",
+                            "value": "1A800000"
+                        },
+                        {
+                            "label": "0x36",
+                            "value": "1B000000"
+                        },
+                        {
+                            "label": "0x37",
+                            "value": "1B800000"
+                        },
+                        {
+                            "label": "0x38",
+                            "value": "1C000000"
+                        },
+                        {
+                            "label": "0x39",
+                            "value": "1C800000"
+                        },
+                        {
+                            "label": "0x3A",
+                            "value": "1D000000"
+                        },
+                        {
+                            "label": "0x3B",
+                            "value": "1D800000"
+                        },
+                        {
+                            "label": "0x3C",
+                            "value": "1E000000"
+                        },
+                        {
+                            "label": "0x3D",
+                            "value": "1E800000"
+                        },
+                        {
+                            "label": "0x3E",
+                            "value": "1F000000"
+                        },
+                        {
+                            "label": "0x3F",
+                            "value": "1F800000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PWRDN2",
+                    "label": "PLL Power Down 2",
+                    "mask": "00002000",
+                    "settings": [
+                        {
+                            "label": "PLL Power Down is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL Power Down is enabled",
+                            "value": "00002000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "BYPASS2",
+                    "label": "PLL Bypass 2",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "use PLL",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL is bypassed",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "USBPWRDN",
+                    "label": "Power-Down USB PLL",
+                    "mask": "00004000",
+                    "settings": [
+                        {
+                            "label": "Power-Down USB PLL is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Power-Down USB PLL",
+                            "value": "00004000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "40000000",
+                    "key": "DIV400",
+                    "label": "Divide PLL as 400 MHz vs. 200 MHz",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": "Use SYSDIV2 as is and apply to 200 MHz predivided PLL",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Use 7 bit divisor and the 400 MHz PLL output",
+                            "value": "40000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SYSDIV2LSB",
+                    "label": "Additional LSB for SYSDIV2 (When DIV400 is set)",
+                    "mask": "00400000",
+                    "settings": [
+                        {
+                            "label": "Additional LSB for SYSDIV2 (value 0)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Additional LSB for SYSDIV2 (value 1)",
+                            "value": "00400000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC2",
+            "unused": "00000000"
+        }
+    ],
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "ivt": [
+        {
+            "name": "IVT_FAULT_NMI",
+            "vector": 2
+        },
+        {
+            "name": "IVT_FAULT_HARD",
+            "vector": 3
+        },
+        {
+            "name": "IVT_FAULT_MPU",
+            "vector": 4
+        },
+        {
+            "name": "IVT_FAULT_BUS",
+            "vector": 5
+        },
+        {
+            "name": "IVT_FAULT_USAGE",
+            "vector": 6
+        },
+        {
+            "name": "IVT_MCU_RESERVED7",
+            "vector": 7
+        },
+        {
+            "name": "IVT_MCU_RESERVED8",
+            "vector": 8
+        },
+        {
+            "name": "IVT_MCU_RESERVED9",
+            "vector": 9
+        },
+        {
+            "name": "IVT_MCU_RESERVED10",
+            "vector": 10
+        },
+        {
+            "name": "IVT_FAULT_SVCALL",
+            "vector": 11
+        },
+        {
+            "name": "IVT_FAULT_DEBUG",
+            "vector": 12
+        },
+        {
+            "name": "IVT_MCU_RESERVED13",
+            "vector": 13
+        },
+        {
+            "name": "IVT_FAULT_PENDSV",
+            "vector": 14
+        },
+        {
+            "name": "IVT_FAULT_SYSTICK",
+            "vector": 15
+        },
+        {
+            "name": "IVT_INT_GPIOA",
+            "vector": 16
+        },
+        {
+            "name": "IVT_INT_GPIOB",
+            "vector": 17
+        },
+        {
+            "name": "IVT_INT_GPIOC",
+            "vector": 18
+        },
+        {
+            "name": "IVT_INT_GPIOD",
+            "vector": 19
+        },
+        {
+            "name": "IVT_INT_GPIOE",
+            "vector": 20
+        },
+        {
+            "name": "IVT_INT_UART0",
+            "vector": 21
+        },
+        {
+            "name": "IVT_INT_UART1",
+            "vector": 22
+        },
+        {
+            "name": "IVT_INT_SSI0",
+            "vector": 23
+        },
+        {
+            "name": "IVT_INT_I2C0",
+            "vector": 24
+        },
+        {
+            "name": "IVT_INT_PWM0_FAULT",
+            "vector": 25
+        },
+        {
+            "name": "IVT_INT_PWM0_GEN0",
+            "vector": 26
+        },
+        {
+            "name": "IVT_INT_PWM0_GEN1",
+            "vector": 27
+        },
+        {
+            "name": "IVT_INT_PWM0_GEN2",
+            "vector": 28
+        },
+        {
+            "name": "IVT_INT_QEI0",
+            "vector": 29
+        },
+        {
+            "name": "IVT_INT_ADC0SS0",
+            "vector": 30
+        },
+        {
+            "name": "IVT_INT_ADC0SS1",
+            "vector": 31
+        },
+        {
+            "name": "IVT_INT_ADC0SS2",
+            "vector": 32
+        },
+        {
+            "name": "IVT_INT_ADC0SS3",
+            "vector": 33
+        },
+        {
+            "name": "IVT_INT_WATCHDOG",
+            "vector": 34
+        },
+        {
+            "name": "IVT_INT_TIMER0A_16_32_bit",
+            "vector": 35
+        },
+        {
+            "name": "IVT_INT_TIMER0B_16_32_bit",
+            "vector": 36
+        },
+        {
+            "name": "IVT_INT_TIMER1A_16_32_bit",
+            "vector": 37
+        },
+        {
+            "name": "IVT_INT_TIMER1B_16_32_bit",
+            "vector": 38
+        },
+        {
+            "name": "IVT_INT_TIMER2A_16_32_bit",
+            "vector": 39
+        },
+        {
+            "name": "IVT_INT_TIMER2B_16_32_bit",
+            "vector": 40
+        },
+        {
+            "name": "IVT_INT_COMP0",
+            "vector": 41
+        },
+        {
+            "name": "IVT_INT_COMP1",
+            "vector": 42
+        },
+        {
+            "name": "IVT_INT_RESERVED0",
+            "vector": 43
+        },
+        {
+            "name": "IVT_INT_SYSCTL",
+            "vector": 44
+        },
+        {
+            "name": "IVT_INT_FLASH_EEPROM",
+            "vector": 45
+        },
+        {
+            "name": "IVT_INT_GPIOF",
+            "vector": 46
+        },
+        {
+            "name": "IVT_INT_GPIOG",
+            "vector": 47
+        },
+        {
+            "name": "IVT_INT_RESERVED1",
+            "vector": 48
+        },
+        {
+            "name": "IVT_INT_UART2",
+            "vector": 49
+        },
+        {
+            "name": "IVT_INT_SSI1",
+            "vector": 50
+        },
+        {
+            "name": "IVT_INT_TIMER3A_16_32_bit",
+            "vector": 51
+        },
+        {
+            "name": "IVT_INT_TIMER3B_16_32_bit",
+            "vector": 52
+        },
+        {
+            "name": "IVT_INT_I2C1",
+            "vector": 53
+        },
+        {
+            "name": "IVT_INT_QEI1",
+            "vector": 54
+        },
+        {
+            "name": "IVT_INT_CAN0",
+            "vector": 55
+        },
+        {
+            "name": "IVT_INT_CAN1",
+            "vector": 56
+        },
+        {
+            "name": "IVT_INT_RESERVED2",
+            "vector": 57
+        },
+        {
+            "name": "IVT_INT_RESERVED3",
+            "vector": 58
+        },
+        {
+            "name": "IVT_INT_RESERVED4",
+            "vector": 59
+        },
+        {
+            "name": "IVT_INT_USB",
+            "vector": 60
+        },
+        {
+            "name": "IVT_INT_PWM_GEN3",
+            "vector": 61
+        },
+        {
+            "name": "IVT_INT_UDMA",
+            "vector": 62
+        },
+        {
+            "name": "IVT_INT_UDMAERR",
+            "vector": 63
+        },
+        {
+            "name": "IVT_INT_ADC1SS0",
+            "vector": 64
+        },
+        {
+            "name": "IVT_INT_ADC1SS1",
+            "vector": 65
+        },
+        {
+            "name": "IVT_INT_ADC1SS2",
+            "vector": 66
+        },
+        {
+            "name": "IVT_INT_ADC1SS3",
+            "vector": 67
+        },
+        {
+            "name": "IVT_INT_RESERVED5",
+            "vector": 68
+        },
+        {
+            "name": "IVT_INT_RESERVED6",
+            "vector": 69
+        },
+        {
+            "name": "IVT_INT_RESERVED7",
+            "vector": 70
+        },
+        {
+            "name": "IVT_INT_RESERVED8",
+            "vector": 71
+        },
+        {
+            "name": "IVT_INT_RESERVED9",
+            "vector": 72
+        },
+        {
+            "name": "IVT_INT_SSI2",
+            "vector": 73
+        },
+        {
+            "name": "IVT_INT_SSI3",
+            "vector": 74
+        },
+        {
+            "name": "IVT_INT_UART3",
+            "vector": 75
+        },
+        {
+            "name": "IVT_INT_UART4",
+            "vector": 76
+        },
+        {
+            "name": "IVT_INT_UART5",
+            "vector": 77
+        },
+        {
+            "name": "IVT_INT_UART6",
+            "vector": 78
+        },
+        {
+            "name": "IVT_INT_UART7",
+            "vector": 79
+        },
+        {
+            "name": "IVT_INT_RESERVED10",
+            "vector": 80
+        },
+        {
+            "name": "IVT_INT_RESERVED11",
+            "vector": 81
+        },
+        {
+            "name": "IVT_INT_RESERVED12",
+            "vector": 82
+        },
+        {
+            "name": "IVT_INT_RESERVED13",
+            "vector": 83
+        },
+        {
+            "name": "IVT_INT_I2C2",
+            "vector": 84
+        },
+        {
+            "name": "IVT_INT_I2C3",
+            "vector": 85
+        },
+        {
+            "name": "IVT_INT_TIMER4A_16_32_bit",
+            "vector": 86
+        },
+        {
+            "name": "IVT_INT_TIMER4B_16_32_bit",
+            "vector": 87
+        },
+        {
+            "name": "IVT_INT_RESERVED14",
+            "vector": 88
+        },
+        {
+            "name": "IVT_INT_RESERVED15",
+            "vector": 89
+        },
+        {
+            "name": "IVT_INT_RESERVED16",
+            "vector": 90
+        },
+        {
+            "name": "IVT_INT_RESERVED17",
+            "vector": 91
+        },
+        {
+            "name": "IVT_INT_RESERVED18",
+            "vector": 92
+        },
+        {
+            "name": "IVT_INT_RESERVED19",
+            "vector": 93
+        },
+        {
+            "name": "IVT_INT_RESERVED20",
+            "vector": 94
+        },
+        {
+            "name": "IVT_INT_RESERVED21",
+            "vector": 95
+        },
+        {
+            "name": "IVT_INT_RESERVED22",
+            "vector": 96
+        },
+        {
+            "name": "IVT_INT_RESERVED23",
+            "vector": 97
+        },
+        {
+            "name": "IVT_INT_RESERVED24",
+            "vector": 98
+        },
+        {
+            "name": "IVT_INT_RESERVED25",
+            "vector": 99
+        },
+        {
+            "name": "IVT_INT_RESERVED26",
+            "vector": 100
+        },
+        {
+            "name": "IVT_INT_RESERVED27",
+            "vector": 101
+        },
+        {
+            "name": "IVT_INT_RESERVED28",
+            "vector": 102
+        },
+        {
+            "name": "IVT_INT_RESERVED29",
+            "vector": 103
+        },
+        {
+            "name": "IVT_INT_RESERVED30",
+            "vector": 104
+        },
+        {
+            "name": "IVT_INT_RESERVED31",
+            "vector": 105
+        },
+        {
+            "name": "IVT_INT_RESERVED32",
+            "vector": 106
+        },
+        {
+            "name": "IVT_INT_RESERVED33",
+            "vector": 107
+        },
+        {
+            "name": "IVT_INT_TIMER5A_16_32_bit",
+            "vector": 108
+        },
+        {
+            "name": "IVT_INT_TIMER5B_16_32_bit",
+            "vector": 109
+        },
+        {
+            "name": "IVT_INT_TIMER0A_32_64_bit",
+            "vector": 110
+        },
+        {
+            "name": "IVT_INT_TIMER0B_32_64_bit",
+            "vector": 111
+        },
+        {
+            "name": "IVT_INT_TIMER1A_32_64_bit",
+            "vector": 112
+        },
+        {
+            "name": "IVT_INT_TIMER1B_32_64_bit",
+            "vector": 113
+        },
+        {
+            "name": "IVT_INT_TIMER2A_32_64_bit",
+            "vector": 114
+        },
+        {
+            "name": "IVT_INT_TIMER2B_32_64_bit",
+            "vector": 115
+        },
+        {
+            "name": "IVT_INT_TIMER3A_32_64_bit",
+            "vector": 116
+        },
+        {
+            "name": "IVT_INT_TIMER3B_32_64_bit",
+            "vector": 117
+        },
+        {
+            "name": "IVT_INT_TIMER4A_32_64_bit",
+            "vector": 118
+        },
+        {
+            "name": "IVT_INT_TIMER4B_32_64_bit",
+            "vector": 119
+        },
+        {
+            "name": "IVT_INT_TIMER5A_32_64_bit",
+            "vector": 120
+        },
+        {
+            "name": "IVT_INT_TIMER5B_32_64_bit",
+            "vector": 121
+        },
+        {
+            "name": "IVT_INT_SYS_EXC",
+            "vector": 122
+        },
+        {
+            "name": "IVT_INT_RESERVED34",
+            "vector": 123
+        },
+        {
+            "name": "IVT_INT_RESERVED35",
+            "vector": 124
+        },
+        {
+            "name": "IVT_INT_I2C4",
+            "vector": 125
+        },
+        {
+            "name": "IVT_INT_I2C5",
+            "vector": 126
+        },
+        {
+            "name": "IVT_INT_RESERVED36",
+            "vector": 127
+        },
+        {
+            "name": "IVT_INT_RESERVED37",
+            "vector": 128
+        },
+        {
+            "name": "IVT_INT_RESERVED38",
+            "vector": 129
+        },
+        {
+            "name": "IVT_INT_RESERVED39",
+            "vector": 130
+        },
+        {
+            "name": "IVT_INT_RESERVED40",
+            "vector": 131
+        },
+        {
+            "name": "IVT_INT_RESERVED41",
+            "vector": 132
+        },
+        {
+            "name": "IVT_INT_RESERVED42",
+            "vector": 133
+        },
+        {
+            "name": "IVT_INT_RESERVED43",
+            "vector": 134
+        },
+        {
+            "name": "IVT_INT_RESERVED44",
+            "vector": 135
+        },
+        {
+            "name": "IVT_INT_RESERVED45",
+            "vector": 136
+        },
+        {
+            "name": "IVT_INT_RESERVED46",
+            "vector": 137
+        },
+        {
+            "name": "IVT_INT_RESERVED47",
+            "vector": 138
+        },
+        {
+            "name": "IVT_INT_RESERVED48",
+            "vector": 139
+        },
+        {
+            "name": "IVT_INT_RESERVED49",
+            "vector": 140
+        },
+        {
+            "name": "IVT_INT_RESERVED50",
+            "vector": 141
+        },
+        {
+            "name": "IVT_INT_RESERVED51",
+            "vector": 142
+        },
+        {
+            "name": "IVT_INT_RESERVED52",
+            "vector": 143
+        },
+        {
+            "name": "IVT_INT_RESERVED53",
+            "vector": 144
+        },
+        {
+            "name": "IVT_INT_RESERVED54",
+            "vector": 145
+        },
+        {
+            "name": "IVT_INT_RESERVED55",
+            "vector": 146
+        },
+        {
+            "name": "IVT_INT_RESERVED56",
+            "vector": 147
+        },
+        {
+            "name": "IVT_INT_RESERVED57",
+            "vector": 148
+        },
+        {
+            "name": "IVT_INT_RESERVED58",
+            "vector": 149
+        },
+        {
+            "name": "IVT_INT_PWM1_GEN0",
+            "vector": 150
+        },
+        {
+            "name": "IVT_INT_PWM1_GEN1",
+            "vector": 151
+        },
+        {
+            "name": "IVT_INT_PWM1_GEN2",
+            "vector": 152
+        },
+        {
+            "name": "IVT_INT_PWM1_GEN3",
+            "vector": 153
+        },
+        {
+            "name": "IVT_INT_PWM1_FAULT",
+            "vector": 154
+        }
+    ],
+    "mcu": "TM4C123FH6PM",
+    "ram": {
+        "max_address": "0x20007FFF",
+        "min_address": "0x20000000"
+    },
+    "rom": {
+        "max_address": "0x0003FFFF",
+        "min_address": "0x00000000"
+    },
+    "rx": {
+        "max_address": "0x003F",
+        "min_address": "0x0000"
+    },
+    "sfr": [
+        {
+            "max_address": "0x40000017",
+            "min_address": "0x40000000"
+        },
+        {
+            "max_address": "0x4000041B",
+            "min_address": "0x40000418"
+        },
+        {
+            "max_address": "0x40000C03",
+            "min_address": "0x40000C00"
+        },
+        {
+            "max_address": "0x40001017",
+            "min_address": "0x40001000"
+        },
+        {
+            "max_address": "0x4000141B",
+            "min_address": "0x40001418"
+        },
+        {
+            "max_address": "0x40001C03",
+            "min_address": "0x40001C00"
+        },
+        {
+            "max_address": "0x40004003",
+            "min_address": "0x40004000"
+        },
+        {
+            "max_address": "0x40004423",
+            "min_address": "0x400043FC"
+        },
+        {
+            "max_address": "0x4000453B",
+            "min_address": "0x40004500"
+        },
+        {
+            "max_address": "0x40005003",
+            "min_address": "0x40005000"
+        },
+        {
+            "max_address": "0x40005423",
+            "min_address": "0x400053FC"
+        },
+        {
+            "max_address": "0x4000553B",
+            "min_address": "0x40005500"
+        },
+        {
+            "max_address": "0x40006003",
+            "min_address": "0x40006000"
+        },
+        {
+            "max_address": "0x40006423",
+            "min_address": "0x400063FC"
+        },
+        {
+            "max_address": "0x4000653B",
+            "min_address": "0x40006500"
+        },
+        {
+            "max_address": "0x40007003",
+            "min_address": "0x40007000"
+        },
+        {
+            "max_address": "0x40007423",
+            "min_address": "0x400073FC"
+        },
+        {
+            "max_address": "0x4000753B",
+            "min_address": "0x40007500"
+        },
+        {
+            "max_address": "0x40008027",
+            "min_address": "0x40008000"
+        },
+        {
+            "max_address": "0x40008FCB",
+            "min_address": "0x40008FC8"
+        },
+        {
+            "max_address": "0x40009027",
+            "min_address": "0x40009000"
+        },
+        {
+            "max_address": "0x40009FCB",
+            "min_address": "0x40009FC8"
+        },
+        {
+            "max_address": "0x4000A027",
+            "min_address": "0x4000A000"
+        },
+        {
+            "max_address": "0x4000AFCB",
+            "min_address": "0x4000AFC8"
+        },
+        {
+            "max_address": "0x4000B027",
+            "min_address": "0x4000B000"
+        },
+        {
+            "max_address": "0x4000BFCB",
+            "min_address": "0x4000BFC8"
+        },
+        {
+            "max_address": "0x4000C007",
+            "min_address": "0x4000C000"
+        },
+        {
+            "max_address": "0x4000C01B",
+            "min_address": "0x4000C018"
+        },
+        {
+            "max_address": "0x4000C04B",
+            "min_address": "0x4000C020"
+        },
+        {
+            "max_address": "0x4000C09B",
+            "min_address": "0x4000C090"
+        },
+        {
+            "max_address": "0x4000C0AB",
+            "min_address": "0x4000C0A4"
+        },
+        {
+            "max_address": "0x4000CFC3",
+            "min_address": "0x4000CFC0"
+        },
+        {
+            "max_address": "0x4000CFCB",
+            "min_address": "0x4000CFC8"
+        },
+        {
+            "max_address": "0x4000D007",
+            "min_address": "0x4000D000"
+        },
+        {
+            "max_address": "0x4000D01B",
+            "min_address": "0x4000D018"
+        },
+        {
+            "max_address": "0x4000D04B",
+            "min_address": "0x4000D020"
+        },
+        {
+            "max_address": "0x4000D09B",
+            "min_address": "0x4000D090"
+        },
+        {
+            "max_address": "0x4000D0AB",
+            "min_address": "0x4000D0A4"
+        },
+        {
+            "max_address": "0x4000DFC3",
+            "min_address": "0x4000DFC0"
+        },
+        {
+            "max_address": "0x4000DFCB",
+            "min_address": "0x4000DFC8"
+        },
+        {
+            "max_address": "0x4000E007",
+            "min_address": "0x4000E000"
+        },
+        {
+            "max_address": "0x4000E01B",
+            "min_address": "0x4000E018"
+        },
+        {
+            "max_address": "0x4000E04B",
+            "min_address": "0x4000E020"
+        },
+        {
+            "max_address": "0x4000E09B",
+            "min_address": "0x4000E090"
+        },
+        {
+            "max_address": "0x4000E0AB",
+            "min_address": "0x4000E0A4"
+        },
+        {
+            "max_address": "0x4000EFC3",
+            "min_address": "0x4000EFC0"
+        },
+        {
+            "max_address": "0x4000EFCB",
+            "min_address": "0x4000EFC8"
+        },
+        {
+            "max_address": "0x4000F007",
+            "min_address": "0x4000F000"
+        },
+        {
+            "max_address": "0x4000F01B",
+            "min_address": "0x4000F018"
+        },
+        {
+            "max_address": "0x4000F04B",
+            "min_address": "0x4000F020"
+        },
+        {
+            "max_address": "0x4000F09B",
+            "min_address": "0x4000F090"
+        },
+        {
+            "max_address": "0x4000F0AB",
+            "min_address": "0x4000F0A4"
+        },
+        {
+            "max_address": "0x4000FFC3",
+            "min_address": "0x4000FFC0"
+        },
+        {
+            "max_address": "0x4000FFCB",
+            "min_address": "0x4000FFC8"
+        },
+        {
+            "max_address": "0x40010007",
+            "min_address": "0x40010000"
+        },
+        {
+            "max_address": "0x4001001B",
+            "min_address": "0x40010018"
+        },
+        {
+            "max_address": "0x4001004B",
+            "min_address": "0x40010020"
+        },
+        {
+            "max_address": "0x4001009B",
+            "min_address": "0x40010090"
+        },
+        {
+            "max_address": "0x400100AB",
+            "min_address": "0x400100A4"
+        },
+        {
+            "max_address": "0x40010FC3",
+            "min_address": "0x40010FC0"
+        },
+        {
+            "max_address": "0x40010FCB",
+            "min_address": "0x40010FC8"
+        },
+        {
+            "max_address": "0x40011007",
+            "min_address": "0x40011000"
+        },
+        {
+            "max_address": "0x4001101B",
+            "min_address": "0x40011018"
+        },
+        {
+            "max_address": "0x4001104B",
+            "min_address": "0x40011020"
+        },
+        {
+            "max_address": "0x4001109B",
+            "min_address": "0x40011090"
+        },
+        {
+            "max_address": "0x400110AB",
+            "min_address": "0x400110A4"
+        },
+        {
+            "max_address": "0x40011FC3",
+            "min_address": "0x40011FC0"
+        },
+        {
+            "max_address": "0x40011FCB",
+            "min_address": "0x40011FC8"
+        },
+        {
+            "max_address": "0x40012007",
+            "min_address": "0x40012000"
+        },
+        {
+            "max_address": "0x4001201B",
+            "min_address": "0x40012018"
+        },
+        {
+            "max_address": "0x4001204B",
+            "min_address": "0x40012020"
+        },
+        {
+            "max_address": "0x4001209B",
+            "min_address": "0x40012090"
+        },
+        {
+            "max_address": "0x400120AB",
+            "min_address": "0x400120A4"
+        },
+        {
+            "max_address": "0x40012FC3",
+            "min_address": "0x40012FC0"
+        },
+        {
+            "max_address": "0x40012FCB",
+            "min_address": "0x40012FC8"
+        },
+        {
+            "max_address": "0x40013007",
+            "min_address": "0x40013000"
+        },
+        {
+            "max_address": "0x4001301B",
+            "min_address": "0x40013018"
+        },
+        {
+            "max_address": "0x4001304B",
+            "min_address": "0x40013020"
+        },
+        {
+            "max_address": "0x4001309B",
+            "min_address": "0x40013090"
+        },
+        {
+            "max_address": "0x400130AB",
+            "min_address": "0x400130A4"
+        },
+        {
+            "max_address": "0x40013FC3",
+            "min_address": "0x40013FC0"
+        },
+        {
+            "max_address": "0x40013FCB",
+            "min_address": "0x40013FC8"
+        },
+        {
+            "max_address": "0x40020027",
+            "min_address": "0x40020000"
+        },
+        {
+            "max_address": "0x4002002F",
+            "min_address": "0x4002002C"
+        },
+        {
+            "max_address": "0x40020823",
+            "min_address": "0x40020800"
+        },
+        {
+            "max_address": "0x40020FC7",
+            "min_address": "0x40020FC0"
+        },
+        {
+            "max_address": "0x40021027",
+            "min_address": "0x40021000"
+        },
+        {
+            "max_address": "0x4002102F",
+            "min_address": "0x4002102C"
+        },
+        {
+            "max_address": "0x40021823",
+            "min_address": "0x40021800"
+        },
+        {
+            "max_address": "0x40021FC7",
+            "min_address": "0x40021FC0"
+        },
+        {
+            "max_address": "0x40022027",
+            "min_address": "0x40022000"
+        },
+        {
+            "max_address": "0x4002202F",
+            "min_address": "0x4002202C"
+        },
+        {
+            "max_address": "0x40022823",
+            "min_address": "0x40022800"
+        },
+        {
+            "max_address": "0x40022FC7",
+            "min_address": "0x40022FC0"
+        },
+        {
+            "max_address": "0x40023027",
+            "min_address": "0x40023000"
+        },
+        {
+            "max_address": "0x4002302F",
+            "min_address": "0x4002302C"
+        },
+        {
+            "max_address": "0x40023823",
+            "min_address": "0x40023800"
+        },
+        {
+            "max_address": "0x40023FC7",
+            "min_address": "0x40023FC0"
+        },
+        {
+            "max_address": "0x40024003",
+            "min_address": "0x40024000"
+        },
+        {
+            "max_address": "0x40024423",
+            "min_address": "0x400243FC"
+        },
+        {
+            "max_address": "0x4002453B",
+            "min_address": "0x40024500"
+        },
+        {
+            "max_address": "0x40025003",
+            "min_address": "0x40025000"
+        },
+        {
+            "max_address": "0x40025423",
+            "min_address": "0x400253FC"
+        },
+        {
+            "max_address": "0x4002553B",
+            "min_address": "0x40025500"
+        },
+        {
+            "max_address": "0x40026003",
+            "min_address": "0x40026000"
+        },
+        {
+            "max_address": "0x40026423",
+            "min_address": "0x400263FC"
+        },
+        {
+            "max_address": "0x4002653B",
+            "min_address": "0x40026500"
+        },
+        {
+            "max_address": "0x4002802B",
+            "min_address": "0x40028000"
+        },
+        {
+            "max_address": "0x4002813F",
+            "min_address": "0x40028040"
+        },
+        {
+            "max_address": "0x4002880B",
+            "min_address": "0x40028800"
+        },
+        {
+            "max_address": "0x4002888B",
+            "min_address": "0x40028880"
+        },
+        {
+            "max_address": "0x4002890B",
+            "min_address": "0x40028900"
+        },
+        {
+            "max_address": "0x4002898B",
+            "min_address": "0x40028980"
+        },
+        {
+            "max_address": "0x40028FC7",
+            "min_address": "0x40028FC0"
+        },
+        {
+            "max_address": "0x4002902B",
+            "min_address": "0x40029000"
+        },
+        {
+            "max_address": "0x4002913F",
+            "min_address": "0x40029040"
+        },
+        {
+            "max_address": "0x4002980B",
+            "min_address": "0x40029800"
+        },
+        {
+            "max_address": "0x4002988B",
+            "min_address": "0x40029880"
+        },
+        {
+            "max_address": "0x4002990B",
+            "min_address": "0x40029900"
+        },
+        {
+            "max_address": "0x4002998B",
+            "min_address": "0x40029980"
+        },
+        {
+            "max_address": "0x40029FC7",
+            "min_address": "0x40029FC0"
+        },
+        {
+            "max_address": "0x4002C02B",
+            "min_address": "0x4002C000"
+        },
+        {
+            "max_address": "0x4002D02B",
+            "min_address": "0x4002D000"
+        },
+        {
+            "max_address": "0x40030013",
+            "min_address": "0x40030000"
+        },
+        {
+            "max_address": "0x4003006B",
+            "min_address": "0x40030018"
+        },
+        {
+            "max_address": "0x40030FC3",
+            "min_address": "0x40030FC0"
+        },
+        {
+            "max_address": "0x40031013",
+            "min_address": "0x40031000"
+        },
+        {
+            "max_address": "0x4003106B",
+            "min_address": "0x40031018"
+        },
+        {
+            "max_address": "0x40031FC3",
+            "min_address": "0x40031FC0"
+        },
+        {
+            "max_address": "0x40032013",
+            "min_address": "0x40032000"
+        },
+        {
+            "max_address": "0x4003206B",
+            "min_address": "0x40032018"
+        },
+        {
+            "max_address": "0x40032FC3",
+            "min_address": "0x40032FC0"
+        },
+        {
+            "max_address": "0x40033013",
+            "min_address": "0x40033000"
+        },
+        {
+            "max_address": "0x4003306B",
+            "min_address": "0x40033018"
+        },
+        {
+            "max_address": "0x40033FC3",
+            "min_address": "0x40033FC0"
+        },
+        {
+            "max_address": "0x40034013",
+            "min_address": "0x40034000"
+        },
+        {
+            "max_address": "0x4003406B",
+            "min_address": "0x40034018"
+        },
+        {
+            "max_address": "0x40034FC3",
+            "min_address": "0x40034FC0"
+        },
+        {
+            "max_address": "0x40035013",
+            "min_address": "0x40035000"
+        },
+        {
+            "max_address": "0x4003506B",
+            "min_address": "0x40035018"
+        },
+        {
+            "max_address": "0x40035FC3",
+            "min_address": "0x40035FC0"
+        },
+        {
+            "max_address": "0x40036013",
+            "min_address": "0x40036000"
+        },
+        {
+            "max_address": "0x4003606B",
+            "min_address": "0x40036018"
+        },
+        {
+            "max_address": "0x40036FC3",
+            "min_address": "0x40036FC0"
+        },
+        {
+            "max_address": "0x40037013",
+            "min_address": "0x40037000"
+        },
+        {
+            "max_address": "0x4003706B",
+            "min_address": "0x40037018"
+        },
+        {
+            "max_address": "0x40037FC3",
+            "min_address": "0x40037FC0"
+        },
+        {
+            "max_address": "0x4003802B",
+            "min_address": "0x40038000"
+        },
+        {
+            "max_address": "0x40038037",
+            "min_address": "0x40038030"
+        },
+        {
+            "max_address": "0x40038057",
+            "min_address": "0x40038040"
+        },
+        {
+            "max_address": "0x40038077",
+            "min_address": "0x40038060"
+        },
+        {
+            "max_address": "0x40038097",
+            "min_address": "0x40038080"
+        },
+        {
+            "max_address": "0x400380B7",
+            "min_address": "0x400380A0"
+        },
+        {
+            "max_address": "0x40038D03",
+            "min_address": "0x40038D00"
+        },
+        {
+            "max_address": "0x40038E1F",
+            "min_address": "0x40038E00"
+        },
+        {
+            "max_address": "0x40038E5F",
+            "min_address": "0x40038E40"
+        },
+        {
+            "max_address": "0x40038FCB",
+            "min_address": "0x40038FC0"
+        },
+        {
+            "max_address": "0x4003902B",
+            "min_address": "0x40039000"
+        },
+        {
+            "max_address": "0x40039037",
+            "min_address": "0x40039030"
+        },
+        {
+            "max_address": "0x40039057",
+            "min_address": "0x40039040"
+        },
+        {
+            "max_address": "0x40039077",
+            "min_address": "0x40039060"
+        },
+        {
+            "max_address": "0x40039097",
+            "min_address": "0x40039080"
+        },
+        {
+            "max_address": "0x400390B7",
+            "min_address": "0x400390A0"
+        },
+        {
+            "max_address": "0x40039D03",
+            "min_address": "0x40039D00"
+        },
+        {
+            "max_address": "0x40039E1F",
+            "min_address": "0x40039E00"
+        },
+        {
+            "max_address": "0x40039E5F",
+            "min_address": "0x40039E40"
+        },
+        {
+            "max_address": "0x40039FCB",
+            "min_address": "0x40039FC0"
+        },
+        {
+            "max_address": "0x4003C00B",
+            "min_address": "0x4003C000"
+        },
+        {
+            "max_address": "0x4003C013",
+            "min_address": "0x4003C010"
+        },
+        {
+            "max_address": "0x4003C027",
+            "min_address": "0x4003C020"
+        },
+        {
+            "max_address": "0x4003C047",
+            "min_address": "0x4003C040"
+        },
+        {
+            "max_address": "0x4003CFC3",
+            "min_address": "0x4003CFC0"
+        },
+        {
+            "max_address": "0x4004001B",
+            "min_address": "0x40040000"
+        },
+        {
+            "max_address": "0x4004004B",
+            "min_address": "0x40040020"
+        },
+        {
+            "max_address": "0x400400AB",
+            "min_address": "0x40040080"
+        },
+        {
+            "max_address": "0x40040107",
+            "min_address": "0x40040100"
+        },
+        {
+            "max_address": "0x40040127",
+            "min_address": "0x40040120"
+        },
+        {
+            "max_address": "0x40040147",
+            "min_address": "0x40040140"
+        },
+        {
+            "max_address": "0x40040167",
+            "min_address": "0x40040160"
+        },
+        {
+            "max_address": "0x4004101B",
+            "min_address": "0x40041000"
+        },
+        {
+            "max_address": "0x4004104B",
+            "min_address": "0x40041020"
+        },
+        {
+            "max_address": "0x400410AB",
+            "min_address": "0x40041080"
+        },
+        {
+            "max_address": "0x40041107",
+            "min_address": "0x40041100"
+        },
+        {
+            "max_address": "0x40041127",
+            "min_address": "0x40041120"
+        },
+        {
+            "max_address": "0x40041147",
+            "min_address": "0x40041140"
+        },
+        {
+            "max_address": "0x40041167",
+            "min_address": "0x40041160"
+        },
+        {
+            "max_address": "0x4004C013",
+            "min_address": "0x4004C000"
+        },
+        {
+            "max_address": "0x4004C06B",
+            "min_address": "0x4004C018"
+        },
+        {
+            "max_address": "0x4004CFC3",
+            "min_address": "0x4004CFC0"
+        },
+        {
+            "max_address": "0x4004D013",
+            "min_address": "0x4004D000"
+        },
+        {
+            "max_address": "0x4004D06B",
+            "min_address": "0x4004D018"
+        },
+        {
+            "max_address": "0x4004DFC3",
+            "min_address": "0x4004DFC0"
+        },
+        {
+            "max_address": "0x4004E013",
+            "min_address": "0x4004E000"
+        },
+        {
+            "max_address": "0x4004E06B",
+            "min_address": "0x4004E018"
+        },
+        {
+            "max_address": "0x4004EFC3",
+            "min_address": "0x4004EFC0"
+        },
+        {
+            "max_address": "0x4004F013",
+            "min_address": "0x4004F000"
+        },
+        {
+            "max_address": "0x4004F06B",
+            "min_address": "0x4004F018"
+        },
+        {
+            "max_address": "0x4004FFC3",
+            "min_address": "0x4004FFC0"
+        },
+        {
+            "max_address": "0x4005000F",
+            "min_address": "0x40050000"
+        },
+        {
+            "max_address": "0x4005003F",
+            "min_address": "0x40050020"
+        },
+        {
+            "max_address": "0x40050060",
+            "min_address": "0x40050060"
+        },
+        {
+            "max_address": "0x40050067",
+            "min_address": "0x40050062"
+        },
+        {
+            "max_address": "0x4005007B",
+            "min_address": "0x4005007A"
+        },
+        {
+            "max_address": "0x4005007E",
+            "min_address": "0x4005007D"
+        },
+        {
+            "max_address": "0x40050080",
+            "min_address": "0x40050080"
+        },
+        {
+            "max_address": "0x40050083",
+            "min_address": "0x40050082"
+        },
+        {
+            "max_address": "0x40050088",
+            "min_address": "0x40050088"
+        },
+        {
+            "max_address": "0x4005008C",
+            "min_address": "0x4005008A"
+        },
+        {
+            "max_address": "0x40050090",
+            "min_address": "0x4005008E"
+        },
+        {
+            "max_address": "0x40050094",
+            "min_address": "0x40050092"
+        },
+        {
+            "max_address": "0x40050098",
+            "min_address": "0x40050096"
+        },
+        {
+            "max_address": "0x4005009C",
+            "min_address": "0x4005009A"
+        },
+        {
+            "max_address": "0x400500A0",
+            "min_address": "0x4005009E"
+        },
+        {
+            "max_address": "0x400500A4",
+            "min_address": "0x400500A2"
+        },
+        {
+            "max_address": "0x400500A8",
+            "min_address": "0x400500A6"
+        },
+        {
+            "max_address": "0x400500AC",
+            "min_address": "0x400500AA"
+        },
+        {
+            "max_address": "0x400500B0",
+            "min_address": "0x400500AE"
+        },
+        {
+            "max_address": "0x400500B4",
+            "min_address": "0x400500B2"
+        },
+        {
+            "max_address": "0x400500B8",
+            "min_address": "0x400500B6"
+        },
+        {
+            "max_address": "0x400500BC",
+            "min_address": "0x400500BA"
+        },
+        {
+            "max_address": "0x400500BF",
+            "min_address": "0x400500BE"
+        },
+        {
+            "max_address": "0x40050103",
+            "min_address": "0x40050102"
+        },
+        {
+            "max_address": "0x40050108",
+            "min_address": "0x40050108"
+        },
+        {
+            "max_address": "0x4005010B",
+            "min_address": "0x4005010A"
+        },
+        {
+            "max_address": "0x4005011D",
+            "min_address": "0x40050110"
+        },
+        {
+            "max_address": "0x4005012D",
+            "min_address": "0x40050120"
+        },
+        {
+            "max_address": "0x4005013D",
+            "min_address": "0x40050130"
+        },
+        {
+            "max_address": "0x4005014D",
+            "min_address": "0x40050140"
+        },
+        {
+            "max_address": "0x4005015D",
+            "min_address": "0x40050150"
+        },
+        {
+            "max_address": "0x4005016D",
+            "min_address": "0x40050160"
+        },
+        {
+            "max_address": "0x4005017D",
+            "min_address": "0x40050170"
+        },
+        {
+            "max_address": "0x40050305",
+            "min_address": "0x40050304"
+        },
+        {
+            "max_address": "0x40050309",
+            "min_address": "0x40050308"
+        },
+        {
+            "max_address": "0x4005030D",
+            "min_address": "0x4005030C"
+        },
+        {
+            "max_address": "0x40050311",
+            "min_address": "0x40050310"
+        },
+        {
+            "max_address": "0x40050315",
+            "min_address": "0x40050314"
+        },
+        {
+            "max_address": "0x40050319",
+            "min_address": "0x40050318"
+        },
+        {
+            "max_address": "0x4005031D",
+            "min_address": "0x4005031C"
+        },
+        {
+            "max_address": "0x40050343",
+            "min_address": "0x40050340"
+        },
+        {
+            "max_address": "0x4005041F",
+            "min_address": "0x40050400"
+        },
+        {
+            "max_address": "0x4005043F",
+            "min_address": "0x40050430"
+        },
+        {
+            "max_address": "0x40050453",
+            "min_address": "0x40050444"
+        },
+        {
+            "max_address": "0x40050FC3",
+            "min_address": "0x40050FC0"
+        },
+        {
+            "max_address": "0x40058003",
+            "min_address": "0x40058000"
+        },
+        {
+            "max_address": "0x40058423",
+            "min_address": "0x400583FC"
+        },
+        {
+            "max_address": "0x4005853B",
+            "min_address": "0x40058500"
+        },
+        {
+            "max_address": "0x40059003",
+            "min_address": "0x40059000"
+        },
+        {
+            "max_address": "0x40059423",
+            "min_address": "0x400593FC"
+        },
+        {
+            "max_address": "0x4005953B",
+            "min_address": "0x40059500"
+        },
+        {
+            "max_address": "0x4005A003",
+            "min_address": "0x4005A000"
+        },
+        {
+            "max_address": "0x4005A423",
+            "min_address": "0x4005A3FC"
+        },
+        {
+            "max_address": "0x4005A53B",
+            "min_address": "0x4005A500"
+        },
+        {
+            "max_address": "0x4005B003",
+            "min_address": "0x4005B000"
+        },
+        {
+            "max_address": "0x4005B423",
+            "min_address": "0x4005B3FC"
+        },
+        {
+            "max_address": "0x4005B53B",
+            "min_address": "0x4005B500"
+        },
+        {
+            "max_address": "0x4005C003",
+            "min_address": "0x4005C000"
+        },
+        {
+            "max_address": "0x4005C423",
+            "min_address": "0x4005C3FC"
+        },
+        {
+            "max_address": "0x4005C53B",
+            "min_address": "0x4005C500"
+        },
+        {
+            "max_address": "0x4005D003",
+            "min_address": "0x4005D000"
+        },
+        {
+            "max_address": "0x4005D423",
+            "min_address": "0x4005D3FC"
+        },
+        {
+            "max_address": "0x4005D53B",
+            "min_address": "0x4005D500"
+        },
+        {
+            "max_address": "0x4005E003",
+            "min_address": "0x4005E000"
+        },
+        {
+            "max_address": "0x4005E423",
+            "min_address": "0x4005E3FC"
+        },
+        {
+            "max_address": "0x4005E53B",
+            "min_address": "0x4005E500"
+        },
+        {
+            "max_address": "0x400AF00B",
+            "min_address": "0x400AF000"
+        },
+        {
+            "max_address": "0x400AF023",
+            "min_address": "0x400AF010"
+        },
+        {
+            "max_address": "0x400AF043",
+            "min_address": "0x400AF030"
+        },
+        {
+            "max_address": "0x400AF053",
+            "min_address": "0x400AF050"
+        },
+        {
+            "max_address": "0x400AF083",
+            "min_address": "0x400AF080"
+        },
+        {
+            "max_address": "0x400AFFC3",
+            "min_address": "0x400AFFC0"
+        },
+        {
+            "max_address": "0x400C0027",
+            "min_address": "0x400C0000"
+        },
+        {
+            "max_address": "0x400C002F",
+            "min_address": "0x400C002C"
+        },
+        {
+            "max_address": "0x400C0823",
+            "min_address": "0x400C0800"
+        },
+        {
+            "max_address": "0x400C0FC7",
+            "min_address": "0x400C0FC0"
+        },
+        {
+            "max_address": "0x400C1027",
+            "min_address": "0x400C1000"
+        },
+        {
+            "max_address": "0x400C102F",
+            "min_address": "0x400C102C"
+        },
+        {
+            "max_address": "0x400C1823",
+            "min_address": "0x400C1800"
+        },
+        {
+            "max_address": "0x400C1FC7",
+            "min_address": "0x400C1FC0"
+        },
+        {
+            "max_address": "0x400F900F",
+            "min_address": "0x400F9000"
+        },
+        {
+            "max_address": "0x400FD017",
+            "min_address": "0x400FD000"
+        },
+        {
+            "max_address": "0x400FD023",
+            "min_address": "0x400FD020"
+        },
+        {
+            "max_address": "0x400FD033",
+            "min_address": "0x400FD030"
+        },
+        {
+            "max_address": "0x400FD103",
+            "min_address": "0x400FD100"
+        },
+        {
+            "max_address": "0x400FDFC7",
+            "min_address": "0x400FDFC0"
+        },
+        {
+            "max_address": "0x400FDFCF",
+            "min_address": "0x400FDFCC"
+        },
+        {
+            "max_address": "0x400FE00B",
+            "min_address": "0x400FE000"
+        },
+        {
+            "max_address": "0x400FE033",
+            "min_address": "0x400FE010"
+        },
+        {
+            "max_address": "0x400FE04B",
+            "min_address": "0x400FE040"
+        },
+        {
+            "max_address": "0x400FE063",
+            "min_address": "0x400FE050"
+        },
+        {
+            "max_address": "0x400FE073",
+            "min_address": "0x400FE06C"
+        },
+        {
+            "max_address": "0x400FE07F",
+            "min_address": "0x400FE07C"
+        },
+        {
+            "max_address": "0x400FE0F3",
+            "min_address": "0x400FE0F0"
+        },
+        {
+            "max_address": "0x400FE10B",
+            "min_address": "0x400FE100"
+        },
+        {
+            "max_address": "0x400FE11B",
+            "min_address": "0x400FE110"
+        },
+        {
+            "max_address": "0x400FE12B",
+            "min_address": "0x400FE120"
+        },
+        {
+            "max_address": "0x400FE147",
+            "min_address": "0x400FE144"
+        },
+        {
+            "max_address": "0x400FE153",
+            "min_address": "0x400FE14C"
+        },
+        {
+            "max_address": "0x400FE16B",
+            "min_address": "0x400FE160"
+        },
+        {
+            "max_address": "0x400FE193",
+            "min_address": "0x400FE190"
+        },
+        {
+            "max_address": "0x400FE1A3",
+            "min_address": "0x400FE1A0"
+        },
+        {
+            "max_address": "0x400FE1D3",
+            "min_address": "0x400FE1D0"
+        },
+        {
+            "max_address": "0x400FE1EF",
+            "min_address": "0x400FE1E0"
+        },
+        {
+            "max_address": "0x400FE20F",
+            "min_address": "0x400FE200"
+        },
+        {
+            "max_address": "0x400FE30F",
+            "min_address": "0x400FE300"
+        },
+        {
+            "max_address": "0x400FE323",
+            "min_address": "0x400FE314"
+        },
+        {
+            "max_address": "0x400FE32B",
+            "min_address": "0x400FE328"
+        },
+        {
+            "max_address": "0x400FE347",
+            "min_address": "0x400FE334"
+        },
+        {
+            "max_address": "0x400FE35F",
+            "min_address": "0x400FE358"
+        },
+        {
+            "max_address": "0x400FE40F",
+            "min_address": "0x400FE400"
+        },
+        {
+            "max_address": "0x400FE50F",
+            "min_address": "0x400FE500"
+        },
+        {
+            "max_address": "0x400FE523",
+            "min_address": "0x400FE518"
+        },
+        {
+            "max_address": "0x400FE52B",
+            "min_address": "0x400FE528"
+        },
+        {
+            "max_address": "0x400FE547",
+            "min_address": "0x400FE534"
+        },
+        {
+            "max_address": "0x400FE55F",
+            "min_address": "0x400FE558"
+        },
+        {
+            "max_address": "0x400FE60F",
+            "min_address": "0x400FE600"
+        },
+        {
+            "max_address": "0x400FE623",
+            "min_address": "0x400FE618"
+        },
+        {
+            "max_address": "0x400FE62B",
+            "min_address": "0x400FE628"
+        },
+        {
+            "max_address": "0x400FE647",
+            "min_address": "0x400FE634"
+        },
+        {
+            "max_address": "0x400FE65F",
+            "min_address": "0x400FE658"
+        },
+        {
+            "max_address": "0x400FE70F",
+            "min_address": "0x400FE700"
+        },
+        {
+            "max_address": "0x400FE723",
+            "min_address": "0x400FE718"
+        },
+        {
+            "max_address": "0x400FE72B",
+            "min_address": "0x400FE728"
+        },
+        {
+            "max_address": "0x400FE747",
+            "min_address": "0x400FE734"
+        },
+        {
+            "max_address": "0x400FE75F",
+            "min_address": "0x400FE758"
+        },
+        {
+            "max_address": "0x400FE80F",
+            "min_address": "0x400FE800"
+        },
+        {
+            "max_address": "0x400FE823",
+            "min_address": "0x400FE818"
+        },
+        {
+            "max_address": "0x400FE82B",
+            "min_address": "0x400FE828"
+        },
+        {
+            "max_address": "0x400FE847",
+            "min_address": "0x400FE834"
+        },
+        {
+            "max_address": "0x400FE85F",
+            "min_address": "0x400FE858"
+        },
+        {
+            "max_address": "0x400FE90F",
+            "min_address": "0x400FE900"
+        },
+        {
+            "max_address": "0x400FE923",
+            "min_address": "0x400FE918"
+        },
+        {
+            "max_address": "0x400FE92B",
+            "min_address": "0x400FE928"
+        },
+        {
+            "max_address": "0x400FE947",
+            "min_address": "0x400FE934"
+        },
+        {
+            "max_address": "0x400FE95F",
+            "min_address": "0x400FE958"
+        },
+        {
+            "max_address": "0x400FEA0F",
+            "min_address": "0x400FEA00"
+        },
+        {
+            "max_address": "0x400FEA23",
+            "min_address": "0x400FEA18"
+        },
+        {
+            "max_address": "0x400FEA2B",
+            "min_address": "0x400FEA28"
+        },
+        {
+            "max_address": "0x400FEA47",
+            "min_address": "0x400FEA34"
+        },
+        {
+            "max_address": "0x400FEA5F",
+            "min_address": "0x400FEA58"
+        },
+        {
+            "max_address": "0x400FF03F",
+            "min_address": "0x400FF000"
+        },
+        {
+            "max_address": "0x400FF04F",
+            "min_address": "0x400FF04C"
+        },
+        {
+            "max_address": "0x400FF507",
+            "min_address": "0x400FF500"
+        },
+        {
+            "max_address": "0x400FF51F",
+            "min_address": "0x400FF510"
+        },
+        {
+            "max_address": "0xE000E00B",
+            "min_address": "0xE000E004"
+        },
+        {
+            "max_address": "0xE000E01F",
+            "min_address": "0xE000E010"
+        },
+        {
+            "max_address": "0xE000E113",
+            "min_address": "0xE000E100"
+        },
+        {
+            "max_address": "0xE000E193",
+            "min_address": "0xE000E180"
+        },
+        {
+            "max_address": "0xE000E213",
+            "min_address": "0xE000E200"
+        },
+        {
+            "max_address": "0xE000E293",
+            "min_address": "0xE000E280"
+        },
+        {
+            "max_address": "0xE000E313",
+            "min_address": "0xE000E300"
+        },
+        {
+            "max_address": "0xE000E483",
+            "min_address": "0xE000E400"
+        },
+        {
+            "max_address": "0xE000ED3B",
+            "min_address": "0xE000ED00"
+        },
+        {
+            "max_address": "0xE000ED8B",
+            "min_address": "0xE000ED88"
+        },
+        {
+            "max_address": "0xE000EDBB",
+            "min_address": "0xE000ED90"
+        },
+        {
+            "max_address": "0xE000EDFF",
+            "min_address": "0xE000EDF0"
+        },
+        {
+            "max_address": "0xE000EF03",
+            "min_address": "0xE000EF00"
+        }
+    ],
+    "clock": "80"
+}

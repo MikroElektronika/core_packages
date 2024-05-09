@@ -1,0 +1,817 @@
+{
+    "accessbank": "0x00000060",
+    "badram": [
+        {
+            "max_addr": "0x0F6A",
+            "min_addr": "0x0800"
+        },
+        {
+            "max_addr": "0x0F7F",
+            "min_addr": "0x0F79"
+        },
+        {
+            "max_addr": "0x0F88",
+            "min_addr": "0x0F87"
+        },
+        {
+            "max_addr": "0x0F91",
+            "min_addr": "0x0F90"
+        },
+        {
+            "max_addr": "0x0F9C",
+            "min_addr": "0x0F99"
+        },
+        {
+            "max_addr": "0x0FB6",
+            "min_addr": "0x0FB6"
+        },
+        {
+            "max_addr": "0x0FD4",
+            "min_addr": "0x0FD4"
+        }
+    ],
+    "bank": [
+        {
+            "max_addr": "0x00FF",
+            "min_addr": "0x0000",
+            "number": "0"
+        },
+        {
+            "max_addr": "0x01FF",
+            "min_addr": "0x0100",
+            "number": "1"
+        },
+        {
+            "max_addr": "0x02FF",
+            "min_addr": "0x0200",
+            "number": "2"
+        },
+        {
+            "max_addr": "0x03FF",
+            "min_addr": "0x0300",
+            "number": "3"
+        },
+        {
+            "max_addr": "0x04FF",
+            "min_addr": "0x0400",
+            "number": "4"
+        },
+        {
+            "max_addr": "0x05FF",
+            "min_addr": "0x0500",
+            "number": "5"
+        },
+        {
+            "max_addr": "0x06FF",
+            "min_addr": "0x0600",
+            "number": "6"
+        },
+        {
+            "max_addr": "0x07FF",
+            "min_addr": "0x0700",
+            "number": "7"
+        },
+        {
+            "max_addr": "0x08FF",
+            "min_addr": "0x0800",
+            "number": "8"
+        },
+        {
+            "max_addr": "0x09FF",
+            "min_addr": "0x0900",
+            "number": "9"
+        },
+        {
+            "max_addr": "0x0AFF",
+            "min_addr": "0x0A00",
+            "number": "10"
+        },
+        {
+            "max_addr": "0x0BFF",
+            "min_addr": "0x0B00",
+            "number": "11"
+        },
+        {
+            "max_addr": "0x0CFF",
+            "min_addr": "0x0C00",
+            "number": "12"
+        },
+        {
+            "max_addr": "0x0DFF",
+            "min_addr": "0x0D00",
+            "number": "13"
+        },
+        {
+            "max_addr": "0x0EFF",
+            "min_addr": "0x0E00",
+            "number": "14"
+        },
+        {
+            "max_addr": "0x0FFF",
+            "min_addr": "0x0F00",
+            "number": "15"
+        }
+    ],
+    "callstack": {
+        "max": "0x1F"
+    },
+    "config_registers": [
+        {
+            "address": "300001",
+            "default": "27",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "OSC",
+                    "label": "Oscillator Selection bits",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "RC oscillator w/ OSC2 configured as RA6",
+                            "value": "7"
+                        },
+                        {
+                            "label": "HS oscillator with PLL enabled",
+                            "value": "6"
+                        },
+                        {
+                            "label": "EC oscillator w/ OSC2 configured as RA6",
+                            "value": "5"
+                        },
+                        {
+                            "label": "EC oscillator w/ OSC2 configured as divide-by-4 clock output",
+                            "value": "4"
+                        },
+                        {
+                            "label": "RC oscillator w/ OSC2 configured as divide-by-4 clock output",
+                            "value": "3"
+                        },
+                        {
+                            "label": "HS oscillator",
+                            "value": "2"
+                        },
+                        {
+                            "label": "XT oscillator",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LP oscillator",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "OSCS",
+                    "label": "Oscillator System Clock Switch Enable bit",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "Oscillator system clock switch option is disabled (main oscillator is source)",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Timer1 Oscillator system clock switch option is enabled (oscillator switching is enabled)",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1H",
+            "unused": "D8"
+        },
+        {
+            "address": "300002",
+            "default": "F",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "PWRT",
+                    "label": "Power-up Timer Enable bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PWRT disabled",
+                            "value": "1"
+                        },
+                        {
+                            "label": "PWRT enabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "BOR",
+                    "label": "Brown-out Reset Enable bit",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Brown-out Reset enabled",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Brown-out Reset disabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "C",
+                    "key": "BORV",
+                    "label": "Brown-out Reset Voltage bits",
+                    "mask": "C",
+                    "settings": [
+                        {
+                            "label": "VBOR set to 2.5V",
+                            "value": "C"
+                        },
+                        {
+                            "label": "VBOR set to 2.7V",
+                            "value": "8"
+                        },
+                        {
+                            "label": "VBOR set to 4.2V",
+                            "value": "4"
+                        },
+                        {
+                            "label": "VBOR set to 4.5V",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2L",
+            "unused": "0"
+        },
+        {
+            "address": "300003",
+            "default": "F",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "WDT",
+                    "label": "Watchdog Timer Enable bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "WDT enabled",
+                            "value": "1"
+                        },
+                        {
+                            "label": "WDT disabled (control is placed on the SWDTEN bit)",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "E",
+                    "key": "WDTPS",
+                    "label": "Watchdog Timer Postscale Select bits",
+                    "mask": "E",
+                    "settings": [
+                        {
+                            "label": "1:128",
+                            "value": "E"
+                        },
+                        {
+                            "label": "1:64",
+                            "value": "C"
+                        },
+                        {
+                            "label": "1:32",
+                            "value": "A"
+                        },
+                        {
+                            "label": "1:16",
+                            "value": "8"
+                        },
+                        {
+                            "label": "1:8",
+                            "value": "6"
+                        },
+                        {
+                            "label": "1:4",
+                            "value": "4"
+                        },
+                        {
+                            "label": "1:2",
+                            "value": "2"
+                        },
+                        {
+                            "label": "1:1",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2H",
+            "unused": "0"
+        },
+        {
+            "address": "300004",
+            "default": "83",
+            "fields": [
+                
+            ],
+            "key": "CONFIG3L",
+            "unused": "7C"
+        },
+        {
+            "address": "300005",
+            "default": "3",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "CCP2MUX",
+                    "label": "CCP2 Mux bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "CCP2 input/output is multiplexed with RC1",
+                            "value": "1"
+                        },
+                        {
+                            "label": "CCP2 input/output is multiplexed with RE7",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG3H",
+            "unused": "C"
+        },
+        {
+            "address": "300006",
+            "default": "85",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "STVR",
+                    "label": "Stack Full/Underflow Reset Enable bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Stack full/underflow will cause Reset",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Stack full/underflow will not cause Reset",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "LVP",
+                    "label": "Low-Voltage ICSP Enable bit",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Low-voltage ICSP enabled",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Low-voltage ICSP disabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "DEBUG",
+                    "label": "Background Debugger Enable bit",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Background debugger disabled. RB6 and RB7 configured as general purpose I/O pins.",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Background debugger enabled. RB6 and RB7 are dedicated to In-Circuit Debug.",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG4L",
+            "unused": "7A"
+        },
+        {
+            "address": "300008",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "CP0",
+                    "label": "Code Protection bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Block 0 (000800-001FFFh) not code-protected",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Block 0 (000800-001FFFh) code-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "CP1",
+                    "label": "Code Protection bit",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Block 1 (002000-003FFFh) not code-protected",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Block 1 (002000-003FFFh) code-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "CP2",
+                    "label": "Code Protection bit",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Block 2 (004000-005FFFh) not code-protected",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Block 2 (004000-005FFFh) code-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "CP3",
+                    "label": "Code Protection bit",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "Block 3 (006000-007FFFh) not code-protected",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Block 3 (006000-007FFFh) code-protected",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG5L",
+            "unused": "00"
+        },
+        {
+            "address": "300009",
+            "default": "C0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "40",
+                    "key": "CPB",
+                    "label": "Boot Block Code Protection bit",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "Boot Block (000000-0007FFh) not code-protected",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Boot Block (000000-0007FFh) code-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "CPD",
+                    "label": "Data EEPROM Code Protection bit",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Data EEPROM not code-protected",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Data EEPROM code-protected",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG5H",
+            "unused": "3F"
+        },
+        {
+            "address": "30000A",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "WRT0",
+                    "label": "Write Protection bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Block 0 (000800-001FFFh) not write-protected",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Block 0 (000800-001FFFh) write-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "WRT1",
+                    "label": "Write Protection bit",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Block 1 (002000-003FFFh) not write-protected",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Block 1 (002000-003FFFh) write-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "WRT2",
+                    "label": "Write Protection bit",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Block 2 (004000-005FFFh) not write-protected",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Block 2 (004000-005FFFh) write-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "WRT3",
+                    "label": "Write Protection bit",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "Block 3 (006000-007FFFh) not write-protected",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Block 3 (006000-007FFFh) write-protected",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG6L",
+            "unused": "00"
+        },
+        {
+            "address": "30000B",
+            "default": "E0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "WRTC",
+                    "label": "Configuration Register Write Protection bit",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "Configuration registers (300000-3000FFh) not write-protected",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Configuration registers (300000-3000FFh) write-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "40",
+                    "key": "WRTB",
+                    "label": "Boot Block Write Protection bit",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "Boot Block (000000-0007FFh) not write-protected",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Boot Block (000000-0007FFh) write-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "WRTD",
+                    "label": "Data EEPROM Write Protection bit",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Data EEPROM not write-protected",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Data EEPROM write-protected",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG6H",
+            "unused": "1F"
+        },
+        {
+            "address": "30000C",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "EBTR0",
+                    "label": "Table Read Protection bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Block 0 (000800-001FFFh) not protected from table reads executed in other blocks",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Block 0 (000800-001FFFh) protected from table reads executed in other blocks",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "EBTR1",
+                    "label": "Table Read Protection bit",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Block 1 (002000-003FFFh) not protected from table reads executed in other blocks",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Block 1 (002000-003FFFh) protected from table reads executed in other blocks",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "EBTR2",
+                    "label": "Table Read Protection bit",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Block 2 (004000-005FFFh) not protected from table reads executed in other blocks",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Block 2 (004000-005FFFh) protected from table reads executed in other blocks",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "EBTR3",
+                    "label": "Table Read Protection bit",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "Block 3 (006000-007FFFh) not protected from table reads executed in other blocks",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Block 3 (006000-007FFFh) protected from table reads executed in other blocks",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG7L",
+            "unused": "00"
+        },
+        {
+            "address": "30000D",
+            "default": "40",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "40",
+                    "key": "EBTRB",
+                    "label": "Boot Block Table Read Protection bit",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "Boot Block (000000-0007FFh) not protected from table reads executed in other blocks",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Boot Block (000000-0007FFh) protected from table reads executed in other blocks",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG7H",
+            "unused": "BF"
+        }
+    ],
+    "core": "P18",
+    "delay_src_path": "delays/p18/__lib_delays.c",
+    "eeprom": {
+        "max_addr": "0xF003FF",
+        "min_addr": "0xF00000"
+    },
+    "gprend": "0x7FF",
+    "ivt": [
+        {
+            "address": "0x000008",
+            "ilevel": "0x0000",
+            "name": "High Priority Interrupt"
+        },
+        {
+            "address": "0x000018",
+            "ilevel": "0x0001",
+            "name": "Low Priority Interrupt"
+        }
+    ],
+    "mcu": "PIC18LF6520",
+    "prog_options": {
+        "codegrip": {
+            "debugging": "False",
+            "programming": "False"
+        },
+        "mikroprog": {
+            "debugging": "False",
+            "programming": "True"
+        }
+    },
+    "ram": {
+        "max_addr": "0xFFF",
+        "min_addr": "0x0015"
+    },
+    "rom": {
+        "max_addr": "0x7FFF",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x0014",
+        "min_addr": "0x0000"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "3.600",
+        "range": {
+            "max_value": "3.600",
+            "min_value": "2.700"
+        }
+    },
+    "clock": "1"
+}

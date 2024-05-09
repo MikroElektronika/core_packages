@@ -1,0 +1,652 @@
+{
+    "eeprom": {
+        "max_addr": "0x0003FF",
+        "min_addr": "0x0000"
+    },
+    "eio": {
+        "max_addr": "0x000FFF",
+        "min_addr": "0x40"
+    },
+    "fuse": {
+    "list": "[]"
+    },
+    "io": {
+        "max_addr": "0x3F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x0054",
+            "name": "USARTD0_TX"
+        },
+        {
+            "address": "0x0052",
+            "name": "USARTD0_DRE"
+        },
+        {
+            "address": "0x0050",
+            "name": "USARTD0_RX"
+        },
+        {
+            "address": "0x0048",
+            "name": "TCD5"
+        },
+        {
+            "address": "0x0046",
+            "name": "PORTD"
+        },
+        {
+            "address": "0x0044",
+            "name": "ADCA"
+        },
+        {
+            "address": "0x003E",
+            "name": "ACA"
+        },
+        {
+            "address": "0x003C",
+            "name": "PORTA"
+        },
+        {
+            "address": "0x0038",
+            "name": "XCL"
+        },
+        {
+            "address": "0x0034",
+            "name": "NVM"
+        },
+        {
+            "address": "0x0032",
+            "name": "USARTC0_TX"
+        },
+        {
+            "address": "0x0030",
+            "name": "USARTC0_DRE"
+        },
+        {
+            "address": "0x002E",
+            "name": "USARTC0_RX"
+        },
+        {
+            "address": "0x002C",
+            "name": "SPIC"
+        },
+        {
+            "address": "0x0024",
+            "name": "TCC5"
+        },
+        {
+            "address": "0x0018",
+            "name": "TCC4"
+        },
+        {
+            "address": "0x0014",
+            "name": "TWIC"
+        },
+        {
+            "address": "0x0012",
+            "name": "PORTC"
+        },
+        {
+            "address": "0x000E",
+            "name": "RTC"
+        },
+        {
+            "address": "0x0006",
+            "name": "EDMA"
+        },
+        {
+            "address": "0x0004",
+            "name": "PORTR"
+        },
+        {
+            "address": "0x0002",
+            "desc": "None.",
+            "name": "OSC"
+        }
+    ],
+    "mcu": "ATXMEGA32E5",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "ram": {
+        "max_addr": "0x002FFF",
+        "min_addr": "0x2000"
+    },
+    "rom": {
+        "max_addr": "0x0047FF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "ADIW",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "SBIW",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "MUL",
+        "MULS",
+        "MULSU",
+        "FMUL",
+        "FMULS",
+        "FMULSU",
+        "RJMP",
+        "IJMP",
+        "JMP",
+        "RCALL",
+        "ICALL",
+        "CALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "MOV",
+        "MOVW",
+        "LDI",
+        "LDS",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LDD_Y",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDD_Z",
+        "STS",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "STD_Y",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STD_Z",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi",
+        "ELPM_Z",
+        "ELPM_Zi",
+        "SPM",
+        "SPM_Zi",
+        "IN",
+        "OUT",
+        "PUSH",
+        "POP",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "SBI",
+        "CBI",
+        "BST",
+        "BLD",
+        "BSET",
+        "BCLR",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "BREAK",
+        "NOP",
+        "SLEEP",
+        "WDR"
+    ],
+    "config_registers": [
+        {
+            "address": "820001",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "WDPER",
+                    "label": "Watchdog Timeout Period",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "8 cycles (8ms @ 3.3V)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "16 cycles (16ms @ 3.3V)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "32 cycles (32ms @ 3.3V)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "64 cycles (64ms @ 3.3V)",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "128 cycles (0.125s @ 3.3V)",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "256 cycles (0.25s @ 3.3V)",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "512 cycles (0.5s @ 3.3V)",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "1K cycles (1s @ 3.3V)",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "2K cycles (2s @ 3.3V)",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "4K cycles (4s @ 3.3V)",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "8K cycles (8s @ 3.3V)",
+                            "value": "0000000A"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "WDWPER",
+                    "label": "Watchdog Window Timeout Period",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "8 cycles (8ms @ 3.3V)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "16 cycles (16ms @ 3.3V)",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "32 cycles (32ms @ 3.3V)",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "64 cycles (64ms @ 3.3V)",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "128 cycles (0.125s @ 3.3V)",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "256 cycles (0.25s @ 3.3V)",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "512 cycles (0.5s @ 3.3V)",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "1K cycles (1s @ 3.3V)",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "2K cycles (2s @ 3.3V)",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "4K cycles (4s @ 3.3V)",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "8K cycles (8s @ 3.3V)",
+                            "value": "000000A0"
+                        }
+                    ]
+                }
+            ],
+            "key": "FUSEBYTE1",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "820002",
+            "default": "000000FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "3",
+                    "key": "BODPD",
+                    "label": "BOD Operation in Power-Down Mode",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "BOD enabled in sampled mode",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "BOD enabled continuously",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "BOD Disabled",
+                            "value": "00000003"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "reserved",
+                    "label": "reserved",
+                    "mask": "0000003C",
+                "settings": []
+                },
+                {
+                    "hidden": false,
+                    "init": "40",
+                    "key": "BOOTRST",
+                    "label": "Boot Loader Section Reset Vector",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Boot Loader Reset",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Application Reset",
+                            "value": "00000040"
+                        }
+                    ]
+                }
+            ],
+            "key": "FUSEBYTE2",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "820003",
+            "default": "000000FF",
+        "fields": [],
+            "key": "reserved",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "820004",
+            "default": "000000FF",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "reserved",
+                    "label": "reserved",
+                    "mask": "00000001",
+                "settings": []
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "WDLOCK",
+                    "label": "Watchdog Timer Lock",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "C",
+                    "key": "STARTUPTIME",
+                    "label": "Start-up Time",
+                    "mask": "0000000C",
+                    "settings": [
+                        {
+                            "label": "0 ms",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "4 ms",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "64 ms",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10",
+                    "key": "RSTDISBL",
+                    "label": "External Reset Disable",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000010"
+                        }
+                    ]
+                }
+            ],
+            "key": "FUSEBYTE4",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "820005",
+            "default": "000000FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "BODLEVEL",
+                    "label": "Brownout Detection Voltage Level",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "1.6 V",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "1.8 V",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "2.0 V",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "2.2 V",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "2.4 V",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "2.6 V",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "2.8 V",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "3.0 V",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "EESAVE",
+                    "label": "Preserve EEPROM Through Chip Erase",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "30",
+                    "key": "BODACT",
+                    "label": "BOD Operation in Active Mode",
+                    "mask": "00000030",
+                    "settings": [
+                        {
+                            "label": "BOD enabled in sampled mode",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "BOD enabled continuously",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "BOD Disabled",
+                            "value": "00000030"
+                        }
+                    ]
+                }
+            ],
+            "key": "FUSEBYTE5",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "820006",
+            "default": "000000FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "VALUE",
+                    "label": "Port Pin Value",
+                    "mask": "0000003F",
+                "settings": []
+                },
+                {
+                    "hidden": false,
+                    "init": "40",
+                    "key": "FDACT4",
+                    "label": "Fault Dectection Action on TC4",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000040"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "FDACT5",
+                    "label": "Fault Dectection Action on TC5",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "FUSEBYTE6",
+            "unused": "FFFFFF00"
+        }
+    ],
+    "avr_core": "avrxmega2",
+    "codegrip_icd": {
+        "hwbrkpno": "2",
+        "instr_pipeline": "0",
+        "start_addr": "0",
+        "swbrkpen": "0"
+    }
+}

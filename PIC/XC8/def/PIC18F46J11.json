@@ -1,0 +1,720 @@
+{
+    "config_words": [
+        {
+            "init": "ON",
+            "key": "WDTEN",
+            "label": "Watchdog Timer",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled - Controlled by SWDTEN bit",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Overflow/Underflow Reset",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "XINST",
+            "label": "Extended Instruction Set",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Background Debug",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP0",
+            "label": "Code Protect",
+            "settings": [
+                {
+                    "label": "Program memory is not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory is code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ECPLL",
+            "key": "OSC",
+            "label": "Oscillator",
+            "settings": [
+                {
+                    "label": "EC+PLL (CLKO-RA6)",
+                    "value": "ECPLL"
+                },
+                {
+                    "label": "EC (CLKO-RA6)",
+                    "value": "EC"
+                },
+                {
+                    "label": "HS+PLL",
+                    "value": "HSPLL"
+                },
+                {
+                    "label": "HS",
+                    "value": "HS"
+                },
+                {
+                    "label": "INTOSCPLLO (CLKO-RA6)",
+                    "value": "INTOSCPLLO"
+                },
+                {
+                    "label": "INTOSCPLL",
+                    "value": "INTOSCPLL"
+                },
+                {
+                    "label": "INTOSCO (CLKO-RA6)",
+                    "value": "INTOSCO"
+                },
+                {
+                    "label": "INTOSC",
+                    "value": "INTOSC"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "T1DIG",
+            "label": "T1OSCEN Enforcement",
+            "settings": [
+                {
+                    "label": "Secondary Oscillator clock source may be selected",
+                    "value": "ON"
+                },
+                {
+                    "label": "Secondary Oscillator clock source may not be selected",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "LPT1OSC",
+            "label": "Low-Power Timer1 Oscillator",
+            "settings": [
+                {
+                    "label": "High-power operation",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Low-power operation",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Oscillator Switch Over Mode",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "32768",
+            "key": "WDTPS",
+            "label": "Watchdog Postscaler",
+            "settings": [
+                {
+                    "label": "1:32768",
+                    "value": "32768"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "16384"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "8192"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "4096"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "2048"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "1024"
+                },
+                {
+                    "label": "1:512",
+                    "value": "512"
+                },
+                {
+                    "label": "1:256",
+                    "value": "256"
+                },
+                {
+                    "label": "1:128",
+                    "value": "128"
+                },
+                {
+                    "label": "1:64",
+                    "value": "64"
+                },
+                {
+                    "label": "1:32",
+                    "value": "32"
+                },
+                {
+                    "label": "1:16",
+                    "value": "16"
+                },
+                {
+                    "label": "1:8",
+                    "value": "8"
+                },
+                {
+                    "label": "1:4",
+                    "value": "4"
+                },
+                {
+                    "label": "1:2",
+                    "value": "2"
+                },
+                {
+                    "label": "1:1",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "init": "INTOSCREF",
+            "key": "DSWDTOSC",
+            "label": "DSWDT Clock Select",
+            "settings": [
+                {
+                    "label": "DSWDT uses INTRC",
+                    "value": "INTOSCREF"
+                },
+                {
+                    "label": "DSWDT uses T1OSC/T1CKI",
+                    "value": "T1OSCREF"
+                }
+            ]
+        },
+        {
+            "init": "T1OSCREF",
+            "key": "RTCOSC",
+            "label": "RTCC Clock Select",
+            "settings": [
+                {
+                    "label": "RTCC uses T1OSC/T1CKI",
+                    "value": "T1OSCREF"
+                },
+                {
+                    "label": "RTCC uses INTRC",
+                    "value": "INTOSCREF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSBOREN",
+            "label": "Deep Sleep BOR",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSWDTEN",
+            "label": "Deep Sleep Watchdog Timer",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "G2",
+            "key": "DSWDTPS",
+            "label": "Deep Sleep Watchdog Postscaler",
+            "settings": [
+                {
+                    "label": "1:2,147,483,648 (25.7 days)",
+                    "value": "G2"
+                },
+                {
+                    "label": "1:536,870,912 (6.4 days)",
+                    "value": "M536"
+                },
+                {
+                    "label": "1:134,217,728 (38.5 hours)",
+                    "value": "M134"
+                },
+                {
+                    "label": "1:33,554,432 (9.6 hours)",
+                    "value": "M33"
+                },
+                {
+                    "label": "1:8,388,608 (2.4 hours)",
+                    "value": "M8"
+                },
+                {
+                    "label": "1:2,097,152 (36 minutes)",
+                    "value": "M2"
+                },
+                {
+                    "label": "1:524,288 (9 minutes)",
+                    "value": "K524"
+                },
+                {
+                    "label": "1:131,072 (135 seconds)",
+                    "value": "K131"
+                },
+                {
+                    "label": "1:32,768 (34 seconds)",
+                    "value": "K32"
+                },
+                {
+                    "label": "1:8,192 (8.5 seconds)",
+                    "value": "8192"
+                },
+                {
+                    "label": "1:2,048 (2.1 seconds)",
+                    "value": "2048"
+                },
+                {
+                    "label": "1:512 (528 ms)",
+                    "value": "512"
+                },
+                {
+                    "label": "1:128 (132 ms)",
+                    "value": "128"
+                },
+                {
+                    "label": "1:32 (33 ms)",
+                    "value": "32"
+                },
+                {
+                    "label": "1:8 (8.3 ms)",
+                    "value": "8"
+                },
+                {
+                    "label": "1:2 (2.1 ms)",
+                    "value": "2"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "IOLOCK One-Way Set Enable bit",
+            "settings": [
+                {
+                    "label": "The IOLOCK bit (PPSCON<0>) can be set once",
+                    "value": "ON"
+                },
+                {
+                    "label": "The IOLOCK bit (PPSCON<0>) can be set and cleared as needed",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "MSK7",
+            "key": "MSSP7B_EN",
+            "label": "MSSP address masking",
+            "settings": [
+                {
+                    "label": "7 Bit address masking mode",
+                    "value": "MSK7"
+                },
+                {
+                    "label": "5 Bit address masking mode",
+                    "value": "MSK5"
+                }
+            ]
+        },
+        {
+            "init": "PAGE_63",
+            "key": "WPFP",
+            "label": "Write/Erase Protect Page Start/End Location",
+            "settings": [
+                {
+                    "label": "Write Protect Program Flash Page 0",
+                    "value": "PAGE_0"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 1",
+                    "value": "PAGE_1"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 2",
+                    "value": "PAGE_2"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 3",
+                    "value": "PAGE_3"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 4",
+                    "value": "PAGE_4"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 5",
+                    "value": "PAGE_5"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 6",
+                    "value": "PAGE_6"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 7",
+                    "value": "PAGE_7"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 8",
+                    "value": "PAGE_8"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 9",
+                    "value": "PAGE_9"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 10",
+                    "value": "PAGE_10"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 11",
+                    "value": "PAGE_11"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 12",
+                    "value": "PAGE_12"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 13",
+                    "value": "PAGE_13"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 14",
+                    "value": "PAGE_14"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 15",
+                    "value": "PAGE_15"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 16",
+                    "value": "PAGE_16"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 17",
+                    "value": "PAGE_17"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 18",
+                    "value": "PAGE_18"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 19",
+                    "value": "PAGE_19"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 20",
+                    "value": "PAGE_20"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 21",
+                    "value": "PAGE_21"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 22",
+                    "value": "PAGE_22"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 23",
+                    "value": "PAGE_23"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 24",
+                    "value": "PAGE_24"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 25",
+                    "value": "PAGE_25"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 26",
+                    "value": "PAGE_26"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 27",
+                    "value": "PAGE_27"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 28",
+                    "value": "PAGE_28"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 29",
+                    "value": "PAGE_29"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 30",
+                    "value": "PAGE_30"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 31",
+                    "value": "PAGE_31"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 32",
+                    "value": "PAGE_32"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 33",
+                    "value": "PAGE_33"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 34",
+                    "value": "PAGE_34"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 35",
+                    "value": "PAGE_35"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 36",
+                    "value": "PAGE_36"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 37",
+                    "value": "PAGE_37"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 38",
+                    "value": "PAGE_38"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 39",
+                    "value": "PAGE_39"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 40",
+                    "value": "PAGE_40"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 41",
+                    "value": "PAGE_41"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 42",
+                    "value": "PAGE_42"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 43",
+                    "value": "PAGE_43"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 44",
+                    "value": "PAGE_44"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 45",
+                    "value": "PAGE_45"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 46",
+                    "value": "PAGE_46"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 47",
+                    "value": "PAGE_47"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 48",
+                    "value": "PAGE_48"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 49",
+                    "value": "PAGE_49"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 50",
+                    "value": "PAGE_50"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 51",
+                    "value": "PAGE_51"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 52",
+                    "value": "PAGE_52"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 53",
+                    "value": "PAGE_53"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 54",
+                    "value": "PAGE_54"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 55",
+                    "value": "PAGE_55"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 56",
+                    "value": "PAGE_56"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 57",
+                    "value": "PAGE_57"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 58",
+                    "value": "PAGE_58"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 59",
+                    "value": "PAGE_59"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 60",
+                    "value": "PAGE_60"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 61",
+                    "value": "PAGE_61"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 62",
+                    "value": "PAGE_62"
+                },
+                {
+                    "label": "Write Protect Program Flash Page 63",
+                    "value": "PAGE_63"
+                }
+            ]
+        },
+        {
+            "init": "PAGE_WPFP",
+            "key": "WPEND",
+            "label": "Write/Erase Protect Region Select (valid when WPDIS = 0)",
+            "settings": [
+                {
+                    "label": "Page WPFP<5:0> through Configuration Words erase/write protected",
+                    "value": "PAGE_WPFP"
+                },
+                {
+                    "label": "Page 0 through WPFP<5:0> erase/write protected",
+                    "value": "PAGE_0"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WPCFG",
+            "label": "Write/Erase Protect Configuration Region",
+            "settings": [
+                {
+                    "label": "Configuration Words page not erase/write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Configuration Words page erase/write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WPDIS",
+            "label": "Write Protect Disable bit",
+            "settings": [
+                {
+                    "label": "WPFP<5:0>/WPEND region ignored",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WPFP<5:0>/WPEND region erase/write protected",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18F46J11",
+    "clock": 1
+}

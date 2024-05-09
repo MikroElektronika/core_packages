@@ -1,0 +1,642 @@
+{
+    "config_words": [
+        {
+            "init": "OFF",
+            "key": "BWRP",
+            "label": "Boot Segment Write-Protect Bit",
+            "settings": [
+                {
+                    "label": "Boot Segment is write protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "Boot Segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DISABLED",
+            "key": "BSS",
+            "label": "Boot Segment Code-Protect Level bits",
+            "settings": [
+                {
+                    "label": "High Security",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "Standard Security",
+                    "value": "STNDRD"
+                },
+                {
+                    "label": "No Protection (other than BWRP)",
+                    "value": "DISABLED"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BSS2",
+            "label": "Boot Segment Control Bit",
+            "settings": [
+                {
+                    "label": "Boot Segment size determined by FBSLIM",
+                    "value": "ON"
+                },
+                {
+                    "label": "No Boot Segment",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Segment Write-Protect Bit",
+            "settings": [
+                {
+                    "label": "General Segment is write protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "General Segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DISABLED",
+            "key": "GSS",
+            "label": "General Segment Code-Protect Level bits",
+            "settings": [
+                {
+                    "label": "High Security",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "Standard Security",
+                    "value": "STNDRD"
+                },
+                {
+                    "label": "No Protection (other than GWRP)",
+                    "value": "DISABLED"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CWRP",
+            "label": "Configuration Segment Write-Protect Bit",
+            "settings": [
+                {
+                    "label": "Configuration Segment is write protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "Configuration Segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DISABLED",
+            "key": "CSS",
+            "label": "Configuration Segment Code-Protect Level bits",
+            "settings": [
+                {
+                    "label": "High Security",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "Enhanced Security",
+                    "value": "ENHNCD"
+                },
+                {
+                    "label": "Standard Security",
+                    "value": "STNDRD"
+                },
+                {
+                    "label": "No Protection (other than CWRP)",
+                    "value": "DISABLED"
+                }
+            ]
+        },
+        {
+            "init": "DISABLE",
+            "key": "AIVTDIS",
+            "label": "Alternate Interrupt Vector Table Disable Bit",
+            "settings": [
+                {
+                    "label": "Enable Alternate Vector Table",
+                    "value": "ENABLE"
+                },
+                {
+                    "label": "Disable Alternate Vector Table",
+                    "value": "DISABLE"
+                }
+            ]
+        },
+        {
+            "init": "BSLIM",
+            "key": "BSLIM",
+            "label": "Boot Segment Code Flash Page Address Limit Bits",
+            "settings": [
+                {
+                    "label": "Boot Segment Flash Page Address Limit (0-0x1FFF)",
+                    "value": "BSLIM"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIVN",
+            "key": "FNOSC",
+            "label": "Initial oscillator Source Selection Bits",
+            "settings": [
+                {
+                    "label": "Internal Fast RC (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC Oscillator with divide-by-N with PLL module (FRCPLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Oscillator with PLL module (XT + PLL, HS + PLL, EC + PLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Low-Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) Oscillator with divide by 16",
+                    "value": "FRCDIV16"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) Oscillator with postscaler",
+                    "value": "FRCDIVN"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Two Speed Oscillator Start-Up Bit",
+            "settings": [
+                {
+                    "label": "Start up device with user selected oscillator source",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Start up device with FRC,then automatically switch to user selected oscillator source",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "POSCMD",
+            "label": "Primary Oscillator Mode Select Bits",
+            "settings": [
+                {
+                    "label": "EC (External Clock) mode",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT Crystal Oscillator mode",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS Crystal Oscillator mode",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary Oscillator disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "OSC2 Pin I/O Function Enable Bit",
+            "settings": [
+                {
+                    "label": "OSC2 is general purpose digital I/O pin",
+                    "value": "ON"
+                },
+                {
+                    "label": "OSC2 is clock output",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "Peripheral Pin Select Configuration Bit",
+            "settings": [
+                {
+                    "label": "Allow Multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow Only One reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "CSECME",
+            "key": "FCKSM",
+            "label": "Clock Switching Mode Bits",
+            "settings": [
+                {
+                    "label": "Both Clock Switching and Fail-safe Clock Monitor are enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock Switching is enabled,Fail-safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Both Clock Switching and Fail-safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PLLKEN",
+            "label": "PLL Lock Enable Bit",
+            "settings": [
+                {
+                    "label": "Clock switch will not wait for the PLL lock signal",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Clock switch to PLL source will wait until the PLL lock signal is valid",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPOST",
+            "label": "Watchdog Timer Postscaler Bits",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "WDTPRE",
+            "label": "Watchdog Timer Prescaler Bit",
+            "settings": [
+                {
+                    "label": "1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable Bits",
+            "settings": [
+                {
+                    "label": "WDT and SWDTEN Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT Enabled only while device is active (disabled in sleep, SWDTEN disabled)",
+                    "value": "ON_DIS_SLEEP"
+                },
+                {
+                    "label": "WDT Enabled/Disabled (controlled using SWDTEN bit)",
+                    "value": "ON_SWDTEN"
+                },
+                {
+                    "label": "WDT Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window Enable Bit",
+            "settings": [
+                {
+                    "label": "Watchdog timer in Window Mode",
+                    "value": "ON"
+                },
+                {
+                    "label": "Watchdog timer in Non-Window Mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "WIN25",
+            "key": "WDTWIN",
+            "label": "Watchdog Window Select Bits",
+            "settings": [
+                {
+                    "label": "WDT Window is 75% of WDT period",
+                    "value": "WIN75"
+                },
+                {
+                    "label": "WDT Window is 50% of WDT period",
+                    "value": "WIN50"
+                },
+                {
+                    "label": "WDT Window is 37.5% of WDT period",
+                    "value": "WIN37"
+                },
+                {
+                    "label": "WDT Window is 25% of WDT period",
+                    "value": "WIN25"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "BOREN0",
+            "label": "Brown Out Reset Detection Bit",
+            "settings": [
+                {
+                    "label": "BOR is Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "BOR is Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PGD1",
+            "key": "ICS",
+            "label": "ICD Communication Channel Select Bits",
+            "settings": [
+                {
+                    "label": "Reserved, do not use",
+                    "value": "NONE"
+                },
+                {
+                    "label": "Communicate on PGEC3 and PGED3",
+                    "value": "PGD3"
+                },
+                {
+                    "label": "Communicate on PGEC2 and PGED2",
+                    "value": "PGD2"
+                },
+                {
+                    "label": "Communicate on PGEC1 and PGED1",
+                    "value": "PGD1"
+                }
+            ]
+        },
+        {
+            "init": "DMTIVTL",
+            "key": "DMTIVTL",
+            "label": "Lower 16 Bits of 32 Bit DMT Window Interval",
+            "settings": [
+                {
+                    "label": "Lower 16 bits of 32 bit DMT window interval (0-0xFFFF)",
+                    "value": "DMTIVTL"
+                }
+            ]
+        },
+        {
+            "init": "DMTIVTH",
+            "key": "DMTIVTH",
+            "label": "Upper 16 Bits of 32 Bit DMT Window Interval",
+            "settings": [
+                {
+                    "label": "Upper 16 bits of 32 bit DMT window interval (0-0xFFFF)",
+                    "value": "DMTIVTH"
+                }
+            ]
+        },
+        {
+            "init": "DMTCNTL",
+            "key": "DMTCNTL",
+            "label": "Lower 16 Bits of 32 Bit DMT Instruction Count Time-Out Value",
+            "settings": [
+                {
+                    "label": "Lower 16 bits of 32 bit DMT instruction count time-out value (0-0xFFFF)",
+                    "value": "DMTCNTL"
+                }
+            ]
+        },
+        {
+            "init": "DMTCNTH",
+            "key": "DMTCNTH",
+            "label": "Upper 16 Bits of 32 Bit DMT Instruction Count Time-Out Value",
+            "settings": [
+                {
+                    "label": "Upper 16 bits of 32 bit DMT instruction count time-out value (0-0xFFFF)",
+                    "value": "DMTCNTH"
+                }
+            ]
+        },
+        {
+            "init": "ENABLE",
+            "key": "DMTEN",
+            "label": "Dead Man Timer Enable Bit",
+            "settings": [
+                {
+                    "label": "Dead Man Timer is Disabled and can be enabled by software",
+                    "value": "DISABLE"
+                },
+                {
+                    "label": "Dead Man Timer is Enabled and cannot be disabled by software",
+                    "value": "ENABLE"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PWMLOCK",
+            "label": "PWM Lock Enable Bit",
+            "settings": [
+                {
+                    "label": "PWM registers may be written without key sequence",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Certain PWM registers may only be written after key sequence",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "ALTI2C1",
+            "label": "Alternate I2C1 Pins Selection Bit",
+            "settings": [
+                {
+                    "label": "I2C1 mapped to ASDA1/ASCL1 pins",
+                    "value": "ON"
+                },
+                {
+                    "label": "I2C1 mapped to SDA1/SCL1 pins",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "CTXT1",
+            "label": "Interrupt Priority Level (IPL) Selection Bits For Alternate Working Register Set 1",
+            "settings": [
+                {
+                    "label": "Alternate register set 1 assigned to IPL level 1",
+                    "value": "IPL1"
+                },
+                {
+                    "label": "Alternate register set 1 assigned to IPL level 2",
+                    "value": "IPL2"
+                },
+                {
+                    "label": "Alternate register set 1 assigned to IPL level 3",
+                    "value": "IPL3"
+                },
+                {
+                    "label": "Alternate register set 1 assigned to IPL level 4",
+                    "value": "IPL4"
+                },
+                {
+                    "label": "Alternate register set 1 assigned to IPL level 5",
+                    "value": "IPL5"
+                },
+                {
+                    "label": "Alternate register set 1 assigned to IPL level 6",
+                    "value": "IPL6"
+                },
+                {
+                    "label": "Alternate register set 1 assigned to IPL level 7",
+                    "value": "IPL7"
+                },
+                {
+                    "label": "Not Assigned",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "CTXT2",
+            "label": "Interrupt Priority Level (IPL) Selection Bits For Alternate Working Register Set 2",
+            "settings": [
+                {
+                    "label": "Alternate register set 2  assigned to IPL level 1",
+                    "value": "IPL1"
+                },
+                {
+                    "label": "Alternate register set 2  assigned to IPL level 2",
+                    "value": "IPL2"
+                },
+                {
+                    "label": "Alternate register set 2  assigned to IPL level 3",
+                    "value": "IPL3"
+                },
+                {
+                    "label": "Alternate register set 2  assigned to IPL level 4",
+                    "value": "IPL4"
+                },
+                {
+                    "label": "Alternate register set 2  assigned to IPL level 5",
+                    "value": "IPL5"
+                },
+                {
+                    "label": "Alternate register set 2  assigned to IPL level 6",
+                    "value": "IPL6"
+                },
+                {
+                    "label": "Alternate register set 2 assigned to IPL level 7",
+                    "value": "IPL7"
+                },
+                {
+                    "label": "Not Assigned",
+                    "value": "NONE"
+                }
+            ]
+        }
+    ],
+    "mcu": "dsPIC33EV64GM104",
+    "clock": 1
+}

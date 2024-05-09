@@ -1,0 +1,181 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC32/XC32/core/def/PIC32MZ1024EFK064.json",
+    "flash": 1048576,
+    "ram": 262144,
+    "settings": {
+        "clock": "1",
+        "scheme": "PIC32MZ1024EFK064_CAN",
+        "mcu": "PIC32MZ1024EFK064",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "FMIIEN",
+                "value": "ON"
+            },
+            {
+                "key": "FETHIO",
+                "value": "ON"
+            },
+            {
+                "key": "PGL1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "PMDL1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "FUSBIDIO",
+                "value": "ON"
+            },
+            {
+                "key": "FPLLIDIV",
+                "value": "DIV_8"
+            },
+            {
+                "key": "FPLLRNG",
+                "value": "RANGE_34_68_MHZ"
+            },
+            {
+                "key": "FPLLICLK",
+                "value": "PLL_FRC"
+            },
+            {
+                "key": "FPLLMULT",
+                "value": "MUL_128"
+            },
+            {
+                "key": "FPLLODIV",
+                "value": "DIV_32"
+            },
+            {
+                "key": "UPLLFSEL",
+                "value": "FREQ_24MHZ"
+            },
+            {
+                "key": "FNOSC",
+                "value": "FRCDIV"
+            },
+            {
+                "key": "DMTINTV",
+                "value": "WIN_127_128"
+            },
+            {
+                "key": "FSOSCEN",
+                "value": "ON"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "POSCMOD",
+                "value": "OFF"
+            },
+            {
+                "key": "OSCIOFNC",
+                "value": "OFF"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSECME"
+            },
+            {
+                "key": "WDTPS",
+                "value": "PS1048576"
+            },
+            {
+                "key": "WDTSPGM",
+                "value": "STOP"
+            },
+            {
+                "key": "WINDIS",
+                "value": "NORMAL"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "ON"
+            },
+            {
+                "key": "FWDTWINSZ",
+                "value": "WINSZ_25"
+            },
+            {
+                "key": "DMTCNT",
+                "value": "DMT31"
+            },
+            {
+                "key": "FDMTEN",
+                "value": "ON"
+            },
+            {
+                "key": "DEBUG",
+                "value": "OFF"
+            },
+            {
+                "key": "JTAGEN",
+                "value": "ON"
+            },
+            {
+                "key": "ICESEL",
+                "value": "ICS_PGx1"
+            },
+            {
+                "key": "TRCEN",
+                "value": "ON"
+            },
+            {
+                "key": "BOOTISA",
+                "value": "MIPS32"
+            },
+            {
+                "key": "FECCCON",
+                "value": "OFF_UNLOCKED"
+            },
+            {
+                "key": "FSLEEP",
+                "value": "OFF"
+            },
+            {
+                "key": "DBGPER",
+                "value": "PG_ALL"
+            },
+            {
+                "key": "SMCLR",
+                "value": "MCLR_NORM"
+            },
+            {
+                "key": "SOSCGAIN",
+                "value": "GAIN_LEVEL_3"
+            },
+            {
+                "key": "SOSCBOOST",
+                "value": "ON"
+            },
+            {
+                "key": "POSCGAIN",
+                "value": "GAIN_LEVEL_3"
+            },
+            {
+                "key": "POSCBOOST",
+                "value": "ON"
+            },
+            {
+                "key": "EJTAGBEN",
+                "value": "NORMAL"
+            },
+            {
+                "key": "CP",
+                "value": "OFF"
+            }
+        ]
+    }
+}

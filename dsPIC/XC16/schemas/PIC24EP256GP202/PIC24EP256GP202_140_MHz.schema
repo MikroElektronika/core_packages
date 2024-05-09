@@ -1,0 +1,89 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/XC16/core/def/PIC24EP256GP202.json",
+    "flash": 262144,
+    "ram": 32768,
+    "settings": {
+        "clock": "140",
+        "scheme": "PIC24EP256GP202_140_MHz",
+        "mcu": "PIC24EP256GP202",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "ICS",
+                "value": "PGD1"
+            },
+            {
+                "key": "JTAGEN",
+                "value": "OFF"
+            },
+            {
+                "key": "ALTI2C1",
+                "value": "OFF"
+            },
+            {
+                "key": "ALTI2C2",
+                "value": "OFF"
+            },
+            {
+                "key": "WDTWIN",
+                "value": "WIN25"
+            },
+            {
+                "key": "WDTPOST",
+                "value": "PS32768"
+            },
+            {
+                "key": "WDTPRE",
+                "value": "PR128"
+            },
+            {
+                "key": "PLLKEN",
+                "value": "ON"
+            },
+            {
+                "key": "WINDIS",
+                "value": "OFF"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "POSCMD",
+                "value": "NONE"
+            },
+            {
+                "key": "OSCIOFNC",
+                "value": "OFF"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "OFF"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSDCMD"
+            },
+            {
+                "key": "FNOSC",
+                "value": "FRCPLL"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "GWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "GCP",
+                "value": "OFF"
+            }
+        ]
+    }
+}

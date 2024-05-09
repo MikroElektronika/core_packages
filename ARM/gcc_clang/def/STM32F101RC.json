@@ -1,0 +1,1179 @@
+{
+    "config_registers": [
+        {
+            "address": "40021000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "HSION",
+                    "label": "Internal high-speed clock enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "internal 8 MHz RC oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "internal 8 MHz RC oscillator ON",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HSEON",
+                    "label": "External high-speed clock enable",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "HSE oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSE oscillator ON",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HSEBYP",
+                    "label": "External high-speed clock bypass",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "HSE oscillator not bypassed",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSE oscillator bypassed with external clock",
+                            "value": "00040000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSSON",
+                    "label": "Clock security system enable",
+                    "mask": "00080000",
+                    "settings": [
+                        {
+                            "label": "Clock detector OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clock detector ON (if the HSE oscillator is ready, OFF if not)",
+                            "value": "00080000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLON",
+                    "label": "PLL enable",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "PLL OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL ON",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000080",
+                    "key": "HSITRIM",
+                    "label": "Internal high-speed clock trimming",
+                    "mask": "000000F8",
+                    "settings": [
+                        {
+                            "label": "The default value is 16, which, when added to the HSICAL value, should trim the HSI to 8",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CR",
+            "unused": "00000000"
+        },
+        {
+            "address": "40021004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SW",
+                    "label": "System clock Switch",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "HSI selected as system clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSE selected as system clock",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLL selected as system clock",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HPRE",
+                    "label": "Set and cleared by software to control the division factor of the AHB clock",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "SYSCLK not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "SYSCLK divided by 2",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "SYSCLK divided by 4",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "SYSCLK divided by 8",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 16",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 64",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 128",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 256",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 512",
+                            "value": "000000F0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PPRE1",
+                    "label": "APB low-speed prescaler (APB1)",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "HCLK not divided ",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HCLK divided by 2 ",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "HCLK divided by 4 ",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "HCLK divided by 8 ",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "HCLK divided by 16 ",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PPRE2",
+                    "label": "APB high-speed prescaler (APB2)",
+                    "mask": "00003800",
+                    "settings": [
+                        {
+                            "label": "HCLK not divided ",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HCLK divided by 2 ",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "HCLK divided by 4 ",
+                            "value": "00002100"
+                        },
+                        {
+                            "label": "HCLK divided by 8 ",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": "HCLK divided by 16 ",
+                            "value": "00003100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ADCPRE",
+                    "label": "ADC prescaler",
+                    "mask": "0000C000",
+                    "settings": [
+                        {
+                            "label": "PCLK2 divided by 2 ",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PCLK2 divided by 4 ",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "PCLK2 divided by 6 ",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "PCLK2 divided by 8 ",
+                            "value": "0000C000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLSRC",
+                    "label": "PLL entry clock source",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "HSI oscillator clock / 2 selected as PLL input clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clock from PREDIV1 selected as the PLL input clock",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLXTPRE",
+                    "label": "HSE divider for PLL entry",
+                    "mask": "00020000",
+                    "settings": [
+                        {
+                            "label": "HSE clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSE clock divided by 2",
+                            "value": "00020000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLMUL",
+                    "label": "PLL multiplication factor",
+                    "mask": "003C0000",
+                    "settings": [
+                        {
+                            "label": "PLL input clock x 2",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL input clock x 3",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "PLL input clock x 4",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "PLL input clock x 5",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "PLL input clock x 6",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "PLL input clock x 7",
+                            "value": "00140000"
+                        },
+                        {
+                            "label": "PLL input clock x 8",
+                            "value": "00180000"
+                        },
+                        {
+                            "label": "PLL input clock x 9",
+                            "value": "001C0000"
+                        },
+                        {
+                            "label": "PLL input clock x 10",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "PLL input clock x 11",
+                            "value": "00240000"
+                        },
+                        {
+                            "label": "PLL input clock x 12",
+                            "value": "00280000"
+                        },
+                        {
+                            "label": "PLL input clock x 13",
+                            "value": "002C0000"
+                        },
+                        {
+                            "label": "PLL input clock x 14",
+                            "value": "00300000"
+                        },
+                        {
+                            "label": "PLL input clock x 15",
+                            "value": "00340000"
+                        },
+                        {
+                            "label": "PLL input clock x 16",
+                            "value": "00380000"
+                        },
+                        {
+                            "label": "PLL input clock x 16",
+                            "value": "003C0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "USBPRE",
+                    "label": "USB prescaler",
+                    "mask": "00400000",
+                    "settings": [
+                        {
+                            "label": "PLL clock is divided by 1.5",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL clock is not divided",
+                            "value": "00400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MCO",
+                    "label": "Microcontroller clock output",
+                    "mask": "07000000",
+                    "settings": [
+                        {
+                            "label": "No clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "System clock (SYSCLK) selected",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "HSI clock selected",
+                            "value": "05000000"
+                        },
+                        {
+                            "label": "HSE clock selected",
+                            "value": "06000000"
+                        },
+                        {
+                            "label": "PLL clock divided by 2 selected",
+                            "value": "07000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CFGR",
+            "unused": "00000000"
+        }
+    ],
+    "core": "M3",
+    "delay_src_path": "delays/m3/__lib_delays.c",
+    "ivt": [
+        {
+            "name": "IVT_INT_NMI",
+            "vector": 2
+        },
+        {
+            "name": "IVT_INT_HardFault",
+            "vector": 3
+        },
+        {
+            "name": "IVT_INT_MemManage",
+            "vector": 4
+        },
+        {
+            "name": "IVT_INT_BusFault",
+            "vector": 5
+        },
+        {
+            "name": "IVT_INT_UsageFault",
+            "vector": 6
+        },
+        {
+            "name": "IVT_INT_RESERVED1",
+            "vector": 7
+        },
+        {
+            "name": "IVT_INT_RESERVED2",
+            "vector": 8
+        },
+        {
+            "name": "IVT_INT_RESERVED3",
+            "vector": 9
+        },
+        {
+            "name": "IVT_INT_RESERVED4",
+            "vector": 10
+        },
+        {
+            "name": "IVT_INT_SVCall",
+            "vector": 11
+        },
+        {
+            "name": "IVT_INT_DebugMon",
+            "vector": 12
+        },
+        {
+            "name": "IVT_INT_RESERVED5",
+            "vector": 13
+        },
+        {
+            "name": "IVT_INT_PendSV",
+            "vector": 14
+        },
+        {
+            "name": "IVT_INT_SysTick",
+            "vector": 15
+        },
+        {
+            "name": "IVT_INT_WWDG",
+            "vector": 16
+        },
+        {
+            "name": "IVT_INT_PVD",
+            "vector": 17
+        },
+        {
+            "name": "IVT_INT_TAMPER_STAMP",
+            "vector": 18
+        },
+        {
+            "name": "IVT_INT_RTC",
+            "vector": 19
+        },
+        {
+            "name": "IVT_INT_FLASH",
+            "vector": 20
+        },
+        {
+            "name": "IVT_INT_RCC",
+            "vector": 21
+        },
+        {
+            "name": "IVT_INT_EXTI0",
+            "vector": 22
+        },
+        {
+            "name": "IVT_INT_EXTI1",
+            "vector": 23
+        },
+        {
+            "name": "IVT_INT_EXTI2",
+            "vector": 24
+        },
+        {
+            "name": "IVT_INT_EXTI3",
+            "vector": 25
+        },
+        {
+            "name": "IVT_INT_EXTI4",
+            "vector": 26
+        },
+        {
+            "name": "IVT_INT_DMA1_Channel1",
+            "vector": 27
+        },
+        {
+            "name": "IVT_INT_DMA1_Channel2",
+            "vector": 28
+        },
+        {
+            "name": "IVT_INT_DMA1_Channel3",
+            "vector": 29
+        },
+        {
+            "name": "IVT_INT_DMA1_Channel4",
+            "vector": 30
+        },
+        {
+            "name": "IVT_INT_DMA1_Channel5",
+            "vector": 31
+        },
+        {
+            "name": "IVT_INT_DMA1_Channel6",
+            "vector": 32
+        },
+        {
+            "name": "IVT_INT_DMA1_Channel7",
+            "vector": 33
+        },
+        {
+            "name": "IVT_INT_ADC1_2",
+            "vector": 34
+        },
+        {
+            "name": "IVT_INT_USB_HP_CAN_TX",
+            "vector": 35
+        },
+        {
+            "name": "IVT_INT_USB_LP_CAN_RX0",
+            "vector": 36
+        },
+        {
+            "name": "IVT_INT_CAN1_RX1",
+            "vector": 37
+        },
+        {
+            "name": "IVT_INT_CAN1_SCE",
+            "vector": 38
+        },
+        {
+            "name": "IVT_INT_EXTI9_5",
+            "vector": 39
+        },
+        {
+            "name": "IVT_INT_TIM1_BRK",
+            "vector": 40
+        },
+        {
+            "name": "IVT_INT_TIM1_UP",
+            "vector": 41
+        },
+        {
+            "name": "IVT_INT_TIM1_TRG_COM",
+            "vector": 42
+        },
+        {
+            "name": "IVT_INT_TIM1_CC",
+            "vector": 43
+        },
+        {
+            "name": "IVT_INT_TIM2",
+            "vector": 44
+        },
+        {
+            "name": "IVT_INT_TIM3",
+            "vector": 45
+        },
+        {
+            "name": "IVT_INT_TIM4",
+            "vector": 46
+        },
+        {
+            "name": "IVT_INT_I2C1_EV",
+            "vector": 47
+        },
+        {
+            "name": "IVT_INT_I2C1_ER",
+            "vector": 48
+        },
+        {
+            "name": "IVT_INT_I2C2_EV",
+            "vector": 49
+        },
+        {
+            "name": "IVT_INT_I2C2_ER",
+            "vector": 50
+        },
+        {
+            "name": "IVT_INT_SPI1",
+            "vector": 51
+        },
+        {
+            "name": "IVT_INT_SPI2",
+            "vector": 52
+        },
+        {
+            "name": "IVT_INT_USART1",
+            "vector": 53
+        },
+        {
+            "name": "IVT_INT_USART2",
+            "vector": 54
+        },
+        {
+            "name": "IVT_INT_USART3",
+            "vector": 55
+        },
+        {
+            "name": "IVT_INT_EXTI15_10",
+            "vector": 56
+        },
+        {
+            "name": "IVT_INT_RTC_Alarm",
+            "vector": 57
+        },
+        {
+            "name": "IVT_INT_USB_Wakeup",
+            "vector": 58
+        },
+        {
+            "name": "IVT_INT_TIM8_BRK",
+            "vector": 59
+        },
+        {
+            "name": "IVT_INT_TIM8_UP",
+            "vector": 60
+        },
+        {
+            "name": "IVT_INT_TIM8_TRG_COM",
+            "vector": 61
+        },
+        {
+            "name": "IVT_INT_TIM8_CC",
+            "vector": 62
+        },
+        {
+            "name": "IVT_INT_ADC3",
+            "vector": 63
+        },
+        {
+            "name": "IVT_INT_FSMC",
+            "vector": 64
+        },
+        {
+            "name": "IVT_INT_SDIO",
+            "vector": 65
+        },
+        {
+            "name": "IVT_INT_TIM5",
+            "vector": 66
+        },
+        {
+            "name": "IVT_INT_SPI3",
+            "vector": 67
+        },
+        {
+            "name": "IVT_INT_UART4",
+            "vector": 68
+        },
+        {
+            "name": "IVT_INT_UART5",
+            "vector": 69
+        },
+        {
+            "name": "IVT_INT_TIM6",
+            "vector": 70
+        },
+        {
+            "name": "IVT_INT_TIM7",
+            "vector": 71
+        },
+        {
+            "name": "IVT_INT_DMA2_Channel1",
+            "vector": 72
+        },
+        {
+            "name": "IVT_INT_DMA2_Channel2",
+            "vector": 73
+        },
+        {
+            "name": "IVT_INT_DMA2_Channel3",
+            "vector": 74
+        },
+        {
+            "name": "IVT_INT_DMA2_Channel4_5",
+            "vector": 75
+        }
+    ],
+    "mcu": "STM32F101RC",
+    "packages": [
+        "Tx"
+    ],
+    "ram": {
+        "max_address": "0x20007FFF",
+        "min_address": "0x20000000"
+    },
+    "rom": {
+        "max_address": "0x0003FFFF",
+        "min_address": "0x00000000"
+    },
+    "rx": {
+        "max_address": "0x003F",
+        "min_address": "0x0000"
+    },
+    "sfr": [
+        {
+            "max_address": "0x4000002F",
+            "min_address": "0x40000000"
+        },
+        {
+            "max_address": "0x40000043",
+            "min_address": "0x40000034"
+        },
+        {
+            "max_address": "0x4000004F",
+            "min_address": "0x40000048"
+        },
+        {
+            "max_address": "0x4000042F",
+            "min_address": "0x40000400"
+        },
+        {
+            "max_address": "0x40000443",
+            "min_address": "0x40000434"
+        },
+        {
+            "max_address": "0x4000044F",
+            "min_address": "0x40000448"
+        },
+        {
+            "max_address": "0x4000082F",
+            "min_address": "0x40000800"
+        },
+        {
+            "max_address": "0x40000843",
+            "min_address": "0x40000834"
+        },
+        {
+            "max_address": "0x4000084F",
+            "min_address": "0x40000848"
+        },
+        {
+            "max_address": "0x40000C2F",
+            "min_address": "0x40000C00"
+        },
+        {
+            "max_address": "0x40000C43",
+            "min_address": "0x40000C34"
+        },
+        {
+            "max_address": "0x40000C4F",
+            "min_address": "0x40000C48"
+        },
+        {
+            "max_address": "0x40001007",
+            "min_address": "0x40001000"
+        },
+        {
+            "max_address": "0x40001017",
+            "min_address": "0x4000100C"
+        },
+        {
+            "max_address": "0x4000102F",
+            "min_address": "0x40001024"
+        },
+        {
+            "max_address": "0x40001407",
+            "min_address": "0x40001400"
+        },
+        {
+            "max_address": "0x40001417",
+            "min_address": "0x4000140C"
+        },
+        {
+            "max_address": "0x4000142F",
+            "min_address": "0x40001424"
+        },
+        {
+            "max_address": "0x4000181B",
+            "min_address": "0x40001800"
+        },
+        {
+            "max_address": "0x4000182F",
+            "min_address": "0x40001820"
+        },
+        {
+            "max_address": "0x4000183B",
+            "min_address": "0x40001834"
+        },
+        {
+            "max_address": "0x40001C07",
+            "min_address": "0x40001C00"
+        },
+        {
+            "max_address": "0x40001C1B",
+            "min_address": "0x40001C0C"
+        },
+        {
+            "max_address": "0x40001C2F",
+            "min_address": "0x40001C20"
+        },
+        {
+            "max_address": "0x40001C37",
+            "min_address": "0x40001C34"
+        },
+        {
+            "max_address": "0x40002007",
+            "min_address": "0x40002000"
+        },
+        {
+            "max_address": "0x4000201B",
+            "min_address": "0x4000200C"
+        },
+        {
+            "max_address": "0x4000202F",
+            "min_address": "0x40002020"
+        },
+        {
+            "max_address": "0x40002037",
+            "min_address": "0x40002034"
+        },
+        {
+            "max_address": "0x40002827",
+            "min_address": "0x40002800"
+        },
+        {
+            "max_address": "0x40002C0B",
+            "min_address": "0x40002C00"
+        },
+        {
+            "max_address": "0x4000300F",
+            "min_address": "0x40003000"
+        },
+        {
+            "max_address": "0x40003823",
+            "min_address": "0x40003800"
+        },
+        {
+            "max_address": "0x40003C23",
+            "min_address": "0x40003C00"
+        },
+        {
+            "max_address": "0x4000441B",
+            "min_address": "0x40004400"
+        },
+        {
+            "max_address": "0x4000481B",
+            "min_address": "0x40004800"
+        },
+        {
+            "max_address": "0x40004C17",
+            "min_address": "0x40004C00"
+        },
+        {
+            "max_address": "0x40005017",
+            "min_address": "0x40005000"
+        },
+        {
+            "max_address": "0x40005423",
+            "min_address": "0x40005400"
+        },
+        {
+            "max_address": "0x40005823",
+            "min_address": "0x40005800"
+        },
+        {
+            "max_address": "0x40006C37",
+            "min_address": "0x40006C04"
+        },
+        {
+            "max_address": "0x40006CBF",
+            "min_address": "0x40006C40"
+        },
+        {
+            "max_address": "0x40007007",
+            "min_address": "0x40007000"
+        },
+        {
+            "max_address": "0x40007433",
+            "min_address": "0x40007400"
+        },
+        {
+            "max_address": "0x40010017",
+            "min_address": "0x40010000"
+        },
+        {
+            "max_address": "0x4001001F",
+            "min_address": "0x4001001C"
+        },
+        {
+            "max_address": "0x40010417",
+            "min_address": "0x40010400"
+        },
+        {
+            "max_address": "0x4001081B",
+            "min_address": "0x40010800"
+        },
+        {
+            "max_address": "0x40010C1B",
+            "min_address": "0x40010C00"
+        },
+        {
+            "max_address": "0x4001101B",
+            "min_address": "0x40011000"
+        },
+        {
+            "max_address": "0x4001141B",
+            "min_address": "0x40011400"
+        },
+        {
+            "max_address": "0x4001181B",
+            "min_address": "0x40011800"
+        },
+        {
+            "max_address": "0x40011C1B",
+            "min_address": "0x40011C00"
+        },
+        {
+            "max_address": "0x4001201B",
+            "min_address": "0x40012000"
+        },
+        {
+            "max_address": "0x4001244F",
+            "min_address": "0x40012400"
+        },
+        {
+            "max_address": "0x40013023",
+            "min_address": "0x40013000"
+        },
+        {
+            "max_address": "0x4001381B",
+            "min_address": "0x40013800"
+        },
+        {
+            "max_address": "0x40014C1B",
+            "min_address": "0x40014C00"
+        },
+        {
+            "max_address": "0x40014C2F",
+            "min_address": "0x40014C20"
+        },
+        {
+            "max_address": "0x40014C3B",
+            "min_address": "0x40014C34"
+        },
+        {
+            "max_address": "0x40015007",
+            "min_address": "0x40015000"
+        },
+        {
+            "max_address": "0x4001501B",
+            "min_address": "0x4001500C"
+        },
+        {
+            "max_address": "0x4001502F",
+            "min_address": "0x40015020"
+        },
+        {
+            "max_address": "0x40015037",
+            "min_address": "0x40015034"
+        },
+        {
+            "max_address": "0x40015407",
+            "min_address": "0x40015400"
+        },
+        {
+            "max_address": "0x4001541B",
+            "min_address": "0x4001540C"
+        },
+        {
+            "max_address": "0x4001542F",
+            "min_address": "0x40015420"
+        },
+        {
+            "max_address": "0x40015437",
+            "min_address": "0x40015434"
+        },
+        {
+            "max_address": "0x40020017",
+            "min_address": "0x40020000"
+        },
+        {
+            "max_address": "0x4002002B",
+            "min_address": "0x4002001C"
+        },
+        {
+            "max_address": "0x4002003F",
+            "min_address": "0x40020030"
+        },
+        {
+            "max_address": "0x40020053",
+            "min_address": "0x40020044"
+        },
+        {
+            "max_address": "0x40020067",
+            "min_address": "0x40020058"
+        },
+        {
+            "max_address": "0x4002007B",
+            "min_address": "0x4002006C"
+        },
+        {
+            "max_address": "0x4002008F",
+            "min_address": "0x40020080"
+        },
+        {
+            "max_address": "0x40020417",
+            "min_address": "0x40020400"
+        },
+        {
+            "max_address": "0x4002042B",
+            "min_address": "0x4002041C"
+        },
+        {
+            "max_address": "0x4002043F",
+            "min_address": "0x40020430"
+        },
+        {
+            "max_address": "0x40020453",
+            "min_address": "0x40020444"
+        },
+        {
+            "max_address": "0x40020467",
+            "min_address": "0x40020458"
+        },
+        {
+            "max_address": "0x4002047B",
+            "min_address": "0x4002046C"
+        },
+        {
+            "max_address": "0x4002048F",
+            "min_address": "0x40020480"
+        },
+        {
+            "max_address": "0x40021027",
+            "min_address": "0x40021000"
+        },
+        {
+            "max_address": "0x40022017",
+            "min_address": "0x40022000"
+        },
+        {
+            "max_address": "0x40022023",
+            "min_address": "0x4002201C"
+        },
+        {
+            "max_address": "0x40022047",
+            "min_address": "0x40022044"
+        },
+        {
+            "max_address": "0x40022057",
+            "min_address": "0x4002204C"
+        },
+        {
+            "max_address": "0x4002300B",
+            "min_address": "0x40023000"
+        },
+        {
+            "max_address": "0xA000001F",
+            "min_address": "0xA0000000"
+        },
+        {
+            "max_address": "0xA000006F",
+            "min_address": "0xA0000060"
+        },
+        {
+            "max_address": "0xA0000077",
+            "min_address": "0xA0000074"
+        },
+        {
+            "max_address": "0xA000008F",
+            "min_address": "0xA0000080"
+        },
+        {
+            "max_address": "0xA0000097",
+            "min_address": "0xA0000094"
+        },
+        {
+            "max_address": "0xA00000B3",
+            "min_address": "0xA00000A0"
+        },
+        {
+            "max_address": "0xA0000107",
+            "min_address": "0xA0000104"
+        },
+        {
+            "max_address": "0xA000010F",
+            "min_address": "0xA000010C"
+        },
+        {
+            "max_address": "0xA0000117",
+            "min_address": "0xA0000114"
+        },
+        {
+            "max_address": "0xA000011F",
+            "min_address": "0xA000011C"
+        },
+        {
+            "max_address": "0xE000E007",
+            "min_address": "0xE000E004"
+        },
+        {
+            "max_address": "0xE000E01F",
+            "min_address": "0xE000E010"
+        },
+        {
+            "max_address": "0xE000E10B",
+            "min_address": "0xE000E100"
+        },
+        {
+            "max_address": "0xE000E18B",
+            "min_address": "0xE000E180"
+        },
+        {
+            "max_address": "0xE000E20B",
+            "min_address": "0xE000E200"
+        },
+        {
+            "max_address": "0xE000E28B",
+            "min_address": "0xE000E280"
+        },
+        {
+            "max_address": "0xE000E30B",
+            "min_address": "0xE000E300"
+        },
+        {
+            "max_address": "0xE000E43B",
+            "min_address": "0xE000E400"
+        },
+        {
+            "max_address": "0xE000ED2F",
+            "min_address": "0xE000ED00"
+        },
+        {
+            "max_address": "0xE000ED3B",
+            "min_address": "0xE000ED34"
+        },
+        {
+            "max_address": "0xE000EF03",
+            "min_address": "0xE000EF00"
+        },
+        {
+            "max_address": "0xE0042007",
+            "min_address": "0xE0042000"
+        }
+    ],
+    "clock": "1"
+}

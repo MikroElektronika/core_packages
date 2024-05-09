@@ -1,0 +1,335 @@
+{
+    "fuse": {
+        "byte0": {
+            "fuse0": {
+                "default": "1",
+                "name": "RSTDISBL",
+                "text": "Disable external reset"
+            },
+            "fuse1": {
+                "default": "1",
+                "name": "WDTON",
+                "text": "Watch dog timer always on"
+            },
+            "fuse2": {
+                "default": "1",
+                "name": "CKOUT",
+                "text": "Output external clock"
+            },
+            "fuse3": {
+                "default": "1",
+                "name": "SELFPROGEN",
+                "text": "Self programming enable"
+            },
+            "nmb_fuse_bits": "4",
+            "nmb_text": "4",
+            "text1": {
+                "mask": "0x08",
+            "text": "Self programming enable; [SELFPROGEN=0]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x04",
+            "text": "Output external clock; [CKOUT=0]",
+                "value": "0x00"
+            },
+            "text3": {
+                "mask": "0x02",
+            "text": "Watch dog timer always on; [WDTON=0]",
+                "value": "0x00"
+            },
+            "text4": {
+                "mask": "0x01",
+            "text": "Disable external reset; [RSTDISBL=0]",
+                "value": "0x00"
+            }
+        },
+    "list": "[BYTE0]"
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x000F",
+            "name": "USART_TXC"
+        },
+        {
+            "address": "0x000E",
+            "name": "USART_DRE"
+        },
+        {
+            "address": "0x000D",
+            "name": "USART_RXC"
+        },
+        {
+            "address": "0x000C",
+            "name": "USART_RXS"
+        },
+        {
+            "address": "0x000B",
+            "name": "ADC"
+        },
+        {
+            "address": "0x000A",
+            "name": "VLM"
+        },
+        {
+            "address": "0x0009",
+            "name": "WDT"
+        },
+        {
+            "address": "0x0008",
+            "name": "ANA_COMP"
+        },
+        {
+            "address": "0x0007",
+            "name": "TIM0_COMPB"
+        },
+        {
+            "address": "0x0006",
+            "name": "TIM0_COMPA"
+        },
+        {
+            "address": "0x0005",
+            "name": "TIM0_OVF"
+        },
+        {
+            "address": "0x0004",
+            "name": "TIM0_CAPT"
+        },
+        {
+            "address": "0x0003",
+            "name": "PCINT1"
+        },
+        {
+            "address": "0x0002",
+            "name": "PCINT0"
+        },
+        {
+            "address": "0x0001",
+            "desc": "None.",
+            "name": "INT0"
+        }
+    ],
+    "mcu": "ATTINY102",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "ram": {
+        "max_addr": "0x00005F",
+        "min_addr": "0x0040"
+    },
+    "rom": {
+        "max_addr": "0x0001FF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "RJMP",
+        "IJMP",
+        "RCALL",
+        "ICALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "MOV",
+        "LDI",
+        "LDS",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LDD_Y",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDD_Z",
+        "STS",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "STD_Y",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STD_Z",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi",
+        "ELPM_Z2R0",
+        "ELPM_Z",
+        "ELPM_Zi",
+        "IN",
+        "OUT",
+        "PUSH",
+        "POP",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "SBI",
+        "CBI",
+        "BST",
+        "BLD",
+        "BSET",
+        "BCLR",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "BREAK",
+        "NOP",
+        "SLEEP",
+        "WDR"
+    ],
+    "config_registers": [
+        {
+            "address": "820000",
+            "default": "000000FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "RSTDISBL",
+                    "label": "Disable external reset",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "WDTON",
+                    "label": "Watch dog timer always on",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "CKOUT",
+                    "label": "Output external clock",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "SELFPROGEN",
+                    "label": "Self programming enable",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000008"
+                        }
+                    ]
+                }
+            ],
+            "key": "BYTE0",
+            "unused": "FFFFFF00"
+        }
+    ],
+    "avr_core": "avrtiny"
+}

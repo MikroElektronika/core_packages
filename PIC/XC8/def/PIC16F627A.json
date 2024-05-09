@@ -1,0 +1,150 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRCCLK,_RC_OSC_CLKOUT,_ER_OSC_CLKOUT",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, Resistor and Capacitor on RA7/OSC1/CLKIN",
+                    "value": "EXTRCCLK,_RC_OSC_CLKOUT,_ER_OSC_CLKOUT"
+                },
+                {
+                    "label": "RC oscillator: I/O function on RA6/OSC2/CLKOUT pin, Resistor and Capacitor on RA7/OSC1/CLKIN",
+                    "value": "EXTRCIO,_RC_OSC_NOCLKOUT,_ER_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN",
+                    "value": "INTOSCCLK,_INTOSC_OSC_CLKOUT,_INTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN",
+                    "value": "INTOSCIO,_INTOSC_OSC_NOCLKOUT,_INTRC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "EC: I/O function on RA6/OSC2/CLKOUT pin, CLKIN on RA7/OSC1/CLKIN",
+                    "value": "ECIO,_EXTCLK_OSC"
+                },
+                {
+                    "label": "HS oscillator: High-speed crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator: Low-power crystal on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "RA5/MCLR/VPP Pin Function Select bit",
+            "settings": [
+                {
+                    "label": "RA5/MCLR/VPP pin function is MCLR",
+                    "value": "ON"
+                },
+                {
+                    "label": "RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BODEN_ON,_BOREN_ON",
+            "key": "BOREN",
+            "label": "Brown-out Detect Enable bit",
+            "settings": [
+                {
+                    "label": "BOD enabled",
+                    "value": "ON,_BODEN_ON,_BOREN_ON"
+                },
+                {
+                    "label": "BOD disabled",
+                    "value": "OFF,_BODEN_OFF,_BOREN_OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LVP",
+            "label": "Low-Voltage Programming Enable bit",
+            "settings": [
+                {
+                    "label": "RB4/PGM pin has PGM function, low-voltage programming enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "RB4/PGM pin has digital I/O function, HV on MCLR must be used for programming",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF,DATA_CP_OFF",
+            "key": "CPD",
+            "label": "Data EE Memory Code Protection bit",
+            "settings": [
+                {
+                    "label": "Data memory code protection off",
+                    "value": "OFF,DATA_CP_OFF"
+                },
+                {
+                    "label": "Data memory code-protected",
+                    "value": "ON,DATA_CP_ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Flash Program Memory Code Protection bit",
+            "settings": [
+                {
+                    "label": "Code protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "0000h to 03FFh code-protected",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F627A",
+    "clock": 1
+}

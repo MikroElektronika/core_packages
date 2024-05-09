@@ -1,0 +1,157 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/mikroC/core/def/PIC24HJ64GP510A.json",
+    "flash": 65536,
+    "ram": 8192,
+    "settings": {
+        "clock": "25",
+        "scheme": "PIC24HJ64GP510A_CAN",
+        "mcu": "PIC24HJ64GP510A",
+        "core": "DSPIC",
+        "delay_src_path": "delays/dspic/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    }
+                ],
+                "key": "FBS"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000e0"
+                    }
+                ],
+                "key": "FSS"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    }
+                ],
+                "key": "FGS"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSCSEL"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSC"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FWDT"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    }
+                ],
+                "key": "FPOR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FICD"
+            }
+        ]
+    }
+}

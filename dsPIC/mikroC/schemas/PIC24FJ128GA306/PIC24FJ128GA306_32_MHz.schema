@@ -1,0 +1,181 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/mikroC/core/def/PIC24FJ128GA306.json",
+    "flash": 131072,
+    "ram": 8192,
+    "settings": {
+        "clock": "32",
+        "scheme": "PIC24FJ128GA306_32_MHz",
+        "mcu": "PIC24FJ128GA306",
+        "core": "DSPIC",
+        "delay_src_path": "delays/dspic/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "DSWDTPS",
+                        "value": "0000001f"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSSWEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "00000004"
+                    }
+                ],
+                "key": "CONFIG4"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WPFP",
+                        "value": "0000007f"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "RES2",
+                        "value": "00000200"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000c00"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00001000"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00002000"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00004000"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00008000"
+                    }
+                ],
+                "key": "CONFIG3"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "BOREN1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "ALTVREF",
+                        "value": "00001800"
+                    },
+                    {
+                        "key": "RES1",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00008000"
+                    }
+                ],
+                "key": "CONFIG2"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000f"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000200"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000400"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00001000"
+                    },
+                    {
+                        "key": "GCP",
+                        "value": "00002000"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "CONFIG1"
+            }
+        ]
+    }
+}

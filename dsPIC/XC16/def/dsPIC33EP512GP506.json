@@ -1,0 +1,376 @@
+{
+    "config_words": [
+        {
+            "init": "PGD1",
+            "key": "ICS",
+            "label": "ICD Communication Channel Select bits",
+            "settings": [
+                {
+                    "label": "Reserved, do not use",
+                    "value": "NONE"
+                },
+                {
+                    "label": "Communicate on PGEC3 and PGED3",
+                    "value": "PGD3"
+                },
+                {
+                    "label": "Communicate on PGEC2 and PGED2",
+                    "value": "PGD2"
+                },
+                {
+                    "label": "Communicate on PGEC1 and PGED1",
+                    "value": "PGD1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "JTAGEN",
+            "label": "JTAG Enable bit",
+            "settings": [
+                {
+                    "label": "JTAG is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "JTAG is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "ALTI2C1",
+            "label": "Alternate I2C1 pins",
+            "settings": [
+                {
+                    "label": "I2C1 mapped to ASDA1/ASCL1 pins",
+                    "value": "ON"
+                },
+                {
+                    "label": "I2C1 mapped to SDA1/SCL1 pins",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "ALTI2C2",
+            "label": "Alternate I2C2 pins",
+            "settings": [
+                {
+                    "label": "I2C2 mapped to ASDA2/ASCL2 pins",
+                    "value": "ON"
+                },
+                {
+                    "label": "I2C2 mapped to SDA2/SCL2 pins",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "WIN25",
+            "key": "WDTWIN",
+            "label": "Watchdog Window Select bits",
+            "settings": [
+                {
+                    "label": "WDT Window is 75% of WDT period",
+                    "value": "WIN75"
+                },
+                {
+                    "label": "WDT Window is 50% of WDT period",
+                    "value": "WIN50"
+                },
+                {
+                    "label": "WDT Window is 37.5% of WDT period",
+                    "value": "WIN37"
+                },
+                {
+                    "label": "WDT Window is 25% of WDT period",
+                    "value": "WIN25"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPOST",
+            "label": "Watchdog Timer Postscaler bits",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "WDTPRE",
+            "label": "Watchdog Timer Prescaler bit",
+            "settings": [
+                {
+                    "label": "1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PLLKEN",
+            "label": "PLL Lock Enable bit",
+            "settings": [
+                {
+                    "label": "Clock switch will not wait for the PLL lock signal.",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Clock switch to PLL source will wait until the PLL lock signal is valid.",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window Enable bit",
+            "settings": [
+                {
+                    "label": "Watchdog Timer in Window mode",
+                    "value": "ON"
+                },
+                {
+                    "label": "Watchdog Timer in Non-Window mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "Watchdog timer enabled/disabled by user software",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Watchdog timer always enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "POSCMD",
+            "label": "Primary Oscillator Mode Select bits",
+            "settings": [
+                {
+                    "label": "EC (External Clock) Mode",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT Crystal Oscillator Mode",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS Crystal Oscillator Mode",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary Oscillator disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "OSC2 Pin Function bit",
+            "settings": [
+                {
+                    "label": "OSC2 is general purpose digital I/O pin",
+                    "value": "ON"
+                },
+                {
+                    "label": "OSC2 is clock output",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "Peripheral pin select configuration",
+            "settings": [
+                {
+                    "label": "Allow multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow only one reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching Mode bits",
+            "settings": [
+                {
+                    "label": "Both Clock switching and Fail-safe Clock Monitor are enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock switching is enabled,Fail-safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Both Clock switching and Fail-safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIVN",
+            "key": "FNOSC",
+            "label": "Oscillator Source Selection",
+            "settings": [
+                {
+                    "label": "Internal Fast RC (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC Oscillator with divide-by-N with PLL module (FRCPLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Oscillator with PLL module (XT + PLL, HS + PLL, EC + PLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Low-Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) Oscillator with postscaler",
+                    "value": "FRCDIVN"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Two-speed Oscillator Start-up Enable bit",
+            "settings": [
+                {
+                    "label": "Start up with user-selected oscillator source",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Start up device with FRC, then switch to user-selected oscillator source",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Segment Write-Protect bit",
+            "settings": [
+                {
+                    "label": "General Segment is write protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "General Segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GCP",
+            "label": "General Segment Code-Protect bit",
+            "settings": [
+                {
+                    "label": "General Segment Code protection Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "General Segment Code protect is Disabled",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "dsPIC33EP512GP506",
+    "clock": 1
+}

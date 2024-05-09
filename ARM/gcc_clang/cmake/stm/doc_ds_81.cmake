@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32G0C1CC$|^STM32G0C1KC$|^STM32G0C1MC$|^STM32G0C1RC$|^STM32G0C1VC$|^STM32G0C1CE$|^STM32G0C1KE$|^STM32G0C1ME$|^STM32G0C1NE$|^STM32G0C1RE$|^STM32G0C1VE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/stm/doc_ds_81/init_clock.c)
+endif()

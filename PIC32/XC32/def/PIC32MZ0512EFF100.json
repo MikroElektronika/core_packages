@@ -1,0 +1,1445 @@
+{
+    "config_words": [
+        {
+            "init": "ON",
+            "key": "FMIIEN",
+            "label": "Ethernet RMII/MII Enable",
+            "settings": [
+                {
+                    "label": "RMII Enabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "MII Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FETHIO",
+            "label": "Ethernet I/O Pin Select",
+            "settings": [
+                {
+                    "label": "Alternate Ethernet I/O",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Default Ethernet I/O",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PGL1WAY",
+            "label": "Permission Group Lock One Way Configuration",
+            "settings": [
+                {
+                    "label": "Allow multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow only one reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PMDL1WAY",
+            "label": "Peripheral Module Disable Configuration",
+            "settings": [
+                {
+                    "label": "Allow multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow only one reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "Peripheral Pin Select Configuration",
+            "settings": [
+                {
+                    "label": "Allow multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow only one reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FUSBIDIO",
+            "label": "USB USBID Selection",
+            "settings": [
+                {
+                    "label": "Controlled by Port Function",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Controlled by the USB Module",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "DIV_8",
+            "key": "FPLLIDIV",
+            "label": "System PLL Input Divider",
+            "settings": [
+                {
+                    "label": "1x Divider",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "2x Divider",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "3x Divider",
+                    "value": "DIV_3"
+                },
+                {
+                    "label": "4x Divider",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "5x Divider",
+                    "value": "DIV_5"
+                },
+                {
+                    "label": "6x Divider",
+                    "value": "DIV_6"
+                },
+                {
+                    "label": "7x Divider",
+                    "value": "DIV_7"
+                },
+                {
+                    "label": "8x Divider",
+                    "value": "DIV_8"
+                }
+            ]
+        },
+        {
+            "init": "RANGE_34_68_MHZ",
+            "key": "FPLLRNG",
+            "label": "System PLL Input Range",
+            "settings": [
+                {
+                    "label": "Bypass",
+                    "value": "RANGE_BYPASS"
+                },
+                {
+                    "label": "5-10 MHz Input",
+                    "value": "RANGE_5_10_MHZ"
+                },
+                {
+                    "label": "8-16 MHz Input",
+                    "value": "RANGE_8_16_MHZ"
+                },
+                {
+                    "label": "13-26 MHz Input",
+                    "value": "RANGE_13_26_MHZ"
+                },
+                {
+                    "label": "21-42 MHz Input",
+                    "value": "RANGE_21_42_MHZ"
+                },
+                {
+                    "label": "34-68 MHz Input",
+                    "value": "RANGE_34_68_MHZ"
+                }
+            ]
+        },
+        {
+            "init": "PLL_FRC",
+            "key": "FPLLICLK",
+            "label": "System PLL Input Clock Selection",
+            "settings": [
+                {
+                    "label": "POSC is input to the System PLL",
+                    "value": "PLL_POSC"
+                },
+                {
+                    "label": "FRC is input to the System PLL",
+                    "value": "PLL_FRC"
+                }
+            ]
+        },
+        {
+            "init": "MUL_128",
+            "key": "FPLLMULT",
+            "label": "System PLL Multiplier",
+            "settings": [
+                {
+                    "label": "PLL Multiply by 1",
+                    "value": "MUL_1"
+                },
+                {
+                    "label": "PLL Multiply by 2",
+                    "value": "MUL_2"
+                },
+                {
+                    "label": "PLL Multiply by 3",
+                    "value": "MUL_3"
+                },
+                {
+                    "label": "PLL Multiply by 4",
+                    "value": "MUL_4"
+                },
+                {
+                    "label": "PLL Multiply by 5",
+                    "value": "MUL_5"
+                },
+                {
+                    "label": "PLL Multiply by 6",
+                    "value": "MUL_6"
+                },
+                {
+                    "label": "PLL Multiply by 7",
+                    "value": "MUL_7"
+                },
+                {
+                    "label": "PLL Multiply by 8",
+                    "value": "MUL_8"
+                },
+                {
+                    "label": "PLL Multiply by 9",
+                    "value": "MUL_9"
+                },
+                {
+                    "label": "PLL Multiply by 10",
+                    "value": "MUL_10"
+                },
+                {
+                    "label": "PLL Multiply by 11",
+                    "value": "MUL_11"
+                },
+                {
+                    "label": "PLL Multiply by 12",
+                    "value": "MUL_12"
+                },
+                {
+                    "label": "PLL Multiply by 13",
+                    "value": "MUL_13"
+                },
+                {
+                    "label": "PLL Multiply by 14",
+                    "value": "MUL_14"
+                },
+                {
+                    "label": "PLL Multiply by 15",
+                    "value": "MUL_15"
+                },
+                {
+                    "label": "PLL Multiply by 16",
+                    "value": "MUL_16"
+                },
+                {
+                    "label": "PLL Multiply by 17",
+                    "value": "MUL_17"
+                },
+                {
+                    "label": "PLL Multiply by 18",
+                    "value": "MUL_18"
+                },
+                {
+                    "label": "PLL Multiply by 19",
+                    "value": "MUL_19"
+                },
+                {
+                    "label": "PLL Multiply by 20",
+                    "value": "MUL_20"
+                },
+                {
+                    "label": "PLL Multiply by 21",
+                    "value": "MUL_21"
+                },
+                {
+                    "label": "PLL Multiply by 22",
+                    "value": "MUL_22"
+                },
+                {
+                    "label": "PLL Multiply by 23",
+                    "value": "MUL_23"
+                },
+                {
+                    "label": "PLL Multiply by 24",
+                    "value": "MUL_24"
+                },
+                {
+                    "label": "PLL Multiply by 25",
+                    "value": "MUL_25"
+                },
+                {
+                    "label": "PLL Multiply by 26",
+                    "value": "MUL_26"
+                },
+                {
+                    "label": "PLL Multiply by 27",
+                    "value": "MUL_27"
+                },
+                {
+                    "label": "PLL Multiply by 28",
+                    "value": "MUL_28"
+                },
+                {
+                    "label": "PLL Multiply by 29",
+                    "value": "MUL_29"
+                },
+                {
+                    "label": "PLL Multiply by 30",
+                    "value": "MUL_30"
+                },
+                {
+                    "label": "PLL Multiply by 31",
+                    "value": "MUL_31"
+                },
+                {
+                    "label": "PLL Multiply by 32",
+                    "value": "MUL_32"
+                },
+                {
+                    "label": "PLL Multiply by 33",
+                    "value": "MUL_33"
+                },
+                {
+                    "label": "PLL Multiply by 34",
+                    "value": "MUL_34"
+                },
+                {
+                    "label": "PLL Multiply by 35",
+                    "value": "MUL_35"
+                },
+                {
+                    "label": "PLL Multiply by 36",
+                    "value": "MUL_36"
+                },
+                {
+                    "label": "PLL Multiply by 37",
+                    "value": "MUL_37"
+                },
+                {
+                    "label": "PLL Multiply by 38",
+                    "value": "MUL_38"
+                },
+                {
+                    "label": "PLL Multiply by 39",
+                    "value": "MUL_39"
+                },
+                {
+                    "label": "PLL Multiply by 40",
+                    "value": "MUL_40"
+                },
+                {
+                    "label": "PLL Multiply by 41",
+                    "value": "MUL_41"
+                },
+                {
+                    "label": "PLL Multiply by 42",
+                    "value": "MUL_42"
+                },
+                {
+                    "label": "PLL Multiply by 43",
+                    "value": "MUL_43"
+                },
+                {
+                    "label": "PLL Multiply by 44",
+                    "value": "MUL_44"
+                },
+                {
+                    "label": "PLL Multiply by 45",
+                    "value": "MUL_45"
+                },
+                {
+                    "label": "PLL Multiply by 46",
+                    "value": "MUL_46"
+                },
+                {
+                    "label": "PLL Multiply by 47",
+                    "value": "MUL_47"
+                },
+                {
+                    "label": "PLL Multiply by 48",
+                    "value": "MUL_48"
+                },
+                {
+                    "label": "PLL Multiply by 49",
+                    "value": "MUL_49"
+                },
+                {
+                    "label": "PLL Multiply by 50",
+                    "value": "MUL_50"
+                },
+                {
+                    "label": "PLL Multiply by 51",
+                    "value": "MUL_51"
+                },
+                {
+                    "label": "PLL Multiply by 52",
+                    "value": "MUL_52"
+                },
+                {
+                    "label": "PLL Multiply by 53",
+                    "value": "MUL_53"
+                },
+                {
+                    "label": "PLL Multiply by 54",
+                    "value": "MUL_54"
+                },
+                {
+                    "label": "PLL Multiply by 55",
+                    "value": "MUL_55"
+                },
+                {
+                    "label": "PLL Multiply by 56",
+                    "value": "MUL_56"
+                },
+                {
+                    "label": "PLL Multiply by 57",
+                    "value": "MUL_57"
+                },
+                {
+                    "label": "PLL Multiply by 58",
+                    "value": "MUL_58"
+                },
+                {
+                    "label": "PLL Multiply by 59",
+                    "value": "MUL_59"
+                },
+                {
+                    "label": "PLL Multiply by 60",
+                    "value": "MUL_60"
+                },
+                {
+                    "label": "PLL Multiply by 61",
+                    "value": "MUL_61"
+                },
+                {
+                    "label": "PLL Multiply by 62",
+                    "value": "MUL_62"
+                },
+                {
+                    "label": "PLL Multiply by 63",
+                    "value": "MUL_63"
+                },
+                {
+                    "label": "PLL Multiply by 64",
+                    "value": "MUL_64"
+                },
+                {
+                    "label": "PLL Multiply by 65",
+                    "value": "MUL_65"
+                },
+                {
+                    "label": "PLL Multiply by 66",
+                    "value": "MUL_66"
+                },
+                {
+                    "label": "PLL Multiply by 67",
+                    "value": "MUL_67"
+                },
+                {
+                    "label": "PLL Multiply by 68",
+                    "value": "MUL_68"
+                },
+                {
+                    "label": "PLL Multiply by 69",
+                    "value": "MUL_69"
+                },
+                {
+                    "label": "PLL Multiply by 70",
+                    "value": "MUL_70"
+                },
+                {
+                    "label": "PLL Multiply by 71",
+                    "value": "MUL_71"
+                },
+                {
+                    "label": "PLL Multiply by 72",
+                    "value": "MUL_72"
+                },
+                {
+                    "label": "PLL Multiply by 73",
+                    "value": "MUL_73"
+                },
+                {
+                    "label": "PLL Multiply by 74",
+                    "value": "MUL_74"
+                },
+                {
+                    "label": "PLL Multiply by 75",
+                    "value": "MUL_75"
+                },
+                {
+                    "label": "PLL Multiply by 76",
+                    "value": "MUL_76"
+                },
+                {
+                    "label": "PLL Multiply by 77",
+                    "value": "MUL_77"
+                },
+                {
+                    "label": "PLL Multiply by 78",
+                    "value": "MUL_78"
+                },
+                {
+                    "label": "PLL Multiply by 79",
+                    "value": "MUL_79"
+                },
+                {
+                    "label": "PLL Multiply by 80",
+                    "value": "MUL_80"
+                },
+                {
+                    "label": "PLL Multiply by 81",
+                    "value": "MUL_81"
+                },
+                {
+                    "label": "PLL Multiply by 82",
+                    "value": "MUL_82"
+                },
+                {
+                    "label": "PLL Multiply by 83",
+                    "value": "MUL_83"
+                },
+                {
+                    "label": "PLL Multiply by 84",
+                    "value": "MUL_84"
+                },
+                {
+                    "label": "PLL Multiply by 85",
+                    "value": "MUL_85"
+                },
+                {
+                    "label": "PLL Multiply by 86",
+                    "value": "MUL_86"
+                },
+                {
+                    "label": "PLL Multiply by 87",
+                    "value": "MUL_87"
+                },
+                {
+                    "label": "PLL Multiply by 88",
+                    "value": "MUL_88"
+                },
+                {
+                    "label": "PLL Multiply by 89",
+                    "value": "MUL_89"
+                },
+                {
+                    "label": "PLL Multiply by 90",
+                    "value": "MUL_90"
+                },
+                {
+                    "label": "PLL Multiply by 91",
+                    "value": "MUL_91"
+                },
+                {
+                    "label": "PLL Multiply by 92",
+                    "value": "MUL_92"
+                },
+                {
+                    "label": "PLL Multiply by 93",
+                    "value": "MUL_93"
+                },
+                {
+                    "label": "PLL Multiply by 94",
+                    "value": "MUL_94"
+                },
+                {
+                    "label": "PLL Multiply by 95",
+                    "value": "MUL_95"
+                },
+                {
+                    "label": "PLL Multiply by 96",
+                    "value": "MUL_96"
+                },
+                {
+                    "label": "PLL Multiply by 97",
+                    "value": "MUL_97"
+                },
+                {
+                    "label": "PLL Multiply by 98",
+                    "value": "MUL_98"
+                },
+                {
+                    "label": "PLL Multiply by 99",
+                    "value": "MUL_99"
+                },
+                {
+                    "label": "PLL Multiply by 100",
+                    "value": "MUL_100"
+                },
+                {
+                    "label": "PLL Multiply by 101",
+                    "value": "MUL_101"
+                },
+                {
+                    "label": "PLL Multiply by 102",
+                    "value": "MUL_102"
+                },
+                {
+                    "label": "PLL Multiply by 103",
+                    "value": "MUL_103"
+                },
+                {
+                    "label": "PLL Multiply by 104",
+                    "value": "MUL_104"
+                },
+                {
+                    "label": "PLL Multiply by 105",
+                    "value": "MUL_105"
+                },
+                {
+                    "label": "PLL Multiply by 106",
+                    "value": "MUL_106"
+                },
+                {
+                    "label": "PLL Multiply by 107",
+                    "value": "MUL_107"
+                },
+                {
+                    "label": "PLL Multiply by 108",
+                    "value": "MUL_108"
+                },
+                {
+                    "label": "PLL Multiply by 109",
+                    "value": "MUL_109"
+                },
+                {
+                    "label": "PLL Multiply by 110",
+                    "value": "MUL_110"
+                },
+                {
+                    "label": "PLL Multiply by 111",
+                    "value": "MUL_111"
+                },
+                {
+                    "label": "PLL Multiply by 112",
+                    "value": "MUL_112"
+                },
+                {
+                    "label": "PLL Multiply by 113",
+                    "value": "MUL_113"
+                },
+                {
+                    "label": "PLL Multiply by 114",
+                    "value": "MUL_114"
+                },
+                {
+                    "label": "PLL Multiply by 115",
+                    "value": "MUL_115"
+                },
+                {
+                    "label": "PLL Multiply by 116",
+                    "value": "MUL_116"
+                },
+                {
+                    "label": "PLL Multiply by 117",
+                    "value": "MUL_117"
+                },
+                {
+                    "label": "PLL Multiply by 118",
+                    "value": "MUL_118"
+                },
+                {
+                    "label": "PLL Multiply by 119",
+                    "value": "MUL_119"
+                },
+                {
+                    "label": "PLL Multiply by 120",
+                    "value": "MUL_120"
+                },
+                {
+                    "label": "PLL Multiply by 121",
+                    "value": "MUL_121"
+                },
+                {
+                    "label": "PLL Multiply by 122",
+                    "value": "MUL_122"
+                },
+                {
+                    "label": "PLL Multiply by 123",
+                    "value": "MUL_123"
+                },
+                {
+                    "label": "PLL Multiply by 124",
+                    "value": "MUL_124"
+                },
+                {
+                    "label": "PLL Multiply by 125",
+                    "value": "MUL_125"
+                },
+                {
+                    "label": "PLL Multiply by 126",
+                    "value": "MUL_126"
+                },
+                {
+                    "label": "PLL Multiply by 127",
+                    "value": "MUL_127"
+                },
+                {
+                    "label": "PLL Multiply by 128",
+                    "value": "MUL_128"
+                }
+            ]
+        },
+        {
+            "init": "DIV_32",
+            "key": "FPLLODIV",
+            "label": "System PLL Output Clock Divider",
+            "settings": [
+                {
+                    "label": "2x Divider",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "4x Divider",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "8x Divider",
+                    "value": "DIV_8"
+                },
+                {
+                    "label": "16x Divider",
+                    "value": "DIV_16"
+                },
+                {
+                    "label": "32x Divider",
+                    "value": "DIV_32"
+                }
+            ]
+        },
+        {
+            "init": "FREQ_24MHZ",
+            "key": "UPLLFSEL",
+            "label": "USB PLL Input Frequency Selection",
+            "settings": [
+                {
+                    "label": "USB PLL input is 12 MHz",
+                    "value": "FREQ_12MHZ"
+                },
+                {
+                    "label": "USB PLL input is 24 MHz",
+                    "value": "FREQ_24MHZ"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIV",
+            "key": "FNOSC",
+            "label": "Oscillator Selection Bits",
+            "settings": [
+                {
+                    "label": "System PLL",
+                    "value": "SPLL"
+                },
+                {
+                    "label": "Primary Osc (HS,EC)",
+                    "value": "POSC"
+                },
+                {
+                    "label": "Low Power Secondary Osc (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low Power RC Osc (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
+                    "value": "FRCDIV"
+                }
+            ]
+        },
+        {
+            "init": "WIN_127_128",
+            "key": "DMTINTV",
+            "label": "DMT Count Window Interval",
+            "settings": [
+                {
+                    "label": "Window/Interval value is zero",
+                    "value": "WIN_0"
+                },
+                {
+                    "label": "Window/Interval value is 1/2 counter value",
+                    "value": "WIN_1_2"
+                },
+                {
+                    "label": "Window/Interval value is 3/4 counter value",
+                    "value": "WIN_3_4"
+                },
+                {
+                    "label": "Window/Interval value is 7/8 counter value",
+                    "value": "WIN_7_8"
+                },
+                {
+                    "label": "Window/Interval value is 15/16 counter value",
+                    "value": "WIN_15_16"
+                },
+                {
+                    "label": "Window/Interval value is 31/32 counter value",
+                    "value": "WIN_31_32"
+                },
+                {
+                    "label": "Window/Interval value is 63/64 counter value",
+                    "value": "WIN_63_64"
+                },
+                {
+                    "label": "Window/Interval value is 127/128 counter value",
+                    "value": "WIN_127_128"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FSOSCEN",
+            "label": "Secondary Oscillator Enable",
+            "settings": [
+                {
+                    "label": "Disable SOSC",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enable SOSC",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal/External Switch Over",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "POSCMOD",
+            "label": "Primary Oscillator Configuration",
+            "settings": [
+                {
+                    "label": "External clock mode",
+                    "value": "EC"
+                },
+                {
+                    "label": "HS osc mode",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary osc disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "CLKO Output Signal Active on the OSCO Pin",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "CSECME",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor Selection",
+            "settings": [
+                {
+                    "label": "Clock Switch Disabled, FSCM Disabled",
+                    "value": "CSDCMD"
+                },
+                {
+                    "label": "Clock Switch Enabled, FSCM Disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Clock Switch Disabled, FSCM Enabled",
+                    "value": "CSDCME"
+                },
+                {
+                    "label": "Clock Switch Enabled, FSCM Enabled",
+                    "value": "CSECME"
+                }
+            ]
+        },
+        {
+            "init": "PS1048576",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32768",
+                    "value": "PS32768"
+                },
+                {
+                    "label": "1:65536",
+                    "value": "PS65536"
+                },
+                {
+                    "label": "1:131072",
+                    "value": "PS131072"
+                },
+                {
+                    "label": "1:262144",
+                    "value": "PS262144"
+                },
+                {
+                    "label": "1:524288",
+                    "value": "PS524288"
+                },
+                {
+                    "label": "1:1048576",
+                    "value": "PS1048576"
+                }
+            ]
+        },
+        {
+            "init": "STOP",
+            "key": "WDTSPGM",
+            "label": "Watchdog Timer Stop During Flash Programming",
+            "settings": [
+                {
+                    "label": "WDT runs during Flash programming",
+                    "value": "RUN"
+                },
+                {
+                    "label": "WDT stops during Flash programming",
+                    "value": "STOP"
+                }
+            ]
+        },
+        {
+            "init": "NORMAL",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window Mode",
+            "settings": [
+                {
+                    "label": "Watchdog Timer is in Window mode",
+                    "value": "WINDOW"
+                },
+                {
+                    "label": "Watchdog Timer is in non-Window mode",
+                    "value": "NORMAL"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "WDT Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WINSZ_25",
+            "key": "FWDTWINSZ",
+            "label": "Watchdog Timer Window Size",
+            "settings": [
+                {
+                    "label": "Window size is 75%",
+                    "value": "WINSZ_75"
+                },
+                {
+                    "label": "Window size is 50%",
+                    "value": "WINSZ_50"
+                },
+                {
+                    "label": "Window size is 37.5%",
+                    "value": "WINSZ_37"
+                },
+                {
+                    "label": "Window size is 25%",
+                    "value": "WINSZ_25"
+                }
+            ]
+        },
+        {
+            "init": "DMT31",
+            "key": "DMTCNT",
+            "label": "Deadman Timer Count Selection",
+            "settings": [
+                {
+                    "label": "2^8 (256)",
+                    "value": "DMT8"
+                },
+                {
+                    "label": "2^9 (512)",
+                    "value": "DMT9"
+                },
+                {
+                    "label": "2^10 (1024)",
+                    "value": "DMT10"
+                },
+                {
+                    "label": "2^11 (2048)",
+                    "value": "DMT11"
+                },
+                {
+                    "label": "2^12 (4096)",
+                    "value": "DMT12"
+                },
+                {
+                    "label": "2^13 (8192)",
+                    "value": "DMT13"
+                },
+                {
+                    "label": "2^14 (16384)",
+                    "value": "DMT14"
+                },
+                {
+                    "label": "2^15 (32768)",
+                    "value": "DMT15"
+                },
+                {
+                    "label": "2^16 (65536)",
+                    "value": "DMT16"
+                },
+                {
+                    "label": "2^17 (131072)",
+                    "value": "DMT17"
+                },
+                {
+                    "label": "2^18 (262144)",
+                    "value": "DMT18"
+                },
+                {
+                    "label": "2^19 (524288)",
+                    "value": "DMT19"
+                },
+                {
+                    "label": "2^20 (1048576)",
+                    "value": "DMT20"
+                },
+                {
+                    "label": "2^21 (2097152)",
+                    "value": "DMT21"
+                },
+                {
+                    "label": "2^22 (4194304)",
+                    "value": "DMT22"
+                },
+                {
+                    "label": "2^23 (8388608)",
+                    "value": "DMT23"
+                },
+                {
+                    "label": "2^24 (16777216)",
+                    "value": "DMT24"
+                },
+                {
+                    "label": "2^25 (33554432)",
+                    "value": "DMT25"
+                },
+                {
+                    "label": "2^26 (67108864)",
+                    "value": "DMT26"
+                },
+                {
+                    "label": "2^27 (134217728)",
+                    "value": "DMT27"
+                },
+                {
+                    "label": "2^28 (268435456)",
+                    "value": "DMT28"
+                },
+                {
+                    "label": "2^29 (536870912)",
+                    "value": "DMT29"
+                },
+                {
+                    "label": "2^30 (1073741824)",
+                    "value": "DMT30"
+                },
+                {
+                    "label": "2^31 (2147483648)",
+                    "value": "DMT31"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FDMTEN",
+            "label": "Deadman Timer Enable",
+            "settings": [
+                {
+                    "label": "Deadman Timer is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Deadman Timer is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Background Debugger Enable",
+            "settings": [
+                {
+                    "label": "Debugger is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Debugger is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "JTAGEN",
+            "label": "JTAG Enable",
+            "settings": [
+                {
+                    "label": "JTAG Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "JTAG Port Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ICS_PGx1",
+            "key": "ICESEL",
+            "label": "ICE/ICD Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Communicate on PGEC2/PGED2",
+                    "value": "ICS_PGx2"
+                },
+                {
+                    "label": "Communicate on PGEC1/PGED1",
+                    "value": "ICS_PGx1"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "TRCEN",
+            "label": "Trace Enable",
+            "settings": [
+                {
+                    "label": "Trace features in the CPU are disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Trace features in the CPU are enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "MIPS32",
+            "key": "BOOTISA",
+            "label": "Boot ISA Selection",
+            "settings": [
+                {
+                    "label": "Boot code and Exception code is microMIPS",
+                    "value": "MICROMIPS"
+                },
+                {
+                    "label": "Boot code and Exception code is MIPS32",
+                    "value": "MIPS32"
+                }
+            ]
+        },
+        {
+            "init": "OFF_UNLOCKED",
+            "key": "FECCCON",
+            "label": "Dynamic Flash ECC Configuration",
+            "settings": [
+                {
+                    "label": "Flash ECC is enabled (ECCCON bits are locked)",
+                    "value": "ON"
+                },
+                {
+                    "label": "Dynamic Flash ECC is enabled (ECCCON bits are locked)",
+                    "value": "DYNAMIC"
+                },
+                {
+                    "label": "ECC and Dynamic ECC are disabled (ECCCON bits are locked)",
+                    "value": "OFF_LOCKED"
+                },
+                {
+                    "label": "ECC and Dynamic ECC are disabled (ECCCON bits are writable)",
+                    "value": "OFF_UNLOCKED"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "FSLEEP",
+            "label": "Flash Sleep Mode",
+            "settings": [
+                {
+                    "label": "Flash power down is controlled by the VREGS bit",
+                    "value": "VREGS"
+                },
+                {
+                    "label": "Flash is powered down when the device is in Sleep mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "PG_ALL",
+            "key": "DBGPER",
+            "label": "Debug Mode CPU Access Permission",
+            "settings": [
+                {
+                    "label": "Deny CPU access to all permission regions",
+                    "value": "PG_NONE"
+                },
+                {
+                    "label": "Allow CPU access to Permission Group 0 permission regions",
+                    "value": "ALLOW_PG0"
+                },
+                {
+                    "label": "Allow CPU access to Permission Group 1 permission regions",
+                    "value": "ALLOW_PG1"
+                },
+                {
+                    "label": "PG0: Allow PG1: Allow PG2: Deny",
+                    "value": "PG_1_0"
+                },
+                {
+                    "label": "Allow CPU access to Permission Group 2 permission regions",
+                    "value": "ALLOW_PG2"
+                },
+                {
+                    "label": "PG0: Allow PG1: Deny PG2: Allow",
+                    "value": "PG_2_0"
+                },
+                {
+                    "label": "PG0: Deny PG1: Allow PG2: Allow",
+                    "value": "PG_2_1"
+                },
+                {
+                    "label": "Allow CPU access to all permission regions",
+                    "value": "PG_ALL"
+                }
+            ]
+        },
+        {
+            "init": "MCLR_NORM",
+            "key": "SMCLR",
+            "label": "Soft Master Clear Enable bit",
+            "settings": [
+                {
+                    "label": "MCLR pin generates an emulated POR Reset",
+                    "value": "MCLR_POR"
+                },
+                {
+                    "label": "MCLR pin generates a normal system Reset",
+                    "value": "MCLR_NORM"
+                }
+            ]
+        },
+        {
+            "init": "GAIN_LEVEL_3",
+            "key": "SOSCGAIN",
+            "label": "Secondary Oscillator Gain Control bits",
+            "settings": [
+                {
+                    "label": "Gain level 0 (Lowest)",
+                    "value": "GAIN_LEVEL_0"
+                },
+                {
+                    "label": "Gain level 1",
+                    "value": "GAIN_LEVEL_1"
+                },
+                {
+                    "label": "Gain level 2",
+                    "value": "GAIN_LEVEL_2"
+                },
+                {
+                    "label": "Gain level 3 (Highest)",
+                    "value": "GAIN_LEVEL_3"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "SOSCBOOST",
+            "label": "Secondary Oscillator Boost Kick Start Enable bit",
+            "settings": [
+                {
+                    "label": "Normal start of the oscillator",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boost the kick start of the oscillator",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "GAIN_LEVEL_3",
+            "key": "POSCGAIN",
+            "label": "Primary Oscillator Gain Control bits",
+            "settings": [
+                {
+                    "label": "Gain level 0 (Lowest)",
+                    "value": "GAIN_LEVEL_0"
+                },
+                {
+                    "label": "Gain level 1",
+                    "value": "GAIN_LEVEL_1"
+                },
+                {
+                    "label": "Gain level 2",
+                    "value": "GAIN_LEVEL_2"
+                },
+                {
+                    "label": "Gain level 3 (Highest)",
+                    "value": "GAIN_LEVEL_3"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "POSCBOOST",
+            "label": "Primary Oscillator Boost Kick Start Enable bit",
+            "settings": [
+                {
+                    "label": "Normal start of the oscillator",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boost the kick start of the oscillator",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "NORMAL",
+            "key": "EJTAGBEN",
+            "label": "EJTAG Boot",
+            "settings": [
+                {
+                    "label": "Reduced EJTAG functionality",
+                    "value": "REDUCED"
+                },
+                {
+                    "label": "Normal EJTAG functionality",
+                    "value": "NORMAL"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protect",
+            "settings": [
+                {
+                    "label": "Protection Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Protection Disabled",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC32MZ0512EFF100",
+    "clock": 1
+}

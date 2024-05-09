@@ -1,0 +1,212 @@
+{
+    "config_words": [
+        {
+            "init": "OFF,_CP_OFF_0",
+            "key": "CP",
+            "label": "Code Protection bits",
+            "settings": [
+                {
+                    "label": "Program memory code protection off",
+                    "value": "OFF,_CP_OFF_0"
+                },
+                {
+                    "label": "All of program memory code protected",
+                    "value": "ON,_CP_ON_0"
+                }
+            ]
+        },
+        {
+            "init": "RCIO,_RCIO_OSC_1",
+            "key": "OSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator w/OSC2 configured as RA6",
+                    "value": "RCIO,_RCIO_OSC_1"
+                },
+                {
+                    "label": "HS oscillator with PLL enabled/Clock frequency = (4 x FOSC)",
+                    "value": "HSPLL,_HSPLL_OSC_1"
+                },
+                {
+                    "label": "EC oscillator w/OSC2 configured as RA6",
+                    "value": "ECIO,_ECIO_OSC_1"
+                },
+                {
+                    "label": "EC oscillator w/OSC2 configured as divide-by-4 clock output",
+                    "value": "EC,_EC_OSC_1"
+                },
+                {
+                    "label": "RC oscillator",
+                    "value": "RC,_RC_OSC_1"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS,_HS_OSC_1"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT,_XT_OSC_1"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP,_LP_OSC_1"
+                }
+            ]
+        },
+        {
+            "init": "OFF,_OSCS_OFF_1",
+            "key": "OSCS",
+            "label": "Oscillator System Clock Switch Enable bit",
+            "settings": [
+                {
+                    "label": "Oscillator system clock switch option is disabled (main oscillator is source)",
+                    "value": "OFF,_OSCS_OFF_1"
+                },
+                {
+                    "label": "Oscillator system clock switch option is enabled (oscillator switching is enabled)",
+                    "value": "ON,_OSCS_ON_1"
+                }
+            ]
+        },
+        {
+            "init": "OFF,_PWRT_OFF_2",
+            "key": "PWRT",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF,_PWRT_OFF_2"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON,_PWRT_ON_2"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BOR_ON_2",
+            "key": "BOR",
+            "label": "Brown-out Reset Enable bit",
+            "settings": [
+                {
+                    "label": "Brown-out Reset enabled",
+                    "value": "ON,_BOR_ON_2"
+                },
+                {
+                    "label": "Brown-out Reset disabled",
+                    "value": "OFF,_BOR_OFF_2"
+                }
+            ]
+        },
+        {
+            "init": "25,_BORV_25_2",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage bits",
+            "settings": [
+                {
+                    "label": "VBOR set to 2.5V",
+                    "value": "25,_BORV_25_2"
+                },
+                {
+                    "label": "VBOR set to 2.7V",
+                    "value": "27,_BORV_27_2"
+                },
+                {
+                    "label": "VBOR set to 4.2V",
+                    "value": "42,_BORV_42_2"
+                },
+                {
+                    "label": "VBOR set to 4.5V",
+                    "value": "45,_BORV_45_2"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON_3",
+            "key": "WDT",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON_3"
+                },
+                {
+                    "label": "WDT disabled (control is placed on the SWDTEN bit)",
+                    "value": "OFF,_WDT_OFF_3"
+                }
+            ]
+        },
+        {
+            "init": "128,_WDTPS_128_3",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscale Select bits",
+            "settings": [
+                {
+                    "label": "1:128",
+                    "value": "128,_WDTPS_128_3"
+                },
+                {
+                    "label": "1:64",
+                    "value": "64,_WDTPS_64_3"
+                },
+                {
+                    "label": "1:32",
+                    "value": "32,_WDTPS_32_3"
+                },
+                {
+                    "label": "1:16",
+                    "value": "16,_WDTPS_16_3"
+                },
+                {
+                    "label": "1:8",
+                    "value": "8,_WDTPS_8_3"
+                },
+                {
+                    "label": "1:4",
+                    "value": "4,_WDTPS_4_3"
+                },
+                {
+                    "label": "1:2",
+                    "value": "2,_WDTPS_2_3"
+                },
+                {
+                    "label": "1:1",
+                    "value": "1,_WDTPS_1_3"
+                }
+            ]
+        },
+        {
+            "init": "ON,_CCP2MX_ON_5",
+            "key": "CCP2MUX",
+            "label": "CCP2 Mux bit",
+            "settings": [
+                {
+                    "label": "CCP2 input/output is multiplexed with RC1",
+                    "value": "ON,_CCP2MX_ON_5"
+                },
+                {
+                    "label": "CCP2 input/output is multiplexed with RB3",
+                    "value": "OFF,_CCP2MX_OFF_5"
+                }
+            ]
+        },
+        {
+            "init": "ON,_STVR_ON_6",
+            "key": "STVR",
+            "label": "Stack Full/Underflow Reset Enable bit",
+            "settings": [
+                {
+                    "label": "Stack Full/Underflow will cause RESET",
+                    "value": "ON,_STVR_ON_6"
+                },
+                {
+                    "label": "Stack Full/Underflow will not cause RESET",
+                    "value": "OFF,_STVR_OFF_6"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18C252",
+    "clock": 1
+}

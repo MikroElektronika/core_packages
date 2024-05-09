@@ -1,0 +1,1124 @@
+{
+    "config_words": [
+        {
+            "init": "WPFP511",
+            "key": "WPFP",
+            "label": "Write Protection Flash Page Segment Boundary",
+            "settings": [
+                {
+                    "label": "Page 0 (0x00)",
+                    "value": "WPFP0"
+                },
+                {
+                    "label": "Page 1 (0x400)",
+                    "value": "WPFP1"
+                },
+                {
+                    "label": "Page 2 (0x800)",
+                    "value": "WPFP2"
+                },
+                {
+                    "label": "Page 3 (0xC00)",
+                    "value": "WPFP3"
+                },
+                {
+                    "label": "Page 4 (0x1000)",
+                    "value": "WPFP4"
+                },
+                {
+                    "label": "Page 5 (0x1400)",
+                    "value": "WPFP5"
+                },
+                {
+                    "label": "Page 6 (0x1800)",
+                    "value": "WPFP6"
+                },
+                {
+                    "label": "Page 7 (0x1C00)",
+                    "value": "WPFP7"
+                },
+                {
+                    "label": "Page 8 (0x2000)",
+                    "value": "WPFP8"
+                },
+                {
+                    "label": "Page 9 (0x2400)",
+                    "value": "WPFP9"
+                },
+                {
+                    "label": "Page 10 (0x2800)",
+                    "value": "WPFP10"
+                },
+                {
+                    "label": "Page 11 (0x2C00)",
+                    "value": "WPFP11"
+                },
+                {
+                    "label": "Page 12 (0x3000)",
+                    "value": "WPFP12"
+                },
+                {
+                    "label": "Page 13 (0x3400)",
+                    "value": "WPFP13"
+                },
+                {
+                    "label": "Page 14 (0x3800)",
+                    "value": "WPFP14"
+                },
+                {
+                    "label": "Page 15 (0x3C00)",
+                    "value": "WPFP15"
+                },
+                {
+                    "label": "Page 16 (0x4000)",
+                    "value": "WPFP16"
+                },
+                {
+                    "label": "Page 17 (0x4400)",
+                    "value": "WPFP17"
+                },
+                {
+                    "label": "Page 18 (0x4800)",
+                    "value": "WPFP18"
+                },
+                {
+                    "label": "Page 19 (0x4C00)",
+                    "value": "WPFP19"
+                },
+                {
+                    "label": "Page 20 (0x5000)",
+                    "value": "WPFP20"
+                },
+                {
+                    "label": "Page 21 (0x5400)",
+                    "value": "WPFP21"
+                },
+                {
+                    "label": "Page 22 (0x5800)",
+                    "value": "WPFP22"
+                },
+                {
+                    "label": "Page 23 (0x5C00)",
+                    "value": "WPFP23"
+                },
+                {
+                    "label": "Page 24 (0x6000)",
+                    "value": "WPFP24"
+                },
+                {
+                    "label": "Page 25 (0x6400)",
+                    "value": "WPFP25"
+                },
+                {
+                    "label": "Page 26 (0x6800)",
+                    "value": "WPFP26"
+                },
+                {
+                    "label": "Page 27 (0x6C00)",
+                    "value": "WPFP27"
+                },
+                {
+                    "label": "Page 28 (0x7000)",
+                    "value": "WPFP28"
+                },
+                {
+                    "label": "Page 29 (0x7400)",
+                    "value": "WPFP29"
+                },
+                {
+                    "label": "Page 30 (0x7800)",
+                    "value": "WPFP30"
+                },
+                {
+                    "label": "Page 31 (0x7C00)",
+                    "value": "WPFP31"
+                },
+                {
+                    "label": "Page 32 (0x8000)",
+                    "value": "WPFP32"
+                },
+                {
+                    "label": "Page 33 (0x8400)",
+                    "value": "WPFP33"
+                },
+                {
+                    "label": "Page 34 (0x8800)",
+                    "value": "WPFP34"
+                },
+                {
+                    "label": "Page 35 (0x8C00)",
+                    "value": "WPFP35"
+                },
+                {
+                    "label": "Page 36 (0x9000)",
+                    "value": "WPFP36"
+                },
+                {
+                    "label": "Page 37 (0x9400)",
+                    "value": "WPFP37"
+                },
+                {
+                    "label": "Page 38 (0x9800)",
+                    "value": "WPFP38"
+                },
+                {
+                    "label": "Page 39 (0x9C00)",
+                    "value": "WPFP39"
+                },
+                {
+                    "label": "Page 40 (0xA000)",
+                    "value": "WPFP40"
+                },
+                {
+                    "label": "Page 41 (0xA400)",
+                    "value": "WPFP41"
+                },
+                {
+                    "label": "Page 42 (0xA800)",
+                    "value": "WPFP42"
+                },
+                {
+                    "label": "Page 43 (0xAC00)",
+                    "value": "WPFP43"
+                },
+                {
+                    "label": "Page 44 (0xB000)",
+                    "value": "WPFP44"
+                },
+                {
+                    "label": "Page 45 (0xB400)",
+                    "value": "WPFP45"
+                },
+                {
+                    "label": "Page 46 (0xB800)",
+                    "value": "WPFP46"
+                },
+                {
+                    "label": "Page 47 (0xBC00)",
+                    "value": "WPFP47"
+                },
+                {
+                    "label": "Page 48 (0xC000)",
+                    "value": "WPFP48"
+                },
+                {
+                    "label": "Page 49 (0xC400)",
+                    "value": "WPFP49"
+                },
+                {
+                    "label": "Page 50 (0xC800)",
+                    "value": "WPFP50"
+                },
+                {
+                    "label": "Page 51 (0xCC00)",
+                    "value": "WPFP51"
+                },
+                {
+                    "label": "Page 52 (0xD000)",
+                    "value": "WPFP52"
+                },
+                {
+                    "label": "Page 53 (0xD400)",
+                    "value": "WPFP53"
+                },
+                {
+                    "label": "Page 54 (0xD800)",
+                    "value": "WPFP54"
+                },
+                {
+                    "label": "Page 55 (0xDC00)",
+                    "value": "WPFP55"
+                },
+                {
+                    "label": "Page 56 (0xE000)",
+                    "value": "WPFP56"
+                },
+                {
+                    "label": "Page 57 (0xE400)",
+                    "value": "WPFP57"
+                },
+                {
+                    "label": "Page 58 (0xE800)",
+                    "value": "WPFP58"
+                },
+                {
+                    "label": "Page 59 (0xEC00)",
+                    "value": "WPFP59"
+                },
+                {
+                    "label": "Page 60 (0xF000)",
+                    "value": "WPFP60"
+                },
+                {
+                    "label": "Page 61 (0xF400)",
+                    "value": "WPFP61"
+                },
+                {
+                    "label": "Page 62 (0xF800)",
+                    "value": "WPFP62"
+                },
+                {
+                    "label": "Page 63 (0xFC00)",
+                    "value": "WPFP63"
+                },
+                {
+                    "label": "Page 64 (0x10000)",
+                    "value": "WPFP64"
+                },
+                {
+                    "label": "Page 65 (0x10400)",
+                    "value": "WPFP65"
+                },
+                {
+                    "label": "Page 66 (0x10800)",
+                    "value": "WPFP66"
+                },
+                {
+                    "label": "Page 67 (0x10C00)",
+                    "value": "WPFP67"
+                },
+                {
+                    "label": "Page 68 (0x11000)",
+                    "value": "WPFP68"
+                },
+                {
+                    "label": "Page 69 (0x11400)",
+                    "value": "WPFP69"
+                },
+                {
+                    "label": "Page 70 (0x11800)",
+                    "value": "WPFP70"
+                },
+                {
+                    "label": "Page 71 (0x11C00)",
+                    "value": "WPFP71"
+                },
+                {
+                    "label": "Page 72 (0x12000)",
+                    "value": "WPFP72"
+                },
+                {
+                    "label": "Page 73 (0x12400)",
+                    "value": "WPFP73"
+                },
+                {
+                    "label": "Page 74 (0x12800)",
+                    "value": "WPFP74"
+                },
+                {
+                    "label": "Page 75 (0x12C00)",
+                    "value": "WPFP75"
+                },
+                {
+                    "label": "Page 76 (0x13000)",
+                    "value": "WPFP76"
+                },
+                {
+                    "label": "Page 77 (0x13400)",
+                    "value": "WPFP77"
+                },
+                {
+                    "label": "Page 78 (0x13800)",
+                    "value": "WPFP78"
+                },
+                {
+                    "label": "Page 79 (0x13C00)",
+                    "value": "WPFP79"
+                },
+                {
+                    "label": "Page 80 (0x14000)",
+                    "value": "WPFP80"
+                },
+                {
+                    "label": "Page 81 (0x14400)",
+                    "value": "WPFP81"
+                },
+                {
+                    "label": "Page 82 (0x14800)",
+                    "value": "WPFP82"
+                },
+                {
+                    "label": "Page 83 (0x14C00)",
+                    "value": "WPFP83"
+                },
+                {
+                    "label": "Page 84 (0x15000)",
+                    "value": "WPFP84"
+                },
+                {
+                    "label": "Page 85 (0x15400)",
+                    "value": "WPFP85"
+                },
+                {
+                    "label": "Page 86 (0x15800)",
+                    "value": "WPFP86"
+                },
+                {
+                    "label": "Page 87 (0x15C00)",
+                    "value": "WPFP87"
+                },
+                {
+                    "label": "Page 88 (0x16000)",
+                    "value": "WPFP88"
+                },
+                {
+                    "label": "Page 89 (0x16400)",
+                    "value": "WPFP89"
+                },
+                {
+                    "label": "Page 90 (0x16800)",
+                    "value": "WPFP90"
+                },
+                {
+                    "label": "Page 91 (0x16C00)",
+                    "value": "WPFP91"
+                },
+                {
+                    "label": "Page 92 (0x17000)",
+                    "value": "WPFP92"
+                },
+                {
+                    "label": "Page 93 (0x17400)",
+                    "value": "WPFP93"
+                },
+                {
+                    "label": "Page 94 (0x17800)",
+                    "value": "WPFP94"
+                },
+                {
+                    "label": "Page 95 (0x17C00)",
+                    "value": "WPFP95"
+                },
+                {
+                    "label": "Page 96 (0x18000)",
+                    "value": "WPFP96"
+                },
+                {
+                    "label": "Page 97 (0x18400)",
+                    "value": "WPFP97"
+                },
+                {
+                    "label": "Page 98 (0x18800)",
+                    "value": "WPFP98"
+                },
+                {
+                    "label": "Page 99 (0x18C00)",
+                    "value": "WPFP99"
+                },
+                {
+                    "label": "Page 100 (0x19000)",
+                    "value": "WPFP100"
+                },
+                {
+                    "label": "Page 101 (0x19400)",
+                    "value": "WPFP101"
+                },
+                {
+                    "label": "Page 102 (0x19800)",
+                    "value": "WPFP102"
+                },
+                {
+                    "label": "Page 103 (0x19C00)",
+                    "value": "WPFP103"
+                },
+                {
+                    "label": "Page 104 (0x1A000)",
+                    "value": "WPFP104"
+                },
+                {
+                    "label": "Page 105 (0x1A400)",
+                    "value": "WPFP105"
+                },
+                {
+                    "label": "Page 106 (0x1A800)",
+                    "value": "WPFP106"
+                },
+                {
+                    "label": "Page 107 (0x1AC00)",
+                    "value": "WPFP107"
+                },
+                {
+                    "label": "Page 108 (0x1B000)",
+                    "value": "WPFP108"
+                },
+                {
+                    "label": "Page 109 (0x1B400)",
+                    "value": "WPFP109"
+                },
+                {
+                    "label": "Page 110 (0x1B800)",
+                    "value": "WPFP110"
+                },
+                {
+                    "label": "Page 111 (0x1BC00)",
+                    "value": "WPFP111"
+                },
+                {
+                    "label": "Page 112 (0x1C000)",
+                    "value": "WPFP112"
+                },
+                {
+                    "label": "Page 113 (0x1C400)",
+                    "value": "WPFP113"
+                },
+                {
+                    "label": "Page 114 (0x1C800)",
+                    "value": "WPFP114"
+                },
+                {
+                    "label": "Page 115 (0x1CC00)",
+                    "value": "WPFP115"
+                },
+                {
+                    "label": "Page 116 (0x1D000)",
+                    "value": "WPFP116"
+                },
+                {
+                    "label": "Page 117 (0x1D400)",
+                    "value": "WPFP117"
+                },
+                {
+                    "label": "Page 118 (0x1D800)",
+                    "value": "WPFP118"
+                },
+                {
+                    "label": "Page 119 (0x1DC00)",
+                    "value": "WPFP119"
+                },
+                {
+                    "label": "Page 120 (0x1E000)",
+                    "value": "WPFP120"
+                },
+                {
+                    "label": "Page 121 (0x1E400)",
+                    "value": "WPFP121"
+                },
+                {
+                    "label": "Page 122 (0x1E800)",
+                    "value": "WPFP122"
+                },
+                {
+                    "label": "Page 123 (0x1EC00)",
+                    "value": "WPFP123"
+                },
+                {
+                    "label": "Page 124 (0x1F000)",
+                    "value": "WPFP124"
+                },
+                {
+                    "label": "Page 125 (0x1F400)",
+                    "value": "WPFP125"
+                },
+                {
+                    "label": "Page 126 (0x1F800)",
+                    "value": "WPFP126"
+                },
+                {
+                    "label": "Page 127 (0x1FC00)",
+                    "value": "WPFP127"
+                },
+                {
+                    "label": "Page 128 (0x20000)",
+                    "value": "WPFP128"
+                },
+                {
+                    "label": "Page 129 (0x20400)",
+                    "value": "WPFP129"
+                },
+                {
+                    "label": "Page 130 (0x20800)",
+                    "value": "WPFP130"
+                },
+                {
+                    "label": "Page 131 (0x20C00)",
+                    "value": "WPFP131"
+                },
+                {
+                    "label": "Page 132 (0x21000)",
+                    "value": "WPFP132"
+                },
+                {
+                    "label": "Page 133 (0x21400)",
+                    "value": "WPFP133"
+                },
+                {
+                    "label": "Page 134 (0x21800)",
+                    "value": "WPFP134"
+                },
+                {
+                    "label": "Page 135 (0x21C00)",
+                    "value": "WPFP135"
+                },
+                {
+                    "label": "Page 136 (0x22000)",
+                    "value": "WPFP136"
+                },
+                {
+                    "label": "Page 137 (0x22400)",
+                    "value": "WPFP137"
+                },
+                {
+                    "label": "Page 138 (0x22800)",
+                    "value": "WPFP138"
+                },
+                {
+                    "label": "Page 139 (0x22C00)",
+                    "value": "WPFP139"
+                },
+                {
+                    "label": "Page 140 (0x23000)",
+                    "value": "WPFP140"
+                },
+                {
+                    "label": "Page 141 (0x23400)",
+                    "value": "WPFP141"
+                },
+                {
+                    "label": "Page 142 (0x23800)",
+                    "value": "WPFP142"
+                },
+                {
+                    "label": "Page 143 (0x23C00)",
+                    "value": "WPFP143"
+                },
+                {
+                    "label": "Page 144 (0x24000)",
+                    "value": "WPFP144"
+                },
+                {
+                    "label": "Page 145 (0x24400)",
+                    "value": "WPFP145"
+                },
+                {
+                    "label": "Page 146 (0x24800)",
+                    "value": "WPFP146"
+                },
+                {
+                    "label": "Page 147 (0x24C00)",
+                    "value": "WPFP147"
+                },
+                {
+                    "label": "Page 148 (0x25000)",
+                    "value": "WPFP148"
+                },
+                {
+                    "label": "Page 149 (0x25400)",
+                    "value": "WPFP149"
+                },
+                {
+                    "label": "Page 150 (0x25800)",
+                    "value": "WPFP150"
+                },
+                {
+                    "label": "Page 151 (0x25C00)",
+                    "value": "WPFP151"
+                },
+                {
+                    "label": "Page 152 (0x26000)",
+                    "value": "WPFP152"
+                },
+                {
+                    "label": "Page 153 (0x26400)",
+                    "value": "WPFP153"
+                },
+                {
+                    "label": "Page 154 (0x26800)",
+                    "value": "WPFP154"
+                },
+                {
+                    "label": "Page 155 (0x26C00)",
+                    "value": "WPFP155"
+                },
+                {
+                    "label": "Page 156 (0x27000)",
+                    "value": "WPFP156"
+                },
+                {
+                    "label": "Page 157 (0x27400)",
+                    "value": "WPFP157"
+                },
+                {
+                    "label": "Page 158 (0x27800)",
+                    "value": "WPFP158"
+                },
+                {
+                    "label": "Page 159 (0x27C00)",
+                    "value": "WPFP159"
+                },
+                {
+                    "label": "Page 160 (0x28000)",
+                    "value": "WPFP160"
+                },
+                {
+                    "label": "Page 161 (0x28400)",
+                    "value": "WPFP161"
+                },
+                {
+                    "label": "Page 162 (0x28800)",
+                    "value": "WPFP162"
+                },
+                {
+                    "label": "Page 163 (0x28C00)",
+                    "value": "WPFP163"
+                },
+                {
+                    "label": "Page 164 (0x29000)",
+                    "value": "WPFP164"
+                },
+                {
+                    "label": "Page 165 (0x29400)",
+                    "value": "WPFP165"
+                },
+                {
+                    "label": "Page 166 (0x29800)",
+                    "value": "WPFP166"
+                },
+                {
+                    "label": "Page 167 (0x29C00)",
+                    "value": "WPFP167"
+                },
+                {
+                    "label": "Page 168 (0x2A000)",
+                    "value": "WPFP168"
+                },
+                {
+                    "label": "Page 169 (0x2A400)",
+                    "value": "WPFP169"
+                },
+                {
+                    "label": "Page 170 (0x2A800)",
+                    "value": "WPFP170"
+                },
+                {
+                    "label": "Highest Page (same as page 170)",
+                    "value": "WPFP511"
+                }
+            ]
+        },
+        {
+            "init": "WPDIS",
+            "key": "WPDIS",
+            "label": "Segment Write Protection Disable bit",
+            "settings": [
+                {
+                    "label": "Segmented code protection enabled",
+                    "value": "WPEN"
+                },
+                {
+                    "label": "Segmented code protection disabled",
+                    "value": "WPDIS"
+                }
+            ]
+        },
+        {
+            "init": "WPCFGDIS",
+            "key": "WPCFG",
+            "label": "Configuration Word Code Page Protection Select bit",
+            "settings": [
+                {
+                    "label": "Last page and Flash configuration words are code-protected",
+                    "value": "WPCFGEN"
+                },
+                {
+                    "label": "Last page(at the top of program memory) and Flash configuration words are not protected",
+                    "value": "WPCFGDIS"
+                }
+            ]
+        },
+        {
+            "init": "WPENDMEM",
+            "key": "WPEND",
+            "label": "Segment Write Protection End Page Select bit",
+            "settings": [
+                {
+                    "label": "Write Protect from page 0 to WPFP",
+                    "value": "WPSTARTMEM"
+                },
+                {
+                    "label": "Write Protect from WPFP to the last page of memory",
+                    "value": "WPENDMEM"
+                }
+            ]
+        },
+        {
+            "init": "XT",
+            "key": "POSCMOD",
+            "label": "Primary Oscillator Select",
+            "settings": [
+                {
+                    "label": "EC oscillator mode selected",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT oscillator mode selected",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS oscillator mode selected",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary oscillator disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DISUVREG",
+            "label": "Internal USB 3.3V Regulator Disable bit",
+            "settings": [
+                {
+                    "label": "Regulator is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Regulator is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "IOLOCK One-Way Set Enable bit",
+            "settings": [
+                {
+                    "label": "Unlimited Writes To RP Registers",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Write RP Registers Once",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "Primary Oscillator Output Function",
+            "settings": [
+                {
+                    "label": "OSCO functions as port I/O (RC15)",
+                    "value": "ON"
+                },
+                {
+                    "label": "OSCO functions as CLKO (FOSC/2)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor",
+            "settings": [
+                {
+                    "label": "Both Clock switching and Fail-safe Clock Monitor are enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock switching is enabled, Fail-safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Both Clock Switching and Fail-safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "PRI",
+            "key": "FNOSC",
+            "label": "Oscillator Select",
+            "settings": [
+                {
+                    "label": "Fast RC Oscillator (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC oscillator with Postscaler and PLL module (FRCPLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary oscillator (XT, HS, EC) with PLL module (XTPLL,HSPLL, ECPLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Secondary oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low-Power RC oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Fast RC oscillator with Postscaler (FRCDIV)",
+                    "value": "FRCDIV"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PLL_96MHZ",
+            "label": "96MHz PLL Disable",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "DIV12",
+            "key": "PLLDIV",
+            "label": "USB 96 MHz PLL Prescaler Select bits",
+            "settings": [
+                {
+                    "label": "Oscillator input used directly (4MHz input)",
+                    "value": "NODIV"
+                },
+                {
+                    "label": "Oscillator input divided by 2 (8MHz input)",
+                    "value": "DIV2"
+                },
+                {
+                    "label": "Oscillator input divided by 3 (12MHz input)",
+                    "value": "DIV3"
+                },
+                {
+                    "label": "Oscillator input divided by 4 (16MHz input)",
+                    "value": "DIV4"
+                },
+                {
+                    "label": "Oscillator input divided by 5 (20MHz input)",
+                    "value": "DIV5"
+                },
+                {
+                    "label": "Oscillator input divided by 6 (24MHz input)",
+                    "value": "DIV6"
+                },
+                {
+                    "label": "Oscillator input divided by 10 (40MHz input)",
+                    "value": "DIV10"
+                },
+                {
+                    "label": "Oscillator input divided by 12 (48MHz input)",
+                    "value": "DIV12"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switch Over Mode",
+            "settings": [
+                {
+                    "label": "IESO mode (Two-speed start-up)disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "IESO mode (Two-speed start-up) enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "FWPSA",
+            "label": "WDT Prescaler",
+            "settings": [
+                {
+                    "label": "Prescaler ratio of 1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "Prescaler ratio of 1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window",
+            "settings": [
+                {
+                    "label": "Windowed Watchdog Timer enabled; FWDTEN must be 1",
+                    "value": "ON"
+                },
+                {
+                    "label": "Standard Watchdog Timer enabled,(Windowed-mode is disabled)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "Watchdog Timer is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Watchdog Timer is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PGx1",
+            "key": "ICS",
+            "label": "Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Emulator functions are shared with PGEC3/PGED3",
+                    "value": "PGx3"
+                },
+                {
+                    "label": "Emulator functions are shared with PGEC2/PGED2",
+                    "value": "PGx2"
+                },
+                {
+                    "label": "Emulator functions are shared with PGEC1/PGED1",
+                    "value": "PGx1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BKBUG",
+            "label": "Background Debug",
+            "settings": [
+                {
+                    "label": "Device resets into Operational mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Code Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Writes to program memory are disabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Writes to program memory are allowed",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GCP",
+            "label": "General Code Segment Code Protect",
+            "settings": [
+                {
+                    "label": "Code protection is enabled for the entire program memory space",
+                    "value": "ON"
+                },
+                {
+                    "label": "Code protection is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "JTAGEN",
+            "label": "JTAG Port Enable",
+            "settings": [
+                {
+                    "label": "JTAG port is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "JTAG port is enabled",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC24FJ256GB110",
+    "clock": 8
+}

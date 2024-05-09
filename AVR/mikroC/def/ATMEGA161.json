@@ -1,0 +1,509 @@
+{
+    "avr_core": "avr5",
+    "eeprom": {
+        "max_addr": "0x01FF",
+        "min_addr": "0x0000"
+    },
+    "fuse": {
+    "list": "[LOW]",
+        "low": {
+            "fuse0": {
+                "default": "0",
+                "name": "CKSEL0",
+                "text": "Select Clock Source"
+            },
+            "fuse1": {
+                "default": "1",
+                "name": "CKSEL1",
+                "text": "Select Clock Source"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "CKSEL2",
+                "text": "Select Clock Source"
+            },
+            "fuse3": {
+                "default": "1",
+                "name": "SUT",
+                "text": "Start-up time"
+            },
+            "fuse4": {
+                "default": "0",
+                "name": "SPIEN",
+                "text": "Serial program downloading (SPI) enabled"
+            },
+            "fuse5": {
+                "default": "1",
+                "name": "BOOTRST",
+                "text": "Boot Reset Vector Enabled"
+            },
+            "nmb_fuse_bits": "6",
+            "nmb_text": "11",
+            "text1": {
+                "mask": "0x20",
+            "text": "Boot Reset Vector Enabled; [BOOTRST=0]",
+                "value": "0x00"
+            },
+            "text10": {
+                "mask": "0x07",
+            "text": "Ceramic Resonator, fast rising power; [CKSEL=110]",
+                "value": "0x06"
+            },
+            "text11": {
+                "mask": "0x07",
+            "text": "Ceramic Resonator, BOD Enabled or power-on reset; [CKSEL=111]",
+                "value": "0x07"
+            },
+            "text2": {
+                "mask": "0x10",
+            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "value": "0x0"
+            },
+            "text3": {
+                "mask": "0x08",
+            "text": "Start-up time Programmed; [SUT=0]",
+                "value": "0x00"
+            },
+            "text4": {
+                "mask": "0x07",
+            "text": "External Clock, fast rising power; [CKSEL=000]",
+                "value": "0x00"
+            },
+            "text5": {
+                "mask": "0x07",
+            "text": "External Clock, BOD Enabled or power-on reset; [CKSEL=001]",
+                "value": "0x01"
+            },
+            "text6": {
+                "mask": "0x07",
+            "text": "Crystal Oscillator, slowly rising power ; default value; [CKSEL=010]",
+                "value": "0x02"
+            },
+            "text7": {
+                "mask": "0x07",
+            "text": "Crystal Oscillator, fast rising power; [CKSEL=011]",
+                "value": "0x03"
+            },
+            "text8": {
+                "mask": "0x07",
+            "text": "Crystal Oscillator, BOD Enabled or power-on reset; [CKSEL=100]",
+                "value": "0x04"
+            },
+            "text9": {
+                "mask": "0x07",
+            "text": "Ceramic Resonator / External Clock, Slowly rising power; [CKSEL=101]",
+                "value": "0x05"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x0028",
+            "desc": "Analog Comparator",
+            "name": "ANA_COMP"
+        },
+        {
+            "address": "0x0026",
+            "desc": "EEPROM Ready",
+            "name": "EE_RDY"
+        },
+        {
+            "address": "0x0024",
+            "desc": "UART1, Tx Complete",
+            "name": "UART1,TX"
+        },
+        {
+            "address": "0x0022",
+            "desc": "UART0, Tx Complete",
+            "name": "UART0,TX"
+        },
+        {
+            "address": "0x0020",
+            "desc": "UART1 Data Register Empty",
+            "name": "UART1,UDRE"
+        },
+        {
+            "address": "0x001E",
+            "desc": "UART0 Data Register Empty",
+            "name": "UART0,UDRE"
+        },
+        {
+            "address": "0x001C",
+            "desc": "UART1, Rx Complete",
+            "name": "UART1,RX"
+        },
+        {
+            "address": "0x001A",
+            "desc": "UART0, Rx Complete",
+            "name": "UART0,RX"
+        },
+        {
+            "address": "0x0018",
+            "desc": "Serial Transfer Complete",
+            "name": "SPI,STC"
+        },
+        {
+            "address": "0x0016",
+            "desc": "Timer/Counter0 Overflow",
+            "name": "TIMER0_OVF"
+        },
+        {
+            "address": "0x0014",
+            "desc": "Timer/Counter0 Compare Match",
+            "name": "TIMER0_COMP"
+        },
+        {
+            "address": "0x0012",
+            "desc": "Timer/Counter1 Overflow",
+            "name": "TIMER1_OVF"
+        },
+        {
+            "address": "0x0010",
+            "desc": "Timer/Counter1 Compare Match B",
+            "name": "TIMER1_COMPB"
+        },
+        {
+            "address": "0x000E",
+            "desc": "Timer/Counter1 Compare Match A",
+            "name": "TIMER1_COMPA"
+        },
+        {
+            "address": "0x000C",
+            "desc": "Timer/Counter1 Capture Event",
+            "name": "TIMER1_CAPT"
+        },
+        {
+            "address": "0x000A",
+            "desc": "Timer/Counter2 Overflow",
+            "name": "TIMER2_OVF"
+        },
+        {
+            "address": "0x0008",
+            "desc": "Timer/Counter2 Compare Match",
+            "name": "TIMER2_COMP"
+        },
+        {
+            "address": "0x0006",
+            "desc": "External Interrupt 2",
+            "name": "INT2"
+        },
+        {
+            "address": "0x0004",
+            "desc": "External Interrupt 1",
+            "name": "INT1"
+        },
+        {
+            "address": "0x0002",
+            "desc": "External Interrupt 0",
+            "name": "INT0"
+        }
+    ],
+    "mcu": "ATMEGA161",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "package": {
+    "packages": "[TQFP]",
+        "tqfp": {
+            "nmb_pin": "44",
+            "pin1": {
+            "name": "[PB5:MOSI]",
+                "text": "MOSI: SPI Master data output, slave data input for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB5. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB5. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB5 bit. See the description of the SPI port for further details."
+            },
+            "pin10": {
+            "name": "[PD4]"
+            },
+            "pin11": {
+            "name": "[PD5:OC1A:TOSC2]",
+            "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
+            },
+            "pin12": {
+            "name": "[PD6:'WR]",
+                "text": "WR is the external data memory write control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+            },
+            "pin13": {
+            "name": "[PD7:'RD]",
+                "text": "RD is the external data memory read control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+            },
+            "pin14": {
+            "name": "[XTAL2]"
+            },
+            "pin15": {
+            "name": "[XTAL1]"
+            },
+            "pin16": {
+            "name": "[GND]"
+            },
+            "pin17": {
+            "name": "[NC]"
+            },
+            "pin18": {
+            "name": "[PC0:A8]"
+            },
+            "pin19": {
+            "name": "[PC1:A9]"
+            },
+            "pin2": {
+            "name": "[PB6:MISO]",
+                "text": "MISO: Master data input, slave data output pin for SPI channel. When the SPI is enabled as a master, this pin is configured as an input regardless of the setting of DDB6. When the SPI is enabled as a slave, the data direction of this pin is controlled by DDB6. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB6 bit. See the description of the SPI port for further details."
+            },
+            "pin20": {
+            "name": "[PC2:A10]"
+            },
+            "pin21": {
+            "name": "[PC3:A11]"
+            },
+            "pin22": {
+            "name": "[PC4:A12]"
+            },
+            "pin23": {
+            "name": "[PC5:A13]"
+            },
+            "pin24": {
+            "name": "[PC6:A14]"
+            },
+            "pin25": {
+            "name": "[PC7:A15]"
+            },
+            "pin26": {
+            "name": "[PE2:OC1B]"
+            },
+            "pin27": {
+            "name": "[PE1:ALE]"
+            },
+            "pin28": {
+            "name": "[NC]"
+            },
+            "pin29": {
+            "name": "[PE0:ICP/INT2]"
+            },
+            "pin3": {
+            "name": "[PB7:SCK]",
+                "text": "SCK: Master clock output, slave clock input pin for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB7. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB7. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB7 bit. See the description of the SPI port for further details."
+            },
+            "pin30": {
+            "name": "[PA7:AD7]"
+            },
+            "pin31": {
+            "name": "[PA6:AD6]"
+            },
+            "pin32": {
+            "name": "[PA5:AD5]"
+            },
+            "pin33": {
+            "name": "[PA4:AD4]"
+            },
+            "pin34": {
+            "name": "[PA3:AD3]"
+            },
+            "pin35": {
+            "name": "[PA2:AD2]"
+            },
+            "pin36": {
+            "name": "[PA1:AD1]"
+            },
+            "pin37": {
+            "name": "[PA0:AD0]"
+            },
+            "pin38": {
+            "name": "[VCC]"
+            },
+            "pin39": {
+            "name": "[NC]"
+            },
+            "pin4": {
+            "name": "['RESET]"
+            },
+            "pin40": {
+            "name": "[PB0:OC0/T0]",
+                "text": "T0: Timer/Counter0 counter source. See the timer description for further details."
+            },
+            "pin41": {
+            "name": "[PB1:OC2/T1]",
+                "text": "T1: Timer/Counter1 counter source. See the timer description for further details"
+            },
+            "pin42": {
+            "name": "[PB2:RXD1:AIN0]",
+            "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
+            },
+            "pin43": {
+            "name": "[PB3:TXD1:AIN1]",
+            "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
+            },
+            "pin44": {
+            "name": "[PB4:SS]",
+                "text": "SS: Slave port select input. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB4. As a slave, the SPI is activated when this pin is driven low. When the SPI is enabled as a master, the data direc-tion of this pin is controlled by DDB4. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB4 bit. See the description of the SPI port for further details."
+            },
+            "pin5": {
+            "name": "[PD0:RXD]",
+                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical “1” in PORTD0 will turn on the internal pull-up."
+            },
+            "pin6": {
+            "name": "[NC]"
+            },
+            "pin7": {
+            "name": "[PD1:TXD]",
+                "text": "Transmit Data (data output pin for the UART). When the UART transmitter is enabled, this pin is configured as an output, regardless of the value of DDRD1."
+            },
+            "pin8": {
+            "name": "[PD2:INT0]",
+                "text": "INT0: External Interrupt source 0. The PD2 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
+            },
+            "pin9": {
+            "name": "[PD3:INT1]",
+                "text": "INT1: External Interrupt source 1. The PD3 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
+            }
+        }
+    },
+    "ram": {
+        "max_addr": "0x045F",
+        "min_addr": "0x0060"
+    },
+    "rom": {
+        "max_addr": "0x1FFF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "ADIW",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "SBIW",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "MUL",
+        "MULS",
+        "MULSU",
+        "FMUL",
+        "FMULS",
+        "FMULSU",
+        "RJMP",
+        "IJMP",
+        "JMP",
+        "RCALL",
+        "ICALL",
+        "CALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "MOV",
+        "MOVW",
+        "LDI",
+        "LDS",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LDD_Y",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDD_Z",
+        "STS",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "STD_Y",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STD_Z",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi",
+        "ELPM_Z",
+        "ELPM_Zi",
+        "SPM",
+        "IN",
+        "OUT",
+        "PUSH",
+        "POP",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "SBI",
+        "CBI",
+        "BST",
+        "BLD",
+        "BSET",
+        "BCLR",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "BREAK",
+        "NOP",
+        "SLEEP",
+        "WDR"
+    ]
+}

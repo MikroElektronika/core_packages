@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32H757AI$|^STM32H757BI$|^STM32H757II$|^STM32H757XI$|^STM32H757ZI$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/stm/doc_ds_104/init_clock.c)
+endif()

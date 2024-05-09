@@ -1,0 +1,1369 @@
+{
+    "eio": {
+        "max_addr": "0x0010FF",
+        "min_addr": "0x60"
+    },
+    "fuse": {
+        "bodcfg": {
+            "fuse0": {
+                "default": "0",
+                "name": "SLEEP0",
+                "text": "BOD Operation in Sleep Mode"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "SLEEP1",
+                "text": "BOD Operation in Sleep Mode"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "SAMPLFREQ",
+                "text": "BOD Sample Frequency"
+            },
+            "fuse3": {
+                "default": "0",
+                "name": "LVL0",
+                "text": "BOD Level"
+            },
+            "fuse4": {
+                "default": "0",
+                "name": "LVL1",
+                "text": "BOD Level"
+            },
+            "fuse5": {
+                "default": "0",
+                "name": "LVL2",
+                "text": "BOD Level"
+            },
+            "fuse6": {
+                "default": "0",
+                "name": "ACTIVE0",
+                "text": "BOD Operation in Active Mode"
+            },
+            "fuse7": {
+                "default": "0",
+                "name": "ACTIVE1",
+                "text": "BOD Operation in Active Mode"
+            },
+            "nmb_fuse_bits": "8",
+            "nmb_text": "15",
+            "text1": {
+                "mask": "0x0C",
+            "text": "Disabled; [ACTIVE=00]",
+                "value": "0x00"
+            },
+            "text10": {
+                "mask": "0xE0",
+            "text": "4.3 V; [LVL=111]",
+                "value": "0xE0"
+            },
+            "text11": {
+                "mask": "0x10",
+            "text": "1kHz sampling frequency; [SAMPLFREQ=0]",
+                "value": "0x00"
+            },
+            "text12": {
+                "mask": "0x10",
+            "text": "125Hz sampling frequency; [SAMPLFREQ=1]",
+                "value": "0x10"
+            },
+            "text13": {
+                "mask": "0x03",
+            "text": "Disabled; [SLEEP=00]",
+                "value": "0x00"
+            },
+            "text14": {
+                "mask": "0x03",
+            "text": "Enabled; [SLEEP=01]",
+                "value": "0x01"
+            },
+            "text15": {
+                "mask": "0x03",
+            "text": "Sampled; [SLEEP=10]",
+                "value": "0x02"
+            },
+            "text2": {
+                "mask": "0x0C",
+            "text": "Enabled; [ACTIVE=01]",
+                "value": "0x04"
+            },
+            "text3": {
+                "mask": "0x0C",
+            "text": "Sampled; [ACTIVE=10]",
+                "value": "0x08"
+            },
+            "text4": {
+                "mask": "0x0C",
+            "text": "Enabled with wake-up halted until BOD is ready; [ACTIVE=11]",
+                "value": "0x0C"
+            },
+            "text5": {
+                "mask": "0xE0",
+            "text": "1.8 V; [LVL=000]",
+                "value": "0x00"
+            },
+            "text6": {
+                "mask": "0xE0",
+            "text": "2.15 V; [LVL=001]",
+                "value": "0x20"
+            },
+            "text7": {
+                "mask": "0xE0",
+            "text": "2.51 V; [LVL=010]",
+                "value": "0x40"
+            },
+            "text8": {
+                "mask": "0xE0",
+            "text": "2.87 V; [LVL=011]",
+                "value": "0x60"
+            },
+            "text9": {
+                "mask": "0xE0",
+            "text": "3.94 V; [LVL=110]",
+                "value": "0xC0"
+            }
+        },
+    "list": "[BODCFG:OSCCFG:SYSCFG0:SYSCFG1:TCD0CFG:WDTCFG]",
+        "osccfg": {
+            "fuse0": {
+                "default": "0",
+                "name": "OSCLOCK",
+                "text": "Oscillator Lock"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "FREQSEL0",
+                "text": "Frequency Select"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "FREQSEL1",
+                "text": "Frequency Select"
+            },
+            "nmb_fuse_bits": "3",
+            "nmb_text": "3",
+            "text1": {
+                "mask": "0x03",
+            "text": "16 MHz; [FREQSEL=01]",
+                "value": "0x01"
+            },
+            "text2": {
+                "mask": "0x03",
+            "text": "20 MHz; [FREQSEL=10]",
+                "value": "0x02"
+            },
+            "text3": {
+                "mask": "0x80",
+            "text": "Oscillator Lock; [OSCLOCK=0]",
+                "value": "0x00"
+            }
+        },
+        "syscfg0": {
+            "fuse0": {
+                "default": "0",
+                "name": "RSTPINCFG0",
+                "text": "Reset Pin Configuration"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "RSTPINCFG1",
+                "text": "Reset Pin Configuration"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "EESAVE",
+                "text": "EEPROM Save"
+            },
+            "fuse3": {
+                "default": "0",
+                "name": "CRCSRC0",
+                "text": "CRC Source"
+            },
+            "fuse4": {
+                "default": "0",
+                "name": "CRCSRC1",
+                "text": "CRC Source"
+            },
+            "nmb_fuse_bits": "5",
+            "nmb_text": "8",
+            "text1": {
+                "mask": "0xC0",
+            "text": "The CRC is performed on the entire Flash (boot, application code and application data section).; [CRCSRC=00]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0xC0",
+            "text": "The CRC is performed on the boot section of Flash; [CRCSRC=01]",
+                "value": "0x40"
+            },
+            "text3": {
+                "mask": "0xC0",
+            "text": "The CRC is performed on the boot and application code section of Flash; [CRCSRC=10]",
+                "value": "0x80"
+            },
+            "text4": {
+                "mask": "0xC0",
+            "text": "Disable CRC.; [CRCSRC=11]",
+                "value": "0xC0"
+            },
+            "text5": {
+                "mask": "0x01",
+            "text": "EEPROM Save; [EESAVE=0]",
+                "value": "0x00"
+            },
+            "text6": {
+                "mask": "0x0C",
+            "text": "GPIO mode; [RSTPINCFG=00]",
+                "value": "0x00"
+            },
+            "text7": {
+                "mask": "0x0C",
+            "text": "UPDI mode; [RSTPINCFG=01]",
+                "value": "0x04"
+            },
+            "text8": {
+                "mask": "0x0C",
+            "text": "Reset mode; [RSTPINCFG=10]",
+                "value": "0x08"
+            }
+        },
+        "syscfg1": {
+            "fuse0": {
+                "default": "0",
+                "name": "SUT0",
+                "text": "Startup Time"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "SUT1",
+                "text": "Startup Time"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "SUT2",
+                "text": "Startup Time"
+            },
+            "nmb_fuse_bits": "3",
+            "nmb_text": "8",
+            "text1": {
+                "mask": "0x07",
+            "text": "0 ms; [SUT=000]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x07",
+            "text": "1 ms; [SUT=001]",
+                "value": "0x01"
+            },
+            "text3": {
+                "mask": "0x07",
+            "text": "2 ms; [SUT=010]",
+                "value": "0x02"
+            },
+            "text4": {
+                "mask": "0x07",
+            "text": "4 ms; [SUT=011]",
+                "value": "0x03"
+            },
+            "text5": {
+                "mask": "0x07",
+            "text": "8 ms; [SUT=100]",
+                "value": "0x04"
+            },
+            "text6": {
+                "mask": "0x07",
+            "text": "16 ms; [SUT=101]",
+                "value": "0x05"
+            },
+            "text7": {
+                "mask": "0x07",
+            "text": "32 ms; [SUT=110]",
+                "value": "0x06"
+            },
+            "text8": {
+                "mask": "0x07",
+            "text": "64 ms; [SUT=111]",
+                "value": "0x07"
+            }
+        },
+        "tcd0cfg": {
+            "fuse0": {
+                "default": "0",
+                "name": "CMPDEN",
+                "text": "Compare D Output Enable"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "CMPD",
+                "text": "Compare D Default Output Value"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "CMPCEN",
+                "text": "Compare C Output Enable"
+            },
+            "fuse3": {
+                "default": "0",
+                "name": "CMPC",
+                "text": "Compare C Default Output Value"
+            },
+            "fuse4": {
+                "default": "0",
+                "name": "CMPBEN",
+                "text": "Compare B Output Enable"
+            },
+            "fuse5": {
+                "default": "0",
+                "name": "CMPB",
+                "text": "Compare B Default Output Value"
+            },
+            "fuse6": {
+                "default": "0",
+                "name": "CMPAEN",
+                "text": "Compare A Output Enable"
+            },
+            "fuse7": {
+                "default": "0",
+                "name": "CMPA",
+                "text": "Compare A Default Output Value"
+            },
+            "nmb_fuse_bits": "8",
+            "nmb_text": "8",
+            "text1": {
+                "mask": "0x01",
+            "text": "Compare A Default Output Value; [CMPA=0]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x10",
+            "text": "Compare A Output Enable; [CMPAEN=0]",
+                "value": "0x00"
+            },
+            "text3": {
+                "mask": "0x02",
+            "text": "Compare B Default Output Value; [CMPB=0]",
+                "value": "0x00"
+            },
+            "text4": {
+                "mask": "0x20",
+            "text": "Compare B Output Enable; [CMPBEN=0]",
+                "value": "0x00"
+            },
+            "text5": {
+                "mask": "0x04",
+            "text": "Compare C Default Output Value; [CMPC=0]",
+                "value": "0x00"
+            },
+            "text6": {
+                "mask": "0x40",
+            "text": "Compare C Output Enable; [CMPCEN=0]",
+                "value": "0x00"
+            },
+            "text7": {
+                "mask": "0x08",
+            "text": "Compare D Default Output Value; [CMPD=0]",
+                "value": "0x00"
+            },
+            "text8": {
+                "mask": "0x80",
+            "text": "Compare D Output Enable; [CMPDEN=0]",
+                "value": "0x00"
+            }
+        },
+        "wdtcfg": {
+            "fuse0": {
+                "default": "0",
+                "name": "WINDOW0",
+                "text": "Watchdog Window Timeout Period"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "WINDOW1",
+                "text": "Watchdog Window Timeout Period"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "WINDOW2",
+                "text": "Watchdog Window Timeout Period"
+            },
+            "fuse3": {
+                "default": "0",
+                "name": "WINDOW3",
+                "text": "Watchdog Window Timeout Period"
+            },
+            "fuse4": {
+                "default": "0",
+                "name": "PERIOD0",
+                "text": "Watchdog Timeout Period"
+            },
+            "fuse5": {
+                "default": "0",
+                "name": "PERIOD1",
+                "text": "Watchdog Timeout Period"
+            },
+            "fuse6": {
+                "default": "0",
+                "name": "PERIOD2",
+                "text": "Watchdog Timeout Period"
+            },
+            "fuse7": {
+                "default": "0",
+                "name": "PERIOD3",
+                "text": "Watchdog Timeout Period"
+            },
+            "nmb_fuse_bits": "8",
+            "nmb_text": "24",
+            "text1": {
+                "mask": "0x0F",
+            "text": "Watch-Dog timer Off; [PERIOD=0000]",
+                "value": "0x00"
+            },
+            "text10": {
+                "mask": "0x0F",
+            "text": "2K cycles (2.0s); [PERIOD=1001]",
+                "value": "0x09"
+            },
+            "text11": {
+                "mask": "0x0F",
+            "text": "4K cycles (4.1s); [PERIOD=1010]",
+                "value": "0x0A"
+            },
+            "text12": {
+                "mask": "0x0F",
+            "text": "8K cycles (8.2s); [PERIOD=1011]",
+                "value": "0x0B"
+            },
+            "text13": {
+                "mask": "0xF0",
+            "text": "Window mode off; [WINDOW=0000]",
+                "value": "0x00"
+            },
+            "text14": {
+                "mask": "0xF0",
+            "text": "8 cycles (8ms); [WINDOW=0001]",
+                "value": "0x10"
+            },
+            "text15": {
+                "mask": "0xF0",
+            "text": "16 cycles (16ms); [WINDOW=0010]",
+                "value": "0x20"
+            },
+            "text16": {
+                "mask": "0xF0",
+            "text": "32 cycles (32ms); [WINDOW=0011]",
+                "value": "0x30"
+            },
+            "text17": {
+                "mask": "0xF0",
+            "text": "64 cycles (64ms); [WINDOW=0100]",
+                "value": "0x40"
+            },
+            "text18": {
+                "mask": "0xF0",
+            "text": "128 cycles (0.128s); [WINDOW=0101]",
+                "value": "0x50"
+            },
+            "text19": {
+                "mask": "0xF0",
+            "text": "256 cycles (0.256s); [WINDOW=0110]",
+                "value": "0x60"
+            },
+            "text2": {
+                "mask": "0x0F",
+            "text": "8 cycles (8ms); [PERIOD=0001]",
+                "value": "0x01"
+            },
+            "text20": {
+                "mask": "0xF0",
+            "text": "512 cycles (0.512s); [WINDOW=0111]",
+                "value": "0x70"
+            },
+            "text21": {
+                "mask": "0xF0",
+            "text": "1K cycles (1.0s); [WINDOW=1000]",
+                "value": "0x80"
+            },
+            "text22": {
+                "mask": "0xF0",
+            "text": "2K cycles (2.0s); [WINDOW=1001]",
+                "value": "0x90"
+            },
+            "text23": {
+                "mask": "0xF0",
+            "text": "4K cycles (4.1s); [WINDOW=1010]",
+                "value": "0xA0"
+            },
+            "text24": {
+                "mask": "0xF0",
+            "text": "8K cycles (8.2s); [WINDOW=1011]",
+                "value": "0xB0"
+            },
+            "text3": {
+                "mask": "0x0F",
+            "text": "16 cycles (16ms); [PERIOD=0010]",
+                "value": "0x02"
+            },
+            "text4": {
+                "mask": "0x0F",
+            "text": "32 cycles (32ms); [PERIOD=0011]",
+                "value": "0x03"
+            },
+            "text5": {
+                "mask": "0x0F",
+            "text": "64 cycles (64ms); [PERIOD=0100]",
+                "value": "0x04"
+            },
+            "text6": {
+                "mask": "0x0F",
+            "text": "128 cycles (0.128s); [PERIOD=0101]",
+                "value": "0x05"
+            },
+            "text7": {
+                "mask": "0x0F",
+            "text": "256 cycles (0.256s); [PERIOD=0110]",
+                "value": "0x06"
+            },
+            "text8": {
+                "mask": "0x0F",
+            "text": "512 cycles (0.512s); [PERIOD=0111]",
+                "value": "0x07"
+            },
+            "text9": {
+                "mask": "0x0F",
+            "text": "1K cycles (1.0s); [PERIOD=1000]",
+                "value": "0x08"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x0032",
+            "name": "EE"
+        },
+        {
+            "address": "0x0030",
+            "name": "TXC"
+        },
+        {
+            "address": "0x002E",
+            "name": "DRE"
+        },
+        {
+            "address": "0x002C",
+            "name": "RXC"
+        },
+        {
+            "address": "0x002A",
+            "name": "INT"
+        },
+        {
+            "address": "0x0028",
+            "name": "TWIM"
+        },
+        {
+            "address": "0x0026",
+            "name": "TWIS"
+        },
+        {
+            "address": "0x0024",
+            "name": "WCOMP"
+        },
+        {
+            "address": "0x0022",
+            "name": "RESRDY"
+        },
+        {
+            "address": "0x0020",
+            "name": "AC"
+        },
+        {
+            "address": "0x001E",
+            "name": "TRIG"
+        },
+        {
+            "address": "0x001C",
+            "name": "OVF"
+        },
+        {
+            "address": "0x001A",
+            "name": "INT"
+        },
+        {
+            "address": "0x0018",
+            "name": "LCMP2"
+        },
+        {
+            "address": "0x0018",
+            "name": "CMP2"
+        },
+        {
+            "address": "0x0016",
+            "name": "LCMP1"
+        },
+        {
+            "address": "0x0016",
+            "name": "CMP1"
+        },
+        {
+            "address": "0x0014",
+            "name": "CMP0"
+        },
+        {
+            "address": "0x0014",
+            "name": "LCMP0"
+        },
+        {
+            "address": "0x0012",
+            "name": "HUNF"
+        },
+        {
+            "address": "0x0010",
+            "name": "OVF"
+        },
+        {
+            "address": "0x0010",
+            "name": "LUNF"
+        },
+        {
+            "address": "0x000E",
+            "name": "PIT"
+        },
+        {
+            "address": "0x000C",
+            "name": "CNT"
+        },
+        {
+            "address": "0x000A",
+            "name": "PORT"
+        },
+        {
+            "address": "0x0008",
+            "name": "PORT"
+        },
+        {
+            "address": "0x0006",
+            "name": "PORT"
+        },
+        {
+            "address": "0x0004",
+            "name": "VLM"
+        },
+        {
+            "address": "0x0002",
+            "desc": "None.",
+            "name": "NMI"
+        }
+    ],
+    "mcu": "ATTINY817",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "ram": {
+        "max_addr": "0x003FFF",
+        "min_addr": "0x00003E00"
+    },
+    "rom": {
+        "max_addr": "0x000FFF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "ADIW",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "SBIW",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "MUL",
+        "MULS",
+        "MULSU",
+        "FMUL",
+        "FMULS",
+        "FMULSU",
+        "RJMP",
+        "IJMP",
+        "RCALL",
+        "ICALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "MOV",
+        "MOVW",
+        "LDI",
+        "LDS",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LDD_Y",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDD_Z",
+        "STS",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "STD_Y",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STD_Z",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi",
+        "ELPM_Z",
+        "ELPM_Zi",
+        "IN",
+        "OUT",
+        "PUSH",
+        "POP",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "SBI",
+        "CBI",
+        "BST",
+        "BLD",
+        "BSET",
+        "BCLR",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "BREAK",
+        "NOP",
+        "SLEEP",
+        "WDR"
+    ],
+    "config_registers": [
+        {
+            "address": "00820000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PERIOD",
+                    "label": "Watchdog Timeout Period",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "Watch-Dog timer Off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "8 cycles (8ms)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "16 cycles (16ms)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "32 cycles (32ms)",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "64 cycles (64ms)",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "128 cycles (0.128s)",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "256 cycles (0.256s)",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "512 cycles (0.512s)",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "1K cycles (1.0s)",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "2K cycles (2.0s)",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "4K cycles (4.1s)",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "8K cycles (8.2s)",
+                            "value": "0000000B"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "WINDOW",
+                    "label": "Watchdog Window Timeout Period",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "Window mode off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "8 cycles (8ms)",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "16 cycles (16ms)",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "32 cycles (32ms)",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "64 cycles (64ms)",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "128 cycles (0.128s)",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "256 cycles (0.256s)",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "512 cycles (0.512s)",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "1K cycles (1.0s)",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "2K cycles (2.0s)",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "4K cycles (4.1s)",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "8K cycles (8.2s)",
+                            "value": "000000B0"
+                        }
+                    ]
+                }
+            ],
+            "key": "WDTCFG",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "00820001",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SLEEP",
+                    "label": "BOD Operation in Sleep Mode",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Sampled",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "ACTIVE",
+                    "label": "BOD Operation in Active Mode",
+                    "mask": "0000000C",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Sampled",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Enabled with wake-up halted until BOD is ready",
+                            "value": "0000000C"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SAMPFREQ",
+                    "label": "BOD Sample Frequency",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "1kHz sampling frequency",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "125Hz sampling frequency",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVL",
+                    "label": "BOD Level",
+                    "mask": "000000E0",
+                    "settings": [
+                        {
+                            "label": "1.8 V",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "2.6 V",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "4.2 V",
+                            "value": "000000E0"
+                        }
+                    ]
+                }
+            ],
+            "key": "BODCFG",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "00820002",
+            "default": "00000002",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "FREQSEL",
+                    "label": "Frequency Select",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "16 MHz",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "20 MHz",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "reserved",
+                    "label": "reserved",
+                    "mask": "0000007C",
+                "settings": []
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OSCLOCK",
+                    "label": "Oscillator Lock",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "OSCCFG",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "00820003",
+            "default": "000000FF",
+        "fields": [],
+            "key": "reserved",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "00820004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPA",
+                    "label": "Compare A Default Output Value",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPB",
+                    "label": "Compare B Default Output Value",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPC",
+                    "label": "Compare C Default Output Value",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPD",
+                    "label": "Compare D Default Output Value",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPAEN",
+                    "label": "Compare A Output Enable",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPBEN",
+                    "label": "Compare B Output Enable",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPCEN",
+                    "label": "Compare C Output Enable",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPDEN",
+                    "label": "Compare D Output Enable",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "TCD0CFG",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "00820005",
+            "default": "000000C4",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EESAVE",
+                    "label": "EEPROM Save",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Set",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Clear",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "reserved",
+                    "label": "reserved",
+                    "mask": "00000002",
+                "settings": []
+                },
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "RSTPINCFG",
+                    "label": "Reset Pin Configuration",
+                    "mask": "0000000C",
+                    "settings": [
+                        {
+                            "label": "GPIO mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "UPDI mode",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Reset mode",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "reserved",
+                    "label": "reserved",
+                    "mask": "00000030",
+                "settings": []
+                },
+                {
+                    "hidden": false,
+                    "init": "C0",
+                    "key": "CRCSRC",
+                    "label": "CRC Source",
+                    "mask": "000000C0",
+                    "settings": [
+                        {
+                            "label": "The CRC is performed on the entire Flash (boot, application code and application data section).",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The CRC is performed on the boot section of Flash",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "The CRC is performed on the boot and application code section of Flash",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Disable CRC.",
+                            "value": "000000C0"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSCFG0",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "00820006",
+            "default": "00000007",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "SUT",
+                    "label": "Startup Time",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "0 ms",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1 ms",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "2 ms",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "4 ms",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "8 ms",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "16 ms",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "32 ms",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "64 ms",
+                            "value": "00000007"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSCFG1",
+            "unused": "FFFFFF00"
+        }
+    ],
+    "avr_core": "avrxmega3",
+    "codegrip_icd": {
+        "hwbrkpno": "2",
+        "instr_pipeline": "0",
+        "start_addr": "0",
+        "swbrkpen": "0"
+    }
+}

@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "(^PIC12F1(.+)$)|(^PIC12LF1(.+)$)|(^PIC16F1(.+)$)|(^PIC16LF1(.+)$)")
+    set(SYSTEM_LIB_SOURCE "system/P16_Enh/src/__Lib_System.c")
+    set(SYSTEM_LIB_INCLUDE_DIR "")
+    set(MATH_LIB_SOURCE "math/P16_Enh/__Lib_Math.c")
+    set(MATH_DOUBLE_SOURCE "math_double/P16_Enh/__Lib_MathDouble.c")
+    set(DELAY_SOURCE "delay/p16_enh/__lib_delays.c")
+endif()

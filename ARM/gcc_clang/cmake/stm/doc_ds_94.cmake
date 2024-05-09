@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32H725ZE$|^STM32H725VE$|^STM32H725RE$|^STM32H725IE$|^STM32H725AE$|^STM32H725ZG$|^STM32H725VG$|^STM32H725RG$|^STM32H725IG$|^STM32H725AG$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/stm/doc_ds_94/init_clock.c)
+endif()

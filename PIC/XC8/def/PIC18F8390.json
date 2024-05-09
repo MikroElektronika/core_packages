@@ -1,0 +1,335 @@
+{
+    "config_words": [
+        {
+            "init": "RCIO",
+            "key": "OSC",
+            "label": "Oscillator",
+            "settings": [
+                {
+                    "label": "Internal oscillator block, CLKO function on RA6, port function on RA7",
+                    "value": "INTIO7"
+                },
+                {
+                    "label": "Internal oscillator block, port function on RA6 and RA7",
+                    "value": "INTIO67"
+                },
+                {
+                    "label": "External RC oscillator, port function on RA6",
+                    "value": "RCIO"
+                },
+                {
+                    "label": "HS oscillator, PLL enabled (clock frequency = 4 x FOSC1)",
+                    "value": "HSPLL"
+                },
+                {
+                    "label": "EC oscillator, port function on RA6",
+                    "value": "ECIO"
+                },
+                {
+                    "label": "EC oscillator, CLKO function on RA6",
+                    "value": "EC"
+                },
+                {
+                    "label": "External RC oscillator, CLKO function on RA6",
+                    "value": "RC"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enable",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "IESO",
+            "label": "Internal External Switch Over Mode",
+            "settings": [
+                {
+                    "label": "Oscillator Switchover mode disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Oscillator Switchover mode enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRT",
+            "label": "Power Up Timer",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "SBORDIS",
+            "key": "BOREN",
+            "label": "Brown Out Detect",
+            "settings": [
+                {
+                    "label": "Brown-out Reset enabled in hardware only (SBOREN is disabled)",
+                    "value": "SBORDIS"
+                },
+                {
+                    "label": "Brown-out Reset enabled in hardware only and disabled in Sleep mode (SBOREN is disabled)",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "Brown-out Reset enabled and controlled by software (SBOREN is enabled)",
+                    "value": "ON"
+                },
+                {
+                    "label": "Brown-out Reset disabled in hardware and software",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "3",
+            "key": "BORV",
+            "label": "Brown Out Voltage",
+            "settings": [
+                {
+                    "label": "VBOR set to 2.1V",
+                    "value": "3"
+                },
+                {
+                    "label": "VBOR set to 2.8V",
+                    "value": "2"
+                },
+                {
+                    "label": "VBOR set to 4.3V",
+                    "value": "1"
+                },
+                {
+                    "label": "VBOR set to 4.6V",
+                    "value": "0"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDT",
+            "label": "Watchdog Timer",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "WDT disabled (control is placed on the SWDTEN bit)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "32768",
+            "key": "WDTPS",
+            "label": "Watchdog Postscaler",
+            "settings": [
+                {
+                    "label": "1:32768",
+                    "value": "32768"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "16384"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "8192"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "4096"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "2048"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "1024"
+                },
+                {
+                    "label": "1:512",
+                    "value": "512"
+                },
+                {
+                    "label": "1:256",
+                    "value": "256"
+                },
+                {
+                    "label": "1:128",
+                    "value": "128"
+                },
+                {
+                    "label": "1:64",
+                    "value": "64"
+                },
+                {
+                    "label": "1:32",
+                    "value": "32"
+                },
+                {
+                    "label": "1:16",
+                    "value": "16"
+                },
+                {
+                    "label": "1:8",
+                    "value": "8"
+                },
+                {
+                    "label": "1:4",
+                    "value": "4"
+                },
+                {
+                    "label": "1:2",
+                    "value": "2"
+                },
+                {
+                    "label": "1:1",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "init": "PORTC",
+            "key": "CCP2MX",
+            "label": "CCP2 Mux",
+            "settings": [
+                {
+                    "label": "CCP2 input/output is multiplexed with RC1",
+                    "value": "PORTC"
+                },
+                {
+                    "label": "CCP2 input/output is multiplexed with RE7",
+                    "value": "PORTBE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "LPT1OSC",
+            "label": "Low Power Timer1 Osc enable",
+            "settings": [
+                {
+                    "label": "Timer1 configured for low-power operation",
+                    "value": "ON"
+                },
+                {
+                    "label": "Timer1 configured for higher power operation",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "Master Clear Enable",
+            "settings": [
+                {
+                    "label": "MCLR pin enabled; RG5 input pin disabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "RG5 input pin enabled; MCLR disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Overflow Reset",
+            "settings": [
+                {
+                    "label": "Stack full/underflow will cause Reset",
+                    "value": "ON"
+                },
+                {
+                    "label": "Stack full/underflow will not cause Reset",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "XINST",
+            "label": "Extended Instruction Set Enable bit",
+            "settings": [
+                {
+                    "label": "Instruction set extension and Indexed Addressing mode enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Instruction set extension and Indexed Addressing mode disabled (Legacy mode)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Background Debugger Enable bit",
+            "settings": [
+                {
+                    "label": "Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Background debugger enabled, RB6 and RB7 are dedicated to In-Circuit Debug",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protect 00000-03FFF",
+            "settings": [
+                {
+                    "label": "Program memory block (000000-003FFFh) not code-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory block (000000-003FFFh) code-protected",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18F8390",
+    "clock": 1
+}

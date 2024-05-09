@@ -1,0 +1,192 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRCCLK,_EXTRC_OSC_CLKOUT,_EXTRC",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN",
+                    "value": "EXTRCCLK,_EXTRC_OSC_CLKOUT,_EXTRC"
+                },
+                {
+                    "label": "RCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN",
+                    "value": "EXTRCIO,_EXTRC_OSC_NOCLKOUT,_EXTRCIO"
+                },
+                {
+                    "label": "INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN",
+                    "value": "INTOSCCLK,_INTRC_OSC_CLKOUT,_INTOSC"
+                },
+                {
+                    "label": "INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN",
+                    "value": "INTOSCIO,_INTRC_OSC_NOCLKOUT,_INTOSCIO"
+                },
+                {
+                    "label": "EC: I/O function on RA6/OSC2/CLKOUT pin, CLKIN on RA7/OSC1/CLKIN",
+                    "value": "EC,_EC_OSC"
+                },
+                {
+                    "label": "HS oscillator: High-speed crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator: Low-power crystal on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF,_PWRT_DIS",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF,_PWRT_DIS"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON,_PWRT_EN"
+                }
+            ]
+        },
+        {
+            "init": "ON,_MCLR_EN",
+            "key": "MCLRE",
+            "label": "RE3/MCLR Pin Function Select bit",
+            "settings": [
+                {
+                    "label": "RE3/MCLR pin function is digital input, MCLR internally tied to VDD",
+                    "value": "OFF,_MCLR_DIS"
+                },
+                {
+                    "label": "RE3/MCLR pin function is MCLR",
+                    "value": "ON,_MCLR_EN"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bit",
+            "settings": [
+                {
+                    "label": "Program memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BOR_ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Selection bits",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON,_BOR_ON"
+                },
+                {
+                    "label": "BOR enabled during operation and disabled in Sleep",
+                    "value": "NSLEEP,_BOR_NSLEEP"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF,_BOR_OFF"
+                }
+            ]
+        },
+        {
+            "init": "19,_BORV_1_9",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage selection bit",
+            "settings": [
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 1.9 V nominal",
+                    "value": "19,_BORV_1_9"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 2.5 V nominal",
+                    "value": "25,_BORV_2_5"
+                }
+            ]
+        },
+        {
+            "init": "ON,_PLL_EN",
+            "key": "PLLEN",
+            "label": "INTOSC PLL Enable bit",
+            "settings": [
+                {
+                    "label": "INTOSC Frequency is 16MHz (32x)",
+                    "value": "ON,_PLL_EN"
+                },
+                {
+                    "label": "INTOSC Frequency is 500 kHz",
+                    "value": "OFF,_PLL_DIS"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "In-Circuit Debugger Mode bit",
+            "settings": [
+                {
+                    "label": "In-circuit debugger disabled, RB6/ICSPCLK and RB7/ICSPDAT are general purpose I/O pins",
+                    "value": "OFF"
+                },
+                {
+                    "label": "In-circuit debugger enabled, RB6/ICSPCLK and RB7/ICSPDAT are dedicated to the debugger",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "DIS,_VCAP_DIS",
+            "key": "VCAPEN",
+            "label": "Voltage Regulator Capacitor Enable bits",
+            "settings": [
+                {
+                    "label": "All VCAP pin functions are disabled",
+                    "value": "DIS,_VCAP_DIS"
+                },
+                {
+                    "label": "VCAP functionality is enabled on RA6",
+                    "value": "RA6,_VCAP_RA6"
+                },
+                {
+                    "label": "VCAP functionality is enabled on RA5",
+                    "value": "RA5,_VCAP_RA5"
+                },
+                {
+                    "label": "VCAP functionality is enabled on RA0",
+                    "value": "RA0,_VCAP_RA0"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F722A",
+    "clock": 1
+}

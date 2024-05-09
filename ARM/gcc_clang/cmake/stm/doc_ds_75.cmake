@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32G061C6$|^STM32G061F6$|^STM32G061G6$|^STM32G061K6$|^STM32G061C8$|^STM32G061F8$|^STM32G061G8$|^STM32G061K8$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/stm/doc_ds_75/init_clock.c)
+endif()

@@ -1,0 +1,1104 @@
+{
+    "config_registers": [
+        {
+            "address": "40021008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HSI48ON",
+                    "label": "48MHz HSI clock enable bit",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "48MHz HSI clock disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "48MHz HSI clock enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CRRCR",
+            "unused": "00000000"
+        },
+        {
+            "address": "40021000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "HSI16ON",
+                    "label": "16 MHz high-speed internal clock enable",
+                    "mask": "000000001",
+                    "settings": [
+                        {
+                            "label": "HSI16 oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSI16 oscillator ON",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HSI16DIVEN",
+                    "label": "HSI16 divider enable bit",
+                    "mask": "000000008",
+                    "settings": [
+                        {
+                            "label": "no 16 MHz HSI division requested",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "16 MHz HSI division by 4 requested",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MSION",
+                    "label": "MSI clock enable",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "MSI oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MSI oscillator ON",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HSEON",
+                    "label": "External high-speed clock enable",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "HSE oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSE oscillator ON",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HSEBYP",
+                    "label": "External high-speed clock bypass",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "HSE oscillator not bypassed",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSE oscillator bypassed with external clock",
+                            "value": "00040000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSSHSEON",
+                    "label": "Clock security system on HSE enable bit",
+                    "mask": "00080000",
+                    "settings": [
+                        {
+                            "label": "Clock security system OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clock security system ON",
+                            "value": "00080000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "RTCPRE",
+                    "label": "RTC prescaler",
+                    "mask": "00300000",
+                    "settings": [
+                        {
+                            "label": "HSE is divided by 2 for RTC clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSE is divided by 4 for RTC clock",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "HSE is divided by 8 for RTC clock",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "HSE is divided by 16 for RTC clock",
+                            "value": "00300000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLON",
+                    "label": "PLL Power Down",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "PLL OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL ON",
+                            "value": "01000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CR",
+            "unused": "00000000"
+        },
+        {
+            "address": "4002100C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SW",
+                    "label": "System clock switch",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "MSI oscillator used as system clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSI16 oscillator used as system clock",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "HSE oscillator used as system clock",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "PLL used as system clock",
+                            "value": "00000003"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HPRE",
+                    "label": "Set and cleared by software to control the division factor of the AHB clock",
+                    "mask": "0000000F0",
+                    "settings": [
+                        {
+                            "label": "SYSCLK not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "SYSCLK divided by 2",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "SYSCLK divided by 4",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "SYSCLK divided by 8",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 16",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 64",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 128",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 256",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "SYSCLK divided by 512",
+                            "value": "000000F0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PPRE1",
+                    "label": "APB low-speed prescaler (APB1)",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": " HCLK not divided ",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": " HCLK divided by 2 ",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": " HCLK divided by 4 ",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": " HCLK divided by 8 ",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": " HCLK divided by 16 ",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PPRE2",
+                    "label": "APB high-speed prescaler (APB2)",
+                    "mask": "00003800",
+                    "settings": [
+                        {
+                            "label": " HCLK not divided ",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": " HCLK divided by 2 ",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": " HCLK divided by 4 ",
+                            "value": "00002800"
+                        },
+                        {
+                            "label": " HCLK divided by 8 ",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": " HCLK divided by 16 ",
+                            "value": "00003800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLSRC",
+                    "label": "PLL entry clock source",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "HSI16 oscillator clock selected as PLL input clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HSE oscillator clock selected as PLL input clock",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLMUL",
+                    "label": "PLL multiplication factor",
+                    "mask": "003C0000",
+                    "settings": [
+                        {
+                            "label": "PLLVCO = PLL clock entry x 3",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLVCO = PLL clock entry x 4",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "PLLVCO = PLL clock entry x 6",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "PLLVCO = PLL clock entry x 8",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "PLLVCO = PLL clock entry x 12",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "PLLVCO = PLL clock entry x 16",
+                            "value": "00140000"
+                        },
+                        {
+                            "label": "PLLVCO = PLL clock entry x 24",
+                            "value": "00180000"
+                        },
+                        {
+                            "label": "PLLVCO = PLL clock entry x 32",
+                            "value": "001C0000"
+                        },
+                        {
+                            "label": "PLLVCO = PLL clock entry x 48",
+                            "value": "00200000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLDIV",
+                    "label": "PLL output division",
+                    "mask": "00C00000",
+                    "settings": [
+                        {
+                            "label": "not allowed",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL clock output = PLLVCO / 2",
+                            "value": "00400000"
+                        },
+                        {
+                            "label": "PLL clock output = PLLVCO / 3",
+                            "value": "00800000"
+                        },
+                        {
+                            "label": "PLL clock output = PLLVCO / 4",
+                            "value": "00C00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MCOSEL",
+                    "label": "Microcontroller clock output",
+                    "mask": "0F000000",
+                    "settings": [
+                        {
+                            "label": "No clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "System clock (SYSCLK) selected",
+                            "value": "01000000"
+                        },
+                        {
+                            "label": "HSI16 clock selected",
+                            "value": "02000000"
+                        },
+                        {
+                            "label": "MSI oscillator clock selected",
+                            "value": "03000000"
+                        },
+                        {
+                            "label": "HSE oscillator clock selected",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "PLL clock selected",
+                            "value": "05000000"
+                        },
+                        {
+                            "label": "LSI oscillator clock selected",
+                            "value": "06000000"
+                        },
+                        {
+                            "label": "LSE oscillator clock selected",
+                            "value": "07000000"
+                        },
+                        {
+                            "label": "HSI48 oscillator clock selected",
+                            "value": "08000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MCOPRE",
+                    "label": "Microcontroller clock output prescaler",
+                    "mask": "70000000",
+                    "settings": [
+                        {
+                            "label": "MCO is divided by 1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MCO is divided by 2",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "MCO is divided by 4",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "MCO is divided by 8",
+                            "value": "30000000"
+                        },
+                        {
+                            "label": "MCO is divided by 16",
+                            "value": "40000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CFGR",
+            "unused": "00000000"
+        },
+        {
+            "address": "40007000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00001000",
+                    "key": "VCORE",
+                    "label": "Core Voltage",
+                    "mask": "00001800",
+                    "settings": [
+                        {
+                            "label": "VCORE = 1.2 V",
+                            "value": "00001800"
+                        },
+                        {
+                            "label": "VCORE = 1.5 V",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "VCORE = 1.8 V",
+                            "value": "00000800"
+                        }
+                    ]
+                }
+            ],
+            "key": "PWR_CR",
+            "unused": "00000000"
+        }
+    ],
+    "core": "M0",
+    "delay_src_path": "delays/m0/__lib_delays.c",
+    "ivt": [
+        {
+            "name": "IVT_INT_NMI",
+            "vector": 2
+        },
+        {
+            "name": "IVT_INT_HardFault",
+            "vector": 3
+        },
+        {
+            "name": "IVT_INT_MemManage",
+            "vector": 4
+        },
+        {
+            "name": "IVT_INT_BusFault",
+            "vector": 5
+        },
+        {
+            "name": "IVT_INT_UsageFault",
+            "vector": 6
+        },
+        {
+            "name": "IVT_INT_RESERVED1",
+            "vector": 7
+        },
+        {
+            "name": "IVT_INT_RESERVED2",
+            "vector": 8
+        },
+        {
+            "name": "IVT_INT_RESERVED3",
+            "vector": 9
+        },
+        {
+            "name": "IVT_INT_RESERVED4",
+            "vector": 10
+        },
+        {
+            "name": "IVT_INT_SVCall",
+            "vector": 11
+        },
+        {
+            "name": "IVT_INT_DebugMon",
+            "vector": 12
+        },
+        {
+            "name": "IVT_INT_RESERVED5",
+            "vector": 13
+        },
+        {
+            "name": "IVT_INT_PendSV",
+            "vector": 14
+        },
+        {
+            "name": "IVT_INT_SysTick",
+            "vector": 15
+        },
+        {
+            "name": "IVT_INT_WWDG",
+            "vector": 16
+        },
+        {
+            "name": "IVT_INT_PVD",
+            "vector": 17
+        },
+        {
+            "name": "IVT_INT_RTC",
+            "vector": 18
+        },
+        {
+            "name": "IVT_INT_FLASH",
+            "vector": 19
+        },
+        {
+            "name": "IVT_INT_RCC_CRS",
+            "vector": 20
+        },
+        {
+            "name": "IVT_INT_EXTI0_1",
+            "vector": 21
+        },
+        {
+            "name": "IVT_INT_EXTI2_3",
+            "vector": 22
+        },
+        {
+            "name": "IVT_INT_EXTI4_15",
+            "vector": 23
+        },
+        {
+            "name": "IVT_INT_TSC",
+            "vector": 24
+        },
+        {
+            "name": "IVT_INT_DMA_CH1",
+            "vector": 25
+        },
+        {
+            "name": "IVT_INT_DMA_CH2_CH3",
+            "vector": 26
+        },
+        {
+            "name": "IVT_INT_DMA_CH4_CH7",
+            "vector": 27
+        },
+        {
+            "name": "IVT_INT_ADC_COMP",
+            "vector": 28
+        },
+        {
+            "name": "IVT_INT_LPTIM1",
+            "vector": 29
+        },
+        {
+            "name": "IVT_INT_RESERVED6",
+            "vector": 30
+        },
+        {
+            "name": "IVT_INT_TIM2",
+            "vector": 31
+        },
+        {
+            "name": "IVT_INT_RESERVED7",
+            "vector": 32
+        },
+        {
+            "name": "IVT_INT_TIM6_DAC",
+            "vector": 33
+        },
+        {
+            "name": "IVT_INT_RESERVED8",
+            "vector": 34
+        },
+        {
+            "name": "IVT_INT_RESERVED9",
+            "vector": 35
+        },
+        {
+            "name": "IVT_INT_TIM21",
+            "vector": 36
+        },
+        {
+            "name": "IVT_INT_RESERVED10",
+            "vector": 37
+        },
+        {
+            "name": "IVT_INT_TIM22",
+            "vector": 38
+        },
+        {
+            "name": "IVT_INT_I2C1",
+            "vector": 39
+        },
+        {
+            "name": "IVT_INT_I2C2",
+            "vector": 40
+        },
+        {
+            "name": "IVT_INT_SPI1",
+            "vector": 41
+        },
+        {
+            "name": "IVT_INT_SPI2",
+            "vector": 42
+        },
+        {
+            "name": "IVT_INT_USART1",
+            "vector": 43
+        },
+        {
+            "name": "IVT_INT_USART2",
+            "vector": 44
+        },
+        {
+            "name": "IVT_INT_LPUART1_AES_RNG",
+            "vector": 45
+        },
+        {
+            "name": "IVT_INT_RESERVED11",
+            "vector": 46
+        },
+        {
+            "name": "IVT_INT_USB",
+            "vector": 47
+        }
+    ],
+    "mcu": "STM32L072RB",
+    "packages": [
+        "Hx",
+        "Ix",
+        "Tx"
+    ],
+    "ram": {
+        "max_address": "0x20004FFF",
+        "min_address": "0x20000000"
+    },
+    "rom": {
+        "max_address": "0x0001FFFF",
+        "min_address": "0x00000000"
+    },
+    "rx": {
+        "max_address": "0x003F",
+        "min_address": "0x0000"
+    },
+    "sfr": [
+        {
+            "max_address": "0x4000002F",
+            "min_address": "0x40000000"
+        },
+        {
+            "max_address": "0x40000043",
+            "min_address": "0x40000034"
+        },
+        {
+            "max_address": "0x40000053",
+            "min_address": "0x40000048"
+        },
+        {
+            "max_address": "0x4000042F",
+            "min_address": "0x40000400"
+        },
+        {
+            "max_address": "0x40000443",
+            "min_address": "0x40000434"
+        },
+        {
+            "max_address": "0x40000453",
+            "min_address": "0x40000448"
+        },
+        {
+            "max_address": "0x40000C07",
+            "min_address": "0x40000C00"
+        },
+        {
+            "max_address": "0x40000C17",
+            "min_address": "0x40000C0C"
+        },
+        {
+            "max_address": "0x40000C2F",
+            "min_address": "0x40000C24"
+        },
+        {
+            "max_address": "0x40001007",
+            "min_address": "0x40001000"
+        },
+        {
+            "max_address": "0x40001017",
+            "min_address": "0x4000100C"
+        },
+        {
+            "max_address": "0x4000102F",
+            "min_address": "0x40001024"
+        },
+        {
+            "max_address": "0x4000240F",
+            "min_address": "0x40002400"
+        },
+        {
+            "max_address": "0x40002417",
+            "min_address": "0x40002414"
+        },
+        {
+            "max_address": "0x4000241F",
+            "min_address": "0x4000241C"
+        },
+        {
+            "max_address": "0x40002427",
+            "min_address": "0x40002424"
+        },
+        {
+            "max_address": "0x4000242F",
+            "min_address": "0x4000242C"
+        },
+        {
+            "max_address": "0x40002437",
+            "min_address": "0x40002434"
+        },
+        {
+            "max_address": "0x4000243F",
+            "min_address": "0x4000243C"
+        },
+        {
+            "max_address": "0x40002447",
+            "min_address": "0x40002444"
+        },
+        {
+            "max_address": "0x4000244F",
+            "min_address": "0x4000244C"
+        },
+        {
+            "max_address": "0x40002817",
+            "min_address": "0x40002800"
+        },
+        {
+            "max_address": "0x40002863",
+            "min_address": "0x4000281C"
+        },
+        {
+            "max_address": "0x40002C0B",
+            "min_address": "0x40002C00"
+        },
+        {
+            "max_address": "0x40003013",
+            "min_address": "0x40003000"
+        },
+        {
+            "max_address": "0x40003823",
+            "min_address": "0x40003800"
+        },
+        {
+            "max_address": "0x4000442B",
+            "min_address": "0x40004400"
+        },
+        {
+            "max_address": "0x4000480F",
+            "min_address": "0x40004800"
+        },
+        {
+            "max_address": "0x4000482B",
+            "min_address": "0x40004818"
+        },
+        {
+            "max_address": "0x40004C2B",
+            "min_address": "0x40004C00"
+        },
+        {
+            "max_address": "0x4000502B",
+            "min_address": "0x40005000"
+        },
+        {
+            "max_address": "0x4000542B",
+            "min_address": "0x40005400"
+        },
+        {
+            "max_address": "0x4000582B",
+            "min_address": "0x40005800"
+        },
+        {
+            "max_address": "0x40005C1F",
+            "min_address": "0x40005C00"
+        },
+        {
+            "max_address": "0x40005C5B",
+            "min_address": "0x40005C40"
+        },
+        {
+            "max_address": "0x40006C0F",
+            "min_address": "0x40006C00"
+        },
+        {
+            "max_address": "0x40007007",
+            "min_address": "0x40007000"
+        },
+        {
+            "max_address": "0x40007437",
+            "min_address": "0x40007400"
+        },
+        {
+            "max_address": "0x4000782B",
+            "min_address": "0x40007800"
+        },
+        {
+            "max_address": "0x40007C1F",
+            "min_address": "0x40007C00"
+        },
+        {
+            "max_address": "0x40010017",
+            "min_address": "0x40010000"
+        },
+        {
+            "max_address": "0x40010023",
+            "min_address": "0x40010020"
+        },
+        {
+            "max_address": "0x40010037",
+            "min_address": "0x40010030"
+        },
+        {
+            "max_address": "0x40010417",
+            "min_address": "0x40010400"
+        },
+        {
+            "max_address": "0x4001081B",
+            "min_address": "0x40010800"
+        },
+        {
+            "max_address": "0x4001082F",
+            "min_address": "0x40010820"
+        },
+        {
+            "max_address": "0x4001083B",
+            "min_address": "0x40010834"
+        },
+        {
+            "max_address": "0x40010853",
+            "min_address": "0x40010850"
+        },
+        {
+            "max_address": "0x4001141B",
+            "min_address": "0x40011400"
+        },
+        {
+            "max_address": "0x4001142F",
+            "min_address": "0x40011420"
+        },
+        {
+            "max_address": "0x4001143B",
+            "min_address": "0x40011434"
+        },
+        {
+            "max_address": "0x40011453",
+            "min_address": "0x40011450"
+        },
+        {
+            "max_address": "0x40011C17",
+            "min_address": "0x40011C00"
+        },
+        {
+            "max_address": "0x40011C23",
+            "min_address": "0x40011C20"
+        },
+        {
+            "max_address": "0x40012417",
+            "min_address": "0x40012400"
+        },
+        {
+            "max_address": "0x40012423",
+            "min_address": "0x40012420"
+        },
+        {
+            "max_address": "0x4001242B",
+            "min_address": "0x40012428"
+        },
+        {
+            "max_address": "0x40012443",
+            "min_address": "0x40012440"
+        },
+        {
+            "max_address": "0x400124B7",
+            "min_address": "0x400124B4"
+        },
+        {
+            "max_address": "0x4001270B",
+            "min_address": "0x40012708"
+        },
+        {
+            "max_address": "0x40013023",
+            "min_address": "0x40013000"
+        },
+        {
+            "max_address": "0x4001382B",
+            "min_address": "0x40013800"
+        },
+        {
+            "max_address": "0x4001580F",
+            "min_address": "0x40015800"
+        },
+        {
+            "max_address": "0x40020017",
+            "min_address": "0x40020000"
+        },
+        {
+            "max_address": "0x4002002B",
+            "min_address": "0x4002001C"
+        },
+        {
+            "max_address": "0x4002003F",
+            "min_address": "0x40020030"
+        },
+        {
+            "max_address": "0x40020053",
+            "min_address": "0x40020044"
+        },
+        {
+            "max_address": "0x40020067",
+            "min_address": "0x40020058"
+        },
+        {
+            "max_address": "0x4002007B",
+            "min_address": "0x4002006C"
+        },
+        {
+            "max_address": "0x4002008F",
+            "min_address": "0x40020080"
+        },
+        {
+            "max_address": "0x400200AB",
+            "min_address": "0x400200A8"
+        },
+        {
+            "max_address": "0x40021053",
+            "min_address": "0x40021000"
+        },
+        {
+            "max_address": "0x40022023",
+            "min_address": "0x40022000"
+        },
+        {
+            "max_address": "0x4002300B",
+            "min_address": "0x40023000"
+        },
+        {
+            "max_address": "0x40023017",
+            "min_address": "0x40023010"
+        },
+        {
+            "max_address": "0x40024013",
+            "min_address": "0x40024000"
+        },
+        {
+            "max_address": "0x4002401B",
+            "min_address": "0x40024018"
+        },
+        {
+            "max_address": "0x40024023",
+            "min_address": "0x40024020"
+        },
+        {
+            "max_address": "0x4002402B",
+            "min_address": "0x40024028"
+        },
+        {
+            "max_address": "0x40024053",
+            "min_address": "0x40024030"
+        },
+        {
+            "max_address": "0x4002500B",
+            "min_address": "0x40025000"
+        },
+        {
+            "max_address": "0x4002602F",
+            "min_address": "0x40026000"
+        },
+        {
+            "max_address": "0x5000002B",
+            "min_address": "0x50000000"
+        },
+        {
+            "max_address": "0x5000042B",
+            "min_address": "0x50000400"
+        },
+        {
+            "max_address": "0x5000082B",
+            "min_address": "0x50000800"
+        },
+        {
+            "max_address": "0x50000C2B",
+            "min_address": "0x50000C00"
+        },
+        {
+            "max_address": "0x5000102B",
+            "min_address": "0x50001000"
+        },
+        {
+            "max_address": "0x50001C2B",
+            "min_address": "0x50001C00"
+        },
+        {
+            "max_address": "0xE000E01F",
+            "min_address": "0xE000E010"
+        },
+        {
+            "max_address": "0xE000E103",
+            "min_address": "0xE000E100"
+        },
+        {
+            "max_address": "0xE000E183",
+            "min_address": "0xE000E180"
+        },
+        {
+            "max_address": "0xE000E203",
+            "min_address": "0xE000E200"
+        },
+        {
+            "max_address": "0xE000E283",
+            "min_address": "0xE000E280"
+        },
+        {
+            "max_address": "0xE000E41F",
+            "min_address": "0xE000E400"
+        },
+        {
+            "max_address": "0xE000ED07",
+            "min_address": "0xE000ED00"
+        },
+        {
+            "max_address": "0xE000ED17",
+            "min_address": "0xE000ED0C"
+        },
+        {
+            "max_address": "0xE000ED23",
+            "min_address": "0xE000ED1C"
+        }
+    ],
+    "clock": "1"
+}

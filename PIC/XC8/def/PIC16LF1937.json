@@ -1,0 +1,279 @@
+{
+    "config_words": [
+        {
+            "init": "ECH",
+            "key": "FOSC",
+            "label": "Oscillator Selection",
+            "settings": [
+                {
+                    "label": "ECH, External Clock, High Power Mode (4-32 MHz): device clock supplied to CLKIN pin",
+                    "value": "ECH"
+                },
+                {
+                    "label": "ECM, External Clock, Medium Power Mode (0.5-4 MHz): device clock supplied to CLKIN pin",
+                    "value": "ECM"
+                },
+                {
+                    "label": "ECL, External Clock, Low Power Mode (0-0.5 MHz): device clock supplied to CLKIN pin",
+                    "value": "ECL"
+                },
+                {
+                    "label": "INTOSC oscillator: I/O function on CLKIN pin",
+                    "value": "INTOSC"
+                },
+                {
+                    "label": "EXTRC oscillator: External RC circuit connected to CLKIN pin",
+                    "value": "EXTRC"
+                },
+                {
+                    "label": "HS Oscillator, High-speed crystal/resonator connected between OSC1 and OSC2 pins",
+                    "value": "HS"
+                },
+                {
+                    "label": "XT Oscillator, Crystal/resonator connected between OSC1 and OSC2 pins",
+                    "value": "XT"
+                },
+                {
+                    "label": "LP Oscillator, Low-power crystal connected between OSC1 and OSC2 pins",
+                    "value": "LP"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "WDT enabled while running and disabled in Sleep",
+                    "value": "NSLEEP"
+                },
+                {
+                    "label": "WDT controlled by the SWDTEN bit in the WDTCON register",
+                    "value": "SWDTEN"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "MCLR Pin Function Select",
+            "settings": [
+                {
+                    "label": "MCLR/VPP pin function is MCLR",
+                    "value": "ON"
+                },
+                {
+                    "label": "MCLR/VPP pin function is digital input",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Flash Program Memory Code Protection",
+            "settings": [
+                {
+                    "label": "Program memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "Data Memory Code Protection",
+            "settings": [
+                {
+                    "label": "Data memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable",
+            "settings": [
+                {
+                    "label": "Brown-out Reset enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Brown-out Reset enabled while running and disabled in Sleep",
+                    "value": "NSLEEP"
+                },
+                {
+                    "label": "Brown-out Reset controlled by the SBOREN bit in the BORCON register",
+                    "value": "SBODEN"
+                },
+                {
+                    "label": "Brown-out Reset disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CLKOUTEN",
+            "label": "Clock Out Enable",
+            "settings": [
+                {
+                    "label": "CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin",
+                    "value": "OFF"
+                },
+                {
+                    "label": "CLKOUT function is enabled on the CLKOUT pin",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal/External Switchover",
+            "settings": [
+                {
+                    "label": "Internal/External Switchover mode is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Internal/External Switchover mode is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enable",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT",
+            "label": "Flash Memory Self-Write Protection",
+            "settings": [
+                {
+                    "label": "Write protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "000h to 1FFh write protected, 200h to 1FFFh may be modified by EECON control",
+                    "value": "BOOT"
+                },
+                {
+                    "label": "000h to FFFh write protected, 1000h to 1FFFh may be modified by EECON control",
+                    "value": "HALF"
+                },
+                {
+                    "label": "000h to 1FFFh write protected, no addresses may be modified by EECON control",
+                    "value": "ALL"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PLLEN",
+            "label": "PLL Enable",
+            "settings": [
+                {
+                    "label": "4x PLL enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "4x PLL disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Overflow/Underflow Reset Enable",
+            "settings": [
+                {
+                    "label": "Stack Overflow or Underflow will cause a Reset",
+                    "value": "ON"
+                },
+                {
+                    "label": "Stack Overflow or Underflow will not cause a Reset",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "LO,_BORV_19",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage Selection",
+            "settings": [
+                {
+                    "label": "Brown-out Reset Voltage (Vbor), low trip point selected.",
+                    "value": "LO,_BORV_19"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (Vbor), high trip point selected.",
+                    "value": "HI,_BORV_25"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LVP",
+            "label": "Low-Voltage Programming Enable",
+            "settings": [
+                {
+                    "label": "Low-voltage programming enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "High-voltage on MCLR/VPP must be used for programming",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16LF1937",
+    "clock": 1
+}

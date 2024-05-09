@@ -1,0 +1,1893 @@
+{
+    "aivt": [
+        {
+            "address": "0x0104",
+            "name": "AltReservedTrap0"
+        },
+        {
+            "address": "0x0106",
+            "name": "AltOscillatorFail"
+        },
+        {
+            "address": "0x0108",
+            "name": "AltAddressError"
+        },
+        {
+            "address": "0x010A",
+            "name": "AltStackError"
+        },
+        {
+            "address": "0x010C",
+            "name": "AltMathError"
+        },
+        {
+            "address": "0x010E",
+            "name": "AltDMACError"
+        },
+        {
+            "address": "0x0110",
+            "name": "AltReservedTrap6"
+        },
+        {
+            "address": "0x0112",
+            "name": "AltReservedTrap7"
+        },
+        {
+            "address": "0x0114",
+            "name": "AltINT0Interrupt"
+        },
+        {
+            "address": "0x0116",
+            "name": "AltIC1Interrupt"
+        },
+        {
+            "address": "0x0118",
+            "name": "AltOC1Interrupt"
+        },
+        {
+            "address": "0x011A",
+            "name": "AltT1Interrupt"
+        },
+        {
+            "address": "0x011C",
+            "name": "AltDMA0Interrupt"
+        },
+        {
+            "address": "0x011E",
+            "name": "AltIC2Interrupt"
+        },
+        {
+            "address": "0x0120",
+            "name": "AltOC2Interrupt"
+        },
+        {
+            "address": "0x0122",
+            "name": "AltT2Interrupt"
+        },
+        {
+            "address": "0x0124",
+            "name": "AltT3Interrupt"
+        },
+        {
+            "address": "0x0126",
+            "name": "AltSPI1ErrInterrupt"
+        },
+        {
+            "address": "0x0128",
+            "name": "AltSPI1Interrupt"
+        },
+        {
+            "address": "0x012A",
+            "name": "AltU1RXInterrupt"
+        },
+        {
+            "address": "0x012C",
+            "name": "AltU1TXInterrupt"
+        },
+        {
+            "address": "0x012E",
+            "name": "AltADC1Interrupt"
+        },
+        {
+            "address": "0x0130",
+            "name": "AltDMA1Interrupt"
+        },
+        {
+            "address": "0x0132",
+            "name": "AltInterrupt15"
+        },
+        {
+            "address": "0x0134",
+            "name": "AltSI2C1Interrupt"
+        },
+        {
+            "address": "0x0136",
+            "name": "AltMI2C1Interrupt"
+        },
+        {
+            "address": "0x0138",
+            "name": "AltInterrupt18"
+        },
+        {
+            "address": "0x013A",
+            "name": "AltCNInterrupt"
+        },
+        {
+            "address": "0x013C",
+            "name": "AltINT1Interrupt"
+        },
+        {
+            "address": "0x013E",
+            "name": "AltInterrupt21"
+        },
+        {
+            "address": "0x0140",
+            "name": "AltIC7Interrupt"
+        },
+        {
+            "address": "0x0142",
+            "name": "AltIC8Interrupt"
+        },
+        {
+            "address": "0x0144",
+            "name": "AltDMA2Interrupt"
+        },
+        {
+            "address": "0x0146",
+            "name": "AltOC3Interrupt"
+        },
+        {
+            "address": "0x0148",
+            "name": "AltOC4Interrupt"
+        },
+        {
+            "address": "0x014A",
+            "name": "AltT4Interrupt"
+        },
+        {
+            "address": "0x014C",
+            "name": "AltT5Interrupt"
+        },
+        {
+            "address": "0x014E",
+            "name": "AltINT2Interrupt"
+        },
+        {
+            "address": "0x0150",
+            "name": "AltU2RXInterrupt"
+        },
+        {
+            "address": "0x0152",
+            "name": "AltU2TXInterrupt"
+        },
+        {
+            "address": "0x0154",
+            "name": "AltSPI2ErrInterrupt"
+        },
+        {
+            "address": "0x0156",
+            "name": "AltSPI2Interrupt"
+        },
+        {
+            "address": "0x0158",
+            "name": "AltC1RxRdyInterrupt"
+        },
+        {
+            "address": "0x015A",
+            "name": "AltC1Interrupt"
+        },
+        {
+            "address": "0x015C",
+            "name": "AltDMA3Interrupt"
+        },
+        {
+            "address": "0x015E",
+            "name": "AltIC3Interrupt"
+        },
+        {
+            "address": "0x0160",
+            "name": "AltIC4Interrupt"
+        },
+        {
+            "address": "0x0162",
+            "name": "AltIC5Interrupt"
+        },
+        {
+            "address": "0x0164",
+            "name": "AltIC6Interrupt"
+        },
+        {
+            "address": "0x0166",
+            "name": "AltOC5Interrupt"
+        },
+        {
+            "address": "0x0168",
+            "name": "AltOC6Interrupt"
+        },
+        {
+            "address": "0x016A",
+            "name": "AltOC7Interrupt"
+        },
+        {
+            "address": "0x016C",
+            "name": "AltOC8Interrupt"
+        },
+        {
+            "address": "0x016E",
+            "name": "AltInterrupt45"
+        },
+        {
+            "address": "0x0170",
+            "name": "AltDMA4Interrupt"
+        },
+        {
+            "address": "0x0172",
+            "name": "AltT6Interrupt"
+        },
+        {
+            "address": "0x0174",
+            "name": "AltT7Interrupt"
+        },
+        {
+            "address": "0x0176",
+            "name": "AltSI2C2Interrupt"
+        },
+        {
+            "address": "0x0178",
+            "name": "AltMI2C2Interrupt"
+        },
+        {
+            "address": "0x017A",
+            "name": "AltT8Interrupt"
+        },
+        {
+            "address": "0x017C",
+            "name": "AltT9Interrupt"
+        },
+        {
+            "address": "0x017E",
+            "name": "AltINT3Interrupt"
+        },
+        {
+            "address": "0x0180",
+            "name": "AltINT4Interrupt"
+        },
+        {
+            "address": "0x0182",
+            "name": "AltInterrupt55"
+        },
+        {
+            "address": "0x0184",
+            "name": "AltInterrupt56"
+        },
+        {
+            "address": "0x0186",
+            "name": "AltInterrupt57"
+        },
+        {
+            "address": "0x0188",
+            "name": "AltInterrupt58"
+        },
+        {
+            "address": "0x018A",
+            "name": "AltDCIErrInterrupt"
+        },
+        {
+            "address": "0x018C",
+            "name": "AltDCIInterrupt"
+        },
+        {
+            "address": "0x018E",
+            "name": "AltInterrupt61"
+        },
+        {
+            "address": "0x0190",
+            "name": "AltInterrupt62"
+        },
+        {
+            "address": "0x0192",
+            "name": "AltInterrupt63"
+        },
+        {
+            "address": "0x0194",
+            "name": "AltInterrupt64"
+        },
+        {
+            "address": "0x0196",
+            "name": "AltU1ErrInterrupt"
+        },
+        {
+            "address": "0x0198",
+            "name": "AltU2ErrInterrupt"
+        },
+        {
+            "address": "0x019A",
+            "name": "AltInterrupt67"
+        },
+        {
+            "address": "0x019C",
+            "name": "AltDMA6Interrupt"
+        },
+        {
+            "address": "0x019E",
+            "name": "AltDMA7Interrupt"
+        },
+        {
+            "address": "0x01A0",
+            "name": "AltC1TxReqInterrupt"
+        },
+        {
+            "address": "0x01A2",
+            "name": "AltInterrupt71"
+        },
+        {
+            "address": "0x01A4",
+            "name": "AltInterrupt72"
+        },
+        {
+            "address": "0x01A6",
+            "name": "AltInterrupt73"
+        },
+        {
+            "address": "0x01A8",
+            "name": "AltInterrupt74"
+        },
+        {
+            "address": "0x01AA",
+            "name": "AltInterrupt75"
+        },
+        {
+            "address": "0x01AC",
+            "name": "AltInterrupt76"
+        },
+        {
+            "address": "0x01AE",
+            "name": "AltInterrupt77"
+        },
+        {
+            "address": "0x01B0",
+            "name": "AltInterrupt78"
+        },
+        {
+            "address": "0x01B2",
+            "name": "AltInterrupt79"
+        },
+        {
+            "address": "0x01B4",
+            "name": "AltInterrupt80"
+        },
+        {
+            "address": "0x01B6",
+            "name": "AltInterrupt81"
+        },
+        {
+            "address": "0x01B8",
+            "name": "AltInterrupt82"
+        },
+        {
+            "address": "0x01BA",
+            "name": "AltInterrupt83"
+        },
+        {
+            "address": "0x01BC",
+            "name": "AltInterrupt84"
+        },
+        {
+            "address": "0x01BE",
+            "name": "AltInterrupt85"
+        },
+        {
+            "address": "0x01C0",
+            "name": "AltInterrupt86"
+        },
+        {
+            "address": "0x01C2",
+            "name": "AltInterrupt87"
+        },
+        {
+            "address": "0x01C4",
+            "name": "AltInterrupt88"
+        },
+        {
+            "address": "0x01C6",
+            "name": "AltInterrupt89"
+        },
+        {
+            "address": "0x01C8",
+            "name": "AltInterrupt90"
+        },
+        {
+            "address": "0x01CA",
+            "name": "AltInterrupt91"
+        },
+        {
+            "address": "0x01CC",
+            "name": "AltInterrupt92"
+        },
+        {
+            "address": "0x01CE",
+            "name": "AltInterrupt93"
+        },
+        {
+            "address": "0x01D0",
+            "name": "AltInterrupt94"
+        },
+        {
+            "address": "0x01D2",
+            "name": "AltInterrupt95"
+        },
+        {
+            "address": "0x01D4",
+            "name": "AltInterrupt96"
+        },
+        {
+            "address": "0x01D6",
+            "name": "AltInterrupt97"
+        },
+        {
+            "address": "0x01D8",
+            "name": "AltInterrupt98"
+        },
+        {
+            "address": "0x01DA",
+            "name": "AltInterrupt99"
+        },
+        {
+            "address": "0x01DC",
+            "name": "AltInterrupt100"
+        },
+        {
+            "address": "0x01DE",
+            "name": "AltInterrupt101"
+        },
+        {
+            "address": "0x01E0",
+            "name": "AltInterrupt102"
+        },
+        {
+            "address": "0x01E2",
+            "name": "AltInterrupt103"
+        },
+        {
+            "address": "0x01E4",
+            "name": "AltInterrupt104"
+        },
+        {
+            "address": "0x01E6",
+            "name": "AltInterrupt105"
+        },
+        {
+            "address": "0x01E8",
+            "name": "AltInterrupt106"
+        },
+        {
+            "address": "0x01EA",
+            "name": "AltInterrupt107"
+        },
+        {
+            "address": "0x01EC",
+            "name": "AltInterrupt108"
+        },
+        {
+            "address": "0x01EE",
+            "name": "AltInterrupt109"
+        },
+        {
+            "address": "0x01F0",
+            "name": "AltInterrupt110"
+        },
+        {
+            "address": "0x01F2",
+            "name": "AltInterrupt111"
+        },
+        {
+            "address": "0x01F4",
+            "name": "AltInterrupt112"
+        },
+        {
+            "address": "0x01F6",
+            "name": "AltInterrupt113"
+        },
+        {
+            "address": "0x01F8",
+            "name": "AltInterrupt114"
+        },
+        {
+            "address": "0x01FA",
+            "name": "AltInterrupt115"
+        },
+        {
+            "address": "0x01FC",
+            "name": "AltInterrupt116"
+        },
+        {
+            "address": "0x01FE",
+            "name": "AltInterrupt117"
+        }
+    ],
+    "badram": [
+        {
+            "max_addr": "0x2d",
+            "min_addr": "0x22"
+        },
+        {
+            "max_addr": "0x41",
+            "min_addr": "0x38"
+        },
+        {
+            "max_addr": "0x51",
+            "min_addr": "0x46"
+        },
+        {
+            "max_addr": "0x5f",
+            "min_addr": "0x54"
+        },
+        {
+            "max_addr": "0x67",
+            "min_addr": "0x64"
+        },
+        {
+            "max_addr": "0x7f",
+            "min_addr": "0x6c"
+        },
+        {
+            "max_addr": "0x93",
+            "min_addr": "0x8e"
+        },
+        {
+            "max_addr": "0xa3",
+            "min_addr": "0x9e"
+        },
+        {
+            "max_addr": "0xc1",
+            "min_addr": "0xc0"
+        },
+        {
+            "max_addr": "0xdf",
+            "min_addr": "0xc8"
+        },
+        {
+            "max_addr": "0xff",
+            "min_addr": "0xe2"
+        },
+        {
+            "max_addr": "0x13f",
+            "min_addr": "0x13e"
+        },
+        {
+            "max_addr": "0x17f",
+            "min_addr": "0x160"
+        },
+        {
+            "max_addr": "0x1ff",
+            "min_addr": "0x1b0"
+        },
+        {
+            "max_addr": "0x20f",
+            "min_addr": "0x20e"
+        },
+        {
+            "max_addr": "0x21f",
+            "min_addr": "0x21e"
+        },
+        {
+            "max_addr": "0x22f",
+            "min_addr": "0x22a"
+        },
+        {
+            "max_addr": "0x23f",
+            "min_addr": "0x23a"
+        },
+        {
+            "max_addr": "0x247",
+            "min_addr": "0x246"
+        },
+        {
+            "max_addr": "0x25f",
+            "min_addr": "0x24a"
+        },
+        {
+            "max_addr": "0x267",
+            "min_addr": "0x266"
+        },
+        {
+            "max_addr": "0x2bf",
+            "min_addr": "0x26a"
+        },
+        {
+            "max_addr": "0x2ff",
+            "min_addr": "0x2ea"
+        },
+        {
+            "max_addr": "0x31f",
+            "min_addr": "0x302"
+        },
+        {
+            "max_addr": "0x37f",
+            "min_addr": "0x334"
+        },
+        {
+            "max_addr": "0x3ff",
+            "min_addr": "0x3e6"
+        },
+        {
+            "max_addr": "0x417",
+            "min_addr": "0x416"
+        },
+        {
+            "max_addr": "0x41f",
+            "min_addr": "0x41c"
+        },
+        {
+            "max_addr": "0x42f",
+            "min_addr": "0x42c"
+        },
+        {
+            "max_addr": "0x43f",
+            "min_addr": "0x43c"
+        },
+        {
+            "max_addr": "0x6bf",
+            "min_addr": "0x480"
+        },
+        {
+            "max_addr": "0x6d1",
+            "min_addr": "0x6c2"
+        },
+        {
+            "max_addr": "0x6dd",
+            "min_addr": "0x6d4"
+        },
+        {
+            "max_addr": "0x6e3",
+            "min_addr": "0x6e0"
+        },
+        {
+            "max_addr": "0x73f",
+            "min_addr": "0x6e6"
+        },
+        {
+            "max_addr": "0x74f",
+            "min_addr": "0x74a"
+        },
+        {
+            "max_addr": "0x75f",
+            "min_addr": "0x754"
+        },
+        {
+            "max_addr": "0x765",
+            "min_addr": "0x762"
+        },
+        {
+            "max_addr": "0x76f",
+            "min_addr": "0x768"
+        },
+        {
+            "max_addr": "0x7ff",
+            "min_addr": "0x776"
+        }
+    ],
+    "config_registers": [
+        {
+            "address": "00F80000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "BWRP",
+                    "label": "Boot Segment Write Protect",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Boot Segment may be written",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Boot segment is write-protected",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0000000E",
+                    "key": "BSS",
+                    "label": "Boot Segment Program Flash Code Protection",
+                    "mask": "0000000E",
+                    "settings": [
+                        {
+                            "label": "No Boot program Flash segment",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Standard Security, Small-sized Boot Flash",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Standard Security, Medium-sized Boot Flash",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Standard Security, Large-sized Boot Flash",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "No Boot program Flash segment",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "High Security, Small-sized Boot Flash",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "High Security, Medium-sized Boot Flash",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "High Security, Large-sized Boot Flash",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "000000C0",
+                    "key": "RBS",
+                    "label": "Boot Segment RAM Protection",
+                    "mask": "000000C0",
+                    "settings": [
+                        {
+                            "label": "No Boot RAM",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "Small-sized Boot RAM",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Medium-sized Boot RAM",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Large-sized Boot RAM",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "FBS",
+            "unused": "00000000"
+        },
+        {
+            "address": "00F80002",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "SWRP",
+                    "label": "Secure Segment Program Write Protect",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Secure segment may be written",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Secure segment is write-protected",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0000000E",
+                    "key": "SSS",
+                    "label": "Secure Segment Program Flash Code Protection",
+                    "mask": "0000000E",
+                    "settings": [
+                        {
+                            "label": "No Secure Segment",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Standard Security, Small-sized Secure Flash",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Standard Security, Medium-sized Secure Flash",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Standard Security, Large-sized Secure Flash",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "No Secure Segment",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "High Security, Small-sized Secure Flash",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "High Security, Medium-sized Secure Flash",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "High Security, Large-sized Secure Flash",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "000000C0",
+                    "key": "RSS",
+                    "label": "Secure Segment Data RAM Protection",
+                    "mask": "000000C0",
+                    "settings": [
+                        {
+                            "label": "No Secure RAM",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "Small-sized Secure RAM",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Medium-sized Secure RAM",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Large-sized Secure RAM",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0000FF00",
+                    "key": "RES",
+                    "label": "Reserved",
+                    "mask": "0000FF00",
+                    "settings": [
+                        {
+                            "label": "Reserved",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "FSS",
+            "unused": "00000000"
+        },
+        {
+            "address": "00F80004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "GWRP",
+                    "label": "General Code Segment Write Protect",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000006",
+                    "key": "GSS",
+                    "label": "General Segment Code Protection",
+                    "mask": "00000006",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "High Security Code Protection Enable",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ],
+            "key": "FGS",
+            "unused": "00000000"
+        },
+        {
+            "address": "00F80006",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000007",
+                    "key": "FNOSC",
+                    "label": "Oscillator Mode",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Internal Fast RC (FRC) with divide by N",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Internal Fast RC (FRC) divide by 16",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Low Power RC Oscillator (LPRC)",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Secondary Oscillator (SOSC)",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Primary Oscillator (XT, HS, EC) w/ PLL",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Primary Oscillator (XT, HS, EC)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Internal Fast RC (FRC) w/ PLL",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Internal Fast RC (FRC)",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000020",
+                    "key": "TEMP",
+                    "label": "Temperature Protection Enable",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "IESO",
+                    "label": "Two-speed Oscillator Start-Up Enable",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "FOSCSEL",
+            "unused": "00000000"
+        },
+        {
+            "address": "00F80008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "POSCMD",
+                    "label": "Primary Oscillator Source",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Primary Oscillator Disabled",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "HS Oscillator Mode",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "XT Oscillator Mode",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "EC Oscillator Mode",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "OSCIOFNC",
+                    "label": "OSC2 Pin Configuration",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "OSC2 functions as CLKO",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "OSCO functions as port I/O",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "FCKSM",
+                    "label": "Clock Switching and Monitor",
+                    "mask": "000000C0",
+                    "settings": [
+                        {
+                            "label": "Both Clock Switching and Fail-Safe Clock Monitor are disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Clock switching is enabled, Fail-Safe Clock Monitor is disabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Both Clock Switching and Fail-Safe Clock Monitor are enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "FOSC",
+            "unused": "00000000"
+        },
+        {
+            "address": "00F8000A",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0000000F",
+                    "key": "WDTPOST",
+                    "label": "Watchdog Timer Postscaler",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "1:32,768",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "1:16,384",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "1:8,192",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "1:4,096",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "1:2,048",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "1:1,024",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "1:512",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "1:256",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "1:128",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "1:64",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "1:32",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "1:16",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "1:8",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "1:4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "1:2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "1:1",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "WDTPRE",
+                    "label": "WDT Prescaler",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "1:128",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "1:32",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "WINDIS",
+                    "label": "Watchdog Timer Window",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "FWDTEN",
+                    "label": "Watchdog Timer Enable",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "FWDT",
+            "unused": "00000000"
+        },
+        {
+            "address": "00F8000C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000007",
+                    "key": "FPWRT",
+                    "label": "POR Timer Value",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "128ms",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "64ms",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "32ms",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "16ms",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "8ms",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "4ms",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "2ms",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "000000E0",
+                    "key": "RES",
+                    "label": "Reserved",
+                    "mask": "000000E0",
+                    "settings": [
+                        {
+                            "label": "Reserved",
+                            "value": "000000E0"
+                        }
+                    ]
+                }
+            ],
+            "key": "FPOR",
+            "unused": "00000000"
+        },
+        {
+            "address": "00F8000E",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "ICS",
+                    "label": "Comm Channel Select",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Communicate on PGC1/EMUC1 and PGD1/EMUD1",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Communicate on PGC2/EMUC2 and PGD2/EMUD2",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Communicate on PGC3/EMUC3 and PGD3/EMUD3",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "JTAGEN",
+                    "label": "JTAG Port Enable",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000040",
+                    "key": "COE",
+                    "label": "Set Clip On Emulation Mode",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "DEBUG",
+                    "label": "Background Debug",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "FICD",
+            "unused": "00000000"
+        }
+    ],
+    "dma": {
+        "max_addr": "0x27ff",
+        "min_addr": "0x2000"
+    },
+    "errata": "PSV",
+    "fcy": "2",
+    "icd": {
+        "badram": {
+            "max_addr": "0x860",
+            "min_addr": "0x800"
+        },
+        "hwbrkpno": "6",
+        "start_addr": "0x00"
+    },
+    "ivt": [
+        {
+            "address": "0x0004",
+            "name": "ReservedTrap0"
+        },
+        {
+            "address": "0x0006",
+            "name": "OscillatorFail"
+        },
+        {
+            "address": "0x0008",
+            "name": "AddressError"
+        },
+        {
+            "address": "0x000A",
+            "name": "StackError"
+        },
+        {
+            "address": "0x000C",
+            "name": "MathError"
+        },
+        {
+            "address": "0x000E",
+            "name": "DMACError"
+        },
+        {
+            "address": "0x0010",
+            "name": "ReservedTrap6"
+        },
+        {
+            "address": "0x0012",
+            "name": "ReservedTrap7"
+        },
+        {
+            "address": "0x0014",
+            "name": "INT0Interrupt"
+        },
+        {
+            "address": "0x0016",
+            "name": "IC1Interrupt"
+        },
+        {
+            "address": "0x0018",
+            "name": "OC1Interrupt"
+        },
+        {
+            "address": "0x001A",
+            "name": "T1Interrupt"
+        },
+        {
+            "address": "0x001C",
+            "name": "DMA0Interrupt"
+        },
+        {
+            "address": "0x001E",
+            "name": "IC2Interrupt"
+        },
+        {
+            "address": "0x0020",
+            "name": "OC2Interrupt"
+        },
+        {
+            "address": "0x0022",
+            "name": "T2Interrupt"
+        },
+        {
+            "address": "0x0024",
+            "name": "T3Interrupt"
+        },
+        {
+            "address": "0x0026",
+            "name": "SPI1ErrInterrupt"
+        },
+        {
+            "address": "0x0028",
+            "name": "SPI1Interrupt"
+        },
+        {
+            "address": "0x002A",
+            "name": "U1RXInterrupt"
+        },
+        {
+            "address": "0x002C",
+            "name": "U1TXInterrupt"
+        },
+        {
+            "address": "0x002E",
+            "name": "ADC1Interrupt"
+        },
+        {
+            "address": "0x0030",
+            "name": "DMA1Interrupt"
+        },
+        {
+            "address": "0x0032",
+            "name": "Interrupt15"
+        },
+        {
+            "address": "0x0034",
+            "name": "SI2C1Interrupt"
+        },
+        {
+            "address": "0x0036",
+            "name": "MI2C1Interrupt"
+        },
+        {
+            "address": "0x0038",
+            "name": "Interrupt18"
+        },
+        {
+            "address": "0x003A",
+            "name": "CNInterrupt"
+        },
+        {
+            "address": "0x003C",
+            "name": "INT1Interrupt"
+        },
+        {
+            "address": "0x003E",
+            "name": "Interrupt21"
+        },
+        {
+            "address": "0x0040",
+            "name": "IC7Interrupt"
+        },
+        {
+            "address": "0x0042",
+            "name": "IC8Interrupt"
+        },
+        {
+            "address": "0x0044",
+            "name": "DMA2Interrupt"
+        },
+        {
+            "address": "0x0046",
+            "name": "OC3Interrupt"
+        },
+        {
+            "address": "0x0048",
+            "name": "OC4Interrupt"
+        },
+        {
+            "address": "0x004A",
+            "name": "T4Interrupt"
+        },
+        {
+            "address": "0x004C",
+            "name": "T5Interrupt"
+        },
+        {
+            "address": "0x004E",
+            "name": "INT2Interrupt"
+        },
+        {
+            "address": "0x0050",
+            "name": "U2RXInterrupt"
+        },
+        {
+            "address": "0x0052",
+            "name": "U2TXInterrupt"
+        },
+        {
+            "address": "0x0054",
+            "name": "SPI2ErrInterrupt"
+        },
+        {
+            "address": "0x0056",
+            "name": "SPI2Interrupt"
+        },
+        {
+            "address": "0x0058",
+            "name": "C1RxRdyInterrupt"
+        },
+        {
+            "address": "0x005A",
+            "name": "C1Interrupt"
+        },
+        {
+            "address": "0x005C",
+            "name": "DMA3Interrupt"
+        },
+        {
+            "address": "0x005E",
+            "name": "IC3Interrupt"
+        },
+        {
+            "address": "0x0060",
+            "name": "IC4Interrupt"
+        },
+        {
+            "address": "0x0062",
+            "name": "IC5Interrupt"
+        },
+        {
+            "address": "0x0064",
+            "name": "IC6Interrupt"
+        },
+        {
+            "address": "0x0066",
+            "name": "OC5Interrupt"
+        },
+        {
+            "address": "0x0068",
+            "name": "OC6Interrupt"
+        },
+        {
+            "address": "0x006A",
+            "name": "OC7Interrupt"
+        },
+        {
+            "address": "0x006C",
+            "name": "OC8Interrupt"
+        },
+        {
+            "address": "0x006E",
+            "name": "Interrupt45"
+        },
+        {
+            "address": "0x0070",
+            "name": "DMA4Interrupt"
+        },
+        {
+            "address": "0x0072",
+            "name": "T6Interrupt"
+        },
+        {
+            "address": "0x0074",
+            "name": "T7Interrupt"
+        },
+        {
+            "address": "0x0076",
+            "name": "SI2C2Interrupt"
+        },
+        {
+            "address": "0x0078",
+            "name": "MI2C2Interrupt"
+        },
+        {
+            "address": "0x007A",
+            "name": "T8Interrupt"
+        },
+        {
+            "address": "0x007C",
+            "name": "T9Interrupt"
+        },
+        {
+            "address": "0x007E",
+            "name": "INT3Interrupt"
+        },
+        {
+            "address": "0x0080",
+            "name": "INT4Interrupt"
+        },
+        {
+            "address": "0x0082",
+            "name": "Interrupt55"
+        },
+        {
+            "address": "0x0084",
+            "name": "Interrupt56"
+        },
+        {
+            "address": "0x0086",
+            "name": "Interrupt57"
+        },
+        {
+            "address": "0x0088",
+            "name": "Interrupt58"
+        },
+        {
+            "address": "0x008A",
+            "name": "DCIErrInterrupt"
+        },
+        {
+            "address": "0x008C",
+            "name": "DCIInterrupt"
+        },
+        {
+            "address": "0x008E",
+            "name": "Interrupt61"
+        },
+        {
+            "address": "0x0090",
+            "name": "Interrupt62"
+        },
+        {
+            "address": "0x0092",
+            "name": "Interrupt63"
+        },
+        {
+            "address": "0x0094",
+            "name": "Interrupt64"
+        },
+        {
+            "address": "0x0096",
+            "name": "U1ErrInterrupt"
+        },
+        {
+            "address": "0x0098",
+            "name": "U2ErrInterrupt"
+        },
+        {
+            "address": "0x009A",
+            "name": "Interrupt67"
+        },
+        {
+            "address": "0x009C",
+            "name": "DMA6Interrupt"
+        },
+        {
+            "address": "0x009E",
+            "name": "DMA7Interrupt"
+        },
+        {
+            "address": "0x00A0",
+            "name": "C1TxReqInterrupt"
+        },
+        {
+            "address": "0x00A2",
+            "name": "Interrupt71"
+        },
+        {
+            "address": "0x00A4",
+            "name": "Interrupt72"
+        },
+        {
+            "address": "0x00A6",
+            "name": "Interrupt73"
+        },
+        {
+            "address": "0x00A8",
+            "name": "Interrupt74"
+        },
+        {
+            "address": "0x00AA",
+            "name": "Interrupt75"
+        },
+        {
+            "address": "0x00AC",
+            "name": "Interrupt76"
+        },
+        {
+            "address": "0x00AE",
+            "name": "Interrupt77"
+        },
+        {
+            "address": "0x00B0",
+            "name": "Interrupt78"
+        },
+        {
+            "address": "0x00B2",
+            "name": "Interrupt79"
+        },
+        {
+            "address": "0x00B4",
+            "name": "Interrupt80"
+        },
+        {
+            "address": "0x00B6",
+            "name": "Interrupt81"
+        },
+        {
+            "address": "0x00B8",
+            "name": "Interrupt82"
+        },
+        {
+            "address": "0x00BA",
+            "name": "Interrupt83"
+        },
+        {
+            "address": "0x00BC",
+            "name": "Interrupt84"
+        },
+        {
+            "address": "0x00BE",
+            "name": "Interrupt85"
+        },
+        {
+            "address": "0x00C0",
+            "name": "Interrupt86"
+        },
+        {
+            "address": "0x00C2",
+            "name": "Interrupt87"
+        },
+        {
+            "address": "0x00C4",
+            "name": "Interrupt88"
+        },
+        {
+            "address": "0x00C6",
+            "name": "Interrupt89"
+        },
+        {
+            "address": "0x00C8",
+            "name": "Interrupt90"
+        },
+        {
+            "address": "0x00CA",
+            "name": "Interrupt91"
+        },
+        {
+            "address": "0x00CC",
+            "name": "Interrupt92"
+        },
+        {
+            "address": "0x00CE",
+            "name": "Interrupt93"
+        },
+        {
+            "address": "0x00D0",
+            "name": "Interrupt94"
+        },
+        {
+            "address": "0x00D2",
+            "name": "Interrupt95"
+        },
+        {
+            "address": "0x00D4",
+            "name": "Interrupt96"
+        },
+        {
+            "address": "0x00D6",
+            "name": "Interrupt97"
+        },
+        {
+            "address": "0x00D8",
+            "name": "Interrupt98"
+        },
+        {
+            "address": "0x00DA",
+            "name": "Interrupt99"
+        },
+        {
+            "address": "0x00DC",
+            "name": "Interrupt100"
+        },
+        {
+            "address": "0x00DE",
+            "name": "Interrupt101"
+        },
+        {
+            "address": "0x00E0",
+            "name": "Interrupt102"
+        },
+        {
+            "address": "0x00E2",
+            "name": "Interrupt103"
+        },
+        {
+            "address": "0x00E4",
+            "name": "Interrupt104"
+        },
+        {
+            "address": "0x00E6",
+            "name": "Interrupt105"
+        },
+        {
+            "address": "0x00E8",
+            "name": "Interrupt106"
+        },
+        {
+            "address": "0x00EA",
+            "name": "Interrupt107"
+        },
+        {
+            "address": "0x00EC",
+            "name": "Interrupt108"
+        },
+        {
+            "address": "0x00EE",
+            "name": "Interrupt109"
+        },
+        {
+            "address": "0x00F0",
+            "name": "Interrupt110"
+        },
+        {
+            "address": "0x00F2",
+            "name": "Interrupt111"
+        },
+        {
+            "address": "0x00F4",
+            "name": "Interrupt112"
+        },
+        {
+            "address": "0x00F6",
+            "name": "Interrupt113"
+        },
+        {
+            "address": "0x00F8",
+            "name": "Interrupt114"
+        },
+        {
+            "address": "0x00FA",
+            "name": "Interrupt115"
+        },
+        {
+            "address": "0x00FC",
+            "name": "Interrupt116"
+        },
+        {
+            "address": "0x00FE",
+            "name": "Interrupt117"
+        }
+    ],
+    "mcu": "PIC24HJ64GP510A",
+    "core": "DSPIC",
+    "delay_src_path": "delays/dspic/__lib_delays.c",
+    "rom": {
+        "max_addr": "0xabff",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x001F",
+        "min_addr": "0x0000"
+    },
+    "sfr": {
+        "max_addr": "0x07FF",
+        "min_addr": "0x0020"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "3.250",
+        "range": {
+            "max_value": "3.500",
+            "min_value": "3.000"
+        }
+    },
+    "xram": {
+        "max_addr": "0x1FFF",
+        "min_addr": "0x800"
+    },
+    "yram": {
+        "max_addr": "NA",
+        "min_addr": "NA"
+    },
+    "clock": "1"
+}

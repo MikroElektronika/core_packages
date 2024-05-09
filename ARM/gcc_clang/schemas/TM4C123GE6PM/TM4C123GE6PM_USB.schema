@@ -1,0 +1,15 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc-arm-none-eabi/core/def/TM4C123GE6PM.json",
+    "flash": 131071,
+    "ram": 32767,
+    "settings": {
+        "clock": "80",
+        "scheme": "TM4C123GE6PM_USB",
+        "mcu": "TM4C123GE6PM",
+        "core": "M4EF",
+        "delay_src_path": "delays/m4ef/__lib_delays.c",
+        "name": null
+    }
+}

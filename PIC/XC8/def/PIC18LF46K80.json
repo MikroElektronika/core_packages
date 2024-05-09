@@ -1,0 +1,736 @@
+{
+    "config_words": [
+        {
+            "init": "OFF",
+            "key": "RETEN",
+            "label": "VREG Sleep Enable bit",
+            "settings": [
+                {
+                    "label": "Ultra low-power regulator is Enabled (Controlled by SRETEN bit)",
+                    "value": "ON"
+                },
+                {
+                    "label": "Ultra low-power regulator is Disabled (Controlled by REGSLP bit)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "HIGH",
+            "key": "INTOSCSEL",
+            "label": "LF-INTOSC Low-power Enable bit",
+            "settings": [
+                {
+                    "label": "LF-INTOSC in High-power mode during Sleep",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "LF-INTOSC in Low-power mode during Sleep",
+                    "value": "LOW"
+                }
+            ]
+        },
+        {
+            "init": "HIGH",
+            "key": "SOSCSEL",
+            "label": "SOSC Power Selection and mode Configuration bits",
+            "settings": [
+                {
+                    "label": "High Power SOSC circuit selected",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "Low Power SOSC circuit selected",
+                    "value": "LOW"
+                },
+                {
+                    "label": "Digital (SCLKI) mode",
+                    "value": "DIG"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "XINST",
+            "label": "Extended Instruction Set",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "INTIO2",
+            "key": "FOSC",
+            "label": "Oscillator",
+            "settings": [
+                {
+                    "label": "External RC oscillator",
+                    "value": "RCIO"
+                },
+                {
+                    "label": "External RC oscillator, CLKOUT function on OSC2",
+                    "value": "RC"
+                },
+                {
+                    "label": "EC oscillator (Low power, DC - 160 kHz)",
+                    "value": "EC1"
+                },
+                {
+                    "label": "EC oscillator, CLKOUT function on OSC2 (Low power, DC - 160 kHz)",
+                    "value": "EC1IO"
+                },
+                {
+                    "label": "EC oscillator (Medium power, 160 kHz - 16 MHz)",
+                    "value": "EC2"
+                },
+                {
+                    "label": "EC oscillator, CLKOUT function on OSC2 (Medium power, 160 kHz - 16 MHz)",
+                    "value": "EC2IO"
+                },
+                {
+                    "label": "Internal RC oscillator, CLKOUT function on OSC2",
+                    "value": "INTIO1"
+                },
+                {
+                    "label": "Internal RC oscillator",
+                    "value": "INTIO2"
+                },
+                {
+                    "label": "EC oscillator (High power, 16 MHz - 64 MHz)",
+                    "value": "EC3"
+                },
+                {
+                    "label": "EC oscillator, CLKOUT function on OSC2 (High power, 16 MHz - 64 MHz)",
+                    "value": "EC3IO"
+                },
+                {
+                    "label": "HS oscillator (Medium power, 4 MHz - 16 MHz)",
+                    "value": "HS1"
+                },
+                {
+                    "label": "HS oscillator (High power, 16 MHz - 25 MHz)",
+                    "value": "HS2"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PLLCFG",
+            "label": "PLL x4 Enable bit",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "IESO",
+            "label": "Internal External Oscillator Switch Over Mode",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTEN",
+            "label": "Power Up Timer",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "SBORDIS",
+            "key": "BOREN",
+            "label": "Brown Out Detect",
+            "settings": [
+                {
+                    "label": "Enabled in hardware, SBOREN disabled",
+                    "value": "SBORDIS"
+                },
+                {
+                    "label": "Enabled while active, disabled in SLEEP, SBOREN disabled",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "Controlled with SBOREN bit",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled in hardware, SBOREN disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "3",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage bits",
+            "settings": [
+                {
+                    "label": "1.8V",
+                    "value": "3"
+                },
+                {
+                    "label": "2.0V",
+                    "value": "2"
+                },
+                {
+                    "label": "2.7V",
+                    "value": "1"
+                },
+                {
+                    "label": "3.0V",
+                    "value": "0"
+                }
+            ]
+        },
+        {
+            "init": "ZPBORMV",
+            "key": "BORPWR",
+            "label": "BORMV Power level",
+            "settings": [
+                {
+                    "label": "ZPBORMV instead of BORMV is selected",
+                    "value": "ZPBORMV"
+                },
+                {
+                    "label": "BORMV set to high power level",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "BORMV set to medium power level",
+                    "value": "MEDIUM"
+                },
+                {
+                    "label": "BORMV set to low power level",
+                    "value": "LOW"
+                }
+            ]
+        },
+        {
+            "init": "SWDTDIS",
+            "key": "WDTEN",
+            "label": "Watchdog Timer",
+            "settings": [
+                {
+                    "label": "WDT enabled in hardware; SWDTEN bit disabled",
+                    "value": "SWDTDIS"
+                },
+                {
+                    "label": "WDT controlled by SWDTEN bit setting",
+                    "value": "ON"
+                },
+                {
+                    "label": "WDT enabled only while device is active and disabled in Sleep mode; SWDTEN bit disabled",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "WDT disabled in hardware; SWDTEN bit disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "1048576",
+            "key": "WDTPS",
+            "label": "Watchdog Postscaler",
+            "settings": [
+                {
+                    "label": "1:1048576",
+                    "value": "1048576"
+                },
+                {
+                    "label": "1:524288",
+                    "value": "524288"
+                },
+                {
+                    "label": "1:262144",
+                    "value": "262144"
+                },
+                {
+                    "label": "1:131072",
+                    "value": "131072"
+                },
+                {
+                    "label": "1:65536",
+                    "value": "65536"
+                },
+                {
+                    "label": "1:32768",
+                    "value": "32768"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "16384"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "8192"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "4096"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "2048"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "1024"
+                },
+                {
+                    "label": "1:512",
+                    "value": "512"
+                },
+                {
+                    "label": "1:256",
+                    "value": "256"
+                },
+                {
+                    "label": "1:128",
+                    "value": "128"
+                },
+                {
+                    "label": "1:64",
+                    "value": "64"
+                },
+                {
+                    "label": "1:32",
+                    "value": "32"
+                },
+                {
+                    "label": "1:16",
+                    "value": "16"
+                },
+                {
+                    "label": "1:8",
+                    "value": "8"
+                },
+                {
+                    "label": "1:4",
+                    "value": "4"
+                },
+                {
+                    "label": "1:2",
+                    "value": "2"
+                },
+                {
+                    "label": "1:1",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "init": "PORTB",
+            "key": "CANMX",
+            "label": "ECAN Mux bit",
+            "settings": [
+                {
+                    "label": "ECAN TX and RX pins are located on RB2 and RB3, respectively",
+                    "value": "PORTB"
+                },
+                {
+                    "label": "ECAN TX and RX pins are located on RC6 and RC7, respectively",
+                    "value": "PORTC"
+                }
+            ]
+        },
+        {
+            "init": "MSK7",
+            "key": "MSSPMSK",
+            "label": "MSSP address masking",
+            "settings": [
+                {
+                    "label": "7 Bit address masking mode",
+                    "value": "MSK7"
+                },
+                {
+                    "label": "5 bit address masking mode",
+                    "value": "MSK5"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "Master Clear Enable",
+            "settings": [
+                {
+                    "label": "MCLR Enabled, RE3 Disabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "MCLR Disabled, RE3 Enabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Overflow Reset",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "BB2K",
+            "key": "BBSIZ",
+            "label": "Boot Block Size",
+            "settings": [
+                {
+                    "label": "2K word Boot Block size",
+                    "value": "BB2K"
+                },
+                {
+                    "label": "1K word Boot Block size",
+                    "value": "BB1K"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Background Debugger",
+            "settings": [
+                {
+                    "label": "Background Debugger disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Background Debugger enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP0",
+            "label": "Code Protect 00800-03FFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP1",
+            "label": "Code Protect 04000-07FFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP2",
+            "label": "Code Protect 08000-0BFFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP3",
+            "label": "Code Protect 0C000-0FFFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPB",
+            "label": "Code Protect Boot",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "Data EE Read Protect",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT0",
+            "label": "Table Write Protect 00800-03FFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT1",
+            "label": "Table Write Protect 04000-07FFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT2",
+            "label": "Table Write Protect 08000-0BFFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT3",
+            "label": "Table Write Protect 0C000-0FFFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTC",
+            "label": "Config. Write Protect",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTB",
+            "label": "Table Write Protect Boot",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTD",
+            "label": "Data EE Write Protect",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR0",
+            "label": "Table Read Protect 00800-03FFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR1",
+            "label": "Table Read Protect 04000-07FFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR2",
+            "label": "Table Read Protect 08000-0BFFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTR3",
+            "label": "Table Read Protect 0C000-0FFFF",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "EBTRB",
+            "label": "Table Read Protect Boot",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18LF46K80",
+    "clock": 1
+}

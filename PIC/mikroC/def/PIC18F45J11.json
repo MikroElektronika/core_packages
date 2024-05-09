@@ -1,0 +1,986 @@
+{
+    "accessbank": "0x60",
+    "badram": [
+        {
+            "max_addr": "0xec5",
+            "min_addr": "0xec0"
+        },
+        {
+            "max_addr": "0xee6",
+            "min_addr": "0xedf"
+        },
+        {
+            "max_addr": "0xeeb",
+            "min_addr": "0xeeb"
+        },
+        {
+            "max_addr": "0xef1",
+            "min_addr": "0xeef"
+        },
+        {
+            "max_addr": "0xef5",
+            "min_addr": "0xef4"
+        },
+        {
+            "max_addr": "0xefa",
+            "min_addr": "0xef8"
+        },
+        {
+            "max_addr": "0xf25",
+            "min_addr": "0xf00"
+        },
+        {
+            "max_addr": "0xf3b",
+            "min_addr": "0xf26"
+        },
+        {
+            "max_addr": "0xf47",
+            "min_addr": "0xf43"
+        },
+        {
+            "max_addr": "0xf51",
+            "min_addr": "0xf50"
+        },
+        {
+            "max_addr": "0xf65",
+            "min_addr": "0xf60"
+        },
+        {
+            "max_addr": "0xf87",
+            "min_addr": "0xf87"
+        },
+        {
+            "max_addr": "0xfd4",
+            "min_addr": "0xfd4"
+        }
+    ],
+    "bank": [
+        {
+            "max_addr": "0x00FF",
+            "min_addr": "0x0000",
+            "number": "0"
+        },
+        {
+            "max_addr": "0x01FF",
+            "min_addr": "0x0100",
+            "number": "1"
+        },
+        {
+            "max_addr": "0x02FF",
+            "min_addr": "0x0200",
+            "number": "2"
+        },
+        {
+            "max_addr": "0x03FF",
+            "min_addr": "0x0300",
+            "number": "3"
+        },
+        {
+            "max_addr": "0x04FF",
+            "min_addr": "0x0400",
+            "number": "4"
+        },
+        {
+            "max_addr": "0x05FF",
+            "min_addr": "0x0500",
+            "number": "5"
+        },
+        {
+            "max_addr": "0x06FF",
+            "min_addr": "0x0600",
+            "number": "6"
+        },
+        {
+            "max_addr": "0x07FF",
+            "min_addr": "0x0700",
+            "number": "7"
+        },
+        {
+            "max_addr": "0x08FF",
+            "min_addr": "0x0800",
+            "number": "8"
+        },
+        {
+            "max_addr": "0x09FF",
+            "min_addr": "0x0900",
+            "number": "9"
+        },
+        {
+            "max_addr": "0x0AFF",
+            "min_addr": "0x0A00",
+            "number": "10"
+        },
+        {
+            "max_addr": "0x0BFF",
+            "min_addr": "0x0B00",
+            "number": "11"
+        },
+        {
+            "max_addr": "0x0CFF",
+            "min_addr": "0x0C00",
+            "number": "12"
+        },
+        {
+            "max_addr": "0x0DFF",
+            "min_addr": "0x0D00",
+            "number": "13"
+        },
+        {
+            "max_addr": "0x0EFF",
+            "min_addr": "0x0E00",
+            "number": "14"
+        },
+        {
+            "max_addr": "0x0FFF",
+            "min_addr": "0x0F00",
+            "number": "15"
+        }
+    ],
+    "callstack": {
+        "max": "0x1F"
+    },
+    "codegrip_icd": {
+        "badram": {
+            "max_addr": "0x0EBF",
+            "min_addr": "0x0EA8"
+        },
+        "hwbrkpno": "3",
+        "instr_pipeline": "1",
+        "start_addr": "0x200028",
+        "swbrkpen": "0"
+    },
+    "config_registers": [
+        {
+            "address": "00007FF8",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "WDTEN",
+                    "label": "Watchdog Timer",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "STVREN",
+                    "label": "Stack Overflow/Underflow Reset",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "XINST",
+                    "label": "Extended Instruction Set",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "DEBUG",
+                    "label": "Background Debug",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1L",
+            "unused": "00000000"
+        },
+        {
+            "address": "00007FF9",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "CP0",
+                    "label": "Code Protect",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "SIGN",
+                    "label": "Config Word Signature Bit",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Bulk erase of memory not conducated",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Bulk erase of memory area complete",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "000000F0",
+                    "key": "RESERVED",
+                    "label": "RESERVED",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "RESERVED",
+                            "value": "000000F0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1H",
+            "unused": "00000000"
+        },
+        {
+            "address": "00007FFA",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000007",
+                    "key": "OSC",
+                    "label": "Oscillator",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "EC+PLL (CLKO-RA6)",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "EC (CLKO-RA6)",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "HS+PLL",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "HS",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "INTOSCPLLO (CLKO-RA6)",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "INTOSCPLL",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "INTOSCO (CLKO-RA6)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "INTOSC",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "T1DIG",
+                    "label": "T1OSCEN Enforcement",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "LPT1OSC",
+                    "label": "Low-Power Timer1 Oscillator",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "FCMEN",
+                    "label": "Fail-Safe Clock Monitor",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000040"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "IESO",
+                    "label": "Internal External Oscillator Switch Over Mode",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2L",
+            "unused": "00000000"
+        },
+        {
+            "address": "00007FFB",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0000000F",
+                    "key": "WDTPS",
+                    "label": "Watchdog Postscaler",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "1:32768",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "1:16384",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "1:8192",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "1:4096",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "1:2048",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "1:1024",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "1:512",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "1:256",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "1:128",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "1:64",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "1:32",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "1:16",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "1:8",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "1:4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "1:2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "1:1",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "000000F0",
+                    "key": "RESERVED",
+                    "label": "RESERVED",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "RESERVED",
+                            "value": "000000F0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2H",
+            "unused": "00000000"
+        },
+        {
+            "address": "00007FFC",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DSWDTOSC",
+                    "label": "DSWDT Clock Select",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "DSWDT uses INTRC",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "DSWDT uses T1OSC/T1CKI",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "RTCOSC",
+                    "label": "RTCC Clock Select",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "RTCC uses T1OSC/T1CKI",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "RTCC uses INTRC",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "DSBOREN",
+                    "label": "Deep Sleep BOR",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "DSWDTEN",
+                    "label": "Deep Sleep Watchdog Timer",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "000000F0",
+                    "key": "DSWDTPS",
+                    "label": "Deep Sleep Watchdog Postscaler",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "1:2,147,483,648 (25.7 days)",
+                            "value": "000000F0"
+                        },
+                        {
+                            "label": "1:536,870,912 (6.4 days)",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "1:134,217,728 (38.5 hours)",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "1:33,554,432 (9.6 hours)",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "1:8,388,608 (2.4 hours)",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "1:2,097,152 (36 minutes)",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "1:524,288 (9 minutes)",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "1:131,072 (135 seconds)",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "1:32,768 (34 seconds)",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "1:8,192 (8.5 seconds)",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "1:2,048 (2.1 seconds)",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "1:512 (528 ms)",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "1:128 (132 ms)",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "1:32 (33 ms)",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "1:8 (8.3 ms)",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "1:2 (2.1 ms)",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG3L",
+            "unused": "00000000"
+        },
+        {
+            "address": "00007FFD",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "IOL1WAY",
+                    "label": "IOLOCK One-Way Set",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "MSSP7B_EN",
+                    "label": "MSSP address masking",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "7 Bit address masking mode",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "5 Bit address masking mode",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "000000F0",
+                    "key": "RESERVED",
+                    "label": "RESERVED",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "RESERVED",
+                            "value": "000000F0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG3H",
+            "unused": "00000000"
+        },
+        {
+            "address": "00007FFE",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0000001F",
+                    "key": "WPFP",
+                    "label": "Write/Erase Protect Page Start/End Location",
+                    "mask": "0000001F",
+                    "settings": [
+                        {
+                            "label": "Write Protect Program Flash Page 0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 1",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 2",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 3",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 4",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 5",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 6",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 7",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 8",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 9",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 10",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 11",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 12",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 13",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 14",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 15",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 16",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 17",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 18",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 19",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 20",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 21",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 22",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 23",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 24",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 25",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 26",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 27",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 28",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 29",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 30",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Write Protect Program Flash Page 31",
+                            "value": "0000001F"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "RESERVED",
+                    "label": "...",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "RESERVED",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "WPEND",
+                    "label": "Write/Erase Protect Region Select (valid when WPDIS = 0)",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Page WPFP\u003c5:0\u003e through Configuration Words erase/write protected",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Page 0 through WPFP\u003c5:0\u003e erase/write protected",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "WPCFG",
+                    "label": "Write/Erase Protect Configuration Region",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG4L",
+            "unused": "00000000"
+        },
+        {
+            "address": "00007FFF",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "WPDIS",
+                    "label": "Write Protect",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "000000F0",
+                    "key": "RESERVED",
+                    "label": "...",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "RESERVED",
+                            "value": "000000F0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG4H",
+            "unused": "00000000"
+        }
+    ],
+    "core": "P18",
+    "delay_src_path": "delays/p18/__lib_delays.c",
+    "gprend": "0x0EC6",
+    "icd": {
+        "badram": {
+            "max_addr": "0x0EBF",
+            "min_addr": "0x0EA8"
+        },
+        "hwbrkpno": "3",
+        "instr_pipeline": "1",
+        "start_addr": "0x200028"
+    },
+    "ivt": [
+        {
+            "address": "0x000008",
+            "ilevel": "0x0000",
+            "name": "High Priority Interrupt"
+        },
+        {
+            "address": "0x000018",
+            "ilevel": "0x0001",
+            "name": "Low Priority Interrupt"
+        }
+    ],
+    "mcu": "PIC18F45J11",
+    "prog_options": {
+        "codegrip": {
+            "debugging": "False",
+            "programming": "False"
+        },
+        "mikroprog": {
+            "debugging": "True",
+            "programming": "True"
+        }
+    },
+    "ram": {
+        "max_addr": "0x0FFF",
+        "min_addr": "0x0015"
+    },
+    "rom": {
+        "max_addr": "0x7ff7",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x0014",
+        "min_addr": "0x0000"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "3.250",
+        "range": {
+            "max_value": "3.500",
+            "min_value": "2.700"
+        }
+    },
+    "clock": "1"
+}

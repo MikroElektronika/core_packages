@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "(^STM32L100[C-R][6-8A-B]$)|(^STM32L15[1-2][C-R][6-8B-D]$)|(^STM32L1[5-6][1-2]QD$)|(^STM32L151UC$)|(^STM32L15[1-2]V[8B-D]$)|(^STM32L15[1-2]Z[C-D]$)|(^STM32L162Z[C-D]$)|(^STM32L162[R-v]D$)")
+    set(SYSTEM_LIB_SOURCE "system/ST/M3/src/__Lib_System_15X.c")
+    set(SYSTEM_LIB_INCLUDE_DIR "system/ST/M3/include")
+    set(MATH_LIB_SOURCE "math/M3/__Lib_Math.c")
+    set(MATH_DOUBLE_SOURCE "math_double/M3/__Lib_MathDouble.c")
+    set(DELAY_SOURCE "delay/m3/__lib_delays.c")
+endif()

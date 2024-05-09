@@ -1,0 +1,346 @@
+{
+    "config_words": [
+        {
+            "init": "NONE",
+            "key": "POSCMOD",
+            "label": "Primary Oscillator Select",
+            "settings": [
+                {
+                    "label": "EC Oscillator mode selected",
+                    "value": "EC"
+                },
+                {
+                    "label": "MS Oscillator mode selected",
+                    "value": "MS"
+                },
+                {
+                    "label": "HS Oscillator mode selected",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary oscillator disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "ALTI2C",
+            "label": "Alternate I2C pins",
+            "settings": [
+                {
+                    "label": "I2C mapped to ASDA1/ASCL1",
+                    "value": "ON"
+                },
+                {
+                    "label": "I2C mapped to SDA1/SCL1",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "IOLOCK Protection",
+            "settings": [
+                {
+                    "label": "Allow Multiple Re-configurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow Only One Re-configuration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "Primary Oscillator Output Function",
+            "settings": [
+                {
+                    "label": "OSC2 pin has digital I/O function",
+                    "value": "ON"
+                },
+                {
+                    "label": "OSC2 pin has clock out function",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor",
+            "settings": [
+                {
+                    "label": "Clock switching is enabled, Fail-Safe Clock Monitor is enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock switching is enabled, Fail-Safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Clock switching and Fail-Safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIVN",
+            "key": "FNOSC",
+            "label": "Oscillator Mode",
+            "settings": [
+                {
+                    "label": "Internal Fast RC (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) w/ PLL",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Oscillator (MS, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Oscillator (MS, HS, EC) w/ PLL",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Secondary Oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) with divide by N",
+                    "value": "FRCDIVN"
+                }
+            ]
+        },
+        {
+            "init": "WDTWIN25",
+            "key": "WDTWIN",
+            "label": "Watchdog Window Select",
+            "settings": [
+                {
+                    "label": "Watchdog Window is 75% of WDT period",
+                    "value": "WDTWIN75"
+                },
+                {
+                    "label": "Watchdog Window is 50% of WDT period",
+                    "value": "WDTWIN50"
+                },
+                {
+                    "label": "Watchdog Window is 37.5% of WDT period",
+                    "value": "WDTWIN37"
+                },
+                {
+                    "label": "Watchdog Window is 25% of WDT period",
+                    "value": "WDTWIN25"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switch Over Mode",
+            "settings": [
+                {
+                    "label": "Start-up device with user-selected oscillator source",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Start-up device with FRC, then automatically switch to user-selected oscillator source when ready",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPOST",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "WDTPRE",
+            "label": "WDT Prescaler",
+            "settings": [
+                {
+                    "label": "Prescaler ratio of 1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "Prescaler ratio of 1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PLLKEN",
+            "label": "PLL Lock Enable",
+            "settings": [
+                {
+                    "label": "Clock switch will not wait for the PLL lock signal.",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Clock switch to PLL source will wait until the PLL lock signal is valid.",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window",
+            "settings": [
+                {
+                    "label": "Watchdog Timer in Window mode",
+                    "value": "ON"
+                },
+                {
+                    "label": "Watchdog Timer in Non-Window mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "Watchdog timer enabled/disabled by user software",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Watchdog timer always enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PGD1",
+            "key": "ICS",
+            "label": "Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Communicate on PGEC3/PGED3",
+                    "value": "PGD3"
+                },
+                {
+                    "label": "Communicate on PGEC2/PGED2",
+                    "value": "PGD2"
+                },
+                {
+                    "label": "Communicate on PGEC1/PGED1",
+                    "value": "PGD1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Code Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Writes to program memory are disabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Writes to program memory are allowed",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GCP",
+            "label": "General Segment Code Protection",
+            "settings": [
+                {
+                    "label": "Standard Security Code protection Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "General Segment Code protect is disabled",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "dsPIC33FJ32GP102",
+    "clock": 1
+}

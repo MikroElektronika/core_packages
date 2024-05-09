@@ -1,0 +1,162 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRCCLK,_EXTRC_OSC_CLKOUT",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "EXTRC oscillator: CLKOUT function on RA4/AN3/T1G/OSC2/CLKOUT, RC on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "EXTRCCLK,_EXTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "EXTRCIO oscillator: I/O function on RA4/AN3/T1G/OSC2/CLKOUT, RC on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "EXTRCIO,_EXTRC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "INTOSC oscillator: CLKOUT function on RA4/AN3/T1G/OSC2/CLKOUT, I/O function on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "INTOSCCLK,_INTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "INTOSCIO oscillator: I/O function on RA4/AN3/T1G/OSC2/CLKOUT, I/O function on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "INTOSCIO,_INTRC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "EC: I/O function on RA4/AN3/T1G/OSC2/CLKOUT, CLKIN on RA5/T1CKI/OSC1/CLKIN",
+                    "value": "EC,_EC_OSC"
+                },
+                {
+                    "label": "HS oscillator: High-speed crystal/resonator on RA5/T1CKI/OSC1/CLKIN and RA4/AN3/T1G/OSC2/CLKOUT",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator: Crystal/resonator on RA5/T1CKI/OSC1/CLKIN and RA4/AN3/T1G/OSC2/CLKOUT",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator: Low-power crystal on RA5/T1CKI/OSC1/CLKIN and RA4/AN3/T1G/OSC2/CLKOUT",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "MCLR Pin Function Select bit",
+            "settings": [
+                {
+                    "label": "MCLR pin is MCLR function and weak internal pull-up is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "MCLR pin is alternate function, MCLR function is internally disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bit",
+            "settings": [
+                {
+                    "label": "Program memory is not code protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory is external read and write protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "8MHZ",
+            "key": "IOSCFS",
+            "label": "Internal Oscillator Frequency Select",
+            "settings": [
+                {
+                    "label": "8 MHz",
+                    "value": "8MHZ"
+                },
+                {
+                    "label": "4 MHz",
+                    "value": "4MHZ"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BOR_ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Selection bits",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON,_BOR_ON"
+                },
+                {
+                    "label": "BOR enabled during operation and disabled in Sleep",
+                    "value": "NSLEEP,_BOR_NSLEEP"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF,_BOR_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRT",
+            "label": "Flash Program Memory Self Write Enable bits",
+            "settings": [
+                {
+                    "label": "Write protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "000h to 1FFh write protected, 200h to 7FFh may be modified by PMCON1 control",
+                    "value": "BOOT"
+                },
+                {
+                    "label": "000h to 3FFh write protected, 400h to 7FFh may be modified by PMCON1 control",
+                    "value": "HALF"
+                },
+                {
+                    "label": "000h to 7FFh write protected, entire program memory is write protected.",
+                    "value": "ALL"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC12F617",
+    "clock": 1
+}

@@ -1,0 +1,1547 @@
+{
+    "config_registers": [
+        {
+            "address": "40010404",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00050000",
+                    "key": "DCORSEL",
+                    "label": "DCO frequency range select",
+                    "mask": "00070000",
+                    "settings": [
+                        {
+                            "label": "Nominal DCO Frequency (MHz): 1.5",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Nominal DCO Frequency (MHz): 3",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "Nominal DCO Frequency (MHz): 6",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "Nominal DCO Frequency (MHz): 12",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "Nominal DCO Frequency (MHz): 24",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "Nominal DCO Frequency (MHz): 48",
+                            "value": "00050000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DCORES",
+                    "label": "Enables the DCO external resistor mode.",
+                    "mask": "00400000",
+                    "settings": [
+                        {
+                            "label": "Internal resistor mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "External resistor mode",
+                            "value": "00400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DCOEN",
+                    "label": "DCO oscillator enable",
+                    "mask": "00800000",
+                    "settings": [
+                        {
+                            "label": "DCO is on if it is used as a source for MCLK, HSMCLK , or SMCLK and clock is requested , otherwise it is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "DCO is on.",
+                            "value": "00800000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CSCTL0",
+            "unused": "FF38FC00"
+        },
+        {
+            "address": "40010408",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "SELM",
+                    "label": "MCLK source",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "LFXTCLK",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "VLOCLK",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "REFOCLK",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "DCOCLK",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "MODOSC",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "NHFXTCLK",
+                            "value": "00000005"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000030",
+                    "key": "SELS",
+                    "label": "SMCLK and HSMCLK source",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "LFXTCLK",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "VLOCLK",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "REFOCLK",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "DCOCLK",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "MODOSC",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "NHFXTCLK",
+                            "value": "00000050"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SELA",
+                    "label": "ACLK source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "LFXTCLK",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "VLOCLK",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "REFOCLK",
+                            "value": "00000200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SELB",
+                    "label": "BCLK source",
+                    "mask": "00003000",
+                    "settings": [
+                        {
+                            "label": "LFXTCLK",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "REFOCLK",
+                            "value": "00001000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIVM",
+                    "label": "MCLK source divider",
+                    "mask": "00070000",
+                    "settings": [
+                        {
+                            "label": "f(MCLK)/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "f(MCLK)/2",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "f(MCLK)/4",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "f(MCLK)/8",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "f(MCLK)/16",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "f(MCLK)/32",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "f(MCLK)/64",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "f(MCLK)/128",
+                            "value": "00070000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIVHS",
+                    "label": "HSMCLK source divider",
+                    "mask": "00700000",
+                    "settings": [
+                        {
+                            "label": "f(HSMCLK)/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "f(HSMCLK)/2",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "f(HSMCLK)/4",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "f(HSMCLK)/8",
+                            "value": "00300000"
+                        },
+                        {
+                            "label": "f(HSMCLK)/16",
+                            "value": "00400000"
+                        },
+                        {
+                            "label": "f(HSMCLK)/32",
+                            "value": "00500000"
+                        },
+                        {
+                            "label": "f(HSMCLK)/64",
+                            "value": "00600000"
+                        },
+                        {
+                            "label": "f(HSMCLK)/128",
+                            "value": "00700000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIVA",
+                    "label": "ACLK source divider",
+                    "mask": "07000000",
+                    "settings": [
+                        {
+                            "label": "f(ACLK)/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "f(ACLK)/2",
+                            "value": "01000000"
+                        },
+                        {
+                            "label": "f(ACLK)/4",
+                            "value": "02000000"
+                        },
+                        {
+                            "label": "f(ACLK)/8",
+                            "value": "03000000"
+                        },
+                        {
+                            "label": "f(ACLK)/16",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "f(ACLK)/32",
+                            "value": "05000000"
+                        },
+                        {
+                            "label": "f(ACLK)/64",
+                            "value": "06000000"
+                        },
+                        {
+                            "label": "f(ACLK)/128",
+                            "value": "07000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIVS",
+                    "label": "SMCLK source divider",
+                    "mask": "70000000",
+                    "settings": [
+                        {
+                            "label": "f(SMCLK)/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "f(SMCLK)/2",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "f(SMCLK)/4",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "f(SMCLK)/8",
+                            "value": "30000000"
+                        },
+                        {
+                            "label": "f(SMCLK)/16",
+                            "value": "40000000"
+                        },
+                        {
+                            "label": "f(SMCLK)/32",
+                            "value": "50000000"
+                        },
+                        {
+                            "label": "f(SMCLK)/64",
+                            "value": "60000000"
+                        },
+                        {
+                            "label": "f(SMCLK)/128",
+                            "value": "70000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CSCTL1",
+            "unused": "88888888"
+        },
+        {
+            "address": "4001040C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "LFXT_EN",
+                    "label": "LFXT oscillator enable",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "LFXT is on if it is used as a source for ACLK, MCLK, HSMCLK , or SMCLK and is selected via the port selection and not in bypass mode of operation",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "LFXT is on if LFXT is selected via the port selection and LFXT is not in bypass mode of operation.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "LFXTBYPASS",
+                    "label": "LFXT bypass select.",
+                    "mask": "00000200",
+                    "settings": [
+                        {
+                            "label": "LFXT sourced by external crystal.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "LFXT sourced by external square wave.",
+                            "value": "00000200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HFXTFREQ",
+                    "label": "HFXT frequency selection",
+                    "mask": "00700000",
+                    "settings": [
+                        {
+                            "label": "1 MHz to 4 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "4 MHz to 8 MHz",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "8 MHz to 16 MHz",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "16 MHz to 24 MHz",
+                            "value": "00300000"
+                        },
+                        {
+                            "label": "4 MHz to 32 MHz",
+                            "value": "00400000"
+                        },
+                        {
+                            "label": "32 MHz to 40 MHz",
+                            "value": "00500000"
+                        },
+                        {
+                            "label": "40 MHz to 48 MHz",
+                            "value": "00600000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HFXT_EN",
+                    "label": "HFXT oscillator enable",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "HFXT is on if it is used as a source for MCLK, HSMCLK , or SMCLK and is selected via the port selection and not in bypass mode of operation.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HFXT is on if HFXT is selected via the port selection and HFXT is not in bypass mode of operation.",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HFXTBYPASS",
+                    "label": "HFXT bypass select",
+                    "mask": "02000000",
+                    "settings": [
+                        {
+                            "label": "HFXT sourced by external crystal",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HFXT sourced by external square wave",
+                            "value": "02000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000003",
+                    "key": "LFXTDRIVE",
+                    "label": "LFXT oscillator current",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Maximum drive strength and maximum current consumption LFXT oscillator.",
+                            "value": "00000003"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00010000",
+                    "key": "HFXTDRIVE",
+                    "label": "HFXT oscillator drive selection",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "To be used for HFXTFREQ settings 001b to 110b",
+                            "value": "00010000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CSCTL2",
+            "unused": "FC8EFCFC"
+        },
+        {
+            "address": "4000480C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "WDTIS",
+                    "label": "Watchdog timer interval select.",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Watchdog clock source / 2^31",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Watchdog clock source / 2^27",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Watchdog clock source / 2^23",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Watchdog clock source / 2^19",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Watchdog clock source / 2^15",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Watchdog clock source / 2^13",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Watchdog clock source / 2^9",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Watchdog clock source / 2^6",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "WDTHOLD",
+                    "label": "Watchdog timer hold",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Watchdog timer is not stopped",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Watchdog timer is stopped",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "WDTCTL",
+            "unused": "00000000"
+        },
+        {
+            "address": "40011010",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "BUFI",
+                    "label": "Read buffering for instruction fetches",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "BUFD",
+                    "label": "Read buffering for data reads",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "00000020"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00001000",
+                    "key": "WAIT",
+                    "label": "Wait states for a read operation",
+                    "mask": "0000F000",
+                    "settings": [
+                        {
+                            "label": "0 wait states",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1 wait states",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "2 wait states",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "3 wait states",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": "4 wait states",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "5 wait states",
+                            "value": "00005000"
+                        },
+                        {
+                            "label": "6 wait states",
+                            "value": "00006000"
+                        },
+                        {
+                            "label": "7 wait states",
+                            "value": "00007000"
+                        },
+                        {
+                            "label": "8 wait states",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "9 wait states",
+                            "value": "00009000"
+                        },
+                        {
+                            "label": "10 wait states",
+                            "value": "0000A000"
+                        },
+                        {
+                            "label": "11 wait states",
+                            "value": "0000B000"
+                        },
+                        {
+                            "label": "12 wait states",
+                            "value": "0000C000"
+                        },
+                        {
+                            "label": "13 wait states",
+                            "value": "0000D000"
+                        },
+                        {
+                            "label": "14 wait states",
+                            "value": "0000E000"
+                        },
+                        {
+                            "label": "15 wait states",
+                            "value": "0000F000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RDCTL",
+            "unused": "FFF00FC0"
+        }
+    ],
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays_msp432.c",
+    "ivt": [
+        {
+            "name": "IVT_INT_NMI",
+            "vector": 2
+        },
+        {
+            "name": "IVT_INT_HardFault",
+            "vector": 3
+        },
+        {
+            "name": "IVT_INT_MemManage",
+            "vector": 4
+        },
+        {
+            "name": "IVT_INT_BusFault",
+            "vector": 5
+        },
+        {
+            "name": "IVT_INT_UsageFault",
+            "vector": 6
+        },
+        {
+            "name": "IVT_INT_RESERVED1",
+            "vector": 7
+        },
+        {
+            "name": "IVT_INT_RESERVED2",
+            "vector": 8
+        },
+        {
+            "name": "IVT_INT_RESERVED3",
+            "vector": 9
+        },
+        {
+            "name": "IVT_INT_RESERVED4",
+            "vector": 10
+        },
+        {
+            "name": "IVT_INT_SVCall",
+            "vector": 11
+        },
+        {
+            "name": "IVT_INT_DebugMon",
+            "vector": 12
+        },
+        {
+            "name": "IVT_INT_RESERVED5",
+            "vector": 13
+        },
+        {
+            "name": "IVT_INT_PendSV",
+            "vector": 14
+        },
+        {
+            "name": "IVT_INT_SysTick",
+            "vector": 15
+        },
+        {
+            "name": "IVT_INT_PSS",
+            "vector": 16
+        },
+        {
+            "name": "IVT_INT_CS",
+            "vector": 17
+        },
+        {
+            "name": "IVT_INT_PCM",
+            "vector": 18
+        },
+        {
+            "name": "IVT_INT_WDT_A",
+            "vector": 19
+        },
+        {
+            "name": "IVT_INT_FPU_INT",
+            "vector": 20
+        },
+        {
+            "name": "IVT_INT_FLCTL_A",
+            "vector": 21
+        },
+        {
+            "name": "IVT_INT_COMP_E0",
+            "vector": 22
+        },
+        {
+            "name": "IVT_INT_COMP_E1",
+            "vector": 23
+        },
+        {
+            "name": "IVT_INT_TA0_0",
+            "vector": 24
+        },
+        {
+            "name": "IVT_INT_TA0_N",
+            "vector": 25
+        },
+        {
+            "name": "IVT_INT_TA1_0",
+            "vector": 26
+        },
+        {
+            "name": "IVT_INT_TA1_N",
+            "vector": 27
+        },
+        {
+            "name": "IVT_INT_TA2_0",
+            "vector": 28
+        },
+        {
+            "name": "IVT_INT_TA2_N",
+            "vector": 29
+        },
+        {
+            "name": "IVT_INT_TA3_0",
+            "vector": 30
+        },
+        {
+            "name": "IVT_INT_TA3_N",
+            "vector": 31
+        },
+        {
+            "name": "IVT_INT_EUSCIA0",
+            "vector": 32
+        },
+        {
+            "name": "IVT_INT_EUSCIA1",
+            "vector": 33
+        },
+        {
+            "name": "IVT_INT_EUSCIA2",
+            "vector": 34
+        },
+        {
+            "name": "IVT_INT_EUSCIA3",
+            "vector": 35
+        },
+        {
+            "name": "IVT_INT_EUSCIB0",
+            "vector": 36
+        },
+        {
+            "name": "IVT_INT_EUSCIB1",
+            "vector": 37
+        },
+        {
+            "name": "IVT_INT_EUSCIB2",
+            "vector": 38
+        },
+        {
+            "name": "IVT_INT_EUSCIB3",
+            "vector": 39
+        },
+        {
+            "name": "IVT_INT_ADC14",
+            "vector": 40
+        },
+        {
+            "name": "IVT_INT_T32_INT1",
+            "vector": 41
+        },
+        {
+            "name": "IVT_INT_T32_INT2",
+            "vector": 42
+        },
+        {
+            "name": "IVT_INT_T32_INTC",
+            "vector": 43
+        },
+        {
+            "name": "IVT_INT_AES256",
+            "vector": 44
+        },
+        {
+            "name": "IVT_INT_RTC_C",
+            "vector": 45
+        },
+        {
+            "name": "IVT_INT_DMA_ERR",
+            "vector": 46
+        },
+        {
+            "name": "IVT_INT_DMA_INT3",
+            "vector": 47
+        },
+        {
+            "name": "IVT_INT_DMA_INT2",
+            "vector": 48
+        },
+        {
+            "name": "IVT_INT_DMA_INT1",
+            "vector": 49
+        },
+        {
+            "name": "IVT_INT_DMA_INT0",
+            "vector": 50
+        },
+        {
+            "name": "IVT_INT_PORT1",
+            "vector": 51
+        },
+        {
+            "name": "IVT_INT_PORT2",
+            "vector": 52
+        },
+        {
+            "name": "IVT_INT_PORT3",
+            "vector": 53
+        },
+        {
+            "name": "IVT_INT_PORT4",
+            "vector": 54
+        },
+        {
+            "name": "IVT_INT_PORT5",
+            "vector": 55
+        },
+        {
+            "name": "IVT_INT_PORT6",
+            "vector": 56
+        },
+        {
+            "name": "IVT_INT_LCD_F",
+            "vector": 57
+        },
+        {
+            "name": "IVT_INT_RESERVED6",
+            "vector": 58
+        },
+        {
+            "name": "IVT_INT_RESERVED7",
+            "vector": 59
+        },
+        {
+            "name": "IVT_INT_RESERVED8",
+            "vector": 60
+        },
+        {
+            "name": "IVT_INT_RESERVED9",
+            "vector": 61
+        },
+        {
+            "name": "IVT_INT_RESERVED10",
+            "vector": 62
+        },
+        {
+            "name": "IVT_INT_RESERVED11",
+            "vector": 63
+        },
+        {
+            "name": "IVT_INT_RESERVED12",
+            "vector": 64
+        },
+        {
+            "name": "IVT_INT_RESERVED13",
+            "vector": 65
+        },
+        {
+            "name": "IVT_INT_RESERVED14",
+            "vector": 66
+        },
+        {
+            "name": "IVT_INT_RESERVED15",
+            "vector": 67
+        },
+        {
+            "name": "IVT_INT_RESERVED16",
+            "vector": 68
+        },
+        {
+            "name": "IVT_INT_RESERVED17",
+            "vector": 69
+        },
+        {
+            "name": "IVT_INT_RESERVED18",
+            "vector": 70
+        },
+        {
+            "name": "IVT_INT_RESERVED19",
+            "vector": 71
+        },
+        {
+            "name": "IVT_INT_RESERVED20",
+            "vector": 72
+        },
+        {
+            "name": "IVT_INT_RESERVED21",
+            "vector": 73
+        },
+        {
+            "name": "IVT_INT_RESERVED22",
+            "vector": 74
+        },
+        {
+            "name": "IVT_INT_RESERVED23",
+            "vector": 75
+        },
+        {
+            "name": "IVT_INT_RESERVED24",
+            "vector": 76
+        },
+        {
+            "name": "IVT_INT_RESERVED25",
+            "vector": 77
+        },
+        {
+            "name": "IVT_INT_RESERVED26",
+            "vector": 78
+        },
+        {
+            "name": "IVT_INT_RESERVED27",
+            "vector": 79
+        }
+    ],
+    "mcu": "MSP432P401M",
+    "ram": {
+        "max_address": "0x20007FFF",
+        "min_address": "0x20000000"
+    },
+    "rom": {
+        "max_address": "0x0001FFFF",
+        "min_address": "0x00000000"
+    },
+    "rx": {
+        "max_address": "0x003F",
+        "min_address": "0x0000"
+    },
+    "sfr": [
+        {
+            "max_address": "0x00201033",
+            "min_address": "0x00201000"
+        },
+        {
+            "max_address": "0x00201053",
+            "min_address": "0x00201040"
+        },
+        {
+            "max_address": "0x00201073",
+            "min_address": "0x00201064"
+        },
+        {
+            "max_address": "0x0020109B",
+            "min_address": "0x00201084"
+        },
+        {
+            "max_address": "0x0020114B",
+            "min_address": "0x002010DC"
+        },
+        {
+            "max_address": "0x40000021",
+            "min_address": "0x40000000"
+        },
+        {
+            "max_address": "0x4000002F",
+            "min_address": "0x4000002E"
+        },
+        {
+            "max_address": "0x40000421",
+            "min_address": "0x40000400"
+        },
+        {
+            "max_address": "0x4000042F",
+            "min_address": "0x4000042E"
+        },
+        {
+            "max_address": "0x40000821",
+            "min_address": "0x40000800"
+        },
+        {
+            "max_address": "0x4000082F",
+            "min_address": "0x4000082E"
+        },
+        {
+            "max_address": "0x40000C21",
+            "min_address": "0x40000C00"
+        },
+        {
+            "max_address": "0x40000C2F",
+            "min_address": "0x40000C2E"
+        },
+        {
+            "max_address": "0x40001003",
+            "min_address": "0x40001000"
+        },
+        {
+            "max_address": "0x40001013",
+            "min_address": "0x40001006"
+        },
+        {
+            "max_address": "0x4000101F",
+            "min_address": "0x4000101A"
+        },
+        {
+            "max_address": "0x40001403",
+            "min_address": "0x40001400"
+        },
+        {
+            "max_address": "0x40001413",
+            "min_address": "0x40001406"
+        },
+        {
+            "max_address": "0x4000141F",
+            "min_address": "0x4000141A"
+        },
+        {
+            "max_address": "0x40001803",
+            "min_address": "0x40001800"
+        },
+        {
+            "max_address": "0x40001813",
+            "min_address": "0x40001806"
+        },
+        {
+            "max_address": "0x4000181F",
+            "min_address": "0x4000181A"
+        },
+        {
+            "max_address": "0x40001C03",
+            "min_address": "0x40001C00"
+        },
+        {
+            "max_address": "0x40001C13",
+            "min_address": "0x40001C06"
+        },
+        {
+            "max_address": "0x40001C1F",
+            "min_address": "0x40001C1A"
+        },
+        {
+            "max_address": "0x40002003",
+            "min_address": "0x40002000"
+        },
+        {
+            "max_address": "0x4000200F",
+            "min_address": "0x40002006"
+        },
+        {
+            "max_address": "0x40002021",
+            "min_address": "0x40002014"
+        },
+        {
+            "max_address": "0x4000202F",
+            "min_address": "0x4000202A"
+        },
+        {
+            "max_address": "0x40002403",
+            "min_address": "0x40002400"
+        },
+        {
+            "max_address": "0x4000240F",
+            "min_address": "0x40002406"
+        },
+        {
+            "max_address": "0x40002421",
+            "min_address": "0x40002414"
+        },
+        {
+            "max_address": "0x4000242F",
+            "min_address": "0x4000242A"
+        },
+        {
+            "max_address": "0x40002803",
+            "min_address": "0x40002800"
+        },
+        {
+            "max_address": "0x4000280F",
+            "min_address": "0x40002806"
+        },
+        {
+            "max_address": "0x40002821",
+            "min_address": "0x40002814"
+        },
+        {
+            "max_address": "0x4000282F",
+            "min_address": "0x4000282A"
+        },
+        {
+            "max_address": "0x40002C03",
+            "min_address": "0x40002C00"
+        },
+        {
+            "max_address": "0x40002C0F",
+            "min_address": "0x40002C06"
+        },
+        {
+            "max_address": "0x40002C21",
+            "min_address": "0x40002C14"
+        },
+        {
+            "max_address": "0x40002C2F",
+            "min_address": "0x40002C2A"
+        },
+        {
+            "max_address": "0x40003001",
+            "min_address": "0x40003000"
+        },
+        {
+            "max_address": "0x40003407",
+            "min_address": "0x40003400"
+        },
+        {
+            "max_address": "0x4000340F",
+            "min_address": "0x4000340C"
+        },
+        {
+            "max_address": "0x40003807",
+            "min_address": "0x40003800"
+        },
+        {
+            "max_address": "0x4000380F",
+            "min_address": "0x4000380C"
+        },
+        {
+            "max_address": "0x40003C0F",
+            "min_address": "0x40003C00"
+        },
+        {
+            "max_address": "0x40004001",
+            "min_address": "0x40004000"
+        },
+        {
+            "max_address": "0x40004005",
+            "min_address": "0x40004004"
+        },
+        {
+            "max_address": "0x40004011",
+            "min_address": "0x40004008"
+        },
+        {
+            "max_address": "0x40004015",
+            "min_address": "0x40004014"
+        },
+        {
+            "max_address": "0x40004019",
+            "min_address": "0x40004018"
+        },
+        {
+            "max_address": "0x4000401F",
+            "min_address": "0x4000401E"
+        },
+        {
+            "max_address": "0x4000441F",
+            "min_address": "0x40004400"
+        },
+        {
+            "max_address": "0x4000480D",
+            "min_address": "0x4000480C"
+        },
+        {
+            "max_address": "0x40004C0F",
+            "min_address": "0x40004C00"
+        },
+        {
+            "max_address": "0x40004C2F",
+            "min_address": "0x40004C16"
+        },
+        {
+            "max_address": "0x40004C4F",
+            "min_address": "0x40004C36"
+        },
+        {
+            "max_address": "0x40004C6F",
+            "min_address": "0x40004C56"
+        },
+        {
+            "max_address": "0x40004C8F",
+            "min_address": "0x40004C76"
+        },
+        {
+            "max_address": "0x40004C9F",
+            "min_address": "0x40004C96"
+        },
+        {
+            "max_address": "0x40004D2D",
+            "min_address": "0x40004D20"
+        },
+        {
+            "max_address": "0x40004D37",
+            "min_address": "0x40004D36"
+        },
+        {
+            "max_address": "0x40005003",
+            "min_address": "0x40005000"
+        },
+        {
+            "max_address": "0x4000503F",
+            "min_address": "0x40005008"
+        },
+        {
+            "max_address": "0x4000540F",
+            "min_address": "0x4000540E"
+        },
+        {
+            "max_address": "0x4000580F",
+            "min_address": "0x4000580E"
+        },
+        {
+            "max_address": "0x4000C01B",
+            "min_address": "0x4000C000"
+        },
+        {
+            "max_address": "0x4000C03B",
+            "min_address": "0x4000C020"
+        },
+        {
+            "max_address": "0x4000E007",
+            "min_address": "0x4000E000"
+        },
+        {
+            "max_address": "0x4000E08F",
+            "min_address": "0x4000E010"
+        },
+        {
+            "max_address": "0x4000E10B",
+            "min_address": "0x4000E100"
+        },
+        {
+            "max_address": "0x4000E117",
+            "min_address": "0x4000E110"
+        },
+        {
+            "max_address": "0x4000F03F",
+            "min_address": "0x4000F000"
+        },
+        {
+            "max_address": "0x4000F04F",
+            "min_address": "0x4000F04C"
+        },
+        {
+            "max_address": "0x40010013",
+            "min_address": "0x40010000"
+        },
+        {
+            "max_address": "0x40010413",
+            "min_address": "0x40010400"
+        },
+        {
+            "max_address": "0x40010437",
+            "min_address": "0x40010430"
+        },
+        {
+            "max_address": "0x40010443",
+            "min_address": "0x40010440"
+        },
+        {
+            "max_address": "0x4001044B",
+            "min_address": "0x40010448"
+        },
+        {
+            "max_address": "0x40010453",
+            "min_address": "0x40010450"
+        },
+        {
+            "max_address": "0x4001045B",
+            "min_address": "0x40010458"
+        },
+        {
+            "max_address": "0x40010467",
+            "min_address": "0x40010460"
+        },
+        {
+            "max_address": "0x40010807",
+            "min_address": "0x40010800"
+        },
+        {
+            "max_address": "0x4001083F",
+            "min_address": "0x40010834"
+        },
+        {
+            "max_address": "0x40011003",
+            "min_address": "0x40011000"
+        },
+        {
+            "max_address": "0x40011017",
+            "min_address": "0x40011010"
+        },
+        {
+            "max_address": "0x4001102B",
+            "min_address": "0x40011020"
+        },
+        {
+            "max_address": "0x40011043",
+            "min_address": "0x4001103C"
+        },
+        {
+            "max_address": "0x4001105B",
+            "min_address": "0x40011050"
+        },
+        {
+            "max_address": "0x400110A7",
+            "min_address": "0x40011060"
+        },
+        {
+            "max_address": "0x400110B7",
+            "min_address": "0x400110B0"
+        },
+        {
+            "max_address": "0x400110C7",
+            "min_address": "0x400110C0"
+        },
+        {
+            "max_address": "0x400110DF",
+            "min_address": "0x400110D0"
+        },
+        {
+            "max_address": "0x40011123",
+            "min_address": "0x400110F0"
+        },
+        {
+            "max_address": "0x40011317",
+            "min_address": "0x40011300"
+        },
+        {
+            "max_address": "0x4001132B",
+            "min_address": "0x40011320"
+        },
+        {
+            "max_address": "0x4001133B",
+            "min_address": "0x40011330"
+        },
+        {
+            "max_address": "0x40011713",
+            "min_address": "0x40011700"
+        },
+        {
+            "max_address": "0x40011733",
+            "min_address": "0x40011720"
+        },
+        {
+            "max_address": "0x40012117",
+            "min_address": "0x40012000"
+        },
+        {
+            "max_address": "0x40012157",
+            "min_address": "0x4001213C"
+        },
+        {
+            "max_address": "0xE000007F",
+            "min_address": "0xE0000000"
+        },
+        {
+            "max_address": "0xE0000E03",
+            "min_address": "0xE0000E00"
+        },
+        {
+            "max_address": "0xE0000E43",
+            "min_address": "0xE0000E40"
+        },
+        {
+            "max_address": "0xE0000E83",
+            "min_address": "0xE0000E80"
+        },
+        {
+            "max_address": "0xE0000EFB",
+            "min_address": "0xE0000EF8"
+        },
+        {
+            "max_address": "0xE0000F03",
+            "min_address": "0xE0000F00"
+        },
+        {
+            "max_address": "0xE0000FB7",
+            "min_address": "0xE0000FB0"
+        },
+        {
+            "max_address": "0xE000102B",
+            "min_address": "0xE0001000"
+        },
+        {
+            "max_address": "0xE000103B",
+            "min_address": "0xE0001030"
+        },
+        {
+            "max_address": "0xE000104B",
+            "min_address": "0xE0001040"
+        },
+        {
+            "max_address": "0xE000105B",
+            "min_address": "0xE0001050"
+        },
+        {
+            "max_address": "0xE0002027",
+            "min_address": "0xE0002000"
+        },
+        {
+            "max_address": "0xE000E00B",
+            "min_address": "0xE000E004"
+        },
+        {
+            "max_address": "0xE000E01F",
+            "min_address": "0xE000E010"
+        },
+        {
+            "max_address": "0xE000E10B",
+            "min_address": "0xE000E100"
+        },
+        {
+            "max_address": "0xE000E18B",
+            "min_address": "0xE000E180"
+        },
+        {
+            "max_address": "0xE000E20B",
+            "min_address": "0xE000E200"
+        },
+        {
+            "max_address": "0xE000E28B",
+            "min_address": "0xE000E280"
+        },
+        {
+            "max_address": "0xE000E30B",
+            "min_address": "0xE000E300"
+        },
+        {
+            "max_address": "0xE000E453",
+            "min_address": "0xE000E400"
+        },
+        {
+            "max_address": "0xE000ED73",
+            "min_address": "0xE000ED00"
+        },
+        {
+            "max_address": "0xE000ED8B",
+            "min_address": "0xE000ED88"
+        },
+        {
+            "max_address": "0xE000EDBB",
+            "min_address": "0xE000ED90"
+        },
+        {
+            "max_address": "0xE000EDFF",
+            "min_address": "0xE000EDF0"
+        },
+        {
+            "max_address": "0xE000EF03",
+            "min_address": "0xE000EF00"
+        },
+        {
+            "max_address": "0xE000EF47",
+            "min_address": "0xE000EF34"
+        },
+        {
+            "max_address": "0xE004201B",
+            "min_address": "0xE0042000"
+        },
+        {
+            "max_address": "0xE0042127",
+            "min_address": "0xE0042100"
+        },
+        {
+            "max_address": "0xE004301B",
+            "min_address": "0xE0043000"
+        },
+        {
+            "max_address": "0xE0043023",
+            "min_address": "0xE0043020"
+        },
+        {
+            "max_address": "0xE0043033",
+            "min_address": "0xE0043030"
+        },
+        {
+            "max_address": "0xE0043043",
+            "min_address": "0xE0043040"
+        },
+        {
+            "max_address": "0xE0044017",
+            "min_address": "0xE0044000"
+        }
+    ],
+    "clock": "48"
+}

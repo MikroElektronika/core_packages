@@ -1,0 +1,1648 @@
+{
+    "config_words": [
+        {
+            "init": "ON",
+            "key": "PMDL1WAY",
+            "label": "Peripheral Module Disable Configuration",
+            "settings": [
+                {
+                    "label": "Allow multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow only one reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "Peripheral Pin Select Configuration",
+            "settings": [
+                {
+                    "label": "Allow multiple reconfigurations",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Allow only one reconfiguration",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FUSBIDIO",
+            "label": "USB USID Selection",
+            "settings": [
+                {
+                    "label": "Controlled by Port Function",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Controlled by the USB Module",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FVBUSONIO",
+            "label": "USB VBUS ON Selection",
+            "settings": [
+                {
+                    "label": "Controlled by Port Function",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Controlled by USB Module",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "DIV_12",
+            "key": "FPLLIDIV",
+            "label": "PLL Input Divider",
+            "settings": [
+                {
+                    "label": "1x Divider",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "2x Divider",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "3x Divider",
+                    "value": "DIV_3"
+                },
+                {
+                    "label": "4x Divider",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "5x Divider",
+                    "value": "DIV_5"
+                },
+                {
+                    "label": "6x Divider",
+                    "value": "DIV_6"
+                },
+                {
+                    "label": "10x Divider",
+                    "value": "DIV_10"
+                },
+                {
+                    "label": "12x Divider",
+                    "value": "DIV_12"
+                }
+            ]
+        },
+        {
+            "init": "MUL_24",
+            "key": "FPLLMUL",
+            "label": "PLL Multiplier",
+            "settings": [
+                {
+                    "label": "15x Multiplier",
+                    "value": "MUL_15"
+                },
+                {
+                    "label": "16x Multiplier",
+                    "value": "MUL_16"
+                },
+                {
+                    "label": "17x Multiplier",
+                    "value": "MUL_17"
+                },
+                {
+                    "label": "18x Multiplier",
+                    "value": "MUL_18"
+                },
+                {
+                    "label": "19x Multiplier",
+                    "value": "MUL_19"
+                },
+                {
+                    "label": "20x Multiplier",
+                    "value": "MUL_20"
+                },
+                {
+                    "label": "21x Multiplier",
+                    "value": "MUL_21"
+                },
+                {
+                    "label": "24x Multiplier",
+                    "value": "MUL_24"
+                }
+            ]
+        },
+        {
+            "init": "DIV_12",
+            "key": "UPLLIDIV",
+            "label": "USB PLL Input Divider",
+            "settings": [
+                {
+                    "label": "1x Divider",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "2x Divider",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "3x Divider",
+                    "value": "DIV_3"
+                },
+                {
+                    "label": "4x Divider",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "5x Divider",
+                    "value": "DIV_5"
+                },
+                {
+                    "label": "6x Divider",
+                    "value": "DIV_6"
+                },
+                {
+                    "label": "10x Divider",
+                    "value": "DIV_10"
+                },
+                {
+                    "label": "12x Divider",
+                    "value": "DIV_12"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "UPLLEN",
+            "label": "USB PLL Enable",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled and Bypassed",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DIV_256",
+            "key": "FPLLODIV",
+            "label": "System PLL Output Clock Divider",
+            "settings": [
+                {
+                    "label": "PLL Divide by 1",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "PLL Divide by 2",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "PLL Divide by 4",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "PLL Divide by 8",
+                    "value": "DIV_8"
+                },
+                {
+                    "label": "PLL Divide by 16",
+                    "value": "DIV_16"
+                },
+                {
+                    "label": "PLL Divide by 32",
+                    "value": "DIV_32"
+                },
+                {
+                    "label": "PLL Divide by 64",
+                    "value": "DIV_64"
+                },
+                {
+                    "label": "PLL Divide by 256",
+                    "value": "DIV_256"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIV",
+            "key": "FNOSC",
+            "label": "Oscillator Selection Bits",
+            "settings": [
+                {
+                    "label": "Fast RC Osc (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC Osc with PLL",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Osc (XT,HS,EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Osc w/PLL (XT+,HS+,EC+PLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Low Power Secondary Osc (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low Power RC Osc (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Fast RC Osc w/Div-by-16 (FRC/16)",
+                    "value": "FRCDIV16"
+                },
+                {
+                    "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
+                    "value": "FRCDIV"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FSOSCEN",
+            "label": "Secondary Oscillator Enable",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal/External Switch Over",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "POSCMOD",
+            "label": "Primary Oscillator Configuration",
+            "settings": [
+                {
+                    "label": "External clock mode",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT osc mode",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS osc mode",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary osc disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "CLKO Output Signal Active on the OSCO Pin",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DIV_8",
+            "key": "FPBDIV",
+            "label": "Peripheral Clock Divisor",
+            "settings": [
+                {
+                    "label": "Pb_Clk is Sys_Clk/1",
+                    "value": "DIV_1"
+                },
+                {
+                    "label": "Pb_Clk is Sys_Clk/2",
+                    "value": "DIV_2"
+                },
+                {
+                    "label": "Pb_Clk is Sys_Clk/4",
+                    "value": "DIV_4"
+                },
+                {
+                    "label": "Pb_Clk is Sys_Clk/8",
+                    "value": "DIV_8"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor Selection",
+            "settings": [
+                {
+                    "label": "Clock Switch Enable, FSCM Enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock Switch Enable, FSCM Disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Clock Switch Disable, FSCM Disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "PS1048576",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32768",
+                    "value": "PS32768"
+                },
+                {
+                    "label": "1:65536",
+                    "value": "PS65536"
+                },
+                {
+                    "label": "1:131072",
+                    "value": "PS131072"
+                },
+                {
+                    "label": "1:262144",
+                    "value": "PS262144"
+                },
+                {
+                    "label": "1:524288",
+                    "value": "PS524288"
+                },
+                {
+                    "label": "1:1048576",
+                    "value": "PS1048576"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window Enable",
+            "settings": [
+                {
+                    "label": "Watchdog Timer is in Window Mode",
+                    "value": "ON"
+                },
+                {
+                    "label": "Watchdog Timer is in Non-Window Mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "WDT Disabled (SWDTEN Bit Controls)",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WINSZ_25",
+            "key": "FWDTWINSZ",
+            "label": "Watchdog Timer Window Size",
+            "settings": [
+                {
+                    "label": "Window Size is 75%",
+                    "value": "WINSZ_75"
+                },
+                {
+                    "label": "Window Size is 50%",
+                    "value": "WINSZ_50"
+                },
+                {
+                    "label": "Window Size is 37.5%",
+                    "value": "WINSZ_37"
+                },
+                {
+                    "label": "Window Size is 25%",
+                    "value": "WINSZ_25"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Background Debugger Enable",
+            "settings": [
+                {
+                    "label": "Debugger is Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Debugger is Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "JTAGEN",
+            "label": "JTAG Enable",
+            "settings": [
+                {
+                    "label": "JTAG Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "JTAG Port Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ICS_PGx1",
+            "key": "ICESEL",
+            "label": "ICE/ICD Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Reserved",
+                    "value": "RESERVED"
+                },
+                {
+                    "label": "Communicate on PGEC3/PGED3",
+                    "value": "ICS_PGx3"
+                },
+                {
+                    "label": "Communicate on PGEC2/PGED2",
+                    "value": "ICS_PGx2"
+                },
+                {
+                    "label": "Communicate on PGEC1/PGED1",
+                    "value": "ICS_PGx1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWP",
+            "label": "Program Flash Write Protect",
+            "settings": [
+                {
+                    "label": "First 256K",
+                    "value": "PWP256K"
+                },
+                {
+                    "label": "First 255K",
+                    "value": "PWP255K"
+                },
+                {
+                    "label": "First 254K",
+                    "value": "PWP254K"
+                },
+                {
+                    "label": "First 253K",
+                    "value": "PWP253K"
+                },
+                {
+                    "label": "First 252K",
+                    "value": "PWP252K"
+                },
+                {
+                    "label": "First 251K",
+                    "value": "PWP251K"
+                },
+                {
+                    "label": "First 250K",
+                    "value": "PWP250K"
+                },
+                {
+                    "label": "First 249K",
+                    "value": "PWP249K"
+                },
+                {
+                    "label": "First 248K",
+                    "value": "PWP248K"
+                },
+                {
+                    "label": "First 247K",
+                    "value": "PWP247K"
+                },
+                {
+                    "label": "First 246K",
+                    "value": "PWP246K"
+                },
+                {
+                    "label": "First 245K",
+                    "value": "PWP245K"
+                },
+                {
+                    "label": "First 244K",
+                    "value": "PWP244K"
+                },
+                {
+                    "label": "First 243K",
+                    "value": "PWP243K"
+                },
+                {
+                    "label": "First 242K",
+                    "value": "PWP242K"
+                },
+                {
+                    "label": "First 241K",
+                    "value": "PWP241K"
+                },
+                {
+                    "label": "First 240K",
+                    "value": "PWP240K"
+                },
+                {
+                    "label": "First 239K",
+                    "value": "PWP239K"
+                },
+                {
+                    "label": "First 238K",
+                    "value": "PWP238K"
+                },
+                {
+                    "label": "First 237K",
+                    "value": "PWP237K"
+                },
+                {
+                    "label": "First 236K",
+                    "value": "PWP236K"
+                },
+                {
+                    "label": "First 235K",
+                    "value": "PWP235K"
+                },
+                {
+                    "label": "First 234K",
+                    "value": "PWP234K"
+                },
+                {
+                    "label": "First 233K",
+                    "value": "PWP233K"
+                },
+                {
+                    "label": "First 232K",
+                    "value": "PWP232K"
+                },
+                {
+                    "label": "First 231K",
+                    "value": "PWP231K"
+                },
+                {
+                    "label": "First 230K",
+                    "value": "PWP230K"
+                },
+                {
+                    "label": "First 229K",
+                    "value": "PWP229K"
+                },
+                {
+                    "label": "First 228K",
+                    "value": "PWP228K"
+                },
+                {
+                    "label": "First 227K",
+                    "value": "PWP227K"
+                },
+                {
+                    "label": "First 226K",
+                    "value": "PWP226K"
+                },
+                {
+                    "label": "First 225K",
+                    "value": "PWP225K"
+                },
+                {
+                    "label": "First 224K",
+                    "value": "PWP224K"
+                },
+                {
+                    "label": "First 223K",
+                    "value": "PWP223K"
+                },
+                {
+                    "label": "First 222K",
+                    "value": "PWP222K"
+                },
+                {
+                    "label": "First 221K",
+                    "value": "PWP221K"
+                },
+                {
+                    "label": "First 220K",
+                    "value": "PWP220K"
+                },
+                {
+                    "label": "First 219K",
+                    "value": "PWP219K"
+                },
+                {
+                    "label": "First 218K",
+                    "value": "PWP218K"
+                },
+                {
+                    "label": "First 217K",
+                    "value": "PWP217K"
+                },
+                {
+                    "label": "First 216K",
+                    "value": "PWP216K"
+                },
+                {
+                    "label": "First 215K",
+                    "value": "PWP215K"
+                },
+                {
+                    "label": "First 214K",
+                    "value": "PWP214K"
+                },
+                {
+                    "label": "First 213K",
+                    "value": "PWP213K"
+                },
+                {
+                    "label": "First 212K",
+                    "value": "PWP212K"
+                },
+                {
+                    "label": "First 211K",
+                    "value": "PWP211K"
+                },
+                {
+                    "label": "First 210K",
+                    "value": "PWP210K"
+                },
+                {
+                    "label": "First 209K",
+                    "value": "PWP209K"
+                },
+                {
+                    "label": "First 208K",
+                    "value": "PWP208K"
+                },
+                {
+                    "label": "First 207K",
+                    "value": "PWP207K"
+                },
+                {
+                    "label": "First 206K",
+                    "value": "PWP206K"
+                },
+                {
+                    "label": "First 205K",
+                    "value": "PWP205K"
+                },
+                {
+                    "label": "First 204K",
+                    "value": "PWP204K"
+                },
+                {
+                    "label": "First 203K",
+                    "value": "PWP203K"
+                },
+                {
+                    "label": "First 202K",
+                    "value": "PWP202K"
+                },
+                {
+                    "label": "First 201K",
+                    "value": "PWP201K"
+                },
+                {
+                    "label": "First 200K",
+                    "value": "PWP200K"
+                },
+                {
+                    "label": "First 199K",
+                    "value": "PWP199K"
+                },
+                {
+                    "label": "First 198K",
+                    "value": "PWP198K"
+                },
+                {
+                    "label": "First 197K",
+                    "value": "PWP197K"
+                },
+                {
+                    "label": "First 196K",
+                    "value": "PWP196K"
+                },
+                {
+                    "label": "First 195K",
+                    "value": "PWP195K"
+                },
+                {
+                    "label": "First 194K",
+                    "value": "PWP194K"
+                },
+                {
+                    "label": "First 193K",
+                    "value": "PWP193K"
+                },
+                {
+                    "label": "First 192K",
+                    "value": "PWP192K"
+                },
+                {
+                    "label": "First 191K",
+                    "value": "PWP191K"
+                },
+                {
+                    "label": "First 190K",
+                    "value": "PWP190K"
+                },
+                {
+                    "label": "First 189K",
+                    "value": "PWP189K"
+                },
+                {
+                    "label": "First 188K",
+                    "value": "PWP188K"
+                },
+                {
+                    "label": "First 187K",
+                    "value": "PWP187K"
+                },
+                {
+                    "label": "First 186K",
+                    "value": "PWP186K"
+                },
+                {
+                    "label": "First 185K",
+                    "value": "PWP185K"
+                },
+                {
+                    "label": "First 184K",
+                    "value": "PWP184K"
+                },
+                {
+                    "label": "First 183K",
+                    "value": "PWP183K"
+                },
+                {
+                    "label": "First 182K",
+                    "value": "PWP182K"
+                },
+                {
+                    "label": "First 181K",
+                    "value": "PWP181K"
+                },
+                {
+                    "label": "First 180K",
+                    "value": "PWP180K"
+                },
+                {
+                    "label": "First 179K",
+                    "value": "PWP179K"
+                },
+                {
+                    "label": "First 178K",
+                    "value": "PWP178K"
+                },
+                {
+                    "label": "First 177K",
+                    "value": "PWP177K"
+                },
+                {
+                    "label": "First 176K",
+                    "value": "PWP176K"
+                },
+                {
+                    "label": "First 175K",
+                    "value": "PWP175K"
+                },
+                {
+                    "label": "First 174K",
+                    "value": "PWP174K"
+                },
+                {
+                    "label": "First 173K",
+                    "value": "PWP173K"
+                },
+                {
+                    "label": "First 172K",
+                    "value": "PWP172K"
+                },
+                {
+                    "label": "First 171K",
+                    "value": "PWP171K"
+                },
+                {
+                    "label": "First 170K",
+                    "value": "PWP170K"
+                },
+                {
+                    "label": "First 169K",
+                    "value": "PWP169K"
+                },
+                {
+                    "label": "First 168K",
+                    "value": "PWP168K"
+                },
+                {
+                    "label": "First 167K",
+                    "value": "PWP167K"
+                },
+                {
+                    "label": "First 166K",
+                    "value": "PWP166K"
+                },
+                {
+                    "label": "First 165K",
+                    "value": "PWP165K"
+                },
+                {
+                    "label": "First 164K",
+                    "value": "PWP164K"
+                },
+                {
+                    "label": "First 163K",
+                    "value": "PWP163K"
+                },
+                {
+                    "label": "First 162K",
+                    "value": "PWP162K"
+                },
+                {
+                    "label": "First 161K",
+                    "value": "PWP161K"
+                },
+                {
+                    "label": "First 160K",
+                    "value": "PWP160K"
+                },
+                {
+                    "label": "First 159K",
+                    "value": "PWP159K"
+                },
+                {
+                    "label": "First 158K",
+                    "value": "PWP158K"
+                },
+                {
+                    "label": "First 157K",
+                    "value": "PWP157K"
+                },
+                {
+                    "label": "First 156K",
+                    "value": "PWP156K"
+                },
+                {
+                    "label": "First 155K",
+                    "value": "PWP155K"
+                },
+                {
+                    "label": "First 154K",
+                    "value": "PWP154K"
+                },
+                {
+                    "label": "First 153K",
+                    "value": "PWP153K"
+                },
+                {
+                    "label": "First 152K",
+                    "value": "PWP152K"
+                },
+                {
+                    "label": "First 151K",
+                    "value": "PWP151K"
+                },
+                {
+                    "label": "First 150K",
+                    "value": "PWP150K"
+                },
+                {
+                    "label": "First 149K",
+                    "value": "PWP149K"
+                },
+                {
+                    "label": "First 148K",
+                    "value": "PWP148K"
+                },
+                {
+                    "label": "First 147K",
+                    "value": "PWP147K"
+                },
+                {
+                    "label": "First 146K",
+                    "value": "PWP146K"
+                },
+                {
+                    "label": "First 145K",
+                    "value": "PWP145K"
+                },
+                {
+                    "label": "First 144K",
+                    "value": "PWP144K"
+                },
+                {
+                    "label": "First 143K",
+                    "value": "PWP143K"
+                },
+                {
+                    "label": "First 142K",
+                    "value": "PWP142K"
+                },
+                {
+                    "label": "First 141K",
+                    "value": "PWP141K"
+                },
+                {
+                    "label": "First 140K",
+                    "value": "PWP140K"
+                },
+                {
+                    "label": "First 139K",
+                    "value": "PWP139K"
+                },
+                {
+                    "label": "First 138K",
+                    "value": "PWP138K"
+                },
+                {
+                    "label": "First 137K",
+                    "value": "PWP137K"
+                },
+                {
+                    "label": "First 136K",
+                    "value": "PWP136K"
+                },
+                {
+                    "label": "First 135K",
+                    "value": "PWP135K"
+                },
+                {
+                    "label": "First 134K",
+                    "value": "PWP134K"
+                },
+                {
+                    "label": "First 133K",
+                    "value": "PWP133K"
+                },
+                {
+                    "label": "First 132K",
+                    "value": "PWP132K"
+                },
+                {
+                    "label": "First 131K",
+                    "value": "PWP131K"
+                },
+                {
+                    "label": "First 130K",
+                    "value": "PWP130K"
+                },
+                {
+                    "label": "First 129K",
+                    "value": "PWP129K"
+                },
+                {
+                    "label": "First 128K",
+                    "value": "PWP128K"
+                },
+                {
+                    "label": "First 127K",
+                    "value": "PWP127K"
+                },
+                {
+                    "label": "First 126K",
+                    "value": "PWP126K"
+                },
+                {
+                    "label": "First 125K",
+                    "value": "PWP125K"
+                },
+                {
+                    "label": "First 124K",
+                    "value": "PWP124K"
+                },
+                {
+                    "label": "First 123K",
+                    "value": "PWP123K"
+                },
+                {
+                    "label": "First 122K",
+                    "value": "PWP122K"
+                },
+                {
+                    "label": "First 121K",
+                    "value": "PWP121K"
+                },
+                {
+                    "label": "First 120K",
+                    "value": "PWP120K"
+                },
+                {
+                    "label": "First 119K",
+                    "value": "PWP119K"
+                },
+                {
+                    "label": "First 118K",
+                    "value": "PWP118K"
+                },
+                {
+                    "label": "First 117K",
+                    "value": "PWP117K"
+                },
+                {
+                    "label": "First 116K",
+                    "value": "PWP116K"
+                },
+                {
+                    "label": "First 115K",
+                    "value": "PWP115K"
+                },
+                {
+                    "label": "First 114K",
+                    "value": "PWP114K"
+                },
+                {
+                    "label": "First 113K",
+                    "value": "PWP113K"
+                },
+                {
+                    "label": "First 112K",
+                    "value": "PWP112K"
+                },
+                {
+                    "label": "First 111K",
+                    "value": "PWP111K"
+                },
+                {
+                    "label": "First 110K",
+                    "value": "PWP110K"
+                },
+                {
+                    "label": "First 109K",
+                    "value": "PWP109K"
+                },
+                {
+                    "label": "First 108K",
+                    "value": "PWP108K"
+                },
+                {
+                    "label": "First 107K",
+                    "value": "PWP107K"
+                },
+                {
+                    "label": "First 106K",
+                    "value": "PWP106K"
+                },
+                {
+                    "label": "First 105K",
+                    "value": "PWP105K"
+                },
+                {
+                    "label": "First 104K",
+                    "value": "PWP104K"
+                },
+                {
+                    "label": "First 103K",
+                    "value": "PWP103K"
+                },
+                {
+                    "label": "First 102K",
+                    "value": "PWP102K"
+                },
+                {
+                    "label": "First 101K",
+                    "value": "PWP101K"
+                },
+                {
+                    "label": "First 100K",
+                    "value": "PWP100K"
+                },
+                {
+                    "label": "First 99K",
+                    "value": "PWP99K"
+                },
+                {
+                    "label": "First 98K",
+                    "value": "PWP98K"
+                },
+                {
+                    "label": "First 97K",
+                    "value": "PWP97K"
+                },
+                {
+                    "label": "First 96K",
+                    "value": "PWP96K"
+                },
+                {
+                    "label": "First 95K",
+                    "value": "PWP95K"
+                },
+                {
+                    "label": "First 94K",
+                    "value": "PWP94K"
+                },
+                {
+                    "label": "First 93K",
+                    "value": "PWP93K"
+                },
+                {
+                    "label": "First 92K",
+                    "value": "PWP92K"
+                },
+                {
+                    "label": "First 91K",
+                    "value": "PWP91K"
+                },
+                {
+                    "label": "First 90K",
+                    "value": "PWP90K"
+                },
+                {
+                    "label": "First 89K",
+                    "value": "PWP89K"
+                },
+                {
+                    "label": "First 88K",
+                    "value": "PWP88K"
+                },
+                {
+                    "label": "First 87K",
+                    "value": "PWP87K"
+                },
+                {
+                    "label": "First 86K",
+                    "value": "PWP86K"
+                },
+                {
+                    "label": "First 85K",
+                    "value": "PWP85K"
+                },
+                {
+                    "label": "First 84K",
+                    "value": "PWP84K"
+                },
+                {
+                    "label": "First 83K",
+                    "value": "PWP83K"
+                },
+                {
+                    "label": "First 82K",
+                    "value": "PWP82K"
+                },
+                {
+                    "label": "First 81K",
+                    "value": "PWP81K"
+                },
+                {
+                    "label": "First 80K",
+                    "value": "PWP80K"
+                },
+                {
+                    "label": "First 79K",
+                    "value": "PWP79K"
+                },
+                {
+                    "label": "First 78K",
+                    "value": "PWP78K"
+                },
+                {
+                    "label": "First 77K",
+                    "value": "PWP77K"
+                },
+                {
+                    "label": "First 76K",
+                    "value": "PWP76K"
+                },
+                {
+                    "label": "First 75K",
+                    "value": "PWP75K"
+                },
+                {
+                    "label": "First 74K",
+                    "value": "PWP74K"
+                },
+                {
+                    "label": "First 73K",
+                    "value": "PWP73K"
+                },
+                {
+                    "label": "First 72K",
+                    "value": "PWP72K"
+                },
+                {
+                    "label": "First 71K",
+                    "value": "PWP71K"
+                },
+                {
+                    "label": "First 70K",
+                    "value": "PWP70K"
+                },
+                {
+                    "label": "First 69K",
+                    "value": "PWP69K"
+                },
+                {
+                    "label": "First 68K",
+                    "value": "PWP68K"
+                },
+                {
+                    "label": "First 67K",
+                    "value": "PWP67K"
+                },
+                {
+                    "label": "First 66K",
+                    "value": "PWP66K"
+                },
+                {
+                    "label": "First 65K",
+                    "value": "PWP65K"
+                },
+                {
+                    "label": "First 64K",
+                    "value": "PWP64K"
+                },
+                {
+                    "label": "First 63K",
+                    "value": "PWP63K"
+                },
+                {
+                    "label": "First 62K",
+                    "value": "PWP62K"
+                },
+                {
+                    "label": "First 61K",
+                    "value": "PWP61K"
+                },
+                {
+                    "label": "First 60K",
+                    "value": "PWP60K"
+                },
+                {
+                    "label": "First 59K",
+                    "value": "PWP59K"
+                },
+                {
+                    "label": "First 58K",
+                    "value": "PWP58K"
+                },
+                {
+                    "label": "First 57K",
+                    "value": "PWP57K"
+                },
+                {
+                    "label": "First 56K",
+                    "value": "PWP56K"
+                },
+                {
+                    "label": "First 55K",
+                    "value": "PWP55K"
+                },
+                {
+                    "label": "First 54K",
+                    "value": "PWP54K"
+                },
+                {
+                    "label": "First 53K",
+                    "value": "PWP53K"
+                },
+                {
+                    "label": "First 52K",
+                    "value": "PWP52K"
+                },
+                {
+                    "label": "First 51K",
+                    "value": "PWP51K"
+                },
+                {
+                    "label": "First 50K",
+                    "value": "PWP50K"
+                },
+                {
+                    "label": "First 49K",
+                    "value": "PWP49K"
+                },
+                {
+                    "label": "First 48K",
+                    "value": "PWP48K"
+                },
+                {
+                    "label": "First 47K",
+                    "value": "PWP47K"
+                },
+                {
+                    "label": "First 46K",
+                    "value": "PWP46K"
+                },
+                {
+                    "label": "First 45K",
+                    "value": "PWP45K"
+                },
+                {
+                    "label": "First 44K",
+                    "value": "PWP44K"
+                },
+                {
+                    "label": "First 43K",
+                    "value": "PWP43K"
+                },
+                {
+                    "label": "First 42K",
+                    "value": "PWP42K"
+                },
+                {
+                    "label": "First 41K",
+                    "value": "PWP41K"
+                },
+                {
+                    "label": "First 40K",
+                    "value": "PWP40K"
+                },
+                {
+                    "label": "First 39K",
+                    "value": "PWP39K"
+                },
+                {
+                    "label": "First 38K",
+                    "value": "PWP38K"
+                },
+                {
+                    "label": "First 37K",
+                    "value": "PWP37K"
+                },
+                {
+                    "label": "First 36K",
+                    "value": "PWP36K"
+                },
+                {
+                    "label": "First 35K",
+                    "value": "PWP35K"
+                },
+                {
+                    "label": "First 34K",
+                    "value": "PWP34K"
+                },
+                {
+                    "label": "First 33K",
+                    "value": "PWP33K"
+                },
+                {
+                    "label": "First 32K",
+                    "value": "PWP32K"
+                },
+                {
+                    "label": "First 31K",
+                    "value": "PWP31K"
+                },
+                {
+                    "label": "First 30K",
+                    "value": "PWP30K"
+                },
+                {
+                    "label": "First 29K",
+                    "value": "PWP29K"
+                },
+                {
+                    "label": "First 28K",
+                    "value": "PWP28K"
+                },
+                {
+                    "label": "First 27K",
+                    "value": "PWP27K"
+                },
+                {
+                    "label": "First 26K",
+                    "value": "PWP26K"
+                },
+                {
+                    "label": "First 25K",
+                    "value": "PWP25K"
+                },
+                {
+                    "label": "First 24K",
+                    "value": "PWP24K"
+                },
+                {
+                    "label": "First 23K",
+                    "value": "PWP23K"
+                },
+                {
+                    "label": "First 22K",
+                    "value": "PWP22K"
+                },
+                {
+                    "label": "First 21K",
+                    "value": "PWP21K"
+                },
+                {
+                    "label": "First 20K",
+                    "value": "PWP20K"
+                },
+                {
+                    "label": "First 19K",
+                    "value": "PWP19K"
+                },
+                {
+                    "label": "First 18K",
+                    "value": "PWP18K"
+                },
+                {
+                    "label": "First 17K",
+                    "value": "PWP17K"
+                },
+                {
+                    "label": "First 16K",
+                    "value": "PWP16K"
+                },
+                {
+                    "label": "First 15K",
+                    "value": "PWP15K"
+                },
+                {
+                    "label": "First 14K",
+                    "value": "PWP14K"
+                },
+                {
+                    "label": "First 13K",
+                    "value": "PWP13K"
+                },
+                {
+                    "label": "First 12K",
+                    "value": "PWP12K"
+                },
+                {
+                    "label": "First 11K",
+                    "value": "PWP11K"
+                },
+                {
+                    "label": "First 10K",
+                    "value": "PWP10K"
+                },
+                {
+                    "label": "First 9K",
+                    "value": "PWP9K"
+                },
+                {
+                    "label": "First 8K",
+                    "value": "PWP8K"
+                },
+                {
+                    "label": "First 7K",
+                    "value": "PWP7K"
+                },
+                {
+                    "label": "First 6K",
+                    "value": "PWP6K"
+                },
+                {
+                    "label": "First 5K",
+                    "value": "PWP5K"
+                },
+                {
+                    "label": "First 4K",
+                    "value": "PWP4K"
+                },
+                {
+                    "label": "First 3K",
+                    "value": "PWP3K"
+                },
+                {
+                    "label": "First 2K",
+                    "value": "PWP2K"
+                },
+                {
+                    "label": "First 1K",
+                    "value": "PWP1K"
+                },
+                {
+                    "label": "Disable",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BWP",
+            "label": "Boot Flash Write Protect bit",
+            "settings": [
+                {
+                    "label": "Protection Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Protection Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protect",
+            "settings": [
+                {
+                    "label": "Protection Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Protection Disabled",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC32MX270F256B",
+    "clock": 1
+}

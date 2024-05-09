@@ -1,0 +1,6 @@
+{
+    "core": "M7EF",
+    "delay_src_path": "delays/m7ef/__lib_delays.c",
+    "mcu": "STM32H725VG",
+    "clock": 64
+}

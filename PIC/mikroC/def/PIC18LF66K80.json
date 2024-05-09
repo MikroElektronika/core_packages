@@ -1,0 +1,1106 @@
+{
+    "accessbank": "0x60",
+    "badram": [
+        {
+            "max_addr": "0xf41",
+            "min_addr": "0xf40"
+        },
+        {
+            "max_addr": "0xfd4",
+            "min_addr": "0xfd4"
+        }
+    ],
+    "bank": [
+        {
+            "max_addr": "0x00FF",
+            "min_addr": "0x0000",
+            "number": "0"
+        },
+        {
+            "max_addr": "0x01FF",
+            "min_addr": "0x0100",
+            "number": "1"
+        },
+        {
+            "max_addr": "0x02FF",
+            "min_addr": "0x0200",
+            "number": "2"
+        },
+        {
+            "max_addr": "0x03FF",
+            "min_addr": "0x0300",
+            "number": "3"
+        },
+        {
+            "max_addr": "0x04FF",
+            "min_addr": "0x0400",
+            "number": "4"
+        },
+        {
+            "max_addr": "0x05FF",
+            "min_addr": "0x0500",
+            "number": "5"
+        },
+        {
+            "max_addr": "0x06FF",
+            "min_addr": "0x0600",
+            "number": "6"
+        },
+        {
+            "max_addr": "0x07FF",
+            "min_addr": "0x0700",
+            "number": "7"
+        },
+        {
+            "max_addr": "0x08FF",
+            "min_addr": "0x0800",
+            "number": "8"
+        },
+        {
+            "max_addr": "0x09FF",
+            "min_addr": "0x0900",
+            "number": "9"
+        },
+        {
+            "max_addr": "0x0AFF",
+            "min_addr": "0x0A00",
+            "number": "10"
+        },
+        {
+            "max_addr": "0x0BFF",
+            "min_addr": "0x0B00",
+            "number": "11"
+        },
+        {
+            "max_addr": "0x0CFF",
+            "min_addr": "0x0C00",
+            "number": "12"
+        },
+        {
+            "max_addr": "0x0DFF",
+            "min_addr": "0x0D00",
+            "number": "13"
+        },
+        {
+            "max_addr": "0x0EFF",
+            "min_addr": "0x0E00",
+            "number": "14"
+        },
+        {
+            "max_addr": "0x0FFF",
+            "min_addr": "0x0F00",
+            "number": "15"
+        }
+    ],
+    "callstack": {
+        "max": "0x1F"
+    },
+    "codegrip_icd": {
+        "badram": {
+            "max_addr": "0x0E38",
+            "min_addr": "0xE29"
+        },
+        "hwbrkpno": "3",
+        "instr_pipeline": "1",
+        "start_addr": "0x200028",
+        "swbrkpen": "0"
+    },
+    "config_registers": [
+        {
+            "address": "00300000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "RETEN",
+                    "label": "VREG Sleep",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "INTOSCSEL",
+                    "label": "LF-INTOSC Low-power",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "LF-INTOSC in High-Power mode during Sleep",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "LF-INTOSC in Low-Power mode during Sleep",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000018",
+                    "key": "SOSCSEL",
+                    "label": "SOSC Power Selection and mode",
+                    "mask": "00000018",
+                    "settings": [
+                        {
+                            "label": "High Power SOSC circuit selected",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Low Power SOSC circuit selected",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Digital (SCLKI) mode",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "XINST",
+                    "label": "Extended Instruction Set",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1L",
+            "unused": "00000000"
+        },
+        {
+            "address": "00300001",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "FOSC",
+                    "label": "Oscillator",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "External RC oscillator",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "External RC oscillator, CLKOUT function on OSC2",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "EC oscillator (Low power, DC - 160 kHz)",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "EC oscillator, CLKOUT function on OSC2 (Low power, DC - 160 kHz)",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "EC oscillator (Medium power, 160 kHz - 16 MHz)",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "EC oscillator, CLKOUT function on OSC2 (Medium power, 160 kHz - 16 MHz)",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Internal RC oscillator, CLKOUT function on OSC2",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Internal RC oscillator",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "EC oscillator (High power, 16 MHz - 64 MHz)",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "EC oscillator, CLKOUT function on OSC2 (High power, 16 MHz - 64 MHz)",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "HS oscillator (Medium power, 4 MHz - 16 MHz)",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "HS oscillator (High power, 16 MHz - 25 MHz)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "XT oscillator",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "LP oscillator",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLCFG",
+                    "label": "PLL x4",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "FCMEN",
+                    "label": "Fail-Safe Clock Monitor",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000040"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "IESO",
+                    "label": "Internal External Oscillator Switch Over Mode",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1H",
+            "unused": "00000000"
+        },
+        {
+            "address": "00300002",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "PWRTEN",
+                    "label": "Power Up Timer",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000006",
+                    "key": "BOREN",
+                    "label": "Brown Out Detect",
+                    "mask": "00000006",
+                    "settings": [
+                        {
+                            "label": "Enabled in hardware, SBOREN disabled",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Enabled while active, disabled in SLEEP, SBOREN disabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Controlled with SBOREN bit",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Disabled in hardware, SBOREN disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000018",
+                    "key": "BORV",
+                    "label": "Brown-out Reset Voltage",
+                    "mask": "00000018",
+                    "settings": [
+                        {
+                            "label": "1.8V",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "2.0V",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "2.7V",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "3.0V",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000060",
+                    "key": "BORPWR",
+                    "label": "BORMV Power level",
+                    "mask": "00000060",
+                    "settings": [
+                        {
+                            "label": "ZPBORMV instead of BORMV is selected",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "BORMV set to high power level",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "BORMV set to medium power level",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "BORMV set to low power level",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2L",
+            "unused": "00000000"
+        },
+        {
+            "address": "00300003",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "WDTEN",
+                    "label": "Watchdog Timer",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "WDT enabled in hardware; SWDTEN bit disabled",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "WDT controlled by SWDTEN bit setting",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "WDT enabled only while device is active and disabled in Sleep mode; SWDTEN bit disabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "WDT disabled in hardware; SWDTEN bit disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0000007C",
+                    "key": "WDTPS",
+                    "label": "Watchdog Postscaler",
+                    "mask": "0000007C",
+                    "settings": [
+                        {
+                            "label": "1:1048576",
+                            "value": "0000007C"
+                        },
+                        {
+                            "label": "1:524288",
+                            "value": "0000004C"
+                        },
+                        {
+                            "label": "1:262144",
+                            "value": "00000048"
+                        },
+                        {
+                            "label": "1:131072",
+                            "value": "00000044"
+                        },
+                        {
+                            "label": "1:65536",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "1:32768",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "1:16384",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "1:8192",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "1:4096",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "1:2048",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "1:1024",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "1:512",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "1:256",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "1:128",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "1:64",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "1:32",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "1:16",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "1:8",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "1:4",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "1:2",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "1:1",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2H",
+            "unused": "00000000"
+        },
+        {
+            "address": "00300005",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "CANMX",
+                    "label": "ECAN Mux bit",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "ECAN TX and RX pins are located on RB2 and RB3, respectively",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "ECAN TX and RX pins are located on RE5 and RE4, respectively",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "T0CKMX",
+                    "label": "Timer0 Clock Input Mux bit",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Timer0 gets its clock input from the RB5/T0CKI pin on 64-pin packages",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Timer0 gets its clock input from the RG4/T0CKI pin on 64-pin packages",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "T3CKMX",
+                    "label": "Timer3 Clock Input Mux bit",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Timer3 gets its clock input from the RG2/T3CKI pin on 64-pin packages",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Timer3 gets its clock input from the RB5/T3CKI pin on 64-pin packages",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "MSSPMSK",
+                    "label": "MSSP address masking",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "7 Bit address masking mode",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "5 bit address masking mode",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "MCLRE",
+                    "label": "Master Clear",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "MCLR Enabled, RE3 Disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "MCLR Disabled, RG5 Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG3H",
+            "unused": "00000000"
+        },
+        {
+            "address": "00300006",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "STVREN",
+                    "label": "Stack Overflow Reset",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "BBSIZ",
+                    "label": "Boot Block Size",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "2K word Boot Block size",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "1K word Boot Block size",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "DEBUG",
+                    "label": "Background Debug",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG4L",
+            "unused": "00000000"
+        },
+        {
+            "address": "00300008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "CP0",
+                    "label": "Code Protect 00800-03FFF",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "CP1",
+                    "label": "Code Protect 04000-07FFF",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "CP2",
+                    "label": "Code Protect 08000-0BFFF",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "CP3",
+                    "label": "Code Protect 0C000-0FFFF",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG5L",
+            "unused": "00000000"
+        },
+        {
+            "address": "00300009",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "CPB",
+                    "label": "Code Protect Boot",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "CPD",
+                    "label": "Data EE Read Protect",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG5H",
+            "unused": "00000000"
+        },
+        {
+            "address": "0030000A",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "WRT0",
+                    "label": "Table Write Protect 00800-03FFF",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "WRT1",
+                    "label": "Table Write Protect 04000-07FFF",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "WRT2",
+                    "label": "Table Write Protect 08000-0BFFF",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "WRT3",
+                    "label": "Table Write Protect 0C000-0FFFF",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG6L",
+            "unused": "00000000"
+        },
+        {
+            "address": "0030000B",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "WRTC",
+                    "label": "Config. Write Protect",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "WRTB",
+                    "label": "Table Write Protect Boot",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "WRTD",
+                    "label": "Data EE Write Protect",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG6H",
+            "unused": "00000000"
+        },
+        {
+            "address": "0030000C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "EBTR0",
+                    "label": "Table Read Protect 00800-03FFF",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "EBTR1",
+                    "label": "Table Read Protect 04000-07FFF",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "EBTR2",
+                    "label": "Table Read Protect 08000-0BFFF",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "EBTR3",
+                    "label": "Table Read Protect 0C000-0FFFF",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG7L",
+            "unused": "00000000"
+        },
+        {
+            "address": "0030000D",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "EBTRB",
+                    "label": "Table Read Protect Boot",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG7H",
+            "unused": "00000000"
+        }
+    ],
+    "core": "P18",
+    "delay_src_path": "delays/p18/__lib_delays.c",
+    "eeprom": {
+        "max_addr": "0x3ff",
+        "min_addr": "0x0"
+    },
+    "gprend": "0x0E41",
+    "icd": {
+        "badram": {
+            "max_addr": "0x0E38",
+            "min_addr": "0xE29"
+        },
+        "hwbrkpno": "3",
+        "instr_pipeline": "1",
+        "start_addr": "0x200028"
+    },
+    "ivt": [
+        {
+            "address": "0x000008",
+            "ilevel": "0x0000",
+            "name": "High Priority Interrupt"
+        },
+        {
+            "address": "0x000018",
+            "ilevel": "0x0001",
+            "name": "Low Priority Interrupt"
+        }
+    ],
+    "mcu": "PIC18LF66K80",
+    "prog_options": {
+        "codegrip": {
+            "debugging": "False",
+            "programming": "False"
+        },
+        "mikroprog": {
+            "debugging": "True",
+            "programming": "True"
+        }
+    },
+    "ram": {
+        "max_addr": "0x0FFF",
+        "min_addr": "0x0015"
+    },
+    "rom": {
+        "max_addr": "0xffff",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x0014",
+        "min_addr": "0x0000"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "3.300",
+        "range": {
+            "max_value": "3.600",
+            "min_value": "2.700"
+        }
+    },
+    "clock": "1"
+}

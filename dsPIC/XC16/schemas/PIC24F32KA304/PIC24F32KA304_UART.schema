@@ -1,0 +1,129 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/XC16/core/def/PIC24F32KA304.json",
+    "flash": 32768,
+    "ram": 2048,
+    "settings": {
+        "clock": "32",
+        "scheme": "PIC24F32KA304_UART",
+        "mcu": "PIC24F32KA304",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "BWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "BSS",
+                "value": "OFF"
+            },
+            {
+                "key": "GWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "GSS0",
+                "value": "OFF"
+            },
+            {
+                "key": "FNOSC",
+                "value": "PRIPLL"
+            },
+            {
+                "key": "SOSCSRC",
+                "value": "ANA"
+            },
+            {
+                "key": "LPRCSEL",
+                "value": "HP"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "POSCMOD",
+                "value": "XT"
+            },
+            {
+                "key": "OSCIOFNC",
+                "value": "ON"
+            },
+            {
+                "key": "POSCFREQ",
+                "value": "HS"
+            },
+            {
+                "key": "SOSCSEL",
+                "value": "SOSCHP"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSDCMD"
+            },
+            {
+                "key": "WDTPS",
+                "value": "PS32768"
+            },
+            {
+                "key": "FWPSA",
+                "value": "PR128"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "ON"
+            },
+            {
+                "key": "WINDIS",
+                "value": "OFF"
+            },
+            {
+                "key": "BOREN",
+                "value": "BOR3"
+            },
+            {
+                "key": "LVRCFG",
+                "value": "OFF"
+            },
+            {
+                "key": "PWRTEN",
+                "value": "ON"
+            },
+            {
+                "key": "I2C1SEL",
+                "value": "PRI"
+            },
+            {
+                "key": "BORV",
+                "value": "V18"
+            },
+            {
+                "key": "MCLRE",
+                "value": "ON"
+            },
+            {
+                "key": "ICS",
+                "value": "PGx1"
+            },
+            {
+                "key": "DSWDTPS",
+                "value": "DSWDTPSF"
+            },
+            {
+                "key": "DSWDTOSC",
+                "value": "LPRC"
+            },
+            {
+                "key": "DSBOREN",
+                "value": "ON"
+            },
+            {
+                "key": "DSWDTEN",
+                "value": "ON"
+            }
+        ]
+    }
+}

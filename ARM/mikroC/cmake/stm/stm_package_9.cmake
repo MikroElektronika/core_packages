@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "(STM32F2(05|07|15|17)(.+)$)")
+    set(SYSTEM_LIB_SOURCE "system/ST/M3/src/__Lib_System_2XX.c")
+    set(SYSTEM_LIB_INCLUDE_DIR "system/ST/M3/include")
+    set(MATH_LIB_SOURCE "math/M3/__Lib_Math.c")
+    set(MATH_DOUBLE_SOURCE "math_double/M3/__Lib_MathDouble.c")
+    set(DELAY_SOURCE "delay/m3/__lib_delays.c")
+endif()

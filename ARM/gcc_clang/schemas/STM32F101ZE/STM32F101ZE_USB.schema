@@ -1,0 +1,15 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc-arm-none-eabi/core/def/STM32F101ZE.json",
+    "flash": 524287,
+    "ram": 49151,
+    "settings": {
+        "clock": "64",
+        "scheme": "STM32F101ZE_USB",
+        "mcu": "STM32F101ZE",
+        "core": "M3",
+        "delay_src_path": "delays/m3/__lib_delays.c",
+        "name": null
+    }
+}

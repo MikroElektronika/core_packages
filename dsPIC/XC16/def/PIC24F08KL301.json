@@ -1,0 +1,479 @@
+{
+    "config_words": [
+        {
+            "init": "OFF",
+            "key": "BWRP",
+            "label": "Boot Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BSS",
+            "label": "Boot segment Protect",
+            "settings": [
+                {
+                    "label": "High Security Boot Protect 000200 - 000AFE",
+                    "value": "HI1K"
+                },
+                {
+                    "label": "Standard Security Boot Protect 000200 - 000AFE",
+                    "value": "STD1K"
+                },
+                {
+                    "label": "No boot flash segment",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Segment Flash Write Protect",
+            "settings": [
+                {
+                    "label": "General segment is write-protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "General segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GSS0",
+            "label": "General Segment Code Protect",
+            "settings": [
+                {
+                    "label": "Standard security enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "No Protection",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "FRCPLL",
+            "key": "FNOSC",
+            "label": "Oscillator Select",
+            "settings": [
+                {
+                    "label": "Fast RC Oscillator (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC Oscillator with Postscaler and PLL (FRCDIV+PLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Oscillator with PLL (XT+PLL, HS+PLL, EC+PLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Secondary Oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "500KHz Low Power FRC with Postscaler (LPFRC)",
+                    "value": "LPFRC"
+                },
+                {
+                    "label": "8MHz FRC with Postscaler (FRCDIV)",
+                    "value": "FRCDIV"
+                }
+            ]
+        },
+        {
+            "init": "ANA",
+            "key": "SOSCSRC",
+            "label": "SOSC Source Type",
+            "settings": [
+                {
+                    "label": "Digital Mode for use with external clock on SCLKI",
+                    "value": "DIG"
+                },
+                {
+                    "label": "Analog Mode for use with crystal",
+                    "value": "ANA"
+                }
+            ]
+        },
+        {
+            "init": "HP",
+            "key": "LPRCSEL",
+            "label": "LPRC Power and Accuracy",
+            "settings": [
+                {
+                    "label": "Low Power/Low Accuracy",
+                    "value": "LP"
+                },
+                {
+                    "label": "High Power/High Accuracy",
+                    "value": "HP"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switch Over bit",
+            "settings": [
+                {
+                    "label": "Internal External Switchover mode disabled (Two-speed Start-up disabled)",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Internal External Switchover mode enabled (Two-speed Start-up enabled)",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "POSCMD",
+            "label": "Primary Oscillator Mode",
+            "settings": [
+                {
+                    "label": "External clock mode selected",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT oscillator mode selected",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS oscillator mode selected",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary oscillator disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "CLKO Pin I/O Function",
+            "settings": [
+                {
+                    "label": "Port I/O enabled (CLKO disabled)",
+                    "value": "ON"
+                },
+                {
+                    "label": "CLKO output signal enabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "HS",
+            "key": "POSCFREQ",
+            "label": "Primary Oscillator Frequency Range",
+            "settings": [
+                {
+                    "label": "Primary Oscillator/External Clock frequency <100kHz",
+                    "value": "LS"
+                },
+                {
+                    "label": "Primary Oscillator/External Clock frequency between 100kHz to 8MHz",
+                    "value": "MS"
+                },
+                {
+                    "label": "Primary Oscillator/External Clock frequency >8MHz",
+                    "value": "HS"
+                }
+            ]
+        },
+        {
+            "init": "SOSCHP",
+            "key": "SOSCSEL",
+            "label": "SOSC Power Selection Configuration bits",
+            "settings": [
+                {
+                    "label": "Secondary Oscillator configured for low-power operation",
+                    "value": "SOSCLP"
+                },
+                {
+                    "label": "Secondary Oscillator configured for high-power operation",
+                    "value": "SOSCHP"
+                }
+            ]
+        },
+        {
+            "init": "CSECME",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor Selection",
+            "settings": [
+                {
+                    "label": "Clock Switching and Fail-safe Clock Monitor Enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock Switching Enabled; Fail-safe Clock Monitor Disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Clock Switching and Fail-safe Clock Monitor Disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscale Select bits",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "FWPSA",
+            "label": "WDT Prescaler bit",
+            "settings": [
+                {
+                    "label": "WDT prescaler ratio of 1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "WDT prescaler ratio of 1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable bits",
+            "settings": [
+                {
+                    "label": "WDT disabled in hardware; SWDTEN bit disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT enabled while device is active; SWDTEN bit disabled",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "WDT controlled with SWDTEN bit setting",
+                    "value": "SWON"
+                },
+                {
+                    "label": "WDT enabled in hardware",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Windowed Watchdog Timer Disable bit",
+            "settings": [
+                {
+                    "label": "Windowed WDT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Standard WDT selected (windowed WDT disabled)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "BOR3",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset disabled in hardware; SBOREN bit disabled",
+                    "value": "BOR0"
+                },
+                {
+                    "label": "Brown-out Rest controlled by SBOREN bit",
+                    "value": "BOR1"
+                },
+                {
+                    "label": "Enabled only while device is active; SBOREN bit disabled",
+                    "value": "BOR2"
+                },
+                {
+                    "label": "Enabled in hardware; SBOREN bit disabled",
+                    "value": "BOR3"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PWRTEN",
+            "label": "Power-up Timer Enable",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PRI",
+            "key": "I2C1SEL",
+            "label": "Alternate I2C1 Pin Mapping bit",
+            "settings": [
+                {
+                    "label": "Alternate ASCL1/ASDA1 Pins for I2C1",
+                    "value": "SEC"
+                },
+                {
+                    "label": "Default SCL1/SDA1 Pins for I2C1",
+                    "value": "PRI"
+                }
+            ]
+        },
+        {
+            "init": "V18",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage bits",
+            "settings": [
+                {
+                    "label": "Low-power Brown-Out Reset occurs around 2.0V",
+                    "value": "LPBOR"
+                },
+                {
+                    "label": "Brown-out Reset at 3.0V",
+                    "value": "V30"
+                },
+                {
+                    "label": "Brown-out Reset at 2.7V",
+                    "value": "V27"
+                },
+                {
+                    "label": "Brown-out Reset at 1.8V",
+                    "value": "V18"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "MCLR Pin Enable bit",
+            "settings": [
+                {
+                    "label": "RA5 input enabled; MCLR disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "RA5 input disabled; MCLR enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PGx1",
+            "key": "ICS",
+            "label": "ICD Pin Placement Select",
+            "settings": [
+                {
+                    "label": "EMUC/EMUD share PGC3/PGD3",
+                    "value": "PGx3"
+                },
+                {
+                    "label": "EMUC/EMUD share PGC2/PGD2",
+                    "value": "PGx2"
+                },
+                {
+                    "label": "EMUC/EMUD share PGC1/PGD1",
+                    "value": "PGx1"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC24F08KL301",
+    "clock": 1
+}

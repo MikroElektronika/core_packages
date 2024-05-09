@@ -1,0 +1,718 @@
+{
+    "config_words": [
+        {
+            "init": "ECH",
+            "key": "FEXTOSC",
+            "label": "External Oscillator Selection",
+            "settings": [
+                {
+                    "label": "LP (crystal oscillator) optimized for 32.768 kHz; PFM set to low power",
+                    "value": "LP"
+                },
+                {
+                    "label": "XT (crystal oscillator) above 100 kHz, below 8 MHz; PFM set to medium power",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS (crystal oscillator) above 8 MHz; PFM set to high power",
+                    "value": "HS"
+                },
+                {
+                    "label": "Oscillator not enabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "EC (external clock) below 100 kHz; PFM set to low power",
+                    "value": "ECL"
+                },
+                {
+                    "label": "EC (external clock) for 500 kHz to 8 MHz; PFM set to medium power",
+                    "value": "ECM"
+                },
+                {
+                    "label": "EC (external clock) above 8 MHz; PFM set to high power",
+                    "value": "ECH"
+                }
+            ]
+        },
+        {
+            "init": "EXTOSC",
+            "key": "RSTOSC",
+            "label": "Reset Oscillator Selection",
+            "settings": [
+                {
+                    "label": "HFINTOSC with HFFRQ = 64 MHz and CDIV = 1:1",
+                    "value": "HFINTOSC_64MHZ"
+                },
+                {
+                    "label": "EXTOSC with 4x PLL, with EXTOSC operating per FEXTOSC bits",
+                    "value": "EXTOSC_4PLL"
+                },
+                {
+                    "label": "Secondary Oscillator",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low-Frequency Oscillator",
+                    "value": "LFINTOSC"
+                },
+                {
+                    "label": "HFINTOSC with HFFRQ = 4 MHz and CDIV = 4:1",
+                    "value": "HFINTOSC_1MHZ"
+                },
+                {
+                    "label": "EXTOSC operating per FEXTOSC bits (device manufacturing default)",
+                    "value": "EXTOSC"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CLKOUTEN",
+            "label": "Clock out Enable bit",
+            "settings": [
+                {
+                    "label": "CLKOUT function is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "CLKOUT function is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PR1WAY",
+            "label": "PRLOCKED One-Way Set Enable bit",
+            "settings": [
+                {
+                    "label": "PRLOCK bit can be cleared and set only once",
+                    "value": "ON"
+                },
+                {
+                    "label": "PRLOCK bit can be set and cleared repeatedly",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "CSWEN",
+            "label": "Clock Switch Enable bit",
+            "settings": [
+                {
+                    "label": "The NOSC and NDIV bits cannot be changed by user software",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Writing to NOSC and NDIV is allowed",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enable bit",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "EXTMCLR",
+            "key": "MCLRE",
+            "label": "MCLR Enable bit",
+            "settings": [
+                {
+                    "label": "If LVP = 0, MCLR pin is MCLR; If LVP = 1, RE3 pin function is MCLR",
+                    "value": "EXTMCLR"
+                },
+                {
+                    "label": "If LVP = 0, MCLR pin function is port defined function; If LVP =1, RE3 pin fuction is MCLR",
+                    "value": "INTMCLR"
+                }
+            ]
+        },
+        {
+            "init": "PWRT_OFF",
+            "key": "PWRTS",
+            "label": "Power-up timer selection bits",
+            "settings": [
+                {
+                    "label": "PWRT is disabled",
+                    "value": "PWRT_OFF"
+                },
+                {
+                    "label": "PWRT set at 64ms",
+                    "value": "PWRT_64"
+                },
+                {
+                    "label": "PWRT set at 16ms",
+                    "value": "PWRT_16"
+                },
+                {
+                    "label": "PWRT set at 1ms",
+                    "value": "PWRT_1"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MVECEN",
+            "label": "Multi-vector enable bit",
+            "settings": [
+                {
+                    "label": "Multi-vector enabled, Vector table used for interrupts",
+                    "value": "ON"
+                },
+                {
+                    "label": "Interrupt contoller does not use vector table to prioritze interrupts",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IVT1WAY",
+            "label": "IVTLOCK bit One-way set enable bit",
+            "settings": [
+                {
+                    "label": "IVTLOCK bit can be cleared and set only once",
+                    "value": "ON"
+                },
+                {
+                    "label": "IVTLOCK bit can be cleared and set repeatedly",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "LPBOREN",
+            "label": "Low Power BOR Enable bit",
+            "settings": [
+                {
+                    "label": "ULPBOR disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "ULPBOR enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "SBORDIS",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset enabled , SBOREN bit is ignored",
+                    "value": "SBORDIS"
+                },
+                {
+                    "label": "Brown-out Reset enabled while running, disabled in Sleep; SBOREN is ignored",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "Brown-out Reset enabled according to SBOREN",
+                    "value": "ON"
+                },
+                {
+                    "label": "Brown-out Reset disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "VBOR_2P45",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage Selection bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 2.45V",
+                    "value": "VBOR_2P45"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 2.45V",
+                    "value": "VBOR_245"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 2.7V",
+                    "value": "VBOR_2P7"
+                },
+                {
+                    "label": "Brown-out Reset Voltage (VBOR) set to 2.8V",
+                    "value": "VBOR_2P85"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "ZCD",
+            "label": "ZCD Disable bit",
+            "settings": [
+                {
+                    "label": "ZCD disabled. ZCD can be enabled by setting the ZCDSEN bit of ZCDCON",
+                    "value": "OFF"
+                },
+                {
+                    "label": "ZCD always enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PPS1WAY",
+            "label": "PPSLOCK bit One-Way Set Enable bit",
+            "settings": [
+                {
+                    "label": "PPSLOCK bit can be cleared and set only once; PPS registers remain locked after one clear/set cycle",
+                    "value": "ON"
+                },
+                {
+                    "label": "PPSLOCK bit can be set and cleared repeatedly (subject to the unlock sequence)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "STVREN",
+            "label": "Stack Full/Underflow Reset Enable bit",
+            "settings": [
+                {
+                    "label": "Stack full/underflow will cause Reset",
+                    "value": "ON"
+                },
+                {
+                    "label": "Stack full/underflow will not cause Reset",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "Debugger Enable bit",
+            "settings": [
+                {
+                    "label": "Background debugger disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Background debugger enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "XINST",
+            "label": "Extended Instruction Set Enable bit",
+            "settings": [
+                {
+                    "label": "Extended Instruction Set and Indexed Addressing Mode disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Extended Instruction Set and Indexed Addressing Mode enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WDTCPS_31",
+            "key": "WDTCPS",
+            "label": "WDT Period selection bits",
+            "settings": [
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_0"
+                },
+                {
+                    "label": "Divider ratio 1:64",
+                    "value": "WDTCPS_1"
+                },
+                {
+                    "label": "Divider ratio 1:128",
+                    "value": "WDTCPS_2"
+                },
+                {
+                    "label": "Divider ratio 1:256",
+                    "value": "WDTCPS_3"
+                },
+                {
+                    "label": "Divider ratio 1:512",
+                    "value": "WDTCPS_4"
+                },
+                {
+                    "label": "Divider ratio 1:1024",
+                    "value": "WDTCPS_5"
+                },
+                {
+                    "label": "Divider ratio 1:2048",
+                    "value": "WDTCPS_6"
+                },
+                {
+                    "label": "Divider ratio 1:4096",
+                    "value": "WDTCPS_7"
+                },
+                {
+                    "label": "Divider ratio 1:8192",
+                    "value": "WDTCPS_8"
+                },
+                {
+                    "label": "Divider ratio 1:16384",
+                    "value": "WDTCPS_9"
+                },
+                {
+                    "label": "Divider ratio 1:32768",
+                    "value": "WDTCPS_10"
+                },
+                {
+                    "label": "Divider ratio 1:65536",
+                    "value": "WDTCPS_11"
+                },
+                {
+                    "label": "Divider ratio 1:131072",
+                    "value": "WDTCPS_12"
+                },
+                {
+                    "label": "Divider ratio 1:262144",
+                    "value": "WDTCPS_13"
+                },
+                {
+                    "label": "Divider ratio 1:524299",
+                    "value": "WDTCPS_14"
+                },
+                {
+                    "label": "Divider ratio 1:1048576",
+                    "value": "WDTCPS_15"
+                },
+                {
+                    "label": "Divider ratio 1:2097152",
+                    "value": "WDTCPS_16"
+                },
+                {
+                    "label": "Divider ratio 1:4194304",
+                    "value": "WDTCPS_17"
+                },
+                {
+                    "label": "Divider ratio 1:8388608",
+                    "value": "WDTCPS_18"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_19"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_20"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_21"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_22"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_23"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_24"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_25"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_26"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_27"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_28"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_29"
+                },
+                {
+                    "label": "Divider ratio 1:32",
+                    "value": "WDTCPS_30"
+                },
+                {
+                    "label": "Divider ratio 1:65536; software control of WDTPS",
+                    "value": "WDTCPS_31"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "WDTE",
+            "label": "WDT operating mode",
+            "settings": [
+                {
+                    "label": "WDT Disabled; SWDTEN is ignored",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT enabled/disabled by SWDTEN bit",
+                    "value": "SWDTEN"
+                },
+                {
+                    "label": "WDT enabled while sleep=0, suspended when sleep=1; SWDTEN ignored",
+                    "value": "NSLEEP"
+                },
+                {
+                    "label": "WDT enabled regardless of sleep",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "WDTCWS_7",
+            "key": "WDTCWS",
+            "label": "WDT Window Select bits",
+            "settings": [
+                {
+                    "label": "window delay = 87.5; no software control; keyed access required",
+                    "value": "WDTCWS_0"
+                },
+                {
+                    "label": "window delay = 75 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_1"
+                },
+                {
+                    "label": "window delay = 62.5 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_2"
+                },
+                {
+                    "label": "window delay = 50 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_3"
+                },
+                {
+                    "label": "window delay = 37.5 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_4"
+                },
+                {
+                    "label": "window delay = 25 percent of time; no software control; keyed access required",
+                    "value": "WDTCWS_5"
+                },
+                {
+                    "label": "window always open (100%); no software control; keyed access required",
+                    "value": "WDTCWS_6"
+                },
+                {
+                    "label": "window always open (100%); software control; keyed access not required",
+                    "value": "WDTCWS_7"
+                }
+            ]
+        },
+        {
+            "init": "SC",
+            "key": "WDTCCS",
+            "label": "WDT input clock selector",
+            "settings": [
+                {
+                    "label": "WDT reference clock is the 31.0 kHz LFINTOSC",
+                    "value": "LFINTOSC"
+                },
+                {
+                    "label": "WDT reference clock is the 32kHz MFINTOSC output",
+                    "value": "MFINTOSC"
+                },
+                {
+                    "label": "WDT reference clock is SOSC",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Software Control",
+                    "value": "SC"
+                }
+            ]
+        },
+        {
+            "init": "BBSIZE_512",
+            "key": "BBSIZE",
+            "label": "Boot Block Size selection bits",
+            "settings": [
+                {
+                    "label": "Boot Block size is 512 words",
+                    "value": "BBSIZE_512"
+                },
+                {
+                    "label": "Boot Block size is 1024 words",
+                    "value": "BBSIZE_1024"
+                },
+                {
+                    "label": "Boot Block size is 2048 words",
+                    "value": "BBSIZE_2048"
+                },
+                {
+                    "label": "Boot Block size is 4096 words",
+                    "value": "BBSIZE_4096"
+                },
+                {
+                    "label": "Boot Block size is 8192 words",
+                    "value": "BBSIZE_8192"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BBEN",
+            "label": "Boot Block enable bit",
+            "settings": [
+                {
+                    "label": "Boot block disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot block enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "SAFEN",
+            "label": "Storage Area Flash enable bit",
+            "settings": [
+                {
+                    "label": "SAF disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "SAF enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTAPP",
+            "label": "Application Block write protection bit",
+            "settings": [
+                {
+                    "label": "Application Block not write protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Application Block write protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTB",
+            "label": "Boot Block Write Protection bit",
+            "settings": [
+                {
+                    "label": "Boot Block not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Boot Block write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTC",
+            "label": "Configuration Register Write Protection bit",
+            "settings": [
+                {
+                    "label": "Configuration registers (300000-30000Bh) not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Configuration registers (300000-30000Bh) write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTD",
+            "label": "Data EEPROM Write Protection bit",
+            "settings": [
+                {
+                    "label": "Data EEPROM not write-protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data EEPROM write-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTSAF",
+            "label": "SAF Write protection bit",
+            "settings": [
+                {
+                    "label": "SAF not Write Protected",
+                    "value": "OFF"
+                },
+                {
+                    "label": "SAF Write Protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LVP",
+            "label": "Low Voltage Programming Enable bit",
+            "settings": [
+                {
+                    "label": "HV on MCLR/VPP must be used for programming",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Low voltage programming enabled. MCLR/VPP pin function is MCLR. MCLRE configuration bit is ignored",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "PFM and Data EEPROM Code Protection bit",
+            "settings": [
+                {
+                    "label": "PFM and Data EEPROM code protection disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PFM and Data EEPROM code protection enabled",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC18F25K83",
+    "clock": 1
+}

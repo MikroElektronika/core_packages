@@ -1,0 +1,3904 @@
+{
+    "bootrom": [
+        {
+            "max_addr": "0x1FC0FF3F",
+            "min_addr": "0x1FC00000"
+        },
+        {
+            "max_addr": "0x1FC13FFF",
+            "min_addr": "0x1FC10000"
+        },
+        {
+            "max_addr": "0x1FC2FEFF",
+            "min_addr": "0x1FC20000"
+        }
+    ],
+    "cfgreg": {
+        "max_addr": "0x1FC0FFFC",
+        "min_addr": "0x1FC0FF40"
+    },
+    "config_registers": [
+        {
+            "address": "1FC0FFC0",
+            "default": "FFFFFFFF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "01000000",
+                    "key": "FMIIEN",
+                    "label": "Ethernet RMII/MII Enable",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "RMII Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MII Enabled",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "02000000",
+                    "key": "FETHIO",
+                    "label": "Ethernet I/O Pin Select",
+                    "mask": "02000000",
+                    "settings": [
+                        {
+                            "label": "Alternate Ethernet I/O",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Default Ethernet I/O",
+                            "value": "02000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PGL1WAY",
+                    "label": "Permission Group Lock One Way Configuration",
+                    "mask": "08000000",
+                    "settings": [
+                        {
+                            "label": "Allow multiple reconfigurations",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Allow only one reconfiguration",
+                            "value": "08000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PMDL1WAY",
+                    "label": "Peripheral Module Disable Configuration",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "Allow multiple reconfigurations",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Allow only one reconfiguration",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "IOL1WAY",
+                    "label": "Peripheral Pin Select Configuration",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": "Allow multiple reconfigurations",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Allow only one reconfiguration",
+                            "value": "20000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "40000000",
+                    "key": "FUSBIDIO",
+                    "label": "USB USBID Selection",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": "Controlled by Port Function",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Controlled by the USB Module",
+                            "value": "40000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCFG3",
+            "unused": "00000000"
+        },
+        {
+            "address": "1FC0FFC4",
+            "default": "FFFFFFFF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "FPLLIDIV",
+                    "label": "System PLL Input Divider",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "1x Divider",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "2x Divider",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "3x Divider",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "4x Divider",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "5x Divider",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "6x Divider",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "7x Divider",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "8x Divider",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "FPLLRNG",
+                    "label": "System PLL Input Range",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Bypass",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "5-10 MHz Input",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "8-16 MHz Input",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "13-26 MHz Input",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "21-42 MHz Input",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "34-68 MHz Input",
+                            "value": "00000050"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "FPLLICLK",
+                    "label": "System PLL Input Clock Selection",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "POSC is input to the System PLL",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "FRC is input to the System PLL",
+                            "value": "00000080"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003100",
+                    "key": "FPLLMULT",
+                    "label": "System PLL Multiplier",
+                    "mask": "00007F00",
+                    "settings": [
+                        {
+                            "label": "PLL Multiply by 1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL Multiply by 2",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL Multiply by 3",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL Multiply by 4",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL Multiply by 5",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL Multiply by 6",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL Multiply by 7",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL Multiply by 8",
+                            "value": "00000700"
+                        },
+                        {
+                            "label": "PLL Multiply by 9",
+                            "value": "00000800"
+                        },
+                        {
+                            "label": "PLL Multiply by 10",
+                            "value": "00000900"
+                        },
+                        {
+                            "label": "PLL Multiply by 11",
+                            "value": "00000A00"
+                        },
+                        {
+                            "label": "PLL Multiply by 12",
+                            "value": "00000B00"
+                        },
+                        {
+                            "label": "PLL Multiply by 13",
+                            "value": "00000C00"
+                        },
+                        {
+                            "label": "PLL Multiply by 14",
+                            "value": "00000D00"
+                        },
+                        {
+                            "label": "PLL Multiply by 15",
+                            "value": "00000E00"
+                        },
+                        {
+                            "label": "PLL Multiply by 16",
+                            "value": "00000F00"
+                        },
+                        {
+                            "label": "PLL Multiply by 17",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "PLL Multiply by 18",
+                            "value": "00001100"
+                        },
+                        {
+                            "label": "PLL Multiply by 19",
+                            "value": "00001200"
+                        },
+                        {
+                            "label": "PLL Multiply by 20",
+                            "value": "00001300"
+                        },
+                        {
+                            "label": "PLL Multiply by 21",
+                            "value": "00001400"
+                        },
+                        {
+                            "label": "PLL Multiply by 22",
+                            "value": "00001500"
+                        },
+                        {
+                            "label": "PLL Multiply by 23",
+                            "value": "00001600"
+                        },
+                        {
+                            "label": "PLL Multiply by 24",
+                            "value": "00001700"
+                        },
+                        {
+                            "label": "PLL Multiply by 25",
+                            "value": "00001800"
+                        },
+                        {
+                            "label": "PLL Multiply by 26",
+                            "value": "00001900"
+                        },
+                        {
+                            "label": "PLL Multiply by 27",
+                            "value": "00001A00"
+                        },
+                        {
+                            "label": "PLL Multiply by 28",
+                            "value": "00001B00"
+                        },
+                        {
+                            "label": "PLL Multiply by 29",
+                            "value": "00001C00"
+                        },
+                        {
+                            "label": "PLL Multiply by 30",
+                            "value": "00001D00"
+                        },
+                        {
+                            "label": "PLL Multiply by 31",
+                            "value": "00001E00"
+                        },
+                        {
+                            "label": "PLL Multiply by 32",
+                            "value": "00001F00"
+                        },
+                        {
+                            "label": "PLL Multiply by 33",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "PLL Multiply by 34",
+                            "value": "00002100"
+                        },
+                        {
+                            "label": "PLL Multiply by 35",
+                            "value": "00002200"
+                        },
+                        {
+                            "label": "PLL Multiply by 36",
+                            "value": "00002300"
+                        },
+                        {
+                            "label": "PLL Multiply by 37",
+                            "value": "00002400"
+                        },
+                        {
+                            "label": "PLL Multiply by 38",
+                            "value": "00002500"
+                        },
+                        {
+                            "label": "PLL Multiply by 39",
+                            "value": "00002600"
+                        },
+                        {
+                            "label": "PLL Multiply by 40",
+                            "value": "00002700"
+                        },
+                        {
+                            "label": "PLL Multiply by 41",
+                            "value": "00002800"
+                        },
+                        {
+                            "label": "PLL Multiply by 42",
+                            "value": "00002900"
+                        },
+                        {
+                            "label": "PLL Multiply by 43",
+                            "value": "00002A00"
+                        },
+                        {
+                            "label": "PLL Multiply by 44",
+                            "value": "00002B00"
+                        },
+                        {
+                            "label": "PLL Multiply by 45",
+                            "value": "00002C00"
+                        },
+                        {
+                            "label": "PLL Multiply by 46",
+                            "value": "00002D00"
+                        },
+                        {
+                            "label": "PLL Multiply by 47",
+                            "value": "00002E00"
+                        },
+                        {
+                            "label": "PLL Multiply by 48",
+                            "value": "00002F00"
+                        },
+                        {
+                            "label": "PLL Multiply by 49",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": "PLL Multiply by 50",
+                            "value": "00003100"
+                        },
+                        {
+                            "label": "PLL Multiply by 51",
+                            "value": "00003200"
+                        },
+                        {
+                            "label": "PLL Multiply by 52",
+                            "value": "00003300"
+                        },
+                        {
+                            "label": "PLL Multiply by 53",
+                            "value": "00003400"
+                        },
+                        {
+                            "label": "PLL Multiply by 54",
+                            "value": "00003500"
+                        },
+                        {
+                            "label": "PLL Multiply by 55",
+                            "value": "00003600"
+                        },
+                        {
+                            "label": "PLL Multiply by 56",
+                            "value": "00003700"
+                        },
+                        {
+                            "label": "PLL Multiply by 57",
+                            "value": "00003800"
+                        },
+                        {
+                            "label": "PLL Multiply by 58",
+                            "value": "00003900"
+                        },
+                        {
+                            "label": "PLL Multiply by 59",
+                            "value": "00003A00"
+                        },
+                        {
+                            "label": "PLL Multiply by 60",
+                            "value": "00003B00"
+                        },
+                        {
+                            "label": "PLL Multiply by 61",
+                            "value": "00003C00"
+                        },
+                        {
+                            "label": "PLL Multiply by 62",
+                            "value": "00003D00"
+                        },
+                        {
+                            "label": "PLL Multiply by 63",
+                            "value": "00003E00"
+                        },
+                        {
+                            "label": "PLL Multiply by 64",
+                            "value": "00003F00"
+                        },
+                        {
+                            "label": "PLL Multiply by 65",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "PLL Multiply by 66",
+                            "value": "00004100"
+                        },
+                        {
+                            "label": "PLL Multiply by 67",
+                            "value": "00004200"
+                        },
+                        {
+                            "label": "PLL Multiply by 68",
+                            "value": "00004300"
+                        },
+                        {
+                            "label": "PLL Multiply by 69",
+                            "value": "00004400"
+                        },
+                        {
+                            "label": "PLL Multiply by 70",
+                            "value": "00004500"
+                        },
+                        {
+                            "label": "PLL Multiply by 71",
+                            "value": "00004600"
+                        },
+                        {
+                            "label": "PLL Multiply by 72",
+                            "value": "00004700"
+                        },
+                        {
+                            "label": "PLL Multiply by 73",
+                            "value": "00004800"
+                        },
+                        {
+                            "label": "PLL Multiply by 74",
+                            "value": "00004900"
+                        },
+                        {
+                            "label": "PLL Multiply by 75",
+                            "value": "00004A00"
+                        },
+                        {
+                            "label": "PLL Multiply by 76",
+                            "value": "00004B00"
+                        },
+                        {
+                            "label": "PLL Multiply by 77",
+                            "value": "00004C00"
+                        },
+                        {
+                            "label": "PLL Multiply by 78",
+                            "value": "00004D00"
+                        },
+                        {
+                            "label": "PLL Multiply by 79",
+                            "value": "00004E00"
+                        },
+                        {
+                            "label": "PLL Multiply by 80",
+                            "value": "00004F00"
+                        },
+                        {
+                            "label": "PLL Multiply by 81",
+                            "value": "00005000"
+                        },
+                        {
+                            "label": "PLL Multiply by 82",
+                            "value": "00005100"
+                        },
+                        {
+                            "label": "PLL Multiply by 83",
+                            "value": "00005200"
+                        },
+                        {
+                            "label": "PLL Multiply by 84",
+                            "value": "00005300"
+                        },
+                        {
+                            "label": "PLL Multiply by 85",
+                            "value": "00005400"
+                        },
+                        {
+                            "label": "PLL Multiply by 86",
+                            "value": "00005500"
+                        },
+                        {
+                            "label": "PLL Multiply by 87",
+                            "value": "00005600"
+                        },
+                        {
+                            "label": "PLL Multiply by 88",
+                            "value": "00005700"
+                        },
+                        {
+                            "label": "PLL Multiply by 89",
+                            "value": "00005800"
+                        },
+                        {
+                            "label": "PLL Multiply by 90",
+                            "value": "00005900"
+                        },
+                        {
+                            "label": "PLL Multiply by 91",
+                            "value": "00005A00"
+                        },
+                        {
+                            "label": "PLL Multiply by 92",
+                            "value": "00005B00"
+                        },
+                        {
+                            "label": "PLL Multiply by 93",
+                            "value": "00005C00"
+                        },
+                        {
+                            "label": "PLL Multiply by 94",
+                            "value": "00005D00"
+                        },
+                        {
+                            "label": "PLL Multiply by 95",
+                            "value": "00005E00"
+                        },
+                        {
+                            "label": "PLL Multiply by 96",
+                            "value": "00005F00"
+                        },
+                        {
+                            "label": "PLL Multiply by 97",
+                            "value": "00006000"
+                        },
+                        {
+                            "label": "PLL Multiply by 98",
+                            "value": "00006100"
+                        },
+                        {
+                            "label": "PLL Multiply by 99",
+                            "value": "00006200"
+                        },
+                        {
+                            "label": "PLL Multiply by 100",
+                            "value": "00006300"
+                        },
+                        {
+                            "label": "PLL Multiply by 101",
+                            "value": "00006400"
+                        },
+                        {
+                            "label": "PLL Multiply by 102",
+                            "value": "00006500"
+                        },
+                        {
+                            "label": "PLL Multiply by 103",
+                            "value": "00006600"
+                        },
+                        {
+                            "label": "PLL Multiply by 104",
+                            "value": "00006700"
+                        },
+                        {
+                            "label": "PLL Multiply by 105",
+                            "value": "00006800"
+                        },
+                        {
+                            "label": "PLL Multiply by 106",
+                            "value": "00006900"
+                        },
+                        {
+                            "label": "PLL Multiply by 107",
+                            "value": "00006A00"
+                        },
+                        {
+                            "label": "PLL Multiply by 108",
+                            "value": "00006B00"
+                        },
+                        {
+                            "label": "PLL Multiply by 109",
+                            "value": "00006C00"
+                        },
+                        {
+                            "label": "PLL Multiply by 110",
+                            "value": "00006D00"
+                        },
+                        {
+                            "label": "PLL Multiply by 111",
+                            "value": "00006E00"
+                        },
+                        {
+                            "label": "PLL Multiply by 112",
+                            "value": "00006F00"
+                        },
+                        {
+                            "label": "PLL Multiply by 113",
+                            "value": "00007000"
+                        },
+                        {
+                            "label": "PLL Multiply by 114",
+                            "value": "00007100"
+                        },
+                        {
+                            "label": "PLL Multiply by 115",
+                            "value": "00007200"
+                        },
+                        {
+                            "label": "PLL Multiply by 116",
+                            "value": "00007300"
+                        },
+                        {
+                            "label": "PLL Multiply by 117",
+                            "value": "00007400"
+                        },
+                        {
+                            "label": "PLL Multiply by 118",
+                            "value": "00007500"
+                        },
+                        {
+                            "label": "PLL Multiply by 119",
+                            "value": "00007600"
+                        },
+                        {
+                            "label": "PLL Multiply by 120",
+                            "value": "00007700"
+                        },
+                        {
+                            "label": "PLL Multiply by 121",
+                            "value": "00007800"
+                        },
+                        {
+                            "label": "PLL Multiply by 122",
+                            "value": "00007900"
+                        },
+                        {
+                            "label": "PLL Multiply by 123",
+                            "value": "00007A00"
+                        },
+                        {
+                            "label": "PLL Multiply by 124",
+                            "value": "00007B00"
+                        },
+                        {
+                            "label": "PLL Multiply by 125",
+                            "value": "00007C00"
+                        },
+                        {
+                            "label": "PLL Multiply by 126",
+                            "value": "00007D00"
+                        },
+                        {
+                            "label": "PLL Multiply by 127",
+                            "value": "00007E00"
+                        },
+                        {
+                            "label": "PLL Multiply by 128",
+                            "value": "00007F00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00010000",
+                    "key": "FPLLODIV",
+                    "label": "System PLL Output Clock Divider",
+                    "mask": "00070000",
+                    "settings": [
+                        {
+                            "label": "2x Divider",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "4x Divider",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "8x Divider",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "16x Divider",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "32x Divider",
+                            "value": "00070000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "UPLLFSEL",
+                    "label": "USB PLL Input Frequency Selection",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": "USB PLL input is 12 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "USB PLL input is 24 MHz",
+                            "value": "40000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCFG2",
+            "unused": "00000000"
+        },
+        {
+            "address": "1FC0FFC8",
+            "default": "FFFFFFFF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "FNOSC",
+                    "label": "Oscillator Selection Bits",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "System PLL",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Primary Osc (HS,EC)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Low Power Secondary Osc (SOSC)",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Low Power RC Osc (LPRC)",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000038",
+                    "key": "DMTINTV",
+                    "label": "DMT Count Window Interval",
+                    "mask": "00000038",
+                    "settings": [
+                        {
+                            "label": "Window/Interval value is zero",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Window/Interval value is 1/2 counter value",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Window/Interval value is 3/4 counter value",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Window/Interval value is 7/8 counter value",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Window/Interval value is 15/16 counter value",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Window/Interval value is 31/32 counter value",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Window/Interval value is 63/64 counter value",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Window/Interval value is 127/128 counter value",
+                            "value": "00000038"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "FSOSCEN",
+                    "label": "Secondary Oscillator Enable",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Disable SOSC",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enable SOSC",
+                            "value": "00000040"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "IESO",
+                    "label": "Internal/External Switch Over",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000080"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "POSCMOD",
+                    "label": "Primary Oscillator Configuration",
+                    "mask": "00000300",
+                    "settings": [
+                        {
+                            "label": "External clock mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HS osc mode",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "Primary osc disabled",
+                            "value": "00000300"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000400",
+                    "key": "OSCIOFNC",
+                    "label": "CLKO Output Signal Active on the OSCO Pin",
+                    "mask": "00000400",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0000c000",
+                    "key": "FCKSM",
+                    "label": "Clock Switching and Monitor Selection",
+                    "mask": "0000C000",
+                    "settings": [
+                        {
+                            "label": "Clock Switch Disabled, FSCM Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clock Switch Enabled, FSCM Disabled",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "Clock Switch Disabled, FSCM Enabled",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "Clock Switch Enabled, FSCM Enabled",
+                            "value": "0000C000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00140000",
+                    "key": "WDTPS",
+                    "label": "Watchdog Timer Postscaler",
+                    "mask": "001F0000",
+                    "settings": [
+                        {
+                            "label": "1:1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1:2",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "1:4",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "1:8",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "1:16",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "1:32",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "1:64",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "1:128",
+                            "value": "00070000"
+                        },
+                        {
+                            "label": "1:256",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "1:512",
+                            "value": "00090000"
+                        },
+                        {
+                            "label": "1:1024",
+                            "value": "000A0000"
+                        },
+                        {
+                            "label": "1:2048",
+                            "value": "000B0000"
+                        },
+                        {
+                            "label": "1:4096",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "1:8192",
+                            "value": "000D0000"
+                        },
+                        {
+                            "label": "1:16384",
+                            "value": "000E0000"
+                        },
+                        {
+                            "label": "1:32768",
+                            "value": "000F0000"
+                        },
+                        {
+                            "label": "1:65536",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "1:131072",
+                            "value": "00110000"
+                        },
+                        {
+                            "label": "1:262144",
+                            "value": "00120000"
+                        },
+                        {
+                            "label": "1:524288",
+                            "value": "00130000"
+                        },
+                        {
+                            "label": "1:1048576",
+                            "value": "00140000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00200000",
+                    "key": "WDTSPGM",
+                    "label": "Watchdog Timer Stop During Flash Programming",
+                    "mask": "00200000",
+                    "settings": [
+                        {
+                            "label": "WDT runs during Flash programming",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "WDT stops during Flash programming",
+                            "value": "00200000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00400000",
+                    "key": "WINDIS",
+                    "label": "Watchdog Timer Window Mode",
+                    "mask": "00400000",
+                    "settings": [
+                        {
+                            "label": "Watchdog Timer is in Window mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Watchdog Timer is in non-Window mode",
+                            "value": "00400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "FWDTEN",
+                    "label": "Watchdog Timer Enable",
+                    "mask": "00800000",
+                    "settings": [
+                        {
+                            "label": "WDT Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "WDT Enabled",
+                            "value": "00800000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "03000000",
+                    "key": "FWDTWINSZ",
+                    "label": "Watchdog Timer Window Size",
+                    "mask": "03000000",
+                    "settings": [
+                        {
+                            "label": "Window size is 75%",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Window size is 50%",
+                            "value": "01000000"
+                        },
+                        {
+                            "label": "Window size is 37.5%",
+                            "value": "02000000"
+                        },
+                        {
+                            "label": "Window size is 25%",
+                            "value": "03000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "5c000000",
+                    "key": "DMTCNT",
+                    "label": "Deadman Timer Count Selection",
+                    "mask": "7C000000",
+                    "settings": [
+                        {
+                            "label": "2^8 (256)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "2^9 (512)",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "2^10 (1024)",
+                            "value": "08000000"
+                        },
+                        {
+                            "label": "2^11 (2048)",
+                            "value": "0C000000"
+                        },
+                        {
+                            "label": "2^12 (4096)",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "2^13 (8192)",
+                            "value": "14000000"
+                        },
+                        {
+                            "label": "2^14 (16384)",
+                            "value": "18000000"
+                        },
+                        {
+                            "label": "2^15 (32768)",
+                            "value": "1C000000"
+                        },
+                        {
+                            "label": "2^16 (65536)",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "2^17 (131072)",
+                            "value": "24000000"
+                        },
+                        {
+                            "label": "2^18 (262144)",
+                            "value": "28000000"
+                        },
+                        {
+                            "label": "2^19 (524288)",
+                            "value": "2C000000"
+                        },
+                        {
+                            "label": "2^20 (1048576)",
+                            "value": "30000000"
+                        },
+                        {
+                            "label": "2^21 (2097152)",
+                            "value": "34000000"
+                        },
+                        {
+                            "label": "2^22 (4194304)",
+                            "value": "38000000"
+                        },
+                        {
+                            "label": "2^23 (8388608)",
+                            "value": "3C000000"
+                        },
+                        {
+                            "label": "2^24 (16777216)",
+                            "value": "40000000"
+                        },
+                        {
+                            "label": "2^25 (33554432)",
+                            "value": "44000000"
+                        },
+                        {
+                            "label": "2^26 (67108864)",
+                            "value": "48000000"
+                        },
+                        {
+                            "label": "2^27 (134217728)",
+                            "value": "4C000000"
+                        },
+                        {
+                            "label": "2^28 (268435456)",
+                            "value": "50000000"
+                        },
+                        {
+                            "label": "2^29 (536870912)",
+                            "value": "54000000"
+                        },
+                        {
+                            "label": "2^30 (1073741824)",
+                            "value": "58000000"
+                        },
+                        {
+                            "label": "2^31 (2147483648)",
+                            "value": "5C000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "FDMTEN",
+                    "label": "Deadman Timer Enable",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": "Deadman Timer is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Deadman Timer is enabled",
+                            "value": "80000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCFG1",
+            "unused": "00000000"
+        },
+        {
+            "address": "1FC0FFCC",
+            "default": "FFFFF7FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DEBUG",
+                    "label": "Background Debugger Enable",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Debugger is enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Debugger is disabled",
+                            "value": "00000003"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "JTAGEN",
+                    "label": "JTAG Enable",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "JTAG Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "JTAG Port Enabled",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "ICESEL",
+                    "label": "ICE/ICD Comm Channel Select",
+                    "mask": "00000018",
+                    "settings": [
+                        {
+                            "label": "Communicate on PGEC2/PGED2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Communicate on PGEC1/PGED1",
+                            "value": "00000018"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "TRCEN",
+                    "label": "Trace Enable",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Trace features in the CPU are disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Trace features in the CPU are enabled",
+                            "value": "00000020"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "BOOTISA",
+                    "label": "Boot ISA Selection",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Boot code and Exception code is microMIPS",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Boot code and Exception code is MIPS32",
+                            "value": "00000040"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "FECCCON",
+                    "label": "Dynamic Flash ECC Configuration",
+                    "mask": "00000300",
+                    "settings": [
+                        {
+                            "label": "Flash ECC is enabled (ECCCON bits are locked)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Dynamic Flash ECC is enabled (ECCCON bits are locked)",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "ECC and Dynamic ECC are disabled (ECCCON bits are locked)",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "ECC and Dynamic ECC are disabled (ECCCON bits are writable)",
+                            "value": "00000300"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000400",
+                    "key": "FSLEEP",
+                    "label": "Flash Sleep Mode",
+                    "mask": "00000400",
+                    "settings": [
+                        {
+                            "label": "Flash power down is controlled by the VREGS bit",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Flash is powered down when the device is in Sleep mode",
+                            "value": "00000400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00007000",
+                    "key": "DBGPER",
+                    "label": "Debug Mode CPU Access Permission",
+                    "mask": "00007000",
+                    "settings": [
+                        {
+                            "label": "Deny CPU access to all permission regions",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Allow CPU access to Permission Group 0 permission regions",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "Allow CPU access to Permission Group 1 permission regions",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "PG0: Allow PG1",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": "Allow CPU access to Permission Group 2 permission regions",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "PG0: Allow PG1",
+                            "value": "00005000"
+                        },
+                        {
+                            "label": "PG0: Deny PG1",
+                            "value": "00006000"
+                        },
+                        {
+                            "label": "Allow CPU access to all permission regions",
+                            "value": "00007000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00008000",
+                    "key": "SMCLR",
+                    "label": "Soft Master Clear Enable bit",
+                    "mask": "00008000",
+                    "settings": [
+                        {
+                            "label": "MCLR pin generates an emulated POR Reset",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MCLR pin generates a normal system Reset",
+                            "value": "00008000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00030000",
+                    "key": "SOSCGAIN",
+                    "label": "Secondary Oscillator Gain Control bits",
+                    "mask": "00030000",
+                    "settings": [
+                        {
+                            "label": "0.5x gain setting",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Gain level 0 (Lowest)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1x gain setting",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "Gain level 1",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "1.5x gain setting",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "Gain level 2",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "2x gain setting",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "Gain level 3 (Highest)",
+                            "value": "00030000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00040000",
+                    "key": "SOSCBOOST",
+                    "label": "Secondary Oscillator Boost Kick Start Enable bit",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "Normal start of the oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Boost the kick start of the oscillator",
+                            "value": "00040000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00180000",
+                    "key": "POSCGAIN",
+                    "label": "Primary Oscillator Gain Control bits",
+                    "mask": "00180000",
+                    "settings": [
+                        {
+                            "label": "0.5x gain setting",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Gain level 0 (Lowest)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1x gain setting",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "Gain level 1",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "1.5x gain setting",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "Gain level 2",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "2x gain setting",
+                            "value": "00180000"
+                        },
+                        {
+                            "label": "Gain level 3 (Highest)",
+                            "value": "00180000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00200000",
+                    "key": "POSCBOOST",
+                    "label": "Primary Oscillator Boost Kick Start Enable bit",
+                    "mask": "00200000",
+                    "settings": [
+                        {
+                            "label": "Normal start of the oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Boost the kick start of the oscillator",
+                            "value": "00200000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "40000000",
+                    "key": "EJTAGBEN",
+                    "label": "EJTAG Boot",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": "Reduced EJTAG functionality",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Normal EJTAG functionality",
+                            "value": "40000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCFG0",
+            "unused": "00000800"
+        },
+        {
+            "address": "1FC0FFD0",
+            "default": "FFFFFFFF",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "ffffffff",
+                    "key": "Hidden",
+                    "label": "Hidden",
+                    "mask": "FFFFFFFF",
+                    "settings": [
+                        {
+                            "label": "Protection Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Protection Disabled",
+                            "value": "FFFFFFFF"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCP3",
+            "unused": "00000000"
+        },
+        {
+            "address": "1FC0FFD4",
+            "default": "FFFFFFFF",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "ffffffff",
+                    "key": "Hidden",
+                    "label": "Hidden",
+                    "mask": "FFFFFFFF",
+                    "settings": [
+                        {
+                            "label": "Protection Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Protection Disabled",
+                            "value": "FFFFFFFF"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCP2",
+            "unused": "00000000"
+        },
+        {
+            "address": "1FC0FFD8",
+            "default": "FFFFFFFF",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "ffffffff",
+                    "key": "Hidden",
+                    "label": "Hidden",
+                    "mask": "FFFFFFFF",
+                    "settings": [
+                        {
+                            "label": "Protection Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Protection Disabled",
+                            "value": "FFFFFFFF"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCP1",
+            "unused": "00000000"
+        },
+        {
+            "address": "1FC0FFDC",
+            "default": "FFFFFFFF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "ffffffff",
+                    "key": "CP",
+                    "label": "Code Protect",
+                    "mask": "FFFFFFFF",
+                    "settings": [
+                        {
+                            "label": "Protection Enabled",
+                            "value": "EFFFFFFF"
+                        },
+                        {
+                            "label": "Protection Disabled",
+                            "value": "FFFFFFFF"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCP0",
+            "unused": "00000000"
+        }
+    ],
+    "core": "MICROAPTIV_FP",
+    "delay_src_path": "delays/microaptiv_fp/__lib_delays.c",
+    "icd": {
+        "badram": {
+            "max_addr": "0x400",
+            "min_addr": "0x000"
+        },
+        "hwbrkpno": "8",
+        "start_addr": "0x00"
+    },
+    "ivt": [
+        {
+            "name": "IVT_CORE_TIMER_VECTOR",
+            "vector": "0"
+        },
+        {
+            "name": "IVT_CORE_SOFTWARE_0_VECTOR",
+            "vector": "1"
+        },
+        {
+            "name": "IVT_CORE_SOFTWARE_1_VECTOR",
+            "vector": "2"
+        },
+        {
+            "name": "IVT_EXTERNAL_0_VECTOR",
+            "vector": "3"
+        },
+        {
+            "name": "IVT_TIMER_1_VECTOR",
+            "vector": "4"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_1_ERROR_VECTOR",
+            "vector": "5"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_1_VECTOR",
+            "vector": "6"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_1_VECTOR",
+            "vector": "7"
+        },
+        {
+            "name": "IVT_EXTERNAL_1_VECTOR",
+            "vector": "8"
+        },
+        {
+            "name": "IVT_TIMER_2_VECTOR",
+            "vector": "9"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_2_ERROR_VECTOR",
+            "vector": "10"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_2_VECTOR",
+            "vector": "11"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_2_VECTOR",
+            "vector": "12"
+        },
+        {
+            "name": "IVT_EXTERNAL_2_VECTOR",
+            "vector": "13"
+        },
+        {
+            "name": "IVT_TIMER_3_VECTOR",
+            "vector": "14"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_3_ERROR_VECTOR",
+            "vector": "15"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_3_VECTOR",
+            "vector": "16"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_3_VECTOR",
+            "vector": "17"
+        },
+        {
+            "name": "IVT_EXTERNAL_3_VECTOR",
+            "vector": "18"
+        },
+        {
+            "name": "IVT_TIMER_4_VECTOR",
+            "vector": "19"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_4_ERROR_VECTOR",
+            "vector": "20"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_4_VECTOR",
+            "vector": "21"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_4_VECTOR",
+            "vector": "22"
+        },
+        {
+            "name": "IVT_EXTERNAL_4_VECTOR",
+            "vector": "23"
+        },
+        {
+            "name": "IVT_TIMER_5_VECTOR",
+            "vector": "24"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_5_ERROR_VECTOR",
+            "vector": "25"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_5_VECTOR",
+            "vector": "26"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_5_VECTOR",
+            "vector": "27"
+        },
+        {
+            "name": "IVT_TIMER_6_VECTOR",
+            "vector": "28"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_6_ERROR_VECTOR",
+            "vector": "29"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_6_VECTOR",
+            "vector": "30"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_6_VECTOR",
+            "vector": "31"
+        },
+        {
+            "name": "IVT_TIMER_7_VECTOR",
+            "vector": "32"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_7_ERROR_VECTOR",
+            "vector": "33"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_7_VECTOR",
+            "vector": "34"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_7_VECTOR",
+            "vector": "35"
+        },
+        {
+            "name": "IVT_TIMER_8_VECTOR",
+            "vector": "36"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_8_ERROR_VECTOR",
+            "vector": "37"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_8_VECTOR",
+            "vector": "38"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_8_VECTOR",
+            "vector": "39"
+        },
+        {
+            "name": "IVT_TIMER_9_VECTOR",
+            "vector": "40"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_9_ERROR_VECTOR",
+            "vector": "41"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_9_VECTOR",
+            "vector": "42"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_9_VECTOR",
+            "vector": "43"
+        },
+        {
+            "name": "IVT_ADC_VECTOR",
+            "vector": "44"
+        },
+        {
+            "name": "IVT_ADC_FIFO_VECTOR",
+            "vector": "45"
+        },
+        {
+            "name": "IVT_ADC_DC1_VECTOR",
+            "vector": "46"
+        },
+        {
+            "name": "IVT_ADC_DC2_VECTOR",
+            "vector": "47"
+        },
+        {
+            "name": "IVT_ADC_DC3_VECTOR",
+            "vector": "48"
+        },
+        {
+            "name": "IVT_ADC_DC4_VECTOR",
+            "vector": "49"
+        },
+        {
+            "name": "IVT_ADC_DC5_VECTOR",
+            "vector": "50"
+        },
+        {
+            "name": "IVT_ADC_DC6_VECTOR",
+            "vector": "51"
+        },
+        {
+            "name": "IVT_ADC_DF1_VECTOR",
+            "vector": "52"
+        },
+        {
+            "name": "IVT_ADC_DF2_VECTOR",
+            "vector": "53"
+        },
+        {
+            "name": "IVT_ADC_DF3_VECTOR",
+            "vector": "54"
+        },
+        {
+            "name": "IVT_ADC_DF4_VECTOR",
+            "vector": "55"
+        },
+        {
+            "name": "IVT_ADC_DF5_VECTOR",
+            "vector": "56"
+        },
+        {
+            "name": "IVT_ADC_DF6_VECTOR",
+            "vector": "57"
+        },
+        {
+            "name": "IVT_ADC_FAULT_VECTOR",
+            "vector": "58"
+        },
+        {
+            "name": "IVT_ADC_DATA0_VECTOR",
+            "vector": "59"
+        },
+        {
+            "name": "IVT_ADC_DATA1_VECTOR",
+            "vector": "60"
+        },
+        {
+            "name": "IVT_ADC_DATA2_VECTOR",
+            "vector": "61"
+        },
+        {
+            "name": "IVT_ADC_DATA3_VECTOR",
+            "vector": "62"
+        },
+        {
+            "name": "IVT_ADC_DATA4_VECTOR",
+            "vector": "63"
+        },
+        {
+            "name": "IVT_ADC_DATA5_VECTOR",
+            "vector": "64"
+        },
+        {
+            "name": "IVT_ADC_DATA6_VECTOR",
+            "vector": "65"
+        },
+        {
+            "name": "IVT_ADC_DATA7_VECTOR",
+            "vector": "66"
+        },
+        {
+            "name": "IVT_ADC_DATA8_VECTOR",
+            "vector": "67"
+        },
+        {
+            "name": "IVT_ADC_DATA9_VECTOR",
+            "vector": "68"
+        },
+        {
+            "name": "IVT_ADC_DATA10_VECTOR",
+            "vector": "69"
+        },
+        {
+            "name": "IVT_ADC_DATA11_VECTOR",
+            "vector": "70"
+        },
+        {
+            "name": "IVT_ADC_DATA12_VECTOR",
+            "vector": "71"
+        },
+        {
+            "name": "IVT_ADC_DATA13_VECTOR",
+            "vector": "72"
+        },
+        {
+            "name": "IVT_ADC_DATA14_VECTOR",
+            "vector": "73"
+        },
+        {
+            "name": "IVT_ADC_DATA15_VECTOR",
+            "vector": "74"
+        },
+        {
+            "name": "IVT_ADC_DATA16_VECTOR",
+            "vector": "75"
+        },
+        {
+            "name": "IVT_ADC_DATA17_VECTOR",
+            "vector": "76"
+        },
+        {
+            "name": "IVT_ADC_DATA18_VECTOR",
+            "vector": "77"
+        },
+        {
+            "name": "IVT_ADC_DATA19_VECTOR",
+            "vector": "78"
+        },
+        {
+            "name": "IVT_ADC_DATA20_VECTOR",
+            "vector": "79"
+        },
+        {
+            "name": "IVT_ADC_DATA21_VECTOR",
+            "vector": "80"
+        },
+        {
+            "name": "IVT_ADC_DATA22_VECTOR",
+            "vector": "81"
+        },
+        {
+            "name": "IVT_ADC_DATA23_VECTOR",
+            "vector": "82"
+        },
+        {
+            "name": "IVT_ADC_DATA24_VECTOR",
+            "vector": "83"
+        },
+        {
+            "name": "IVT_ADC_DATA25_VECTOR",
+            "vector": "84"
+        },
+        {
+            "name": "IVT_ADC_DATA26_VECTOR",
+            "vector": "85"
+        },
+        {
+            "name": "IVT_ADC_DATA27_VECTOR",
+            "vector": "86"
+        },
+        {
+            "name": "IVT_ADC_DATA28_VECTOR",
+            "vector": "87"
+        },
+        {
+            "name": "IVT_ADC_DATA29_VECTOR",
+            "vector": "88"
+        },
+        {
+            "name": "IVT_ADC_DATA30_VECTOR",
+            "vector": "89"
+        },
+        {
+            "name": "IVT_ADC_DATA31_VECTOR",
+            "vector": "90"
+        },
+        {
+            "name": "IVT_ADC_DATA32_VECTOR",
+            "vector": "91"
+        },
+        {
+            "name": "IVT_ADC_DATA33_VECTOR",
+            "vector": "92"
+        },
+        {
+            "name": "IVT_ADC_DATA34_VECTOR",
+            "vector": "93"
+        },
+        {
+            "name": "IVT_ADC_DATA35_VECTOR",
+            "vector": "94"
+        },
+        {
+            "name": "IVT_ADC_DATA36_VECTOR",
+            "vector": "95"
+        },
+        {
+            "name": "IVT_ADC_DATA37_VECTOR",
+            "vector": "96"
+        },
+        {
+            "name": "IVT_ADC_DATA38_VECTOR",
+            "vector": "97"
+        },
+        {
+            "name": "IVT_ADC_DATA39_VECTOR",
+            "vector": "98"
+        },
+        {
+            "name": "IVT_ADC_DATA40_VECTOR",
+            "vector": "99"
+        },
+        {
+            "name": "IVT_ADC_DATA41_VECTOR",
+            "vector": "100"
+        },
+        {
+            "name": "IVT_ADC_DATA42_VECTOR",
+            "vector": "101"
+        },
+        {
+            "name": "IVT_ADC_DATA43_VECTOR",
+            "vector": "102"
+        },
+        {
+            "name": "IVT_ADC_DATA44_VECTOR",
+            "vector": "103"
+        },
+        {
+            "name": "IVT_CORE_PERF_COUNT_VECTOR",
+            "vector": "104"
+        },
+        {
+            "name": "IVT_CORE_FAST_DEBUG_CHAN_VECTOR",
+            "vector": "105"
+        },
+        {
+            "name": "IVT_SYSTEM_BUS_PROTECTION_VECTOR",
+            "vector": "106"
+        },
+        {
+            "name": "IVT_RESERVED_107_VECTOR",
+            "vector": "107"
+        },
+        {
+            "name": "IVT_RESERVED_108_VECTOR",
+            "vector": "108"
+        },
+        {
+            "name": "IVT_SPI1_FAULT_VECTOR",
+            "vector": "109"
+        },
+        {
+            "name": "IVT_SPI1_RX_VECTOR",
+            "vector": "110"
+        },
+        {
+            "name": "IVT_SPI1_TX_VECTOR",
+            "vector": "111"
+        },
+        {
+            "name": "IVT_UART1_FAULT_VECTOR",
+            "vector": "112"
+        },
+        {
+            "name": "IVT_UART1_RX_VECTOR",
+            "vector": "113"
+        },
+        {
+            "name": "IVT_UART1_TX_VECTOR",
+            "vector": "114"
+        },
+        {
+            "name": "IVT_I2C1_BUS_VECTOR",
+            "vector": "115"
+        },
+        {
+            "name": "IVT_I2C1_SLAVE_VECTOR",
+            "vector": "116"
+        },
+        {
+            "name": "IVT_I2C1_MASTER_VECTOR",
+            "vector": "117"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_A_VECTOR",
+            "vector": "118"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_B_VECTOR",
+            "vector": "119"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_C_VECTOR",
+            "vector": "120"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_D_VECTOR",
+            "vector": "121"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_E_VECTOR",
+            "vector": "122"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_F_VECTOR",
+            "vector": "123"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_G_VECTOR",
+            "vector": "124"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_H_VECTOR",
+            "vector": "125"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_J_VECTOR",
+            "vector": "126"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_K_VECTOR",
+            "vector": "127"
+        },
+        {
+            "name": "IVT_PMP_VECTOR",
+            "vector": "128"
+        },
+        {
+            "name": "IVT_PMP_ERROR_VECTOR",
+            "vector": "129"
+        },
+        {
+            "name": "IVT_COMPARATOR_1_VECTOR",
+            "vector": "130"
+        },
+        {
+            "name": "IVT_COMPARATOR_2_VECTOR",
+            "vector": "131"
+        },
+        {
+            "name": "IVT_USB_VECTOR",
+            "vector": "132"
+        },
+        {
+            "name": "IVT_USB_DMA_VECTOR",
+            "vector": "133"
+        },
+        {
+            "name": "IVT_DMA0_VECTOR",
+            "vector": "134"
+        },
+        {
+            "name": "IVT_DMA1_VECTOR",
+            "vector": "135"
+        },
+        {
+            "name": "IVT_DMA2_VECTOR",
+            "vector": "136"
+        },
+        {
+            "name": "IVT_DMA3_VECTOR",
+            "vector": "137"
+        },
+        {
+            "name": "IVT_DMA4_VECTOR",
+            "vector": "138"
+        },
+        {
+            "name": "IVT_DMA5_VECTOR",
+            "vector": "139"
+        },
+        {
+            "name": "IVT_DMA6_VECTOR",
+            "vector": "140"
+        },
+        {
+            "name": "IVT_DMA7_VECTOR",
+            "vector": "141"
+        },
+        {
+            "name": "IVT_SPI2_FAULT_VECTOR",
+            "vector": "142"
+        },
+        {
+            "name": "IVT_SPI2_RX_VECTOR",
+            "vector": "143"
+        },
+        {
+            "name": "IVT_SPI2_TX_VECTOR",
+            "vector": "144"
+        },
+        {
+            "name": "IVT_UART2_FAULT_VECTOR",
+            "vector": "145"
+        },
+        {
+            "name": "IVT_UART2_RX_VECTOR",
+            "vector": "146"
+        },
+        {
+            "name": "IVT_UART2_TX_VECTOR",
+            "vector": "147"
+        },
+        {
+            "name": "IVT_I2C2_BUS_VECTOR",
+            "vector": "148"
+        },
+        {
+            "name": "IVT_I2C2_SLAVE_VECTOR",
+            "vector": "149"
+        },
+        {
+            "name": "IVT_I2C2_MASTER_VECTOR",
+            "vector": "150"
+        },
+        {
+            "name": "IVT_CAN1_VECTOR",
+            "vector": "151"
+        },
+        {
+            "name": "IVT_CAN2_VECTOR",
+            "vector": "152"
+        },
+        {
+            "name": "IVT_ETHERNET_VECTOR",
+            "vector": "153"
+        },
+        {
+            "name": "IVT_SPI3_FAULT_VECTOR",
+            "vector": "154"
+        },
+        {
+            "name": "IVT_SPI3_RX_VECTOR",
+            "vector": "155"
+        },
+        {
+            "name": "IVT_SPI3_TX_VECTOR",
+            "vector": "156"
+        },
+        {
+            "name": "IVT_UART3_FAULT_VECTOR",
+            "vector": "157"
+        },
+        {
+            "name": "IVT_UART3_RX_VECTOR",
+            "vector": "158"
+        },
+        {
+            "name": "IVT_UART3_TX_VECTOR",
+            "vector": "159"
+        },
+        {
+            "name": "IVT_I2C3_BUS_VECTOR",
+            "vector": "160"
+        },
+        {
+            "name": "IVT_I2C3_SLAVE_VECTOR",
+            "vector": "161"
+        },
+        {
+            "name": "IVT_I2C3_MASTER_VECTOR",
+            "vector": "162"
+        },
+        {
+            "name": "IVT_SPI4_FAULT_VECTOR",
+            "vector": "163"
+        },
+        {
+            "name": "IVT_SPI4_RX_VECTOR",
+            "vector": "164"
+        },
+        {
+            "name": "IVT_SPI4_TX_VECTOR",
+            "vector": "165"
+        },
+        {
+            "name": "IVT_RTCC_VECTOR",
+            "vector": "166"
+        },
+        {
+            "name": "IVT_FLASH_CONTROL_VECTOR",
+            "vector": "167"
+        },
+        {
+            "name": "IVT_PREFETCH_VECTOR",
+            "vector": "168"
+        },
+        {
+            "name": "IVT_SQI1_VECTOR",
+            "vector": "169"
+        },
+        {
+            "name": "IVT_UART4_FAULT_VECTOR",
+            "vector": "170"
+        },
+        {
+            "name": "IVT_UART4_RX_VECTOR",
+            "vector": "171"
+        },
+        {
+            "name": "IVT_UART4_TX_VECTOR",
+            "vector": "172"
+        },
+        {
+            "name": "IVT_I2C4_BUS_VECTOR",
+            "vector": "173"
+        },
+        {
+            "name": "IVT_I2C4_SLAVE_VECTOR",
+            "vector": "174"
+        },
+        {
+            "name": "IVT_I2C4_MASTER_VECTOR",
+            "vector": "175"
+        },
+        {
+            "name": "IVT_SPI5_FAULT_VECTOR",
+            "vector": "176"
+        },
+        {
+            "name": "IVT_SPI5_RX_VECTOR",
+            "vector": "177"
+        },
+        {
+            "name": "IVT_SPI5_TX_VECTOR",
+            "vector": "178"
+        },
+        {
+            "name": "IVT_UART5_FAULT_VECTOR",
+            "vector": "179"
+        },
+        {
+            "name": "IVT_UART5_RX_VECTOR",
+            "vector": "180"
+        },
+        {
+            "name": "IVT_UART5_TX_VECTOR",
+            "vector": "181"
+        },
+        {
+            "name": "IVT_I2C5_BUS_VECTOR",
+            "vector": "182"
+        },
+        {
+            "name": "IVT_I2C5_SLAVE_VECTOR",
+            "vector": "183"
+        },
+        {
+            "name": "IVT_I2C5_MASTER_VECTOR",
+            "vector": "184"
+        },
+        {
+            "name": "IVT_SPI6_FAULT_VECTOR",
+            "vector": "185"
+        },
+        {
+            "name": "IVT_SPI6_RX_VECTOR",
+            "vector": "186"
+        },
+        {
+            "name": "IVT_SPI6_TX_VECTOR",
+            "vector": "187"
+        },
+        {
+            "name": "IVT_UART6_FAULT_VECTOR",
+            "vector": "188"
+        },
+        {
+            "name": "IVT_UART6_RX_VECTOR",
+            "vector": "189"
+        },
+        {
+            "name": "IVT_UART6_TX_VECTOR",
+            "vector": "190"
+        },
+        {
+            "name": "IVT_RESERVED_191_VECTOR",
+            "vector": "191"
+        },
+        {
+            "name": "IVT_ADC_EOS_VECTOR",
+            "vector": "192"
+        },
+        {
+            "name": "IVT_ADC_ARDY_VECTOR",
+            "vector": "193"
+        },
+        {
+            "name": "IVT_ADC_URDY_VECTOR",
+            "vector": "194"
+        },
+        {
+            "name": "IVT_RESERVED_195_VECTOR",
+            "vector": "195"
+        },
+        {
+            "name": "IVT_ADC_EARLY_VECTOR",
+            "vector": "196"
+        },
+        {
+            "name": "IVT_RESERVED_197_VECTOR",
+            "vector": "197"
+        },
+        {
+            "name": "IVT_ADC0_EARLY_VECTOR",
+            "vector": "198"
+        },
+        {
+            "name": "IVT_ADC1_EARLY_VECTOR",
+            "vector": "199"
+        },
+        {
+            "name": "IVT_ADC2_EARLY_VECTOR",
+            "vector": "200"
+        },
+        {
+            "name": "IVT_ADC3_EARLY_VECTOR",
+            "vector": "201"
+        },
+        {
+            "name": "IVT_ADC4_EARLY_VECTOR",
+            "vector": "202"
+        },
+        {
+            "name": "IVT_RESERVED_203_VECTOR",
+            "vector": "203"
+        },
+        {
+            "name": "IVT_RESERVED_204_VECTOR",
+            "vector": "204"
+        },
+        {
+            "name": "IVT_ADC7_EARLY_VECTOR",
+            "vector": "205"
+        },
+        {
+            "name": "IVT_ADC0_WARM_VECTOR",
+            "vector": "206"
+        },
+        {
+            "name": "IVT_ADC1_WARM_VECTOR",
+            "vector": "207"
+        },
+        {
+            "name": "IVT_ADC2_WARM_VECTOR",
+            "vector": "208"
+        },
+        {
+            "name": "IVT_ADC3_WARM_VECTOR",
+            "vector": "209"
+        },
+        {
+            "name": "IVT_ADC4_WARM_VECTOR",
+            "vector": "210"
+        },
+        {
+            "name": "IVT_RESERVED_211_VECTOR",
+            "vector": "211"
+        },
+        {
+            "name": "IVT_RESERVED_212_VECTOR",
+            "vector": "212"
+        },
+        {
+            "name": "IVT_ADC7_WARM_VECTOR",
+            "vector": "213"
+        }
+    ],
+    "mcu": "PIC32MZ1024EFF144",
+    "ram": {
+        "max_addr": "0x0003FFFF",
+        "min_addr": "0x00000000"
+    },
+    "rom": {
+        "max_addr": "0x1D0FFFFF",
+        "min_addr": "0x1D000000"
+    },
+    "rx": {
+        "max_addr": "0x007F",
+        "min_addr": "0x0000"
+    },
+    "sfr": {
+        "scope": [
+            {
+                "max_addr": "0x1F800003",
+                "min_addr": "0x1F800000"
+            },
+            {
+                "max_addr": "0x1F800023",
+                "min_addr": "0x1F800020"
+            },
+            {
+                "max_addr": "0x1F800033",
+                "min_addr": "0x1F800030"
+            },
+            {
+                "max_addr": "0x1F8000AF",
+                "min_addr": "0x1F800040"
+            },
+            {
+                "max_addr": "0x1F8000E3",
+                "min_addr": "0x1F8000C0"
+            },
+            {
+                "max_addr": "0x1F800613",
+                "min_addr": "0x1F800600"
+            },
+            {
+                "max_addr": "0x1F8006AF",
+                "min_addr": "0x1F800620"
+            },
+            {
+                "max_addr": "0x1F80080F",
+                "min_addr": "0x1F800800"
+            },
+            {
+                "max_addr": "0x1F800A03",
+                "min_addr": "0x1F800A00"
+            },
+            {
+                "max_addr": "0x1F800A13",
+                "min_addr": "0x1F800A10"
+            },
+            {
+                "max_addr": "0x1F800A23",
+                "min_addr": "0x1F800A20"
+            },
+            {
+                "max_addr": "0x1F800A33",
+                "min_addr": "0x1F800A30"
+            },
+            {
+                "max_addr": "0x1F800A43",
+                "min_addr": "0x1F800A40"
+            },
+            {
+                "max_addr": "0x1F800A63",
+                "min_addr": "0x1F800A60"
+            },
+            {
+                "max_addr": "0x1F800A73",
+                "min_addr": "0x1F800A70"
+            },
+            {
+                "max_addr": "0x1F800C5F",
+                "min_addr": "0x1F800C00"
+            },
+            {
+                "max_addr": "0x1F800E0F",
+                "min_addr": "0x1F800E00"
+            },
+            {
+                "max_addr": "0x1F801133",
+                "min_addr": "0x1F801130"
+            },
+            {
+                "max_addr": "0x1F801143",
+                "min_addr": "0x1F801140"
+            },
+            {
+                "max_addr": "0x1F80122F",
+                "min_addr": "0x1F801200"
+            },
+            {
+                "max_addr": "0x1F80134F",
+                "min_addr": "0x1F801240"
+            },
+            {
+                "max_addr": "0x1F80137F",
+                "min_addr": "0x1F801360"
+            },
+            {
+                "max_addr": "0x1F8013DF",
+                "min_addr": "0x1F8013C0"
+            },
+            {
+                "max_addr": "0x1F801413",
+                "min_addr": "0x1F801404"
+            },
+            {
+                "max_addr": "0x1F80145B",
+                "min_addr": "0x1F801418"
+            },
+            {
+                "max_addr": "0x1F801463",
+                "min_addr": "0x1F801460"
+            },
+            {
+                "max_addr": "0x1F801497",
+                "min_addr": "0x1F801468"
+            },
+            {
+                "max_addr": "0x1F8014A3",
+                "min_addr": "0x1F80149C"
+            },
+            {
+                "max_addr": "0x1F8014AF",
+                "min_addr": "0x1F8014A8"
+            },
+            {
+                "max_addr": "0x1F8014BB",
+                "min_addr": "0x1F8014B4"
+            },
+            {
+                "max_addr": "0x1F8014C7",
+                "min_addr": "0x1F8014C0"
+            },
+            {
+                "max_addr": "0x1F8014D3",
+                "min_addr": "0x1F8014CC"
+            },
+            {
+                "max_addr": "0x1F8014EB",
+                "min_addr": "0x1F8014D8"
+            },
+            {
+                "max_addr": "0x1F8014F7",
+                "min_addr": "0x1F8014F0"
+            },
+            {
+                "max_addr": "0x1F80154F",
+                "min_addr": "0x1F801538"
+            },
+            {
+                "max_addr": "0x1F80156B",
+                "min_addr": "0x1F801554"
+            },
+            {
+                "max_addr": "0x1F80157F",
+                "min_addr": "0x1F801578"
+            },
+            {
+                "max_addr": "0x1F801593",
+                "min_addr": "0x1F801584"
+            },
+            {
+                "max_addr": "0x1F8015BB",
+                "min_addr": "0x1F8015B4"
+            },
+            {
+                "max_addr": "0x1F8015DF",
+                "min_addr": "0x1F8015C0"
+            },
+            {
+                "max_addr": "0x1F8015F3",
+                "min_addr": "0x1F8015E4"
+            },
+            {
+                "max_addr": "0x1F8015FF",
+                "min_addr": "0x1F8015F8"
+            },
+            {
+                "max_addr": "0x1F80160F",
+                "min_addr": "0x1F80160C"
+            },
+            {
+                "max_addr": "0x1F801617",
+                "min_addr": "0x1F801614"
+            },
+            {
+                "max_addr": "0x1F801627",
+                "min_addr": "0x1F801620"
+            },
+            {
+                "max_addr": "0x1F801657",
+                "min_addr": "0x1F801640"
+            },
+            {
+                "max_addr": "0x1F801663",
+                "min_addr": "0x1F801660"
+            },
+            {
+                "max_addr": "0x1F801677",
+                "min_addr": "0x1F801670"
+            },
+            {
+                "max_addr": "0x1F801687",
+                "min_addr": "0x1F801680"
+            },
+            {
+                "max_addr": "0x1F8016A7",
+                "min_addr": "0x1F801698"
+            },
+            {
+                "max_addr": "0x1F8100AF",
+                "min_addr": "0x1F810000"
+            },
+            {
+                "max_addr": "0x1F81012F",
+                "min_addr": "0x1F8100C0"
+            },
+            {
+                "max_addr": "0x1F81049F",
+                "min_addr": "0x1F810140"
+            },
+            {
+                "max_addr": "0x1F8106EB",
+                "min_addr": "0x1F810540"
+            },
+            {
+                "max_addr": "0x1F81083B",
+                "min_addr": "0x1F8106F4"
+            },
+            {
+                "max_addr": "0x1F81084B",
+                "min_addr": "0x1F810840"
+            },
+            {
+                "max_addr": "0x1F810853",
+                "min_addr": "0x1F810850"
+            },
+            {
+                "max_addr": "0x1F81086B",
+                "min_addr": "0x1F810858"
+            },
+            {
+                "max_addr": "0x1F81088B",
+                "min_addr": "0x1F810874"
+            },
+            {
+                "max_addr": "0x1F810897",
+                "min_addr": "0x1F810894"
+            },
+            {
+                "max_addr": "0x1F81165F",
+                "min_addr": "0x1F811000"
+            },
+            {
+                "max_addr": "0x1F82006F",
+                "min_addr": "0x1F820000"
+            },
+            {
+                "max_addr": "0x1F82026F",
+                "min_addr": "0x1F820200"
+            },
+            {
+                "max_addr": "0x1F82046F",
+                "min_addr": "0x1F820400"
+            },
+            {
+                "max_addr": "0x1F82066F",
+                "min_addr": "0x1F820600"
+            },
+            {
+                "max_addr": "0x1F82086F",
+                "min_addr": "0x1F820800"
+            },
+            {
+                "max_addr": "0x1F821023",
+                "min_addr": "0x1F821000"
+            },
+            {
+                "max_addr": "0x1F82104F",
+                "min_addr": "0x1F821030"
+            },
+            {
+                "max_addr": "0x1F821223",
+                "min_addr": "0x1F821200"
+            },
+            {
+                "max_addr": "0x1F82124F",
+                "min_addr": "0x1F821230"
+            },
+            {
+                "max_addr": "0x1F821423",
+                "min_addr": "0x1F821400"
+            },
+            {
+                "max_addr": "0x1F82144F",
+                "min_addr": "0x1F821430"
+            },
+            {
+                "max_addr": "0x1F821623",
+                "min_addr": "0x1F821600"
+            },
+            {
+                "max_addr": "0x1F82164F",
+                "min_addr": "0x1F821630"
+            },
+            {
+                "max_addr": "0x1F821823",
+                "min_addr": "0x1F821800"
+            },
+            {
+                "max_addr": "0x1F82184F",
+                "min_addr": "0x1F821830"
+            },
+            {
+                "max_addr": "0x1F821A23",
+                "min_addr": "0x1F821A00"
+            },
+            {
+                "max_addr": "0x1F821A4F",
+                "min_addr": "0x1F821A30"
+            },
+            {
+                "max_addr": "0x1F822023",
+                "min_addr": "0x1F822000"
+            },
+            {
+                "max_addr": "0x1F822033",
+                "min_addr": "0x1F822030"
+            },
+            {
+                "max_addr": "0x1F82204F",
+                "min_addr": "0x1F822040"
+            },
+            {
+                "max_addr": "0x1F822223",
+                "min_addr": "0x1F822200"
+            },
+            {
+                "max_addr": "0x1F822233",
+                "min_addr": "0x1F822230"
+            },
+            {
+                "max_addr": "0x1F82224F",
+                "min_addr": "0x1F822240"
+            },
+            {
+                "max_addr": "0x1F822423",
+                "min_addr": "0x1F822400"
+            },
+            {
+                "max_addr": "0x1F822433",
+                "min_addr": "0x1F822430"
+            },
+            {
+                "max_addr": "0x1F82244F",
+                "min_addr": "0x1F822440"
+            },
+            {
+                "max_addr": "0x1F822623",
+                "min_addr": "0x1F822600"
+            },
+            {
+                "max_addr": "0x1F822633",
+                "min_addr": "0x1F822630"
+            },
+            {
+                "max_addr": "0x1F82264F",
+                "min_addr": "0x1F822640"
+            },
+            {
+                "max_addr": "0x1F822823",
+                "min_addr": "0x1F822800"
+            },
+            {
+                "max_addr": "0x1F822833",
+                "min_addr": "0x1F822830"
+            },
+            {
+                "max_addr": "0x1F82284F",
+                "min_addr": "0x1F822840"
+            },
+            {
+                "max_addr": "0x1F822A23",
+                "min_addr": "0x1F822A00"
+            },
+            {
+                "max_addr": "0x1F822A33",
+                "min_addr": "0x1F822A30"
+            },
+            {
+                "max_addr": "0x1F822A4F",
+                "min_addr": "0x1F822A40"
+            },
+            {
+                "max_addr": "0x1F82E09F",
+                "min_addr": "0x1F82E000"
+            },
+            {
+                "max_addr": "0x1F84002F",
+                "min_addr": "0x1F840000"
+            },
+            {
+                "max_addr": "0x1F84022F",
+                "min_addr": "0x1F840200"
+            },
+            {
+                "max_addr": "0x1F84042F",
+                "min_addr": "0x1F840400"
+            },
+            {
+                "max_addr": "0x1F84062F",
+                "min_addr": "0x1F840600"
+            },
+            {
+                "max_addr": "0x1F84082F",
+                "min_addr": "0x1F840800"
+            },
+            {
+                "max_addr": "0x1F840A2F",
+                "min_addr": "0x1F840A00"
+            },
+            {
+                "max_addr": "0x1F840C2F",
+                "min_addr": "0x1F840C00"
+            },
+            {
+                "max_addr": "0x1F840E2F",
+                "min_addr": "0x1F840E00"
+            },
+            {
+                "max_addr": "0x1F84102F",
+                "min_addr": "0x1F841000"
+            },
+            {
+                "max_addr": "0x1F842013",
+                "min_addr": "0x1F842000"
+            },
+            {
+                "max_addr": "0x1F842213",
+                "min_addr": "0x1F842200"
+            },
+            {
+                "max_addr": "0x1F842413",
+                "min_addr": "0x1F842400"
+            },
+            {
+                "max_addr": "0x1F842613",
+                "min_addr": "0x1F842600"
+            },
+            {
+                "max_addr": "0x1F842813",
+                "min_addr": "0x1F842800"
+            },
+            {
+                "max_addr": "0x1F842A13",
+                "min_addr": "0x1F842A00"
+            },
+            {
+                "max_addr": "0x1F842C13",
+                "min_addr": "0x1F842C00"
+            },
+            {
+                "max_addr": "0x1F842E13",
+                "min_addr": "0x1F842E00"
+            },
+            {
+                "max_addr": "0x1F843013",
+                "min_addr": "0x1F843000"
+            },
+            {
+                "max_addr": "0x1F84402F",
+                "min_addr": "0x1F844000"
+            },
+            {
+                "max_addr": "0x1F84422F",
+                "min_addr": "0x1F844200"
+            },
+            {
+                "max_addr": "0x1F84442F",
+                "min_addr": "0x1F844400"
+            },
+            {
+                "max_addr": "0x1F84462F",
+                "min_addr": "0x1F844600"
+            },
+            {
+                "max_addr": "0x1F84482F",
+                "min_addr": "0x1F844800"
+            },
+            {
+                "max_addr": "0x1F844A2F",
+                "min_addr": "0x1F844A00"
+            },
+            {
+                "max_addr": "0x1F844C2F",
+                "min_addr": "0x1F844C00"
+            },
+            {
+                "max_addr": "0x1F844E2F",
+                "min_addr": "0x1F844E00"
+            },
+            {
+                "max_addr": "0x1F84502F",
+                "min_addr": "0x1F845000"
+            },
+            {
+                "max_addr": "0x1F84B01B",
+                "min_addr": "0x1F84B000"
+            },
+            {
+                "max_addr": "0x1F84B08B",
+                "min_addr": "0x1F84B020"
+            },
+            {
+                "max_addr": "0x1F84B0C3",
+                "min_addr": "0x1F84B0A0"
+            },
+            {
+                "max_addr": "0x1F84B0E7",
+                "min_addr": "0x1F84B0D0"
+            },
+            {
+                "max_addr": "0x1F84B103",
+                "min_addr": "0x1F84B0F0"
+            },
+            {
+                "max_addr": "0x1F84B193",
+                "min_addr": "0x1F84B180"
+            },
+            {
+                "max_addr": "0x1F84B19F",
+                "min_addr": "0x1F84B19C"
+            },
+            {
+                "max_addr": "0x1F84B1C7",
+                "min_addr": "0x1F84B1C0"
+            },
+            {
+                "max_addr": "0x1F84B2B3",
+                "min_addr": "0x1F84B200"
+            },
+            {
+                "max_addr": "0x1F84C01F",
+                "min_addr": "0x1F84C000"
+            },
+            {
+                "max_addr": "0x1F84C06F",
+                "min_addr": "0x1F84C060"
+            },
+            {
+                "max_addr": "0x1F8600DF",
+                "min_addr": "0x1F860000"
+            },
+            {
+                "max_addr": "0x1F8601DF",
+                "min_addr": "0x1F860100"
+            },
+            {
+                "max_addr": "0x1F8602BF",
+                "min_addr": "0x1F860200"
+            },
+            {
+                "max_addr": "0x1F8603BF",
+                "min_addr": "0x1F860300"
+            },
+            {
+                "max_addr": "0x1F8604DF",
+                "min_addr": "0x1F860400"
+            },
+            {
+                "max_addr": "0x1F8605DF",
+                "min_addr": "0x1F860500"
+            },
+            {
+                "max_addr": "0x1F8606DF",
+                "min_addr": "0x1F860600"
+            },
+            {
+                "max_addr": "0x1F8607BF",
+                "min_addr": "0x1F860700"
+            },
+            {
+                "max_addr": "0x1F8608BF",
+                "min_addr": "0x1F860800"
+            },
+            {
+                "max_addr": "0x1F8609BF",
+                "min_addr": "0x1F860910"
+            },
+            {
+                "max_addr": "0x1F880B4F",
+                "min_addr": "0x1F880000"
+            },
+            {
+                "max_addr": "0x1F881B4F",
+                "min_addr": "0x1F881000"
+            },
+            {
+                "max_addr": "0x1F8820EF",
+                "min_addr": "0x1F882000"
+            },
+            {
+                "max_addr": "0x1F88216F",
+                "min_addr": "0x1F882100"
+            },
+            {
+                "max_addr": "0x1F8822DF",
+                "min_addr": "0x1F882200"
+            },
+            {
+                "max_addr": "0x1F88232F",
+                "min_addr": "0x1F882300"
+            },
+            {
+                "max_addr": "0x1F884003",
+                "min_addr": "0x1F884000"
+            },
+            {
+                "max_addr": "0x1F8E001F",
+                "min_addr": "0x1F8E0000"
+            },
+            {
+                "max_addr": "0x1F8E1023",
+                "min_addr": "0x1F8E1014"
+            },
+            {
+                "max_addr": "0x1F8E1063",
+                "min_addr": "0x1F8E1054"
+            },
+            {
+                "max_addr": "0x1F8E10A7",
+                "min_addr": "0x1F8E1094"
+            },
+            {
+                "max_addr": "0x1F8E203B",
+                "min_addr": "0x1F8E2000"
+            },
+            {
+                "max_addr": "0x1F8E206B",
+                "min_addr": "0x1F8E2040"
+            },
+            {
+                "max_addr": "0x1F8E303F",
+                "min_addr": "0x1F8E3000"
+            },
+            {
+                "max_addr": "0x1F8E3067",
+                "min_addr": "0x1F8E3060"
+            },
+            {
+                "max_addr": "0x1F8E306F",
+                "min_addr": "0x1F8E306C"
+            },
+            {
+                "max_addr": "0x1F8E30BF",
+                "min_addr": "0x1F8E3078"
+            },
+            {
+                "max_addr": "0x1F8E3103",
+                "min_addr": "0x1F8E3100"
+            },
+            {
+                "max_addr": "0x1F8E317F",
+                "min_addr": "0x1F8E3108"
+            },
+            {
+                "max_addr": "0x1F8E320F",
+                "min_addr": "0x1F8E3200"
+            },
+            {
+                "max_addr": "0x1F8E321F",
+                "min_addr": "0x1F8E3214"
+            },
+            {
+                "max_addr": "0x1F8E322F",
+                "min_addr": "0x1F8E3224"
+            },
+            {
+                "max_addr": "0x1F8E323F",
+                "min_addr": "0x1F8E3234"
+            },
+            {
+                "max_addr": "0x1F8E324F",
+                "min_addr": "0x1F8E3244"
+            },
+            {
+                "max_addr": "0x1F8E325F",
+                "min_addr": "0x1F8E3254"
+            },
+            {
+                "max_addr": "0x1F8E326F",
+                "min_addr": "0x1F8E3264"
+            },
+            {
+                "max_addr": "0x1F8E327F",
+                "min_addr": "0x1F8E3274"
+            },
+            {
+                "max_addr": "0x1F8E331F",
+                "min_addr": "0x1F8E3304"
+            },
+            {
+                "max_addr": "0x1F8E334B",
+                "min_addr": "0x1F8E3340"
+            },
+            {
+                "max_addr": "0x1F8E3367",
+                "min_addr": "0x1F8E3360"
+            },
+            {
+                "max_addr": "0x1F8E6023",
+                "min_addr": "0x1F8E6000"
+            },
+            {
+                "max_addr": "0x1F8F0513",
+                "min_addr": "0x1F8F0510"
+            },
+            {
+                "max_addr": "0x1F8F802B",
+                "min_addr": "0x1F8F8020"
+            },
+            {
+                "max_addr": "0x1F8F8033",
+                "min_addr": "0x1F8F8030"
+            },
+            {
+                "max_addr": "0x1F8F803B",
+                "min_addr": "0x1F8F8038"
+            },
+            {
+                "max_addr": "0x1F8F8043",
+                "min_addr": "0x1F8F8040"
+            },
+            {
+                "max_addr": "0x1F8F8053",
+                "min_addr": "0x1F8F8050"
+            },
+            {
+                "max_addr": "0x1F8F805B",
+                "min_addr": "0x1F8F8058"
+            },
+            {
+                "max_addr": "0x1F8F8063",
+                "min_addr": "0x1F8F8060"
+            },
+            {
+                "max_addr": "0x1F8F8073",
+                "min_addr": "0x1F8F8070"
+            },
+            {
+                "max_addr": "0x1F8F807B",
+                "min_addr": "0x1F8F8078"
+            },
+            {
+                "max_addr": "0x1F8F842B",
+                "min_addr": "0x1F8F8420"
+            },
+            {
+                "max_addr": "0x1F8F8433",
+                "min_addr": "0x1F8F8430"
+            },
+            {
+                "max_addr": "0x1F8F843B",
+                "min_addr": "0x1F8F8438"
+            },
+            {
+                "max_addr": "0x1F8F8443",
+                "min_addr": "0x1F8F8440"
+            },
+            {
+                "max_addr": "0x1F8F8453",
+                "min_addr": "0x1F8F8450"
+            },
+            {
+                "max_addr": "0x1F8F845B",
+                "min_addr": "0x1F8F8458"
+            },
+            {
+                "max_addr": "0x1F8F8483",
+                "min_addr": "0x1F8F8480"
+            },
+            {
+                "max_addr": "0x1F8F8493",
+                "min_addr": "0x1F8F8490"
+            },
+            {
+                "max_addr": "0x1F8F849B",
+                "min_addr": "0x1F8F8498"
+            },
+            {
+                "max_addr": "0x1F8F84A3",
+                "min_addr": "0x1F8F84A0"
+            },
+            {
+                "max_addr": "0x1F8F84B3",
+                "min_addr": "0x1F8F84B0"
+            },
+            {
+                "max_addr": "0x1F8F84BB",
+                "min_addr": "0x1F8F84B8"
+            },
+            {
+                "max_addr": "0x1F8F84C3",
+                "min_addr": "0x1F8F84C0"
+            },
+            {
+                "max_addr": "0x1F8F84D3",
+                "min_addr": "0x1F8F84D0"
+            },
+            {
+                "max_addr": "0x1F8F84DB",
+                "min_addr": "0x1F8F84D8"
+            },
+            {
+                "max_addr": "0x1F8F84E3",
+                "min_addr": "0x1F8F84E0"
+            },
+            {
+                "max_addr": "0x1F8F84F3",
+                "min_addr": "0x1F8F84F0"
+            },
+            {
+                "max_addr": "0x1F8F84FB",
+                "min_addr": "0x1F8F84F8"
+            },
+            {
+                "max_addr": "0x1F8F8503",
+                "min_addr": "0x1F8F8500"
+            },
+            {
+                "max_addr": "0x1F8F8513",
+                "min_addr": "0x1F8F8510"
+            },
+            {
+                "max_addr": "0x1F8F851B",
+                "min_addr": "0x1F8F8518"
+            },
+            {
+                "max_addr": "0x1F8F8523",
+                "min_addr": "0x1F8F8520"
+            },
+            {
+                "max_addr": "0x1F8F8533",
+                "min_addr": "0x1F8F8530"
+            },
+            {
+                "max_addr": "0x1F8F853B",
+                "min_addr": "0x1F8F8538"
+            },
+            {
+                "max_addr": "0x1F8F8543",
+                "min_addr": "0x1F8F8540"
+            },
+            {
+                "max_addr": "0x1F8F8553",
+                "min_addr": "0x1F8F8550"
+            },
+            {
+                "max_addr": "0x1F8F855B",
+                "min_addr": "0x1F8F8558"
+            },
+            {
+                "max_addr": "0x1F8F882B",
+                "min_addr": "0x1F8F8820"
+            },
+            {
+                "max_addr": "0x1F8F8833",
+                "min_addr": "0x1F8F8830"
+            },
+            {
+                "max_addr": "0x1F8F883B",
+                "min_addr": "0x1F8F8838"
+            },
+            {
+                "max_addr": "0x1F8F8843",
+                "min_addr": "0x1F8F8840"
+            },
+            {
+                "max_addr": "0x1F8F8853",
+                "min_addr": "0x1F8F8850"
+            },
+            {
+                "max_addr": "0x1F8F885B",
+                "min_addr": "0x1F8F8858"
+            },
+            {
+                "max_addr": "0x1F8F8863",
+                "min_addr": "0x1F8F8860"
+            },
+            {
+                "max_addr": "0x1F8F8873",
+                "min_addr": "0x1F8F8870"
+            },
+            {
+                "max_addr": "0x1F8F887B",
+                "min_addr": "0x1F8F8878"
+            },
+            {
+                "max_addr": "0x1F8F8883",
+                "min_addr": "0x1F8F8880"
+            },
+            {
+                "max_addr": "0x1F8F8893",
+                "min_addr": "0x1F8F8890"
+            },
+            {
+                "max_addr": "0x1F8F889B",
+                "min_addr": "0x1F8F8898"
+            },
+            {
+                "max_addr": "0x1F8F8C2B",
+                "min_addr": "0x1F8F8C20"
+            },
+            {
+                "max_addr": "0x1F8F8C33",
+                "min_addr": "0x1F8F8C30"
+            },
+            {
+                "max_addr": "0x1F8F8C3B",
+                "min_addr": "0x1F8F8C38"
+            },
+            {
+                "max_addr": "0x1F8F8C43",
+                "min_addr": "0x1F8F8C40"
+            },
+            {
+                "max_addr": "0x1F8F8C53",
+                "min_addr": "0x1F8F8C50"
+            },
+            {
+                "max_addr": "0x1F8F8C5B",
+                "min_addr": "0x1F8F8C58"
+            },
+            {
+                "max_addr": "0x1F8F8C63",
+                "min_addr": "0x1F8F8C60"
+            },
+            {
+                "max_addr": "0x1F8F8C73",
+                "min_addr": "0x1F8F8C70"
+            },
+            {
+                "max_addr": "0x1F8F8C7B",
+                "min_addr": "0x1F8F8C78"
+            },
+            {
+                "max_addr": "0x1F8F8C83",
+                "min_addr": "0x1F8F8C80"
+            },
+            {
+                "max_addr": "0x1F8F8C93",
+                "min_addr": "0x1F8F8C90"
+            },
+            {
+                "max_addr": "0x1F8F8C9B",
+                "min_addr": "0x1F8F8C98"
+            },
+            {
+                "max_addr": "0x1F8F902B",
+                "min_addr": "0x1F8F9020"
+            },
+            {
+                "max_addr": "0x1F8F9033",
+                "min_addr": "0x1F8F9030"
+            },
+            {
+                "max_addr": "0x1F8F903B",
+                "min_addr": "0x1F8F9038"
+            },
+            {
+                "max_addr": "0x1F8F9043",
+                "min_addr": "0x1F8F9040"
+            },
+            {
+                "max_addr": "0x1F8F9053",
+                "min_addr": "0x1F8F9050"
+            },
+            {
+                "max_addr": "0x1F8F905B",
+                "min_addr": "0x1F8F9058"
+            },
+            {
+                "max_addr": "0x1F8F9083",
+                "min_addr": "0x1F8F9080"
+            },
+            {
+                "max_addr": "0x1F8F9093",
+                "min_addr": "0x1F8F9090"
+            },
+            {
+                "max_addr": "0x1F8F909B",
+                "min_addr": "0x1F8F9098"
+            },
+            {
+                "max_addr": "0x1F8F942B",
+                "min_addr": "0x1F8F9420"
+            },
+            {
+                "max_addr": "0x1F8F9433",
+                "min_addr": "0x1F8F9430"
+            },
+            {
+                "max_addr": "0x1F8F943B",
+                "min_addr": "0x1F8F9438"
+            },
+            {
+                "max_addr": "0x1F8F9443",
+                "min_addr": "0x1F8F9440"
+            },
+            {
+                "max_addr": "0x1F8F9453",
+                "min_addr": "0x1F8F9450"
+            },
+            {
+                "max_addr": "0x1F8F945B",
+                "min_addr": "0x1F8F9458"
+            },
+            {
+                "max_addr": "0x1F8F9463",
+                "min_addr": "0x1F8F9460"
+            },
+            {
+                "max_addr": "0x1F8F9473",
+                "min_addr": "0x1F8F9470"
+            },
+            {
+                "max_addr": "0x1F8F947B",
+                "min_addr": "0x1F8F9478"
+            },
+            {
+                "max_addr": "0x1F8F9483",
+                "min_addr": "0x1F8F9480"
+            },
+            {
+                "max_addr": "0x1F8F9493",
+                "min_addr": "0x1F8F9490"
+            },
+            {
+                "max_addr": "0x1F8F949B",
+                "min_addr": "0x1F8F9498"
+            },
+            {
+                "max_addr": "0x1F8F982B",
+                "min_addr": "0x1F8F9820"
+            },
+            {
+                "max_addr": "0x1F8F9833",
+                "min_addr": "0x1F8F9830"
+            },
+            {
+                "max_addr": "0x1F8F983B",
+                "min_addr": "0x1F8F9838"
+            },
+            {
+                "max_addr": "0x1F8F9843",
+                "min_addr": "0x1F8F9840"
+            },
+            {
+                "max_addr": "0x1F8F9853",
+                "min_addr": "0x1F8F9850"
+            },
+            {
+                "max_addr": "0x1F8F985B",
+                "min_addr": "0x1F8F9858"
+            },
+            {
+                "max_addr": "0x1F8F9863",
+                "min_addr": "0x1F8F9860"
+            },
+            {
+                "max_addr": "0x1F8F9873",
+                "min_addr": "0x1F8F9870"
+            },
+            {
+                "max_addr": "0x1F8F987B",
+                "min_addr": "0x1F8F9878"
+            },
+            {
+                "max_addr": "0x1F8F9C2B",
+                "min_addr": "0x1F8F9C20"
+            },
+            {
+                "max_addr": "0x1F8F9C33",
+                "min_addr": "0x1F8F9C30"
+            },
+            {
+                "max_addr": "0x1F8F9C3B",
+                "min_addr": "0x1F8F9C38"
+            },
+            {
+                "max_addr": "0x1F8F9C43",
+                "min_addr": "0x1F8F9C40"
+            },
+            {
+                "max_addr": "0x1F8F9C53",
+                "min_addr": "0x1F8F9C50"
+            },
+            {
+                "max_addr": "0x1F8F9C5B",
+                "min_addr": "0x1F8F9C58"
+            },
+            {
+                "max_addr": "0x1F8F9C63",
+                "min_addr": "0x1F8F9C60"
+            },
+            {
+                "max_addr": "0x1F8F9C73",
+                "min_addr": "0x1F8F9C70"
+            },
+            {
+                "max_addr": "0x1F8F9C7B",
+                "min_addr": "0x1F8F9C78"
+            },
+            {
+                "max_addr": "0x1F8FA02B",
+                "min_addr": "0x1F8FA020"
+            },
+            {
+                "max_addr": "0x1F8FA033",
+                "min_addr": "0x1F8FA030"
+            },
+            {
+                "max_addr": "0x1F8FA03B",
+                "min_addr": "0x1F8FA038"
+            },
+            {
+                "max_addr": "0x1F8FA043",
+                "min_addr": "0x1F8FA040"
+            },
+            {
+                "max_addr": "0x1F8FA053",
+                "min_addr": "0x1F8FA050"
+            },
+            {
+                "max_addr": "0x1F8FA05B",
+                "min_addr": "0x1F8FA058"
+            },
+            {
+                "max_addr": "0x1F8FA063",
+                "min_addr": "0x1F8FA060"
+            },
+            {
+                "max_addr": "0x1F8FA073",
+                "min_addr": "0x1F8FA070"
+            },
+            {
+                "max_addr": "0x1F8FA07B",
+                "min_addr": "0x1F8FA078"
+            },
+            {
+                "max_addr": "0x1F8FA42B",
+                "min_addr": "0x1F8FA420"
+            },
+            {
+                "max_addr": "0x1F8FA433",
+                "min_addr": "0x1F8FA430"
+            },
+            {
+                "max_addr": "0x1F8FA43B",
+                "min_addr": "0x1F8FA438"
+            },
+            {
+                "max_addr": "0x1F8FA443",
+                "min_addr": "0x1F8FA440"
+            },
+            {
+                "max_addr": "0x1F8FA453",
+                "min_addr": "0x1F8FA450"
+            },
+            {
+                "max_addr": "0x1F8FA45B",
+                "min_addr": "0x1F8FA458"
+            },
+            {
+                "max_addr": "0x1F8FA463",
+                "min_addr": "0x1F8FA460"
+            },
+            {
+                "max_addr": "0x1F8FA473",
+                "min_addr": "0x1F8FA470"
+            },
+            {
+                "max_addr": "0x1F8FA47B",
+                "min_addr": "0x1F8FA478"
+            },
+            {
+                "max_addr": "0x1F8FA82B",
+                "min_addr": "0x1F8FA820"
+            },
+            {
+                "max_addr": "0x1F8FA833",
+                "min_addr": "0x1F8FA830"
+            },
+            {
+                "max_addr": "0x1F8FA83B",
+                "min_addr": "0x1F8FA838"
+            },
+            {
+                "max_addr": "0x1F8FA843",
+                "min_addr": "0x1F8FA840"
+            },
+            {
+                "max_addr": "0x1F8FA853",
+                "min_addr": "0x1F8FA850"
+            },
+            {
+                "max_addr": "0x1F8FA85B",
+                "min_addr": "0x1F8FA858"
+            },
+            {
+                "max_addr": "0x1F8FAC2B",
+                "min_addr": "0x1F8FAC20"
+            },
+            {
+                "max_addr": "0x1F8FAC33",
+                "min_addr": "0x1F8FAC30"
+            },
+            {
+                "max_addr": "0x1F8FAC3B",
+                "min_addr": "0x1F8FAC38"
+            },
+            {
+                "max_addr": "0x1F8FAC43",
+                "min_addr": "0x1F8FAC40"
+            },
+            {
+                "max_addr": "0x1F8FAC53",
+                "min_addr": "0x1F8FAC50"
+            },
+            {
+                "max_addr": "0x1F8FAC5B",
+                "min_addr": "0x1F8FAC58"
+            },
+            {
+                "max_addr": "0x1F8FAC63",
+                "min_addr": "0x1F8FAC60"
+            },
+            {
+                "max_addr": "0x1F8FAC73",
+                "min_addr": "0x1F8FAC70"
+            },
+            {
+                "max_addr": "0x1F8FAC7B",
+                "min_addr": "0x1F8FAC78"
+            },
+            {
+                "max_addr": "0x1F8FB02B",
+                "min_addr": "0x1F8FB020"
+            },
+            {
+                "max_addr": "0x1F8FB033",
+                "min_addr": "0x1F8FB030"
+            },
+            {
+                "max_addr": "0x1F8FB03B",
+                "min_addr": "0x1F8FB038"
+            },
+            {
+                "max_addr": "0x1F8FB043",
+                "min_addr": "0x1F8FB040"
+            },
+            {
+                "max_addr": "0x1F8FB053",
+                "min_addr": "0x1F8FB050"
+            },
+            {
+                "max_addr": "0x1F8FB05B",
+                "min_addr": "0x1F8FB058"
+            },
+            {
+                "max_addr": "0x1F8FB42B",
+                "min_addr": "0x1F8FB420"
+            },
+            {
+                "max_addr": "0x1F8FB433",
+                "min_addr": "0x1F8FB430"
+            },
+            {
+                "max_addr": "0x1F8FB43B",
+                "min_addr": "0x1F8FB438"
+            },
+            {
+                "max_addr": "0x1F8FB443",
+                "min_addr": "0x1F8FB440"
+            },
+            {
+                "max_addr": "0x1F8FB453",
+                "min_addr": "0x1F8FB450"
+            },
+            {
+                "max_addr": "0x1F8FB45B",
+                "min_addr": "0x1F8FB458"
+            },
+            {
+                "max_addr": "0x1FC0FF7F",
+                "min_addr": "0x1FC0FF40"
+            },
+            {
+                "max_addr": "0x1FC0FFFF",
+                "min_addr": "0x1FC0FFC0"
+            },
+            {
+                "max_addr": "0x1FC2FF7F",
+                "min_addr": "0x1FC2FF40"
+            },
+            {
+                "max_addr": "0x1FC2FFFF",
+                "min_addr": "0x1FC2FFC0"
+            },
+            {
+                "max_addr": "0x1FC4FF7F",
+                "min_addr": "0x1FC4FF40"
+            },
+            {
+                "max_addr": "0x1FC4FFFF",
+                "min_addr": "0x1FC4FFC0"
+            },
+            {
+                "max_addr": "0x1FC54013",
+                "min_addr": "0x1FC54000"
+            },
+            {
+                "max_addr": "0x1FC54027",
+                "min_addr": "0x1FC5401C"
+            },
+            {
+                "max_addr": "0x1FC6FF7F",
+                "min_addr": "0x1FC6FF40"
+            }
+        ]
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "3.300",
+        "range": {
+            "max_value": "3.600",
+            "min_value": "2.700"
+        }
+    },
+    "clock": "200"
+}

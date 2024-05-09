@@ -1,0 +1,236 @@
+{
+    "badram": [
+        {
+            "max_addr": "0x7f",
+            "min_addr": "0x50"
+        },
+        {
+            "max_addr": "0xff",
+            "min_addr": "0xd0"
+        },
+        {
+            "max_addr": "0x7",
+            "min_addr": "0x7"
+        },
+        {
+            "max_addr": "0x87",
+            "min_addr": "0x87"
+        }
+    ],
+    "bank": [
+        {
+            "max_addr": "0x007F",
+            "min_addr": "0x0000",
+            "number": "0"
+        },
+        {
+            "max_addr": "0x00FF",
+            "min_addr": "0x0080",
+            "number": "1"
+        },
+        {
+            "max_addr": "0x017F",
+            "min_addr": "0x0100",
+            "number": "2"
+        },
+        {
+            "max_addr": "0x01FF",
+            "min_addr": "0x0180",
+            "number": "3"
+        }
+    ],
+    "callstack": {
+        "max": "0x8"
+    },
+    "config_registers": [
+        {
+            "address": "00002007",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "FOSC",
+                    "label": "Oscillator Selection",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "RC oscillator",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "HS oscillator",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "XT oscillator",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "LP oscillator",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "WDTE",
+                    "label": "Watchdog Timer",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "PWRTE",
+                    "label": "Power-up Timer",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003FF0",
+                    "key": "CP",
+                    "label": "Code Protection",
+                    "mask": "00003FF0",
+                    "settings": [
+                        {
+                            "label": "Code protection off",
+                            "value": "00003FF0"
+                        },
+                        {
+                            "label": "Program memory is code protected",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG",
+            "unused": "00000000"
+        }
+    ],
+    "core": "P16",
+    "delay_src_path": "delays/p16/__lib_delays.c",
+    "eeprom": {
+        "max_addr": "0x3f",
+        "min_addr": "0x0"
+    },
+    "ivt": {
+        "address": "0x0004",
+        "ilevel": "0x0000",
+        "name": "Interrupt"
+    },
+    "mappedmemory": [
+        {
+            "map": [
+                {
+                    "max_addr": "0xb",
+                    "min_addr": "0xa"
+                },
+                {
+                    "max_addr": "0x8b",
+                    "min_addr": "0x8a"
+                }
+            ]
+        },
+        {
+            "map": [
+                {
+                    "max_addr": "0x4",
+                    "min_addr": "0x2"
+                },
+                {
+                    "max_addr": "0x84",
+                    "min_addr": "0x82"
+                }
+            ]
+        },
+        {
+            "map": [
+                {
+                    "max_addr": "0x0",
+                    "min_addr": "0x0"
+                },
+                {
+                    "max_addr": "0x80",
+                    "min_addr": "0x80"
+                }
+            ]
+        },
+        {
+            "map": [
+                {
+                    "max_addr": "0x4f",
+                    "min_addr": "0xc"
+                },
+                {
+                    "max_addr": "0xcf",
+                    "min_addr": "0x8c"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F84A",
+    "prog_options": {
+        "codegrip": {
+            "debugging": "False",
+            "programming": "False"
+        },
+        "mikroprog": {
+            "debugging": "False",
+            "programming": "True"
+        }
+    },
+    "ram": {
+        "data": [
+            {
+                "max_addr": "0x003F",
+                "min_addr": "0x000C"
+            },
+            {
+                "max_addr": "0x007F",
+                "min_addr": "0x0050"
+            },
+            {
+                "max_addr": "0x00FF",
+                "min_addr": "0x00D0"
+            }
+        ]
+    },
+    "rom": {
+        "max_addr": "0x3ff",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x4f",
+        "min_addr": "0x0040"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "5.000",
+        "range": {
+            "max_value": "5.500",
+            "min_value": "4.500"
+        }
+    },
+    "clock": "1"
+}

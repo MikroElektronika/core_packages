@@ -1,0 +1,591 @@
+{
+    "config_words": [
+        {
+            "init": "OFF",
+            "key": "BWRP",
+            "label": "Table Write Protect Boot",
+            "settings": [
+                {
+                    "label": "Boot segment is write-protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "Boot segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BSS",
+            "label": "Boot segment Protect",
+            "settings": [
+                {
+                    "label": "High security, boot program Flash segment starts at 200h, ends at 0015FEh",
+                    "value": "HI2K"
+                },
+                {
+                    "label": "High security boot program Flash segment starts at 200h, ends at 000AFEh",
+                    "value": "HI1K"
+                },
+                {
+                    "label": "Standard security, boot program Flash segment starts at 200h, ends at 0015FEh",
+                    "value": "STD2K"
+                },
+                {
+                    "label": "Standard security, boot program Flash segment starts at 200h, ends at 000AFEh",
+                    "value": "STD1K"
+                },
+                {
+                    "label": "No boot program Flash segment",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Segment Code Flash Write Protection bit",
+            "settings": [
+                {
+                    "label": "General segment is write-protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "General segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GCP",
+            "label": "General Segment Code Flash Code Protection bit",
+            "settings": [
+                {
+                    "label": "Standard security enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "No protection",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "PRIPLL",
+            "key": "FNOSC",
+            "label": "Oscillator Select",
+            "settings": [
+                {
+                    "label": "Fast RC oscillator (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC oscillator with divide-by-N with PLL module (FRCDIV+PLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary oscillator with PLL module (HS+PLL, EC+PLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Secondary oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low-Power RC oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "500 kHz Low-Power FRC oscillator with divide-by-N (LPFRCDIV)",
+                    "value": "LPFRC"
+                },
+                {
+                    "label": "8 MHz FRC oscillator with divide-by-N (FRCDIV)",
+                    "value": "FRCDIV"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "IESO",
+            "label": "Internal External Switch Over bit",
+            "settings": [
+                {
+                    "label": "Internal External Switchover mode disabled (Two-Speed Start-up disabled)",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Internal External Switchover mode enabled (Two-Speed Start-up enabled)",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "HS",
+            "key": "POSCMOD",
+            "label": "Primary Oscillator Configuration bits",
+            "settings": [
+                {
+                    "label": "External clock mode selected",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT oscillator mode selected",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS oscillator mode selected",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary oscillator disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "CLKO Enable Configuration bit",
+            "settings": [
+                {
+                    "label": "CLKO output disabled; pin functions as port I/O",
+                    "value": "ON"
+                },
+                {
+                    "label": "CLKO output signal is active on the OSCO pin",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "HS",
+            "key": "POSCFREQ",
+            "label": "Primary Oscillator Frequency Range Configuration bits",
+            "settings": [
+                {
+                    "label": "Primary oscillator/external clock input frequency less than 100 kHz",
+                    "value": "LS"
+                },
+                {
+                    "label": "Primary oscillator/external clock input frequency between 100 kHz and 8 MHz",
+                    "value": "MS"
+                },
+                {
+                    "label": "Primary oscillator/external clock input frequency greater than 8 MHz",
+                    "value": "HS"
+                }
+            ]
+        },
+        {
+            "init": "SOSCHP",
+            "key": "SOSCSEL",
+            "label": "SOSC Power Selection Configuration bits",
+            "settings": [
+                {
+                    "label": "Secondary oscillator configured for low-power operation",
+                    "value": "SOSCLP"
+                },
+                {
+                    "label": "Secondary oscillator configured for high-power operation",
+                    "value": "SOSCHP"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor Selection",
+            "settings": [
+                {
+                    "label": "Both Clock Switching and Fail-safe Clock Monitor are enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock switching is enabled, Fail-Safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Both Clock Switching and Fail-safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscale Select bits",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "FWPSA",
+            "label": "WDT Prescaler",
+            "settings": [
+                {
+                    "label": "WDT prescaler ratio of 1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "WDT prescaler ratio of 1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Windowed Watchdog Timer Disable bit",
+            "settings": [
+                {
+                    "label": "Windowed WDT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Standard WDT selected; windowed WDT disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT disabled (control is placed on the SWDTEN bit)",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "BOR3",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset disabled in hardware; SBOREN bit disabled",
+                    "value": "BOR0"
+                },
+                {
+                    "label": "Brown-out Reset controlled with the SBOREN bit setting",
+                    "value": "BOR1"
+                },
+                {
+                    "label": "Brown-out Reset enabled only while device is active and disabled in Sleep; SBOREN bit disabled",
+                    "value": "BOR2"
+                },
+                {
+                    "label": "Brown-out Reset enabled in hardware; SBOREN bit disabled",
+                    "value": "BOR3"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PWRTEN",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PRI",
+            "key": "I2C1SEL",
+            "label": "Alternate I2C1 Pin Mapping bit",
+            "settings": [
+                {
+                    "label": "Alternate location for SCL1/SDA1 pins",
+                    "value": "SEC"
+                },
+                {
+                    "label": "Default location for SCL1/SDA1 pins",
+                    "value": "PRI"
+                }
+            ]
+        },
+        {
+            "init": "V18",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage bits",
+            "settings": [
+                {
+                    "label": "Low-power Brown-Out Reset occurs around 2.0V",
+                    "value": "LPBOR"
+                },
+                {
+                    "label": "Brown-out Reset set to Highest Voltage (2.7V)",
+                    "value": "V30"
+                },
+                {
+                    "label": "Brown-out Reset set at 2.0V",
+                    "value": "V27"
+                },
+                {
+                    "label": "Brown-out Reset set to lowest voltage (1.8V)",
+                    "value": "V18"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "MCLR Pin Enable bit",
+            "settings": [
+                {
+                    "label": "RA5 input pin enabled; MCLR disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "MCLR pin enabled; RA5 input pin disabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PGx1",
+            "key": "ICS",
+            "label": "ICD Pin Placement Select bits",
+            "settings": [
+                {
+                    "label": "PGC3/PGD3 are used for programming and debugging the device",
+                    "value": "PGx3"
+                },
+                {
+                    "label": "PGC2/PGD2 are used for programming and debugging the device",
+                    "value": "PGx2"
+                },
+                {
+                    "label": "PGC1/PGD1 are used for programming and debugging the device",
+                    "value": "PGx1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BKBUG",
+            "label": "Background Debugger Enable bit",
+            "settings": [
+                {
+                    "label": "Background debugger disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DSWDTPSF",
+            "key": "DSWDTPS",
+            "label": "Deep Sleep Watchdog Timer Postscale Select bits",
+            "settings": [
+                {
+                    "label": "1:2 (2.1 ms)",
+                    "value": "DSWDTPS0"
+                },
+                {
+                    "label": "1:8 (8.3 ms)",
+                    "value": "DSWDTPS1"
+                },
+                {
+                    "label": "1:32 (33 ms)",
+                    "value": "DSWDTPS2"
+                },
+                {
+                    "label": "1:128 (132 ms)",
+                    "value": "DSWDTPS3"
+                },
+                {
+                    "label": "1:512 (528 ms)",
+                    "value": "DSWDTPS4"
+                },
+                {
+                    "label": "1:2048 (2.1 Seconds)",
+                    "value": "DSWDTPS5"
+                },
+                {
+                    "label": "1:8192 (8.5 Seconds)",
+                    "value": "DSWDTPS6"
+                },
+                {
+                    "label": "1:32,768 (34 Seconds)",
+                    "value": "DSWDTPS7"
+                },
+                {
+                    "label": "1:131,072 (135 Seconds)",
+                    "value": "DSWDTPS8"
+                },
+                {
+                    "label": "1:524,288 (9 Minutes)",
+                    "value": "DSWDTPS9"
+                },
+                {
+                    "label": "1:2,097,152 (36 Minutes)",
+                    "value": "DSWDTPSA"
+                },
+                {
+                    "label": "1:8,388,608 (2.4 Hours)",
+                    "value": "DSWDTPSB"
+                },
+                {
+                    "label": "1:33,554,432 (9.6 Hours)",
+                    "value": "DSWDTPSC"
+                },
+                {
+                    "label": "1:134,217,728 (38.5 Hours)",
+                    "value": "DSWDTPSD"
+                },
+                {
+                    "label": "1:536,870,912 (6.4 Days)",
+                    "value": "DSWDTPSE"
+                },
+                {
+                    "label": "1:2,147,483,648 (25.7 Days)",
+                    "value": "DSWDTPSF"
+                }
+            ]
+        },
+        {
+            "init": "LPRC",
+            "key": "DSWDTOSC",
+            "label": "DSWDT Reference Clock Select bit",
+            "settings": [
+                {
+                    "label": "DSWDT uses SOSC as reference clock",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "DSWDT uses LPRC as reference clock",
+                    "value": "LPRC"
+                }
+            ]
+        },
+        {
+            "init": "SOSC",
+            "key": "RTCOSC",
+            "label": "RTCC Reference Clock Select bit",
+            "settings": [
+                {
+                    "label": "RTCC uses LPRC as reference clock",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "RTCC uses SOSC as reference clock",
+                    "value": "SOSC"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSBOREN",
+            "label": "Deep Sleep Zero-Power BOR Enable bit",
+            "settings": [
+                {
+                    "label": "Deep Sleep BOR disabled in Deep Sleep",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Deep Sleep BOR enabled in Deep Sleep",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSWDTEN",
+            "label": "Deep Sleep Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "DSWDT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "DSWDT enabled",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC24F16KA101",
+    "clock": 32
+}

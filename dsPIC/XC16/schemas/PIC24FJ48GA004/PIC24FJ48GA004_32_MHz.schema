@@ -1,0 +1,89 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/XC16/core/def/PIC24FJ48GA004.json",
+    "flash": 49152,
+    "ram": 8192,
+    "settings": {
+        "clock": "32",
+        "scheme": "PIC24FJ48GA004_32_MHz",
+        "mcu": "PIC24FJ48GA004",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "POSCMOD",
+                "value": "NONE"
+            },
+            {
+                "key": "I2C1SEL",
+                "value": "PRI"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "OSCIOFNC",
+                "value": "OFF"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSDCMD"
+            },
+            {
+                "key": "FNOSC",
+                "value": "FRCPLL"
+            },
+            {
+                "key": "SOSCSEL",
+                "value": "SOSC"
+            },
+            {
+                "key": "WUTSEL",
+                "value": "LEG"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "WDTPS",
+                "value": "PS32768"
+            },
+            {
+                "key": "FWPSA",
+                "value": "PR128"
+            },
+            {
+                "key": "WINDIS",
+                "value": "ON"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "ICS",
+                "value": "PGx1"
+            },
+            {
+                "key": "BKBUG",
+                "value": "OFF"
+            },
+            {
+                "key": "GWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "GCP",
+                "value": "OFF"
+            },
+            {
+                "key": "JTAGEN",
+                "value": "OFF"
+            }
+        ]
+    }
+}

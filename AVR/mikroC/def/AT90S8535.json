@@ -1,0 +1,413 @@
+{
+    "avr_core": "avr2",
+    "eeprom": {
+        "max_addr": "0x01FF",
+        "min_addr": "0x0000"
+    },
+    "fuse": {
+    "list": "[LOW]",
+        "low": {
+            "fuse1": {
+                "default": "0",
+                "name": "SPIEN",
+                "text": "Serial Program Downloading Enabled"
+            },
+            "fuse2": {
+                "default": "1",
+                "name": "FSTRT",
+                "text": "Short Start-up time selected"
+            },
+            "nmb_fuse_bits": "2",
+            "nmb_text": "2",
+            "text1": {
+                "mask": "0x20",
+            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x01",
+            "text": "Short start-up time enabled; [FSTRT=1]",
+                "value": "0x00"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x0010",
+            "desc": "Analog Comparator",
+            "name": "ANA_COMP"
+        },
+        {
+            "address": "0x000F",
+            "desc": "EEPROM Ready",
+            "name": "EE_RDY"
+        },
+        {
+            "address": "0x000E",
+            "desc": "ADC Conversion Complete",
+            "name": "ADC"
+        },
+        {
+            "address": "0x000D",
+            "desc": "UART, TX Complete",
+            "name": "UART,TX"
+        },
+        {
+            "address": "0x000C",
+            "desc": "UART Data Register Empty",
+            "name": "UART,UDRE"
+        },
+        {
+            "address": "0x000B",
+            "desc": "UART, RX Complete",
+            "name": "UART,RX"
+        },
+        {
+            "address": "0x000A",
+            "desc": "SPI Serial Transfer Complete",
+            "name": "SPI,STC"
+        },
+        {
+            "address": "0x0009",
+            "desc": "Timer/Counter0 Overflow",
+            "name": "TIMER0_OVF"
+        },
+        {
+            "address": "0x0008",
+            "desc": "Timer/Counter1 Overflow",
+            "name": "TIMER1_OVF"
+        },
+        {
+            "address": "0x0007",
+            "desc": "Timer/Counter1 Compare Match B",
+            "name": "TIMER1_COMPB"
+        },
+        {
+            "address": "0x0006",
+            "desc": "Timer/Counter1 Compare Match A",
+            "name": "TIMER1_COMPA"
+        },
+        {
+            "address": "0x0005",
+            "desc": "Timer/Counter1 Capture Event",
+            "name": "TIMER1_CAPT"
+        },
+        {
+            "address": "0x0004",
+            "desc": "Timer/Counter2 Overflow",
+            "name": "TIMER2_OVF"
+        },
+        {
+            "address": "0x0003",
+            "desc": "Timer/Counter2 Compare Match",
+            "name": "TIMER2_COMP"
+        },
+        {
+            "address": "0x0002",
+            "desc": "External Interrupt 1",
+            "name": "INT1"
+        },
+        {
+            "address": "0x0001",
+            "desc": "External Interrupt 0",
+            "name": "INT0"
+        }
+    ],
+    "mcu": "AT90S8535",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "package": {
+    "packages": "[TQFP]",
+        "tqfp": {
+            "nmb_pin": "44",
+            "pin1": {
+            "name": "[PB5:MOSI]",
+                "text": "MOSI: SPI Master data output, slave data input for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB5. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB5. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB5 bit. See the description of the SPI port for further details."
+            },
+            "pin10": {
+            "name": "[PD1:TXD]",
+                "text": "Transmit Data (data output pin for the UART). When the UART Transmitter is enabled, this pin is configured as an output, regardless of the value of DDD1."
+            },
+            "pin11": {
+            "name": "[PD2:INT0]",
+                "text": "INT0, External Interrupt source 0: The PD2 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
+            },
+            "pin12": {
+            "name": "[PD3:INT1]",
+                "text": "INT1, External Interrupt source 1: The PD3 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
+            },
+            "pin13": {
+            "name": "[PD4:OC1B]",
+            "text": "OC1B, Output compare matchB output: The PD4 pin can serve as an external output for the Timer/Counter1 output com-pareB. The pin has to be configured as an output (DDD4 set [one]) to serve this function. See the timer description on how to enable this function. The OC1B pin is also the output pin for the PWM mode timer function."
+            },
+            "pin14": {
+            "name": "[PD5:OC1A]",
+            "text": "OC1A, Output compare matchA output: The PD5 pin can serve as an external output for the Timer/Counter1 output com-pareA. The pin has to be configured as an output (DDD5 set [one]) to serve this function. See the timer description on how to enable this function. The OC1A pin is also the output pin for the PWM mode timer function."
+            },
+            "pin15": {
+            "name": "[PD6:ICP]",
+            "text": "ICP – Input Capture Pin: The PD6 pin can act as an input capture pin for Timer/Counter1. The pin has to be configured as an input (DDD6 cleared [zero]) to serve this function. See the timer description on how to enable this function."
+            },
+            "pin16": {
+            "name": "[PD7:OC2]",
+            "text": "OC2, Timer/Counter2 output compare match output: The PD7 pin can serve as an external output for the Timer/Counter2 output compare. The pin has to be configured as an output (DDD7 set [one]) to serve this function. See the timer descrip-tion on how to enable this function. The OC2 pin is also the output pin for the PWM mode timer function."
+            },
+            "pin17": {
+            "name": "[VCC]"
+            },
+            "pin18": {
+            "name": "[GND]"
+            },
+            "pin19": {
+            "name": "[PC0]"
+            },
+            "pin2": {
+            "name": "[PB6:MISO]",
+                "text": "MISO: Master data input, slave data output pin for SPI channel. When the SPI is enabled as a master, this pin is configured as an input regardless of the setting of DDB6. When the SPI is enabled as a slave, the data direction of this pin is controlled by DDB6. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB6 bit. See the description of the SPI port for further details."
+            },
+            "pin20": {
+            "name": "[PC1]"
+            },
+            "pin21": {
+            "name": "[PC2]"
+            },
+            "pin22": {
+            "name": "[PC3]"
+            },
+            "pin23": {
+            "name": "[PC4]"
+            },
+            "pin24": {
+            "name": "[PC5]"
+            },
+            "pin25": {
+            "name": "[PC6:TOSC1]"
+            },
+            "pin26": {
+            "name": "[PC7:TOSC2]"
+            },
+            "pin27": {
+            "name": "[AVCC]"
+            },
+            "pin28": {
+            "name": "[AGND]"
+            },
+            "pin29": {
+            "name": "[AREF]"
+            },
+            "pin3": {
+            "name": "[PB7_SCK]",
+                "text": "SCK: Master clock output, slave clock input pin for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB7. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB7. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB7 bit. See the description of the SPI port for further details."
+            },
+            "pin30": {
+            "name": "[PA7:ADC7]"
+            },
+            "pin31": {
+            "name": "[PA6:ADC6]"
+            },
+            "pin32": {
+            "name": "[PA5:ADc5]"
+            },
+            "pin33": {
+            "name": "[PA4:ADC4]"
+            },
+            "pin34": {
+            "name": "[PA3:ADC3]"
+            },
+            "pin35": {
+            "name": "[PA2:ADC2]"
+            },
+            "pin36": {
+            "name": "[PA1:ADC1]"
+            },
+            "pin37": {
+            "name": "[PA0:ADC0]"
+            },
+            "pin38": {
+            "name": "[VCC]"
+            },
+            "pin39": {
+            "name": "[GND]"
+            },
+            "pin4": {
+            "name": "['RESET]"
+            },
+            "pin40": {
+            "name": "[PB0:T0]",
+                "text": "T0: Timer/Counter0 counter source. See the timer description for further details."
+            },
+            "pin41": {
+            "name": "[PB1:T1]",
+                "text": "T1: Timer/Counter1 counter source. See the timer description for further details"
+            },
+            "pin42": {
+            "name": "[PB2:AIN0]",
+            "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
+            },
+            "pin43": {
+            "name": "[PB3:AIN1]",
+            "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
+            },
+            "pin44": {
+            "name": "[PB4:'SS]",
+                "text": "SS: Slave port select input. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB4. As a slave, the SPI is activated when this pin is driven low. When the SPI is enabled as a master, the data direc-tion of this pin is controlled by DDB4. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB4 bit. See the description of the SPI port for further details."
+            },
+            "pin5": {
+            "name": "[VCC]"
+            },
+            "pin6": {
+            "name": "[GND]"
+            },
+            "pin7": {
+            "name": "[XTAL2]"
+            },
+            "pin8": {
+            "name": "[XTAL1]"
+            },
+            "pin9": {
+            "name": "[PD0:RXD]",
+                "text": "Receive Data (data input pin for the UART). When the UART Receiver is enabled, this pin is configured as an input, regard-less of the value of DDD0. When the UART forces this pin to be an input, a logical “1” in PORTD0 will turn on the internal pull-up."
+            }
+        }
+    },
+    "ram": {
+        "max_addr": "0x025F",
+        "min_addr": "0x0060"
+    },
+    "rom": {
+        "max_addr": "0x0FFF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "RJMP",
+        "RCALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "LD",
+        "ST",
+        "MOV",
+        "LDI",
+        "IN",
+        "OUT",
+        "LPM",
+        "SBI",
+        "CBI",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "BSET",
+        "BCLR",
+        "BST",
+        "BLD",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "NOP",
+        "SLEEP",
+        "WDR",
+        "ADIW",
+        "SBIW",
+        "IJMP",
+        "ICALL",
+        "LDD",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDS",
+        "STD",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STS",
+        "PUSH",
+        "POP",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi"
+    ]
+}

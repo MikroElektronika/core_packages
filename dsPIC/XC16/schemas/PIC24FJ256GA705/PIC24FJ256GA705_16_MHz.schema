@@ -1,0 +1,153 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/XC16/core/def/PIC24FJ256GA705.json",
+    "flash": 256,
+    "ram": 16384,
+    "settings": {
+        "clock": "16",
+        "scheme": "PIC24FJ256GA705_16_MHz",
+        "mcu": "PIC24FJ256GA705",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "BWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "BSS",
+                "value": "DISABLED"
+            },
+            {
+                "key": "BSEN",
+                "value": "OFF"
+            },
+            {
+                "key": "GWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "GSS",
+                "value": "DISABLED"
+            },
+            {
+                "key": "CWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "CSS",
+                "value": "DISABLED"
+            },
+            {
+                "key": "AIVTDIS",
+                "value": "OFF"
+            },
+            {
+                "key": "BSLIM",
+                "value": "BSLIM"
+            },
+            {
+                "key": "FNOSC",
+                "value": "FRCPLL"
+            },
+            {
+                "key": "PLLMODE",
+                "value": "PLL4X"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "POSCMD",
+                "value": "NONE"
+            },
+            {
+                "key": "OSCIOFCN",
+                "value": "OFF"
+            },
+            {
+                "key": "SOSCSEL",
+                "value": "ON"
+            },
+            {
+                "key": "PLLSS",
+                "value": "PLL_PRI"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSDCMD"
+            },
+            {
+                "key": "WDTPS",
+                "value": "PS32768"
+            },
+            {
+                "key": "FWPSA",
+                "value": "PR128"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "WINDIS",
+                "value": "OFF"
+            },
+            {
+                "key": "WDTWIN",
+                "value": "WIN25"
+            },
+            {
+                "key": "WDTCMX",
+                "value": "WDTCLK"
+            },
+            {
+                "key": "WDTCLK",
+                "value": "LPRC"
+            },
+            {
+                "key": "BOREN",
+                "value": "OFF"
+            },
+            {
+                "key": "LPCFG",
+                "value": "OFF"
+            },
+            {
+                "key": "DNVPEN",
+                "value": "ENABLE"
+            },
+            {
+                "key": "ICS",
+                "value": "PGD2"
+            },
+            {
+                "key": "JTAGEN",
+                "value": "ON"
+            },
+            {
+                "key": "ALTCMPI",
+                "value": "DISABLE"
+            },
+            {
+                "key": "TMPRPIN",
+                "value": "OFF"
+            },
+            {
+                "key": "SOSCHP",
+                "value": "ON"
+            },
+            {
+                "key": "ALTI2C1",
+                "value": "ALTI2CDIS"
+            }
+        ]
+    }
+}

@@ -1,0 +1,982 @@
+{
+    "avr_core": "avr4",
+    "eeprom": {
+        "max_addr": "0x01FF",
+        "min_addr": "0x0000"
+    },
+    "eio": {
+        "max_addr": "0x00FF",
+        "min_addr": "0x60"
+    },
+    "fuse": {
+        "extended": {
+            "fuse0": {
+                "default": "1",
+                "name": "BOOTRST",
+                "text": "Select Reset Vector"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "BOOTSZ0",
+                "text": "Select Boot Size"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "BOOTSZ1",
+                "text": "Select Boot Size"
+            },
+            "fuse4": {
+                "default": "1",
+                "name": "PSCRV",
+                "text": "PSCOUT Reset Value"
+            },
+            "fuse5": {
+                "default": "1",
+                "name": "PSC0RB",
+                "text": "PSC0 Reset Behaviour"
+            },
+            "fuse6": {
+                "default": "1",
+                "name": "PSC1RB",
+                "text": "PSC1 Reset Behaviour"
+            },
+            "fuse7": {
+                "default": "1",
+                "name": "PSC2RB",
+                "text": "PSC2 Reset Behaviour"
+            },
+            "nmb_fuse_bits": "7",
+            "nmb_text": "9",
+            "text1": {
+                "mask": "0x80",
+            "text": "PSC2 Reset Behavior; [PSC2RB=0]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x40",
+            "text": "PSC1 Reset Behavior; [PSC1RB=0]",
+                "value": "0x00"
+            },
+            "text3": {
+                "mask": "0x20",
+            "text": "PSC0 Reset Behavior; [PSC0RB=0]",
+                "value": "0x00"
+            },
+            "text4": {
+                "mask": "0x10",
+            "text": "PSCOUT Reset Value; [PSCRV=0]",
+                "value": "0x00"
+            },
+            "text5": {
+                "mask": "0x06",
+            "text": "Boot Flash section size=128 words; Boot start address=$0F80; [BOOTSZ=11]",
+                "value": "0x06"
+            },
+            "text6": {
+                "mask": "0x06",
+            "text": "Boot Flash section size=256 words; Boot start address=$0F00; [BOOTSZ=10]",
+                "value": "0x04"
+            },
+            "text7": {
+                "mask": "0x06",
+            "text": "Boot Flash section size=512 words; Boot start address=$0E00; [BOOTSZ=01]",
+                "value": "0x02"
+            },
+            "text8": {
+                "mask": "0x06",
+            "text": "Boot Flash section size=1024 words; Boot start address=$0C00; [BOOTSZ=00] ; default value",
+                "value": "0x00"
+            },
+            "text9": {
+                "mask": "0x01",
+            "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
+                "value": "0x00"
+            }
+        },
+        "high": {
+            "fuse0": {
+                "default": "1",
+                "name": "BODLEVEL0",
+                "text": "Brown-out Detector trigger level"
+            },
+            "fuse1": {
+                "default": "1",
+                "name": "BODLEVEL1",
+                "text": "Brown-out Detector trigger level"
+            },
+            "fuse2": {
+                "default": "1",
+                "name": "BODLEVEL2",
+                "text": "Brown out detector trigger level"
+            },
+            "fuse3": {
+                "default": "1",
+                "name": "EESAVE",
+                "text": "EEPROM memory is preserved through chip erase"
+            },
+            "fuse4": {
+                "default": "1",
+                "name": "WDTON",
+                "text": "Watchdog timer always on"
+            },
+            "fuse5": {
+                "default": "0",
+                "name": "SPIEN",
+                "text": "Enable Serial programming and Data Downloading"
+            },
+            "fuse6": {
+                "default": "1",
+                "name": "DWEN",
+                "text": "debugWIRE Enable"
+            },
+            "fuse7": {
+                "default": "1",
+                "name": "RSTDISBL",
+                "text": "External Reset Disable"
+            },
+            "nmb_fuse_bits": "8",
+            "nmb_text": "13",
+            "text1": {
+                "mask": "0x80",
+            "text": "Reset Disabled (Enable PC6 as i/o pin); [RSTDISBL=0]",
+                "value": "0x00"
+            },
+            "text10": {
+                "mask": "0x07",
+            "text": "Brown-out detection level at VCC=4.4 V; [BODLEVEL=011]",
+                "value": "0x03"
+            },
+            "text11": {
+                "mask": "0x07",
+            "text": "Brown-out detection level at VCC=4.2 V; [BODLEVEL=010]",
+                "value": "0x02"
+            },
+            "text12": {
+                "mask": "0x07",
+            "text": "Brown-out detection level at VCC=2.8 V; [BODLEVEL=001]",
+                "value": "0x01"
+            },
+            "text13": {
+                "mask": "0x07",
+            "text": "Brown-out detection level at VCC=2.6 V; [BODLEVEL=000]",
+                "value": "0x00"
+            },
+            "text2": {
+                "mask": "0x40",
+            "text": "Debug Wire enable; [DWEN=0]",
+                "value": "0x00"
+            },
+            "text3": {
+                "mask": "0x20",
+            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "value": "0x00"
+            },
+            "text4": {
+                "mask": "0x10",
+            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "value": "0x00"
+            },
+            "text5": {
+                "mask": "0x08",
+            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "value": "0x00"
+            },
+            "text6": {
+                "mask": "0x07",
+            "text": "Brown-out detection disabled; [BODLEVEL=111]",
+                "value": "0x07"
+            },
+            "text7": {
+                "mask": "0x07",
+            "text": "Brown-out detection level at VCC=4.5 V; [BODLEVEL=110]",
+                "value": "0x06"
+            },
+            "text8": {
+                "mask": "0x07",
+            "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=101]",
+                "value": "0x05"
+            },
+            "text9": {
+                "mask": "0x07",
+            "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=100]",
+                "value": "0x04"
+            }
+        },
+    "list": "[LOW:HIGH:EXTENDED]",
+        "low": {
+            "fuse0": {
+                "default": "1",
+                "name": "CKSEL0",
+                "text": "Select Clock Source"
+            },
+            "fuse1": {
+                "default": "0",
+                "name": "CKSEL1",
+                "text": "Select Clock Source"
+            },
+            "fuse2": {
+                "default": "0",
+                "name": "CKSEL2",
+                "text": "Select Clock Source"
+            },
+            "fuse3": {
+                "default": "0",
+                "name": "CKSEL3",
+                "text": "Select Clock Source"
+            },
+            "fuse4": {
+                "default": "0",
+                "name": "SUT0",
+                "text": "Select start-up time"
+            },
+            "fuse5": {
+                "default": "0",
+                "name": "SUT1",
+                "text": "Select start-up time"
+            },
+            "fuse6": {
+                "default": "1",
+                "name": "CKOUT",
+                "text": "Oscillator output option"
+            },
+            "fuse7": {
+                "default": "0",
+                "name": "CKDIV8",
+                "text": "Divide clock by 8"
+            },
+            "nmb_fuse_bits": "8",
+            "nmb_text": "44",
+            "text1": {
+                "mask": "0x80",
+            "text": "Divide clock by 8 internally; [CKDIV8=0]",
+                "value": "0x00"
+            },
+            "text10": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1000 SUT=01]",
+                "value": "0x18"
+            },
+            "text11": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1000 SUT=10]",
+                "value": "0x28"
+            },
+            "text12": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1000 SUT=11]",
+                "value": "0x38"
+            },
+            "text13": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1001 SUT=00]",
+                "value": "0x09"
+            },
+            "text14": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1001 SUT=01]",
+                "value": "0x19"
+            },
+            "text15": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1001 SUT=10]",
+                "value": "0x29"
+            },
+            "text16": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1001 SUT=11]",
+                "value": "0x39"
+            },
+            "text17": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1010 SUT=00]",
+                "value": "0x0A"
+            },
+            "text18": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1010 SUT=01]",
+                "value": "0x1A"
+            },
+            "text19": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1010 SUT=10]",
+                "value": "0x2A"
+            },
+            "text2": {
+                "mask": "0x40",
+            "text": "Clock output on PORTD1; [CKOUT=0]",
+                "value": "0x00"
+            },
+            "text20": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1010 SUT=11]",
+                "value": "0x3A"
+            },
+            "text21": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1011 SUT=00]",
+                "value": "0x0B"
+            },
+            "text22": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1011 SUT=01]",
+                "value": "0x1B"
+            },
+            "text23": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1011 SUT=10]",
+                "value": "0x2B"
+            },
+            "text24": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1011 SUT=11]",
+                "value": "0x3B"
+            },
+            "text25": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1100 SUT=00]",
+                "value": "0x0C"
+            },
+            "text26": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1100 SUT=01]",
+                "value": "0x1C"
+            },
+            "text27": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1100 SUT=10]",
+                "value": "0x2C"
+            },
+            "text28": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1100 SUT=11]",
+                "value": "0x3C"
+            },
+            "text29": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1101 SUT=00]",
+                "value": "0x0D"
+            },
+            "text3": {
+                "mask": "0x3F",
+            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0000 SUT=00]",
+                "value": "0x00"
+            },
+            "text30": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1101 SUT=01]",
+                "value": "0x1D"
+            },
+            "text31": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1101 SUT=10]",
+                "value": "0x2D"
+            },
+            "text32": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1101 SUT=11]",
+                "value": "0x3D"
+            },
+            "text33": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1110 SUT=00]",
+                "value": "0x0E"
+            },
+            "text34": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1110 SUT=01]",
+                "value": "0x1E"
+            },
+            "text35": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1110 SUT=10]",
+                "value": "0x2E"
+            },
+            "text36": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1110 SUT=11]",
+                "value": "0x3E"
+            },
+            "text37": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1111 SUT=00]",
+                "value": "0x0F"
+            },
+            "text38": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1111 SUT=01]",
+                "value": "0x1F"
+            },
+            "text39": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1111 SUT=10]",
+                "value": "0x2F"
+            },
+            "text4": {
+                "mask": "0x3F",
+            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms; [CKSEL=0000 SUT=01]",
+                "value": "0x10"
+            },
+            "text40": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1111 SUT=11]",
+                "value": "0x3F"
+            },
+            "text41": {
+                "mask": "0x3F",
+            "text": "PLL clock; Frequency 16 MHz; Start-up time PWRDWN/RESET: 1K CK/14 CK + 0 ms;   [CKSEL=0011 SUT=00]",
+                "value": "0x03"
+            },
+            "text42": {
+                "mask": "0x3F",
+            "text": "PLL clock; Frequency 16 MHz; Start-up time PWRDWN/RESET: 1K CK/14 CK + 4.1 ms; [CKSEL=0011 SUT=01]",
+                "value": "0x13"
+            },
+            "text43": {
+                "mask": "0x3F",
+            "text": "PLL clock; Frequency 16 MHz; Start-up time PWRDWN/RESET: 1K CK/14 CK + 65 ms;  [CKSEL=0011 SUT=10]",
+                "value": "0x23"
+            },
+            "text44": {
+                "mask": "0x3F",
+            "text": "PLL clock; Frequency 16 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=0011 SUT=11]",
+                "value": "0x33"
+            },
+            "text5": {
+                "mask": "0x3F",
+            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms;  [CKSEL=0000 SUT=10]",
+                "value": "0x20"
+            },
+            "text6": {
+                "mask": "0x3F",
+            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0010 SUT=00]",
+                "value": "0x02"
+            },
+            "text7": {
+                "mask": "0x3F",
+            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms; [CKSEL=0010 SUT=01]",
+                "value": "0x12"
+            },
+            "text8": {
+                "mask": "0x3F",
+            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms;  [CKSEL=0010 SUT=10]; default value",
+                "value": "0x22"
+            },
+            "text9": {
+                "mask": "0x3F",
+            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1000 SUT=00]",
+                "value": "0x08"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x001F",
+            "desc": "Store Program Memory Read",
+            "name": "SPM READY"
+        },
+        {
+            "address": "0x001E",
+            "desc": "None.",
+            "name": "RESERVED31"
+        },
+        {
+            "address": "0x001D",
+            "desc": "None.",
+            "name": "RESERVED30"
+        },
+        {
+            "address": "0x001C",
+            "desc": "External Interrupt Request 3",
+            "name": "INT3"
+        },
+        {
+            "address": "0x001B",
+            "desc": "Timer Counter 0 Compare Match B",
+            "name": "TIMER0 COMPB"
+        },
+        {
+            "address": "0x001A",
+            "desc": "EEPROM Ready",
+            "name": "EE READY"
+        },
+        {
+            "address": "0x0019",
+            "desc": "Watchdog Timeout Interrupt",
+            "name": "WDT"
+        },
+        {
+            "address": "0x0018",
+            "desc": "External Interrupt Request 2",
+            "name": "INT2"
+        },
+        {
+            "address": "0x0017",
+            "desc": "USART, Tx Complete",
+            "name": "USART, TX"
+        },
+        {
+            "address": "0x0016",
+            "desc": "USART Data Register Empty",
+            "name": "USART, UDRE"
+        },
+        {
+            "address": "0x0015",
+            "desc": "USART, Rx Complete",
+            "name": "USART, RX"
+        },
+        {
+            "address": "0x0014",
+            "desc": "SPI Serial Transfer Complete",
+            "name": "SPI, STC"
+        },
+        {
+            "address": "0x0013",
+            "desc": "External Interrupt Request 1",
+            "name": "INT1"
+        },
+        {
+            "address": "0x0012",
+            "desc": "ADC Conversion Complete",
+            "name": "ADC"
+        },
+        {
+            "address": "0x0011",
+            "desc": "Timer/Counter0 Overflow",
+            "name": "TIMER0 OVF"
+        },
+        {
+            "address": "0x0010",
+            "desc": "Timer/Counter0 Compare Match A",
+            "name": "TIMER0 COMP A"
+        },
+        {
+            "address": "0x000F",
+            "desc": "Timer/Counter1 Overflow",
+            "name": "TIMER1 OVF"
+        },
+        {
+            "address": "0x000E",
+            "desc": "None.",
+            "name": "RESERVED15"
+        },
+        {
+            "address": "0x000D",
+            "desc": "Timer/Counter Compare Match B",
+            "name": "TIMER1 COMPB"
+        },
+        {
+            "address": "0x000C",
+            "desc": "Timer/Counter1 Compare Match A",
+            "name": "TIMER1 COMPA"
+        },
+        {
+            "address": "0x000B",
+            "desc": "Timer/Counter1 Capture Event",
+            "name": "TIMER1 CAPT"
+        },
+        {
+            "address": "0x000A",
+            "desc": "External Interrupt Request 0",
+            "name": "INT0"
+        },
+        {
+            "address": "0x0009",
+            "desc": "Analog Comparator 2",
+            "name": "ANALOG COMP 2"
+        },
+        {
+            "address": "0x0008",
+            "desc": "Analog Comparator 1",
+            "name": "ANALOG COMP 1"
+        },
+        {
+            "address": "0x0007",
+            "desc": "Analog Comparator 0",
+            "name": "ANALOG COMP 0"
+        },
+        {
+            "address": "0x0006",
+            "desc": "PSC0 End Cycle",
+            "name": "PSC0 EC"
+        },
+        {
+            "address": "0x0005",
+            "desc": "PSC0 Capture Event",
+            "name": "PSC0 CAPT"
+        },
+        {
+            "address": "0x0004",
+            "desc": "PSC1 End Cycle",
+            "name": "PSC1 EC"
+        },
+        {
+            "address": "0x0003",
+            "desc": "PSC1 Capture Event",
+            "name": "PSC1 CAPT"
+        },
+        {
+            "address": "0x0002",
+            "desc": "PSC2 End Cycle",
+            "name": "PSC2 EC"
+        },
+        {
+            "address": "0x0001",
+            "desc": "PSC2 Capture Event",
+            "name": "PSC2 CAPT"
+        }
+    ],
+    "mcu": "AT90PWM3",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "package": {
+    "packages": "[QFN:SOIC]",
+        "qfn": {
+            "nmb_pin": "32",
+            "pin1": {
+            "name": "[PD2:PSCIN2:OC1A:MISO_A]"
+            },
+            "pin10": {
+            "name": "[PE1:OC0B:XTAL1]"
+            },
+            "pin11": {
+            "name": "[PE2:ADC0:XTAL2]"
+            },
+            "pin12": {
+            "name": "[PD4:ADC1:RXD:DALI:ICP1:SCK_A]"
+            },
+            "pin13": {
+            "name": "[PD5:ADC2:ACOMP2]"
+            },
+            "pin14": {
+            "name": "[PD6:ADC3:ACMPM:INT0]"
+            },
+            "pin15": {
+            "name": "[PD7:ACMP0]"
+            },
+            "pin16": {
+            "name": "[PB2:ADC5:INT1]"
+            },
+            "pin17": {
+            "name": "[PC4:ADC8:AMP1-]"
+            },
+            "pin18": {
+            "name": "[PC5:ADC9:AMP1+]"
+            },
+            "pin19": {
+            "name": "[AVCC]"
+            },
+            "pin2": {
+            "name": "[PD3:TXD:DALI:OC0A:SS:MOSI_A]"
+            },
+            "pin20": {
+            "name": "[AGND]"
+            },
+            "pin21": {
+            "name": "[AREF]"
+            },
+            "pin22": {
+            "name": "[PC6:ADC10:ACMP1]"
+            },
+            "pin23": {
+            "name": "[PB3:AMP0-]"
+            },
+            "pin24": {
+            "name": "[PB4:AMP0+]"
+            },
+            "pin25": {
+            "name": "[PC7:D2A]"
+            },
+            "pin26": {
+            "name": "[PB5:ADC6:INT2]"
+            },
+            "pin27": {
+            "name": "[PB6:ADC7:PSCOUT11:ICP1B]"
+            },
+            "pin28": {
+                "name": "[PB7:ADC4:PSCOUT01:SCK)"
+                },
+                "pin29": {
+                "name": "[PD0:PSCOUT00:XCK:SSA]"
+                },
+                "pin3": {
+                "name": "[PC1:PSCIN1:OC1B]"
+                },
+                "pin30": {
+                "name": "[PC0:INT3:PSCOUT10]"
+                },
+                "pin31": {
+                "name": "[PE0:RESET:OCD]"
+                },
+                "pin32": {
+                "name": "[PD1:PSCIN0:CLK0]"
+                },
+                "pin4": {
+                "name": "[VCC]"
+                },
+                "pin5": {
+                "name": "[GND]"
+                },
+                "pin6": {
+                "name": "[PC2:T0:PSCOUT22]"
+                },
+                "pin7": {
+                "name": "[PC3:T1:PSCOUT23]"
+                },
+                "pin8": {
+                "name": "[PB0:MISO:PSCOUT20]"
+                },
+                "pin9": {
+                "name": "[PB1:MOSI:PSCOUT21]"
+                }
+            },
+            "soic": {
+                "nmb_pin": "32",
+                "pin1": {
+                "name": "[PD0:PSCOUT00:XCK:SSA]"
+                },
+                "pin10": {
+                "name": "[PC2:T0:PSCOUT22]"
+                },
+                "pin11": {
+                "name": "[PC3:T1:PSCOUT23]"
+                },
+                "pin12": {
+                "name": "[PB0:MISO:PSCOUT20]"
+                },
+                "pin13": {
+                "name": "[PB1:MOSI:PSCOUT21]"
+                },
+                "pin14": {
+                "name": "[PE1:OC0B:XTAL1]"
+                },
+                "pin15": {
+                "name": "[PE2:ADC0:XTAL2]"
+                },
+                "pin16": {
+                "name": "[PD4:ADC1:RXD:DALI:ICP1:SCK_A]"
+                },
+                "pin17": {
+                "name": "[PD5:ADC2:ACOMP2]"
+                },
+                "pin18": {
+                "name": "[PD6:ADC3:ACMPM:INT0]"
+                },
+                "pin19": {
+                "name": "[PD7:ACMP0]"
+                },
+                "pin2": {
+                "name": "[PC0:INT3:PSCOUT10]"
+                },
+                "pin20": {
+                "name": "[PB2:ADC5:INT1]"
+                },
+                "pin21": {
+                "name": "[PC4:ADC8:AMP1-]"
+                },
+                "pin22": {
+                "name": "[PC5:ADC9:AMP1+]"
+                },
+                "pin23": {
+                "name": "[AVCC]"
+                },
+                "pin24": {
+                "name": "[AGND]"
+                },
+                "pin25": {
+                "name": "[AREF]"
+                },
+                "pin26": {
+                "name": "[PC6:ADC10:ACMP1]"
+                },
+                "pin27": {
+                "name": "[PB3:AMP0-]"
+                },
+                "pin28": {
+                "name": "[PB4:AMP0+]"
+                },
+                "pin29": {
+                "name": "[PC7:D2A]"
+                },
+                "pin3": {
+                "name": "[PE0:RESET:OCD]"
+                },
+                "pin30": {
+                "name": "[PB5:ADC6:INT2]"
+                },
+                "pin31": {
+                "name": "[PB6:ADC7:PSCOUT11:ICP1B]"
+                },
+                "pin32": {
+                    "name": "[PB7:ADC4:PSCOUT01:SCK)"
+                    },
+                    "pin4": {
+                    "name": "[PD1:PSCIN0:CLK0]"
+                    },
+                    "pin5": {
+                    "name": "[PD2:PSCIN2:OC1A:MISO_A]"
+                    },
+                    "pin6": {
+                    "name": "[PD3:TXD:DALI:OC0A:SS:MOSI_A]"
+                    },
+                    "pin7": {
+                    "name": "[PC1:PSCIN1:OC1B]"
+                    },
+                    "pin8": {
+                    "name": "[VCC]"
+                    },
+                    "pin9": {
+                    "name": "[GND]"
+                    }
+                }
+            },
+            "ram": {
+                "max_addr": "0x02FF",
+                "min_addr": "0x0100"
+            },
+            "rom": {
+                "max_addr": "0x0FFF",
+                "min_addr": "0x0000"
+            },
+            "rx": {
+                "max_addr": "0x1F",
+                "min_addr": "0x00"
+            },
+            "clock": "1",
+            "instruction_set": [
+                "ADD",
+                "ADC",
+                "ADIW",
+                "SUB",
+                "SUBI",
+                "SBC",
+                "SBCI",
+                "SBIW",
+                "AND",
+                "ANDI",
+                "OR",
+                "ORI",
+                "EOR",
+                "COM",
+                "NEG",
+                "SBR",
+                "CBR",
+                "INC",
+                "DEC",
+                "TST",
+                "CLR",
+                "SER",
+                "MUL",
+                "MULS",
+                "MULSU",
+                "FMUL",
+                "FMULS",
+                "FMULSU",
+                "RJMP",
+                "IJMP",
+                "RCALL",
+                "ICALL",
+                "RET",
+                "RETI",
+                "CPSE",
+                "CP",
+                "CPC",
+                "CPI",
+                "SBRC",
+                "SBRS",
+                "SBIC",
+                "SBIS",
+                "BRBS",
+                "BRBC",
+                "BREQ",
+                "BRNE",
+                "BRCS",
+                "BRCC",
+                "BRSH",
+                "BRLO",
+                "BRMI",
+                "BRPL",
+                "BRGE",
+                "BRLT",
+                "BRHS",
+                "BRHC",
+                "BRTS",
+                "BRTC",
+                "BRVS",
+                "BRVC",
+                "BRIE",
+                "BRID",
+                "MOV",
+                "MOVW",
+                "LDI",
+                "LDS",
+                "LD_X",
+                "LD_Xi",
+                "LD_dX",
+                "LD_Y",
+                "LD_Yi",
+                "LD_dY",
+                "LDD_Y",
+                "LD_Z",
+                "LD_Zi",
+                "LD_dZ",
+                "LDD_Z",
+                "STS",
+                "ST_X",
+                "ST_Xi",
+                "ST_dX",
+                "ST_Y",
+                "ST_Yi",
+                "ST_dY",
+                "STD_Y",
+                "ST_Z",
+                "ST_Zi",
+                "ST_dZ",
+                "STD_Z",
+                "LPM_Z2R0",
+                "LPM_Z",
+                "LPM_Zi",
+                "ELPM_Z",
+                "ELPM_Zi",
+                "SPM",
+                "IN",
+                "OUT",
+                "PUSH",
+                "POP",
+                "LSL",
+                "LSR",
+                "ROL",
+                "ROR",
+                "ASR",
+                "SWAP",
+                "SBI",
+                "CBI",
+                "BST",
+                "BLD",
+                "BSET",
+                "BCLR",
+                "SEC",
+                "CLC",
+                "SEN",
+                "CLN",
+                "SEZ",
+                "CLZ",
+                "SEI",
+                "CLI",
+                "SES",
+                "CLS",
+                "SEV",
+                "CLV",
+                "SET",
+                "CLT",
+                "SEH",
+                "CLH",
+                "BREAK",
+                "NOP",
+                "SLEEP",
+                "WDR"
+            ]
+        }

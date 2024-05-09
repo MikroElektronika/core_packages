@@ -1,0 +1,574 @@
+{
+    "accessbank": "0x00000060",
+    "badram": [
+        {
+            "max_addr": "0x0F57",
+            "min_addr": "0x0300"
+        },
+        {
+            "max_addr": "0x0F7D",
+            "min_addr": "0x0F7D"
+        },
+        {
+            "max_addr": "0x0FAA",
+            "min_addr": "0x0FA6"
+        },
+        {
+            "max_addr": "0x0FB0",
+            "min_addr": "0x0FB0"
+        },
+        {
+            "max_addr": "0x0FB9",
+            "min_addr": "0x0FB6"
+        },
+        {
+            "max_addr": "0x0FD4",
+            "min_addr": "0x0FD4"
+        }
+    ],
+    "bank": [
+        {
+            "max_addr": "0x00FF",
+            "min_addr": "0x0000",
+            "number": "0"
+        },
+        {
+            "max_addr": "0x01FF",
+            "min_addr": "0x0100",
+            "number": "1"
+        },
+        {
+            "max_addr": "0x02FF",
+            "min_addr": "0x0200",
+            "number": "2"
+        },
+        {
+            "max_addr": "0x03FF",
+            "min_addr": "0x0300",
+            "number": "3"
+        },
+        {
+            "max_addr": "0x04FF",
+            "min_addr": "0x0400",
+            "number": "4"
+        },
+        {
+            "max_addr": "0x05FF",
+            "min_addr": "0x0500",
+            "number": "5"
+        },
+        {
+            "max_addr": "0x06FF",
+            "min_addr": "0x0600",
+            "number": "6"
+        },
+        {
+            "max_addr": "0x07FF",
+            "min_addr": "0x0700",
+            "number": "7"
+        },
+        {
+            "max_addr": "0x08FF",
+            "min_addr": "0x0800",
+            "number": "8"
+        },
+        {
+            "max_addr": "0x09FF",
+            "min_addr": "0x0900",
+            "number": "9"
+        },
+        {
+            "max_addr": "0x0AFF",
+            "min_addr": "0x0A00",
+            "number": "10"
+        },
+        {
+            "max_addr": "0x0BFF",
+            "min_addr": "0x0B00",
+            "number": "11"
+        },
+        {
+            "max_addr": "0x0CFF",
+            "min_addr": "0x0C00",
+            "number": "12"
+        },
+        {
+            "max_addr": "0x0DFF",
+            "min_addr": "0x0D00",
+            "number": "13"
+        },
+        {
+            "max_addr": "0x0EFF",
+            "min_addr": "0x0E00",
+            "number": "14"
+        },
+        {
+            "max_addr": "0x0FFF",
+            "min_addr": "0x0F00",
+            "number": "15"
+        }
+    ],
+    "callstack": {
+        "max": "0x1F"
+    },
+    "config_registers": [
+        {
+            "address": "300001",
+            "default": "7",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "OSC",
+                    "label": "Oscillator",
+                    "mask": "F",
+                    "settings": [
+                        {
+                            "label": "Internal oscillator block, CLKO function on RA6, port function on RA7",
+                            "value": "9"
+                        },
+                        {
+                            "label": "Internal oscillator block, port function on RA6 and RA7",
+                            "value": "8"
+                        },
+                        {
+                            "label": "External RC oscillator, port function on RA6",
+                            "value": "7"
+                        },
+                        {
+                            "label": "HS oscillator, PLL enabled (clock frequency = 4 x FOSC1)",
+                            "value": "6"
+                        },
+                        {
+                            "label": "EC oscillator, port function on RA6",
+                            "value": "5"
+                        },
+                        {
+                            "label": "EC oscillator, CLKO function on RA6",
+                            "value": "4"
+                        },
+                        {
+                            "label": "External RC oscillator, CLKO function on RA6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "HS oscillator",
+                            "value": "2"
+                        },
+                        {
+                            "label": "XT oscillator",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LP oscillator",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "FCMEN",
+                    "label": "Fail-Safe Clock Monitor Enable",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "Fail-Safe Clock Monitor disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Fail-Safe Clock Monitor enabled",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IESO",
+                    "label": "Internal External Switch Over Mode",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Oscillator Switchover mode disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Oscillator Switchover mode enabled",
+                            "value": "80"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1H",
+            "unused": "30"
+        },
+        {
+            "address": "300002",
+            "default": "1F",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "PWRT",
+                    "label": "Power Up Timer",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PWRT disabled",
+                            "value": "1"
+                        },
+                        {
+                            "label": "PWRT enabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "6",
+                    "key": "BOREN",
+                    "label": "Brown Out Detect",
+                    "mask": "6",
+                    "settings": [
+                        {
+                            "label": "Brown-out Reset enabled in hardware only (SBOREN is disabled)",
+                            "value": "6"
+                        },
+                        {
+                            "label": "Brown-out Reset enabled in hardware only and disabled in Sleep mode (SBOREN is disabled)",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Brown-out Reset enabled and controlled by software (SBOREN is enabled)",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Brown-out Reset disabled in hardware and software",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "18",
+                    "key": "BORV",
+                    "label": "Brown Out Voltage",
+                    "mask": "18",
+                    "settings": [
+                        {
+                            "label": "VBOR set to 2.1V",
+                            "value": "18"
+                        },
+                        {
+                            "label": "VBOR set to 2.8V",
+                            "value": "10"
+                        },
+                        {
+                            "label": "VBOR set to 4.3V",
+                            "value": "8"
+                        },
+                        {
+                            "label": "VBOR set to 4.6V",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2L",
+            "unused": "E0"
+        },
+        {
+            "address": "300003",
+            "default": "1F",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "WDT",
+                    "label": "Watchdog Timer",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "WDT enabled",
+                            "value": "1"
+                        },
+                        {
+                            "label": "WDT disabled (control is placed on the SWDTEN bit)",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "1E",
+                    "key": "WDTPS",
+                    "label": "Watchdog Postscaler",
+                    "mask": "1E",
+                    "settings": [
+                        {
+                            "label": "1:32768",
+                            "value": "1E"
+                        },
+                        {
+                            "label": "1:16384",
+                            "value": "1C"
+                        },
+                        {
+                            "label": "1:8192",
+                            "value": "1A"
+                        },
+                        {
+                            "label": "1:4096",
+                            "value": "18"
+                        },
+                        {
+                            "label": "1:2048",
+                            "value": "16"
+                        },
+                        {
+                            "label": "1:1024",
+                            "value": "14"
+                        },
+                        {
+                            "label": "1:512",
+                            "value": "12"
+                        },
+                        {
+                            "label": "1:256",
+                            "value": "10"
+                        },
+                        {
+                            "label": "1:128",
+                            "value": "E"
+                        },
+                        {
+                            "label": "1:64",
+                            "value": "C"
+                        },
+                        {
+                            "label": "1:32",
+                            "value": "A"
+                        },
+                        {
+                            "label": "1:16",
+                            "value": "8"
+                        },
+                        {
+                            "label": "1:8",
+                            "value": "6"
+                        },
+                        {
+                            "label": "1:4",
+                            "value": "4"
+                        },
+                        {
+                            "label": "1:2",
+                            "value": "2"
+                        },
+                        {
+                            "label": "1:1",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2H",
+            "unused": "E0"
+        },
+        {
+            "address": "300005",
+            "default": "81",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "CCP2MX",
+                    "label": "CCP2 Mux",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "CCP2 input/output is multiplexed with RC1",
+                            "value": "1"
+                        },
+                        {
+                            "label": "CCP2 input/output is multiplexed with RE7",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LPT1OSC",
+                    "label": "Low Power Timer1 Osc enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Timer1 configured for low-power operation",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Timer1 configured for higher power operation",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "MCLRE",
+                    "label": "Master Clear Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "MCLR pin enabled: RG5 input pin disabled",
+                            "value": "80"
+                        },
+                        {
+                            "label": "RG5 input pin enabled: MCLR disabled",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG3H",
+            "unused": "7A"
+        },
+        {
+            "address": "300006",
+            "default": "81",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "STVREN",
+                    "label": "Stack Overflow Reset",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Stack full/underflow will cause Reset",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Stack full/underflow will not cause Reset",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "XINST",
+                    "label": "Extended Instruction Set Enable bit",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "Instruction set extension and Indexed Addressing mode enabled",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Instruction set extension and Indexed Addressing mode disabled (Legacy mode)",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "DEBUG",
+                    "label": "Background Debugger Enable bit",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Background debugger enabled, RB6 and RB7 are dedicated to In-Circuit Debug",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG4L",
+            "unused": "3E"
+        },
+        {
+            "address": "300008",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "CP",
+                    "label": "Code Protect 00000-03FFF",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Program memory block (000000-003FFFh) not code-protected",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Program memory block (000000-003FFFh) code-protected",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG5L",
+            "unused": "E"
+        }
+    ],
+    "core": "P18",
+    "delay_src_path": "delays/p18/__lib_delays.c",
+    "ext_rom": {
+        "max_addr": "0x1FFFFF",
+        "min_addr": "0x1000"
+    },
+    "gprend": "0x2FF",
+    "ivt": [
+        {
+            "address": "0x000008",
+            "ilevel": "0x0000",
+            "name": "High Priority Interrupt"
+        },
+        {
+            "address": "0x000018",
+            "ilevel": "0x0001",
+            "name": "Low Priority Interrupt"
+        }
+    ],
+    "mcu": "PIC18LF8393",
+    "prog_options": {
+        "codegrip": {
+            "debugging": "False",
+            "programming": "False"
+        },
+        "mikroprog": {
+            "debugging": "False",
+            "programming": "True"
+        }
+    },
+    "ram": {
+        "max_addr": "0xFFF",
+        "min_addr": "0x0015"
+    },
+    "rom": {
+        "max_addr": "0x1FFF",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x0014",
+        "min_addr": "0x0000"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "3.600",
+        "range": {
+            "max_value": "3.600",
+            "min_value": "2.700"
+        }
+    },
+    "clock": "1"
+}

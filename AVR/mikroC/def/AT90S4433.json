@@ -1,0 +1,416 @@
+{
+    "avr_core": "avr2",
+    "eeprom": {
+        "max_addr": "0x00FF",
+        "min_addr": "0x0000"
+    },
+    "fuse": {
+    "list": "[LOW]",
+        "low": {
+            "fuse0": {
+                "default": "0",
+                "name": "CKSEL0",
+                "text": "Select Clock Source"
+            },
+            "fuse1": {
+                "default": "1",
+                "name": "CKSEL1",
+                "text": "Select Clock Source"
+            },
+            "fuse2": {
+                "default": "1",
+                "name": "CKSEL2",
+                "text": "Select Clock Source"
+            },
+            "fuse3": {
+                "default": "1",
+                "name": "BODLEVEL0",
+                "text": "Brown out detector trigger level"
+            },
+            "fuse4": {
+                "default": "1",
+                "name": "BODLEVEL1",
+                "text": "Brown out detector enable"
+            },
+            "fuse5": {
+                "default": "0",
+                "name": "SPIEN",
+                "text": "Enable Serial programming and Data Downloading"
+            },
+            "nmb_fuse_bits": "6",
+            "nmb_text": "12",
+            "text1": {
+                "mask": "0x20",
+            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "value": "0x00"
+            },
+            "text10": {
+                "mask": "0x07",
+            "text": "Ceramic Resonator; [CKSEL=101]",
+                "value": "0x05"
+            },
+            "text11": {
+                "mask": "0x07",
+            "text": "Ceramic Resonator, fast rising power; [CKSEL=110]",
+                "value": "0x06"
+            },
+            "text12": {
+                "mask": "0x07",
+            "text": "Ceramic Resonator, BOD Enabled or power-on reset; [CKSEL=111]",
+                "value": "0x07"
+            },
+            "text2": {
+                "mask": "0x18",
+            "text": "BOD disabled; [BODLEVEL=11]",
+                "value": "0x08"
+            },
+            "text3": {
+                "mask": "0x18",
+            "text": "Brown-out detection level at VCC=2.7V; [BODLEVEL=10]",
+                "value": "0x10"
+            },
+            "text4": {
+                "mask": "0x18",
+            "text": "Brown-out detection level at VCC=4.0V; [BODLEVEL=00]",
+                "value": "0x00"
+            },
+            "text5": {
+                "mask": "0x07",
+            "text": "External Clock, slowly rising power; [CKSEL=000]",
+                "value": "0x00"
+            },
+            "text6": {
+                "mask": "0x07",
+            "text": "External Clock, BOD Enabled or power-on reset; [CKSEL=001]",
+                "value": "0x01"
+            },
+            "text7": {
+                "mask": "0x07",
+            "text": "Crystal Oscillator, default value; [CKSEL=010]",
+                "value": "0x02"
+            },
+            "text8": {
+                "mask": "0x07",
+            "text": "Crystal Oscillator, fast rising power; [CKSEL=011]",
+                "value": "0x03"
+            },
+            "text9": {
+                "mask": "0x07",
+            "text": "Crystal Oscillator, BOD Enabled or power-on reset; [CKSEL=100]",
+                "value": "0x04"
+            }
+        }
+    },
+    "io": {
+        "max_addr": "0x5F",
+        "min_addr": "0x20"
+    },
+    "ivt": [
+        {
+            "address": "0x000D",
+            "desc": "Analog Comparator",
+            "name": "ANA_COMP"
+        },
+        {
+            "address": "0x000C",
+            "desc": "EEPROM Ready",
+            "name": "EE_RDY"
+        },
+        {
+            "address": "0x000B",
+            "desc": "ADC Conversion Complete",
+            "name": "ADC"
+        },
+        {
+            "address": "0x000A",
+            "desc": "UART, Tx Complete",
+            "name": "UART, TX"
+        },
+        {
+            "address": "0x0009",
+            "desc": "UART Data Register Empty",
+            "name": "UART,UDRE"
+        },
+        {
+            "address": "0x0008",
+            "desc": "UART, Rx Complete",
+            "name": "UART,RX"
+        },
+        {
+            "address": "0x0007",
+            "desc": "Serial Transfer Complete",
+            "name": "SPI,STC"
+        },
+        {
+            "address": "0x0006",
+            "desc": "Timer/Counter0 Overflow",
+            "name": "TIMER0_OVF"
+        },
+        {
+            "address": "0x0005",
+            "desc": "Timer/Counter1 Overflow",
+            "name": "TIMER1_OVF"
+        },
+        {
+            "address": "0x0004",
+            "desc": "Timer/Counter1 Compare Match",
+            "name": "TIMER1_COMP"
+        },
+        {
+            "address": "0x0003",
+            "desc": "Timer/Counter Capture Event",
+            "name": "TIMER1_CAPT"
+        },
+        {
+            "address": "0x0002",
+            "desc": "External Interrupt 1",
+            "name": "INT1"
+        },
+        {
+            "address": "0x0001",
+            "desc": "External Interrupt 0",
+            "name": "INT0"
+        }
+    ],
+    "mcu": "AT90S4433",
+    "core": "LTE64K",
+    "delay_src_path": "delays/lte64k/__lib_delays.c",
+    "package": {
+    "packages": "[TQFP]",
+        "tqfp": {
+            "nmb_pin": "32",
+            "pin1": {
+            "name": "[INT1:PD3]"
+            },
+            "pin10": {
+            "name": "[AIN0:PD6]"
+            },
+            "pin11": {
+            "name": "[AIN1:PD7]"
+            },
+            "pin12": {
+            "name": "[ICP:PB0]"
+            },
+            "pin13": {
+            "name": "[OC1:PB1]"
+            },
+            "pin14": {
+            "name": "[SS:PB2]"
+            },
+            "pin15": {
+            "name": "[MOS1:PB3]"
+            },
+            "pin16": {
+            "name": "[MOS0:PB4]"
+            },
+            "pin17": {
+            "name": "[SCK:PB5]"
+            },
+            "pin18": {
+            "name": "[AVCC]"
+            },
+            "pin19": {
+            "name": "[NC]"
+            },
+            "pin2": {
+            "name": "[T0:PD4]"
+            },
+            "pin20": {
+            "name": "[AREF]"
+            },
+            "pin21": {
+            "name": "[AGND]"
+            },
+            "pin22": {
+            "name": "[NC]"
+            },
+            "pin23": {
+            "name": "[PC0:ADC0]"
+            },
+            "pin24": {
+            "name": "[PC1:ADC1]"
+            },
+            "pin25": {
+            "name": "[PC2:ADC2]"
+            },
+            "pin26": {
+            "name": "[PC3:ADC3]"
+            },
+            "pin27": {
+            "name": "[PC4:ADC4]"
+            },
+            "pin28": {
+            "name": "[PC5:ADC5]"
+            },
+            "pin29": {
+            "name": "[RESET]"
+            },
+            "pin3": {
+            "name": "[NC]"
+            },
+            "pin30": {
+            "name": "[PD0:RXD]"
+            },
+            "pin31": {
+            "name": "[PD1:TXD]"
+            },
+            "pin32": {
+            "name": "[PD2:INT0]"
+            },
+            "pin4": {
+            "name": "[VCC]"
+            },
+            "pin5": {
+            "name": "[GND]"
+            },
+            "pin6": {
+            "name": "[NC]"
+            },
+            "pin7": {
+            "name": "[XTAL1]"
+            },
+            "pin8": {
+            "name": "[XTAL2]"
+            },
+            "pin9": {
+            "name": "[T1:PD5]"
+            }
+        }
+    },
+    "ram": {
+        "max_addr": "0x00DF",
+        "min_addr": "0x0060"
+    },
+    "rom": {
+        "max_addr": "0x07FF",
+        "min_addr": "0x0000"
+    },
+    "rx": {
+        "max_addr": "0x1F",
+        "min_addr": "0x00"
+    },
+    "clock": "1",
+    "instruction_set": [
+        "ADD",
+        "ADC",
+        "SUB",
+        "SUBI",
+        "SBC",
+        "SBCI",
+        "AND",
+        "ANDI",
+        "OR",
+        "ORI",
+        "EOR",
+        "COM",
+        "NEG",
+        "SBR",
+        "CBR",
+        "INC",
+        "DEC",
+        "TST",
+        "CLR",
+        "SER",
+        "RJMP",
+        "RCALL",
+        "RET",
+        "RETI",
+        "CPSE",
+        "CP",
+        "CPC",
+        "CPI",
+        "SBRC",
+        "SBRS",
+        "SBIC",
+        "SBIS",
+        "BRBS",
+        "BRBC",
+        "BREQ",
+        "BRNE",
+        "BRCS",
+        "BRCC",
+        "BRSH",
+        "BRLO",
+        "BRMI",
+        "BRPL",
+        "BRGE",
+        "BRLT",
+        "BRHS",
+        "BRHC",
+        "BRTS",
+        "BRTC",
+        "BRVS",
+        "BRVC",
+        "BRIE",
+        "BRID",
+        "LD",
+        "ST",
+        "MOV",
+        "LDI",
+        "IN",
+        "OUT",
+        "LPM",
+        "SBI",
+        "CBI",
+        "LSL",
+        "LSR",
+        "ROL",
+        "ROR",
+        "ASR",
+        "SWAP",
+        "BSET",
+        "BCLR",
+        "BST",
+        "BLD",
+        "SEC",
+        "CLC",
+        "SEN",
+        "CLN",
+        "SEZ",
+        "CLZ",
+        "SEI",
+        "CLI",
+        "SES",
+        "CLS",
+        "SEV",
+        "CLV",
+        "SET",
+        "CLT",
+        "SEH",
+        "CLH",
+        "NOP",
+        "SLEEP",
+        "WDR",
+        "ADIW",
+        "SBIW",
+        "IJMP",
+        "ICALL",
+        "LDD",
+        "LD_X",
+        "LD_Xi",
+        "LD_dX",
+        "LD_Y",
+        "LD_Yi",
+        "LD_dY",
+        "LD_Z",
+        "LD_Zi",
+        "LD_dZ",
+        "LDS",
+        "STD",
+        "ST_X",
+        "ST_Xi",
+        "ST_dX",
+        "ST_Y",
+        "ST_Yi",
+        "ST_dY",
+        "ST_Z",
+        "ST_Zi",
+        "ST_dZ",
+        "STS",
+        "PUSH",
+        "POP",
+        "LPM_Z2R0",
+        "LPM_Z",
+        "LPM_Zi"
+    ]
+}

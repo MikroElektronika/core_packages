@@ -1,0 +1,1219 @@
+{
+        "config_registers": [
+        {
+            "address": "40021000",
+            "default": "00001500",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "SYSDIV",
+                    "label": "System clock division factor.\nThis bitfield controlled by software sets the division factor of the system clock divider to produce SYSCLK clock:",
+                    "mask": "1c",
+                    "settings": [
+                        {
+                            "label": "TODO SYSDIV bit number 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "TODO SYSDIV bit number 1",
+                            "value": "4"
+                        },
+                        {
+                            "label": "TODO SYSDIV bit number 2",
+                            "value": "8"
+                        },
+                        {
+                            "label": "TODO SYSDIV bit number 3",
+                            "value": "c"
+                        },
+                        {
+                            "label": "TODO SYSDIV bit number 4",
+                            "value": "10"
+                        },
+                        {
+                            "label": "TODO SYSDIV bit number 5",
+                            "value": "14"
+                        },
+                        {
+                            "label": "TODO SYSDIV bit number 6",
+                            "value": "18"
+                        },
+                        {
+                            "label": "TODO SYSDIV bit number 7",
+                            "value": "1c"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "HSIKERDIV",
+                    "label": "HSI48 kernel clock division factor.\nThis bitfield controlled by software sets the division factor of the kernel clock divider to produce HSIKER clock:",
+                    "mask": "e0",
+                    "settings": [
+                        {
+                            "label": "Division factor is 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Division factor is 2",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Division factor is 3",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Division factor is 4",
+                            "value": "60"
+                        },
+                        {
+                            "label": "Division factor is 5",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Division factor is 6",
+                            "value": "a0"
+                        },
+                        {
+                            "label": "Division factor is 7",
+                            "value": "c0"
+                        },
+                        {
+                            "label": "Division factor is 8",
+                            "value": "e0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "100",
+                    "key": "HSION",
+                    "label": "HSI48 clock enable.\nSet and cleared by software and hardware, with hardware taking priority.",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "Disable HSI clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable HSI clock",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "HSIKERON",
+                    "label": "HSI48 always-enable for peripheral kernels.\nSet and cleared by software.",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "HSI48 oscillator enable depends on the HSION bit",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSI48 oscillator is active in Run and Stop modes",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSIDIV",
+                    "label": "HSI48 clock division factor.\nThis bitfield controlled by software sets the division factor of the HSI48 clock divider to produce HSISYS clock:",
+                    "mask": "3800",
+                    "settings": [
+                        {
+                            "label": "Division factor is 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Division factor is 2",
+                            "value": "800"
+                        },
+                        {
+                            "label": "Division factor is 4",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "Division factor is 8",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "Division factor is 16",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "Division factor is 32",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "Division factor is 64",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "Division factor is 128",
+                            "value": "3800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSEON",
+                    "label": "HSE clock enable.\nSet and cleared by software.",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disable HSE",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable HSE",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSEBYP",
+                    "label": "HSE crystal oscillator bypass.\nSet and cleared by software.",
+                    "mask": "40000",
+                    "settings": [
+                        {
+                            "label": "No bypass",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Bypass",
+                            "value": "40000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "CSSON",
+                    "label": "Clock security system enable.\nSet by software to enable the clock security system.",
+                    "mask": "80000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "80000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CR",
+            "unused": "fff0c01f"
+        },
+        {
+            "address": "40021004",
+            "default": "00004000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "4000",
+                    "key": "HSITRIM",
+                    "label": "HSI48 clock trimming.\nThe value of this bitfield contributes to the HSICAL[7:0] bitfield value.",
+                    "mask": "7f00",
+                    "settings": [
+                        {
+                            "label": "Code 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Code 1",
+                            "value": "100"
+                        },
+                        {
+                            "label": "Code 2",
+                            "value": "200"
+                        },
+                        {
+                            "label": "Code 3",
+                            "value": "300"
+                        },
+                        {
+                            "label": "Code 4",
+                            "value": "400"
+                        },
+                        {
+                            "label": "Code 5",
+                            "value": "500"
+                        },
+                        {
+                            "label": "Code 6",
+                            "value": "600"
+                        },
+                        {
+                            "label": "Code 7",
+                            "value": "700"
+                        },
+                        {
+                            "label": "Code 8",
+                            "value": "800"
+                        },
+                        {
+                            "label": "Code 9",
+                            "value": "900"
+                        },
+                        {
+                            "label": "Code 10",
+                            "value": "a00"
+                        },
+                        {
+                            "label": "Code 11",
+                            "value": "b00"
+                        },
+                        {
+                            "label": "Code 12",
+                            "value": "c00"
+                        },
+                        {
+                            "label": "Code 13",
+                            "value": "d00"
+                        },
+                        {
+                            "label": "Code 14",
+                            "value": "e00"
+                        },
+                        {
+                            "label": "Code 15",
+                            "value": "f00"
+                        },
+                        {
+                            "label": "Code 16",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "Code 17",
+                            "value": "1100"
+                        },
+                        {
+                            "label": "Code 18",
+                            "value": "1200"
+                        },
+                        {
+                            "label": "Code 19",
+                            "value": "1300"
+                        },
+                        {
+                            "label": "Code 20",
+                            "value": "1400"
+                        },
+                        {
+                            "label": "Code 21",
+                            "value": "1500"
+                        },
+                        {
+                            "label": "Code 22",
+                            "value": "1600"
+                        },
+                        {
+                            "label": "Code 23",
+                            "value": "1700"
+                        },
+                        {
+                            "label": "Code 24",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "Code 25",
+                            "value": "1900"
+                        },
+                        {
+                            "label": "Code 26",
+                            "value": "1a00"
+                        },
+                        {
+                            "label": "Code 27",
+                            "value": "1b00"
+                        },
+                        {
+                            "label": "Code 28",
+                            "value": "1c00"
+                        },
+                        {
+                            "label": "Code 29",
+                            "value": "1d00"
+                        },
+                        {
+                            "label": "Code 30",
+                            "value": "1e00"
+                        },
+                        {
+                            "label": "Code 31",
+                            "value": "1f00"
+                        },
+                        {
+                            "label": "Code 32",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "Code 33",
+                            "value": "2100"
+                        },
+                        {
+                            "label": "Code 34",
+                            "value": "2200"
+                        },
+                        {
+                            "label": "Code 35",
+                            "value": "2300"
+                        },
+                        {
+                            "label": "Code 36",
+                            "value": "2400"
+                        },
+                        {
+                            "label": "Code 37",
+                            "value": "2500"
+                        },
+                        {
+                            "label": "Code 38",
+                            "value": "2600"
+                        },
+                        {
+                            "label": "Code 39",
+                            "value": "2700"
+                        },
+                        {
+                            "label": "Code 40",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "Code 41",
+                            "value": "2900"
+                        },
+                        {
+                            "label": "Code 42",
+                            "value": "2a00"
+                        },
+                        {
+                            "label": "Code 43",
+                            "value": "2b00"
+                        },
+                        {
+                            "label": "Code 44",
+                            "value": "2c00"
+                        },
+                        {
+                            "label": "Code 45",
+                            "value": "2d00"
+                        },
+                        {
+                            "label": "Code 46",
+                            "value": "2e00"
+                        },
+                        {
+                            "label": "Code 47",
+                            "value": "2f00"
+                        },
+                        {
+                            "label": "Code 48",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "Code 49",
+                            "value": "3100"
+                        },
+                        {
+                            "label": "Code 50",
+                            "value": "3200"
+                        },
+                        {
+                            "label": "Code 51",
+                            "value": "3300"
+                        },
+                        {
+                            "label": "Code 52",
+                            "value": "3400"
+                        },
+                        {
+                            "label": "Code 53",
+                            "value": "3500"
+                        },
+                        {
+                            "label": "Code 54",
+                            "value": "3600"
+                        },
+                        {
+                            "label": "Code 55",
+                            "value": "3700"
+                        },
+                        {
+                            "label": "Code 56",
+                            "value": "3800"
+                        },
+                        {
+                            "label": "Code 57",
+                            "value": "3900"
+                        },
+                        {
+                            "label": "Code 58",
+                            "value": "3a00"
+                        },
+                        {
+                            "label": "Code 59",
+                            "value": "3b00"
+                        },
+                        {
+                            "label": "Code 60",
+                            "value": "3c00"
+                        },
+                        {
+                            "label": "Code 61",
+                            "value": "3d00"
+                        },
+                        {
+                            "label": "Code 62",
+                            "value": "3e00"
+                        },
+                        {
+                            "label": "Code 63",
+                            "value": "3f00"
+                        },
+                        {
+                            "label": "Code 64",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "Code 65",
+                            "value": "4100"
+                        },
+                        {
+                            "label": "Code 66",
+                            "value": "4200"
+                        },
+                        {
+                            "label": "Code 67",
+                            "value": "4300"
+                        },
+                        {
+                            "label": "Code 68",
+                            "value": "4400"
+                        },
+                        {
+                            "label": "Code 69",
+                            "value": "4500"
+                        },
+                        {
+                            "label": "Code 70",
+                            "value": "4600"
+                        },
+                        {
+                            "label": "Code 71",
+                            "value": "4700"
+                        },
+                        {
+                            "label": "Code 72",
+                            "value": "4800"
+                        },
+                        {
+                            "label": "Code 73",
+                            "value": "4900"
+                        },
+                        {
+                            "label": "Code 74",
+                            "value": "4a00"
+                        },
+                        {
+                            "label": "Code 75",
+                            "value": "4b00"
+                        },
+                        {
+                            "label": "Code 76",
+                            "value": "4c00"
+                        },
+                        {
+                            "label": "Code 77",
+                            "value": "4d00"
+                        },
+                        {
+                            "label": "Code 78",
+                            "value": "4e00"
+                        },
+                        {
+                            "label": "Code 79",
+                            "value": "4f00"
+                        },
+                        {
+                            "label": "Code 80",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "Code 81",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "Code 82",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "Code 83",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "Code 84",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "Code 85",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "Code 86",
+                            "value": "5600"
+                        },
+                        {
+                            "label": "Code 87",
+                            "value": "5700"
+                        },
+                        {
+                            "label": "Code 88",
+                            "value": "5800"
+                        },
+                        {
+                            "label": "Code 89",
+                            "value": "5900"
+                        },
+                        {
+                            "label": "Code 90",
+                            "value": "5a00"
+                        },
+                        {
+                            "label": "Code 91",
+                            "value": "5b00"
+                        },
+                        {
+                            "label": "Code 92",
+                            "value": "5c00"
+                        },
+                        {
+                            "label": "Code 93",
+                            "value": "5d00"
+                        },
+                        {
+                            "label": "Code 94",
+                            "value": "5e00"
+                        },
+                        {
+                            "label": "Code 95",
+                            "value": "5f00"
+                        },
+                        {
+                            "label": "Code 96",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "Code 97",
+                            "value": "6100"
+                        },
+                        {
+                            "label": "Code 98",
+                            "value": "6200"
+                        },
+                        {
+                            "label": "Code 99",
+                            "value": "6300"
+                        },
+                        {
+                            "label": "Code 100",
+                            "value": "6400"
+                        },
+                        {
+                            "label": "Code 101",
+                            "value": "6500"
+                        },
+                        {
+                            "label": "Code 102",
+                            "value": "6600"
+                        },
+                        {
+                            "label": "Code 103",
+                            "value": "6700"
+                        },
+                        {
+                            "label": "Code 104",
+                            "value": "6800"
+                        },
+                        {
+                            "label": "Code 105",
+                            "value": "6900"
+                        },
+                        {
+                            "label": "Code 106",
+                            "value": "6a00"
+                        },
+                        {
+                            "label": "Code 107",
+                            "value": "6b00"
+                        },
+                        {
+                            "label": "Code 108",
+                            "value": "6c00"
+                        },
+                        {
+                            "label": "Code 109",
+                            "value": "6d00"
+                        },
+                        {
+                            "label": "Code 110",
+                            "value": "6e00"
+                        },
+                        {
+                            "label": "Code 111",
+                            "value": "6f00"
+                        },
+                        {
+                            "label": "Code 112",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "Code 113",
+                            "value": "7100"
+                        },
+                        {
+                            "label": "Code 114",
+                            "value": "7200"
+                        },
+                        {
+                            "label": "Code 115",
+                            "value": "7300"
+                        },
+                        {
+                            "label": "Code 116",
+                            "value": "7400"
+                        },
+                        {
+                            "label": "Code 117",
+                            "value": "7500"
+                        },
+                        {
+                            "label": "Code 118",
+                            "value": "7600"
+                        },
+                        {
+                            "label": "Code 119",
+                            "value": "7700"
+                        },
+                        {
+                            "label": "Code 120",
+                            "value": "7800"
+                        },
+                        {
+                            "label": "Code 121",
+                            "value": "7900"
+                        },
+                        {
+                            "label": "Code 122",
+                            "value": "7a00"
+                        },
+                        {
+                            "label": "Code 123",
+                            "value": "7b00"
+                        },
+                        {
+                            "label": "Code 124",
+                            "value": "7c00"
+                        },
+                        {
+                            "label": "Code 125",
+                            "value": "7d00"
+                        },
+                        {
+                            "label": "Code 126",
+                            "value": "7e00"
+                        },
+                        {
+                            "label": "Code 127",
+                            "value": "7f00"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_ICSCR",
+            "unused": "ffff8000"
+        },
+        {
+            "address": "40021008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SW",
+                    "label": "System clock switch.\nThis bitfield is controlled by software and hardware. The bitfield selects the clock for SYSCLK as follows:",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HSISYS",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HSE",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LSI",
+                            "value": "3"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HPRE",
+                    "label": "AHB prescaler.\nThis bitfield is controlled by software. To produce HCLK clock, it sets the division factor of SYSCLK clock as follows:",
+                    "mask": "f00",
+                    "settings": [
+                        {
+                            "label": "Division factor is 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Division factor is 2",
+                            "value": "800"
+                        },
+                        {
+                            "label": "Division factor is 4",
+                            "value": "900"
+                        },
+                        {
+                            "label": "Division factor is 8",
+                            "value": "a00"
+                        },
+                        {
+                            "label": "Division factor is 16",
+                            "value": "b00"
+                        },
+                        {
+                            "label": "Division factor is 64",
+                            "value": "c00"
+                        },
+                        {
+                            "label": "Division factor is 128",
+                            "value": "d00"
+                        },
+                        {
+                            "label": "Division factor is 256",
+                            "value": "e00"
+                        },
+                        {
+                            "label": "Division factor is 512",
+                            "value": "f00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PPRE",
+                    "label": "APB prescaler.\nThis bitfield is controlled by software. To produce PCLK clock, it sets the division factor of HCLK clock as follows:",
+                    "mask": "7000",
+                    "settings": [
+                        {
+                            "label": "Division factor is 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Division factor is 2",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "Division factor is 4",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "Division factor is 8",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "Division factor is 16",
+                            "value": "7000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "MCO2SEL",
+                    "label": "Microcontroller clock output 2 clock selector.\nThis bitfield is controlled by software. It sets the clock selector for MCO2 output as follows:",
+                    "mask": "f0000",
+                    "settings": [
+                        {
+                            "label": "no clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSCLK",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "HSI48",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "HSE",
+                            "value": "40000"
+                        },
+                        {
+                            "label": "LSI",
+                            "value": "60000"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "70000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "MCO2PRE",
+                    "label": "Microcontroller clock output 2 prescaler.\nThis bitfield is controlled by software. It sets the division factor of the clock sent to the MCO2 output as follows:",
+                    "mask": "f00000",
+                    "settings": [
+                        {
+                            "label": "Division factor is 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Division factor is 2",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "Division factor is 4",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "Division factor is 8",
+                            "value": "300000"
+                        },
+                        {
+                            "label": "Division factor is 16",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "Division factor is 32",
+                            "value": "500000"
+                        },
+                        {
+                            "label": "Division factor is 64",
+                            "value": "600000"
+                        },
+                        {
+                            "label": "Division factor is 128",
+                            "value": "700000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "MCOSEL",
+                    "label": "Microcontroller clock output clock selector.\nThis bitfield is controlled by software. It sets the clock selector for MCO output as follows:",
+                    "mask": "f000000",
+                    "settings": [
+                        {
+                            "label": "no clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSCLK",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "HSI48",
+                            "value": "3000000"
+                        },
+                        {
+                            "label": "HSE",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "LSI",
+                            "value": "6000000"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "7000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "MCOPRE",
+                    "label": "Microcontroller clock output prescaler.\nThis bitfield is controlled by software. It sets the division factor of the clock sent to the MCO output as follows:",
+                    "mask": "f0000000",
+                    "settings": [
+                        {
+                            "label": "Division factor is 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Division factor is 2",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "Division factor is 4",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "Division factor is 8",
+                            "value": "30000000"
+                        },
+                        {
+                            "label": "Division factor is 16",
+                            "value": "40000000"
+                        },
+                        {
+                            "label": "Division factor is 32",
+                            "value": "50000000"
+                        },
+                        {
+                            "label": "Division factor is 64",
+                            "value": "60000000"
+                        },
+                        {
+                            "label": "Division factor is 128",
+                            "value": "70000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CFGR",
+            "unused": "888880c0"
+        },
+        {
+            "address": "4002105c",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSEON",
+                    "label": "LSE oscillator enable.\nSet and cleared by software to enable LSE oscillator:",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Disable LSE",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable LSE",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSEBYP",
+                    "label": "LSE oscillator bypass.\nSet and cleared by software to bypass the LSE oscillator (in debug mode).",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Not bypassed",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Bypassed",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "LSEDRV",
+                    "label": "LSE oscillator drive capability.\nSet by software to select the LSE oscillator drive capability as follows:",
+                    "mask": "18",
+                    "settings": [
+                        {
+                            "label": "Medium-high driving capability",
+                            "value": "0"
+                        },
+                        {
+                            "label": "High driving capability",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "LSECSSON",
+                    "label": "CSS on LSE enable.\nSet by software to enable the clock security system on LSE (32 kHz) oscillator as follows:",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "RTCSEL",
+                    "label": "RTC clock source selection.\nSet by software to select the clock source for the RTC as follows:",
+                    "mask": "300",
+                    "settings": [
+                        {
+                            "label": "No clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "100"
+                        },
+                        {
+                            "label": "LSI",
+                            "value": "200"
+                        },
+                        {
+                            "label": "HSE divided by 32",
+                            "value": "300"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "RTCEN",
+                    "label": "RTC clock enable.\nSet and cleared by software. The bit enables clock to RTC and TAMP.",
+                    "mask": "8000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "8000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "RTCRST",
+                    "label": "RTC domain software reset.\nSet and cleared by software to reset the RTC domain:",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "No effect",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reset",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "LSCOEN",
+                    "label": "Low-speed clock output (LSCO) enable.\nSet and cleared by software.",
+                    "mask": "1000000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "LSCOSEL",
+                    "label": "Low-speed clock output selection.\nSet and cleared by software to select the low-speed output clock:",
+                    "mask": "2000000",
+                    "settings": [
+                        {
+                            "label": "LSI",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "2000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CSR1",
+            "unused": "fcfe7c90"
+        },
+        {
+            "address": "40021060",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSION",
+                    "label": "LSI oscillator enable.\nSet and cleared by software to enable/disable the LSI oscillator:",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "RMVF",
+                    "label": "Remove reset flags.\nSet by software to clear the reset flags.",
+                    "mask": "800000",
+                    "settings": [
+                        {
+                            "label": "No effect",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Clear reset flags",
+                            "value": "800000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CSR2",
+            "unused": "017ffffc"
+        }
+    ],
+    "core": "M0EF",
+    "delay_src_path": "delays/m0ef/__lib_delays.c",
+    "mcu": "STM32C031K6",
+    "clock": 48
+}

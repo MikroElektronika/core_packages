@@ -1,0 +1,173 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/mikroC/core/def/PIC24FV16KA301.json",
+    "flash": 16384,
+    "ram": 2048,
+    "settings": {
+        "clock": "32",
+        "scheme": "PIC24FV16KA301_32_MHz",
+        "mcu": "PIC24FV16KA301",
+        "core": "DSPIC",
+        "delay_src_path": "delays/dspic/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    }
+                ],
+                "key": "FBS"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GCP",
+                        "value": "00000002"
+                    }
+                ],
+                "key": "FGS"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FNOSC",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SOSCSRC",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "LPRCSEL",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSCSEL"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "POSCMOD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "POSCFREQ",
+                        "value": "00000018"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSC"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWTEN0",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    }
+                ],
+                "key": "FWDT"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BOREN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "LVRCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "PWRTEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "I2C1SEL",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000060"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FPOR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FICD"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "DSWDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FDS"
+            }
+        ]
+    }
+}

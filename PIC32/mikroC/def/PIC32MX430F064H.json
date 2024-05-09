@@ -1,0 +1,1487 @@
+{
+    "bootrom": {
+        "max_addr": "0x1FC02FEF",
+        "min_addr": "0x1FC00000"
+    },
+    "cfgreg": {
+        "max_addr": "0x1FC02FFF",
+        "min_addr": "0x1FC02FF0"
+    },
+    "config_registers": [
+        {
+            "address": "1FC02FF0",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00070000",
+                    "key": "FSRSSEL",
+                    "label": "Shadow Register Set Priority Select",
+                    "mask": "00070000",
+                    "settings": [
+                        {
+                            "label": "SRS Priority 0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "SRS Priority 1",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "SRS Priority 2",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "SRS Priority 3",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "SRS Priority 4",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "SRS Priority 5",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "SRS Priority 6",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "SRS Priority 7",
+                            "value": "00070000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10000000",
+                    "key": "PMDL1WAY",
+                    "label": "Peripheral Module Disable Configuration",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "Allow multiple reconfigurations",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Allow only one reconfiguration",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20000000",
+                    "key": "IOL1WAY",
+                    "label": "Peripheral Pin Select Configuration",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": "Allow multiple reconfigurations",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Allow only one reconfiguration",
+                            "value": "20000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "40000000",
+                    "key": "FUSBIDIO",
+                    "label": "USB USID Selection",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": "Controlled by Port Function",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Controlled by the USB Module",
+                            "value": "40000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80000000",
+                    "key": "FVBUSONIO",
+                    "label": "USB VBUS ON Selection",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": "Controlled by Port Function",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Controlled by USB Module",
+                            "value": "80000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCFG3",
+            "unused": "FFFFFFFF"
+        },
+        {
+            "address": "1FC02FF4",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000007",
+                    "key": "FPLLIDIV",
+                    "label": "PLL Input Divider",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "1x Divider",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "2x Divider",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "3x Divider",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "4x Divider",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "5x Divider",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "6x Divider",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "10x Divider",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "12x Divider",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000070",
+                    "key": "FPLLMUL",
+                    "label": "PLL Multiplier",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "15x Multiplier",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "16x Multiplier",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "17x Multiplier",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "18x Multiplier",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "19x Multiplier",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "20x Multiplier",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "21x Multiplier",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "24x Multiplier",
+                            "value": "00000070"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000700",
+                    "key": "UPLLIDIV",
+                    "label": "USB PLL Input Divider",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "1x Divider",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "2x Divider",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "3x Divider",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "4x Divider",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "5x Divider",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "6x Divider",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "10x Divider",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "12x Divider",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00008000",
+                    "key": "UPLLEN",
+                    "label": "USB PLL Enable",
+                    "mask": "00008000",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Disabled and Bypassed",
+                            "value": "00008000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00070000",
+                    "key": "FPLLODIV",
+                    "label": "System PLL Output Clock Divider",
+                    "mask": "00070000",
+                    "settings": [
+                        {
+                            "label": "PLL Divide by 1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL Divide by 2",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "PLL Divide by 4",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "PLL Divide by 8",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "PLL Divide by 16",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "PLL Divide by 32",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "PLL Divide by 64",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "PLL Divide by 256",
+                            "value": "00070000"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCFG2",
+            "unused": "FFF87888"
+        },
+        {
+            "address": "1FC02FF8",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000007",
+                    "key": "FNOSC",
+                    "label": "Oscillator Selection Bits",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Fast RC Osc (FRC)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Fast RC Osc with PLL",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Primary Osc (XT,HS,EC)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Primary Osc w/PLL (XT+,HS+,EC+PLL)",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Low Power Secondary Osc (SOSC)",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Low Power RC Osc (LPRC)",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Fast RC Osc w/Div-by-16 (FRC/16)",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "FSOSCEN",
+                    "label": "Secondary Oscillator Enable",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000020"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "IESO",
+                    "label": "Internal/External Switch Over",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000080"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "POSCMOD",
+                    "label": "Primary Oscillator Configuration",
+                    "mask": "00000300",
+                    "settings": [
+                        {
+                            "label": "External clock mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "XT osc mode",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "HS osc mode",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "Primary osc disabled",
+                            "value": "00000300"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000400",
+                    "key": "OSCIOFNC",
+                    "label": "CLKO Output Signal Active on the OSCO Pin",
+                    "mask": "00000400",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003000",
+                    "key": "FPBDIV",
+                    "label": "Peripheral Clock Divisor",
+                    "mask": "00003000",
+                    "settings": [
+                        {
+                            "label": "Pb_Clk is Sys_Clk/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Pb_Clk is Sys_Clk/2",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "Pb_Clk is Sys_Clk/4",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "Pb_Clk is Sys_Clk/8",
+                            "value": "00003000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0000C000",
+                    "key": "FCKSM",
+                    "label": "Clock Switching and Monitor Selection",
+                    "mask": "0000C000",
+                    "settings": [
+                        {
+                            "label": "Clock Switch Enable, FSCM Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clock Switch Enable, FSCM Disabled",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "Clock Switch Disable, FSCM Disabled",
+                            "value": "0000C000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00140000",
+                    "key": "WDTPS",
+                    "label": "Watchdog Timer Postscaler",
+                    "mask": "001F0000",
+                    "settings": [
+                        {
+                            "label": "1:1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1:2",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "1:4",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "1:8",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "1:16",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "1:32",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "1:64",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "1:128",
+                            "value": "00070000"
+                        },
+                        {
+                            "label": "1:256",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "1:512",
+                            "value": "00090000"
+                        },
+                        {
+                            "label": "1:1024",
+                            "value": "000A0000"
+                        },
+                        {
+                            "label": "1:2048",
+                            "value": "000B0000"
+                        },
+                        {
+                            "label": "1:4096",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "1:8192",
+                            "value": "000D0000"
+                        },
+                        {
+                            "label": "1:16384",
+                            "value": "000E0000"
+                        },
+                        {
+                            "label": "1:32768",
+                            "value": "000F0000"
+                        },
+                        {
+                            "label": "1:65536",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "1:131072",
+                            "value": "00110000"
+                        },
+                        {
+                            "label": "1:262144",
+                            "value": "00120000"
+                        },
+                        {
+                            "label": "1:524288",
+                            "value": "00130000"
+                        },
+                        {
+                            "label": "1:1048576",
+                            "value": "00140000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00400000",
+                    "key": "WINDIS",
+                    "label": "Watchdog Timer Window Enable",
+                    "mask": "00400000",
+                    "settings": [
+                        {
+                            "label": "Watchdog Timer is in Window Mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Watchdog Timer is in Non-Window Mode",
+                            "value": "00400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00800000",
+                    "key": "FWDTEN",
+                    "label": "Watchdog Timer Enable",
+                    "mask": "00800000",
+                    "settings": [
+                        {
+                            "label": "WDT Disabled (SWDTEN Bit Controls)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "WDT Enabled",
+                            "value": "00800000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "03000000",
+                    "key": "FWDTWINSZ",
+                    "label": "Watchdog Timer Window Size",
+                    "mask": "03000000",
+                    "settings": [
+                        {
+                            "label": "Window Size is 75%",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Window Size is 50%",
+                            "value": "01000000"
+                        },
+                        {
+                            "label": "Window Size is 37.5%",
+                            "value": "02000000"
+                        },
+                        {
+                            "label": "Window Size is 25%",
+                            "value": "03000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCFG1",
+            "unused": "FC200858"
+        },
+        {
+            "address": "1FC02FFC",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DEBUG",
+                    "label": "Background Debugger Enable",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Debugger is Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Debugger is Disabled",
+                            "value": "00000003"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "JTAGEN",
+                    "label": "JTAG Enable",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "JTAG Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "JTAG Port Enabled",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000018",
+                    "key": "ICESEL",
+                    "label": "ICE/ICD Comm Channel Select",
+                    "mask": "00000018",
+                    "settings": [
+                        {
+                            "label": "Communicate on PGEC3/PGED3",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Communicate on PGEC2/PGED2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Communicate on PGEC1/PGED1",
+                            "value": "00000018"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "000FF000",
+                    "key": "PWP",
+                    "label": "Program Flash Write Protect",
+                    "mask": "000FF000",
+                    "settings": [
+                        {
+                            "label": "First 512K",
+                            "value": "0007F000"
+                        },
+                        {
+                            "label": "First 508K",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "First 504K",
+                            "value": "00081000"
+                        },
+                        {
+                            "label": "First 500K",
+                            "value": "00082000"
+                        },
+                        {
+                            "label": "First 496K",
+                            "value": "00083000"
+                        },
+                        {
+                            "label": "First 492K",
+                            "value": "00084000"
+                        },
+                        {
+                            "label": "First 488K",
+                            "value": "00085000"
+                        },
+                        {
+                            "label": "First 484K",
+                            "value": "00086000"
+                        },
+                        {
+                            "label": "First 480K",
+                            "value": "00087000"
+                        },
+                        {
+                            "label": "First 476K",
+                            "value": "00088000"
+                        },
+                        {
+                            "label": "First 472K",
+                            "value": "00089000"
+                        },
+                        {
+                            "label": "First 468K",
+                            "value": "0008A000"
+                        },
+                        {
+                            "label": "First 464K",
+                            "value": "0008B000"
+                        },
+                        {
+                            "label": "First 460K",
+                            "value": "0008C000"
+                        },
+                        {
+                            "label": "First 456K",
+                            "value": "0008D000"
+                        },
+                        {
+                            "label": "First 452K",
+                            "value": "0008E000"
+                        },
+                        {
+                            "label": "First 448K",
+                            "value": "0008F000"
+                        },
+                        {
+                            "label": "First 444K",
+                            "value": "00090000"
+                        },
+                        {
+                            "label": "First 440K",
+                            "value": "00091000"
+                        },
+                        {
+                            "label": "First 436K",
+                            "value": "00092000"
+                        },
+                        {
+                            "label": "First 432K",
+                            "value": "00093000"
+                        },
+                        {
+                            "label": "First 428K",
+                            "value": "00094000"
+                        },
+                        {
+                            "label": "First 424K",
+                            "value": "00095000"
+                        },
+                        {
+                            "label": "First 420K",
+                            "value": "00096000"
+                        },
+                        {
+                            "label": "First 416K",
+                            "value": "00097000"
+                        },
+                        {
+                            "label": "First 412K",
+                            "value": "00098000"
+                        },
+                        {
+                            "label": "First 408K",
+                            "value": "00099000"
+                        },
+                        {
+                            "label": "First 404K",
+                            "value": "0009A000"
+                        },
+                        {
+                            "label": "First 400K",
+                            "value": "0009B000"
+                        },
+                        {
+                            "label": "First 396K",
+                            "value": "0009C000"
+                        },
+                        {
+                            "label": "First 392K",
+                            "value": "0009D000"
+                        },
+                        {
+                            "label": "First 388K",
+                            "value": "0009E000"
+                        },
+                        {
+                            "label": "First 384K",
+                            "value": "0009F000"
+                        },
+                        {
+                            "label": "First 380K",
+                            "value": "000A0000"
+                        },
+                        {
+                            "label": "First 376K",
+                            "value": "000A1000"
+                        },
+                        {
+                            "label": "First 372K",
+                            "value": "000A2000"
+                        },
+                        {
+                            "label": "First 368K",
+                            "value": "000A3000"
+                        },
+                        {
+                            "label": "First 364K",
+                            "value": "000A4000"
+                        },
+                        {
+                            "label": "First 360K",
+                            "value": "000A5000"
+                        },
+                        {
+                            "label": "First 356K",
+                            "value": "000A6000"
+                        },
+                        {
+                            "label": "First 352K",
+                            "value": "000A7000"
+                        },
+                        {
+                            "label": "First 348K",
+                            "value": "000A8000"
+                        },
+                        {
+                            "label": "First 344K",
+                            "value": "000A9000"
+                        },
+                        {
+                            "label": "First 340K",
+                            "value": "000AA000"
+                        },
+                        {
+                            "label": "First 336K",
+                            "value": "000AB000"
+                        },
+                        {
+                            "label": "First 332K",
+                            "value": "000AC000"
+                        },
+                        {
+                            "label": "First 328K",
+                            "value": "000AD000"
+                        },
+                        {
+                            "label": "First 324K",
+                            "value": "000AE000"
+                        },
+                        {
+                            "label": "First 320K",
+                            "value": "000AF000"
+                        },
+                        {
+                            "label": "First 316K",
+                            "value": "000B0000"
+                        },
+                        {
+                            "label": "First 312K",
+                            "value": "000B1000"
+                        },
+                        {
+                            "label": "First 308K",
+                            "value": "000B2000"
+                        },
+                        {
+                            "label": "First 304K",
+                            "value": "000B3000"
+                        },
+                        {
+                            "label": "First 300K",
+                            "value": "000B4000"
+                        },
+                        {
+                            "label": "First 296K",
+                            "value": "000B5000"
+                        },
+                        {
+                            "label": "First 292K",
+                            "value": "000B6000"
+                        },
+                        {
+                            "label": "First 288K",
+                            "value": "000B7000"
+                        },
+                        {
+                            "label": "First 284K",
+                            "value": "000B8000"
+                        },
+                        {
+                            "label": "First 280K",
+                            "value": "000B9000"
+                        },
+                        {
+                            "label": "First 276K",
+                            "value": "000BA000"
+                        },
+                        {
+                            "label": "First 272K",
+                            "value": "000BB000"
+                        },
+                        {
+                            "label": "First 268K",
+                            "value": "000BC000"
+                        },
+                        {
+                            "label": "First 264K",
+                            "value": "000BD000"
+                        },
+                        {
+                            "label": "First 260K",
+                            "value": "000BE000"
+                        },
+                        {
+                            "label": "First 256K",
+                            "value": "000BF000"
+                        },
+                        {
+                            "label": "First 252K",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "First 248K",
+                            "value": "000C1000"
+                        },
+                        {
+                            "label": "First 244K",
+                            "value": "000C2000"
+                        },
+                        {
+                            "label": "First 240K",
+                            "value": "000C3000"
+                        },
+                        {
+                            "label": "First 236K",
+                            "value": "000C4000"
+                        },
+                        {
+                            "label": "First 232K",
+                            "value": "000C5000"
+                        },
+                        {
+                            "label": "First 228K",
+                            "value": "000C6000"
+                        },
+                        {
+                            "label": "First 224K",
+                            "value": "000C7000"
+                        },
+                        {
+                            "label": "First 220K",
+                            "value": "000C8000"
+                        },
+                        {
+                            "label": "First 216K",
+                            "value": "000C9000"
+                        },
+                        {
+                            "label": "First 212K",
+                            "value": "000CA000"
+                        },
+                        {
+                            "label": "First 208K",
+                            "value": "000CB000"
+                        },
+                        {
+                            "label": "First 204K",
+                            "value": "000CC000"
+                        },
+                        {
+                            "label": "First 200K",
+                            "value": "000CD000"
+                        },
+                        {
+                            "label": "First 196K",
+                            "value": "000CE000"
+                        },
+                        {
+                            "label": "First 192K",
+                            "value": "000CF000"
+                        },
+                        {
+                            "label": "First 188K",
+                            "value": "000D0000"
+                        },
+                        {
+                            "label": "First 184K",
+                            "value": "000D1000"
+                        },
+                        {
+                            "label": "First 180K",
+                            "value": "000D2000"
+                        },
+                        {
+                            "label": "First 176K",
+                            "value": "000D3000"
+                        },
+                        {
+                            "label": "First 172K",
+                            "value": "000D4000"
+                        },
+                        {
+                            "label": "First 168K",
+                            "value": "000D5000"
+                        },
+                        {
+                            "label": "First 164K",
+                            "value": "000D6000"
+                        },
+                        {
+                            "label": "First 160K",
+                            "value": "000D7000"
+                        },
+                        {
+                            "label": "First 156K",
+                            "value": "000D8000"
+                        },
+                        {
+                            "label": "First 152K",
+                            "value": "000D9000"
+                        },
+                        {
+                            "label": "First 148K",
+                            "value": "000DA000"
+                        },
+                        {
+                            "label": "First 144K",
+                            "value": "000DB000"
+                        },
+                        {
+                            "label": "First 140K",
+                            "value": "000DC000"
+                        },
+                        {
+                            "label": "First 136K",
+                            "value": "000DD000"
+                        },
+                        {
+                            "label": "First 132K",
+                            "value": "000DE000"
+                        },
+                        {
+                            "label": "First 128K",
+                            "value": "000DF000"
+                        },
+                        {
+                            "label": "First 124K",
+                            "value": "000E0000"
+                        },
+                        {
+                            "label": "First 120K",
+                            "value": "000E1000"
+                        },
+                        {
+                            "label": "First 116K",
+                            "value": "000E2000"
+                        },
+                        {
+                            "label": "First 112K",
+                            "value": "000E3000"
+                        },
+                        {
+                            "label": "First 108K",
+                            "value": "000E4000"
+                        },
+                        {
+                            "label": "First 104K",
+                            "value": "000E5000"
+                        },
+                        {
+                            "label": "First 100K",
+                            "value": "000E6000"
+                        },
+                        {
+                            "label": "First 96K",
+                            "value": "000E7000"
+                        },
+                        {
+                            "label": "First 92K",
+                            "value": "000E8000"
+                        },
+                        {
+                            "label": "First 88K",
+                            "value": "000E9000"
+                        },
+                        {
+                            "label": "First 84K",
+                            "value": "000EA000"
+                        },
+                        {
+                            "label": "First 80K",
+                            "value": "000EB000"
+                        },
+                        {
+                            "label": "First 76K",
+                            "value": "000EC000"
+                        },
+                        {
+                            "label": "First 72K",
+                            "value": "000ED000"
+                        },
+                        {
+                            "label": "First 68K",
+                            "value": "000EE000"
+                        },
+                        {
+                            "label": "First 64K",
+                            "value": "000EF000"
+                        },
+                        {
+                            "label": "First 60K",
+                            "value": "000F0000"
+                        },
+                        {
+                            "label": "First 56K",
+                            "value": "000F1000"
+                        },
+                        {
+                            "label": "First 52K",
+                            "value": "000F2000"
+                        },
+                        {
+                            "label": "First 48K",
+                            "value": "000F3000"
+                        },
+                        {
+                            "label": "First 44K",
+                            "value": "000F4000"
+                        },
+                        {
+                            "label": "First 40K",
+                            "value": "000F5000"
+                        },
+                        {
+                            "label": "First 36K",
+                            "value": "000F6000"
+                        },
+                        {
+                            "label": "First 32K",
+                            "value": "000F7000"
+                        },
+                        {
+                            "label": "First 28K",
+                            "value": "000F8000"
+                        },
+                        {
+                            "label": "First 24K",
+                            "value": "000F9000"
+                        },
+                        {
+                            "label": "First 20K",
+                            "value": "000FA000"
+                        },
+                        {
+                            "label": "First 16K",
+                            "value": "000FB000"
+                        },
+                        {
+                            "label": "First 12K",
+                            "value": "000FC000"
+                        },
+                        {
+                            "label": "First 8K",
+                            "value": "000FD000"
+                        },
+                        {
+                            "label": "First 4K",
+                            "value": "000FE000"
+                        },
+                        {
+                            "label": "Disable",
+                            "value": "000FF000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "01000000",
+                    "key": "BWP",
+                    "label": "Boot Flash Write Protect bit",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "Protection Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Protection Disabled",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10000000",
+                    "key": "CP",
+                    "label": "Code Protect",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "Protection Enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Protection Disabled",
+                            "value": "10000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "DEVCFG0",
+            "unused": "EEF00FE0"
+        }
+    ],
+    "icd": {
+        "badram": {
+            "max_addr": "0x1FF",
+            "min_addr": "0x0"
+        },
+        "hwbrkpno": "6",
+        "start_addr": "0x00"
+    },
+    "ivt": [
+        {
+            "name": "IVT_CORE_TIMER_VECTOR",
+            "vector": "0"
+        },
+        {
+            "name": "IVT_CORE_SOFTWARE_0_VECTOR",
+            "vector": "1"
+        },
+        {
+            "name": "IVT_CORE_SOFTWARE_1_VECTOR",
+            "vector": "2"
+        },
+        {
+            "name": "IVT_EXTERNAL_0_VECTOR",
+            "vector": "3"
+        },
+        {
+            "name": "IVT_TIMER_1_VECTOR",
+            "vector": "4"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_1_VECTOR",
+            "vector": "5"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_1_VECTOR",
+            "vector": "6"
+        },
+        {
+            "name": "IVT_EXTERNAL_1_VECTOR",
+            "vector": "7"
+        },
+        {
+            "name": "IVT_TIMER_2_VECTOR",
+            "vector": "8"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_2_VECTOR",
+            "vector": "9"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_2_VECTOR",
+            "vector": "10"
+        },
+        {
+            "name": "IVT_EXTERNAL_2_VECTOR",
+            "vector": "11"
+        },
+        {
+            "name": "IVT_TIMER_3_VECTOR",
+            "vector": "12"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_3_VECTOR",
+            "vector": "13"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_3_VECTOR",
+            "vector": "14"
+        },
+        {
+            "name": "IVT_EXTERNAL_3_VECTOR",
+            "vector": "15"
+        },
+        {
+            "name": "IVT_TIMER_4_VECTOR",
+            "vector": "16"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_4_VECTOR",
+            "vector": "17"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_4_VECTOR",
+            "vector": "18"
+        },
+        {
+            "name": "IVT_EXTERNAL_4_VECTOR",
+            "vector": "19"
+        },
+        {
+            "name": "IVT_TIMER_5_VECTOR",
+            "vector": "20"
+        },
+        {
+            "name": "IVT_INPUT_CAPTURE_5_VECTOR",
+            "vector": "21"
+        },
+        {
+            "name": "IVT_OUTPUT_COMPARE_5_VECTOR",
+            "vector": "22"
+        },
+        {
+            "name": "IVT_ADC_VECTOR",
+            "vector": "23"
+        },
+        {
+            "name": "IVT_FAIL_SAFE_MONITOR_VECTOR",
+            "vector": "24"
+        },
+        {
+            "name": "IVT_RTCC_VECTOR",
+            "vector": "25"
+        },
+        {
+            "name": "IVT_FCE_VECTOR",
+            "vector": "26"
+        },
+        {
+            "name": "IVT_COMPARATOR_1_VECTOR",
+            "vector": "27"
+        },
+        {
+            "name": "IVT_COMPARATOR_2_VECTOR",
+            "vector": "28"
+        },
+        {
+            "name": "IVT_USB_1_VECTOR",
+            "vector": "29"
+        },
+        {
+            "name": "IVT_SPI_1_VECTOR",
+            "vector": "30"
+        },
+        {
+            "name": "IVT_UART_1_VECTOR",
+            "vector": "31"
+        },
+        {
+            "name": "IVT_I2C_1_VECTOR",
+            "vector": "32"
+        },
+        {
+            "name": "IVT_CHANGE_NOTICE_VECTOR",
+            "vector": "33"
+        },
+        {
+            "name": "IVT_PMP_VECTOR",
+            "vector": "34"
+        },
+        {
+            "name": "IVT_SPI_2_VECTOR",
+            "vector": "35"
+        },
+        {
+            "name": "IVT_UART_2_VECTOR",
+            "vector": "36"
+        },
+        {
+            "name": "IVT_I2C_2_VECTOR",
+            "vector": "37"
+        },
+        {
+            "name": "IVT_UART_3_VECTOR",
+            "vector": "38"
+        },
+        {
+            "name": "IVT_UART_4_VECTOR",
+            "vector": "39"
+        },
+        {
+            "name": "IVT_RESERVED_40_VECTOR",
+            "vector": "40"
+        },
+        {
+            "name": "IVT_CTMU_VECTOR",
+            "vector": "41"
+        },
+        {
+            "name": "IVT_DMA_0_VECTOR",
+            "vector": "42"
+        },
+        {
+            "name": "IVT_DMA_1_VECTOR",
+            "vector": "43"
+        },
+        {
+            "name": "IVT_DMA_2_VECTOR",
+            "vector": "44"
+        },
+        {
+            "name": "IVT_DMA_3_VECTOR",
+            "vector": "45"
+        }
+    ],
+    "mcu": "PIC32MX430F064H",
+    "core": "MIPS32",
+    "delay_src_path": "delays/mips32/__lib_delays.c",
+    "ram": {
+        "max_addr": "0x00003FFF",
+        "min_addr": "0x00000000"
+    },
+    "rom": {
+        "max_addr": "0x1D00FFFF",
+        "min_addr": "0x1D000000"
+    },
+    "rx": {
+        "max_addr": "0x007F",
+        "min_addr": "0x0000"
+    },
+    "sfr": {
+        "scope": {
+            "max_addr": "0x1F8FFFFF",
+            "min_addr": "0x1F800000"
+        }
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "3.300",
+        "range": {
+            "max_value": "3.600",
+            "min_value": "2.700"
+        }
+    },
+    "clock": "1"
+}

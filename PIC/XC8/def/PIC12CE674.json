@@ -1,0 +1,109 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRCCLK,_EXTRC_OSC_CLKOUT",
+            "key": "FOSC",
+            "label": "Oscillator selection bits",
+            "settings": [
+                {
+                    "label": "EXTRC, Clockout on OSC2",
+                    "value": "EXTRCCLK,_EXTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "EXTRC, OSC2 is I/O",
+                    "value": "EXTRCIO,_EXTRC_OSC_NOCLKOUT,_EXTRC_OSC"
+                },
+                {
+                    "label": "INTRC, Clockout on OSC2",
+                    "value": "INTRCCLK,_INTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "INTRC, OSC2 is I/O",
+                    "value": "INTRCIO,_INTRC_OSC_NOCLKOUT,_INTRC_OSC"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power Up Timer",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bits",
+            "settings": [
+                {
+                    "label": "code protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "0400h-07FEh code protected",
+                    "value": "50"
+                },
+                {
+                    "label": "0200h-07FEh code protected",
+                    "value": "75"
+                },
+                {
+                    "label": "All memory is code protected",
+                    "value": "ALL"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "Master Clear Enable",
+            "settings": [
+                {
+                    "label": "Master Clear enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Master Clear disabled",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC12CE674",
+    "clock": 1
+}

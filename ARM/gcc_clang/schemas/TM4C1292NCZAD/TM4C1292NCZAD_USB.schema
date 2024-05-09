@@ -1,0 +1,105 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc-arm-none-eabi/core/def/TM4C1292NCZAD.json",
+    "flash": 1048575,
+    "ram": 262143,
+    "settings": {
+        "clock": "120",
+        "scheme": "TM4C1292NCZAD_USB",
+        "mcu": "TM4C1292NCZAD",
+        "core": "M4EF",
+        "delay_src_path": "delays/m4ef/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "ACG",
+                        "value": "20000000"
+                    },
+                    {
+                        "key": "USEPLL",
+                        "value": "10000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "03000000"
+                    },
+                    {
+                        "key": "OSCSRC",
+                        "value": "00300000"
+                    },
+                    {
+                        "key": "OSYSDIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PSYSDIV",
+                        "value": "00000004"
+                    }
+                ],
+                "key": "RSCLKCFG"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SESRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "OSCRNG",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "PWRDN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "NOXTAL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MOSCIM",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CVAL",
+                        "value": "00000001"
+                    }
+                ],
+                "key": "MOSCCTL"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "PLLPWR",
+                        "value": "00800000"
+                    },
+                    {
+                        "key": "MFRAC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MINT",
+                        "value": "00000018"
+                    }
+                ],
+                "key": "PLLFREQ0"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "Q",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "N",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "PLLFREQ1"
+            }
+        ]
+    }
+}

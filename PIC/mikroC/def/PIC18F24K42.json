@@ -1,0 +1,1822 @@
+{
+    "accessbank": "0x00000060",
+    "badram": [
+        {
+            "max_addr": "0x387F",
+            "min_addr": "0x0400"
+        },
+        {
+            "max_addr": "0x389C",
+            "min_addr": "0x3891"
+        },
+        {
+            "max_addr": "0x395A",
+            "min_addr": "0x38A0"
+        },
+        {
+            "max_addr": "0x3975",
+            "min_addr": "0x396A"
+        },
+        {
+            "max_addr": "0x397F",
+            "min_addr": "0x397E"
+        },
+        {
+            "max_addr": "0x398F",
+            "min_addr": "0x398B"
+        },
+        {
+            "max_addr": "0x399F",
+            "min_addr": "0x399B"
+        },
+        {
+            "max_addr": "0x39BF",
+            "min_addr": "0x39AB"
+        },
+        {
+            "max_addr": "0x39CF",
+            "min_addr": "0x39C8"
+        },
+        {
+            "max_addr": "0x39D7",
+            "min_addr": "0x39D2"
+        },
+        {
+            "max_addr": "0x39E2",
+            "min_addr": "0x39E1"
+        },
+        {
+            "max_addr": "0x39E4",
+            "min_addr": "0x39E4"
+        },
+        {
+            "max_addr": "0x39EE",
+            "min_addr": "0x39E7"
+        },
+        {
+            "max_addr": "0x39F0",
+            "min_addr": "0x39F0"
+        },
+        {
+            "max_addr": "0x39F6",
+            "min_addr": "0x39F5"
+        },
+        {
+            "max_addr": "0x39FF",
+            "min_addr": "0x39F8"
+        },
+        {
+            "max_addr": "0x3A3F",
+            "min_addr": "0x3A18"
+        },
+        {
+            "max_addr": "0x3A4F",
+            "min_addr": "0x3A4A"
+        },
+        {
+            "max_addr": "0x3A5F",
+            "min_addr": "0x3A5C"
+        },
+        {
+            "max_addr": "0x3A80",
+            "min_addr": "0x3A6C"
+        },
+        {
+            "max_addr": "0x3A83",
+            "min_addr": "0x3A82"
+        },
+        {
+            "max_addr": "0x3ABD",
+            "min_addr": "0x3A88"
+        },
+        {
+            "max_addr": "0x3AE7",
+            "min_addr": "0x3AE7"
+        },
+        {
+            "max_addr": "0x3BC8",
+            "min_addr": "0x3AEA"
+        },
+        {
+            "max_addr": "0x3BE8",
+            "min_addr": "0x3BE0"
+        },
+        {
+            "max_addr": "0x3C55",
+            "min_addr": "0x3C00"
+        },
+        {
+            "max_addr": "0x3CE4",
+            "min_addr": "0x3C7F"
+        },
+        {
+            "max_addr": "0x3CF9",
+            "min_addr": "0x3CE7"
+        },
+        {
+            "max_addr": "0x3D0F",
+            "min_addr": "0x3CFF"
+        },
+        {
+            "max_addr": "0x3D53",
+            "min_addr": "0x3D1D"
+        },
+        {
+            "max_addr": "0x3D69",
+            "min_addr": "0x3D67"
+        },
+        {
+            "max_addr": "0x3DCF",
+            "min_addr": "0x3D7D"
+        },
+        {
+            "max_addr": "0x3DD1",
+            "min_addr": "0x3DD1"
+        },
+        {
+            "max_addr": "0x3DD3",
+            "min_addr": "0x3DD3"
+        },
+        {
+            "max_addr": "0x3DD5",
+            "min_addr": "0x3DD5"
+        },
+        {
+            "max_addr": "0x3DD7",
+            "min_addr": "0x3DD7"
+        },
+        {
+            "max_addr": "0x3DD9",
+            "min_addr": "0x3DD9"
+        },
+        {
+            "max_addr": "0x3DE7",
+            "min_addr": "0x3DE3"
+        },
+        {
+            "max_addr": "0x3E9B",
+            "min_addr": "0x3DFB"
+        },
+        {
+            "max_addr": "0x3E9D",
+            "min_addr": "0x3E9D"
+        },
+        {
+            "max_addr": "0x3EB7",
+            "min_addr": "0x3E9F"
+        },
+        {
+            "max_addr": "0x3EC2",
+            "min_addr": "0x3EC2"
+        },
+        {
+            "max_addr": "0x3EC8",
+            "min_addr": "0x3EC4"
+        },
+        {
+            "max_addr": "0x3ED6",
+            "min_addr": "0x3ECB"
+        },
+        {
+            "max_addr": "0x3EDD",
+            "min_addr": "0x3ED8"
+        },
+        {
+            "max_addr": "0x3EF2",
+            "min_addr": "0x3EF2"
+        },
+        {
+            "max_addr": "0x3F11",
+            "min_addr": "0x3F00"
+        },
+        {
+            "max_addr": "0x3F37",
+            "min_addr": "0x3F24"
+        },
+        {
+            "max_addr": "0x3F5D",
+            "min_addr": "0x3F5B"
+        },
+        {
+            "max_addr": "0x3F63",
+            "min_addr": "0x3F63"
+        },
+        {
+            "max_addr": "0x3F67",
+            "min_addr": "0x3F67"
+        },
+        {
+            "max_addr": "0x3F6B",
+            "min_addr": "0x3F6B"
+        },
+        {
+            "max_addr": "0x3F6F",
+            "min_addr": "0x3F6F"
+        },
+        {
+            "max_addr": "0x3F91",
+            "min_addr": "0x3F80"
+        },
+        {
+            "max_addr": "0x3FC1",
+            "min_addr": "0x3FBD"
+        },
+        {
+            "max_addr": "0x3FC9",
+            "min_addr": "0x3FC5"
+        },
+        {
+            "max_addr": "0x3FCD",
+            "min_addr": "0x3FCD"
+        },
+        {
+            "max_addr": "0x3FD1",
+            "min_addr": "0x3FCF"
+        },
+        {
+            "max_addr": "0x3FF2",
+            "min_addr": "0x3FF2"
+        }
+    ],
+    "bank": [
+        {
+            "max_addr": "0x00FF",
+            "min_addr": "0x0000",
+            "number": "0"
+        },
+        {
+            "max_addr": "0x01FF",
+            "min_addr": "0x0100",
+            "number": "1"
+        },
+        {
+            "max_addr": "0x02FF",
+            "min_addr": "0x0200",
+            "number": "2"
+        },
+        {
+            "max_addr": "0x03FF",
+            "min_addr": "0x0300",
+            "number": "3"
+        },
+        {
+            "max_addr": "0x04FF",
+            "min_addr": "0x0400",
+            "number": "4"
+        },
+        {
+            "max_addr": "0x05FF",
+            "min_addr": "0x0500",
+            "number": "5"
+        },
+        {
+            "max_addr": "0x06FF",
+            "min_addr": "0x0600",
+            "number": "6"
+        },
+        {
+            "max_addr": "0x07FF",
+            "min_addr": "0x0700",
+            "number": "7"
+        },
+        {
+            "max_addr": "0x08FF",
+            "min_addr": "0x0800",
+            "number": "8"
+        },
+        {
+            "max_addr": "0x09FF",
+            "min_addr": "0x0900",
+            "number": "9"
+        },
+        {
+            "max_addr": "0x0AFF",
+            "min_addr": "0x0A00",
+            "number": "10"
+        },
+        {
+            "max_addr": "0x0BFF",
+            "min_addr": "0x0B00",
+            "number": "11"
+        },
+        {
+            "max_addr": "0x0CFF",
+            "min_addr": "0x0C00",
+            "number": "12"
+        },
+        {
+            "max_addr": "0x0DFF",
+            "min_addr": "0x0D00",
+            "number": "13"
+        },
+        {
+            "max_addr": "0x0EFF",
+            "min_addr": "0x0E00",
+            "number": "14"
+        },
+        {
+            "max_addr": "0x0FFF",
+            "min_addr": "0x0F00",
+            "number": "15"
+        },
+        {
+            "max_addr": "0x10FF",
+            "min_addr": "0x1000",
+            "number": "16"
+        },
+        {
+            "max_addr": "0x11FF",
+            "min_addr": "0x1100",
+            "number": "17"
+        },
+        {
+            "max_addr": "0x12FF",
+            "min_addr": "0x1200",
+            "number": "18"
+        },
+        {
+            "max_addr": "0x13FF",
+            "min_addr": "0x1300",
+            "number": "19"
+        },
+        {
+            "max_addr": "0x14FF",
+            "min_addr": "0x1400",
+            "number": "20"
+        },
+        {
+            "max_addr": "0x15FF",
+            "min_addr": "0x1500",
+            "number": "21"
+        },
+        {
+            "max_addr": "0x16FF",
+            "min_addr": "0x1600",
+            "number": "22"
+        },
+        {
+            "max_addr": "0x17FF",
+            "min_addr": "0x1700",
+            "number": "23"
+        },
+        {
+            "max_addr": "0x18FF",
+            "min_addr": "0x1800",
+            "number": "24"
+        },
+        {
+            "max_addr": "0x19FF",
+            "min_addr": "0x1900",
+            "number": "25"
+        },
+        {
+            "max_addr": "0x1AFF",
+            "min_addr": "0x1A00",
+            "number": "26"
+        },
+        {
+            "max_addr": "0x1BFF",
+            "min_addr": "0x1B00",
+            "number": "27"
+        },
+        {
+            "max_addr": "0x1CFF",
+            "min_addr": "0x1C00",
+            "number": "28"
+        },
+        {
+            "max_addr": "0x1DFF",
+            "min_addr": "0x1D00",
+            "number": "29"
+        },
+        {
+            "max_addr": "0x1EFF",
+            "min_addr": "0x1E00",
+            "number": "30"
+        },
+        {
+            "max_addr": "0x1FFF",
+            "min_addr": "0x1F00",
+            "number": "31"
+        },
+        {
+            "max_addr": "0x20FF",
+            "min_addr": "0x2000",
+            "number": "32"
+        },
+        {
+            "max_addr": "0x21FF",
+            "min_addr": "0x2100",
+            "number": "33"
+        },
+        {
+            "max_addr": "0x22FF",
+            "min_addr": "0x2200",
+            "number": "34"
+        },
+        {
+            "max_addr": "0x23FF",
+            "min_addr": "0x2300",
+            "number": "35"
+        },
+        {
+            "max_addr": "0x24FF",
+            "min_addr": "0x2400",
+            "number": "36"
+        },
+        {
+            "max_addr": "0x25FF",
+            "min_addr": "0x2500",
+            "number": "37"
+        },
+        {
+            "max_addr": "0x26FF",
+            "min_addr": "0x2600",
+            "number": "38"
+        },
+        {
+            "max_addr": "0x27FF",
+            "min_addr": "0x2700",
+            "number": "39"
+        },
+        {
+            "max_addr": "0x28FF",
+            "min_addr": "0x2800",
+            "number": "40"
+        },
+        {
+            "max_addr": "0x29FF",
+            "min_addr": "0x2900",
+            "number": "41"
+        },
+        {
+            "max_addr": "0x2AFF",
+            "min_addr": "0x2A00",
+            "number": "42"
+        },
+        {
+            "max_addr": "0x2BFF",
+            "min_addr": "0x2B00",
+            "number": "43"
+        },
+        {
+            "max_addr": "0x2CFF",
+            "min_addr": "0x2C00",
+            "number": "44"
+        },
+        {
+            "max_addr": "0x2DFF",
+            "min_addr": "0x2D00",
+            "number": "45"
+        },
+        {
+            "max_addr": "0x2EFF",
+            "min_addr": "0x2E00",
+            "number": "46"
+        },
+        {
+            "max_addr": "0x2FFF",
+            "min_addr": "0x2F00",
+            "number": "47"
+        },
+        {
+            "max_addr": "0x30FF",
+            "min_addr": "0x3000",
+            "number": "48"
+        },
+        {
+            "max_addr": "0x31FF",
+            "min_addr": "0x3100",
+            "number": "49"
+        },
+        {
+            "max_addr": "0x32FF",
+            "min_addr": "0x3200",
+            "number": "50"
+        },
+        {
+            "max_addr": "0x33FF",
+            "min_addr": "0x3300",
+            "number": "51"
+        },
+        {
+            "max_addr": "0x34FF",
+            "min_addr": "0x3400",
+            "number": "52"
+        },
+        {
+            "max_addr": "0x35FF",
+            "min_addr": "0x3500",
+            "number": "53"
+        },
+        {
+            "max_addr": "0x36FF",
+            "min_addr": "0x3600",
+            "number": "54"
+        },
+        {
+            "max_addr": "0x37FF",
+            "min_addr": "0x3700",
+            "number": "55"
+        },
+        {
+            "max_addr": "0x38FF",
+            "min_addr": "0x3800",
+            "number": "56"
+        },
+        {
+            "max_addr": "0x39FF",
+            "min_addr": "0x3900",
+            "number": "57"
+        },
+        {
+            "max_addr": "0x3AFF",
+            "min_addr": "0x3A00",
+            "number": "58"
+        },
+        {
+            "max_addr": "0x3BFF",
+            "min_addr": "0x3B00",
+            "number": "59"
+        },
+        {
+            "max_addr": "0x3CFF",
+            "min_addr": "0x3C00",
+            "number": "60"
+        },
+        {
+            "max_addr": "0x3DFF",
+            "min_addr": "0x3D00",
+            "number": "61"
+        },
+        {
+            "max_addr": "0x3EFF",
+            "min_addr": "0x3E00",
+            "number": "62"
+        },
+        {
+            "max_addr": "0x3FFF",
+            "min_addr": "0x3F00",
+            "number": "63"
+        }
+    ],
+    "callstack": {
+        "max": "0x1F"
+    },
+    "codegrip_icd": {
+        "hwbrkpno": "3",
+        "instr_pipeline": "0",
+        "start_addr": "0x200400",
+        "swbrkpen": "0"
+    },
+    "config_registers": [
+        {
+            "address": "300000",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "FEXTOSC",
+                    "label": "External Oscillator Selection",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "LP (crystal oscillator) optimized for 32.768 kHz",
+                            "value": "0"
+                        },
+                        {
+                            "label": "XT (crystal oscillator) above 100 kHz, below 8 MHz",
+                            "value": "1"
+                        },
+                        {
+                            "label": "HS (crystal oscillator) above 8 MHz",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Oscillator not enabled",
+                            "value": "4"
+                        },
+                        {
+                            "label": "EC (external clock) below 100 kHz: PFM set to low power",
+                            "value": "5"
+                        },
+                        {
+                            "label": "EC (external clock) for 500 kHz to 8 MHz",
+                            "value": "6"
+                        },
+                        {
+                            "label": "EC (external clock) above 8 MHz: PFM set to high power",
+                            "value": "7"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "70",
+                    "key": "RSTOSC",
+                    "label": "Reset Oscillator Selection",
+                    "mask": "70",
+                    "settings": [
+                        {
+                            "label": "HFINTOSC with HFFRQ = 64 MHz and CDIV = 1:1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "EXTOSC with 4x PLL, with EXTOSC operating per FEXTOSC bits",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Secondary Oscillator",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Low-Frequency Oscillator",
+                            "value": "50"
+                        },
+                        {
+                            "label": "HFINTOSC with HFFRQ = 4 MHz and CDIV = 4:1",
+                            "value": "60"
+                        },
+                        {
+                            "label": "EXTOSC operating per FEXTOSC bits (device manufacturing default)",
+                            "value": "70"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1L",
+            "unused": "88"
+        },
+        {
+            "address": "300001",
+            "default": "DF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "CLKOUTEN",
+                    "label": "Clock out Enable bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "CLKOUT function is disabled",
+                            "value": "1"
+                        },
+                        {
+                            "label": "CLKOUT function is enabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "PR1WAY",
+                    "label": "PRLOCKED One-Way Set Enable bit",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "PRLOCK bit can be cleared and set only once",
+                            "value": "2"
+                        },
+                        {
+                            "label": "PRLOCK bit can be set and cleared repeatedly",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "CSWEN",
+                    "label": "Clock Switch Enable bit",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "The NOSC and NDIV bits cannot be changed by user software",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Writing to NOSC and NDIV is allowed",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "FCMEN",
+                    "label": "Fail-Safe Clock Monitor Enable bit",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "Fail-Safe Clock Monitor disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Fail-Safe Clock Monitor enabled",
+                            "value": "20"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1H",
+            "unused": "D4"
+        },
+        {
+            "address": "300002",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "MCLRE",
+                    "label": "MCLR Enable bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "If LVP = 0, MCLR pin is MCLR",
+                            "value": "1"
+                        },
+                        {
+                            "label": "If LVP = 0, MCLR pin function is port defined function",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "6",
+                    "key": "PWRTS",
+                    "label": "Power-up timer selection bits",
+                    "mask": "6",
+                    "settings": [
+                        {
+                            "label": "PWRT is disabled",
+                            "value": "6"
+                        },
+                        {
+                            "label": "PWRT set at 64ms",
+                            "value": "4"
+                        },
+                        {
+                            "label": "PWRT set at 16ms",
+                            "value": "2"
+                        },
+                        {
+                            "label": "PWRT set at 1ms",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "MVECEN",
+                    "label": "Multi-vector enable bit",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "Multi-vector enabled, Vector table used for interrupts",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Interrupt contoller does not use vector table to prioritze interrupts",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10",
+                    "key": "IVT1WAY",
+                    "label": "IVTLOCK bit One-way set enable bit",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "IVTLOCK bit can be cleared and set only once",
+                            "value": "10"
+                        },
+                        {
+                            "label": "IVTLOCK bit can be cleared and set repeatedly",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "LPBOREN",
+                    "label": "Low Power BOR Enable bit",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "ULPBOR disabled",
+                            "value": "20"
+                        },
+                        {
+                            "label": "ULPBOR enabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "C0",
+                    "key": "BOREN",
+                    "label": "Brown-out Reset Enable bits",
+                    "mask": "C0",
+                    "settings": [
+                        {
+                            "label": "Brown-out Reset enabled , SBOREN bit is ignored",
+                            "value": "C0"
+                        },
+                        {
+                            "label": "Brown-out Reset enabled while running, disabled in Sleep",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Brown-out Reset enabled according to SBOREN",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Brown-out Reset disabled",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2L",
+            "unused": "00"
+        },
+        {
+            "address": "300003",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "3",
+                    "key": "BORV",
+                    "label": "Brown-out Reset Voltage Selection bits",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "Brown-out Reset Voltage (VBOR) set to 1.90V",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Brown-out Reset Voltage (VBOR) set to 2.45V",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Brown-out Reset Voltage (VBOR) set to 2.7V",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Brown-out Reset Voltage (VBOR) set to 2.8V",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "ZCD",
+                    "label": "ZCD Disable bit",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "ZCD disabled. ZCD can be enabled by setting the ZCDSEN bit of ZCDCON",
+                            "value": "4"
+                        },
+                        {
+                            "label": "ZCD always enabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "PPS1WAY",
+                    "label": "PPSLOCK bit One-Way Set Enable bit",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "PPSLOCK bit can be cleared and set only once",
+                            "value": "8"
+                        },
+                        {
+                            "label": "PPSLOCK bit can be set and cleared repeatedly (subject to the unlock sequence)",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10",
+                    "key": "STVREN",
+                    "label": "Stack Full/Underflow Reset Enable bit",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Stack full/underflow will cause Reset",
+                            "value": "10"
+                        },
+                        {
+                            "label": "Stack full/underflow will not cause Reset",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "DEBUG",
+                    "label": "Debugger Enable bit",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "Background debugger disabled",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Background debugger enabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "XINST",
+                    "label": "Extended Instruction Set Enable bit",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Extended Instruction Set and Indexed Addressing Mode disabled",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Extended Instruction Set and Indexed Addressing Mode enabled",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2H",
+            "unused": "40"
+        },
+        {
+            "address": "300004",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1F",
+                    "key": "WDTCPS",
+                    "label": "WDT Period selection bits",
+                    "mask": "1F",
+                    "settings": [
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Divider ratio 1:64",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Divider ratio 1:128",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Divider ratio 1:256",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Divider ratio 1:512",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Divider ratio 1:1024",
+                            "value": "5"
+                        },
+                        {
+                            "label": "Divider ratio 1:2048",
+                            "value": "6"
+                        },
+                        {
+                            "label": "Divider ratio 1:4096",
+                            "value": "7"
+                        },
+                        {
+                            "label": "Divider ratio 1:8192",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Divider ratio 1:16384",
+                            "value": "9"
+                        },
+                        {
+                            "label": "Divider ratio 1:32768",
+                            "value": "A"
+                        },
+                        {
+                            "label": "Divider ratio 1:65536",
+                            "value": "B"
+                        },
+                        {
+                            "label": "Divider ratio 1:131072",
+                            "value": "C"
+                        },
+                        {
+                            "label": "Divider ratio 1:262144",
+                            "value": "D"
+                        },
+                        {
+                            "label": "Divider ratio 1:524299",
+                            "value": "E"
+                        },
+                        {
+                            "label": "Divider ratio 1:1048576",
+                            "value": "F"
+                        },
+                        {
+                            "label": "Divider ratio 1:2097152",
+                            "value": "10"
+                        },
+                        {
+                            "label": "Divider ratio 1:4194304",
+                            "value": "11"
+                        },
+                        {
+                            "label": "Divider ratio 1:8388608",
+                            "value": "12"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "13"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "14"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "15"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "16"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "17"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "18"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "19"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "1A"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "1B"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "1C"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "1D"
+                        },
+                        {
+                            "label": "Divider ratio 1:32",
+                            "value": "1E"
+                        },
+                        {
+                            "label": "Divider ratio 1:65536",
+                            "value": "1F"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "60",
+                    "key": "WDTE",
+                    "label": "WDT operating mode",
+                    "mask": "60",
+                    "settings": [
+                        {
+                            "label": "WDT Disabled: SWDTEN is ignored",
+                            "value": "0"
+                        },
+                        {
+                            "label": "WDT enabled/disabled by SWDTEN bit",
+                            "value": "20"
+                        },
+                        {
+                            "label": "WDT enabled while sleep=0, suspended when sleep=1",
+                            "value": "40"
+                        },
+                        {
+                            "label": "WDT enabled regardless of sleep",
+                            "value": "60"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG3L",
+            "unused": "80"
+        },
+        {
+            "address": "300005",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "WDTCWS",
+                    "label": "WDT Window Select bits",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "window delay = 87.5: no software control",
+                            "value": "0"
+                        },
+                        {
+                            "label": "window delay = 75 percent of time: no software control",
+                            "value": "1"
+                        },
+                        {
+                            "label": "window delay = 62.5 percent of time: no software control",
+                            "value": "2"
+                        },
+                        {
+                            "label": "window delay = 50 percent of time: no software control",
+                            "value": "3"
+                        },
+                        {
+                            "label": "window delay = 37.5 percent of time: no software control",
+                            "value": "4"
+                        },
+                        {
+                            "label": "window delay = 25 percent of time: no software control",
+                            "value": "5"
+                        },
+                        {
+                            "label": "window always open (100%): no software control",
+                            "value": "6"
+                        },
+                        {
+                            "label": "window always open (100%): software control",
+                            "value": "7"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "38",
+                    "key": "WDTCCS",
+                    "label": "WDT input clock selector",
+                    "mask": "38",
+                    "settings": [
+                        {
+                            "label": "WDT reference clock is the 31.0 kHz LFINTOSC",
+                            "value": "0"
+                        },
+                        {
+                            "label": "WDT reference clock is the 32kHz MFINTOSC output",
+                            "value": "8"
+                        },
+                        {
+                            "label": "WDT reference clock is SOSC",
+                            "value": "10"
+                        },
+                        {
+                            "label": "Software Control",
+                            "value": "38"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG3H",
+            "unused": "C0"
+        },
+        {
+            "address": "300006",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "BBSIZE",
+                    "label": "Boot Block Size selection bits",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "Boot Block size is 512 words",
+                            "value": "7"
+                        },
+                        {
+                            "label": "Boot Block size is 1024 words",
+                            "value": "6"
+                        },
+                        {
+                            "label": "Boot Block size is 2048 words",
+                            "value": "5"
+                        },
+                        {
+                            "label": "Boot Block size is 4096 words",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "BBEN",
+                    "label": "Boot Block enable bit",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "Boot block disabled",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Boot block enabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10",
+                    "key": "SAFEN",
+                    "label": "Storage Area Flash enable bit",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "SAF disabled",
+                            "value": "10"
+                        },
+                        {
+                            "label": "SAF enabled",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "WRTAPP",
+                    "label": "Application Block write protection bit",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Application Block not write protected",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Application Block write protected",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG4L",
+            "unused": "60"
+        },
+        {
+            "address": "300007",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "WRTB",
+                    "label": "Configuration Register Write Protection bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Configuration registers (300000-30000Bh) not write-protected",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Configuration registers (300000-30000Bh) write-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "WRTC",
+                    "label": "Boot Block Write Protection bit",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Boot Block (000000-0007FFh) not write-protected",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Boot Block (000000-0007FFh) write-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "WRTD",
+                    "label": "Data EEPROM Write Protection bit",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Data EEPROM not write-protected",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Data EEPROM write-protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "8",
+                    "key": "WRTSAF",
+                    "label": "SAF Write protection bit",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "SAF not Write Protected",
+                            "value": "8"
+                        },
+                        {
+                            "label": "SAF Write Protected",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "LVP",
+                    "label": "Low Voltage Programming Enable bit",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "HV on MCLR/VPP must be used for programming",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Low voltage programming enabled. MCLR/VPP pin function is MCLR. MCLRE configuration bit is ignored",
+                            "value": "20"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG4H",
+            "unused": "D0"
+        },
+        {
+            "address": "300008",
+            "default": "FF",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "CP",
+                    "label": "PFM and Data EEPROM Code Protection bit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PFM and Data EEPROM code protection disabled",
+                            "value": "1"
+                        },
+                        {
+                            "label": "PFM and Data EEPROM code protection enabled",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG5L",
+            "unused": "FE"
+        },
+        {
+            "address": "300009",
+            "default": "FF",
+            "fields": [
+                
+            ],
+            "key": "CONFIG5H",
+            "unused": "FF"
+        }
+    ],
+    "core": "P18",
+    "delay_src_path": "delays/p18/__lib_delays.c",
+    "eeprom": {
+        "max_addr": "0x3100FF",
+        "min_addr": "0x310000"
+    },
+    "ext_rom": {
+        "max_addr": "0x1FFFFF",
+        "min_addr": "0x4000"
+    },
+    "gprend": "0x3FF",
+    "icd": {
+        "hwbrkpno": "3",
+        "instr_pipeline": "0",
+        "start_addr": "0x200400"
+    },
+    "ivt": [
+        {
+            "address": "0x000008",
+            "ilevel": "0x0000",
+            "name": "High Priority Interrupt"
+        },
+        {
+            "address": "0x000018",
+            "ilevel": "0x0001",
+            "name": "Low Priority Interrupt"
+        }
+    ],
+    "mcu": "PIC18F24K42",
+    "mivt": [
+        {
+            "name": "IVT_SWINT",
+            "vector": "0"
+        },
+        {
+            "name": "IVT_HLVD",
+            "vector": "1"
+        },
+        {
+            "name": "IVT_OSF",
+            "vector": "2"
+        },
+        {
+            "name": "IVT_CSW",
+            "vector": "3"
+        },
+        {
+            "name": "IVT_NVM",
+            "vector": "4"
+        },
+        {
+            "name": "IVT_SCAN",
+            "vector": "5"
+        },
+        {
+            "name": "IVT_CRC",
+            "vector": "6"
+        },
+        {
+            "name": "IVT_IOC",
+            "vector": "7"
+        },
+        {
+            "name": "IVT_INT0",
+            "vector": "8"
+        },
+        {
+            "name": "IVT_ZCD",
+            "vector": "9"
+        },
+        {
+            "name": "IVT_AD",
+            "vector": "10"
+        },
+        {
+            "name": "IVT_ADT",
+            "vector": "11"
+        },
+        {
+            "name": "IVT_CMP1",
+            "vector": "12"
+        },
+        {
+            "name": "IVT_SMT1",
+            "vector": "13"
+        },
+        {
+            "name": "IVT_SMT1PRA",
+            "vector": "14"
+        },
+        {
+            "name": "IVT_SMT1PRW",
+            "vector": "15"
+        },
+        {
+            "name": "IVT_DMA1SCNT",
+            "vector": "16"
+        },
+        {
+            "name": "IVT_DMA1DCNT",
+            "vector": "17"
+        },
+        {
+            "name": "IVT_DMA1OR",
+            "vector": "18"
+        },
+        {
+            "name": "IVT_DMA1A",
+            "vector": "19"
+        },
+        {
+            "name": "IVT_SPI1RX",
+            "vector": "20"
+        },
+        {
+            "name": "IVT_SPI1TX",
+            "vector": "21"
+        },
+        {
+            "name": "IVT_SPI1",
+            "vector": "22"
+        },
+        {
+            "name": "IVT_I2C1RX",
+            "vector": "23"
+        },
+        {
+            "name": "IVT_I2C1TX",
+            "vector": "24"
+        },
+        {
+            "name": "IVT_I2C1",
+            "vector": "25"
+        },
+        {
+            "name": "IVT_I2C1E",
+            "vector": "26"
+        },
+        {
+            "name": "IVT_U1RX",
+            "vector": "27"
+        },
+        {
+            "name": "IVT_U1TX",
+            "vector": "28"
+        },
+        {
+            "name": "IVT_U1E",
+            "vector": "29"
+        },
+        {
+            "name": "IVT_U1",
+            "vector": "30"
+        },
+        {
+            "name": "IVT_TMR0",
+            "vector": "31"
+        },
+        {
+            "name": "IVT_TMR1",
+            "vector": "32"
+        },
+        {
+            "name": "IVT_TMR1G",
+            "vector": "33"
+        },
+        {
+            "name": "IVT_TMR2",
+            "vector": "34"
+        },
+        {
+            "name": "IVT_CCP1",
+            "vector": "35"
+        },
+        {
+            "name": "IVT_RESERVED00",
+            "vector": "36"
+        },
+        {
+            "name": "IVT_NCO1",
+            "vector": "37"
+        },
+        {
+            "name": "IVT_CWG1",
+            "vector": "38"
+        },
+        {
+            "name": "IVT_CLC1",
+            "vector": "39"
+        },
+        {
+            "name": "IVT_INT1",
+            "vector": "40"
+        },
+        {
+            "name": "IVT_CMP2",
+            "vector": "41"
+        },
+        {
+            "name": "IVT_DMA2SCNT",
+            "vector": "42"
+        },
+        {
+            "name": "IVT_DMA2DCNT",
+            "vector": "43"
+        },
+        {
+            "name": "IVT_DMA2OR",
+            "vector": "44"
+        },
+        {
+            "name": "IVT_DMA2A",
+            "vector": "45"
+        },
+        {
+            "name": "IVT_I2C2RX",
+            "vector": "46"
+        },
+        {
+            "name": "IVT_I2C2TX",
+            "vector": "47"
+        },
+        {
+            "name": "IVT_I2C2",
+            "vector": "48"
+        },
+        {
+            "name": "IVT_I2C2E",
+            "vector": "49"
+        },
+        {
+            "name": "IVT_U2RX",
+            "vector": "50"
+        },
+        {
+            "name": "IVT_U2TX",
+            "vector": "51"
+        },
+        {
+            "name": "IVT_U2E",
+            "vector": "52"
+        },
+        {
+            "name": "IVT_U2",
+            "vector": "53"
+        },
+        {
+            "name": "IVT_TMR3",
+            "vector": "54"
+        },
+        {
+            "name": "IVT_TMR3G",
+            "vector": "55"
+        },
+        {
+            "name": "IVT_TMR4",
+            "vector": "56"
+        },
+        {
+            "name": "IVT_CCP2",
+            "vector": "57"
+        },
+        {
+            "name": "IVT_RESERVED01",
+            "vector": "58"
+        },
+        {
+            "name": "IVT_CWG2",
+            "vector": "59"
+        },
+        {
+            "name": "IVT_CLC2",
+            "vector": "60"
+        },
+        {
+            "name": "IVT_INT2",
+            "vector": "61"
+        },
+        {
+            "name": "IVT_RESERVED02",
+            "vector": "62"
+        },
+        {
+            "name": "IVT_RESERVED03",
+            "vector": "63"
+        },
+        {
+            "name": "IVT_RESERVED04",
+            "vector": "64"
+        },
+        {
+            "name": "IVT_RESERVED05",
+            "vector": "65"
+        },
+        {
+            "name": "IVT_RESERVED06",
+            "vector": "66"
+        },
+        {
+            "name": "IVT_RESERVED07",
+            "vector": "67"
+        },
+        {
+            "name": "IVT_RESERVED08",
+            "vector": "68"
+        },
+        {
+            "name": "IVT_RESERVED09",
+            "vector": "69"
+        },
+        {
+            "name": "IVT_TMR5",
+            "vector": "70"
+        },
+        {
+            "name": "IVT_TMR5G",
+            "vector": "71"
+        },
+        {
+            "name": "IVT_TMR6",
+            "vector": "72"
+        },
+        {
+            "name": "IVT_CCP3",
+            "vector": "73"
+        },
+        {
+            "name": "IVT_CWG3",
+            "vector": "74"
+        },
+        {
+            "name": "IVT_CLC3",
+            "vector": "75"
+        },
+        {
+            "name": "IVT_RESERVED10",
+            "vector": "76"
+        },
+        {
+            "name": "IVT_RESERVED11",
+            "vector": "77"
+        },
+        {
+            "name": "IVT_RESERVED12",
+            "vector": "78"
+        },
+        {
+            "name": "IVT_RESERVED13",
+            "vector": "79"
+        },
+        {
+            "name": "IVT_CCP4",
+            "vector": "80"
+        },
+        {
+            "name": "IVT_CLC4",
+            "vector": "81"
+        }
+    ],
+    "prog_options": {
+        "codegrip": {
+            "debugging": "True",
+            "prog_type": {
+                "value1": "Vpp first entry mode",
+                "value2": "Vdd first entry mode",
+                "value3": "Low voltage"
+            },
+            "programming": "True"
+        },
+        "mikroprog": {
+            "debugging": "False",
+            "programming": "True"
+        }
+    },
+    "ram": {
+        "max_addr": "0x3FFF",
+        "min_addr": "0x0015"
+    },
+    "rom": {
+        "max_addr": "0x3FFF",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x0014",
+        "min_addr": "0x0000"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "5.500",
+        "range": {
+            "max_value": "5.500",
+            "min_value": "2.700"
+        }
+    },
+    "clock": "1"
+}

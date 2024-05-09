@@ -1,0 +1,886 @@
+{
+    "config_words": [
+        {
+            "init": "OFF",
+            "key": "BWRP",
+            "label": "Boot Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Boot segment is write-protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "Boot segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "BSS_OFF",
+            "key": "BSS",
+            "label": "Boot segment Protect",
+            "settings": [
+                {
+                    "label": "High Security",
+                    "value": "BSS_HI"
+                },
+                {
+                    "label": "Standard Security",
+                    "value": "BSS_STD"
+                },
+                {
+                    "label": "No Protection (other than BWRP)",
+                    "value": "BSS_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BSEN",
+            "label": "Boot Segment Control bit",
+            "settings": [
+                {
+                    "label": "Boot Segment size determined by FBSLIM",
+                    "value": "ON"
+                },
+                {
+                    "label": "No Boot Segment",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Segment Write Protect",
+            "settings": [
+                {
+                    "label": "General segment is write-protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "Writes to program memory are allowed",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "GSS_OFF",
+            "key": "GSS",
+            "label": "General Segment Code Protect",
+            "settings": [
+                {
+                    "label": "High Security",
+                    "value": "GSS_HI"
+                },
+                {
+                    "label": "Standard Security",
+                    "value": "GSS_STD"
+                },
+                {
+                    "label": "Code protection is disabled",
+                    "value": "GSS_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CWRP",
+            "label": "Configuration Segment Program Write Protection bit",
+            "settings": [
+                {
+                    "label": "Configuration Segment is write protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "Configuration Segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "CSS_DIS",
+            "key": "CSS",
+            "label": "Configuration Segment Code Protection Level bits",
+            "settings": [
+                {
+                    "label": "High Security",
+                    "value": "CSS_HI"
+                },
+                {
+                    "label": "Enhanced Security",
+                    "value": "CSS_ENH"
+                },
+                {
+                    "label": "Standard Security",
+                    "value": "CSS_STD"
+                },
+                {
+                    "label": "No Protection (other than CWRP)",
+                    "value": "CSS_DIS"
+                }
+            ]
+        },
+        {
+            "init": "DISABLE",
+            "key": "AIVTDIS",
+            "label": "Alternate Interrupt Vector Table Disable bit",
+            "settings": [
+                {
+                    "label": "Enable AIVT",
+                    "value": "ENABLE"
+                },
+                {
+                    "label": "Disable AIVT",
+                    "value": "DISABLE"
+                }
+            ]
+        },
+        {
+            "init": "BSLIM",
+            "key": "BSLIM",
+            "label": "Boot Segment Code Flash Page Address Limit bits",
+            "settings": [
+                {
+                    "label": "Boot Segment Flash page address limit",
+                    "value": "BSLIM"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIV",
+            "key": "FNOSC",
+            "label": "Oscillator Select",
+            "settings": [
+                {
+                    "label": "Fast RC Oscillator (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Fast RC Oscillator with PLL module (FRCPLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Oscillator with PLL module (XTPLL, HSPLL, ECPLL)",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Secondary Oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low-Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Fast RC Oscillator with divide-by-n (FRCDIV)",
+                    "value": "FRCDIV"
+                }
+            ]
+        },
+        {
+            "init": "DISABLED",
+            "key": "PLLMODE",
+            "label": "Frequency Multiplier Select Bits",
+            "settings": [
+                {
+                    "label": "96 MHz PLL (4 MHz input)",
+                    "value": "PLL96DIV1"
+                },
+                {
+                    "label": "96 MHz PLL (8 MHz input)",
+                    "value": "PLL96DIV2"
+                },
+                {
+                    "label": "96 MHz PLL (12 MHz input)",
+                    "value": "PLL96DIV3"
+                },
+                {
+                    "label": "96 MHz PLL (16 MHz input)",
+                    "value": "PLL96DIV4"
+                },
+                {
+                    "label": "96 MHz PLL (20 MHz input)",
+                    "value": "PLL96DIV5"
+                },
+                {
+                    "label": "96 MHz PLL (24 MHz input)",
+                    "value": "PLL96DIV6"
+                },
+                {
+                    "label": "96 MHz PLL (32 MHz input)",
+                    "value": "PLL96DIV8"
+                },
+                {
+                    "label": "96 MHz PLL (48 MHz input)",
+                    "value": "PLL96DIV12"
+                },
+                {
+                    "label": "4x PLL selected",
+                    "value": "PLL4X"
+                },
+                {
+                    "label": "6x PLL selected",
+                    "value": "PLL6X"
+                },
+                {
+                    "label": "8x PLL selected",
+                    "value": "PLL8X"
+                },
+                {
+                    "label": "No PLL used; PLLEN bit is not available",
+                    "value": "DISABLED"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switchover",
+            "settings": [
+                {
+                    "label": "Start up with user-selected oscillator source",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Start up device with FRC, then switch to user-selected oscillator source",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "POSCMOD",
+            "label": "Primary Oscillator Select",
+            "settings": [
+                {
+                    "label": "External clock mode selected",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT oscillator mode selected",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS Oscillator mode selected",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary Oscillator disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFCN",
+            "label": "OSCO Pin Configuration",
+            "settings": [
+                {
+                    "label": "OSCO/CLKO/RC15 functions as port I/O (RC15)",
+                    "value": "ON"
+                },
+                {
+                    "label": "OSCO/CLKO/RC15 functions as CLKO (FOSC/2)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "SOSCSEL",
+            "label": "SOSC Power Selection Configuration bits",
+            "settings": [
+                {
+                    "label": "Digital (SCLKI) mode",
+                    "value": "OFF"
+                },
+                {
+                    "label": "SOSC is used in crystal (SOSCI/SOSCO) mode",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PLL_PRI",
+            "key": "PLLSS",
+            "label": "PLL Secondary Selection Configuration bit",
+            "settings": [
+                {
+                    "label": "PLL is fed by the on-chip Fast RC (FRC) oscillator",
+                    "value": "PLL_FRC"
+                },
+                {
+                    "label": "PLL is fed by the Primary oscillator",
+                    "value": "PLL_PRI"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IOL1WAY",
+            "label": "IOLOCK One-Way Set Enable",
+            "settings": [
+                {
+                    "label": "The IOLOCK bit can be set and cleared using the unlock sequence",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Once set the IOLOCK bit cannot be cleared",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "CSECME",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor Selection",
+            "settings": [
+                {
+                    "label": "Clock switching is enabled, Fail-Safe Clock Monitor is enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock switching is enabled, Fail-Safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Clock switching and Fail-Safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "FWPSA",
+            "label": "WDT Prescaler",
+            "settings": [
+                {
+                    "label": "Prescaler ratio of 1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "Prescaler ratio of 1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "Watchdog Timer is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "WDT enabled only while device active and disabled in Sleep",
+                    "value": "NOSLP"
+                },
+                {
+                    "label": "WDT controlled with the SWDTEN bit",
+                    "value": "SWON"
+                },
+                {
+                    "label": "Watchdog Timer is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Windowed Watchdog Timer Disable bit",
+            "settings": [
+                {
+                    "label": "Windowed WDT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Standard Watchdog Timer enabled (Windowed-mode is disabled)",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "PS25_0",
+            "key": "WDTWIN",
+            "label": "Watchdog Window Select bits",
+            "settings": [
+                {
+                    "label": "Watch Dog Timer Window Width is 75 percent",
+                    "value": "PS75_0"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 50 percent",
+                    "value": "PS50_0"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 37.5 percent",
+                    "value": "PS37_5"
+                },
+                {
+                    "label": "Watch Dog Timer Window Width is 25 percent",
+                    "value": "PS25_0"
+                }
+            ]
+        },
+        {
+            "init": "WDTCLK",
+            "key": "WDTCMX",
+            "label": "WDT Clock Source Select bits",
+            "settings": [
+                {
+                    "label": "WDT always uses LPRC as its clock source",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "WDT clock source is determined by the WDTCLK Configuration bits",
+                    "value": "WDTCLK"
+                }
+            ]
+        },
+        {
+            "init": "LPRC",
+            "key": "WDTCLK",
+            "label": "WDT Clock Source Select bits",
+            "settings": [
+                {
+                    "label": "WDT uses system clock when active, LPRC while in Sleep mode",
+                    "value": "SYSCLK"
+                },
+                {
+                    "label": "WDT uses SOSC input",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "WDT uses 31 kHz source from FRC when active in Windowed WDT",
+                    "value": "FRC"
+                },
+                {
+                    "label": "WDT uses LPRC",
+                    "value": "LPRC"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Brown-out Reset Enable",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "LPCFG",
+            "label": "Low power regulator control",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "PGx1",
+            "key": "ICS",
+            "label": "Emulator Pin Placement Select bits",
+            "settings": [
+                {
+                    "label": "Emulator functions are shared with PGEC3/PGED3",
+                    "value": "PGx3"
+                },
+                {
+                    "label": "Emulator functions are shared with PGEC2/PGED2",
+                    "value": "PGx2"
+                },
+                {
+                    "label": "Emulator functions are shared with PGEC1/PGED1",
+                    "value": "PGx1"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "JTAGEN",
+            "label": "JTAG Port Enable",
+            "settings": [
+                {
+                    "label": "JTAG port is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "JTAG port is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "BTSWP",
+            "label": "BOOTSWP Instruction Enable bit",
+            "settings": [
+                {
+                    "label": "BOOTSWP instruction is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "BOOTSWP instruction is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "DSWDTPS1F",
+            "key": "DSWDTPS",
+            "label": "Deep Sleep Watchdog Timer Postscale Select bits",
+            "settings": [
+                {
+                    "label": "1:32 (1 ms)",
+                    "value": "DSWDTPS00"
+                },
+                {
+                    "label": "1:64 (2.1 ms)",
+                    "value": "DSWDTPS01"
+                },
+                {
+                    "label": "1:128 (4.1 ms)",
+                    "value": "DSWDTPS02"
+                },
+                {
+                    "label": "1:256 (8.3 ms)",
+                    "value": "DSWDTPS03"
+                },
+                {
+                    "label": "1:512 (16.5 ms)",
+                    "value": "DSWDTPS04"
+                },
+                {
+                    "label": "1:1,024 (33 ms)",
+                    "value": "DSWDTPS05"
+                },
+                {
+                    "label": "1:2,048 (66.1 ms)",
+                    "value": "DSWDTPS06"
+                },
+                {
+                    "label": "1:4,096 (132.1 ms)",
+                    "value": "DSWDTPS07"
+                },
+                {
+                    "label": "1:8,192 (264.3 ms)",
+                    "value": "DSWDTPS08"
+                },
+                {
+                    "label": "1:16,384 (528.5 ms)",
+                    "value": "DSWDTPS09"
+                },
+                {
+                    "label": "1:32,768 (1.057s)",
+                    "value": "DSWDTPS0A"
+                },
+                {
+                    "label": "1:65,536 (2.114s)",
+                    "value": "DSWDTPS0B"
+                },
+                {
+                    "label": "1:131,072 (4.228s)",
+                    "value": "DSWDTPS0C"
+                },
+                {
+                    "label": "1:262,114 (8.456s)",
+                    "value": "DSWDTPS0D"
+                },
+                {
+                    "label": "1:524,288 (16.912s)",
+                    "value": "DSWDTPS0E"
+                },
+                {
+                    "label": "1:1,048,576 (33.825s)",
+                    "value": "DSWDTPS0F"
+                },
+                {
+                    "label": "1:2,097,152 (67.7s)",
+                    "value": "DSWDTPS10"
+                },
+                {
+                    "label": "1:4,194,304 (135.3s)",
+                    "value": "DSWDTPS11"
+                },
+                {
+                    "label": "1:8,388,608 (4.5 minutes)",
+                    "value": "DSWDTPS12"
+                },
+                {
+                    "label": "1:16,777,216 (9.0 minutes)",
+                    "value": "DSWDTPS13"
+                },
+                {
+                    "label": "1:33,554,432 (18.0 minutes)",
+                    "value": "DSWDTPS14"
+                },
+                {
+                    "label": "1:67,108,864 (36.1 minutes)",
+                    "value": "DSWDTPS15"
+                },
+                {
+                    "label": "1:134,217,728 (72.2 minutes)",
+                    "value": "DSWDTPS16"
+                },
+                {
+                    "label": "1:268,435,456 (2.4 hours)",
+                    "value": "DSWDTPS17"
+                },
+                {
+                    "label": "1:536,870,912 (4.8 hours)",
+                    "value": "DSWDTPS18"
+                },
+                {
+                    "label": "1:1,073,741,824 (9.6 hours)",
+                    "value": "DSWDTPS19"
+                },
+                {
+                    "label": "1:2,147,483,648 (19.2 hours)",
+                    "value": "DSWDTPS1A"
+                },
+                {
+                    "label": "1:4,294,967,296 (38.5 hours)",
+                    "value": "DSWDTPS1B"
+                },
+                {
+                    "label": "1:8,589,934592 (77.0 hours)",
+                    "value": "DSWDTPS1C"
+                },
+                {
+                    "label": "1:17,179,869,184 (6.4 days)",
+                    "value": "DSWDTPS1D"
+                },
+                {
+                    "label": "1:34,359,738,368(12.8 days)",
+                    "value": "DSWDTPS1E"
+                },
+                {
+                    "label": "1:68,719,476,736 (25.7 days)",
+                    "value": "DSWDTPS1F"
+                }
+            ]
+        },
+        {
+            "init": "LPRC",
+            "key": "DSWDTOSC",
+            "label": "DSWDT Reference Clock Select bit",
+            "settings": [
+                {
+                    "label": "DSWDT uses Secondary Oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "DSWDT uses Low Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSBOREN",
+            "label": "Deep Sleep Zero-Power BOR Enable bit",
+            "settings": [
+                {
+                    "label": "Deep Sleep BOR disabled in Deep Sleep",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Deep Sleep BOR enabled in Deep Sleep",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSWDTEN",
+            "label": "Deep Sleep Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "DSWDT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "DSWDT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSSWEN",
+            "label": "Deep Sleep Software Control Select Bit",
+            "settings": [
+                {
+                    "label": "Deep Sleep disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Deep Sleep enabled and controlled by the DSEN bit",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "DISABLE",
+            "key": "ALTCMPI",
+            "label": "Alternate Comparator Input Enable bit",
+            "settings": [
+                {
+                    "label": "C1INC, C2INC and C3INC are on RG9",
+                    "value": "ENABLE"
+                },
+                {
+                    "label": "C1INC, C2INC, and C3INC are on their standard pin locations",
+                    "value": "DISABLE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "TMPRPIN",
+            "label": "Tamper Pin Enable bit",
+            "settings": [
+                {
+                    "label": "TMPRN pin function is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "TMPRN pin function is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ALTVREFDIS",
+            "key": "ALTVREF",
+            "label": "Alternate VREF location Enable",
+            "settings": [
+                {
+                    "label": "VREF is on an alternate pin (VREF+ on RB0 and VREF- on RB1)",
+                    "value": "ALTVREFEN"
+                },
+                {
+                    "label": "VREF is on a default pin (VREF+ on RA10 and VREF- on RA9)",
+                    "value": "ALTVREFDIS"
+                }
+            ]
+        },
+        {
+            "init": "BSEQ",
+            "key": "BSEQ",
+            "label": "Relative value defining which partition will be active after devie Reset; the partition containing a lower boot number will be active.",
+            "settings": [
+                {
+                    "label": "Boot Sequence Number bits",
+                    "value": "BSEQ"
+                }
+            ]
+        },
+        {
+            "init": "IBSEQ",
+            "key": "IBSEQ",
+            "label": "The one's complement of BSEQ; must be calculated by the user and written during device programming.",
+            "settings": [
+                {
+                    "label": "Inverse Boot Sequence Number bits",
+                    "value": "IBSEQ"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC24FJ256GB406",
+    "clock": 1
+}

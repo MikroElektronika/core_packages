@@ -1,0 +1,146 @@
+{
+    "config_words": [
+        {
+            "init": "ECCLK,_EC_OSC_CLKOUT",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "EC oscillator: CLKO function on RA4/CLKO pin, CLKI on RA5/CLKI",
+                    "value": "ECCLK,_EC_OSC_CLKOUT"
+                },
+                {
+                    "label": "EC oscillator: I/O function on RA4/CLKO pin, CLKI on RA5/CLKI",
+                    "value": "ECIO,_EC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "INTOSC oscillator: CLKO function on RA4/CLKO pin, I/O function on RA5/CLKI",
+                    "value": "INTOSCCLK,_INTOSC_CLKOUT"
+                },
+                {
+                    "label": "INTOSCIO oscillator: I/O function on RA4/CLKO pin, I/O function on RA5/CLKI",
+                    "value": "INTOSCIO,_INTOSC_NOCLKOUT"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDTEN_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDTEN_OFF"
+                },
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDTEN_ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "RA3/MCLR/VPP Pin Function Select bit",
+            "settings": [
+                {
+                    "label": "RA3/MCLR/VPP pin function is MCLR; Weak pull-up enabled.",
+                    "value": "ON"
+                },
+                {
+                    "label": "RA3/MCLR/VPP pin function is digital input; MCLR internally disabled; Weak pull-up disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Flash Program Memory Code Protection bit",
+            "settings": [
+                {
+                    "label": "0000h to 0FFFh code protection on",
+                    "value": "ON"
+                },
+                {
+                    "label": "Code protection off",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bits",
+            "settings": [
+                {
+                    "label": "Brown-out Reset disabled (Preconditioned State)",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Brown-out Reset enabled during operation and disabled in Sleep",
+                    "value": "NSLEEP"
+                },
+                {
+                    "label": "Brown-out Reset enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "PLLEN",
+            "label": "INTOSC PLLEN Enable Bit",
+            "settings": [
+                {
+                    "label": "INTOSC Frequency is 500 kHz",
+                    "value": "OFF"
+                },
+                {
+                    "label": "INTOSC Frequency is 16 MHz (32x)",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WRTEN",
+            "label": "Flash memory self-write protection bits",
+            "settings": [
+                {
+                    "label": "Write protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "0h to 1FFh of flash memory write protected, 200h to FFFh may be modified",
+                    "value": "BOOT"
+                },
+                {
+                    "label": "0h to 7FFh of flash memory write protected, 800h to FFFh may be modified",
+                    "value": "HALF"
+                },
+                {
+                    "label": "0h to FFFh of flash memory write protected, no address may be modified",
+                    "value": "FULL"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F721",
+    "clock": 1
+}

@@ -1,0 +1,6 @@
+{
+    "core": "M0",
+    "delay_src_path": "delays/m0/__lib_delays.c",
+    "mcu": "STM32G0C1RE",
+    "clock": 1
+}

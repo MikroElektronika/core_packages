@@ -1,0 +1,173 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRCCLK,_EXTRC,_EXTRC_OSC_CLKOUT",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "EXTRC oscillator: External RC on RA5/OSC1/CLKIN, CLKOUT function on RA4/OSC2/CLKOUT pin",
+                    "value": "EXTRCCLK,_EXTRC,_EXTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "EXTRCIO oscillator: External RC on RA5/OSC1/CLKIN, I/O function on RA4/OSC2/CLKOUT pin",
+                    "value": "EXTRCIO,_EXTRCIO,_EXTRC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "INTOSC oscillator: CLKOUT function on RA4/OSC2/CLKOUT pin, I/O function on RA5/OSC1/CLKIN",
+                    "value": "INTOSCCLK,_INTOSC,_INTRC_OSC_CLKOUT"
+                },
+                {
+                    "label": "INTOSCIO oscillator: I/O function on RA4/OSC2/CLKOUT pin, I/O function on RA5/OSC1/CLKIN",
+                    "value": "INTOSCIO,_INTOSCIO,_INTRC_OSC_NOCLKOUT"
+                },
+                {
+                    "label": "EC: I/O function on RA4/OSC2/CLKOUT pin, CLKIN on RA5/OSC1/CLKIN",
+                    "value": "EC,_EC_OSC"
+                },
+                {
+                    "label": "HS oscillator: High-speed crystal/resonator on RA4/OSC2/CLKOUT and RA5/OSC1/CLKIN",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator: Crystal/resonator on RA4/OSC2/CLKOUT and RA5/OSC1/CLKINT",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator: Low-power crystal on RA4/OSC2/CLKOUT and RA5/OSC1/CLKIN",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "MCLRE",
+            "label": "MCLR Pin Function Select bit",
+            "settings": [
+                {
+                    "label": "MCLR pin function is MCLR",
+                    "value": "ON"
+                },
+                {
+                    "label": "MCLR pin function is digital input, MCLR internally tied to VDD",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Code Protection bit",
+            "settings": [
+                {
+                    "label": "Program memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Program memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "Data Code Protection bit",
+            "settings": [
+                {
+                    "label": "Data memory code protection is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data memory code protection is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BOD_ON",
+            "key": "BOREN",
+            "label": "Brown Out Detect",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON,_BOD_ON"
+                },
+                {
+                    "label": "BOR enabled during operation and disabled in Sleep",
+                    "value": "NSLEEP,_BOD_NSLEEP"
+                },
+                {
+                    "label": "BOR controlled by SBOREN bit of the PCON register",
+                    "value": "SBODEN,_BOD_SBODEN"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF,_BOD_OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switchover bit",
+            "settings": [
+                {
+                    "label": "Internal External Switchover mode is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Internal External Switchover mode is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enabled bit",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor is enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor is disabled",
+                    "value": "OFF"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F684",
+    "clock": 1
+}

@@ -1,0 +1,500 @@
+{
+    "config_words": [
+        {
+            "init": "WRPROTECT_OFF",
+            "key": "BWRP",
+            "label": "Boot Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Boot Segment is write protected",
+                    "value": "WRPROTECT_ON"
+                },
+                {
+                    "label": "Boot Segment may be written",
+                    "value": "WRPROTECT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "NO_FLASH",
+            "key": "BSS",
+            "label": "Boot Segment Program Flash Code Protection",
+            "settings": [
+                {
+                    "label": "High Security, Large-sized Boot Flash",
+                    "value": "LARGE_FLASH_HIGH"
+                },
+                {
+                    "label": "High Security, Medium-sized Boot Flash",
+                    "value": "MEDIUM_FLASH_HIGH"
+                },
+                {
+                    "label": "High Security, Small-sized Boot Flash",
+                    "value": "SMALL_FLASH_HIGH"
+                },
+                {
+                    "label": "Standard Security, Large-sized Boot Flash",
+                    "value": "LARGE_FLASH_STD"
+                },
+                {
+                    "label": "Standard Security, Medium-sized Boot Flash",
+                    "value": "MEDIUM_FLASH_STD"
+                },
+                {
+                    "label": "Standard Security, Small-sized Boot Flash",
+                    "value": "SMALL_FLASH_STD"
+                },
+                {
+                    "label": "No Boot program Flash segment",
+                    "value": "NO_FLASH"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Code Segment Write Protect",
+            "settings": [
+                {
+                    "label": "General Segment is write protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "General Segment may be written",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GSS",
+            "label": "General Segment Code Protection",
+            "settings": [
+                {
+                    "label": "High Security Code Protection Enabled",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "Standard Security Code protection Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "General Segment Code protect is disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "FRCDIVN",
+            "key": "FNOSC",
+            "label": "Oscillator Source Selection",
+            "settings": [
+                {
+                    "label": "Internal Fast RC (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Internal Fast RC with PLL (FRCPLL)",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC) with PLL",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Secondary Oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low-Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) Oscillator with divide-by-16",
+                    "value": "FRCDIV16"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) Oscillator with postscaler",
+                    "value": "FRCDIVN"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switch Over Mode",
+            "settings": [
+                {
+                    "label": "Start up with user-selected oscillator source",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Start up device with FRC, then switch to user-selected oscillator source",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "POSCMD",
+            "label": "Primary Oscillator Source",
+            "settings": [
+                {
+                    "label": "EC (External Clock) Mode",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT Crystal Oscillator Mode",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS Crystal Oscillator Mode",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary Oscillator disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "OSC2 Pin Function",
+            "settings": [
+                {
+                    "label": "OSC2 is general purpose digital I/O pin",
+                    "value": "ON"
+                },
+                {
+                    "label": "OSC2 is clock output",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching Mode bits",
+            "settings": [
+                {
+                    "label": "Both Clock switching and Fail-safe Clock Monitor are enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock switching is enabled,Fail-safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Both Clock switching and Fail-safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPOST",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "WDTPRE",
+            "label": "WDT Prescaler",
+            "settings": [
+                {
+                    "label": "1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window",
+            "settings": [
+                {
+                    "label": "Watchdog Timer in Window mode",
+                    "value": "ON"
+                },
+                {
+                    "label": "Watchdog Timer in Non-Window mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "Watchdog timer enabled/disabled by user software",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Watchdog timer always enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PWR128",
+            "key": "FPWRT",
+            "label": "POR Timer Value",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "PWR1"
+                },
+                {
+                    "label": "2ms",
+                    "value": "PWR2"
+                },
+                {
+                    "label": "4ms",
+                    "value": "PWR4"
+                },
+                {
+                    "label": "8ms",
+                    "value": "PWR8"
+                },
+                {
+                    "label": "16ms",
+                    "value": "PWR16"
+                },
+                {
+                    "label": "32ms",
+                    "value": "PWR32"
+                },
+                {
+                    "label": "64ms",
+                    "value": "PWR64"
+                },
+                {
+                    "label": "128ms",
+                    "value": "PWR128"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "ALTSS1",
+            "label": "Enable Alternate SS1 pin bit",
+            "settings": [
+                {
+                    "label": "SS1 is selected as the I/O pin for SPI1",
+                    "value": "OFF"
+                },
+                {
+                    "label": "SS1A is selected as the I/O pin for SPI1",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "ALTQIO",
+            "label": "Enable Alternate QEI1 pin bit",
+            "settings": [
+                {
+                    "label": "AQEA1, AQEB1, and AINDX1 are selected as inputs to QEI1",
+                    "value": "ON"
+                },
+                {
+                    "label": "QEA1, QEB1, INDX1 are selected as inputs to QEI1",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "PGD1",
+            "key": "ICS",
+            "label": "Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Reserved, do not use",
+                    "value": "NONE"
+                },
+                {
+                    "label": "Communicate on PGC3/EMUC3 and PGD3/EMUD3",
+                    "value": "PGD3"
+                },
+                {
+                    "label": "Communicate on PGC2/EMUC2 and PGD2/EMUD2",
+                    "value": "PGD2"
+                },
+                {
+                    "label": "Communicate on PGC1/EMUC1 and PGD1/EMUD1",
+                    "value": "PGD1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "JTAGEN",
+            "label": "JTAG Port Enable",
+            "settings": [
+                {
+                    "label": "JTAG is disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "JTAG is enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "HYST45",
+            "key": "HYST0",
+            "label": "Even Comparator Hysteresis Select",
+            "settings": [
+                {
+                    "label": "No Hysteresis",
+                    "value": "HYST0"
+                },
+                {
+                    "label": "15 mV Hysteresis",
+                    "value": "HYST15"
+                },
+                {
+                    "label": "30 mV Hysteresis",
+                    "value": "HYST30"
+                },
+                {
+                    "label": "45 mV Hysteresis",
+                    "value": "HYST45"
+                }
+            ]
+        },
+        {
+            "init": "POL_FALL",
+            "key": "CMPPOL0",
+            "label": "Comparator Hysteresis Polarity (for even numbered comparators)",
+            "settings": [
+                {
+                    "label": "Hysteresis is applied to rising edge",
+                    "value": "POL_RISE"
+                },
+                {
+                    "label": "Hysteresis is applied to falling edge",
+                    "value": "POL_FALL"
+                }
+            ]
+        },
+        {
+            "init": "HYST45",
+            "key": "HYST1",
+            "label": "Odd Comparator Hysteresis Select",
+            "settings": [
+                {
+                    "label": "No Hysteresis",
+                    "value": "HYST0"
+                },
+                {
+                    "label": "15 mV Hysteresis",
+                    "value": "HYST15"
+                },
+                {
+                    "label": "30 mV Hysteresis",
+                    "value": "HYST30"
+                },
+                {
+                    "label": "45 mV Hysteresis",
+                    "value": "HYST45"
+                }
+            ]
+        },
+        {
+            "init": "POL_FALL",
+            "key": "CMPPOL1",
+            "label": "Comparator Hysteresis Polarity (for odd numbered comparators)",
+            "settings": [
+                {
+                    "label": "Hysteresis is applied to rising edge",
+                    "value": "POL_RISE"
+                },
+                {
+                    "label": "Hysteresis is applied to falling edge",
+                    "value": "POL_FALL"
+                }
+            ]
+        }
+    ],
+    "mcu": "dsPIC33FJ32GS606",
+    "clock": 1
+}

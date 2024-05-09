@@ -1,0 +1,415 @@
+{
+    "config_words": [
+        {
+            "init": "FRC",
+            "key": "FOSFPR",
+            "label": "Oscillator",
+            "settings": [
+                {
+                    "label": "Low-Power 32KHz Osc (No change to Primary Osc Mode bits)",
+                    "value": "LP"
+                },
+                {
+                    "label": "Internal Fast RC (No change to Primary Osc Mode bits)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Internal Low-Power RC (No change to Primary Osc Mode bits)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "XTL",
+                    "value": "XTL"
+                },
+                {
+                    "label": "HS",
+                    "value": "HS"
+                },
+                {
+                    "label": "XT",
+                    "value": "XT"
+                },
+                {
+                    "label": "ERCIO",
+                    "value": "ERCIO"
+                },
+                {
+                    "label": "ERC",
+                    "value": "ERC"
+                },
+                {
+                    "label": "EC",
+                    "value": "EC"
+                },
+                {
+                    "label": "ECIO",
+                    "value": "ECIO"
+                },
+                {
+                    "label": "FRC w/PLL 4x",
+                    "value": "FRC_PLL4"
+                },
+                {
+                    "label": "FRC w/PLL 16x",
+                    "value": "FRC_PLL16"
+                },
+                {
+                    "label": "XT w/PLL 4x",
+                    "value": "XT_PLL4"
+                },
+                {
+                    "label": "XT w/PLL 8x",
+                    "value": "XT_PLL8"
+                },
+                {
+                    "label": "XT w/PLL 16x",
+                    "value": "XT_PLL16"
+                },
+                {
+                    "label": "FRC w/PLL 8x",
+                    "value": "FRC_PLL8"
+                },
+                {
+                    "label": "ECIO w/PLL 4x",
+                    "value": "ECIO_PLL4"
+                },
+                {
+                    "label": "ECIO w/PLL 8x",
+                    "value": "ECIO_PLL8"
+                },
+                {
+                    "label": "ECIO w/PLL 16x",
+                    "value": "ECIO_PLL16"
+                },
+                {
+                    "label": "HS2 w/PLL 4x",
+                    "value": "HS2_PLL4"
+                },
+                {
+                    "label": "HS2 w/PLL 8x",
+                    "value": "HS2_PLL8"
+                },
+                {
+                    "label": "HS2 w/PLL 16x",
+                    "value": "HS2_PLL16"
+                },
+                {
+                    "label": "HS3 w/PLL 4x",
+                    "value": "HS3_PLL4"
+                },
+                {
+                    "label": "HS3 w/PLL 8x",
+                    "value": "HS3_PLL8"
+                },
+                {
+                    "label": "HS3 w/PLL 16x",
+                    "value": "HS3_PLL16"
+                }
+            ]
+        },
+        {
+            "init": "CSW_FSCM_OFF",
+            "key": "FCKSMEN",
+            "label": "Clock Switching and Monitor",
+            "settings": [
+                {
+                    "label": "Sw Enabled, Mon Enabled",
+                    "value": "CSW_FSCM_ON"
+                },
+                {
+                    "label": "Sw Enabled, Mon Disabled",
+                    "value": "CSW_ON_FSCM_OFF"
+                },
+                {
+                    "label": "Sw Disabled, Mon Disabled",
+                    "value": "CSW_FSCM_OFF"
+                }
+            ]
+        },
+        {
+            "init": "WDTPSB_16",
+            "key": "FWPSB",
+            "label": "WDT Prescaler B",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "WDTPSB_1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "WDTPSB_2"
+                },
+                {
+                    "label": "1:3",
+                    "value": "WDTPSB_3"
+                },
+                {
+                    "label": "1:4",
+                    "value": "WDTPSB_4"
+                },
+                {
+                    "label": "1:5",
+                    "value": "WDTPSB_5"
+                },
+                {
+                    "label": "1:6",
+                    "value": "WDTPSB_6"
+                },
+                {
+                    "label": "1:7",
+                    "value": "WDTPSB_7"
+                },
+                {
+                    "label": "1:8",
+                    "value": "WDTPSB_8"
+                },
+                {
+                    "label": "1:9",
+                    "value": "WDTPSB_9"
+                },
+                {
+                    "label": "1:10",
+                    "value": "WDTPSB_10"
+                },
+                {
+                    "label": "1:11",
+                    "value": "WDTPSB_11"
+                },
+                {
+                    "label": "1:12",
+                    "value": "WDTPSB_12"
+                },
+                {
+                    "label": "1:13",
+                    "value": "WDTPSB_13"
+                },
+                {
+                    "label": "1:14",
+                    "value": "WDTPSB_14"
+                },
+                {
+                    "label": "1:15",
+                    "value": "WDTPSB_15"
+                },
+                {
+                    "label": "1:16",
+                    "value": "WDTPSB_16"
+                }
+            ]
+        },
+        {
+            "init": "WDTPSA_512",
+            "key": "FWPSA",
+            "label": "WDT Prescaler A",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "WDTPSA_1"
+                },
+                {
+                    "label": "1:8",
+                    "value": "WDTPSA_8"
+                },
+                {
+                    "label": "1:64",
+                    "value": "WDTPSA_64"
+                },
+                {
+                    "label": "1:512",
+                    "value": "WDTPSA_512"
+                }
+            ]
+        },
+        {
+            "init": "WDT_ON",
+            "key": "WDT",
+            "label": "Watchdog Timer",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "WDT_OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "WDT_ON"
+                }
+            ]
+        },
+        {
+            "init": "PWRT_64",
+            "key": "FPWRT",
+            "label": "POR Timer Value",
+            "settings": [
+                {
+                    "label": "Timer Disabled",
+                    "value": "PWRT_OFF"
+                },
+                {
+                    "label": "4ms",
+                    "value": "PWRT_4"
+                },
+                {
+                    "label": "16ms",
+                    "value": "PWRT_16"
+                },
+                {
+                    "label": "64ms",
+                    "value": "PWRT_64"
+                }
+            ]
+        },
+        {
+            "init": "BORV20",
+            "key": "BODENV",
+            "label": "Brown Out Voltage",
+            "settings": [
+                {
+                    "label": "4.5V",
+                    "value": "BORV45"
+                },
+                {
+                    "label": "4.2V",
+                    "value": "BORV42"
+                },
+                {
+                    "label": "2.7V",
+                    "value": "BORV27"
+                },
+                {
+                    "label": "Reserved",
+                    "value": "BORV20"
+                }
+            ]
+        },
+        {
+            "init": "PBOR_ON",
+            "key": "BOREN",
+            "label": "PBOR Enable",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "PBOR_OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "PBOR_ON"
+                }
+            ]
+        },
+        {
+            "init": "PWMxL_ACT_HI",
+            "key": "LPOL",
+            "label": "Low-side PWM Output Polarity",
+            "settings": [
+                {
+                    "label": "Active Low",
+                    "value": "PWMxL_ACT_LO"
+                },
+                {
+                    "label": "Active High",
+                    "value": "PWMxL_ACT_HI"
+                }
+            ]
+        },
+        {
+            "init": "PWMxH_ACT_HI",
+            "key": "HPOL",
+            "label": "High-side PWM Output Polarity",
+            "settings": [
+                {
+                    "label": "Active Low",
+                    "value": "PWMxH_ACT_LO"
+                },
+                {
+                    "label": "Active High",
+                    "value": "PWMxH_ACT_HI"
+                }
+            ]
+        },
+        {
+            "init": "RST_IOPIN",
+            "key": "PWMPIN",
+            "label": "PWM Output Pin Reset",
+            "settings": [
+                {
+                    "label": "Control with HPOL/LPOL bits",
+                    "value": "RST_PWMPIN"
+                },
+                {
+                    "label": "Control with PORT/TRIS regs",
+                    "value": "RST_IOPIN"
+                }
+            ]
+        },
+        {
+            "init": "MCLR_EN",
+            "key": "MCLRE",
+            "label": "Master Clear Enable",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "MCLR_DIS"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "MCLR_EN"
+                }
+            ]
+        },
+        {
+            "init": "GWRP_OFF",
+            "key": "GWRP",
+            "label": "General Code Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "GWRP_ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "GWRP_OFF"
+                }
+            ]
+        },
+        {
+            "init": "CODE_PROT_OFF",
+            "key": "GCP",
+            "label": "General Segment Code Protection",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "CODE_PROT_ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "CODE_PROT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "ICS_PGD",
+            "key": "ICS",
+            "label": "Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Use EMUC3 and EMUD3",
+                    "value": "ICS_PGD3"
+                },
+                {
+                    "label": "Use EMUC2 and EMUD2",
+                    "value": "ICS_PGD2"
+                },
+                {
+                    "label": "Use EMUC1 and EMUD1",
+                    "value": "ICS_PGD1"
+                },
+                {
+                    "label": "Use PGC/EMUC and PGD/EMUD",
+                    "value": "ICS_PGD"
+                }
+            ]
+        }
+    ],
+    "mcu": "dsPIC30F3011",
+    "clock": 1
+}

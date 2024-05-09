@@ -1,0 +1,1240 @@
+{
+    "badram": [
+        {
+            "max_addr": "0x66f",
+            "min_addr": "0x650"
+        },
+        {
+            "max_addr": "0x6ef",
+            "min_addr": "0x6a0"
+        },
+        {
+            "max_addr": "0x76f",
+            "min_addr": "0x720"
+        },
+        {
+            "max_addr": "0x7ef",
+            "min_addr": "0x7a0"
+        },
+        {
+            "max_addr": "0x86f",
+            "min_addr": "0x820"
+        },
+        {
+            "max_addr": "0x8ef",
+            "min_addr": "0x8a0"
+        },
+        {
+            "max_addr": "0x96f",
+            "min_addr": "0x920"
+        },
+        {
+            "max_addr": "0x9ef",
+            "min_addr": "0x9a0"
+        },
+        {
+            "max_addr": "0xa6f",
+            "min_addr": "0xa20"
+        },
+        {
+            "max_addr": "0xaef",
+            "min_addr": "0xaa0"
+        },
+        {
+            "max_addr": "0xb6f",
+            "min_addr": "0xb20"
+        },
+        {
+            "max_addr": "0xbef",
+            "min_addr": "0xba0"
+        },
+        {
+            "max_addr": "0xc6f",
+            "min_addr": "0xc20"
+        },
+        {
+            "max_addr": "0xcef",
+            "min_addr": "0xca0"
+        },
+        {
+            "max_addr": "0xd6f",
+            "min_addr": "0xd20"
+        },
+        {
+            "max_addr": "0xdef",
+            "min_addr": "0xda0"
+        },
+        {
+            "max_addr": "0xe6f",
+            "min_addr": "0xe20"
+        },
+        {
+            "max_addr": "0xeef",
+            "min_addr": "0xea0"
+        },
+        {
+            "max_addr": "0xf6f",
+            "min_addr": "0xf20"
+        },
+        {
+            "max_addr": "0x10",
+            "min_addr": "0xf"
+        },
+        {
+            "max_addr": "0x1d",
+            "min_addr": "0x1d"
+        },
+        {
+            "max_addr": "0x90",
+            "min_addr": "0x8f"
+        },
+        {
+            "max_addr": "0x9f",
+            "min_addr": "0x9f"
+        },
+        {
+            "max_addr": "0x110",
+            "min_addr": "0x10f"
+        },
+        {
+            "max_addr": "0x11c",
+            "min_addr": "0x11c"
+        },
+        {
+            "max_addr": "0x11f",
+            "min_addr": "0x11f"
+        },
+        {
+            "max_addr": "0x190",
+            "min_addr": "0x18f"
+        },
+        {
+            "max_addr": "0x198",
+            "min_addr": "0x197"
+        },
+        {
+            "max_addr": "0x210",
+            "min_addr": "0x20f"
+        },
+        {
+            "max_addr": "0x218",
+            "min_addr": "0x218"
+        },
+        {
+            "max_addr": "0x290",
+            "min_addr": "0x28c"
+        },
+        {
+            "max_addr": "0x297",
+            "min_addr": "0x297"
+        },
+        {
+            "max_addr": "0x29f",
+            "min_addr": "0x29f"
+        },
+        {
+            "max_addr": "0x310",
+            "min_addr": "0x30c"
+        },
+        {
+            "max_addr": "0x317",
+            "min_addr": "0x314"
+        },
+        {
+            "max_addr": "0x31f",
+            "min_addr": "0x31b"
+        },
+        {
+            "max_addr": "0x390",
+            "min_addr": "0x38f"
+        },
+        {
+            "max_addr": "0x399",
+            "min_addr": "0x397"
+        },
+        {
+            "max_addr": "0x39b",
+            "min_addr": "0x39b"
+        },
+        {
+            "max_addr": "0x414",
+            "min_addr": "0x40c"
+        },
+        {
+            "max_addr": "0x41b",
+            "min_addr": "0x418"
+        },
+        {
+            "max_addr": "0x41f",
+            "min_addr": "0x41f"
+        },
+        {
+            "max_addr": "0x49f",
+            "min_addr": "0x48c"
+        },
+        {
+            "max_addr": "0x51f",
+            "min_addr": "0x50c"
+        },
+        {
+            "max_addr": "0x59f",
+            "min_addr": "0x58c"
+        },
+        {
+            "max_addr": "0x61f",
+            "min_addr": "0x60c"
+        },
+        {
+            "max_addr": "0x69f",
+            "min_addr": "0x68c"
+        },
+        {
+            "max_addr": "0x71f",
+            "min_addr": "0x70c"
+        },
+        {
+            "max_addr": "0x79f",
+            "min_addr": "0x78c"
+        },
+        {
+            "max_addr": "0x81f",
+            "min_addr": "0x80c"
+        },
+        {
+            "max_addr": "0x89f",
+            "min_addr": "0x88c"
+        },
+        {
+            "max_addr": "0x91f",
+            "min_addr": "0x90c"
+        },
+        {
+            "max_addr": "0x99f",
+            "min_addr": "0x98c"
+        },
+        {
+            "max_addr": "0xa1f",
+            "min_addr": "0xa0c"
+        },
+        {
+            "max_addr": "0xa9f",
+            "min_addr": "0xa8c"
+        },
+        {
+            "max_addr": "0xb1f",
+            "min_addr": "0xb0c"
+        },
+        {
+            "max_addr": "0xb9f",
+            "min_addr": "0xb8c"
+        },
+        {
+            "max_addr": "0xc1f",
+            "min_addr": "0xc0c"
+        },
+        {
+            "max_addr": "0xc9f",
+            "min_addr": "0xc8c"
+        },
+        {
+            "max_addr": "0xd1f",
+            "min_addr": "0xd0c"
+        },
+        {
+            "max_addr": "0xd9f",
+            "min_addr": "0xd8c"
+        },
+        {
+            "max_addr": "0xe1f",
+            "min_addr": "0xe0c"
+        },
+        {
+            "max_addr": "0xe9f",
+            "min_addr": "0xe8c"
+        },
+        {
+            "max_addr": "0xf1f",
+            "min_addr": "0xf0c"
+        },
+        {
+            "max_addr": "0xfe3",
+            "min_addr": "0xf8c"
+        },
+        {
+            "max_addr": "0xfec",
+            "min_addr": "0xfec"
+        }
+    ],
+    "bank": [
+        {
+            "max_addr": "0x007F",
+            "min_addr": "0x0000",
+            "number": "0"
+        },
+        {
+            "max_addr": "0x00FF",
+            "min_addr": "0x0080",
+            "number": "1"
+        },
+        {
+            "max_addr": "0x017F",
+            "min_addr": "0x0100",
+            "number": "2"
+        },
+        {
+            "max_addr": "0x01FF",
+            "min_addr": "0x0180",
+            "number": "3"
+        },
+        {
+            "max_addr": "0x027F",
+            "min_addr": "0x0200",
+            "number": "4"
+        },
+        {
+            "max_addr": "0x02FF",
+            "min_addr": "0x0280",
+            "number": "5"
+        },
+        {
+            "max_addr": "0x037F",
+            "min_addr": "0x0300",
+            "number": "6"
+        },
+        {
+            "max_addr": "0x03FF",
+            "min_addr": "0x0380",
+            "number": "7"
+        },
+        {
+            "max_addr": "0x047F",
+            "min_addr": "0x0400",
+            "number": "8"
+        },
+        {
+            "max_addr": "0x04FF",
+            "min_addr": "0x0480",
+            "number": "9"
+        },
+        {
+            "max_addr": "0x057F",
+            "min_addr": "0x0500",
+            "number": "10"
+        },
+        {
+            "max_addr": "0x05FF",
+            "min_addr": "0x0580",
+            "number": "11"
+        },
+        {
+            "max_addr": "0x067F",
+            "min_addr": "0x0600",
+            "number": "12"
+        },
+        {
+            "max_addr": "0x06FF",
+            "min_addr": "0x0680",
+            "number": "13"
+        },
+        {
+            "max_addr": "0x077F",
+            "min_addr": "0x0700",
+            "number": "14"
+        },
+        {
+            "max_addr": "0x07FF",
+            "min_addr": "0x0780",
+            "number": "15"
+        },
+        {
+            "max_addr": "0x087F",
+            "min_addr": "0x0800",
+            "number": "16"
+        },
+        {
+            "max_addr": "0x08FF",
+            "min_addr": "0x0880",
+            "number": "17"
+        },
+        {
+            "max_addr": "0x097F",
+            "min_addr": "0x0900",
+            "number": "18"
+        },
+        {
+            "max_addr": "0x09FF",
+            "min_addr": "0x0980",
+            "number": "19"
+        },
+        {
+            "max_addr": "0x0A7F",
+            "min_addr": "0x0A00",
+            "number": "20"
+        },
+        {
+            "max_addr": "0x0AFF",
+            "min_addr": "0x0A80",
+            "number": "21"
+        },
+        {
+            "max_addr": "0x0B7F",
+            "min_addr": "0x0B00",
+            "number": "22"
+        },
+        {
+            "max_addr": "0x0BFF",
+            "min_addr": "0x0B80",
+            "number": "23"
+        },
+        {
+            "max_addr": "0x0C7F",
+            "min_addr": "0x0C00",
+            "number": "24"
+        },
+        {
+            "max_addr": "0x0CFF",
+            "min_addr": "0x0C80",
+            "number": "25"
+        },
+        {
+            "max_addr": "0x0D7F",
+            "min_addr": "0x0D00",
+            "number": "26"
+        },
+        {
+            "max_addr": "0x0DFF",
+            "min_addr": "0x0D80",
+            "number": "27"
+        },
+        {
+            "max_addr": "0x0E7F",
+            "min_addr": "0x0E00",
+            "number": "28"
+        },
+        {
+            "max_addr": "0x0EFF",
+            "min_addr": "0x0E80",
+            "number": "29"
+        },
+        {
+            "max_addr": "0x0F7F",
+            "min_addr": "0x0F00",
+            "number": "30"
+        },
+        {
+            "max_addr": "0x0FFF",
+            "min_addr": "0x0F80",
+            "number": "31"
+        }
+    ],
+    "callstack": {
+        "max": "0x10"
+    },
+    "codegrip_icd": {
+        "badram": {
+            "max_addr": "0x0FCC",
+            "min_addr": "0xFC0"
+        },
+        "hwbrkpno": "3",
+        "instr_pipeline": "1",
+        "start_addr": "0x0010",
+        "swbrkpen": "0"
+    },
+    "config_registers": [
+        {
+            "address": "00008007",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000007",
+                    "key": "FOSC",
+                    "label": "Oscillator Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "ECH, External Clock, High Power Mode (4-32 MHz): device clock supplied to CLKIN pin",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "ECM, External Clock, Medium Power Mode (0.5-4 MHz): device clock supplied to CLKIN pin",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "ECL, External Clock, Low Power Mode (0-0.5 MHz): device clock supplied to CLKIN pin",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "INTOSC oscillator: I/O function on CLKIN pin",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "EXTRC oscillator: External RC circuit connected to CLKIN pin",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "HS Oscillator, High-speed crystal/resonator connected between OSC1 and OSC2 pins",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "XT Oscillator, Crystal/resonator connected between OSC1 and OSC2 pins",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "LP Oscillator, Low-power crystal connected between OSC1 and OSC2 pins",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000018",
+                    "key": "WDTE",
+                    "label": "Watchdog Timer Enable",
+                    "mask": "00000018",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "WDT enabled while running and disabled in Sleep",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "WDT controlled by the SWDTEN bit in the WDTCON register",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "PWRTE",
+                    "label": "Power-up Timer Enable",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "MCLRE",
+                    "label": "MCLR Pin Function Select",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000080",
+                    "key": "CP",
+                    "label": "Flash Program Memory Code Protection",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "CPD",
+                    "label": "Data Memory Code Protection",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000600",
+                    "key": "BOREN",
+                    "label": "Brown-out Reset Enable",
+                    "mask": "00000600",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "Brown-out Reset enabled while running and disabled in Sleep",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "Brown-out Reset controlled by the SBOREN bit in the BORCON register",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000800",
+                    "key": "CLKOUTEN",
+                    "label": "Clock Out Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000800"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00001000",
+                    "key": "IESO",
+                    "label": "Internal/External Switchover",
+                    "mask": "00001000",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00002000",
+                    "key": "FCMEN",
+                    "label": "Fail-Safe Clock Monitor Enable",
+                    "mask": "00002000",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1",
+            "unused": "00000000"
+        },
+        {
+            "address": "00008008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "WRT",
+                    "label": "Flash Memory Self-Write Protection",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "000h to 1FFh write protected, 200h to 1FFFh may be modified by EECON control",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "000h to FFFh write protected, 1000h to 1FFFh may be modified by EECON control",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "000h to 1FFFh write protected, no addresses may be modified by EECON control",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000010",
+                    "key": "VCOREV",
+                    "label": "VDDCORE Visibility",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "PLLEN",
+                    "label": "PLL Enable",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000200",
+                    "key": "STVREN",
+                    "label": "Stack Overflow/Underflow Reset Enable",
+                    "mask": "00000200",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000400",
+                    "key": "BORV",
+                    "label": "Brown-out Reset Voltage Selection",
+                    "mask": "00000400",
+                    "settings": [
+                        {
+                            "label": "Brown-out Reset Voltage (Vbor), low trip point selected.",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "Brown-out Reset Voltage (Vbor), high trip point selected.",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00001000",
+                    "key": "DEBUG",
+                    "label": "In-Circuit Debugger Mode",
+                    "mask": "00001000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00002000",
+                    "key": "LVP",
+                    "label": "Low-Voltage Programming Enable",
+                    "mask": "00002000",
+                    "settings": [
+                        {
+                            "label": "Enabled",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2",
+            "unused": "00000000"
+        }
+    ],
+    "core": "P16_Enh",
+    "delay_src_path": "delays/p16_enh/__lib_delays.c",
+    "eeprom": {
+        "max_addr": "0xff",
+        "min_addr": "0x0"
+    },
+    "icd": {
+        "badram": {
+            "max_addr": "0x0FCC",
+            "min_addr": "0xFC0"
+        },
+        "hwbrkpno": "3",
+        "instr_pipeline": "1",
+        "start_addr": "0x0010"
+    },
+    "ivt": {
+        "address": "0x0004",
+        "ilevel": "0x0000",
+        "name": "Interrupt"
+    },
+    "mappedmemory": [
+        {
+            "map": [
+                {
+                    "max_addr": "0xb",
+                    "min_addr": "0x0"
+                },
+                {
+                    "max_addr": "0x8b",
+                    "min_addr": "0x80"
+                },
+                {
+                    "max_addr": "0x10b",
+                    "min_addr": "0x100"
+                },
+                {
+                    "max_addr": "0x18b",
+                    "min_addr": "0x180"
+                },
+                {
+                    "max_addr": "0x20b",
+                    "min_addr": "0x200"
+                },
+                {
+                    "max_addr": "0x28b",
+                    "min_addr": "0x280"
+                },
+                {
+                    "max_addr": "0x30b",
+                    "min_addr": "0x300"
+                },
+                {
+                    "max_addr": "0x38b",
+                    "min_addr": "0x380"
+                },
+                {
+                    "max_addr": "0x40b",
+                    "min_addr": "0x400"
+                },
+                {
+                    "max_addr": "0x48b",
+                    "min_addr": "0x480"
+                },
+                {
+                    "max_addr": "0x50b",
+                    "min_addr": "0x500"
+                },
+                {
+                    "max_addr": "0x58b",
+                    "min_addr": "0x580"
+                },
+                {
+                    "max_addr": "0x60b",
+                    "min_addr": "0x600"
+                },
+                {
+                    "max_addr": "0x68b",
+                    "min_addr": "0x680"
+                },
+                {
+                    "max_addr": "0x70b",
+                    "min_addr": "0x700"
+                },
+                {
+                    "max_addr": "0x78b",
+                    "min_addr": "0x780"
+                },
+                {
+                    "max_addr": "0x80b",
+                    "min_addr": "0x800"
+                },
+                {
+                    "max_addr": "0x88b",
+                    "min_addr": "0x880"
+                },
+                {
+                    "max_addr": "0x90b",
+                    "min_addr": "0x900"
+                },
+                {
+                    "max_addr": "0x98b",
+                    "min_addr": "0x980"
+                },
+                {
+                    "max_addr": "0xa0b",
+                    "min_addr": "0xa00"
+                },
+                {
+                    "max_addr": "0xa8b",
+                    "min_addr": "0xa80"
+                },
+                {
+                    "max_addr": "0xb0b",
+                    "min_addr": "0xb00"
+                },
+                {
+                    "max_addr": "0xb8b",
+                    "min_addr": "0xb80"
+                },
+                {
+                    "max_addr": "0xc0b",
+                    "min_addr": "0xc00"
+                },
+                {
+                    "max_addr": "0xc8b",
+                    "min_addr": "0xc80"
+                },
+                {
+                    "max_addr": "0xd0b",
+                    "min_addr": "0xd00"
+                },
+                {
+                    "max_addr": "0xd8b",
+                    "min_addr": "0xd80"
+                },
+                {
+                    "max_addr": "0xe0b",
+                    "min_addr": "0xe00"
+                },
+                {
+                    "max_addr": "0xe8b",
+                    "min_addr": "0xe80"
+                },
+                {
+                    "max_addr": "0xf0b",
+                    "min_addr": "0xf00"
+                },
+                {
+                    "max_addr": "0xf8b",
+                    "min_addr": "0xf80"
+                }
+            ]
+        },
+        {
+            "map": [
+                {
+                    "max_addr": "0x7f",
+                    "min_addr": "0x70"
+                },
+                {
+                    "max_addr": "0xff",
+                    "min_addr": "0xf0"
+                },
+                {
+                    "max_addr": "0x17f",
+                    "min_addr": "0x170"
+                },
+                {
+                    "max_addr": "0x1ff",
+                    "min_addr": "0x1f0"
+                },
+                {
+                    "max_addr": "0x27f",
+                    "min_addr": "0x270"
+                },
+                {
+                    "max_addr": "0x2ff",
+                    "min_addr": "0x2f0"
+                },
+                {
+                    "max_addr": "0x37f",
+                    "min_addr": "0x370"
+                },
+                {
+                    "max_addr": "0x3ff",
+                    "min_addr": "0x3f0"
+                },
+                {
+                    "max_addr": "0x47f",
+                    "min_addr": "0x470"
+                },
+                {
+                    "max_addr": "0x4ff",
+                    "min_addr": "0x4f0"
+                },
+                {
+                    "max_addr": "0x57f",
+                    "min_addr": "0x570"
+                },
+                {
+                    "max_addr": "0x5ff",
+                    "min_addr": "0x5f0"
+                },
+                {
+                    "max_addr": "0x67f",
+                    "min_addr": "0x670"
+                },
+                {
+                    "max_addr": "0x6ff",
+                    "min_addr": "0x6f0"
+                },
+                {
+                    "max_addr": "0x77f",
+                    "min_addr": "0x770"
+                },
+                {
+                    "max_addr": "0x7ff",
+                    "min_addr": "0x7f0"
+                },
+                {
+                    "max_addr": "0x87f",
+                    "min_addr": "0x870"
+                },
+                {
+                    "max_addr": "0x8ff",
+                    "min_addr": "0x8f0"
+                },
+                {
+                    "max_addr": "0x97f",
+                    "min_addr": "0x970"
+                },
+                {
+                    "max_addr": "0x9ff",
+                    "min_addr": "0x9f0"
+                },
+                {
+                    "max_addr": "0xa7f",
+                    "min_addr": "0xa70"
+                },
+                {
+                    "max_addr": "0xaff",
+                    "min_addr": "0xaf0"
+                },
+                {
+                    "max_addr": "0xb7f",
+                    "min_addr": "0xb70"
+                },
+                {
+                    "max_addr": "0xbff",
+                    "min_addr": "0xbf0"
+                },
+                {
+                    "max_addr": "0xc7f",
+                    "min_addr": "0xc70"
+                },
+                {
+                    "max_addr": "0xcff",
+                    "min_addr": "0xcf0"
+                },
+                {
+                    "max_addr": "0xd7f",
+                    "min_addr": "0xd70"
+                },
+                {
+                    "max_addr": "0xdff",
+                    "min_addr": "0xdf0"
+                },
+                {
+                    "max_addr": "0xe7f",
+                    "min_addr": "0xe70"
+                },
+                {
+                    "max_addr": "0xeff",
+                    "min_addr": "0xef0"
+                },
+                {
+                    "max_addr": "0xf7f",
+                    "min_addr": "0xf70"
+                },
+                {
+                    "max_addr": "0xfff",
+                    "min_addr": "0xff0"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16LF1829",
+    "prog_options": {
+        "codegrip": {
+            "debugging": "False",
+            "programming": "False"
+        },
+        "mikroprog": {
+            "debugging": "True",
+            "programming": "True"
+        }
+    },
+    "ram": {
+        "data": [
+            {
+                "max_addr": "0x006F",
+                "min_addr": "0x0020"
+            },
+            {
+                "max_addr": "0x00EF",
+                "min_addr": "0x00A0"
+            },
+            {
+                "max_addr": "0x016F",
+                "min_addr": "0x0120"
+            },
+            {
+                "max_addr": "0x01EF",
+                "min_addr": "0x01A0"
+            },
+            {
+                "max_addr": "0x026F",
+                "min_addr": "0x0220"
+            },
+            {
+                "max_addr": "0x02EF",
+                "min_addr": "0x02A0"
+            },
+            {
+                "max_addr": "0x036F",
+                "min_addr": "0x0320"
+            },
+            {
+                "max_addr": "0x03EF",
+                "min_addr": "0x03A0"
+            },
+            {
+                "max_addr": "0x046F",
+                "min_addr": "0x0420"
+            },
+            {
+                "max_addr": "0x04EF",
+                "min_addr": "0x04A0"
+            },
+            {
+                "max_addr": "0x056F",
+                "min_addr": "0x0520"
+            },
+            {
+                "max_addr": "0x05EF",
+                "min_addr": "0x05A0"
+            },
+            {
+                "max_addr": "0x066F",
+                "min_addr": "0x0620"
+            },
+            {
+                "max_addr": "0x06EF",
+                "min_addr": "0x06A0"
+            },
+            {
+                "max_addr": "0x076F",
+                "min_addr": "0x0720"
+            },
+            {
+                "max_addr": "0x07EF",
+                "min_addr": "0x07A0"
+            },
+            {
+                "max_addr": "0x086F",
+                "min_addr": "0x0820"
+            },
+            {
+                "max_addr": "0x08EF",
+                "min_addr": "0x08A0"
+            },
+            {
+                "max_addr": "0x096F",
+                "min_addr": "0x0920"
+            },
+            {
+                "max_addr": "0x09EF",
+                "min_addr": "0x09A0"
+            },
+            {
+                "max_addr": "0x0A6F",
+                "min_addr": "0x0A20"
+            },
+            {
+                "max_addr": "0x0AEF",
+                "min_addr": "0x0AA0"
+            },
+            {
+                "max_addr": "0x0B6F",
+                "min_addr": "0x0B20"
+            },
+            {
+                "max_addr": "0x0BEF",
+                "min_addr": "0x0BA0"
+            },
+            {
+                "max_addr": "0x0C6F",
+                "min_addr": "0x0C20"
+            },
+            {
+                "max_addr": "0x0CEF",
+                "min_addr": "0x0CA0"
+            },
+            {
+                "max_addr": "0x0D6F",
+                "min_addr": "0x0D20"
+            },
+            {
+                "max_addr": "0x0DEF",
+                "min_addr": "0x0DA0"
+            },
+            {
+                "max_addr": "0x0E6F",
+                "min_addr": "0x0E20"
+            },
+            {
+                "max_addr": "0x0EEF",
+                "min_addr": "0x0EA0"
+            },
+            {
+                "max_addr": "0x0F6F",
+                "min_addr": "0x0F20"
+            }
+        ]
+    },
+    "rom": {
+        "max_addr": "0x1fff",
+        "min_addr": "0x0"
+    },
+    "rx": {
+        "max_addr": "0x007F",
+        "min_addr": "0x0070"
+    },
+    "socket": "1",
+    "vdd": {
+        "nominal": "3.300",
+        "range": {
+            "max_value": "3.600",
+            "min_value": "2.700"
+        }
+    },
+    "clock": "1"
+}

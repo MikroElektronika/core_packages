@@ -1,0 +1,113 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/XC16/core/def/PIC24EP256GU810.json",
+    "flash": 262144,
+    "ram": 28672,
+    "settings": {
+        "clock": "140",
+        "scheme": "PIC24EP256GU810_140_MHz",
+        "mcu": "PIC24EP256GU810",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "GWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "GSS",
+                "value": "OFF"
+            },
+            {
+                "key": "GSSK",
+                "value": "OFF"
+            },
+            {
+                "key": "FNOSC",
+                "value": "FRCPLL"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "POSCMD",
+                "value": "NONE"
+            },
+            {
+                "key": "OSCIOFNC",
+                "value": "OFF"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "OFF"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSDCMD"
+            },
+            {
+                "key": "WDTPOST",
+                "value": "PS32768"
+            },
+            {
+                "key": "WDTPRE",
+                "value": "PR128"
+            },
+            {
+                "key": "PLLKEN",
+                "value": "ON"
+            },
+            {
+                "key": "WINDIS",
+                "value": "OFF"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "FPWRT",
+                "value": "PWR128"
+            },
+            {
+                "key": "BOREN",
+                "value": "ON"
+            },
+            {
+                "key": "ALTI2C1",
+                "value": "OFF"
+            },
+            {
+                "key": "ALTI2C2",
+                "value": "OFF"
+            },
+            {
+                "key": "ICS",
+                "value": "PGD1"
+            },
+            {
+                "key": "RSTPRI",
+                "value": "PF"
+            },
+            {
+                "key": "JTAGEN",
+                "value": "OFF"
+            },
+            {
+                "key": "AWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "APL",
+                "value": "OFF"
+            },
+            {
+                "key": "APLK",
+                "value": "OFF"
+            }
+        ]
+    }
+}

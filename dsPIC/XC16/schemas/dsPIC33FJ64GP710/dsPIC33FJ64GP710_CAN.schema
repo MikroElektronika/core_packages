@@ -1,0 +1,97 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/XC16/core/def/DSPIC33FJ64GP710.json",
+    "flash": 65536,
+    "ram": 16384,
+    "settings": {
+        "clock": "25",
+        "scheme": "dsPIC33FJ64GP710_CAN",
+        "mcu": "DSPIC33FJ64GP710",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "BWRP",
+                "value": "WRPROTECT_OFF"
+            },
+            {
+                "key": "BSS",
+                "value": "NO_FLASH"
+            },
+            {
+                "key": "RBS",
+                "value": "NO_RAM"
+            },
+            {
+                "key": "SWRP",
+                "value": "WRPROTECT_OFF"
+            },
+            {
+                "key": "SSS",
+                "value": "NO_FLASH"
+            },
+            {
+                "key": "RSS",
+                "value": "NO_RAM"
+            },
+            {
+                "key": "GWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "GSS",
+                "value": "OFF"
+            },
+            {
+                "key": "FNOSC",
+                "value": "PRI"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "POSCMD",
+                "value": "HS"
+            },
+            {
+                "key": "OSCIOFNC",
+                "value": "OFF"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSDCMD"
+            },
+            {
+                "key": "WDTPOST",
+                "value": "PS32768"
+            },
+            {
+                "key": "WDTPRE",
+                "value": "PR128"
+            },
+            {
+                "key": "WINDIS",
+                "value": "OFF"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "FPWRT",
+                "value": "PWR128"
+            },
+            {
+                "key": "ICS",
+                "value": "PGD1"
+            },
+            {
+                "key": "JTAGEN",
+                "value": "OFF"
+            }
+        ]
+    }
+}

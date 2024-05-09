@@ -1,0 +1,486 @@
+{
+    "config_words": [
+        {
+            "init": "WRPROTECT_OFF",
+            "key": "BWRP",
+            "label": "Boot Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Boot segment is write-protected",
+                    "value": "WRPROTECT_ON"
+                },
+                {
+                    "label": "Boot Segment may be written",
+                    "value": "WRPROTECT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "NO_FLASH",
+            "key": "BSS",
+            "label": "Boot Segment Program Flash Code Protection",
+            "settings": [
+                {
+                    "label": "High Security, Large-sized Boot Flash",
+                    "value": "LARGE_FLASH_HIGH"
+                },
+                {
+                    "label": "High Security, Medium-sized Boot Flash",
+                    "value": "MEDIUM_FLASH_HIGH"
+                },
+                {
+                    "label": "High Security, Small-sized Boot Flash",
+                    "value": "SMALL_FLASH_HIGH"
+                },
+                {
+                    "label": "Standard Security, Large-sized Boot Flash",
+                    "value": "LARGE_FLASH_STD"
+                },
+                {
+                    "label": "Standard Security, Medium-sized Boot Flash",
+                    "value": "MEDIUM_FLASH_STD"
+                },
+                {
+                    "label": "Standard Security, Small-sized Boot Flash",
+                    "value": "SMALL_FLASH_STD"
+                },
+                {
+                    "label": "No Boot program Flash segment",
+                    "value": "NO_FLASH"
+                }
+            ]
+        },
+        {
+            "init": "NO_RAM",
+            "key": "RBS",
+            "label": "Boot Segment RAM Protection",
+            "settings": [
+                {
+                    "label": "Large-sized Boot RAM",
+                    "value": "LARGE_RAM"
+                },
+                {
+                    "label": "Medium-sized Boot RAM",
+                    "value": "MEDIUM_RAM"
+                },
+                {
+                    "label": "Small-sized Boot RAM",
+                    "value": "SMALL_RAM"
+                },
+                {
+                    "label": "No Boot RAM",
+                    "value": "NO_RAM"
+                }
+            ]
+        },
+        {
+            "init": "WRPROTECT_OFF",
+            "key": "SWRP",
+            "label": "Secure Segment Program Write Protect",
+            "settings": [
+                {
+                    "label": "Secure segment is write-protected",
+                    "value": "WRPROTECT_ON"
+                },
+                {
+                    "label": "Secure segment may be written",
+                    "value": "WRPROTECT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "NO_FLASH",
+            "key": "SSS",
+            "label": "Secure Segment Program Flash Code Protection",
+            "settings": [
+                {
+                    "label": "High Security, Large-sized Secure Flash",
+                    "value": "LARGE_FLASH_HIGH"
+                },
+                {
+                    "label": "High Security, Medium-sized Secure Flash",
+                    "value": "MEDIUM_FLASH_HIGH"
+                },
+                {
+                    "label": "High Security, Small-sized Secure Flash",
+                    "value": "SMALL_FLASH_HIGH"
+                },
+                {
+                    "label": "Standard Security, Large-sized Secure Flash",
+                    "value": "LARGE_FLASH_STD"
+                },
+                {
+                    "label": "Standard Security, Medium-sized Secure Flash",
+                    "value": "MEDIUM_FLASH_STD"
+                },
+                {
+                    "label": "Standard Security, Small-sized Secure Flash",
+                    "value": "SMALL_FLASH_STD"
+                },
+                {
+                    "label": "No Secure Segment",
+                    "value": "NO_FLASH"
+                }
+            ]
+        },
+        {
+            "init": "NO_RAM",
+            "key": "RSS",
+            "label": "Secure Segment Data RAM Protection",
+            "settings": [
+                {
+                    "label": "Large-sized Secure RAM",
+                    "value": "LARGE_RAM"
+                },
+                {
+                    "label": "Medium-sized Secure RAM",
+                    "value": "MEDIUM_RAM"
+                },
+                {
+                    "label": "Small-sized Secure RAM",
+                    "value": "SMALL_RAM"
+                },
+                {
+                    "label": "No Secure RAM",
+                    "value": "NO_RAM"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GWRP",
+            "label": "General Code Segment Write Protect",
+            "settings": [
+                {
+                    "label": "User program memory is write-protected",
+                    "value": "ON"
+                },
+                {
+                    "label": "User program memory is not write-protected",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "GSS",
+            "label": "General Segment Code Protection",
+            "settings": [
+                {
+                    "label": "High Security Code Protection is Enabled",
+                    "value": "HIGH"
+                },
+                {
+                    "label": "Standard Security Code Protection is Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "User program memory is not code-protected",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "LPRCDIVN",
+            "key": "FNOSC",
+            "label": "Oscillator Mode",
+            "settings": [
+                {
+                    "label": "Internal Fast RC (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) w/ PLL",
+                    "value": "FRCPLL"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC)",
+                    "value": "PRI"
+                },
+                {
+                    "label": "Primary Oscillator (XT, HS, EC) w/ PLL",
+                    "value": "PRIPLL"
+                },
+                {
+                    "label": "Secondary Oscillator (SOSC)",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Low Power RC Oscillator (LPRC)",
+                    "value": "LPRC"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) divide by 16",
+                    "value": "FRCDIV16"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) with divide by N",
+                    "value": "LPRCDIVN"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Two-speed Oscillator Start-Up Enable",
+            "settings": [
+                {
+                    "label": "Start up with user-selected oscillator",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Start up with FRC, then switch",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "NONE",
+            "key": "POSCMD",
+            "label": "Primary Oscillator Source",
+            "settings": [
+                {
+                    "label": "EC Oscillator Mode",
+                    "value": "EC"
+                },
+                {
+                    "label": "XT Oscillator Mode",
+                    "value": "XT"
+                },
+                {
+                    "label": "HS Oscillator Mode",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary Oscillator Disabled",
+                    "value": "NONE"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "OSCIOFNC",
+            "label": "OSC2 Pin Function",
+            "settings": [
+                {
+                    "label": "OSC2 pin has digital I/O function",
+                    "value": "ON"
+                },
+                {
+                    "label": "OSC2 pin has clock out function",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "CSDCMD",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor",
+            "settings": [
+                {
+                    "label": "Both Clock Switching and Fail-Safe Clock Monitor are enabled",
+                    "value": "CSECME"
+                },
+                {
+                    "label": "Clock switching is enabled, Fail-Safe Clock Monitor is disabled",
+                    "value": "CSECMD"
+                },
+                {
+                    "label": "Both Clock Switching and Fail-Safe Clock Monitor are disabled",
+                    "value": "CSDCMD"
+                }
+            ]
+        },
+        {
+            "init": "PS32768",
+            "key": "WDTPOST",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "PS32768"
+                }
+            ]
+        },
+        {
+            "init": "PR128",
+            "key": "WDTPRE",
+            "label": "WDT Prescaler",
+            "settings": [
+                {
+                    "label": "1:32",
+                    "value": "PR32"
+                },
+                {
+                    "label": "1:128",
+                    "value": "PR128"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "WINDIS",
+            "label": "Watchdog Timer Window",
+            "settings": [
+                {
+                    "label": "Watchdog Timer in Window mode",
+                    "value": "ON"
+                },
+                {
+                    "label": "Watchdog Timer in Non-Window mode",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "Watchdog timer enabled/disabled by user software",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Watchdog timer always enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "PWR128",
+            "key": "FPWRT",
+            "label": "POR Timer Value",
+            "settings": [
+                {
+                    "label": "Disabled",
+                    "value": "PWR1"
+                },
+                {
+                    "label": "2ms",
+                    "value": "PWR2"
+                },
+                {
+                    "label": "4ms",
+                    "value": "PWR4"
+                },
+                {
+                    "label": "8ms",
+                    "value": "PWR8"
+                },
+                {
+                    "label": "16ms",
+                    "value": "PWR16"
+                },
+                {
+                    "label": "32ms",
+                    "value": "PWR32"
+                },
+                {
+                    "label": "64ms",
+                    "value": "PWR64"
+                },
+                {
+                    "label": "128ms",
+                    "value": "PWR128"
+                }
+            ]
+        },
+        {
+            "init": "PGD1",
+            "key": "ICS",
+            "label": "Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Communicate on PGC3/EMUC3 and PGD3/EMUD3",
+                    "value": "PGD3"
+                },
+                {
+                    "label": "Communicate on PGC2/EMUC2 and PGD2/EMUD2",
+                    "value": "PGD2"
+                },
+                {
+                    "label": "Communicate on PGC1/EMUC1 and PGD1/EMUD1",
+                    "value": "PGD1"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "JTAGEN",
+            "label": "JTAG Port Enable",
+            "settings": [
+                {
+                    "label": "JTAG is Disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "JTAG is Enabled",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC24HJ64GP506",
+    "clock": 1
+}

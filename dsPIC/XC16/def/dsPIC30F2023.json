@@ -1,0 +1,351 @@
+{
+    "config_words": [
+        {
+            "init": "BWRP_OFF",
+            "key": "BWRP",
+            "label": "Boot Segment Write Protect",
+            "settings": [
+                {
+                    "label": "Boot Segment is write protected",
+                    "value": "BWRP_ON"
+                },
+                {
+                    "label": "Boot Segment may be written",
+                    "value": "BWRP_OFF"
+                }
+            ]
+        },
+        {
+            "init": "NO_BOOT_CODE",
+            "key": "BSS",
+            "label": "Boot Segment Program Flash Code Protection",
+            "settings": [
+                {
+                    "label": "High Security, Medium-sized Boot Flash",
+                    "value": "HIGH_MEDIUM_BOOT_CODE"
+                },
+                {
+                    "label": "High Security, Small-sized Boot Flash",
+                    "value": "HIGH_SMALL_BOOT_CODE"
+                },
+                {
+                    "label": "Standard Security, Medium-sized Boot Flash",
+                    "value": "STRD_MEDIUM_BOOT_CODE"
+                },
+                {
+                    "label": "Standard Security, Small-sized Boot Flash",
+                    "value": "STRD_SMALL_BOOT_CODE"
+                },
+                {
+                    "label": "No Boot Segment",
+                    "value": "NO_BOOT_CODE"
+                }
+            ]
+        },
+        {
+            "init": "GWRP_OFF",
+            "key": "GWRP",
+            "label": "General Code Segment Write Protect",
+            "settings": [
+                {
+                    "label": "General Segment is write protected",
+                    "value": "GWRP_ON"
+                },
+                {
+                    "label": "General Segment may be written",
+                    "value": "GWRP_OFF"
+                }
+            ]
+        },
+        {
+            "init": "GSS_OFF",
+            "key": "GSS",
+            "label": "General Segment Code Protection",
+            "settings": [
+                {
+                    "label": "High Security Code Protection Enabled",
+                    "value": "GSS_HIGH"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "GSS_ON"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "GSS_OFF"
+                }
+            ]
+        },
+        {
+            "init": "PRIOSC_PLL",
+            "key": "FNOSC",
+            "label": "Oscillator Mode",
+            "settings": [
+                {
+                    "label": "Internal Fast RC (FRC)",
+                    "value": "FRC"
+                },
+                {
+                    "label": "Internal Fast RC (FRC) w/ PLL",
+                    "value": "FRC_PLL"
+                },
+                {
+                    "label": "Primary Oscillator (HS, EC)",
+                    "value": "PRIOSC"
+                },
+                {
+                    "label": "Primary Oscillator (HS, EC) w/ PLL",
+                    "value": "PRIOSC_PLL"
+                }
+            ]
+        },
+        {
+            "init": "PRIOSC_OFF",
+            "key": "POSCMD",
+            "label": "Primary Oscillator Source",
+            "settings": [
+                {
+                    "label": "EC Oscillator Mode",
+                    "value": "EC"
+                },
+                {
+                    "label": "HS Oscillator Mode",
+                    "value": "HS"
+                },
+                {
+                    "label": "Primary Oscillator Disabled",
+                    "value": "PRIOSC_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OSC2_CLKO",
+            "key": "OSCIOFNC",
+            "label": "OSCI/OSCO Pin Function",
+            "settings": [
+                {
+                    "label": "OSCO pin has digital I/O function",
+                    "value": "OSC2_IO"
+                },
+                {
+                    "label": "OSCO pin has clock out function",
+                    "value": "OSC2_CLKO"
+                }
+            ]
+        },
+        {
+            "init": "FRC_HI_RANGE",
+            "key": "FRANGE",
+            "label": "Frequency Range Select",
+            "settings": [
+                {
+                    "label": "Low Range",
+                    "value": "FRC_LO_RANGE"
+                },
+                {
+                    "label": "High Range",
+                    "value": "FRC_HI_RANGE"
+                }
+            ]
+        },
+        {
+            "init": "CSW_FSCM_OFF",
+            "key": "FCKSM",
+            "label": "Clock Switching and Monitor",
+            "settings": [
+                {
+                    "label": "Sw Enabled, Mon Enabled",
+                    "value": "CSW_FSCM_ON"
+                },
+                {
+                    "label": "Sw Enabled, Mon Disabled",
+                    "value": "CSW_ON_FSCM_OFF"
+                },
+                {
+                    "label": "Sw Disabled, Mon Disabled",
+                    "value": "CSW_FSCM_OFF"
+                }
+            ]
+        },
+        {
+            "init": "WDTPOST_PS32768",
+            "key": "WDTPS",
+            "label": "Watchdog Timer Postscaler",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "WDTPOST_PS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "WDTPOST_PS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "WDTPOST_PS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "WDTPOST_PS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "WDTPOST_PS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "WDTPOST_PS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "WDTPOST_PS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "WDTPOST_PS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "WDTPOST_PS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "WDTPOST_PS512"
+                },
+                {
+                    "label": "1:1,024",
+                    "value": "WDTPOST_PS1024"
+                },
+                {
+                    "label": "1:2,048",
+                    "value": "WDTPOST_PS2048"
+                },
+                {
+                    "label": "1:4,096",
+                    "value": "WDTPOST_PS4096"
+                },
+                {
+                    "label": "1:8,192",
+                    "value": "WDTPOST_PS8192"
+                },
+                {
+                    "label": "1:16,384",
+                    "value": "WDTPOST_PS16384"
+                },
+                {
+                    "label": "1:32,768",
+                    "value": "WDTPOST_PS32768"
+                }
+            ]
+        },
+        {
+            "init": "WDTPRE_PR128",
+            "key": "FWPSA0",
+            "label": "WDT Prescaler",
+            "settings": [
+                {
+                    "label": "1:32",
+                    "value": "WDTPRE_PR32"
+                },
+                {
+                    "label": "1:128",
+                    "value": "WDTPRE_PR128"
+                }
+            ]
+        },
+        {
+            "init": "WINDIS_OFF",
+            "key": "WWDTEN",
+            "label": "Watchdog Timer Window",
+            "settings": [
+                {
+                    "label": "Window mode",
+                    "value": "WINDIS_ON"
+                },
+                {
+                    "label": "Non-Window mode",
+                    "value": "WINDIS_OFF"
+                }
+            ]
+        },
+        {
+            "init": "FWDTEN_ON",
+            "key": "FWDTEN",
+            "label": "Watchdog Timer Enable",
+            "settings": [
+                {
+                    "label": "Disable",
+                    "value": "FWDTEN_OFF"
+                },
+                {
+                    "label": "Enable",
+                    "value": "FWDTEN_ON"
+                }
+            ]
+        },
+        {
+            "init": "PWRT_128",
+            "key": "FPWRT",
+            "label": "POR Timer Value",
+            "settings": [
+                {
+                    "label": "Off",
+                    "value": "PWRT_OFF"
+                },
+                {
+                    "label": "2ms",
+                    "value": "PWRT_2"
+                },
+                {
+                    "label": "4ms",
+                    "value": "PWRT_4"
+                },
+                {
+                    "label": "8ms",
+                    "value": "PWRT_8"
+                },
+                {
+                    "label": "16ms",
+                    "value": "PWRT_16"
+                },
+                {
+                    "label": "32ms",
+                    "value": "PWRT_32"
+                },
+                {
+                    "label": "64ms",
+                    "value": "PWRT_64"
+                },
+                {
+                    "label": "128ms",
+                    "value": "PWRT_128"
+                }
+            ]
+        },
+        {
+            "init": "ICS_PGD",
+            "key": "ICS",
+            "label": "Comm Channel Select",
+            "settings": [
+                {
+                    "label": "Reserved",
+                    "value": "NONE"
+                },
+                {
+                    "label": "Use EMUC2 and EMUD2",
+                    "value": "ICS_PGD2"
+                },
+                {
+                    "label": "Use EMUC1 and EMUD1",
+                    "value": "ICS_PGD1"
+                },
+                {
+                    "label": "Use PGC/EMUC and PGD/EMUD",
+                    "value": "ICS_PGD"
+                }
+            ]
+        }
+    ],
+    "mcu": "dsPIC30F2023",
+    "clock": 1
+}

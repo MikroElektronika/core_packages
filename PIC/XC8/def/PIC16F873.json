@@ -1,0 +1,157 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRC,_RC_OSC",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "RC oscillator",
+                    "value": "EXTRC,_RC_OSC"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "FLASH Program Memory Code Protection bits",
+            "settings": [
+                {
+                    "label": "Code protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "0F00h to 0FFFh code protected",
+                    "value": "UPPER_256"
+                },
+                {
+                    "label": "0800h to 0FFFh code protected",
+                    "value": "HALF"
+                },
+                {
+                    "label": "0000h to 0FFFh code protected",
+                    "value": "ALL"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BODEN_ON",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bit",
+            "settings": [
+                {
+                    "label": "BOR enabled",
+                    "value": "ON,_BODEN_ON"
+                },
+                {
+                    "label": "BOR disabled",
+                    "value": "OFF,_BODEN_OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "LVP",
+            "label": "Low Voltage In-Circuit Serial Programming Enable bit",
+            "settings": [
+                {
+                    "label": "RB3/PGM pin has PGM function; low-voltage programming enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "RB3 is digital I/O, HV on MCLR must be used for programming",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CPD",
+            "label": "Data EE Memory Code Protection",
+            "settings": [
+                {
+                    "label": "Code Protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Data EEPROM memory code-protected",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WRT_ENABLE_ON",
+            "key": "WRT",
+            "label": "FLASH Program Memory Write Enable",
+            "settings": [
+                {
+                    "label": "Unprotected program memory may be written to by EECON control",
+                    "value": "ON,_WRT_ENABLE_ON"
+                },
+                {
+                    "label": "Unprotected program memory may not be written to by EECON control",
+                    "value": "OFF,_WRT_ENABLE_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "In-Circuit Debugger Mode bit",
+            "settings": [
+                {
+                    "label": "In-Circuit Debugger disabled, RB6 and RB7 are general purpose I/O pins",
+                    "value": "OFF"
+                },
+                {
+                    "label": "In-Circuit Debugger enabled, RB6 and RB7 are dedicated to the debugger",
+                    "value": "ON"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F873",
+    "clock": 1
+}

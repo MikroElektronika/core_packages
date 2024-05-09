@@ -1,0 +1,218 @@
+{
+    "config_words": [
+        {
+            "init": "EXTRCCLK,_EXTRC_CLKOUT",
+            "key": "FOSC",
+            "label": "Oscillator Selection bits",
+            "settings": [
+                {
+                    "label": "EXTRC oscillator; CLKO function on OSC2/CLKO/RA6",
+                    "value": "EXTRCCLK,_EXTRC_CLKOUT"
+                },
+                {
+                    "label": "EXTRC oscillator; port I/O function on OSC2/CLKO/RA6",
+                    "value": "EXTRCIO,_EXTRC_IO"
+                },
+                {
+                    "label": "INTRC oscillator; CLKO function on OSC2/CLKO/RA6 and port I/O function on OSC1/CLKI/RA7",
+                    "value": "INTOSCCLK,_INTRC_CLKOUT"
+                },
+                {
+                    "label": "INTRC oscillator; port I/O function on OSC1/CLKI/RA7 and OSC2/CLKO/RA6",
+                    "value": "INTOSCIO,_INTRC_IO"
+                },
+                {
+                    "label": "EXTCLK; port I/O function on OSC2/CLKO/RA6",
+                    "value": "EC,_EXTCLK"
+                },
+                {
+                    "label": "HS oscillator",
+                    "value": "HS,_HS_OSC"
+                },
+                {
+                    "label": "XT oscillator",
+                    "value": "XT,_XT_OSC"
+                },
+                {
+                    "label": "LP oscillator",
+                    "value": "LP,_LP_OSC"
+                }
+            ]
+        },
+        {
+            "init": "ON,_WDT_ON",
+            "key": "WDTE",
+            "label": "Watchdog Timer Enable bit",
+            "settings": [
+                {
+                    "label": "WDT enabled",
+                    "value": "ON,_WDT_ON"
+                },
+                {
+                    "label": "WDT disabled",
+                    "value": "OFF,_WDT_OFF"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "PWRTE",
+            "label": "Power-up Timer Enable bit",
+            "settings": [
+                {
+                    "label": "PWRT disabled",
+                    "value": "OFF"
+                },
+                {
+                    "label": "PWRT enabled",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON,_MCLR_ON",
+            "key": "MCLRE",
+            "label": "MCLR/VPP/RE3 Pin Function Select bit",
+            "settings": [
+                {
+                    "label": "MCLR/VPP/RE3 pin function is MCLR",
+                    "value": "ON,_MCLR_ON"
+                },
+                {
+                    "label": "MCLR/VPP/RE3 pin function is digital input only, MCLR gated to '1'",
+                    "value": "OFF,_MCLR_OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BOREN_1",
+            "key": "BOREN",
+            "label": "Brown-out Reset Enable bit",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON,_BOREN_1"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF,_BOREN_0"
+                }
+            ]
+        },
+        {
+            "init": "20,_VBOR_2_0",
+            "key": "BORV",
+            "label": "Brown-out Reset Voltage bits",
+            "settings": [
+                {
+                    "label": "VBOR set to 2.0V",
+                    "value": "20,_VBOR_2_0"
+                },
+                {
+                    "label": "VBOR set to 2.7V",
+                    "value": "27,_VBOR_2_7"
+                },
+                {
+                    "label": "VBOR set to 4.2V",
+                    "value": "42,_VBOR_4_2"
+                },
+                {
+                    "label": "VBOR set to 4.5V",
+                    "value": "45,_VBOR_4_5"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "DEBUG",
+            "label": "In-Circuit Debugger Mode bit",
+            "settings": [
+                {
+                    "label": "In-Circuit Debugger disabled, RB6 and RB7 are general purpose I/O pins",
+                    "value": "OFF"
+                },
+                {
+                    "label": "In-Circuit Debugger enabled, RB6 and RB7 are dedicated to the debugger",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "RC1,_CCP2_RC1",
+            "key": "CCP2MX",
+            "label": "CCP2 Multiplex bit",
+            "settings": [
+                {
+                    "label": "CCP2 is on RC1",
+                    "value": "RC1,_CCP2_RC1"
+                },
+                {
+                    "label": "CCP2 is on RB3",
+                    "value": "RB3,_CCP2_RB3"
+                }
+            ]
+        },
+        {
+            "init": "OFF",
+            "key": "CP",
+            "label": "Flash Program Memory Code Protection bits",
+            "settings": [
+                {
+                    "label": "Code protection off",
+                    "value": "OFF"
+                },
+                {
+                    "label": "0000h to 1FFFh code-protected",
+                    "value": "ON,_CP_ALL"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FCMEN",
+            "label": "Fail-Safe Clock Monitor Enable bit",
+            "settings": [
+                {
+                    "label": "Fail-Safe Clock Monitor enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Fail-Safe Clock Monitor disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "IESO",
+            "label": "Internal External Switchover bit",
+            "settings": [
+                {
+                    "label": "Internal External Switchover mode enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "Internal External Switchover mode disabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "ON,_BORSEN_1",
+            "key": "BORSEN",
+            "label": "Brown-out Reset Software Enable bit",
+            "settings": [
+                {
+                    "label": "Enabled",
+                    "value": "ON,_BORSEN_1"
+                },
+                {
+                    "label": "Disabled",
+                    "value": "OFF,_BORSEN_0"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC16F767",
+    "clock": 1
+}
