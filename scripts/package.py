@@ -4,6 +4,7 @@ import re
 import urllib.request
 import json
 from pathlib import Path
+import py7zr
 
 def find_cmake_files(directory):
     """ Return a list of .cmake files in the directory, excluding specific files """
@@ -301,8 +302,31 @@ def copy_delays(cores, source_dir, output_dir, base_path):
         if os.path.exists(delays_dir):
             os.makedirs(dest_path, exist_ok=True)
             shutil.copytree(delays_dir, dest_path, dirs_exist_ok=True)
-     
+
+def create_archive(base_output_dir):
+    """Creates a 7z archive of the specified directory with all files at the root of the archive."""
+    try:
+        archive_name = os.path.join(os.path.dirname(base_output_dir), f"{os.path.basename(base_output_dir)}.7z")
+        print(f"Starting to create archive {archive_name}...")
+
+        # Open the 7z file
+        with py7zr.SevenZipFile(archive_name, mode='w') as archive:
+            # Get all files and directories in the base_output_dir
+            for folder_name, subfolders, filenames in os.walk(base_output_dir):
+                for filename in filenames:
+                    # Create the full file path
+                    file_path = os.path.join(folder_name, filename)
+                    # Add file to the archive, with the relative path set to be flat at the root
+                    archive_name_inside = os.path.relpath(file_path, base_output_dir)
+                    archive.write(file_path, archive_name_inside)
+
+        print(f"Archive created successfully at {archive_name}")
+
+    except Exception as e:
+        print(f"Failed to create archive due to an error: {e}")
+   
 def main(source_dir, output_dir):
+    
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
     downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
@@ -332,7 +356,7 @@ def main(source_dir, output_dir):
         # #copy std_library to every package
         std_library_path = os.path.join(source_dir, 'std_library')
         if os.path.exists(std_library_path):
-            shutil.copytree(std_library_path, os.path.join(base_output_dir, "std_library"))
+            shutil.copytree(std_library_path, os.path.join(base_output_dir, "std_library"), dirs_exist_ok=True)
         #copy include to every package
         include_path = os.path.join(source_dir, 'include')
         if os.path.exists(include_path):
@@ -346,11 +370,18 @@ def main(source_dir, output_dir):
         shutil.copytree(os.path.join(source_dir, 'common'), os.path.join(base_output_dir, "common"), dirs_exist_ok=True)
         #copy base CMakeLists.txt to every package
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
-
+        
+        #create archive            
+        create_archive(base_output_dir)
+        shutil.rmtree(base_output_dir)
 # Usage
-source_directory = '/home/software/GIT/core_packages/ARM/mikroC'
-output_directory = '/home/software/test_dir/ARM/mikroC'
+import time
+start_time = time.time()
+
+source_directory = '/home/software/GIT/core_packages/PIC32/XC32'
+output_directory = '/home/software/test_dir/PIC32/XC32'
 main(source_directory, output_directory)
+print("--- %s seconds ---" % (time.time() - start_time))
 
 
 
