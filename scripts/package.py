@@ -414,12 +414,12 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         
         #upload archive
         async with aiohttp.ClientSession() as session:
-            # upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
-            # results = await asyncio.gather(*upload_tasks, return_exceptions=True)
-            # for result in results:
-            #     print(result)
-            # print("All uploads completed.")
-            upload_release_asset(session, token, repo, tag_name, archivePath)
+            upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
+            results = await asyncio.gather(*upload_tasks, return_exceptions=True)
+            for result in results:
+                print(result)
+            print("All uploads completed.")
+            # upload_release_asset(session, token, repo, tag_name, archivePath)
         packages.append({"name" : archiveName, "version" : "1.0.0", "hash" :archiveHash})
 
 def file_hash(filename):
@@ -495,7 +495,7 @@ async def main(token, repo, tag_name):
         json.dump(new_metadate, f)
     
     async with aiohttp.ClientSession() as session:
-        upload_release_asset(session, token, repo, tag_name, "metadata.json")
+        await upload_release_asset(session, token, repo, tag_name, "metadata.json")
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
