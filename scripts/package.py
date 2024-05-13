@@ -370,10 +370,8 @@ def main(source_dir, output_dir, arch, entry_name):
         #create archive            
         create_archive(base_output_dir, arch, entry_name)
         shutil.rmtree(base_output_dir)
-# Usage
 
 architectures = ["RISCV", "PIC32", "PIC", "dsPIC", "AVR", "ARM"]
-# architectures = ["RISCV"]
 downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
                         "",
                         'necto_db.db', True)
