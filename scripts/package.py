@@ -438,7 +438,7 @@ async def main(token, repo, tag_name):
                         output_directory = os.path.join(root_output_directory, entry.name)
                                             
                         print(f"Processing {source_directory} to {output_directory}")
-                        package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name)
+                        await package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name)
         except Exception as e:
             print(f"Failed to process directories in {root_source_directory}: {e}")
 
