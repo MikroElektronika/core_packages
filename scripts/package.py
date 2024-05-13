@@ -1,10 +1,14 @@
 import os
 import shutil
 import re
-import urllib.request
+import requests
 import json
 from pathlib import Path
 import py7zr
+import argparse
+import aiohttp
+import asyncio
+import aiofiles
 
 def find_cmake_files(directory):
     """ Return a list of .cmake files in the directory, excluding specific files """
@@ -220,12 +224,30 @@ def checkFileOnDisk(fileName):
 # verifyDownload is used to retrieve error if download failed
 def downloadFile(downloadLink, outputDir, outputFileName, verifyDownload):
     lastError = 0
+
+    # Ensure the output directory exists
     if outputDir:
         os.makedirs(outputDir, exist_ok=True)
 
-    urllib.request.urlretrieve(downloadLink, outputDir + outputFileName)
-    if verifyDownload:
-        lastError = checkFileOnDisk(outputDir + outputFileName)
+    # Full path to where the file will be saved
+    fullPath = os.path.join(outputDir, outputFileName)
+
+    try:
+        # Make the request
+        response = requests.get(downloadLink, stream=True)
+        response.raise_for_status()  # Raises a HTTPError for bad responses
+
+        # Write the response content to a file
+        with open(fullPath, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192): 
+                f.write(chunk)
+
+        if verifyDownload:
+            lastError = checkFileOnDisk(fullPath)
+
+    except requests.RequestException as e:
+        print(f"Error downloading file: {e}")
+        lastError = -1
 
     return lastError
 
@@ -310,7 +332,8 @@ def create_archive(base_output_dir, arch, entry_name):
         print(f"Starting to create archive {archive_name}...")
 
         # Open the 7z file
-        with py7zr.SevenZipFile(archive_name, mode='w') as archive:
+        filters = [{'id': py7zr.FILTER_ZSTD, 'level': 3}]
+        with py7zr.SevenZipFile(archive_name, mode='w', filters=filters) as archive:
             # Get all files and directories in the base_output_dir
             for folder_name, subfolders, filenames in os.walk(base_output_dir):
                 for filename in filenames:
@@ -321,11 +344,26 @@ def create_archive(base_output_dir, arch, entry_name):
                     archive.write(file_path, archive_name_inside)
 
         print(f"Archive created successfully at {archive_name}")
-
+        return archive_name
     except Exception as e:
         print(f"Failed to create archive due to an error: {e}")
-   
-def main(source_dir, output_dir, arch, entry_name):
+        
+async def upload_release_asset(session, token, repo, tag_name, asset_path):
+    print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
+    headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
+    release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
+    async with session.get(release_url, headers=headers) as response:
+        response_data = await response.json()
+        release_id = response_data['id']
+    upload_url = f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={os.path.basename(asset_path)}"
+    async with aiofiles.open(asset_path, 'rb') as f:
+        data = await f.read()
+    async with session.post(upload_url, headers=headers, data=data) as response:
+        result = await response.json()
+    print(f"Upload completed for: {os.path.basename(asset_path)}.")
+    return result
+
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name):
     
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -368,30 +406,55 @@ def main(source_dir, output_dir, arch, entry_name):
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
         
         #create archive            
-        create_archive(base_output_dir, arch, entry_name)
+        archivePath = create_archive(base_output_dir, arch, entry_name)
         shutil.rmtree(base_output_dir)
+        #upload archive
+        async with aiohttp.ClientSession() as session:
+            upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
+            results = await asyncio.gather(*upload_tasks, return_exceptions=True)
+            for result in results:
+                print(result)
+            print("All uploads completed.")
+        upload_release_asset(session, token, repo, tag_name, archivePath)
 
-architectures = ["RISCV", "PIC32", "PIC", "dsPIC", "AVR", "ARM"]
-downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
-                        "",
-                        'necto_db.db', True)
+async def main(token, repo, tag_name):
+    architectures = ["RISCV", "PIC32", "PIC", "dsPIC", "AVR", "ARM"]
+    downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
+                            "",
+                            'necto_db.db', True)
+    import time
 
-for arch in architectures:
-    root_source_directory = f"/home/software/GIT/core_packages/{arch}"
-    root_output_directory = f"/home/software/test_dir/{arch}"
-# List directories directly under the root source directory
-    try:
-        with os.scandir(root_source_directory) as entries:
-            for entry in entries:
-                if entry.is_dir():
-                    source_directory = os.path.join(root_source_directory, entry.name)
-                    output_directory = os.path.join(root_output_directory, entry.name)
-                                        
-                    print(f"Processing {source_directory} to {output_directory}")
-                    main(source_directory, output_directory, arch, entry.name)
-    except Exception as e:
-        print(f"Failed to process directories in {root_source_directory}: {e}")
+    start_time = time.time()  # Capture start time
 
+    for arch in architectures:
+        root_source_directory = f"/home/software/GIT/core_packages/{arch}"
+        root_output_directory = f"/home/software/test_dir/{arch}"
+    # List directories directly under the root source directory
+        try:
+            with os.scandir(root_source_directory) as entries:
+                for entry in entries:
+                    if entry.is_dir():
+                        source_directory = os.path.join(root_source_directory, entry.name)
+                        output_directory = os.path.join(root_output_directory, entry.name)
+                                            
+                        print(f"Processing {source_directory} to {output_directory}")
+                        package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name)
+        except Exception as e:
+            print(f"Failed to process directories in {root_source_directory}: {e}")
+
+    end_time = time.time()  # Capture end time
+    print(f"Total runtime of the script: {end_time - start_time} seconds")
+    
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Upload directories as release assets.")
+    parser.add_argument("token", help="GitHub Token")
+    parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
+    parser.add_argument("tag_name", help="Tag name from the release")
+    args = parser.parse_args()
+    
+    print("Starting the upload process...")
+    asyncio.run(main(args.token, args.repo, args.tag_name))
+    print("Upload process completed.")
     
 
 
