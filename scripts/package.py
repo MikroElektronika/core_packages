@@ -427,8 +427,8 @@ async def main(token, repo, tag_name):
     start_time = time.time()  # Capture start time
 
     for arch in architectures:
-        root_source_directory = f"/home/software/GIT/core_packages/{arch}"
-        root_output_directory = f"/home/software/test_dir/{arch}"
+        root_source_directory = f"./{arch}"
+        root_output_directory = f"./output/{arch}"
     # List directories directly under the root source directory
         try:
             with os.scandir(root_source_directory) as entries:
