@@ -9,7 +9,7 @@ import argparse
 import aiohttp
 import asyncio
 import aiofiles
-
+import hashlib
 def find_cmake_files(directory):
     """ Return a list of .cmake files in the directory, excluding specific files """
     cmake_files = []
@@ -332,7 +332,7 @@ def create_archive(base_output_dir, arch, entry_name):
         print(f"Starting to create archive {archive_name}...")
 
         # Open the 7z file
-        filters = [{'id': py7zr.FILTER_ZSTD, 'level': 22}]
+        filters = [{'id': py7zr.FILTER_ZSTD, 'level': 3}]
         with py7zr.SevenZipFile(archive_name, mode='w', filters=filters) as archive:
             # Get all files and directories in the base_output_dir
             for folder_name, subfolders, filenames in os.walk(base_output_dir):
@@ -363,7 +363,7 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path):
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name):
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages):
     
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -407,25 +407,71 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         
         #create archive            
         archivePath = create_archive(base_output_dir, arch, entry_name)
+        archiveHash = file_hash(archivePath)
+        archiveName = os.path.basename(archivePath)
+        
         shutil.rmtree(base_output_dir)
+        
         #upload archive
         async with aiohttp.ClientSession() as session:
-            upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
-            results = await asyncio.gather(*upload_tasks, return_exceptions=True)
-            for result in results:
-                print(result)
-            print("All uploads completed.")
-        upload_release_asset(session, token, repo, tag_name, archivePath)
+            # upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
+            # results = await asyncio.gather(*upload_tasks, return_exceptions=True)
+            # for result in results:
+            #     print(result)
+            # print("All uploads completed.")
+            upload_release_asset(session, token, repo, tag_name, archivePath)
+        packages.append({"name" : archiveName, "version" : "1.0.0", "hash" :archiveHash})
+
+def file_hash(filename):
+    """Generate MD5 hash of a file."""
+    hash_md5 = hashlib.md5()
+    with open(filename, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
+def fetch_current_metadata(repo, token):
+    url = f"https://api.github.com/repos/{repo}/releases/latest"
+    headers = {'Authorization': f'token {token}'}
+    response = requests.get(url, headers=headers)
+    release_info = response.json()
+    for asset in release_info.get('assets', []):
+        if asset['name'] == 'metadata.json':
+            metadata_url = asset['browser_download_url']
+            metadata_response = requests.get(metadata_url)
+            return metadata_response.json()
+    return []
+
+def update_metadata(current_metadata, new_files):
+    updated_metadata = []
+    current_files_dict = {item['name']: item for item in current_metadata}
+
+    for new_file in new_files:
+        name = new_file['name']
+        if name in current_files_dict:
+            if new_file['hash'] != current_files_dict[name]['hash']:
+                # Increment version
+                old_version = current_files_dict[name]['version']
+                version_parts = old_version.split('.')
+                version_parts[-1] = str(int(version_parts[-1]) + 1)  # Increment the patch version
+                new_file['version'] = '.'.join(version_parts)
+        else:
+            # If it's a new file, set the initial version
+            new_file['version'] = "1.0.0"
+        
+        updated_metadata.append(new_file)
+    
+    return updated_metadata
 
 async def main(token, repo, tag_name):
     architectures = ["RISCV", "PIC32", "PIC", "dsPIC", "AVR", "ARM"]
     downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
                             "",
                             'necto_db.db', True)
-    import time
+    
+    current_metadata = fetch_current_metadata("MikroElektronika/core_packages", "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")
 
-    start_time = time.time()  # Capture start time
-
+    packages = []
     for arch in architectures:
         root_source_directory = f"./{arch}"
         root_output_directory = f"./output/{arch}"
@@ -438,12 +484,18 @@ async def main(token, repo, tag_name):
                         output_directory = os.path.join(root_output_directory, entry.name)
                                             
                         print(f"Processing {source_directory} to {output_directory}")
-                        await package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name)
+                        await package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name, packages)
+                        
         except Exception as e:
             print(f"Failed to process directories in {root_source_directory}: {e}")
 
-    end_time = time.time()  # Capture end time
-    print(f"Total runtime of the script: {end_time - start_time} seconds")
+    new_metadate = update_metadata(current_metadata, packages)
+    
+    with open('metadata.json', 'w') as f:
+        json.dump(new_metadate, f)
+    
+    async with aiohttp.ClientSession() as session:
+        upload_release_asset(session, token, repo, tag_name, "metadata.json")
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
@@ -454,6 +506,7 @@ if __name__ == '__main__':
     
     print("Starting the upload process...")
     asyncio.run(main(args.token, args.repo, args.tag_name))
+    # asyncio.run(main("", "", ""))
     print("Upload process completed.")
     
 
