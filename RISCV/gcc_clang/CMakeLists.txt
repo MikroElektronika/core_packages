@@ -5,15 +5,14 @@ project(lib_core VERSION 1 LANGUAGES C ASM)
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 include(mikroeUtils)
+include(coreUtils)
 
 add_preinit_lib()
 
-if( ${MCU_NAME} MATCHES "(^GD32VF103[CRTV](.+)6$)" )
-    set(SYSTEM_FILE "system_gd32vf103x")
-    set(STARTUP_FILE "startup_gd32vf103x")
-else()
-    message(FATAL_ERROR "-- SELECTED CHIP NOT SUPPORTED --")
-endif()
+file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
+foreach(cmakeFile ${CMAKE_FILES})
+    include(${cmakeFile})
+endforeach()
 
 core_add_library(lib_core MikroC.Core
     system/${SYSTEM_FILE}.c

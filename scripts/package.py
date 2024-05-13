@@ -115,7 +115,7 @@ def extract_mcu_names(file_name, source_dir, output_dir, regex):
                     if regex_pattern.match(mcu_name):
                         mcus[file_name]['mcu_names'].add(mcu_name)
                         if 'gcc_clang' in source_dir:
-                            isPresent, readData = read_data_from_db(os.path.join(output_dir, 'necto_db.db'), f'SELECT sdk_config FROM Devices WHERE name IS "{mcu_name}"')
+                            isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config FROM Devices WHERE name IS "{mcu_name}"')
                             if isPresent:
                                 configJson = json.loads(readData[0][0])
                                 mcus[file_name]['cores'].add(configJson['CORE_NAME'])
@@ -220,8 +220,8 @@ def checkFileOnDisk(fileName):
 # verifyDownload is used to retrieve error if download failed
 def downloadFile(downloadLink, outputDir, outputFileName, verifyDownload):
     lastError = 0
-
-    os.makedirs(outputDir, exist_ok=True)
+    if outputDir:
+        os.makedirs(outputDir, exist_ok=True)
 
     urllib.request.urlretrieve(downloadLink, outputDir + outputFileName)
     if verifyDownload:
@@ -303,10 +303,10 @@ def copy_delays(cores, source_dir, output_dir, base_path):
             os.makedirs(dest_path, exist_ok=True)
             shutil.copytree(delays_dir, dest_path, dirs_exist_ok=True)
 
-def create_archive(base_output_dir):
+def create_archive(base_output_dir, arch, entry_name):
     """Creates a 7z archive of the specified directory with all files at the root of the archive."""
     try:
-        archive_name = os.path.join(os.path.dirname(base_output_dir), f"{os.path.basename(base_output_dir)}.7z")
+        archive_name = os.path.join(os.path.dirname(base_output_dir), f"{arch.lower()}_{entry_name.lower()}_{os.path.basename(base_output_dir)}.7z")
         print(f"Starting to create archive {archive_name}...")
 
         # Open the 7z file
@@ -325,14 +325,10 @@ def create_archive(base_output_dir):
     except Exception as e:
         print(f"Failed to create archive due to an error: {e}")
    
-def main(source_dir, output_dir):
+def main(source_dir, output_dir, arch, entry_name):
     
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
-    downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
-                             output_dir,
-                             '/necto_db.db', True)
-
     for cmake_file, data in file_paths.items():
         base_output_dir = os.path.join(output_dir, cmake_file)  # Subdirectory for this .cmake file
         # Copy the .cmake file into the package directory
@@ -372,16 +368,33 @@ def main(source_dir, output_dir):
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
         
         #create archive            
-        create_archive(base_output_dir)
+        create_archive(base_output_dir, arch, entry_name)
         shutil.rmtree(base_output_dir)
 # Usage
-import time
-start_time = time.time()
 
-source_directory = '/home/software/GIT/core_packages/PIC32/XC32'
-output_directory = '/home/software/test_dir/PIC32/XC32'
-main(source_directory, output_directory)
-print("--- %s seconds ---" % (time.time() - start_time))
+architectures = ["RISCV", "PIC32", "PIC", "dsPIC", "AVR", "ARM"]
+# architectures = ["RISCV"]
+downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
+                        "",
+                        'necto_db.db', True)
+
+for arch in architectures:
+    root_source_directory = f"/home/software/GIT/core_packages/{arch}"
+    root_output_directory = f"/home/software/test_dir/{arch}"
+# List directories directly under the root source directory
+    try:
+        with os.scandir(root_source_directory) as entries:
+            for entry in entries:
+                if entry.is_dir():
+                    source_directory = os.path.join(root_source_directory, entry.name)
+                    output_directory = os.path.join(root_output_directory, entry.name)
+                                        
+                    print(f"Processing {source_directory} to {output_directory}")
+                    main(source_directory, output_directory, arch, entry.name)
+    except Exception as e:
+        print(f"Failed to process directories in {root_source_directory}: {e}")
+
+    
 
 
 

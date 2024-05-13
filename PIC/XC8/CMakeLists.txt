@@ -11,6 +11,12 @@ add_preinit_lib()
 
 core_files_set(fileListInclude fileDirInclude fileListInstall)
 
+file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
+foreach(cmakeFile ${CMAKE_FILES})
+    include(${cmakeFile})
+endforeach()
+
+
 set(MCU_NAME_LOWER "")
 string(TOLOWER ${MCU_NAME} MCU_NAME_LOWER)
 

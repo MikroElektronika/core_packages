@@ -91,19 +91,16 @@ endfunction()
 #############################################################################
 function(core_files_set fileListInclude fileDirInclude fileListInstall)
 
-    set(local_list_include ${fileListInclude})
     set(local_list_install ${fileListInstall})
     set(local_dir_install ${fileDirInclude})
 
     list(APPEND local_list_install "common/delays.h")
 
-    list(APPEND local_list_include def/${MCU_NAME}/mcu.h)
+    
     list(APPEND local_list_install def/${MCU_NAME}/mcu.h)
-
     list(APPEND local_dir_install def/${MCU_NAME})
 
     set(${list} ${local_dir_install} PARENT_SCOPE)
-    set(${list} ${local_list_include} PARENT_SCOPE)
     set(${list} ${local_list_install} PARENT_SCOPE)
 
 endfunction()
