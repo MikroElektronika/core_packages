@@ -6,6 +6,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
 include(mikroeUtils)
+include(coreUtils)
 
 add_preinit_lib()
 
