@@ -332,7 +332,7 @@ def create_archive(base_output_dir, arch, entry_name):
         print(f"Starting to create archive {archive_name}...")
 
         # Open the 7z file
-        filters = [{'id': py7zr.FILTER_ZSTD, 'level': 3}]
+        filters = [{'id': py7zr.FILTER_ZSTD, 'level': 22}]
         with py7zr.SevenZipFile(archive_name, mode='w', filters=filters) as archive:
             # Get all files and directories in the base_output_dir
             for folder_name, subfolders, filenames in os.walk(base_output_dir):
