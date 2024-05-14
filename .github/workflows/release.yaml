@@ -1,12 +1,8 @@
 name: Release Asset Upload Workflow
 
 on:
-  push:
-    tags:
-      - '*'
-# on:
-#   release:
-#     types: [published]
+  release:
+    types: [published]
 
 jobs:
   upload-release-asset:

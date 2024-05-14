@@ -514,18 +514,20 @@ def hash_directory_contents(directory):
     return combined_hash
 
 def fetch_current_metadata(repo, token):
-    url = f"https://api.github.com/repos/{repo}/releases/latest"
+    url = f"https://api.github.com/repos/{repo}/releases"
     headers = {'Authorization': f'token {token}'}
     response = requests.get(url, headers=headers)
-    release_info = response.json()
-    print(f"Release info: {release_info}")
-    for asset in release_info.get('assets', []):
-            if asset['name'] == 'metadata.json':
-                print("Found metadata.json")
-                metadata_url = asset['url']
-                print("Attempting to download metadata from:", metadata_url)
-                metadata_response = fetch_json_data(metadata_url, token)
-                return metadata_response                
+    releases = response.json()
+    if len(releases) > 1:
+        previous_release = releases[1]
+        print(f"Release info: {previous_release}")
+        for asset in previous_release.get('assets', []):
+                if asset['name'] == 'metadata.json':
+                    print("Found metadata.json")
+                    metadata_url = asset['url']
+                    print("Attempting to download metadata from:", metadata_url)
+                    metadata_response = fetch_json_data(metadata_url, token)
+                    return metadata_response                
     return []
 
 def update_metadata(current_metadata, new_files, version):
