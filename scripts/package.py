@@ -402,6 +402,7 @@ def compress_directory_7z(base_output_dir, arch, entry_name):
     command = [
         '7z', 'a',  # 'a' stands for adding to an archive
         '-t7z',     # Specify 7z archive type
+        '-mx3',
         '-mtc=off', # Do not store timestamps
         archive_name, # Path to the output .7z file
         os.path.join(base_output_dir, '*')  # Path to the source directory content
@@ -524,7 +525,7 @@ def fetch_current_metadata(repo, token):
                 return metadata_response                
     return []
 
-def update_metadata(current_metadata, new_files):
+def update_metadata(current_metadata, new_files, version):
     
     updated_metadata = []
     print(f"Update metadata: {current_metadata}")
@@ -536,10 +537,7 @@ def update_metadata(current_metadata, new_files):
         if name in current_files_dict:
             if new_file['hash'] != current_files_dict[name]['hash']:
                 # Increment version
-                old_version = current_files_dict[name]['version']
-                version_parts = old_version.split('.')
-                version_parts[-1] = str(int(version_parts[-1]) + 1)  # Increment the patch version
-                new_file['version'] = '.'.join(version_parts)
+                new_file['version'] = version
         else:
             # If it's a new file, set the initial version
             new_file['version'] = "1.0.0"
@@ -574,7 +572,7 @@ async def main(token, repo, tag_name):
         except Exception as e:
             print(f"Failed to process directories in {root_source_directory}: {e}")
 
-    new_metadate = update_metadata(current_metadata, packages)
+    new_metadate = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
     
     with open('metadata.json', 'w') as f:
         json.dump(new_metadate, f, indent=4)
