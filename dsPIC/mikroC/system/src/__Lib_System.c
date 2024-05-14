@@ -2,7 +2,6 @@
 #include "built_in.h"
 
 extern const long   __CONST_FAR_PREFIX;
-
 const unsigned int  __Lib_System_DefaultPage = 0;
 
 void __CS2S() {
@@ -45,7 +44,6 @@ void __AddToFarPointer(const void far** ptr, unsigned long increment){
   if(cPtr[2].F0 == 0)
     cPtr[1].F7 = 0;
     
-  
   cPtr[2] >>= 1;
   *((unsigned long*)cPtr) += increment;
   
@@ -335,5 +333,3 @@ void __CFar2FarS(){
   W1 = HiWord(dest);
   W0 = LoWord(dest);
 }
-
-////////////////////////////////////////////////////////////////////////////////

@@ -537,6 +537,7 @@ def update_metadata(current_metadata, new_files, version):
         if name in current_files_dict:
             if new_file['hash'] != current_files_dict[name]['hash']:
                 # Increment version
+                print(f"Update version to: {version}")
                 new_file['version'] = version
         else:
             # If it's a new file, set the initial version
