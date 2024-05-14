@@ -528,8 +528,8 @@ def fetch_current_metadata(repo, token):
 def update_metadata(current_metadata, new_files):
     
     updated_metadata = []
-    print(f"Update metadata: {updated_metadata}")
-    print(f"New files: {updated_metadata}")
+    print(f"Update metadata: {current_metadata}")
+    print(f"New files: {new_files}")
     current_files_dict = {item['name']: item for item in current_metadata}
 
     for new_file in new_files:
