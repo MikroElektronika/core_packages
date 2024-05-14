@@ -4,12 +4,15 @@ project(Core VERSION 2.3.0 LANGUAGES MikroC)
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
+
+
 include(coreUtils)
 include(mikroeUtils)
 
 set(STD_SOURCES "std_library/cstdlib.c;std_library/cstring.c;std_library/ctype.c;std_library/cmath.c;std_library/cstdio.c")
 set(DEF_SOURCE def/${MCU_NAME}.c)
 
+#add all .cmake files from cmake folder
 file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
 foreach(cmakeFile ${CMAKE_FILES})
     include(${cmakeFile})
