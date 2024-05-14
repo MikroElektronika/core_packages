@@ -512,13 +512,16 @@ def hash_directory_contents(directory):
     # Combine all file hashes into one hash
     combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
     return combined_hash
+
 def fetch_current_metadata(repo, token):
     url = f"https://api.github.com/repos/{repo}/releases/latest"
     headers = {'Authorization': f'token {token}'}
     response = requests.get(url, headers=headers)
     release_info = response.json()
+    print(f"Release info: {release_info}")
     for asset in release_info.get('assets', []):
             if asset['name'] == 'metadata.json':
+                print("Found metadata.json")
                 metadata_url = asset['url']
                 print("Attempting to download metadata from:", metadata_url)
                 metadata_response = fetch_json_data(metadata_url, token)
@@ -582,15 +585,15 @@ async def main(token, repo, tag_name):
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
     
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Upload directories as release assets.")
-    parser.add_argument("token", help="GitHub Token")
-    parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
-    parser.add_argument("tag_name", help="Tag name from the release")
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser(description="Upload directories as release assets.")
+    # parser.add_argument("token", help="GitHub Token")
+    # parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
+    # parser.add_argument("tag_name", help="Tag name from the release")
+    # args = parser.parse_args()
     
     print("Starting the upload process...")
-    asyncio.run(main(args.token, args.repo, args.tag_name))
-    # asyncio.run(main("", "", ""))
+    # asyncio.run(main(args.token, args.repo, args.tag_name))
+    asyncio.run(main("", "", ""))
     print("Upload process completed.")
     
 
