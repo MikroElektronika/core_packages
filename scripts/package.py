@@ -585,15 +585,15 @@ async def main(token, repo, tag_name):
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
     
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser(description="Upload directories as release assets.")
-    # parser.add_argument("token", help="GitHub Token")
-    # parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
-    # parser.add_argument("tag_name", help="Tag name from the release")
-    # args = parser.parse_args()
+    parser = argparse.ArgumentParser(description="Upload directories as release assets.")
+    parser.add_argument("token", help="GitHub Token")
+    parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
+    parser.add_argument("tag_name", help="Tag name from the release")
+    args = parser.parse_args()
     
     print("Starting the upload process...")
-    # asyncio.run(main(args.token, args.repo, args.tag_name))
-    asyncio.run(main("", "", ""))
+    asyncio.run(main(args.token, args.repo, args.tag_name))
+    # asyncio.run(main("", "", ""))
     print("Upload process completed.")
     
 
