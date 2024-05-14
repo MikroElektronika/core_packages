@@ -141,7 +141,6 @@ void __BootStartUp(){
                        // izmeni treba srediti i linker...
 
   //Cause: WP (Watch Pending), SW0/1 (Software Interrupts) should be cleared.
-  // CP0_SET(CP0_CAUSE, 0);
   CP0_SET(CP0_CAUSE, 0x00800000);
 
   // izvrsavanje main-a
