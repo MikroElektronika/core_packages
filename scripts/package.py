@@ -252,6 +252,38 @@ def downloadFile(downloadLink, outputDir, outputFileName, verifyDownload):
 
     return lastError
 
+def fetch_json_data(download_link, token):
+    """
+    Fetches JSON data from the specified URL using an authorization token and returns it as a dictionary.
+
+    Args:
+        download_link (str): URL from which to fetch the JSON data.
+        token (str): Authorization token for the request.
+
+    Returns:
+        tuple: The first element is a dictionary containing the JSON data (or None in case of failure),
+               the second element is an error message or None if no errors occurred.
+    """
+    headers = {
+        'Authorization': f'Bearer {token}',
+        'Accept': 'application/octet-stream'  # Explicitly request JSON data
+    }
+
+    try:
+        # Make the request
+        response = requests.get(download_link, headers=headers)
+        response.raise_for_status()  # Raises a HTTPError for bad responses
+
+        # Parse JSON content and return
+        json_data = response.json()
+        return json_data  # Return data and no error message
+
+    except requests.RequestException as e:
+        print(f"Error fetching JSON data: {e}")
+        return None, str(e)  # Return None for data and error message
+
+
+
 def functionRegex(value, pattern):
     c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
     return c_pattern.search(value) is not None
@@ -487,13 +519,10 @@ def fetch_current_metadata(repo, token):
     release_info = response.json()
     for asset in release_info.get('assets', []):
             if asset['name'] == 'metadata.json':
-                metadata_url = asset['browser_download_url']
+                metadata_url = asset['url']
                 print("Attempting to download metadata from:", metadata_url)
-                metadata_response = requests.get(metadata_url, headers=headers)
-                if metadata_response.status_code == 200:
-                    return metadata_response.json()
-                else:
-                    print("Error downloading metadata:", metadata_response.status_code, metadata_response.text)
+                metadata_response = fetch_json_data(metadata_url, token)
+                return metadata_response                
     return []
 
 def update_metadata(current_metadata, new_files):
