@@ -4,11 +4,12 @@ project(lib_core VERSION 1 LANGUAGES C ASM)
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
+
 include(mikroeUtils)
 include(coreUtils)
 
 add_preinit_lib()
-
+#include all .cmake files from cmake folder
 file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
 foreach(cmakeFile ${CMAKE_FILES})
     include(${cmakeFile})

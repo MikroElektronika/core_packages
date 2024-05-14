@@ -23,6 +23,7 @@ jobs:
           pip install aiohttp
           pip install aiofiles
           pip install requests
+          sudo apt-get install p7zip-full
 
       - name: Run Release Script
         env:

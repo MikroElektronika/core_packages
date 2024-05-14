@@ -1,3 +1,4 @@
+import subprocess
 import os
 import shutil
 import re
@@ -347,7 +348,43 @@ def create_archive(base_output_dir, arch, entry_name):
         return archive_name
     except Exception as e:
         print(f"Failed to create archive due to an error: {e}")
-        
+
+def compress_directory_7z(base_output_dir, arch, entry_name):
+    """
+    Compresses the given directory into a 7z archive using the 7z command line tool.
+    
+    Args:
+    source_dir (str): Path to the directory to be compressed.
+    output_file (str): Path where the output .7z file should be saved.
+    
+    Returns:
+    bool: True if compression was successful, False otherwise.
+    """
+    # Check if the source directory exists
+    archive_name = os.path.join(os.path.dirname(base_output_dir), f"{arch.lower()}_{entry_name.lower()}_{os.path.basename(base_output_dir)}.7z")
+    if not os.path.isdir(base_output_dir):
+        print(f"The specified directory does not exist: {base_output_dir}")
+        return False
+
+    # Construct the command to compress the directory
+    command = [
+        '7z', 'a',  # 'a' stands for adding to an archive
+        '-t7z',     # Specify 7z archive type
+        '-mx3',
+        '-mtc=off', # Do not store timestamps
+        archive_name, # Path to the output .7z file
+        os.path.join(base_output_dir, '*')  # Path to the source directory content
+    ]
+
+    # Execute the command
+    try:
+        subprocess.run(command, check=True)
+        print(f"Archive created successfully: {archive_name}")
+        return archive_name
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred while creating the archive: {e}")
+        return None
+         
 async def upload_release_asset(session, token, repo, tag_name, asset_path):
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
@@ -406,23 +443,22 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
         
         #create archive            
-        archivePath = create_archive(base_output_dir, arch, entry_name)
-        archiveHash = file_hash(archivePath)
+        archivePath = compress_directory_7z(base_output_dir, arch, entry_name)
+        archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archivePath)
         
         shutil.rmtree(base_output_dir)
-        
         #upload archive
+        
         async with aiohttp.ClientSession() as session:
             upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
             results = await asyncio.gather(*upload_tasks, return_exceptions=True)
             for result in results:
                 print(result)
             print("All uploads completed.")
-            # upload_release_asset(session, token, repo, tag_name, archivePath)
         packages.append({"name" : archiveName, "version" : "1.0.0", "hash" :archiveHash})
 
-def file_hash(filename):
+def hash_file(filename):
     """Generate MD5 hash of a file."""
     hash_md5 = hashlib.md5()
     with open(filename, "rb") as f:
@@ -430,16 +466,34 @@ def file_hash(filename):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
+def hash_directory_contents(directory):
+    """Generate a hash for the contents of a directory."""
+    all_hashes = []
+    for root, dirs, files in os.walk(directory):
+        dirs.sort()  # Ensure directory traversal is in a consistent order
+        files.sort()  # Ensure file traversal is in a consistent order
+        for filename in files:
+            file_path = os.path.join(root, filename)
+            file_hash = hash_file(file_path)
+            all_hashes.append(file_hash)
+
+    # Combine all file hashes into one hash
+    combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
+    return combined_hash
 def fetch_current_metadata(repo, token):
     url = f"https://api.github.com/repos/{repo}/releases/latest"
     headers = {'Authorization': f'token {token}'}
     response = requests.get(url, headers=headers)
     release_info = response.json()
     for asset in release_info.get('assets', []):
-        if asset['name'] == 'metadata.json':
-            metadata_url = asset['browser_download_url']
-            metadata_response = requests.get(metadata_url)
-            return metadata_response.json()
+            if asset['name'] == 'metadata.json':
+                metadata_url = asset['browser_download_url']
+                print("Attempting to download metadata from:", metadata_url)
+                metadata_response = requests.get(metadata_url, headers=headers)
+                if metadata_response.status_code == 200:
+                    return metadata_response.json()
+                else:
+                    print("Error downloading metadata:", metadata_response.status_code, metadata_response.text)
     return []
 
 def update_metadata(current_metadata, new_files):
@@ -468,8 +522,8 @@ async def main(token, repo, tag_name):
     downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
                             "",
                             'necto_db.db', True)
-    
-    current_metadata = fetch_current_metadata("MikroElektronika/core_packages", "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")
+    current_metadata = fetch_current_metadata(repo, token)
+    # current_metadata = fetch_current_metadata("MikroElektronika/core_packages", "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")
 
     packages = []
     for arch in architectures:
@@ -492,7 +546,7 @@ async def main(token, repo, tag_name):
     new_metadate = update_metadata(current_metadata, packages)
     
     with open('metadata.json', 'w') as f:
-        json.dump(new_metadate, f)
+        json.dump(new_metadate, f, indent=4)
     
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
