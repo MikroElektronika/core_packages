@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "((^PIC(24)|(^dsPIC((30)|(33))))(.+))$")
+if(${MCU_NAME} MATCHES "^dsPIC30(.+)$")
     set(SYSTEM_LIB_SOURCE "system/src/__Lib_System.c")
     set(SYSTEM_LIB_INCLUDE_DIR "")
     set(MATH_LIB_SOURCE "math/__Lib_math.c")

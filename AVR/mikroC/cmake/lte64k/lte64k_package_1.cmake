@@ -1,7 +1,0 @@
-if(${MCU_NAME} MATCHES "(^ATTINY1634$|^ATTINY167$|^ATTINY87$)")
-    set(SYSTEM_LIB_SOURCE "system/src/__Lib_System.c")
-    set(SYSTEM_LIB_INCLUDE_DIR "")
-    set(MATH_LIB_SOURCE "math/LTE64K/__Lib_Math_NoHwMul.c")
-    set(MATH_DOUBLE_SOURCE "math_double/LTE64K/__Lib_MathDouble.c")
-    set(DELAY_SOURCE "delay/lte64k/__lib_delays.c")
-endif()

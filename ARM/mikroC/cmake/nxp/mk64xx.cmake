@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "(^MK22F[NX](.+)$)|(^MK64F[NX](.+)$)")
+if(${MCU_NAME} MATCHES "(^MK64F[NX](.+)$)")
     set(SYSTEM_LIB_SOURCE "system/NXP/M4/src/__Lib_System.c")
     set(SYSTEM_LIB_INCLUDE_DIR "system/NXP/M4/include/")
     set(MATH_LIB_SOURCE "math/M4EF/__Lib_Math.c")

@@ -451,6 +451,10 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         
         #create archive            
         archivePath = compress_directory_7z(base_output_dir, arch, entry_name)
+        compiler = "mikroC"
+        if entry_name == "gcc_clang":
+            compiler = "GCC & Clang"
+        displayName = f"{os.path.basename(base_output_dir.upper())} MCU Support package for {compiler}"
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archivePath)
         
@@ -463,7 +467,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             for result in results:
                 print(result)
             print("All uploads completed.")
-        packages.append({"name" : archiveName, "version" : "1.0.0", "hash" :archiveHash})
+        packages.append({"name" : archiveName, "display_name": displayName, "version" : "1.0.0", "hash" :archiveHash})
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
