@@ -4,7 +4,4 @@ if(${MCU_NAME} MATCHES "(^AT90S2313$|^AT90S2323$|^AT90S2343$|^AT90S4414$|^AT90S4
     set(MATH_LIB_SOURCE "math/LTE64K/__Lib_Math_NoMOVW.c")
     set(MATH_DOUBLE_SOURCE "math_double/LTE64K/__Lib_MathDouble.c")
     set(DELAY_SOURCE "delay/lte64k/__lib_delays.c")
-else()
-    set(SYSTEM_LIB_SOURCE "no_file_found")
-    set(SYSTEM_LIB_INCLUDE_DIR "no_file_found")
 endif()

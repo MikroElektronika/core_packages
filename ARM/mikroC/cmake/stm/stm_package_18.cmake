@@ -4,5 +4,4 @@ if(${MCU_NAME} MATCHES "(^STM32H7(.+)$)")
     set(MATH_LIB_SOURCE "math/M7/__Lib_Math.c")
     set(MATH_DOUBLE_SOURCE "math_double/M7/__Lib_MathDouble.c")
     set(DELAY_SOURCE "delay/m4ef/__lib_delays.c")
-### NXP
 endif()

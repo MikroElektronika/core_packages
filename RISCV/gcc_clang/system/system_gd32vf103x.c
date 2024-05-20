@@ -44,7 +44,9 @@
 #include "rcu_typedef.h"
 #include "core_header.h"
 #include "cstdio.h"
+#if !defined (__GNUC__)
 #include <stdio.h>
+#endif
 
 /* -----PREPROCESSOR DIRECTIVES----- */
 
@@ -149,9 +151,10 @@ typedef enum {
 static const uint8_t array_divider_apb1_2[4] = { 2, 4, 8, 16 };
 static const uint8_t array_divider_ahb[8] = { 0, 1, 2, 3, 5, 6, 7, 8 };
 
+#if !defined (__GNUC__)
 // stderr stream declaration.
 FILE *const stderr;
-
+#endif
 /* -----PUBLIC FUNCTION DECLARATIONS------ */
 
 /**
@@ -205,12 +208,12 @@ static system_clock_update_t system_rcu_clock_check_err( uint32_t register_addre
                                                          uint32_t register_mask );
 
 /* -----PUBLIC FUNCTION DEFINITIONS----- */
-
+#if !defined (__GNUC__)
 void _exit() {
     // No return function in clang-llvm.
     while(1);
 }
-
+#endif
 void system_init( void ) {
     register uint32_t volatile *src, *dst;
 

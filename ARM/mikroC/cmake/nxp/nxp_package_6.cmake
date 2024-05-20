@@ -4,5 +4,4 @@ if(${MCU_NAME} MATCHES "(^MK[256][013]D[NX][125](.+)$)")
     set(MATH_LIB_SOURCE "math/M4EF/__Lib_Math.c")
     set(MATH_DOUBLE_SOURCE "math_double/M4EF/__Lib_MathDouble.c")
     set(DELAY_SOURCE "delay/m4ef/__lib_delays.c")
-### TI
 endif()
