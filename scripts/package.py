@@ -467,7 +467,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             for result in results:
                 print(result)
             print("All uploads completed.")
-        packages.append({"name" : archiveName, "display_name": displayName, "version" : "1.0.0", "hash" :archiveHash})
+        packages.append({"name" : archiveName, "display_name": displayName, "version" : "1.0.0", "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False})
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
