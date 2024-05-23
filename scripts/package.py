@@ -468,9 +468,10 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             results = await asyncio.gather(*upload_tasks, return_exceptions=True)
             for result in results:
                 upload_result = result
-                print(result)
+                print(f"RESULT: {result}")
             print("All uploads completed.")
         
+        print(f"UPLOAD RESULT: {upload_result}")
         # Determine the version based on the hash
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
@@ -486,12 +487,12 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             'version': version,
             'created_at' : upload_result['created_at'],
             'updated_at' : upload_result['updated_at'],
-            'category': 'Mcu support',
+            'category': 'MCU support',
             'download_link': upload_result["browser_download_url"],  # Adjust as needed for actual URL
             'package_changed': package_changed
         }
         
-        print(doc)
+        print(f"DOCUMENT: {doc}")
         # resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
         # print(f"{resp['result']} {resp['_id']}")
         
