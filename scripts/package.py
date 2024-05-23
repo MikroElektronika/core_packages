@@ -489,9 +489,9 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             'download_link': upload_result['browser_download_url'],  # Adjust as needed for actual URL
             'package_changed': package_changed
         }
-        
+        print(f"DOCUMENT TO INDEX: {doc}")
         resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
-        print(f"{resp['result']} {resp['_id']}")
+        print(f"ES RESPONSE: {resp}")
         
 def hash_file(filename):
     """Generate MD5 hash of a file."""
