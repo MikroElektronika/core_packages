@@ -470,8 +470,6 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
                 upload_result = result
             print("All uploads completed.")
         
-        print(f"UPLOAD RESULT: {upload_result}")
-        print(f"DOWNLOAD LINK: {upload_result['browser_download_url']}")
         # Determine the version based on the hash
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
@@ -492,9 +490,8 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             'package_changed': package_changed
         }
         
-        print(f"DOCUMENT: {doc}")
-        # resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
-        # print(f"{resp['result']} {resp['_id']}")
+        resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
+        print(f"{resp['result']} {resp['_id']}")
         
 def hash_file(filename):
     """Generate MD5 hash of a file."""
