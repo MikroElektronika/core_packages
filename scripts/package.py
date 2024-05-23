@@ -10,6 +10,8 @@ import aiohttp
 import asyncio
 import aiofiles
 import hashlib
+from elasticsearch import Elasticsearch
+
 
 def find_cmake_files(directory):
     """ Return a list of .cmake files in the directory, excluding specific files """
@@ -408,7 +410,7 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path):
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages):
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, es, index_name, current_metadata):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -460,15 +462,39 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         
         shutil.rmtree(base_output_dir)
         #upload archive
-        
+        upload_result = {}
         async with aiohttp.ClientSession() as session:
             upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
             results = await asyncio.gather(*upload_tasks, return_exceptions=True)
             for result in results:
+                upload_result = result
                 print(result)
             print("All uploads completed.")
-        packages.append({"name" : archiveName, "display_name": displayName, "version" : "1.0.0", "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False})
-
+        
+        # Determine the version based on the hash
+        version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
+        # Add to packages list
+        packages.append({"name" : archiveName, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False})
+        package_changed = (version == tag_name.replace("v", ""))
+        # Index to Elasticsearch
+        doc = {
+            'name': archiveName,
+            'display_name': displayName,
+            'vendor': 'MIKROE',
+            'hidden': False,
+            'type': 'mcu',
+            'version': version,
+            'created_at' : upload_result['created_at'],
+            'updated_at' : upload_result['updated_at'],
+            'category': 'Mcu support',
+            'download_link': upload_result["browser_download_url"],  # Adjust as needed for actual URL
+            'package_changed': package_changed
+        }
+        
+        print(doc)
+        # resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
+        # print(f"{resp['result']} {resp['_id']}")
+        
 def hash_file(filename):
     """Generate MD5 hash of a file."""
     hash_md5 = hashlib.md5()
@@ -510,6 +536,36 @@ def fetch_current_metadata(repo, token):
                     return metadata_response                
     return []
 
+def get_version_based_on_hash(package_name, version, hash_value, current_metadata):
+    """
+    Check if the package name and hash exist in the current metadata.
+    If the hash matches, return the version from the current metadata.
+    Otherwise, return the provided version.
+
+    Args:
+        package_name (str): The name of the package.
+        version (str): The version to return if hash doesn't match or package is not found.
+        hash_value (str): The hash value to compare.
+        current_metadata (list): The list of current metadata entries.
+
+    Returns:
+        str: The appropriate version based on the hash comparison.
+    """
+    # Create a dictionary for quick lookup
+    metadata_dict = {item['name']: item for item in current_metadata}
+
+    # Check if the package exists in the current metadata
+    if package_name in metadata_dict:
+        existing_package = metadata_dict[package_name]
+
+        # Compare the hash values
+        if existing_package['hash'] == hash_value:
+            # If the hash matches, return the version from the current metadata
+            return existing_package['version']
+
+    # If the package is not found or the hash doesn't match, return the provided version
+    return version
+
 def update_metadata(current_metadata, new_files, version):
     """ Update the metadata with the new files """
     updated_metadata = []
@@ -534,6 +590,10 @@ def update_metadata(current_metadata, new_files, version):
 
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
+    # Elasticsearch details
+    es = Elasticsearch(["https://search-mikroe-eotds45vmgevl75dl75hjanrzm.us-west-2.es.amazonaws.com"])
+    index_name = 'github_mikrosdk_test'
+    
     architectures = ["RISCV", "PIC32", "PIC", "dsPIC", "AVR", "ARM"]
     downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
                             "",
@@ -554,19 +614,19 @@ async def main(token, repo, tag_name):
                         output_directory = os.path.join(root_output_directory, entry.name)
                                             
                         print(f"Processing {source_directory} to {output_directory}")
-                        await package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name, packages)
+                        await package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name, packages, es, index_name)
                         
         except Exception as e:
             print(f"Failed to process directories in {root_source_directory}: {e}")
 
-    new_metadate = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
+    new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
     
     with open('metadata.json', 'w') as f:
-        json.dump(new_metadate, f, indent=4)
+        json.dump(new_metadata, f, indent=4)
     
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
-    
+        
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("token", help="GitHub Token")
