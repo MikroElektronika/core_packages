@@ -22,6 +22,7 @@ jobs:
           pip install aiohttp
           pip install aiofiles
           pip install requests
+          pip install elasticsearch==7.13.4
           sudo apt-get install p7zip-full
 
       - name: Run Release Script
