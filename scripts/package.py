@@ -462,16 +462,16 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         
         shutil.rmtree(base_output_dir)
         #upload archive
-        upload_result_string = ""
+        upload_result= ""
         async with aiohttp.ClientSession() as session:
             upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
             results = await asyncio.gather(*upload_tasks, return_exceptions=True)
             for result in results:
-                upload_result_string = result
+                upload_result = result
             print("All uploads completed.")
         
-        print(f"UPLOAD RESULT: {upload_result_string}")
-        upload_result = json.loads(upload_result_string)
+        print(f"UPLOAD RESULT: {upload_result}")
+        print(f"DOWNLOAD LINK: {upload_result['browser_download_url']}")
         # Determine the version based on the hash
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
@@ -488,7 +488,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             'created_at' : upload_result['created_at'],
             'updated_at' : upload_result['updated_at'],
             'category': 'MCU support',
-            'download_link': upload_result["browser_download_url"],  # Adjust as needed for actual URL
+            'download_link': upload_result['browser_download_url'],  # Adjust as needed for actual URL
             'package_changed': package_changed
         }
         
