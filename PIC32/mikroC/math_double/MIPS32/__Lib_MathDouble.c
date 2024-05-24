@@ -1,4 +1,6 @@
-// float to signed integral 8,16,32 bitna
+/**
+ * @brief Convert a floating-point number to a signed integral value of 8, 16, or 32 bits.
+ */
 void _FloatToSignedIntegral(){
 asm{
 sll         R5,R4,0x8
@@ -33,14 +35,15 @@ beq         R0,R0,label_end
 lui         R2,0x8000
 label4:
  lui         R2,0x7fff
-//beq         R0,R0,label_end
 ori         R2,R2,0xffff
 label_end:
 //nop
 }
 }
 
-// float to unsigned integral 8,16,32 bitna
+/**
+ * @brief Convert a floating-point number to an unsigned integral value of 8, 16, or 32 bits.
+ */
 void _FloatToUnsignedIntegral(){
 asm{
 sll         R5,R4,0x8
@@ -74,11 +77,8 @@ nop
 beq         R0,R0,label_end
 lui         R2,0x8000
 label5:
-// beq         R0,R0,label_end
 addiu       R2,R0,-1
 label_end:
-//nop
-}
 }
 
 void _LongDoubleToSignedIntegral(){
@@ -120,10 +120,8 @@ beq         R0,R0,label_end
 lui         R2,0x8000
 label5:
  lui         R2,0x7fff
-//beq         R0,R0,label_end
 ori         R2,R2,0xffff
 label_end:
-//nop
 }
 }
 
@@ -151,8 +149,6 @@ subu        R7,R0,R7
 label3:
  beq         R0,R0,label_end
  or          R2,R0,R7
-//b label_end
-//nop
 label1:
  beq         R4,R0,label4
 nop
@@ -166,14 +162,14 @@ nop
 beq         R0,R0,label_end
 lui         R2,0x8000
 label5:
-// beq         R0,R0,label_end
 addiu       R2,R0,-1
 label_end:
-//nop
 }
 }
 
-// signed 8,16,32 bitne integral tipove to float
+/**
+ * @brief Convert signed integral values of 8, 16, or 32 bits to a floating-point number.
+ */
 void _SignedIntegralToFloat(){
 asm{
   lui         R3,0x8000
@@ -202,7 +198,9 @@ asm{
 }
 }
 
-// signed 8,16,32 bitne integral tipove to LongDouble
+/**
+ * @brief Convert signed integral values of 8, 16, or 32 bits to a long double.
+ */
 void _SignedIntegralToLongDouble(){
 asm{
 addiu       R5,R0,0
@@ -238,7 +236,9 @@ or          R3,R0,R9
 }
 }
 
-//pomocna funkcija za unsigned konverziju, poziva se iz _UsignedXXIntToFloat() funkcija
+/**
+ * @brief Helper function for unsigned conversion, called from _UnsignedXXIntToFloat() function.
+ */
 static void _UnsignedIntegralToFloat(){
 asm{
 srl         R9,R4,0x17
@@ -342,8 +342,6 @@ sll         R13,R9,0x17
 or          R8,R8,R13
 beq         R0,R0,label_end
 or          R2,R8,R12
-//label_end jr          ra
-//nop
 label13:
  addiu       R6,R0,1
 subu        R6,R6,R9
@@ -418,13 +416,14 @@ label12:
  beq         R0,R0,label_end
 addiu       R2,R0,0
 label20:
-// beq         R0,R0,label_end
 lui         R2,0xffc0
 label_end:
 }
 }
 
-//8 bitni unsigned int to float
+/**
+ * @brief Convert an 8-bit unsigned integer to a float.
+ */
 void _Unsigned8IntToFloat(){
 asm{
 bgez R4, label_signed
@@ -432,8 +431,7 @@ nop
 jal __SignedIntegralToFloat
 nop
 or R4,R2,R0          // R4=R2
-//lui R5, 18304 //R5=0x47800000 za 16bit
-lui R5, 17280  // R5=0x43800000    za 8bit
+lui R5, 17280  // R5=0x43800000    for 8bit
 jal __Lib_MathDouble__UnsignedIntegralToFloat
 nop
 beq R0,R0, label_end
