@@ -456,6 +456,9 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         compiler = "mikroC"
         if entry_name == "gcc_clang":
             compiler = "GCC & Clang"
+        elif "XC" in entry_name:
+            compiler = entry_name
+            
         displayName = f"{os.path.basename(base_output_dir.upper())} MCU Support package for {compiler}"
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archivePath)
