@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -947,7 +947,7 @@ void debugStdOut( char ch ) {
 /*
     cstdio.c
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

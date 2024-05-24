@@ -1,33 +1,19 @@
-/*******************************************************************************
- * Library name:
-     dspic_math_float (biblioteka za rad sa float-ovima (32-bit floating point))
- * Copyright:
-     (c) mikroElektronika, 2006
- * Revision History:
-     20060322:
-       - Initial release
- * Status:
-     0% completed.
- * Description:
-     Biblioteka za rad sa float-ovima (32-bit floating point).
- * Platforms supported:
-     - dsPIC;
- * Function List:
-     _Longint2Float, _Long2Float, _Float2Longword, _Float2Longint;
-     _Add_FP, _Sub_FP, _Mul_FP, _Div_FP;
-     _CompareFpNeq, _CompareFpGeq, _CompareFpLeq;
- * NOTES:
-     None.
- ******************************************************************************/
+/******************************************************************************
+    __Lib_MathDouble.c
 
-////////////////////////// U T I L I T I E S ///////////////////////////////////
+ ------------------------------------------------------------------------------
+
+  This file is part of mikroSDK.
+
+  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+
+  All rights reserved.
+
+----------------------------------------------------------------------------- */
 
 void Float_fpack(void) {
-
   asm  RCALL Float__fpack
-
   asm GOTO the_end_Float__fpack;
-
 
   asm {
     Float__fpack:
@@ -75,41 +61,25 @@ void Float_fpack(void) {
                   MOV       W11, W1
                   RETLW     #0x0, W0
   }
-  
+
  asm the_end_Float__fpack:
    ;
 }
-
-////////////////////////// U I  -  C O N V E R S I O N S ///////////////////////
 
 /*
  * Function Name:
      _Long2Float
  * Description:
-     Converts 32-bit, signed/unsigned long to 32-bit floating-point.
- * Arguments:
-     Integer to be converted -> [w1:w0]
-     Informacija o oznacenosti -> w2: 0 = neoznacen (unsigned long); 1 = oznacen
- * Returns:
-     Floating-point representation of input value -> [w1:w0]
- * Version History:
-     20060322:
-       - initial release;
- * TODO:
-     None.
- * NOTES:
-     - korisceni resursi: registri W0.  11, i nesto stack-a
-     - preuzeto od Rileta
+     Converts 32-bit signed/unsigned long integer to 32-bit floating-point.
  */
 void _Long2Float(void) {
-
   asm  RCALL LL_intro_Long2Float
   asm  GOTO the_end__Long2Float;
 
   asm {  LL_intro_Long2Float:
-                  CP0       W2                                                  ; vidi znak
-                  BRA       NZ, Longint2Float__floatsisf                        ; ako !=0 => signed long
-    ; ulaz za unsigned long
+                  CP0       W2                                                  ; check the sign
+                  BRA       NZ, Longint2Float__floatsisf                        ; if !=0 => signed long
+    ; entry for unsigned long
     Longword2Float__floatuisf:
                   CLR       W10
                   CP0       W1
@@ -117,7 +87,7 @@ void _Long2Float(void) {
                   CP0       W0
                   BRA       Z, Long2Float_return0
                   BRA       Long2Float_notspecial
-    ; ulaz za signed long
+    ; entry for signed long
     Longint2Float__floatsisf:
                   MOV       W1, W10
                   CP0       W1
@@ -132,7 +102,7 @@ void _Long2Float(void) {
                   BRA       NN, Long2Float_notspecial
                   MOV       #0xcf00, W1
                   BRA       Long2Float_return0
-    ; zajednicki deo
+    ; common part
     Long2Float_notspecial:
                   MOV.D     W0, W8
                   MUL.UU    W2, #0, W2
@@ -214,62 +184,44 @@ void _Long2Float(void) {
 
  asm  the_end__Long2Float:
    ;
-  
 }
-
 
 /*
  * Function Name:
      _LongLong2Float
  * Description:
-     Convert 64-bit, signed integer to 32-bit floating-point
- * Arguments:
-     This is a asm wrapper function, it has no standard arguments. Instead,
-     it requires certain registers to be pre-set:
-     (w3:w2:w1:w0) Integer to be converted
- * Returns:
-      This is a asm wrapper function, it hs no standard return value. Instead,
-      it returns the result in certain registera:
-     (w1:w0) Floating-point representation of input value
- * Version History:
-     <release 0 notes, etc.>
- * TODO:
-     <various TODO tasks>
- * NOTES:
-     <notes>
+     Convert 64-bit signed integer to 32-bit floating-point
  */
 void _LongLong2Float(void) {
-
   asm  RCALL Longlong2Float_floatdisf;
   asm  GOTO the_end__LongLong2Float;
 
-
   asm {
       Longlong2Float_floatdisf:
-              mov     W3, W10                  ; Preserve sign
+              mov     W3, W10                                 ; Preserve sign
 
       ;------ Check for special arguments: 0x0000000000000000 and 0x8000000000000000
 
-              cp0     W3                      ; arg < 0 ?
+              cp0     W3                                      ; arg < 0 ?
               bra     lt, Longlong2Float_negative             ; Yes ...
               bra     gt, Longlong2Float_notspecial           ; No ...
-              ior     W1, W0, W4                ; arg == 0 ?
-              ior     W2, W4, W4                ; *
+              ior     W1, W0, W4                              ; arg == 0 ?
+              ior     W2, W4, W4                              ; *
               bra     z, Longlong2Float_return0               ; Yes ...
-              bra     Longlong2Float_notspecial              ; arg is > 0
+              bra     Longlong2Float_notspecial               ; arg is > 0
 
       ;------ Argument is negative
 
       Longlong2Float_negative:
-              subr    W0, #0, W0                ; (w3:w0) = |arg|
-              subbr   W1, #0, W1                ; *
-              subbr   W2, #0, W2                ; *
-              subbr   W3, #0, W3                ; *
+              subr    W0, #0, W0                              ; (w3:w0) = |arg|
+              subbr   W1, #0, W1                              ; *
+              subbr   W2, #0, W2                              ; *
+              subbr   W3, #0, W3                              ; *
               bra     nn, Longlong2Float_notspecial           ; arg is in range
 
       ;------ Maximum negative integer: -1.0 x 2^63
 
-              mov     #0x8000, W1         ; Convert to floating-point
+              mov     #0x8000, W1                            ; Convert to floating-point
               bra     Longlong2Float_return0                 ; Done
 
       ;-----------------------------------------------------------------------;
@@ -280,11 +232,11 @@ void _LongLong2Float(void) {
 
       ;------ Form significand, exponent, sticky & round
 
-              mov.d   W0, W8                   ; (w9:w8) = significand
-              mov.d   W2, W0                   ; *
-              mul.uu  W2, #0, W2                ; (w2) = round
-                                              ; (w3) = sticky
-              mov     #150, W11                ; (w11)= exponent (23+FLT_BIAS)
+              mov.d   W0, W8                                  ; (w9:w8) = significand
+              mov.d   W2, W0                                  ; *
+              mul.uu  W2, #0, W2                              ; (w2) = round
+                                                              ; (w3) = sticky
+              mov     #150, W11                               ; (w11)= exponent (23+FLT_BIAS)
 
       ;------ Form the significand by aligning the MSB at position 23
 
@@ -296,47 +248,47 @@ void _LongLong2Float(void) {
       ;       If the shift count is negative, it means that the MSB
       ;       is to the left of position 23, so a right shift is needed.
 
-              mov     #41, W5                  ; (w5) = shift normalizer
-              ff1l    W1, W4                   ; (w4) = shift count
+              mov     #41, W5                                 ; (w5) = shift normalizer
+              ff1l    W1, W4                                  ; (w4) = shift count
               bra     nc, Longlong2Float_fixshift             ; Found the leading '1' ...
-              sub.b   #16, W5                  ; Adjust normalizer
-              ff1l    W0, W4                   ; Try again
+              sub.b   #16, W5                                 ; Adjust normalizer
+              ff1l    W0, W4                                  ; Try again
               bra     nc, Longlong2Float_fixshift             ; Found the leading '1' ...
-              sub.b   #16, W5                  ; Adjust normalizer
-              ff1l    W9, W4                   ; Try again
+              sub.b   #16, W5                                 ; Adjust normalizer
+              ff1l    W9, W4                                  ; Try again
               bra     nc, Longlong2Float_fixshift             ; Found the leading '1' ...
-              sub.b   #16, W5                  ; Adjust normalizer
-              ff1l    W8, W4                   ; Try again
+              sub.b   #16, W5                                 ; Adjust normalizer
+              ff1l    W8, W4                                  ; Try again
               bra     nc, Longlong2Float_fixshift             ; Found the leading '1' ...
-              sub.b   #16, W5                  ; Adjust normalizer
+              sub.b   #16, W5                                 ; Adjust normalizer
       Longlong2Float_fixshift:
-              sub.b   W4, W5, W4                ; (w4) = shift count
+              sub.b   W4, W5, W4                              ; (w4) = shift count
               bra     z, Longlong2Float_round                 ; No shift required ...
               bra     nn, Longlong2Float_shiftleft            ; Left shift required ...
 
       ;------ Shift right
 
       Longlong2Float_shiftright:
-              ior     W3, W2, W3                            ; (w3) = (sticky |= round)
-              and     W8, #1, W2                            ; (w2) = (round = sig & 1)
-              lsr     W1, W1                               ; (w9:w8) = (sig >>= 1)
-              rrc     W0, W0                               ; *
-              rrc     W9, W9                               ; *
-              rrc     W8, W8                               ; *
-              inc     W11, W11                             ; (w11) = exp++
-              inc.b   W4, W4                               ; Count the bits
-              bra     nz, Longlong2Float_shiftright       ; Not there yet ...
-              bra     Longlong2Float_round                ; Round and pack ...
+              ior     W3, W2, W3                              ; (w3) = (sticky |= round)
+              and     W8, #1, W2                              ; (w2) = (round = sig & 1)
+              lsr     W1, W1                                  ; (w9:w8) = (sig >>= 1)
+              rrc     W0, W0                                  ; *
+              rrc     W9, W9                                  ; *
+              rrc     W8, W8                                  ; *
+              inc     W11, W11                                ; (w11) = exp++
+              inc.b   W4, W4                                  ; Count the bits
+              bra     nz, Longlong2Float_shiftright           ; Not there yet ...
+              bra     Longlong2Float_round                    ; Round and pack ...
 
       ;------ Shift left
 
       Longlong2Float_shiftleft:
-              add     W8, W8, W8                ; (w9:w8) = (sig <<= 1)
-              addc    W9, W9, W9                ; *
-              addc    W0, W0, W0                ; *
-              addc    W1, W1, W1                ; *
-              dec     W11, W11                 ; (w11) = exp--
-              dec.b   W4, W4                   ; Count the bits
+              add     W8, W8, W8                              ; (w9:w8) = (sig <<= 1)
+              addc    W9, W9, W9                              ; *
+              addc    W0, W0, W0                              ; *
+              addc    W1, W1, W1                              ; *
+              dec     W11, W11                                ; (w11) = exp--
+              dec.b   W4, W4                                  ; Count the bits
               bra     nz, Longlong2Float_shiftleft            ; Not there yet ...
 
       ;-----------------------------------------------------------------------;
@@ -359,33 +311,18 @@ void _LongLong2Float(void) {
 
       ;-----------------------------------------------------------------------;
   }
-  
+
  asm  the_end__LongLong2Float:
  ;
 }
-
 
 /*
  * Function Name:
      _Float2Longword
  * Description:
-     Converts 32-bit floating-point to 32-bit, UNSIGNED long
- * Arguments:
-     Floating point single precision (32-bit) number to be converted -> [w1:w0]
- * Returns:
-     unsigned long representation of input value -> [w1:w0]
- * Version History:
-     20060322:
-       - Initial release (Vlada);
- * TODO:
-     - Izvuci _funpack napolje (to je zajednicki makro??).
- * NOTES:
-     - korisceni registri: W0.  5, i nesto stack-a;
-     - uzeto od Rileta;
-     - konverzije se zaokruzuju NADOLE! Tako bi bar trebalo da bude.
+     Converts 32-bit floating-point to 32-bit unsigned long
  */
 void _Float2Longword(void) {
-
   asm  RCALL Float2Longword_fixunssfsi;
   asm  GOTO the_end__Float2Longword;
 
@@ -456,31 +393,15 @@ void _Float2Longword(void) {
     ;
 }
 
-
 /*
  * Function Name:
      _Float2Longint
  * Description:
-     Converts 32-bit floating-point to 32-bit, signed long
- * Arguments:
-     Integer to be converted -> [w1:w0]
- * Returns:
-     Floating-point representation of input value -> [w1:w0]
- * Version History:
-     20060322:
-       - Initial release (Vlada);
- * TODO:
-     Nothing.
- * NOTES:
-     - korisceni registri: W0.  5, i nesto stack-a;
-     - uzeto od Rileta;
-     - konverzije se zaokruzuju NADOLE!
+     Converts 32-bit floating-point to 32-bit signed long
  */
 void _Float2Longint(void) {
-
   asm  RCALL Float2Longint__fixsfsi;
   asm  GOTO the_end__Float2Longint;
-
 
   asm {
      Float2Longint__fixsfsi:
@@ -551,36 +472,18 @@ void _Float2Longint(void) {
                    BSET      W1, #7
                    RETLW     #0x2, W4
   }
-  
+
  asm  the_end__Float2Longint:
    ;
 }
 
-
-
-/////////////////////////// O P E R A T I O N S ////////////////////////////////
 /*
  * Function Name:
      _AddSub_FP
  * Description:
-     Addition AND SuBRAction, 32-bit floats.
- * Arguments:
-     Operand a -> [w1:w0]
-     Operand b -> [w3:w2]
- * Returns:
-     Floating-point result (a + b) or (a - b) -> [w1:w0]
- * Version History:
-     20060322:
-       - Initial release (Vlada)
- * TODO:
-     None.
- * NOTES:
-     - uzeto od Rileta.
-     - (a - b) se realizuje kao (a + (-b)). Za izvrtanje znaka postoji posebna
-       rutina.
+     32-bit floating point addition and subtraction routine.
  */
 void _AddSub_FP(void) {
-
   asm  RCALL AddSubFP__addsf3;
   asm  GOTO the_end__AddSub_FP;
 
@@ -802,61 +705,32 @@ void _AddSub_FP(void) {
                    BSET     W1, #7
                    RETLW    #0x2, W4
   } //asm
-  
+
   asm  the_end__AddSub_FP:
     ;
-  
 }
-
 
 /*
  * Function Name:
      _Sub_FP
  * Description:
-     32-bit Floating point subtraction routine.
- * Arguments:
-     <argument_list>
- * Returns:
-     <return value>
- * Version History:
-     20060322:
-       - Initial release (Vlada)
- * TODO:
-     <various TODO tasks>
- * NOTES:
-     - ova rutina samo izvrce znak 2. argumentu i skace na _AddSubFP.
-     - Rile nema ovaj kod.
+     32-bit floating point subtraction routine.
  */
 void _Sub_FP(void) {
   asm BTG      W3, #15;
-  _AddSub_FP();         //#36
+  _AddSub_FP();
 }
-
 
 /*
  * Function Name:
      _Mul_FP
  * Description:
-     Multiplication, 32-bit floats.
- * Arguments:
-     Operand a [w1:w0]
-     Operand b [w3:w2]
- * Returns:
-     Floating-point result: (a * b) -> [w1:w0]
- * Version History:
-     20060322:
-       - Initial release (Vlada)
- * TODO:
-     None.
- * NOTES:
-     - The result of multiplication is rounded to nearest rational No.
-     - preuzet kod od Rileta;
+     32-bit floating point multiplication routine.
  */
 void _Mul_FP(void) {
-
   asm  RCALL MulFP___mulsf3;
   asm  GOTO the_end__Mul_FP;
-  
+
   asm {
     MulFP___mulsf3:
                  MOV.D     W8,  [W15++]
@@ -1021,34 +895,18 @@ void _Mul_FP(void) {
                  BSET      W1, #7
                  RETLW     #0x2, W4
   } //asm
-  
+
   asm  the_end__Mul_FP:
     ;
-
 }
-
 
 /*
  * Function Name:
      _Div_FP
  * Description:
-     Division, 32-bit floats.
- * Arguments:
-     Operand a -> [w1:w0]
-     Operand b -> [w3:w2]
- * Returns:
-     Floating-point result: (a / b) -> [w1:w0]
- * Version History:
-     20060322:
-       - Initial release (Vlada)
- * TODO:
-     Nothing.
- * NOTES:
-     - The result of division is rounded to nearest rational No.
-     - kod uzet u celini od Rileta.
+     32-bit floating point division routine.
  */
 void _Div_FP(void) {
-
   asm  RCALL DivFP___divsf3;
   asm  GOTO the_end__Div_FP;
 
@@ -1242,32 +1100,11 @@ void _Div_FP(void) {
     ;
 }
 
-
-
-/////////////////////////// C O M P A R E S ////////////////////////////////////
-
 /*
  * Function Name:
      _Compare_FP
  * Description:
-     Compare, 32-bit floats, general routine
- * Arguments:
-     Operand a -> [w1:w0]
-     Operand b -> [w3:w2]
- * Returns:
-     [W0] <- If either operand is a NaN, 0.
-               Else result of comparison, as follows:
-               -1 (FFFF),      a < b
-                0,             a = b
-               +1,             a > b
- * Version History:
-     20060322:
-       - Initial release (Vlada)
- * TODO:
-     - Videti shta ce da se radi sa NaN setovanjima (u W4);
- * NOTES:
-     - Kod u celini preuzet od Rileta.
-     - originalne f-je (Microchip): fcompare.s, fgtge.s, feqlte.s;
+     Compares 32-bit floats.
  */
 void _Compare_Fp(void) {
 
@@ -1339,19 +1176,44 @@ void _Compare_Fp(void) {
                  BSET      W1,#7
                  RETLW     #0x2,W4
   }
-  
+
   asm the_end__Compare_Fp:
     ;
 }
-
 
 void _Compare_Le_Fp(void) {
   asm mov     #1, W4;
   _Compare_Fp();
 }
 
-
 void _Compare_Ge_Fp(void) {
   asm MOV     #0xffff, W4;
   _Compare_Fp();
 }
+
+// ----------------------------------------------------------------------------
+/*
+    __Lib_MathDouble.c
+
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+// ----------------------------------------------------------------------------

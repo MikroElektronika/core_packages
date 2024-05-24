@@ -1,44 +1,21 @@
-/*******************************************************************************
- * Project name:
-     dspic_math.c (rutine za cele brojeve za dsPIC)
- * Copyright:
-     (c) mikroElektronika, 2006
- * Revision History:
-     20060321 -
-       initial release
- * Status:
-     <XX% completed.>
- * Description:
-     <project_description>
- * Test configuration:
-     MCU:             x
-     Dev.Board:       x
-     Oscillator:      x
-     Ext. Modules:    x
-     SW:              x
- * NOTES:
-     <all that matters>
- ******************************************************************************/
+/******************************************************************************
+    __Lib_math.c
 
+ ------------------------------------------------------------------------------
+
+  This file is part of mikroSDK.
+
+  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+
+  All rights reserved.
+
+----------------------------------------------------------------------------- */
 
 /*
  * Function Name:
      Multiply_32x32
  * Description:
-     Mnozenje oznacenih i neoznacenih long-ova, na nivou long-a (4 byte-a)
- * Arguments:
-     cinilac_1 -> [W1:W0]
-     cinilac_2 -> [W3:W2]
- * Returns:
-     rezultat -> [W1:W0]
- * Version History:
-     - 20060321 - initial release (Vlada)
- * TODO:
-     - Test
- * NOTES:
-     - Korisceni registri: W0..W5;
-     - Rile je ovo izveo sa 3x mul.uu; kod iz MPLAB-a radi 1x mul.uu, potom
-       2x mul.ss; Riletov kod je ispravan, MPLAB-ov nije.
+     Multiplication of signed/unsigned long integers (32-bit size)
  */
 void _Multiply_32x32(void) {
   //--- [w1:w0]*[w3:w2] -> [w1:w0]
@@ -57,31 +34,11 @@ void _Multiply_32x32(void) {
  * Function Name:
      Divide_32x32
  * Description:
-     Deljenje long-ova, oznacenih i neoznacenih, na nivou long-a (4 byte-a).
- * Arguments:
-     deljenik -> [W1:W0]
-     delilac  -> [W3:W2]
-     kolicnik -> [W1:W0]
-     flag unsigned/signed (0/!0) -> [W4]
- * Returns:
-     rezultat oznacenog/neoznacenog deljenja, na nivou long-a (4 byte-a).
- * Version History:
-     20060321 -
-       initial release (Vlada)
- * TODO:
-     - PROVERITI RASPORED ARGUMENATA U REGISTRIMA!!
- * NOTES:
-     - korisceni registri: W0..W6
-     - f-ja se sama grana za signed i unsigned slucajeve.
-     - preuzeto od Rileta.
+     Division of signed/unsigned long integers (32-bit size)
  */
 void _Divide_32x32(void) {
-
-
   asm  RCALL Divide_32x32___testsus
-
   asm GOTO the_end_Divide_32x32;
-  
 
   asm {
 
@@ -134,38 +91,17 @@ void _Divide_32x32(void) {
 
  asm the_end_Divide_32x32:
    ;
-
 }
 
 /*
  * Function Name:
      Modulus_32x32
  * Description:
-     Racuna moduo celobrojnog deljenja na nivou long-a
- * Arguments:
-     deljenik          -> [W1:W0]
-     delilac           -> [W3:W2]
-     ostatak po modulu -> [W1:W0]
-     flag unsigned/signed (0/!0) -> [W4]
- * Returns:
-     moduo celobrojnog deljenja na nivou long-a.
- * Version History:
-     20060321:
-       Initial release.
- * TODO:
-     - PROVERITI RASPORED ARGUMENATA U REGISTRIMA!!
- * NOTES:
-     - korisceni registri: W0..W6; i nesto malo stack-a
-     - f-ja se sama grana za signed i unsigned slucajeve.
-     - preuzeto od Rileta.
+     Calculates the modulo of division of two long integers (32-bit size)
  */
 void _Modulus_32x32(void) {
-
   asm RCALL Modulus_32x32___testsus;
-
   asm GOTO the_end_Modulus_32x32;
-
-
 
   asm {
     Modulus_32x32___testsus:
@@ -218,8 +154,34 @@ void _Modulus_32x32(void) {
                  BRA NZ    , Modulus_32x32_nextbit
                  RETURN
   }
-  
+
   asm the_end_Modulus_32x32:
     ;
-  
 }
+
+// ----------------------------------------------------------------------------
+/*
+    __Lib_math.c
+
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+// ----------------------------------------------------------------------------

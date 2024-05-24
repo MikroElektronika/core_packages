@@ -1,18 +1,15 @@
-//****************************************************************************//
-//                                                                            //
-// FILENAME   : __Lib_Delays.c                                                //
-// PROJECT    : MikroC delays                                                 //
-// CPU TYPE   : Microchip dsPIC and PIC24 family                              //
-// COMPILER   : mikroC PRO for dsPIC                                          //
-//                                                                            //
-//                                                                            //
-//*************************** CHANGE AND RELEASE LOG *************************//
-// Version | ACTION                                           |  DATE  | SIG  //
-// --------|--------------------------------------------------|--------|----- //
-//         |                                                  |        |      //
-//    0.00 | Created file                                     | 271206 | ST   //
-//                                                                            //
-//****************************************************************************//
+/*
+    __lib_delays.c
+
+ ------------------------------------------------------------------------------
+
+  This file is part of mikroSDK.
+
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
+
+  All rights reserved.
+
+----------------------------------------------------------------------------- */
 #include <built_in.h>
 
 void _Multiply_32x32(void);
@@ -97,7 +94,6 @@ unsigned int Get_Fosc_Per_Cyc() {
 //    0.00 | Created function                                 | 271206 | ST   //
 //         |                                                  |        |      //
 //****************************************************************************//
-// When using - read header section about OFFSET and RANGE !!!
 void Delay_Cyc(unsigned int x, unsigned int y) {
   W8 = x;
   W9 = y;
@@ -114,7 +110,6 @@ void Delay_Cyc(unsigned int x, unsigned int y) {
         nop                    ;   remaining after the division
   }
 }
-
 
 //****************************************************************************//
 //                                                                            //
@@ -142,21 +137,19 @@ void Delay_Cyc(unsigned int x, unsigned int y) {
 //    0.00 | Created function                                 |20091020| MR   //
 //         |                                                  |        |      //
 //****************************************************************************//
-// When using - read header section about OFFSET and RANGE !!!
 void Delay_Cyc_Long(unsigned long CycNo) {
   W8 = CycNo;
   W9 = HiWord(CycNo);
   asm {
-        PUSH       W8
-        //       W8 = CycNo >> 14             // shift code must be written
+        PUSH       W8                         //   Shift code must be written
         MOV        #14, W7                    //   in asm because dsPIC30 can
     Label1:                                   //   generate DO instruction
         DEC        W7, W7                     //   instead of a loop.
         BRA LT,    Label2                     //
-        LSR        W9, W9                     // in that case code execution
+        LSR        W9, W9                     //   In that case code execution
         RRC        W8, W8                     //   time would be different
         BRA        Label1                     //   between dsPIC30 family
-    Label2:                                   //   and PIC24/dsPIC33 families
+    Label2:                                   //   and PIC24/dsPIC33 families.
 
         POP        W9
         MOV        #16383, W7
@@ -174,7 +167,6 @@ void Delay_Cyc_Long(unsigned long CycNo) {
         nop                    ;   remaining after the division
   }
 }
-
 
 //****************************************************************************//
 //                                                                            //
@@ -211,32 +203,29 @@ void VDelay_ms(unsigned Time_ms) {
 
   unsigned long volatile NumberOfCyc;
 
-  NumberOfCyc = Clock_kHz() / __FOSC_PER_CYC; // Cycl./msec
+  NumberOfCyc = Clock_kHz() / __FOSC_PER_CYC; // Number of cycles per millisecond
   NumberOfCyc *= Time_ms;                     // Total number of cycles
 
-  if (__FOSC_PER_CYC == 4) {                  // take care of cycles needed for passing
-    NumberOfCyc -= 149;                       // parameters, calls, retunrs and such, so
-  }                                           // decrease NumberOfCyc
+  if (__FOSC_PER_CYC == 4) {                  // Take care of cycles needed for passing
+    NumberOfCyc -= 149;                       // parameters, calls, returns and such, so
+  }                                           // decrease NumberOfCyc.
   else {
     NumberOfCyc -= 149;
   }
 
-  // Delay_Cyc(NumberOfCyc >> 14, NumberOfCyc & 0x00003FFF);
   W1 = HiWord(NumberOfCyc);
   W0 = NumberOfCyc;
   asm {
         MOV        #16383, W2
-        AND        W0, W2, W3
-
-        //       W0 = CycNo >> 14             // shift code must be written
+        AND        W0, W2, W3                 //   Shift code must be written
         MOV        #14, W2                    //   in asm because dsPIC30 can
      Label1:                                  //   generate DO instruction
         DEC        W2, W2                     //   instead of a loop.
         BRA LT,    Label2                     //
-        LSR        W1, W1                     // in that case code execution
+        LSR        W1, W1                     //   In that case code execution
         RRC        W0, W0                     //   time would be different
         BRA        Label1                     //   between dsPIC30 family
-    Label2:                                   //   and PIC24/dsPIC33 families
+    Label2:                                   //   and PIC24/dsPIC33 families.
 
     Delay_Cyc_loop:
         CP0 W0                 ; skip delay
@@ -289,32 +278,29 @@ void VDelay_Advanced_ms(unsigned Time_ms, unsigned long Current_Fosc_kHz) {
 
   unsigned long volatile NumberOfCyc;
 
-  NumberOfCyc = Current_Fosc_kHz / __FOSC_PER_CYC; //Cycl./msec
+  NumberOfCyc = Current_Fosc_kHz / __FOSC_PER_CYC; // Number of cycles per millisecond
   NumberOfCyc *= Time_ms;                          // Total number of cycles
 
   if (__FOSC_PER_CYC == 4) {                       // take care of cycles needed for passing
     NumberOfCyc -= 159;                            // parameters, calls, retunrs and such, so
-  }                                                // decrease NumberOfCyc
+  }                                                // decrease NumberOfCyc.
   else {
     NumberOfCyc -= 163;
   }
 
-  // Delay_Cyc(NumberOfCyc >> 14, NumberOfCyc & 0x00003FFF);
   W1 = HiWord(NumberOfCyc);
   W0 = NumberOfCyc;
   asm {
         MOV        #16383, W2
-        AND        W0, W2, W3
-
-        //       W0 = CycNo >> 14             // shift code must be written
+        AND        W0, W2, W3                 //   Shift code must be written
         MOV        #14, W2                    //   in asm because dsPIC30 can
      Label1:                                  //   generate DO instruction
         DEC        W2, W2                     //   instead of a loop.
         BRA LT,    Label2                     //
-        LSR        W1, W1                     // in that case code execution
+        LSR        W1, W1                     //   In that case code execution
         RRC        W0, W0                     //   time would be different
         BRA        Label1                     //   between dsPIC30 family
-    Label2:                                   //   and PIC24/dsPIC33 families
+    Label2:                                   //   and PIC24/dsPIC33 families.
 
     Delay_Cyc_loop:
         CP0 W0                 ; skip delay
@@ -929,3 +915,30 @@ void Delay_1sec()
 {
   Delay_ms(1000);
 }
+
+// ----------------------------------------------------------------------------
+/*
+    __lib_delays.c
+
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+// ----------------------------------------------------------------------------
