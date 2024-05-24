@@ -5,23 +5,15 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
 ----------------------------------------------------------------------------- */
-
-/**
-    \file   cstdio.h
-    \brief  Standard input output functions.
-    \{
-
-- Version : **1.0.0**
-- Date : **02.03.2023**
-- Developer : **MikroE Team**
-
-*/
-// ----------------------------------------------------------------------------
+/*!
+ * @file  cstdio.h
+ * @brief Standard input output functions.
+ */
 
 #ifndef _CSTDIO_H_
 #define _CSTDIO_H_
@@ -36,8 +28,8 @@ extern "C"{
 /**
  * @brief MikroE standard output breakpoint.
  * @details This routine is used by built-in terminal.
- * @param / None
- * @return None
+ * @param / None.
+ * @return None.
  */
 static inline void stdBuffFullBreak() {
     asm ("nop");
@@ -61,7 +53,7 @@ int putchar_me( int character );
  *          but not including the null character. A newline character is appended to the output.
  * @param[in] str This is the C string to be written.
  * @note MikroE standard output implementation.
- * @return None
+ * @return None.
  */
 int puts_me( const char *str );
 
@@ -73,7 +65,7 @@ int puts_me( const char *str );
  * @param[out] stream This is the pointer to a FILE object that identifies the stream
  *                    where the string is to be written.
  * @note MikroE standard output implementation.
- * @return None
+ * @return None.
  */
 int fputs_me( const char *str, void (*stream)(char ch) );
 
@@ -82,7 +74,7 @@ int fputs_me( const char *str, void (*stream)(char ch) );
  * @details This routine is used by NECTO Studio
  *          to send log output to the built-in terminal.
  * @param[in] ch String to be written.
- * @return None
+ * @return None.
  */
 void debugStdOut( char ch );
 
@@ -141,12 +133,11 @@ int vfprintf_me( void (*stream)(char ch), const char *format, register va_list a
 
 #endif  // _CSTDIO_H_
 
-/// \}
 // ----------------------------------------------------------------------------
 /*
     cstdio.h
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
