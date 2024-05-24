@@ -479,7 +479,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         doc = {
             'name': archiveName,
             'display_name': displayName,
-            'vendor': 'MIKROE',
+            'author': 'MIKROE',
             'hidden': False,
             'type': 'mcu',
             'version': version,
@@ -490,8 +490,8 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             'package_changed': package_changed
         }
         print(f"DOCUMENT TO INDEX: {doc}")
-        resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
-        print(f"ES RESPONSE: {resp}")
+        # resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
+        # print(f"ES RESPONSE: {resp}")
         
 def hash_file(filename):
     """Generate MD5 hash of a file."""
