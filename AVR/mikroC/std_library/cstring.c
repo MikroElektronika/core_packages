@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2020, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -13,22 +13,7 @@
 
 #include "string.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
-
-
-// -------------------------------------------------------------- PRIVATE TYPES
-
-
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
-
-
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
-
-
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* ------PUBLIC FUNCTION DEFINITIONS------- */
 
 void * __generic memchr( const void * __generic ptr, char chr, unsigned int num )
 {
@@ -51,9 +36,9 @@ void * __generic memchr( const void * __generic ptr, char chr, unsigned int num 
 
 int memcmp( const void * __generic str1, const void * __generic str2, int num )
 {
-    while (num-- != 0)
+    while ( num-- != 0 )
     {
-        if (*((char * __generic) str1) != *((char * __generic) str2))
+        if (*(( char * __generic) str1 ) != *(( char * __generic ) str2 ))
         {
             return *( ( char * __generic) str1 ) - *( ( char * __generic) str2 );
         }
@@ -145,7 +130,7 @@ char * __generic strchr( const char * __generic ptr, char chr )
     {
         if ( *ptr == chr )
         {
-            return (char * __generic) ptr;
+            return ( char * __generic ) ptr;
         }
 
     } while ( *ptr++ );
@@ -156,7 +141,7 @@ char * __generic strchr( const char * __generic ptr, char chr )
 
 int strcmp( const char * __generic str1,const char * __generic str2 )
 {
-    while (*str1 && (*str1 == *str2))
+    while ( *str1 && ( *str1 == *str2 ))
     {
         str1++, str2++;
     }
@@ -169,7 +154,7 @@ char * strcpy( char * dest_ptr, const char * __generic src_ptr )
     char *dest_char_ptr;
 
     dest_char_ptr = dest_ptr;
-    while (*dest_char_ptr++ = *src_ptr++);
+    while ( *dest_char_ptr++ = *src_ptr++ );
 
     return dest_ptr;
 }
@@ -250,7 +235,7 @@ char strcspn( const char * __generic str1, const char * __generic str2 )
 {
     char i;
     i = 0;
-    while (*str1 && (strchr(str2, *str1) == 0))
+    while ( *str1 && ( strchr( str2, *str1 ) == 0 ))
     {
         str1++;
         i++;
@@ -277,11 +262,11 @@ int strncmp( const char * __generic str1, const char * __generic str2, char len 
 
 char * __generic strpbrk( const char * __generic str1, const char * __generic str2 )
 {
-    while (*str1)
+    while ( *str1 )
     {
-        if (strchr(str2, *str1))
+        if ( strchr( str2, *str1 ) )
         {
-            return (char * __generic)str1;
+            return ( char * __generic )str1;
         }
 
         str1++;
@@ -294,28 +279,28 @@ char * __generic strrchr( const char * __generic ptr, char chr )
 {
     const char * __generic char_ptr;
 
-    char_ptr = ptr + strlen(ptr);
+    char_ptr = ptr + strlen( ptr );
     do
     {
-        if (*char_ptr == chr)
+        if ( *char_ptr == chr )
         {
             return (char * __generic) char_ptr;
         }
-    } while (char_ptr-- != ptr);
+    } while ( char_ptr-- != ptr );
 
     return 0;
 }
 
 char * __generic strstr( const char * __generic str1, const char * __generic str2 )
 {
-    while ((str1 != 0) && *str1)
+    while ( ( str1 != 0 ) && *str1 )
     {
-        if (strncmp(str1, str2, strlen(str2)) == 0)
+        if ( strncmp( str1, str2, strlen( str2 ) ) == 0 )
         {
             return (char * __generic)str1;
         }
 
-        str1 = strchr(str1 + 1, *str2);
+        str1 = strchr( str1 + 1, *str2 );
     }
 
     return 0;
@@ -477,7 +462,7 @@ void str_insert_chr( char * str, char chr, int num )
 /*
     cstring.c
 
-    Copyright (c) 2020, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

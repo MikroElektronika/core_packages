@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2020, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -14,37 +14,30 @@
 #include "stdlib.h"
 #include "ctype.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* ------------PRIVATE MACROS------------- */
 
-//define's for strtod() function
+// Macros for strtod() function
 #define	ISNEG	1	// Number is negative
 #define	DIGSEEN	2	// We saw at least one digit
 #define	EXPNEG	8	// Exponent is negative
 #define	DOTSEEN	16	// We have seen a dot
 
-// -------------------------------------------------------------- PRIVATE TYPES
-
-
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
+/* ---------------VARIABLES---------------- */
 
  static	long randx;
  static	int	 randf;
 
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* -----PRIVATE FUNCTION DECLARATIONS------ */
 
 /**
  * @brief Converts string to number of type <float>
- *
  * @param str pointer to the null-terminated byte string to be interpreted
  * @param res pointer to a pointer to character.
  * @return float value corresponding to the contents of str on success.
  */
 static float strtod( const char * __generic str, char ** res );
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* ------PUBLIC FUNCTION DEFINITIONS------- */
 
 int abs( int num )
 {
@@ -292,7 +285,7 @@ int xtoi( const char * __generic str )
 	return val;
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* ------PRIVATE FUNCTION DEFINITIONS------- */
 
 static float strtod( const char * __generic str, char * __generic * res )
 {
@@ -301,7 +294,7 @@ static float strtod( const char * __generic str, char * __generic * res )
 	int eexp;
 
 	union               // A union to hold the integer
-    {			        //  component and then the resultant
+    {			        // component and then the resultant
 		float	_l;
 		long	_v;
 	}	_u;
@@ -505,7 +498,7 @@ static float strtod( const char * __generic str, char * __generic * res )
 /*
     cstdlib.c
 
-    Copyright (c) 2020, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
