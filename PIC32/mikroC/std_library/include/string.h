@@ -8,19 +8,15 @@
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 /**
-    \file   string.h
-    \brief  Standard C string handling functions.
-    \{
+ * @file string.h
+ * @brief Standard C string handling functions.
+ * @{
+ */
 
-- Version : **<[VERSION]>**
-- Date : **<[DATE]>**
-- Developer : **MikroE Team**
-
-*/
-// ----------------------------------------------------------------------------
+/* ------------------------------------------------------------------------- */
 
 #ifndef _STRING_H_
 #define _STRING_H_
@@ -31,81 +27,68 @@ extern "C"{
 
 #include <stdint.h>
 
-// -------------------------------------------------------------- PUBLIC MACROS
-
-
-// --------------------------------------------------------------- PUBLIC TYPES
-
-
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
-
-
-// ----------------------------------------------- PUBLIC FUNCTION DECLARATIONS
+/* ----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
- * @brief Function locates the first occurrence of a character in a defined memory
- * area starting with a given address. The function returns the pointer to this
- * location or 0 if the n was not found.
- *
+ * @brief Searches for the first occurrence of the character ch, in the first
+ *        num bytes of the string pointed to, by the argument ptr.
+ * @details Function locates the first occurrence of a character in a defined
+ *          memory area starting with a given address. The function returns
+ *          the pointer to this location or 0 if the n was not found.
  * @param ptr  Pointer to the address from which the character is searched from.
  * @param ch   Character that is searched for.
  * @param num  Number of bytes in memory from the start address where the
  *             search is conducted.
- *
  * @return void * Pointer to the found character.
  */
 const void * memchr( const void * ptr, char ch, unsigned int num );
 
 /**
- * @brief Function compares a given number of characters inside of objects
- * pointed to by str1 and str2, returns zero if the objects are equal,
- * or returns a difference between the first differing characters
- * (in a left-to-right evaluation).
- *
+ * @brief Compares the first num bytes of str1 and str2.
+ * @details Function compares a given number of characters inside of objects
+ *          pointed to by str1 and str2, returns zero if the objects are equal,
+ *          or returns a difference between the first differing characters
+ *          (in a left-to-right evaluation).
  * @param str1 String object one.
  * @param str2 String object two.
  * @param num  Number of characters compared.
- *
  * @return int Difference between objects (zero if equal).
  */
 int memcmp( const void * str1, const void * str2, int num );
 
 /**
- * @brief Function copies a given number of characters( num ) from the object pointed to by
- * src_ptr into the object pointed to by dest_ptr.
- * If copying takes place between objects that overlap, the behavior is undefined.
- * The function returns address of the object pointed to by dest_ptr.
- *
+ * @brief Copies num characters from src_ptr to dest_ptr.
+ * @details Function copies a given number of characters( num ) from the object
+ *          pointed to by src_ptr into the object pointed to by dest_ptr.
+ *          If  copying takes place between objects that overlap,
+ *          the behavior is undefined.
+ *          The function returns address of the object pointed to by dest_ptr.
  * @param dest_ptr Pointer to the location data is copied to.
  * @param src_ptr  Pointer to the location data is copied from.
  * @param num      Number of bytes of data to be copied.
- *
  * @return void *  Pointer to the location data is copied to.
  */
 void * memcpy( void * dest_ptr, const void * src_ptr, int num );
 
 /**
- * @brief Function copies num characters from a object pointed to by src_ptr
- * into a object pointed to by dest_ptr.
- * Unlike memcpy, the memory areas to and from may overlap.
- * The function returns address of the object pointed to.
- *
+ * @brief Copies num characters from src_ptr to dest_ptr.
+ * @details Function copies num characters from a object pointed to by src_ptr
+ *          into a object pointed to by dest_ptr. Unlike memcpy, the memory
+ *          areas to and from may overlap.
+ *          The function returns address of the object pointed to.
  * @param dest_ptr Pointer to the location data is copied to
  * @param src_ptr  Pointer to the location data is copied from
  * @param num      Number of bytes of data to be moved.
- *
  * @return void *  Pointer to the location data is moved to.
  */
 void * memmove( void * dest_ptr, const void * src_ptr, int num );
 
 /**
- * @brief Function copies the value of the character into each
- * of the first num characters of the object pointed by ptr.
- * The function returns address of the object pointed to by ptr.
- *
+ * @brief Copies the character chr to the first num characters of the string
+ *        pointed to, by the argument ptr.
+ * @details Function copies the value of the character into each
+ *         of the first num characters of the object pointed by ptr.
+ *         The function returns address of the object pointed to by ptr.
  * @param ptr Pointer to the location from which the data will be set.
  * @param chr Value to which the data will be set.
  * @param num Number of bytes that will be set.
@@ -115,13 +98,15 @@ void * memmove( void * dest_ptr, const void * src_ptr, int num );
 void * memset( void * ptr, char chr, int num );
 
 /**
- * @brief Function appends a copy of the string src_ptr
- * to the string dest_ptr, overwriting the null character at the end of dest_ptr.
- * Then, a terminating null character is added to the result.
- * If copying takes place between objects that overlap, the behavior is undefined.
- * The string must have enough space to store the result.
- * The function returns address of the object pointed to by dest_ptr.
- *
+ * @brief Appends the string pointed to, by src_ptr to the end of the string
+ *        pointed to by dest_ptr.
+ * @details Function appends a copy of the string src_ptr
+ *          to the string dest_ptr, overwriting the null character
+ *          at the end of dest_ptr. Then, a terminating null character is added
+ *          to the result. If copying takes place between objects that overlap,
+ *          the behavior is undefined.
+ *          The string must have enough space to store the result.
+ *          The function returns address of the object pointed to by dest_ptr.
  * @param dest_ptr Addres of destination.
  * @param src_ptr Addres of source.
  *
@@ -130,62 +115,66 @@ void * memset( void * ptr, char chr, int num );
 char * strcat( char * dest_ptr, const char * src_ptr );
 
 /**
- * @brief Function locates the first occurrence of character chr in the string ptr.
- * The function returns a pointer to the first occurrence of character chr,
- * or a null pointer if chr does not occur in ptr.
- * The terminating null character is considered to be a part of the string.
- *
+ * @brief Searches for the first occurrence of the character chr in the string
+ *        pointed to, by the argument ptr.
+ * @details Function locates the first occurrence of character chr
+ *          in the string ptr. The function returns a pointer
+ *          to the first occurrence of character chr,or a null pointer if chr
+ *          does not occur in ptr. The terminating null character is considered
+ *          to be a part of the string.
  * @param ptr Addres of string.
  * @param chr Character to search for.
- *
  * @return char * Address of found character.
  */
 const char * strchr( const char * ptr, char chr );
 
 /**
- * @brief Function compares strings str1 and str2 and returns zero if the strings are equal,
- * or returns a difference between the first differing characters (in a left-to-right evaluation).
- * Accordingly, the result is greater than zero if str1 is greater than str2 and vice versa.
- *
+ * @brief Compares the string pointed to, by str1 to the string
+ *        pointed to by str2.
+ * @details Function compares strings str1 and str2 and returns zero
+ *          if the strings are equal, or returns a difference between
+ *          the first differing characters (in a left-to-right evaluation).
+ *          Accordingly, the result is greater than zero if str1 is greater
+ *          than str2 and vice versa.
  * @param str1 String 1.
  * @param str2 String 2.
- *
  * @return int Number of different characters.
  */
 int strcmp( const char * str1, const char * str2 );
 
 /**
- * @brief Function copies the string from src_ptr to the string dest_ptr.
- * If copying is successful, the function returns dest_ptr.
- * If copying takes place between objects that overlap, the behavior is undefined.
- *
+ * @brief Copies the string pointed to, by src_ptr to dest_ptr.
+ * @details Function copies the string from src_ptr to the string dest_ptr.
+ *          If copying is successful, the function returns dest_ptr.
+ *          If copying takes place between objects that overlap,
+ *          the behavior is undefined.
  * @param dest_ptr Address of destination object.
  * @param src_ptr Address of source object.
- *
  * @return char * Address pointed to by dest_ptr.
  */
 char * strcpy( char * dest_ptr, const char * src_ptr );
 
 /**
- * @brief Function returns the length of the string str.
- * (the terminating null character does not count against string's length).
- *
+ * @brief Computes the length of the string str up to but not including
+ *        the terminating null character.
+ * @details Function returns the length of the string str.
+ *          (the terminating null character does not count).
  * @param str String address.
- *
  * @return int Number of characters in string str.
  */
 int strlen( const char * str );
 
 /**
- * @brief Function appends not more than size characters from the string src_ptr to dest_ptr.
- * The initial character of src_ptr overwrites the null character at the end of dest_ptr.
- * The terminating null character is always appended to the result.
- * The function returns dest_ptr.
- *
+ * @brief Appends the string pointed to, by src_ptr to the end of the string
+ *        pointed to, by dest_ptr up to size characters long.
+ * @details Function appends not more than size characters from the string
+ *          src_ptr to dest_ptr. The initial character of src_ptr overwrites
+ *          the null character at the end of dest_ptr. The terminating
+ *          null character is always appended to the result.
+ *          The function returns dest_ptr.
  * @param dest_ptr Address of destination object.
  * @param src_ptr Address of source object.
  * @param size Number of characters to append.
- *
  * @return char * Address pointed to by dest_ptr.
  */
 char * strncat( char * dest_ptr, const char * src_ptr, int size );
