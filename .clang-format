@@ -12,4 +12,5 @@ SpacesInParens: Custom
 SpacesInParensOptions:
   InEmptyParentheses: false
   Other: true
+IndentExternBlock: NoIndent
 ---
