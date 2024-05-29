@@ -463,7 +463,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_l
                  * @note If the number is non-zero, find the exponent.
                  *       get binary exponent and adjust 0.5 -> 1.0
                  */
-                frexp( fval, &exp );
+                frexp(fval, &exp);
                 exp--;
                 exp *= 3;
                 /**
@@ -626,7 +626,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_l
                     exp -= NDDIG - 1;
                 else
                     exp -= NDDIG - 2;
-                val = _div_to_l_( fval, scale( exp ) );
+                val = _div_to_l_(fval, scale( exp ));
                 fval = 0.0;
             } else {
                 val = ( unsigned long )fval;
