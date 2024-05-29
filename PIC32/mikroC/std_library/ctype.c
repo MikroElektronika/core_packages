@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2020, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -13,23 +13,6 @@
 
 #include "ctype.h"
 #include "stdbool.h"
-
-// ------------------------------------------------------------- PRIVATE MACROS
-
-
-// -------------------------------------------------------------- PRIVATE TYPES
-
-
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
-
-
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
-
-
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
 
 unsigned short islower( char character )
 {
@@ -123,7 +106,7 @@ char toupper( char character )
 /*
     ctype.c
 
-    Copyright (c) 2020, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
