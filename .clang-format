@@ -4,7 +4,6 @@ IndentWidth: 4
 UseTab: Never
 BreakBeforeBraces: Allman
 ColumnLimit: '0'
-AllowShortCaseExpressionOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
