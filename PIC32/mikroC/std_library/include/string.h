@@ -4,7 +4,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2020, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -180,146 +180,158 @@ int strlen( const char * str );
 char * strncat( char * dest_ptr, const char * src_ptr, int size );
 
 /**
- * @brief Function copies the string from src_ptr the string dest_ptr.
- * If copying is successful, the function returns dest_ptr.
- * If copying takes place between objects that overlap, the behavior is undefined
- *
+ * @brief Copies up to size characters from the string pointed to,
+ *        by src_ptr to dest_ptr.
+ * @details Function copies the string from src_ptr to the string dest_ptr.
+ *          If copying is successful, the function returns dest_ptr.
+ *          If copying takes place between objects that overlap, the behavior is undefined
  * @param dest_ptr Address of destination object.
  * @param src_ptr Address of source object.
  * @param size Number of characters to copy.
- *
  * @return char * Address pointed to by dest_ptr.
  */
 char * strncpy( char * dest_ptr, const char * src_ptr, int size );
 
 /**
- * @brief Function computes the length of the maximum initial segment of the string pointed to by str1
- * that consists entirely of characters that are in the string pointed to by str2.
- * The function returns the length of the initial segment.
- *
+ * @brief Calculates the length of the initial segment of str1 which consists
+ *        entirely of characters in str2.
+ * @details Function computes the length of the maximum initial segment
+ *         of the string pointed to by str1 that consists entirely
+ *         of characters that are in the string pointed to by str2.
+ *         The function returns the length of the initial segment.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
- *
  * @return int Number of characters found.
  */
 int strspn( const char * str1, const char * str2 );
 
 /**
- * @brief Function computes the length of the maximum initial segment of the string
- * pointed to by str1 that consists entirely of characters that are not in the
- * string pointed to by str2.
- * The function returns the length of the initial segment.
- *
+ * @brief Calculates the length of the initial segment of str1 which consists
+ *        entirely of characters not in str2.
+ * @details Function computes the length of the maximum initial segment
+ *          of the string pointed to by str1 that consists entirely
+ *          of characters that are not in the string pointed to by str2.
+ *          The function returns the length of the initial segment.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
- *
  * @return char Number of characters.
  */
 char strcspn( const char * str1, const char * str2 );
 
 /**
- * @brief Function lexicographically compares not more than len characters
- * (characters that follow the null character are not compared) from
- * the string pointed by str1 to the string pointed by str2.
- *
+ * @brief Compares at most the first len bytes of str1 and str2.
+ * @details Function lexicographically compares not more than len characters
+ *          (characters that follow the null character are not compared) from
+ *          the string pointed by str1 to the string pointed by str2.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
  * @param len Number of characters to compare.
- *
  * @return int Number of exact characters.
  */
 int strncmp( const char * str1, const char * str2, char len );
 
 /**
- * @brief Function searches str1 for the first occurrence of any character from the
- * string str2. The terminating null character is not included in the search.
- * The function returns pointer to the matching character in str1. If str1 contains
- * no characters from str2, the function returns 0.
- *
+ * @brief Finds the first character in the string str1 that matches
+ *        any character specified in str2.
+ * @details Function searches str1 for the first occurrence of any character
+ *          from the string str2. The terminating null character is not
+ *          included in the search. The function returns pointer
+ *          to the matching character in str1. If str1 contains no characters
+ *          from str2, the function returns 0.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
- *
  * @return char * Address of matching character in str1.
  */
 char * strpbrk( const char * str1, const char * str2 );
 
 /**
- * @brief Function searches the string ptr for the last occurrence of character chr.
- * The null character terminating ptr is not included in the search.
- * The function returns pointer to the last chr found in ptr; if no matching
- * character was found, function returns 0.
- *
+ * @brief Searches for the last occurrence of the character chr in the string
+ *        pointed to by the argument str.
+ * @details Function searches the string ptr for the last occurrence
+ *          of character chr. The null character terminating ptr is not
+ *          included in the search. The function returns pointer
+ *          to the last chr found in ptr. if no matching character was found,
+ *          function returns 0.
  * @param ptr Address of string to check.
  * @param chr Character to check for.
- *
  * @return char * Address of last found character chr in string pointed
  * to by ptr.
  */
 const char * strrchr( const char * ptr, char chr );
 
 /**
- * @brief Function locates the first occurrence of the string str2 in the string str1
- * (excluding the terminating null character).
- * The function returns pointer to first occurrence of str2 in str1; if no string
- * was found, function returns 0. If str2 is a null string, the function returns 0.
- *
+ * @brief Finds the first occurrence of the entire string needle which appears
+ *        in the string haystack.
+ * @details Function locates the first occurrence of the string str2
+ *          in the string str1 (excluding the terminating null character).
+ *          The function returns pointer to first occurrence of str2 in str1,
+ *          if no string was found, the function returns 0. If str2 is
+ *          a null string, the function returns 0.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
- *
- * @return char * Address of first str2 character occurence in str1.
+ * @return char * Address of first str2 character occurrence in str1.
  */
 char * strstr( const char * str1, const char * str2 );
 
 /**
- * @brief The strtok function returns a pointer to the first character of a token,
- * or a null pointer if there is no token.
- *
+ * @brief Breaks string str1 into a series of tokens separated
+ *        by delimiters from str2.
+ * @details The strtok function returns a pointer to the first character
+ *          of a token, or a null pointer if there is no token.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
- *
- * @return char * Adress of adequate character.
+ * @return char * Address of adequate character.
  */
 char * strtok( char * str1, char * str2 );
 
 /**
- * @brief The str_cut_chr function removes all selected characters from string str,
- * and returns it to the same str without those characters.
- *
- * @param str Address of string.
- * @param num Character to cut.
+ * @brief Removes all occurrences of a specified character `num` from a `str`.
+ * @details This function iterates through the given string `str` and removes
+ *          all occurrences of the character `num`. The string is modified in
+ *          place, and all characters following each occurrence of `num` are
+ *          shifted left to fill the gap.
+ * @param str The input string to be modified.
+ * @param num The character to be removed from the string.
  */
 void str_cut_chr( char * str, char num );
 
 /**
- * @brief The replace_chr function replaces all chr_old characters in string str
- * with chr_new characters and returns it to the same str.
- *
- * @param str Address of string.
- * @param chr_old Character to be replaced.
- * @param chr_new Character to replace with.
+ * @brief Replaces all occurrences of a `chr_old` in a `str` with `chr_new`.
+ * @details This function iterates through the given string `str` and replaces
+ *          every occurrence of the character `chr_old` with the character
+ *          `chr_new`. The string is modified in place.
+ * @param str The input string to be modified.
+ * @param chr_old The character to be replaced.
+ * @param chr_new The character to replace `chr_old`.
  */
 void str_replace_chr( char * str, char chr_old, char chr_new );
 
 /**
- * @brief The function str_cut_left crops string str to the left starting from position num.
- *
- * @param str Address of string.
- * @param num Starting position.
+ * @brief Crops characters in `str` up to specified index `num`.
+ * @details The function left shifts characters in the string `str` by `num`,
+ *          then sets the characters starting from position `strlen(str) - num`
+ *          to zero. The function modifies the string in place.
+ * @param str The input string to be modified.
+ * @param num Crop ending position.
  */
 void str_cut_left( char * str, int num );
 
 /**
- * @brief The function str_cut_right crops string str to the right starting from position num.
- *
- * @param str Address of string.
- * @param num Starting position.
+ * @brief Crops characters in `str` starting from a specified index `num`.
+ * @details The function cuts the string `str` by setting characters to null
+ *          starting from the specified index `num`. It modifies the string in
+ *          place.
+ * @param str The input string to be modified.
+ * @param num Crop starting position.
  */
 void str_cut_right( char * str, int num );
 
 /**
- * @brief The str_split function splits string str1 into two strings,
- * str1 and str2, after the num-th character
- *
+ * @brief Splits `str1` into `str1` and `str2` starting from `num`.
+ * @details This function cuts characters from the string `str1` starting from
+ *          the specified index `num` and copies them to the string `str2`.
+ *          It then null-terminates `str2` and modifies `str1` by cutting
+ *          characters from `num` onward.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
  * @param num Position to be split at.
@@ -327,8 +339,10 @@ void str_cut_right( char * str, int num );
 void str_split( char * str1, char * str2, int num );
 
 /**
- * @brief The str_insert_chr function adds selected character chr to string str at position num.
- *
+ * @brief Inserts a character `chr` into a string `str` at `num` index.
+ * @details This function inserts the character `chr` into the string `str`
+ *          at the specified index `num`. It shifts the existing characters
+ *          to the right to make space for the new character.
  * @param str Address of string.
  * @param chr Character to be added.
  * @param num Position to add at.
@@ -340,12 +354,12 @@ void str_insert_chr( char * str, char chr, int num );
 #endif
 #endif  // _STRING_H_
 
-/// \}
+/** @} */
 // ----------------------------------------------------------------------------
 /*
     string.h
 
-    Copyright (c) 2020, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
