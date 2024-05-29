@@ -2,7 +2,14 @@
 BasedOnStyle: LLVM
 IndentWidth: 4
 UseTab: Never
-BreakBeforeBraces: Allman
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterStruct: true
+  AfterUnion: true
+  AfterControlStatement: Never
+  BeforeElse: false
+  BeforeWhile: false
 ColumnLimit: '0'
 AlignConsecutiveBitFields:
   Enabled: true
@@ -25,5 +32,9 @@ SpacesInParensOptions:
   InEmptyParentheses: false
   InCStyleCasts: true
   Other: true
+SpacesInSquareBrackets: true
 IndentExternBlock: NoIndent
+IndentCaseLabels: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
 ---
