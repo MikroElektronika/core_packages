@@ -37,10 +37,10 @@ static union both
 {
     struct flt
     {
-        unsigned short  mant[2];
-        unsigned int    hmant:7;
-        unsigned int    exp:8;
-        unsigned int    sign:1;
+        unsigned short mant[2];
+        unsigned int   hmant : 7;
+        unsigned int   exp   : 8;
+        unsigned int   sign  : 1;
     } flt;
     double fl;
 };
@@ -60,7 +60,7 @@ static union both
  * @param n The degree of the polynomial function.
  * @return The result of the polynomial function evaluation.
  */
-static double eval_poly(double num, const double code * coeff_ptr, int n);
+static double eval_poly( double num, const double code * coeff_ptr, int n );
 
 /* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
@@ -77,9 +77,9 @@ double fabs( double num )
 double floor( double num )
 {
     double i;
-    int expon;
+    int    expon;
 
-    expon = ( *( unsigned long * ) & num >> DBL_MANT_DIG ) & 255;
+    expon = ( *( unsigned long * )&num >> DBL_MANT_DIG ) & 255;
     expon = expon - 127;
 
     if ( expon < 0 )
@@ -90,11 +90,11 @@ double floor( double num )
         }
         else
         {
-            return  0.0;
+            return 0.0;
         }
     }
 
-    if ( ( unsigned int ) expon > sizeof( double ) *CHAR_BIT - 8 )
+    if ( ( unsigned int )expon > sizeof( double ) * CHAR_BIT - 8 )
     {
         return num; /* already an integer */
     }
@@ -112,9 +112,9 @@ double floor( double num )
 double ceil( double num )
 {
     double i;
-    int expon;
+    int    expon;
 
-    expon = ( ( *( unsigned long * ) & num >> DBL_MANT_DIG ) & 255 ) - 127;
+    expon = ( ( *( unsigned long * )&num >> DBL_MANT_DIG ) & 255 ) - 127;
     if ( expon < 0 )
     {
         if ( num <= 0.0 )
@@ -123,7 +123,7 @@ double ceil( double num )
         }
         else
         {
-            return  1.0;
+            return 1.0;
         }
     }
 
@@ -156,7 +156,7 @@ double frexp( double num, int * exp_ptr )
 
     return uv.fl;
     #elif defined(__MIKROC_AI_FOR_PIC__)
-    char *pom;
+    char * pom;
 
     pom = &num;
     *exp_ptr = pom[3] - EXCESS;
@@ -200,11 +200,11 @@ double ldexp( double num, int new_exp )
 
     return uv.fl;
     #elif defined(__MIKROC_AI_FOR_PIC__)
-    char *pom;
+    char * pom;
 
     pom = &num;
     new_exp += pom[3];
-    if (new_exp < 0)
+    if ( new_exp < 0 )
         return 0.0;
     else
         if (new_exp > MAX_EXPONENT)
@@ -237,7 +237,7 @@ double modf( double num, double * int_ptr )
     if ( expon > ( sizeof( double ) * CHAR_BIT - 8 ) )
     {
         *int_ptr = num;
-        return 0.0; //already an integer
+        return 0.0; // already an integer
     }
 
     *int_ptr = _FRNDINT( num );
@@ -250,7 +250,7 @@ double sqrt( double num )
     double og;
     double ng;
     short  niter;
-    int expon;
+    int    expon;
 
     if ( num <= 0.0 )
     {
@@ -307,8 +307,8 @@ double atan( double num )
     };
 
     unsigned short recip;
-    double val;
-    double val_sqr;
+    double         val;
+    double         val_sqr;
 
     if ( ( val = fabs( num ) ) == 0.0 )
     {
@@ -338,7 +338,7 @@ double asin( double num )
 {
     double y;
 
-    if (fabs( num ) > 1.0 )
+    if ( fabs( num ) > 1.0 )
     {
         return 0.0;
     }
@@ -363,11 +363,11 @@ double acos( double num )
     return HALF_PI - asin( num );
 }
 
-double atan2( double y, double  x )
+double atan2( double y, double x )
 {
     double v;
 
-    if((0 == y) && (0 == x))
+    if ( ( 0 == y ) && ( 0 == x ) )
     {
         return 0.0;
     }
@@ -422,8 +422,8 @@ double sin( double num )
         108.99981103712905,
         1.0
     };
-    double num_sqr;
-    unsigned short sgn;
+    double              num_sqr;
+    unsigned short      sgn;
 
     sgn = 0;
     if ( num < 0.0 )
@@ -480,7 +480,7 @@ double tan( double num )
 
 double exp( double pow )
 {
-    int exp;
+    int            exp;
     unsigned short sign;
 
     const static double coeff[] =
@@ -501,11 +501,11 @@ double exp( double pow )
     {
         return 1.0;
     }
-    if ( pow > EXP_MAX )    // too big?
+    if ( pow > EXP_MAX ) // too big?
     {
         return DBL_MAX;
     }
-    if ( pow < EXP_MIN )    // too small?
+    if ( pow < EXP_MIN ) // too small?
     {
         return 0.0;
     }
@@ -517,7 +517,7 @@ double exp( double pow )
         pow = -pow;
     }
 
-    pow *= 1.4426950409;            // convert to log2
+    pow *= 1.4426950409; // convert to log2
     exp = ( int )floor( pow );
     pow -= ( double )exp;
     pow = ldexp( eval_poly( pow, coeff, sizeof coeff / sizeof coeff[0] - 1 ), exp );
@@ -535,23 +535,23 @@ double exp( double pow )
 
 double log( double num )
 {
-    int exp;
+    int                 exp;
     static const double coeff[] =
     {
-        0.0000000001,      // a0 //
-        0.9999964239,      // a1 //
-        -0.4998741238,     // a2 //
-        0.3317990258,      // a3 //
-        -0.2407338084,     // a4 //
-        0.1676540711,      // a5 //
-        -0.0953293897,     // a6 //
-        0.0360884937,      // a7 //
-        -0.0064535442,     // a8 //
+        0.0000000001,  // a0 //
+        0.9999964239,  // a1 //
+        -0.4998741238, // a2 //
+        0.3317990258,  // a3 //
+        -0.2407338084, // a4 //
+        0.1676540711,  // a5 //
+        -0.0953293897, // a6 //
+        0.0360884937,  // a7 //
+        -0.0064535442, // a8 //
     };
 
     // zero or -ve arguments are not defined //
 
-    if (num <= 0.0)
+    if ( num <= 0.0 )
     {
         return 0.0;
     }
@@ -571,19 +571,19 @@ double log10( double num )
 double pow( double num, double pow )
 {
     unsigned short sign = 0;
-    long pow_int;
+    long           pow_int;
 
-    if (pow == 0.0)
+    if ( pow == 0.0 )
     {
         return 1.0;
     }
 
-    if (num == 0.0)
+    if ( num == 0.0 )
     {
         return 0.0;
     }
 
-    if (num < 0.0)
+    if ( num < 0.0 )
     {
         pow_int = ( long )pow;
 
@@ -639,7 +639,7 @@ static double eval_poly( double num, const double code * coeff_ptr, int n )
 
     res = coeff_ptr[n];
 
-    while (n)
+    while ( n )
     {
         res = num * res + coeff_ptr[--n];
     }
