@@ -57,7 +57,7 @@ unsigned short ispunct( char character )
 {
     unsigned short rslt;
 
-    rslt =  ( character >= 041 ) && ( character <= 057 );
+    rslt = ( character >= 041 ) && ( character <= 057 );
     rslt |= ( character >= 072 ) && ( character <= 0100 );
     rslt |= ( character >= 0133 ) && ( character <= 0140 );
     rslt |= ( character >= 0173 ) && ( character <= 0176 );
@@ -86,8 +86,7 @@ unsigned short isxdigit( char character )
 
 char tolower( char character )
 {
-    if ( ( character <= 'Z' ) && ( character >= 'A' ) )
-    {
+    if ( ( character <= 'Z' ) && ( character >= 'A' ) ) {
         character |= ( 'a' - 'A' );
     }
     return character;
@@ -95,8 +94,7 @@ char tolower( char character )
 
 char toupper( char character )
 {
-    if ( ( character <= 'z' ) && ( character >= 'a' ) )
-    {
+    if ( ( character <= 'z' ) && ( character >= 'a' ) ) {
         character &= ~( 'a' - 'A' );
     }
     return character;
