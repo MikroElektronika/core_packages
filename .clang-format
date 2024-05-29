@@ -14,7 +14,7 @@ AlignConsecutiveDeclarations:
   AcrossComments: false
 AlignConsecutiveMacros:
   Enabled: true
-  AcrossEmptyLines: false
+  AcrossEmptyLines: true
   AcrossComments: false
 PointerAlignment: Middle
 AllowShortFunctionsOnASingleLine: None
