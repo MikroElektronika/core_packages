@@ -23,6 +23,9 @@ AlignConsecutiveMacros:
   Enabled: true
   AcrossEmptyLines: true
   AcrossComments: false
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 2
 PointerAlignment: Middle
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: Never
