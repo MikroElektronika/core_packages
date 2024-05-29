@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -203,7 +203,7 @@ static float fround( unsigned char prec ) {
  * @details This routine returns a scaling factor equal to 1 to the decimal
  *          power supplied.
  * @param[in] scl Exponent value used for calculation.
- * @return float Rerurns calculated float value.
+ * @return float Returns calculated float value.
  */
 static float scale( expon scl ) {
     if (scl < 0)
@@ -523,7 +523,7 @@ int vfprintf_me( void (*stream)(char ch), const char *format, register va_list a
                 if (fval != 0)
                 {
                     /**
-                     * @note Normalise only if the number is non-zero.
+                     * @note Normalize only if the number is non-zero.
                      */
                     fval /= scale(exp);
                     fval /= scale(-c);
@@ -947,7 +947,7 @@ void debugStdOut( char ch ) {
 /*
     cstdio.c
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
