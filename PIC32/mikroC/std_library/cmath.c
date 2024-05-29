@@ -5,17 +5,15 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2020, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
-
-// 230706 - Fixed atan2() API
+---------------------------------------------------------------------------- */
 
 #include "math.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* ----------------------------PRIVATE MACROS------------------------------- */
 
 #define EXCESS        126
 #define MAX_EXPONENT  255
@@ -31,7 +29,7 @@
 
 #define CHAR_BIT      8
 
-// -------------------------------------------------------------- PRIVATE TYPES
+/* -----------------------------PRIVATE TYPES------------------------------- */
 
 #if defined(__MIKROC_AI_FOR_ARM__) || defined(__MIKROC_AI_FOR_PIC32__) \
  || defined(__MIKROC_AI_FOR_DSPIC__) || defined(__MIKROC_AI_FOR_AVR__)
@@ -48,27 +46,23 @@ static union both
 };
 #endif
 
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
-
-
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ---------------------PRIVATE FUNCTION DECLARATIONS----------------------- */
 
 /**
- * Calculates polynom for a number, with coefficients stored in coeff_ptr[],
- * for degree n
- *
- * @param num Number for which the polynom is calculated
- * @param coeff_ptr Pointer to the array in which coefficients are stored in
- * @param n Degree for which the polynom is calculated
- *
- * @return Calculation result
+ * @brief Computes the result of a polynomial function.
+ * @details This function computes the result of a polynomial function
+ *          of degree `n` using the coefficients stored in the array
+ *          `coeff_ptr`. It evaluates the polynomial for the given value
+ *          `num`.
+ * @param num The value for which the polynomial function is evaluated.
+ * @param coeff_ptr Pointer to the array of coefficients representing
+ *                  the polynomial function.
+ * @param n The degree of the polynomial function.
+ * @return The result of the polynomial function evaluation.
  */
 static double eval_poly(double num, const double code * coeff_ptr, int n);
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
 double fabs( double num )
 {
@@ -507,11 +501,11 @@ double exp( double pow )
     {
         return 1.0;
     }
-    if ( pow > EXP_MAX )    //too big?
+    if ( pow > EXP_MAX )    // too big?
     {
         return DBL_MAX;
     }
-    if ( pow < EXP_MIN )    //too small?
+    if ( pow < EXP_MIN )    // too small?
     {
         return 0.0;
     }
@@ -523,7 +517,7 @@ double exp( double pow )
         pow = -pow;
     }
 
-    pow *= 1.4426950409;            // convert to log2 //
+    pow *= 1.4426950409;            // convert to log2
     exp = ( int )floor( pow );
     pow -= ( double )exp;
     pow = ldexp( eval_poly( pow, coeff, sizeof coeff / sizeof coeff[0] - 1 ), exp );
@@ -637,7 +631,7 @@ double tanh( double num )
     return ( num_exp - num ) / ( num_exp + num );
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* ----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
 static double eval_poly( double num, const double code * coeff_ptr, int n )
 {
@@ -657,7 +651,7 @@ static double eval_poly( double num, const double code * coeff_ptr, int n )
 /*
     cmath.c
 
-    Copyright (c) 2020, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
