@@ -1,8 +1,9 @@
 #include "__Lib_CP0.h"
 
-// rutina koja kopira iz dela memorije na koju pokazuje R28
-// u deo memorije na koju pokazuje R27
-// adresa do koje se kopira je u R26
+/**
+ * @brief Routine that copies from the memory area pointed to by R28 to the
+ * memory area pointed to by R27. The address to which it copies is in R26.
+ */
 void __CC2DW() {
   asm {
     L_loopDW:
@@ -68,8 +69,8 @@ void __GenExcept() {
 extern void main();
 
 void __BootStartUp(){
-  // ako je NMI pozvati defualt (ako nije data korisnicka definicja funkcije)
-  // for bootloader purpose
+  // If NMI is called, invoke default (if user-defined function is not provided).
+  // For bootloader purposes
   asm {
     NOP
     NOP
@@ -92,11 +93,10 @@ void __BootStartUp(){
     NOP
     NOP
   }
-  // stack pointer i global pointer
+  // stack pointer and global pointer
   R29 = 0x00FF00FF;
   R1  = 0xA0008000;
 
-  // sinhro gp u shadow set
   asm {
     MFC0        R30, 12, 2
     MOVZ        R28, R30, R0
@@ -107,45 +107,43 @@ void __BootStartUp(){
     MTC0        R28, 12, 2
   }
 
-  //Config: Typically, the K0, KU and K23 fields should be set to the desired Cache Coherency Algorithm (CCA)
-  //  value prior to accessing the corresponding memory regions. But in the M4K core, all CCA values are treated
-  //  identically, so the hardware reset value of these fields need not be modified.
+  // Config: Typically, the K0, KU and K23 fields should be set to the desired Cache Coherency Algorithm (CCA)
+  //         value prior to accessing the corresponding memory regions. But in the M4K core, all CCA values are treated
+  //         identically, so the hardware reset value of these fields need not be modified.
   CP0_SET(CP0_CONFIG, 0xA4210582);
   // Count: Should be set to a known value if Timer Interrupts are used.
-  // COUNT
   CP0_SET(CP0_COUNT, 0);
   // Compare: Should be set to a known value if Timer Interrupts are used. The write to compare will also clear any
-  //    pending Timer Interrupts (Thus, Count should be set before Compare to avoid any unexpected interrupts).
+  //          pending Timer Interrupts (Thus, Count should be set before Compare to avoid any unexpected interrupts).
   CP0_SET(CP0_COMPARE, 0xFFFFFFFF);
 
-  CP0_SET(CP0_EBASE,  0x9FC01000);    // offset do pocetka exception tabele
+  CP0_SET(CP0_EBASE,  0x9FC01000);    // Offset to the beginning of the exception table
 
-  CP0_SET(CP0_INTCTL, 0x00000020);    // 32 bajta izmedju sisednih interrupt vectora
+  CP0_SET(CP0_INTCTL, 0x00000020);    // 32 bytes between adjacent interrupt vectors
 
   CP0_SET(CP0_SRSCTL, 0x04000000);
   CP0_SET(CP0_SRSMAP, 0x00000000);
 
-  // todo .. napraviti poziv funkcije koja se ivrsava nakon bootStartUp-a
-  // tj. dok je jos u boot sekciji
   //Status: Desired state of the device should be set.
   CP0_SET(CP0_STATUS, 0x00100000);
 
-  // dummy setovanje checon-a, ispravice linker wait state-ove prema setovanom clocku
-  //  izbaceno jer ovi chipovei nemaju  CHECON
+  // Dummy setting of CHECON, will correct linker wait states according to the set clock
+  // Removed because these chips do not have CHECON
 
 
-  // dummy setovanje intcon-a, ispravice linker/izbacice ako ne treba...
-  INTCON = 0x80000000; // instrukcije se u linkeru prepoznaje po ovoj konstanti,
-                       // jer je jedinstvena u ovoj f-ji trenutno, ako se bilo shta
-                       // izmeni treba srediti i linker...
+  // Dummy setting of INTCON, will correct linker/omit if not needed...
+  INTCON = 0x80000000; // Instructions are recognized by the linker based on this constant,
+                       // as it is unique in this function currently. If anything changes,
+                       // the linker needs to be adjusted as well...
+
 
   //Cause: WP (Watch Pending), SW0/1 (Software Interrupts) should be cleared.
   // CP0_SET(CP0_CAUSE, 0);
   CP0_SET(CP0_CAUSE, 0x00800000);
 
-  // izvrsavanje main-a
-  // mora indirektni poziv da bi se promenio kseg
-  // mora iz asm-a da se ne bi registrovao cross calling...
+  // Execution of main
+  // An indirect call is necessary to change the kseg
+  // It must be done from assembly to avoid registering cross-calling...
   asm {
       LUI R30, hi_addr(_main)
       ORI R30, R30, lo_addr(_main)
