@@ -205,15 +205,20 @@ double ldexp( double num, int new_exp )
     pom = &num;
     new_exp += pom[3];
     if ( new_exp < 0 )
+    {
         return 0.0;
-    else
-        if (new_exp > MAX_EXPONENT)
-            if (num < 0.0)
-                return -DBL_MAX;
-            else
-                return DBL_MAX;
+    }
+    else if ( new_exp > MAX_EXPONENT )
+    {
+        if ( num < 0.0 )
+            return -DBL_MAX;
         else
-            pom[3] = new_exp;
+            return DBL_MAX;
+    }
+    else
+    {
+        pom[3] = new_exp;
+    }
 
     return num;
     #endif
