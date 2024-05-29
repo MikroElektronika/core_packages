@@ -118,10 +118,8 @@ void Delay_Cyc( unsigned long cycles_div_by_10 )
     unsigned long loc;
 
     loc = cycles_div_by_10;
-    loc = loc - 2; // this and NOPs on exit compensate code before loop
-    while ( loc-- )
-    { // this loop should last 10cycles
-
+    loc = loc - 2;    // this and NOPs on exit compensate code before loop
+    while ( loc-- ) { // this loop should last 10cycles
         asm {
             NOP
             NOP
@@ -186,12 +184,11 @@ void VDelay_ms( unsigned long Time_ms )
     NumberOfCyc = Clock_kHz(); // cycles per millisecond
     NumberOfCyc *= Time_ms;    // total number of cycles
 
-    NumberOfCyc >>= 5; // divide with 31(loop duration is 32 cycles)
-    NumberOfCyc -= 1;  // this and NOPs on exit compensate code before loop
+    NumberOfCyc >>= 5;         // divide with 31(loop duration is 32 cycles)
+    NumberOfCyc -= 1;          // this and NOPs on exit compensate code before loop
 
     //  loop:
-    while ( NumberOfCyc-- ) // 32 cycles (together with jump from "}" to while)
-    {
+    while ( NumberOfCyc-- ) { // 32 cycles (together with jump from "}" to while)
         asm nop;
         asm nop;
         asm nop;
@@ -249,12 +246,11 @@ void VDelay_Advanced_ms( unsigned long Time_ms, unsigned Current_Fosc_kHz )
     NumberOfCyc = Current_Fosc_kHz; // cycles per millisecond
     NumberOfCyc *= Time_ms;         // total number of cycles
 
-    NumberOfCyc >>= 5; // divide with 32 (loop duration is 32 cycles)
-    NumberOfCyc -= 1;  // this and NOPs on exit compensate code before loop
+    NumberOfCyc >>= 5;              // divide with 32 (loop duration is 32 cycles)
+    NumberOfCyc -= 1;               // this and NOPs on exit compensate code before loop
 
     //  loop:
-    while ( NumberOfCyc-- ) // 32 cycles (together with jump from "}" to while)
-    {
+    while ( NumberOfCyc-- ) { // 32 cycles (together with jump from "}" to while)
         asm nop;
         asm nop;
         asm nop;
