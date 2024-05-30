@@ -1,9 +1,22 @@
-// r4,r5,  R6,r7 operandi
+/*
+    __lib_Math.c
 
+ ------------------------------------------------------------------------------
 
-// R2,R3 rezultat
+  This file is part of mikroSDK.
+
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
+
+  All rights reserved.
+
+----------------------------------------------------------------------------- */
+
+/**
+ * @brief Operands r4, r5, r6, r7
+ *        Results R2, R3
+ *        Perform multiplication of two 64-bit values.
+ */
 void _Mul_64x64(){
-
   asm{
     multu       R6,R4
     mflo        R2
@@ -97,7 +110,6 @@ sltu        R2,R0,R4
 subu        R5,R5,R2
 label11:
  addu        R2,R4,R0
-//jr          ra
 b label_end
 addu        R3,R5,R0
 label3:
@@ -429,7 +441,6 @@ label7:
 addu        R6,R0,R0
 label9:
  addu        R2,R4,R0
-//jr          ra
 b label_end
 addu        R3,R6,R0
 label1:
@@ -584,7 +595,6 @@ sll         R3,R11,0x10
 label21:
  or          R4,R3,R10
 addu        R2,R4,R0
-//jr          ra
 b label_end
 addu        R3,R6,R0
 label3:
@@ -600,7 +610,6 @@ xori        R5,R2,0x1
 or          R10,R4,R5
 sltu        R4,R0,R10
 addu        R2,R4,R0
-//jr          ra
 b label_end
 addu        R3,R6,R0
 label16:
@@ -1001,10 +1010,8 @@ label21:
 addu        R16,R8,R10
 beq         R0,R0,label20
 movn        R8,R16,R17
-//addiu       R29,R29,-88
 label_end:
 }
-
 }
 
 void _Mod_64x64_S(void) {
@@ -1352,3 +1359,30 @@ movn        R8,R16,R17
 label_end:
 }
 }
+
+// ----------------------------------------------------------------------------
+/*
+    __Lib_Math.c
+
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+// ----------------------------------------------------------------------------
