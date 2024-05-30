@@ -135,24 +135,24 @@ void Delay_Cyc( unsigned long cycles_div_by_10 )
     while ( loc-- ) { // this loop should last 10cycles
 
         asm {
-      NOP
-      NOP
-      NOP
-      NOP
+            NOP
+            NOP
+            NOP
+            NOP
         }
     }
 
     asm {
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
     }
 }
 
@@ -167,22 +167,25 @@ void Delay_Cyc_Long( unsigned long CycNo )
         R1 = CycNo - 10;
 
     asm {
-          ANDI  R2, R1, 0x01
-          BEQ   R2, R0, jmp1
-          NOP
-          ADDI R3, R3, -1
+        ANDI  R2, R1, 0x01
+        BEQ   R2, R0, jmp1
+        NOP
+        ADDI R3, R3, -1
 
-  jmp1:   ANDI  R2, R1, 0x02
-          BEQ   R2, R0, jmp2
-          NOP
-          ADDI  R3, R3, -2
-          NOP
+    jmp1:
+        ANDI  R2, R1, 0x02
+        BEQ   R2, R0, jmp2
+        NOP
+        ADDI  R3, R3, -2
+        NOP
 
-  jmp2:   AND   R1, R1, R4
-          ADDI  R1, R1, -8
+    jmp2:
+        AND   R1, R1, R4
+        ADDI  R1, R1, -8
 
-  loop:   ADDI   R1, R1, -4
-          BGTZ   R1, loop
+    loop:
+        ADDI   R1, R1, -4
+        BGTZ   R1, loop
     }
 }
 
