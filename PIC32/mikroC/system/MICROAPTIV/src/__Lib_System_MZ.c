@@ -161,17 +161,17 @@ void __BootStartUp()
         EHB
         NOP
 
-                                                    // Cache initialization
-                        // PIC32MZ EC Family has 16KB I-cache and 4KB D-Cache
-        MFC0 R27, Status                                                                      // Read status
+        // Cache initialization
+        // PIC32MZ EC Family has 16KB I-cache and 4KB D-Cache
+        MFC0 R27, Status  // Read status
         ADDIU R30, R0, -2
         AND R30, R30, R27 // disable interrupts
-        ORI R30, R30, 4 // set error level
+        ORI R30, R30, 4   // set error level
         MTC0 R30, Status
         EHB
 
         MTC0 R0, ErrCtl // clear wst bit, tag array is written on CACHE
-        MTC0 R0, TagLo //
+        MTC0 R0, TagLo
         EHB
 
         LUI R30, 0x9D00
@@ -196,23 +196,23 @@ void __BootStartUp()
         ORI R30, R30, 7
         XORI R30, R30, 7
         ORI R30, R30, 3
-        MTC0 R30, Config                                // Cacheable, non-coherent, write-back, write allocate
+        MTC0 R30, Config // Cacheable, non-coherent, write-back, write allocate
         EHB
 
-                                                        // Set other cp0 registers
-        MTC0 R0, Count // count = 0
+        // Set other cp0 registers
+        MTC0 R0, Count    // count = 0
         ADDIU R30, R0, -1
         MTC0 R30, Compare // Compare = 0xFFFFFFFF
         LUI R28, 128
-        MTC0 R28, Cause // Cause (IV = 1)
-        MFC0 R27, Config //
-        EXT R28, R27, 22, 1 // UDI bit u Cause registru
+        MTC0 R28, Cause   // Cause (IV = 1)
+        MFC0 R27, Config
+        EXT R28, R27, 22, 1
         SLL R28, R28, 17
         MFC0 R27, Status
         LUI R26, 88
         AND R27, R27, R26 // BEV SR NMI
         LUI R30, 256
-        OR R27, R30, R27 // MX = 1
+        OR R27, R30, R27  // MX = 1
         OR R27, R28, R27
         MTC0 R27, Status
         NOP
@@ -228,14 +228,14 @@ void __BootStartUp()
     //  initialize OFFxxx registers
     // if changes are made, linker must be updated
     asm {
-        ORI R30, R0, 191 // number of iv
-        LUI R28, hi_addr(OFF000) // address of first offset register
+        ORI R30, R0, 191                // number of iv
+        LUI R28, hi_addr(OFF000)        // address of first offset register
         ORI R28, R28, lo_addr(OFF000)
         LUI R26, hi_addr(___OFFx_VALS) // address of const array with offsets
         ORI R26, R26, lo_addr(___OFFx_VALS)
     __me_lab_set_offx:
-        LW R27, (R26) // load offset value
-        SW R27, (R28) // store offset to OFFx reg
+        LW R27, (R26)     // load offset value
+        SW R27, (R28)     // store offset to OFFx reg
         ADDIU R26, R26, 4 // move to next value
         ADDIU R28, R28, 4 // move to next offset register
         BNE R30, R0, __me_lab_set_offx
@@ -245,7 +245,6 @@ void __BootStartUp()
     INTCON = 0x80000000;
     PRISS = 0x76543210;
 
-    // nopovi zbog errata
     asm nop;
     asm nop;
     asm nop;
@@ -274,14 +273,14 @@ char Swap( char arg )
 void __FillZeros()
 {
     asm {
-		L___FillZeros0:
+	L___FillZeros0:
 		BEQ R23, R22, L___FillZeros1
 		NOP
-		L____FillZeros4:
+	L____FillZeros4:
 		SW R0, 0(R23)
 		J L___FillZeros0
 		ADDIU R23, R23, 4
-		L___FillZeros1:
+	L___FillZeros1:
     }
 }
 
