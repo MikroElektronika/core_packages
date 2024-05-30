@@ -11,6 +11,10 @@ BraceWrapping:
   BeforeElse: false
   BeforeWhile: false
 ColumnLimit: '0'
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: false
 AlignConsecutiveBitFields:
   Enabled: true
   AcrossEmptyLines: false
