@@ -100,18 +100,17 @@ void Delay_Cyc( unsigned int x, unsigned int y )
 {
     W8 = x;
     W9 = y;
-    asm
-    {
-        Delay_Cyc_loop:
-            cp0 W8                 ; skip delay
-            bra z, Delay_Cyc_rez   ;   if w8 = 0
-            repeat #16377          ; perform delay by
-            nop                    ;   by executing w8*16384 <nop>s in Delay_Cyc_loop
-            dec W8, W8             ; next loop
-            bra Delay_Cyc_loop
-        Delay_Cyc_rez:
-            repeat W9              ; execute whats
-            nop                    ;   remaining after the division
+    asm {
+    Delay_Cyc_loop:
+        cp0 W8                 ; skip delay
+        bra z, Delay_Cyc_rez   ;   if w8 = 0
+        repeat #16377          ; perform delay by
+        nop                    ;   by executing w8*16384 <nop>s in Delay_Cyc_loop
+        dec W8, W8             ; next loop
+        bra Delay_Cyc_loop
+    Delay_Cyc_rez:
+        repeat W9              ; execute whats
+        nop                    ;   remaining after the division
     }
 }
 
@@ -145,32 +144,31 @@ void Delay_Cyc_Long( unsigned long CycNo )
 {
     W8 = CycNo;
     W9 = HiWord( CycNo );
-    asm
-    {
-            PUSH       W8                         //   Shift code must be written
-            MOV        #14, W7                    //   in asm because dsPIC30 can
-        Label1:                                   //   generate DO instruction
-            DEC        W7, W7                     //   instead of a loop.
-            BRA LT,    Label2                     //
-            LSR        W9, W9                     //   In that case code execution
-            RRC        W8, W8                     //   time would be different
-            BRA        Label1                     //   between dsPIC30 family
-        Label2:                                   //   and PIC24/dsPIC33 families.
+    asm {
+        PUSH       W8           //   Shift code must be written
+        MOV        #14, W7      //   in asm because dsPIC30 can
+    Label1:                     //   generate DO instruction
+        DEC        W7, W7       //   instead of a loop.
+        BRA LT,    Label2
+        LSR        W9, W9       //   In that case code execution
+        RRC        W8, W8       //   time would be different
+        BRA        Label1       //   between dsPIC30 family
+    Label2:                     //   and PIC24/dsPIC33 families.
 
-            POP        W9
-            MOV        #16383, W7
-            AND        W9, W7, W9
+        POP        W9
+        MOV        #16383, W7
+        AND        W9, W7, W9
 
-        Delay_Cyc_loop:
-            CP0 W8                 ; skip delay
-            BRA Z, Delay_Cyc_rem   ;    if W8 = 0
-            repeat #16377          ; perform delay by
-            NOP                    ;   by executing W8*16384 <nop>s in Delay_Cyc_loop
-            DEC W8, W8             ; next loop
-            bra Delay_Cyc_loop
-        Delay_Cyc_rem:
-            REPEAT W9              ; execute whats
-            nop                    ;   remaining after the division
+    Delay_Cyc_loop:
+        CP0 W8                 ; skip delay
+        BRA Z, Delay_Cyc_rem   ;    if W8 = 0
+        repeat #16377          ; perform delay by
+        NOP                    ;   by executing W8*16384 <nop>s in Delay_Cyc_loop
+        DEC W8, W8             ; next loop
+        bra Delay_Cyc_loop
+    Delay_Cyc_rem:
+        REPEAT W9              ; execute whats
+        nop                    ;   remaining after the division
     }
 }
 
@@ -212,40 +210,37 @@ void VDelay_ms( unsigned Time_ms )
     NumberOfCyc = Clock_kHz() / __FOSC_PER_CYC; // Number of cycles per millisecond
     NumberOfCyc *= Time_ms;                     // Total number of cycles
 
-    if ( __FOSC_PER_CYC == 4 )
-    {                                           // Take care of cycles needed for passing
+    if ( __FOSC_PER_CYC == 4 ) {                // Take care of cycles needed for passing
         NumberOfCyc -= 149;                     // parameters, calls, returns and such, so
     }                                           // decrease NumberOfCyc.
-    else
-    {
+    else {
         NumberOfCyc -= 149;
     }
 
     W1 = HiWord( NumberOfCyc );
     W0 = NumberOfCyc;
-    asm
-    {
-            MOV        #16383, W2
-            AND        W0, W2, W3               //   Shift code must be written
-            MOV        #14, W2                  //   in asm because dsPIC30 can
-        Label1:                                 //   generate DO instruction
-            DEC        W2, W2                   //   instead of a loop.
-            BRA LT,    Label2                   //
-            LSR        W1, W1                   //   In that case code execution
-            RRC        W0, W0                   //   time would be different
-            BRA        Label1                   //   between dsPIC30 family
-        Label2:                                 //   and PIC24/dsPIC33 families.
+    asm {
+        MOV        #16383, W2
+        AND        W0, W2, W3   //   Shift code must be written
+        MOV        #14, W2      //   in asm because dsPIC30 can
+    Label1:                     //   generate DO instruction
+        DEC        W2, W2       //   instead of a loop.
+        BRA LT,    Label2
+        LSR        W1, W1       //   In that case code execution
+        RRC        W0, W0       //   time would be different
+        BRA        Label1       //   between dsPIC30 family
+    Label2:                     //   and PIC24/dsPIC33 families.
 
-        Delay_Cyc_loop:
-            CP0 W0                 ; skip delay
-            BRA Z, Delay_Cyc_rem   ;    if W0 = 0
-            repeat #16377          ; perform delay by
-            NOP                    ;   by executing W0*16384 <nop>s in Delay_Cyc_loop
-            DEC W0, W0             ; next loop
-            bra Delay_Cyc_loop
-        Delay_Cyc_rem:
-            REPEAT W3              ; execute whats
-            nop                    ;   remaining after the division
+    Delay_Cyc_loop:
+        CP0 W0                 ; skip delay
+        BRA Z, Delay_Cyc_rem   ;    if W0 = 0
+        repeat #16377          ; perform delay by
+        NOP                    ;   by executing W0*16384 <nop>s in Delay_Cyc_loop
+        DEC W0, W0             ; next loop
+        bra Delay_Cyc_loop
+    Delay_Cyc_rem:
+        REPEAT W3              ; execute whats
+        nop                    ;   remaining after the division
     }
 }
 
@@ -290,41 +285,38 @@ void VDelay_Advanced_ms( unsigned Time_ms, unsigned long Current_Fosc_kHz )
     NumberOfCyc = Current_Fosc_kHz / __FOSC_PER_CYC; // Number of cycles per millisecond
     NumberOfCyc *= Time_ms;                          // Total number of cycles
 
-    if ( __FOSC_PER_CYC == 4 )
-    {                                                // Take care of cycles needed for passing
+    if ( __FOSC_PER_CYC == 4 ) {                     // Take care of cycles needed for passing
         NumberOfCyc -= 159;                          // parameters, calls, retunrs and such, so
     }                                                // decrease NumberOfCyc.
-    else
-    {
+    else {
         NumberOfCyc -= 163;
     }
 
     W1 = HiWord( NumberOfCyc );
     W0 = NumberOfCyc;
-    asm
-    {
-            MOV        #16383, W2
-            AND        W0, W2, W3                 //   Shift code must be written
-            MOV        #14, W2                    //   in asm because dsPIC30 can
-        Label1:                                   //   generate DO instruction
-            DEC        W2, W2                     //   instead of a loop.
-            BRA LT,    Label2                     //
-            LSR        W1, W1                     //   In that case code execution
-            RRC        W0, W0                     //   time would be different
-            BRA        Label1                     //   between dsPIC30 family
-        Label2:                                   //   and PIC24/dsPIC33 families.
+    asm {
+        MOV        #16383, W2
+        AND        W0, W2, W3   //   Shift code must be written
+        MOV        #14, W2      //   in asm because dsPIC30 can
+    Label1:                     //   generate DO instruction
+        DEC        W2, W2       //   instead of a loop.
+        BRA LT,    Label2
+        LSR        W1, W1       //   In that case code execution
+        RRC        W0, W0       //   time would be different
+        BRA        Label1       //   between dsPIC30 family
+    Label2:                     //   and PIC24/dsPIC33 families.
 
-        Delay_Cyc_loop:
-            CP0 W0                 ; skip delay
-            BRA Z, Delay_Cyc_rem   ;    if W0 = 0
-            repeat #16377          ; perform delay by
-            NOP                    ;   by executing W0*16384 <nop>s in Delay_Cyc_loop
-            DEC W0, W0             ; next loop
-            bra Delay_Cyc_loop
-        Delay_Cyc_rem:
-            REPEAT W3              ; execute whats
-            nop                    ;   remaining after the division
-  }
+    Delay_Cyc_loop:
+        CP0 W0                 ; skip delay
+        BRA Z, Delay_Cyc_rem   ;    if W0 = 0
+        repeat #16377          ; perform delay by
+        NOP                    ;   by executing W0*16384 <nop>s in Delay_Cyc_loop
+        DEC W0, W0             ; next loop
+        bra Delay_Cyc_loop
+    Delay_Cyc_rem:
+        REPEAT W3              ; execute whats
+        nop                    ;   remaining after the division
+    }
 }
 
 //****************************************************************************//
@@ -351,8 +343,7 @@ void VDelay_Advanced_ms( unsigned Time_ms, unsigned long Current_Fosc_kHz )
 //****************************************************************************//
 void Delay_W0()
 {
-    asm
-    {
+    asm {
         repeat W0
         nop
     }

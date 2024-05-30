@@ -9,21 +9,25 @@
   All rights reserved.
 
 ----------------------------------------------------------------------------- */
+
 /*!
  * @file  string.h
  * @brief Standard C string handling functions.
+ * @{
  */
+
+/* ------------------------------------------------------------------------- */
 
 #ifndef _STRING_H_
 #define _STRING_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 #include <stdint.h>
 
-/* -----PUBLIC FUNCTION DECLARATIONS------ */
+/* -----------------------PUBLIC FUNCTION DECLARATIONS ----------------------- */
 
 /**
  * @brief Finds first occurence of the ch character in the first num bytes of string
@@ -312,8 +316,9 @@ void str_insert_chr( char * str, char chr, int num );
 #ifdef __cplusplus
 }
 #endif
-#endif  // _STRING_H_
+#endif // _STRING_H_
 
+/** @} */
 // ----------------------------------------------------------------------------
 /*
     string.h

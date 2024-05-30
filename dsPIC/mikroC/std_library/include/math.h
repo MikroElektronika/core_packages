@@ -10,30 +10,34 @@
   All rights reserved.
 
 ----------------------------------------------------------------------------- */
+
 /*!
  * @file  math.h
  * @brief Standard C math function declarations.
+ * @{
  */
+
+/* -------------------------------------------------------------------------- */
 
 #ifndef _MATH_H_
 #define _MATH_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 #include <stdint.h>
 
-/* ------------PUBLIC MACROS------------- */
+/* ----------------------------PUBLIC MACROS--------------------------------- */
 
-#define PI          3.14159265358979
-#define TWO_PI      6.28318530717958
-#define HALF_PI     1.570796326794895
-#define EXP_MAX     89.416
-#define EXP_MIN    -87.33655
-#define DBL_MAX     3.40282347e+38
+#define PI      3.14159265358979
+#define TWO_PI  6.28318530717958
+#define HALF_PI 1.570796326794895
+#define EXP_MAX 89.416
+#define EXP_MIN -87.33655
+#define DBL_MAX 3.40282347e+38
 
-/* -----PUBLIC FUNCTION DECLARATIONS------ */
+/* -----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
  * @brief Calculates floating point abolute value of given number.
@@ -152,7 +156,7 @@ double acos( double num );
  * @return The function returns the arc tangent of y/x
  *         in the range [-infinity, +infinity] radians.
  */
-double atan2( double y, double  x );
+double atan2( double y, double x );
 
 /**
  * @brief Calculates the sine of a given angle (in radians).
@@ -250,8 +254,9 @@ double tanh( double num );
 #ifdef __cplusplus
 }
 #endif
-#endif  // _MATH_H_
+#endif // _MATH_H_
 
+/** @} */
 // ----------------------------------------------------------------------------
 /*
     math.h

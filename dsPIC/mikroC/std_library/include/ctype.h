@@ -10,34 +10,38 @@
   All rights reserved.
 
 ----------------------------------------------------------------------------- */
+
 /*!
  * @file  ctype.h
  * @brief Standard C type function declarations.
+ * @{
  */
+
+/*--------------------------------------------------------------------------- */
 
 #ifndef _CTYPE_H_
 #define _CTYPE_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
-/* -----PUBLIC FUNCTION DECLARATIONS------ */
+/* -----------------------PUBLIC FUNCTION DECLARATIONS ------------------------ */
 
 /**
  * @brief The function checks whether the passed character is a lowercase letter.
  * @param character, this is the character to be checked.
- * @retval returns true if the given character is a lowercase letter
+ * @return returns true if the given character is a lowercase letter
  */
 unsigned short islower( char character );
 
 /**
  * @brief The function checks whether the passed character is an uppercase letter.
  * @param character, this is the character to be checked.
- * @retval returns true if the given character is an UPPERCASE letter
+ * @return returns true if the given character is an UPPERCASE letter
  */
 unsigned short isupper( char character );
 
@@ -114,8 +118,9 @@ char toupper( char character );
 #ifdef __cplusplus
 }
 #endif
-#endif  // _CTYPE_H_
+#endif // _CTYPE_H_
 
+/** @} */
 // ----------------------------------------------------------------------------
 /*
     ctype.h

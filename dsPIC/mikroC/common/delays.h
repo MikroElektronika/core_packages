@@ -61,7 +61,7 @@ void Delay_Cyc( uint32_t cycles_div_by_10 );
  * @param[in] time_ms Delay value in microseconds.
  * @return None.
  */
-void Delay_us ( uint32_t time_us );
+void Delay_us( uint32_t time_us );
 
 /**
  * @brief Creates a software delay in duration of @b time_ms milliseconds.
