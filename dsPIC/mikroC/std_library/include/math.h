@@ -122,7 +122,7 @@ double sqrt( double num );
  *          the arc tangent of num.
  * @param num Number the arctangent is calculated for.
  * @return The function returns the arc tangent
- *         in the range [-infinity/2, +infinity/2] radians.
+ *         in the range [-pi/2, +pi/2] radians.
  */
 double atan( double num );
 
@@ -132,7 +132,7 @@ double atan( double num );
  *          A domain error occurs for arguments not in the range [-1, +1].
  * @param num Number the arcsine is calculated for.
  * @return The function returns the arc sine
- *         in the range [-infinity/2. +infinity/2] radians.
+ *         in the range [-pi/2. +pi/2] radians.
  */
 double asin( double num );
 
@@ -142,7 +142,7 @@ double asin( double num );
  *          A domain error occurs for arguments not in the range [-1, +1].
  * @param num Number which the arc cosine is calculated for.
  * @return The function returns the arc cosine
- *         in the range [0, infinity] radians.
+ *         in the range [0, pi] radians.
  */
 double acos( double num );
 
@@ -154,7 +154,7 @@ double acos( double num );
  * @param y First value.
  * @param x Second value.
  * @return The function returns the arc tangent of y/x
- *         in the range [-infinity, +infinity] radians.
+ *         in the range [-pi, +pi] radians.
  */
 double atan2( double y, double x );
 
