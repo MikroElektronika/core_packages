@@ -16,8 +16,9 @@
  *        Results R2, R3
  *        Perform multiplication of two 64-bit values.
  */
-void _Mul_64x64(){
-  asm{
+void _Mul_64x64()
+{
+    asm {
     multu       R6,R4
     mflo        R2
     mfhi        R3
@@ -25,12 +26,13 @@ void _Mul_64x64(){
     addu        R7,R3,R4
     mul         R5,R6,R5
     addu        R3,R7,R5
-  };
+    }
+    ;
 }
 
-void _Div_64x64_S(){
-  asm{
-
+void _Div_64x64_S()
+{
+    asm {
 bltz        R5,label1
 addu        R16,R0,R0
 label27:
@@ -370,11 +372,12 @@ label8:
  beq         R0,R0,label7
 addu        R5,R5,R7
 label_end:
-}
+    }
 }
 
-void _Div_64x64_U(){
-asm{
+void _Div_64x64_U()
+{
+    asm {
 addu        R3,R7,R0
 addu        R8,R5,R0
 addu        R7,R6,R0
@@ -691,12 +694,12 @@ label6:
 addu        R5,R5,R7
 label_end:
 nop
-
+    }
 }
-}
 
-void _Mod_64x64_U(void) {
-asm{
+void _Mod_64x64_U( void )
+{
+    asm {
 addiu       R29,R29,-24
 addu        R8,R7,R0
 sw          R18,16(R29)
@@ -1011,11 +1014,12 @@ addu        R16,R8,R10
 beq         R0,R0,label20
 movn        R8,R16,R17
 label_end:
-}
+    }
 }
 
-void _Mod_64x64_S(void) {
-asm{
+void _Mod_64x64_S( void )
+{
+    asm {
 addiu       R29,R29,-24
 sw          R19,20(R29)
 sw          R18,16(R29)
@@ -1357,7 +1361,7 @@ addu        R16,R8,R7
 beq         R0,R0,label26
 movn        R8,R16,R17
 label_end:
-}
+    }
 }
 
 // ----------------------------------------------------------------------------
