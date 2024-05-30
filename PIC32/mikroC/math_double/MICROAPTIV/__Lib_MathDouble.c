@@ -1,4 +1,19 @@
-// float to signed integral 8,16,32 bitna
+/*
+    __lib_MathDouble.c
+
+ ------------------------------------------------------------------------------
+
+  This file is part of mikroSDK.
+
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
+
+  All rights reserved.
+
+----------------------------------------------------------------------------- */
+
+/**
+ * @brief Convert a floating-point number to a signed integral value of 8, 16, or 32 bits.
+ */
 void _FloatToSignedIntegral(){
 asm{
 sll         R5,R4,0x8
@@ -33,14 +48,14 @@ beq         R0,R0,label_end
 lui         R2,0x8000
 label4:
  lui         R2,0x7fff
-//beq         R0,R0,label_end
 ori         R2,R2,0xffff
 label_end:
-//nop
 }
 }
 
-// float to unsigned integral 8,16,32 bitna
+/**
+ * @brief Convert a floating-point number to an unsigned integral value of 8, 16, or 32 bits.
+ */
 void _FloatToUnsignedIntegral(){
 asm{
 sll         R5,R4,0x8
@@ -74,10 +89,8 @@ nop
 beq         R0,R0,label_end
 lui         R2,0x8000
 label5:
-// beq         R0,R0,label_end
 addiu       R2,R0,-1
 label_end:
-//nop
 }
 }
 
@@ -120,10 +133,8 @@ beq         R0,R0,label_end
 lui         R2,0x8000
 label5:
  lui         R2,0x7fff
-//beq         R0,R0,label_end
 ori         R2,R2,0xffff
 label_end:
-//nop
 }
 }
 
@@ -151,8 +162,6 @@ subu        R7,R0,R7
 label3:
  beq         R0,R0,label_end
  or          R2,R0,R7
-//b label_end
-//nop
 label1:
  beq         R4,R0,label4
 nop
@@ -166,14 +175,14 @@ nop
 beq         R0,R0,label_end
 lui         R2,0x8000
 label5:
-// beq         R0,R0,label_end
 addiu       R2,R0,-1
 label_end:
-//nop
 }
 }
 
-// signed 8,16,32 bitne integral tipove to float
+/**
+ * @brief Convert signed integral values of 8, 16, or 32 bits to a floating-point number.
+ */
 void _SignedIntegralToFloat(){
 asm{
   lui         R3,0x8000
@@ -202,7 +211,9 @@ asm{
 }
 }
 
-// signed 8,16,32 bitne integral tipove to LongDouble
+/**
+ * @brief Convert signed integral values of 8, 16, or 32 bits to a long double.
+ */
 void _SignedIntegralToLongDouble(){
 asm{
 addiu       R5,R0,0
@@ -238,7 +249,9 @@ or          R3,R0,R9
 }
 }
 
-//pomocna funkcija za unsigned konverziju, poziva se iz _UsignedXXIntToFloat() funkcija
+/**
+ * @brief Helper function for unsigned conversion, called from _UnsignedXXIntToFloat() function.
+ */
 static void _UnsignedIntegralToFloat(){
 asm{
 srl         R9,R4,0x17
@@ -342,8 +355,6 @@ sll         R13,R9,0x17
 or          R8,R8,R13
 beq         R0,R0,label_end
 or          R2,R8,R12
-//label_end jr          ra
-//nop
 label13:
  addiu       R6,R0,1
 subu        R6,R6,R9
@@ -418,13 +429,14 @@ label12:
  beq         R0,R0,label_end
 addiu       R2,R0,0
 label20:
-// beq         R0,R0,label_end
 lui         R2,0xffc0
 label_end:
 }
 }
 
-//8 bitni unsigned int to float
+/**
+ * @brief Convert an 8-bit unsigned integer to a float.
+ */
 void _Unsigned8IntToFloat(){
 asm{
 bgez R4, label_signed
@@ -432,13 +444,11 @@ nop
 jal __SignedIntegralToFloat
 nop
 or R4,R2,R0          // R4=R2
-//lui R5, 18304 //R5=0x47800000 za 16bit
 lui R5, 17280  // R5=0x43800000    za 8bit
 jal __Lib_MathDouble__UnsignedIntegralToFloat
 nop
 beq R0,R0, label_end
 nop
-
 label_signed:
 jal __SignedIntegralToFloat
 nop
@@ -446,7 +456,9 @@ label_end:
 }
 }
 
-//16bitni unsigned int to float
+/**
+ * @brief Converts a 16-bit unsigned integer to a floating-point number.
+ */
 void _Unsigned16IntToFloat(){
 asm{
 bgez R4, label_signed
@@ -455,12 +467,10 @@ jal __SignedIntegralToFloat
 nop
 or R4,R2,R0          // R4=R2
 lui R5, 18304 //R5=0x47800000 za 16bit
-//lui R5, 17280  // R5=0x43800000    za 8bit
 jal __Lib_MathDouble__UnsignedIntegralToFloat
 nop
 beq R0,R0, label_end
 nop
-
 label_signed:
 jal __SignedIntegralToFloat
 nop
@@ -468,7 +478,9 @@ label_end:
 }
 }
 
-// 32bit unsigned int to float
+/**
+ * @brief Converts a 32-bit unsigned integer to a floating-point number.
+ */
 void _Unsigned32IntToFloat(){
 asm{
 bltz R4, label_unsigned
@@ -491,12 +503,13 @@ or R4,R2,0
 or R5,R2,0
 jal __Lib_MathDouble__UnsignedIntegralToFloat
 nop
-
 label_end:
 }
 }
 
-//pomocna funkcija za unsigned konverziju, poziva se iz _UsignedXXIntToLongDouble() funkcija
+/**
+ * @brief Helper function for unsigned conversion, called by _UnsignedXXIntToLongDouble() functions.
+ */
 static void _UnsignedIntegralToLongDouble(){
 asm{
 sll         R11,R5,0x1
@@ -868,7 +881,6 @@ label_end:
 }
 }
 
-
 void _LongDoubleToFloat(){
 asm{
 sll         R7,R5,0xb
@@ -904,8 +916,6 @@ or          R7,R7,R11
 
 beq         R0,R0,label_end
 or          R2,R7,R9
-//b label_end
-//nop
 label1:
  addiu       R3,R0,1151
 bne         R8,R3,label3
@@ -942,8 +952,6 @@ lui         R3,0x8000
 beq         R0,R0,label7
 or          R7,R7,R3
 label_end:
-//nop
-
 }
 }
 
@@ -969,8 +977,6 @@ or          R6,R6,R9
 or          R2,R0,R5
 beq         R0,R0,label_end
 or          R3,R0,R6
-//jr          ra
-//nop
 label1:
  addiu       R5,R0,0
 addu        R4,R4,R4
@@ -1002,7 +1008,7 @@ label_end:
 
 void _Add_FP(){
   asm{
-    srl         R9,R4,0x17            // odavde add
+    srl         R9,R4,0x17            // from here add
     andi        R9,R9,0xff
     srl         R11,R6,0x17
     andi        R11,R11,0xff
@@ -1187,7 +1193,7 @@ void _Add_FP(){
 
 void _Sub_FP(void) {
 asm{
-  lui         R5,0x8000             //odavde sub
+  lui         R5,0x8000             //from here sub
   xor         R6,R6,R5
   }
   _Add_FP();
@@ -1216,7 +1222,7 @@ sltiu       R15,R12,254
 beq         R15,R0,label2
 nop
 label14:
- multu       R5,R8              //////
+ multu       R5,R8
 mflo        R11
 beq         R11,R0,label3
 mfhi        R5
@@ -1323,7 +1329,6 @@ nop
 beq         R0,R0,label17
 addiu       R7,R0,1
 label_end:
-
 }
 }
 
@@ -1486,9 +1491,7 @@ or          R2,R11,R15
 label28:
  beq         R0,R0,label33
 lui         R2,0xffc0
-
 label_end:
-
 }
 }
 void _Compare_FP(){
@@ -1536,17 +1539,12 @@ nop
 label50:
  beq         R0,R0,label54
 or          R2,R0,R8
-
 label_end:
-
 }
 }
 
-
-//DOUBLE
 void _Add_DP(){
 asm{
-//add
 sll         R11,R5,0x1
 srl         R11,R11,0x15
 sll         R10,R5,0xb
@@ -1852,7 +1850,6 @@ label_end:
 
 void _Sub_DP(void) {
 asm{
-//sub
 lui         R8,0x8000
 xor         R7,R7,R8
 }
@@ -1861,7 +1858,6 @@ xor         R7,R7,R8
 
 void _Mul_DP(){
 asm{
-//mul
 sll         R10,R5,0x1
 srl         R10,R10,0x15
 sll         R9,R5,0xb
@@ -2095,7 +2091,6 @@ label_end:
 
 void _Div_DP(){
 asm{
-//div
 sll         R10,R5,0x1
 srl         R10,R10,0x15
 sll         R9,R5,0xb
@@ -2435,7 +2430,6 @@ label91:
 label97:
  beq         R0,R0,label92
 addiu       R4,R0,0
-
 label_end:
 }
 }
@@ -2527,16 +2521,13 @@ nop
 label128:
  beq         R0,R0,label126
 or          R2,R0,R9
-
 label_end:
 }
 }
 
-///////////////////////////////////////////
-/// LongLong to float/LongDouble i vice versa//
-///////////////////////////////////////////
-
-///LongLongToFloat
+/**
+ * @brief Converts a long long integer to a floating-point number.
+ */
 static void _F_1034(){
 asm{
 ADDIU       R5,R0,0
@@ -2568,8 +2559,6 @@ SLL         R10,R7,0x14
 OR          R9,R9,R10
 OR          R2,R0,R8
 OR          R3,R0,R9
-//JR          RA
-//NOP
 }
 }
 
@@ -2673,7 +2662,6 @@ label14:
  OR          R2,R0,R4
 OR          R3,R0,R5
 B label_end
-//JR          RA
 NOP
 label1:
  SLT         R15,R8,R0
@@ -2803,9 +2791,7 @@ SLTIU       R15,R8,1024
 ADDU        R9,R9,R15
 BEQ         R0,R0,label25
 SRL         R10,R9,0x1F
-
 label_end:
-
 }
 }
 
@@ -2988,7 +2974,6 @@ label13:
 OR          R3,R0,R5
 label25:
 B label_end
-// JR          RA
 NOP
 label1:
  SLT         R15,R9,R0
@@ -3112,7 +3097,6 @@ label32:
  BEQ         R0,R0,label34
 ADDIU       R11,R0,0
 label_end:
-
 }
 }
 
@@ -3151,7 +3135,6 @@ OR          R7,R7,R11
 OR          R2,R7,R9
 label4:
 B label_end
-// JR          RA
 NOP
 label1:
  ADDIU       R24,R0,1151
@@ -3188,21 +3171,18 @@ ADDIU       R8,R0,0
 LUI         R24,0x8000
 BEQ         R0,R0,label7
 OR          R7,R7,R24
-
 label_end:
-
 }
 }
 
-// ulazi R4 i R6
+/**
+ * @brief Converts signed long long integers from registers R4 and R6 to floating-point numbers.
+ */
 void _SignedLongLongToFloat(){
 asm{
-//LUI         R6,0X9D00
 ADDIU       R29,R29,-40
-//LW          R8,7752(R6)
 LUI         R8, 0
 ORI         R8, R8, 1
-//LW          R3,7756(R6)
 LUI         R3, 0xFFE0
 
 SW          R19,28(R29)
@@ -3226,9 +3206,6 @@ label4:
  JAL         __Lib_MathDouble__F_1034
 ADDU        R4,R19,R0
 
-//LUI         R15,0x9D00
-//LW          R16,7760(R15)
-//LW          R17,7764(R15)
 LUI         R16, 0
 LUI         R17, 0x40F0
 
@@ -3263,7 +3240,6 @@ LW          R19,28(R29)
 LW          R18,24(R29)
 LW          R17,20(R29)
 LW          R16,16(R29)
-//JR          R31
 B   label_end
 ADDIU       R29,R29,40
 label2:
@@ -3282,8 +3258,6 @@ JAL         __Lib_MathDouble__F_1034
 ADDU        R18,R6,R0
 LUI         R15,0x9D00
 
-//LW          R16,7760(R15)
-//LW          R17,7764(R15)
 LUI         R16, 0
 LUI         R17, 0x40F0
 
@@ -3305,12 +3279,9 @@ ADDU        R4,R2,R0
 BGEZ        R18,label5
 ADDU        R5,R3,R0
 label3:
-// LUI         R18,0x9D00
-//LW          R6,7768(R18)
 MOVZ        R6,R0,R0
 
 JAL         __Lib_MathDouble__F_0434
-//LW          R7,7772(R18)
 LUI         R7, 0x41F0
 
 ADDU        R6,R2,R0
@@ -3326,9 +3297,7 @@ LW          R19,28(R29)
 LW          R18,24(R29)
 LW          R17,20(R29)
 LW          R16,16(R29)
-//JR          R31
 ADDIU       R29,R29,40
-
 label_end:
 }
 
@@ -3350,7 +3319,6 @@ ADDIU       R3,R0,2
 ADDIU       R5,R0,1
 MOVZ        R3,R5,R4
 label_end:
-//  JR          RA
 ADDU        R2,R3,R0
 }
 }
@@ -3458,7 +3426,6 @@ SLL         R13,R9,0x17
 OR          R8,R8,R13
 OR          R2,R8,R12
 label24:
-// JR          RA
 B label_end
 NOP
 label13:
@@ -3541,12 +3508,11 @@ label_end:
 }
 }
 
-// ulaz R4 i R5
-void _UnsignedLongLongToFloat(){
-
+/**
+ * @brief Converts unsigned long long integers from registers R4 and R5 to floating-point numbers.
+ */
+void _UnsignedLongLongToFloat_UnsignedLongLongToFloat(){
 asm{
-//LW          R4,-32656(GP)
-//LW          R5,-32652(GP)
 ADDIU       R29,R29,-16
 SW          R4,8(R29)
 SW          R5,4(R29)
@@ -3558,28 +3524,21 @@ NOP
 SLTI        R2,R2,1
 BNE         R2,R0,label1
 NOP
-//LW          R4,-32656(GP)
-//LW          R5,-32652(GP)
 LW          R4,8(R29)
 LW          R5,4(R29)
 
 JAL         __SignedLongLongToFloat//0x1D000158
 NOP
-//SW          R2,16(S8)
 SW          R2, 12(R29)
 
 BEQ         R0,R0,label2
 NOP
 label1:
-// LW          R2,-32656(GP)
-//LW          R3,-32652(GP)
 LW          R2,8(R29)
 LW          R3,4(R29)
 
 ANDI        R4,R2,0x1
 ANDI        R5,R3,0x0
-//LW          R2,-32656(GP)
-//LW          R3,-32652(GP)
 LW          R2,8(R29)
 LW          R3,4(R29)
 
@@ -3593,30 +3552,23 @@ ADDU        R4,R2,R0
 ADDU        R5,R3,R0
 JAL         __SignedLongLongToFloat//0x1D000158
 NOP
-//SW          R2,16(S8)
-//LW          R4,16(S8)
-//LW          R5,16(S8)
 SW          R2,12(R29)
 LW          R4,12(R29)
 LW          R5,12(R29)
 
 JAL         __Lib_MathDouble__F_155C//0x1D00155C
 NOP
-//SW          R2,16(S8)
 SW          R2,12(R29)
-
 label2:
-// LW          R2,16(S8)
  LW          R2,12(R29)
-//SW          R2,-32648(GP)
 
-//VRNI STEK
 ADDIU     R29,R29,16
 }
-
 }
 
-//FloatToLongLong
+/**
+ * @brief Converts floating-point numbers to long long integers.
+ */
 static void _FLL_0368(){
 asm{
  LUI         R8,0x8000
@@ -3647,7 +3599,6 @@ label2:
 OR          R6,R6,R9
 OR          R2,R0,R5
 OR          R3,R0,R6
-//JR          RA
 B label_end
 NOP
 label1:
@@ -3705,7 +3656,6 @@ SUBU        R7,R0,R7
 label3:
  OR          R2,R0,R7
 label6:
-// JR          RA
 B  label_end
 NOP
 label1:
@@ -3739,9 +3689,6 @@ SW          R19,24(R29)
 JAL         __Lib_MathDouble__FLL_1034
 SW          R18,20(R29)
 ADDU        R20,R2,R0
-//LUI         R2,0x9D00
-//LW          R6,7560(R2)
-//LW          R7,7564(R2)
 LUI         R6,0
 LUI         R7,0x3DF0
 
@@ -3760,9 +3707,6 @@ ADDU        R9,R3,R0
 ADDU        R4,R2,R0
 BLTZ        R16,label1
 ADDU        R5,R3,R0
-//LUI         R4,0x9D00
-//LW          R18,7568(R4)
-//LW          R19,7572(R4)
 LUI         R18,0
 LUI         R19,0x41F0
 
@@ -3791,13 +3735,10 @@ LW          R18,20(R29)
 LW          R16,16(R29)
 ADDU        R2,R8,R0
 ADDU        R3,R5,R0
-//JR          RA
 B label_end
 ADDIU       R29,R29,40
 label1:
  LUI         R3,0x9D00
-//LW          R18,7568(R3)
-//LW          R19,7572(R3)
 LUI         R18,0
 LUI         R19,0x41F0
 
@@ -3831,7 +3772,6 @@ LW          R18,20(R29)
 LW          R16,16(R29)
 ADDU        R2,R8,R0
 ADDU        R3,R5,R0
-//JR          RA
 ADDIU       R29,R29,40
 label_end:
 }
@@ -3877,7 +3817,6 @@ ADDIU       R2,R0,1
 label1:
  ADDIU       R2,R0,0
 label6:
- //JR          RA
  B label_end
 NOP
 label2:
@@ -3903,7 +3842,6 @@ JAL         __FloatToUnsignedLongLong
 ADDU        R4,R16,R0
 LW          R31,20(R29)
 LW          R16,16(R29)
-//JR          R31
 B label_end
 ADDIU       R29,R29,24
 label1:
@@ -3915,15 +3853,14 @@ SUBU        R2,R0,R2
 SUBU        R3,R0,R3
 SLTU        R4,R0,R2
 SUBU        R3,R3,R4
-//JR          R31
 ADDIU       R29,R29,24
 label_end:
-
 }
 }
 
-//////// LongLongToLongDouble
-
+/**
+ * @brief Converts signed long long integers to long double.
+ */
 void _SignedLongLongToLongDouble(){
 asm{
 ADDIU       R29,R29,-40
@@ -3935,9 +3872,6 @@ SW          R17,20(R29)
 SW          R16,16(R29)
 JAL         __Lib_MathDouble__F_1034
 SW          R19,28(R29)
-//LUI         R4,0x9D00
-//LW          R16,5296(R4)
-//LW          R17,5300(R4)
 LUI          R16, 0
 LUI          R17, 0x40F0
 
@@ -3968,16 +3902,12 @@ LW          R19,28(R29)
 LW          R18,24(R29)
 LW          R17,20(R29)
 LW          R16,16(R29)
-//JR          RA
 B             label_end
 ADDIU       R29,R29,40
 label1:
-// LUI         R2,0x9D00
-//LW          R6,5304(R2)
 LUI         R6, 0
 
 JAL         __Lib_MathDouble__F_0434
-//LW          R7,5308(R2)
 LUI         R7, 0x41F0
 
 ADDU        R6,R2,R0
@@ -3990,7 +3920,6 @@ LW          R19,28(R29)
 LW          R18,24(R29)
 LW          R17,20(R29)
 LW          R16,16(R29)
-//JR          RA
 ADDIU       R29,R29,40
 label_end:
 }
@@ -3999,8 +3928,6 @@ label_end:
 
 void _UnsignedLongLongToLongDouble(){
 asm{
-//LW          R4,-32656(GP)
-//LW          R5,-32652(GP)
 ADDIU       R29,R29,-20
 SW          R4,4(R29)
 SW          R5,8(R29)
@@ -4012,8 +3939,6 @@ NOP
 SLTI        R2,R2,1
 BNE         R2,R0,label1
 NOP
-//LW          R4,-32656(GP)
-//LW          R5,-32652(GP)
 LW          R4,4(R29)
 lW          R5,8(R29)
 
@@ -4024,15 +3949,11 @@ SW          R3,16(R29)
 BEQ         R0,R0,label2
 NOP
 label1:
-// LW          R2,-32656(GP)
-//LW          R3,-32652(GP)
 LW          R2,4(R29)
 LW          R3,8(R29)
 
 ANDI        R4,R2,0x1
 ANDI        R5,R3,0x0
-//LW          R2,-32656(GP)
-//LW          R3,-32652(GP)
 LW          R2,4(R29)
 LW          R3,8(R29)
 
@@ -4061,13 +3982,12 @@ label2:
 LW          R3,16(R29)
 
 ADDIU       R29,R29,20
-//SW          R2,-32640(GP)
-//SW          R3,-32636(GP)
 }
 }
 
-//////////LongDoubleToLongLong
-
+/**
+ * @brief Converts long double to unsigned long long integers.
+ */
 void _LongDoubleToUnsignedLongLong(){
 asm{
 ADDIU       R29,R29,-40
@@ -4077,9 +3997,6 @@ SW          R20,28(R29)
 SW          R16,16(R29)
 SW          R19,24(R29)
 SW          R18,20(R29)
-//LUI         R2,0x9D00
-//LW          R6,5312(R2)
-//LW          R7,5316(R2)
 LUI         R6,0
 LUI         R7,0x3DF0
 
@@ -4097,9 +4014,6 @@ ADDU        R9,R3,R0
 ADDU        R4,R2,R0
 BLTZ        R16,label1
 ADDU        R5,R3,R0
-//LUI         R4,0x9D00
-//LW          R18,5320(R4)
-//LW          R19,5324(R4)
 LUI         R18,0
 LUI         R19,0x41F0
 
@@ -4128,13 +4042,9 @@ LW          R18,20(R29)
 LW          R16,16(R29)
 ADDU        R2,R8,R0
 ADDU        R3,R5,R0
-//JR          R31
 B label_end
 ADDIU       R29,R29,40
 label1:
-// LUI         R3,0x9D00
-//LW          R18,5320(R3)
-//LW          R19,5324(R3)
 LUI         R18,0
 LUI         R19,0x41F0
 
@@ -4168,7 +4078,6 @@ LW          R18,20(R29)
 LW          R16,16(R29)
 ADDU        R2,R8,R0
 ADDU        R3,R5,R0
-//JR          R31
 ADDIU       R29,R29,40
 label_end:
 }
@@ -4256,7 +4165,6 @@ ADDIU       R2,R0,1
 label12:
  ADDIU       R2,R0,0
 label2:
-// JR          RA
 B label_end
 NOP
 label4:
@@ -4285,12 +4193,9 @@ NOP
 LW          R31,24(R29)
 LW          R17,20(R29)
 LW          R16,16(R29)
-//JR          R31
 B label_end
 ADDIU       R29,R29,32
 label1:
-// LUI         R2,0x9D00
-//LW          R5,5332(R2)
 LUI         R5,0x8000
 
 ADDU        R4,R16,R0
@@ -4304,8 +4209,34 @@ SUBU        R2,R0,R2
 SUBU        R3,R0,R3
 SLTU        R4,R0,R2
 SUBU        R3,R3,R4
-//JR          R31
 ADDIU       R29,R29,32
 label_end:
 }
 }
+
+// ----------------------------------------------------------------------------
+/*
+    __Lib_MathDouble.c
+
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+// ----------------------------------------------------------------------------
