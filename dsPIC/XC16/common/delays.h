@@ -48,16 +48,16 @@
 extern "C" {
 #endif
 
-#define FCY OSC_KHZ*1000ul/FOSC_PER_CYC
+#define FCY OSC_KHZ * 1000ul / FOSC_PER_CYC
 #include <libpic30.h>
 
 /* -----DELAY MACROS------ */
 
 /*!< @brief Macro for creating a software delay in duration of @b time_us microseconds. */
-#define Delay_us(time_us) __delay_us( time_us )
+#define Delay_us(time_us) __delay_us(time_us)
 
 /*!< @brief Macro for creating a software delay in duration of @b time_ms milliseconds. */
-#define Delay_ms(time_ms) __delay_ms( time_ms )
+#define Delay_ms(time_ms) __delay_ms(time_ms)
 
 /*!< @brief Macro for creating a software delay in duration of 1us. */
 #define Delay_1us() __delay_us( 1 )

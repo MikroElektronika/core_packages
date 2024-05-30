@@ -16,10 +16,10 @@
 
 #define MAX_STD_DBG_OUT_BUFFER_SIZE 48
 
-#define __FLOAT 1
-#define DOUBLE 0
-#define DBL_MAX_EXP 128
-#define DBL_MAX_10_EXP 38
+#define __FLOAT                     1
+#define DOUBLE                      0
+#define DBL_MAX_EXP                 128
+#define DBL_MAX_10_EXP              38
 
 #define _div_to_l_(a, b) ((uint32_t)((a) / (b)))
 
@@ -34,17 +34,17 @@
  */
 #ifdef __LONG
 #define value long
-#define NDIG 12
+#define NDIG  12
 #else
 #define value int
-#define NDIG 6
+#define NDIG  6
 #endif
 
 #if DOUBLE
 union
 {
-    uint32_t ul[40];
-    float db[20];
+    uint32_t ul[ 40 ];
+    float    db[ 20 ];
 } _fdp = {
     0x00000001,
     0x00000000,
@@ -129,8 +129,8 @@ static const float _npowers_[] = {
     1e-30
 };
 
-static const char hexb[] = "0123456789ABCDEF";
-static const char hexs[] = "0123456789abcdef";
+static const char hexb[]              = "0123456789ABCDEF";
+static const char hexs[]              = "0123456789abcdef";
 
 const static unsigned value dpowers[] = {
     1, 10, 100, 1000, 10000
@@ -170,20 +170,18 @@ const static unsigned value octpowers[] = {
  * @param[in] prec number to be rounded.
  * @return float Returns rounded float value.
  */
-static float fround( unsigned char prec ) {
+static float fround( unsigned char prec )
+{
     /**
      * @note prec is guaranteed to be less than NDIG.
      */
-    if (prec >= 110)
-    {
-        return 0.5 * _npowers_[prec / 100 + 18] * _npowers_[(prec % 100) / 10 + 9] * _npowers_[prec % 10];
-    }
-    else if (prec > 10)
-    {
-        return 0.5 * _npowers_[prec / 10 + 9] * _npowers_[prec % 10];
+    if ( prec >= 110 ) {
+        return 0.5 * _npowers_[ prec / 100 + 18 ] * _npowers_[ ( prec % 100 ) / 10 + 9 ] * _npowers_[ prec % 10 ];
+    } else if ( prec > 10 ) {
+        return 0.5 * _npowers_[ prec / 10 + 9 ] * _npowers_[ prec % 10 ];
     }
 
-    return 0.5 * _npowers_[prec];
+    return 0.5 * _npowers_[ prec ];
 }
 
 /**
@@ -193,32 +191,26 @@ static float fround( unsigned char prec ) {
  * @param[in] scl Exponent value used for calculation.
  * @return float Rerurns calculated float value.
  */
-static float scale( expon scl ) {
-    if (scl < 0)
-    {
+static float scale( expon scl )
+{
+    if ( scl < 0 ) {
         scl = -scl;
-        if (scl >= 110)
-        {
-            return _npowers_[scl / 100 + 18] * _npowers_[(scl % 100) / 10 + 9] * _npowers_[scl % 10];
-        }
-        else if (scl > 10)
-        {
-            return _npowers_[scl / 10 + 9] * _npowers_[scl % 10];
+        if ( scl >= 110 ) {
+            return _npowers_[ scl / 100 + 18 ] * _npowers_[ ( scl % 100 ) / 10 + 9 ] * _npowers_[ scl % 10 ];
+        } else if ( scl > 10 ) {
+            return _npowers_[ scl / 10 + 9 ] * _npowers_[ scl % 10 ];
         }
 
-        return _npowers_[scl];
+        return _npowers_[ scl ];
     }
 
-    if (scl >= 110)
-    {
-        return _powers_[scl / 100 + 18] * _powers_[(scl % 100) / 10 + 9] * _powers_[scl % 10];
-    }
-    else if (scl > 10)
-    {
-        return _powers_[scl / 10 + 9] * _powers_[scl % 10];
+    if ( scl >= 110 ) {
+        return _powers_[ scl / 100 + 18 ] * _powers_[ ( scl % 100 ) / 10 + 9 ] * _powers_[ scl % 10 ];
+    } else if ( scl > 10 ) {
+        return _powers_[ scl / 10 + 9 ] * _powers_[ scl % 10 ];
     }
 
-    return _powers_[scl];
+    return _powers_[ scl ];
 }
 
 #endif /* __FLOAT */
@@ -227,31 +219,32 @@ static float scale( expon scl ) {
 #define SPCSIGN 0x01
 #define MANSIGN 0x02
 #define NEGSIGN 0x03
-#define FILL 0x04
-#define LEFT 0x08
-#define LONG 0x10
-#define UPCASE 0x20
-#define TEN 0x00
-#define EIGHT 0x40
+#define FILL    0x04
+#define LEFT    0x08
+#define LONG    0x10
+#define UPCASE  0x20
+#define TEN     0x00
+#define EIGHT   0x40
 #define SIXTEEN 0x80
-#define UNSIGN 0xC0
-#define BASEM 0xC0
-#define EFMT 0x100
-#define GFMT 0x200
-#define FFMT 0x400
-#define ALTERN 0x800
+#define UNSIGN  0xC0
+#define BASEM   0xC0
+#define EFMT    0x100
+#define GFMT    0x200
+#define FFMT    0x400
+#define ALTERN  0x800
 #define DEFPREC 0x1000
 #define POINTER 0x2000
 
-int vfprintf_me( void (*stream)(char ch), const char *format, register va_list arg ) {
-    int prec;
-    char c;
-    int width;
+int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_list arg )
+{
+    int      prec;
+    char     c;
+    int      width;
     unsigned flag;
-    int ccnt = 0;
+    int      ccnt = 0;
 #ifdef __FLOAT
     float fval;
-    int exp;
+    int   exp;
 #if DOUBLE
     float ival;
 #endif
@@ -260,8 +253,8 @@ int vfprintf_me( void (*stream)(char ch), const char *format, register va_list a
         unsigned value _val;
         struct
         {
-            const char *_cp;
-            unsigned _len;
+            const char * _cp;
+            unsigned     _len;
         } _str;
         float _integ;
     } _val;
@@ -271,88 +264,77 @@ int vfprintf_me( void (*stream)(char ch), const char *format, register va_list a
         unsigned value _val;
         struct
         {
-            const char *_cp;
-            unsigned _len;
+            const char * _cp;
+            unsigned     _len;
         } _str;
     } _val;
 #endif
 
-#define val _val._val
-#define cp _val._str._cp
-#define len _val._str._len
+#define val   _val._val
+#define cp    _val._str._cp
+#define len   _val._str._len
 #define integ _val._integ
 
     flag = 0;
-    while (c = *format++)
-    {
-        if (c != '%')
-        {
-            stream(c);
+    while ( c = *format++ ) {
+        if ( c != '%' ) {
+            stream( c );
             continue;
         }
         width = 0;
-        flag = 0;
-        for (;;)
-        {
-            switch (*format)
-            {
-            case '-':
-                flag |= LEFT;
-                format++;
-                continue;
+        flag  = 0;
+        for ( ;; ) {
+            switch ( *format ) {
+                case '-':
+                    flag |= LEFT;
+                    format++;
+                    continue;
 
-            case ' ':
-                flag |= SPCSIGN;
-                format++;
-                continue;
+                case ' ':
+                    flag |= SPCSIGN;
+                    format++;
+                    continue;
 
-            case '+':
-                flag |= MANSIGN;
-                format++;
-                continue;
+                case '+':
+                    flag |= MANSIGN;
+                    format++;
+                    continue;
 
-            case '#':
-                flag |= ALTERN;
-                format++;
-                continue;
+                case '#':
+                    flag |= ALTERN;
+                    format++;
+                    continue;
 
-            case '0':
-                flag |= FILL;
-                format++;
-                continue;
+                case '0':
+                    flag |= FILL;
+                    format++;
+                    continue;
             }
             break;
         }
-        if (flag & MANSIGN)
+        if ( flag & MANSIGN )
             flag &= ~SPCSIGN;
-        if (flag & LEFT)
+        if ( flag & LEFT )
             flag &= ~FILL;
-        if (isdigit((unsigned)*format))
-        {
+        if ( isdigit( ( unsigned )*format ) ) {
             width = 0;
             do
                 width = width * 10 + *format++ - '0';
-            while (isdigit((unsigned)*format));
-        }
-        else if (*format == '*')
-        {
-            width = va_arg(arg, int);
+            while ( isdigit( ( unsigned )*format ) );
+        } else if ( *format == '*' ) {
+            width = va_arg( arg, int );
             format++;
         }
-        if (*format == '.')
-            if (*++format == '*')
-            {
-                prec = va_arg(arg, int);
+        if ( *format == '.' )
+            if ( *++format == '*' ) {
+                prec = va_arg( arg, int );
                 format++;
-            }
-            else
-            {
+            } else {
                 prec = 0;
-                while (isdigit((unsigned)*format))
+                while ( isdigit( ( unsigned )*format ) )
                     prec = prec * 10 + *format++ - '0';
             }
-        else
-        {
+        else {
             prec = 0;
 #ifdef __FLOAT
             flag |= DEFPREC;
@@ -361,104 +343,101 @@ int vfprintf_me( void (*stream)(char ch), const char *format, register va_list a
 #ifdef __LONG
     loop:
 #endif
-        switch (c = *format++)
-        {
-        case 0:
-            return ccnt;
-        case 'l':
-        case 'L':
+        switch ( c = *format++ ) {
+            case 0:
+                return ccnt;
+            case 'l':
+            case 'L':
 #ifdef __LONG
-            flag |= LONG;
-            goto loop;
+                flag |= LONG;
+                goto loop;
 #else
-            cp = "non-long printf";
-            goto strings;
+                cp = "non-long printf";
+                goto strings;
 #endif
 
 #ifndef __FLOAT
-        case 'E':
-        case 'f':
-        case 'e':
-        case 'g':
-            cp = "non-float printf";
-            prec = 0;
-            goto strings;
+            case 'E':
+            case 'f':
+            case 'e':
+            case 'g':
+                cp   = "non-float printf";
+                prec = 0;
+                goto strings;
 #else
-        case 'f':
-            flag |= FFMT;
-            break;
+            case 'f':
+                flag |= FFMT;
+                break;
 
-        case 'E':
-            flag |= UPCASE;
-        case 'e':
-            flag |= EFMT;
-            break;
-        case 'g':
-            flag |= GFMT;
-            break;
+            case 'E':
+                flag |= UPCASE;
+            case 'e':
+                flag |= EFMT;
+                break;
+            case 'g':
+                flag |= GFMT;
+                break;
 #endif
-        case 'o':
-            flag |= EIGHT;
-            break;
+            case 'o':
+                flag |= EIGHT;
+                break;
 
-        case 'd':
-        case 'i':
-            break;
+            case 'd':
+            case 'i':
+                break;
 
-        case 'p':
+            case 'p':
 
-        case 'X':
-            flag |= UPCASE;
-        case 'x':
-            flag |= SIXTEEN;
-            break;
+            case 'X':
+                flag |= UPCASE;
+            case 'x':
+                flag |= SIXTEEN;
+                break;
 
-        case 's':
-            cp = va_arg(arg, const char *);
-#if !defined(__FLOAT)
-        strings:
+            case 's':
+                cp = va_arg( arg, const char * );
+#if !defined( __FLOAT )
+            strings:
 #endif
-            if (cp == 0)
-                cp = "null";
-            len = 0;
-            while (cp[len])
-                len++;
-        dostring:
-            if (prec && (prec < len))
-                len = prec;
-            if (width > len)
-                width -= len;
-            else
-                width = 0;
-            if (!(flag & LEFT))
-                while (width--)
-                    stream(' ');
-            while (len--)
-                stream(*cp++);
+                if ( cp == 0 )
+                    cp = "null";
+                len = 0;
+                while ( cp[ len ] )
+                    len++;
+            dostring:
+                if ( prec && ( prec < len ) )
+                    len = prec;
+                if ( width > len )
+                    width -= len;
+                else
+                    width = 0;
+                if ( !( flag & LEFT ) )
+                    while ( width-- )
+                        stream( ' ' );
+                while ( len-- )
+                    stream( *cp++ );
 
-            if (flag & LEFT)
-                while (width--)
-                    stream(' ');
-            continue;
-        case 'c':
-            c = va_arg(arg, int);
-        default:
-            cp = &c;
-            len = 1;
-            goto dostring;
+                if ( flag & LEFT )
+                    while ( width-- )
+                        stream( ' ' );
+                continue;
+            case 'c':
+                c = va_arg( arg, int );
+            default:
+                cp  = &c;
+                len = 1;
+                goto dostring;
 
-        case 'u':
-            flag |= UNSIGN;
-            break;
+            case 'u':
+                flag |= UNSIGN;
+                break;
         }
 #ifdef __FLOAT
-        if (flag & (EFMT | GFMT | FFMT))
-        {
-            if (flag & DEFPREC)
+        if ( flag & ( EFMT | GFMT | FFMT ) ) {
+            if ( flag & DEFPREC )
                 prec = 6;
-            fval = va_arg(arg, double);
-            if (fval < 0.0)
-            {
+            fval = va_arg( arg, double );
+            if ( fval < 0.0 ) {
                 fval = -fval;
                 flag |= NEGSIGN;
             }
@@ -466,431 +445,386 @@ int vfprintf_me( void (*stream)(char ch), const char *format, register va_list a
              * @note If the number is zero, the exponent is zero.
              */
             exp = 0;
-            if (fval != 0)
-            {
+            if ( fval != 0 ) {
                 /**
                  * @note If the number is non-zero, find the exponent.
                  *       get binary exponent and adjust 0.5 -> 1.0
                  */
-                frexp(fval, &exp);
+                frexp( fval, &exp );
                 exp--;
                 exp *= 3;
                 /**
                  * @note Estimate decimal exponent.
                  */
                 exp /= 10;
-                if (exp < 0)
+                if ( exp < 0 )
                     exp--;
-                integ = fval * scale(-exp);
-                if (integ < 1.0)
+                integ = fval * scale( -exp );
+                if ( integ < 1.0 )
                     exp--;
-                else if (integ >= 10.0)
+                else if ( integ >= 10.0 )
                     exp++;
             }
 
-            if (exp <= 0)
+            if ( exp <= 0 )
                 c = 1;
             else
                 c = exp;
 
-            if (flag & EFMT || flag & GFMT && (exp < -4 || exp >= (int)prec))
-            {
+            if ( flag & EFMT || flag & GFMT && ( exp < -4 || exp >= ( int )prec ) ) {
                 /**
                  * @note Use e format
                  */
-                if (prec && flag & GFMT)
+                if ( prec && flag & GFMT )
                     /**
                      * @note g format precision includes integer digit.
                      */
                     prec--;
-                if ((unsigned)prec > NDDIG - 2)
+                if ( ( unsigned )prec > NDDIG - 2 )
                     c = NDDIG - 2;
                 else
                     c = prec;
 
-                if (fval != 0)
-                {
+                if ( fval != 0 ) {
                     /**
                      * @note Normalise only if the number is non-zero.
                      */
-                    fval /= scale(exp);
-                    fval /= scale(-c);
-                    if (fval - (float)(unsigned long)fval >= 0.5)
+                    fval /= scale( exp );
+                    fval /= scale( -c );
+                    if ( fval - ( float )( unsigned long )fval >= 0.5 )
                         fval += 0.5;
-                    if ((unsigned long)fval >= fdpowers[c + 1])
-                    {
+                    if ( ( unsigned long )fval >= fdpowers[ c + 1 ] ) {
                         fval *= 1e-1;
                         exp++;
-                    }
-                    else if ((unsigned long)fval < fdpowers[c])
-                    {
+                    } else if ( ( unsigned long )fval < fdpowers[ c ] ) {
                         fval *= 10.0;
                         exp--;
                     }
                 }
 
-                if (flag & GFMT && !(flag & ALTERN))
-                {
+                if ( flag & GFMT && !( flag & ALTERN ) ) {
                     /**
                      * @note g format, precision means something different.
                      */
-                    if (prec > (int)(NDDIG))
+                    if ( prec > ( int )( NDDIG ) )
                         prec = NDDIG;
-                    val = (unsigned long)fval;
-                    while (val && val % 10 == 0)
-                    {
+                    val = ( unsigned long )fval;
+                    while ( val && val % 10 == 0 ) {
                         prec--;
                         val /= 10;
                     }
-                    if (prec < c)
-                    {
-                        fval /= scale(c - prec);
+                    if ( prec < c ) {
+                        fval /= scale( c - prec );
                         c = prec;
                     }
                 }
 
                 width -= prec + 5;
-                if (prec || flag & ALTERN)
+                if ( prec || flag & ALTERN )
                     width--;
 
-                if (flag & (MANSIGN | SPCSIGN))
+                if ( flag & ( MANSIGN | SPCSIGN ) )
                     width--;
 
-                if (flag & FILL)
-                {
-                    if (flag & MANSIGN)
-                        stream(flag & SPCSIGN ? '-' : '+');
-                    else if (flag & SPCSIGN)
-                        stream(' ');
-                    while (width > 0)
-                    {
-                        stream('0');
+                if ( flag & FILL ) {
+                    if ( flag & MANSIGN )
+                        stream( flag & SPCSIGN ? '-' : '+' );
+                    else if ( flag & SPCSIGN )
+                        stream( ' ' );
+                    while ( width > 0 ) {
+                        stream( '0' );
                         width--;
                     }
-                }
-                else
-                {
-                    if (!(flag & LEFT))
-                        while (width > 0)
-                        {
-                            stream(' ');
+                } else {
+                    if ( !( flag & LEFT ) )
+                        while ( width > 0 ) {
+                            stream( ' ' );
                             width--;
                         }
-                    if (flag & MANSIGN)
-                        stream(flag & SPCSIGN ? '-' : '+');
-                    else if (flag & SPCSIGN)
-                        stream(' ');
+                    if ( flag & MANSIGN )
+                        stream( flag & SPCSIGN ? '-' : '+' );
+                    else if ( flag & SPCSIGN )
+                        stream( ' ' );
                 }
 
-                val = (unsigned long)fval;
-                stream(val / fdpowers[c] + '0');
+                val = ( unsigned long )fval;
+                stream( val / fdpowers[ c ] + '0' );
 
-                if (prec || flag & ALTERN)
-                {
-                    stream('.');
+                if ( prec || flag & ALTERN ) {
+                    stream( '.' );
                     prec -= c;
-                    while (c)
-                    {
-                        stream('0' + (val / fdpowers[--c]) % 10);
+                    while ( c ) {
+                        stream( '0' + ( val / fdpowers[ --c ] ) % 10 );
                     }
-                    while (prec)
-                    {
-                        stream('0');
+                    while ( prec ) {
+                        stream( '0' );
                         prec--;
                     }
                 }
 
-                if (flag & UPCASE)
-                    stream('E');
+                if ( flag & UPCASE )
+                    stream( 'E' );
                 else
-                    stream('e');
+                    stream( 'e' );
 
-                if (exp < 0)
-                {
+                if ( exp < 0 ) {
                     exp = -exp;
-                    stream('-');
-                }
-                else
-                    stream('+');
+                    stream( '-' );
+                } else
+                    stream( '+' );
 
-                stream(exp / 10 + '0');
-                stream(exp % 10 + '0');
+                stream( exp / 10 + '0' );
+                stream( exp % 10 + '0' );
 
-                if ((flag & LEFT) && width > 0)
+                if ( ( flag & LEFT ) && width > 0 )
                     do
-                        stream(' ');
-                    while (--width);
+                        stream( ' ' );
+                    while ( --width );
                 continue;
             }
 
-            if (flag & GFMT)
-            {
-                if (exp < 0)
+            if ( flag & GFMT ) {
+                if ( exp < 0 )
                     prec -= exp - 1;
-                val = (unsigned long)fval;
-                for (c = 1; c != NDDIG; c++)
-                    if (val < fdpowers[c])
+                val = ( unsigned long )fval;
+                for ( c = 1; c != NDDIG; c++ )
+                    if ( val < fdpowers[ c ] )
                         break;
                 prec -= c;
-                val = (unsigned long)((fval - (float)val) * scale(prec) + 0.5);
-                while (prec && val % 10 == 0)
-                {
+                val = ( unsigned long )( ( fval - ( float )val ) * scale( prec ) + 0.5 );
+                while ( prec && val % 10 == 0 ) {
                     val /= 10;
                     prec--;
                 }
             }
 
-            if (prec <= NDIG)
-                fval += fround(prec);
+            if ( prec <= NDIG )
+                fval += fround( prec );
 
             /**
              * @note ~4.2e9 is the largest float that will with into a 32-bit long.
              */
-            if (fval != 0 && (unsigned long)fval == 0 && exp > 1)
-            {
+            if ( fval != 0 && ( unsigned long )fval == 0 && exp > 1 ) {
                 /**
                  * @note fval is > 4.2e9
                  * @attention exp must be such that div_to_l() is < 4.2e9
                  */
-                if (fval / scale(exp) < 4.294967296)
+                if ( fval / scale( exp ) < 4.294967296 )
                     exp -= NDDIG - 1;
                 else
                     exp -= NDDIG - 2;
-                val = _div_to_l_(fval, scale(exp));
+                val  = _div_to_l_( fval, scale( exp ) );
                 fval = 0.0;
-            }
-            else
-            {
-                val = (unsigned long)fval;
-                fval -= (float)val;
+            } else {
+                val = ( unsigned long )fval;
+                fval -= ( float )val;
                 exp = 0;
             }
 
-            for (c = 1; c != NDDIG; c++)
-                if (val < fdpowers[c])
+            for ( c = 1; c != NDDIG; c++ )
+                if ( val < fdpowers[ c ] )
                     break;
 
             width -= prec + c + exp;
 
-            if (flag & ALTERN || prec)
+            if ( flag & ALTERN || prec )
                 width--;
 
-            if (flag & (MANSIGN | SPCSIGN))
+            if ( flag & ( MANSIGN | SPCSIGN ) )
                 width--;
 
-            if (flag & FILL)
-            {
-                if (flag & MANSIGN)
-                    stream(flag & SPCSIGN ? '-' : '+');
-                else if (flag & SPCSIGN)
-                    stream(' ');
+            if ( flag & FILL ) {
+                if ( flag & MANSIGN )
+                    stream( flag & SPCSIGN ? '-' : '+' );
+                else if ( flag & SPCSIGN )
+                    stream( ' ' );
 
-                while (width > 0)
-                {
-                    stream('0');
+                while ( width > 0 ) {
+                    stream( '0' );
                     width--;
                 }
-            }
-            else
-            {
-                if (!(flag & LEFT))
-                    while (width > 0)
-                    {
-                        stream(' ');
+            } else {
+                if ( !( flag & LEFT ) )
+                    while ( width > 0 ) {
+                        stream( ' ' );
                         width--;
                     }
 
-                if (flag & MANSIGN)
-                    stream(flag & SPCSIGN ? '-' : '+');
-                else if (flag & SPCSIGN)
-                    stream(' ');
+                if ( flag & MANSIGN )
+                    stream( flag & SPCSIGN ? '-' : '+' );
+                else if ( flag & SPCSIGN )
+                    stream( ' ' );
             }
 
-            while (c--)
-                stream('0' + (val / fdpowers[c]) % 10);
+            while ( c-- )
+                stream( '0' + ( val / fdpowers[ c ] ) % 10 );
 
-            while (exp > 0)
-            {
-                stream('0');
+            while ( exp > 0 ) {
+                stream( '0' );
                 exp--;
             }
 
-            if (prec > (int)(NDDIG - 2))
+            if ( prec > ( int )( NDDIG - 2 ) )
                 c = NDDIG - 2;
             else
                 c = prec;
 
             prec -= c;
-            if (c || flag & ALTERN)
-                stream('.');
+            if ( c || flag & ALTERN )
+                stream( '.' );
 
-            val = (long)(fval * scale(c));
-            while (c)
-                stream('0' + (val / fdpowers[--c]) % 10);
+            val = ( long )( fval * scale( c ) );
+            while ( c )
+                stream( '0' + ( val / fdpowers[ --c ] ) % 10 );
 
-            while (prec)
-            {
-                stream('0');
+            while ( prec ) {
+                stream( '0' );
                 prec--;
             }
 
-            if ((flag & LEFT) && width > 0)
+            if ( ( flag & LEFT ) && width > 0 )
                 do
-                    stream(' ');
-                while (--width);
+                    stream( ' ' );
+                while ( --width );
             continue;
         }
 #endif /* __FLOAT */
-        if ((flag & BASEM) == TEN)
-        {
+        if ( ( flag & BASEM ) == TEN ) {
 #ifdef __LONG
-            if (flag & LONG)
-                val = va_arg(arg, long);
+            if ( flag & LONG )
+                val = va_arg( arg, long );
             else
 #endif
-                val = (value)va_arg(arg, int);
+                val = ( value )va_arg( arg, int );
 
-            if ((value)val < 0)
-            {
+            if ( ( value )val < 0 ) {
                 flag |= NEGSIGN;
                 val = -val;
             }
-        }
-        else
-        {
+        } else {
 #ifdef __LONG
-            if (flag & LONG)
-                val = va_arg(arg, unsigned long);
+            if ( flag & LONG )
+                val = va_arg( arg, unsigned long );
             else
 #endif
-                val = va_arg(arg, unsigned);
+                val = va_arg( arg, unsigned );
         }
-        if (prec == 0 && val == 0)
+        if ( prec == 0 && val == 0 )
             prec++;
 
-        switch ((unsigned char)(flag & BASEM))
-        {
+        switch ( ( unsigned char )( flag & BASEM ) ) {
             case TEN:
             case UNSIGN:
-                for (c = 1; c != sizeof dpowers / sizeof dpowers[0]; c++)
-                    if (val < dpowers[c])
+                for ( c = 1; c != sizeof dpowers / sizeof dpowers[ 0 ]; c++ )
+                    if ( val < dpowers[ c ] )
                         break;
                 break;
 
             case SIXTEEN:
-                for (c = 1; c != sizeof hexpowers / sizeof hexpowers[0]; c++)
-                    if (val < hexpowers[c])
+                for ( c = 1; c != sizeof hexpowers / sizeof hexpowers[ 0 ]; c++ )
+                    if ( val < hexpowers[ c ] )
                         break;
                 break;
 
             case EIGHT:
-                for (c = 1; c != sizeof octpowers / sizeof octpowers[0]; c++)
-                    if (val < octpowers[c])
+                for ( c = 1; c != sizeof octpowers / sizeof octpowers[ 0 ]; c++ )
+                    if ( val < octpowers[ c ] )
                         break;
                 break;
         }
 
-        if (c < prec)
+        if ( c < prec )
             c = prec;
-        else if (prec < c)
+        else if ( prec < c )
             prec = c;
 
-        if (width && flag & NEGSIGN)
+        if ( width && flag & NEGSIGN )
             width--;
 
-        if (width > prec)
+        if ( width > prec )
             width -= prec;
         else
             width = 0;
 
-        if ((flag & (FILL | BASEM | ALTERN)) == (EIGHT | ALTERN))
-        {
-            if (width)
+        if ( ( flag & ( FILL | BASEM | ALTERN ) ) == ( EIGHT | ALTERN ) ) {
+            if ( width )
                 width--;
-        }
-        else if ((flag & (BASEM | ALTERN)) == (SIXTEEN | ALTERN))
-        {
-            if (width > 2)
+        } else if ( ( flag & ( BASEM | ALTERN ) ) == ( SIXTEEN | ALTERN ) ) {
+            if ( width > 2 )
                 width -= 2;
             else
                 width = 0;
         }
 
-        if (flag & FILL)
-        {
-            if (flag & MANSIGN)
-                stream(flag & SPCSIGN ? '-' : '+');
-            else if (flag & SPCSIGN)
-                stream(' ');
-            else if ((flag & (BASEM | ALTERN)) == (SIXTEEN | ALTERN))
-            {
-                stream('0');
-                stream(flag & UPCASE ? 'X' : 'x');
+        if ( flag & FILL ) {
+            if ( flag & MANSIGN )
+                stream( flag & SPCSIGN ? '-' : '+' );
+            else if ( flag & SPCSIGN )
+                stream( ' ' );
+            else if ( ( flag & ( BASEM | ALTERN ) ) == ( SIXTEEN | ALTERN ) ) {
+                stream( '0' );
+                stream( flag & UPCASE ? 'X' : 'x' );
             }
 
-            if (width)
+            if ( width )
                 do
-                    stream('0');
-                while (--width);
-        }
-        else
-        {
-            if (width && !(flag & LEFT))
+                    stream( '0' );
+                while ( --width );
+        } else {
+            if ( width && !( flag & LEFT ) )
                 do
-                    stream(' ');
-                while (--width);
+                    stream( ' ' );
+                while ( --width );
 
-            if (flag & MANSIGN)
-                stream(flag & SPCSIGN ? '-' : '+');
-            else if (flag & SPCSIGN)
-                stream(' ');
+            if ( flag & MANSIGN )
+                stream( flag & SPCSIGN ? '-' : '+' );
+            else if ( flag & SPCSIGN )
+                stream( ' ' );
 
-            if ((flag & (BASEM | ALTERN)) == (EIGHT | ALTERN))
-                stream('0');
-            else if ((flag & (BASEM | ALTERN)) == (SIXTEEN | ALTERN))
-            {
-                stream('0');
-                stream(flag & UPCASE ? 'X' : 'x');
+            if ( ( flag & ( BASEM | ALTERN ) ) == ( EIGHT | ALTERN ) )
+                stream( '0' );
+            else if ( ( flag & ( BASEM | ALTERN ) ) == ( SIXTEEN | ALTERN ) ) {
+                stream( '0' );
+                stream( flag & UPCASE ? 'X' : 'x' );
             }
         }
 
-        while (prec > c)
-            stream('0');
+        while ( prec > c )
+            stream( '0' );
 
-        while (prec--)
-        {
-            switch ((unsigned char)(flag & BASEM))
-            {
+        while ( prec-- ) {
+            switch ( ( unsigned char )( flag & BASEM ) ) {
                 case TEN:
                 case UNSIGN:
-                    c = (val / dpowers[prec]) % 10 + '0';
+                    c = ( val / dpowers[ prec ] ) % 10 + '0';
                     break;
 
                 case SIXTEEN:
-                    if (flag & UPCASE)
-                        c = hexb[(val / hexpowers[prec]) & 0xF];
+                    if ( flag & UPCASE )
+                        c = hexb[ ( val / hexpowers[ prec ] ) & 0xF ];
                     else
-                        c = hexs[(val / hexpowers[prec]) & 0xF];
+                        c = hexs[ ( val / hexpowers[ prec ] ) & 0xF ];
                     break;
 
                 case EIGHT:
-                    c = ((val / octpowers[prec]) & 07) + '0';
+                    c = ( ( val / octpowers[ prec ] ) & 07 ) + '0';
                     break;
             }
-            stream(c);
+            stream( c );
         }
 
-        if ((flag & LEFT) && width > 0)
+        if ( ( flag & LEFT ) && width > 0 )
             do
-                stream(' ');
-            while (--width);
+                stream( ' ' );
+            while ( --width );
     }
 
     return ccnt;
 }
 
-int fprintf_me( void (*stream)(char ch), const char *format, ... ) {
-    int cnt = 0;
+int fprintf_me( void ( *stream )( char ch ), const char * format, ... )
+{
+    int     cnt = 0;
     va_list arg;
 
     va_start( arg, format );
@@ -899,8 +833,9 @@ int fprintf_me( void (*stream)(char ch), const char *format, ... ) {
     return cnt;
 }
 
-int printf_me( const char *format, ... ) {
-    int cnt = 0;
+int printf_me( const char * format, ... )
+{
+    int     cnt = 0;
     va_list arg;
 
     va_start( arg, format );
@@ -913,36 +848,39 @@ int printf_me( const char *format, ... ) {
  * @note Following function used for MikroE std printout.
  * @warning Must be declared as volatile, so compiler will keep them after optimizations.
  */
-static volatile char __debugBuffer[ MAX_STD_DBG_OUT_BUFFER_SIZE ] = {0};
-static volatile char buffPos = 0;
-static volatile char lastPos = 0;
-static volatile int counterID = 0;
+static volatile char __debugBuffer[ MAX_STD_DBG_OUT_BUFFER_SIZE ] = { 0 };
+static volatile char buffPos                                      = 0;
+static volatile char lastPos                                      = 0;
+static volatile int  counterID                                    = 0;
 
-void debugStdOut( char ch ) {
-    if (0 == buffPos)
+void debugStdOut( char ch )
+{
+    if ( 0 == buffPos )
         lastPos = 0;
 
-    __debugBuffer[buffPos++] = ch;
+    __debugBuffer[ buffPos++ ] = ch;
 
-    if((buffPos >= MAX_STD_DBG_OUT_BUFFER_SIZE) || (ch == '\n'))
-    {
+    if ( ( buffPos >= MAX_STD_DBG_OUT_BUFFER_SIZE ) || ( ch == '\n' ) ) {
         lastPos = buffPos;
         counterID++;
         stdBuffFullBreak();
         buffPos = 0;
-        ch = 0;
+        ch      = 0;
     }
 }
 
-int puts_me( const char *str ) {
+int puts_me( const char * str )
+{
     return printf_me( "%s%s", str, "\n" );
 }
 
-int fputs_me( const char *str, void (*stream)(char ch) ) {
+int fputs_me( const char * str, void ( *stream )( char ch ) )
+{
     return fprintf_me( stream, "%s%s", str, "\n" );
 }
 
-int putchar_me( int character ) {
+int putchar_me( int character )
+{
     return printf_me( "%i", character );
 }
 

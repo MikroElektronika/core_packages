@@ -13,17 +13,20 @@
 /*!
  * @file  cstdio.h
  * @brief Standard input output functions.
+  * @{
  */
+
+/*--------------------------------------------------------------------------- */
 
 #ifndef _CSTDIO_H_
 #define _CSTDIO_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
-#include <stdint.h>
 #include <stdarg.h>
+#include <stdint.h>
 
 /**
  * @brief MikroE standard output breakpoint.
@@ -31,8 +34,9 @@ extern "C"{
  * @param / None.
  * @return None.
  */
-static inline void stdBuffFullBreak() {
-    asm ("nop");
+static inline void stdBuffFullBreak()
+{
+    asm( "nop" );
 }
 
 /**
@@ -55,7 +59,7 @@ int putchar_me( int character );
  * @note MikroE standard output implementation.
  * @return None.
  */
-int puts_me( const char *str );
+int puts_me( const char * str );
 
 /**
  * @brief Writes a string to specified stream.
@@ -67,7 +71,7 @@ int puts_me( const char *str );
  * @note MikroE standard output implementation.
  * @return None.
  */
-int fputs_me( const char *str, void (*stream)(char ch) );
+int fputs_me( const char * str, void ( *stream )( char ch ) );
 
 /**
  * @brief MikroE standard output API.
@@ -91,7 +95,7 @@ void debugStdOut( char ch );
  * @return If successful, the total number of characters written is returned.
  *         On failure, a negative number is returned.
  */
-int printf_me( const char *format, ... );
+int printf_me( const char * format, ... );
 
 /**
  * @brief Sends formatted output to a stream.
@@ -107,7 +111,7 @@ int printf_me( const char *format, ... );
  * @return If successful, the total number of characters written is returned.
  *         On failure, a negative number is returned.
  */
-int fprintf_me( void (*stream)(char ch), const char *format, ... );
+int fprintf_me( void ( *stream )( char ch ), const char * format, ... );
 
 /**
  * @brief Sends formatted output to a stream using an argument list passed to it.
@@ -125,14 +129,15 @@ int fprintf_me( void (*stream)(char ch), const char *format, ... );
  * @return If successful, the total number of characters written is returned.
  *         On failure, a negative number is returned.
  */
-int vfprintf_me( void (*stream)(char ch), const char *format, register va_list arg );
+int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_list arg );
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // _CSTDIO_H_
+#endif // _CSTDIO_H_
 
+/** @} */
 // ----------------------------------------------------------------------------
 /*
     cstdio.h
