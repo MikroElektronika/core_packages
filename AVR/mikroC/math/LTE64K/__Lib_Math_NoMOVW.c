@@ -6,8 +6,7 @@
 
 void Mul_8x8_U()
 {
-    asm
-    {
+    asm {
         CLR   R0
     Mul_8x8_U_L1:
         SBRC  R16, 0
@@ -23,8 +22,7 @@ void Mul_8x8_U()
 
 void Mul_16x16()
 {
-    asm
-    {
+    asm {
         CLR    R18
         CLR    R0
     Mul_16x16_L1:
@@ -51,8 +49,7 @@ void Mul_16x16()
 
 void Mul_32x32()
 {
-    asm
-    {
+    asm {
         CLR  R27
         CLR  R26
         CLR  R25
@@ -88,8 +85,7 @@ void Mul_32x32()
 
 void Div_8x8_U()
 {
-    asm
-    {
+    asm {
         CLR  R25
         LDI  R23, 0x09
         RJMP Div_8x8_U_L2
@@ -108,8 +104,7 @@ void Div_8x8_U()
 
 void Div_16x16_S()
 {
-    asm
-    {
+    asm {
         MOV   R24, R16
         MOV   R25, R17
         MOV   R22, R20
@@ -167,8 +162,7 @@ void Div_16x16_S()
 
 void Div_16x16_U()
 {
-    asm
-    {
+    asm {
         MOV   R24, R16
         MOV   R25, R17
         MOV   R22, R20
@@ -198,8 +192,7 @@ void Div_16x16_U()
 
 void Div_32x32_U()
 {
-    asm
-    {
+    asm {
         MOV R24, R18
         MOV R25, R19
         MOV R18, R20
@@ -246,8 +239,7 @@ void Div_32x32_U()
 
 void Div_32x32_S()
 {
-    asm
-    {
+    asm {
         MOV   R24, R18
         MOV   R25, R19
         MOV   R18, R20

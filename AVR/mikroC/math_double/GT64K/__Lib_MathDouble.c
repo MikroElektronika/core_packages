@@ -1,8 +1,7 @@
 
 void float_neg32()
 {
-    asm
-    {
+    asm {
         COM  R16
         COM  R17
         COM  R18
@@ -16,8 +15,7 @@ void float_neg32()
 
 void float_tstr16_r19()
 {
-    asm
-    {
+    asm {
         TST  R16
         BRNE L015C
         TST  R17
@@ -32,8 +30,7 @@ void float_tstr16_r19()
 void float_pack()
 {
     float_tstr16_r19();
-    asm
-    {
+    asm {
         BREQ L01A7
         SUBI R20,129
         SBCI R21,255
@@ -49,8 +46,7 @@ void float_pack()
 void float_normalize_and_pack()
 {
     float_tstr16_r19();
-    asm
-    {
+    asm {
         BREQ  L0196
         PUSH  R25
         PUSH  R24
@@ -103,16 +99,14 @@ void float_normalize_and_pack()
         POP   R25
     }
     float_pack();
-    asm
-    {
+    asm {
     L0196x:
     }
 }
 
 void float_long2fp()
 {
-    asm
-    {
+    asm {
         LDI   R20, 23
         CLR   R22
         CLR   R21
@@ -121,8 +115,7 @@ void float_long2fp()
         BRPL  L00FC
     }
     float_neg32();
-    asm
-    {
+    asm {
         LDI   R22,128
         L00FC:
     }
@@ -131,8 +124,7 @@ void float_long2fp()
 
 void float_slong2fp()
 {
-    asm
-    {
+    asm {
         BCLR  6
     }
     float_long2fp();
@@ -140,8 +132,7 @@ void float_slong2fp()
 
 void float_ulong2fp()
 {
-    asm
-    {
+    asm {
         BSET  6
     }
     float_long2fp();
@@ -149,8 +140,7 @@ void float_ulong2fp()
 
 void float_int2fp()
 {
-    asm
-    {
+    asm {
         CLR   R18
         CLR   R19
         SBRC  R17,7
@@ -164,8 +154,7 @@ void float_int2fp()
 void float_unpacku()
 {
     float_tstr16_r19();
-    asm
-    {
+    asm {
         BREQ  L016E
         MOV	  R22, R19
         ANDI  R22, 128
@@ -193,15 +182,13 @@ void float_unpacku()
 void float_unpacks()
 {
     float_unpacku();
-    asm
-    {
+    asm {
         BREQ  L0154
         TST   R22
         BREQ  L0153
     }
     float_neg32();
-    asm
-    {
+    asm {
     L0153:
         CLZ
     L0154:
@@ -211,8 +198,7 @@ void float_unpacks()
 void float_fpint()
 {
     float_unpacku();
-    asm
-    {
+    asm {
         BREQ  L0077
         TST   R21
         BRMI  L0073
@@ -255,8 +241,7 @@ void float_fpint()
         BREQ  L007A
     }
     float_neg32();
-    asm
-    {
+    asm {
     L007A:
     }
 }
@@ -264,8 +249,7 @@ void float_fpint()
 void float_fpadd_alt()
 {
     float_unpacks();
-    asm
-    {
+    asm {
         BRNE  L008A
         RJMP  L00CC
     L008A:
@@ -282,8 +266,7 @@ void float_fpadd_alt()
         MOV   R19, R3
     }
     float_unpacks();
-    asm
-    {
+    asm {
         BRNE  L0098
         RJMP  L00D6
     L0098:
@@ -340,20 +323,17 @@ void float_fpadd_alt()
         BRPL  L00C7
     }
     float_neg32();
-    asm
-    {
+    asm {
         LDI   R22,128
     L00C7:
     }
     float_normalize_and_pack();
-    asm
-    {
+    asm {
         RJMP  L00CA
     L00C9:
     }
     float_pack();
-    asm
-    {
+    asm {
     L00CA:
         RJMP  L00D6x
     L00CC:
@@ -364,8 +344,7 @@ void float_fpadd_alt()
         BRTC  L00CA
     }
     float_tstr16_r19();
-    asm
-    {
+    asm {
         BREQ  L00CA
         LDI   R20,128
         EOR   R19,R20
@@ -382,8 +361,7 @@ void float_fpadd_alt()
         BRPL  L00C9
     }
     float_neg32();
-    asm
-    {
+    asm {
         LDI   R22,128
         RJMP  L00C9
     L00D6x:
@@ -392,8 +370,7 @@ void float_fpadd_alt()
 
 void float_fpadd()
 {
-    asm
-    {
+    asm {
         CLT
     }
     float_fpadd_alt();
@@ -401,16 +378,14 @@ void float_fpadd()
 
 void float_fpadd1()
 {
-    asm
-    {
+    asm {
         MOV   R0, R20
         MOV   R1, R21
         MOV   R2, R22
         MOV   R3, R23
     }
     float_fpadd();
-    asm
-    {
+    asm {
         MOV   R0, R16
         MOV   R1, R17
         MOV   R2, R18
@@ -420,8 +395,7 @@ void float_fpadd1()
 
 void float_fpsub()
 {
-    asm
-    {
+    asm {
         SET
     }
     float_fpadd_alt();
@@ -429,16 +403,14 @@ void float_fpsub()
 
 void float_fpsub1()
 {
-    asm
-    {
+    asm {
         MOV   R0, R20
         MOV   R1, R21
         MOV   R2, R22
         MOV   R3, R23
     }
     float_fpsub();
-    asm
-    {
+    asm {
         MOV   R0, R16
         MOV   R1, R17
         MOV   R2, R18
@@ -449,8 +421,7 @@ void float_fpsub1()
 void float_fpmul()
 {
     float_unpacku();
-    asm
-    {
+    asm {
         BREQ  L0097
         MOV   R14,R22
         MOV   R13,R21
@@ -465,8 +436,7 @@ void float_fpmul()
         MOV   R19, R3
     }
     float_unpacku();
-    asm
-    {
+    asm {
         BREQ  L0097
         EOR   R22,R14
         ADD   R20,R12
@@ -506,8 +476,7 @@ void float_fpmul()
         MOV	  R17,R24
     }
     float_normalize_and_pack();
-    asm
-    {
+    asm {
     L0097:
         RJMP  L00A0x
     L009B:
@@ -528,16 +497,14 @@ void float_fpmul()
 
 void float_fpmul1()
 {
-    asm
-    {
+    asm {
         MOV   R0, R20
         MOV   R1, R21
         MOV   R2, R22
         MOV   R3, R23
     }
     float_fpmul();
-    asm
-    {
+    asm {
         MOV   R0, R16
         MOV   R1, R17
         MOV   R2, R18
@@ -547,8 +514,7 @@ void float_fpmul1()
 
 void float_fpdiv()
 {
-    asm
-    {
+    asm {
         PUSH  R19
         PUSH  R18
         PUSH  R17
@@ -559,8 +525,7 @@ void float_fpdiv()
         MOV   R19, R3
     }
     float_unpacku();
-    asm
-    {
+    asm {
         BRNE  L0072div
         RJMP  L00C2
     L0072div:
@@ -578,8 +543,7 @@ void float_fpdiv()
     }
 
     float_unpacku();
-    asm
-    {
+    asm {
         BREQ  L00AB
         EOR	  R22,R14
         SUB	  R20,R12
@@ -630,8 +594,7 @@ void float_fpdiv()
         SBCI  R21, 0
     }
     float_normalize_and_pack();
-    asm
-    {
+    asm {
     L00AB:
         RJMP  L00C2x
     L00B1:
@@ -643,8 +606,7 @@ void float_fpdiv()
         BREQ  L00AB
     }
     float_tstr16_r19();
-    asm
-    {
+    asm {
         BREQ  L00AB
         MOV	  R19,R4
         LDI	  R19,0x80
@@ -669,16 +631,14 @@ void float_fpdiv()
 
 void float_fpdiv1()
 {
-    asm
-    {
+    asm {
         MOV   R0, R20
         MOV   R1, R21
         MOV   R2, R22
         MOV   R3, R23
     }
     float_fpdiv();
-    asm
-    {
+    asm {
         MOV   R0, R16
         MOV   R1, R17
         MOV   R2, R18
@@ -689,14 +649,12 @@ void float_fpdiv1()
 void float_fpcmp()
 {
     float_fpsub();
-    asm
-    {
+    asm {
         TST   R19
         BRMI  L011A
     }
     float_tstr16_r19();
-    asm
-    {
+    asm {
         BREQ  L0118
         LDI   R16, 1
         RJMP  L011Aexit
@@ -711,16 +669,14 @@ void float_fpcmp()
 
 void float_fpcmp1()
 {
-    asm
-    {
+    asm {
         MOV   R0, R20
         MOV   R1, R21
         MOV   R2, R22
         MOV   R3, R23
     }
     float_fpcmp();
-    asm
-    {
+    asm {
         TST   R16
     }
 }
@@ -728,8 +684,7 @@ void float_fpcmp1()
 void float_op_equ()
 {
     float_fpcmp1();
-    asm
-    {
+    asm {
         BRNE  op_equ_false
         CLR   R0
         INC   R0
@@ -743,8 +698,7 @@ void float_op_equ()
 void float_op_diff()
 {
     float_fpcmp1();
-    asm
-    {
+    asm {
         BREQ op_diff_false
         CLR   R0
         INC   R0
@@ -758,8 +712,7 @@ void float_op_diff()
 void float_op_gequ()
 {
     float_fpcmp1();
-    asm
-    {
+    asm {
         BRLT  op_gequ_false
         CLR   R0
         INC   R0
@@ -772,8 +725,7 @@ void float_op_gequ()
 
 void float_op_big()
 {
-    asm
-    {
+    asm {
         MOV   R0, R16
         MOV   R1, R17
         MOV   R2, R18
@@ -785,8 +737,7 @@ void float_op_big()
         MOV   R19, R23
     }
     float_fpcmp();
-    asm
-    {
+    asm {
         TST R16
         BRGE  op_big_false
         CLR   R0
@@ -801,8 +752,7 @@ void float_op_big()
 void float_op_less()
 {
     float_fpcmp1();
-    asm
-    {
+    asm {
         BRGE  op_less_false
         CLR   R0
         INC   R0
@@ -815,8 +765,7 @@ void float_op_less()
 
 void float_op_lequ()
 {
-    asm
-    {
+    asm {
         MOV   R0, R16
         MOV   R1, R17
         MOV   R2, R18
@@ -828,8 +777,7 @@ void float_op_lequ()
         MOV   R19, R23
     }
     float_fpcmp();
-    asm
-    {
+    asm {
         TST   R16
         BRLT  op_lequ_false
         CLR   R0

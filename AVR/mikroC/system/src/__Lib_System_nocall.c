@@ -24,8 +24,7 @@
 /******************************************************************************/
 void __CC2DW()
 {
-    asm
-    {
+    asm {
         MOV ZL, YL
         MOV ZH, YH
         L_loopDW:
@@ -38,8 +37,7 @@ void __CC2DW()
 
 void __FillZeros()
 {
-    asm
-    {
+    asm {
             LDI        R0 , 0
         L_loopDW:
             ST         X+ , R0
@@ -50,8 +48,7 @@ void __FillZeros()
 
 void __CA2AW()
 {
-    asm
-    {
+    asm {
         MOV ZL, YL
         MOV ZH, YH
         L_loopCA2A:
@@ -64,8 +61,7 @@ void __CA2AW()
 
 void __CCA2AW()
 {
-    asm
-    {
+    asm {
         MOV ZL, YL
         MOV ZH, YH
         L_loopCCA2A:
@@ -78,8 +74,7 @@ void __CCA2AW()
 
 void __CFCA2A()
 {
-    asm
-    {
+    asm {
         MOV ZL, YL
         MOV ZH, YH
         L_loopCFCA2A:
@@ -92,8 +87,7 @@ void __CFCA2A()
 
 void __CS2S()
 {
-    asm
-    {
+    asm {
         MOV ZL, YL
         MOV ZH, YH
         L_loopCS2Ss:
@@ -108,8 +102,7 @@ void __CS2S()
 
 void __CCS2S()
 {
-    asm
-    {
+    asm {
         MOV ZL, YL
         MOV ZH, YH
         L_loopCCS2Ss:
@@ -124,8 +117,7 @@ void __CCS2S()
 
 void __CFCS2S()
 {
-    asm
-    {
+    asm {
         MOV ZL, YL
         MOV ZH, YH
         L_loopCFCS2Ss:
@@ -140,8 +132,7 @@ void __CFCS2S()
 
 void __FZinS()
 {
-    asm
-    {
+    asm {
         L_loopFZinSWs:
             LD         R0, X+
             TST        R0
