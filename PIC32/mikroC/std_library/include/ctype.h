@@ -34,7 +34,7 @@ extern "C"{
  * @brief The function checks whether the passed character is a lowercase
  *        letter.
  * @param character, this is the character to be checked.
- * @retval returns true if the given character is a lowercase letter
+ * @return true if the given character is a lowercase letter
  */
 unsigned short islower( char character );
 
@@ -42,7 +42,7 @@ unsigned short islower( char character );
  * @brief The function checks whether the passed character is a uppercase
  *        letter.
  * @param character, this is the character to be checked.
- * @retval returns true if the given character is a UPPERCASE letter
+ * @return true if the given character is a UPPERCASE letter
  */
 unsigned short isupper( char character );
 
@@ -50,7 +50,7 @@ unsigned short isupper( char character );
  * @brief The function checks whether the passed character is an alphabet
  *        (a to z and A-Z).
  * @param character, this is the character to be checked.
- * @return returns true if the given character is a letter.
+ * @return true if the given character is a letter.
  */
 unsigned short isalpha( char character );
 
@@ -58,7 +58,7 @@ unsigned short isalpha( char character );
  * @brief The function checks whether the passed character is a control
  *        character.
  * @param character, this is the character to be checked.
- * @return returns true if the given character is a control character.
+ * @return true if the given character is a control character.
  */
 unsigned short iscntrl( char character );
 
@@ -66,7 +66,7 @@ unsigned short iscntrl( char character );
  * @brief The function checks if the passed character is a decimal digit
  *        character.
  * @param character, this is the character to be checked.
- * @return returns true if the given character is a cipher (digit)
+ * @return true if the given character is a cipher (digit)
  */
 unsigned short isdigit( char character );
 
@@ -74,7 +74,7 @@ unsigned short isdigit( char character );
  * @brief The function checks if the passed character is alphanumeric
  *        (cipher or letter).
  * @param character, this is the character to be checked.
- * @return returns true if the given character is alphanumeric
+ * @return true if the given character is alphanumeric
  *         (cipher or letter).
  */
 unsigned short isalnum( char character );
@@ -83,7 +83,7 @@ unsigned short isalnum( char character );
  * @brief The function checks whether the passed character is a white-space
  *        character.
  * @param character, this is the character to be checked.
- * @return returns true if the given character is space or tab.
+ * @return true if the given character is space or tab.
  */
 unsigned short isspace( char character );
 
@@ -91,7 +91,7 @@ unsigned short isspace( char character );
  * @brief The function checks whether the passed character is a punctuation
  *        mark.
  * @param character, this is the character to be checked.
- * @return returns true if the given character is a punctuation mark.
+ * @return true if the given character is a punctuation mark.
  */
 unsigned short ispunct( char character );
 
@@ -99,14 +99,14 @@ unsigned short ispunct( char character );
  * @brief The function checks whether the passed character is a graphic
  *        character.
  * @param character, this is the character to be checked.
- * @return returns true if the given character is a graphical character.
+ * @return true if the given character is a graphical character.
  */
 unsigned short isgraph( char character );
 
 /**
  * @brief The function checks whether the passed character is a hex digit.
  * @param character, this is the character to be checked.
- * @return returns true if given character is a hex digit.
+ * @return true if given character is a hex digit.
  */
 unsigned short isxdigit( char character );
 

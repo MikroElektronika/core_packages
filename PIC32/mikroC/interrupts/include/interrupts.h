@@ -52,27 +52,27 @@ extern "C"{
 
 /**
  * @brief Enables interrupts on the global level.
- * @return Nothing.
+ * @return None.
  */
 void interrupts_enable( void );
 
 /**
  * @brief Disables interrupts on the global level.
- * @return Nothing.
+ * @return None.
  */
 void interrupts_disable( void );
 
 /**
  * @brief Enables module specific interrupt.
  * @param[in] interrupt IVT number.
- * @return Nothing.
+ * @return None.
  */
 void interrupt_enable( int interrupt );
 
 /**
  * @brief Disables module specific interrupt.
  * @param[in] interrupt IVT number.
- * @return Nothing.
+ * @return None.
  */
 void interrupt_disable( int interrupt );
 
