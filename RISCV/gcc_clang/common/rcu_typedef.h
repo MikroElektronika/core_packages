@@ -53,7 +53,8 @@ extern "C" {
  * @note Timer module 0 is clocked from APB2.
  *       All other timer modules are clocked from APB1.
  */
-typedef struct {
+typedef struct
+{
     uint32_t rcu_clocks_timer_0;
     uint32_t rcu_clocks_timer_others;
 } rcu_clocks_timer_t;
@@ -63,17 +64,18 @@ typedef struct {
  * @note Can be utilized with the
  *       `system_rcu_get_clocks` function.
  */
-typedef struct {
-    uint32_t rcu_clocks_system;            /* System clock frequency in Hz. */
-    uint32_t rcu_clocks_ahb;               /* AHB clock frequency in Hz. */
-    uint32_t rcu_clocks_exmc;              /* EXMC clock frequency in Hz. */
-    uint32_t rcu_clocks_hclk;              /* HCLK clock frequency in Hz. */
-    uint32_t rcu_clocks_sys_tick;          /* SysTick clock frequency in Hz. */
-    uint32_t rcu_clocks_fclk;              /* FCLK clock frequency in Hz. */
-    uint32_t rcu_clocks_apb1;              /* APB1(PCLK1) clock frequency in Hz. */
-    uint32_t rcu_clocks_apb2;              /* APB2(PCLK2) clock frequency in Hz. */
-    rcu_clocks_timer_t rcu_clocks_timer;   /* Timer clock frequency in Hz. */
-    uint32_t rcu_clocks_adc;               /* ADC clock frequency in Hz. */
+typedef struct
+{
+    uint32_t           rcu_clocks_system;   /* System clock frequency in Hz. */
+    uint32_t           rcu_clocks_ahb;      /* AHB clock frequency in Hz. */
+    uint32_t           rcu_clocks_exmc;     /* EXMC clock frequency in Hz. */
+    uint32_t           rcu_clocks_hclk;     /* HCLK clock frequency in Hz. */
+    uint32_t           rcu_clocks_sys_tick; /* SysTick clock frequency in Hz. */
+    uint32_t           rcu_clocks_fclk;     /* FCLK clock frequency in Hz. */
+    uint32_t           rcu_clocks_apb1;     /* APB1(PCLK1) clock frequency in Hz. */
+    uint32_t           rcu_clocks_apb2;     /* APB2(PCLK2) clock frequency in Hz. */
+    rcu_clocks_timer_t rcu_clocks_timer;    /* Timer clock frequency in Hz. */
+    uint32_t           rcu_clocks_adc;      /* ADC clock frequency in Hz. */
 } rcu_clocks_t;
 
 /* -----PUBLIC FUNCTION DECLARATIONS------ */
@@ -98,7 +100,7 @@ typedef struct {
  *       Other timer modules frequency in Hz.
  *       ADC clock frequency in Hz.
  */
-void system_rcu_get_clocks( rcu_clocks_t* rcu_clocks );
+void system_rcu_get_clocks( rcu_clocks_t * rcu_clocks );
 
 #ifdef __cplusplus
 }
