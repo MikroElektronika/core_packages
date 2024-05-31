@@ -51,7 +51,7 @@ extern "C" {
 /**
  * @brief Timer clock structure.
  * @note Timer module 0 is clocked from APB2.
- * All other timer modules are clocked from APB1.
+ *       All other timer modules are clocked from APB1.
  */
 typedef struct {
     uint32_t rcu_clocks_timer_0;
@@ -60,8 +60,8 @@ typedef struct {
 
 /**
  * @brief Clock branches structure.
- * @note Can be utilised with the
- * `system_rcu_get_clocks` function.
+ * @note Can be utilized with the
+ *       `system_rcu_get_clocks` function.
  */
 typedef struct {
     uint32_t rcu_clocks_system;            /* System clock frequency in Hz. */
@@ -82,21 +82,21 @@ typedef struct {
  * @brief Returns branch clock values based on system clock.
  * @param[out] rcu_clocks Structure containing all values.
  * @details Param type is @li @ref rcu_clocks_t.
- * @retval Nothing.
+ * @return None.
  *
- * @note Structure contains following information:
- *   System clock frequency in Hz.
- *   AHB clock frequency in Hz.
- *   EXMC clock frequency in Hz.
- *   HCLK clock frequency in Hz.
- *   SysTick clock frequency in Hz.
- *   FCLK clock frequency in Hz.
- *   APB1(PCLK1) clock frequency in Hz.
- *   APB2(PCLK2) clock frequency in Hz.
- *   Timer clock frequency in Hz.
- *     Timer0 clock frequency in Hz.
- *     Other timer modules frequency in Hz.
- *   ADC clock frequency in Hz.
+ * @note Structure contains the following information:
+ *       System clock frequency in Hz.
+ *       AHB clock frequency in Hz.
+ *       EXMC clock frequency in Hz.
+ *       HCLK clock frequency in Hz.
+ *       SysTick clock frequency in Hz.
+ *       FCLK clock frequency in Hz.
+ *       APB1 (PCLK1) clock frequency in Hz.
+ *       APB2 (PCLK2) clock frequency in Hz.
+ *       Timer clock frequency in Hz.
+ *       Timer0 clock frequency in Hz.
+ *       Other timer modules frequency in Hz.
+ *       ADC clock frequency in Hz.
  */
 void system_rcu_get_clocks( rcu_clocks_t* rcu_clocks );
 
