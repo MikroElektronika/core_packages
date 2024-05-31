@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -37,15 +37,18 @@ static inline void interrupts_disable_asm( void );
 
 // ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
 
-void interrupts_enable( void ) {
+void interrupts_enable( void )
+{
     interrupts_enable_asm();
 }
 
-void interrupts_disable( void ) {
+void interrupts_disable( void )
+{
     interrupts_disable_asm();
 }
 
-void interrupt_enable( int interrupt ) {
+void interrupt_enable( int interrupt )
+{
     switch ( interrupt ) {
         #if defined(INTERRUPT_TMR2_REGISTER) && defined(INTERRUPT_TMR2_BIT)
         case INTERRUPTS_TMR2:
@@ -2523,11 +2526,13 @@ void interrupt_disable( int interrupt ) {
 
 // ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
 
-static inline void interrupts_enable_asm( void ) {
+static inline void interrupts_enable_asm( void )
+{
     asm BSF INTCON,GIE;
 }
 
-static inline void interrupts_disable_asm( void ) {
+static inline void interrupts_disable_asm( void )
+{
     asm BCF INTCON,GIE;
 }
 
@@ -2535,7 +2540,7 @@ static inline void interrupts_disable_asm( void ) {
 /*
     interrupts.c
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2023 MikroElektronika d.o.o.
+** Copyright (C) 2024 MikroElektronika d.o.o.
 ** Contact: https://www.mikroe.com/contact
 **
 ** This file is part of the mikroSDK package
@@ -45,7 +45,7 @@
 #define _INTERRUPTS_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 #include "interrupts_mcu.h"

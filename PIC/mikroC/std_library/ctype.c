@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2020, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -14,22 +14,7 @@
 #include "ctype.h"
 #include "stdbool.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
-
-
-// -------------------------------------------------------------- PRIVATE TYPES
-
-
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
-
-
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
-
-
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS------------------------ */
 
 unsigned short islower( char character )
 {
@@ -67,14 +52,14 @@ unsigned short isspace( char character )
 {
     return ( ( character == ' ' ) ||
              ( character <= 015 ) &&
-             ( character >= 011 ) );
+                 ( character >= 011 ) );
 }
 
 unsigned short ispunct( char character )
 {
     unsigned short rslt;
 
-    rslt =  ( character >= 041 ) && ( character <= 057 );
+    rslt = ( character >= 041 ) && ( character <= 057 );
     rslt |= ( character >= 072 ) && ( character <= 0100 );
     rslt |= ( character >= 0133 ) && ( character <= 0140 );
     rslt |= ( character >= 0173 ) && ( character <= 0176 );
@@ -103,8 +88,7 @@ unsigned short isxdigit( char character )
 
 char tolower( char character )
 {
-    if ( ( character <= 'Z' ) && ( character >= 'A' ) )
-    {
+    if ( ( character <= 'Z' ) && ( character >= 'A' ) ) {
         character |= ( 'a' - 'A' );
     }
     return character;
@@ -112,8 +96,7 @@ char tolower( char character )
 
 char toupper( char character )
 {
-    if ( ( character <= 'z' ) && ( character >= 'a' ) )
-    {
+    if ( ( character <= 'z' ) && ( character >= 'a' ) ) {
         character &= ~( 'a' - 'A' );
     }
     return character;
@@ -123,7 +106,7 @@ char toupper( char character )
 /*
     ctype.c
 
-    Copyright (c) 2020, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
