@@ -139,7 +139,7 @@ void __BootStartUp()
     }
 
     R29 = 0x00FF00FF;
-    R1  = 0xA0008000;
+    R1 = 0xA0008000;
 
     asm {
         // Initialize shadow set registers
@@ -259,7 +259,7 @@ void __BootStartUp()
     }
 
     INTCON = 0x80000000;
-    PRISS  = 0x76543210;
+    PRISS = 0x76543210;
 
     asm nop;
     asm nop;
