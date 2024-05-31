@@ -9,11 +9,11 @@
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "interrupts.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* -----------------------------PRIVATE MACROS------------------------------ */
 
 #define set_csr(reg, bit) ({ unsigned long __tmp; \
                              if (__builtin_constant_p(bit) && (unsigned long)(bit) < 32) \
@@ -52,21 +52,21 @@
 #define MTVEC_CLIC_INTERRUPT_MODE_MASK (0xFFFFFFC0UL)
 #define CLICINT_ATTR_VECTORED_INTERRUPT (0x1UL)
 
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ----------------------PRIVATE FUNCTION DECLARATIONS---------------------- */
 
 /**
  * @brief Enables interrupts on the global level.
- * @return Nothing.
+ * @return None.
  */
 static inline void interrupts_enable_asm( void );
 
 /**
  * @brief Disables interrupts on the global level.
- * @return Nothing.
+ * @return None.
  */
 static inline void interrupts_disable_asm( void );
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
 void interrupts_enable( void )
 {
@@ -99,7 +99,7 @@ void interrupt_disable( int interrupt )
     SET_ECLIC_CLICINT_IE( interrupt, 0 );
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* ----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
 static inline void interrupts_enable_asm( void )
 {
