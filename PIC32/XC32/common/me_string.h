@@ -21,11 +21,10 @@
 #define _STRING_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 #include <stdint.h>
-
 
 /* ----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
@@ -297,7 +296,7 @@ void str_insert_chr( char * str, char chr, int num );
 #ifdef __cplusplus
 }
 #endif
-#endif  // _STRING_H_
+#endif // _STRING_H_
 
 /** @} */
 // ----------------------------------------------------------------------------
