@@ -160,7 +160,7 @@ FILE * const stderr;
 /**
  * @brief Initialize adequate system clock.
  * @param None.
- * @retval Nothing.
+ * @return None.
  *
  * @note If initializing adequate system clock fails,
  * clock will be set to default 8MHz clocked by
@@ -172,19 +172,19 @@ void system_init( void );
 
 /**
  * @brief Enables floating point unit.
- * @retval Nothing.
+ * @return None.
  */
 static void system_enable_fpu( void );
 
 /**
  * @brief Clears all RCUx registers to default state.
- * @retval Nothing.
+ * @return None.
  */
 static void system_rcu_clock_reset( void );
 
 /**
  * @brief Sets clock to default value.
- * @retval Nothing.
+ * @return None.
  * @note Clock is set to default 8MHz clocked by
  * internal oscillator.
  */
@@ -192,7 +192,7 @@ static void system_rcu_clock_default( void );
 
 /**
  * @brief Updates clock values based on set configuration.
- * @retval Nothing.
+ * @return None.
  * @warning If initializing adequate system clock fails,
  * clock will be set to default 8MHz clocked by
  * internal oscillator.
@@ -200,8 +200,8 @@ static void system_rcu_clock_default( void );
 static system_clock_update_t system_rcu_clock_update( void );
 
 /**
- * @brief Supporting fuction.
- * @retval system_clock_update_t 1(fail) or 0(success).
+ * @brief Supporting function.
+ * @return system_clock_update_t 1(fail) or 0(success).
  * @details Checks for clock stabilization with a defined timeout
  */
 static system_clock_update_t system_rcu_clock_check_err( uint32_t register_address,
@@ -597,7 +597,7 @@ static void system_rcu_clock_reset( void )
                            RCU_CTL_HXTALEN_MASK );
 
     /**
-     * Desable all interrupts and clear flags.
+     * Disable all interrupts and clear flags.
      * @note This register is the same for all GD32VF103 chips.
      */
     REGISTER_RCU_INT |= RCU_INT_MASK;
