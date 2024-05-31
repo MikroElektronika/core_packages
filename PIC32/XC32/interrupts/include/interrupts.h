@@ -45,7 +45,7 @@
 #define _INTERRUPTS_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 #include "interrupts_mcu.h"
