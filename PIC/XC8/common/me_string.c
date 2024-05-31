@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -13,19 +13,7 @@
 
 #include "me_string.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
-
-
-// -------------------------------------------------------------- PRIVATE TYPES
-
-
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
-
-
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ---------------------PRIVATE FUNCTION DECLARATIONS------------------------ */
 
 
 static int me_strlen( char * str )
@@ -38,7 +26,7 @@ static int me_strlen( char * str )
     return char_ptr - str - 1;
 }
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS------------------------ */
 
 void str_cut_chr( char * str, char num )
 {
@@ -152,14 +140,11 @@ void str_insert_chr( char * str, char chr, int num )
     }
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
-
-
 // ----------------------------------------------------------------------------
 /*
     cstring.c
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
