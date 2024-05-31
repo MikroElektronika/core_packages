@@ -4,7 +4,7 @@ include(CMakePackageConfigHelpers)
 ## Function to install and export static library target
 #############################################################################
 function(mikrosdk_install targetAlias)
-## Install library
+    ## Install library
     get_target_property(_targetName ${targetAlias} ALIASED_TARGET)
     get_target_property(linkLibs ${_targetName} INTERFACE_LINK_LIBRARIES)
     install(TARGETS ${_targetName}
@@ -13,11 +13,11 @@ function(mikrosdk_install targetAlias)
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
- # INSTALL EXPORT FILE
+    # Install export file
     install(EXPORT ${targetAlias}Target
         FILE ${targetAlias}Targets.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${targetAlias})
-    ## Set variable used in configFile
+    ## Set variable used in config file
     set(TARGET_NAME ${targetAlias})
     set(findDepsList "")
 
@@ -29,13 +29,12 @@ function(mikrosdk_install targetAlias)
     else()
         set(FIND_DEPS "")
     endif()
-## Configure package file
+    ## Configure package file
     configure_package_config_file(${PROJECT_SOURCE_DIR}/cmake/ExportConfig.cmake.in
          "${CMAKE_CURRENT_BINARY_DIR}/${targetAlias}Config.cmake"
          INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${targetAlias})
 
-
-    ## configure package version file
+    ## Configure package version file
     write_basic_package_version_file(
         "${CMAKE_CURRENT_BINARY_DIR}/${targetAlias}ConfigVersion.cmake"
         VERSION ${CMAKE_PROJECT_VERSION}
@@ -194,7 +193,6 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
     list(APPEND local_dir_install def/${vendor}/${MCU_NAME})
     set(${list} ${local_dir_install} PARENT_SCOPE)
 
-    # Ideja je da include-ujemo po imenu cipa (regex)
     string(TOLOWER ${MCU_NAME} mcu_match)
 
     file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${vendor}/*.cmake)
