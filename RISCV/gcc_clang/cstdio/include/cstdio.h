@@ -146,7 +146,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_l
 
 #endif // _CSTDIO_H_
 
-/// \}
+/** @} */
 // ----------------------------------------------------------------------------
 /*
     cstdio.h
