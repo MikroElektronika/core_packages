@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2023 MikroElektronika d.o.o.
+** Copyright (C) 2024 MikroElektronika d.o.o.
 ** Contact: https://www.mikroe.com/contact
 **
 ** Commercial License Usage
@@ -49,6 +49,7 @@ extern "C" {
 #endif
 
 /* -----------------------PUBLIC FUNCTION DECLARATIONS ---------------------- */
+
 /**
  * @brief Creates a delay based on MCU clock.
  * @param[in] cycles_div_by_10 Number of cycles divided by 10.
