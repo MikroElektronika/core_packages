@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2022 MikroElektronika d.o.o.
+** Copyright (C) 2024 MikroElektronika d.o.o.
 ** Contact: https://www.mikroe.com/contact
 **
 ** Commercial License Usage
@@ -148,12 +148,12 @@ typedef enum {
     SYSTEM_CLOCK_UPDATE_ERROR
 } system_clock_update_t;
 
-static const uint8_t array_divider_apb1_2[4] = { 2, 4, 8, 16 };
-static const uint8_t array_divider_ahb[8] = { 0, 1, 2, 3, 5, 6, 7, 8 };
+static const uint8_t array_divider_apb1_2[ 4 ] = { 2, 4, 8, 16 };
+static const uint8_t array_divider_ahb[ 8 ] = { 0, 1, 2, 3, 5, 6, 7, 8 };
 
 #if !defined (__GNUC__)
 // stderr stream declaration.
-FILE *const stderr;
+FILE * const stderr;
 #endif
 /* -----PUBLIC FUNCTION DECLARATIONS------ */
 
@@ -208,13 +208,16 @@ static system_clock_update_t system_rcu_clock_check_err( uint32_t register_addre
                                                          uint32_t register_mask );
 
 /* -----PUBLIC FUNCTION DEFINITIONS----- */
-#if !defined (__GNUC__)
-void _exit() {
+#if !defined(__GNUC__)
+void _exit()
+{
     // No return function in clang-llvm.
-    while(1);
+    while ( 1 )
+        ;
 }
 #endif
-void system_init( void ) {
+void system_init( void )
+{
     register uint32_t volatile *src, *dst;
 
     /* First, reset the values. */
@@ -233,17 +236,15 @@ void system_init( void ) {
     }
 
     /* Copy the .data section (initialized data) from flash to RAM */
-    src = (uint32_t *) &_data_load;
-    dst = (uint32_t *) &_sdata;
-    while (dst < (uint32_t *)&_edata)
-    {
+    src = ( uint32_t * )&_data_load;
+    dst = ( uint32_t * )&_sdata;
+    while ( dst < ( uint32_t * )&_edata ) {
         *dst++ = *src++;
     }
 
     /* Zero initialize the BSS section (zero initialized data) */
     dst = &_sbss;
-    while (dst < (uint32_t *)&_ebss)
-    {
+    while ( dst < ( uint32_t * )&_ebss ) {
         *dst++ = 0U;
     }
 
@@ -251,10 +252,12 @@ void system_init( void ) {
      * Call printf in system_init so gcc linker does not optimize whole cstdio module.
      * Fix for gdb throwing errors when variables from cstdio are not present.
      */
-    if ( printf_me("") ) {}
+    if ( printf_me( "" ) ) {
+    }
 }
 
-void system_rcu_get_clocks( rcu_clocks_t* rcu_clocks ) {
+void system_rcu_get_clocks( rcu_clocks_t * rcu_clocks )
+{
     /* System clock equals the value set during setup. */
     rcu_clocks->rcu_clocks_system = FOSC_KHZ_VALUE * 1000;
 
@@ -263,8 +266,8 @@ void system_rcu_get_clocks( rcu_clocks_t* rcu_clocks ) {
      * AHB prescaler value.
      * @note Bits[7:4] of RCU_CFG0 register.
      */
-    if ( (VALUE_RCU_CFG0 & RCU_CFG0_AHBPSC_MASK) >> 4 ) {
-        rcu_clocks->rcu_clocks_ahb = 2 << array_divider_ahb[((VALUE_RCU_CFG0 & RCU_CFG0_AHBPSC_MASK) >> 4) - 1];
+    if ( ( VALUE_RCU_CFG0 & RCU_CFG0_AHBPSC_MASK ) >> 4 ) {
+        rcu_clocks->rcu_clocks_ahb = 2 << array_divider_ahb[ ( ( VALUE_RCU_CFG0 & RCU_CFG0_AHBPSC_MASK ) >> 4 ) - 1 ];
     } else {
         rcu_clocks->rcu_clocks_ahb = rcu_clocks->rcu_clocks_system;
     }
@@ -286,9 +289,9 @@ void system_rcu_get_clocks( rcu_clocks_t* rcu_clocks ) {
      * APB1 prescaler value.
      * @note Bits [10:8] of RCU_CFG0 register.
      */
-    if ( (VALUE_RCU_CFG0 & RCU_CFG0_APB1PSC_MASK) >> 8 ) {
+    if ( ( VALUE_RCU_CFG0 & RCU_CFG0_APB1PSC_MASK ) >> 8 ) {
         rcu_clocks->rcu_clocks_apb1 = rcu_clocks->rcu_clocks_ahb /
-                                      array_divider_apb1_2[((VALUE_RCU_CFG0 & RCU_CFG0_APB1PSC_MASK) >> 8) - 4];
+                                      array_divider_apb1_2[ ( ( VALUE_RCU_CFG0 & RCU_CFG0_APB1PSC_MASK ) >> 8 ) - 4 ];
         /**
          * Timer module 1,2,3,4,5,6 clock value.
          * @note If APB1 divider is greater than 1, clock equals
@@ -310,9 +313,9 @@ void system_rcu_get_clocks( rcu_clocks_t* rcu_clocks ) {
      * APB2 prescaler value.
      * @note Bits [13:11] of RCU_CFG0 register.
      */
-    if ( (VALUE_RCU_CFG0 & RCU_CFG0_APB2PSC_MASK) >> 11 ) {
+    if ( ( VALUE_RCU_CFG0 & RCU_CFG0_APB2PSC_MASK ) >> 11 ) {
         rcu_clocks->rcu_clocks_apb2 = rcu_clocks->rcu_clocks_ahb /
-                                      array_divider_apb1_2[((VALUE_RCU_CFG0 & RCU_CFG0_APB2PSC_MASK) >> 11) - 4];
+                                      array_divider_apb1_2[ ( ( VALUE_RCU_CFG0 & RCU_CFG0_APB2PSC_MASK ) >> 11 ) - 4 ];
         /**
          * Timer module 0 clock value.
          * @note If APB2 divider is greater than 1, clock equals
@@ -333,14 +336,14 @@ void system_rcu_get_clocks( rcu_clocks_t* rcu_clocks ) {
      * ADC module 0,1 clock value.
      * @note Bits[15:14] and Bit[28] of RCU_CFG0 register.
      */
-    if ( (VALUE_RCU_CFG0 & MASK_REGISTER_RCU_CFG0_ADCPSC_MSB) ) {
-        if ( 1 == ((VALUE_RCU_CFG0 & MASK_REGISTER_RCU_CFG0_ADCPSC) >> 14) ) {
+    if ( ( VALUE_RCU_CFG0 & MASK_REGISTER_RCU_CFG0_ADCPSC_MSB ) ) {
+        if ( 1 == ( ( VALUE_RCU_CFG0 & MASK_REGISTER_RCU_CFG0_ADCPSC ) >> 14 ) ) {
             rcu_clocks->rcu_clocks_adc = rcu_clocks->rcu_clocks_apb2 / 12;
         } else {
             rcu_clocks->rcu_clocks_adc = rcu_clocks->rcu_clocks_apb2 / 16;
         }
     } else {
-        switch ( ((VALUE_RCU_CFG0 & MASK_REGISTER_RCU_CFG0_ADCPSC) >> 14) ) {
+        switch ( ( ( VALUE_RCU_CFG0 & MASK_REGISTER_RCU_CFG0_ADCPSC ) >> 14 ) ) {
             case 1:
                 rcu_clocks->rcu_clocks_adc = rcu_clocks->rcu_clocks_apb2 / 4;
                 break;
@@ -358,26 +361,28 @@ void system_rcu_get_clocks( rcu_clocks_t* rcu_clocks ) {
     }
 }
 
-void __attribute__ ((noinline)) Delay_Cyc( uint32_t cycles_div_by_10 ) {
-    while( cycles_div_by_10-- ) {
-        asm("\n\t \
+void __attribute__( ( noinline ) ) Delay_Cyc( uint32_t cycles_div_by_10 )
+{
+    while ( cycles_div_by_10-- ) {
+        asm( "\n\t \
             nop \n\t \
             nop \n\t \
             nop \n\t \
             nop \n\t \
-        ");
+        " );
     }
 }
 
-void __attribute__ ((noinline)) Delay_us ( uint32_t time_us ) {
-    register int temp asm ("a0");
+void __attribute__( ( noinline ) ) Delay_us( uint32_t time_us )
+{
+    register int temp asm( "a0" );
 
-    temp = (((FOSC_KHZ_VALUE/ 100) * time_us ) / 10) - 76;
+    temp = ( ( ( FOSC_KHZ_VALUE / 100 ) * time_us ) / 10 ) - 76;
 
-    if(temp <= 0)
-      return;
+    if ( temp <= 0 )
+        return;
 
-    asm("\n\t \
+    asm( "\n\t \
         rdcycleh t2 \n\t \
         rdcycle  t1 \n\t \
         add      t3,t1,a0 \n\t \
@@ -390,179 +395,206 @@ void __attribute__ ((noinline)) Delay_us ( uint32_t time_us ) {
             rdcycle  t5 \n\t \
             blt      t6, t4, delay_me_loop  \n\t \
             blt      t5, t3, delay_me_loop  \n\t \
-    ");
+    " );
 }
 
-void __attribute__ ((noinline)) Delay_ms( uint32_t time_ms ) {
+void __attribute__( ( noinline ) ) Delay_ms( uint32_t time_ms )
+{
     uint32_t number_of_cyc = FOSC_KHZ_VALUE * time_ms;
 
-    Delay_Cyc(number_of_cyc / 10 - 3);
-    asm ("\n\t \
+    Delay_Cyc( number_of_cyc / 10 - 3 );
+    asm( "\n\t \
         nop \n\t \
         nop \n\t \
         nop \n\t \
         nop \n\t \
         nop \n\t \
         nop \n\t \
-    ");
+    " );
 }
 
-void __attribute__ ((noinline)) Delay_Advanced_ms( uint32_t time_ms,
-                                                   uint32_t current_fosc_khz )
+void __attribute__( ( noinline ) ) Delay_Advanced_ms( uint32_t time_ms,
+                                                      uint32_t current_fosc_khz )
 {
     uint32_t number_of_cyc = current_fosc_khz * time_ms;
 
-    Delay_Cyc(number_of_cyc / 10 - 3);
-    asm ("\n\t \
+    Delay_Cyc( number_of_cyc / 10 - 3 );
+    asm( "\n\t \
         nop \n\t \
         nop \n\t \
         nop \n\t \
         nop \n\t \
         nop \n\t \
         nop \n\t \
-    ");
+    " );
 }
 
-void Delay_1us() {
-    Delay_us(1);
+void Delay_1us()
+{
+    Delay_us( 1 );
 }
 
-void Delay_5us() {
-    Delay_us(5);
+void Delay_5us()
+{
+    Delay_us( 5 );
 }
 
-void Delay_6us() {
-    Delay_us(6);
+void Delay_6us()
+{
+    Delay_us( 6 );
 }
 
-void Delay_9us() {
-    Delay_us(9);
+void Delay_9us()
+{
+    Delay_us( 9 );
 }
 
-void Delay_10us() {
-    Delay_us(10);
+void Delay_10us()
+{
+    Delay_us( 10 );
 }
 
-void Delay_22us() {
-    Delay_us(22);
+void Delay_22us()
+{
+    Delay_us( 22 );
 }
 
-void Delay_50us() {
-    Delay_us(50);
+void Delay_50us()
+{
+    Delay_us( 50 );
 }
 
-void Delay_55us() {
-    Delay_us(55);
+void Delay_55us()
+{
+    Delay_us( 55 );
 }
 
-void Delay_60us() {
-    Delay_us(60);
+void Delay_60us()
+{
+    Delay_us( 60 );
 }
 
-void Delay_64us() {
-    Delay_us(64);
+void Delay_64us()
+{
+    Delay_us( 64 );
 }
 
-void Delay_70us() {
-    Delay_us(70);
+void Delay_70us()
+{
+    Delay_us( 70 );
 }
 
-void Delay_80us() {
-    Delay_us(78);
+void Delay_80us()
+{
+    Delay_us( 78 );
 }
 
-void Delay_410us() {
-    Delay_us(410);
+void Delay_410us()
+{
+    Delay_us( 410 );
 }
 
-void Delay_480us() {
-    Delay_us(480);
+void Delay_480us()
+{
+    Delay_us( 480 );
 }
 
-void Delay_500us() {
-    Delay_us(498);
+void Delay_500us()
+{
+    Delay_us( 498 );
 }
 
-void Delay_5500us() {
-    Delay_us(5500);
+void Delay_5500us()
+{
+    Delay_us( 5500 );
 }
 
-void Delay_1ms() {
+void Delay_1ms()
+{
     Delay_ms( 1 );
 }
 
-void Delay_5ms() {
+void Delay_5ms()
+{
     Delay_ms( 5 );
 }
 
-void Delay_8ms() {
+void Delay_8ms()
+{
     Delay_ms( 8 );
 }
 
-void Delay_10ms() {
+void Delay_10ms()
+{
     Delay_ms( 10 );
 }
 
-void Delay_100ms() {
+void Delay_100ms()
+{
     Delay_ms( 100 );
 }
 
-void Delay_1sec() {
+void Delay_1sec()
+{
     Delay_ms( 1000 );
 }
 
 /* -----PRIVATE FUNCTION DEFINITIONS----- */
 
-static void system_enable_fpu( void ){
-    asm("\n\t \
+static void system_enable_fpu( void )
+{
+    asm( "\n\t \
         li t0, 0x00006000 \n\t \
         csrs mstatus, t0 \n\t \
         csrw fcsr, x0 \n\t \
-    ");
+    " );
 }
 
-static void system_rcu_clock_reset( void ) {
+static void system_rcu_clock_reset( void )
+{
     REGISTER_RCU_CTL |= RCU_CTL_IRC8MEN_MASK;
 
     /* Wait for IRC8M to stabilize. */
-    while( !(REGISTER_RCU_CTL & RCU_CTL_IRC8STB_MASK ) );
+    while ( !( REGISTER_RCU_CTL & RCU_CTL_IRC8STB_MASK ) )
+        ;
 
     /**
      * Reset SCS, AHBPSC, APB1PSC, ADCPSC, CKOUT0SEL bits,
      * PLLSEL, PREDV0_LSB, PLLMF, USBFSPSC bits.
      * @note Effectively selecting IRC8M as clock source.
      */
-    REGISTER_RCU_CFG0 &= ~(RCU_CFGO_SCS_MASK | RCU_CFG0_AHBPSC_MASK |
-                           RCU_CFG0_APB1PSC_MASK | RCU_CFG0_APB2PSC_MASK |
-                           RCU_CFG0_ADCPSC_MASK | RCU_CFG0_CKOUT0SEL_MASK |
-                           RCU_CFG0_PLLSEL_MASK | RCU_CFG0_PREDV0_LSB_MASK |
-                           RCU_CFG0_PLLMF_MASK | RCU_CFG0_USBFSPSC_MASK);
+    REGISTER_RCU_CFG0 &= ~( RCU_CFGO_SCS_MASK | RCU_CFG0_AHBPSC_MASK |
+                            RCU_CFG0_APB1PSC_MASK | RCU_CFG0_APB2PSC_MASK |
+                            RCU_CFG0_ADCPSC_MASK | RCU_CFG0_CKOUT0SEL_MASK |
+                            RCU_CFG0_PLLSEL_MASK | RCU_CFG0_PREDV0_LSB_MASK |
+                            RCU_CFG0_PLLMF_MASK | RCU_CFG0_USBFSPSC_MASK );
 
     /* Reset HXTALEN, CKMEN, PLLEN bits. */
-    REGISTER_RCU_CTL &= ~(RCU_CTL_HXTALEN_MASK | RCU_CTL_CKMEN_MASK |
-                          RCU_CTL_PLLEN_MASK);
+    REGISTER_RCU_CTL &= ~( RCU_CTL_HXTALEN_MASK | RCU_CTL_CKMEN_MASK |
+                           RCU_CTL_PLLEN_MASK );
 
     /**
      * Reset HXTALBPS bit.
      * @note HXTAL @b MUST be disabled first.
      */
-    while( ( REGISTER_RCU_CTL & RCU_CTL_HXTALEN_MASK ) );
-    REGISTER_RCU_CTL &= ~(RCU_CTL_HXTALBPS_MASK);
+    while ( ( REGISTER_RCU_CTL & RCU_CTL_HXTALEN_MASK ) )
+        ;
+    REGISTER_RCU_CTL &= ~( RCU_CTL_HXTALBPS_MASK );
 
     /* Reset PLLSEL, PREDV0_LSB, PLLMF, USBFSPSC bits */
-    REGISTER_RCU_CFG0 &= ~(RCU_CFG0_PLLSEL_MASK | RCU_CFG0_PREDV0_LSB_MASK |
-                           RCU_CFG0_PLLMF_MASK | RCU_CFG0_USBFSPSC_MASK);
+    REGISTER_RCU_CFG0 &= ~( RCU_CFG0_PLLSEL_MASK | RCU_CFG0_PREDV0_LSB_MASK |
+                            RCU_CFG0_PLLMF_MASK | RCU_CFG0_USBFSPSC_MASK );
 
     /**
      * Reset PREDV0, PREDV1, PLL1MF, PLL2MF,
      * PREDV0_SEL, I2S1SEL and I2S2SEL bits.
      */
-    REGISTER_RCU_CFG1 &= ~(RCU_CFG1_MASK);
+    REGISTER_RCU_CFG1 &= ~( RCU_CFG1_MASK );
 
     /* Reset HXTALEN, CKMEN, PLLEN, PLL1EN and PLL2EN bits. */
-    REGISTER_RCU_CTL &= ~(RCU_CTL_PLLEN_MASK | RCU_CTL_PLL1EN_MASK |
-                          RCU_CTL_PLL2EN_MASK | RCU_CTL_CKMEN_MASK |
-                          RCU_CTL_HXTALEN_MASK);
+    REGISTER_RCU_CTL &= ~( RCU_CTL_PLLEN_MASK | RCU_CTL_PLL1EN_MASK |
+                           RCU_CTL_PLL2EN_MASK | RCU_CTL_CKMEN_MASK |
+                           RCU_CTL_HXTALEN_MASK );
 
     /**
      * Desable all interrupts and clear flags.
@@ -571,25 +603,26 @@ static void system_rcu_clock_reset( void ) {
     REGISTER_RCU_INT |= RCU_INT_MASK;
 }
 
-static system_clock_update_t system_rcu_clock_update( void ) {
+static system_clock_update_t system_rcu_clock_update( void )
+{
     /**
      * Trim clock value for IRC8M oscillator.
      * @note The trimming value should trim the IRC8M to 8 MHz ± 1%.
      */
     if ( VALUE_RCU_CTL & RCU_CTL_IRC8MADJ_MASK ) {
-        REGISTER_RCU_CTL |= (VALUE_RCU_CTL & RCU_CTL_IRC8MADJ_MASK);
+        REGISTER_RCU_CTL |= ( VALUE_RCU_CTL & RCU_CTL_IRC8MADJ_MASK );
     }
 
     /* Enable IRC8M and wait for it to stabilize. */
     if ( VALUE_RCU_CTL & RCU_CTL_IRC8MEN_MASK ) {
         REGISTER_RCU_CTL |= RCU_CTL_IRC8MEN_MASK;
-        if ( system_rcu_clock_check_err(ADDRESS_RCU_CTL,RCU_CTL_IRC8STB_MASK) )
+        if ( system_rcu_clock_check_err( ADDRESS_RCU_CTL, RCU_CTL_IRC8STB_MASK ) )
             return SYSTEM_CLOCK_UPDATE_ERROR;
     }
 
     /* Disable HXTAL if it remained enabled. */
     if ( REGISTER_RCU_CTL & RCU_CTL_HXTALEN_MASK ) {
-        REGISTER_RCU_CTL &= ~(RCU_CTL_HXTALEN_MASK);
+        REGISTER_RCU_CTL &= ~( RCU_CTL_HXTALEN_MASK );
     }
 
     /**
@@ -608,7 +641,7 @@ static system_clock_update_t system_rcu_clock_update( void ) {
     /* Enable HXTAL and wait for it to stabilize. */
     if ( VALUE_RCU_CTL & RCU_CTL_HXTALEN_MASK ) {
         REGISTER_RCU_CTL |= RCU_CTL_HXTALEN_MASK;
-        if ( system_rcu_clock_check_err(ADDRESS_RCU_CTL,RCU_CTL_HXTALSTB_MASK) )
+        if ( system_rcu_clock_check_err( ADDRESS_RCU_CTL, RCU_CTL_HXTALSTB_MASK ) )
             return SYSTEM_CLOCK_UPDATE_ERROR;
     }
 
@@ -623,50 +656,50 @@ static system_clock_update_t system_rcu_clock_update( void ) {
     /* Enable LXTAL and wait for it to stabilize. */
     if ( VALUE_RCU_BDCTL & RCU_BDCTL_LXTALEN_MASK ) {
         REGISTER_RCU_BDCTL |= RCU_BDCTL_LXTALEN_MASK;
-        if ( system_rcu_clock_check_err(ADDRESS_RCU_BDCTL,RCU_BDCTL_LXTALSTB_MASK) )
+        if ( system_rcu_clock_check_err( ADDRESS_RCU_BDCTL, RCU_BDCTL_LXTALSTB_MASK ) )
             return SYSTEM_CLOCK_UPDATE_ERROR;
     }
 
     /* Select RTC clock entry and enable/disable clock output. */
-    if( VALUE_RCU_BDCTL & RCU_BDCTL_RTCSRC_MASK ) {
-        REGISTER_RCU_BDCTL |= (VALUE_RCU_BDCTL & (RCU_BDCTL_RTCSRC_MASK | RCU_BDCTL_RTCEN_MASK));
+    if ( VALUE_RCU_BDCTL & RCU_BDCTL_RTCSRC_MASK ) {
+        REGISTER_RCU_BDCTL |= ( VALUE_RCU_BDCTL & ( RCU_BDCTL_RTCSRC_MASK | RCU_BDCTL_RTCEN_MASK ) );
     }
 
     /* Enable IRC40K and wait for it to stabilize. */
     if ( VALUE_RCU_RSTSCK & RCU_RSTCK_IRC40KEN_MASK ) {
         REGISTER_RCU_RSTSCK |= RCU_RSTCK_IRC40KEN_MASK;
-        if ( system_rcu_clock_check_err(ADDRESS_RCU_RSTSCK,RCU_RSTCK_IRC40KSTB_MASK) )
+        if ( system_rcu_clock_check_err( ADDRESS_RCU_RSTSCK, RCU_RSTCK_IRC40KSTB_MASK ) )
             return SYSTEM_CLOCK_UPDATE_ERROR;
     }
 
     /* Set adequate prescaler/divider values. */
-    REGISTER_RCU_CFG0 |= (VALUE_RCU_CFG0 & (RCU_CFG0_AHBPSC_MASK |
-                                            RCU_CFG0_APB1PSC_MASK |
-                                            RCU_CFG0_APB2PSC_MASK |
-                                            RCU_CFG0_ADCPSC_MASK |
-                                            RCU_CFG0_PLLMF_MASK |
-                                            RCU_CFG0_PLLSEL_MASK |
-                                            RCU_CFG0_USBFSPSC_MASK |
-                                            RCU_CFG0_CKOUT0SEL_MASK));
+    REGISTER_RCU_CFG0 |= ( VALUE_RCU_CFG0 & ( RCU_CFG0_AHBPSC_MASK |
+                                              RCU_CFG0_APB1PSC_MASK |
+                                              RCU_CFG0_APB2PSC_MASK |
+                                              RCU_CFG0_ADCPSC_MASK |
+                                              RCU_CFG0_PLLMF_MASK |
+                                              RCU_CFG0_PLLSEL_MASK |
+                                              RCU_CFG0_USBFSPSC_MASK |
+                                              RCU_CFG0_CKOUT0SEL_MASK ) );
 
     /**
      * Set adequate clock dividers/multipliers for following bits:
      * @b PREDV0, @b PREDV1, @b PLL1MF, @b PLL2MF.
      */
-    REGISTER_RCU_CFG1 |= (VALUE_RCU_CFG1 & (RCU_CFG1_PREDV0_MASK |
-                                            RCU_CFG1_PREDV1_MASK |
-                                            RCU_CFG1_PLL1MF_MASK |
-                                            RCU_CFG1_PLL2MF_MASK));
+    REGISTER_RCU_CFG1 |= ( VALUE_RCU_CFG1 & ( RCU_CFG1_PREDV0_MASK |
+                                              RCU_CFG1_PREDV1_MASK |
+                                              RCU_CFG1_PLL1MF_MASK |
+                                              RCU_CFG1_PLL2MF_MASK ) );
 
     /* Select PREDV0 clock source. */
-    REGISTER_RCU_CFG1 |= (VALUE_RCU_CFG1 & RCU_CFG1_PREDV0SEL_MASK);
+    REGISTER_RCU_CFG1 |= ( VALUE_RCU_CFG1 & RCU_CFG1_PREDV0SEL_MASK );
 
     /* Select I2S1/I2S2 clock source. */
-    REGISTER_RCU_CFG1 |= (VALUE_RCU_CFG1 & (RCU_CFG1_I2S1SEL_MASK |
-                                            RCU_CFG1_I2S2SEL_MASK));
+    REGISTER_RCU_CFG1 |= ( VALUE_RCU_CFG1 & ( RCU_CFG1_I2S1SEL_MASK |
+                                              RCU_CFG1_I2S2SEL_MASK ) );
 
     /* Set Deep-sleep mode voltage. */
-    REGISTER_RCU_DSV |= (VALUE_RCU_DSV & RCU_DSV_DSLPVS_MASK);
+    REGISTER_RCU_DSV |= ( VALUE_RCU_DSV & RCU_DSV_DSLPVS_MASK );
 
     /**
      * Set PLL state.
@@ -676,42 +709,42 @@ static system_clock_update_t system_rcu_clock_update( void ) {
      *   - @b PLL2.
      */
     if ( VALUE_RCU_CTL & RCU_CTL_PLLEN_MASK ) {
-        REGISTER_RCU_CTL |= (uint32_t)(VALUE_RCU_CTL & RCU_CTL_PLLEN_MASK);
-        if ( system_rcu_clock_check_err(ADDRESS_RCU_CTL,RCU_CTL_PLLSTB_MASK) )
+        REGISTER_RCU_CTL |= ( uint32_t )( VALUE_RCU_CTL & RCU_CTL_PLLEN_MASK );
+        if ( system_rcu_clock_check_err( ADDRESS_RCU_CTL, RCU_CTL_PLLSTB_MASK ) )
             return SYSTEM_CLOCK_UPDATE_ERROR;
     }
 
     if ( VALUE_RCU_CTL & RCU_CTL_PLL1EN_MASK ) {
-        REGISTER_RCU_CTL |= (uint32_t)(VALUE_RCU_CTL & RCU_CTL_PLL1EN_MASK);
-        if ( system_rcu_clock_check_err(ADDRESS_RCU_CTL,RCU_CTL_PLL1STB_MASK) )
+        REGISTER_RCU_CTL |= ( uint32_t )( VALUE_RCU_CTL & RCU_CTL_PLL1EN_MASK );
+        if ( system_rcu_clock_check_err( ADDRESS_RCU_CTL, RCU_CTL_PLL1STB_MASK ) )
             return SYSTEM_CLOCK_UPDATE_ERROR;
     }
 
     if ( VALUE_RCU_CTL & RCU_CTL_PLL2EN_MASK ) {
-        REGISTER_RCU_CTL |= (uint32_t)(VALUE_RCU_CTL & RCU_CTL_PLL2EN_MASK);
-        if ( system_rcu_clock_check_err(ADDRESS_RCU_CTL,RCU_CTL_PLL2STB_MASK) )
+        REGISTER_RCU_CTL |= ( uint32_t )( VALUE_RCU_CTL & RCU_CTL_PLL2EN_MASK );
+        if ( system_rcu_clock_check_err( ADDRESS_RCU_CTL, RCU_CTL_PLL2STB_MASK ) )
             return SYSTEM_CLOCK_UPDATE_ERROR;
     }
 
     /* Select system clock supply. */
-    if ( (VALUE_RCU_CFG0 & RCU_CFGO_SCS_HXTAL_MASK) ||
-         (VALUE_RCU_CFG0 & RCU_CFGO_SCS_PLL_MASK) )
-    {
-        REGISTER_RCU_CFG0 |= (VALUE_RCU_CFG0 & RCU_CFGO_SCS_MASK);
-        if (VALUE_RCU_CFG0 & RCU_CFGO_SCS_HXTAL_MASK) {
-            if ( system_rcu_clock_check_err(ADDRESS_RCU_CFG0,RCU_CFGO_SCSS_HXTAL_MASK) )
+    if ( ( VALUE_RCU_CFG0 & RCU_CFGO_SCS_HXTAL_MASK ) ||
+         ( VALUE_RCU_CFG0 & RCU_CFGO_SCS_PLL_MASK ) ) {
+        REGISTER_RCU_CFG0 |= ( VALUE_RCU_CFG0 & RCU_CFGO_SCS_MASK );
+        if ( VALUE_RCU_CFG0 & RCU_CFGO_SCS_HXTAL_MASK ) {
+            if ( system_rcu_clock_check_err( ADDRESS_RCU_CFG0, RCU_CFGO_SCSS_HXTAL_MASK ) )
                 return SYSTEM_CLOCK_UPDATE_ERROR;
         } else {
-            if ( system_rcu_clock_check_err(ADDRESS_RCU_CFG0,RCU_CFGO_SCSS_PLL_MASK) )
+            if ( system_rcu_clock_check_err( ADDRESS_RCU_CFG0, RCU_CFGO_SCSS_PLL_MASK ) )
                 return SYSTEM_CLOCK_UPDATE_ERROR;
         }
     } else {
         uint32_t stabilization_timeout_interval = STABILIZATION_TIMEOUT_VALUE;
         REGISTER_RCU_CFG0 &= ~RCU_CFGO_SCS_MASK;
 
-        while ( stabilization_timeout_interval-- );
-        if ( __pointer(ADDRESS_RCU_CFG0) & (RCU_CFGO_SCSS_HXTAL_MASK ||
-                                            RCU_CFGO_SCSS_PLL_MASK) ) {
+        while ( stabilization_timeout_interval-- )
+            ;
+        if ( __pointer( ADDRESS_RCU_CFG0 ) & ( RCU_CFGO_SCSS_HXTAL_MASK ||
+                                               RCU_CFGO_SCSS_PLL_MASK ) ) {
             return SYSTEM_CLOCK_UPDATE_ERROR;
         }
     }
@@ -719,10 +752,12 @@ static system_clock_update_t system_rcu_clock_update( void ) {
     return SYSTEM_CLOCK_UPDATE_SUCCESS;
 }
 
-static void system_rcu_clock_default( void ) {
+static void system_rcu_clock_default( void )
+{
     /* Enable IRC8M and wait for it to stabilize. */
     REGISTER_RCU_CTL |= RCU_CTL_IRC8MEN_MASK;
-    while( !(REGISTER_RCU_CTL & RCU_CTL_IRC8STB_MASK) );
+    while ( !( REGISTER_RCU_CTL & RCU_CTL_IRC8STB_MASK ) )
+        ;
 
     /* Set adequate prescaler/divider values. */
     REGISTER_RCU_CFG0 &= RCU_CFG0_DEFAULT_VALUE;
@@ -740,9 +775,9 @@ static system_clock_update_t system_rcu_clock_check_err( uint32_t register_addre
     uint32_t stabilization_timeout_interval = STABILIZATION_TIMEOUT_VALUE;
 
     do {
-        if ( !(stabilization_timeout_interval--) )
-                return SYSTEM_CLOCK_UPDATE_ERROR;
-    } while( !( __pointer(register_address) & register_mask ) );
+        if ( !( stabilization_timeout_interval-- ) )
+            return SYSTEM_CLOCK_UPDATE_ERROR;
+    } while ( !( __pointer( register_address ) & register_mask ) );
 
     return SYSTEM_CLOCK_UPDATE_SUCCESS;
 }
