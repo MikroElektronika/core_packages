@@ -400,8 +400,6 @@ void str_insert_chr( char * str, char chr, int num )
     }
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
-
 // ----------------------------------------------------------------------------
 /*
     cstring.c
