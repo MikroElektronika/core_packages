@@ -10,7 +10,6 @@ include(coreUtils)
 
 add_preinit_lib()
 
-
 #include all .cmake files from cmake folder
 
 file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
