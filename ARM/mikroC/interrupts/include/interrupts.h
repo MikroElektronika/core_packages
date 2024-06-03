@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2024 MikroElektronika d.o.o.
+** Copyright (C) 2023 MikroElektronika d.o.o.
 ** Contact: https://www.mikroe.com/contact
 **
 ** This file is part of the mikroSDK package
@@ -45,34 +45,34 @@
 #define _INTERRUPTS_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
 
 #include "interrupts_mcu.h"
 
 /**
  * @brief Enables interrupts on the global level.
- * @return None.
+ * @return Nothing.
  */
 void interrupts_enable( void );
 
 /**
  * @brief Disables interrupts on the global level.
- * @return None.
+ * @return Nothing.
  */
 void interrupts_disable( void );
 
 /**
  * @brief Enables module specific interrupt.
  * @param[in] interrupt IVT number.
- * @return None.
+ * @return Nothing.
  */
 void interrupt_enable( int interrupt );
 
 /**
  * @brief Disables module specific interrupt.
  * @param[in] interrupt IVT number.
- * @return None.
+ * @return Nothing.
  */
 void interrupt_disable( int interrupt );
 
