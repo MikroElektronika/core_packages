@@ -55,7 +55,7 @@ void __CCA2AW()
     asm {
         _CCA2AW_Loop1:
     }
-    ____DoICP(); // mora da se zove iz pascal koda, nikako iz asemblera
+    ____DoICP();
     asm {
         MOVWF       INDF
         INCF        FSR, 1
@@ -105,7 +105,7 @@ void __CCS2S()
     asm {
       _CCS2S_Loop1:
     }
-    ____DoICP(); // mora da se zove iz pascal koda, nikako iz asemblera
+    ____DoICP();
     asm {
         IORLW       0
         BTFSC       STATUS, Z
