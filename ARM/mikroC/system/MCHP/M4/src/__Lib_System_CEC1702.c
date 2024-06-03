@@ -253,7 +253,7 @@ void __GenExcept()
  *          registers return to their default values. The reset cause
  *          register maintains its current value with the software reset
  *          bit set.
- * @return This function does not return.
+ * @return None.
  */
 void SystemReset( void )
 {
@@ -280,7 +280,7 @@ void __EnableFPU()
     STR     R1, [R0]
     }
     asm nop asm nop asm nop asm nop
-        // The code below includes rounding to zero during conversion.
+    // The code below includes rounding to zero during conversion.
     asm vmrs R0,
         FPSCR
         R0 = R0 | ( 0b11ul << 22 ); // SWRELARM-665

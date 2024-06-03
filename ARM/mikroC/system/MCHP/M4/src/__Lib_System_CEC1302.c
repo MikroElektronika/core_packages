@@ -253,7 +253,7 @@ void __GenExcept()
  *          registers return to their default values. The reset cause
  *          register maintains its current value with the software reset
  *          bit set.
- * @return This function does not return.
+ * @return None.
  */
 void SystemReset( void )
 {
