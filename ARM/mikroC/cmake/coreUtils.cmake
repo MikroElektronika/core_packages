@@ -18,11 +18,11 @@ function(core_install targetAlias)
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         )
-    # Install export file
+    # INSTALL EXPORT FILE
     install(EXPORT ${targetAlias}Target
         FILE ${targetAlias}Targets.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${targetAlias})
-    ## Set variable used in config file
+    ## Set variable used in configFile
     set(TARGET_NAME ${targetAlias})
     set(findDepsList "")
 
@@ -39,7 +39,7 @@ function(core_install targetAlias)
          "${CMAKE_CURRENT_BINARY_DIR}/${targetAlias}Config.cmake"
          INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${targetAlias})
 
-    ## Configure package version file
+    ## configure package version file
     write_basic_package_version_file(
         "${CMAKE_CURRENT_BINARY_DIR}/${targetAlias}ConfigVersion.cmake"
         VERSION ${CMAKE_PROJECT_VERSION}
