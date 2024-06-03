@@ -5,17 +5,15 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2020, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
-
-// 230706 - Fixed atan2() API
+---------------------------------------------------------------------------- */
 
 #include "math.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* -----------------------------PRIVATE MACROS------------------------------ */
 
 #define EXCESS        126
 #define MAX_EXPONENT  255
@@ -31,7 +29,7 @@
 
 #define CHAR_BIT      8
 
-// -------------------------------------------------------------- PRIVATE TYPES
+/* ------------------------------PRIVATE TYPES------------------------------ */
 
 #if defined(__MIKROC_AI_FOR_ARM__) || defined(__MIKROC_AI_FOR_PIC32__) \
  || defined(__MIKROC_AI_FOR_DSPIC__) || defined(__MIKROC_AI_FOR_AVR__)
@@ -39,41 +37,34 @@ static union both
 {
     struct flt
     {
-        unsigned short  mant[2];
-        unsigned int    hmant:7;
-        unsigned int    exp:8;
-        unsigned int    sign:1;
+        unsigned short mant[ 2 ];
+        unsigned int   hmant : 7;
+        unsigned int   exp   : 8;
+        unsigned int   sign  : 1;
     } flt;
     double fl;
 };
 #endif
 
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
-
-
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ----------------------PRIVATE FUNCTION DECLARATIONS---------------------- */
 
 /**
- * Calculates polynom for a number, with coefficients stored in coeff_ptr[],
- * for degree n
- *
- * @param num Number for which the polynom is calculated
- * @param coeff_ptr Pointer to the array in which coefficients are stored in
- * @param n Degree for which the polynom is calculated
- *
- * @return Calculation result
+ * @brief Calculates the value of a polynomial for a given number.
+ * @details The function evaluates a polynomial for the specified number, with
+ *          coefficients stored in an array pointed to by coeff_ptr, for a
+ *          given degree n.
+ * @param num       Number for which the polynomial is calculated.
+ * @param coeff_ptr Pointer to the array containing the coefficients.
+ * @param n         Degree of the polynomial.
+ * @return The calculated result of the polynomial.
  */
-static double eval_poly(double num, const double code * coeff_ptr, int n);
+static double eval_poly( double num, const double code * coeff_ptr, int n );
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
 double fabs( double num )
 {
-    if ( num < 0.0 )
-    {
+    if ( num < 0.0 ) {
         return -num;
     }
 
@@ -83,32 +74,26 @@ double fabs( double num )
 double floor( double num )
 {
     double i;
-    int expon;
+    int    expon;
 
-    expon = ( *( unsigned long * ) & num >> DBL_MANT_DIG ) & 255;
+    expon = ( *( unsigned long * )&num >> DBL_MANT_DIG ) & 255;
     expon = expon - 127;
 
-    if ( expon < 0 )
-    {
-        if ( num < 0.0 )
-        {
+    if ( expon < 0 ) {
+        if ( num < 0.0 ) {
             return -1.0;
-        }
-        else
-        {
-            return  0.0;
+        } else {
+            return 0.0;
         }
     }
 
-    if ( ( unsigned int ) expon > sizeof( double ) *CHAR_BIT - 8 )
-    {
+    if ( ( unsigned int )expon > sizeof( double ) * CHAR_BIT - 8 ) {
         return num; /* already an integer */
     }
 
     i = _FRNDINT( num );
 
-    if ( i > num )
-    {
+    if ( i > num ) {
         return i - 1.0;
     }
 
@@ -118,30 +103,24 @@ double floor( double num )
 double ceil( double num )
 {
     double i;
-    int expon;
+    int    expon;
 
-    expon = ( ( *( unsigned long * ) & num >> DBL_MANT_DIG ) & 255 ) - 127;
-    if ( expon < 0 )
-    {
-        if ( num <= 0.0 )
-        {
+    expon = ( ( *( unsigned long * )&num >> DBL_MANT_DIG ) & 255 ) - 127;
+    if ( expon < 0 ) {
+        if ( num <= 0.0 ) {
             return 0.0;
-        }
-        else
-        {
-            return  1.0;
+        } else {
+            return 1.0;
         }
     }
 
-    if ( ( ( int )expon ) > ( sizeof( double ) * CHAR_BIT - 8 ) )
-    {
+    if ( ( ( int )expon ) > ( sizeof( double ) * CHAR_BIT - 8 ) ) {
         return num; /* already an integer */
     }
 
     i = _FRNDINT( num );
 
-    if ( i < num )
-    {
+    if ( i < num ) {
         return i + 1.0;
     }
 
@@ -162,11 +141,11 @@ double frexp( double num, int * exp_ptr )
 
     return uv.fl;
     #elif defined(__MIKROC_AI_FOR_PIC__)
-    char *pom;
+    char * pom;
 
     pom = &num;
-    *exp_ptr = pom[3] - EXCESS;
-    pom[3] = EXCESS;
+    *exp_ptr = pom[ 3 ] - EXCESS;
+    pom[ 3 ] = EXCESS;
 
     return num;
     #endif
@@ -181,45 +160,35 @@ double ldexp( double num, int new_exp )
     uv.fl = num;
     new_exp += uv.flt.exp;
 
-    if ( new_exp < 0 )
-    {
+    if ( new_exp < 0 ) {
         return 0.0;
-    }
-    else
-    {
-        if ( new_exp > MAX_EXPONENT )
-        {
-            if ( num < 0.0 )
-            {
+    } else {
+        if ( new_exp > MAX_EXPONENT ) {
+            if ( num < 0.0 ) {
                 return -DBL_MAX;
-            }
-            else
-            {
+            } else {
                 return DBL_MAX;
             }
-        }
-        else
-        {
+        } else {
             uv.flt.exp = new_exp;
         }
     }
 
     return uv.fl;
     #elif defined(__MIKROC_AI_FOR_PIC__)
-    char *pom;
+    char * pom;
 
     pom = &num;
-    new_exp += pom[3];
-    if (new_exp < 0)
+    new_exp += pom[ 3 ];
+    if ( new_exp < 0 )
         return 0.0;
-    else
-        if (new_exp > MAX_EXPONENT)
-            if (num < 0.0)
-                return -DBL_MAX;
-            else
-                return DBL_MAX;
+    else if ( new_exp > MAX_EXPONENT )
+        if ( num < 0.0 )
+            return -DBL_MAX;
         else
-            pom[3] = new_exp;
+            return DBL_MAX;
+    else
+        pom[ 3 ] = new_exp;
 
     return num;
     #endif
@@ -232,18 +201,16 @@ double modf( double num, double * int_ptr )
 
     bbb = ( num >= 0.0 ) && ( num < 1.0 );
 
-    if ( bbb || ( num > -1.0 ) && ( num <= 0.0 ) )
-    {
+    if ( bbb || ( num > -1.0 ) && ( num <= 0.0 ) ) {
         *int_ptr = 0;
         return num;
     }
 
     expon = ( ( ( *( long * )&num >> DBL_MANT_DIG ) ) & 255 ) - 127;
 
-    if ( expon > ( sizeof( double ) * CHAR_BIT - 8 ) )
-    {
+    if ( expon > ( sizeof( double ) * CHAR_BIT - 8 ) ) {
         *int_ptr = num;
-        return 0.0; //already an integer
+        return 0.0; // already an integer
     }
 
     *int_ptr = _FRNDINT( num );
@@ -256,34 +223,29 @@ double sqrt( double num )
     double og;
     double ng;
     short  niter;
-    int expon;
+    int    expon;
 
-    if ( num <= 0.0 )
-    {
+    if ( num <= 0.0 ) {
         return 0.0;
     }
 
     og = num;
 
-    if ( og < 1.0 )
-    {
+    if ( og < 1.0 ) {
         og = 1.0 / og;
     }
 
     og = frexp( og, &expon );
     og = ldexp( og, expon / 2 );
 
-    if ( num < 1.0 )
-    {
+    if ( num < 1.0 ) {
         og = 1.0 / og;
     }
 
     niter = 20;
-    do
-    {
+    do {
         ng = ( num / og + og ) / 2.0;
-        if ( ng == og )
-        {
+        if ( ng == og ) {
             break;
         }
         og = ng;
@@ -313,15 +275,13 @@ double atan( double num )
     };
 
     unsigned short recip;
-    double val;
-    double val_sqr;
+    double         val;
+    double         val_sqr;
 
-    if ( ( val = fabs( num ) ) == 0.0 )
-    {
+    if ( ( val = fabs( num ) ) == 0.0 ) {
         return 0.0;
     }
-    if ( recip = ( val > 1.0 ) )
-    {
+    if ( recip = ( val > 1.0 ) ) {
         val = 1.0 / val;
     }
 
@@ -329,8 +289,7 @@ double atan( double num )
     val *= eval_poly( val_sqr, coeff_a, 5 );
     val /= eval_poly( val_sqr, coeff_b, 4 );
 
-    if ( recip )
-    {
+    if ( recip ) {
         val = HALF_PI - val;
     }
 
@@ -344,20 +303,17 @@ double asin( double num )
 {
     double y;
 
-    if (fabs( num ) > 1.0 )
-    {
+    if ( fabs( num ) > 1.0 ) {
         return 0.0;
     }
 
     y = sqrt( 1.0 - num * num );
 
-    if ( fabs( num ) < 0.71 )
-    {
+    if ( fabs( num ) < 0.71 ) {
         return atan( num / y );
     }
 
-    if ( num < 0.0 )
-    {
+    if ( num < 0.0 ) {
         return -( HALF_PI - atan( -y / num ) );
     }
 
@@ -369,25 +325,20 @@ double acos( double num )
     return HALF_PI - asin( num );
 }
 
-double atan2( double y, double  x )
+double atan2( double y, double x )
 {
     double v;
 
-    if((0 == y) && (0 == x))
-    {
+    if ( ( 0 == y ) && ( 0 == x ) ) {
         return 0.0;
     }
 
-    if ( fabs( y ) >= fabs( x ) )
-    {
+    if ( fabs( y ) >= fabs( x ) ) {
         v = -atan( x / y );
 
-        if ( y > 0.0 )
-        {
+        if ( y > 0.0 ) {
             v += HALF_PI;
-        }
-        else
-        {
+        } else {
             v -= HALF_PI;
         }
 
@@ -396,14 +347,10 @@ double atan2( double y, double  x )
 
     v = atan( y / x );
 
-    if ( x < 0.0 )
-    {
-        if ( y >= 0.0 )
-        {
+    if ( x < 0.0 ) {
+        if ( y >= 0.0 ) {
             v += PI;
-        }
-        else
-        {
+        } else {
             v -= PI;
         }
     }
@@ -432,8 +379,7 @@ double sin( double num )
     unsigned short sgn;
 
     sgn = 0;
-    if ( num < 0.0 )
-    {
+    if ( num < 0.0 ) {
         num = -num;
         sgn = 1;
     }
@@ -441,13 +387,11 @@ double sin( double num )
     num *= 1.0 / TWO_PI;
     num = 4.0 * ( num - floor( num ) );
 
-    if ( num > 2.0 )
-    {
+    if ( num > 2.0 ) {
         num -= 2.0;
         sgn = !sgn;
     }
-    if ( num > 1.0 )
-    {
+    if ( num > 1.0 ) {
         num = 2.0 - num;
     }
 
@@ -455,8 +399,7 @@ double sin( double num )
     num *= eval_poly( num_sqr, coeff_a, 4 );
     num /= eval_poly( num_sqr, coeff_b, 3 );
 
-    if ( sgn )
-    {
+    if ( sgn ) {
         return -num;
     }
 
@@ -465,8 +408,7 @@ double sin( double num )
 
 double cos( double num )
 {
-    if ( num > PI )
-    {
+    if ( num > PI ) {
         return sin( num - ( PI + HALF_PI ) );
     }
 
@@ -486,7 +428,7 @@ double tan( double num )
 
 double exp( double pow )
 {
-    int exp;
+    int            exp;
     unsigned short sign;
 
     const static double coeff[] =
@@ -503,35 +445,31 @@ double exp( double pow )
         1.3908092221e-07,
     };
 
-    if ( pow == 0.0 )
-    {
+    if ( pow == 0.0 ) {
         return 1.0;
     }
-    if ( pow > EXP_MAX )    //too big?
+    if ( pow > EXP_MAX ) // too big?
     {
         return DBL_MAX;
     }
-    if ( pow < EXP_MIN )    //too small?
+    if ( pow < EXP_MIN ) // too small?
     {
         return 0.0;
     }
 
     sign = pow < 0.0;
 
-    if ( sign )
-    {
+    if ( sign ) {
         pow = -pow;
     }
 
-    pow *= 1.4426950409;            // convert to log2 //
+    pow *= 1.4426950409; // convert to log2 //
     exp = ( int )floor( pow );
     pow -= ( double )exp;
-    pow = ldexp( eval_poly( pow, coeff, sizeof coeff / sizeof coeff[0] - 1 ), exp );
+    pow = ldexp( eval_poly( pow, coeff, sizeof coeff / sizeof coeff[ 0 ] - 1 ), exp );
 
-    if ( sign )
-    {
-        if ( pow == DBL_MAX )
-        {
+    if ( sign ) {
+        if ( pow == DBL_MAX ) {
             return 0.0;
         }
         return 1.0 / pow;
@@ -541,7 +479,7 @@ double exp( double pow )
 
 double log( double num )
 {
-    int exp;
+    int                 exp;
     static const double coeff[] =
     {
         0.0000000001,      // a0 //
@@ -557,14 +495,13 @@ double log( double num )
 
     // zero or -ve arguments are not defined //
 
-    if (num <= 0.0)
-    {
+    if ( num <= 0.0 ) {
         return 0.0;
     }
 
     num = frexp( num, &exp ) * 2.0 - 1.0;
     exp--;
-    num = eval_poly( num, coeff, sizeof coeff / sizeof coeff[0] - 1 );
+    num = eval_poly( num, coeff, sizeof coeff / sizeof coeff[ 0 ] - 1 );
 
     return num + 0.69314718055995 * exp;
 }
@@ -577,24 +514,20 @@ double log10( double num )
 double pow( double num, double pow )
 {
     unsigned short sign = 0;
-    long pow_int;
+    long           pow_int;
 
-    if (pow == 0.0)
-    {
+    if ( pow == 0.0 ) {
         return 1.0;
     }
 
-    if (num == 0.0)
-    {
+    if ( num == 0.0 ) {
         return 0.0;
     }
 
-    if (num < 0.0)
-    {
+    if ( num < 0.0 ) {
         pow_int = ( long )pow;
 
-        if ( ( double )pow_int != pow )
-        {
+        if ( ( double )pow_int != pow ) {
             return 0.0;
         }
 
@@ -605,8 +538,7 @@ double pow( double num, double pow )
     num = num * pow;
     num = exp( num );
 
-    if ( sign )
-    {
+    if ( sign ) {
         return -num;
     }
 
@@ -637,17 +569,16 @@ double tanh( double num )
     return ( num_exp - num ) / ( num_exp + num );
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* ----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
 static double eval_poly( double num, const double code * coeff_ptr, int n )
 {
     double res;
 
-    res = coeff_ptr[n];
+    res = coeff_ptr[ n ];
 
-    while (n)
-    {
-        res = num * res + coeff_ptr[--n];
+    while ( n ) {
+        res = num * res + coeff_ptr[ --n ];
     }
 
     return res;
@@ -657,7 +588,7 @@ static double eval_poly( double num, const double code * coeff_ptr, int n )
 /*
     cmath.c
 
-    Copyright (c) 2020, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
