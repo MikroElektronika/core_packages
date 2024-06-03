@@ -147,21 +147,12 @@ static void InitialSetUpFosc()
     _VOLTAGE_RANGE        = 12345676;
 }
 
-/* System Clock Switch Status */
-#define RCC_CFGR_SWS ( 0x0000000C )
+#define RCC_CFGR_SWS (0x0000000C) /* System Clock Switch Status */
 
-// Voltage range
-// 2.7 to 3.6 V
-#define VR_2700_3600 3
-// Voltage range
-// 2.4 to 2.7 V
-#define VR_2400_2700 2
-// Voltage range
-// 2.1 to 2.4 V
-#define VR_2100_2400 1
-// Voltage range
-// 1.8 to 2.1 V
-#define VR_1800_2100 0
+#define VR_2700_3600 3 /* Voltage range 2.7 to 3.6V */
+#define VR_2400_2700 2 /* Voltage range 2.7 to 3.6V */
+#define VR_2100_2400 1 /* Voltage range 2.7 to 3.6V */
+#define VR_1800_2100 0 /* Voltage range 1.8 to 2.1V */
 
 void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
 {

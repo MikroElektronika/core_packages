@@ -151,12 +151,10 @@ static void InitialSetUpFosc()
     _VOLTAGE_RANGE        = 12345676;
 }
 
-/* System Clock Switch Status */
-#define RCC_CFGR_SWS ( 0x0000000C )
+#define RCC_CFGR_SWS (0x0000000C) /* System Clock Switch Status */
 
-#define VR_1000      0x00000400
-// Voltage range 1.2V
-#define VR_1200 0x00000200
+#define VR_1000 0x00000400 /* Voltage range 1.0V */
+#define VR_1200 0x00000200 /* Voltage range 1.2V */
 
 void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
 {
