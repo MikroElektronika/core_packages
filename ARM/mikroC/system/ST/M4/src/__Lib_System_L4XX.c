@@ -159,24 +159,24 @@ void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
     RCC_Clocks->HCLK_Frequency = Get_Fosc_kHz() * 1000;
 
     /* Get HCLK prescaler */
-    tmp   = RCC_CFGR & 0xF0;
-    tmp   = tmp >> 4;
+    tmp = RCC_CFGR & 0xF0;
+    tmp = tmp >> 4;
     presc = APBAHBPrescTable[ tmp ];
 
     /* HCLK clock frequency */
     RCC_Clocks->SYSCLK_Frequency = RCC_Clocks->HCLK_Frequency << presc;
 
     /* Get PCLK1 prescaler */
-    tmp   = RCC_CFGR & ( 0b111L << 8 );
-    tmp   = tmp >> 8;
+    tmp = RCC_CFGR & ( 0b111L << 8 );
+    tmp = tmp >> 8;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK1 clock frequency */
     RCC_Clocks->PCLK1_Frequency = RCC_Clocks->HCLK_Frequency >> presc;
 
     /* Get PCLK2 prescaler */
-    tmp   = RCC_CFGR & ( 0b111L << 11 );
-    tmp   = tmp >> 11;
+    tmp = RCC_CFGR & ( 0b111L << 11 );
+    tmp = tmp >> 11;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK2 clock frequency */
@@ -211,12 +211,12 @@ static void InitialSetUpRCCRCC2()
 {
     unsigned long volatile ulRCC_CR, ulRCC_CFGR, ulRCC_PLLCFGR, ulRCC_CSR, ulVOLTAGE_RANGE;
     unsigned long Fosc_kHz;
-    ulRCC_CR        = 12345678;
-    ulRCC_CFGR      = 12345679;
-    ulRCC_PLLCFGR   = 12345680;
-    ulRCC_CSR       = 12345681;
+    ulRCC_CR = 12345678;
+    ulRCC_CFGR = 12345679;
+    ulRCC_PLLCFGR = 12345680;
+    ulRCC_CSR = 12345681;
     ulVOLTAGE_RANGE = 12345682;
-    Fosc_kHz        = 12345677;
+    Fosc_kHz = 12345677;
 
     SystemClockSetDefault();
 
@@ -243,18 +243,18 @@ static void InitialSetUpRCCRCC2()
     }
 
     FLASH_ACR.PRFTEN = 1;                     // Prefetch enable.
-    FLASH_ACR.ICEN   = 1;                     // Instruction cache enable.
-    FLASH_ACR.DCEN   = 1;                     // Data cache enable.
+    FLASH_ACR.ICEN = 1;                     // Instruction cache enable.
+    FLASH_ACR.DCEN = 1;                     // Data cache enable.
 
     /* Set clock configuration register */
-    RCC_PLLCFGR      = ulRCC_PLLCFGR;
+    RCC_PLLCFGR = ulRCC_PLLCFGR;
 
     /* Set clock configuration register 2 */
-    RCC_CFGR         = ulRCC_CFGR;
-    RCC_CSR          = ulRCC_CSR;
+    RCC_CFGR = ulRCC_CFGR;
+    RCC_CSR = ulRCC_CSR;
 
     /* Do not start PLLs yet */
-    RCC_CR           = ulRCC_CR & 0x000FFFFF;
+    RCC_CR = ulRCC_CR & 0x000FFFFF;
 
     /* If MSI enabled*/
     if ( ulRCC_CR & ( 1ul << MSION ) ) {

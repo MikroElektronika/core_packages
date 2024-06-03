@@ -160,24 +160,24 @@ void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
     RCC_Clocks->HCLK_Frequency = Get_Fosc_kHz() * 1000;
 
     /* Get HCLK prescaler */
-    tmp   = RCC_CFGR & 0xF0;
-    tmp   = tmp >> 4;
+    tmp = RCC_CFGR & 0xF0;
+    tmp = tmp >> 4;
     presc = APBAHBPrescTable[ tmp ];
 
     /* HCLK clock frequency */
     RCC_Clocks->SYSCLK_Frequency = RCC_Clocks->HCLK_Frequency << presc;
 
     /* Get PCLK1 prescaler */
-    tmp   = RCC_CFGR & ( 0b111L << 10 );
-    tmp   = tmp >> 10;
+    tmp = RCC_CFGR & ( 0b111L << 10 );
+    tmp = tmp >> 10;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK1 clock frequency */
     RCC_Clocks->PCLK1_Frequency = RCC_Clocks->HCLK_Frequency >> presc;
 
     /* Get PCLK2 prescaler */
-    tmp   = RCC_CFGR & ( 0b111L << 13 );
-    tmp   = tmp >> 13;
+    tmp = RCC_CFGR & ( 0b111L << 13 );
+    tmp = tmp >> 13;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK2 clock frequency */
@@ -220,11 +220,11 @@ static void InitialSetUpRCCRCC2()
 {
     unsigned long volatile ulRCC_CR, ulRCC_CFGR, ulRCC_PLLCFGR, ulVOLTAGE_RANGE;
     unsigned long Fosc_kHz;
-    ulRCC_CR        = 12345678;
-    ulRCC_PLLCFGR   = 12345679;
-    ulRCC_CFGR      = 12345680;
+    ulRCC_CR = 12345678;
+    ulRCC_PLLCFGR = 12345679;
+    ulRCC_CFGR = 12345680;
     ulVOLTAGE_RANGE = 12345681;
-    Fosc_kHz        = 12345677;
+    Fosc_kHz = 12345677;
 
     if ( ulVOLTAGE_RANGE == VR_2700_3600 ) {
         if ( Fosc_kHz > 150000 )
@@ -291,7 +291,7 @@ static void InitialSetUpRCCRCC2()
     }
 
     FLASH_ACR.PRFTEN = 1; // Prefetch enable.
-    FLASH_ACR.ICEN   = 1; // Instruction cache enable.
+    FLASH_ACR.ICEN = 1; // Instruction cache enable.
 
     SystemClockSetDefault();
 

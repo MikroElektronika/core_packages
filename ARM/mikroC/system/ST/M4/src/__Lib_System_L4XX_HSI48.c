@@ -163,24 +163,24 @@ void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
     RCC_Clocks->HCLK_Frequency = Get_Fosc_kHz() * 1000;
 
     /* Get HCLK prescaler */
-    tmp   = RCC_CFGR & 0xF0;
-    tmp   = tmp >> 4;
+    tmp = RCC_CFGR & 0xF0;
+    tmp = tmp >> 4;
     presc = APBAHBPrescTable[ tmp ];
 
     /* HCLK clock frequency */
     RCC_Clocks->SYSCLK_Frequency = RCC_Clocks->HCLK_Frequency << presc;
 
     /* Get PCLK1 prescaler */
-    tmp   = RCC_CFGR & ( 0b111L << 8 );
-    tmp   = tmp >> 8;
+    tmp = RCC_CFGR & ( 0b111L << 8 );
+    tmp = tmp >> 8;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK1 clock frequency */
     RCC_Clocks->PCLK1_Frequency = RCC_Clocks->HCLK_Frequency >> presc;
 
     /* Get PCLK2 prescaler */
-    tmp   = RCC_CFGR & ( 0b111L << 11 );
-    tmp   = tmp >> 11;
+    tmp = RCC_CFGR & ( 0b111L << 11 );
+    tmp = tmp >> 11;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK2 clock frequency */
@@ -218,14 +218,14 @@ static void InitialSetUpRCCRCC2()
 {
     unsigned long volatile ulRCC_CR, ulRCC_CFGR, ulRCC_PLLCFGR, ulRCC_CSR, ulVOLTAGE_RANGE, ulRCC_CRRCR, ulRCC_CCIPR;
     unsigned long Fosc_kHz;
-    ulRCC_CR        = 12345678;
-    ulRCC_CFGR      = 12345679;
-    ulRCC_PLLCFGR   = 12345680;
-    ulRCC_CSR       = 12345681;
+    ulRCC_CR = 12345678;
+    ulRCC_CFGR = 12345679;
+    ulRCC_PLLCFGR = 12345680;
+    ulRCC_CSR = 12345681;
     ulVOLTAGE_RANGE = 12345682;
-    ulRCC_CRRCR     = 12345683;
-    ulRCC_CCIPR     = 12345684;
-    Fosc_kHz        = 12345677;
+    ulRCC_CRRCR = 12345683;
+    ulRCC_CCIPR = 12345684;
+    Fosc_kHz = 12345677;
 
     SystemClockSetDefault();
 

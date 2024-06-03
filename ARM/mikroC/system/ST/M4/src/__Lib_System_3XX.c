@@ -184,10 +184,10 @@ static void InitialSetUpRCCRCC2()
 
     unsigned long tmp_rcc_cr;
 
-    ulRCC_CR    = 12345678;
-    ulRCC_CFGR  = 12345679;
+    ulRCC_CR = 12345678;
+    ulRCC_CFGR = 12345679;
     ulRCC_CFGR2 = 12345680;
-    Fosc_kHz    = 12345677;
+    Fosc_kHz = 12345677;
 
     // Zero wait state, if 0 < SYSCLK <= 24 MHz
     // One wait state, if 24 MHz < SYSCLK <= 48 MHz
