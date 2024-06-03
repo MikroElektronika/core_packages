@@ -5,152 +5,113 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2020, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 /**
-    \file   ctype.h
-    \brief  ...
-    \{
+ * @file ctype.h
+ * @brief ...
+ * @{
+ */
 
-- Version : **<[VERSION]>**
-- Date : **<[DATE]>**
-- Developer : **MikroE Team**
-
-*/
 // ----------------------------------------------------------------------------
 #ifndef _CTYPE_H_
 #define _CTYPE_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
-#include <stdint.h>
 #include <stdbool.h>
-
-// -------------------------------------------------------------- PUBLIC MACROS
-
-
-// --------------------------------------------------------------- PUBLIC TYPES
+#include <stdint.h>
 
 
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
-
-
-// ----------------------------------------------- PUBLIC FUNCTION DECLARATIONS
+/* ----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
  * @brief The function checks whether the passed character is a lowercase letter.
- *
  * @param character, this is the character to be checked.
- *
- * @retval returns true if the given character is a lowercase letter
+ * @return true if the given character is a lowercase letter
  */
 unsigned short islower( char character );
 
 /**
  * @brief The function checks whether the passed character is a uppercase letter.
- *
  * @param character, this is the character to be checked.
- *
- * @retval returns true if the given character is a UPPERCASE letter
+ * @return true if the given character is a UPPERCASE letter
  */
 unsigned short isupper( char character );
 
 /**
  * @brief The function checks whether a character is an alphabet (a to z and A-Z).
- *
  * @param character, this is the character to be checked.
- *
- * @return returns true if the given character is a letter.
+ * @return true if the given character is a letter.
  */
 unsigned short isalpha( char character );
 
 /**
  * @brief The function checks whether a character is a control character.
- *
  * @param character, this is the character to be checked.
- *
- * @return returns true if the given character is a control character.
+ * @return true if the given character is a control character.
  */
 unsigned short iscntrl( char character );
 
 /**
  * @brief The function checks if the passed character is a decimal digit character.
- *
  * @param character, this is the character to be checked.
- *
- * @return returns true if the given character is a cipher (digit)
+ * @return true if the given character is a cipher (digit)
  */
 unsigned short isdigit( char character );
 
 /**
  * @brief The function checks if the passed
- * character is alphanumeric (cipher or letter).
- *
+ *        character is alphanumeric (cipher or letter).
  * @param character, this is the character to be checked.
- *
- * @return returns true if the given character is alphanumeric (cipher or letter).
+ * @return true if the given character is alphanumeric (cipher or letter).
  */
 unsigned short isalnum( char character );
 
 /**
  * @brief The function checks whether a character is a white-space character.
- *
  * @param character, this is the character to be checked.
- *
- * @return returns true if the given character is space or tab.
+ * @return true if the given character is space or tab.
  */
 unsigned short isspace( char character );
 
 /**
  * @brief The function checks whether a character is a punctuation mark.
- *
  * @param character, this is the character to be checked.
- *
- * @return returns true if the given character is a punctuation mark.
+ * @return true if the given character is a punctuation mark.
  */
 unsigned short ispunct( char character );
 
 /**
  * @brief The function checks whether a character is a graphic character.
- *
  * @param character, this is the character to be checked.
- *
- * @return returns true if the given character is a graphical character.
+ * @return true if the given character is a graphical character.
  */
 unsigned short isgraph( char character );
 
 /**
  * @brief The function checks whether a character is a hex digit.
- *
  * @param character, this is the character to be checked.
- *
- * @return returns true if given character is a hex digit.
+ * @return true if given character is a hex digit.
  */
 unsigned short isxdigit( char character );
 
 /**
  * @brief The function converts a given letter to lowercase.
- *
  * @param character, this is the letter to be converted to lowercase.
- *
  * @return - Transposes uppercase letter to lowercase.
  */
 char tolower( char character );
 
 /**
  * @brief The function converts lowercase letter to uppercase.
- *
  * @param character, this is the letter to be converted to uppercase.
- *
  * @return - Transposes lowercase letter to uppercase.
  */
 char toupper( char character );
@@ -158,14 +119,14 @@ char toupper( char character );
 #ifdef __cplusplus
 }
 #endif
-#endif  // _CTYPE_H_
+#endif // _CTYPE_H_
 
-/// \}
+/** @} */
 // ----------------------------------------------------------------------------
 /*
     ctype.h
 
-    Copyright (c) 2020, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
