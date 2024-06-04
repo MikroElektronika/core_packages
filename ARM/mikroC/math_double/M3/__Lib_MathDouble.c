@@ -1338,13 +1338,13 @@ void _Div_DP()
         LSL        R7, R3, #1           // BUILD INPUT #2 EXPONENT
         LSRS.W     R7, R7, #21
 
-        ITT        NE                  //                                                                .
-        ORRNE      R5, R5,#0x00200000   //SET IMPLIED 1 IN MANTISSA IF R7 != 0                            .
-        BNE        __me_jump                //                                                                .
-        MOVW       R1, #0               // IF R7 == 0, THEN UNDERFLOW                                     .
-        MOVT       R1, #0x7FF0         //                                                                .
+        ITT        NE                  //
+        ORRNE      R5, R5,#0x00200000   //SET IMPLIED 1 IN MANTISSA IF R7 != 0
+        BNE        __me_jump                //
+        MOVW       R1, #0               // IF R7 == 0, THEN UNDERFLOW
+        MOVT       R1, #0x7FF0         //
         ORR        R1, R1, R8
-        MOV        R0, #0              //                                                                .
+        MOV        R0, #0              //
         B          __me_lab_end
     __me_jump:
         MOV        LR, #0x700
