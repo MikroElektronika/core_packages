@@ -474,11 +474,12 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             print("All uploads completed.")
 
         # Determine the version based on the hash
+        install_location = os.path.join("core", arch, entry_name)
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
-        packages.append({"name" : archiveName, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False})
+        packages.append({"name" : archiveName, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False, 'install_location': install_location})
         package_changed = (version == tag_name.replace("v", ""))
-        install_location = os.path.join("core", arch, entry_name)
+
         # Index to Elasticsearch
         doc = {
             'name': archiveName,
