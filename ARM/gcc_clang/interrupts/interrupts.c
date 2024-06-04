@@ -5,15 +5,15 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "interrupts.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* -----------------------------PRIVATE MACROS------------------------------ */
 
 /* Set bit _bit in register _reg. */
 #define interrupt_bit_set(_reg,_bit) (_reg |= 1UL << _bit)
@@ -25,37 +25,37 @@
 #define INTERRUPT_GET_IRQ(ivt_val) (ivt_val - 16)
 
 /* IRQ mask. */
-#define INTERRUPT_IRQ_MASK (0x1FU)
+#define INTERRUPT_IRQ_MASK ( 0x1FU )
 
 /* Cortex register addresses. */
-#define REGISTER_SCB_SHCRS (*( unsigned long * )0xE000ED24)
-#define REGISTER_STK_CTRL (*( unsigned long * )0xE000E010)
-#define REGISTER_NVIC_ISER_0 (*( unsigned long * )0xE000E100)
-#define REGISTER_NVIC_ISER_1 (*( unsigned long * )0xE000E104)
-#define REGISTER_NVIC_ISER_2 (*( unsigned long * )0xE000E108)
-#define REGISTER_NVIC_ISER_3 (*( unsigned long * )0xE000E10C)
-#define REGISTER_NVIC_ICER_0 (*( unsigned long * )0xE000E180)
-#define REGISTER_NVIC_ICER_1 (*( unsigned long * )0xE000E184)
-#define REGISTER_NVIC_ICER_2 (*( unsigned long * )0xE000E188)
-#define REGISTER_NVIC_ICER_3 (*( unsigned long * )0xE000E18C)
-#define REGISTER_NVIC_IPR_0 (*( unsigned long * )0xE000E400)
-#define REGISTER_NVIC_SCB_SHPR1 (*( unsigned long * )0xE000ED18)
-#define REGISTER_NVIC_SCB_SHPR2 (*( unsigned long * )0xE000ED1C)
-#define REGISTER_NVIC_SCB_SHPR3 (*( unsigned long * )0xE000ED20)
+#define REGISTER_SCB_SHCRS      (*(unsigned long *)0xE000ED24)
+#define REGISTER_STK_CTRL       (*(unsigned long *)0xE000E010)
+#define REGISTER_NVIC_ISER_0    (*(unsigned long *)0xE000E100)
+#define REGISTER_NVIC_ISER_1    (*(unsigned long *)0xE000E104)
+#define REGISTER_NVIC_ISER_2    (*(unsigned long *)0xE000E108)
+#define REGISTER_NVIC_ISER_3    (*(unsigned long *)0xE000E10C)
+#define REGISTER_NVIC_ICER_0    (*(unsigned long *)0xE000E180)
+#define REGISTER_NVIC_ICER_1    (*(unsigned long *)0xE000E184)
+#define REGISTER_NVIC_ICER_2    (*(unsigned long *)0xE000E188)
+#define REGISTER_NVIC_ICER_3    (*(unsigned long *)0xE000E18C)
+#define REGISTER_NVIC_IPR_0     (*(unsigned long *)0xE000E400)
+#define REGISTER_NVIC_SCB_SHPR1 (*(unsigned long *)0xE000ED18)
+#define REGISTER_NVIC_SCB_SHPR2 (*(unsigned long *)0xE000ED1C)
+#define REGISTER_NVIC_SCB_SHPR3 (*(unsigned long *)0xE000ED20)
 
 /* Vector table numbers. */
-#define IVT_MEM_MANAGE (4)
-#define IVT_BUS_FAULT (5)
+#define IVT_MEM_MANAGE  (4)
+#define IVT_BUS_FAULT   (5)
 #define IVT_USAGE_FAULT (6)
-#define IVT_SYS_TICK (15)
+#define IVT_SYS_TICK    (15)
 
 /* Vector table register bit locations. */
-#define IVT_BIT_TICKINT (1)
+#define IVT_BIT_TICKINT     (1)
 #define IVT_BIT_MEMFAULTENA (16)
 #define IVT_BIT_BUSFAULTENA (17)
 #define IVT_BIT_USGFAULTENA (18)
 
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ----------------------PRIVATE FUNCTION DECLARATIONS---------------------- */
 
 /**
  * @brief Enables interrupts on the global level.
@@ -69,17 +69,20 @@ static inline void interrupts_enable_asm( void );
  */
 static inline void interrupts_disable_asm( void );
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
-void interrupts_enable( void ) {
+void interrupts_enable( void )
+{
     interrupts_enable_asm();
 }
 
-void interrupts_disable( void ) {
+void interrupts_disable( void )
+{
     interrupts_disable_asm();
 }
 
-void interrupt_enable( int interrupt ) {
+void interrupt_enable( int interrupt )
+{
     switch ( interrupt ) {
         #ifdef _INCLUDE_INTERRUPT_CASES_
         case IVT_MEM_MANAGE:
@@ -112,7 +115,8 @@ void interrupt_enable( int interrupt ) {
     }
 }
 
-void interrupt_disable( int interrupt ) {
+void interrupt_disable( int interrupt )
+{
     switch ( interrupt ) {
         #ifdef _INCLUDE_INTERRUPT_CASES_
         case IVT_MEM_MANAGE:
@@ -145,21 +149,23 @@ void interrupt_disable( int interrupt ) {
     }
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* ----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
-static inline void interrupts_enable_asm( void ) {
-    asm ("CPSIE I");
+static inline void interrupts_enable_asm( void )
+{
+    asm( "CPSIE I" );
 }
 
-static inline void interrupts_disable_asm( void ) {
-    asm ("CPSID I");
+static inline void interrupts_disable_asm( void )
+{
+    asm( "CPSID I" );
 }
 
 // ----------------------------------------------------------------------------
 /*
     interrupts.c
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
