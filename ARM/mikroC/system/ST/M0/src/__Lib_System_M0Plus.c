@@ -139,8 +139,7 @@ void SystemReset( void )
  * @note   This function doesn't modify the configuration of the
  *            - Peripheral clocks
  *            - LSI, LSE and RTC clocks
- * @param  None
- * @retval None
+ * @return None.
  */
 static void SystemClockSetDefault( void )
 {
@@ -214,25 +213,25 @@ static void InitialSetUpRCCRCC2()
     /* Do not start PLLs yet */
     RCC_CR   = ulRCC_CR & 0x000FFFFF;
 
-    /* If HSI enabled*/
+    /* If HSI enabled */
     if ( ulRCC_CR & ( 1ul << HSI16ON ) ) {
-        /* Wait for HSIRDYF = 1 (HSI is ready)*/
+        /* Wait for HSIRDYF = 1 (HSI is ready) */
         while ( ( RCC_CR & ( 1ul << HSI16RDYF ) ) == 0 )
             ;
     }
 
-    /* If HSE enabled*/
+    /* If HSE enabled */
     if ( ulRCC_CR & ( 1ul << HSEON ) ) {
-        /* Wait for HSERDY = 1 (HSE is ready)*/
+        /* Wait for HSERDY = 1 (HSE is ready) */
         while ( ( RCC_CR & ( 1ul << HSERDY ) ) == 0 )
             ;
     }
 
-    /* If PLL1 enabled*/
+    /* If PLL1 enabled */
     if ( ulRCC_CR & ( 1ul << PLLON ) ) {
         /* PLL3 On */
         RCC_CR |= ( 1ul << PLLON );
-        /* Wait for PLL1RDY = 1 (PLL is ready)*/
+        /* Wait for PLL1RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLLRDY ) ) == 0 )
             ;
     }

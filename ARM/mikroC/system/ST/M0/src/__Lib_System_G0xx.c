@@ -182,7 +182,7 @@ static void SystemClockSetDefault( void )
  * @details Flash latency is dependent on HCLK only.
  *          Range is selected by writing 1 or 0 to VOS bit of PWR1_CR1 register.
  * @note Flash latency is dependent on HCLK only.
- * @retval None
+ * @return None.
  */
 static void set_core_latency( unsigned long core_voltage_value,
                               unsigned long hclk_freq )
@@ -228,7 +228,7 @@ static void set_core_latency( unsigned long core_voltage_value,
 
 /**
  * @brief Checks if activated clocks are stable.
- * @return None
+ * @return None.
  */
 void is_clock_stable( void )
 {
@@ -271,7 +271,7 @@ void is_clock_stable( void )
 /**
  * @brief Initial clock set-up.
  * @details This function sets up the initial clock configuration.
- * @retval None
+ * @return None.
  */
 static void InitialSetUpRCCRCC2( void )
 {
@@ -323,7 +323,7 @@ static void InitialSetUpRCCRCC2( void )
 /**
  * @brief Initial system clock value.
  * @details This function initializes the system clock value.
- * @retval None
+ * @return None.
  */
 static void InitialSetUpFosc( void )
 {
@@ -340,13 +340,14 @@ static const char APBPrescTable[ 4 ] = { 2, 4, 8, 16 };
  *          based on the system requirements.
  * @param[out] prescaler The calculated prescaler value.
  * @param[out] divider The calculated divider value.
- * @retval None
+ * @return None.
  */
 void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
 {
     unsigned long tmp, presc, presc1, presc2;
 
     RCC_Clocks->HCLK_Frequency = Get_Fosc_kHz() * 1000;
+
     /*  Compute SYSCLK, PCLK clocks frequencies  */
     /*  Get HCLK prescaler  */
     tmp = RCC_CFGR & RCC_CFGR_HPRE;

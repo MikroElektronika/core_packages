@@ -75,25 +75,25 @@ void __FZinS()
 void __FillZeros()
 {
     asm {
-          MOVS     R4, #0
-          MOVS     R7, #0
-          CMP      SP, R5
-          BGT      L_loopFZs
-          CMP      SP, R6
-          BLT      L_loopFZs
-          MOV      R7, R5
-          MOV      R5, SP
+        MOVS       R4, #0
+        MOVS       R7, #0
+        CMP        SP, R5
+        BGT        L_loopFZs
+        CMP        SP, R6
+        BLT        L_loopFZs
+        MOV        R7, R5
+        MOV        R5, SP
     L_loopFZs:
-          STR      R4, [R6, #0]
-          ADDS     R6, R6, #4
-          CMP      R6, R5
-          BNE      L_loopFZs
-          CMP      R7, R5
-          BLE      L_norep
-          MOV      R5, R7
-          LDR      R6, [R4]
-          ADDS     R6, R6, #4
-          B        L_loopFZs
+        STR        R4, [R6, #0]
+        ADDS       R6, R6, #4
+        CMP        R6, R5
+        BNE        L_loopFZs
+        CMP        R7, R5
+        BLE        L_norep
+        MOV        R5, R7
+        LDR        R6, [R4]
+        ADDS       R6, R6, #4
+        B          L_loopFZs
     L_norep:
     }
 }
@@ -139,7 +139,7 @@ void SystemReset( void )
  * @note   This function doesn't modify the configuration of the
  *            - Peripheral clocks
  *            - LSI, LSE and RTC clocks
- * @retval None
+ * @return None.
  */
 static void SystemClockSetDefault( void )
 {
@@ -168,8 +168,8 @@ static void SystemClockSetDefault( void )
     RCC_CR2 &= ( unsigned long )0xFFFFFFFE;
 }
 
-static const char APBAHBPrescTable[ 16 ] = { 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9 }; // AHB {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9}
-static const char ADCPrescTable[ 2 ] = { 2, 4 }; //{2, 4, 6, 8};
+static const char APBAHBPrescTable[ 16 ] = { 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9 };
+static const char ADCPrescTable[ 2 ] = { 2, 4 };
 
 static void InitialSetUpRCCRCC2()
 {
@@ -210,25 +210,25 @@ static void InitialSetUpRCCRCC2()
     RCC_CSR   = ulRCC_CSR;
     RCC_CR2   = ulRCC_CR2;
 
-    /* If HSI enabled*/
+    /* If HSI enabled */
     if ( ulRCC_CR & ( 1ul << HSION ) ) {
-        /* Wait for HSIRDY = 1 (HSI is ready)*/
+        /* Wait for HSIRDY = 1 (HSI is ready) */
         while ( ( RCC_CR & ( 1ul << HSIRDY ) ) == 0 )
             ;
     }
 
-    /* If HSE enabled*/
+    /* If HSE enabled */
     if ( ulRCC_CR & ( 1ul << HSEON ) ) {
-        /* Wait for HSERDY = 1 (HSE is ready)*/
+        /* Wait for HSERDY = 1 (HSE is ready) */
         while ( ( RCC_CR & ( 1ul << HSERDY ) ) == 0 )
             ;
     }
 
-    /* If PLL1 enabled*/
+    /* If PLL1 enabled */
     if ( ulRCC_CR & ( 1ul << PLLON ) ) {
         /* PLL3 On */
         RCC_CR |= ( 1ul << PLLON );
-        /* Wait for PLL1RDY = 1 (PLL is ready)*/
+        /* Wait for PLL1RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLLRDY ) ) == 0 )
             ;
     }

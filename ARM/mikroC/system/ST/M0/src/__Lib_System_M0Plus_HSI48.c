@@ -75,25 +75,25 @@ void __FZinS()
 void __FillZeros()
 {
     asm {
-          MOVS     R4, #0
-          MOVS     R7, #0
-          CMP      SP, R5
-          BGT      L_loopFZs
-          CMP      SP, R6
-          BLT      L_loopFZs
-          MOV      R7, R5
-          MOV      R5, SP
+        MOVS       R4, #0
+        MOVS       R7, #0
+        CMP        SP, R5
+        BGT        L_loopFZs
+        CMP        SP, R6
+        BLT        L_loopFZs
+        MOV        R7, R5
+        MOV        R5, SP
     L_loopFZs:
-          STR      R4, [R6, #0]
-          ADDS     R6, R6, #4
-          CMP      R6, R5
-          BNE      L_loopFZs
-          CMP      R7, R5
-          BLE      L_norep
-          MOV      R5, R7
-          LDR      R6, [R4]
-          ADDS     R6, R6, #4
-          B        L_loopFZs
+        STR        R4, [R6, #0]
+        ADDS       R6, R6, #4
+        CMP        R6, R5
+        BNE        L_loopFZs
+        CMP        R7, R5
+        BLE        L_norep
+        MOV        R5, R7
+        LDR        R6, [R4]
+        ADDS       R6, R6, #4
+        B          L_loopFZs
     L_norep:
     }
 }
@@ -124,9 +124,9 @@ void SystemReset( void )
     }
 }
 
-#define RCC_CFGR_SWS  ( 0x0000000C ) /* System Clock Switch Status */
-#define RCC_CFGR_HPRE ( 0x000000F0 ) /* HLCK Prescaler */
-#define RCC_CFGR_PPRE ( 0x00000700 ) /* PCLK Prescaler */
+#define RCC_CFGR_SWS  (0x0000000C) /* System Clock Switch Status */
+#define RCC_CFGR_HPRE (0x000000F0) /* HLCK Prescaler */
+#define RCC_CFGR_PPRE (0x00000700) /* PCLK Prescaler */
 
 /**
  * @brief  Resets the RCC clock configuration to the default reset state.
@@ -139,7 +139,7 @@ void SystemReset( void )
  * @note   This function doesn't modify the configuration of the
  *            - Peripheral clocks
  *            - LSI, LSE and RTC clocks
- * @retval None
+ * @return None.
  */
 static void SystemClockSetDefault( void )
 {
@@ -218,7 +218,7 @@ static void InitialSetUpRCCRCC2()
     /* Do not start PLLs yet */
     RCC_CR    = ulRCC_CR & 0x000FFFFF;
 
-    /* If HSI48 enabled*/
+    /* If HSI48 enabled */
     if ( ulRCC_CRRCR & ( 1ul << HSI48ON ) ) {
         /* System configuration controller clock enable */
         RCC_APB2ENR.B0   = 1;
@@ -230,7 +230,7 @@ static void InitialSetUpRCCRCC2()
             ;
     }
 
-    /* If HSI enabled*/
+    /* If HSI enabled */
     if ( ulRCC_CR & ( 1ul << HSI16ON ) ) {
         /* Wait for HSIRDYF = 1 (HSI is ready) */
         while ( ( RCC_CR & ( 1ul << HSI16RDYF ) ) == 0 )
@@ -248,7 +248,7 @@ static void InitialSetUpRCCRCC2()
     if ( ulRCC_CR & ( 1ul << PLLON ) ) {
         /* PLL3 On */
         RCC_CR |= ( 1ul << PLLON );
-        /* Wait for PLL1RDY = 1 (PLL is ready)*/
+        /* Wait for PLL1RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLLRDY ) ) == 0 )
             ;
     }
