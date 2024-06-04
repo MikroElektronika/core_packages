@@ -44,7 +44,7 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
             current_regex = None
             for line in f:
                 if isGCC and 'list(APPEND local_list_include' in line:
-                    
+
                     systemPath = line.split()[-1][:-1].replace("${vendor}", vendor)
                     if 'doc_ds' in systemPath:
                         systemPath = os.path.dirname(systemPath)
@@ -83,7 +83,7 @@ def copy_files(files, output_dir, source_dir):
             full_dest_path = os.path.join(output_dir, relative_path)
             os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
             if os.path.isdir(full_source_path):
-                shutil.copytree(full_source_path, full_dest_path, dirs_exist_ok=True)    
+                shutil.copytree(full_source_path, full_dest_path, dirs_exist_ok=True)
             else:
                 shutil.copy(full_source_path, full_dest_path)
         else:
@@ -111,7 +111,7 @@ def extract_mcu_names(file_name, source_dir, output_dir, regex):
     mcus = {}
     mcus[file_name] = {'mcu_names': set(), 'cores': set()}
     source_subdir = os.path.join(source_dir, 'def')
-    
+
     if regex:
         regex_pattern = re.compile(regex, re.IGNORECASE)
 
@@ -126,16 +126,16 @@ def extract_mcu_names(file_name, source_dir, output_dir, regex):
                             if isPresent:
                                 configJson = json.loads(readData[0][0])
                                 mcus[file_name]['cores'].add(configJson['CORE_NAME'])
-    
+
     return mcus
-                
+
 def find_first_matching_mcu_name(source_dir, regex):
     """
     Find and return the filename of the first file that matches a given regex in the specified 'def' directory.
     """
     if not regex:
         return None
-    
+
     def_dir = os.path.join(source_dir, 'def')  # Define the path to the 'def' directory
     regex_pattern = re.compile(regex)  # Compile the regex pattern for efficiency
 
@@ -157,7 +157,7 @@ def extract_regex_from_cmake(cmake_file):
 
     with open(cmake_file, 'r') as file:
         content = file.read()
-    
+
     # Finding all occurrences of MCU_NAME MATCHES conditions
     if_conditions = re.findall(r'if\s*\((.*?)\)\s*endif', content, re.DOTALL)
     for condition in if_conditions:
@@ -173,7 +173,7 @@ def copy_files_based_on_regex(source_dir, dest_dir, check_string):
     """
     if not check_string:
         return
-    
+
     for root, dirs, files in os.walk(source_dir):
         for file in files:
             if file.endswith(".cmake"):
@@ -186,7 +186,7 @@ def copy_files_based_on_regex(source_dir, dest_dir, check_string):
                         os.makedirs(os.path.dirname(dest_file_path), exist_ok=True)
                         shutil.copy(full_path, dest_file_path)
 
-                 
+
 def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
     """ Copy the .cmake file to the output directory maintaining the same folder structure """
     relative_path = os.path.relpath(cmake_file, start=source_dir)
@@ -242,7 +242,7 @@ def downloadFile(downloadLink, outputDir, outputFileName, verifyDownload):
 
         # Write the response content to a file
         with open(fullPath, 'wb') as f:
-            for chunk in response.iter_content(chunk_size=8192): 
+            for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
 
         if verifyDownload:
@@ -310,27 +310,27 @@ def read_data_from_db(db, sql_query):
     return len(results), results
 
 def copy_schemas(mcus, source_dir, output_dir, base_path):
-    
+
     for mcu in mcus:
         schemas_dir = os.path.join(source_dir, 'schemas', mcu)
         dest_path = os.path.join(output_dir, base_path, 'schemas', mcu)
         if os.path.exists(schemas_dir):
             os.makedirs(dest_path, exist_ok=True)
             shutil.copytree(schemas_dir, dest_path, dirs_exist_ok=True)
-        
+
 def copy_interrupts(mcus, source_dir, output_dir, base_path):
-    
+
     for mcu in mcus:
         interrupts_dir = os.path.join(source_dir, 'interrupts', 'include', 'interrupts_mcu', mcu.lower())
         dest_path = os.path.join(output_dir, base_path, 'interrupts', 'include', 'interrupts_mcu', mcu.lower())
         if os.path.exists(interrupts_dir):
             os.makedirs(dest_path, exist_ok=True)
             shutil.copytree(interrupts_dir, dest_path, dirs_exist_ok=True)
-            
+
     copy_interrupt_files(source_dir, base_path)
 
 def copy_files_from_dir(mcus, source_dir, output_dir, base_path, subdirectory):
-    
+
     source_subdir = os.path.join(source_dir, subdirectory)
     output_subdir = os.path.join(base_path, subdirectory)
 
@@ -350,7 +350,7 @@ def copy_files_from_dir(mcus, source_dir, output_dir, base_path, subdirectory):
                 shutil.copy(full_source_path, full_dest_path)
 
 def copy_delays(cores, source_dir, output_dir, base_path):
-    
+
     for core in cores:
         delays_dir = os.path.join(source_dir, 'delays', core.lower())
         dest_path = os.path.join(output_dir, base_path, 'delays', core.lower())
@@ -361,11 +361,11 @@ def copy_delays(cores, source_dir, output_dir, base_path):
 def compress_directory_7z(base_output_dir, arch, entry_name):
     """
     Compresses the given directory into a 7z archive using the 7z command line tool.
-    
+
     Args:
     source_dir (str): Path to the directory to be compressed.
     output_file (str): Path where the output .7z file should be saved.
-    
+
     Returns:
     bool: True if compression was successful, False otherwise.
     """
@@ -393,7 +393,7 @@ def compress_directory_7z(base_output_dir, arch, entry_name):
     except subprocess.CalledProcessError as e:
         print(f"An error occurred while creating the archive: {e}")
         return None
-         
+
 async def upload_release_asset(session, token, repo, tag_name, asset_path):
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
@@ -419,7 +419,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         # Copy the .cmake file into the package directory
         copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, data['regex'])
 
-        mcuNames = extract_mcu_names(cmake_file, source_dir, output_dir, data['regex'])            
+        mcuNames = extract_mcu_names(cmake_file, source_dir, output_dir, data['regex'])
         # Copy individual files
         copy_files(data['files'], base_output_dir, source_dir)
         # Copy schema directories
@@ -445,24 +445,24 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         cstdio_path = os.path.join(source_dir, 'cstdio')
         if os.path.exists(cstdio_path):
             shutil.copytree(cstdio_path, os.path.join(base_output_dir, "cstdio"), dirs_exist_ok=True)
-            
+
         #copy common to every package
         shutil.copytree(os.path.join(source_dir, 'common'), os.path.join(base_output_dir, "common"), dirs_exist_ok=True)
         #copy base CMakeLists.txt to every package
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
-        
-        #create archive            
+
+        #create archive
         archivePath = compress_directory_7z(base_output_dir, arch, entry_name)
         compiler = "mikroC"
         if entry_name == "gcc_clang":
             compiler = "GCC & Clang"
         elif "XC" in entry_name:
             compiler = entry_name
-            
+
         displayName = f"{os.path.basename(base_output_dir.upper())} MCU Support package for {compiler}"
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archivePath)
-        
+
         shutil.rmtree(base_output_dir)
         #upload archive
         upload_result= ""
@@ -472,12 +472,13 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             for result in results:
                 upload_result = result
             print("All uploads completed.")
-        
+
         # Determine the version based on the hash
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
         packages.append({"name" : archiveName, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False})
         package_changed = (version == tag_name.replace("v", ""))
+        install_location = os.path.join("core", arch, entry_name)
         # Index to Elasticsearch
         doc = {
             'name': archiveName,
@@ -490,12 +491,13 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             'updated_at' : upload_result['updated_at'],
             'category': 'MCU support',
             'download_link': upload_result['browser_download_url'],  # Adjust as needed for actual URL
-            'package_changed': package_changed
+            'package_changed': package_changed,
+            'install_location': install_location
         }
         print(f"DOCUMENT TO INDEX: {doc}")
         # resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
         # print(f"ES RESPONSE: {resp}")
-        
+
 def hash_file(filename):
     """Generate MD5 hash of a file."""
     hash_md5 = hashlib.md5()
@@ -534,7 +536,7 @@ def fetch_current_metadata(repo, token):
                     metadata_url = asset['url']
                     print("Attempting to download metadata from:", metadata_url)
                     metadata_response = fetch_json_data(metadata_url, token)
-                    return metadata_response                
+                    return metadata_response
     return []
 
 def get_version_based_on_hash(package_name, version, hash_value, current_metadata):
@@ -584,9 +586,9 @@ def update_metadata(current_metadata, new_files, version):
         else:
             # If it's a new file, set the initial version
             new_file['version'] = "1.0.0"
-        
+
         updated_metadata.append(new_file)
-    
+
     return updated_metadata
 
 async def main(token, repo, tag_name):
@@ -594,7 +596,7 @@ async def main(token, repo, tag_name):
     # Elasticsearch details
     es = Elasticsearch(["https://search-mikroe-eotds45vmgevl75dl75hjanrzm.us-west-2.es.amazonaws.com"])
     index_name = 'github_mikrosdk_test'
-    
+
     architectures = ["RISCV", "PIC32", "PIC", "dsPIC", "AVR", "ARM"]
     downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
                             "",
@@ -613,28 +615,28 @@ async def main(token, repo, tag_name):
                     if entry.is_dir():
                         source_directory = os.path.join(root_source_directory, entry.name)
                         output_directory = os.path.join(root_output_directory, entry.name)
-                                            
+
                         print(f"Processing {source_directory} to {output_directory}")
                         await package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name, packages, es, index_name, current_metadata)
-                        
+
         except Exception as e:
             print(f"Failed to process directories in {root_source_directory}: {e}")
 
     new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
-    
+
     with open('metadata.json', 'w') as f:
         json.dump(new_metadata, f, indent=4)
-    
+
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
-        
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
     args = parser.parse_args()
-    
+
     print("Starting the upload process...")
     asyncio.run(main(args.token, args.repo, args.tag_name))
     # asyncio.run(main("", "", ""))
