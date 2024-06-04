@@ -642,7 +642,7 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
     args = parser.parse_args()
-    os.chdir("..")
+    # os.chdir("..")
     print(os.getcwd())
     print("Starting the upload process...")
     asyncio.run(main(args.token, args.repo, args.tag_name))
