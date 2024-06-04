@@ -1,6 +1,4 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Fajl:   fs_toi_t2.asm
 void _FloatToSignedIntegral() {
   asm {
         PUSH       (R1, R2, LR)
@@ -11,7 +9,6 @@ void _FloatToSignedIntegral() {
         SUBS       R2, R2, #0x7F             // CHECK FOR UNDERFLOW
         ITT        MI
         MOVMI      R0, #0                    // IF UNDERFLOW, RETURN ZERO
-//        POPMI      (R1, R2, PC)              //
         BMI  __me_lab_end
 
         RSBS       R2, R2, #0x1F             // CHECK FOR OVERFLOW
@@ -27,7 +24,6 @@ void _FloatToSignedIntegral() {
         RSBMI      R0, R1, #0                //  THEN NEGATE THE RESULT
         MOVPL      R0, R1                    //
 
-//        POP        (R1, R2, PC)               //
         B __me_lab_end
 
 __me_ovfl:   CMP        R0, #0                    // IF OVERFLOW, RETURN INFINITY
@@ -39,18 +35,13 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fs_tou_t2.asm
 void _FloatToUnsignedIntegral() {
   asm {
         PUSH (R1, LR)
-//        PUSH        (R1, LR)          // SAVE CONTEXT
         CMP        R0, #0             // CHECK FOR A NEGATIVE VALUE
         BPL     __me_label_pos
         BL      __FloatToSignedIntegral           // CAST TO INT
         B __me_endLab
-//        POP     (R1, PC)              //
 
 __me_label_pos:    LSL        R1, R0, #1         // PUT EXPONENT IN R1
         LSR        R1, R1, #24        //
@@ -58,7 +49,6 @@ __me_label_pos:    LSL        R1, R0, #1         // PUT EXPONENT IN R1
         SUBS        R1, R1, #0x7F     // CHECK FOR UNDERFLOW
         ITT        CC
         MOVCC        R0, #0           // IF UNDERFLOW, RETURN ZERO
-//        POPCC        (R1, PC)         //
         BCC __me_endLab
 
         RSBS        R1, R1, #0x1F     // CHECK FOR OVERFLOW
@@ -69,21 +59,16 @@ __me_label_pos:    LSL        R1, R0, #1         // PUT EXPONENT IN R1
 
         LSRS        R0, R0, R1        // COMPUTE THE INTEGER VALUE
 
-//        POP        (R1, PC)           //
         B __me_endLab
 
 __me_ovfl:   MOVS        R0, #0x0          // IF OVERFLOW, RETURN 0xFFFFFFFF
         SUBS        R0, R0, #0x1      //
-//        POP        (R1, PC)           //
 __me_endLab:
          POP (R1, LR)
   }
 
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fd_toi_t2.asm
 void _LongDoubleToSignedIntegral() {
   asm {
         PUSH       (R2, R3, LR)              // SAVE CONTEXT
@@ -95,7 +80,6 @@ void _LongDoubleToSignedIntegral() {
         SUBS        R3, R3, #0xFF            // CHECK FOR UNDERFLOW
         ITT        MI
         MOVMI        R0, #0                  // IF UNDERFLOW, RETURN ZERO
-//        POPMI        (R2, R3, PC)            //
         BMI __me_lab_end
 
         RSBS        R3, R3, #0x1F            // CHECK FOR OVERFLOW
@@ -116,7 +100,6 @@ void _LongDoubleToSignedIntegral() {
         RSBMI        R0, R2, #0              //  THEN NEGATE THE RESULT
         MOVPL        R0, R2                  //
 
-//        POP        (R2, R3, PC)              //
         B __me_lab_end
 
 __me_ovfl:   CMP        R1, #0                    // IF OVERFLOW, RETURN INFINITY
@@ -128,9 +111,7 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Fajl:   fd_tou_t2.asm
 void _LongDoubleToUnsignedIntegral() {
   asm {
         PUSH       (R2, LR)              // SAVE CONTEXT
@@ -151,7 +132,6 @@ __me_pos:
         SUBS       R2, R2, #0xFF         // CHECK FOR UNDERFLOW
         ITT        MI
         MOVMI      R0, #0                // IF UNDERFLOW, RETURN ZERO
-        //POPMI     (R2, PC)               //
         BMI        __me_endLab
 
         RSBS       R2, R2, #0x1F         // CHECK FOR OVERFLOW
@@ -169,25 +149,19 @@ __me_pos:
 
         MOV        R0, R1                //
 
-        //POP       (R2, PC)               //
         B        __me_endLab
 
 __me_ovfl:   MOVS      R0, #0x0               // IF OVERFLOW, RETURN 0XFFFFFFFF
         SUBS      R0, R0, #0x1           //
-        //POP       (R2, PC)               //
 __me_endLab:
         POP (R2, LR)
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   i_tofs_t2.asm
 void _SignedIntegralToFloat() {
   asm {
         CMP       R0, #0                        //
         IT        EQ
-//        BXEQ      LR                        // IF ZERO, RETURN ZERO
         BEQ __me_lab_end
 
         PUSH      (R1, R2, LR)                // SAVE CONTEXT
@@ -220,15 +194,11 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   i_tofd_t2.asm
 void _SignedIntegralToLongDouble() {
   asm {
         CMP        R0, #0                        // IF ZERO, RETURN ZERO
         ITT        EQ
         MOVEQ      R1, #0
-//        BXEQ       LR
         BEQ __me_lab_end
 
         ITE        MI
@@ -251,19 +221,14 @@ __me_loop:   SUBS       R1, R1, #0x1
         LSLS      R0, R0, #20                    // SETUP __me_low HALF OF RESULT
 
 __me_lab_end:
-//        BX        LR
-        
+
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   u_tofs_t2.asm
 void _UnsignedIntegralToFloat() {
   asm {
         CMP       R0, #0                    //
         IT        EQ
-//        BXEQ      LR                        // IF ZERO, RETURN ZERO
         BEQ __me_lab_end
 
         PUSH      (R1, LR)
@@ -289,15 +254,11 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   u_tofd_t2.asm
 void _UnsignedIntegralToLongDouble() {
   asm {
         CMP        R0, #0                        // IF ZERO, RETURN ZERO
         ITT        EQ
         MOVEQ      R1, #0
-//        BXEQ       LR
         BEQ __me_lab_end
 
         MOVS       R1, R0                        // MOVE INPUT INTO R1
@@ -314,13 +275,9 @@ __me_loop:   SUBS       R1, R1, #0x1
         ORR       R1, R1, R0, LSR #12
         LSLS      R0, R0, #20                    // SETUP __me_low HALF OF RESULT
 __me_lab_end:
-//        BX        LR
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl: fd_tos_t2.asm
 void _LongDoubleToFloat() {
   asm {
         LSR        R0, R0, #20                // SETUP MANTISSA INTO R0
@@ -343,7 +300,6 @@ void _LongDoubleToFloat() {
         MOVEQ      R0, #0                   // SET THE RETURN VALUE
 
         IT        EQ
-//        BXEQ      LR
         BEQ __me_lab_end
 
         SUB        R1, R1, #0x380           // ADJUST FOR THE BIAS
@@ -352,7 +308,6 @@ void _LongDoubleToFloat() {
         BCS        __me_ovfl                     //
 
         ORR        R0, R0, R1, LSL #23      // ADD EXPONENT INTO RESULT
-//        BX         LR                       //
         B __me_lab_end
 
 __me_ovfl:   AND        R1, R1, #0x80000000      // OVERFLOW, RETURN +/- INF
@@ -360,13 +315,9 @@ __me_ovfl:   AND        R1, R1, #0x80000000      // OVERFLOW, RETURN +/- INF
         LSL        R0, R0, #23
         ORRS       R0, R0, R1
 __me_lab_end:
-//        BX         LR                       //
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl: fs_tod_t2.asm
 void _FloatToLongDouble() {
   asm {
         PUSH    (R2, LR)                // SAVE CONTEXT
@@ -389,12 +340,10 @@ void _FloatToLongDouble() {
         LSLS    R1, R1, #9              // AND SETUP __me_high PART OF MANTISSA
         LSRS    R1, R1, #12             //
         ORR     R1, R1, R2, LSL #20     // OR SIGN AND EXPONENT INTO RESULT
-//        POP     (R2, PC)                //
         B __me_lab_end
 
 __me_unfl:   MOVS    R1, #0x0                // IF UNDERFLOW, RETURN 0
         MOVS    R0, #0x0                //
-//        POP     (R2, PC)                //
         B __me_lab_end
 
 __me_ovfl:   MOV     R0, #0                  // IF OVERFLOW, RETURN +/- INFINITY
@@ -407,9 +356,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fs_add_t2.asm
 void _Add_FP() {
   asm {
         PUSH      (R1, R3, R4, R5, R6, R7, R8, LR)
@@ -422,7 +368,6 @@ void _Add_FP() {
         CMP        R4, #0                    // IF DENORMALIZED NUMBER (R2 != 0 AND
         IT         NE
         MOVNE      R0, #0                    // R5 == 0), THEN UNDERFLOW
-//        POP       (R1, R3, R4, R5, R6, R7, R8, PC)                // ELSE IT IS ZERO SO RETURN INPUT #1
         B __me_lab_end
 
 __me_lab1:     ORR     R4, R4, #0x80000000          // SET IMPLIED ONE IN MANTISSA
@@ -445,7 +390,6 @@ __me_lab1:     ORR     R4, R4, #0x80000000          // SET IMPLIED ONE IN MANTIS
         ITE        NE
         MOVNE      R0, #0                    // R3 == 0), THEN UNDERFLOW
         MOVEQ      R0, R2                    // ELSE IT IS ZERO SO RETURN INPUT #2
-//        POP       (R1, R3, R4, R5, R6, R7, R8, PC)                //
         B __me_lab_end
 
 __me_lab2:     ORR        R1, R1, #0x80000000       // SET IMPLIED ONE IN MANTISSA
@@ -480,7 +424,6 @@ __me_skip_sticky:
         CMP        R1, #0x0                  //
         ITT        EQ
         MOVEQ      R0, #0                    // IF THE RESULT IS ZERO,
-//        POPEQ      (R1, R3, R4, R5, R6, R7, R8, PC)               // THEN UNDERFLOW
         BEQ __me_lab_end
         ITTE       MI                        //
         RSBMI      R1, R1, #0x0              // IF THE RESULT IS NEGATIVE, THEN
@@ -507,7 +450,6 @@ __me_no_round:
         ADDS       R3, R3, #2                // NORMALIZE THE EXPONENT
         ITT        LE
         MOVLE      R0, #0                    // CHECK FOR UNDERFLOW
-//        POPLE      (R1, R3, R4, R5, R6, R7, R8, PC)               //
         BLE __me_lab_end
         CMP        R3, #0xFF                 // CHECK FOR OVERFLOW
         BCS        __me_ovfl                      //
@@ -519,7 +461,6 @@ __me_no_round:
         ORR        R0, R0, R3, LSL #23       // REPACK THE EXPONENT INTO R0
         ORR        R0, R0, R7, LSL #31       // REPACK THE SIGN INTO R0
 
-//        POP        (R1, R3, R4, R5, R6, R7, R8, PC)               //
         B __me_lab_end
 
 __me_ovfl1:  MOV        R0, R2                    // OVERFLOW
@@ -533,9 +474,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fs_add_t2.asm
 void _Sub_FP(void) {
   asm {
         EOR        R2, R2, #0x80000000       // NEGATE INPUT #2
@@ -549,7 +487,6 @@ void _Sub_FP(void) {
         CMP        R4, #0                    // IF DENORMALIZED NUMBER (R2 != 0 AND
         IT         NE
         MOVNE      R0, #0                    // R5 == 0), THEN UNDERFLOW
-//        POP       (R1, R3, R4, R5, R6, R7, R8, PC)                // ELSE IT IS ZERO SO RETURN INPUT #1
         B __me_lab_end
 
 __me_lab1:        ORR     R4, R4, #0x80000000       // SET IMPLIED ONE IN MANTISSA
@@ -572,7 +509,6 @@ __me_lab1:        ORR     R4, R4, #0x80000000       // SET IMPLIED ONE IN MANTIS
         ITE        NE
         MOVNE      R0, #0                    // R3 == 0), THEN UNDERFLOW
         MOVEQ      R0, R2                    // ELSE IT IS ZERO SO RETURN INPUT #2
-//        POP       (R1, R3, R4, R5, R6, R7, R8, PC)                //
         B __me_lab_end
 
 __me_lab2:     ORR        R1, R1, #0x80000000       // SET IMPLIED ONE IN MANTISSA
@@ -607,7 +543,6 @@ __me_skip_sticky:
         CMP        R1, #0x0                  //
         ITT        EQ
         MOVEQ      R0, #0                    // IF THE RESULT IS ZERO,
-//        POPEQ      (R1, R3, R4, R5, R6, R7, R8, PC)               // THEN UNDERFLOW
         BEQ __me_lab_end
         ITTE       MI                        //
         RSBMI      R1, R1, #0x0              // IF THE RESULT IS NEGATIVE, THEN
@@ -634,7 +569,6 @@ __me_no_round:
         ADDS       R3, R3, #2                // NORMALIZE THE EXPONENT
         ITT        LE
         MOVLE      R0, #0                    // CHECK FOR UNDERFLOW
-//        POPLE      (R1, R3, R4, R5, R6, R7, R8, PC)               //
         BLE __me_lab_end
         CMP        R3, #0xFF                 // CHECK FOR OVERFLOW
         BCS        __me_ovfl                      //
@@ -646,7 +580,6 @@ __me_no_round:
         ORR        R0, R0, R3, LSL #23       // REPACK THE EXPONENT INTO R0
         ORR        R0, R0, R7, LSL #31       // REPACK THE SIGN INTO R0
 
-//        POP        (R1, R3, R4, R5, R6, R7, R8, PC)               //
         B __me_lab_end
 
 __me_ovfl1:  MOV        R0, R2                    // OVERFLOW
@@ -660,9 +593,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fs_mul_t2.asm
 void _Mul_FP(void) {
   asm {
         PUSH        (R1, R3, R4, R5, R6, R7, LR)
@@ -679,7 +609,6 @@ void _Mul_FP(void) {
         ORRNE        R1, R1, #0x80000000    // SET IMPLIED ONE IN MANTISSA IF R3 != 0
 
         MOVEQ        R0, #0                 // IF R3 == 0, THEN UNDERFLOW
-//        POPEQ        (R1, R3, R4, R5, R6, R7, PC)            //
         BEQ __me_lab_end
 
         CMP        R3, #0xFF                // IF R3 == 0xFF, THEN OVERFLOW
@@ -692,7 +621,6 @@ void _Mul_FP(void) {
         ORRNE        R4, R4, #0x80000000    // SET IMPLIED ONE IN MANTISSA IF R5 != 0
 
         MOVEQ        R0, #0                 // IF R5 == 0, THEN UNDERFLOW
-//        POPEQ        (R1, R3, R4, R5, R6, R7, PC)            //
         BEQ __me_lab_end
 
         CMP        R5, #0xFF                // IF R5 == 0xFF, THEN OVERFLOW
@@ -715,7 +643,6 @@ void _Mul_FP(void) {
         SUBS        R3, R3, #0x00000007E    // ADJUST THE BIAS
         ITT        LE
         MOVLE        R0, #0                 // AND CHECK FOR UNDERFLOW
-//        POPLE        (R1, R3, R4, R5, R6, R7, PC)            //
         BLE __me_lab_end
 
         CMP        R3, #0x000000FF          // CHECK FOR EXPONENT OVERFLOW
@@ -726,7 +653,6 @@ void _Mul_FP(void) {
         ORR        R0, R0, R3, LSL #23      // REPACK THE EXPONENT INTO R0
         ORRS        R0, R0, R6              // REPACK THE SIGN INTO R0
 
-//        POP        (R1, R3, R4, R5, R6, R7, PC)              //
         B __me_lab_end
 
 __me_ovfl:        MOVS        R7, #0xFF          // OVERFLOW, RETURN +/- INFINITY
@@ -737,9 +663,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fs_div_t2.asm
 void _Div_FP(void) {
   asm {
         PUSH       (R1, R3, R4, R5, R6, R7, LR)
@@ -755,7 +678,6 @@ void _Div_FP(void) {
         ORRNE      R1, R1, #0x80000000    // SET IMPLIED ONE IN MANTISSA IF R3 != 0
 
         MOVEQ      R0, #0                 // IF R3 == 0, THEN UNDERFLOW
-//        POPEQ     (R1, R3, R4, R5, R6, R7, PC)             //
         BEQ __me_lab_end
 
         CMP        R3, #0xFF              // IF R3 == 0xFF, THEN OVERFLOW
@@ -765,11 +687,9 @@ void _Div_FP(void) {
         LSLS.W    R5, R2, #1              // PUT INPUT #2 EXPONENT IN R5
         LSRS.W    R5, R5, #24             //
         ITEEE     NE
-        // ITEE     NE
         ORRNE     R4, R4, #0x80000000     // SET IMPLIED ONE IN MANTISSA IF R5 != 0
         MOVEQ     R0, #2139095040                  // IF R5 == 0, THEN UNDERFLOW
         ORREQ     R0, R0, R6              // IF RESULT < 0 (R6.31 == 1) THEN R0.31 = 1
-//        POPEQ     (R1, R3, R4, R5, R6, R7, PC)             //
         BEQ __me_lab_end
 
         CMP       R5, #0xFF               // IF R5 == 0xFF, THEN OVERFLOW
@@ -777,7 +697,6 @@ void _Div_FP(void) {
 
         SUBS      R3, R3, R5              // SUBTRACT EXPONENTS
 
-        // DIVIDE THE MANTISAE:  R2 / R4 => R0
         MOVS      R0, #0x0                // INITIALIZE THE QUOTIENT
         MOVS      R7, #32                 // INITIALIZE THE SHIFT COUNTER
         LSRS      R4, R4, #1              // SETUP THE DIVISOR
@@ -812,7 +731,6 @@ __me_flb1_: TST       R0, #0x80000000         // ALIGN THE MANTISSA
 __me_flb2_: ADDS      R3, R3, #0x7F           // ADJUST FOR BIAS
         ITT       LE
         MOVLE     R0, #0                  // AND CHECK FOR UNDERFLOW
-//        POPLE     (R1, R3, R4, R5, R6, R7, PC)             //
         BLE __me_lab_end
 
         CMP       R3, #0x000000FF         // AND CHECK FOR EXPONENT OVERFLOW
@@ -822,7 +740,6 @@ __me_flb2_: ADDS      R3, R3, #0x7F           // ADJUST FOR BIAS
         ORR       R0, R0, R3, LSL #23     // REPACK THE EXPONENT INTO R0
         ORRS      R0, R0, R6              // REPACK THE SIGN INTO R0
 
-//        POP       (R1, R3, R4, R5, R6, R7, PC)             //
         B __me_lab_end
 
 __me_ovfl:   MOVS      R7, #0xFF               // OVERFLOW, RETURN +/- INFINITY
@@ -833,23 +750,18 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fs_cmp_t2.asm
 void _Compare_FP() {
   asm {
         PUSH      (R4, LR)
 
         CMP        R0, R2                    // HANDLE THE CASE OF BOTH INPUTS EQUAL
         IT         EQ
-//        POPEQ      (R4, PC)
         BEQ __me_lab_end
 
         ORR        R4, R0, R2                // HANDLE THE CASE OF BOTH INPUTS BEING
         LSL        R4, R4, #1                // ZERO
         CMP        R4, #0x0                  //
         IT         EQ
-//        POPEQ      (R4, PC)
         BEQ __me_lab_end
 
         LSLS       R4, R0, #1                // TEST OP1 == 0
@@ -860,7 +772,6 @@ void _Compare_FP() {
         ADDS       R4, R4, #2                // RTS-ABI REQUIRES C FLAG SET
         CMP        R4, #1                    // TO INDICATE OP1 > OP2
 __me_labop2_pos:
-//        POP       (R4, PC)
         B __me_lab_end
 
 __me_ct2_:  LSL        R4, R0, #1                //
@@ -874,7 +785,6 @@ __me_ct2_:  LSL        R4, R0, #1                //
 
         LSR        R4, R2, #31               // HANDLE THE CASE OF BOTH INPUTS
         SUBS        R4, R4, R0, LSR #31      // BEING INFINITE
-//        POP        (R4, PC)
         B __me_lab_end
 
 __me_ct1_:  CMP        R2, #0                    // CHECK OP2'S SIGN
@@ -884,11 +794,9 @@ __me_ct1_:  CMP        R2, #0                    // CHECK OP2'S SIGN
         BGT        __me_labop1_pos                  // CMP SINCE THERE IS NO BORROW
         MOVS       R4, #0                    // RT-ABI REQUIRES C FLAG CLEAR TO
         CMP        R4, #1                    // INDICATE OP1 < OP2
-//        POP       (R4, PC)
         B __me_lab_end
 __me_labop1_pos:
         CMP        R0, R2                    //
-//        POP       (R4, PC)
         B __me_lab_end
 __me_op2_m:  CMP        R0, #0                    // OP2 IS NEGATIVE.  IF OP1 IS NEGATIVE,
         IT         MI
@@ -898,9 +806,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fd_add_t2.asm
 void _Add_DP() {
   asm {
         PUSH        (R2-R11, LR)
@@ -917,7 +822,6 @@ void _Add_DP() {
         ITT         NE
         MOVNE       R1, #0                    // R9 == 0), THEN UNDERFLOW
         MOVNE       R0, #0                    //
-//        POP        (R2-R11, PC)               // ELSE IT IS ZERO SO RETURN INPUT #1
         B __me_lab_end
 
 __me_lab1:     ORRS        R7, R7, #0x20000000       // SET IMPLIED ONE IN MANTISSA
@@ -928,7 +832,6 @@ __me_lab1:     ORRS        R7, R7, #0x20000000       // SET IMPLIED ONE IN MANTI
         MOV         R0, #0
         LSRS        R1, R3, #20
         LSLS        R1, R1, #20
-//        POP        (R2-R11, PC)
         B __me_lab_end
 
 __me_lab2:     CMP        R3, #0
@@ -951,7 +854,6 @@ __me_lab3:     LSLS       R4, R1, #12                // BUILD INPUT #1 MANTISSA
         MOVNE      R0, #0                     // THEN UNDERFLOW
         MOVEQ      R1, R3                     // ELSE IT IS ZERO SO RETURN
         MOVEQ      R0, R2                     // INPUT #2
-//        POP        (R2-R11, PC)
         B __me_lab_end
 
 __me_lab4:     ORR        R4, R4, #0x20000000        // SET IMPLIED ONE IN MANTISSA
@@ -960,7 +862,6 @@ __me_lab4:     ORR        R4, R4, #0x20000000        // SET IMPLIED ONE IN MANTI
         MOVS       R0, #0
         LSRS       R1, R1, #20
         LSLS       R1, R1, #20
-//        POP        (R2-R11, PC)
         B __me_lab_end
 
 __me_lab5:     CMP        R1, #0
@@ -1015,7 +916,6 @@ __me_no_add: ORRS       R10, R4, R5                //
         ITTT       EQ
         MOVEQ      R1, #0                     // IF THE RESULT IS ZERO,
         MOVEQ      R0, #0                     //
-//        POPEQ      (R2-R11, PC)               //  THEN UNDERFLOW
         BEQ __me_lab_end
 
         CMP        R4, #0                     //
@@ -1055,7 +955,6 @@ __me_ovfl:   ADDS       R6, R6, #2                 // NORMALIZE THE EXPONENT
         ITTT       LE
         MOVLE      R1, #0                     // CHECK FOR UNDERFLOW
         MOVLE      R0, #0                     //
-//        POPLE      (R2-R11, PC)               //
         BLE __me_lab_end
 
         MOVS       LR, #0x700                 //
@@ -1069,7 +968,6 @@ __me_ovfl:   ADDS       R6, R6, #2                 // NORMALIZE THE EXPONENT
         ADDS       R1, R1, #7
         LSLS       R1, R1, #20
         ORRS       R1, R1, R3
-//        POP        (R2-R11, PC)
         B __me_lab_end
 
 
@@ -1083,9 +981,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fd_add_t2.asm
 void _Sub_DP(void) {
   asm {
         PUSH        (R2-R11, LR)
@@ -1103,7 +998,6 @@ void _Sub_DP(void) {
         ITT         NE
         MOVNE       R1, #0                    // R9 == 0), THEN UNDERFLOW
         MOVNE       R0, #0                    //
-//        POP        (R2-R11, PC)               // ELSE IT IS ZERO SO RETURN INPUT #1
         B __me_lab_end
 
 __me_lab1:     ORRS        R7, R7, #0x20000000       // SET IMPLIED ONE IN MANTISSA
@@ -1114,7 +1008,6 @@ __me_lab1:     ORRS        R7, R7, #0x20000000       // SET IMPLIED ONE IN MANTI
         MOV         R0, #0
         LSRS        R1, R3, #20
         LSLS        R1, R1, #20
-//        POP        (R2-R11, PC)
         B __me_lab_end
 
 __me_lab2:     CMP        R3, #0
@@ -1137,7 +1030,6 @@ __me_lab3:     LSLS       R4, R1, #12                // BUILD INPUT #1 MANTISSA
         MOVNE      R0, #0                     // THEN UNDERFLOW
         MOVEQ      R1, R3                     // ELSE IT IS ZERO SO RETURN
         MOVEQ      R0, R2                     // INPUT #2
-//        POP        (R2-R11, PC)
         B __me_lab_end
 
 __me_lab4:     ORR        R4, R4, #0x20000000        // SET IMPLIED ONE IN MANTISSA
@@ -1146,7 +1038,6 @@ __me_lab4:     ORR        R4, R4, #0x20000000        // SET IMPLIED ONE IN MANTI
         MOVS       R0, #0
         LSRS       R1, R1, #20
         LSLS       R1, R1, #20
-//        POP        (R2-R11, PC)
         B __me_lab_end
 
 __me_lab5:     CMP        R1, #0
@@ -1201,7 +1092,6 @@ __me_no_add: ORRS       R10, R4, R5                //
         ITTT       EQ
         MOVEQ      R1, #0                     // IF THE RESULT IS ZERO,
         MOVEQ      R0, #0                     //
-//        POPEQ      (R2-R11, PC)               //  THEN UNDERFLOW
         BEQ __me_lab_end
 
         CMP        R4, #0                     //
@@ -1241,7 +1131,6 @@ __me_ovfl:   ADDS       R6, R6, #2                 // NORMALIZE THE EXPONENT
         ITTT       LE
         MOVLE      R1, #0                     // CHECK FOR UNDERFLOW
         MOVLE      R0, #0                     //
-//        POPLE      (R2-R11, PC)               //
         BLE __me_lab_end
 
         MOVS       LR, #0x700                 //
@@ -1255,7 +1144,6 @@ __me_ovfl:   ADDS       R6, R6, #2                 // NORMALIZE THE EXPONENT
         ADDS       R1, R1, #7
         LSLS       R1, R1, #20
         ORRS       R1, R1, R3
-//        POP        (R2-R11, PC)
         B __me_lab_end
 
 
@@ -1269,9 +1157,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fd_mul_t2.asm
 void _Mul_DP() {
   asm {
         PUSH        (R2-R8, LR)
@@ -1290,7 +1175,6 @@ void _Mul_DP() {
         ORRNE       R5, R5,#0x80000000            // SET IMPLIED 1 IN MANTISSA
         MOVEQ       R1, #0                        // IF R7 == 0, ELSE UNDERFLOW
         MOVEQ       R0, #0                        //
-//        POPEQ       (R2-R8, PC)                   //
         BEQ __me_lab_end
 
         MOVS        LR, #0x700                    //
@@ -1307,7 +1191,6 @@ void _Mul_DP() {
         ORRNE       R3, R3,#0x80000000            // SET IMPLIED 1 IN MANTISSA
         MOVEQ       R1, #0                        // IF R4 == 0, ELSE UNDERFLOW
         MOVEQ       R0, #0                        //
-//        POPEQ       (R2-R8, PC)                   //
         BEQ __me_lab_end
 
         CMP         R4, LR                        // IF R4 == 0x7FF, THEN
@@ -1315,7 +1198,6 @@ void _Mul_DP() {
 
         ADDS        R4, R4, R7                    // ADD EXPONENTS
 
-        // MULTIPLY THE MANTISAE: op1m * op2m => R1:R0
         UMULL       R0, R1, R3, R5; R3*R5=> R1:R0:0:0
         UMULL       LR, R7, R3, R6                // R3*R6 =>  0 :R7:LR  : 0
         UMULL       R6, R3, R2, R6                // R2*R6 =>  0 :  0 :R3:R6
@@ -1350,7 +1232,6 @@ __me_lab1:     MOVS        R7, #0x300                    //
         ITTT        LE
         MOVLE   R1, #0x0                          // AND CHECK FOR UNDERFLOW
         MOVLE       R0, #0x0                      //
-//        POPLE      (R2-R8, PC)                    //
         BLE __me_lab_end
 
         ADDS        R7, R7, #0x400                // AND CHECK FOR EXPONENT OVERFLOW
@@ -1364,7 +1245,6 @@ __me_lab1:     MOVS        R7, #0x300                    //
         ORR         R1, R1, R4, LSL #20           // REPACK THE EXPONENT INTO
         ORR         R1, R1, R8                    // R1 REPACK THE SIGN INTO
                                                   // R1
-//        POP      (R2-R8, PC)
         B __me_lab_end
 
 
@@ -1379,9 +1259,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fd_div_t2.asm
 void _Div_DP() {
   asm {
         PUSH        (R2-R8, LR)
@@ -1397,8 +1274,7 @@ void _Div_DP() {
         ADCS        R5, R5, R5           //
         LSL        R7, R3, #1            // BUILD INPUT #2 EXPONENT
         LSRS.W        R7, R7, #21        //
-        
-        // Ovde je TexasInst. f-ja ispravljena tako da kada je delilac nula, f-ja vraca INF a ne nula.....
+
         ITT        NE                  //                                                                .
         ORRNE      R5, R5,#0x00200000  //SET IMPLIED 1 IN MANTISSA IF R7 != 0                            .
         BNE        __me_jump                //                                                                .
@@ -1406,9 +1282,7 @@ void _Div_DP() {
         MOVT       R1, #0x7FF0         //                                                                .
         ORR        R1, R1, R8
         MOV        R0, #0              //                                                                .
-//        POP        (R2-R8, PC)         //                                                                .
         B __me_lab_end
-        //................................................................................................
 __me_jump:
         MOV        LR, #0x700            //
         ADDS        LR, LR, #0xFF        //
@@ -1425,7 +1299,6 @@ __me_jump:
         ORRNE        R3, R3,#0x00200000  // SET IMPLIED 1 IN MANTISSA IF R4 != 0
         MOVEQ        R1, #0              // IF R4 == 0, THEN UNDERFLOW
         MOVEQ        R0, #0              //
-//        POPEQ        (R2-R8, PC)          //
         BEQ __me_lab_end
 
         CMP        R4, LR                // IF R4 == 0x7FF, THEN OVERFLOW
@@ -1498,7 +1371,6 @@ __me_lab4:     ADDS        R0, R0, #0x00000001 // 1/2 ADJUST FOR ROUNDING
         ITTT        LE
         MOVLE        R1, #0x0           // AND CHECK FOR UNDERFLOW
         MOVLE        R0, #0x0           //
-//        POPLE        (R2-R8, PC)        //
         BLE __me_lab_end
 
         ADD        R7, R7, #0x400       // AND CHECK FOR EXPONENT OVERFLOW
@@ -1510,7 +1382,6 @@ __me_lab4:     ADDS        R0, R0, #0x00000001 // 1/2 ADJUST FOR ROUNDING
         ORR        R1, R1, R4, LSL #20  // EXPONENT INTO R1.
         ORR        R1, R1, R8           // REPACK THE SIGN INTO R1
 
-//        POP        (R2-R8, PC)
         B __me_lab_end
 
 __me_ovfl:        MOVS        R0, #0x0       // IF OVERFLOW, RETURN +/-
@@ -1524,9 +1395,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fd_cmp_t2.asm
 void _Compare_DP() {
     asm {
         PUSH        (R4, LR)
@@ -1610,15 +1478,11 @@ void _Compare_DP() {
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   ll_tofs_t2.asm
 void _SignedLongLongToFloat() {
   asm {
         CMP        R0, #0                     //
         ITT        EQ
         CMPEQ      R1, #0                     //
-//        BXEQ       LR                         // IF ZERO, RETURN ZERO
         BEQ __me_lab_end
         PUSH       (R2, R3, R4, LR)           // SAVE CONTEXT
 
@@ -1661,15 +1525,11 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   ull_tofs_t2.asm
 void _UnsignedLongLongToFloat() {
   asm {
         CMP        R0, #0                    //
         ITT        EQ
         CMPEQ      R1, #0                    //
-//        BXEQ       LR                        // IF ZERO, RETURN ZERO
         BEQ __me_lab_end
 
         PUSH      (R2, LR)                   // SAVE CONTEXT
@@ -1705,10 +1565,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// Fajl:   fs_toll_t2.asm
 void _FloatToSignedLongLong() {
   asm {
         PUSH       (R2, R3, R4, LR)
@@ -1720,7 +1576,6 @@ void _FloatToSignedLongLong() {
         ITTT       MI
         MOVMI      R0, #0                    // IF UNDERFLOW, RETURN ZERO
         MOVMI      R1, #0                    //
-//        POPMI      (R2, R3, R4, PC)          //
         BMI __me_lab_end
 
         RSBS       R4, R4, #0x3F             // CHECK FOR OVERFLOW
@@ -1759,14 +1614,12 @@ return:
         MOV        R0, R1                    //
         MOV        R1, LR                    //
 
-//        POP        (R2, R3, R4, PC)          //
         B __me_lab_end
 
 __me_ovfl:   CMP        R0, #0                    // IF OVERFLOW, RETURN INFINITY
         MOV        R1, #0x80000000           // CHECK THE SIGN OF THE INPUT
         MOV        R0, #0                    //
         IT         MI
-//        POPMI     (R2, R3, R4, PC)           //
         BMI __me_lab_end
         SUBS       R0, R0, #0x1              // AND ADJUST INFINITY ACCORDINGLY
         SBC        R1, R1, #0                //
@@ -1775,9 +1628,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fs_toull_t2.asm
 void _FloatToUnsignedLongLong() {
   asm {
         PUSH       (R2, R3, LR)
@@ -1788,7 +1638,6 @@ void _FloatToUnsignedLongLong() {
         BL        __FloatToSignedLongLong                // RETURN ZERO IF IT IS NEGATIVE
         B       __me_endLab
 
-        //PUSH       (R2, R3, LR)                 // SAVE CONTEXT
 __me_jump:
         LSLS        R3, R0, #1                  // PUT EXPONENT IN R3
         LSRS        R3, R3, #24                 //
@@ -1796,7 +1645,6 @@ __me_jump:
         SUBS        R3, R3, #0x7F               // CHECK FOR UNDERFLOW
         ITT         CC
         MOVCC       R0, #0                      // IF UNDERFLOW, RETURN ZERO
-        //POPCC       (R2, R3, PC)                //
         BCC       __me_endLab
 
         RSBS        R3, R3, #0x3F               // CHECK FOR OVERFLOW
@@ -1805,7 +1653,6 @@ __me_jump:
         LSLS        R0, R0, #8                 // PUT MANTISSA IN R0
         ORR         R0, R0, #0x80000000        // SET IMPLIED ONE IN MANTISSA
 
-        // COMPUTE THE INTEGER VALUE
         CMP        R3, #0x20                   // IF R3 GREATER OR EQUAL TO 32, PERFORM
         ITTT       CS
         MOVCS      R1, R0                      // RIGHT SHIFT IN TWO STEPS.
@@ -1825,29 +1672,22 @@ __me_jump:
         MOV        R0, R1                      //
         MOV        R1, LR                      //
 
-        //POP       (R2, R3, PC)                 //
         B       __me_endLab
-        
+
 __me_ovfl:   MOVS       R0, #0x0                    // IF OVERFLOW, RETURN
         SUBS       R0, R0, #0x1                // 0xFFFFFFFF:FFFFFFFF
         MOV        R1, R0                      //
-        //POP       (R2, R3, PC)                 //
 __me_endLab:
        POP       (R2, R3, LR)
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// Fajl:   ll_tofd_t2.asm
 void _SignedLongLongToLongDouble() {
   asm {
         PUSH    (R4, R5, LR)
         CMP     R1, #0                        // IF ZERO, RETURN ZERO
         ITT     EQ
         CMPEQ   R0, #0
-//        POPEQ   (R4, R5, PC)
         BEQ __me_lab_end
 
         MOVS    R4, #0x3F                     // SETUP THE EXPONENT
@@ -1876,16 +1716,12 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   ull_tofd_t2.asm
 void _UnsignedLongLongToLongDouble() {
   asm {
         CMP     R0, #0                          // IF ZERO, RETURN ZERO
 
         ITT     EQ
         CMPEQ   R1, #0
-//        BXEQ    LR
         BEQ __me_lab_end
 
         PUSH   (R2, LR)
@@ -1909,9 +1745,6 @@ __me_lab_end:
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fd_toll_t2.asm
 void _LongDoubleToSignedLongLong() {
   asm {
         PUSH      (R2, R3, R4, LR)        // SAVE CONTEXT
@@ -1924,7 +1757,6 @@ void _LongDoubleToSignedLongLong() {
         ITTT       MI
         MOVMI      R1, #0                 // IF UNDERFLOW, RETURN ZERO
         MOVMI      R0, #0                 // IF UNDERFLOW, RETURN ZERO
-//        POPMI     (R2, R3, R4, PC)        //
         BMI __me_lab_end
 
         RSBS       R4, R4, #0x3F          // CHECK FOR OVERFLOW
@@ -1957,14 +1789,12 @@ void _LongDoubleToSignedLongLong() {
         SBC        R1, R3, R1             //
 
 return:
-//        POP       (R2, R3, R4, PC)
         B __me_lab_end
 
 __me_ovfl:   CMP        R1, #0                 // IF OVERFLOW, RETURN INFINITY
         MOV        R1, #0x80000000        // CHECK THE SIGN OF THE INPUT
         MOV        R0, #0                 //
         IT         MI
-//        POPMI     (R2, R3, R4, PC)        //
         BMI __me_lab_end
         SUBS       R0, R0, #0x1           // AND ADJUST INFINITY ACCORDINGLY
         SBC        R1, R1, #0             //
@@ -1974,22 +1804,18 @@ __me_lab_end:
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Fajl:   fd_toull_t2.asm
 void _LongDoubleToUnsignedLongLong() {
   asm {
-        
+
         PUSH       (R2, R3, LR)
-        
+
         CMP        R1, #0                        // CHECK FOR A NEGATIVE VALUE
-        
+
         IT       PL
         BPL      __me_jump
         BL       __LongDoubleToSignedLongLong
         B        __me_endLab
 
-        //PUSH       (R2, R3, LR)                  // SAVE CONTEXT
 __me_jump:
         LSL        R3, R1, #1                    // PUT EXPONENT IN R3
         LSRS       R3, R3, #21
@@ -1999,7 +1825,6 @@ __me_jump:
         ITTT       MI
         MOVMI      R1, #0                        // IF UNDERFLOW, RETURN ZERO
         MOVMI      R0, #0                        //
-        //POPMI      (R2, R3, PC)
         BMI        __me_endLab
 
         RSBS       R3, R3, #0x3F                 // CHECK FOR OVERFLOW. IF OVRFLW,
@@ -2025,13 +1850,11 @@ __me_jump:
         ORRCC      R0, R0, R2                    //
         LSRCC      R1, R1, R3                    //
 
-        //POP        (R2, R3, PC)
         B        __me_endLab
 
 __me_ovfl:   MOVS       R0, #0x0                      // IF OVERFLOW, RETURN 0XFFFFFFFF
         SUBS       R0, R0, #0x1
         MOV        R1, R0
-        //POP       (R2, R3, PC)
 __me_endLab:
         POP       (R2, R3, LR)
   }
