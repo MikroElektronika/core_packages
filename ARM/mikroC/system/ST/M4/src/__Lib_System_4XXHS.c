@@ -133,7 +133,10 @@ void __EnableFPU()
     ; Write back the modified value to the CPACR
     STR     R1, [R0]
     }
-    asm nop asm nop asm nop asm nop
+    asm nop
+    asm nop
+    asm nop
+    asm nop
     // The code below includes rounding to zero during conversion.
     asm vmrs R0,
         FPSCR
@@ -144,7 +147,7 @@ void __EnableFPU()
 static void InitialSetUpFosc()
 {
     __System_CLOCK_IN_KHZ = 12345677;
-    _VOLTAGE_RANGE        = 12345676;
+    _VOLTAGE_RANGE = 12345676;
 }
 
 #define RCC_CFGR_SWS (0x0000000C) /* System Clock Switch Status */
@@ -196,8 +199,7 @@ void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
  * @note   This function doesn't modify the configuration of the
  *            - Peripheral clocks
  *            - LSI, LSE and RTC clocks
- * @param  None
- * @retval None
+ * @return None.
  */
 static void SystemClockSetDefault( void )
 {
@@ -220,8 +222,7 @@ static void SystemClockSetDefault( void )
 /**
  * @brief  Sets the overdrive mode.
  * @note   Used to get max mcu frequency.
- * @param  None
- * @retval None
+ * @return None.
  */
 static void EnableOverdriveMode()
 {

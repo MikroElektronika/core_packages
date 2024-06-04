@@ -68,24 +68,24 @@ void __FZinS()
 void __FillZeros()
 {
     asm {
-          MOV.W      R9, #0
-          MOV.W      R12, #0
-          CMP.W      SP, R10
-          BGT        L_loopFZs
-          CMP.W      SP, R11
-          BLT        L_loopFZs
-          MOV        R12, R10
-          MOV        R10, SP
+        MOV.W        R9, #0
+        MOV.W        R12, #0
+        CMP.W        SP, R10
+        BGT          L_loopFZs
+        CMP.W        SP, R11
+        BLT          L_loopFZs
+        MOV          R12, R10
+        MOV          R10, SP
     L_loopFZs:
-          STR.W      R9, [R11], #4
-          CMP.W      R11, R10
-          BNE        L_loopFZs
-          CMP.W      R12, R10
-          BLE        L_norep
-          MOV        R10, R12
-          LDR        R11, [R9]
-          ADD        R11, R11,#4
-          B          L_loopFZs
+        STR.W        R9, [R11], #4
+        CMP.W        R11, R10
+        BNE          L_loopFZs
+        CMP.W        R12, R10
+        BLE          L_norep
+        MOV          R10, R12
+        LDR          R11, [R9]
+        ADD          R11, R11,#4
+        B            L_loopFZs
     L_norep:
     }
 }
@@ -129,7 +129,10 @@ void __EnableFPU()
     ; Write back the modified value to the CPACR
     STR     R1, [R0]
     }
-    asm nop asm nop asm nop asm nop
+    asm nop
+    asm nop
+    asm nop
+    asm nop
     // The code below includes rounding to zero during conversion.
     asm vmrs R0,
         FPSCR
@@ -150,8 +153,7 @@ void __EnableFPU()
  * @note   This function doesn't modify the configuration of the
  *            - Peripheral clocks
  *            - LSI, LSE and RTC clocks
- * @param  None
- * @retval None
+ * @return None.
  */
 static void SystemClockSetDefault( void )
 {
@@ -189,9 +191,9 @@ static void InitialSetUpRCCRCC2()
     ulRCC_CFGR2 = 12345680;
     Fosc_kHz = 12345677;
 
-    // Zero wait state, if 0 < SYSCLK <= 24 MHz
-    // One wait state, if 24 MHz < SYSCLK <= 48 MHz
-    // Two wait states, if 48 MHz < SYSCLK <= 72 MHz
+    // Zero wait state, if 0 < SYSCLK <= 24 MHz.
+    // One wait state, if 24 MHz < SYSCLK <= 48 MHz.
+    // Two wait states, if 48 MHz < SYSCLK <= 72 MHz.
 
     if ( Fosc_kHz > 48000 )
         FLASH_ACR |= 2;
@@ -214,25 +216,25 @@ static void InitialSetUpRCCRCC2()
     /* Do not start PLLs yet */
     RCC_CR = ulRCC_CR & 0x000FFFFF;
 
-    /* If HSI enabled*/
+    /* If HSI enabled */
     if ( ulRCC_CR & ( 1ul << HSION ) ) {
-        /* Wait for HSIRDY = 1 (HSI is ready)*/
+        /* Wait for HSIRDY = 1 (HSI is ready) */
         while ( ( RCC_CR & ( 1ul << HSIRDY ) ) == 0 )
             ;
     }
 
-    /* If HSE enabled*/
+    /* If HSE enabled */
     if ( ulRCC_CR & ( 1ul << HSEON ) ) {
-        /* Wait for HSERDY = 1 (HSE is ready)*/
+        /* Wait for HSERDY = 1 (HSE is ready) */
         while ( ( RCC_CR & ( 1ul << HSERDY ) ) == 0 )
             ;
     }
 
-    /* If PLL1 enabled*/
+    /* If PLL1 enabled */
     if ( ulRCC_CR & ( 1ul << PLLON ) ) {
         /* PLL3 On */
         RCC_CR |= ( 1ul << PLLON );
-        /* Wait for PLL1RDY = 1 (PLL is ready)*/
+        /* Wait for PLL1RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLLRDY ) ) == 0 )
             ;
     }
@@ -248,7 +250,7 @@ static void InitialSetUpFosc()
 }
 
 static const char APBAHBPrescTable[ 16 ] = { 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9 };
-static const char ADCPrescTable[ 4 ]     = { 2, 4, 6, 8 };
+static const char ADCPrescTable[ 4 ] = { 2, 4, 6, 8 };
 
 void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
 {
