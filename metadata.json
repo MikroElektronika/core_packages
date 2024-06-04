@@ -1,0 +1,62 @@
+[
+    {
+        "name": "riscv_gcc_clang_riscv",
+        "display_name": "RISCV MCU Support package for GCC & Clang",
+        "version": "1.0.23",
+        "hash": "fcc38f59f7334f68406a216b532b17a2",
+        "vendor": "MIKROE",
+        "type": "mcu",
+        "hidden": false,
+        "install_location": "%APPLICATION_DATA_DIR%/packages/core/RISCV/gcc_clang"
+    },
+    {
+        "name": "pic32_mikroc_pic32mzef",
+        "display_name": "PIC32MZEF MCU Support package for mikroC",
+        "version": "1.0.23",
+        "hash": "bff59b6184f5b0ecf49e145f495a38cf",
+        "vendor": "MIKROE",
+        "type": "mcu",
+        "hidden": false,
+        "install_location": "%APPLICATION_DATA_DIR%/packages/core/PIC32/mikroC"
+    },
+    {
+        "name": "pic_xc8_pic",
+        "display_name": "PIC MCU Support package for XC8",
+        "version": "1.0.23",
+        "hash": "ad83d748ca131ca9c56a0b51de518290",
+        "vendor": "MIKROE",
+        "type": "mcu",
+        "hidden": false,
+        "install_location": "%APPLICATION_DATA_DIR%/packages/core/PIC/XC8"
+    },
+    {
+        "name": "dspic_mikroc_dspic33",
+        "display_name": "DSPIC33 MCU Support package for mikroC",
+        "version": "1.0.23",
+        "hash": "37bac9784f525d9da6238947ebf36f24",
+        "vendor": "MIKROE",
+        "type": "mcu",
+        "hidden": false,
+        "install_location": "%APPLICATION_DATA_DIR%/packages/core/dsPIC/mikroC"
+    },
+    {
+        "name": "avr_mikroc_avr_lte64k",
+        "display_name": "AVR_LTE64K MCU Support package for mikroC",
+        "version": "1.0.23",
+        "hash": "b63ecac83c00c730b4cbb6630edb923f",
+        "vendor": "MIKROE",
+        "type": "mcu",
+        "hidden": false,
+        "install_location": "%APPLICATION_DATA_DIR%/packages/core/AVR/mikroC"
+    },
+    {
+        "name": "arm_mikroc_stm32l0hs",
+        "display_name": "STM32L0HS MCU Support package for mikroC",
+        "version": "1.0.23",
+        "hash": "8ec6e3069bf0f83089a559c791e7d75c",
+        "vendor": "MIKROE",
+        "type": "mcu",
+        "hidden": false,
+        "install_location": "%APPLICATION_DATA_DIR%/packages/core/ARM/mikroC"
+    }
+]

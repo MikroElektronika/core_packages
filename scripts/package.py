@@ -614,7 +614,10 @@ async def main(token, repo, tag_name):
     # List directories directly under the root source directory
         try:
             with os.scandir(root_source_directory) as entries:
+                print(entries)
                 for entry in entries:
+                    print(root_source_directory)
+                    print(entry)
                     if entry.is_dir():
                         source_directory = os.path.join(root_source_directory, entry.name)
                         output_directory = os.path.join(root_output_directory, entry.name)
@@ -639,7 +642,8 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
     args = parser.parse_args()
-
+    os.chdir("..")
+    print(os.getcwd())
     print("Starting the upload process...")
     asyncio.run(main(args.token, args.repo, args.tag_name))
     # asyncio.run(main("", "", ""))

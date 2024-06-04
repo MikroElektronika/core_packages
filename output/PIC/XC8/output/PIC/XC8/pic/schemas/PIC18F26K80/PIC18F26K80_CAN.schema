@@ -1,0 +1,169 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/XC8/core/def/PIC18F26K80.json",
+    "flash": 65536,
+    "ram": 3648,
+    "settings": {
+        "clock": "32",
+        "scheme": "PIC18F26K80_CAN",
+        "mcu": "PIC18F26K80",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "RETEN",
+                "value": "ON"
+            },
+            {
+                "key": "INTOSCSEL",
+                "value": "HIGH"
+            },
+            {
+                "key": "SOSCSEL",
+                "value": "HIGH"
+            },
+            {
+                "key": "XINST",
+                "value": "OFF"
+            },
+            {
+                "key": "FOSC",
+                "value": "HS1"
+            },
+            {
+                "key": "PLLCFG",
+                "value": "ON"
+            },
+            {
+                "key": "FCMEN",
+                "value": "OFF"
+            },
+            {
+                "key": "IESO",
+                "value": "OFF"
+            },
+            {
+                "key": "PWRTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "BOREN",
+                "value": "SBORDIS"
+            },
+            {
+                "key": "BORV",
+                "value": "3"
+            },
+            {
+                "key": "BORPWR",
+                "value": "ZPBORMV"
+            },
+            {
+                "key": "WDTEN",
+                "value": "SWDTDIS"
+            },
+            {
+                "key": "WDTPS",
+                "value": "1048576"
+            },
+            {
+                "key": "CANMX",
+                "value": "PORTB"
+            },
+            {
+                "key": "MSSPMSK",
+                "value": "MSK7"
+            },
+            {
+                "key": "MCLRE",
+                "value": "ON"
+            },
+            {
+                "key": "STVREN",
+                "value": "ON"
+            },
+            {
+                "key": "BBSIZ",
+                "value": "BB2K"
+            },
+            {
+                "key": "DEBUG",
+                "value": "OFF"
+            },
+            {
+                "key": "CP0",
+                "value": "OFF"
+            },
+            {
+                "key": "CP1",
+                "value": "OFF"
+            },
+            {
+                "key": "CP2",
+                "value": "OFF"
+            },
+            {
+                "key": "CP3",
+                "value": "OFF"
+            },
+            {
+                "key": "CPB",
+                "value": "OFF"
+            },
+            {
+                "key": "CPD",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT0",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT1",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT2",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT3",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTC",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTB",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTD",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR0",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR1",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR2",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR3",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTRB",
+                "value": "OFF"
+            }
+        ]
+    }
+}
