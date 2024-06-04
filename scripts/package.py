@@ -313,7 +313,7 @@ def copy_schemas(mcus, source_dir, output_dir, base_path):
 
     for mcu in mcus:
         schemas_dir = os.path.join(source_dir, 'schemas', mcu)
-        dest_path = os.path.join(output_dir, base_path, 'schemas', mcu)
+        dest_path = os.path.join(base_path, 'schemas', mcu)
         if os.path.exists(schemas_dir):
             os.makedirs(dest_path, exist_ok=True)
             shutil.copytree(schemas_dir, dest_path, dirs_exist_ok=True)
@@ -322,7 +322,7 @@ def copy_interrupts(mcus, source_dir, output_dir, base_path):
 
     for mcu in mcus:
         interrupts_dir = os.path.join(source_dir, 'interrupts', 'include', 'interrupts_mcu', mcu.lower())
-        dest_path = os.path.join(output_dir, base_path, 'interrupts', 'include', 'interrupts_mcu', mcu.lower())
+        dest_path = os.path.join(base_path, 'interrupts', 'include', 'interrupts_mcu', mcu.lower())
         if os.path.exists(interrupts_dir):
             os.makedirs(dest_path, exist_ok=True)
             shutil.copytree(interrupts_dir, dest_path, dirs_exist_ok=True)
@@ -353,7 +353,7 @@ def copy_delays(cores, source_dir, output_dir, base_path):
 
     for core in cores:
         delays_dir = os.path.join(source_dir, 'delays', core.lower())
-        dest_path = os.path.join(output_dir, base_path, 'delays', core.lower())
+        dest_path = os.path.join(base_path, 'delays', core.lower())
         if os.path.exists(delays_dir):
             os.makedirs(dest_path, exist_ok=True)
             shutil.copytree(delays_dir, dest_path, dirs_exist_ok=True)
@@ -600,7 +600,7 @@ async def main(token, repo, tag_name):
     es = Elasticsearch(["https://search-mikroe-eotds45vmgevl75dl75hjanrzm.us-west-2.es.amazonaws.com"])
     index_name = 'github_mikrosdk_test'
 
-    architectures = ["RISCV", "PIC32", "PIC", "dsPIC", "AVR", "ARM"]
+    architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR" ]
     downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
                             "",
                             'necto_db.db', True)
