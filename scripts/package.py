@@ -474,7 +474,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             print("All uploads completed.")
 
         # Determine the version based on the hash
-        install_location = os.path.join("core", arch, entry_name)
+        install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name)
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
