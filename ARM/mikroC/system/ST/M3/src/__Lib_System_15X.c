@@ -70,24 +70,24 @@ void __FZinS()
 void __FillZeros()
 {
     asm {
-        MOV.W      R9, #0
-        MOV.W      R12, #0
-        CMP.W      SP, R10
-        BGT        L_loopFZs
-        CMP.W      SP, R11
-        BLT        L_loopFZs
-        MOV        R12, R10
-        MOV        R10, SP
+        MOV.W        R9, #0
+        MOV.W        R12, #0
+        CMP.W        SP, R10
+        BGT          L_loopFZs
+        CMP.W        SP, R11
+        BLT          L_loopFZs
+        MOV          R12, R10
+        MOV          R10, SP
     L_loopFZs:
-        STR.W      R9, [R11], #4
-        CMP.W      R11, R10
-        BNE        L_loopFZs
-        CMP.W      R12, R10
-        BLE        L_norep
-        MOV        R10, R12
-        LDR        R11, [R9]
-        ADD        R11, R11,#4
-        B          L_loopFZs
+        STR.W        R9, [R11], #4
+        CMP.W        R11, R10
+        BNE          L_loopFZs
+        CMP.W        R12, R10
+        BLE          L_norep
+        MOV          R10, R12
+        LDR          R11, [R9]
+        ADD          R11, R11,#4
+        B            L_loopFZs
     L_norep:
     }
 }
@@ -105,7 +105,7 @@ void __GenExcept()
  *          return to their default values (with the exception of the reset cause
  *          register, which will maintain its current value but have the software reset
  *          bit set as well).
- * @return This function does not return.
+ * @return None.
  */
 void SystemReset( void )
 {
@@ -121,7 +121,7 @@ void SystemReset( void )
 static void InitialSetUpFosc()
 {
     __System_CLOCK_IN_KHZ = 12345677;
-    _VOLTAGE_RANGE        = 12345676;
+    _VOLTAGE_RANGE = 12345676;
 }
 
 #define RCC_CFGR_SWS (0x0000000C) /* System Clock Switch Status */
@@ -141,7 +141,7 @@ static void InitialSetUpFosc()
  * @note   This function doesn't modify the configuration of the
  *            - Peripheral clocks
  *            - LSI, LSE and RTC clocks
- * @retval None
+ * @return None.
  */
 static void SystemClockSetDefault( void )
 {
@@ -200,27 +200,27 @@ static void InitialSetUpRCCRCC2()
     RCC_CFGR = ulRCC_CFGR;
 
     /* Do not start PLLs yet */
-    RCC_CR   = ulRCC_CR & 0x000FFFFF;
+    RCC_CR = ulRCC_CR & 0x000FFFFF;
 
-    /* If HSI enabled*/
+    /* If HSI enabled */
     if ( ulRCC_CR & ( 1ul << HSION ) ) {
-        /* Wait for HSIRDY = 1 (HSI is ready)*/
+        /* Wait for HSIRDY = 1 (HSI is ready) */
         while ( ( RCC_CR & ( 1ul << HSIRDY ) ) == 0 )
             ;
     }
 
-    /* If HSE enabled*/
+    /* If HSE enabled */
     if ( ulRCC_CR & ( 1ul << HSEON ) ) {
-        /* Wait for HSERDY = 1 (HSE is ready)*/
+        /* Wait for HSERDY = 1 (HSE is ready) */
         while ( ( RCC_CR & ( 1ul << HSERDY ) ) == 0 )
             ;
     }
 
-    /* If PLL enabled*/
+    /* If PLL enabled */
     if ( ulRCC_CR & ( 1ul << PLLON ) ) {
         /* PLL On */
         RCC_CR |= ( 1ul << PLLON );
-        /* Wait for PLL1RDY = 1 (PLL is ready)*/
+        /* Wait for PLL1RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLLRDY ) ) == 0 )
             ;
     }
@@ -241,21 +241,21 @@ void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
 
     /* Compute HCLK, PCLK1, PCLK2 and ADCCLK clocks frequencies */
     /* Get HCLK prescaler */
-    tmp   = RCC_CFGRbits.HPRE;
+    tmp = RCC_CFGRbits.HPRE;
     presc = APBAHBPrescTable[ tmp ];
 
     /* HCLK clock frequency */
     RCC_Clocks->SYSCLK_Frequency = RCC_Clocks->HCLK_Frequency << presc;
 
     /* Get PCLK1 prescaler */
-    tmp   = RCC_CFGRbits.PPRE1;
+    tmp = RCC_CFGRbits.PPRE1;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK1 clock frequency */
     RCC_Clocks->PCLK1_Frequency = RCC_Clocks->HCLK_Frequency >> presc;
 
     /* Get PCLK2 prescaler */
-    tmp   = RCC_CFGRbits.PPRE2;
+    tmp = RCC_CFGRbits.PPRE2;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK2 clock frequency */

@@ -103,7 +103,7 @@ void __GenExcept()
  *          return to their default values (with the exception of the reset cause
  *          register, which will maintain its current value but have the software reset
  *          bit set as well).
- * @return This function does not return.
+ * @return None.
  */
 void SystemReset( void )
 {
@@ -129,8 +129,7 @@ void SystemReset( void )
  * @note   This function doesn't modify the configuration of the
  *            - Peripheral clocks
  *            - LSI, LSE and RTC clocks
- * @param  None
- * @retval None
+ * @return None.
  */
 static void SystemClockSetDefault( void )
 {
@@ -164,14 +163,14 @@ static void InitialSetUpRCCRCC2()
     unsigned long volatile ulRCC_CR, ulRCC_CFGR, ulRCC_CFGR2;
     unsigned long volatile Fosc_kHz;
     unsigned long tmp, SYS_clk, presc;
-    ulRCC_CR    = 12345678;
-    ulRCC_CFGR  = 12345679;
+    ulRCC_CR = 12345678;
+    ulRCC_CFGR = 12345679;
     ulRCC_CFGR2 = 12345680;
-    Fosc_kHz    = 12345677;
+    Fosc_kHz = 12345677;
 
-    // Zero wait state, if 0 < SYSCLK <= 24 MHz
-    // One wait state, if 24 MHz < SYSCLK <= 48 MHz
-    // Two wait states, if 48 MHz < SYSCLK <= 72 MHz
+    // Zero wait state, if 0 < SYSCLK <= 24 MHz.
+    // One wait state, if 24 MHz < SYSCLK <= 48 MHz.
+    // Two wait states, if 48 MHz < SYSCLK <= 72 MHz.
 
     tmp = ulRCC_CFGR & 0x000000F0;
     tmp = tmp >> 4;
@@ -195,45 +194,45 @@ static void InitialSetUpRCCRCC2()
     RCC_CFGR2 = ulRCC_CFGR2;
 
     /* Do not start PLLs yet */
-    RCC_CR    = ulRCC_CR & 0x000FFFFF;
+    RCC_CR = ulRCC_CR & 0x000FFFFF;
 
-    /* if HSI enabled*/
+    /* if HSI enabled */
     if ( ulRCC_CR & ( 1ul << HSION ) ) {
-        /* Wait for HSIRDY = 1 (HSI is ready)*/
+        /* Wait for HSIRDY = 1 (HSI is ready) */
         while ( ( RCC_CR & ( 1ul << HSIRDY ) ) == 0 )
             ;
     }
 
-    /* if HSE enabled*/
+    /* if HSE enabled */
     if ( ulRCC_CR & ( 1ul << HSEON ) ) {
-        /* Wait for HSERDY = 1 (HSE is ready)*/
+        /* Wait for HSERDY = 1 (HSE is ready) */
         while ( ( RCC_CR & ( 1ul << HSERDY ) ) == 0 )
             ;
     }
 
-    /* if PLL3 enabled*/
+    /* if PLL3 enabled */
     if ( ulRCC_CR & ( 1ul << PLL3ON ) ) {
         /* PLL3 On */
         RCC_CR |= ( 1ul << PLL3ON );
-        /* Wait for PLL3RDY = 1 (PLL is ready)*/
+        /* Wait for PLL3RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLL3RDY ) ) == 0 )
             ;
     }
 
-    /* if PLL2 enabled*/
+    /* if PLL2 enabled */
     if ( ulRCC_CR & ( 1ul << PLL2ON ) ) {
         /* PLL2 On */
         RCC_CR |= ( 1ul << PLL2ON );
-        /* Wait for PLL2RDY = 1 (PLL is ready)*/
+        /* Wait for PLL2RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLL2RDY ) ) == 0 )
             ;
     }
 
-    /* if PLL1 enabled*/
+    /* if PLL1 enabled */
     if ( ulRCC_CR & ( 1ul << PLLON ) ) {
         /* PLL1 On */
         RCC_CR |= ( 1ul << PLLON );
-        /* Wait for PLL1RDY = 1 (PLL is ready)*/
+        /* Wait for PLL1RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLLRDY ) ) == 0 )
             ;
     }
@@ -256,28 +255,28 @@ void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
 
     /* Compute HCLK, PCLK1, PCLK2 and ADCCLK clocks frequencies */
     /* Get HCLK prescaler */
-    tmp   = RCC_CFGRbits.HPRE;
+    tmp = RCC_CFGRbits.HPRE;
     presc = APBAHBPrescTable[ tmp ];
 
     /* HCLK clock frequency */
     RCC_Clocks->SYSCLK_Frequency = RCC_Clocks->HCLK_Frequency << presc;
 
     /* Get PCLK1 prescaler */
-    tmp   = RCC_CFGRbits.PPRE1;
+    tmp = RCC_CFGRbits.PPRE1;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK1 clock frequency */
     RCC_Clocks->PCLK1_Frequency = RCC_Clocks->HCLK_Frequency >> presc;
 
     /* Get PCLK2 prescaler */
-    tmp   = RCC_CFGRbits.PPRE2;
+    tmp = RCC_CFGRbits.PPRE2;
     presc = APBAHBPrescTable[ tmp ];
 
     /* PCLK2 clock frequency */
     RCC_Clocks->PCLK2_Frequency = RCC_Clocks->HCLK_Frequency >> presc;
 
     /* Get ADCCLK prescaler */
-    tmp   = RCC_CFGRbits.ADCPRE;
+    tmp = RCC_CFGRbits.ADCPRE;
     presc = ADCPrescTable[ tmp ];
 
     /* ADCCLK clock frequency */

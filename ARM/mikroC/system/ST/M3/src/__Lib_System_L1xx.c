@@ -105,7 +105,7 @@ void __GenExcept()
  *          return to their default values (with the exception of the reset cause
  *          register, which will maintain its current value but have the software reset
  *          bit set as well).
- * @return This function does not return.
+ * @return None.
  */
 void SystemReset( void )
 {
@@ -124,7 +124,7 @@ static void InitialSetUpFosc()
     _VOLTAGE_RANGE = 12345676;
 }
 
-#define RCC_CFGR_SWS ( 0x0000000C ) /* System Clock Switch Status           */
+#define RCC_CFGR_SWS (0x0000000C) /* System Clock Switch Status           */
 
 #define VC_1200 0 /* VCore = 1.2 */
 #define VC_1500 1 /* VCore = 1.5 */
@@ -141,7 +141,7 @@ static void InitialSetUpFosc()
  * @note   This function doesn't modify the configuration of the
  *            - Peripheral clocks
  *            - LSI, LSE and RTC clocks
- * @retval None
+ * @return None.
  */
 static void SystemClockSetDefault( void )
 {
@@ -166,10 +166,10 @@ static void InitialSetUpRCCRCC2()
     unsigned long volatile ulRCC_CR, ulRCC_CFGR, ulVCORE;
     unsigned long volatile Fosc_kHz;
 
-    ulRCC_CR   = 12345678;
+    ulRCC_CR = 12345678;
     ulRCC_CFGR = 12345679;
-    ulVCORE    = 12345680;
-    Fosc_kHz   = 12345677;
+    ulVCORE = 12345680;
+    Fosc_kHz = 12345677;
 
     if ( ulVCORE == VC_1200 ) {
         if ( Fosc_kHz > 2000 ) {
@@ -202,25 +202,25 @@ static void InitialSetUpRCCRCC2()
     /* Do not start PLLs yet */
     RCC_CR   = ulRCC_CR & 0x000FFFFF;
 
-    /* If HSI enabled*/
+    /* If HSI enabled */
     if ( ulRCC_CR & ( 1ul << HSION ) ) {
-        /* Wait for HSIRDY = 1 (HSI is ready)*/
+        /* Wait for HSIRDY = 1 (HSI is ready) */
         while ( ( RCC_CR & ( 1ul << HSIRDY ) ) == 0 )
             ;
     }
 
-    /* If HSE enabled*/
+    /* If HSE enabled */
     if ( ulRCC_CR & ( 1ul << HSEON ) ) {
-        /* Wait for HSERDY = 1 (HSE is ready)*/
+        /* Wait for HSERDY = 1 (HSE is ready) */
         while ( ( RCC_CR & ( 1ul << HSERDY ) ) == 0 )
             ;
     }
 
-    /* If PLL enabled*/
+    /* If PLL enabled */
     if ( ulRCC_CR & ( 1ul << PLLON ) ) {
         /* PLL On */
         RCC_CR |= ( 1ul << PLLON );
-        /* Wait for PLL1RDY = 1 (PLL is ready)*/
+        /* Wait for PLL1RDY = 1 (PLL is ready) */
         while ( ( RCC_CR & ( 1ul << PLLRDY ) ) == 0 )
             ;
     }
