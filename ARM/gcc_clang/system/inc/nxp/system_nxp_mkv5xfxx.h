@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2023 MikroElektronika d.o.o.
+** Copyright (C) 2024 MikroElektronika d.o.o.
 ** Contact: https://www.mikroe.com/contact
 **
 ** Commercial License Usage
@@ -50,10 +50,10 @@ extern "C" {
 
 typedef struct
 {
-    uint32_t frequency_system;            // SYSTEM clock frequency in Hz.
-    uint32_t frequency_peripheral_fast;   // BUSCLOCK clock frequency in Hz.
-    uint32_t frequency_flexbus;           // FLEXBUS clock frequencyin Hz.
-    uint32_t frequency_flash;             // FLASH clock frequencyin Hz.
+    uint32_t frequency_system;          // SYSTEM clock frequency in Hz.
+    uint32_t frequency_peripheral_fast; // BUSCLOCK clock frequency in Hz.
+    uint32_t frequency_flexbus;         // FLEXBUS clock frequencyin Hz.
+    uint32_t frequency_flash;           // FLASH clock frequencyin Hz.
 } clocks_typedef;
 
 #ifdef __cplusplus
