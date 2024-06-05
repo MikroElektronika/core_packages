@@ -1,17 +1,10 @@
-import subprocess
-import os
-import shutil
-import re
-import requests
-import json
-from pathlib import Path
-import argparse
-import aiohttp
-import asyncio
-import aiofiles
-import hashlib
-from elasticsearch import Elasticsearch
+import os, re, subprocess
+import shutil, requests, json
+import argparse, aiohttp, asyncio
+import aiofiles, hashlib
 
+from pathlib import Path
+from elasticsearch import Elasticsearch
 
 def find_cmake_files(directory):
     """ Return a list of .cmake files in the directory, excluding specific files """
@@ -300,7 +293,6 @@ def read_data_from_db(db, sql_query):
 
     ## Execute the desired query
     results = cur.execute(sql_query).fetchall()
-    # results = cur.fetchall()
 
     ## Close the connection
     cur.close()
@@ -425,33 +417,33 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         # Copy schema directories
         copy_schemas(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir)
         copy_interrupts(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir)
-        #copy defs
+        # Copy defs
         copy_files_from_dir(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir, 'def')
-        #copy startups
+        # Copy startups
         copy_files_from_dir(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir, 'startup')
-        #copy linker scirpts
+        # Copy linker scirpts
         copy_files_from_dir(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir, 'linker_scripts')
-        #copy delay files
+        # Copy delay files
         copy_delays(mcuNames[cmake_file]['cores'],source_dir, output_dir, base_output_dir)
-        # #copy std_library to every package
+        # Copy std_library to every package
         std_library_path = os.path.join(source_dir, 'std_library')
         if os.path.exists(std_library_path):
             shutil.copytree(std_library_path, os.path.join(base_output_dir, "std_library"), dirs_exist_ok=True)
-        #copy include to every package
+        # Copy include to every package
         include_path = os.path.join(source_dir, 'include')
         if os.path.exists(include_path):
             shutil.copytree(include_path, os.path.join(base_output_dir, "include"), dirs_exist_ok=True)
-        #copy cstdio to every package
+        # Copy cstdio to every package
         cstdio_path = os.path.join(source_dir, 'cstdio')
         if os.path.exists(cstdio_path):
             shutil.copytree(cstdio_path, os.path.join(base_output_dir, "cstdio"), dirs_exist_ok=True)
 
-        #copy common to every package
+        # Copy common to every package
         shutil.copytree(os.path.join(source_dir, 'common'), os.path.join(base_output_dir, "common"), dirs_exist_ok=True)
-        #copy base CMakeLists.txt to every package
+        # Copy base CMakeLists.txt to every package
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
 
-        #create archive
+        # Create archive
         archivePath = compress_directory_7z(base_output_dir, arch, entry_name)
         compiler = "mikroC"
         if entry_name == "gcc_clang":
@@ -464,7 +456,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         archiveName = os.path.basename(archivePath)
 
         shutil.rmtree(base_output_dir)
-        #upload archive
+        # Upload archive
         upload_result= ""
         async with aiohttp.ClientSession() as session:
             upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
@@ -483,21 +475,21 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         package_changed = (version == tag_name.replace("v", ""))
 
         # Index to Elasticsearch
-        doc = {
-            'name': name_without_extension,
-            'display_name': displayName,
-            'author': 'MIKROE',
-            'hidden': False,
-            'type': 'mcu',
-            'version': version,
-            'created_at' : upload_result['created_at'],
-            'updated_at' : upload_result['updated_at'],
-            'category': 'MCU support',
-            'download_link': upload_result['browser_download_url'],  # Adjust as needed for actual URL
-            'package_changed': package_changed,
-            'install_location': install_location
-        }
-        print(f"DOCUMENT TO INDEX: {doc}")
+        # doc = {
+        #     'name': name_without_extension,
+        #     'display_name': displayName,
+        #     'author': 'MIKROE',
+        #     'hidden': False,
+        #     'type': 'mcu',
+        #     'version': version,
+        #     'created_at' : upload_result['created_at'],
+        #     'updated_at' : upload_result['updated_at'],
+        #     'category': 'MCU support',
+        #     'download_link': upload_result['browser_download_url'],  # Adjust as needed for actual URL
+        #     'package_changed': package_changed,
+        #     'install_location': install_location
+        # }
+        # print(f"DOCUMENT TO INDEX: {doc}")
         # resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
         # print(f"ES RESPONSE: {resp}")
 
@@ -602,16 +594,14 @@ async def main(token, repo, tag_name):
 
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR" ]
     downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
-                            "",
-                            'necto_db.db', True)
+                 '', 'necto_db.db', True)
     current_metadata = fetch_current_metadata(repo, token)
-    # current_metadata = fetch_current_metadata("MikroElektronika/core_packages", "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")
 
     packages = []
     for arch in architectures:
         root_source_directory = f"./{arch}"
         root_output_directory = f"./output/{arch}"
-    # List directories directly under the root source directory
+        # List directories directly under the root source directory
         try:
             with os.scandir(root_source_directory) as entries:
                 print(entries)
@@ -642,9 +632,6 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
     args = parser.parse_args()
-    # os.chdir("..")
-    print(os.getcwd())
     print("Starting the upload process...")
     asyncio.run(main(args.token, args.repo, args.tag_name))
-    # asyncio.run(main("", "", ""))
     print("Upload process completed.")

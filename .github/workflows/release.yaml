@@ -31,4 +31,3 @@ jobs:
           REPO: ${{ github.repository }}
           TAG_NAME: ${{ github.event.release.tag_name }}
         run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.release.tag_name }}
-
