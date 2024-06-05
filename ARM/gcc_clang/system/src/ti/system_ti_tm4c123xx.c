@@ -16,13 +16,15 @@ void systemEnableFPU()
          MOVT R0, #0xE000 \n\t \
          LDR R1, [R0] \n\t \
          ORR R1, R1, #0xF00000 \n\t \
-         STR R1, [R0]" );
+         STR R1, [R0]" 
+    );
 
     asm(
         "nop \n\t \
          nop \n\t \
          nop \n\t \
-         nop" );
+         nop" 
+    );
 
     asm( "VMRS R0, FPSCR" );
     asm( "VMSR FPSCR, R0" );
@@ -130,15 +132,17 @@ void systemPreInit( void )
         *dst = *src++;
 
     // Zero fill the bss segment.
-    asm( "  ldr     r0, =__bss_start__ \n\t \
-            ldr     r1, =__bss_end__ \n\t \
-            mov     r2, #0 \n\t \
-            .thumb_func \n\t \
-        zero_loop: \n\t \
-            cmp     r0, r1 \n\t \
-            it      lt \n\t \
-            strlt   r2, [r0], #4 \n\t \
-            blt     zero_loop" );
+    asm( 
+        "ldr     r0, =__bss_start__ \n\t \
+         ldr     r1, =__bss_end__ \n\t \
+         mov     r2, #0 \n\t \
+         .thumb_func \n\t \
+    zero_loop: \n\t \
+         cmp     r0, r1 \n\t \
+         it      lt \n\t \
+         strlt   r2, [r0], #4 \n\t \
+         blt     zero_loop" 
+    );
 }
 
 void systemInit( void )
