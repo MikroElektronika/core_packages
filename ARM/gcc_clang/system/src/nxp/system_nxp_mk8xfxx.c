@@ -14,7 +14,7 @@
  */
 typedef struct
 {
-    __I uint32_t  CPUID;                //!< Offset: 0x000 (R/ )  CPUID Base Register                                   //
+    __I  uint32_t CPUID;                //!< Offset: 0x000 (R/ )  CPUID Base Register                                   //
     __IO uint32_t ICSR;                 //!< Offset: 0x004 (R/W)  Interrupt Control and State Register                  //
     __IO uint32_t VTOR;                 //!< Offset: 0x008 (R/W)  Vector Table Offset Register                          //
     __IO uint32_t AIRCR;                //!< Offset: 0x00C (R/W)  Application Interrupt and Reset Control Register      //
@@ -28,12 +28,12 @@ typedef struct
     __IO uint32_t MMFAR;                //!< Offset: 0x034 (R/W)  MemManage Fault Address Register                      //
     __IO uint32_t BFAR;                 //!< Offset: 0x038 (R/W)  BusFault Address Register                             //
     __IO uint32_t AFSR;                 //!< Offset: 0x03C (R/W)  Auxiliary Fault Status Register                       //
-    __I uint32_t  PFR[ 2 ];             //!< Offset: 0x040 (R/ )  Processor Feature Register                            //
-    __I uint32_t  DFR;                  //!< Offset: 0x048 (R/ )  Debug Feature Register                                //
-    __I uint32_t  ADR;                  //!< Offset: 0x04C (R/ )  Auxiliary Feature Register                            //
-    __I uint32_t  MMFR[ 4 ];            //!< Offset: 0x050 (R/ )  Memory Model Feature Register                         //
-    __I uint32_t  ISAR[ 5 ];            //!< Offset: 0x060 (R/ )  Instruction Set Attributes Register                   //
-    uint32_t      RESERVED0[ 5 ];
+    __I  uint32_t PFR[ 2 ];             //!< Offset: 0x040 (R/ )  Processor Feature Register                            //
+    __I  uint32_t DFR;                  //!< Offset: 0x048 (R/ )  Debug Feature Register                                //
+    __I  uint32_t ADR;                  //!< Offset: 0x04C (R/ )  Auxiliary Feature Register                            //
+    __I  uint32_t MMFR[ 4 ];            //!< Offset: 0x050 (R/ )  Memory Model Feature Register                         //
+    __I  uint32_t ISAR[ 5 ];            //!< Offset: 0x060 (R/ )  Instruction Set Attributes Register                   //
+         uint32_t RESERVED0[ 5 ];
     __IO uint32_t CPACR;                //!< Offset: 0x088 (R/W)  Coprocessor Access Control Register                   //
 } SCB_Type;
 
