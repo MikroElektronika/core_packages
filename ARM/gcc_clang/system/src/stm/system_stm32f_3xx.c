@@ -185,12 +185,12 @@ void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
     presc = APBAHBPrescTable[ tmp ];
     /* PCLK2 clock frequency */
     RCC_Clocks->PCLK2_Frequency = RCC_Clocks->HCLK_Frequency >> presc;
-/* Get ADCCLK prescaler */
-#if defined( RCC_CFGR_ADCPRE )
+    /* Get ADCCLK prescaler */
+    #if defined(RCC_CFGR_ADCPRE)
     tmp = ( _REG_VALUE_GET_( RCC->CFGR ) & RCC_CFGR_ADC_PRESCALER_MSK ) >> RCC_CFGR_ADC_PRESCALER_POS;
-#else
+    #else
     tmp = ( _REG_VALUE_GET_( RCC->CFGR2 ) & RCC_CFGR2_ADC_PRESCALER_MSK ) >> RCC_CFGR2_ADC_PRESCALER_POS;
-#endif
+    #endif
     presc = ADCPrescTable[ tmp ];
     /* ADCCLK clock frequency */
     RCC_Clocks->ADCCLK_Frequency = RCC_Clocks->PCLK2_Frequency / presc;

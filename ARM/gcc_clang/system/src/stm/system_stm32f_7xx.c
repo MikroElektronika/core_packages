@@ -175,10 +175,10 @@ const uint32_t
     _NVIC_PRIORITYGROUP_3 = ( ( uint32_t )0x00000004 ),
     _NVIC_PRIORITYGROUP_4 = ( ( uint32_t )0x00000003 );
 
-#define SCB_AIR_VECTORKEY_POS  ( 16 )
-#define SCB_AIR_VECTORKEY_MASK ( ( uint32_t )( 0xFFFFUL << SCB_AIR_VECTORKEY_POS ) )
-#define SCB_AIR_PRIGROUP_POS   ( 8 )
-#define SCB_AIR_PRIGROUP_MASK  ( ( uint32_t )( 0x7UL << SCB_AIR_PRIGROUP_POS ) )
+#define SCB_AIR_VECTORKEY_POS  (16)
+#define SCB_AIR_VECTORKEY_MASK ((uint32_t)(0xFFFFUL << SCB_AIR_VECTORKEY_POS))
+#define SCB_AIR_PRIGROUP_POS   (8)
+#define SCB_AIR_PRIGROUP_MASK  ((uint32_t)(0x7UL << SCB_AIR_PRIGROUP_POS))
 
 /**
  * @brief Set Priority Grouping

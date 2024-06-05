@@ -60,9 +60,9 @@ static void systemClockSetDefault( void )
 
     /* Reset HSEON, CSSON and PLLON bits */
     _REG_VALUE_CLEAR_BIT_( RCC->CR, RCC_CR_HSEON_Pos );
-#if !defined( CATEGORY_1_DEVICE )
+    #if !defined(CATEGORY_1_DEVICE)
     _REG_VALUE_CLEAR_BIT_( RCC->CR, RCC_CR_CSSHSEON_Pos );
-#endif
+    #endif
     _REG_VALUE_CLEAR_BIT_( RCC->CR, RCC_CR_PLLON_Pos );
 
     /* Reset HSEBYP bit */
@@ -108,15 +108,15 @@ void systemInit()
 
     systemClockSetDefault();
 
-#ifdef VALUE_RCC_CRRCR
+    #ifdef VALUE_RCC_CRRCR
     _REG_VALUE_CLEAR_SET_( RCC->CRRCR, VALUE_RCC_CRRCR );
-#endif
+    #endif
 
     _REG_VALUE_CLEAR_SET_( RCC->CFGR, VALUE_RCC_CFGR );                     /* set clock configuration register */
 
     _REG_VALUE_CLEAR_SET_( RCC->CR, VALUE_RCC_CR & 0x000FFFFF );            /* do not start PLLs yet */
 
-#ifdef VALUE_RCC_CRRCR
+    #ifdef VALUE_RCC_CRRCR
     if ( VALUE_RCC_CRRCR & ( 1ul << RCC_CRRCR_HSI48ON_Pos ) ) {             /* if HSI48 enabled*/
         _REG_VALUE_SET_BIT_( RCC->APB2ENR, RCC_APB2ENR_SYSCFGEN_Pos );      // System configuration controller clock enable bit
 
@@ -126,7 +126,7 @@ void systemInit()
             ;                                                               /* Wait for HSI48RDY = 1 (HSI48 is ready)*/
     }
 
-#endif
+    #endif
     if ( VALUE_RCC_CR & ( 1ul << RCC_CR_HSION_Pos ) ) {   /* if HSI enabled*/
         while ( _REG_VALUE_GET_BIT_( RCC->CR, RCC_CR_HSIRDY_Pos ) == 0 )
             ;                                             /* Wait for HSIRDYF = 1 (HSI is ready)*/
