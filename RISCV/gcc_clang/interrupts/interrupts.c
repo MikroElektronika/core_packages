@@ -5,15 +5,15 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "interrupts.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* -----------------------------PRIVATE MACROS------------------------------ */
 
 #define set_csr(reg, bit) ({ unsigned long __tmp; \
                              if (__builtin_constant_p(bit) && (unsigned long)(bit) < 32) \
@@ -52,31 +52,34 @@
 #define MTVEC_CLIC_INTERRUPT_MODE_MASK (0xFFFFFFC0UL)
 #define CLICINT_ATTR_VECTORED_INTERRUPT (0x1UL)
 
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ----------------------PRIVATE FUNCTION DECLARATIONS---------------------- */
 
 /**
  * @brief Enables interrupts on the global level.
- * @return Nothing.
+ * @return None.
  */
 static inline void interrupts_enable_asm( void );
 
 /**
  * @brief Disables interrupts on the global level.
- * @return Nothing.
+ * @return None.
  */
 static inline void interrupts_disable_asm( void );
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
-void interrupts_enable( void ) {
+void interrupts_enable( void )
+{
     interrupts_enable_asm();
 }
 
-void interrupts_disable( void ) {
+void interrupts_disable( void )
+{
     interrupts_disable_asm();
 }
 
-void interrupt_enable( int interrupt ) {
+void interrupt_enable( int interrupt )
+{
     // Get previous register status.
     unsigned long mtvec_value = read_csr( mtvec );
     mtvec_value = mtvec_value & MTVEC_CLIC_INTERRUPT_MODE_MASK;
@@ -90,26 +93,29 @@ void interrupt_enable( int interrupt ) {
     SET_ECLIC_CLICINT_IE( interrupt, 1 );
 }
 
-void interrupt_disable( int interrupt ) {
+void interrupt_disable( int interrupt )
+{
     // Disable interrupt vector.
     SET_ECLIC_CLICINT_IE( interrupt, 0 );
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* ----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
-static inline void interrupts_enable_asm( void ) {
-    set_csr(mstatus, MSTATUS_MIE);
+static inline void interrupts_enable_asm( void )
+{
+    set_csr( mstatus, MSTATUS_MIE );
 }
 
-static inline void interrupts_disable_asm( void ) {
-    clear_csr(mstatus, MSTATUS_MIE);
+static inline void interrupts_disable_asm( void )
+{
+    clear_csr( mstatus, MSTATUS_MIE );
 }
 
 // ----------------------------------------------------------------------------
 /*
     interrupts.c
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
