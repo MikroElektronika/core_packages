@@ -1,8 +1,8 @@
 #include "system_stm32f10_123.h"
-#include "common.h"
-#include "core_header.h"
-#include "mcu.h"
 #include "stdint.h"
+#include "core_header.h"
+#include "common.h"
+#include "mcu.h"
 
 
 #define ADDRESS_SCB_AIRCR     (0xE000ED0C)
