@@ -1,46 +1,64 @@
+/*
+    __lib_System_12.c
+
+ ------------------------------------------------------------------------------
+
+  This file is part of mikroSDK.
+
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
+
+  All rights reserved.
+
+----------------------------------------------------------------------------- */
+
 #include "__Lib_CP0.h"
 
-// rutina koja kopira iz dela memorije na koju pokazuje R28
-// u deo memorije na koju pokazuje R27
-// adresa do koje se kopira je u R26
-void __CC2DW() {
-  asm {
-    L_loopDW:
-          LB        R30, 0(R24)
-          SB        R30, 0(R23)
-          ADDIU     R23, R23, 1
-          BNE       R23, R22, L_loopDW
-          ADDIU     R24, R24, 1
-  }
-}
-
-void __CA2AB(){
+/**
+ * @brief Routine that copies from the memory area pointed to by R28 to the
+ * memory area pointed to by R27. The address to which it copies is in R26.
+ */
+void __CC2DW()
+{
     asm {
-      L_loopCA2ABs:
-          LB        R30, 0(R2)
-          SB        R30, 0(R3)
-          ADDIU     R2, R2, 1
-          BNE       R2, R4, L_loopCA2ABs
-          ADDIU     R3, R3, 1
+    L_loopDW:
+        LB        R30, 0(R24)
+        SB        R30, 0(R23)
+        ADDIU     R23, R23, 1
+        BNE       R23, R22, L_loopDW
+        ADDIU     R24, R24, 1
     }
 }
 
-void __CS2S(){
+void __CA2AB()
+{
     asm {
-      L_loopCS2Ss:
+    L_loopCA2ABs:
+        LB        R30, 0(R2)
+        SB        R30, 0(R3)
+        ADDIU     R2, R2, 1
+        BNE       R2, R4, L_loopCA2ABs
+        ADDIU     R3, R3, 1
+    }
+}
+
+void __CS2S()
+{
+    asm {
+    L_loopCS2Ss:
         LB        R30, 0(R2)
         BEQ       R30, R0, L_CS2Send
         ADDIU     R2, R2, 1
         SB        R30, 0(R3)
         J         L_loopCS2Ss
         ADDIU     R3, R3, 1
-      L_CS2Send:
+    L_CS2Send:
     }
 }
 
-void __FZinS(){
+void __FZinS()
+{
     asm {
-      L_loopCS2Ss:
+    L_loopCS2Ss:
         LB        R30, 0(R3)
         BNE       R30, R0, L_loopCS2Ss
         ADDIU     R3, R3, 1
@@ -48,126 +66,154 @@ void __FZinS(){
     }
 }
 
-void RestoreInterrupts(unsigned long status) {
-  if (status & 0x00000001)
-    asm EI R0;
-  else
-    asm DI R0;
+void RestoreInterrupts( unsigned long status )
+{
+    if ( status & 0x00000001 )
+        asm EI R0;
+    else
+        asm DI R0;
 }
 
-void __BootGenExcept() {
-  while (1)
-    ;
+void __BootGenExcept()
+{
+    while ( 1 )
+        ;
 }
 
-void __GenExcept() {
-  while (1)
-    ;
+void __GenExcept()
+{
+    while ( 1 )
+        ;
 }
 
 extern void main();
 
-void __BootStartUp(){
-  // ako je NMI pozvati defualt (ako nije data korisnicka definicja funkcije)
-  // for bootloader purpose
-  asm {
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-  }
-  // stack pointer i global pointer
-  R29 = 0x00FF00FF;
-  R1  = 0xA0008000;
+void __BootStartUp()
+{
+    // If NMI is called, invoke default (if user-defined function is not provided).
+    // For bootloader purposes
+    asm {
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+        NOP
+    }
+    // stack pointer and global pointer
+    R29 = 0x00FF00FF;
+    R1  = 0xA0008000;
 
-  // sinhro gp u shadow set
-  asm {
-    MFC0        R30, 12, 2
-    MOVZ        R28, R30, R0
-    EXT         R27, R30, 26, 4
-    INS         R30, R27,  6, 4
-    MTC0        R30, 12, 2
-    WRPGPR        R1,  R1
-    MTC0        R28, 12, 2
-  }
+    asm {
+        MFC0        R30, 12, 2
+        MOVZ        R28, R30, R0
+        EXT         R27, R30, 26, 4
+        INS         R30, R27,  6, 4
+        MTC0        R30, 12, 2
+        WRPGPR        R1,  R1
+        MTC0        R28, 12, 2
+    }
 
-  //Config: Typically, the K0, KU and K23 fields should be set to the desired Cache Coherency Algorithm (CCA)
-  //  value prior to accessing the corresponding memory regions. But in the M4K core, all CCA values are treated
-  //  identically, so the hardware reset value of these fields need not be modified.
-  CP0_SET(CP0_CONFIG, 0xA4210582);
-  // Count: Should be set to a known value if Timer Interrupts are used.
-  // COUNT
-  CP0_SET(CP0_COUNT, 0);
-  // Compare: Should be set to a known value if Timer Interrupts are used. The write to compare will also clear any
-  //    pending Timer Interrupts (Thus, Count should be set before Compare to avoid any unexpected interrupts).
-  CP0_SET(CP0_COMPARE, 0xFFFFFFFF);
+    // Config: Typically, the K0, KU and K23 fields should be set to the desired Cache Coherency Algorithm (CCA)
+    //         value prior to accessing the corresponding memory regions. But in the M4K core, all CCA values are treated
+    //         identically, so the hardware reset value of these fields need not be modified.
+    CP0_SET( CP0_CONFIG, 0xA4210582 );
+    // Count: Should be set to a known value if Timer Interrupts are used.
+    CP0_SET( CP0_COUNT, 0 );
+    // Compare: Should be set to a known value if Timer Interrupts are used. The write to compare will also clear any
+    //          pending Timer Interrupts (Thus, Count should be set before Compare to avoid any unexpected interrupts).
+    CP0_SET( CP0_COMPARE, 0xFFFFFFFF );
 
-  CP0_SET(CP0_EBASE,  0x9FC01000);    // offset do pocetka exception tabele
+    CP0_SET( CP0_EBASE, 0x9FC01000 );  // Offset to the beginning of the exception table
 
-  CP0_SET(CP0_INTCTL, 0x00000020);    // 32 bajta izmedju sisednih interrupt vectora
+    CP0_SET( CP0_INTCTL, 0x00000020 ); // 32 bytes between adjacent interrupt vectors
 
-  CP0_SET(CP0_SRSCTL, 0x04000000);
-  CP0_SET(CP0_SRSMAP, 0x00000000);
+    CP0_SET( CP0_SRSCTL, 0x04000000 );
+    CP0_SET( CP0_SRSMAP, 0x00000000 );
 
-  // todo .. napraviti poziv funkcije koja se ivrsava nakon bootStartUp-a
-  // tj. dok je jos u boot sekciji
-  //Status: Desired state of the device should be set.
-  CP0_SET(CP0_STATUS, 0x00100000);
+    // Status: Desired state of the device should be set.
+    CP0_SET( CP0_STATUS, 0x00100000 );
 
-  // dummy setovanje checon-a, ispravice linker wait state-ove prema setovanom clocku
-  //  izbaceno jer ovi chipovei nemaju  CHECON
+    // Dummy setting of CHECON, will correct linker wait states according to the set clock
+    // Removed because these chips do not have CHECON
 
+    // Dummy setting of INTCON, will correct linker/omit if not needed...
+    INTCON = 0x80000000; // Instructions are recognized by the linker based on this constant,
+                         // as it is unique in this function currently. If anything changes,
+                         // the linker needs to be adjusted as well...
 
-  // dummy setovanje intcon-a, ispravice linker/izbacice ako ne treba...
-  INTCON = 0x80000000; // instrukcije se u linkeru prepoznaje po ovoj konstanti,
-                       // jer je jedinstvena u ovoj f-ji trenutno, ako se bilo shta
-                       // izmeni treba srediti i linker...
+    // Cause: WP (Watch Pending), SW0/1 (Software Interrupts) should be cleared.
+    //  CP0_SET(CP0_CAUSE, 0);
+    CP0_SET( CP0_CAUSE, 0x00800000 );
 
-  //Cause: WP (Watch Pending), SW0/1 (Software Interrupts) should be cleared.
-  // CP0_SET(CP0_CAUSE, 0);
-  CP0_SET(CP0_CAUSE, 0x00800000);
+    // Execution of main
+    // An indirect call is necessary to change the kseg
+    // It must be done from assembly to avoid registering cross-calling...
+    asm {
+        LUI R30, hi_addr(_main)
+        ORI R30, R30, lo_addr(_main)
 
-  // izvrsavanje main-a
-  // mora indirektni poziv da bi se promenio kseg
-  // mora iz asm-a da se ne bi registrovao cross calling...
-  asm {
-      LUI R30, hi_addr(_main)
-      ORI R30, R30, lo_addr(_main)
-
-      JR R30
-      NOP
-       }
+        JR R30
+        NOP
+    }
 }
 
-char Swap(char arg) {
-  return (arg >> 4) | (arg << 4);
+char Swap( char arg )
+{
+    return ( arg >> 4 ) | ( arg << 4 );
 }
 
-void __FillZeros(){
-	asm{
-		L___FillZeros0:
+void __FillZeros()
+{
+    asm {
+	L___FillZeros0:
 		BEQ R23, R22, L___FillZeros1
 		NOP
-		L____FillZeros4:
+	L____FillZeros4:
 		SW R0, 0(R23)
 		J L___FillZeros0
 		ADDIU R23, R23, 4
-		L___FillZeros1:
-	}
+	L___FillZeros1:
+    }
 }
+
+// ----------------------------------------------------------------------------
+/*
+    __Lib_System_12.c
+
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+// ----------------------------------------------------------------------------

@@ -5,7 +5,7 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
@@ -16,10 +16,10 @@
 // ------------------------------------------------------------- PRIVATE MACROS
 
 /* Set bit _bit in register _reg. */
-#define interrupt_bit_set(_reg,_bit) (_reg |= 1U << _bit)
+#define interrupt_bit_set(_reg, _bit) (_reg |= 1U << _bit)
 
 /* Clear bit _bit in register _reg. */
-#define interrupt_bit_clear(_reg,_bit) (_reg &= ~(1U << _bit))
+#define interrupt_bit_clear(_reg, _bit) (_reg &= ~(1U << _bit))
 
 // ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
 
@@ -37,11 +37,13 @@ static inline void interrupts_disable_asm( void );
 
 // ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
 
-void interrupts_enable( void ) {
+void interrupts_enable( void )
+{
     interrupts_enable_asm();
 }
 
-void interrupts_disable( void ) {
+void interrupts_disable( void )
+{
     interrupts_disable_asm();
 }
 
@@ -2753,7 +2755,8 @@ void interrupt_disable( int interrupt ) {
 
 // ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
 
-static inline void interrupts_enable_asm( void ) {
+static inline void interrupts_enable_asm( void )
+{
     asm {
         nop
         EI R30
@@ -2761,7 +2764,8 @@ static inline void interrupts_enable_asm( void ) {
     }
 }
 
-static inline void interrupts_disable_asm( void ) {
+static inline void interrupts_disable_asm( void )
+{
     asm {
         nop
         DI R30
@@ -2773,7 +2777,7 @@ static inline void interrupts_disable_asm( void ) {
 /*
     interrupts.c
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
