@@ -1,5 +1,3 @@
-
-
 void ____DoIFC()
 {
     PCLATH = R1;
