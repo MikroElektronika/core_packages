@@ -96,7 +96,7 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall)
 
     list(APPEND local_list_install "common/delays.h")
 
-    
+
     list(APPEND local_list_install def/${MCU_NAME}/mcu.h)
     list(APPEND local_dir_install def/${MCU_NAME})
 
