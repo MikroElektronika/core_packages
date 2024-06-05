@@ -41,6 +41,7 @@
 
 #include "core_header.h"
 
-void clockConfig(void) {
+void clockConfig( void )
+{
     // TODO
 }

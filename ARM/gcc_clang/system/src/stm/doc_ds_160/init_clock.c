@@ -40,20 +40,22 @@
  */
 
 #include "core_header.h"
-#include "stm32l4xx_hal_rcc.h"
 #include "stm32l4xx_hal_pwr_ex.h"
+#include "stm32l4xx_hal_rcc.h"
 
-static RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-static RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+static RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+static RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
 
 extern uint32_t uwTick;
 extern uint32_t uwTickFreq;
 
-__attribute__ ((interrupt("IRQ"))) void SysTick_Handler(void) {
-    uwTick += (uint32_t)uwTickFreq;
+__attribute__( ( interrupt( "IRQ" ) ) ) void SysTick_Handler( void )
+{
+    uwTick += ( uint32_t )uwTickFreq;
 }
 
-void clockConfig(void) {
+void clockConfig( void )
+{
     HAL_Init();
 
     // Enable system and power clocks.
@@ -61,87 +63,89 @@ void clockConfig(void) {
     __HAL_RCC_PWR_CLK_ENABLE();
 
     // Configure the main internal regulator output voltage.
-    if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1_BOOST) != HAL_OK)
-        while(1);
+    if ( HAL_PWREx_ControlVoltageScaling( PWR_REGULATOR_VOLTAGE_SCALE1_BOOST ) != HAL_OK )
+        while ( 1 )
+            ;
 
     // Select oscillators for configuration. More can be selected at once.
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_NONE;
-    if (VALUE_RCC_CR & RCC_CR_HSEON) {
+    if ( VALUE_RCC_CR & RCC_CR_HSEON ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSE;
     }
-    if (VALUE_RCC_CR & RCC_CR_HSION) {
+    if ( VALUE_RCC_CR & RCC_CR_HSION ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI;
     }
-    if (VALUE_RCC_BDCR & RCC_BDCR_LSEON) {
+    if ( VALUE_RCC_BDCR & RCC_BDCR_LSEON ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_LSE;
     }
-    if  (VALUE_RCC_CSR & RCC_CSR_LSION) {
+    if ( VALUE_RCC_CSR & RCC_CSR_LSION ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_LSI;
     }
-    if (VALUE_RCC_CR & RCC_CR_MSION) {
+    if ( VALUE_RCC_CR & RCC_CR_MSION ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_MSI;
     }
-    #if defined(RCC_HSI48_SUPPORT)
-    if (VALUE_RCC_CRRCR & RCC_CRRCR_HSI48ON) {
+#if defined( RCC_HSI48_SUPPORT )
+    if ( VALUE_RCC_CRRCR & RCC_CRRCR_HSI48ON ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI48;
     }
-    #endif /* RCC_HSI48_SUPPORT */
+#endif /* RCC_HSI48_SUPPORT */
 
     // Get HSE oscillator state.
     RCC_OscInitStruct.HSEState = VALUE_RCC_CR & RCC_HSE_BYPASS;
 
-    // Get LSE oscillator state.
-    #if defined(RCC_BDCR_LSESYSDIS)
+// Get LSE oscillator state.
+#if defined( RCC_BDCR_LSESYSDIS )
     RCC_OscInitStruct.LSEState = VALUE_RCC_BDCR & RCC_LSE_BYPASS_RTC_ONLY;
-    #else /* RCC_BDCR_LSESYSDIS */
+#else  /* RCC_BDCR_LSESYSDIS */
     RCC_OscInitStruct.LSEState = VALUE_RCC_BDCR & RCC_LSE_BYPASS;
-    #endif /* RCC_BDCR_LSESYSDIS */
+#endif /* RCC_BDCR_LSESYSDIS */
 
     // Get HSI oscillator state.
     RCC_OscInitStruct.HSIState = VALUE_RCC_CR & RCC_CR_HSION;
     // Get HSI oscillator calibration value.
-    RCC_OscInitStruct.HSICalibrationValue = (VALUE_RCC_ICSCR & RCC_ICSCR_HSITRIM_Msk) >> RCC_ICSCR_HSITRIM_Pos;
+    RCC_OscInitStruct.HSICalibrationValue = ( VALUE_RCC_ICSCR & RCC_ICSCR_HSITRIM_Msk ) >> RCC_ICSCR_HSITRIM_Pos;
     // Get LSI oscillator state.
     RCC_OscInitStruct.LSIState = VALUE_RCC_CSR & RCC_CSR_LSION;
-    // Get LSI oscillator state.
-    #if defined(RCC_CSR_LSIPREDIV)
+// Get LSI oscillator state.
+#if defined( RCC_CSR_LSIPREDIV )
     RCC_OscInitStruct.LSIDiv = VALUE_RCC_CSR & RCC_CSR_LSIPREDIV;
-    #endif /* RCC_CSR_LSIPREDIV */
+#endif /* RCC_CSR_LSIPREDIV */
     // Get MSI oscillator state.
     RCC_OscInitStruct.MSIState = VALUE_RCC_CR & RCC_CR_MSION;
     // Get MSI oscillator calibration value.
-    RCC_OscInitStruct.MSICalibrationValue = (VALUE_RCC_ICSCR & RCC_ICSCR_MSITRIM_Msk) >> RCC_ICSCR_MSITRIM_Pos;
+    RCC_OscInitStruct.MSICalibrationValue = ( VALUE_RCC_ICSCR & RCC_ICSCR_MSITRIM_Msk ) >> RCC_ICSCR_MSITRIM_Pos;
     // Get MSI oscillator clock range.
     RCC_OscInitStruct.MSIClockRange = VALUE_RCC_CR & RCC_CR_MSIRANGE_Msk;
-    // Get HSI48 oscillator state.
-    #if defined(RCC_HSI48_SUPPORT)
+// Get HSI48 oscillator state.
+#if defined( RCC_HSI48_SUPPORT )
     RCC_OscInitStruct.HSI48State = VALUE_RCC_CRRCR & RCC_CRRCR_HSI48ON;
-    #else
+#else
     RCC_OscInitStruct.HSI48State = RCC_HSI48_OFF;
-    #endif /* RCC_HSI48_SUPPORT */
+#endif /* RCC_HSI48_SUPPORT */
     // Get PLL state.
-    RCC_OscInitStruct.PLL.PLLState = (VALUE_RCC_CR & RCC_CR_PLLON) ? RCC_PLL_ON : RCC_PLL_OFF;
+    RCC_OscInitStruct.PLL.PLLState = ( VALUE_RCC_CR & RCC_CR_PLLON ) ? RCC_PLL_ON : RCC_PLL_OFF;
     // Get PLL source.
     RCC_OscInitStruct.PLL.PLLSource = VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLSRC_Msk;
     // Get PLL M divider.
-    RCC_OscInitStruct.PLL.PLLM = ((VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLM_Msk) >> RCC_PLLCFGR_PLLM_Pos ) + 1;
+    RCC_OscInitStruct.PLL.PLLM = ( ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLM_Msk ) >> RCC_PLLCFGR_PLLM_Pos ) + 1;
     // Get PLL N multiplier.
-    RCC_OscInitStruct.PLL.PLLN = (VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLN_Msk) >> RCC_PLLCFGR_PLLN_Pos;
-    // Get PLL P divider.
-    #if defined(RCC_PLLP_SUPPORT)
-    RCC_OscInitStruct.PLL.PLLP = (VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLP_Msk) >> RCC_PLLCFGR_PLLP_Pos;
-    #endif /* RCC_PLLP_SUPPORT */
+    RCC_OscInitStruct.PLL.PLLN = ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLN_Msk ) >> RCC_PLLCFGR_PLLN_Pos;
+// Get PLL P divider.
+#if defined( RCC_PLLP_SUPPORT )
+    RCC_OscInitStruct.PLL.PLLP = ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLP_Msk ) >> RCC_PLLCFGR_PLLP_Pos;
+#endif /* RCC_PLLP_SUPPORT */
     // Get PLL Q divider.
-    RCC_OscInitStruct.PLL.PLLQ = (((VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLQ_Msk) >> RCC_PLLCFGR_PLLQ_Pos) + 1) << 1;
+    RCC_OscInitStruct.PLL.PLLQ = ( ( ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLQ_Msk ) >> RCC_PLLCFGR_PLLQ_Pos ) + 1 ) << 1;
     // Get PLL R divider.
-    RCC_OscInitStruct.PLL.PLLR = (((VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLR_Msk) >> RCC_PLLCFGR_PLLR_Pos) + 1) << 1;
+    RCC_OscInitStruct.PLL.PLLR = ( ( ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLR_Msk ) >> RCC_PLLCFGR_PLLR_Pos ) + 1 ) << 1;
 
     // Initializes the RCC Oscillators according to the specified parameters in the RCC_OscInitTypeDef structure.
-    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-        while(1);
+    if ( HAL_RCC_OscConfig( &RCC_OscInitStruct ) != HAL_OK )
+        while ( 1 )
+            ;
 
     // Select which bus clock will be configured. More can be selected at once.
-    RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
+    RCC_ClkInitStruct.ClockType = ( RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2 );
     // Gets SYSCLK clock source.
     RCC_ClkInitStruct.SYSCLKSource = VALUE_RCC_CFGR & RCC_CFGR_SW_Msk;
     // Gets AHB1 clock source.
@@ -149,26 +153,23 @@ void clockConfig(void) {
     // Gets APB1 clock source.
     RCC_ClkInitStruct.APB1CLKDivider = VALUE_RCC_CFGR & RCC_CFGR_PPRE1_Msk;
     // Gets APB2 clock source.
-    RCC_ClkInitStruct.APB2CLKDivider = (VALUE_RCC_CFGR & RCC_CFGR_PPRE2_Msk) >> 3;
+    RCC_ClkInitStruct.APB2CLKDivider = ( VALUE_RCC_CFGR & RCC_CFGR_PPRE2_Msk ) >> 3;
 
-    uint32_t flash_latency = FLASH_ACR_LATENCY_0WS;
-    if (FOSC_KHZ_VALUE > 100000) {
+    uint32_t flash_latency           = FLASH_ACR_LATENCY_0WS;
+    if ( FOSC_KHZ_VALUE > 100000 ) {
         flash_latency = FLASH_ACR_LATENCY_5WS;
-    }
-    else if (FOSC_KHZ_VALUE > 80000) {
+    } else if ( FOSC_KHZ_VALUE > 80000 ) {
         flash_latency = FLASH_ACR_LATENCY_4WS;
-    }
-    else if (FOSC_KHZ_VALUE > 60000) {
+    } else if ( FOSC_KHZ_VALUE > 60000 ) {
         flash_latency = FLASH_ACR_LATENCY_3WS;
-    }
-    else if (FOSC_KHZ_VALUE > 40000) {
+    } else if ( FOSC_KHZ_VALUE > 40000 ) {
         flash_latency = FLASH_ACR_LATENCY_2WS;
-    }
-    else if (FOSC_KHZ_VALUE > 20000) {
+    } else if ( FOSC_KHZ_VALUE > 20000 ) {
         flash_latency = FLASH_ACR_LATENCY_1WS;
     }
 
     // Initializes the CPU, AHB and APB buses clocks.
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, flash_latency) != HAL_OK)
-        while(1);
+    if ( HAL_RCC_ClockConfig( &RCC_ClkInitStruct, flash_latency ) != HAL_OK )
+        while ( 1 )
+            ;
 }
