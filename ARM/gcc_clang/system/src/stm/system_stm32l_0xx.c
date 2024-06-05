@@ -154,7 +154,7 @@ void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
 
     RCC_Clocks->HCLK_Frequency = FOSC_KHZ_VALUE * 1000;
 
-    /* Compute HCLK, PCLK clocks frequencies -----------------------------------*/
+    /* Compute HCLK, PCLK clocks frequencies --------------------------------*/
     /* Get HCLK prescaler */
     tmp = _REG_VALUE_GET_( RCC->CFGR ) & RCC_CFGR_HPRE_Msk;
     tmp = tmp >> RCC_CFGR_HPRE_Pos;
