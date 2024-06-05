@@ -11,11 +11,11 @@ function(mikrosdk_install targetAlias)
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-    # INSTALL EXPORT FILE
+    # Install export file
     install(EXPORT ${targetAlias}Target
         FILE ${targetAlias}Targets.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${targetAlias})
-    ## Set variable used in configFile
+    ## Set variable used in config file
     set(TARGET_NAME ${targetAlias})
     set(findDepsList "")
 

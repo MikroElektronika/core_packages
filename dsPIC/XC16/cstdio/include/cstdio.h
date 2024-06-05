@@ -5,42 +5,38 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
 ----------------------------------------------------------------------------- */
+/*!
+ * @file  cstdio.h
+ * @brief Standard input output functions.
+  * @{
+ */
 
-/**
-    \file   cstdio.h
-    \brief  Standard input output functions.
-    \{
-
-- Version : **1.0.0**
-- Date : **02.03.2023**
-- Developer : **MikroE Team**
-
-*/
-// ----------------------------------------------------------------------------
+/*--------------------------------------------------------------------------- */
 
 #ifndef _CSTDIO_H_
 #define _CSTDIO_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
-#include <stdint.h>
 #include <stdarg.h>
+#include <stdint.h>
 
 /**
  * @brief MikroE standard output breakpoint.
  * @details This routine is used by built-in terminal.
- * @param / None
- * @return None
+ * @param / None.
+ * @return None.
  */
-static inline void stdBuffFullBreak() {
-    asm ("nop");
+static inline void stdBuffFullBreak()
+{
+    asm( "nop" );
 }
 
 /**
@@ -61,9 +57,9 @@ int putchar_me( int character );
  *          but not including the null character. A newline character is appended to the output.
  * @param[in] str This is the C string to be written.
  * @note MikroE standard output implementation.
- * @return None
+ * @return None.
  */
-int puts_me( const char *str );
+int puts_me( const char * str );
 
 /**
  * @brief Writes a string to specified stream.
@@ -73,16 +69,16 @@ int puts_me( const char *str );
  * @param[out] stream This is the pointer to a FILE object that identifies the stream
  *                    where the string is to be written.
  * @note MikroE standard output implementation.
- * @return None
+ * @return None.
  */
-int fputs_me( const char *str, void (*stream)(char ch) );
+int fputs_me( const char * str, void ( *stream )( char ch ) );
 
 /**
  * @brief MikroE standard output API.
  * @details This routine is used by NECTO Studio
  *          to send log output to the built-in terminal.
  * @param[in] ch String to be written.
- * @return None
+ * @return None.
  */
 void debugStdOut( char ch );
 
@@ -99,7 +95,7 @@ void debugStdOut( char ch );
  * @return If successful, the total number of characters written is returned.
  *         On failure, a negative number is returned.
  */
-int printf_me( const char *format, ... );
+int printf_me( const char * format, ... );
 
 /**
  * @brief Sends formatted output to a stream.
@@ -115,7 +111,7 @@ int printf_me( const char *format, ... );
  * @return If successful, the total number of characters written is returned.
  *         On failure, a negative number is returned.
  */
-int fprintf_me( void (*stream)(char ch), const char *format, ... );
+int fprintf_me( void ( *stream )( char ch ), const char * format, ... );
 
 /**
  * @brief Sends formatted output to a stream using an argument list passed to it.
@@ -133,20 +129,20 @@ int fprintf_me( void (*stream)(char ch), const char *format, ... );
  * @return If successful, the total number of characters written is returned.
  *         On failure, a negative number is returned.
  */
-int vfprintf_me( void (*stream)(char ch), const char *format, register va_list arg );
+int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_list arg );
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // _CSTDIO_H_
+#endif // _CSTDIO_H_
 
-/// \}
+/** @} */
 // ----------------------------------------------------------------------------
 /*
     cstdio.h
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
