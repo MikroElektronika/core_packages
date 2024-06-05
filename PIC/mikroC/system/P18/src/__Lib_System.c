@@ -1,3 +1,5 @@
+#include <setjmp18.h>
+
 char __Low_saveWREG;
 char __Low_saveSTATUS;
 char __Low_saveBSR;
@@ -116,40 +118,15 @@ char Swap( char input )
     asm swapf R0, F return R0;
 }
 
-/******************************************************************************/
-/*                                                                            */
-/* FILENAME   : setjmp.c                                                      */
-/* PROJECT    : Implementation of setjmp and longjmp                          */
-/* CPU TYPE   : Microchip PIC18 family                                        */
-/* COMPILER   : microC compiler for PIC v. 6.2.0.0 (241106)                   */
-/*                                                                            */
-/*                                                                            */
-/**************************** CHANGE AND RELEASE LOG **************************/
-/* Version | ACTION                                           |  DATE  | SIG  */
-/* --------|--------------------------------------------------|--------|----- */
-/*         |                                                  |        |      */
-/*    0.00 | Created file                                     | 231106 | ST   */
-/*                                                                            */
-/******************************************************************************/
-
-#include <setjmp18.h>
-
-/******************************************************************************/
-/*                                                                            */
-/*  Function: setjmp                                                          */
-/*  Purpose:  saves calling position in jmp_buf for later use by longjmp      */
-/*  CallParams: env: array of type (jmp_buf) suitible for holding the         */
-/*                   information needed for restoring calling environment     */
-/*  ReturnValues:  if the return is from direct invocation it returns 0       */
-/*                 if the return is from  a call to the longjmp               */
-/*                 it reurns nonzero value                                    */
-/****************************       CHANGE LOG       **************************/
-/* Version | ACTION                                           |  DATE  | SIG  */
-/* --------|--------------------------------------------------|--------|----- */
-/*         |                                                  |        |      */
-/*    0.00 | Created function setjmp                          | 231106 | ST   */
-/*         |                                                  |        |      */
-/******************************************************************************/
+/**
+ * @brief Saves calling position in jmp_buf for later use by longjmp.
+ * @details This function saves the current environment (calling position) in the provided
+ *          jmp_buf array for later use by the longjmp function.
+ * @param env Array of type jmp_buf suitable for holding the information needed for restoring
+ *            the calling environment.
+ * @return If the return is from a direct invocation, it returns 0. If the return is from a
+ *         call to longjmp, it returns a nonzero value.
+ */
 int setjmp( jmp_buf env )
 {
     env[ 3 ] = STKPTR;
@@ -171,26 +148,16 @@ int setjmp( jmp_buf env )
     return 0;
 }
 
-/******************************************************************************/
-/*                                                                            */
-/*  Function: longjmp                                                         */
-/*  Purpose:  restores calling position saved in jmp_buf by most recent       */
-/*            invocation of setjmp macro. If there has been no such           */
-/*            invocation, or function conatinig the invocation of setjmp has  */
-/*            terminated in the interim, the behaviour is undefined           */
-/*  CallParams: env: array of type (jmp_buf) holding the information          */
-/*                   saved by corresponding setjmp invocation                 */
-/*              val: char value, that will return corresponding setjmp        */
-/*  ReturnValues:  longjmp causes setjmp to return val,if val is 0 it will    */
-/*                 return 1                                                   */
-/*                                                                            */
-/****************************       CHANGE LOG       **************************/
-/* Version | ACTION                                           |  DATE  | SIG  */
-/* --------|--------------------------------------------------|--------|----- */
-/*         |                                                  |        |      */
-/*    0.00 | Created function                                 | 231106 | ST   */
-/*         |                                                  |        |      */
-/******************************************************************************/
+/**
+ * @brief Restores calling position saved in jmp_buf by the most recent invocation of setjmp.
+ * @details This function restores the calling environment saved in the provided jmp_buf by
+ *          the most recent invocation of the setjmp macro. If there has been no such invocation,
+ *          or if the function containing the invocation of setjmp has terminated in the interim,
+ *          the behavior is undefined.
+ * @param env Array of type jmp_buf holding the information saved by the corresponding setjmp invocation.
+ * @param val Char value that will be returned by the corresponding setjmp. If val is 0, setjmp will return 1.
+ * @return longjmp causes setjmp to return val. If val is 0, setjmp will return 1.
+ */
 void longjmp( jmp_buf env, int val )
 {
     if ( !val )
