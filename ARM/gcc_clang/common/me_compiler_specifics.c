@@ -5,52 +5,38 @@
 
   This file is part of mikroSDK.
 
-  Copyright (c) 2023, MikroElektonika - www.mikroe.com
+  Copyright (c) 2024, MikroElektonika - www.mikroe.com
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #ifdef _CLANG_LLVM_
 #include <stdio.h>
 #endif
 
-// ------------------------------------------------------------- PRIVATE MACROS
-
-
-// -------------------------------------------------------------- PRIVATE TYPES
-
-
-// ------------------------------------------------------------------ CONSTANTS
-
-
-// ------------------------------------------------------------------ VARIABLES
+/* --------------------------------VARIABLES-------------------------------- */
 
 #ifdef _CLANG_LLVM_
 // stderr stream declaration.
-FILE *const stderr;
-#endif
+FILE * const stderr;
 
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
-
-
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
 #ifdef _CLANG_LLVM_
-void _exit() {
+void _exit()
+{
     // No return function in clang-llvm.
-    while(1);
+    while ( 1 )
+        ;
 }
 #endif
-
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
-
 
 // ----------------------------------------------------------------------------
 /*
     me_compiler_specifics.c
 
-    Copyright (c) 2023, MikroElektronika - www.mikroe.com
+    Copyright (c) 2024, MikroElektronika - www.mikroe.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

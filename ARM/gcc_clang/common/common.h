@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2023 MikroElektronika d.o.o.
+** Copyright (C) 2024 MikroElektronika d.o.o.
 ** Contact: https://www.mikroe.com/contact
 **
 ** Commercial License Usage
@@ -49,16 +49,16 @@ extern "C" {
 #include <stdint.h>
 #include "core_header.h"
 
-#define _REG_VALUE_GET_(_reg) (_reg)
-#define _REG_VALUE_GET_BIT_(_reg,_bit) (_reg & (1UL << _bit))
+#define _REG_VALUE_GET_(_reg)                (_reg)
+#define _REG_VALUE_GET_BIT_(_reg, _bit)      (_reg & ( 1UL << _bit ))
 
-#define _REG_VALUE_SET_(_reg,_value) (_reg |= _value)
-#define _REG_VALUE_SET_BIT_(_reg,_bit) (_reg |= 1UL << _bit)
+#define _REG_VALUE_SET_(_reg, _value)        (_reg |= _value)
+#define _REG_VALUE_SET_BIT_(_reg, _bit)      (_reg |= 1UL << _bit)
 
-#define _REG_VALUE_CLEAR_(_reg) (_reg = 0UL)
-#define _REG_VALUE_CLEAR_SET_(_reg,_value) (_reg = _value)
-#define _REG_VALUE_CLEAR_BIT_(_reg,_bit) (_reg &= ~(1UL << _bit))
-#define _REG_VALUE_CLEAR_MASK_(_reg,_value) (_reg &= _value)
+#define _REG_VALUE_CLEAR_(_reg)              (_reg = 0UL)
+#define _REG_VALUE_CLEAR_SET_(_reg, _value)  (_reg = _value)
+#define _REG_VALUE_CLEAR_BIT_(_reg, _bit)    (_reg &= ~( 1UL << _bit ))
+#define _REG_VALUE_CLEAR_MASK_(_reg, _value) (_reg &= _value)
 
 #ifdef __cplusplus
 }
