@@ -65,7 +65,8 @@ void systemEnableFPU()
         MOV R1, #0 \n\t \
         MOVT R1, #0xC0 \n\t \
         ORR R0, R0, R1 \n\t \
-        vmsr FPSCR, R0" );
+        vmsr FPSCR, R0"
+    );
 }
 
 void RCC_GetClocksFrequency( RCC_ClocksTypeDef * RCC_Clocks )
