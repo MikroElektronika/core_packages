@@ -9,12 +9,11 @@
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
-
+---------------------------------------------------------------------------- */
 
 #include "interrupts.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* -----------------------------PRIVATE MACROS------------------------------ */
 
 /* Set bit _bit in register _reg. */
 #define interrupt_bit_set(_reg,_bit) (_reg |= 1U << _bit)
@@ -22,23 +21,24 @@
 /* Clear bit _bit in register _reg. */
 #define interrupt_bit_clear(_reg,_bit) (_reg &= ~(1U << _bit))
 
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ----------------------PRIVATE FUNCTION DECLARATIONS---------------------- */
 
 /**
  * @brief Enables interrupts on the global level.
- * @return Nothing.
+ * @return None.
  */
 static inline void interrupts_enable_asm( void );
 
 /**
  * @brief Disables interrupts on the global level.
- * @return Nothing.
+ * @return None.
  */
 static inline void interrupts_disable_asm( void );
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
-void interrupts_enable( void ) {
+void interrupts_enable( void )
+{
     // Set PRISS register for PIC32MZ.
     #ifdef INTERRUPT_PRISS_REGISTER
     INTERRUPT_PRISS_REGISTER = 0x76543210UL;
@@ -50,11 +50,13 @@ void interrupts_enable( void ) {
     interrupts_enable_asm();
 }
 
-void interrupts_disable( void ) {
+void interrupts_disable( void )
+{
     interrupts_disable_asm();
 }
 
-void interrupt_enable( int interrupt ) {
+void interrupt_enable( int interrupt )
+{
     switch ( interrupt ) {
         #if defined(INTERRUPT_FCE_REGISTER) && defined(INTERRUPT_FCE_BIT)
         case INTERRUPTS_FCE:
@@ -2760,18 +2762,20 @@ void interrupt_disable( int interrupt ) {
     }
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* ----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
-static inline void interrupts_enable_asm( void ) {
-    asm ("nop");
-    asm ("EI");
-    asm ("nop");
+static inline void interrupts_enable_asm( void )
+{
+    asm( "nop" );
+    asm( "EI" );
+    asm( "nop" );
 }
 
-static inline void interrupts_disable_asm( void ) {
-    asm ("nop");
-    asm ("DI");
-    asm ("nop");
+static inline void interrupts_disable_asm( void )
+{
+    asm( "nop" );
+    asm( "DI" );
+    asm( "nop" );
 }
 
 // ----------------------------------------------------------------------------
