@@ -59,7 +59,7 @@ void systemPreInit( void )
         *dst = *src++;
 
     // Zero fill the bss segment.
-    asm( 
+    asm(
         "ldr     r0, =__bss_start__ \n\t \
          ldr     r1, =__bss_end__ \n\t \
          mov     r2, #0 \n\t \
@@ -68,7 +68,7 @@ void systemPreInit( void )
          cmp     r0, r1 \n\t \
          it      lt \n\t \
          strlt   r2, [r0], #4 \n\t \
-         blt     zero_loop" 
+         blt     zero_loop"
     );
 }
 
