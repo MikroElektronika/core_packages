@@ -104,13 +104,11 @@ static uint32_t clock_value_set = 0;
 
 /**
  * @brief Resets the device.
- *
- * @details This function performs a software reset of the entire device.
- *          The processor and all peripherals are reset, and all device
- *          registers will return to their default values (with the exception
- *          of the reset cause register, which will maintain its current value
- *          but have the software reset bit set as well).
- *
+ * @details This function will perform a software reset of the entire device. The
+ *          processor and all peripherals are reset and all device registers will
+ *          return to their default values (with the exception of the reset cause
+ *          register, which will maintain its current value but have the software
+ *          reset bit set as well).
  * @return This function does not return.
  */
 void SystemReset( void )
