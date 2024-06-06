@@ -84,8 +84,7 @@ void _Divide_32x32( void )
         RETURN
     }
 
-    asm the_end_Divide_32x32:
-    ;
+    asm the_end_Divide_32x32 :;
 }
 
 /**
@@ -96,7 +95,7 @@ void _Divide_32x32( void )
 void _Modulus_32x32( void )
 {
     asm RCALL Modulus_32x32___testsus;
-    asm GOTO the_end_Modulus_32x32;
+    asm GOTO  the_end_Modulus_32x32;
 
     asm {
     Modulus_32x32___testsus:
@@ -148,8 +147,7 @@ void _Modulus_32x32( void )
         RETURN
     }
 
-    asm the_end_Modulus_32x32:
-    ;
+    asm the_end_Modulus_32x32 :;
 }
 
 // ----------------------------------------------------------------------------
