@@ -29,7 +29,7 @@ extern "C" {
 /* -----------------------PUBLIC FUNCTION DECLARATIONS ---------------------- */
 
 /**
- * @brief Finds first occurence of the ch character in the first num bytes of string
+ * @brief Finds first occurrence of the ch character in the first num bytes of string
  *        pointed to by ptr.
  * @details Function locates the first occurrence of a character in a defined memory
  *          area starting with a given address. The function returns the pointer
@@ -102,8 +102,8 @@ void * memset( void * ptr, char chr, int num );
  *          If copying takes place between objects that overlap, the behavior is undefined.
  *          The string must have enough space to store the result.
  *          The function returns address of the object pointed to by dest_ptr.
- * @param dest_ptr Addres of destination.
- * @param src_ptr Addres of source.
+ * @param dest_ptr Address of destination.
+ * @param src_ptr Address of source.
  * @return char * Address of the object pointed to by dest_ptr.
  */
 char * strcat( char * dest_ptr, const char * src_ptr );
@@ -244,7 +244,7 @@ const char * strrchr( const char * ptr, char chr );
  *          was found, function returns 0. If str2 is a null string, the function returns 0.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
- * @return char * Address of first str2 character occurence in str1.
+ * @return char * Address of first str2 character occurrence in str1.
  */
 char * strstr( const char * str1, const char * str2 );
 
@@ -254,7 +254,7 @@ char * strstr( const char * str1, const char * str2 );
  *          or a null pointer if there is no token.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
- * @return char * Adress of adequate character.
+ * @return char * Address of adequate character.
  */
 char * strtok( char * str1, const char * str2 );
 
