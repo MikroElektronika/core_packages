@@ -48,7 +48,7 @@
 extern "C" {
 #endif
 
-/* -----PUBLIC FUNCTION DECLARATIONS------ */
+/* ----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 /**
  * @brief Creates a delay based on MCU clock.
  * @param[in] cycles_div_by_10 Number of cycles divided by 10.
@@ -72,7 +72,7 @@ void Delay_ms( uint32_t time_ms );
 
 /**
  * @brief Creates a software delay in duration of @b time_ms milliseconds (a variable),
- * for a given oscillator frequency @b current_fosc_khz.
+ *        for a given oscillator frequency @b current_fosc_khz.
  * @param[in] time_ms Delay value in milliseconds.
  * @param[in] current_fosc_khz Current system clock value in @b KHz.
  * @return None.
