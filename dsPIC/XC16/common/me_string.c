@@ -15,9 +15,9 @@
 
 /* -----------------------PUBLIC FUNCTION DECLARATIONS ---------------------- */
 
-const void * memchr( const void * ptr, char chr, unsigned int num )
+const void *memchr( const void *ptr, char chr, unsigned int num )
 {
-    const char * chr_ptr;
+    const char *chr_ptr;
     chr_ptr = ptr;
     while ( num-- ) {
         if ( *chr_ptr == chr ) {
@@ -30,7 +30,7 @@ const void * memchr( const void * ptr, char chr, unsigned int num )
     return 0;
 }
 
-int memcmp( const void * str1, const void * str2, int num )
+int memcmp( const void *str1, const void *str2, int num )
 {
     while ( num-- != 0 ) {
         if ( *( ( char * )str1 ) != *( ( char * )str2 ) ) {
@@ -44,12 +44,12 @@ int memcmp( const void * str1, const void * str2, int num )
     return 0;
 }
 
-void * memcpy( void * dest_ptr, const void * src_ptr, int num )
+void *memcpy( void *dest_ptr, const void *src_ptr, int num )
 {
-    char *       dest_char_ptr;
-    const char * src_char_ptr;
+    char       *dest_char_ptr;
+    const char *src_char_ptr;
 
-    src_char_ptr  = src_ptr;
+    src_char_ptr = src_ptr;
     dest_char_ptr = dest_ptr;
     while ( num-- ) {
         *dest_char_ptr++ = *src_char_ptr++;
@@ -58,13 +58,13 @@ void * memcpy( void * dest_ptr, const void * src_ptr, int num )
     return dest_ptr;
 }
 
-void * memmove( void * dest_ptr, const void * src_ptr, int num )
+void *memmove( void *dest_ptr, const void *src_ptr, int num )
 {
-    char *       dest_chr_ptr;
-    const char * src_chr_ptr;
+    char       *dest_chr_ptr;
+    const char *src_chr_ptr;
 
     dest_chr_ptr = dest_ptr;
-    src_chr_ptr  = src_ptr;
+    src_chr_ptr = src_ptr;
     if (
         ( src_chr_ptr < dest_chr_ptr ) &&
         ( ( src_chr_ptr + num ) > dest_chr_ptr ) ) {
@@ -83,9 +83,9 @@ void * memmove( void * dest_ptr, const void * src_ptr, int num )
     return dest_ptr;
 }
 
-void * memset( void * ptr, char chr, int num )
+void *memset( void *ptr, char chr, int num )
 {
-    char * char_ptr;
+    char *char_ptr;
 
     char_ptr = ptr;
     while ( num-- ) {
@@ -95,9 +95,9 @@ void * memset( void * ptr, char chr, int num )
     return ptr;
 }
 
-char * strcat( char * dest_ptr, const char * src_ptr )
+char *strcat( char *dest_ptr, const char *src_ptr )
 {
-    char * dest_char_ptr;
+    char *dest_char_ptr;
 
     dest_char_ptr = dest_ptr;
     while ( *dest_char_ptr ) {
@@ -110,7 +110,7 @@ char * strcat( char * dest_ptr, const char * src_ptr )
     return dest_ptr;
 }
 
-const char * strchr( const char * ptr, char chr )
+const char *strchr( const char *ptr, char chr )
 {
     do {
         if ( *ptr == chr ) {
@@ -122,7 +122,7 @@ const char * strchr( const char * ptr, char chr )
     return 0;
 }
 
-int strcmp( const char * str1, const char * str2 )
+int strcmp( const char *str1, const char *str2 )
 {
     while ( *str1 && ( *str1 == *str2 ) ) {
         str1++, str2++;
@@ -131,9 +131,9 @@ int strcmp( const char * str1, const char * str2 )
     return *str1 - *str2;
 }
 
-char * strcpy( char * dest_ptr, const char * src_ptr )
+char *strcpy( char *dest_ptr, const char *src_ptr )
 {
-    char * dest_char_ptr;
+    char *dest_char_ptr;
 
     dest_char_ptr = dest_ptr;
     while ( *dest_char_ptr++ = *src_ptr++ )
@@ -142,9 +142,9 @@ char * strcpy( char * dest_ptr, const char * src_ptr )
     return dest_ptr;
 }
 
-int strlen( const char * str )
+int strlen( const char *str )
 {
-    const char * char_ptr;
+    const char *char_ptr;
 
     char_ptr = str;
     while ( *char_ptr++ )
@@ -153,9 +153,9 @@ int strlen( const char * str )
     return char_ptr - str - 1;
 }
 
-char * strncat( char * dest_ptr, const char * src_ptr, int size )
+char *strncat( char *dest_ptr, const char *src_ptr, int size )
 {
-    char * char_ptr;
+    char *char_ptr;
 
     char_ptr = dest_ptr;
     while ( *char_ptr ) {
@@ -173,9 +173,9 @@ char * strncat( char * dest_ptr, const char * src_ptr, int size )
     return dest_ptr;
 }
 
-char * strncpy( char * dest_ptr, const char * src_ptr, int size )
+char *strncpy( char *dest_ptr, const char *src_ptr, int size )
 {
-    char * char_ptr;
+    char *char_ptr;
 
     char_ptr = dest_ptr;
     while ( size ) {
@@ -193,7 +193,7 @@ char * strncpy( char * dest_ptr, const char * src_ptr, int size )
     return dest_ptr;
 }
 
-int strspn( const char * str1, const char * str2 )
+int strspn( const char *str1, const char *str2 )
 {
     int i;
 
@@ -206,7 +206,7 @@ int strspn( const char * str1, const char * str2 )
     return i;
 }
 
-char strcspn( const char * str1, const char * str2 )
+char strcspn( const char *str1, const char *str2 )
 {
     char i;
     i = 0;
@@ -218,7 +218,7 @@ char strcspn( const char * str1, const char * str2 )
     return i;
 }
 
-int strncmp( const char * str1, const char * str2, char len )
+int strncmp( const char *str1, const char *str2, char len )
 {
     while ( len-- ) {
         if ( *str1 == 0 || *str1 != *str2 ) {
@@ -232,7 +232,7 @@ int strncmp( const char * str1, const char * str2, char len )
     return 0;
 }
 
-char * strpbrk( const char * str1, const char * str2 )
+char *strpbrk( const char *str1, const char *str2 )
 {
     while ( *str1 ) {
         if ( strchr( str2, *str1 ) ) {
@@ -245,9 +245,9 @@ char * strpbrk( const char * str1, const char * str2 )
     return 0;
 }
 
-const char * strrchr( const char * ptr, char chr )
+const char *strrchr( const char *ptr, char chr )
 {
-    const char * char_ptr;
+    const char *char_ptr;
 
     char_ptr = ptr + strlen( ptr );
     do {
@@ -259,7 +259,7 @@ const char * strrchr( const char * ptr, char chr )
     return 0;
 }
 
-char * strstr( const char * str1, const char * str2 )
+char *strstr( const char *str1, const char *str2 )
 {
     while ( ( str1 != 0 ) && *str1 ) {
         if ( strncmp( str1, str2, strlen( str2 ) ) == 0 ) {
@@ -272,9 +272,9 @@ char * strstr( const char * str1, const char * str2 )
     return 0;
 }
 
-char * strtok( char * str1, const char * str2 )
+char *strtok( char *str1, const char *str2 )
 {
-    static char * sp;
+    static char *sp;
     if ( str1 == 0 ) {
         str1 = sp;
     }
@@ -302,7 +302,7 @@ char * strtok( char * str1, const char * str2 )
     return str1;
 }
 
-void str_cut_chr( char * str, char num )
+void str_cut_chr( char *str, char num )
 {
     int i;
     int cnt;
@@ -319,7 +319,7 @@ void str_cut_chr( char * str, char num )
     }
 }
 
-void str_replace_chr( char * str, char chr_old, char chr_new )
+void str_replace_chr( char *str, char chr_old, char chr_new )
 {
     int i;
 
@@ -330,13 +330,13 @@ void str_replace_chr( char * str, char chr_old, char chr_new )
     }
 }
 
-void str_cut_left( char * str, int num )
+void str_cut_left( char *str, int num )
 {
     int i;
     int counter;
     int delete_right;
 
-    counter      = 0,
+    counter = 0,
     delete_right = strlen( str );
 
     if ( num < strlen( str ) ) {
@@ -351,7 +351,7 @@ void str_cut_left( char * str, int num )
     }
 }
 
-void str_cut_right( char * str, int num )
+void str_cut_right( char *str, int num )
 {
     int i;
     int counter;
@@ -365,7 +365,7 @@ void str_cut_right( char * str, int num )
     }
 }
 
-void str_split( char * str1, char * str2, int num )
+void str_split( char *str1, char *str2, int num )
 {
     int i;
 
@@ -379,7 +379,7 @@ void str_split( char * str1, char * str2, int num )
     }
 }
 
-void str_insert_chr( char * str, char chr, int num )
+void str_insert_chr( char *str, char chr, int num )
 {
     int  i;
     int  counter;
@@ -387,13 +387,13 @@ void str_insert_chr( char * str, char chr, int num )
     char temp2;
 
     counter = strlen( str );
-    temp1   = str[ num ];
+    temp1 = str[ num ];
 
     if ( num < strlen( str ) ) {
         for ( i = num; i < counter; i++ ) {
-            temp2        = str[ i + 1 ];
+            temp2 = str[ i + 1 ];
             str[ i + 1 ] = temp1;
-            temp1        = temp2;
+            temp1 = temp2;
         }
 
         str[ num ] = chr;

@@ -137,7 +137,7 @@ void _LongDoubleToUnsignedIntegral()
         BMI        __me_endLab
 
         RSBS       R2, R2, #0x1F         // CHECK FOR OVERFLOW
-        BCC        __me_ovfl                  // IF OVERFLOW, RETURN 0xFFFFFFFF
+        BCC        __me_ovfl             // IF OVERFLOW, RETURN 0xFFFFFFFF
 
         LSL        R1, R1, #11           // PUT HI MANTISSA IN R1
         ORR        R1, R1, #0x80000000   // SET IMPLIED ONE IN HI MANTISSA

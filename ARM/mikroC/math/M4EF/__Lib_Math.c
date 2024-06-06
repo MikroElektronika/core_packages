@@ -380,10 +380,10 @@ void _Div_64x64_U ( void ) {
         // IF DVND >> 32 > DVSR THEN DVSR = DVSR << 32
         CMP       dvsr_hi, #0                       // IF (DVSR_HI == 0 AND
         IT        EQ
-        CMPEQ     dvsr_lo, dvnd_hi                  //          DVSRLO < DVND_HI)
+        CMPEQ     dvsr_lo, dvnd_hi                  // DVSRLO < DVND_HI)
         ITT       LS
-        MOVLS     dvsr_hi, dvsr_lo                  //    DVSR_HI = DVSRLO
-        MOVLS     dvsr_lo, #0                       //    DVSR_LO = 0
+        MOVLS     dvsr_hi, dvsr_lo                  // DVSR_HI = DVSRLO
+        MOVLS     dvsr_lo, #0                       // DVSR_LO = 0
 
         // IF DVND >> 16 > DVSR THEN DVSR = DVSR << 16
         LSRS      tmp_lo, dvnd_lo, #16              // SHIFT DVND BY 16 INTO
@@ -480,7 +480,7 @@ void _Div_64x64_U ( void ) {
         IT        EQ
         CMPEQ     dvnd_lo, tmp_lo
         BCC       __me_label_1
-        SUBS      dvnd_lo, dvnd_lo, tmp_lo          //    DVND = DVND - TMP
+        SUBS      dvnd_lo, dvnd_lo, tmp_lo          // DVND = DVND - TMP
         SBCS      dvnd_hi, dvnd_hi, tmp_hi
     __me_label_1:
         ADCS      q_lo, q_lo, q_lo                  // SHIFT THE CARRY BIT DEFED

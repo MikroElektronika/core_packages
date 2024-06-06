@@ -155,7 +155,8 @@ static const uint8_t array_divider_ahb[ 8 ] = { 0, 1, 2, 3, 5, 6, 7, 8 };
 // stderr stream declaration.
 FILE * const stderr;
 #endif
-/* -----PUBLIC FUNCTION DECLARATIONS------ */
+
+/* -----------------------PUBLIC FUNCTION DECLARATIONS ---------------------- */
 
 /**
  * @brief Initialize adequate system clock.
@@ -168,7 +169,7 @@ FILE * const stderr;
  */
 void system_init( void );
 
-/* -----PRIVATE FUNCTION DECLARATIONS----- */
+/* ---------------------PRIVATE FUNCTION DECLARATIONS------------------------ */
 
 /**
  * @brief Enables floating point unit.
@@ -207,7 +208,8 @@ static system_clock_update_t system_rcu_clock_update( void );
 static system_clock_update_t system_rcu_clock_check_err( uint32_t register_address,
                                                          uint32_t register_mask );
 
-/* -----PUBLIC FUNCTION DEFINITIONS----- */
+/* -----------------------PUBLIC FUNCTION DEFINITIONS------------------------ */
+
 #if !defined(__GNUC__)
 void _exit()
 {
@@ -390,11 +392,11 @@ void __attribute__( ( noinline ) ) Delay_us( uint32_t time_us )
         sltu     a6,a6,t1 \n\t \
         add      a3, t2,zero \n\t \
         add      t4,a6,a3 \n\t \
-        delay_me_loop: \n\t \
-            rdcycleh t6 \n\t \
-            rdcycle  t5 \n\t \
-            blt      t6, t4, delay_me_loop  \n\t \
-            blt      t5, t3, delay_me_loop  \n\t \
+    delay_me_loop: \n\t \
+        rdcycleh t6 \n\t \
+        rdcycle  t5 \n\t \
+        blt      t6, t4, delay_me_loop  \n\t \
+        blt      t5, t3, delay_me_loop  \n\t \
     " );
 }
 
@@ -539,7 +541,7 @@ void Delay_1sec()
     Delay_ms( 1000 );
 }
 
-/* -----PRIVATE FUNCTION DEFINITIONS----- */
+/* -----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
 static void system_enable_fpu( void )
 {

@@ -191,7 +191,7 @@ void VDelay_Advanced_ms( unsigned int Time_ms, unsigned int Current_Fosc_kHz ) /
     NumberOfCyc >>= 6;              // divide with 64 (loop duration is 64 cycles)
     NumberOfCyc -= 4;               // this and NOPs on exit compensate code before loop
 
-    while ( NumberOfCyc-- ) {        // 35 cycles (together with jump from "}" to while)
+    while ( NumberOfCyc-- ) {       // 35 cycles (together with jump from "}" to while)
         asm nop;
         asm nop;
         asm nop;

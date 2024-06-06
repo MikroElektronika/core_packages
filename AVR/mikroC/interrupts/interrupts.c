@@ -13,7 +13,7 @@
 
 #include "interrupts.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* ----------------------------PRIVATE MACROS-------------------------------- */
 
 /* Set bit _bit in register _reg. */
 #define interrupt_bit_set(_reg,_bit) (*(unsigned int *)_reg |= 1U << _bit)
@@ -26,7 +26,7 @@
 #define PMIC_CTRL_ENABLE_LVL_MED (0x2)
 #define PMIC_CTRL_ENABLE_LVL_LO  (0x1)
 
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ---------------------PRIVATE FUNCTION DECLARATIONS------------------------ */
 
 /**
  * @brief Enables interrupts on the global level.
@@ -40,7 +40,7 @@ static inline void interrupts_enable_asm( void );
  */
 static inline void interrupts_disable_asm( void );
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS------------------------ */
 
 void interrupts_enable( void )
 {
@@ -2498,7 +2498,7 @@ void interrupt_disable( int interrupt )
     }
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* -----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
 static inline void interrupts_enable_asm( void )
 {

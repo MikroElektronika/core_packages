@@ -1,27 +1,9 @@
-/******************************************************************************/
-/*                                                                            */
-/*  function: __CC2DW();                                                      */
-/*                                                                            */
-/*  Purpose:  Copy up to 65536 initializers from Flash to Ram.                */
-/*                                                                            */
-/*  CallParams:                                                               */
-/*            - None.                                                         */
-/*                                                                            */
-/*  ReturnValues:                                                             */
-/*            - None.                                                         */
-/*                                                                            */
-/*  Requires:                                                                 */
-/*            - Z : preloaded with Flash start address                        */
-/*            - X : preloaded with Ram start address                          */
-/*            - R24R25 : preloaded with number of bytes to copy               */
-/*                                                                            */
-/****************************       CHANGE LOG       **************************/
-/* Version | ACTION                                           |  DATE  | SIG  */
-/* --------|--------------------------------------------------|--------|----- */
-/*         |                                                  |        |      */
-/*    0.01 | Initial release                                  | 230708 | ST   */
-/*         |                                                  |        |      */
-/******************************************************************************/
+/**
+ * @brief Copies up to 65536 initializers from Flash to RAM.
+ * @details This function copies up to 65536 initializers from Flash memory to RAM.
+ *          The number of bytes to copy is preloaded in registers R24 and R25.
+ * @return None.
+ */
 void __CC2DW()
 {
     asm {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Emil Renner Berthing
+ * Copyright (c) 2024, Emil Renner Berthing
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -87,15 +87,15 @@
 #endif
 
 static inline void
-wait_for_interrupt(void)
+wait_for_interrupt( void )
 {
-    __asm__ __volatile__ ("wfi");
+    __asm__ __volatile__ ( "wfi" );
 }
 
 static inline void
-nop(void)
+nop( void )
 {
-    __asm__ __volatile__ ("nop");
+    __asm__ __volatile__ ( "nop" );
 }
 
 #endif

@@ -48,7 +48,8 @@
 extern "C" {
 #endif
 
-/* -----PUBLIC FUNCTION DECLARATIONS------ */
+/* -----------------------PUBLIC FUNCTION DECLARATIONS ---------------------- */
+
 /**
  * @brief Creates a delay based on MCU clock.
  * @param[in] cycles_div_by_10 Number of cycles divided by 10.

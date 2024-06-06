@@ -57,19 +57,19 @@ void _FloatToUnsignedIntegral( void )
         CMP      R1,#0x7F
         BGE      _FloatToUnsignedIntegral_Lab_1
         MOVS     R0,#0x00
-        B        _FloatToUnsignedIntegral_Lab_end // BX       lr
+        B        _FloatToUnsignedIntegral_Lab_end
     _FloatToUnsignedIntegral_Lab_1:
         CMP      R1,#0x96
         BGT      _FloatToUnsignedIntegral_Lab_2
         MOVS     R2,#0x96
         SUBS     R1,R2,R1
         LSRS     R0,R0,R1
-        B        _FloatToUnsignedIntegral_Lab_end // BX       lr
+        B        _FloatToUnsignedIntegral_Lab_end
     _FloatToUnsignedIntegral_Lab_2:
         SUBS     R1,R1,#0x96
         LSLS     R0,R0,R1
 
-    _FloatToUnsignedIntegral_Lab_end:   //  BX       lr
+    _FloatToUnsignedIntegral_Lab_end:
     }
 }
 
@@ -84,7 +84,7 @@ void _LongDoubleToSignedIntegral()
         LSRS     R1,R1,#12
         LSLS     R3,R3,#20
         ORRS     R1,R1,R3
-        LDR      R3, =0x3FF             // LDR      R3,[pc,#44]  ; @0x080001B0
+        LDR      R3, =0x3FF
         LSLS     R5,R5,#31
         MOVS     R4,#0x00
         LSRS     R2,R2,#21
@@ -92,10 +92,10 @@ void _LongDoubleToSignedIntegral()
         BGE      _LDoubleToSIntegral_Lab_1
         MOVS     R0,#0x00
 
-        B        _LDoubleToSIntegral_Lab_end // POP      (R4-R6,pc)
+        B        _LDoubleToSIntegral_Lab_end
 
     _LDoubleToSIntegral_Lab_1:
-        LDR  R3, =0x3FF                 // LDR      R3,[pc,#28]  ; @0x080001B0
+        LDR  R3, =0x3FF
         ADDS     R3,R3,#0x34
         CMP      R2,R3
         BGT      _LDoubleToSIntegral_Lab_2
@@ -117,7 +117,7 @@ void _LongDoubleToSignedIntegral()
         BEQ      _LDoubleToSIntegral_Lab_end
         RSBS     R0,R0,#0
 
-        B      _LDoubleToSIntegral_Lab_end // POP      (R4-R6,pc)
+        B      _LDoubleToSIntegral_Lab_end
 
         MOVS     R0,R0
         LSLS     R7,R7,#15
@@ -137,24 +137,23 @@ void _LongDoubleToUnsignedIntegral( void )
         LSRS     R1,R1,#12
         LSLS     R3,R3,#20
         ORRS     R1,R1,R3
-        LDR      R3, =0x3FF             // LDR      R3,[pc,#36]  ; @0x080001C0
+        LDR      R3, =0x3FF
         PUSH     (R4)
         LSRS     R2,R2,#21
         CMP      R2,R3
         BGE      _LDoubleToUIntegral_Lab_1
         MOVS     R0,#0x00
 
-        B        _LDoubleToUIntegral_Lab_end // POP      (R4,pc)
-
+        B        _LDoubleToUIntegral_Lab_end
     _LDoubleToUIntegral_Lab_1:
-        LDR      R3, =0x3FF             // LDR      R3,[pc,#36]  ; @0x080001C0
+        LDR      R3, =0x3FF
         ADDS     R3,R3,#0x34
         CMP      R2,R3
         BGT      _LDoubleToUIntegral_Lab_2
         SUBS     R2,R3,R2
         BL.W     __Shr_64_U
 
-        B        _LDoubleToUIntegral_Lab_end // POP      (R4,pc)
+        B        _LDoubleToUIntegral_Lab_end
 
     _LDoubleToUIntegral_Lab_2:
 
@@ -162,7 +161,7 @@ void _LongDoubleToUnsignedIntegral( void )
 
         ADDS     R1,R2,R1
         LSLS     R0,R0,R1
-        B        _LDoubleToUIntegral_Lab_end // POP      (R4,pc)
+        B        _LDoubleToUIntegral_Lab_end
         MOVS     R0,R0
         LSLS     R7,R7,#15
         MOVS     R0,R0
@@ -199,7 +198,7 @@ void _SignedIntegralToLongDouble( void )
         LSLS     R2,R1,#31
         ADDS     R0,R0,R1
         MOVS     R1,#0x00
-        LDR      R3, =0x433             // LDR      R3,[pc,#20]  ; @0x08000180
+        LDR      R3, =0x433
         STR      R3,[SP,#0x08]
         STR      R2,[SP,#0x04]
         STR      R1,[SP,#0x00]
@@ -229,7 +228,7 @@ void _UnsignedIntegralToLongDouble( void )
 {
     asm {
         PUSH     (R1-R3)
-        LDR      R1, =0x433             // LDR      R1,[pc,#20]  ; @0x08000180
+        LDR      R1, =0x433
         STR      R1,[SP,#0x08]
         MOVS     R1,#0x00
         STR      R1,[SP,#0x00]
@@ -266,7 +265,7 @@ void _LongDoubleToFloat( void )
     _LongDoubleToFloat_Lab_1:
         MOVS     R0,#0x00
 
-        B        _LongDoubleToFloat_Lab_end // 0x08000246 BD10      POP      (R4,pc)
+        B        _LongDoubleToFloat_Lab_end
 
     _LongDoubleToFloat_Lab_2:
         LSLS     R1,R1,#3
@@ -813,7 +812,7 @@ void _Add_DP( void )
 
     _Add_DP_Lab_7:
         LSLS     R3,R2,#20
-        LDR      R2, =0xFFE00000        // LDR      R2,[pc,#144]  ; @0x08000328
+        LDR      R2, =0xFFE00000
         MOV      R7,R1
         ADDS     R4,R3,R2
         MOVS     R2,#0x00
@@ -1621,31 +1620,31 @@ static void __Float_Aux( void )
         BEQ      __Float_Aux_Lab_2
         MOVS     R4,#0x11
 
-    __Float_Aux_Lab_1:                  // 0x08000226
+    __Float_Aux_Lab_1:
         LSRS     R5,R0,#24
         BNE      __Float_Aux_Lab_3
         ADDS     R4,R4,#0x08
         LSLS     R0,R0,#8
 
-    __Float_Aux_Lab_3:                  // 0x0800022E
+    __Float_Aux_Lab_3:
         LSRS     R5,R0,#28
         BNE      __Float_Aux_Lab_4
         ADDS     R4,R4,#4
         LSLS     R0,R0,#4
 
-    __Float_Aux_Lab_4:                  // 0x08000236
+    __Float_Aux_Lab_4:
         LSRS     R5,R0,#30
         BNE      __Float_Aux_Lab_5
         ADDS     R4,R4,#2
         LSLS     R0,R0,#2
 
-    __Float_Aux_Lab_5:                  // 0x0800023E
+    __Float_Aux_Lab_5:
         CMP      R0,#0x00
         BLT      __Float_Aux_Lab_6
         ADDS     R4,R4,#1
         LSLS     R0,R0,#1
 
-    __Float_Aux_Lab_6:                  // 0x08000246
+    __Float_Aux_Lab_6:
         CMP      R1,#0x00
         BEQ      __Float_Aux_Lab_7
         MOVS     R5,#0x20
@@ -1656,11 +1655,11 @@ static void __Float_Aux( void )
         BEQ      __Float_Aux_Lab_9
         MOVS     R1,#0x01
 
-    __Float_Aux_Lab_9:                  // 0x08000258
+    __Float_Aux_Lab_9:
         ORRS     R5,R5,R1
         ORRS     R0,R0,R5
 
-    __Float_Aux_Lab_7:                  // 0x0800025C
+    __Float_Aux_Lab_7:
         SUBS     R3,R3,R4
         LSLS     R1,R0,#24
         ADDS     R3,R3,#7
@@ -1669,12 +1668,12 @@ static void __Float_Aux( void )
         BGE      __Float_Aux_Lab_8
         MOVS     R0,#0x00
 
-    __Float_Aux_Lab_2:                  // 0x0800026A
+    __Float_Aux_Lab_2:
         POP      (R4-R6)
 
-        B        __Float_Aux_Lab_end    // BX       LR
+        B        __Float_Aux_Lab_end
 
-    __Float_Aux_Lab_8:                  // 0x0800026E
+    __Float_Aux_Lab_8:
         LSLS     R3,R3,#23
         ADDS     R0,R3,R0
         ADDS     R0,R0,R2
@@ -1686,7 +1685,7 @@ static void __Float_Aux( void )
         POP      (R4-R6)
         LSRS     R0,R0,#1
         LSLS     R0,R0,#1
-        B        __Float_Aux_Lab_end    // BX       LR
+        B        __Float_Aux_Lab_end
         MOVS     R0,R0
 
     __Float_Aux_Lab_end:
@@ -1828,7 +1827,7 @@ static void __Zero_Cnt( void )
         LSRS     R2,R0,#1
         BEQ      __Zero_Cnt_Lab_5
         SUBS     R0,R1,#2
-        B        __Zero_Cnt_Lab_end     // BX       LR
+        B        __Zero_Cnt_Lab_end
 
 
     __Zero_Cnt_Lab_5:

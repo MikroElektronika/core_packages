@@ -1324,24 +1324,19 @@ L_Double2Longint_0:
     }
 }
 
-/*******************************************************************************
-       Double to integer conversion
-       Input:  32 bit floating point number (Double) in XExp, XHi_2, XHi_1, XLo_2
-       Use:    CALL    INT3216
-       Output: 16 bit 2's complement integer (Int) right justified in XHi_2, XHi_1
-       Result: AARG  <--  INT(AARG) */
-
+/**
+ * @brief Converts a 32-bit floating point number to a 16-bit integer.
+ * @details This function converts a 32-bit floating point number (Double)
+ *          to a 16-bit 2's complement integer (Int). The input floating
+ *          point number is provided in XExp, XHi_2, XHi_1, and XLo_2 registers.
+ * @param None.
+ * @return The 16-bit 2's complement integer result is right justified in XHi_2 and XHi_1.
+ */
 void double2int()
 {
-    //  main_global_XExp    = main_global_XExp;
-    //  main_global_XHi     = main_global_XHi;
-    //  main_global_FPFLAGS = 0;//main_global_FPFLAGS;
-    //  main_global_Sign    = main_global_Sign;
-    //  main_global_jmpFlg  = main_global_jmpFlg;
-
     asm {
-        BCF STATUS, RP0
-        BCF STATUS, RP1
+        BCF       STATUS, RP0
+        BCF       STATUS, RP1
     INT3216:
         CLRF      math_double_main_global_FPFLAGS
         MOVF      math_double_main_global_XExp,W
@@ -1459,7 +1454,6 @@ L_Double2Int_0:
     MOVF      math_double_main_global_XHi_2,W
     MOVWF     math_double_main_global_XHi_1
     }
-    /*if (math_double_main_global_jmpFlg) SETIOV3224();*/
 }
 
 /**

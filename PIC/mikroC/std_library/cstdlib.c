@@ -21,7 +21,7 @@
 #define EXPNEG  8  // Exponent is negative
 #define DOTSEEN 16 // We have seen a dot
 
-                   /* -------------------------------VARIABLES---------------------------------- */
+/* -------------------------------VARIABLES---------------------------------- */
 
 static long randx;
 static int  randf;

@@ -1762,7 +1762,7 @@ void Mul_32x32_U()
  * @param[out] XHr      The third part of the 64-bit signed fixed point product.
  * @param[out] XHs      The fourth part of the 64-bit signed fixed point product.
  * @result X  <--  X * Y
- */                                       */
+ */
 void Mul_32x32_S()
 {
     asm {

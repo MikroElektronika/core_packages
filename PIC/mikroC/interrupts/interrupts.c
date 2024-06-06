@@ -2524,7 +2524,7 @@ void interrupt_disable( int interrupt ) {
     }
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* -----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
 static inline void interrupts_enable_asm( void )
 {

@@ -14,7 +14,7 @@
 #include "ctype.h"
 #include "stdbool.h"
 
-/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
+/* -----------------------PUBLIC FUNCTION DEFINITIONS------------------------ */
 
 unsigned short islower( char character )
 {
