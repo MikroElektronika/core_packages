@@ -129,16 +129,16 @@ double frexp( double num, int * exp_ptr )
     union both   uv;
     volatile int bb;
 
-    uv.fl      = num;
-    bb         = uv.flt.exp - EXCESS;
-    *exp_ptr   = bb;
+    uv.fl = num;
+    bb = uv.flt.exp - EXCESS;
+    *exp_ptr = bb;
     uv.flt.exp = EXCESS;
 
     return uv.fl;
     #elif defined(__MIKROC_AI_FOR_PIC__)
     char * pom;
 
-    pom      = &num;
+    pom = &num;
     *exp_ptr = pom[ 3 ] - EXCESS;
     pom[ 3 ] = EXCESS;
 
@@ -527,7 +527,7 @@ double pow( double num, double pow )
         }
 
         sign = pow_int & 1;
-        num  = -num;
+        num = -num;
     }
     num = log( num );
     num = num * pow;
@@ -559,7 +559,7 @@ double tanh( double num )
     double num_exp;
 
     num_exp = exp( num );
-    num     = 1.0 / num_exp;
+    num = 1.0 / num_exp;
 
     return ( num_exp - num ) / ( num_exp + num );
 }
