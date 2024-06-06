@@ -887,7 +887,7 @@ void Div_32x32_S()
                 }
 
     asm {
-        FXD3232S:
+    FXD3232S:
         CLRF    math_main_global_SSIGN
         BTFSC   math_main_global_YHi_2,7
         INCF    math_main_global_SSIGN,F
