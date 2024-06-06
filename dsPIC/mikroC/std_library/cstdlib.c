@@ -67,7 +67,7 @@ skipws_atoi:
         goto skipws_atoi;
     }
 
-    a    = 0;
+    a = 0;
     sign = 0;
     if ( c == '-' ) {
         sign++;
@@ -108,7 +108,7 @@ skipws_atol:
         goto skipws_atol;
     }
 
-    a    = 0;
+    a = 0;
     sign = 0;
     if ( *str == '-' ) {
         sign++;
@@ -140,7 +140,7 @@ div_t div( int number, int denom )
     div_t rv;
 
     rv.quot = number / denom;
-    rv.rem  = number % denom;
+    rv.rem = number % denom;
 
     return rv;
 }
@@ -150,7 +150,7 @@ ldiv_t ldiv( long number, long denom )
     ldiv_t rv;
 
     rv.quot = number / denom;
-    rv.rem  = number % denom;
+    rv.rem = number % denom;
 
     return rv;
 }
@@ -160,7 +160,7 @@ uldiv_t uldiv( unsigned long number, unsigned long denom )
     uldiv_t rv;
 
     rv.quot = number / denom;
-    rv.rem  = number % denom;
+    rv.rem = number % denom;
 
     return rv;
 }
@@ -216,7 +216,7 @@ int xtoi( const char * str )
     unsigned     val;
 
     sign = 0;
-    val  = 0;
+    val = 0;
 
     while ( isspace( *str ) ) {
         str++;
@@ -285,7 +285,7 @@ static float strtod( const char * str, char ** res )
         }
     }
 
-    eexp  = 0; // Clear digit count
+    eexp = 0;  // Clear digit count
     _u._v = 0; // Clear integer component
     expon = 0; // Total exponent for integer
 
