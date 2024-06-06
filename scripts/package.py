@@ -1,7 +1,7 @@
 import os, re, subprocess
 import shutil, requests, json
 import argparse, aiohttp, asyncio
-import aiofiles, hashlib
+import aiofiles, hashlib, time
 
 from pathlib import Path
 from elasticsearch import Elasticsearch
@@ -589,12 +589,31 @@ def update_metadata(current_metadata, new_files, version):
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
     # Elasticsearch details
+    ## TODO - remove this section before public release
     es = Elasticsearch(["https://search-mikroe-eotds45vmgevl75dl75hjanrzm.us-west-2.es.amazonaws.com"])
     index_name = 'github_mikrosdk_test'
+    ## EOF TODO - remove this section before public release
+    ## TODO - uncomment this section before public release
+    # num_of_retries = 1
+    # while True:
+    #     es = Elasticsearch([os.environ['ES_HOST']])
+    #     if es.ping():
+    #         break
+    #     # Wait for 30 seconds and try again if connection fails
+    #     if 10 == num_of_retries:
+    #         # Exit if it fails 10 times, something is wrong with the server
+    #         raise ValueError("Connection to ES failed!")
+    #     num_of_retries += 1
+    #     time.sleep(30)
+    # index_name = os.environ['ES_INDEX']
+    ## EOF TODO - uncomment this section before public release
 
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR" ]
+    ## TODO - remove this section before public release
     downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
                  '', 'necto_db.db', True)
+    ## TODO - uncomment this section before public release
+    # downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
     current_metadata = fetch_current_metadata(repo, token)
 
     packages = []
