@@ -13,7 +13,7 @@ function(mikrosdk_install targetAlias)
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-    # Insatll export file
+    # Install export file
     install(EXPORT ${targetAlias}Target
         FILE ${targetAlias}Targets.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${targetAlias})
@@ -35,7 +35,7 @@ function(mikrosdk_install targetAlias)
          INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${targetAlias})
 
 
-    ## configure package version file
+    ## Configure package version file
     write_basic_package_version_file(
         "${CMAKE_CURRENT_BINARY_DIR}/${targetAlias}ConfigVersion.cmake"
         VERSION ${CMAKE_PROJECT_VERSION}
