@@ -904,8 +904,7 @@ void Div_32x32_S()
         BTFSC   STATUS,Z,0
         BRA     END_ALL
     }
-    asm
-    {
+    asm {
         MOVF    math_main_global_XHi_2,W
         XORWF   math_main_global_YHi_2,W
         MOVWF   math_main_global_TEMPB
