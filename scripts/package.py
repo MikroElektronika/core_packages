@@ -2,6 +2,7 @@ import os, re, subprocess
 import shutil, requests, json
 import argparse, aiohttp, asyncio
 import aiofiles, hashlib, time
+from clocks import GenerateClocks
 
 from pathlib import Path
 from elasticsearch import Elasticsearch
@@ -644,6 +645,14 @@ async def main(token, repo, tag_name):
 
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
+
+    #generate clocks.json
+    input_directory = "./"
+    output_file = "./clocks.json"
+    generator = GenerateClocks(input_directory, output_file)
+    generator.generate()
+    async with aiohttp.ClientSession() as session:
+        await upload_release_asset(session, token, repo, tag_name, "clocks.json")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
