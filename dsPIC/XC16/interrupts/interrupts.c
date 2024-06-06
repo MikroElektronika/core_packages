@@ -9,11 +9,11 @@
 
   All rights reserved.
 
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "interrupts.h"
 
-// ------------------------------------------------------------- PRIVATE MACROS
+/* -----------------------------PRIVATE MACROS------------------------------ */
 
 /* Set bit _bit in register _reg. */
 #define interrupt_bit_set(_reg,_bit) (_reg |= 1U << _bit)
@@ -21,7 +21,7 @@
 /* Clear bit _bit in register _reg. */
 #define interrupt_bit_clear(_reg,_bit) (_reg &= ~(1U << _bit))
 
-// ---------------------------------------------- PRIVATE FUNCTION DECLARATIONS
+/* ----------------------PRIVATE FUNCTION DECLARATIONS---------------------- */
 
 /**
  * @brief Enables interrupts on the global level.
@@ -35,17 +35,20 @@ static inline void interrupts_enable_asm( void );
  */
 static inline void interrupts_disable_asm( void );
 
-// ------------------------------------------------ PUBLIC FUNCTION DEFINITIONS
+/* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 
-void interrupts_enable( void ) {
+void interrupts_enable( void )
+{
     interrupts_enable_asm();
 }
 
-void interrupts_disable( void ) {
+void interrupts_disable( void )
+{
     interrupts_disable_asm();
 }
 
-void interrupt_enable( int interrupt ) {
+void interrupt_enable( int interrupt )
+{
     switch ( interrupt ) {
         #if defined(INTERRUPT_MI2C_REGISTER) && defined(INTERRUPT_MI2C_BIT)
         case INTERRUPTS_MI2C:
@@ -1358,7 +1361,8 @@ void interrupt_enable( int interrupt ) {
     }
 }
 
-void interrupt_disable( int interrupt ) {
+void interrupt_disable( int interrupt )
+{
     switch ( interrupt ) {
         #if defined(INTERRUPT_MI2C_REGISTER) && defined(INTERRUPT_MI2C_BIT)
         case INTERRUPTS_MI2C:
@@ -2671,20 +2675,22 @@ void interrupt_disable( int interrupt ) {
     }
 }
 
-// ----------------------------------------------- PRIVATE FUNCTION DEFINITIONS
+/* ----------------------PRIVATE FUNCTION DEFINITIONS----------------------- */
 
-static inline void interrupts_enable_asm( void ) {
-        asm ("MOV #0xFF1F, W1");
-        asm ("MOV SR, W0");
-        asm ("AND W1, [W0], [W0]");
-        asm ("nop");
+static inline void interrupts_enable_asm( void )
+{
+    asm( "MOV #0xFF1F, W1" );
+    asm( "MOV SR, W0" );
+    asm( "AND W1, [W0], [W0]" );
+    asm( "nop" );
 }
 
-static inline void interrupts_disable_asm( void ) {
-        asm("MOV SR, W0");
-        asm("MOV #0xE0, W1");
-        asm("IOR W1, [W0], [W0]");
-        asm("nop");
+static inline void interrupts_disable_asm( void )
+{
+    asm( "MOV SR, W0" );
+    asm( "MOV #0xE0, W1" );
+    asm( "IOR W1, [W0], [W0]" );
+    asm( "nop" );
 }
 
 // ----------------------------------------------------------------------------
