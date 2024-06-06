@@ -904,7 +904,7 @@ void _Mul_FP( void )
  * @details This function performs division on two
  *          32-bit floating-point numbers.
  */
-void _Div_FP(void)
+void _Div_FP( void )
 {
     asm  RCALL DivFP___divsf3;
     asm  GOTO the_end__Div_FP;
@@ -1103,7 +1103,7 @@ void _Div_FP(void)
  * @brief Compares 32-bit floats.
  * @details This function compares two 32-bit floating-point numbers.
  */
-void _Compare_Fp(void)
+void _Compare_Fp( void )
 {
     asm  RCALL CompareFp__fcompare;
     asm  GOTO the_end__Compare_Fp;
