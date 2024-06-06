@@ -11,7 +11,8 @@
 
 ----------------------------------------------------------------------------- */
 
-void Float_fpack(void) {
+void Float_fpack( void )
+{
     asm RCALL Float__fpack
     asm GOTO the_end_Float__fpack;
 
@@ -71,7 +72,8 @@ void Float_fpack(void) {
  * @details This function converts a 32-bit integer, which can be either signed or unsigned,
  *          to a 32-bit floating-point number.
  */
-void _Long2Float(void) {
+void _Long2Float( void )
+{
     asm  RCALL LL_intro_Long2Float
     asm  GOTO the_end__Long2Float;
 
@@ -190,7 +192,8 @@ void _Long2Float(void) {
  * @details This function converts a 64-bit signed integer to a 32-bit
  *          floating-point number.
  */
-void _LongLong2Float(void) {
+void _LongLong2Float( void )
+{
     asm  RCALL Longlong2Float_floatdisf;
     asm  GOTO the_end__LongLong2Float;
 
@@ -317,7 +320,8 @@ void _LongLong2Float(void) {
  * @details This function converts a 32-bit floating-point number
  *          to a 32-bit unsigned long integer.
  */
-void _Float2Longword(void) {
+void _Float2Longword( void )
+{
     asm  RCALL Float2Longword_fixunssfsi;
     asm  GOTO the_end__Float2Longword;
 
@@ -393,7 +397,8 @@ void _Float2Longword(void) {
  * @details This function converts a 32-bit floating-point number
  *          to a 32-bit signed long integer.
  */
-void _Float2Longint(void) {
+void _Float2Longint( void )
+{
     asm  RCALL Float2Longint__fixsfsi;
     asm  GOTO the_end__Float2Longint;
 
@@ -476,7 +481,8 @@ void _Float2Longint(void) {
  * @details This function performs addition or subtraction on two
  *          32-bit floating-point numbers.
  */
-void _AddSub_FP(void) {
+void _AddSub_FP( void )
+{
     asm  RCALL AddSubFP__addsf3;
     asm  GOTO the_end__AddSub_FP;
 
@@ -708,7 +714,8 @@ void _AddSub_FP(void) {
  * @details This function performs subtraction on two
  *          32-bit floating-point numbers.
  */
-void _Sub_FP(void) {
+void _Sub_FP( void )
+{
     asm BTG      W3, #15;
     _AddSub_FP();
 }
@@ -718,7 +725,8 @@ void _Sub_FP(void) {
  * @details This function performs multiplication on two
  *          32-bit floating-point numbers.
  */
-void _Mul_FP(void) {
+void _Mul_FP( void )
+{
     asm  RCALL MulFP___mulsf3;
     asm  GOTO the_end__Mul_FP;
 
@@ -896,7 +904,8 @@ void _Mul_FP(void) {
  * @details This function performs division on two
  *          32-bit floating-point numbers.
  */
-void _Div_FP(void) {
+void _Div_FP( void )
+{
     asm  RCALL DivFP___divsf3;
     asm  GOTO the_end__Div_FP;
 
@@ -1094,7 +1103,8 @@ void _Div_FP(void) {
  * @brief Compares 32-bit floats.
  * @details This function compares two 32-bit floating-point numbers.
  */
-void _Compare_Fp(void) {
+void _Compare_Fp( void )
+{
     asm  RCALL CompareFp__fcompare;
     asm  GOTO the_end__Compare_Fp;
 
@@ -1169,12 +1179,14 @@ void _Compare_Fp(void) {
     ;
 }
 
-void _Compare_Le_Fp(void) {
+void _Compare_Le_Fp( void )
+{
     asm mov     #1, W4;
     _Compare_Fp();
 }
 
-void _Compare_Ge_Fp(void) {
+void _Compare_Ge_Fp( void )
+{
     asm MOV     #0xffff, W4;
     _Compare_Fp();
 }

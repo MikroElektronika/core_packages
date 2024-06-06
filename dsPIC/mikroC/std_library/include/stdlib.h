@@ -23,18 +23,18 @@
 #define STDLIB_H_
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 #include <stdint.h>
 
 /* ----------------------------PUBLIC MACROS--------------------------------- */
 
-#define DBL_MIN           1.1754945e-38
-#define DBL_MAX           3.40282347e+38
-#define DBL_DIG           6
-#define DBL_MAX_10_EXP    38
-#define	NDIG              DBL_DIG + 2 	   // Number of digits (ANSI 5.2.4.2.2)
+#define DBL_MIN        1.1754945e-38
+#define DBL_MAX        3.40282347e+38
+#define DBL_DIG        6
+#define DBL_MAX_10_EXP 38
+#define NDIG           DBL_DIG + 2 // Number of digits (ANSI 5.2.4.2.2)
 
 /* ----------------------------PUBLIC TYPES---------------------------------- */
 
@@ -56,7 +56,7 @@ typedef struct uldivstruct
     unsigned long rem;
 } uldiv_t;
 
-/* -----------------------PUBLIC FUNCTION DECLARATIONS ----------------------- */
+/* -----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
  * @brief Returns an absolute value of given argument.
@@ -109,7 +109,7 @@ long atol( char * str );
  * @param denom Number to be divided by.
  * @return The function returns a structure of type div-t,
  *         comprising of both the quotient and the remainder.
- *         The structure shall contain the lollouing members, in either order:
+ *         The structure shall contain the following members, in either order:
  *         -- int quot  / quotient  /
  *         -- int rem  / remainder /
  */
@@ -124,7 +124,7 @@ div_t div( int number, int denom );
  * @param denom Number to be divided by.
  * @return The function returns a structure of type ldiv-t,
  *         comprising of both the quotient and the remainder.
- *         The structure shall contain the lollouing members, in either order:
+ *         The structure shall contain the following members, in either order:
  *         -- long quot  / quotient  /
  *         -- long rem  / remainder /
  */
@@ -139,7 +139,7 @@ ldiv_t ldiv( long number, long denom );
  * @param denom Number to be divided by.
  * @return The function returns a structure of type uldiv-t,
  *         comprising of both the quotient and the remainder.
- *         The structure shall contain the lollouing members, in either order:
+ *         The structure shall contain the following members, in either order:
  *         -- unsigned long quot  / quotient  /
  *         -- unsigned long rem  / remainder /
  */
@@ -201,14 +201,14 @@ void srand( unsigned seed );
  * @brief Extracts hex value from a
  *        given string.
  * @param str String the value is extracted from.
- * @return The funtion returns a hex value.
+ * @return The function returns a hex value.
  */
 int xtoi( char * str );
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // STDLIB_H_
+#endif // STDLIB_H_
 
 /** @} */
 // ----------------------------------------------------------------------------

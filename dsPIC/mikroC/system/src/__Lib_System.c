@@ -120,7 +120,7 @@ const far char * __FlashAddressToFarPointer( unsigned long address )
     unsigned      lo;
     unsigned long result;
 
-    lo     = address | 0x8000;
+    lo = address | 0x8000;
 
     result = address << 1;
     result &= 0xFFFF0000;
@@ -134,7 +134,7 @@ far char * __DataAddressToFarPointer( unsigned long address )
     unsigned      lo;
     unsigned long result;
 
-    lo     = address | 0x8000;
+    lo = address | 0x8000;
 
     result = address << 1;
     result &= 0xFFFF0000;
@@ -148,7 +148,7 @@ unsigned long __FarPointerToFlashAddress( const far char * ptr )
     unsigned      lo;
     unsigned long result;
 
-    lo     = ( unsigned )ptr & 0x7FFF;
+    lo = ( unsigned )ptr & 0x7FFF;
 
     result = ( unsigned long )ptr >> 1;
     result &= 0x00FF8000;
@@ -162,7 +162,7 @@ unsigned long __FarPointerToDataAddress( far char * ptr )
     unsigned      lo;
     unsigned long result;
 
-    lo     = ( unsigned )ptr & 0x7FFF;
+    lo = ( unsigned )ptr & 0x7FFF;
 
     result = ( unsigned long )ptr >> 1;
     result &= 0x00FF8000;
@@ -209,7 +209,7 @@ void __CFar2FarSwZ( void far * dest, void far * source )
     char b;
 
     while ( 1 ) {
-        b     = *( ( const far char * )source );
+        b = *( ( const far char * )source );
         *dest = b;
         if ( b == 0 ) {
             break;
@@ -261,8 +261,8 @@ void __CFar2FarS()
     far char *       dest;
     const far char * source;
 
-    LoWord( dest )   = W0;
-    HiWord( dest )   = W1;
+    LoWord( dest ) = W0;
+    HiWord( dest ) = W1;
 
     LoWord( source ) = W2;
     HiWord( source ) = W3;

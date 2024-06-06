@@ -32,7 +32,8 @@ void _Multiply_32x32(void) {
  * @details This function performs the division of two 32-bit integers.
  *          It handles both signed and unsigned long integers.
  */
-void _Divide_32x32(void) {
+void _Divide_32x32( void )
+{
     asm RCALL Divide_32x32___testsus
     asm GOTO the_end_Divide_32x32;
 

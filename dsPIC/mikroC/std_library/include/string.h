@@ -30,7 +30,7 @@ extern "C" {
 /* -----------------------PUBLIC FUNCTION DECLARATIONS ----------------------- */
 
 /**
- * @brief Finds first occurence of the ch character in the first num bytes of string
+ * @brief Finds first occurrence of the ch character in the first num bytes of string
  *        pointed to by ptr.
  * @details Function locates the first occurrence of a character in a defined memory
  *          area starting with a given address. The function returns the pointer
@@ -245,7 +245,7 @@ const char * strrchr( const char * ptr, char chr );
  *          was found, function returns 0. If str2 is a null string, the function returns 0.
  * @param str1 Address of string 1.
  * @param str2 Address of string 2.
- * @return char * Address of first str2 character occurence in str1.
+ * @return char * Address of first str2 character occurrence in str1.
  */
 char * strstr( const char * str1, const char * str2 );
 

@@ -49,7 +49,7 @@ void * memcpy( void * dest_ptr, const void * src_ptr, int num )
     char *       dest_char_ptr;
     const char * src_char_ptr;
 
-    src_char_ptr  = src_ptr;
+    src_char_ptr = src_ptr;
     dest_char_ptr = dest_ptr;
     while ( num-- ) {
         *dest_char_ptr++ = *src_char_ptr++;
@@ -64,7 +64,7 @@ void * memmove( void * dest_ptr, const void * src_ptr, int num )
     const char * src_chr_ptr;
 
     dest_chr_ptr = dest_ptr;
-    src_chr_ptr  = src_ptr;
+    src_chr_ptr = src_ptr;
     if (
         ( src_chr_ptr < dest_chr_ptr ) &&
         ( ( src_chr_ptr + num ) > dest_chr_ptr ) ) {
@@ -336,7 +336,7 @@ void str_cut_left( char * str, int num )
     int counter;
     int delete_right;
 
-    counter      = 0,
+    counter = 0,
     delete_right = strlen( str );
 
     if ( num < strlen( str ) ) {
@@ -387,13 +387,13 @@ void str_insert_chr( char * str, char chr, int num )
     char temp2;
 
     counter = strlen( str );
-    temp1   = str[ num ];
+    temp1 = str[ num ];
 
     if ( num < strlen( str ) ) {
         for ( i = num; i < counter; i++ ) {
-            temp2        = str[ i + 1 ];
+            temp2 = str[ i + 1 ];
             str[ i + 1 ] = temp1;
-            temp1        = temp2;
+            temp1 = temp2;
         }
 
         str[ num ] = chr;
