@@ -1,9 +1,9 @@
 import os
 import json
-from collections import defaultdict
-from hashlib import md5
 import zlib
 import struct
+from collections import defaultdict
+from hashlib import md5
 
 class GenerateClocks:
     def __init__(self, input_directory, output_file):
@@ -16,7 +16,9 @@ class GenerateClocks:
         if "config_registers" in data:
             extracted_data = {
                 "config_registers": data.get("config_registers", []),
-                "mcu": data.get("mcu", "")
+                "mcu": data.get("mcu", ""),
+                "clock": data.get("clock", ""),
+                "core": data.get("core", "")
             }
             return extracted_data
         else:
@@ -35,20 +37,24 @@ class GenerateClocks:
             if data:
                 config_registers = data["config_registers"]
                 mcu = data["mcu"]
+                clock = data["clock"]
+                core = data["core"]
                 config_hash = self.config_registers_hash(config_registers)
-                merged_data[config_hash].append((mcu, config_registers))
+                merged_data[config_hash].append((mcu, config_registers, clock, core))
 
-        result = []
+        result = {}
         for mcus in merged_data.values():
-            unique_mcus = sorted(set(mcu for mcu, _ in mcus))
-            key = "^" + "$|^".join(unique_mcus)
+            unique_mcus = sorted(set(mcu for mcu, _, __, ___ in mcus))
+            key = "^" + "$|^".join(unique_mcus) + "$"
             config_registers = mcus[0][1]  # All config_registers are the same for this group
+            clock = mcus[0][2]  # All clocks are the same for this group
+            core = mcus[0][3]  # All cores are the same for this group
             if config_registers:
-                result.append({
-                    key: {
-                        "config_registers": config_registers
-                    }
-                })
+                result[key] = {
+                    "config_registers": config_registers,
+                    "clock": clock,
+                    "core": core
+                }
 
         return result
 
@@ -73,5 +79,3 @@ class GenerateClocks:
 
         with open(self.output_file, 'wb') as file:
             file.write(compressed_data_with_header)
-
-
