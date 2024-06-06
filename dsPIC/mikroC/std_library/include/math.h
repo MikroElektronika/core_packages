@@ -40,7 +40,7 @@ extern "C" {
 /* -----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
- * @brief Calculates floating point abolute value of given number.
+ * @brief Calculates floating point absolute value of given number.
  * @details The function computes the absolute value of a
  *          floating-point number num.
  * @param num Number which the absolute value is calculated for.
@@ -86,7 +86,7 @@ double frexp( double num, int16_t * exp_ptr );
 /**
  * @brief Calculates the result of multiplying the floating-point number
  *        by 2 raised to the power n.
- * @details The function multiplies a tloating-point number by an
+ * @details The function multiplies a floating-point number by an
  *          integer power of 2. A range error may occur.
  * @param num Floating point number to be multiplied.
  * @param new_exp integer exponent.
@@ -197,7 +197,7 @@ double exp( double pow );
  * @details The function compute5 the natural logarithm of num.
  *          A domain error occurs if the argument is negative.
  *          A range error might occur if the argument is zero.
- * @param num Number the natural logaritm is calculated from.
+ * @param num Number the natural logarithm is calculated from.
  * @return The function returns the natural logarithm.
  */
 double log( double num );
@@ -207,7 +207,7 @@ double log( double num );
  * @details The function computes the base-ten logarithm of x.
  *          A domain error occurs if the argument is negative.
  *          A range error may occur if the argument is zero.
- * @param num Number the base 10 logaritm is calculated from.
+ * @param num Number the base 10 logarithm is calculated from.
  * @return The function returns the base-ten logarithm.
  */
 double log10( double num );

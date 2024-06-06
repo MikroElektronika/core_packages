@@ -29,7 +29,7 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 
-/* -----------------------PUBLIC FUNCTION DECLARATIONS ------------------------ */
+/* -----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
  * @brief The function checks whether the passed character is a lowercase letter.
