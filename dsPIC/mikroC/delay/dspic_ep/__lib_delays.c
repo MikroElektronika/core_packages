@@ -69,7 +69,7 @@ unsigned int Get_Fosc_Per_Cyc()
 //                                                                            //
 //  Function:     void Delay_Cyc(unsigned int x, unsigned int y)              //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of <NoCyc> cycles,   //
+//  Purpose:      Causes a blocking, interruptible delay of <NoCyc> cycles,   //
 //                where NoCyc := X*16384 + Y + OFFSET                         //
 //                OFFSET takes in consideration cycles needed for parameter   //
 //                       passing, calls, returns and such                     //
@@ -118,7 +118,7 @@ void Delay_Cyc( unsigned int x, unsigned int y )
 //                                                                            //
 //  Function:     void Delay_Cyc_Long(unsigned long CycNo)                    //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of <CycNo> cycles,   //
+//  Purpose:      Causes a blocking, interruptible delay of <CycNo> cycles,   //
 //                OFFSET takes in consideration cycles needed for parameter   //
 //                       passing, calls, returns and such.                    //
 //                Call this function with parameter zero to measure OFFSET    //
@@ -176,8 +176,8 @@ void Delay_Cyc_Long( unsigned long CycNo )
 //                                                                            //
 //  Function:     void VDelay_ms(unsigned Time_ms)                            //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of                   //
-//                Time_ms miliseconds                                         //
+//  Purpose:      Causes a blocking, interruptible delay of                   //
+//                Time_ms milliseconds                                        //
 //                                                                            //
 //  CallParams:   Time_ms - time to delay in ms                               //
 //                                                                            //
@@ -211,7 +211,7 @@ void VDelay_ms( unsigned Time_ms )
     NumberOfCyc *= Time_ms;                     // Total number of cycles
 
     NumberOfCyc -= 172;                         // Take care of cycles needed for passing
-                                                // parameters, calls, retunrs and such, so
+                                                // parameters, calls, returns and such, so
                                                 // decrease NumberOfCyc.
 
     W1 = HiWord( NumberOfCyc );
@@ -246,8 +246,8 @@ void VDelay_ms( unsigned Time_ms )
 //  Function:     void VDelay_Advanced_ms(unsigned Time_ms,                   //
 //                                        unsigned long Current_Fosc_kHz)     //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of                   //
-//                Time_ms miliseconds.                                        //
+//  Purpose:      Causes a blocking, interruptible delay of                   //
+//                Time_ms milliseconds.                                       //
 //                It supports changing oscillator value in runtime.           //
 //                                                                            //
 //  CallParams:   Time_ms - time to delay in ms                               //
@@ -283,7 +283,7 @@ void VDelay_Advanced_ms( unsigned Time_ms, unsigned long Current_Fosc_kHz )
     NumberOfCyc *= Time_ms;                          // Total number of cycles
 
     NumberOfCyc -= 175;                              // Take care of cycles needed for passing
-                                                     // parameters, calls, retunrs and such, so
+                                                     // parameters, calls, returns and such, so
                                                      // decrease NumberOfCyc.
 
     W1 = HiWord( NumberOfCyc );
@@ -317,7 +317,7 @@ void VDelay_Advanced_ms( unsigned Time_ms, unsigned long Current_Fosc_kHz )
 //                                                                            //
 //  Function:     void Delay_W0()                                             //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of W0 cycles         //
+//  Purpose:      Causes a blocking, interruptible delay of W0 cycles         //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -347,7 +347,7 @@ void Delay_W0()
 //                                                                            //
 //  Function:     void Delay_1us()                                            //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 1us               //
+//  Purpose:      Causes a blocking, interruptible delay of 1us               //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -373,7 +373,7 @@ void Delay_1us()
 //                                                                            //
 //  Function:     void Delay_5us()                                            //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 5us               //
+//  Purpose:      Causes a blocking, interruptible delay of 5us               //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -399,7 +399,7 @@ void Delay_5us()
 //                                                                            //
 //  Function:     void Delay_6us()                                            //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 6us               //
+//  Purpose:      Causes a blocking, interruptible delay of 6us               //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -425,7 +425,7 @@ void Delay_6us()
 //                                                                            //
 //  Function:     void Delay_9us()                                            //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 9us               //
+//  Purpose:      Causes a blocking, interruptible delay of 9us               //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -451,7 +451,7 @@ void Delay_9us()
 //                                                                            //
 //  Function:     void Delay_10us()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 10us              //
+//  Purpose:      Causes a blocking, interruptible delay of 10us              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -477,7 +477,7 @@ void Delay_10us()
 //                                                                            //
 //  Function:     void Delay_22us()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 22us              //
+//  Purpose:      Causes a blocking, interruptible delay of 22us              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -503,7 +503,7 @@ void Delay_22us()
 //                                                                            //
 //  Function:     void Delay_50us()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 50us              //
+//  Purpose:      Causes a blocking, interruptible delay of 50us              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -529,7 +529,7 @@ void Delay_50us()
 //                                                                            //
 //  Function:     void Delay_55us()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 55us              //
+//  Purpose:      Causes a blocking, interruptible delay of 55us              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -555,7 +555,7 @@ void Delay_55us()
 //                                                                            //
 //  Function:     void Delay_60us()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 60us              //
+//  Purpose:      Causes a blocking, interruptible delay of 60us              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -581,7 +581,7 @@ void Delay_60us()
 //                                                                            //
 //  Function:     void Delay_64us()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 64us              //
+//  Purpose:      Causes a blocking, interruptible delay of 64us              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -607,7 +607,7 @@ void Delay_64us()
 //                                                                            //
 //  Function:     void Delay_70us()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 70us              //
+//  Purpose:      Causes a blocking, interruptible delay of 70us              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -633,7 +633,7 @@ void Delay_70us()
 //                                                                            //
 //  Function:     void Delay_80us()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 80us              //
+//  Purpose:      Causes a blocking, interruptible delay of 80us              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -659,7 +659,7 @@ void Delay_80us()
 //                                                                            //
 //  Function:     void Delay_410us()                                          //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 410us             //
+//  Purpose:      Causes a blocking, interruptible delay of 410us             //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -685,7 +685,7 @@ void Delay_410us()
 //                                                                            //
 //  Function:     void Delay_480us()                                          //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 480us             //
+//  Purpose:      Causes a blocking, interruptible delay of 480us             //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -711,7 +711,7 @@ void Delay_480us()
 //                                                                            //
 //  Function:     void Delay_500us()                                          //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 500us             //
+//  Purpose:      Causes a blocking, interruptible delay of 500us             //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -737,7 +737,7 @@ void Delay_500us()
 //                                                                            //
 //  Function:     void Delay_5500us()                                         //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 5500us            //
+//  Purpose:      Causes a blocking, interruptible delay of 5500us            //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -763,7 +763,7 @@ void Delay_5500us()
 //                                                                            //
 //  Function:     void Delay_1ms()                                            //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 1ms               //
+//  Purpose:      Causes a blocking, interruptible delay of 1ms               //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -789,7 +789,7 @@ void Delay_1ms()
 //                                                                            //
 //  Function:     void Delay_5ms()                                            //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 5ms               //
+//  Purpose:      Causes a blocking, interruptible delay of 5ms               //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -815,7 +815,7 @@ void Delay_5ms()
 //                                                                            //
 //  Function:     void Delay_8ms()                                            //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 8ms               //
+//  Purpose:      Causes a blocking, interruptible delay of 8ms               //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -841,7 +841,7 @@ void Delay_8ms()
 //                                                                            //
 //  Function:     void Delay_10ms()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 10ms              //
+//  Purpose:      Causes a blocking, interruptible delay of 10ms              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -867,7 +867,7 @@ void Delay_10ms()
 //                                                                            //
 //  Function:     void Delay_100ms()                                          //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 100ms             //
+//  Purpose:      Causes a blocking, interruptible delay of 100ms             //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
@@ -893,7 +893,7 @@ void Delay_100ms()
 //                                                                            //
 //  Function:     void Delay_1sec()                                           //
 //                                                                            //
-//  Purpose:      Causes a blocking, interruptable delay of 1sec              //
+//  Purpose:      Causes a blocking, interruptible delay of 1sec              //
 //                                                                            //
 //  CallParams:   None.                                                       //
 //                                                                            //
