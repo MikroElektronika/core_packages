@@ -129,8 +129,8 @@ static const float _npowers_[] = {
     1e-30
 };
 
-static const char hexb[]              = "0123456789ABCDEF";
-static const char hexs[]              = "0123456789abcdef";
+static const char hexb[] = "0123456789ABCDEF";
+static const char hexs[] = "0123456789abcdef";
 
 const static unsigned value dpowers[] = {
     1, 10, 100, 1000, 10000
@@ -160,7 +160,7 @@ const static unsigned value octpowers[] = {
 };
 
 #ifdef __FLOAT
-#define NDDIG (sizeof fdpowers / sizeof fdpowers[0])
+#define NDDIG (sizeof fdpowers / sizeof fdpowers[ 0 ])
 #define expon signed char
 
 /**
@@ -189,7 +189,7 @@ static float fround( unsigned char prec )
  * @details This routine returns a scaling factor equal to 1 to the decimal
  *          power supplied.
  * @param[in] scl Exponent value used for calculation.
- * @return float Rerurns calculated float value.
+ * @return float Returns calculated float value.
  */
 static float scale( expon scl )
 {
@@ -282,7 +282,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_l
             continue;
         }
         width = 0;
-        flag  = 0;
+        flag = 0;
         for ( ;; ) {
             switch ( *format ) {
                 case '-':
@@ -361,7 +361,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_l
             case 'f':
             case 'e':
             case 'g':
-                cp   = "non-float printf";
+                cp = "non-float printf";
                 prec = 0;
                 goto strings;
 #else
@@ -424,7 +424,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_l
             case 'c':
                 c = va_arg( arg, int );
             default:
-                cp  = &c;
+                cp = &c;
                 len = 1;
                 goto dostring;
 
@@ -487,7 +487,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_l
 
                 if ( fval != 0 ) {
                     /**
-                     * @note Normalise only if the number is non-zero.
+                     * @note Normalize only if the number is non-zero.
                      */
                     fval /= scale( exp );
                     fval /= scale( -c );
@@ -613,7 +613,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * format, register va_l
                     exp -= NDDIG - 1;
                 else
                     exp -= NDDIG - 2;
-                val  = _div_to_l_( fval, scale( exp ) );
+                val = _div_to_l_( fval, scale( exp ) );
                 fval = 0.0;
             } else {
                 val = ( unsigned long )fval;
@@ -849,9 +849,9 @@ int printf_me( const char * format, ... )
  * @warning Must be declared as volatile, so compiler will keep them after optimizations.
  */
 static volatile char __debugBuffer[ MAX_STD_DBG_OUT_BUFFER_SIZE ] = { 0 };
-static volatile char buffPos                                      = 0;
-static volatile char lastPos                                      = 0;
-static volatile int  counterID                                    = 0;
+static volatile char buffPos = 0;
+static volatile char lastPos = 0;
+static volatile int  counterID = 0;
 
 void debugStdOut( char ch )
 {
@@ -865,7 +865,7 @@ void debugStdOut( char ch )
         counterID++;
         stdBuffFullBreak();
         buffPos = 0;
-        ch      = 0;
+        ch = 0;
     }
 }
 
