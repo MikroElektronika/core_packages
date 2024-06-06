@@ -41,7 +41,7 @@
 #define math_double_main_global_AARGB5  R13
 #define math_double_main_global_TEMPB0  R14
 
-/* -----------------------PUBLIC FUNCTION DECLARATIONS ---------------------- */
+/* -----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
  * @brief Signals floating point overflow.

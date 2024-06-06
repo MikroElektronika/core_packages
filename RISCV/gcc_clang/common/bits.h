@@ -87,15 +87,15 @@
 #endif
 
 static inline void
-wait_for_interrupt(void)
+wait_for_interrupt( void )
 {
-    __asm__ __volatile__ ("wfi");
+    __asm__ __volatile__ ( "wfi" );
 }
 
 static inline void
-nop(void)
+nop( void )
 {
-    __asm__ __volatile__ ("nop");
+    __asm__ __volatile__ ( "nop" );
 }
 
 #endif

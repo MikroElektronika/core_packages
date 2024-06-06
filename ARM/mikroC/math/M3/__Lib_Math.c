@@ -36,7 +36,7 @@ void _Div_64x64_S ( void )
         MOVS      tmp_hi, #0
         RSBS      tmp_lo, dvnd_lo, #0               // EABI, IF DVSR IS 0
 
-        SBCS      tmp_lo, tmp_hi, dvnd_hi                    // CHECK DVND
+        SBCS      tmp_lo, tmp_hi, dvnd_hi           // CHECK DVND
 
         // EABI, QUOTIENT AND REMAINDER ARE SWAPPED.
         // Q [rr_hi:rr_lo], R [rq_hi:rq_lo]
@@ -45,7 +45,7 @@ void _Div_64x64_S ( void )
         MVNLT     rr_hi, #0x80000000
 
         ITT       GT
-        MOVGT     rr_lo, #0                            // Q=LLONG_MIN IF DVND < 0
+        MOVGT     rr_lo, #0                         // Q=LLONG_MIN IF DVND < 0
         MOVGT     rr_hi, #0x80000000
 
         // Q==0 IF DVND==0 (BOTH USE THE SAME REGISTERS)
@@ -189,7 +189,7 @@ void _Div_64x64_S ( void )
         IT        EQ
         CMPEQ     dvnd_lo, tmp_lo
         BCC       __me_label_1
-        SUBS      dvnd_lo, dvnd_lo, tmp_lo          //    DVND = DVND - TMP
+        SUBS      dvnd_lo, dvnd_lo, tmp_lo          // DVND = DVND - TMP
         SBCS      dvnd_hi, dvnd_hi, tmp_hi
     __me_label_1:
         ADCS      q_lo, q_lo, q_lo                  // SHIFT THE CARRY BIT DEFED
@@ -383,10 +383,10 @@ void _Div_64x64_U ( void )
 
         CMP       dvsr_hi, #0                       // IF (DVSR_HI == 0 AND
         IT        EQ
-        CMPEQ     dvsr_lo, dvnd_hi                  //          DVSRLO < DVND_HI)
+        CMPEQ     dvsr_lo, dvnd_hi                  // DVSRLO < DVND_HI)
         ITT       LS
-        MOVLS     dvsr_hi, dvsr_lo                  //    DVSR_HI = DVSRLO
-        MOVLS     dvsr_lo, #0                       //    DVSR_LO = 0
+        MOVLS     dvsr_hi, dvsr_lo                  // DVSR_HI = DVSRLO
+        MOVLS     dvsr_lo, #0                       // DVSR_LO = 0
 
         // IF DVND >> 16 > DVSR THEN DVSR = DVSR << 16
         LSRS      tmp_lo, dvnd_lo, #16              // SHIFT DVND BY 16 INTO
@@ -483,7 +483,7 @@ void _Div_64x64_U ( void )
         IT        EQ
         CMPEQ     dvnd_lo, tmp_lo
         BCC       __me_label_1
-        SUBS      dvnd_lo, dvnd_lo, tmp_lo          //    DVND = DVND - TMP
+        SUBS      dvnd_lo, dvnd_lo, tmp_lo          // DVND = DVND - TMP
         SBCS      dvnd_hi, dvnd_hi, tmp_hi
     __me_label_1:
         ADCS      q_lo, q_lo, q_lo                  // SHIFT THE CARRY BIT DEFED

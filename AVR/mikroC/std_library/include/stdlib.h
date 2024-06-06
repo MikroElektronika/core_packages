@@ -28,7 +28,7 @@ extern "C" {
 
 #include <stdint.h>
 
-// -------------------------------------------------------------- PUBLIC MACROS
+/* ----------------------------PUBLIC MACROS--------------------------------- */
 
 #define DBL_MIN        1.1754945e-38
 #define DBL_MAX        3.40282347e+38
@@ -36,7 +36,7 @@ extern "C" {
 #define DBL_MAX_10_EXP 38
 #define NDIG           DBL_DIG + 2 // Number of digits (ANSI 5.2.4.2.2)
 
-// --------------------------------------------------------------- PUBLIC TYPES
+/* -----------------------------PUBLIC TYPES--------------------------------- */
 
 typedef struct divstruct
 {
@@ -56,11 +56,7 @@ typedef struct uldivstruct
     unsigned long rem;
 } uldiv_t;
 
-// ------------------------------------------------------------------ CONSTANTS
-
-// ------------------------------------------------------------------ VARIABLES
-
-// ----------------------------------------------- PUBLIC FUNCTION DECLARATIONS
+/* -----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
  * @brief Returns absolute value of given argument.

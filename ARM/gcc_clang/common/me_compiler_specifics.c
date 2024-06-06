@@ -20,6 +20,7 @@
 #ifdef _CLANG_LLVM_
 // stderr stream declaration.
 FILE * const stderr;
+#endif
 
 /* -----------------------PUBLIC FUNCTION DEFINITIONS----------------------- */
 

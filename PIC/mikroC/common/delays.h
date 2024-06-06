@@ -48,7 +48,7 @@
 extern "C" {
 #endif
 
-/* -----------------------PUBLIC FUNCTION DECLARATIONS ---------------------- */
+/* -----------------------PUBLIC FUNCTION DECLARATIONS----------------------- */
 
 /**
  * @brief Creates a delay based on MCU clock.

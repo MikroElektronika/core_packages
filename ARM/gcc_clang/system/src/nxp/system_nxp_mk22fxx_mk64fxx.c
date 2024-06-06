@@ -6,8 +6,8 @@
 #define SCS_BASE (0xE000E000UL)              // System Control Space Base Address  //
 #define SCB_BASE (SCS_BASE + 0x0D00UL)       // System Control Block Base Address  //
 
-#define SCnSCB   ((SCnSCB_Type *)SCS_BASE) // System control Register not in SCB //
-#define SCB      ((SCB_Type *)SCB_BASE)    // SCB configuration struct           //
+#define SCnSCB   ((SCnSCB_Type *)SCS_BASE)   // System control Register not in SCB //
+#define SCB      ((SCB_Type *)SCB_BASE)      // SCB configuration struct           //
 
 #ifndef SIM_CLKDIV1_OUTDIV3_MASK
 #define SIM_CLKDIV1_OUTDIV3_MASK (0xF00000U)

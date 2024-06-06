@@ -18,7 +18,7 @@ function(core_install targetAlias)
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         )
-    # INSTALL EXPORT FILE
+    # Install export file
     install(EXPORT ${targetAlias}Target
         FILE ${targetAlias}Targets.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${targetAlias})
@@ -56,6 +56,7 @@ function(core_install targetAlias)
           "${PREINIT_ROUTINE_PATH}/include/preinit.h"
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/../include/core)
 endfunction()
+
 #############################################################################
 ## Function to create static library target
 #############################################################################
@@ -66,6 +67,7 @@ macro(core_add_library functionName functionAlias)
     set_property(TARGET ${functionName} PROPERTY C_STANDARD 99)
     set_target_properties(${functionName} PROPERTIES EXPORT_NAME ${functionAlias})
 endmacro()
+
 #############################################################################
 ## Function to create interface header only library target
 #############################################################################

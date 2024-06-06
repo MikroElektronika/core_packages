@@ -13,7 +13,7 @@ void _FloatToSignedIntegral()
         BMI       __me_lab_end
 
         RSBS       R2, R2, #0x1F             // CHECK FOR OVERFLOW
-        BLS        __me_ovfl                      // IF OVERFLOW, RETURN INFINITY
+        BLS        __me_ovfl                 // IF OVERFLOW, RETURN INFINITY
 
         LSL        R1, R0, #8                // PUT MANTISSA IN R1
         ORR        R1, R1, #0x80000000       // SET IMPLIED ONE IN MANTISSA
@@ -41,32 +41,32 @@ void _FloatToUnsignedIntegral()
 {
     asm {
         PUSH       (R1, LR)
-        CMP        R0, #0             // CHECK FOR A NEGATIVE VALUE
+        CMP        R0, #0                    // CHECK FOR A NEGATIVE VALUE
         BPL        __me_label_pos
-        BL         __FloatToSignedIntegral           // CAST TO INT
+        BL         __FloatToSignedIntegral   // CAST TO INT
         B          __me_endLab
 
     __me_label_pos:
-        LSL        R1, R0, #1          // PUT EXPONENT IN R1
+        LSL        R1, R0, #1                // PUT EXPONENT IN R1
         LSR        R1, R1, #24
 
-        SUBS       R1, R1, #0x7F       // CHECK FOR UNDERFLOW
+        SUBS       R1, R1, #0x7F             // CHECK FOR UNDERFLOW
         ITT        CC
-        MOVCC      R0, #0              // IF UNDERFLOW, RETURN ZERO
+        MOVCC      R0, #0                    // IF UNDERFLOW, RETURN ZERO
         BCC        __me_endLab
 
-        RSBS        R1, R1, #0x1F      // CHECK FOR OVERFLOW
-        BCC        __me_ovfl           // IF OVERFLOW, RETURN 0xFFFFFFFF
+        RSBS        R1, R1, #0x1F            // CHECK FOR OVERFLOW
+        BCC        __me_ovfl                 // IF OVERFLOW, RETURN 0xFFFFFFFF
 
-        LSL        R0, R0, #8          // PUT MANTISSA IN R0
-        ORR        R0, R0, #0x80000000 // SET IMPLIED ONE IN MANTISSA
+        LSL        R0, R0, #8                // PUT MANTISSA IN R0
+        ORR        R0, R0, #0x80000000       // SET IMPLIED ONE IN MANTISSA
 
-        LSRS       R0, R0, R1          // COMPUTE THE INTEGER VALUE
+        LSRS       R0, R0, R1                // COMPUTE THE INTEGER VALUE
 
         B          __me_endLab
 
     __me_ovfl:
-         MOVS      R0, #0x0            // IF OVERFLOW, RETURN 0xFFFFFFFF
+         MOVS      R0, #0x0                  // IF OVERFLOW, RETURN 0xFFFFFFFF
         SUBS       R0, R0, #0x1
     __me_endLab:
         POP        (R1, LR)
@@ -108,10 +108,10 @@ void _LongDoubleToSignedIntegral()
         B          __me_lab_end
 
     __me_ovfl:
-        CMP        R1, #0                    // IF OVERFLOW, RETURN INFINITY
-        MOV        R0, #0x80000000           // CHECK THE SIGN OF THE INPUT
+        CMP        R1, #0              // IF OVERFLOW, RETURN INFINITY
+        MOV        R0, #0x80000000     // CHECK THE SIGN OF THE INPUT
         IT         PL
-        SUBPL      R0, R0, #0x1            // AND ADJUST INFINITY ACCORDINGLY
+        SUBPL      R0, R0, #0x1        // AND ADJUST INFINITY ACCORDINGLY
     __me_lab_end:
         POP        (R2, R3, LR)
     }
@@ -559,7 +559,7 @@ void _Sub_FP(void)
         ASRMI      R7, R4, R6
         ADDMI      R1, R1, R7                // ADD IT TO THE FIRST MANTISSA
         MOVPL      R8, #0                    // IF NOT SIGNIFICANT, STICKY = 0
-        BPL        __me_skip_sticky               // SKIP COMPUTATION OF STICKY BIT
+        BPL        __me_skip_sticky          // SKIP COMPUTATION OF STICKY BIT
         RSB        R7, R6, #28
         LSL        R8, R4, R7                // GET THE BITS THAT WERE SHIFTED OUT
 
@@ -579,7 +579,7 @@ void _Sub_FP(void)
         BPL        __me_loop
 
         ANDS       R4, R1, #0x80             // GUARD BIT
-        BEQ        __me_no_round                  // IF GUARD BIT 0, DO NOT ROUND
+        BEQ        __me_no_round             // IF GUARD BIT 0, DO NOT ROUND
         AND        R5, R1, #0x20             // IF RESULT REQUIRED NORMALIZATION
         ORR        R8, R8, R5                //  BIT 26 MUST BE ADDED TO STICKY
         ADDS       R1, R1, #0x80             // ROUND THE MANTISSA TO THE NEAREST
@@ -712,69 +712,69 @@ void _Div_FP(void)
         CMP       R3, #0xFF              // IF R3 == 0xFF, THEN OVERFLOW
         BEQ       __me_ovfl
 
-        LSLS.W    R4, R2, #8              // PUT INPUT #2 MANTISSA IN R4
-        LSLS.W    R5, R2, #1              // PUT INPUT #2 EXPONENT IN R5
+        LSLS.W    R4, R2, #8             // PUT INPUT #2 MANTISSA IN R4
+        LSLS.W    R5, R2, #1             // PUT INPUT #2 EXPONENT IN R5
         LSRS.W    R5, R5, #24
         ITEEE     NE
-        ORRNE     R4, R4, #0x80000000     // SET IMPLIED ONE IN MANTISSA IF R5 != 0
+        ORRNE     R4, R4, #0x80000000    // SET IMPLIED ONE IN MANTISSA IF R5 != 0
         MOVEQ     R0, #2139095040                  // IF R5 == 0, THEN UNDERFLOW
-        ORREQ     R0, R0, R6              // IF RESULT < 0 (R6.31 == 1) THEN R0.31 = 1
+        ORREQ     R0, R0, R6             // IF RESULT < 0 (R6.31 == 1) THEN R0.31 = 1
         BEQ       __me_lab_end
 
-        CMP       R5, #0xFF               // IF R5 == 0xFF, THEN OVERFLOW
+        CMP       R5, #0xFF              // IF R5 == 0xFF, THEN OVERFLOW
         BEQ       __me_ovfl
 
-        SUBS      R3, R3, R5              // SUBTRACT EXPONENTS
+        SUBS      R3, R3, R5             // SUBTRACT EXPONENTS
 
-        MOVS      R0, #0x0                // INITIALIZE THE QUOTIENT
-        MOVS      R7, #32                 // INITIALIZE THE SHIFT COUNTER
-        LSRS      R4, R4, #1              // SETUP THE DIVISOR
-        LSRS      R1, R1, #1              // SETUP THE DIVIDEND
+        MOVS      R0, #0x0               // INITIALIZE THE QUOTIENT
+        MOVS      R7, #32                // INITIALIZE THE SHIFT COUNTER
+        LSRS      R4, R4, #1             // SETUP THE DIVISOR
+        LSRS      R1, R1, #1             // SETUP THE DIVIDEND
 
     __me_fdiv_:
 
-        CMP       R1, R4                  // IF DIVIDEND IS LARGER THAN DIVISOR,
-                                            // SHIFT A 1 INTO THE QUOTIENT, ELSE 0
+        CMP       R1, R4                 // IF DIVIDEND IS LARGER THAN DIVISOR,
+                                         // SHIFT A 1 INTO THE QUOTIENT, ELSE 0
         ADC       R0, R0, R0
         IT        CS
-        SUBCS     R1, R1, R4              // IF DIVIDEND LARGER, SUBTRACT DIVISOR
-        SUBS      R7, R7, #0x1            // UPDATE THE SHIFT COUNTER
-        BEQ       __me_flb1_                  // EXIT IF OUT OF SHIFTS
-        CMP       R1, #0x0                // IF DIVIDEND STILL THERE,
+        SUBCS     R1, R1, R4             // IF DIVIDEND LARGER, SUBTRACT DIVISOR
+        SUBS      R7, R7, #0x1           // UPDATE THE SHIFT COUNTER
+        BEQ       __me_flb1_             // EXIT IF OUT OF SHIFTS
+        CMP       R1, #0x0               // IF DIVIDEND STILL THERE,
         IT        NE
-        LSLNE     R1, R1, #1              //  UPDATE DIVIDEND
-        BNE       __me_fdiv_                  //  CONTINUE
+        LSLNE     R1, R1, #1             //  UPDATE DIVIDEND
+        BNE       __me_fdiv_             //  CONTINUE
 
-        LSLS      R0, R0, R7              // ADJUST THE MANTISSA AS NECESSARY
+        LSLS      R0, R0, R7             // ADJUST THE MANTISSA AS NECESSARY
 
     __me_flb1_:
-        TST       R0, #0x80000000         // ALIGN THE MANTISSA
+        TST       R0, #0x80000000        // ALIGN THE MANTISSA
         ITT       EQ
         LSLEQ     R0, R0, #1
         SUBSEQ    R3, R3, #0x1
 
-        ADDS      R0, R0, #0x00000080     // 1/2 ADJUST FOR ROUNDING
+        ADDS      R0, R0, #0x00000080    // 1/2 ADJUST FOR ROUNDING
         ITE       CS
         ADDCS     R3, R3, #0x1
         LSLCC     R0, R0, #1
 
     __me_flb2_:
-        ADDS      R3, R3, #0x7F           // ADJUST FOR BIAS
+        ADDS      R3, R3, #0x7F          // ADJUST FOR BIAS
         ITT       LE
-        MOVLE     R0, #0                  // AND CHECK FOR UNDERFLOW
+        MOVLE     R0, #0                 // AND CHECK FOR UNDERFLOW
         BLE       __me_lab_end
 
-        CMP       R3, #0x000000FF         // AND CHECK FOR EXPONENT OVERFLOW
+        CMP       R3, #0x000000FF        // AND CHECK FOR EXPONENT OVERFLOW
         BCS       __me_ovfl
 
-        LSRS      R0, R0, #0x9            // REPACK THE MANTISSA
-        ORR       R0, R0, R3, LSL #23     // REPACK THE EXPONENT INTO R0
-        ORRS      R0, R0, R6              // REPACK THE SIGN INTO R0
+        LSRS      R0, R0, #0x9           // REPACK THE MANTISSA
+        ORR       R0, R0, R3, LSL #23    // REPACK THE EXPONENT INTO R0
+        ORRS      R0, R0, R6             // REPACK THE SIGN INTO R0
 
         B         __me_lab_end
 
     __me_ovfl:
-        MOVS      R7, #0xFF               // OVERFLOW, RETURN +/- INFINITY
+        MOVS      R7, #0xFF              // OVERFLOW, RETURN +/- INFINITY
         LSLS      R7, R7, #23
         ORRS      R0, R6, R7
     __me_lab_end:
@@ -909,20 +909,20 @@ void _Add_DP()
         CMP        R1, #0
         BPL        __me_lab6                 // IF INPUT #1 IS NEGATIVE,
         MOVS       R10, #0
-        RSBS       R5, R5, #0                //  THEN NEGATE THE MANTISSA
+        RSBS       R5, R5, #0                // THEN NEGATE THE MANTISSA
         SBC        R4, R10, R4
 
     __me_lab6:
         SUBS       LR, R6, R9                // GET THE SHIFT AMOUNT
         BPL        __me_lab7
         MOV        R10, R4                   // IF THE SHIFT AMOUNT IS NEGATIVE, THEN
-        MOV        R4, R7                    //  SWAP THE TWO MANTISSA SO THAT op1m
-        MOV        R7, R10                   //  CONTAINS THE LARGER VALUE,
+        MOV        R4, R7                    // SWAP THE TWO MANTISSA SO THAT op1m
+        MOV        R7, R10                   // CONTAINS THE LARGER VALUE,
         MOV        R10, R5
         MOV        R5, R8
         MOV        R8, R10
-        RSB        LR, LR, #0                //  AND NEGATE THE SHIFT AMOUNT,
-        MOV        R6, R9                    //  AND ENSURE THE LARGER EXP. IS IN R6
+        RSB        LR, LR, #0                // AND NEGATE THE SHIFT AMOUNT,
+        MOV        R6, R9                    // AND ENSURE THE LARGER EXP. IS IN R6
 
     __me_lab7:
         CMP        LR, #54                   // IF THE SECOND MANTISSA IS SIGNIFICANT,
@@ -970,8 +970,8 @@ void _Add_DP()
         BPL        __me_nloop
         MOVS       R10, #0x1                 // IF THE RESULT IS NEGATIVE, THEN
         MOVS       LR, #0
-        RSBS       R5, R5, #0x0              //  NOTE THE SIGN AND
-        SBC        R4, LR, R4                //  NEGATE THE RESULT
+        RSBS       R5, R5, #0x0              // NOTE THE SIGN AND
+        SBC        R4, LR, R4                // NEGATE THE RESULT
 
     __me_nloop:
         SUB        R6, R6, #1                // ADJUSTING THE EXPONENT AS NECESSARY
@@ -982,7 +982,7 @@ void _Add_DP()
         ANDS       LR, R5, #0x400            // GUARD_BIT
         BEQ        __me_no_round             // IF GUARD BIT 0, DO NOT ROUND
         AND        R9, R5, #0x100            // IF RESULT REQUIRED NORMALIZATION
-        ORR        R11, R11, R9              //  BIT 26 MUST BE ADDED TO STICKY
+        ORR        R11, R11, R9              // BIT 26 MUST BE ADDED TO STICKY
         ADDS       R5, R5, #0x400            // ROUND THE MANTISSA TO THE NEAREST
         ADCS       R4, R4, #0
         IT         CS
@@ -1064,7 +1064,7 @@ void _Sub_DP(void)
         CMP        R3, #0
         BPL        __me_lab3                  // IF INPUT #2 IS NEGATIVE,
         MOVS       R10, #0
-        RSBS       R8, R8, #0                 //  THEN NEGATE THE MANTISSA
+        RSBS       R8, R8, #0                 // THEN NEGATE THE MANTISSA
         SBC        R7, R10, R7
 
     __me_lab3:
@@ -1097,20 +1097,20 @@ void _Sub_DP(void)
         CMP        R1, #0
         BPL        __me_lab6                  // IF INPUT #1 IS NEGATIVE,
         MOVS       R10, #0
-        RSBS       R5, R5, #0                 //  THEN NEGATE THE MANTISSA
+        RSBS       R5, R5, #0                 // THEN NEGATE THE MANTISSA
         SBC        R4, R10, R4
 
     __me_lab6:
         SUBS       LR, R6, R9                 // GET THE SHIFT AMOUNT
         BPL        __me_lab7
         MOV        R10, R4                    // IF THE SHIFT AMOUNT IS NEGATIVE, THEN
-        MOV        R4, R7                     //  SWAP THE TWO MANTISSA SO THAT op1m
-        MOV        R7, R10                    //  CONTAINS THE LARGER VALUE,
+        MOV        R4, R7                     // SWAP THE TWO MANTISSA SO THAT op1m
+        MOV        R7, R10                    // CONTAINS THE LARGER VALUE,
         MOV        R10, R5
         MOV        R5, R8
         MOV        R8, R10
-        RSB        LR, LR, #0                 //  AND NEGATE THE SHIFT AMOUNT,
-        MOV        R6, R9                     //  AND ENSURE THE LARGER EXP. IS IN R6
+        RSB        LR, LR, #0                 // AND NEGATE THE SHIFT AMOUNT,
+        MOV        R6, R9                     // AND ENSURE THE LARGER EXP. IS IN R6
 
     __me_lab7:
         CMP        LR, #54                    // IF THE SECOND MANTISSA IS SIGNIFICANT,
@@ -1158,8 +1158,8 @@ void _Sub_DP(void)
         BPL        __me_nloop
         MOVS       R10, #0x1                  // IF THE RESULT IS NEGATIVE, THEN
         MOVS       LR, #0
-        RSBS       R5, R5, #0x0               //  NOTE THE SIGN AND
-        SBC        R4, LR, R4                 //  NEGATE THE RESULT
+        RSBS       R5, R5, #0x0               // NOTE THE SIGN AND
+        SBC        R4, LR, R4                 // NEGATE THE RESULT
 
     __me_nloop:
         SUB        R6, R6, #1                 // ADJUSTING THE EXPONENT AS NECESSARY
@@ -1170,7 +1170,7 @@ void _Sub_DP(void)
         ANDS       LR, R5, #0x400             // GUARD_BIT
         BEQ        __me_no_round              // IF GUARD BIT 0, DO NOT ROUND
         AND        R9, R5, #0x100             // IF RESULT REQUIRED NORMALIZATION
-        ORR        R11, R11, R9               //  BIT 26 MUST BE ADDED TO STICKY
+        ORR        R11, R11, R9               // BIT 26 MUST BE ADDED TO STICKY
         ADDS       R5, R5, #0x400             // ROUND THE MANTISSA TO THE NEAREST
         ADCS       R4, R4, #0
         IT         CS
@@ -1293,7 +1293,7 @@ void _Mul_DP()
         ADDS        R7, R7, #0xFF
         SUBS        R4, R4, R7                    // ADJUST FOR BIAS
         ITTT        LE
-        MOVLE       R1, #0x0                          // AND CHECK FOR UNDERFLOW
+        MOVLE       R1, #0x0                      // AND CHECK FOR UNDERFLOW
         MOVLE       R0, #0x0
         BLE         __me_lab_end
 
@@ -1338,13 +1338,13 @@ void _Div_DP()
         LSL        R7, R3, #1           // BUILD INPUT #2 EXPONENT
         LSRS.W     R7, R7, #21
 
-        ITT        NE                  //
+        ITT        NE
         ORRNE      R5, R5,#0x00200000   //SET IMPLIED 1 IN MANTISSA IF R7 != 0
-        BNE        __me_jump                //
+        BNE        __me_jump
         MOVW       R1, #0               // IF R7 == 0, THEN UNDERFLOW
-        MOVT       R1, #0x7FF0         //
+        MOVT       R1, #0x7FF0
         ORR        R1, R1, R8
-        MOV        R0, #0              //
+        MOV        R0, #0
         B          __me_lab_end
     __me_jump:
         MOV        LR, #0x700
@@ -1392,10 +1392,10 @@ void _Div_DP()
         SUBS       LR, LR, #1           // UPDATE THE SHIFT COUNTER
         BEQ        __me_fdive           // EXIT IF OUT OF SHIFTS
         ORRS       R7, R3, R2
-        BEQ        __me_fdive                // IF DIVIDEND STILL THERE,
-        LSLS       R2, R2, #1           //  UPDATE DIVIDEND
-        ADCS       R3, R3, R3           //  AND
-        B          __me_fdivb                  //  CONTINUE
+        BEQ        __me_fdive           // IF DIVIDEND STILL THERE,
+        LSLS       R2, R2, #1           // UPDATE DIVIDEND
+        ADCS       R3, R3, R3           // AND
+        B          __me_fdivb           // CONTINUE
 
     __me_fdive:
         CMP        LR, #32              // ADJUST THE QUOTIENT AS NECESSARY
@@ -1569,14 +1569,14 @@ void _SignedLongLongToFloat()
         MOV        R1, R2
 
         MOVS       R2, R0
-        MOVS       R3, #0xBE                  // SET THE EXPONENT FIELD
+        MOVS       R3, #0xBE                 // SET THE EXPONENT FIELD
 
         CMP        R0, #0
         BPL        __me_loop
         MOVS       R4, #0
-        RSBS       R1, R1, #0                 // IF NEGATIVE, NEGATE IT
+        RSBS       R1, R1, #0                // IF NEGATIVE, NEGATE IT
         SBCS       R0, R4, R0
-        BMI        __me_cont                  // HANDLE THE SPACIAL CASE 0x8000:0:0:0
+        BMI        __me_cont                 // HANDLE THE SPACIAL CASE 0x8000:0:0:0
 
     __me_loop:
         SUBS       R3, R3, #1
@@ -1594,7 +1594,7 @@ void _SignedLongLongToFloat()
         ORR        R0, R0, R3, LSL #23       // PACK THE EXPONENT
         CMP        R2, #0                    // IF THE INPUT WAS NEGATIVE
         IT         MI
-        ORRMI      R0, R0, #0x80000000       //  THEN SET THE SIGN FIELD
+        ORRMI      R0, R0, #0x80000000       // THEN SET THE SIGN FIELD
 
         POP       (R2, R3, R4, LR)           // RESTORE CONTEXT
     __me_lab_end:
@@ -1670,9 +1670,9 @@ void _FloatToSignedLongLong()
         CMP        R4, #0x20                 // IF R4 GREATER OR EQUAL TO 32, PERFORM
         ITTT       CS
         MOVCS      R1, R0                    // RIGHT SHIFT IN TWO STEPS.
-        MOVCS      R0, #0                    //    R0:R1 >>= 32
-        SUBCS      R4, R4, #0x20             //    and
-        LSR        R1, R1, R4                //    R0:R1 >>= R4 - 32
+        MOVCS      R0, #0                    // R0:R1 >>= 32
+        SUBCS      R4, R4, #0x20             // and
+        LSR        R1, R1, R4                // R0:R1 >>= R4 - 32
         ITTTT      CC
         RSBCC      R3, R4, #0x20
         LSLCC      R3, R0, R3
@@ -1683,7 +1683,7 @@ void _FloatToSignedLongLong()
         BPL        return
 
         MOVS       R3, #0
-        RSBS       R1, R1, #0                //  THEN NEGATE THE RESULT
+        RSBS       R1, R1, #0                // THEN NEGATE THE RESULT
         SBC        R0, R3, R0
 
     return:
@@ -1738,9 +1738,9 @@ void _FloatToUnsignedLongLong()
         CMP        R3, #0x20                   // IF R3 GREATER OR EQUAL TO 32, PERFORM
         ITTT       CS
         MOVCS      R1, R0                      // RIGHT SHIFT IN TWO STEPS.
-        MOVCS      R0, #0                      //    R0:R1 >>= 32
-        SUBCS      R3, R3, #0x20               //    and
-        LSR        R1, R1, R3                  //    R0:R1 >>= R3 - 32
+        MOVCS      R0, #0                      // R0:R1 >>= 32
+        SUBCS      R3, R3, #0x20               // and
+        LSR        R1, R1, R3                  // R0:R1 >>= R3 - 32
         ITTTT      CC
         RSBCC      R2, R3, #0x20
         LSLCC      R2, R0, R2
@@ -1848,7 +1848,7 @@ void _LongDoubleToSignedLongLong()
         BMI        __me_lab_end
 
         RSBS       R4, R4, #0x3F          // CHECK FOR OVERFLOW
-        BLS        __me_ovfl                   // IF OVERFLOW, RETURN INFINITY
+        BLS        __me_ovfl              // IF OVERFLOW, RETURN INFINITY
 
         MOVS       R2, R1
         LSL        R1, R1, #11            // SHIFT THE EXPONENT (11 BITS)
@@ -1860,8 +1860,8 @@ void _LongDoubleToSignedLongLong()
         // EXPONENT NUMBER OF BITS OUT OF R0:R1.
         SUBS       R3, R4, #0x20          // IF (EXP >= 32)
         ITTEE      CS
-        LSRCS      R0, R1, R3             //    R1 = MNT.HI >> EXP - 32
-        MOVCS      R1, #0                 //    R0 = 0
+        LSRCS      R0, R1, R3             // R1 = MNT.HI >> EXP - 32
+        MOVCS      R1, #0                 // R0 = 0
 
         RSBCC      R3, R4, #0x20          // IF (EXP < 32)
         LSRCC      R0, R0, R4             // R0:R1 = R0:R1 >> EXP
@@ -1873,7 +1873,7 @@ void _LongDoubleToSignedLongLong()
         CMP        R2, #0                 // IF THE INPUT IS NEGATIVE,
         BPL        return
         MOVS       R3, #0
-        RSBS       R0, R0, #0             //  THEN NEGATE THE RESULT
+        RSBS       R0, R0, #0             // THEN NEGATE THE RESULT
         SBC        R1, R3, R1
 
     return:
@@ -1929,8 +1929,8 @@ void _LongDoubleToUnsignedLongLong()
         // EXPONENT NUMBER OF BITS OUT OF R0:R1.
         SUBS       R2, R3, #0x20                 // IF (EXP >= 32)
         ITTEE      CS
-        LSRCS      R0, R1, R2                    //    R1 = MNT.HI >> EXP - 32
-        MOVCS      R1, #0                        //    R0 = 0
+        LSRCS      R0, R1, R2                    // R1 = MNT.HI >> EXP - 32
+        MOVCS      R1, #0                        // R0 = 0
 
         RSBCC      R2, R3, #0x20                 // IF (EXP < 32)
         LSRCC      R0, R0, R3                    // R0:R1 = R0:R1 >> EXP

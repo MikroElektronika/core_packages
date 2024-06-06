@@ -58,16 +58,16 @@ void clockConfig( void )
 {
     HAL_Init();
 
-    // Enable system and power clocks.
+    /* Enable system and power clocks */
     __HAL_RCC_SYSCFG_CLK_ENABLE();
     __HAL_RCC_PWR_CLK_ENABLE();
 
-    // Configure the main internal regulator output voltage.
+    /* Configure the main internal regulator output voltage */
     if ( HAL_PWREx_ControlVoltageScaling( PWR_REGULATOR_VOLTAGE_SCALE1_BOOST ) != HAL_OK )
         while ( 1 )
             ;
 
-    // Select oscillators for configuration. More can be selected at once.
+    /* Get the oscillator type */
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_NONE;
     if ( VALUE_RCC_CR & RCC_CR_HSEON ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSE;
@@ -84,75 +84,93 @@ void clockConfig( void )
     if ( VALUE_RCC_CR & RCC_CR_MSION ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_MSI;
     }
-#if defined( RCC_HSI48_SUPPORT )
+    #if defined( RCC_HSI48_SUPPORT )
     if ( VALUE_RCC_CRRCR & RCC_CRRCR_HSI48ON ) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI48;
     }
-#endif /* RCC_HSI48_SUPPORT */
+    #endif /* RCC_HSI48_SUPPORT */
 
-    // Get HSE oscillator state.
+    /* Get HSE oscillator state */
     RCC_OscInitStruct.HSEState = VALUE_RCC_CR & RCC_HSE_BYPASS;
 
-// Get LSE oscillator state.
-#if defined( RCC_BDCR_LSESYSDIS )
+    /* Get LSE oscillator state */
+    #if defined( RCC_BDCR_LSESYSDIS )
     RCC_OscInitStruct.LSEState = VALUE_RCC_BDCR & RCC_LSE_BYPASS_RTC_ONLY;
-#else  /* RCC_BDCR_LSESYSDIS */
+    #else  /* RCC_BDCR_LSESYSDIS */
     RCC_OscInitStruct.LSEState = VALUE_RCC_BDCR & RCC_LSE_BYPASS;
-#endif /* RCC_BDCR_LSESYSDIS */
+    #endif /* RCC_BDCR_LSESYSDIS */
 
-    // Get HSI oscillator state.
+    /* Get HSI oscillator state */
     RCC_OscInitStruct.HSIState = VALUE_RCC_CR & RCC_CR_HSION;
-    // Get HSI oscillator calibration value.
+
+    /* Get HSI oscillator calibration value */
     RCC_OscInitStruct.HSICalibrationValue = ( VALUE_RCC_ICSCR & RCC_ICSCR_HSITRIM_Msk ) >> RCC_ICSCR_HSITRIM_Pos;
-    // Get LSI oscillator state.
+
+    /* Get LSI oscillator state */
     RCC_OscInitStruct.LSIState = VALUE_RCC_CSR & RCC_CSR_LSION;
-// Get LSI oscillator state.
-#if defined( RCC_CSR_LSIPREDIV )
+
+    /* Get LSI oscillator state */
+    #if defined( RCC_CSR_LSIPREDIV )
     RCC_OscInitStruct.LSIDiv = VALUE_RCC_CSR & RCC_CSR_LSIPREDIV;
-#endif /* RCC_CSR_LSIPREDIV */
-    // Get MSI oscillator state.
+    #endif /* RCC_CSR_LSIPREDIV */
+
+    /* Get MSI oscillator state */
     RCC_OscInitStruct.MSIState = VALUE_RCC_CR & RCC_CR_MSION;
-    // Get MSI oscillator calibration value.
+
+    /* Get MSI oscillator calibration value. */
     RCC_OscInitStruct.MSICalibrationValue = ( VALUE_RCC_ICSCR & RCC_ICSCR_MSITRIM_Msk ) >> RCC_ICSCR_MSITRIM_Pos;
-    // Get MSI oscillator clock range.
+
+    /* Get MSI oscillator clock range */
     RCC_OscInitStruct.MSIClockRange = VALUE_RCC_CR & RCC_CR_MSIRANGE_Msk;
-// Get HSI48 oscillator state.
-#if defined( RCC_HSI48_SUPPORT )
+
+    /* Get HSI48 oscillator state */
+    #if defined( RCC_HSI48_SUPPORT )
     RCC_OscInitStruct.HSI48State = VALUE_RCC_CRRCR & RCC_CRRCR_HSI48ON;
-#else
+    #else
     RCC_OscInitStruct.HSI48State = RCC_HSI48_OFF;
-#endif /* RCC_HSI48_SUPPORT */
-    // Get PLL state.
+    #endif /* RCC_HSI48_SUPPORT */
+
+    /* Get PLL state */
     RCC_OscInitStruct.PLL.PLLState = ( VALUE_RCC_CR & RCC_CR_PLLON ) ? RCC_PLL_ON : RCC_PLL_OFF;
-    // Get PLL source.
+
+    /* Get PLL source */
     RCC_OscInitStruct.PLL.PLLSource = VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLSRC_Msk;
-    // Get PLL M divider.
+
+    /* Get PLL M divider */
     RCC_OscInitStruct.PLL.PLLM = ( ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLM_Msk ) >> RCC_PLLCFGR_PLLM_Pos ) + 1;
-    // Get PLL N multiplier.
+
+    /* Get PLL N multiplier */
     RCC_OscInitStruct.PLL.PLLN = ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLN_Msk ) >> RCC_PLLCFGR_PLLN_Pos;
-// Get PLL P divider.
-#if defined( RCC_PLLP_SUPPORT )
+
+    /* Get PLL P divider */
+    #if defined( RCC_PLLP_SUPPORT )
     RCC_OscInitStruct.PLL.PLLP = ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLP_Msk ) >> RCC_PLLCFGR_PLLP_Pos;
-#endif /* RCC_PLLP_SUPPORT */
-    // Get PLL Q divider.
+    #endif /* RCC_PLLP_SUPPORT */
+
+    /* Get PLL Q divider */
     RCC_OscInitStruct.PLL.PLLQ = ( ( ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLQ_Msk ) >> RCC_PLLCFGR_PLLQ_Pos ) + 1 ) << 1;
-    // Get PLL R divider.
+
+    /* Get PLL R divider */
     RCC_OscInitStruct.PLL.PLLR = ( ( ( VALUE_RCC_PLLCFGR & RCC_PLLCFGR_PLLR_Msk ) >> RCC_PLLCFGR_PLLR_Pos ) + 1 ) << 1;
 
-    // Initializes the RCC Oscillators according to the specified parameters in the RCC_OscInitTypeDef structure.
+    /* Configure RCC control registers */
     if ( HAL_RCC_OscConfig( &RCC_OscInitStruct ) != HAL_OK )
         while ( 1 )
             ;
 
-    // Select which bus clock will be configured. More can be selected at once.
+    /* Select which bus clock will be configured. More can be selected at once */
     RCC_ClkInitStruct.ClockType = ( RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2 );
-    // Gets SYSCLK clock source.
+
+    /* Gets SYSCLK clock source */
     RCC_ClkInitStruct.SYSCLKSource = VALUE_RCC_CFGR & RCC_CFGR_SW_Msk;
-    // Gets AHB1 clock source.
+
+    /* Gets AHB1 clock source */
     RCC_ClkInitStruct.AHBCLKDivider = VALUE_RCC_CFGR & RCC_CFGR_HPRE_Msk;
-    // Gets APB1 clock source.
+
+    /* Gets APB1 clock source */
     RCC_ClkInitStruct.APB1CLKDivider = VALUE_RCC_CFGR & RCC_CFGR_PPRE1_Msk;
-    // Gets APB2 clock source.
+
+    /* Gets APB2 clock source */
     RCC_ClkInitStruct.APB2CLKDivider = ( VALUE_RCC_CFGR & RCC_CFGR_PPRE2_Msk ) >> 3;
 
     uint32_t flash_latency           = FLASH_ACR_LATENCY_0WS;
@@ -168,7 +186,7 @@ void clockConfig( void )
         flash_latency = FLASH_ACR_LATENCY_1WS;
     }
 
-    // Initializes the CPU, AHB and APB buses clocks.
+    /* Initialize the CPU, AHB and APB buses clocks */
     if ( HAL_RCC_ClockConfig( &RCC_ClkInitStruct, flash_latency ) != HAL_OK )
         while ( 1 )
             ;

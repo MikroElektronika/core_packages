@@ -576,7 +576,7 @@ void _Sub_FP(void)
         BPL        __me_loop
 
         ANDS       R4, R1, #0x80             // GUARD BIT
-        BEQ        __me_no_round                  // IF GUARD BIT 0, DO NOT ROUND
+        BEQ        __me_no_round             // IF GUARD BIT 0, DO NOT ROUND
         AND        R5, R1, #0x20             // IF RESULT REQUIRED NORMALIZATION
         ORR        R8, R8, R5                //  BIT 26 MUST BE ADDED TO STICKY
         ADDS       R1, R1, #0x80             // ROUND THE MANTISSA TO THE NEAREST
@@ -818,7 +818,7 @@ void _Compare_FP()
         BNE        __me_ct1_
 
         LSR        R4, R2, #31               // HANDLE THE CASE OF BOTH INPUTS
-        SUBS       R4, R4, R0, LSR #31      // BEING INFINITE
+        SUBS       R4, R4, R0, LSR #31       // BEING INFINITE
         B          __me_lab_end
 
     __me_ct1_:
@@ -874,7 +874,7 @@ void _Add_DP()
 
     __me_lab2:
         CMP        R3, #0
-        BPL        __me_lab3                         // IF INPUT #2 IS NEGATIVE,
+        BPL        __me_lab3                  // IF INPUT #2 IS NEGATIVE,
         MOVS       R10, #0
         RSBS       R8, R8, #0                 //  THEN NEGATE THE MANTISSA
         SBC        R7, R10, R7
@@ -933,7 +933,7 @@ void _Add_DP()
         CMP        LR, #0                     // ADJUST THE SECOND MANTISSA, BASED
         ITT        EQ
         MOVEQ      R11, #0
-        BEQ        __me_no_sft                     // UPON ITS EXPONENT.
+        BEQ        __me_no_sft                // UPON ITS EXPONENT.
 
         RSB        R10, LR, #57               // CALCULATE STICKY BIT
         SUBS       R9, R10, #32               // PERFORM LONG LONG LSL by R10
@@ -980,14 +980,14 @@ void _Add_DP()
         BPL        __me_nloop
 
         ANDS       LR, R5, #0x400             // GUARD_BIT
-        BEQ        __me_no_round                   // IF GUARD BIT 0, DO NOT ROUND
+        BEQ        __me_no_round              // IF GUARD BIT 0, DO NOT ROUND
         AND        R9, R5, #0x100             // IF RESULT REQUIRED NORMALIZATION
         ORR        R11, R11, R9               //  BIT 26 MUST BE ADDED TO STICKY
         ADDS       R5, R5, #0x400             // ROUND THE MANTISSA TO THE NEAREST
         ADCS       R4, R4, #0
         IT         CS
         ADDCS      R6, R6, #1                 // ADJUST EXPONENT IF AN OVERFLOW OCCURS
-        BCS        __me_ovfl                       // IF OVERFLOW, RESULT IS ALREADY EVEN
+        BCS        __me_ovfl                  // IF OVERFLOW, RESULT IS ALREADY EVEN
         AND        R9, R5, #0x200             // GET ROUND BIT
         ORRS       R11, R11, R9               // (ROUND + STICKY)
         IT         EQ                         // IF (ROUND + STICKY) == 0
@@ -1019,7 +1019,7 @@ void _Add_DP()
         B          __me_lab_end
 
 
-    __me_lab9:     LSLS       R7, R4, #20                // REPACK THE MANTISSA INTO
+    __me_lab9:     LSLS       R7, R4, #20     // REPACK THE MANTISSA INTO
         ORR        R0, R7, R5, LSR #12        // R1:R0
         LSRS       R1, R4, #12
         ORR        R1, R1, R6, LSL #20        // REPACK THE EXPONENT INTO R1
@@ -1062,7 +1062,7 @@ void _Sub_DP(void)
 
     __me_lab2:
         CMP        R3, #0
-        BPL        __me_lab3                         // IF INPUT #2 IS NEGATIVE,
+        BPL        __me_lab3                  // IF INPUT #2 IS NEGATIVE,
         MOVS       R10, #0
         RSBS       R8, R8, #0                 //  THEN NEGATE THE MANTISSA
         SBC        R7, R10, R7
@@ -1095,7 +1095,7 @@ void _Sub_DP(void)
 
     __me_lab5:
         CMP        R1, #0
-        BPL        __me_lab6                         // IF INPUT #1 IS NEGATIVE,
+        BPL        __me_lab6                  // IF INPUT #1 IS NEGATIVE,
         MOVS       R10, #0
         RSBS       R5, R5, #0                 //  THEN NEGATE THE MANTISSA
         SBC        R4, R10, R4
@@ -1121,7 +1121,7 @@ void _Sub_DP(void)
         CMP        LR, #0                     // ADJUST THE SECOND MANTISSA, BASED
         ITT        EQ
         MOVEQ      R11, #0
-        BEQ        __me_no_sft                     // UPON ITS EXPONENT.
+        BEQ        __me_no_sft                // UPON ITS EXPONENT.
 
         RSB        R10, LR, #57               // CALCULATE STICKY BIT
         SUBS       R9, R10, #32               // PERFORM LONG LONG LSL by R10
@@ -1158,8 +1158,8 @@ void _Sub_DP(void)
         BPL        __me_nloop
         MOVS       R10, #0x1                  // IF THE RESULT IS NEGATIVE, THEN
         MOVS       LR, #0
-        RSBS       R5, R5, #0x0               //  NOTE THE SIGN AND
-        SBC        R4, LR, R4                 //  NEGATE THE RESULT
+        RSBS       R5, R5, #0x0               // NOTE THE SIGN AND
+        SBC        R4, LR, R4                 // NEGATE THE RESULT
 
     __me_nloop:
         SUB        R6, R6, #1                 // ADJUSTING THE EXPONENT AS NECESSARY
@@ -1168,7 +1168,7 @@ void _Sub_DP(void)
         BPL        __me_nloop
 
         ANDS       LR, R5, #0x400             // GUARD_BIT
-        BEQ        __me_no_round                   // IF GUARD BIT 0, DO NOT ROUND
+        BEQ        __me_no_round              // IF GUARD BIT 0, DO NOT ROUND
         AND        R9, R5, #0x100             // IF RESULT REQUIRED NORMALIZATION
         ORR        R11, R11, R9               //  BIT 26 MUST BE ADDED TO STICKY
         ADDS       R5, R5, #0x400             // ROUND THE MANTISSA TO THE NEAREST
@@ -1223,7 +1223,7 @@ void _Mul_DP()
     asm {
         PUSH        (R2-R8, LR)
 
-        EORS        R8, R1, R3                     // SET THE SIGN OF THE RESULT
+        EORS        R8, R1, R3                    // SET THE SIGN OF THE RESULT
         ITE         MI
         MOVMI       R8, #0x80000000
         MOVPL       R8, #0x00000000
@@ -1484,7 +1484,7 @@ void _Compare_DP()
 
     __me_label_1:
         ORRS    R4, R0, R2                // HANDLE THE CASE OF BOTH INPUTS BEING
-        BNE     __me_label_2                     // ZERO
+        BNE     __me_label_2              // ZERO
         ORR            R4, R1, R3
         LSLS    R4, R4, #1
         CMP     R4, #0x0
@@ -1729,8 +1729,8 @@ void _FloatToUnsignedLongLong()
         RSBS        R3, R3, #0x3F               // CHECK FOR OVERFLOW
         BCC         __me_ovfl                   // IF OVERFLOW, RETURN 0xFFFFFFFF
 
-        LSLS        R0, R0, #8                 // PUT MANTISSA IN R0
-        ORR         R0, R0, #0x80000000        // SET IMPLIED ONE IN MANTISSA
+        LSLS        R0, R0, #8                  // PUT MANTISSA IN R0
+        ORR         R0, R0, #0x80000000         // SET IMPLIED ONE IN MANTISSA
 
         CMP         R3, #0x20                   // IF R3 GREATER OR EQUAL TO 32, PERFORM
         ITTT        CS
@@ -1842,7 +1842,7 @@ void _LongDoubleToSignedLongLong()
         BMI        __me_lab_end
 
         RSBS       R4, R4, #0x3F          // CHECK FOR OVERFLOW
-        BLS        __me_ovfl                   // IF OVERFLOW, RETURN INFINITY
+        BLS        __me_ovfl              // IF OVERFLOW, RETURN INFINITY
 
         MOVS       R2, R1
         LSL        R1, R1, #11            // SHIFT THE EXPONENT (11 BITS)

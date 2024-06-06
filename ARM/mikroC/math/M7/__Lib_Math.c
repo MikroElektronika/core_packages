@@ -36,7 +36,7 @@ void _Div_64x64_S ( void )
         MOVS      tmp_hi, #0
         RSBS      tmp_lo, dvnd_lo, #0               // EABI, IF DVSR IS 0
 
-        SBCS      tmp_lo, tmp_hi, dvnd_hi                    // CHECK DVND
+        SBCS      tmp_lo, tmp_hi, dvnd_hi           // CHECK DVND
 
         // EABI, QUOTIENT AND REMAINDER ARE SWAPPED.
         // Q [rr_hi:rr_lo], R [rq_hi:rq_lo]
@@ -45,19 +45,13 @@ void _Div_64x64_S ( void )
         MVNLT     rr_hi, #0x80000000
 
         ITT       GT
-        MOVGT     rr_lo, #0                            // Q=LLONG_MIN IF DVND < 0
+        MOVGT     rr_lo, #0                         // Q=LLONG_MIN IF DVND < 0
         MOVGT     rr_hi, #0x80000000
 
         // Q==0 IF DVND==0 (BOTH USE THE SAME REGISTERS)
         // R==0 IF DVSR==0 (BOTH USE THE SAME REGISTERS)
 
-        B __me_lab_end
-        // .else
-        // ITTT          EQ
-        // MOVEQ     rr_lo, #0                         // IF DVSR IS 0,
-        // MOVEQ     rr_hi, #0                         // RETURN Q=0, R=0
-        // POPEQ     {R4-R9, pc}
-        // .endif
+        B        __me_lab_end
 
     __me_not_zero_:
         // STORE THE SIGN OF REMAINDER WHICH IS THE SIGN OF THE DIVIDEND IN
@@ -86,11 +80,11 @@ void _Div_64x64_S ( void )
 
         CMP       dvsr_hi, #0                       // IF (DVSR_HI == 0 AND
         IT        EQ
-        CMPEQ     dvsr_lo, dvnd_hi                  //    DVSRLO < DVND_HI)
+        CMPEQ     dvsr_lo, dvnd_hi                  // DVSRLO < DVND_HI)
 
         ITT       LS
-        MOVLS     dvsr_hi, dvsr_lo                  //    DVSR_HI = DVSRLO
-        MOVLS     dvsr_lo, #0                       //    DVSR_LO = 0
+        MOVLS     dvsr_hi, dvsr_lo                  // DVSR_HI = DVSRLO
+        MOVLS     dvsr_lo, #0                       // DVSR_LO = 0
 
         // IF DVND >> 16 > DVSR THEN DVSR = DVSR << 16
         LSRS      tmp_lo, dvnd_lo, #16              // SHIFT DVND BY 16 INTO
