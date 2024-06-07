@@ -3,3 +3,4 @@
 /necto_db.db
 metadata.json
 output
+__pycache__

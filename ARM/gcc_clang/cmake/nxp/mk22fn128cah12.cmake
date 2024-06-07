@@ -1,5 +1,5 @@
 ## MK22FN128CAH12 has specific sectors
-if(${MCU_NAME} STREQUAL "MK22FN128CAH12")
+if(${MCU_NAME} MATCHES "^MK22FN128CAH12$")
     set(${linkerScript} linker_scripts/${vendor}/mk22fn128xxx12xx.ld PARENT_SCOPE)
     ## Same documentaion as MK22F256xxx MCUs.
     set(${startupFile} startup/${vendor}/mk22f256xxx12.s PARENT_SCOPE)
