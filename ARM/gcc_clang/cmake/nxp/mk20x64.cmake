@@ -1,6 +1,6 @@
 if(${MCU_NAME} MATCHES "^MK20.+64.+$")
-    set(${linkerScript} linker_scripts/${vendor}/mk20dx64xxx5xx.ld PARENT_SCOPE)
-    set(${startupFile} startup/${vendor}/mk20xxx5.s PARENT_SCOPE)
+    set(${linkerScript} linker_scripts/${vendor}/${MCU_NAME}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${MCU_NAME}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/system_nxp_mk20xx_mk5xx_mk60xx.c)
     list(APPEND local_list_include system/inc/${vendor}/system_nxp_mk20xx_mk5xx_mk60xx.h)
     list(APPEND local_list_install system/inc/${vendor}/system_nxp_mk20xx_mk5xx_mk60xx.h)

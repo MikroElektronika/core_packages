@@ -1,6 +1,6 @@
 if(${MCU_NAME} MATCHES "^MK22FN512.+12$")
-    set(${linkerScript} linker_scripts/${vendor}/mk22fn512xxx12xx.ld PARENT_SCOPE)
-    set(${startupFile} startup/${vendor}/mk22f512xxx12.s PARENT_SCOPE)
+    set(${linkerScript} linker_scripts/${vendor}/${MCU_NAME}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${MCU_NAME}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/system_nxp_mk22fxx_mk64fxx.c)
     list(APPEND local_list_include system/inc/${vendor}/system_nxp_mk22fxx_mk64fxx.h)
     list(APPEND local_list_install system/inc/${vendor}/system_nxp_mk22fxx_mk64fxx.h)
