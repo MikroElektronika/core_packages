@@ -345,7 +345,7 @@ def copy_files_from_dir(mcus, source_dir, output_dir, base_path, subdirectory):
                     relative_path = os.path.relpath(root, start=source_subdir)
                     full_dest_path = os.path.join(output_subdir, relative_path)
                     shutil.copytree(root, full_dest_path, dirs_exist_ok=True)
-            if os.path.splitext(os.path.basename(file))[0].upper() in mcus:
+            if os.path.splitext(os.path.basename(file))[0].upper().replace('DSPIC', 'dsPIC') in mcus:
                 full_source_path = os.path.join(root, file)
                 relative_path = os.path.relpath(full_source_path, start=source_subdir)
                 full_dest_path = os.path.join(output_subdir, relative_path)
