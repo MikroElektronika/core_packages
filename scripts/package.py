@@ -721,7 +721,9 @@ async def main(token, repo, tag_name):
     ## EOF TODO - uncomment this section before public release
 
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
-    err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
+    # err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
+    err_check, db_path = downloadFile('https://s3.us-west-2.amazonaws.com/necto.mikroe.com/automation/test_db/necto_db.db',
+                                      '', 'necto_db.db', True)
     if 0 != err_check:
         raise ValueError("Failed to download database!")
 
@@ -760,6 +762,9 @@ async def main(token, repo, tag_name):
 
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
+
+    async with aiohttp.ClientSession() as session:
+        await upload_release_asset(session, token, repo, tag_name, "necto_db.db")
 
     #generate clocks.json
     input_directory = "./"
