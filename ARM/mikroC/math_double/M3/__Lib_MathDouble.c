@@ -648,6 +648,7 @@ void _Mul_FP(void)
         LSRS       R5, R5, #24
         ITEE       NE
         ORRNE      R4, R4, #0x80000000      // SET IMPLIED ONE IN MANTISSA IF R5 != 0
+        MOVEQ      R0, #0                   // IF R5 == 0, THEN UNDERFLOW
         BEQ        __me_lab_end
 
         CMP        R5, #0xFF                // IF R5 == 0xFF, THEN OVERFLOW
