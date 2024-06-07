@@ -1,14 +1,8 @@
+include(coreUtils)
+
+set_file_list()
+
 if(${MCU_NAME} MATCHES "^TM4C123.+$")
     set(${startupFile} startup/${vendor}/tm4c123xx.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/system_ti_tm4c123xx.c)
-    ## Get appropriate linker script.
-    if(${MCU_NAME} MATCHES "^TM4C123.H6.+$")
-        set(${linkerScript} linker_scripts/${vendor}/tm4c123xh6xx.ld PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^TM4C123.C3PM$")
-        set(${linkerScript} linker_scripts/${vendor}/tm4c123xxc3pm.ld PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^TM4C123.D5P[MZ]$")
-        set(${linkerScript} linker_scripts/${vendor}/tm4c123xd5px.ld PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^TM4C123.E6P[MZ]$")
-        set(${linkerScript} linker_scripts/${vendor}/tm4c123xe6px.ld PARENT_SCOPE)
-    endif()
 endif()

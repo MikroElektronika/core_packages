@@ -133,5 +133,5 @@ macro(add_macros fileDestination fileList)
 
         # Generate output file with adequate name and include directive
         configure_file(${PROJECT_SOURCE_DIR}/cmake/InstallHeaders.cmake.in ${fileDestination}/${fileList})
-    endif ()
+    endif()
 endmacro()

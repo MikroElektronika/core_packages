@@ -1,12 +1,9 @@
+include(coreUtils)
+
+set_file_list()
+
 if(${MCU_NAME} MATCHES "^MKV4[246]F128.+16$")
     set(${linkerScript} linker_scripts/${vendor}/mkv4xf128xxx16xx.ld PARENT_SCOPE)
-    if(${MCU_NAME} MATCHES "^MKV42F.+16$")
-        set(${startupFile} startup/${vendor}/mkv42fxxx16.s PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^MKV44F.+16$")
-        set(${startupFile} startup/${vendor}/mkv44fxxx16.s PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^MKV46F.+16$")
-        set(${startupFile} startup/${vendor}/mkv46fxxx16.s PARENT_SCOPE)
-    endif()
     list(APPEND local_list_include system/src/${vendor}/system_nxp_mkv4xfxx.c)
     list(APPEND local_list_include system/inc/${vendor}/system_nxp_mkv4xfxx.h)
     list(APPEND local_list_install system/inc/${vendor}/system_nxp_mkv4xfxx.h)

@@ -196,3 +196,16 @@ macro(create_core_library)
     preinit_support(lib_core)
 
 endmacro()
+
+#############################################################################
+## Macro to set MCU specific variables
+#############################################################################
+macro(set_file_list)
+    if(${MCU_NAME} MATCHES "^dsPIC33(.+)$|^PIC24(.+)$")
+        if(${MCU_NAME} MATCHES "^dsPIC33E[VP](.+)$|^PIC24E[VP](.+)$")
+            set(DELAY_SOURCE "delay/dspic_ep/__lib_delays.c")
+        else()
+            set(DELAY_SOURCE "delay/dspic/__lib_delays.c")
+        endif()
+    endif()
+endmacro()
