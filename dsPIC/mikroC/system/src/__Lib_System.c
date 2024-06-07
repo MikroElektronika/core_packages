@@ -68,11 +68,10 @@ void __FillZerosFar( void far * dest, unsigned long sizeinbytes )
         if ( sizeinbytes > 1 ) {
             W4 = ( sizeinbytes >> 1 ) - 1;
             W5 = dest;
-            asm
-            {
-                        MOV #0, W6
-                        repeat W4
-                        MOV W6,[W5++]
+            asm {
+                MOV #0, W6
+                repeat W4
+                MOV W6,[W5++]
             }
         }
         return;
@@ -181,8 +180,7 @@ void __CFar2Far( void far * dest, void far * source, unsigned long sizeinbytes )
                 W4 = ( sizeinbytes >> 1 ) - 1;
                 W5 = dest;
                 W6 = source;
-                asm
-                {
+                asm {
                     repeat W4
                     MOV [W6++],[W5++]
                 }
