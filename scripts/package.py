@@ -722,8 +722,10 @@ async def main(token, repo, tag_name):
 
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
     # err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
-    err_check, db_path = downloadFile('https://s3.us-west-2.amazonaws.com/necto.mikroe.com/automation/test_db/necto_db.db',
-                                      '', 'necto_db.db', True)
+    # err_check, db_path = downloadFile('https://s3.us-west-2.amazonaws.com/necto.mikroe.com/automation/test_db/necto_db.db',
+                                    #   '', 'necto_db.db', True)
+    err_check = 0
+    db_path = 'necto_db.db'
     if 0 != err_check:
         raise ValueError("Failed to download database!")
 
