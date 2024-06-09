@@ -112,11 +112,5 @@ class GenerateClocks:
         header = struct.pack('>I', uncompressed_size)
         compressed_data_with_header = header + compressed_data
 
-        with open(self.output_file, 'w') as file:
-            file.write(json_str)
-
-if __name__ == "__main__":
-    input_directory = "/home/software/GIT/core_packages"
-    output_file = "clocks.json"
-    generator = GenerateClocks(input_directory, output_file)
-    generator.generate()
+        with open(self.output_file, 'wb') as file:
+            file.write(compressed_data_with_header)

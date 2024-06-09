@@ -4,6 +4,7 @@ import argparse, aiohttp, asyncio
 import aiofiles, hashlib, time
 import sqlite3
 from clocks import GenerateClocks
+from schemas import GenerateSchemas
 
 from pathlib import Path
 from elasticsearch import Elasticsearch
@@ -771,10 +772,18 @@ async def main(token, repo, tag_name):
     #generate clocks.json
     input_directory = "./"
     output_file = "./clocks.json"
-    generator = GenerateClocks(input_directory, output_file)
-    generator.generate()
+    clocksGenerator = GenerateClocks(input_directory, output_file)
+    clocksGenerator.generate()
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "clocks.json")
+
+    #generate schemas.json
+    input_directory = "./"
+    output_file = "./schemas.json"
+    schemaGenerator = GenerateSchemas(input_directory, output_file)
+    schemaGenerator.generate()
+    async with aiohttp.ClientSession() as session:
+        await upload_release_asset(session, token, repo, tag_name, "schemas.json")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")

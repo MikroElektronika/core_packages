@@ -6,7 +6,7 @@ import logging
 from collections import defaultdict
 from hashlib import md5
 
-class GenerateClocks:
+class GenerateSchemas:
     def __init__(self, input_directory, output_file):
         self.input_directory = input_directory
         self.output_file = output_file
@@ -109,10 +109,3 @@ class GenerateClocks:
             logging.info(f"Output file {self.output_file} generated successfully.")
         except Exception as e:
             logging.error(f"Error writing output file {self.output_file}: {e}")
-
-
-if __name__ == "__main__":
-    input_directory = "/home/software/GIT/core_packages"
-    output_file = "schemas.json"
-    generator = GenerateClocks(input_directory, output_file)
-    generator.generate()
