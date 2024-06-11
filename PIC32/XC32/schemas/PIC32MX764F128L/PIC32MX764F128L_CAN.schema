@@ -46,11 +46,11 @@
             },
             {
                 "key": "UPLLIDIV",
-                "value": "DIV_12"
+                "value": "DIV_2"
             },
             {
                 "key": "UPLLEN",
-                "value": "OFF"
+                "value": "ON"
             },
             {
                 "key": "FPLLODIV",

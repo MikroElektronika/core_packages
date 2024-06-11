@@ -4,6 +4,7 @@ import argparse, aiohttp, asyncio
 import aiofiles, hashlib, time
 import sqlite3
 from clocks import GenerateClocks
+from schemas import GenerateSchemas
 
 from pathlib import Path
 from elasticsearch import Elasticsearch
@@ -125,7 +126,7 @@ def extract_mcu_names(file_name, source_dir, output_dir, regex):
                     mcu_name = os.path.splitext(file)[0]
                     if regex_pattern.match(mcu_name):
                         mcus[file_name]['mcu_names'].add(mcu_name)
-                        if 'gcc_clang' in source_dir:
+                        if 'gcc_clang' in source_dir or 'XC32' in source_dir:
                             isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config FROM Devices WHERE name IS "{mcu_name}"')
                             if isPresent:
                                 configJson = json.loads(readData[0][0])
@@ -178,17 +179,26 @@ def copy_files_based_on_regex(source_dir, dest_dir, check_string):
     if not check_string:
         return
 
+    fileCopied = False
     for root, dirs, files in os.walk(source_dir):
         for file in files:
             if file.endswith(".cmake"):
                 full_path = os.path.join(root, file)
                 regexes = extract_regex_from_cmake(full_path)
                 for regex in regexes:
-                    if re.match(regex, check_string):
+                    if re.match(regex, check_string) and not fileCopied:
                         # If check_string matches the regex, copy the file
+                        fileCopied = True
                         dest_file_path = os.path.join(dest_dir, file)
                         os.makedirs(os.path.dirname(dest_file_path), exist_ok=True)
                         shutil.copy(full_path, dest_file_path)
+        if not fileCopied and 'STM32' in check_string and 'gcc_clang' in source_dir:
+            if check_string[6] == '7': ## in special grouped case for M7 not covered by single files
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(os.path.join(root, 'm7.cmake'), os.path.join(dest_dir, 'm7.cmake'))
+            elif check_string[6] == '0': ## in special grouped case for M0 not covered by single files
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(os.path.join(root, 'm0.cmake'), os.path.join(dest_dir, 'm0.cmake'))
 
 
 def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
@@ -341,16 +351,23 @@ def copy_files_from_dir(mcus, source_dir, output_dir, base_path, subdirectory):
         for file in files:
             if os.path.basename(file) == 'mcu.h':
                 # Special rule for 'mcu.h' files, ensure the directory matches the regex
-                if os.path.basename(root).upper() in mcus:
+                if 'XC16' in root:
+                    mcuCheck = os.path.basename(root)
+                else:
+                    mcuCheck = os.path.basename(root).upper()
+                if mcuCheck in mcus:
                     relative_path = os.path.relpath(root, start=source_subdir)
                     full_dest_path = os.path.join(output_subdir, relative_path)
                     shutil.copytree(root, full_dest_path, dirs_exist_ok=True)
-            if os.path.splitext(os.path.basename(file))[0].upper() in mcus:
-                full_source_path = os.path.join(root, file)
-                relative_path = os.path.relpath(full_source_path, start=source_subdir)
-                full_dest_path = os.path.join(output_subdir, relative_path)
-                os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
-                shutil.copy(full_source_path, full_dest_path)
+            if os.path.splitext(os.path.basename(file))[0].upper().replace('DSPIC', 'dsPIC') in mcus:
+                if 'gcc_clang' in source_subdir and re.match('^MKV?.+XXX.+$', file):
+                    continue
+                else:
+                    full_source_path = os.path.join(root, file)
+                    relative_path = os.path.relpath(full_source_path, start=source_subdir)
+                    full_dest_path = os.path.join(output_subdir, relative_path)
+                    os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
+                    shutil.copy(full_source_path, full_dest_path)
 
 def copy_delays(cores, source_dir, output_dir, base_path):
 
@@ -721,7 +738,11 @@ async def main(token, repo, tag_name):
     ## EOF TODO - uncomment this section before public release
 
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
-    err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
+    # err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
+    # err_check, db_path = downloadFile('https://s3.us-west-2.amazonaws.com/necto.mikroe.com/automation/test_db/necto_db.db',
+                                    #   '', 'necto_db.db', True)
+    err_check = 0
+    db_path = 'necto_db.db'
     if 0 != err_check:
         raise ValueError("Failed to download database!")
 
@@ -761,13 +782,24 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
 
+    async with aiohttp.ClientSession() as session:
+        await upload_release_asset(session, token, repo, tag_name, "necto_db.db")
+
     #generate clocks.json
     input_directory = "./"
     output_file = "./clocks.json"
-    generator = GenerateClocks(input_directory, output_file)
-    generator.generate()
+    clocksGenerator = GenerateClocks(input_directory, output_file)
+    clocksGenerator.generate()
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "clocks.json")
+
+    #generate schemas.json
+    input_directory = "./"
+    output_file = "./schemas.json"
+    schemaGenerator = GenerateSchemas(input_directory, output_file)
+    schemaGenerator.generate()
+    async with aiohttp.ClientSession() as session:
+        await upload_release_asset(session, token, repo, tag_name, "schemas.json")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")

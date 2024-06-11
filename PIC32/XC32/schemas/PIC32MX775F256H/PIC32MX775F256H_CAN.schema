@@ -5,7 +5,7 @@
     "flash": 262144,
     "ram": 65536,
     "settings": {
-        "clock": "1",
+        "clock": "80",
         "scheme": "PIC32MX775F256H_CAN",
         "mcu": "PIC32MX775F256H",
         "core": "",
@@ -38,39 +38,39 @@
             },
             {
                 "key": "FPLLIDIV",
-                "value": "DIV_12"
+                "value": "DIV_4"
             },
             {
                 "key": "FPLLMUL",
-                "value": "MUL_24"
+                "value": "MUL_20"
             },
             {
                 "key": "UPLLIDIV",
-                "value": "DIV_12"
+                "value": "DIV_2"
             },
             {
                 "key": "UPLLEN",
-                "value": "OFF"
+                "value": "ON"
             },
             {
                 "key": "FPLLODIV",
-                "value": "DIV_256"
+                "value": "DIV_1"
             },
             {
                 "key": "FNOSC",
-                "value": "FRCDIV"
+                "value": "PRIPLL"
             },
             {
                 "key": "FSOSCEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "IESO",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "POSCMOD",
-                "value": "OFF"
+                "value": "HS"
             },
             {
                 "key": "OSCIOFNC",
@@ -78,7 +78,7 @@
             },
             {
                 "key": "FPBDIV",
-                "value": "DIV_8"
+                "value": "DIV_1"
             },
             {
                 "key": "FCKSM",
@@ -90,7 +90,7 @@
             },
             {
                 "key": "FWDTEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "DEBUG",

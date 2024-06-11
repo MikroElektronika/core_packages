@@ -1,5 +1,6 @@
 *.asm
 .vscode
-/necto_db.db
+# /necto_db.db
 metadata.json
 output
+__pycache__

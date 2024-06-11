@@ -42,7 +42,7 @@
             },
             {
                 "key": "FPLLRNG",
-                "value": "RANGE_5_10_MHZ"
+                "value": "RANGE_8_16_MHZ"
             },
             {
                 "key": "FPLLICLK",
@@ -50,7 +50,7 @@
             },
             {
                 "key": "FPLLMULT",
-                "value": "MUL_50"
+                "value": "MUL_100"
             },
             {
                 "key": "FPLLODIV",
@@ -58,7 +58,7 @@
             },
             {
                 "key": "UPLLFSEL",
-                "value": "FREQ_24MHZ"
+                "value": "FREQ_12MHZ"
             },
             {
                 "key": "FNOSC",
@@ -70,15 +70,15 @@
             },
             {
                 "key": "FSOSCEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "IESO",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "POSCMOD",
-                "value": "EC"
+                "value": "HS"
             },
             {
                 "key": "OSCIOFNC",
@@ -114,7 +114,7 @@
             },
             {
                 "key": "FDMTEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "DEBUG",

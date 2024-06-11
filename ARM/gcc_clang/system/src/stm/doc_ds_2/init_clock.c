@@ -42,23 +42,28 @@
 #include "core_header.h"
 #include "stm32c0xx_hal_rcc.h"
 
-#define FLASH_LATENCY_0 0x00  /*!< FLASH Zero wait state  */
-#define FLASH_LATENCY_1 0x01  /*!< FLASH One wait state   */
-#define FOSC_24_KHz     24000 /*!< 24 MHz clock frequency */
+#define FLASH_LATENCY_0  0x00       /*!< FLASH Zero wait state */
+#define FLASH_LATENCY_1  0x01       /*!< FLASH One wait state */
+#define FOSC_24_KHz      24000      /*!< 24 MHz clock frequency */
 
-static RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
-static RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
+static RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+static RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+typedef struct RCC_ClocksTypeDef {
+    uint32_t SYSCLK_Frequency; // SYSCLK clock frequency  in Hz
+    uint32_t HCLK_Frequency;   // HCLK   clock frequency  in Hz
+    uint32_t PCLK_Frequency;   // PCLK   clock frequency  in Hz
+    uint32_t TPCLK_Frequency;  // TPCLK  clock frequency  in Hz
+} RCC_ClocksTypeDef_t;
 
 extern uint32_t uwTick;
 extern uint32_t uwTickFreq;
 
-__attribute__( ( interrupt( "IRQ" ) ) ) void SysTick_Handler( void )
-{
-    uwTick += ( uint32_t )uwTickFreq;
+__attribute__ ((interrupt("IRQ"))) void SysTick_Handler(void) {
+    uwTick += (uint32_t)uwTickFreq;
 }
 
-void clockConfig( void )
-{
+void clockConfig(void) {
     uint8_t flatency;
 
     /* Reset of all peripherals, initialize the Flash interface and the Systick. */
@@ -70,16 +75,16 @@ void clockConfig( void )
 
     /* Get the oscillator type */
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_NONE;
-    if ( VALUE_RCC_CR & RCC_CR_HSEON ) {
+    if (VALUE_RCC_CR & RCC_CR_HSEON) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSE;
     }
-    if ( VALUE_RCC_CR & RCC_CR_HSION ) {
+    if (VALUE_RCC_CR & RCC_CR_HSION) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI;
     }
-    if ( VALUE_RCC_CSR1 & RCC_CSR1_LSEON ) {
+    if (VALUE_RCC_CSR1 & RCC_CSR1_LSEON) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_LSE;
     }
-    if ( VALUE_RCC_CSR2 & RCC_CSR2_LSION ) {
+    if (VALUE_RCC_CSR2 & RCC_CSR2_LSION) {
         RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_LSI;
     }
 
@@ -96,15 +101,14 @@ void clockConfig( void )
     RCC_OscInitStruct.HSIDiv = VALUE_RCC_CR & RCC_CR_HSIDIV_Msk;
 
     /* Get the HSI clock calibration information */
-    RCC_OscInitStruct.HSICalibrationValue = ( VALUE_RCC_ICSCR & RCC_ICSCR_HSITRIM_Msk ) >> RCC_ICSCR_HSITRIM_Pos;
+    RCC_OscInitStruct.HSICalibrationValue = (VALUE_RCC_ICSCR & RCC_ICSCR_HSITRIM_Msk) >> RCC_ICSCR_HSITRIM_Pos;
 
     /* Get the LSI clock state information */
     RCC_OscInitStruct.LSIState = VALUE_RCC_CSR2 & RCC_CSR2_LSION_Msk;
 
     /* Configure RCC control registers */
-    if ( HAL_RCC_OscConfig( &RCC_OscInitStruct ) != HAL_OK )
-        while ( 1 )
-            ;
+    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+        while(1);
 
     /* Set all clock types for configuration */
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_ALL;
@@ -122,14 +126,60 @@ void clockConfig( void )
     RCC_ClkInitStruct.APB1CLKDivider = VALUE_RCC_CFGR & RCC_CFGR_PPRE_Msk;
 
     /* Set flash latency based on the frequency value*/
-    if ( FOSC_24_KHz < FOSC_KHZ_VALUE ) {
+    if (FOSC_24_KHz < FOSC_KHZ_VALUE) {
         flatency = FLASH_LATENCY_1;
     } else {
         flatency = FLASH_LATENCY_0;
     }
 
     /* Configure RCC configuration register */
-    if ( HAL_RCC_ClockConfig( &RCC_ClkInitStruct, flatency ) != HAL_OK )
-        while ( 1 )
-            ;
+    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, flatency) != HAL_OK)
+        while(1);
+}
+
+//*****************************************************************************
+// Prescaler tables
+//*****************************************************************************
+
+static const uint16_t AHBPrescArray[9] = {1, 2, 4, 8, 32, 64, 128, 256, 512};
+static const uint8_t APBPrescArray[5] = {1, 2, 4, 8, 16};
+
+//*****************************************************************************
+// Compute SYSCLK, PCLK clocks frequencies
+//*****************************************************************************
+
+void RCC_GetClocksFrequency(RCC_ClocksTypeDef_t *RCC_Clocks) {
+    volatile uint32_t tmp = 0, presc = 0;
+
+    RCC_Clocks->SYSCLK_Frequency = FOSC_KHZ_VALUE * 1000;
+
+    /* Get HCLK prescaler */
+    tmp = READ_REG(RCC->CFGR) & RCC_CFGR_HPRE_Msk;
+    tmp = tmp >> RCC_CFGR_HPRE_Pos;
+    if (tmp < 8) { tmp = 7; }
+    presc = AHBPrescArray[tmp - 7];
+
+    /* HCLK clock frequency */
+    RCC_Clocks->HCLK_Frequency = RCC_Clocks->SYSCLK_Frequency / presc;
+
+    /* Get PCLK1 prescaler */
+    tmp = READ_REG(RCC->CFGR) & RCC_CFGR_PPRE_Msk;
+    tmp = tmp >> RCC_CFGR_PPRE_Pos;
+    if (tmp < 4) { tmp = 3; }
+    presc = APBPrescArray[tmp - 3];
+
+    /* PCLK1 clock frequency */
+    RCC_Clocks->PCLK_Frequency = RCC_Clocks->HCLK_Frequency / presc;
+
+    /**
+     * Get TPCLK prescaler
+     * TPCLK clock is calculated in the following way:
+     * If APB Prescaler = 1 then TPCLK prescaler is x1
+     * else if APB Presc > 1 then TPCLK presc is x2
+     **/
+    if (presc == 1) {
+        RCC_Clocks->TPCLK_Frequency = RCC_Clocks->PCLK_Frequency;
+    } else {
+        RCC_Clocks->TPCLK_Frequency = RCC_Clocks->PCLK_Frequency * 2;
+    }
 }

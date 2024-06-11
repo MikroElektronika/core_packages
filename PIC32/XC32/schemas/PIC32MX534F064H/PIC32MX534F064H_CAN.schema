@@ -18,7 +18,7 @@
             },
             {
                 "key": "FCANIO",
-                "value": "OFF"
+                "value": "ON"
             },
             {
                 "key": "FUSBIDIO",
@@ -30,7 +30,7 @@
             },
             {
                 "key": "FPLLIDIV",
-                "value": "DIV_3"
+                "value": "DIV_4"
             },
             {
                 "key": "FPLLMUL",
@@ -38,7 +38,7 @@
             },
             {
                 "key": "UPLLIDIV",
-                "value": "DIV_3"
+                "value": "DIV_2"
             },
             {
                 "key": "UPLLEN",
@@ -54,11 +54,11 @@
             },
             {
                 "key": "FSOSCEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "IESO",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "POSCMOD",

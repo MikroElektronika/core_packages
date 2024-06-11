@@ -115,7 +115,8 @@ void ____DoIFC()
 char Swap( char input )
 {
     R0 = input;
-    asm swapf R0, F return R0;
+    asm swapf R0, F
+    return R0;
 }
 
 /**

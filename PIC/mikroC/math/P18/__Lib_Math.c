@@ -887,7 +887,7 @@ void Div_32x32_S()
                 }
 
     asm {
-        FXD3232S:
+    FXD3232S:
         CLRF    math_main_global_SSIGN
         BTFSC   math_main_global_YHi_2,7
         INCF    math_main_global_SSIGN,F
@@ -904,8 +904,7 @@ void Div_32x32_S()
         BTFSC   STATUS,Z,0
         BRA     END_ALL
     }
-    asm
-    {
+    asm {
         MOVF    math_main_global_XHi_2,W
         XORWF   math_main_global_YHi_2,W
         MOVWF   math_main_global_TEMPB
