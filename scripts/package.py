@@ -126,7 +126,7 @@ def extract_mcu_names(file_name, source_dir, output_dir, regex):
                     mcu_name = os.path.splitext(file)[0]
                     if regex_pattern.match(mcu_name):
                         mcus[file_name]['mcu_names'].add(mcu_name)
-                        if 'gcc_clang' in source_dir:
+                        if 'gcc_clang' in source_dir or 'XC32' in source_dir:
                             isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config FROM Devices WHERE name IS "{mcu_name}"')
                             if isPresent:
                                 configJson = json.loads(readData[0][0])
@@ -179,17 +179,26 @@ def copy_files_based_on_regex(source_dir, dest_dir, check_string):
     if not check_string:
         return
 
+    fileCopied = False
     for root, dirs, files in os.walk(source_dir):
         for file in files:
             if file.endswith(".cmake"):
                 full_path = os.path.join(root, file)
                 regexes = extract_regex_from_cmake(full_path)
                 for regex in regexes:
-                    if re.match(regex, check_string):
+                    if re.match(regex, check_string) and not fileCopied:
                         # If check_string matches the regex, copy the file
+                        fileCopied = True
                         dest_file_path = os.path.join(dest_dir, file)
                         os.makedirs(os.path.dirname(dest_file_path), exist_ok=True)
                         shutil.copy(full_path, dest_file_path)
+        if not fileCopied and 'STM32' in check_string and 'gcc_clang' in source_dir:
+            if check_string[6] == '7': ## in special grouped case for M7 not covered by single files
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(os.path.join(root, 'm7.cmake'), os.path.join(dest_dir, 'm7.cmake'))
+            elif check_string[6] == '0': ## in special grouped case for M0 not covered by single files
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(os.path.join(root, 'm0.cmake'), os.path.join(dest_dir, 'm0.cmake'))
 
 
 def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
@@ -342,7 +351,11 @@ def copy_files_from_dir(mcus, source_dir, output_dir, base_path, subdirectory):
         for file in files:
             if os.path.basename(file) == 'mcu.h':
                 # Special rule for 'mcu.h' files, ensure the directory matches the regex
-                if os.path.basename(root).upper() in mcus:
+                if 'XC16' in root:
+                    mcuCheck = os.path.basename(root)
+                else:
+                    mcuCheck = os.path.basename(root).upper()
+                if mcuCheck in mcus:
                     relative_path = os.path.relpath(root, start=source_subdir)
                     full_dest_path = os.path.join(output_subdir, relative_path)
                     shutil.copytree(root, full_dest_path, dirs_exist_ok=True)

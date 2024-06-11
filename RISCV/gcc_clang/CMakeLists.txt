@@ -12,15 +12,20 @@ add_preinit_lib()
 
 #include all .cmake files from cmake folder
 
+set(local_list_include "")
+set(vendor "gigadevice")
 file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
 foreach(cmakeFile ${CMAKE_FILES})
     include(${cmakeFile})
 endforeach()
 
+set(MCU_NAME_LOWER "")
+string(TOLOWER ${MCU_NAME} MCU_NAME_LOWER)
+
 core_add_library(lib_core MikroC.Core
-    system/${SYSTEM_FILE}.c
-    startup/${STARTUP_FILE}.S
-    linker_scripts/${MCU_NAME}.ld
+    ${local_list_include}
+    startup/${STARTUP_FILE}.s
+    linker_scripts/${MCU_NAME_LOWER}.ld
 
     common/rcu_typedef.h
     common/delays.h
@@ -72,14 +77,14 @@ install(
 
 install(
     FILES
-        startup/${STARTUP_FILE}.S
+        ${startupFile}
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/../FileStartup
 )
 
 install(
     FILES
-        linker_scripts/${MCU_NAME}.ld
+        linker_scripts/${MCU_NAME_LOWER}.ld
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/../FileLinker
 )
