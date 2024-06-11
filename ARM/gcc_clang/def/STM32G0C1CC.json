@@ -1,6 +1,1915 @@
 {
+    "config_registers": [
+        {
+            "address": "40021000",
+            "default": "00000500",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "100",
+                    "key": "HSION",
+                    "label": "HSI16 clock enable",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "HSI16 oscillator OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HSI16 oscillator ON",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSIKERON",
+                    "label": "HSI16 always enable for peripheral kernels",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "No effect on HSI16 oscillator.",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HSI16 oscillator is forced ON even in Stop mode.",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSIDIV",
+                    "label": "HSI16 clock division factor",
+                    "mask": "3800",
+                    "settings": [
+                        {
+                            "label": "1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "2",
+                            "value": "800"
+                        },
+                        {
+                            "label": "4",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "8",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "16",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "32",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "64",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "128",
+                            "value": "3800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSEON",
+                    "label": "HSE clock enable",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": " HSE oscillator OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HSE oscillator ON",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSEBYP",
+                    "label": "HSE crystal oscillator bypass",
+                    "mask": "40000",
+                    "settings": [
+                        {
+                            "label": "HSE crystal oscillator not bypassed",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HSE crystal oscillator bypassed with external clock",
+                            "value": "40000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CSSON",
+                    "label": "Clock security system enable",
+                    "mask": "80000",
+                    "settings": [
+                        {
+                            "label": "Clock security system OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Clock security system ON",
+                            "value": "80000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSI48ON",
+                    "label": "HSI48 RC oscillator enable",
+                    "mask": "400000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "1000000",
+                    "key": "PLLON",
+                    "label": "PLL enable",
+                    "mask": "1000000",
+                    "settings": [
+                        {
+                            "label": "PLL OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL ON",
+                            "value": "1000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CR",
+            "unused": "fc30c0ff"
+        },
+        {
+            "address": "40021004",
+            "default": "00004000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "4000",
+                    "key": "HSITRIM",
+                    "label": "HSI16 clock trimming",
+                    "mask": "7f00",
+                    "settings": [
+                        {
+                            "label": "Code 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Code 1",
+                            "value": "100"
+                        },
+                        {
+                            "label": "Code 2",
+                            "value": "200"
+                        },
+                        {
+                            "label": "Code 3",
+                            "value": "300"
+                        },
+                        {
+                            "label": "Code 4",
+                            "value": "400"
+                        },
+                        {
+                            "label": "Code 5",
+                            "value": "500"
+                        },
+                        {
+                            "label": "Code 6",
+                            "value": "600"
+                        },
+                        {
+                            "label": "Code 7",
+                            "value": "700"
+                        },
+                        {
+                            "label": "Code 8",
+                            "value": "800"
+                        },
+                        {
+                            "label": "Code 9",
+                            "value": "900"
+                        },
+                        {
+                            "label": "Code 10",
+                            "value": "a00"
+                        },
+                        {
+                            "label": "Code 11",
+                            "value": "b00"
+                        },
+                        {
+                            "label": "Code 12",
+                            "value": "c00"
+                        },
+                        {
+                            "label": "Code 13",
+                            "value": "d00"
+                        },
+                        {
+                            "label": "Code 14",
+                            "value": "e00"
+                        },
+                        {
+                            "label": "Code 15",
+                            "value": "f00"
+                        },
+                        {
+                            "label": "Code 16",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "Code 17",
+                            "value": "1100"
+                        },
+                        {
+                            "label": "Code 18",
+                            "value": "1200"
+                        },
+                        {
+                            "label": "Code 19",
+                            "value": "1300"
+                        },
+                        {
+                            "label": "Code 20",
+                            "value": "1400"
+                        },
+                        {
+                            "label": "Code 21",
+                            "value": "1500"
+                        },
+                        {
+                            "label": "Code 22",
+                            "value": "1600"
+                        },
+                        {
+                            "label": "Code 23",
+                            "value": "1700"
+                        },
+                        {
+                            "label": "Code 24",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "Code 25",
+                            "value": "1900"
+                        },
+                        {
+                            "label": "Code 26",
+                            "value": "1a00"
+                        },
+                        {
+                            "label": "Code 27",
+                            "value": "1b00"
+                        },
+                        {
+                            "label": "Code 28",
+                            "value": "1c00"
+                        },
+                        {
+                            "label": "Code 29",
+                            "value": "1d00"
+                        },
+                        {
+                            "label": "Code 30",
+                            "value": "1e00"
+                        },
+                        {
+                            "label": "Code 31",
+                            "value": "1f00"
+                        },
+                        {
+                            "label": "Code 32",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "Code 33",
+                            "value": "2100"
+                        },
+                        {
+                            "label": "Code 34",
+                            "value": "2200"
+                        },
+                        {
+                            "label": "Code 35",
+                            "value": "2300"
+                        },
+                        {
+                            "label": "Code 36",
+                            "value": "2400"
+                        },
+                        {
+                            "label": "Code 37",
+                            "value": "2500"
+                        },
+                        {
+                            "label": "Code 38",
+                            "value": "2600"
+                        },
+                        {
+                            "label": "Code 39",
+                            "value": "2700"
+                        },
+                        {
+                            "label": "Code 40",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "Code 41",
+                            "value": "2900"
+                        },
+                        {
+                            "label": "Code 42",
+                            "value": "2a00"
+                        },
+                        {
+                            "label": "Code 43",
+                            "value": "2b00"
+                        },
+                        {
+                            "label": "Code 44",
+                            "value": "2c00"
+                        },
+                        {
+                            "label": "Code 45",
+                            "value": "2d00"
+                        },
+                        {
+                            "label": "Code 46",
+                            "value": "2e00"
+                        },
+                        {
+                            "label": "Code 47",
+                            "value": "2f00"
+                        },
+                        {
+                            "label": "Code 48",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "Code 49",
+                            "value": "3100"
+                        },
+                        {
+                            "label": "Code 50",
+                            "value": "3200"
+                        },
+                        {
+                            "label": "Code 51",
+                            "value": "3300"
+                        },
+                        {
+                            "label": "Code 52",
+                            "value": "3400"
+                        },
+                        {
+                            "label": "Code 53",
+                            "value": "3500"
+                        },
+                        {
+                            "label": "Code 54",
+                            "value": "3600"
+                        },
+                        {
+                            "label": "Code 55",
+                            "value": "3700"
+                        },
+                        {
+                            "label": "Code 56",
+                            "value": "3800"
+                        },
+                        {
+                            "label": "Code 57",
+                            "value": "3900"
+                        },
+                        {
+                            "label": "Code 58",
+                            "value": "3a00"
+                        },
+                        {
+                            "label": "Code 59",
+                            "value": "3b00"
+                        },
+                        {
+                            "label": "Code 60",
+                            "value": "3c00"
+                        },
+                        {
+                            "label": "Code 61",
+                            "value": "3d00"
+                        },
+                        {
+                            "label": "Code 62",
+                            "value": "3e00"
+                        },
+                        {
+                            "label": "Code 63",
+                            "value": "3f00"
+                        },
+                        {
+                            "label": "Code 64",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "Code 65",
+                            "value": "4100"
+                        },
+                        {
+                            "label": "Code 66",
+                            "value": "4200"
+                        },
+                        {
+                            "label": "Code 67",
+                            "value": "4300"
+                        },
+                        {
+                            "label": "Code 68",
+                            "value": "4400"
+                        },
+                        {
+                            "label": "Code 69",
+                            "value": "4500"
+                        },
+                        {
+                            "label": "Code 70",
+                            "value": "4600"
+                        },
+                        {
+                            "label": "Code 71",
+                            "value": "4700"
+                        },
+                        {
+                            "label": "Code 72",
+                            "value": "4800"
+                        },
+                        {
+                            "label": "Code 73",
+                            "value": "4900"
+                        },
+                        {
+                            "label": "Code 74",
+                            "value": "4a00"
+                        },
+                        {
+                            "label": "Code 75",
+                            "value": "4b00"
+                        },
+                        {
+                            "label": "Code 76",
+                            "value": "4c00"
+                        },
+                        {
+                            "label": "Code 77",
+                            "value": "4d00"
+                        },
+                        {
+                            "label": "Code 78",
+                            "value": "4e00"
+                        },
+                        {
+                            "label": "Code 79",
+                            "value": "4f00"
+                        },
+                        {
+                            "label": "Code 80",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "Code 81",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "Code 82",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "Code 83",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "Code 84",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "Code 85",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "Code 86",
+                            "value": "5600"
+                        },
+                        {
+                            "label": "Code 87",
+                            "value": "5700"
+                        },
+                        {
+                            "label": "Code 88",
+                            "value": "5800"
+                        },
+                        {
+                            "label": "Code 89",
+                            "value": "5900"
+                        },
+                        {
+                            "label": "Code 90",
+                            "value": "5a00"
+                        },
+                        {
+                            "label": "Code 91",
+                            "value": "5b00"
+                        },
+                        {
+                            "label": "Code 92",
+                            "value": "5c00"
+                        },
+                        {
+                            "label": "Code 93",
+                            "value": "5d00"
+                        },
+                        {
+                            "label": "Code 94",
+                            "value": "5e00"
+                        },
+                        {
+                            "label": "Code 95",
+                            "value": "5f00"
+                        },
+                        {
+                            "label": "Code 96",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "Code 97",
+                            "value": "6100"
+                        },
+                        {
+                            "label": "Code 98",
+                            "value": "6200"
+                        },
+                        {
+                            "label": "Code 99",
+                            "value": "6300"
+                        },
+                        {
+                            "label": "Code 100",
+                            "value": "6400"
+                        },
+                        {
+                            "label": "Code 101",
+                            "value": "6500"
+                        },
+                        {
+                            "label": "Code 102",
+                            "value": "6600"
+                        },
+                        {
+                            "label": "Code 103",
+                            "value": "6700"
+                        },
+                        {
+                            "label": "Code 104",
+                            "value": "6800"
+                        },
+                        {
+                            "label": "Code 105",
+                            "value": "6900"
+                        },
+                        {
+                            "label": "Code 106",
+                            "value": "6a00"
+                        },
+                        {
+                            "label": "Code 107",
+                            "value": "6b00"
+                        },
+                        {
+                            "label": "Code 108",
+                            "value": "6c00"
+                        },
+                        {
+                            "label": "Code 109",
+                            "value": "6d00"
+                        },
+                        {
+                            "label": "Code 110",
+                            "value": "6e00"
+                        },
+                        {
+                            "label": "Code 111",
+                            "value": "6f00"
+                        },
+                        {
+                            "label": "Code 112",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "Code 113",
+                            "value": "7100"
+                        },
+                        {
+                            "label": "Code 114",
+                            "value": "7200"
+                        },
+                        {
+                            "label": "Code 115",
+                            "value": "7300"
+                        },
+                        {
+                            "label": "Code 116",
+                            "value": "7400"
+                        },
+                        {
+                            "label": "Code 117",
+                            "value": "7500"
+                        },
+                        {
+                            "label": "Code 118",
+                            "value": "7600"
+                        },
+                        {
+                            "label": "Code 119",
+                            "value": "7700"
+                        },
+                        {
+                            "label": "Code 120",
+                            "value": "7800"
+                        },
+                        {
+                            "label": "Code 121",
+                            "value": "7900"
+                        },
+                        {
+                            "label": "Code 122",
+                            "value": "7a00"
+                        },
+                        {
+                            "label": "Code 123",
+                            "value": "7b00"
+                        },
+                        {
+                            "label": "Code 124",
+                            "value": "7c00"
+                        },
+                        {
+                            "label": "Code 125",
+                            "value": "7d00"
+                        },
+                        {
+                            "label": "Code 126",
+                            "value": "7e00"
+                        },
+                        {
+                            "label": "Code 127",
+                            "value": "7f00"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_ICSCR",
+            "unused": "ffff8000"
+        },
+        {
+            "address": "40021008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCOPRE",
+                    "label": "Microcontroller clock output prescaler",
+                    "mask": "f0000000",
+                    "settings": [
+                        {
+                            "label": "1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "2",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "4",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "8",
+                            "value": "30000000"
+                        },
+                        {
+                            "label": "16",
+                            "value": "40000000"
+                        },
+                        {
+                            "label": "32",
+                            "value": "50000000"
+                        },
+                        {
+                            "label": "64",
+                            "value": "60000000"
+                        },
+                        {
+                            "label": "128",
+                            "value": "70000000"
+                        },
+                        {
+                            "label": "256",
+                            "value": "80000000"
+                        },
+                        {
+                            "label": "512",
+                            "value": "90000000"
+                        },
+                        {
+                            "label": "1024",
+                            "value": "a0000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCOSEL",
+                    "label": " Microcontroller clock output clock selector",
+                    "mask": "f000000",
+                    "settings": [
+                        {
+                            "label": "no clock, MCO output disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSCLK",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "HSI48",
+                            "value": "2000000"
+                        },
+                        {
+                            "label": "HSI16",
+                            "value": "3000000"
+                        },
+                        {
+                            "label": "HSE",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "PLLRCLK",
+                            "value": "5000000"
+                        },
+                        {
+                            "label": "LSI",
+                            "value": "6000000"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "7000000"
+                        },
+                        {
+                            "label": "PLLPCLK",
+                            "value": "8000000"
+                        },
+                        {
+                            "label": "PLLQCLK",
+                            "value": "9000000"
+                        },
+                        {
+                            "label": "RTCCLK",
+                            "value": "a000000"
+                        },
+                        {
+                            "label": "RTC WAKEUP",
+                            "value": "b000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCO2PRE",
+                    "label": "Microcontroller clock output 2 prescaler",
+                    "mask": "f00000",
+                    "settings": [
+                        {
+                            "label": "1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "2",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "4",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "8",
+                            "value": "300000"
+                        },
+                        {
+                            "label": "16",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "32",
+                            "value": "500000"
+                        },
+                        {
+                            "label": "64",
+                            "value": "600000"
+                        },
+                        {
+                            "label": "128",
+                            "value": "700000"
+                        },
+                        {
+                            "label": "256",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "512",
+                            "value": "900000"
+                        },
+                        {
+                            "label": "1024",
+                            "value": "a00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCO2SEL",
+                    "label": "Microcontroller clock output 2 clock selector",
+                    "mask": "f0000",
+                    "settings": [
+                        {
+                            "label": "no clock, MCO2 output disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSCLK",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "HSI48",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "HSI16",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "HSE",
+                            "value": "40000"
+                        },
+                        {
+                            "label": "PLLRCLK",
+                            "value": "50000"
+                        },
+                        {
+                            "label": "LSI",
+                            "value": "60000"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "70000"
+                        },
+                        {
+                            "label": "PLLPCLK",
+                            "value": "80000"
+                        },
+                        {
+                            "label": "PLLQCLK",
+                            "value": "90000"
+                        },
+                        {
+                            "label": "RTCCLK",
+                            "value": "a0000"
+                        },
+                        {
+                            "label": "RTC WAKEUP",
+                            "value": "b0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PPRE",
+                    "label": "APB prescaler",
+                    "mask": "7000",
+                    "settings": [
+                        {
+                            "label": "1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "2",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "4",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "8",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "16",
+                            "value": "7000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HPRE",
+                    "label": "AHB prescaler",
+                    "mask": "f00",
+                    "settings": [
+                        {
+                            "label": "1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "2",
+                            "value": "800"
+                        },
+                        {
+                            "label": "4",
+                            "value": "900"
+                        },
+                        {
+                            "label": "8",
+                            "value": "a00"
+                        },
+                        {
+                            "label": "16",
+                            "value": "b00"
+                        },
+                        {
+                            "label": "64",
+                            "value": "c00"
+                        },
+                        {
+                            "label": "128",
+                            "value": "d00"
+                        },
+                        {
+                            "label": "256",
+                            "value": "e00"
+                        },
+                        {
+                            "label": "512",
+                            "value": "f00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "SW",
+                    "label": "System clock switch",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HSISYS",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HSE",
+                            "value": "1"
+                        },
+                        {
+                            "label": "PLLRCLK",
+                            "value": "2"
+                        },
+                        {
+                            "label": "LSI",
+                            "value": "3"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "4"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CFGR",
+            "unused": "000080c0"
+        },
+        {
+            "address": "4002100c",
+            "default": "00001000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "PLLSRC",
+                    "label": "PLL input clock source",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": " No clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HSI16",
+                            "value": "2"
+                        },
+                        {
+                            "label": "HSE",
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "30",
+                    "key": "PLLM",
+                    "label": "Division factor M of the PLL input clock divider",
+                    "mask": "70",
+                    "settings": [
+                        {
+                            "label": "1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "2",
+                            "value": "10"
+                        },
+                        {
+                            "label": "3",
+                            "value": "20"
+                        },
+                        {
+                            "label": "4",
+                            "value": "30"
+                        },
+                        {
+                            "label": "5",
+                            "value": "40"
+                        },
+                        {
+                            "label": "6",
+                            "value": "50"
+                        },
+                        {
+                            "label": "7",
+                            "value": "60"
+                        },
+                        {
+                            "label": "8",
+                            "value": "70"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "5000",
+                    "key": "PLLN",
+                    "label": "PLL frequency multiplication factor N",
+                    "mask": "ff00",
+                    "settings": [
+                        {
+                            "label": "8",
+                            "value": "800"
+                        },
+                        {
+                            "label": "9",
+                            "value": "900"
+                        },
+                        {
+                            "label": "10",
+                            "value": "a00"
+                        },
+                        {
+                            "label": "11",
+                            "value": "b00"
+                        },
+                        {
+                            "label": "12",
+                            "value": "c00"
+                        },
+                        {
+                            "label": "13",
+                            "value": "d00"
+                        },
+                        {
+                            "label": "14",
+                            "value": "e00"
+                        },
+                        {
+                            "label": "15",
+                            "value": "f00"
+                        },
+                        {
+                            "label": "16",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "17",
+                            "value": "1100"
+                        },
+                        {
+                            "label": "18",
+                            "value": "1200"
+                        },
+                        {
+                            "label": "19",
+                            "value": "1300"
+                        },
+                        {
+                            "label": "20",
+                            "value": "1400"
+                        },
+                        {
+                            "label": "21",
+                            "value": "1500"
+                        },
+                        {
+                            "label": "22",
+                            "value": "1600"
+                        },
+                        {
+                            "label": "23",
+                            "value": "1700"
+                        },
+                        {
+                            "label": "24",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "25",
+                            "value": "1900"
+                        },
+                        {
+                            "label": "26",
+                            "value": "1a00"
+                        },
+                        {
+                            "label": "27",
+                            "value": "1b00"
+                        },
+                        {
+                            "label": "28",
+                            "value": "1c00"
+                        },
+                        {
+                            "label": "29",
+                            "value": "1d00"
+                        },
+                        {
+                            "label": "30",
+                            "value": "1e00"
+                        },
+                        {
+                            "label": "31",
+                            "value": "1f00"
+                        },
+                        {
+                            "label": "32",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "33",
+                            "value": "2100"
+                        },
+                        {
+                            "label": "34",
+                            "value": "2200"
+                        },
+                        {
+                            "label": "35",
+                            "value": "2300"
+                        },
+                        {
+                            "label": "36",
+                            "value": "2400"
+                        },
+                        {
+                            "label": "37",
+                            "value": "2500"
+                        },
+                        {
+                            "label": "38",
+                            "value": "2600"
+                        },
+                        {
+                            "label": "39",
+                            "value": "2700"
+                        },
+                        {
+                            "label": "40",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "41",
+                            "value": "2900"
+                        },
+                        {
+                            "label": "42",
+                            "value": "2a00"
+                        },
+                        {
+                            "label": "43",
+                            "value": "2b00"
+                        },
+                        {
+                            "label": "44",
+                            "value": "2c00"
+                        },
+                        {
+                            "label": "45",
+                            "value": "2d00"
+                        },
+                        {
+                            "label": "46",
+                            "value": "2e00"
+                        },
+                        {
+                            "label": "47",
+                            "value": "2f00"
+                        },
+                        {
+                            "label": "48",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "49",
+                            "value": "3100"
+                        },
+                        {
+                            "label": "50",
+                            "value": "3200"
+                        },
+                        {
+                            "label": "51",
+                            "value": "3300"
+                        },
+                        {
+                            "label": "52",
+                            "value": "3400"
+                        },
+                        {
+                            "label": "53",
+                            "value": "3500"
+                        },
+                        {
+                            "label": "54",
+                            "value": "3600"
+                        },
+                        {
+                            "label": "55",
+                            "value": "3700"
+                        },
+                        {
+                            "label": "56",
+                            "value": "3800"
+                        },
+                        {
+                            "label": "57",
+                            "value": "3900"
+                        },
+                        {
+                            "label": "58",
+                            "value": "3a00"
+                        },
+                        {
+                            "label": "59",
+                            "value": "3b00"
+                        },
+                        {
+                            "label": "60",
+                            "value": "3c00"
+                        },
+                        {
+                            "label": "61",
+                            "value": "3d00"
+                        },
+                        {
+                            "label": "62",
+                            "value": "3e00"
+                        },
+                        {
+                            "label": "63",
+                            "value": "3f00"
+                        },
+                        {
+                            "label": "64",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "65",
+                            "value": "4100"
+                        },
+                        {
+                            "label": "66",
+                            "value": "4200"
+                        },
+                        {
+                            "label": "67",
+                            "value": "4300"
+                        },
+                        {
+                            "label": "68",
+                            "value": "4400"
+                        },
+                        {
+                            "label": "69",
+                            "value": "4500"
+                        },
+                        {
+                            "label": "70",
+                            "value": "4600"
+                        },
+                        {
+                            "label": "71",
+                            "value": "4700"
+                        },
+                        {
+                            "label": "72",
+                            "value": "4800"
+                        },
+                        {
+                            "label": "73",
+                            "value": "4900"
+                        },
+                        {
+                            "label": "74",
+                            "value": "4a00"
+                        },
+                        {
+                            "label": "75",
+                            "value": "4b00"
+                        },
+                        {
+                            "label": "76",
+                            "value": "4c00"
+                        },
+                        {
+                            "label": "77",
+                            "value": "4d00"
+                        },
+                        {
+                            "label": "78",
+                            "value": "4e00"
+                        },
+                        {
+                            "label": "79",
+                            "value": "4f00"
+                        },
+                        {
+                            "label": "80",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "81",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "82",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "83",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "84",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "85",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "86",
+                            "value": "5600"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLLPEN",
+                    "label": "PLLPCLK clock output enable",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20000",
+                    "key": "PLLP",
+                    "label": "PLL VCO division factor P for PLLPCLK clock output",
+                    "mask": "3e0000",
+                    "settings": [
+                        {
+                            "label": "2",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "3",
+                            "value": "40000"
+                        },
+                        {
+                            "label": "4",
+                            "value": "60000"
+                        },
+                        {
+                            "label": "5",
+                            "value": "80000"
+                        },
+                        {
+                            "label": "6",
+                            "value": "a0000"
+                        },
+                        {
+                            "label": "7",
+                            "value": "c0000"
+                        },
+                        {
+                            "label": "8",
+                            "value": "e0000"
+                        },
+                        {
+                            "label": "9",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "10",
+                            "value": "120000"
+                        },
+                        {
+                            "label": "11",
+                            "value": "140000"
+                        },
+                        {
+                            "label": "12",
+                            "value": "160000"
+                        },
+                        {
+                            "label": "13",
+                            "value": "180000"
+                        },
+                        {
+                            "label": "14",
+                            "value": "1a0000"
+                        },
+                        {
+                            "label": "15",
+                            "value": "1c0000"
+                        },
+                        {
+                            "label": "16",
+                            "value": "1e0000"
+                        },
+                        {
+                            "label": "17",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "18",
+                            "value": "220000"
+                        },
+                        {
+                            "label": "19",
+                            "value": "240000"
+                        },
+                        {
+                            "label": "20",
+                            "value": "260000"
+                        },
+                        {
+                            "label": "21",
+                            "value": "280000"
+                        },
+                        {
+                            "label": "22",
+                            "value": "2a0000"
+                        },
+                        {
+                            "label": "23",
+                            "value": "2c0000"
+                        },
+                        {
+                            "label": "24",
+                            "value": "2e0000"
+                        },
+                        {
+                            "label": "25",
+                            "value": "300000"
+                        },
+                        {
+                            "label": "26",
+                            "value": "320000"
+                        },
+                        {
+                            "label": "27",
+                            "value": "340000"
+                        },
+                        {
+                            "label": "28",
+                            "value": "360000"
+                        },
+                        {
+                            "label": "29",
+                            "value": "380000"
+                        },
+                        {
+                            "label": "30",
+                            "value": "3a0000"
+                        },
+                        {
+                            "label": "31",
+                            "value": "3c0000"
+                        },
+                        {
+                            "label": "32",
+                            "value": "3e0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLLQEN",
+                    "label": "PLLQCLK clock output enable",
+                    "mask": "1000000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2000000",
+                    "key": "PLLQ",
+                    "label": "PLL VCO division factor Q for PLLQCLK clock output",
+                    "mask": "e000000",
+                    "settings": [
+                        {
+                            "label": "2",
+                            "value": "2000000"
+                        },
+                        {
+                            "label": "3",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "4",
+                            "value": "6000000"
+                        },
+                        {
+                            "label": "5",
+                            "value": "8000000"
+                        },
+                        {
+                            "label": "6",
+                            "value": "a000000"
+                        },
+                        {
+                            "label": "7",
+                            "value": "c000000"
+                        },
+                        {
+                            "label": "8",
+                            "value": "e000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10000000",
+                    "key": "PLLREN",
+                    "label": "PLLRCLK clock output enable",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80000000",
+                    "key": "PLLR",
+                    "label": "PLL VCO division factor R for PLLRCLK clock output",
+                    "mask": "e0000000",
+                    "settings": [
+                        {
+                            "label": "2",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "3",
+                            "value": "40000000"
+                        },
+                        {
+                            "label": "4",
+                            "value": "60000000"
+                        },
+                        {
+                            "label": "5",
+                            "value": "80000000"
+                        },
+                        {
+                            "label": "6",
+                            "value": "a0000000"
+                        },
+                        {
+                            "label": "7",
+                            "value": "c0000000"
+                        },
+                        {
+                            "label": "8",
+                            "value": "e0000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_PLLCFGR",
+            "unused": "00c0808c"
+        },
+        {
+            "address": "40021014",
+            "default": "00000000",
+            "fields": [],
+            "key": "RCC_CRRCR",
+            "unused": "fffffe00"
+        },
+        {
+            "address": "4002105c",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSEON",
+                    "label": "LSE oscillator enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSEBYP",
+                    "label": "LSE oscillator bypass",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Not bypassed",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Bypassed",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSEDRV",
+                    "label": "LSE oscillator drive capability",
+                    "mask": "18",
+                    "settings": [
+                        {
+                            "label": "Low driving capability",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Medium-low driving capability",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Medium-high driving capability",
+                            "value": "10"
+                        },
+                        {
+                            "label": "High driving capability ",
+                            "value": "18"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSECSSON",
+                    "label": "CSS on LSE enable",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RTCSEL",
+                    "label": "RTC clock source selection",
+                    "mask": "300",
+                    "settings": [
+                        {
+                            "label": "No clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "100"
+                        },
+                        {
+                            "label": "LSI",
+                            "value": "200"
+                        },
+                        {
+                            "label": "HSE divided by 32",
+                            "value": "300"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RTCEN",
+                    "label": "RTC clock enable",
+                    "mask": "8000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "8000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "BDRST",
+                    "label": "RTC domain software reset",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "No effect",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reset",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSCOEN",
+                    "label": "Low-speed clock output (LSCO) enable",
+                    "mask": "1000000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSCOSEL",
+                    "label": "Low-speed clock output selection",
+                    "mask": "2000000",
+                    "settings": [
+                        {
+                            "label": "LSI",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LSE",
+                            "value": "2000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_BDCR",
+            "unused": "fcfe7c80"
+        },
+        {
+            "address": "40021060",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LSION",
+                    "label": "LSI oscillator enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RMVF",
+                    "label": "Remove reset flags",
+                    "mask": "800000",
+                    "settings": [
+                        {
+                            "label": "No effect",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Clear reset flags",
+                            "value": "800000"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CSR",
+            "unused": "017ffffc"
+        }
+    ],
     "core": "M0",
     "delay_src_path": "delays/m0/__lib_delays.c",
     "mcu": "STM32G0C1CC",
-    "clock": 1
+    "clock": 64
 }

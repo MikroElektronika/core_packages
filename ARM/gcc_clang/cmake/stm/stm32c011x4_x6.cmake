@@ -3,6 +3,7 @@ if(${MCU_NAME} MATCHES "^STM32C011F4$|^STM32C011J4$|^STM32C011F6$|^STM32C011J6$|
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/stm/doc_ds_1/init_clock.c)
     list(APPEND local_list_include system/src/stm/doc_ds_1/thirdparty/Src/system_stm32c0xx.c)
+    list(APPEND local_list_include system/src/stm/doc_ds_1/thirdparty/Drivers/STM32C0xx_HAL_Driver/Src/stm32c0xx_hal_pwr_ex.c)
     list(APPEND local_list_include system/src/stm/doc_ds_1/thirdparty/Drivers/STM32C0xx_HAL_Driver/Src/stm32c0xx_hal_cortex.c)
     list(APPEND local_list_include system/src/stm/doc_ds_1/thirdparty/Drivers/STM32C0xx_HAL_Driver/Src/stm32c0xx_hal.c)
     list(APPEND local_list_include system/src/stm/doc_ds_1/thirdparty/Drivers/STM32C0xx_HAL_Driver/Src/stm32c0xx_hal_rcc.c)

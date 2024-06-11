@@ -1,5 +1,5 @@
 {
-        "config_registers": [
+    "config_registers": [
         {
             "address": "40021000",
             "default": "00001500",
