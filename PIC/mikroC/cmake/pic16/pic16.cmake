@@ -1,4 +1,4 @@
-if (${MCU_NAME} MATCHES "(^PIC16F[2-9].+$)|(^PIC16LF[2-9].+$)|(^PIC16HV[67].+$)" OR ${MCU_NAME} MATCHES "(^PIC10F3.+$)|(^PIC10LF3.+$)|(^PIC12C6.+$)|(^PIC12CE6.+$)|(^PIC12F[2-9].+$)|(^PIC12HV[67].+$)|(^PIC16C.+$)")
+if(${MCU_NAME} MATCHES "(^PIC16F[2-9].+$)|(^PIC16LF[2-9].+$)|(^PIC16HV[67].+$)" OR ${MCU_NAME} MATCHES "(^PIC10F3.+$)|(^PIC10LF3.+$)|(^PIC12C6.+$)|(^PIC12CE6.+$)|(^PIC12F[2-9].+$)|(^PIC12HV[67].+$)|(^PIC16C.+$)")
     set(SYSTEM_LIB_SOURCE "system/P16/src/__Lib_System.c")
     set(SYSTEM_LIB_INCLUDE_DIR "")
     set(MATH_LIB_SOURCE "math/P16/__Lib_Math.c")

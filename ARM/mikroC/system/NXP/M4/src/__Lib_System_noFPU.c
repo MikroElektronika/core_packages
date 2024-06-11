@@ -838,12 +838,12 @@ typedef struct
 #define SIM_SOPT1_OSC32KSEL(x)    (((uint32_t)(((uint32_t)(x))<<SIM_SOPT1_OSC32KSEL_SHIFT))&SIM_SOPT1_OSC32KSEL_MASK)
 
 /* SIM SOPT2 Bit Fields */
-#define SIM_SOPT2_USBREGEN_MASK   0x2ul
 #define SIM_SOPT2_TPMSRC_MASK     0x3000000ul
+#define SIM_SOPT2_USBSRC_MASK     0x40000ul
 
 #define MCG_C2_RANGE_MASK         0x30ul
 #define MCG_C2_RANGE_SHIFT        4
-#define MCG_C2_RANGE( x )         ( ( ( uint8_t )( ( ( uint8_t )( x ) ) << MCG_C2_RANGE_SHIFT ) ) & MCG_C2_RANGE_MASK )
+#define MCG_C2_RANGE(x)           (((uint8_t)(((uint8_t)(x))<<MCG_C2_RANGE_SHIFT))&MCG_C2_RANGE_MASK)
 
 #define OSC_CR_ERCLKEN_MASK       0x80ul
 

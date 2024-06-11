@@ -194,7 +194,7 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
     list(APPEND local_dir_install def/${vendor}/${MCU_NAME})
     set(${list} ${local_dir_install} PARENT_SCOPE)
 
-    # Ideja je da include-ujemo po imenu cipa (regex)
+    # Include mcu based on full mcu name matched
     string(TOLOWER ${MCU_NAME} mcu_match)
 
     file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${vendor}/*.cmake)

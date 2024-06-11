@@ -164,7 +164,7 @@ const code static unsigned value octpowers[] = {
 };
 
 #ifdef __FLOAT
-#define NDDIG (sizeof fdpowers / sizeof fdpowers[0])
+#define NDDIG (sizeof fdpowers / sizeof fdpowers[ 0 ])
 #define expon signed char
 
 /**
@@ -296,7 +296,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * __generic format, reg
             continue;
         }
         width = 0;
-        flag  = 0;
+        flag = 0;
         for ( ;; ) {
             switch ( *format ) {
                 case '-':
@@ -330,11 +330,11 @@ int vfprintf_me( void ( *stream )( char ch ), const char * __generic format, reg
             flag &= ~SPCSIGN;
         if ( flag & LEFT )
             flag &= ~FILL;
-        if (__isdigit ( unsigned )*format ) ) {
+        if ( __isdigit( ( unsigned )*format ) ) {
             width = 0;
             do
                 width = width * 10 + *format++ - '0';
-            while (__isdigit ( unsigned )*format ) );
+            while ( __isdigit( ( unsigned )*format ) );
         } else if ( *format == '*' ) {
             width = va_arg( arg, int );
             format++;
@@ -345,7 +345,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * __generic format, reg
                 format++;
             } else {
                 prec = 0;
-                while (__isdigit ( unsigned )*format ) )
+                while ( __isdigit( ( unsigned )*format ) )
                     prec = prec * 10 + *format++ - '0';
             }
         else {
@@ -375,7 +375,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * __generic format, reg
             case 'f':
             case 'e':
             case 'g':
-                cp   = "non-float printf";
+                cp = "non-float printf";
                 prec = 0;
                 goto strings;
             #else
@@ -438,7 +438,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * __generic format, reg
             case 'c':
                 c = va_arg( arg, int );
             default:
-                cp  = &c;
+                cp = &c;
                 len = 1;
                 goto dostring;
 
@@ -627,7 +627,7 @@ int vfprintf_me( void ( *stream )( char ch ), const char * __generic format, reg
                     exp -= NDDIG - 1;
                 else
                     exp -= NDDIG - 2;
-                val  = _div_to_l_( fval, scale( exp ) );
+                val = _div_to_l_( fval, scale( exp ) );
                 fval = 0.0;
             } else {
                 val = ( unsigned long )fval;
@@ -860,9 +860,9 @@ int printf_me( const char * __generic format, ... )
 
 /* Following function used for MikroE std printout. */
 static char __debugBuffer[ MAX_STD_DBG_OUT_BUFFER_SIZE ] = { 0 };
-static char buffPos                                      = 0;
-static char lastPos                                      = 0;
-static int  counterID                                    = 0;
+static char buffPos = 0;
+static char lastPos = 0;
+static int  counterID = 0;
 
 void debugStdOut( char ch )
 {
@@ -876,7 +876,7 @@ void debugStdOut( char ch )
         counterID++;
         stdBuffFullBreak();
         buffPos = 0;
-        ch      = 0;
+        ch = 0;
     }
 }
 

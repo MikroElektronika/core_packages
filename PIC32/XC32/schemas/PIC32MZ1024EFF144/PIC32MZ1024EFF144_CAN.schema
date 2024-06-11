@@ -38,19 +38,19 @@
             },
             {
                 "key": "FPLLIDIV",
-                "value": "DIV_1"
+                "value": "DIV_3"
             },
             {
                 "key": "FPLLRNG",
-                "value": "RANGE_5_10_MHZ"
+                "value": "RANGE_8_16_MHZ"
             },
             {
                 "key": "FPLLICLK",
-                "value": "PLL_FRC"
+                "value": "PLL_POSC"
             },
             {
                 "key": "FPLLMULT",
-                "value": "MUL_50"
+                "value": "MUL_100"
             },
             {
                 "key": "FPLLODIV",
@@ -78,7 +78,7 @@
             },
             {
                 "key": "POSCMOD",
-                "value": "OFF"
+                "value": "HS"
             },
             {
                 "key": "OSCIOFNC",

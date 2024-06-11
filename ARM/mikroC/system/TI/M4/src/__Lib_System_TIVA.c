@@ -102,7 +102,7 @@ void __FillZeros()
 void __EnableFPU()
 {
     asm {
-        ; CPACR is located at address 0xE000ED88 
+        ; CPACR is located at address 0xE000ED88
         MOVW         R0, #0xED88
         MOVT         R0, #0xE000
         ; Read CPACR

@@ -119,15 +119,15 @@ void __FillZeros()
 void __EnableFPU()
 {
     asm {
-    ; CPACR is located at address 0xE000ED88
-    MOVW             R0, #0xED88
-    MOVT             R0, #0xE000
-    ; Read CPACR
-    LDR              R1, [R0]
-    ; Set bits 20-23 to enable CP10 and CP11 coprocessors
-    ORR              R1, R1, #0xF00000
-    ; Write back the modified value to the CPACR
-    STR              R1, [R0]
+        ; CPACR is located at address 0xE000ED88
+        MOVW             R0, #0xED88
+        MOVT             R0, #0xE000
+        ; Read CPACR
+        LDR              R1, [R0]
+        ; Set bits 20-23 to enable CP10 and CP11 coprocessors
+        ORR              R1, R1, #0xF00000
+        ; Write back the modified value to the CPACR
+        STR              R1, [R0]
     }
     asm nop
     asm nop

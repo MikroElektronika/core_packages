@@ -2,7 +2,9 @@ import os, re, subprocess
 import shutil, requests, json
 import argparse, aiohttp, asyncio
 import aiofiles, hashlib, time
+import sqlite3
 from clocks import GenerateClocks
+from schemas import GenerateSchemas
 
 from pathlib import Path
 from elasticsearch import Elasticsearch
@@ -28,6 +30,7 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
     """ Parse cmake files to extract paths, directory contents, and regex for folder names inside if blocks relative to the source_directory """
     path_pattern = re.compile(r'set\((\w+)\s+"([^"]+)"\)')
     regex_pattern = re.compile(r'if.*MATCHES\s+"([^"]+)"')  # Regex to capture MATCHES condition
+    regex_pattern_or = re.compile(r'.*MATCHES\s+"([^"]+)"')  # Regex to capture MATCHES condition
     paths = {}
     for file in cmake_files:
         file_name = os.path.splitext(os.path.basename(file))[0]  # Use filename without extension
@@ -35,6 +38,7 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
         inside_if = False
         vendor = os.path.basename(os.path.dirname(file))
         with open(file, 'r') as f:
+            regex_array = []
             current_regex = None
             for line in f:
                 if isGCC and 'list(APPEND local_list_include' in line:
@@ -47,13 +51,20 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
                 else:
                     if 'if(' in line and '${MCU_NAME} MATCHES' in line:
                         regex_match = regex_pattern.search(line)
-                        if regex_match:
-                            current_regex = regex_match.group(1)  # Capture the regex when it appears
+                        if 'OR ${MCU_NAME} MATCHES' in regex_match.string:
+                            check_split = regex_match.string.split('OR')
+                            for each_split in check_split:
+                                regex_array.append(regex_pattern_or.search(each_split).group(1))
+                            current_regex = '|'.join(regex_array)
+                        else:
+                            if regex_match:
+                                current_regex = regex_match.group(1)  # Capture the regex when it appears
+                                regex_array.append(current_regex)
                         inside_if = True
                     elif inside_if and line.strip() == 'endif()':
                         inside_if = False
                         if current_regex:
-                            paths[file_name]['regex'] = current_regex  # Save the regex before resetting
+                            paths[file_name]['regex'] = '|'.join(regex_array)  # Save the regex before resetting
                             current_regex = None
                     elif inside_if:
                         matches = path_pattern.search(line)
@@ -115,7 +126,7 @@ def extract_mcu_names(file_name, source_dir, output_dir, regex):
                     mcu_name = os.path.splitext(file)[0]
                     if regex_pattern.match(mcu_name):
                         mcus[file_name]['mcu_names'].add(mcu_name)
-                        if 'gcc_clang' in source_dir:
+                        if 'gcc_clang' in source_dir or 'XC32' in source_dir:
                             isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config FROM Devices WHERE name IS "{mcu_name}"')
                             if isPresent:
                                 configJson = json.loads(readData[0][0])
@@ -168,17 +179,26 @@ def copy_files_based_on_regex(source_dir, dest_dir, check_string):
     if not check_string:
         return
 
+    fileCopied = False
     for root, dirs, files in os.walk(source_dir):
         for file in files:
             if file.endswith(".cmake"):
                 full_path = os.path.join(root, file)
                 regexes = extract_regex_from_cmake(full_path)
                 for regex in regexes:
-                    if re.match(regex, check_string):
+                    if re.match(regex, check_string) and not fileCopied:
                         # If check_string matches the regex, copy the file
+                        fileCopied = True
                         dest_file_path = os.path.join(dest_dir, file)
                         os.makedirs(os.path.dirname(dest_file_path), exist_ok=True)
                         shutil.copy(full_path, dest_file_path)
+        if not fileCopied and 'STM32' in check_string and 'gcc_clang' in source_dir:
+            if check_string[6] == '7': ## in special grouped case for M7 not covered by single files
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(os.path.join(root, 'm7.cmake'), os.path.join(dest_dir, 'm7.cmake'))
+            elif check_string[6] == '0': ## in special grouped case for M0 not covered by single files
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(os.path.join(root, 'm0.cmake'), os.path.join(dest_dir, 'm0.cmake'))
 
 
 def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
@@ -246,7 +266,7 @@ def downloadFile(downloadLink, outputDir, outputFileName, verifyDownload):
         print(f"Error downloading file: {e}")
         lastError = -1
 
-    return lastError
+    return lastError, fullPath
 
 def fetch_json_data(download_link, token):
     """
@@ -300,7 +320,7 @@ def read_data_from_db(db, sql_query):
     con.close()
 
     ## Return query results
-    return len(results), results
+    return len(results), list(results)
 
 def copy_schemas(mcus, source_dir, output_dir, base_path):
 
@@ -331,16 +351,23 @@ def copy_files_from_dir(mcus, source_dir, output_dir, base_path, subdirectory):
         for file in files:
             if os.path.basename(file) == 'mcu.h':
                 # Special rule for 'mcu.h' files, ensure the directory matches the regex
-                if os.path.basename(root).upper() in mcus:
+                if 'XC16' in root:
+                    mcuCheck = os.path.basename(root)
+                else:
+                    mcuCheck = os.path.basename(root).upper()
+                if mcuCheck in mcus:
                     relative_path = os.path.relpath(root, start=source_subdir)
                     full_dest_path = os.path.join(output_subdir, relative_path)
                     shutil.copytree(root, full_dest_path, dirs_exist_ok=True)
-            if os.path.splitext(os.path.basename(file))[0].upper() in mcus:
-                full_source_path = os.path.join(root, file)
-                relative_path = os.path.relpath(full_source_path, start=source_subdir)
-                full_dest_path = os.path.join(output_subdir, relative_path)
-                os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
-                shutil.copy(full_source_path, full_dest_path)
+            if os.path.splitext(os.path.basename(file))[0].upper().replace('DSPIC', 'dsPIC') in mcus:
+                if 'gcc_clang' in source_subdir and re.match('^MKV?.+XXX.+$', file):
+                    continue
+                else:
+                    full_source_path = os.path.join(root, file)
+                    relative_path = os.path.relpath(full_source_path, start=source_subdir)
+                    full_dest_path = os.path.join(output_subdir, relative_path)
+                    os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
+                    shutil.copy(full_source_path, full_dest_path)
 
 def copy_delays(cores, source_dir, output_dir, base_path):
 
@@ -387,6 +414,104 @@ def compress_directory_7z(base_output_dir, arch, entry_name):
         print(f"An error occurred while creating the archive: {e}")
         return None
 
+def functionRegex(value, pattern):
+    c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
+    return c_pattern.search(value) is not None
+
+def read_data_from_db(db, sql_query):
+    ## Open the database / connect to it
+    con = sqlite3.connect(db)
+    cur = con.cursor()
+
+    ## Create the REGEXP function to be used in DB
+    con.create_function("REGEXP", 2, functionRegex)
+
+    ## Execute the desired query
+    results = cur.execute(sql_query).fetchall()
+    # results = cur.fetchall()
+
+    ## Close the connection
+    cur.close()
+    con.close()
+
+    ## Return query results
+    return len(results), results
+
+def insertIntoTable(db, tableName, values, columns):
+    conn = sqlite3.connect(db)
+    cur = conn.cursor()
+    numOfItems = ''
+    for itemCount in range(1, len(values) + 1):
+        numOfItems += '?,'
+    cur.execute(f'INSERT OR IGNORE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
+    conn.commit()
+    conn.close()
+
+def updateTable(db, query, newFieldValue):
+    try:
+        # Connect to existing SQLite database
+        conn = sqlite3.connect(db)
+        cur = conn.cursor()
+        # Update fields in the table with data
+        cur.execute(query, (newFieldValue,))
+        # Commit changes
+        conn.commit()
+    except sqlite3.Error as e:
+        print("SQLite error:", e)
+    finally:
+        # Close connection
+        conn.close()
+
+def deleteFromTable(db, sql_query):
+    try:
+        sqliteConnection = sqlite3.connect(db)
+        cursor = sqliteConnection.cursor()
+
+        # Deleting single record now
+        cursor.execute(sql_query)
+        sqliteConnection.commit()
+        cursor.close()
+    except sqlite3.Error as error:
+        print("Failed to delete record from sqlite table", error)
+    finally:
+        if sqliteConnection:
+            sqliteConnection.close()
+
+def update_database(package_name, mcus, db_path):
+    for each_pack in mcus:
+        for each_mcu in mcus[each_pack]['mcu_names']:
+            is_present, read_data_compiler = read_data_from_db(db_path, f'SELECT compiler_uid FROM CompilerToDevice WHERE device_uid IS "{each_mcu.replace('dsPIC', 'DSPIC')}"')
+            is_present, read_data = read_data_from_db(db_path, f'SELECT * FROM Devices WHERE uid IS "{each_mcu.upper()}"')
+            counter = 0
+            data_as_list_joined = []
+            while counter != len(read_data):
+                existing_packages = {}
+                if read_data[counter][len(read_data[counter])-1]:
+                    existing_packages = json.loads(read_data[counter][len(read_data[counter])-1])
+                data_as_list = list(read_data[counter])
+                for each_compiler in list(read_data_compiler):
+                    if 'mchp_xc' in each_compiler[0] and '_xc' in package_name:
+                        existing_packages[each_compiler[0]] = package_name
+                    else:
+                        if not '_xc' in package_name:
+                            for each_split_check in package_name.split('_')[1:]:
+                                if re.search(each_split_check, each_compiler[0]):
+                                    existing_packages[each_compiler[0]] = package_name
+                data_as_list[len(data_as_list)-1] = existing_packages
+                data_as_list_joined.append(data_as_list)
+                counter += 1
+            for each_list in data_as_list_joined:
+                if is_present:
+                    updateTable(
+                        db_path,
+                        f'''UPDATE Devices SET installer_package = ? WHERE uid = "{each_mcu.upper()}"''',
+                        json.dumps(each_list[len(each_list)-1])
+                    )
+                else:
+                    raise ValueError("%s does not exist in database!" % each_mcu)
+
+    return
+
 async def upload_release_asset(session, token, repo, tag_name, asset_path):
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
@@ -403,7 +528,7 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path):
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, es, index_name, current_metadata):
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, es, index_name, current_metadata, db_path):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -416,16 +541,16 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         # Copy individual files
         copy_files(data['files'], base_output_dir, source_dir)
         # Copy schema directories
-        copy_schemas(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir)
-        copy_interrupts(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir)
+        copy_schemas(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir)
+        copy_interrupts(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir)
         # Copy defs
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir, 'def')
+        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir, 'def')
         # Copy startups
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir, 'startup')
+        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir, 'startup')
         # Copy linker scirpts
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'],source_dir, output_dir, base_output_dir, 'linker_scripts')
+        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir, 'linker_scripts')
         # Copy delay files
-        copy_delays(mcuNames[cmake_file]['cores'],source_dir, output_dir, base_output_dir)
+        copy_delays(mcuNames[cmake_file]['cores'], source_dir, output_dir, base_output_dir)
         # Copy std_library to every package
         std_library_path = os.path.join(source_dir, 'std_library')
         if os.path.exists(std_library_path):
@@ -474,6 +599,9 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
 
         packages.append({"name" : name_without_extension, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False, 'install_location': install_location})
         package_changed = (version == tag_name.replace("v", ""))
+
+        # Mark package for appropriate device and toolchain
+        update_database(name_without_extension, mcuNames, db_path)
 
         # Index to Elasticsearch
         # doc = {
@@ -609,12 +737,15 @@ async def main(token, repo, tag_name):
     # index_name = os.environ['ES_INDEX']
     ## EOF TODO - uncomment this section before public release
 
-    architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR" ]
-    ## TODO - remove this section before public release
-    downloadFile('https://s3-us-west-2.amazonaws.com/software-update.mikroe.com/nectostudio2/database/necto_db.db',
-                 '', 'necto_db.db', True)
-    ## TODO - uncomment this section before public release
-    # downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
+    architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
+    # err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
+    # err_check, db_path = downloadFile('https://s3.us-west-2.amazonaws.com/necto.mikroe.com/automation/test_db/necto_db.db',
+                                    #   '', 'necto_db.db', True)
+    err_check = 0
+    db_path = 'necto_db.db'
+    if 0 != err_check:
+        raise ValueError("Failed to download database!")
+
     current_metadata = fetch_current_metadata(repo, token)
 
     packages = []
@@ -633,7 +764,12 @@ async def main(token, repo, tag_name):
                         output_directory = os.path.join(root_output_directory, entry.name)
 
                         print(f"Processing {source_directory} to {output_directory}")
-                        await package_asset(source_directory, output_directory, arch, entry.name, token, repo, tag_name, packages, es, index_name, current_metadata)
+                        await package_asset(
+                            source_directory, output_directory, arch, entry.name,
+                            token, repo, tag_name,
+                            packages, es, index_name,
+                            current_metadata, db_path
+                        )
 
         except Exception as e:
             print(f"Failed to process directories in {root_source_directory}: {e}")
@@ -646,13 +782,24 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "metadata.json")
 
+    async with aiohttp.ClientSession() as session:
+        await upload_release_asset(session, token, repo, tag_name, "necto_db.db")
+
     #generate clocks.json
     input_directory = "./"
     output_file = "./clocks.json"
-    generator = GenerateClocks(input_directory, output_file)
-    generator.generate()
+    clocksGenerator = GenerateClocks(input_directory, output_file)
+    clocksGenerator.generate()
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "clocks.json")
+
+    #generate schemas.json
+    input_directory = "./"
+    output_file = "./schemas.json"
+    schemaGenerator = GenerateSchemas(input_directory, output_file)
+    schemaGenerator.generate()
+    async with aiohttp.ClientSession() as session:
+        await upload_release_asset(session, token, repo, tag_name, "schemas.json")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")

@@ -1,6 +1,6 @@
 if(${MCU_NAME} MATCHES "^MKV56F512.+$")
-    set(${linkerScript} linker_scripts/${vendor}/mkv5xfn512m0xxx24xx.ld PARENT_SCOPE)
-    set(${startupFile} startup/${vendor}/mkv56fxxx24.s PARENT_SCOPE)
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/system_nxp_mkv5xfxx.c)
     list(APPEND local_list_include system/inc/${vendor}/system_nxp_mkv5xfxx.h)
     list(APPEND local_list_install system/inc/${vendor}/system_nxp_mkv5xfxx.h)

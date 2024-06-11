@@ -69,9 +69,9 @@ void __FillZerosFar( void far * dest, unsigned long sizeinbytes )
             W4 = ( sizeinbytes >> 1 ) - 1;
             W5 = dest;
             asm {
-                    MOV #0, W6
-                    repeat W4
-                    MOV W6,[W5++]
+                MOV #0, W6
+                repeat W4
+                MOV W6,[W5++]
             }
         }
         return;

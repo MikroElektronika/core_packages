@@ -5,7 +5,7 @@
     "flash": 2097152,
     "ram": 524288,
     "settings": {
-        "clock": "24",
+        "clock": "200",
         "scheme": "PIC32MZ2048EFM100_CAN",
         "mcu": "PIC32MZ2048EFM100",
         "core": "",
@@ -38,19 +38,19 @@
             },
             {
                 "key": "FPLLIDIV",
-                "value": "DIV_8"
+                "value": "DIV_3"
             },
             {
                 "key": "FPLLRNG",
-                "value": "RANGE_5_10_MHZ"
+                "value": "RANGE_8_16_MHZ"
             },
             {
                 "key": "FPLLICLK",
-                "value": "PLL_FRC"
+                "value": "PLL_POSC"
             },
             {
                 "key": "FPLLMULT",
-                "value": "MUL_128"
+                "value": "MUL_100"
             },
             {
                 "key": "FPLLODIV",
@@ -58,11 +58,11 @@
             },
             {
                 "key": "UPLLFSEL",
-                "value": "FREQ_24MHZ"
+                "value": "FREQ_12MHZ"
             },
             {
                 "key": "FNOSC",
-                "value": "POSC"
+                "value": "SPLL"
             },
             {
                 "key": "DMTINTV",
@@ -78,7 +78,7 @@
             },
             {
                 "key": "POSCMOD",
-                "value": "EC"
+                "value": "HS"
             },
             {
                 "key": "OSCIOFNC",
@@ -86,7 +86,7 @@
             },
             {
                 "key": "FCKSM",
-                "value": "CSDCMD"
+                "value": "CSECME"
             },
             {
                 "key": "WDTPS",
@@ -114,7 +114,7 @@
             },
             {
                 "key": "FDMTEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "DEBUG",
@@ -130,7 +130,7 @@
             },
             {
                 "key": "TRCEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "BOOTISA",

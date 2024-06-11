@@ -1426,14 +1426,14 @@ void _Div_DP()
         LSL        R0, R0, LR
 
     __me_cont:
-        TST        R1, #0x00200000     // ALIGN THE QUOTIENT
+        TST        R1, #0x00200000      // ALIGN THE QUOTIENT
         BNE        __me_lab4
         LSLS       R0, R0, #1
         ADCS       R1, R1, R1
         SUBS       R4, R4, #0x1
 
     __me_lab4:
-        ADDS       R0, R0, #0x00000001 // 1/2 ADJUST FOR ROUNDING
+        ADDS       R0, R0, #0x00000001  // 1/2 ADJUST FOR ROUNDING
         ADCS       R1, R1, #0
         TST        R1, #0x00400000
         ITTE       NE
@@ -1443,9 +1443,9 @@ void _Div_DP()
 
         MOV        R7, #0x300
         ADDS       R7, R7, #0xFF
-        ADDS       R4, R4, R7          // ADJUST FOR BIAS
+        ADDS       R4, R4, R7           // ADJUST FOR BIAS
         ITTT       LE
-        MOVLE      R1, #0x0            // AND CHECK FOR UNDERFLOW
+        MOVLE      R1, #0x0             // AND CHECK FOR UNDERFLOW
         MOVLE      R0, #0x0
         BLE        __me_lab_end
 
@@ -1461,9 +1461,9 @@ void _Div_DP()
         B          __me_lab_end
 
     __me_ovfl:
-        MOVS       R0, #0x0            // IF OVERFLOW, RETURN +/-
-        MOVS       R1, #0xFF           // INFINITY
-        LSL        R1, R1, #s3
+        MOVS       R0, #0x0             // IF OVERFLOW, RETURN +/-
+        MOVS       R1, #0xFF            // INFINITY
+        LSL        R1, R1, #3
         ADDS       R1, R1, #7
         LSL        R1, R1, #20
         ORR        R1, R1, R8
@@ -1483,8 +1483,8 @@ void _Compare_DP()
         BEQ     __me_label_done
 
     __me_label_1:
-        ORRS    R4, R0, R2                // HANDLE THE CASE OF BOTH INPUTS BEING
-        BNE     __me_label_2              // ZERO
+        ORRS    R4, R0, R2             // HANDLE THE CASE OF BOTH INPUTS BEING
+        BNE     __me_label_2           // ZERO
         ORR            R4, R1, R3
         LSLS    R4, R4, #1
         CMP     R4, #0x0

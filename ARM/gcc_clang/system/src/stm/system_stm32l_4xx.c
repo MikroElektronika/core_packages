@@ -161,7 +161,7 @@ void systemInit()
     _REG_VALUE_CLEAR_SET_( RCC->CSR, VALUE_RCC_CSR );
     _REG_VALUE_CLEAR_SET_( RCC->CR, VALUE_RCC_CR & 0x000FFFFFUL ); /* do not start PLLs yet */
 
-    #if defined(VALUE_RCC_CRRCR) && defined VALUE_RCC_CCIPR)
+    #if defined(VALUE_RCC_CRRCR) && defined (VALUE_RCC_CCIPR)
     _REG_VALUE_SET_( RCC->CRRCR, VALUE_RCC_CRRCR );                /* set HSI48 clock */
     _REG_VALUE_CLEAR_SET_( RCC->CCIPR, VALUE_RCC_CCIPR );          /* select CLK48 source */
     #endif

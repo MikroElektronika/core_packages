@@ -1,8 +1,7 @@
-if (${MCU_NAME} MATCHES "(^PIC18C(.+)$)|(^PIC18F[124-9][2-7][^KQ](.+)$)|(^PIC18LF[124-9][2-7][^KQ](.+)$)|(^PIC18F[124-9][2-7]K[0-35-9](.+)$)" OR
-    ${MCU_NAME} MATCHES "(^PIC18LF[124-9][2-7]K[0-35-9](.+)$)|(^PIC18F[124-9][2-7]K4[1-9]$)|(^PIC18LF[124-9][2-7]K4[1-9]$)|(^PIC18F[24][45][28]$)")
+if(${MCU_NAME} MATCHES "(^PIC18C(.+)$)|(^PIC18F[124-9][2-7][^KQ](.+)$)|(^PIC18LF[124-9][2-7][^KQ](.+)$)|(^PIC18F[124-9][2-7]K[0-35-9](.+)$)" OR ${MCU_NAME} MATCHES "(^PIC18LF[124-9][2-7]K[0-35-9](.+)$)|(^PIC18F[124-9][2-7]K4[1-9]$)|(^PIC18LF[124-9][2-7]K4[1-9]$)|(^PIC18F[24][45][28]$)")
     set(SYSTEM_LIB_SOURCE "system/P18/src/__Lib_System.c")
     set(SYSTEM_LIB_INCLUDE_DIR "")
     set(MATH_LIB_SOURCE "math/P18/__Lib_Math.c")
     set(MATH_DOUBLE_SOURCE "math_double/P18/__Lib_MathDouble.c")
     set(DELAY_SOURCE "delay/p18/__lib_delays.c")
-endif ()
+endif()
