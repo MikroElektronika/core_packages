@@ -24,7 +24,7 @@ string(TOLOWER ${MCU_NAME} MCU_NAME_LOWER)
 
 core_add_library(lib_core MikroC.Core
     ${local_list_include}
-    startup/${STARTUP_FILE}.s
+    ${startupFile}
     linker_scripts/${MCU_NAME_LOWER}.ld
 
     common/rcu_typedef.h
@@ -48,7 +48,7 @@ target_include_directories(lib_core PRIVATE
     ${CMAKE_BINARY_DIR}
     ${TEST_LIB_PATH}/include
     ${PREINIT_ROUTINE_PATH}/include
-    interrupts/include/interrupts_mcu/gd32vf103xx
+    interrupts/include/interrupts_mcu/${MCU_NAME_LOWER}
 INTERFACE
     $<INSTALL_INTERFACE:include/core>
 )
