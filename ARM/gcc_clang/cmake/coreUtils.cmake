@@ -194,7 +194,7 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
     list(APPEND local_dir_install def/${vendor}/${MCU_NAME})
     set(${list} ${local_dir_install} PARENT_SCOPE)
 
-    # Ideja je da include-ujemo po imenu cipa (regex)
+    # Include mcu based on full mcu name matched
     string(TOLOWER ${MCU_NAME} mcu_match)
 
     file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${vendor}/*.cmake)
@@ -269,30 +269,3 @@ function(set_delay_parameters delay_parameters)
 
     set(${list} ${local_list_macros} PARENT_SCOPE)
 endfunction()
-
-#############################################################################
-## Macro to set MCU specific variables
-#############################################################################
-macro(set_file_list)
-    ## TIVA
-    if(${MCU_NAME} MATCHES "^TM4C12.+$")
-        if(${MCU_NAME} MATCHES "^TM4C129.+$")
-            if (${MCU_NAME} MATCHES "^TM4C129[49EX]KC.+$")
-                set(${linkerScript} linker_scripts/${vendor}/tm4c129xkxx.ld PARENT_SCOPE)
-            else()
-                set(${linkerScript} linker_scripts/${vendor}/tm4c129xx.ld PARENT_SCOPE)
-            endif()
-        endif()
-        if(${MCU_NAME} MATCHES "^TM4C123.+$")
-            if(${MCU_NAME} MATCHES "^TM4C123.H6.+$")
-                set(${linkerScript} linker_scripts/${vendor}/tm4c123xh6xx.ld PARENT_SCOPE)
-            elseif(${MCU_NAME} MATCHES "^TM4C123.C3PM$")
-                set(${linkerScript} linker_scripts/${vendor}/tm4c123xxc3pm.ld PARENT_SCOPE)
-            elseif(${MCU_NAME} MATCHES "^TM4C123.D5P[MZ]$")
-                set(${linkerScript} linker_scripts/${vendor}/tm4c123xd5px.ld PARENT_SCOPE)
-            elseif(${MCU_NAME} MATCHES "^TM4C123.E6P[MZ]$")
-                set(${linkerScript} linker_scripts/${vendor}/tm4c123xe6px.ld PARENT_SCOPE)
-            endif()
-        endif()
-    endif()
-endmacro()
