@@ -302,26 +302,6 @@ def functionRegex(value, pattern):
     c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
     return c_pattern.search(value) is not None
 
-def read_data_from_db(db, sql_query):
-    import sqlite3
-
-    ## Open the database / connect to it
-    con = sqlite3.connect(db)
-    cur = con.cursor()
-
-    ## Create the REGEXP function to be used in DB
-    con.create_function("REGEXP", 2, functionRegex)
-
-    ## Execute the desired query
-    results = cur.execute(sql_query).fetchall()
-
-    ## Close the connection
-    cur.close()
-    con.close()
-
-    ## Return query results
-    return len(results), list(results)
-
 def copy_schemas(mcus, source_dir, output_dir, base_path):
 
     for mcu in mcus:
@@ -603,6 +583,16 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         # Mark package for appropriate device and toolchain
         update_database(name_without_extension, mcuNames, db_path)
 
+        # Then create a specific database used as asset later
+        os.makedirs('./output/databases/', exist_ok=True)
+        shutil.copy(db_path, f'./output/databases/{name_without_extension}.db')
+        for eachMcu in mcuNames[cmake_file]['mcu_names']:
+            updateTable(
+                f'./output/databases/{name_without_extension}.db',
+                f'''UPDATE Devices SET sdk_support = ? WHERE uid = "{eachMcu.upper()}"''',
+                1  ## Set to 1 to use later for automated build tests
+            )
+
         # Index to Elasticsearch
         # doc = {
         #     'name': name_without_extension,
@@ -785,7 +775,11 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "necto_db.db")
 
-    #generate clocks.json
+    for each_package in packages:
+        async with aiohttp.ClientSession() as session:
+            await upload_release_asset(session, token, repo, tag_name, f"output/databases/{each_package['name']}.db")
+
+    # generate clocks.json
     input_directory = "./"
     output_file = "./clocks.json"
     clocksGenerator = GenerateClocks(input_directory, output_file)
@@ -793,7 +787,7 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "clocks.json")
 
-    #generate schemas.json
+    # generate schemas.json
     input_directory = "./"
     output_file = "./schemas.json"
     schemaGenerator = GenerateSchemas(input_directory, output_file)
