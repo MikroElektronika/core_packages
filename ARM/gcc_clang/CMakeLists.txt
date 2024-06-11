@@ -10,15 +10,15 @@ include(coreUtils)
 
 add_preinit_lib()
 
-set(MCU_NAME_LOWER "")
-string(TOLOWER ${MCU_NAME} MCU_NAME_LOWER)
-set(MCU_CORE_LOWER "")
-string(TOLOWER ${CORE_NAME} MCU_CORE_LOWER)
-
 core_files_set(fileListInclude fileDirInclude fileListInstall linkerScript startupFile)
 
 set_delay_parameters(delayParameters)
 add_macros(${CMAKE_BINARY_DIR} delay_parameters.h ${delayParameters})
+
+set(MCU_NAME_LOWER "")
+string(TOLOWER ${MCU_NAME} MCU_NAME_LOWER)
+set(MCU_CORE_LOWER "")
+string(TOLOWER ${CORE_NAME} MCU_CORE_LOWER)
 
 core_add_library(lib_core MikroC.Core
     common/delays.h
