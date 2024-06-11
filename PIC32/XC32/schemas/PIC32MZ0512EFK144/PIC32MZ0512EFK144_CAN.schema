@@ -5,7 +5,7 @@
     "flash": 524288,
     "ram": 131072,
     "settings": {
-        "clock": "1",
+        "clock": "200",
         "scheme": "PIC32MZ0512EFK144_CAN",
         "mcu": "PIC32MZ0512EFK144",
         "core": "",
@@ -22,15 +22,15 @@
             },
             {
                 "key": "PGL1WAY",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "PMDL1WAY",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "IOL1WAY",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "FUSBIDIO",
@@ -38,31 +38,31 @@
             },
             {
                 "key": "FPLLIDIV",
-                "value": "DIV_8"
+                "value": "DIV_3"
             },
             {
                 "key": "FPLLRNG",
-                "value": "RANGE_34_68_MHZ"
+                "value": "RANGE_8_16_MHZ"
             },
             {
                 "key": "FPLLICLK",
-                "value": "PLL_FRC"
+                "value": "PLL_POSC"
             },
             {
                 "key": "FPLLMULT",
-                "value": "MUL_128"
+                "value": "MUL_100"
             },
             {
                 "key": "FPLLODIV",
-                "value": "DIV_32"
+                "value": "DIV_2"
             },
             {
                 "key": "UPLLFSEL",
-                "value": "FREQ_24MHZ"
+                "value": "FREQ_12MHZ"
             },
             {
                 "key": "FNOSC",
-                "value": "FRCDIV"
+                "value": "SPLL"
             },
             {
                 "key": "DMTINTV",
@@ -70,15 +70,15 @@
             },
             {
                 "key": "FSOSCEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "IESO",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "POSCMOD",
-                "value": "OFF"
+                "value": "HS"
             },
             {
                 "key": "OSCIOFNC",
@@ -102,7 +102,7 @@
             },
             {
                 "key": "FWDTEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "FWDTWINSZ",
@@ -114,7 +114,7 @@
             },
             {
                 "key": "FDMTEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "DEBUG",
@@ -122,15 +122,15 @@
             },
             {
                 "key": "JTAGEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "ICESEL",
-                "value": "ICS_PGx1"
+                "value": "ICS_PGx2"
             },
             {
                 "key": "TRCEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "BOOTISA",

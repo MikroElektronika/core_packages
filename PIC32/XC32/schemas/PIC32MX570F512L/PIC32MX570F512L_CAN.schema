@@ -5,7 +5,7 @@
     "flash": 524288,
     "ram": 65536,
     "settings": {
-        "clock": "48",
+        "clock": "80",
         "scheme": "PIC32MX570F512L_CAN",
         "mcu": "PIC32MX570F512L",
         "core": "",
@@ -34,19 +34,19 @@
             },
             {
                 "key": "FPLLMUL",
-                "value": "MUL_24"
+                "value": "MUL_20"
             },
             {
                 "key": "UPLLIDIV",
-                "value": "DIV_12"
+                "value": "DIV_2"
             },
             {
                 "key": "UPLLEN",
-                "value": "OFF"
+                "value": "ON"
             },
             {
                 "key": "FPLLODIV",
-                "value": "DIV_256"
+                "value": "DIV_1"
             },
             {
                 "key": "FNOSC",
@@ -54,15 +54,15 @@
             },
             {
                 "key": "FSOSCEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "IESO",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "POSCMOD",
-                "value": "XT"
+                "value": "HS"
             },
             {
                 "key": "OSCIOFNC",
@@ -70,7 +70,7 @@
             },
             {
                 "key": "FPBDIV",
-                "value": "DIV_8"
+                "value": "DIV_1"
             },
             {
                 "key": "FCKSM",
@@ -102,7 +102,7 @@
             },
             {
                 "key": "ICESEL",
-                "value": "ICS_PGx1"
+                "value": "ICS_PGx2"
             },
             {
                 "key": "PWP",

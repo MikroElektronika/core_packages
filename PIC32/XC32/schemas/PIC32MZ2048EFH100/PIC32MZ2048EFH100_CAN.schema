@@ -50,7 +50,7 @@
             },
             {
                 "key": "FPLLMULT",
-                "value": "MUL_50"
+                "value": "MUL_100"
             },
             {
                 "key": "FPLLODIV",
@@ -130,7 +130,7 @@
             },
             {
                 "key": "TRCEN",
-                "value": "ON"
+                "value": "OFF"
             },
             {
                 "key": "BOOTISA",
