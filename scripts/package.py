@@ -360,11 +360,14 @@ def copy_files_from_dir(mcus, source_dir, output_dir, base_path, subdirectory):
                     full_dest_path = os.path.join(output_subdir, relative_path)
                     shutil.copytree(root, full_dest_path, dirs_exist_ok=True)
             if os.path.splitext(os.path.basename(file))[0].upper().replace('DSPIC', 'dsPIC') in mcus:
-                full_source_path = os.path.join(root, file)
-                relative_path = os.path.relpath(full_source_path, start=source_subdir)
-                full_dest_path = os.path.join(output_subdir, relative_path)
-                os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
-                shutil.copy(full_source_path, full_dest_path)
+                if 'gcc_clang' in source_subdir and re.match('^MKV?.+XXX.+$', file):
+                    continue
+                else:
+                    full_source_path = os.path.join(root, file)
+                    relative_path = os.path.relpath(full_source_path, start=source_subdir)
+                    full_dest_path = os.path.join(output_subdir, relative_path)
+                    os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
+                    shutil.copy(full_source_path, full_dest_path)
 
 def copy_delays(cores, source_dir, output_dir, base_path):
 
