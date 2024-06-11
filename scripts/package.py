@@ -585,7 +585,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
 
         # Then create a specific database used as asset later
         os.makedirs('./output/databases/', exist_ok=True)
-        shutil.copy(db_path, f'./output/databases/{name_without_extension}.db')
+        shutil.copy('build_test.db', f'./output/databases/{name_without_extension}.db')
         for eachMcu in mcuNames[cmake_file]['mcu_names']:
             updateTable(
                 f'./output/databases/{name_without_extension}.db',
