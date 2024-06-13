@@ -593,54 +593,22 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
                 1  ## Set to 1 to use later for automated build tests
             )
         # Index to Elasticsearch
-        if name_without_extension == "clocks":
-            doc = {
-                'name': "clocks",
-                'display_name' : "Clocks file",
-                'author' : "MIKROE",
-                'hidden' : True,
-                'type' : "mcu_clocks",
-                'version' : release_details['tag_name'],
-                'created_at': asset['created_at'],
-                'updated_at': asset['updated_at'],
-                'category': "MCU Package",
-                'download_link': asset['url'],
-                'package_changed' : True,
-                'install_location' : "%APPLICATION_DATA_DIR%/clocks.json"
-            }
-        elif name_without_extension == "schemas":
-            doc = {
-                'name': "schemas",
-                'display_name' : "schemas file",
-                'author' : "MIKROE",
-                'hidden' : True,
-                'type' : "mcu_schemas",
-                'version' : release_details['tag_name'],
-                'created_at': asset['created_at'],
-                'updated_at': asset['updated_at'],
-                'category': "MCU Package",
-                'download_link': asset['url'],
-                'package_changed' : True,
-                'install_location' : "%APPLICATION_DATA_DIR%/schemas.json"
-            }
-        else:
-            doc = {
-                'name': name_without_extension,
-                'display_name': displayName,
-                'author': 'MIKROE',
-                'hidden': False,
-                'type': 'mcu',
-                'version': version,
-                'created_at' : upload_result['created_at'],
-                'updated_at' : upload_result['updated_at'],
-                'category': 'MCU support',
-                'download_link': upload_result['url'],  # Adjust as needed for actual URL
-                'package_changed': package_changed,
-                'install_location': install_location
-            }
+        doc = {
+            'name': name_without_extension,
+            'display_name': displayName,
+            'author': 'MIKROE',
+            'hidden': False,
+            'type': 'mcu',
+            'version': version,
+            'created_at' : upload_result['created_at'],
+            'updated_at' : upload_result['updated_at'],
+            'category': 'MCU support',
+            'download_link': upload_result['url'],  # Adjust as needed for actual URL
+            'package_changed': package_changed,
+            'install_location': install_location
+        }
         print(f"DOCUMENT TO INDEX: {doc}")
         resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
-        print(f"ES RESPONSE: {resp}")
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
@@ -809,14 +777,43 @@ async def main(token, repo, tag_name):
     clocksGenerator.generate()
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "clocks.json")
-
+        doc = {
+            'name': "clocks",
+            'display_name' : "Clocks file",
+            'author' : "MIKROE",
+            'hidden' : True,
+            'type' : "mcu_clocks",
+            'version' : release_details['tag_name'],
+            'created_at': asset['created_at'],
+            'updated_at': asset['updated_at'],
+            'category': "MCU Package",
+            'download_link': asset['url'],
+            'package_changed' : True,
+            'install_location' : "%APPLICATION_DATA_DIR%/clocks.json"
+        }
+        print(f"CLOCKS DOC: {doc}")
     # generate schemas.json
     input_directory = "./"
     output_file = "./schemas.json"
     schemaGenerator = GenerateSchemas(input_directory, output_file)
     schemaGenerator.generate()
     async with aiohttp.ClientSession() as session:
-        await upload_release_asset(session, token, repo, tag_name, "schemas.json")
+        upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
+        doc = {
+            'name': "schemas",
+            'display_name' : "schemas file",
+            'author' : "MIKROE",
+            'hidden' : True,
+            'type' : "mcu_schemas",
+            'version' : release_details['tag_name'],
+            'created_at': asset['created_at'],
+            'updated_at': asset['updated_at'],
+            'category': "MCU Package",
+            'download_link': asset['url'],
+            'package_changed' : True,
+            'install_location' : "%APPLICATION_DATA_DIR%/schemas.json"
+        }
+        print(f"SCHEMA DOC: {doc}")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
