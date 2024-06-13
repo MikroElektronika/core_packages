@@ -175,15 +175,13 @@ void _osc32kctrl_init_sources(void)
 {
     void *   hw    = (void *)OSC32KCTRL;
     uint16_t calib = 0;
-
-    #if (VALUE_XOSC32K & OSCILLATOR_ENABLE)
-        hri_osc32kctrl_write_XOSC32K_reg(hw, VALUE_XOSC32K);
-
-        hri_osc32kctrl_write_CFDCTRL_reg(hw, VALUE_CFDCTRL);
-
-        hri_osc32kctrl_write_EVCTRL_reg(hw, VALUE_EVCTRL);
-    #endif
-
+    /** TODO, Work in progress.
+     *   #if (VALUE_XOSC32K & OSCILLATOR_ENABLE)
+     *       hri_osc32kctrl_write_XOSC32K_reg(hw, VALUE_XOSC32K);
+     *       hri_osc32kctrl_write_CFDCTRL_reg(hw, VALUE_CFDCTRL);
+     *       hri_osc32kctrl_write_EVCTRL_reg(hw, VALUE_EVCTRL);
+     *   #endif
+     */
     #if (VALUE_OSC32K & OSCILLATOR_ENABLE)
     /* OSC32K calibration value at bit 18:12 of memory 0x00806020 */
     calib = (*((uint32_t *)0x00806020) & 0x007F000) >> 12;
@@ -208,20 +206,19 @@ void _osc32kctrl_init_sources(void)
         #endif
             );
     #endif
-
-    #if (VALUE_XOSC32K & OSCILLATOR_ENABLE)
-        #if (!VALUE_XOSC32K & OSCILLATOR_ONDEMAND)
-            while (!hri_osc32kctrl_get_STATUS_XOSC32KRDY_bit(hw))
-                ;
-        #endif
-        // TODO ESMA
-        #if CONF_OSCULP32K_ULP32KSW == 1
-            hri_osc32kctrl_set_OSCULP32K_reg(hw, OSC32KCTRL_OSCULP32K_ULP32KSW);
-            while (!hri_osc32kctrl_get_STATUS_ULP32KSW_bit(hw))
-                ;
-        #endif
-    #endif
-
+    /** TODO, Work in progress 
+     *  #if (VALUE_XOSC32K & OSCILLATOR_ENABLE)
+     *      #if (!VALUE_XOSC32K & OSCILLATOR_ONDEMAND)
+     *          while (!hri_osc32kctrl_get_STATUS_XOSC32KRDY_bit(hw))
+     *              ;
+     *      #endif
+     *      #if CONF_OSCULP32K_ULP32KSW == 1
+     *          hri_osc32kctrl_set_OSCULP32K_reg(hw, OSC32KCTRL_OSCULP32K_ULP32KSW);
+     *          while (!hri_osc32kctrl_get_STATUS_ULP32KSW_bit(hw))
+     *              ;
+     *      #endif
+     *  #endif
+     */
     #if (VALUE_OSC32K & OSCILLATOR_ENABLE)
         #if (VALUE_OSC32K & OSCILLATOR_ONDEMAND)
             while (!hri_osc32kctrl_get_STATUS_OSC32KRDY_bit(hw))
@@ -258,13 +255,12 @@ static inline bool hri_oscctrl_get_STATUS_OSC48MRDY_bit(const void *const hw)
 void _oscctrl_init_sources(void)
 {
     void *hw = (void *)OSCCTRL;
-
-    #if (VALUE_XOSCCTRL & OSCILLATOR_ENABLE)
-        hri_oscctrl_write_XOSCCTRL_reg(hw, VALUE_XOSCCTRL);
-
-        hri_oscctrl_write_EVCTRL_reg(hw, (CONF_XOSC_CFDEO << OSCCTRL_EVCTRL_CFDEO_Pos));
-    #endif
-
+    /** TODO, Work in progress.
+     *   #if (VALUE_XOSCCTRL & OSCILLATOR_ENABLE)
+     *       hri_oscctrl_write_XOSCCTRL_reg(hw, VALUE_XOSCCTRL);
+     *       hri_oscctrl_write_EVCTRL_reg(hw, (CONF_XOSC_CFDEO << OSCCTRL_EVCTRL_CFDEO_Pos));
+     *   #endif
+     */
     #if (VALUE_OSC48MCTRL & OSCILLATOR_ENABLE)
         hri_oscctrl_write_OSC48MCTRL_reg(hw, VALUE_OSC48MCTRL);
 
@@ -273,18 +269,18 @@ void _oscctrl_init_sources(void)
             ;
         hri_oscctrl_write_OSC48MSTUP_reg(hw, VALUE_OSC48MSTUP);
     #endif
-
-    #if (VALUE_XOSCCTRL & OSCILLATOR_ENABLE)
-        while (!hri_oscctrl_get_STATUS_XOSCRDY_bit(hw))
-            ;
-        #if CONF_XOSC_AMPGC == 1
-            hri_oscctrl_set_XOSCCTRL_AMPGC_bit(hw);
-        #endif
-        #if (VALUE_XOSCCTRL & OSCILLATOR_ONDEMAND)
-            hri_oscctrl_set_XOSCCTRL_ONDEMAND_bit(hw);
-        #endif
-    #endif
-
+    /** TODO, Work in progress.
+     *   #if (VALUE_XOSCCTRL & OSCILLATOR_ENABLE)
+     *       while (!hri_oscctrl_get_STATUS_XOSCRDY_bit(hw))
+     *           ;
+     *       #if CONF_XOSC_AMPGC == 1
+     *           hri_oscctrl_set_XOSCCTRL_AMPGC_bit(hw);
+     *       #endif
+     *       #if (VALUE_XOSCCTRL & OSCILLATOR_ONDEMAND)
+     *           hri_oscctrl_set_XOSCCTRL_ONDEMAND_bit(hw);
+     *       #endif
+     *   #endif
+     */
     #if (VALUE_OSC48MCTRL & OSCILLATOR_ENABLE)
         while (!hri_oscctrl_get_STATUS_OSC48MRDY_bit(hw))
             ;
