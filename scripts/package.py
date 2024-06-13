@@ -707,6 +707,9 @@ async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
     num_of_retries = 1
     while True:
+        print(os.environ['ES_USER'])
+        print(os.environ['ES_PASSWORD'])
+        print(f"Trying to connect to ES. Connection retry:  {num_of_retries}")
         es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
             break
@@ -715,6 +718,7 @@ async def main(token, repo, tag_name):
             # Exit if it fails 10 times, something is wrong with the server
             raise ValueError("Connection to ES failed!")
         num_of_retries += 1
+        
         time.sleep(30)
     index_name = os.environ['ES_INDEX']
 
