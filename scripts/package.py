@@ -576,7 +576,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
-
+        
         packages.append({"name" : name_without_extension, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False, 'install_location': install_location})
         package_changed = (version == tag_name.replace("v", ""))
 
@@ -592,25 +592,55 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
                 f'''UPDATE Devices SET sdk_support = ? WHERE uid = "{eachMcu.upper()}"''',
                 1  ## Set to 1 to use later for automated build tests
             )
-
         # Index to Elasticsearch
-        # doc = {
-        #     'name': name_without_extension,
-        #     'display_name': displayName,
-        #     'author': 'MIKROE',
-        #     'hidden': False,
-        #     'type': 'mcu',
-        #     'version': version,
-        #     'created_at' : upload_result['created_at'],
-        #     'updated_at' : upload_result['updated_at'],
-        #     'category': 'MCU support',
-        #     'download_link': upload_result['browser_download_url'],  # Adjust as needed for actual URL
-        #     'package_changed': package_changed,
-        #     'install_location': install_location
-        # }
-        # print(f"DOCUMENT TO INDEX: {doc}")
-        # resp = es.index(index=index_name, doc_type='necto_package', id=archiveName, body=doc)
-        # print(f"ES RESPONSE: {resp}")
+        if name_without_extension == "clocks":
+            doc = {
+                'name': "clocks",
+                'display_name' : "Clocks file",
+                'author' : "MIKROE",
+                'hidden' : True,
+                'type' : "mcu_clocks",
+                'version' : release_details['tag_name'],
+                'created_at': asset['created_at'],
+                'updated_at': asset['updated_at'],
+                'category': "MCU Package",
+                'download_link': asset['url'],
+                'package_changed' : True,
+                'install_location' : "%APPLICATION_DATA_DIR%/clocks.json"
+            }
+        elif name_without_extension == "schemas":
+            doc = {
+                'name': "schemas",
+                'display_name' : "schemas file",
+                'author' : "MIKROE",
+                'hidden' : True,
+                'type' : "mcu_schemas",
+                'version' : release_details['tag_name'],
+                'created_at': asset['created_at'],
+                'updated_at': asset['updated_at'],
+                'category': "MCU Package",
+                'download_link': asset['url'],
+                'package_changed' : True,
+                'install_location' : "%APPLICATION_DATA_DIR%/schemas.json"
+            }
+        else:
+            doc = {
+                'name': name_without_extension,
+                'display_name': displayName,
+                'author': 'MIKROE',
+                'hidden': False,
+                'type': 'mcu',
+                'version': version,
+                'created_at' : upload_result['created_at'],
+                'updated_at' : upload_result['updated_at'],
+                'category': 'MCU support',
+                'download_link': upload_result['url'],  # Adjust as needed for actual URL
+                'package_changed': package_changed,
+                'install_location': install_location
+            }
+        print(f"DOCUMENT TO INDEX: {doc}")
+        resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
+        print(f"ES RESPONSE: {resp}")
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
@@ -707,25 +737,18 @@ def update_metadata(current_metadata, new_files, version):
 
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
-    # Elasticsearch details
-    ## TODO - remove this section before public release
-    es = Elasticsearch(["https://search-mikroe-eotds45vmgevl75dl75hjanrzm.us-west-2.es.amazonaws.com"])
-    index_name = 'github_mikrosdk_test'
-    ## EOF TODO - remove this section before public release
-    ## TODO - uncomment this section before public release
-    # num_of_retries = 1
-    # while True:
-    #     es = Elasticsearch([os.environ['ES_HOST']])
-    #     if es.ping():
-    #         break
-    #     # Wait for 30 seconds and try again if connection fails
-    #     if 10 == num_of_retries:
-    #         # Exit if it fails 10 times, something is wrong with the server
-    #         raise ValueError("Connection to ES failed!")
-    #     num_of_retries += 1
-    #     time.sleep(30)
-    # index_name = os.environ['ES_INDEX']
-    ## EOF TODO - uncomment this section before public release
+    num_of_retries = 1
+    while True:
+        es = Elasticsearch([os.environ['ES_HOST']],basic_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
+        if es.ping():
+            break
+        # Wait for 30 seconds and try again if connection fails
+        if 10 == num_of_retries:
+            # Exit if it fails 10 times, something is wrong with the server
+            raise ValueError("Connection to ES failed!")
+        num_of_retries += 1
+        time.sleep(30)
+    index_name = os.environ['ES_INDEX']
 
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
     # err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
