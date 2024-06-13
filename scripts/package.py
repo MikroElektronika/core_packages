@@ -707,7 +707,7 @@ async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
     num_of_retries = 1
     while True:
-        es = Elasticsearch([os.environ['ES_HOST']],basic_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
+        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
             break
         # Wait for 30 seconds and try again if connection fails
