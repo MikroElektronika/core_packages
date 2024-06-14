@@ -1,0 +1,6 @@
+{
+    "core": "",
+    "delay_src_path": "delays//__lib_delays.c",
+    "mcu": "ATSAMDA1J16B",
+    "clock": 1
+}
