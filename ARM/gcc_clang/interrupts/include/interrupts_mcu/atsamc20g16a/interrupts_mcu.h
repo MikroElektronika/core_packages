@@ -38,7 +38,7 @@
 ****************************************************************************/
 /*!
 * @file  interrupts_mcu.h
-* @brief ATSAMC21J18A MCU specific interrupt per module definitions.
+* @brief ATSAMC20G16A MCU specific interrupt per module definitions.
 */
 
 #ifndef _INTERRUPTS_MCU_H_
@@ -55,7 +55,6 @@ static const int INTERRUPTS_WDT = 17;
 static const int INTERRUPTS_RTC = 18;
 static const int INTERRUPTS_EIC = 19;
 static const int INTERRUPTS_FREQM = 20;
-static const int INTERRUPTS_TSENS = 21;
 static const int INTERRUPTS_NVMCTRL = 22;
 static const int INTERRUPTS_DMAC = 23;
 static const int INTERRUPTS_EVSYS = 24;
@@ -63,10 +62,6 @@ static const int INTERRUPTS_SERCOM0 = 25;
 static const int INTERRUPTS_SERCOM1 = 26;
 static const int INTERRUPTS_SERCOM2 = 27;
 static const int INTERRUPTS_SERCOM3 = 28;
-static const int INTERRUPTS_SERCOM4 = 29;
-static const int INTERRUPTS_SERCOM5 = 30;
-static const int INTERRUPTS_CAN0 = 31;
-static const int INTERRUPTS_CAN1 = 32;
 static const int INTERRUPTS_TCC0 = 33;
 static const int INTERRUPTS_TCC1 = 34;
 static const int INTERRUPTS_TCC2 = 35;
@@ -76,20 +71,17 @@ static const int INTERRUPTS_TC2 = 38;
 static const int INTERRUPTS_TC3 = 39;
 static const int INTERRUPTS_TC4 = 40;
 static const int INTERRUPTS_ADC0 = 41;
-static const int INTERRUPTS_ADC1 = 42;
 static const int INTERRUPTS_AC = 43;
-static const int INTERRUPTS_DAC = 44;
-static const int INTERRUPTS_SDADC = 45;
 static const int INTERRUPTS_PTC = 46;
 static const int INTERRUPTS_PERIPH_COUNT = 47;
 // EOF Interrupt table
 
 // Interrupt addresses
-// No interrupt registers for ATSAMC21J18A.
+// No interrupt registers for ATSAMC20G16A.
 // EOF Interrupt addresses
 
 // Interrupt register bit values
-// No interrupt bits for ATSAMC21J18A.
+// No interrupt bits for ATSAMC20G16A.
 // EOF Interrupt register bit values
 
 #endif // _INTERRUPTS_MCU_H_

@@ -38,7 +38,7 @@
 ****************************************************************************/
 /*!
 * @file  interrupts_mcu.h
-* @brief ATSAMC21J18A MCU specific interrupt per module definitions.
+* @brief ATSAMC21E18A MCU specific interrupt per module definitions.
 */
 
 #ifndef _INTERRUPTS_MCU_H_
@@ -63,10 +63,7 @@ static const int INTERRUPTS_SERCOM0 = 25;
 static const int INTERRUPTS_SERCOM1 = 26;
 static const int INTERRUPTS_SERCOM2 = 27;
 static const int INTERRUPTS_SERCOM3 = 28;
-static const int INTERRUPTS_SERCOM4 = 29;
-static const int INTERRUPTS_SERCOM5 = 30;
 static const int INTERRUPTS_CAN0 = 31;
-static const int INTERRUPTS_CAN1 = 32;
 static const int INTERRUPTS_TCC0 = 33;
 static const int INTERRUPTS_TCC1 = 34;
 static const int INTERRUPTS_TCC2 = 35;
@@ -85,11 +82,11 @@ static const int INTERRUPTS_PERIPH_COUNT = 47;
 // EOF Interrupt table
 
 // Interrupt addresses
-// No interrupt registers for ATSAMC21J18A.
+// No interrupt registers for ATSAMC21E18A.
 // EOF Interrupt addresses
 
 // Interrupt register bit values
-// No interrupt bits for ATSAMC21J18A.
+// No interrupt bits for ATSAMC21E18A.
 // EOF Interrupt register bit values
 
 #endif // _INTERRUPTS_MCU_H_

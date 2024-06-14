@@ -38,7 +38,7 @@
 ****************************************************************************/
 /*!
 * @file  interrupts_mcu.h
-* @brief ATSAMC21J18A MCU specific interrupt per module definitions.
+* @brief ATSAMC21J17A MCU specific interrupt per module definitions.
 */
 
 #ifndef _INTERRUPTS_MCU_H_
@@ -85,11 +85,11 @@ static const int INTERRUPTS_PERIPH_COUNT = 47;
 // EOF Interrupt table
 
 // Interrupt addresses
-// No interrupt registers for ATSAMC21J18A.
+// No interrupt registers for ATSAMC21J17A.
 // EOF Interrupt addresses
 
 // Interrupt register bit values
-// No interrupt bits for ATSAMC21J18A.
+// No interrupt bits for ATSAMC21J17A.
 // EOF Interrupt register bit values
 
 #endif // _INTERRUPTS_MCU_H_
