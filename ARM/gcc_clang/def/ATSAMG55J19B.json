@@ -48849,5 +48849,5 @@
     "core": "M4",
     "delay_src_path": "delays/m4/__lib_delays.c",
     "mcu": "ATSAMG55J19B",
-    "clock": 1
+    "clock": 8
 }

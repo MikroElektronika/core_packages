@@ -8,7 +8,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PCK7",
-                    "label": "PCK7: Programmable Clock 7 Output Enable",
+                    "label": "Programmable Clock 7 Output Enable",
                     "mask": "00008000",
                     "settings": [
                         {
@@ -25,7 +25,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PCK6",
-                    "label": "PCK6: Programmable Clock 6 Output Enable",
+                    "label": "Programmable Clock 6 Output Enable",
                     "mask": "00004000",
                     "settings": [
                         {
@@ -42,7 +42,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PCK5",
-                    "label": "PCK5: Programmable Clock 5 Output Enable",
+                    "label": "Programmable Clock 5 Output Enable",
                     "mask": "00002000",
                     "settings": [
                         {
@@ -59,7 +59,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PCK4",
-                    "label": "PCK4: Programmable Clock 4 Output Enable",
+                    "label": "Programmable Clock 4 Output Enable",
                     "mask": "00001000",
                     "settings": [
                         {
@@ -76,7 +76,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PCK3",
-                    "label": "PCK3: Programmable Clock 3 Output Enable",
+                    "label": "Programmable Clock 3 Output Enable",
                     "mask": "00000800",
                     "settings": [
                         {
@@ -93,7 +93,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PCK2",
-                    "label": "PCK2: Programmable Clock 2 Output Enable",
+                    "label": "Programmable Clock 2 Output Enable",
                     "mask": "00000400",
                     "settings": [
                         {
@@ -110,7 +110,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PCK1",
-                    "label": "PCK1: Programmable Clock 1 Output Enable",
+                    "label": "Programmable Clock 1 Output Enable",
                     "mask": "00000200",
                     "settings": [
                         {
@@ -127,7 +127,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PCK0",
-                    "label": "PCK0: Programmable Clock 0 Output Enable",
+                    "label": "Programmable Clock 0 Output Enable",
                     "mask": "00000100",
                     "settings": [
                         {
@@ -144,7 +144,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "UDP",
-                    "label": "UDP: USB Device Port Clock Enable",
+                    "label": "USB Device Port Clock Enable",
                     "mask": "00000080",
                     "settings": [
                         {
@@ -161,7 +161,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "UHP",
-                    "label": "UHP: USB Host Port Clock Enable",
+                    "label": "USB Host Port Clock Enable",
                     "mask": "00000040",
                     "settings": [
                         {
@@ -186,7 +186,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "XT32KFME",
-                    "label": "XT32KFME: 32768 Hz Crystal Oscillator Frequency Monitoring Enable",
+                    "label": "32768 Hz Crystal Oscillator Frequency Monitoring Enable",
                     "mask": "04000000",
                     "settings": [
                         {
@@ -203,7 +203,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CFDEN",
-                    "label": "CFDEN: Clock Failure Detector Enable",
+                    "label": "Clock Failure Detector Enable",
                     "mask": "02000000",
                     "settings": [
                         {
@@ -220,7 +220,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "MOSCSEL",
-                    "label": "MOSCSEL: Main Clock Oscillator Selection",
+                    "label": "Main Clock Oscillator Selection",
                     "mask": "01000000",
                     "settings": [
                         {
@@ -237,7 +237,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "MOSCXTST",
-                    "label": "MOSCXTST: 3 to 20 MHz Crystal Oscillator Start-up Time",
+                    "label": "3 to 20 MHz Crystal Oscillator Start-up Time",
                     "mask": "0000ff00",
                     "settings_array": {
                         "decrease": false,
@@ -251,7 +251,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "MOSCRCF",
-                    "label": "MOSCRCF: 8/16/24 MHz RC Oscillator Frequency Selection",
+                    "label": "8/16/24 MHz RC Oscillator Frequency Selection",
                     "mask": "00000070",
                     "settings": [
                         {
@@ -272,7 +272,7 @@
                     "hidden": false,
                     "init": "00000008",
                     "key": "MOSCRCEN",
-                    "label": "MOSCRCEN: 8/16/24 MHz RC Oscillator Enable",
+                    "label": "8/16/24 MHz RC Oscillator Enable",
                     "mask": "00000008",
                     "settings": [
                         {
@@ -289,7 +289,7 @@
                     "hidden": true,
                     "init": "0",
                     "key": "WAITMODE",
-                    "label": "WAITMODE: Wait Mode Command (Write-only)",
+                    "label": "Wait Mode Command (Write-only)",
                     "mask": "00000004",
                     "settings": [
                         {
@@ -306,7 +306,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "MOSCXTBY",
-                    "label": "MOSCXTBY: 3 to 20 MHz Crystal Oscillator Bypass",
+                    "label": "3 to 20 MHz Crystal Oscillator Bypass",
                     "mask": "00000002",
                     "settings": [
                         {
@@ -323,7 +323,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "MOSCXTEN",
-                    "label": "MOSCXTEN: 3 to 20 MHz Crystal Oscillator Enable",
+                    "label": "3 to 20 MHz Crystal Oscillator Enable",
                     "mask": "00000001",
                     "settings": [
                         {
@@ -348,7 +348,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "MULA",
-                    "label": "MULA: PLLA Multiplier",
+                    "label": "PLLA Multiplier",
                     "mask": "1fff0000",
                     "settings": [
                         {
@@ -30333,7 +30333,7 @@
                     "hidden": false,
                     "init": "00003f00",
                     "key": "PLLACOUNT",
-                    "label": "PLLACOUNT: PLLA Counter",
+                    "label": "PLLA Counter",
                     "mask": "00003f00",
                     "settings_array": {
                         "decrease": false,
@@ -30347,7 +30347,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PLLAEN",
-                    "label": "PLLAEN: PLLA Control",
+                    "label": "PLLA Control",
                     "mask": "000000ff",
                     "settings": [
                         {
@@ -30372,7 +30372,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "MULB",
-                    "label": "MULB: PLLB Multiplier",
+                    "label": "PLLB Multiplier",
                     "mask": "07ff0000",
                     "settings": [
                         {
@@ -39957,7 +39957,7 @@
                     "hidden": false,
                     "init": "00003f00",
                     "key": "PLLBCOUNT",
-                    "label": "PLLBCOUNT: PLLB Counter",
+                    "label": "PLLB Counter",
                     "mask": "00003f00",
                     "settings_array": {
                         "decrease": false,
@@ -39971,7 +39971,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PLLBEN",
-                    "label": "PLLBEN: PLLB Control",
+                    "label": "PLLB Control",
                     "mask": "000000ff",
                     "settings": [
                         {
@@ -39996,7 +39996,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PLLBDIV2",
-                    "label": "PLLBDIV2: PLLB Divisor by 2",
+                    "label": "PLLB Divisor by 2",
                     "mask": "00002000",
                     "settings": [
                         {
@@ -40013,7 +40013,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PLLADIV2",
-                    "label": "PLLADIV2: PLLA Divisor by 2",
+                    "label": "PLLA Divisor by 2",
                     "mask": "00001000",
                     "settings": [
                         {
@@ -40030,7 +40030,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Master Clock Prescaler",
+                    "label": "Master Clock Prescaler",
                     "mask": "00000070",
                     "settings": [
                         {
@@ -40071,7 +40071,7 @@
                     "hidden": false,
                     "init": "00000001",
                     "key": "CSS",
-                    "label": "CSS: Master Clock Source Selection",
+                    "label": "Master Clock Source Selection",
                     "mask": "00000003",
                     "settings": [
                         {
@@ -40104,7 +40104,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "USBDIV",
-                    "label": "USBDIV: Divider for USB Clock",
+                    "label": "Divider for USB Clock",
                     "mask": "00000f00",
                     "settings": [
                         {
@@ -40177,7 +40177,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "USBS",
-                    "label": "USBS: USB Input Clock Selection",
+                    "label": "USB Input Clock Selection",
                     "mask": "00000001",
                     "settings": [
                         {
@@ -40202,7 +40202,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Programmable Clock 0 Prescaler",
+                    "label": "Programmable Clock 0 Prescaler",
                     "mask": "00000ff0",
                     "settings": [
                         {
@@ -41235,7 +41235,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CSS",
-                    "label": "CSS: Programmable Clock 0 Source Selection",
+                    "label": "Programmable Clock 0 Source Selection",
                     "mask": "00000007",
                     "settings": [
                         {
@@ -42305,7 +42305,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CSS",
-                    "label": "CSS: Programmable Clock 1 Source Selection",
+                    "label": "Programmable Clock 1 Source Selection",
                     "mask": "00000007",
                     "settings": [
                         {
@@ -42342,7 +42342,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Programmable Clock 2 Prescaler",
+                    "label": "Programmable Clock 2 Prescaler",
                     "mask": "00000ff0",
                     "settings": [
                         {
@@ -43375,7 +43375,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CSS",
-                    "label": "CSS: Programmable Clock 2 Source Selection",
+                    "label": "Programmable Clock 2 Source Selection",
                     "mask": "00000007",
                     "settings": [
                         {
@@ -43412,7 +43412,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Programmable Clock 3 Prescaler",
+                    "label": "Programmable Clock 3 Prescaler",
                     "mask": "00000ff0",
                     "settings": [
                         {
@@ -44445,7 +44445,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CSS",
-                    "label": "CSS: Programmable Clock 3 Source Selection",
+                    "label": "Programmable Clock 3 Source Selection",
                     "mask": "00000007",
                     "settings": [
                         {
@@ -44482,7 +44482,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Programmable Clock 4 Prescaler",
+                    "label": "Programmable Clock 4 Prescaler",
                     "mask": "00000ff0",
                     "settings": [
                         {
@@ -45515,7 +45515,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CSS",
-                    "label": "CSS: Programmable Clock 4 Source Selection",
+                    "label": "Programmable Clock 4 Source Selection",
                     "mask": "00000007",
                     "settings": [
                         {
@@ -45552,7 +45552,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Programmable Clock 5 Prescaler",
+                    "label": "Programmable Clock 5 Prescaler",
                     "mask": "00000ff0",
                     "settings": [
                         {
@@ -46585,7 +46585,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CSS",
-                    "label": "CSS: Programmable Clock 5 Source Selection",
+                    "label": "Programmable Clock 5 Source Selection",
                     "mask": "00000007",
                     "settings": [
                         {
@@ -46622,7 +46622,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Programmable Clock 6 Prescaler",
+                    "label": "Programmable Clock 6 Prescaler",
                     "mask": "00000ff0",
                     "settings": [
                         {
@@ -47655,7 +47655,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CSS",
-                    "label": "CSS: Programmable Clock 6 Source Selection",
+                    "label": "Programmable Clock 6 Source Selection",
                     "mask": "00000007",
                     "settings": [
                         {
@@ -47692,7 +47692,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Programmable Clock 7 Prescaler",
+                    "label": "Programmable Clock 7 Prescaler",
                     "mask": "00000ff0",
                     "settings": [
                         {
@@ -48725,7 +48725,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CSS",
-                    "label": "CSS: Programmable Clock 7 Source Selection",
+                    "label": "Programmable Clock 7 Source Selection",
                     "mask": "00000007",
                     "settings": [
                         {
@@ -48762,7 +48762,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "FWS",
-                    "label": "FWS: Flash Wait State",
+                    "label": "Flash Wait State",
                     "mask": "00000f00",
                     "settings": [
                         {
@@ -48803,7 +48803,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "XTALSEL",
-                    "label": "XTALSEL: Crystal Oscillator Select",
+                    "label": "Crystal Oscillator Select",
                     "mask": "00000008",
                     "settings": [
                         {
@@ -48828,7 +48828,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "OSCBYPASS",
-                    "label": "OSCBYPASS: Oscillator Bypass",
+                    "label": "Oscillator Bypass",
                     "mask": "00100000",
                     "settings": [
                         {
@@ -48849,5 +48849,5 @@
     "core": "M4",
     "delay_src_path": "delays/m4/__lib_delays.c",
     "mcu": "ATSAMG55G19A",
-    "clock": 1
+    "clock": 8
 }
