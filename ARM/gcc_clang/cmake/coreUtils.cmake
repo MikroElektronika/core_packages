@@ -199,6 +199,8 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
     string(TOLOWER ${MCU_NAME} mcu_match)
     string(SUBSTRING ${MCU_NAME} 0 8 MCU_NAME_FIRST_8)
     string(TOLOWER ${MCU_NAME_FIRST_8} MCU_NAME_FIRST_8_LOWER)
+    string(SUBSTRING ${MCU_NAME} 0 6 MCU_NAME_FIRST_6)
+    string(TOLOWER ${MCU_NAME_FIRST_6} MCU_NAME_FIRST_6_LOWER)
 
     file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${vendor}/*.cmake)
     foreach(cmakeFile ${CMAKE_FILES})

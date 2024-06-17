@@ -44,7 +44,7 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
                 if isGCC and 'list(APPEND local_list_include' in line:
 
                     systemPath = line.split()[-1][:-1].replace("${vendor}", vendor)
-                    if 'doc_ds' in systemPath:
+                    if 'doc_ds' in systemPath or ('sam' in systemPath and re.search('^(at)?sam.+$', file_name)):
                         systemPath = os.path.dirname(systemPath)
                     systemPath = os.path.join(source_dir, systemPath)
                     paths[file_name]['files'].add(systemPath)
@@ -576,7 +576,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
-        
+
         packages.append({"name" : name_without_extension, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False, 'install_location': install_location})
         package_changed = (version == tag_name.replace("v", ""))
 
@@ -607,7 +607,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             'package_changed': package_changed,
             'install_location': install_location
         }
-        
+
         resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
         print(f"INDEX RESPONSE: {resp}")
 
@@ -717,7 +717,7 @@ async def main(token, repo, tag_name):
             # Exit if it fails 10 times, something is wrong with the server
             raise ValueError("Connection to ES failed!")
         num_of_retries += 1
-        
+
         time.sleep(30)
     index_name = os.environ['ES_INDEX']
 
