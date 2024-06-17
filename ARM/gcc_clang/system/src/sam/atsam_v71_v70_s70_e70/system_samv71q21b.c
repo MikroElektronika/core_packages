@@ -147,10 +147,17 @@ static void _pmc_init_sources(void)
 
     // If UPLL is enabled.
     if (CKGR_UCKR_UPLLEN == (VALUE_CKGR_UCKR & CKGR_UCKR_UPLLEN_Msk)) {
+        UTMI->UTMI_CKTRIM = VALUE_UTMI_CKTRIM;
         // Configure UPLL.
         PMC->CKGR_UCKR = VALUE_CKGR_UCKR;
 	    while (PMC_SR_LOCKU != (PMC->PMC_SR & PMC_SR_LOCKU_Msk)) {
 		    /* Wait until USB UTMI stabilize */
+        }
+        data = PMC->PMC_MCKR & ~PMC_MCKR_UPLLDIV_Msk;
+        data |= VALUE_PMC_MCKR & PMC_MCKR_UPLLDIV_Msk;
+        PMC->PMC_MCKR = data;
+        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY)) {
+            /* Wait until master clock is ready */
         }
 	} else {
         // Disasble UPLL.

@@ -1,6 +1,31 @@
 {
     "config_registers": [
         {
+            "address": "400E0430",
+            "default": "00010000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "FREQ",
+                    "label": "UTMI Reference Clock Frequency",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "12 MHz reference clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "16 MHz reference clock",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "UTMI_CKTRIM",
+            "unused": "FFFFFFFC"
+        },
+        {
             "address": "400E0600",
             "default": "00000000",
             "fields": [
