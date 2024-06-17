@@ -1,0 +1,8 @@
+if(${MCU_NAME} MATCHES "^ATSAMC20N17A$|^ATSAMC20N18A$|^ATSAMC21N17A$|^ATSAMC21N18A$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamc20n_21n/system_samc20n_21n.c)
+    list(APPEND local_list_include common/syscalls.c)
+    list(APPEND local_dir_install system/src/sam/atsamc20n_21n/thirdparty/${MCU_NAME_FIRST_8_LOWER})
+    set(${thirdpartyInstall} atsamc20n_21n/thirdparty/${MCU_NAME_FIRST_8_LOWER} PARENT_SCOPE)
+endif()
