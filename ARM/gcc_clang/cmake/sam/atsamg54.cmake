@@ -1,0 +1,21 @@
+if(${MCU_NAME} MATCHES "^ATSAMG54J19B$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamg54/thirdparty/system_samg54j19.c)
+    list(APPEND local_list_include common/syscalls.c)
+endif()
+
+if(${MCU_NAME} MATCHES "^ATSAMG54G19B$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamg54/thirdparty/system_samg54g19.c)
+    list(APPEND local_list_include common/syscalls.c)
+endif()
+
+if(${MCU_NAME} MATCHES "^ATSAMG54N19B$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamg54/thirdparty/system_samg54n19.c)
+    list(APPEND local_list_include common/syscalls.c)
+endif()
+
