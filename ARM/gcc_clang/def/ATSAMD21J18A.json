@@ -1332,7 +1332,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00010000",
                     "key": "GENEN",
                     "label": "Generic Clock Generator 0 Enable",
                     "mask": "00010000",
