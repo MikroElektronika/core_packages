@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAMD21E15$|^ATSAMD21E15L$|^ATSAMD21E16$|^ATSAMD21E16L$|^ATSAMD21E17$|^ATSAMD21E17L$|^ATSAMD21E18$|^ATSAMD21G15$|^ATSAMD21G16$|^ATSAMD21G16L$|^ATSAMD21G17$|^ATSAMD21G17L$|^ATSAMD21G18$|^ATSAMD21J15$|^ATSAMD21J16$|^ATSAMD21J17$|^ATSAMD21J18$|^ATSAMDA1E15B$|^ATSAMDA1E16B$|^ATSAMDA1G14B$|^ATSAMDA1G16B$|^ATSAMDA1J14B$|^ATSAMDA1J15B")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/system_sam_d21_da1.c)
+    list(APPEND local_list_include common/syscalls.c)
+endif()
+
