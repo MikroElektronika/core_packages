@@ -41272,7 +41272,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "PRES",
-                    "label": "PRES: Programmable Clock 1 Prescaler",
+                    "label": "Programmable Clock 1 Prescaler",
                     "mask": "00000ff0",
                     "settings": [
                         {
