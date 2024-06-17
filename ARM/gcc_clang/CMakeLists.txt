@@ -10,7 +10,7 @@ include(coreUtils)
 
 add_preinit_lib()
 
-core_files_set(fileListInclude fileDirInclude fileListInstall linkerScript startupFile)
+core_files_set(fileListInclude fileDirInclude fileListInstall linkerScript startupFile thirdpartyInstall)
 
 set_delay_parameters(delayParameters)
 add_macros(${CMAKE_BINARY_DIR} delay_parameters.h ${delayParameters})
@@ -49,8 +49,11 @@ target_include_directories(lib_core
         ${TEST_LIB_PATH}/include
         ${PREINIT_ROUTINE_PATH}/include
         interrupts/include/interrupts_mcu/${MCU_NAME_LOWER}
+        common/cmsis
     INTERFACE
         $<INSTALL_INTERFACE:include/core>
+        $<INSTALL_INTERFACE:include/core/${MCU_NAME}>
+        $<INSTALL_INTERFACE:include/core/common/cmsis>
 )
 
 add_fosc_macro(lib_core)
@@ -105,5 +108,31 @@ install(
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/../FileLinker
 )
+
+install(
+    DIRECTORY "common/cmsis/"
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/common/cmsis"
+    FILES_MATCHING
+        PATTERN "*.h"
+)
+
+get_mcu_vendor(vendor)
+install(
+    DIRECTORY "def/${vendor}/${MCU_NAME}/"
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/${MCU_NAME}"
+    FILES_MATCHING
+        PATTERN "*.h"
+)
+
+if(thirdpartyInstall)
+    if(IS_DIRECTORY "system/src/${vendor}/${thirdpartyInstall}")
+        install(
+            DIRECTORY "system/src/${vendor}/${thirdpartyInstall}/"
+            DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/${MCU_NAME}"
+            FILES_MATCHING
+                PATTERN "*.h"
+        )
+    endif()
+endif()
 
 target_sources(${PROJECT_NAME} PRIVATE ${linkerScript} ${startupFile})
