@@ -4,4 +4,3 @@ if(${MCU_NAME} MATCHES "^ATSAMD21E15$|^ATSAMD21E15L$|^ATSAMD21E16$|^ATSAMD21E16L
     list(APPEND local_list_include system/src/sam/system_sam_d21_da1.c)
     list(APPEND local_list_include common/syscalls.c)
 endif()
-
