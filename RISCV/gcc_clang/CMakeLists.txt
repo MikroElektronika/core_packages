@@ -70,7 +70,7 @@ install(
         ${CMAKE_BINARY_DIR}/core_header.h
 
         interrupts/include/interrupts.h
-        interrupts/include/interrupts_mcu/gd32vf103xx/interrupts_mcu.h
+        interrupts/include/interrupts_mcu/${MCU_NAME_LOWER}/interrupts_mcu.h
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/include/core
 )
