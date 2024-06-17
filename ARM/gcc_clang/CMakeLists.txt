@@ -49,8 +49,11 @@ target_include_directories(lib_core
         ${TEST_LIB_PATH}/include
         ${PREINIT_ROUTINE_PATH}/include
         interrupts/include/interrupts_mcu/${MCU_NAME_LOWER}
+        common/cmsis
     INTERFACE
         $<INSTALL_INTERFACE:include/core>
+        $<INSTALL_INTERFACE:include/core/${MCU_NAME}>
+        $<INSTALL_INTERFACE:include/core/common/cmsis>
 )
 
 add_fosc_macro(lib_core)
@@ -104,6 +107,21 @@ install(
         ${linkerScript}
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/../FileLinker
+)
+
+install(
+    DIRECTORY "common/cmsis/"
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/common/cmsis"
+    FILES_MATCHING
+        PATTERN "*.h"
+)
+
+get_mcu_vendor(vendor)
+install(
+    DIRECTORY "def/${vendor}/${MCU_NAME}/"
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/${MCU_NAME}"
+    FILES_MATCHING
+        PATTERN "*.h"
 )
 
 target_sources(${PROJECT_NAME} PRIVATE ${linkerScript} ${startupFile})
