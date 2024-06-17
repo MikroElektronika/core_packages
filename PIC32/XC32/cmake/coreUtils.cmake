@@ -104,7 +104,7 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
     list(APPEND local_dir_install def/${MCU_NAME})
     set(${list} ${local_dir_install} PARENT_SCOPE)
 
-    file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/pic32/linker.cmake)
+    file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/pic32/*.cmake)
     foreach(cmakeFile ${CMAKE_FILES})
         include(${cmakeFile})
     endforeach()

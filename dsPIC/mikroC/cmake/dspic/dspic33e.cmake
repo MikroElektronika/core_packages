@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^dsPIC33(.+)$")
+    set(SYSTEM_LIB_SOURCE "system/src/__Lib_System.c")
+    set(DELAY_SOURCE "delay/dspic_ep/__lib_delays.c")
+    set(SYSTEM_LIB_INCLUDE_DIR "")
+    set(MATH_LIB_SOURCE "math/__Lib_math.c")
+    set(MATH_DOUBLE_SOURCE "math_double/__Lib_MathDouble.c")
+endif()

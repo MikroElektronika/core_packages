@@ -169,6 +169,8 @@ function(get_mcu_vendor vendor)
         set(${vendor} nxp PARENT_SCOPE)
     elseif(${MCU_NAME} MATCHES "^TM4C.+$")
         set(${vendor} ti PARENT_SCOPE)
+    elseif(${MCU_NAME} MATCHES "^(AT)?SAM.+$")
+        set(${vendor} sam PARENT_SCOPE)
     else()
         message(FATAL_ERROR "${MCU_NAME} not supported in GCC by NECTO.")
     endif()
@@ -178,7 +180,7 @@ endfunction()
 #############################################################################
 ## Function to set appropriate linker, startup and source files
 #############################################################################
-function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScript startupFile)
+function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScript startupFile thirdpartyInstall)
 
     set(local_list_include ${fileListInclude})
     set(local_list_install ${fileListInstall})
@@ -192,18 +194,27 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
 
     list(APPEND local_dir_install system/inc/${vendor})
     list(APPEND local_dir_install def/${vendor}/${MCU_NAME})
-    set(${list} ${local_dir_install} PARENT_SCOPE)
 
     # Include mcu based on full mcu name matched
     string(TOLOWER ${MCU_NAME} mcu_match)
+    string(SUBSTRING ${MCU_NAME} 0 8 MCU_NAME_FIRST_8)
+    string(TOLOWER ${MCU_NAME_FIRST_8} MCU_NAME_FIRST_8_LOWER)
+    string(SUBSTRING ${MCU_NAME} 0 6 MCU_NAME_FIRST_6)
+    string(TOLOWER ${MCU_NAME_FIRST_6} MCU_NAME_FIRST_6_LOWER)
 
     file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${vendor}/*.cmake)
     foreach(cmakeFile ${CMAKE_FILES})
         include(${cmakeFile})
     endforeach()
 
+    set(${list} ${local_dir_install} PARENT_SCOPE)
+
     set(${list} ${local_list_include} PARENT_SCOPE)
     set(${list} ${local_list_install} PARENT_SCOPE)
+
+    if(NOT thirdpartyInstall)
+        set(${thirdpartyInstall} "" PARENT_SCOPE)
+    endif()
 
 endfunction()
 
@@ -218,9 +229,13 @@ function(set_flags flags)
         else()
             set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m0plus -mthumb --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
         endif()
+    elseif (${CORE_NAME} STREQUAL "M0+")
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m0plus -mthumb --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M3")
         set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m3 -mthumb --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
-    elseif (${CORE_NAME} STREQUAL "M4EF")
+    elseif (${CORE_NAME} STREQUAL "M4")
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)else
+    if (${CORE_NAME} STREQUAL "M4EF")
         set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M4DSP")
         set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb --specs=nosys.specs -mfloat-abi=soft -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)

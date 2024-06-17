@@ -1,0 +1,1786 @@
+{
+    "core": "M0+",
+    "delay_src_path": "delays/m0+/__lib_delays.c",
+    "mcu": "ATSAMC20E17A",
+    "clock": 1,
+    "config_registers": [
+    	{
+        "address": "41004004",
+        "default": "00000000",
+        "fields": [
+            {
+                "hidden": false,
+                "init": "00000000",
+                "key": "RWS",
+                "label": "NVM Read Wait States",
+                "mask": "0000001E",
+                "settings_array": {
+                    "decrease": false,
+                    "disabled_when_zero": false,
+                    "inverted": false,
+                    "max_value": "15",
+                    "min_value": "0"
+                }
+            }
+        ],
+            "key": "NVMCTRL_CTRLB",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001414",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "ENABLE",
+                    "label": "TODO, Work in progress. 32.768 kHz External Crystal Oscillator Enable",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "XOSC32K Disable",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "XOSC32K Enable",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "XTALEN",
+                    "label": "TODO, Work in progress. 32.768 kHz External Crystal Oscillator XTALEN",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "External clock connected on XIN32. XOUT32 can be used as general-purpose I/O.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Crystal connected to XIN32/XOUT32.",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "EN32K",
+                    "label": "TODO, Work in progress. 32.768 kHz External Crystal Oscillator 32.768 kHz Output Enable",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "The 32.768 kHz output is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The 32.768 kHz output is enabled, and can be routed to GCLK/GCLK_IO.",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "EN1K",
+                    "label": "TODO, Work in progress. 32.768 kHz External Crystal Oscillator 1.024 kHz Output Enable",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "The 1.024 kHz output is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The 1.024 kHz output is enabled, and available internally only for RTC.",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "STARTUP",
+                    "label": "TODO, Work in progress. 32.768 kHz External Crystal Oscillator Start-Up Time",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "122us",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1.06ms",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "62.6ms",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "125ms",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "500ms",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "1s",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "2s",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "4s",
+                            "value": "00000700"
+                        }
+                    ]
+                }
+            ],
+            "key": "XOSC32K",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001416",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CFDEN",
+                    "label": "Clock Failure Detector Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "The CFD is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The CFD is enabled.",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SWBACK",
+                    "label": "Clock Switch Back",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "The clock switch is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The clock switch is enabled.",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CFDPRESC",
+                    "label": "Clock Failure Detector Prescaler",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "The CFD safe clock frequency is the OSCULP32K frequency",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The CFD safe clock frequency is the OSCULP32K frequency divided by 2",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "CFDCTRL",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001417",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CFDEO",
+                    "label": "Clock Failure Detector Event Out Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Clock Failure Detector Event output is disabled, no event will be generated.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clock Failure Detector Event output is enabled, an event will be generated.",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "EVCTRL",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001418",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ENABLE",
+                    "label": "32.768 kHz Internal Crystal Oscillator Enable",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "OSC32K Disable",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "OSC32K Enable",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "EN32K",
+                    "label": "32.768 kHz Internal Crystal Oscillator 32.768 kHz Output Enable",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "The 32.768 kHz output is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The 32.768 kHz output is enabled, and can be routed to GCLK/GCLK_IO.",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "EN1K",
+                    "label": "32.768 kHz Internal Crystal Oscillator 1.024 kHz Output Enable",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "The 1.024 kHz output is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The 1.024 kHz output is enabled, and  and available internally only for RTC.",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "STARTUP",
+                    "label": "32.768 kHz Internal Crystal Oscillator Start-Up Time",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "0.092 ms",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "0.122 ms",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "0.183 ms",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "0.305 ms",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "0.549 ms",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "1.038 ms",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "2.014 ms",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "3.967 ms",
+                            "value": "00000700"
+                        }
+                    ]
+                }
+            ],
+            "key": "OSC32K",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001410",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "RTCSEL",
+                    "label": "RTC Clock Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "1.024 kHz from 32.768 kHz internal ULP oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "32.768 kHz from 32.768 kHz internal ULP oscillator",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "1.024 kHz from 32.768 kHz internal oscillator",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "32.768 kHz from 32.768 kHz internal oscillator",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "1.024 kHz from 32.768 kHz external oscillator",
+                            "value": "00000004",
+                            "hidden": true
+                        },
+                        {
+                            "label": "32.768 kHz from 32.768 kHz external crystal oscillator",
+                            "value": "00000005",
+                            "hidden": true
+                        }
+                    ]
+                }
+            ],
+            "key": "RTCCTRL",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001010",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "ENABLE",
+                    "label": "External Multipurpose Crystal Oscillator Enable",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "The oscillator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The oscillator is enabled.",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "XTALEN",
+                    "label": "External Multipurpose Crystal Oscillator XTALEN",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "External clock connected on XIN. XOUT can be used as general-purpose I/O.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Crystal connected to XIN/XOUT.",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "STARTUP",
+                    "label": "External Multipurpose Crystal Oscillator Start-Up Time",
+                    "mask": "0000F000",
+                    "settings": [
+                        {
+                            "label": "31 us",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "61 us",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "122 us",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "244 us",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": "488 us",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "977 us",
+                            "value": "00005000"
+                        },
+                        {
+                            "label": "1953 us",
+                            "value": "00006000"
+                        },
+                        {
+                            "label": "3906 us",
+                            "value": "00007000"
+                        },
+                        {
+                            "label": "7813 us",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "15625 us",
+                            "value": "00009000"
+                        },
+                        {
+                            "label": "31250 us",
+                            "value": "0000A000"
+                        },
+                        {
+                            "label": "62500 us",
+                            "value": "0000B000"
+                        },
+                        {
+                            "label": "125000 us",
+                            "value": "0000C000"
+                        },
+                        {
+                            "label": "250000 us",
+                            "value": "0000D000"
+                        },
+                        {
+                            "label": "500000 us",
+                            "value": "0000E000"
+                        },
+                        {
+                            "label": "1000000 us",
+                            "value": "0000F000"
+                        }
+                    ]
+                }
+            ],
+            "key": "XOSCCTRL",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001014",
+            "default": "00000082",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "ENABLE",
+                    "label": "48MHz Internal Oscillator Enable",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "The oscillator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The oscillator is enabled.",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ],
+            "key": "OSC48MCTRL",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001015",
+            "default": "0000000B",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0000000B",
+                    "key": "DIV",
+                    "label": "48MHz Internal Oscillator Divider Selection",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "48MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "24MHz",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "16MHz",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "12MHz",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "9.6MHz",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "8MHz",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "6.86MHz",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "6MHz",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "5.33MHz",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "4.8MHz",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "4.36MHz",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "4MHz",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "3.69MHz",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "3.43MHz",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "3.2MHz",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "3MHz",
+                            "value": "0000000F"
+                        }
+                    ]
+                }
+            ],
+            "key": "OSC48MDIV",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001016",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "STARTUP",
+                    "label": "48MHz Internal Oscillator Startup Delay",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "166 ns",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "333 ns",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "667 ns",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "1.333 us",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "2.667 us",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "5.333 us",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "10.667 us",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "21.333 us",
+                            "value": "00000007"
+                        }
+                    ]
+                }
+            ],
+            "key": "OSC48MSTUP",
+            "unused": "00000000"
+        },
+        {
+            "address": "40000408",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "CPUDIV",
+                    "label": "CPU Clock Division Factor",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "Divide by 1",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 2",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 4",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 8",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 16",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 32",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 64",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Divide by 128",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "CPUDIV",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C20",
+            "default": "00000106",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 0 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 0 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic clock generator 1 output",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 0 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 0 Division Factor",
+                    "mask": "00FF0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL0",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C24",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 1 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 1 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 1 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 1 Division Factor",
+                    "mask": "FFFF0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "todo_comment": "65535",
+                        "max_value": "100",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL1",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C28",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 2 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 2 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic clock generator 1 output",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 2 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 2 Division Factor",
+                    "mask": "00FF00000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL2",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C2C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 3 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 3 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic clock generator 1 output",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 3 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 3 Division Factor",
+                    "mask": "00FF00000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL3",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C30",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 4 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 4 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic clock generator 1 output",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 4 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 4 Division Factor",
+                    "mask": "00FF00000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL4",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C34",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 5 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 5 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic clock generator 1 output",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 5 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 5 Division Factor",
+                    "mask": "00FF00000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL5",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C38",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 6 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 6 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic clock generator 1 output",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 6 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 6 Division Factor",
+                    "mask": "00FF00000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL6",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C3C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 7 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 7 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic clock generator 1 output",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 7 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 7 Division Factor",
+                    "mask": "00FF00000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL7",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C40",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GENEN",
+                    "label": "Generator 8 Enable",
+                    "mask": "000000100",
+                    "settings": [
+                        {
+                            "label": "Generator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generator is enabled.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "Generator 8 Clock Source Selection",
+                    "mask": "00000001F",
+                    "settings": [
+                        {
+                            "label": "XOSC oscillator output",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "Generator input pad (GCLK_IO)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic clock generator 1 output",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "OSCULP32K oscillator output",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "OSC32K oscillator output",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "XOSC32K oscillator output",
+                            "value": "00000005",
+                            "hidden": true
+                        },
+                        {
+                            "label": "OSC48M oscillator output",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "DPLL96M output",
+                            "value": "00000007"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OE",
+                    "label": "Generator 8 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "No Generator clock signal on pin GCLK_IO.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Generator clock signal is output on the corresponding GCLK_IO.",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Generator 8 Division Factor",
+                    "mask": "00FF00000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "GENCTRL8",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001C80",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CHEN",
+                    "label": "Peripheral Channel 0 Enable",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "The Peripheral Channel is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Peripheral Channel is enabled",
+                            "value": "00000040"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "GEN",
+                    "label": "Peripheral Clock Generator Selection",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "Generic Clock Generator 0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Generic Clock Generator 1",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Generic Clock Generator 2",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Generic Clock Generator 3",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Generic Clock Generator 4",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Generic Clock Generator 5",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Generic Clock Generator 6",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Generic Clock Generator 7",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Generic Clock Generator 8",
+                            "value": "00000008"
+                        }
+                    ]
+                }
+            ],
+            "key": "PCHCTRL0",
+            "unused": "00000000"
+        },
+        {
+            "address": "4000101C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ENABLE",
+                    "label": "DPLL Enable",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "DPLL Disable",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "DPLL Enable",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ],
+            "key": "DPLLCTRLA",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001020",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "LDR",
+                    "label": "DPLL Loop Divider Ratio",
+                    "mask": "00000FFF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "2047",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "LDRFRAC",
+                    "label": "DPLL Loop Divider Ratio Fractional Part",
+                    "mask": "000F0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "DPLLRATIO",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001024",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "REFCLK",
+                    "label": "DPLL Reference Clock Selection",
+                    "mask": "00000030",
+                    "settings": [
+                        {
+                            "label": "XOSC32K clock reference",
+                            "value": "00000000",
+                            "hidden": true
+                        },
+                        {
+                            "label": "XOSC clock reference",
+                            "value": "00000010",
+                            "hidden": true
+                        },
+                        {
+                            "label": "GCLK clock reference",
+                            "value": "00000020"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "DPLL Clock Divider",
+                    "mask": "07FF0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "2047",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "DPLLCTRLB",
+            "unused": "00000000"
+        },
+        {
+            "address": "40001028",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRESC",
+                    "label": "DPLL Output Clock Prescaler",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "DPLL output is divided by 1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "DPLL output is divided by 2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "DPLL output is divided by 4",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ],
+            "key": "DPLLPRESC",
+            "unused": "00000000"
+        }
+    ]
+}
