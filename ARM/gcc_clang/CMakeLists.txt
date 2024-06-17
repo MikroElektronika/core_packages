@@ -10,7 +10,7 @@ include(coreUtils)
 
 add_preinit_lib()
 
-core_files_set(fileListInclude fileDirInclude fileListInstall linkerScript startupFile)
+core_files_set(fileListInclude fileDirInclude fileListInstall linkerScript startupFile thirdpartyInstall)
 
 set_delay_parameters(delayParameters)
 add_macros(${CMAKE_BINARY_DIR} delay_parameters.h ${delayParameters})
@@ -123,5 +123,16 @@ install(
     FILES_MATCHING
         PATTERN "*.h"
 )
+
+if(thirdpartyInstall)
+    if(IS_DIRECTORY "system/src/${vendor}/${thirdpartyInstall}")
+        install(
+            DIRECTORY "system/src/${vendor}/${thirdpartyInstall}/"
+            DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/${MCU_NAME}"
+            FILES_MATCHING
+                PATTERN "*.h"
+        )
+    endif()
+endif()
 
 target_sources(${PROJECT_NAME} PRIVATE ${linkerScript} ${startupFile})
