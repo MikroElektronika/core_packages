@@ -135,8 +135,6 @@ static void _pmc_init_sources(void)
     }
 
     /* Stop PLL first */
-    // TODO Check if CKGR_PLLAR_ONE should be added to all writes, same as the key/passwd.
-    PMC->CKGR_PLLAR &= (CKGR_PLLAR_ONE | ~(CKGR_PLLAR_MULA_Msk | CKGR_PLLAR_DIVA_Msk));
     // If the PLLA is enabled.
     if ((CKGR_PLLAR_DIVA_0_Val != (VALUE_CKGR_PLLAR & CKGR_PLLAR_DIVA_Msk)) &&
         (CKGR_PLLAR_MULA(0) < (VALUE_CKGR_PLLAR & CKGR_PLLAR_MULA_Msk))) {
