@@ -38,42 +38,13 @@
 ****************************************************************************/
 /*!
 * @file  interrupts_mcu.h
-<<<<<<< HEAD
-* @brief ATSAM3X8E MCU specific interrupt per module definitions.
-=======
 * @brief ATSAMD21J18A MCU specific interrupt per module definitions.
->>>>>>> remotes/origin/wip/necto-sdk-test
 */
 
 #ifndef _INTERRUPTS_MCU_H_
 #define _INTERRUPTS_MCU_H_
 
 // Interrupt table
-<<<<<<< HEAD
-static const int INTERRUPTS_NMI = 2;
-static const int INTERRUPTS_HARDFAULT = 3;
-static const int INTERRUPTS_MEMMANAGE = 4;
-static const int INTERRUPTS_BUSFAULT = 5;
-static const int INTERRUPTS_USAGEFAULT = 6;
-static const int INTERRUPTS_RESERVED1 = 7;
-static const int INTERRUPTS_RESERVED2 = 8;
-static const int INTERRUPTS_RESERVED3 = 9;
-static const int INTERRUPTS_RESERVED4 = 10;
-static const int INTERRUPTS_SVCALL = 11;
-static const int INTERRUPTS_DEBUGMON = 12;
-static const int INTERRUPTS_RESERVED5 = 13;
-static const int INTERRUPTS_PENDSV = 14;
-static const int INTERRUPTS_SYSTICK = 15;
-// TODO - Rest of APIs
-// EOF Interrupt table
-
-// Interrupt addresses
-// No interrupt registers for cec1302.
-// EOF Interrupt addresses
-
-// Interrupt register bit values
-// No interrupt bits for cec1302.
-=======
 static const int INTERRUPTS_NONMASKABLEINT = 2;
 static const int INTERRUPTS_HARDFAULT = 3;
 static const int INTERRUPTS_SVCALL = 11;
@@ -116,7 +87,6 @@ static const int INTERRUPTS_PERIPH_COUNT = 44;
 
 // Interrupt register bit values
 // No interrupt bits for ATSAMD21J18A.
->>>>>>> remotes/origin/wip/necto-sdk-test
 // EOF Interrupt register bit values
 
 #endif // _INTERRUPTS_MCU_H_

@@ -1,8 +1,4 @@
 {
-    "core": "M0+",
-    "delay_src_path": "delays/m0+/__lib_delays.c",
-    "mcu": "ATSAMD21E18A",
-    "clock": 8,
     "config_registers": [
         {
             "address": "40000408",
@@ -2774,5 +2770,9 @@
             "key": "TEMPLATE",
             "unused": "00000000"
         }
-    ]
+    ],
+    "core": "M0+",
+    "delay_src_path": "delays/m0+/__lib_delays.c",
+    "mcu": "ATSAMD21E18A",
+    "clock": 8
 }
