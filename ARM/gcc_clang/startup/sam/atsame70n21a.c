@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief GCC startup file for ATSAME70N21B
+ * \brief GCC startup file for ATSAME70N21
  *
  * Copyright (c) 2019 Microchip Technology Inc.
  *
@@ -122,15 +122,9 @@ void ISI_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler"))
 void PWM1_Handler         ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void FPU_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void RSWDT_Handler        ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void CCW_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void CCF_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void GMAC_Q1_Handler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void GMAC_Q2_Handler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void IXC_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void I2SC0_Handler        ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void GMAC_Q3_Handler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void GMAC_Q4_Handler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void GMAC_Q5_Handler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 
 /* Exception Table */
 __attribute__ ((section(".vectors")))
@@ -220,16 +214,11 @@ const DeviceVectors exception_table = {
         .pfnFPU_Handler                = (void*) FPU_Handler,    /* 61 Floating Point Unit */
         .pvReserved62                  = (void*) (0UL),          /* 62 Reserved */
         .pfnRSWDT_Handler              = (void*) RSWDT_Handler,  /* 63 Reinforced Safety Watchdog Timer */
-        .pfnCCW_Handler                = (void*) CCW_Handler,    /* 64 System Control Block */
-        .pfnCCF_Handler                = (void*) CCF_Handler,    /* 65 System Control Block */
+        .pvReserved64                  = (void*) (0UL),          /* 64 Reserved */
+        .pvReserved65                  = (void*) (0UL),          /* 65 Reserved */
         .pfnGMAC_Q1_Handler            = (void*) GMAC_Q1_Handler, /* 66 Gigabit Ethernet MAC */
         .pfnGMAC_Q2_Handler            = (void*) GMAC_Q2_Handler, /* 67 Gigabit Ethernet MAC */
-        .pfnIXC_Handler                = (void*) IXC_Handler,    /* 68 Floating Point Unit */
-        .pfnI2SC0_Handler              = (void*) I2SC0_Handler,  /* 69 Inter-IC Sound Controller */
-        .pvReserved70                  = (void*) (0UL),          /* 70 Reserved */
-        .pfnGMAC_Q3_Handler            = (void*) GMAC_Q3_Handler, /* 71 Gigabit Ethernet MAC */
-        .pfnGMAC_Q4_Handler            = (void*) GMAC_Q4_Handler, /* 72 Gigabit Ethernet MAC */
-        .pfnGMAC_Q5_Handler            = (void*) GMAC_Q5_Handler  /* 73 Gigabit Ethernet MAC */
+        .pfnIXC_Handler                = (void*) IXC_Handler     /* 68 Floating Point Unit */
 };
 
 /**

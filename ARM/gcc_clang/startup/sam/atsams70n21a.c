@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief GCC startup file for ATSAMS70N21B
+ * \brief GCC startup file for ATSAMS70N21
  *
  * Copyright (c) 2019 Microchip Technology Inc.
  *
@@ -117,10 +117,7 @@ void ISI_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler"))
 void PWM1_Handler         ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void FPU_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void RSWDT_Handler        ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void CCW_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void CCF_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void IXC_Handler          ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void I2SC0_Handler        ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 
 /* Exception Table */
 __attribute__ ((section(".vectors")))
@@ -210,12 +207,11 @@ const DeviceVectors exception_table = {
         .pfnFPU_Handler                = (void*) FPU_Handler,    /* 61 Floating Point Unit */
         .pvReserved62                  = (void*) (0UL),          /* 62 Reserved */
         .pfnRSWDT_Handler              = (void*) RSWDT_Handler,  /* 63 Reinforced Safety Watchdog Timer */
-        .pfnCCW_Handler                = (void*) CCW_Handler,    /* 64 System Control Block */
-        .pfnCCF_Handler                = (void*) CCF_Handler,    /* 65 System Control Block */
+        .pvReserved64                  = (void*) (0UL),          /* 64 Reserved */
+        .pvReserved65                  = (void*) (0UL),          /* 65 Reserved */
         .pvReserved66                  = (void*) (0UL),          /* 66 Reserved */
         .pvReserved67                  = (void*) (0UL),          /* 67 Reserved */
-        .pfnIXC_Handler                = (void*) IXC_Handler,    /* 68 Floating Point Unit */
-        .pfnI2SC0_Handler              = (void*) I2SC0_Handler   /* 69 Inter-IC Sound Controller */
+        .pfnIXC_Handler                = (void*) IXC_Handler     /* 68 Floating Point Unit */
 };
 
 /**
