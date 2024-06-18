@@ -122,7 +122,7 @@ function(find_cortex listArg)
             list(APPEND local_list __cortex_m0__ PARENT_SCOPE)
         elseif((${CMAKE_MATCH_1} STREQUAL "1") OR (${CMAKE_MATCH_1} STREQUAL "2"))
             list(APPEND local_list __cortex_m3__ PARENT_SCOPE)
-            elseif((${CMAKE_MATCH_1} STREQUAL "3") OR (${CMAKE_MATCH_1} STREQUAL "4"))
+        elseif((${CMAKE_MATCH_1} STREQUAL "3") OR (${CMAKE_MATCH_1} STREQUAL "4"))
             list(APPEND local_list __cortex_m4__ PARENT_SCOPE)
         elseif(${CMAKE_MATCH_1} STREQUAL "7")
             list(APPEND local_list __cortex_m7__ PARENT_SCOPE)
@@ -240,7 +240,12 @@ function(set_flags flags)
     elseif (${CORE_NAME} STREQUAL "M4DSP")
         set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb --specs=nosys.specs -mfloat-abi=soft -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M7")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m7 -mthumb --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv5-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+        if(${MCU_NAME} MATCHES "^STM32(F7[67]|H7[2-5]).+$")
+            set(M7_FPU_FLAG -mfpu=fpv5-d16)
+        else()
+            set(M7_FPU_FLAG -mfpu=fpv5-sp-d16)
+        endif()
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m7 -mthumb -mfloat-abi=hard ${M7_FPU_FLAG} --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 PARENT_SCOPE)
     else()
         message(FATAL_ERROR "MCU Core not supported.")
     endif()
@@ -248,7 +253,7 @@ function(set_flags flags)
 endfunction()
 
 #############################################################################
-## Function to create interface headers according to lib alias
+## Macro to create interface headers according to lib alias
 #############################################################################
 macro(add_macros fileDestination fileList)
     # Cannot use ARGN directly with list() command,
