@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief Header file for ATSAMS70Q20B
+ * \brief Header file for ATSAMS70Q20
  *
  * Copyright (c) 2019 Microchip Technology Inc.
  *
@@ -27,12 +27,12 @@
  *
  */
 
-/* file generated from device description version 2019-01-18T21:20:28Z */
-#ifndef _SAMS70Q20B_H_
-#define _SAMS70Q20B_H_
+/* file generated from device description version 2017-01-08T14:00:00Z */
+#ifndef _SAMS70Q20_H_
+#define _SAMS70Q20_H_
 
-/** \addtogroup SAMS70Q20B_definitions SAMS70Q20B definitions
-  This file defines all structures and symbols for SAMS70Q20B:
+/** \addtogroup SAMS70Q20_definitions SAMS70Q20 definitions
+  This file defines all structures and symbols for SAMS70Q20:
     - registers and bitfields
     - peripheral base address
     - peripheral ID
@@ -105,11 +105,11 @@ typedef volatile       uint8_t  RwReg8;  /**< Read-Write  8-bit register (volati
 #endif /* SKIP_INTEGER_LITERALS */
 /** @}  end of Atmel Global Defines */
 
-/** \addtogroup SAMS70Q20B_cmsis CMSIS Definitions
+/** \addtogroup SAMS70Q20_cmsis CMSIS Definitions
  *  @{
  */
 /* ************************************************************************** */
-/*   CMSIS DEFINITIONS FOR SAMS70Q20B */
+/*   CMSIS DEFINITIONS FOR SAMS70Q20 */
 /* ************************************************************************** */
 #if !(defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__))
 /** Interrupt Number Definition */
@@ -126,69 +126,65 @@ typedef enum IRQn
   DebugMonitor_IRQn         = -4 , /**< 12  Debug Monitor                        */
   PendSV_IRQn               = -2 , /**< 14  Pendable request for system service  */
   SysTick_IRQn              = -1 , /**< 15  System Tick Timer                    */
-/******  SAMS70Q20B specific Interrupt Numbers ***********************************/
-  SUPC_IRQn                 = 0  , /**< 0   SAMS70Q20B Supply Controller (SUPC) */
-  RSTC_IRQn                 = 1  , /**< 1   SAMS70Q20B Reset Controller (RSTC)  */
-  RTC_IRQn                  = 2  , /**< 2   SAMS70Q20B Real-time Clock (RTC)    */
-  RTT_IRQn                  = 3  , /**< 3   SAMS70Q20B Real-time Timer (RTT)    */
-  WDT_IRQn                  = 4  , /**< 4   SAMS70Q20B Watchdog Timer (WDT)     */
-  PMC_IRQn                  = 5  , /**< 5   SAMS70Q20B Power Management Controller (PMC) */
-  EFC_IRQn                  = 6  , /**< 6   SAMS70Q20B Embedded Flash Controller (EFC) */
-  UART0_IRQn                = 7  , /**< 7   SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART0) */
-  UART1_IRQn                = 8  , /**< 8   SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART1) */
-  PIOA_IRQn                 = 10 , /**< 10  SAMS70Q20B Parallel Input/Output Controller (PIOA) */
-  PIOB_IRQn                 = 11 , /**< 11  SAMS70Q20B Parallel Input/Output Controller (PIOB) */
-  PIOC_IRQn                 = 12 , /**< 12  SAMS70Q20B Parallel Input/Output Controller (PIOC) */
-  USART0_IRQn               = 13 , /**< 13  SAMS70Q20B Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
-  USART1_IRQn               = 14 , /**< 14  SAMS70Q20B Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
-  USART2_IRQn               = 15 , /**< 15  SAMS70Q20B Universal Synchronous Asynchronous Receiver Transmitter (USART2) */
-  PIOD_IRQn                 = 16 , /**< 16  SAMS70Q20B Parallel Input/Output Controller (PIOD) */
-  PIOE_IRQn                 = 17 , /**< 17  SAMS70Q20B Parallel Input/Output Controller (PIOE) */
-  HSMCI_IRQn                = 18 , /**< 18  SAMS70Q20B High Speed MultiMedia Card Interface (HSMCI) */
-  TWIHS0_IRQn               = 19 , /**< 19  SAMS70Q20B Two-wire Interface High Speed (TWIHS0) */
-  TWIHS1_IRQn               = 20 , /**< 20  SAMS70Q20B Two-wire Interface High Speed (TWIHS1) */
-  SPI0_IRQn                 = 21 , /**< 21  SAMS70Q20B Serial Peripheral Interface (SPI0) */
-  SSC_IRQn                  = 22 , /**< 22  SAMS70Q20B Synchronous Serial Controller (SSC) */
-  TC0_IRQn                  = 23 , /**< 23  SAMS70Q20B Timer Counter (TC0)      */
-  TC1_IRQn                  = 24 , /**< 24  SAMS70Q20B Timer Counter (TC0)      */
-  TC2_IRQn                  = 25 , /**< 25  SAMS70Q20B Timer Counter (TC0)      */
-  TC3_IRQn                  = 26 , /**< 26  SAMS70Q20B Timer Counter (TC1)      */
-  TC4_IRQn                  = 27 , /**< 27  SAMS70Q20B Timer Counter (TC1)      */
-  TC5_IRQn                  = 28 , /**< 28  SAMS70Q20B Timer Counter (TC1)      */
-  AFEC0_IRQn                = 29 , /**< 29  SAMS70Q20B Analog Front-End Controller (AFEC0) */
-  DACC_IRQn                 = 30 , /**< 30  SAMS70Q20B Digital-to-Analog Converter Controller (DACC) */
-  PWM0_IRQn                 = 31 , /**< 31  SAMS70Q20B Pulse Width Modulation Controller (PWM0) */
-  ICM_IRQn                  = 32 , /**< 32  SAMS70Q20B Integrity Check Monitor (ICM) */
-  ACC_IRQn                  = 33 , /**< 33  SAMS70Q20B Analog Comparator Controller (ACC) */
-  USBHS_IRQn                = 34 , /**< 34  SAMS70Q20B USB High-Speed Interface (USBHS) */
-  AFEC1_IRQn                = 40 , /**< 40  SAMS70Q20B Analog Front-End Controller (AFEC1) */
-  TWIHS2_IRQn               = 41 , /**< 41  SAMS70Q20B Two-wire Interface High Speed (TWIHS2) */
-  SPI1_IRQn                 = 42 , /**< 42  SAMS70Q20B Serial Peripheral Interface (SPI1) */
-  QSPI_IRQn                 = 43 , /**< 43  SAMS70Q20B Quad Serial Peripheral Interface (QSPI) */
-  UART2_IRQn                = 44 , /**< 44  SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART2) */
-  UART3_IRQn                = 45 , /**< 45  SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART3) */
-  UART4_IRQn                = 46 , /**< 46  SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART4) */
-  TC6_IRQn                  = 47 , /**< 47  SAMS70Q20B Timer Counter (TC2)      */
-  TC7_IRQn                  = 48 , /**< 48  SAMS70Q20B Timer Counter (TC2)      */
-  TC8_IRQn                  = 49 , /**< 49  SAMS70Q20B Timer Counter (TC2)      */
-  TC9_IRQn                  = 50 , /**< 50  SAMS70Q20B Timer Counter (TC3)      */
-  TC10_IRQn                 = 51 , /**< 51  SAMS70Q20B Timer Counter (TC3)      */
-  TC11_IRQn                 = 52 , /**< 52  SAMS70Q20B Timer Counter (TC3)      */
-  AES_IRQn                  = 56 , /**< 56  SAMS70Q20B Advanced Encryption Standard (AES) */
-  TRNG_IRQn                 = 57 , /**< 57  SAMS70Q20B True Random Number Generator (TRNG) */
-  XDMAC_IRQn                = 58 , /**< 58  SAMS70Q20B Extensible DMA Controller (XDMAC) */
-  ISI_IRQn                  = 59 , /**< 59  SAMS70Q20B Image Sensor Interface (ISI) */
-  PWM1_IRQn                 = 60 , /**< 60  SAMS70Q20B Pulse Width Modulation Controller (PWM1) */
-  FPU_IRQn                  = 61 , /**< 61  SAMS70Q20B Floating Point Unit (FPU) */
-  SDRAMC_IRQn               = 62 , /**< 62  SAMS70Q20B SDRAM Controller (SDRAMC) */
-  RSWDT_IRQn                = 63 , /**< 63  SAMS70Q20B Reinforced Safety Watchdog Timer (RSWDT) */
-  CCW_IRQn                  = 64 , /**< 64  SAMS70Q20B System Control Block (SCB) */
-  CCF_IRQn                  = 65 , /**< 65  SAMS70Q20B System Control Block (SCB) */
-  IXC_IRQn                  = 68 , /**< 68  SAMS70Q20B Floating Point Unit (FPU) */
-  I2SC0_IRQn                = 69 , /**< 69  SAMS70Q20B Inter-IC Sound Controller (I2SC0) */
-  I2SC1_IRQn                = 70 , /**< 70  SAMS70Q20B Inter-IC Sound Controller (I2SC1) */
+/******  SAMS70Q20 specific Interrupt Numbers ***********************************/
+  SUPC_IRQn                 = 0  , /**< 0   SAMS70Q20 Supply Controller (SUPC)  */
+  RSTC_IRQn                 = 1  , /**< 1   SAMS70Q20 Reset Controller (RSTC)   */
+  RTC_IRQn                  = 2  , /**< 2   SAMS70Q20 Real-time Clock (RTC)     */
+  RTT_IRQn                  = 3  , /**< 3   SAMS70Q20 Real-time Timer (RTT)     */
+  WDT_IRQn                  = 4  , /**< 4   SAMS70Q20 Watchdog Timer (WDT)      */
+  PMC_IRQn                  = 5  , /**< 5   SAMS70Q20 Power Management Controller (PMC) */
+  EFC_IRQn                  = 6  , /**< 6   SAMS70Q20 Embedded Flash Controller (EFC) */
+  UART0_IRQn                = 7  , /**< 7   SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART0) */
+  UART1_IRQn                = 8  , /**< 8   SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART1) */
+  PIOA_IRQn                 = 10 , /**< 10  SAMS70Q20 Parallel Input/Output Controller (PIOA) */
+  PIOB_IRQn                 = 11 , /**< 11  SAMS70Q20 Parallel Input/Output Controller (PIOB) */
+  PIOC_IRQn                 = 12 , /**< 12  SAMS70Q20 Parallel Input/Output Controller (PIOC) */
+  USART0_IRQn               = 13 , /**< 13  SAMS70Q20 Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
+  USART1_IRQn               = 14 , /**< 14  SAMS70Q20 Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
+  USART2_IRQn               = 15 , /**< 15  SAMS70Q20 Universal Synchronous Asynchronous Receiver Transmitter (USART2) */
+  PIOD_IRQn                 = 16 , /**< 16  SAMS70Q20 Parallel Input/Output Controller (PIOD) */
+  PIOE_IRQn                 = 17 , /**< 17  SAMS70Q20 Parallel Input/Output Controller (PIOE) */
+  HSMCI_IRQn                = 18 , /**< 18  SAMS70Q20 High Speed MultiMedia Card Interface (HSMCI) */
+  TWIHS0_IRQn               = 19 , /**< 19  SAMS70Q20 Two-wire Interface High Speed (TWIHS0) */
+  TWIHS1_IRQn               = 20 , /**< 20  SAMS70Q20 Two-wire Interface High Speed (TWIHS1) */
+  SPI0_IRQn                 = 21 , /**< 21  SAMS70Q20 Serial Peripheral Interface (SPI0) */
+  SSC_IRQn                  = 22 , /**< 22  SAMS70Q20 Synchronous Serial Controller (SSC) */
+  TC0_IRQn                  = 23 , /**< 23  SAMS70Q20 Timer Counter (TC0)       */
+  TC1_IRQn                  = 24 , /**< 24  SAMS70Q20 Timer Counter (TC0)       */
+  TC2_IRQn                  = 25 , /**< 25  SAMS70Q20 Timer Counter (TC0)       */
+  TC3_IRQn                  = 26 , /**< 26  SAMS70Q20 Timer Counter (TC1)       */
+  TC4_IRQn                  = 27 , /**< 27  SAMS70Q20 Timer Counter (TC1)       */
+  TC5_IRQn                  = 28 , /**< 28  SAMS70Q20 Timer Counter (TC1)       */
+  AFEC0_IRQn                = 29 , /**< 29  SAMS70Q20 Analog Front-End Controller (AFEC0) */
+  DACC_IRQn                 = 30 , /**< 30  SAMS70Q20 Digital-to-Analog Converter Controller (DACC) */
+  PWM0_IRQn                 = 31 , /**< 31  SAMS70Q20 Pulse Width Modulation Controller (PWM0) */
+  ICM_IRQn                  = 32 , /**< 32  SAMS70Q20 Integrity Check Monitor (ICM) */
+  ACC_IRQn                  = 33 , /**< 33  SAMS70Q20 Analog Comparator Controller (ACC) */
+  USBHS_IRQn                = 34 , /**< 34  SAMS70Q20 USB High-Speed Interface (USBHS) */
+  AFEC1_IRQn                = 40 , /**< 40  SAMS70Q20 Analog Front-End Controller (AFEC1) */
+  TWIHS2_IRQn               = 41 , /**< 41  SAMS70Q20 Two-wire Interface High Speed (TWIHS2) */
+  SPI1_IRQn                 = 42 , /**< 42  SAMS70Q20 Serial Peripheral Interface (SPI1) */
+  QSPI_IRQn                 = 43 , /**< 43  SAMS70Q20 Quad Serial Peripheral Interface (QSPI) */
+  UART2_IRQn                = 44 , /**< 44  SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART2) */
+  UART3_IRQn                = 45 , /**< 45  SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART3) */
+  UART4_IRQn                = 46 , /**< 46  SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART4) */
+  TC6_IRQn                  = 47 , /**< 47  SAMS70Q20 Timer Counter (TC2)       */
+  TC7_IRQn                  = 48 , /**< 48  SAMS70Q20 Timer Counter (TC2)       */
+  TC8_IRQn                  = 49 , /**< 49  SAMS70Q20 Timer Counter (TC2)       */
+  TC9_IRQn                  = 50 , /**< 50  SAMS70Q20 Timer Counter (TC3)       */
+  TC10_IRQn                 = 51 , /**< 51  SAMS70Q20 Timer Counter (TC3)       */
+  TC11_IRQn                 = 52 , /**< 52  SAMS70Q20 Timer Counter (TC3)       */
+  AES_IRQn                  = 56 , /**< 56  SAMS70Q20 Advanced Encryption Standard (AES) */
+  TRNG_IRQn                 = 57 , /**< 57  SAMS70Q20 True Random Number Generator (TRNG) */
+  XDMAC_IRQn                = 58 , /**< 58  SAMS70Q20 Extensible DMA Controller (XDMAC) */
+  ISI_IRQn                  = 59 , /**< 59  SAMS70Q20 Image Sensor Interface (ISI) */
+  PWM1_IRQn                 = 60 , /**< 60  SAMS70Q20 Pulse Width Modulation Controller (PWM1) */
+  FPU_IRQn                  = 61 , /**< 61  SAMS70Q20 Floating Point Unit (FPU) */
+  SDRAMC_IRQn               = 62 , /**< 62  SAMS70Q20 SDRAM Controller (SDRAMC) */
+  RSWDT_IRQn                = 63 , /**< 63  SAMS70Q20 Reinforced Safety Watchdog Timer (RSWDT) */
+  IXC_IRQn                  = 68 , /**< 68  SAMS70Q20 Floating Point Unit (FPU) */
 
-  PERIPH_COUNT_IRQn        = 71  /**< Number of peripheral IDs */
+  PERIPH_COUNT_IRQn        = 69  /**< Number of peripheral IDs */
 } IRQn_Type;
 #endif /* !(defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__)) */
 
@@ -216,77 +212,75 @@ typedef struct _DeviceVectors
 
 
   /* Peripheral handlers */
-  void* pfnSUPC_Handler;                         /* 0   SAMS70Q20B Supply Controller (SUPC) */
-  void* pfnRSTC_Handler;                         /* 1   SAMS70Q20B Reset Controller (RSTC) */
-  void* pfnRTC_Handler;                          /* 2   SAMS70Q20B Real-time Clock (RTC) */
-  void* pfnRTT_Handler;                          /* 3   SAMS70Q20B Real-time Timer (RTT) */
-  void* pfnWDT_Handler;                          /* 4   SAMS70Q20B Watchdog Timer (WDT) */
-  void* pfnPMC_Handler;                          /* 5   SAMS70Q20B Power Management Controller (PMC) */
-  void* pfnEFC_Handler;                          /* 6   SAMS70Q20B Embedded Flash Controller (EFC) */
-  void* pfnUART0_Handler;                        /* 7   SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART0) */
-  void* pfnUART1_Handler;                        /* 8   SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART1) */
+  void* pfnSUPC_Handler;                         /* 0   SAMS70Q20 Supply Controller (SUPC) */
+  void* pfnRSTC_Handler;                         /* 1   SAMS70Q20 Reset Controller (RSTC) */
+  void* pfnRTC_Handler;                          /* 2   SAMS70Q20 Real-time Clock (RTC) */
+  void* pfnRTT_Handler;                          /* 3   SAMS70Q20 Real-time Timer (RTT) */
+  void* pfnWDT_Handler;                          /* 4   SAMS70Q20 Watchdog Timer (WDT) */
+  void* pfnPMC_Handler;                          /* 5   SAMS70Q20 Power Management Controller (PMC) */
+  void* pfnEFC_Handler;                          /* 6   SAMS70Q20 Embedded Flash Controller (EFC) */
+  void* pfnUART0_Handler;                        /* 7   SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART0) */
+  void* pfnUART1_Handler;                        /* 8   SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART1) */
   void* pvReserved9;
-  void* pfnPIOA_Handler;                         /* 10  SAMS70Q20B Parallel Input/Output Controller (PIOA) */
-  void* pfnPIOB_Handler;                         /* 11  SAMS70Q20B Parallel Input/Output Controller (PIOB) */
-  void* pfnPIOC_Handler;                         /* 12  SAMS70Q20B Parallel Input/Output Controller (PIOC) */
-  void* pfnUSART0_Handler;                       /* 13  SAMS70Q20B Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
-  void* pfnUSART1_Handler;                       /* 14  SAMS70Q20B Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
-  void* pfnUSART2_Handler;                       /* 15  SAMS70Q20B Universal Synchronous Asynchronous Receiver Transmitter (USART2) */
-  void* pfnPIOD_Handler;                         /* 16  SAMS70Q20B Parallel Input/Output Controller (PIOD) */
-  void* pfnPIOE_Handler;                         /* 17  SAMS70Q20B Parallel Input/Output Controller (PIOE) */
-  void* pfnHSMCI_Handler;                        /* 18  SAMS70Q20B High Speed MultiMedia Card Interface (HSMCI) */
-  void* pfnTWIHS0_Handler;                       /* 19  SAMS70Q20B Two-wire Interface High Speed (TWIHS0) */
-  void* pfnTWIHS1_Handler;                       /* 20  SAMS70Q20B Two-wire Interface High Speed (TWIHS1) */
-  void* pfnSPI0_Handler;                         /* 21  SAMS70Q20B Serial Peripheral Interface (SPI0) */
-  void* pfnSSC_Handler;                          /* 22  SAMS70Q20B Synchronous Serial Controller (SSC) */
-  void* pfnTC0_Handler;                          /* 23  SAMS70Q20B Timer Counter (TC0) */
-  void* pfnTC1_Handler;                          /* 24  SAMS70Q20B Timer Counter (TC0) */
-  void* pfnTC2_Handler;                          /* 25  SAMS70Q20B Timer Counter (TC0) */
-  void* pfnTC3_Handler;                          /* 26  SAMS70Q20B Timer Counter (TC1) */
-  void* pfnTC4_Handler;                          /* 27  SAMS70Q20B Timer Counter (TC1) */
-  void* pfnTC5_Handler;                          /* 28  SAMS70Q20B Timer Counter (TC1) */
-  void* pfnAFEC0_Handler;                        /* 29  SAMS70Q20B Analog Front-End Controller (AFEC0) */
-  void* pfnDACC_Handler;                         /* 30  SAMS70Q20B Digital-to-Analog Converter Controller (DACC) */
-  void* pfnPWM0_Handler;                         /* 31  SAMS70Q20B Pulse Width Modulation Controller (PWM0) */
-  void* pfnICM_Handler;                          /* 32  SAMS70Q20B Integrity Check Monitor (ICM) */
-  void* pfnACC_Handler;                          /* 33  SAMS70Q20B Analog Comparator Controller (ACC) */
-  void* pfnUSBHS_Handler;                        /* 34  SAMS70Q20B USB High-Speed Interface (USBHS) */
+  void* pfnPIOA_Handler;                         /* 10  SAMS70Q20 Parallel Input/Output Controller (PIOA) */
+  void* pfnPIOB_Handler;                         /* 11  SAMS70Q20 Parallel Input/Output Controller (PIOB) */
+  void* pfnPIOC_Handler;                         /* 12  SAMS70Q20 Parallel Input/Output Controller (PIOC) */
+  void* pfnUSART0_Handler;                       /* 13  SAMS70Q20 Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
+  void* pfnUSART1_Handler;                       /* 14  SAMS70Q20 Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
+  void* pfnUSART2_Handler;                       /* 15  SAMS70Q20 Universal Synchronous Asynchronous Receiver Transmitter (USART2) */
+  void* pfnPIOD_Handler;                         /* 16  SAMS70Q20 Parallel Input/Output Controller (PIOD) */
+  void* pfnPIOE_Handler;                         /* 17  SAMS70Q20 Parallel Input/Output Controller (PIOE) */
+  void* pfnHSMCI_Handler;                        /* 18  SAMS70Q20 High Speed MultiMedia Card Interface (HSMCI) */
+  void* pfnTWIHS0_Handler;                       /* 19  SAMS70Q20 Two-wire Interface High Speed (TWIHS0) */
+  void* pfnTWIHS1_Handler;                       /* 20  SAMS70Q20 Two-wire Interface High Speed (TWIHS1) */
+  void* pfnSPI0_Handler;                         /* 21  SAMS70Q20 Serial Peripheral Interface (SPI0) */
+  void* pfnSSC_Handler;                          /* 22  SAMS70Q20 Synchronous Serial Controller (SSC) */
+  void* pfnTC0_Handler;                          /* 23  SAMS70Q20 Timer Counter (TC0)  */
+  void* pfnTC1_Handler;                          /* 24  SAMS70Q20 Timer Counter (TC0)  */
+  void* pfnTC2_Handler;                          /* 25  SAMS70Q20 Timer Counter (TC0)  */
+  void* pfnTC3_Handler;                          /* 26  SAMS70Q20 Timer Counter (TC1)  */
+  void* pfnTC4_Handler;                          /* 27  SAMS70Q20 Timer Counter (TC1)  */
+  void* pfnTC5_Handler;                          /* 28  SAMS70Q20 Timer Counter (TC1)  */
+  void* pfnAFEC0_Handler;                        /* 29  SAMS70Q20 Analog Front-End Controller (AFEC0) */
+  void* pfnDACC_Handler;                         /* 30  SAMS70Q20 Digital-to-Analog Converter Controller (DACC) */
+  void* pfnPWM0_Handler;                         /* 31  SAMS70Q20 Pulse Width Modulation Controller (PWM0) */
+  void* pfnICM_Handler;                          /* 32  SAMS70Q20 Integrity Check Monitor (ICM) */
+  void* pfnACC_Handler;                          /* 33  SAMS70Q20 Analog Comparator Controller (ACC) */
+  void* pfnUSBHS_Handler;                        /* 34  SAMS70Q20 USB High-Speed Interface (USBHS) */
   void* pvReserved35;
   void* pvReserved36;
   void* pvReserved37;
   void* pvReserved38;
   void* pvReserved39;
-  void* pfnAFEC1_Handler;                        /* 40  SAMS70Q20B Analog Front-End Controller (AFEC1) */
-  void* pfnTWIHS2_Handler;                       /* 41  SAMS70Q20B Two-wire Interface High Speed (TWIHS2) */
-  void* pfnSPI1_Handler;                         /* 42  SAMS70Q20B Serial Peripheral Interface (SPI1) */
-  void* pfnQSPI_Handler;                         /* 43  SAMS70Q20B Quad Serial Peripheral Interface (QSPI) */
-  void* pfnUART2_Handler;                        /* 44  SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART2) */
-  void* pfnUART3_Handler;                        /* 45  SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART3) */
-  void* pfnUART4_Handler;                        /* 46  SAMS70Q20B Universal Asynchronous Receiver Transmitter (UART4) */
-  void* pfnTC6_Handler;                          /* 47  SAMS70Q20B Timer Counter (TC2) */
-  void* pfnTC7_Handler;                          /* 48  SAMS70Q20B Timer Counter (TC2) */
-  void* pfnTC8_Handler;                          /* 49  SAMS70Q20B Timer Counter (TC2) */
-  void* pfnTC9_Handler;                          /* 50  SAMS70Q20B Timer Counter (TC3) */
-  void* pfnTC10_Handler;                         /* 51  SAMS70Q20B Timer Counter (TC3) */
-  void* pfnTC11_Handler;                         /* 52  SAMS70Q20B Timer Counter (TC3) */
+  void* pfnAFEC1_Handler;                        /* 40  SAMS70Q20 Analog Front-End Controller (AFEC1) */
+  void* pfnTWIHS2_Handler;                       /* 41  SAMS70Q20 Two-wire Interface High Speed (TWIHS2) */
+  void* pfnSPI1_Handler;                         /* 42  SAMS70Q20 Serial Peripheral Interface (SPI1) */
+  void* pfnQSPI_Handler;                         /* 43  SAMS70Q20 Quad Serial Peripheral Interface (QSPI) */
+  void* pfnUART2_Handler;                        /* 44  SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART2) */
+  void* pfnUART3_Handler;                        /* 45  SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART3) */
+  void* pfnUART4_Handler;                        /* 46  SAMS70Q20 Universal Asynchronous Receiver Transmitter (UART4) */
+  void* pfnTC6_Handler;                          /* 47  SAMS70Q20 Timer Counter (TC2)  */
+  void* pfnTC7_Handler;                          /* 48  SAMS70Q20 Timer Counter (TC2)  */
+  void* pfnTC8_Handler;                          /* 49  SAMS70Q20 Timer Counter (TC2)  */
+  void* pfnTC9_Handler;                          /* 50  SAMS70Q20 Timer Counter (TC3)  */
+  void* pfnTC10_Handler;                         /* 51  SAMS70Q20 Timer Counter (TC3)  */
+  void* pfnTC11_Handler;                         /* 52  SAMS70Q20 Timer Counter (TC3)  */
   void* pvReserved53;
   void* pvReserved54;
   void* pvReserved55;
-  void* pfnAES_Handler;                          /* 56  SAMS70Q20B Advanced Encryption Standard (AES) */
-  void* pfnTRNG_Handler;                         /* 57  SAMS70Q20B True Random Number Generator (TRNG) */
-  void* pfnXDMAC_Handler;                        /* 58  SAMS70Q20B Extensible DMA Controller (XDMAC) */
-  void* pfnISI_Handler;                          /* 59  SAMS70Q20B Image Sensor Interface (ISI) */
-  void* pfnPWM1_Handler;                         /* 60  SAMS70Q20B Pulse Width Modulation Controller (PWM1) */
-  void* pfnFPU_Handler;                          /* 61  SAMS70Q20B Floating Point Unit (FPU) */
-  void* pfnSDRAMC_Handler;                       /* 62  SAMS70Q20B SDRAM Controller (SDRAMC) */
-  void* pfnRSWDT_Handler;                        /* 63  SAMS70Q20B Reinforced Safety Watchdog Timer (RSWDT) */
-  void* pfnCCW_Handler;                          /* 64  SAMS70Q20B System Control Block (SCB) */
-  void* pfnCCF_Handler;                          /* 65  SAMS70Q20B System Control Block (SCB) */
+  void* pfnAES_Handler;                          /* 56  SAMS70Q20 Advanced Encryption Standard (AES) */
+  void* pfnTRNG_Handler;                         /* 57  SAMS70Q20 True Random Number Generator (TRNG) */
+  void* pfnXDMAC_Handler;                        /* 58  SAMS70Q20 Extensible DMA Controller (XDMAC) */
+  void* pfnISI_Handler;                          /* 59  SAMS70Q20 Image Sensor Interface (ISI) */
+  void* pfnPWM1_Handler;                         /* 60  SAMS70Q20 Pulse Width Modulation Controller (PWM1) */
+  void* pfnFPU_Handler;                          /* 61  SAMS70Q20 Floating Point Unit (FPU) */
+  void* pfnSDRAMC_Handler;                       /* 62  SAMS70Q20 SDRAM Controller (SDRAMC) */
+  void* pfnRSWDT_Handler;                        /* 63  SAMS70Q20 Reinforced Safety Watchdog Timer (RSWDT) */
+  void* pvReserved64;
+  void* pvReserved65;
   void* pvReserved66;
   void* pvReserved67;
-  void* pfnIXC_Handler;                          /* 68  SAMS70Q20B Floating Point Unit (FPU) */
-  void* pfnI2SC0_Handler;                        /* 69  SAMS70Q20B Inter-IC Sound Controller (I2SC0) */
-  void* pfnI2SC1_Handler;                        /* 70  SAMS70Q20B Inter-IC Sound Controller (I2SC1) */
+  void* pfnIXC_Handler;                          /* 68  SAMS70Q20 Floating Point Unit (FPU) */
 } DeviceVectors;
 
 /* Defines for Deprecated Interrupt and Exceptions handler names */
@@ -320,14 +314,10 @@ void ACC_Handler                   ( void );
 void AES_Handler                   ( void );
 void AFEC0_Handler                 ( void );
 void AFEC1_Handler                 ( void );
-void CCF_Handler                   ( void );
-void CCW_Handler                   ( void );
 void DACC_Handler                  ( void );
 void EFC_Handler                   ( void );
 void FPU_Handler                   ( void );
 void HSMCI_Handler                 ( void );
-void I2SC0_Handler                 ( void );
-void I2SC1_Handler                 ( void );
 void ICM_Handler                   ( void );
 void ISI_Handler                   ( void );
 void IXC_Handler                   ( void );
@@ -419,14 +409,14 @@ void XDMAC_Handler                 ( void );
 // #include "system_sams70.h"
 #endif /* DONT_USE_CMSIS_INIT */
 
-/** @}  end of SAMS70Q20B_cmsis CMSIS Definitions */
+/** @}  end of SAMS70Q20_cmsis CMSIS Definitions */
 
-/** \defgroup SAMS70Q20B_api Peripheral Software API
+/** \defgroup SAMS70Q20_api Peripheral Software API
  *  @{
  */
 
 /* ************************************************************************** */
-/**  SOFTWARE PERIPHERAL API DEFINITION FOR SAMS70Q20B */
+/**  SOFTWARE PERIPHERAL API DEFINITION FOR SAMS70Q20 */
 /* ************************************************************************** */
 #include "component/acc.h"
 #include "component/aes.h"
@@ -436,7 +426,6 @@ void XDMAC_Handler                 ( void );
 #include "component/efc.h"
 #include "component/gpbr.h"
 #include "component/hsmci.h"
-#include "component/i2sc.h"
 #include "component/icm.h"
 #include "component/isi.h"
 #include "component/matrix.h"
@@ -464,12 +453,12 @@ void XDMAC_Handler                 ( void );
 #include "component/xdmac.h"
 /** @}  end of Peripheral Software API */
 
-/** \defgroup SAMS70Q20B_reg Registers Access Definitions
+/** \defgroup SAMS70Q20_reg Registers Access Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   REGISTER ACCESS DEFINITIONS FOR SAMS70Q20B */
+/*   REGISTER ACCESS DEFINITIONS FOR SAMS70Q20 */
 /* ************************************************************************** */
 #include "instance/acc.h"
 #include "instance/aes.h"
@@ -480,8 +469,6 @@ void XDMAC_Handler                 ( void );
 #include "instance/efc.h"
 #include "instance/gpbr.h"
 #include "instance/hsmci.h"
-#include "instance/i2sc0.h"
-#include "instance/i2sc1.h"
 #include "instance/icm.h"
 #include "instance/isi.h"
 #include "instance/matrix.h"
@@ -526,12 +513,12 @@ void XDMAC_Handler                 ( void );
 #include "instance/xdmac.h"
 /** @}  end of Registers Access Definitions */
 
-/** \addtogroup SAMS70Q20B_id Peripheral Ids Definitions
+/** \addtogroup SAMS70Q20_id Peripheral Ids Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*  PERIPHERAL ID DEFINITIONS FOR SAMS70Q20B */
+/*  PERIPHERAL ID DEFINITIONS FOR SAMS70Q20 */
 /* ************************************************************************** */
 #define ID_SUPC         (  0) /**< \brief Supply Controller (SUPC) */
 #define ID_RSTC         (  1) /**< \brief Reset Controller (RSTC) */
@@ -588,18 +575,16 @@ void XDMAC_Handler                 ( void );
 #define ID_PWM1         ( 60) /**< \brief Pulse Width Modulation Controller (PWM1) */
 #define ID_SDRAMC       ( 62) /**< \brief SDRAM Controller (SDRAMC) */
 #define ID_RSWDT        ( 63) /**< \brief Reinforced Safety Watchdog Timer (RSWDT) */
-#define ID_I2SC0        ( 69) /**< \brief Inter-IC Sound Controller (I2SC0) */
-#define ID_I2SC1        ( 70) /**< \brief Inter-IC Sound Controller (I2SC1) */
 
-#define ID_PERIPH_COUNT ( 71) /**< \brief Number of peripheral IDs */
+#define ID_PERIPH_COUNT ( 64) /**< \brief Number of peripheral IDs */
 /** @}  end of Peripheral Ids Definitions */
 
-/** \addtogroup legacy_SAMS70Q20B_id Legacy Peripheral Ids Definitions
+/** \addtogroup legacy_SAMS70Q20_id Legacy Peripheral Ids Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*  LEGACY PERIPHERAL ID DEFINITIONS FOR SAMS70Q20B */
+/*  LEGACY PERIPHERAL ID DEFINITIONS FOR SAMS70Q20 */
 /* ************************************************************************** */
 #define ID_TC0                   TC0_INSTANCE_ID_CHANNEL0
 #define ID_TC1                   TC0_INSTANCE_ID_CHANNEL1
@@ -615,12 +600,12 @@ void XDMAC_Handler                 ( void );
 #define ID_TC11                  TC3_INSTANCE_ID_CHANNEL2
 /** @}  end of Legacy Peripheral Ids Definitions */
 
-/** \addtogroup SAMS70Q20B_base Peripheral Base Address Definitions
+/** \addtogroup SAMS70Q20_base Peripheral Base Address Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   BASE ADDRESS DEFINITIONS FOR SAMS70Q20B */
+/*   BASE ADDRESS DEFINITIONS FOR SAMS70Q20 */
 /* ************************************************************************** */
 #if (defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__))
 #define ACC                    (0x40044000)                   /**< \brief (ACC       ) Base Address */
@@ -632,8 +617,6 @@ void XDMAC_Handler                 ( void );
 #define EFC                    (0x400E0C00)                   /**< \brief (EFC       ) Base Address */
 #define GPBR                   (0x400E1890)                   /**< \brief (GPBR      ) Base Address */
 #define HSMCI                  (0x40000000)                   /**< \brief (HSMCI     ) Base Address */
-#define I2SC0                  (0x4008C000)                   /**< \brief (I2SC0     ) Base Address */
-#define I2SC1                  (0x40090000)                   /**< \brief (I2SC1     ) Base Address */
 #define ICM                    (0x40048000)                   /**< \brief (ICM       ) Base Address */
 #define ISI                    (0x4004C000)                   /**< \brief (ISI       ) Base Address */
 #define MATRIX                 (0x40088000)                   /**< \brief (MATRIX    ) Base Address */
@@ -711,11 +694,6 @@ void XDMAC_Handler                 ( void );
 #define HSMCI                  ((Hsmci *)0x40000000U)         /**< \brief (HSMCI     ) Base Address */
 #define HSMCI_INST_NUM         1                              /**< \brief (HSMCI     ) Number of instances */
 #define HSMCI_INSTS            { HSMCI }                      /**< \brief (HSMCI     ) Instances List */
-
-#define I2SC0                  ((I2sc *)0x4008C000U)          /**< \brief (I2SC0     ) Base Address */
-#define I2SC1                  ((I2sc *)0x40090000U)          /**< \brief (I2SC1     ) Base Address */
-#define I2SC_INST_NUM          2                              /**< \brief (I2SC      ) Number of instances */
-#define I2SC_INSTS             { I2SC0, I2SC1 }               /**< \brief (I2SC      ) Instances List */
 
 #define ICM                    ((Icm *)0x40048000U)           /**< \brief (ICM       ) Base Address */
 #define ICM_INST_NUM           1                              /**< \brief (ICM       ) Number of instances */
@@ -837,18 +815,18 @@ void XDMAC_Handler                 ( void );
 #endif /* (defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__)) */
 /** @}  end of Peripheral Base Address Definitions */
 
-/** \addtogroup SAMS70Q20B_pio Peripheral Pio Definitions
+/** \addtogroup SAMS70Q20_pio Peripheral Pio Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   PIO DEFINITIONS FOR SAMS70Q20B*/
+/*   PIO DEFINITIONS FOR SAMS70Q20*/
 /* ************************************************************************** */
-#include "pio/sams70q20b.h"
+#include "pio/sams70q20.h"
 /** @}  end of Peripheral Pio Definitions */
 
 /* ************************************************************************** */
-/*   MEMORY MAPPING DEFINITIONS FOR SAMS70Q20B*/
+/*   MEMORY MAPPING DEFINITIONS FOR SAMS70Q20*/
 /* ************************************************************************** */
 
 #define PERIPHERALS_SIZE         _U_(0x20000000)       /* 524288kB Memory segment type: io */
@@ -885,25 +863,25 @@ void XDMAC_Handler                 ( void );
 #define SDRAM_CS_ADDR            _U_(0x70000000)       /**< SDRAM_CS base address (type: other)*/
 
 /* ************************************************************************** */
-/**  DEVICE SIGNATURES FOR SAMS70Q20B */
+/**  DEVICE SIGNATURES FOR SAMS70Q20 */
 /* ************************************************************************** */
 #define JTAGID                   _UL_(0X05B3D03F)
 #define CHIP_JTAGID              _UL_(0X05B3D03F)
-#define CHIP_CIDR                _UL_(0XA1120C01)
+#define CHIP_CIDR                _UL_(0XA1120C00)
 #define CHIP_EXID                _UL_(0X00000002)
 
 /* ************************************************************************** */
-/**  ELECTRICAL DEFINITIONS FOR SAMS70Q20B */
+/**  ELECTRICAL DEFINITIONS FOR SAMS70Q20 */
 /* ************************************************************************** */
-#define CHIP_FREQ_SLCK_RC_MIN          _UL_(20000)     
+#define CHIP_FREQ_SLCK_RC_MIN          _UL_(20000)
 #define CHIP_FREQ_SLCK_RC              _UL_(32000)     /**< \brief Typical Slow Clock Internal RC frequency*/
-#define CHIP_FREQ_SLCK_RC_MAX          _UL_(44000)     
-#define CHIP_FREQ_MAINCK_RC_4MHZ       _UL_(4000000)   
-#define CHIP_FREQ_MAINCK_RC_8MHZ       _UL_(8000000)   
-#define CHIP_FREQ_MAINCK_RC_12MHZ      _UL_(12000000)  
-#define CHIP_FREQ_CPU_MAX              _UL_(300000000) 
-#define CHIP_FREQ_XTAL_32K             _UL_(32768)     
-#define CHIP_FREQ_XTAL_12M             _UL_(12000000)  
+#define CHIP_FREQ_SLCK_RC_MAX          _UL_(44000)
+#define CHIP_FREQ_MAINCK_RC_4MHZ       _UL_(4000000)
+#define CHIP_FREQ_MAINCK_RC_8MHZ       _UL_(8000000)
+#define CHIP_FREQ_MAINCK_RC_12MHZ      _UL_(12000000)
+#define CHIP_FREQ_CPU_MAX              _UL_(300000000)
+#define CHIP_FREQ_XTAL_32K             _UL_(32768)
+#define CHIP_FREQ_XTAL_12M             _UL_(12000000)
 #define CHIP_FREQ_FWS_0                _UL_(23000000)  /**< \brief Maximum operating frequency when FWS is 0*/
 #define CHIP_FREQ_FWS_1                _UL_(46000000)  /**< \brief Maximum operating frequency when FWS is 1*/
 #define CHIP_FREQ_FWS_2                _UL_(69000000)  /**< \brief Maximum operating frequency when FWS is 2*/
@@ -919,7 +897,7 @@ void XDMAC_Handler                 ( void );
 }
 #endif
 
-/** @}  end of SAMS70Q20B definitions */
+/** @}  end of SAMS70Q20 definitions */
 
 
-#endif /* _SAMS70Q20B_H_ */
+#endif /* _SAMS70Q20_H_ */

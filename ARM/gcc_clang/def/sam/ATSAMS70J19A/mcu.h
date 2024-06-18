@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief Header file for ATSAMS70J19B
+ * \brief Header file for ATSAMS70J19
  *
  * Copyright (c) 2019 Microchip Technology Inc.
  *
@@ -27,12 +27,12 @@
  *
  */
 
-/* file generated from device description version 2019-01-18T21:20:03Z */
-#ifndef _SAMS70J19B_H_
-#define _SAMS70J19B_H_
+/* file generated from device description version 2017-01-08T14:00:00Z */
+#ifndef _SAMS70J19_H_
+#define _SAMS70J19_H_
 
-/** \addtogroup SAMS70J19B_definitions SAMS70J19B definitions
-  This file defines all structures and symbols for SAMS70J19B:
+/** \addtogroup SAMS70J19_definitions SAMS70J19 definitions
+  This file defines all structures and symbols for SAMS70J19:
     - registers and bitfields
     - peripheral base address
     - peripheral ID
@@ -105,11 +105,11 @@ typedef volatile       uint8_t  RwReg8;  /**< Read-Write  8-bit register (volati
 #endif /* SKIP_INTEGER_LITERALS */
 /** @}  end of Atmel Global Defines */
 
-/** \addtogroup SAMS70J19B_cmsis CMSIS Definitions
+/** \addtogroup SAMS70J19_cmsis CMSIS Definitions
  *  @{
  */
 /* ************************************************************************** */
-/*   CMSIS DEFINITIONS FOR SAMS70J19B */
+/*   CMSIS DEFINITIONS FOR SAMS70J19 */
 /* ************************************************************************** */
 #if !(defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__))
 /** Interrupt Number Definition */
@@ -126,55 +126,53 @@ typedef enum IRQn
   DebugMonitor_IRQn         = -4 , /**< 12  Debug Monitor                        */
   PendSV_IRQn               = -2 , /**< 14  Pendable request for system service  */
   SysTick_IRQn              = -1 , /**< 15  System Tick Timer                    */
-/******  SAMS70J19B specific Interrupt Numbers ***********************************/
-  SUPC_IRQn                 = 0  , /**< 0   SAMS70J19B Supply Controller (SUPC) */
-  RSTC_IRQn                 = 1  , /**< 1   SAMS70J19B Reset Controller (RSTC)  */
-  RTC_IRQn                  = 2  , /**< 2   SAMS70J19B Real-time Clock (RTC)    */
-  RTT_IRQn                  = 3  , /**< 3   SAMS70J19B Real-time Timer (RTT)    */
-  WDT_IRQn                  = 4  , /**< 4   SAMS70J19B Watchdog Timer (WDT)     */
-  PMC_IRQn                  = 5  , /**< 5   SAMS70J19B Power Management Controller (PMC) */
-  EFC_IRQn                  = 6  , /**< 6   SAMS70J19B Embedded Flash Controller (EFC) */
-  UART0_IRQn                = 7  , /**< 7   SAMS70J19B Universal Asynchronous Receiver Transmitter (UART0) */
-  UART1_IRQn                = 8  , /**< 8   SAMS70J19B Universal Asynchronous Receiver Transmitter (UART1) */
-  PIOA_IRQn                 = 10 , /**< 10  SAMS70J19B Parallel Input/Output Controller (PIOA) */
-  PIOB_IRQn                 = 11 , /**< 11  SAMS70J19B Parallel Input/Output Controller (PIOB) */
-  USART0_IRQn               = 13 , /**< 13  SAMS70J19B Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
-  USART1_IRQn               = 14 , /**< 14  SAMS70J19B Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
-  PIOD_IRQn                 = 16 , /**< 16  SAMS70J19B Parallel Input/Output Controller (PIOD) */
-  TWIHS0_IRQn               = 19 , /**< 19  SAMS70J19B Two-wire Interface High Speed (TWIHS0) */
-  TWIHS1_IRQn               = 20 , /**< 20  SAMS70J19B Two-wire Interface High Speed (TWIHS1) */
-  SSC_IRQn                  = 22 , /**< 22  SAMS70J19B Synchronous Serial Controller (SSC) */
-  TC0_IRQn                  = 23 , /**< 23  SAMS70J19B Timer Counter (TC0)      */
-  TC1_IRQn                  = 24 , /**< 24  SAMS70J19B Timer Counter (TC0)      */
-  TC2_IRQn                  = 25 , /**< 25  SAMS70J19B Timer Counter (TC0)      */
-  TC3_IRQn                  = 26 , /**< 26  SAMS70J19B Timer Counter (TC1)      */
-  TC4_IRQn                  = 27 , /**< 27  SAMS70J19B Timer Counter (TC1)      */
-  TC5_IRQn                  = 28 , /**< 28  SAMS70J19B Timer Counter (TC1)      */
-  AFEC0_IRQn                = 29 , /**< 29  SAMS70J19B Analog Front-End Controller (AFEC0) */
-  DACC_IRQn                 = 30 , /**< 30  SAMS70J19B Digital-to-Analog Converter Controller (DACC) */
-  PWM0_IRQn                 = 31 , /**< 31  SAMS70J19B Pulse Width Modulation Controller (PWM0) */
-  ICM_IRQn                  = 32 , /**< 32  SAMS70J19B Integrity Check Monitor (ICM) */
-  ACC_IRQn                  = 33 , /**< 33  SAMS70J19B Analog Comparator Controller (ACC) */
-  USBHS_IRQn                = 34 , /**< 34  SAMS70J19B USB High-Speed Interface (USBHS) */
-  AFEC1_IRQn                = 40 , /**< 40  SAMS70J19B Analog Front-End Controller (AFEC1) */
-  QSPI_IRQn                 = 43 , /**< 43  SAMS70J19B Quad Serial Peripheral Interface (QSPI) */
-  UART2_IRQn                = 44 , /**< 44  SAMS70J19B Universal Asynchronous Receiver Transmitter (UART2) */
-  TC6_IRQn                  = 47 , /**< 47  SAMS70J19B Timer Counter (TC2)      */
-  TC7_IRQn                  = 48 , /**< 48  SAMS70J19B Timer Counter (TC2)      */
-  TC8_IRQn                  = 49 , /**< 49  SAMS70J19B Timer Counter (TC2)      */
-  TC9_IRQn                  = 50 , /**< 50  SAMS70J19B Timer Counter (TC3)      */
-  TC10_IRQn                 = 51 , /**< 51  SAMS70J19B Timer Counter (TC3)      */
-  TC11_IRQn                 = 52 , /**< 52  SAMS70J19B Timer Counter (TC3)      */
-  AES_IRQn                  = 56 , /**< 56  SAMS70J19B Advanced Encryption Standard (AES) */
-  TRNG_IRQn                 = 57 , /**< 57  SAMS70J19B True Random Number Generator (TRNG) */
-  XDMAC_IRQn                = 58 , /**< 58  SAMS70J19B Extensible DMA Controller (XDMAC) */
-  ISI_IRQn                  = 59 , /**< 59  SAMS70J19B Image Sensor Interface (ISI) */
-  PWM1_IRQn                 = 60 , /**< 60  SAMS70J19B Pulse Width Modulation Controller (PWM1) */
-  FPU_IRQn                  = 61 , /**< 61  SAMS70J19B Floating Point Unit (FPU) */
-  RSWDT_IRQn                = 63 , /**< 63  SAMS70J19B Reinforced Safety Watchdog Timer (RSWDT) */
-  CCW_IRQn                  = 64 , /**< 64  SAMS70J19B System Control Block (SCB) */
-  CCF_IRQn                  = 65 , /**< 65  SAMS70J19B System Control Block (SCB) */
-  IXC_IRQn                  = 68 , /**< 68  SAMS70J19B Floating Point Unit (FPU) */
+/******  SAMS70J19 specific Interrupt Numbers ***********************************/
+  SUPC_IRQn                 = 0  , /**< 0   SAMS70J19 Supply Controller (SUPC)  */
+  RSTC_IRQn                 = 1  , /**< 1   SAMS70J19 Reset Controller (RSTC)   */
+  RTC_IRQn                  = 2  , /**< 2   SAMS70J19 Real-time Clock (RTC)     */
+  RTT_IRQn                  = 3  , /**< 3   SAMS70J19 Real-time Timer (RTT)     */
+  WDT_IRQn                  = 4  , /**< 4   SAMS70J19 Watchdog Timer (WDT)      */
+  PMC_IRQn                  = 5  , /**< 5   SAMS70J19 Power Management Controller (PMC) */
+  EFC_IRQn                  = 6  , /**< 6   SAMS70J19 Embedded Flash Controller (EFC) */
+  UART0_IRQn                = 7  , /**< 7   SAMS70J19 Universal Asynchronous Receiver Transmitter (UART0) */
+  UART1_IRQn                = 8  , /**< 8   SAMS70J19 Universal Asynchronous Receiver Transmitter (UART1) */
+  PIOA_IRQn                 = 10 , /**< 10  SAMS70J19 Parallel Input/Output Controller (PIOA) */
+  PIOB_IRQn                 = 11 , /**< 11  SAMS70J19 Parallel Input/Output Controller (PIOB) */
+  USART0_IRQn               = 13 , /**< 13  SAMS70J19 Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
+  USART1_IRQn               = 14 , /**< 14  SAMS70J19 Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
+  PIOD_IRQn                 = 16 , /**< 16  SAMS70J19 Parallel Input/Output Controller (PIOD) */
+  TWIHS0_IRQn               = 19 , /**< 19  SAMS70J19 Two-wire Interface High Speed (TWIHS0) */
+  TWIHS1_IRQn               = 20 , /**< 20  SAMS70J19 Two-wire Interface High Speed (TWIHS1) */
+  SSC_IRQn                  = 22 , /**< 22  SAMS70J19 Synchronous Serial Controller (SSC) */
+  TC0_IRQn                  = 23 , /**< 23  SAMS70J19 Timer Counter (TC0)       */
+  TC1_IRQn                  = 24 , /**< 24  SAMS70J19 Timer Counter (TC0)       */
+  TC2_IRQn                  = 25 , /**< 25  SAMS70J19 Timer Counter (TC0)       */
+  TC3_IRQn                  = 26 , /**< 26  SAMS70J19 Timer Counter (TC1)       */
+  TC4_IRQn                  = 27 , /**< 27  SAMS70J19 Timer Counter (TC1)       */
+  TC5_IRQn                  = 28 , /**< 28  SAMS70J19 Timer Counter (TC1)       */
+  AFEC0_IRQn                = 29 , /**< 29  SAMS70J19 Analog Front-End Controller (AFEC0) */
+  DACC_IRQn                 = 30 , /**< 30  SAMS70J19 Digital-to-Analog Converter Controller (DACC) */
+  PWM0_IRQn                 = 31 , /**< 31  SAMS70J19 Pulse Width Modulation Controller (PWM0) */
+  ICM_IRQn                  = 32 , /**< 32  SAMS70J19 Integrity Check Monitor (ICM) */
+  ACC_IRQn                  = 33 , /**< 33  SAMS70J19 Analog Comparator Controller (ACC) */
+  USBHS_IRQn                = 34 , /**< 34  SAMS70J19 USB High-Speed Interface (USBHS) */
+  AFEC1_IRQn                = 40 , /**< 40  SAMS70J19 Analog Front-End Controller (AFEC1) */
+  QSPI_IRQn                 = 43 , /**< 43  SAMS70J19 Quad Serial Peripheral Interface (QSPI) */
+  UART2_IRQn                = 44 , /**< 44  SAMS70J19 Universal Asynchronous Receiver Transmitter (UART2) */
+  TC6_IRQn                  = 47 , /**< 47  SAMS70J19 Timer Counter (TC2)       */
+  TC7_IRQn                  = 48 , /**< 48  SAMS70J19 Timer Counter (TC2)       */
+  TC8_IRQn                  = 49 , /**< 49  SAMS70J19 Timer Counter (TC2)       */
+  TC9_IRQn                  = 50 , /**< 50  SAMS70J19 Timer Counter (TC3)       */
+  TC10_IRQn                 = 51 , /**< 51  SAMS70J19 Timer Counter (TC3)       */
+  TC11_IRQn                 = 52 , /**< 52  SAMS70J19 Timer Counter (TC3)       */
+  AES_IRQn                  = 56 , /**< 56  SAMS70J19 Advanced Encryption Standard (AES) */
+  TRNG_IRQn                 = 57 , /**< 57  SAMS70J19 True Random Number Generator (TRNG) */
+  XDMAC_IRQn                = 58 , /**< 58  SAMS70J19 Extensible DMA Controller (XDMAC) */
+  ISI_IRQn                  = 59 , /**< 59  SAMS70J19 Image Sensor Interface (ISI) */
+  PWM1_IRQn                 = 60 , /**< 60  SAMS70J19 Pulse Width Modulation Controller (PWM1) */
+  FPU_IRQn                  = 61 , /**< 61  SAMS70J19 Floating Point Unit (FPU) */
+  RSWDT_IRQn                = 63 , /**< 63  SAMS70J19 Reinforced Safety Watchdog Timer (RSWDT) */
+  IXC_IRQn                  = 68 , /**< 68  SAMS70J19 Floating Point Unit (FPU) */
 
   PERIPH_COUNT_IRQn        = 69  /**< Number of peripheral IDs */
 } IRQn_Type;
@@ -204,75 +202,75 @@ typedef struct _DeviceVectors
 
 
   /* Peripheral handlers */
-  void* pfnSUPC_Handler;                         /* 0   SAMS70J19B Supply Controller (SUPC) */
-  void* pfnRSTC_Handler;                         /* 1   SAMS70J19B Reset Controller (RSTC) */
-  void* pfnRTC_Handler;                          /* 2   SAMS70J19B Real-time Clock (RTC) */
-  void* pfnRTT_Handler;                          /* 3   SAMS70J19B Real-time Timer (RTT) */
-  void* pfnWDT_Handler;                          /* 4   SAMS70J19B Watchdog Timer (WDT) */
-  void* pfnPMC_Handler;                          /* 5   SAMS70J19B Power Management Controller (PMC) */
-  void* pfnEFC_Handler;                          /* 6   SAMS70J19B Embedded Flash Controller (EFC) */
-  void* pfnUART0_Handler;                        /* 7   SAMS70J19B Universal Asynchronous Receiver Transmitter (UART0) */
-  void* pfnUART1_Handler;                        /* 8   SAMS70J19B Universal Asynchronous Receiver Transmitter (UART1) */
+  void* pfnSUPC_Handler;                         /* 0   SAMS70J19 Supply Controller (SUPC) */
+  void* pfnRSTC_Handler;                         /* 1   SAMS70J19 Reset Controller (RSTC) */
+  void* pfnRTC_Handler;                          /* 2   SAMS70J19 Real-time Clock (RTC) */
+  void* pfnRTT_Handler;                          /* 3   SAMS70J19 Real-time Timer (RTT) */
+  void* pfnWDT_Handler;                          /* 4   SAMS70J19 Watchdog Timer (WDT) */
+  void* pfnPMC_Handler;                          /* 5   SAMS70J19 Power Management Controller (PMC) */
+  void* pfnEFC_Handler;                          /* 6   SAMS70J19 Embedded Flash Controller (EFC) */
+  void* pfnUART0_Handler;                        /* 7   SAMS70J19 Universal Asynchronous Receiver Transmitter (UART0) */
+  void* pfnUART1_Handler;                        /* 8   SAMS70J19 Universal Asynchronous Receiver Transmitter (UART1) */
   void* pvReserved9;
-  void* pfnPIOA_Handler;                         /* 10  SAMS70J19B Parallel Input/Output Controller (PIOA) */
-  void* pfnPIOB_Handler;                         /* 11  SAMS70J19B Parallel Input/Output Controller (PIOB) */
+  void* pfnPIOA_Handler;                         /* 10  SAMS70J19 Parallel Input/Output Controller (PIOA) */
+  void* pfnPIOB_Handler;                         /* 11  SAMS70J19 Parallel Input/Output Controller (PIOB) */
   void* pvReserved12;
-  void* pfnUSART0_Handler;                       /* 13  SAMS70J19B Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
-  void* pfnUSART1_Handler;                       /* 14  SAMS70J19B Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
+  void* pfnUSART0_Handler;                       /* 13  SAMS70J19 Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
+  void* pfnUSART1_Handler;                       /* 14  SAMS70J19 Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
   void* pvReserved15;
-  void* pfnPIOD_Handler;                         /* 16  SAMS70J19B Parallel Input/Output Controller (PIOD) */
+  void* pfnPIOD_Handler;                         /* 16  SAMS70J19 Parallel Input/Output Controller (PIOD) */
   void* pvReserved17;
   void* pvReserved18;
-  void* pfnTWIHS0_Handler;                       /* 19  SAMS70J19B Two-wire Interface High Speed (TWIHS0) */
-  void* pfnTWIHS1_Handler;                       /* 20  SAMS70J19B Two-wire Interface High Speed (TWIHS1) */
+  void* pfnTWIHS0_Handler;                       /* 19  SAMS70J19 Two-wire Interface High Speed (TWIHS0) */
+  void* pfnTWIHS1_Handler;                       /* 20  SAMS70J19 Two-wire Interface High Speed (TWIHS1) */
   void* pvReserved21;
-  void* pfnSSC_Handler;                          /* 22  SAMS70J19B Synchronous Serial Controller (SSC) */
-  void* pfnTC0_Handler;                          /* 23  SAMS70J19B Timer Counter (TC0) */
-  void* pfnTC1_Handler;                          /* 24  SAMS70J19B Timer Counter (TC0) */
-  void* pfnTC2_Handler;                          /* 25  SAMS70J19B Timer Counter (TC0) */
-  void* pfnTC3_Handler;                          /* 26  SAMS70J19B Timer Counter (TC1) */
-  void* pfnTC4_Handler;                          /* 27  SAMS70J19B Timer Counter (TC1) */
-  void* pfnTC5_Handler;                          /* 28  SAMS70J19B Timer Counter (TC1) */
-  void* pfnAFEC0_Handler;                        /* 29  SAMS70J19B Analog Front-End Controller (AFEC0) */
-  void* pfnDACC_Handler;                         /* 30  SAMS70J19B Digital-to-Analog Converter Controller (DACC) */
-  void* pfnPWM0_Handler;                         /* 31  SAMS70J19B Pulse Width Modulation Controller (PWM0) */
-  void* pfnICM_Handler;                          /* 32  SAMS70J19B Integrity Check Monitor (ICM) */
-  void* pfnACC_Handler;                          /* 33  SAMS70J19B Analog Comparator Controller (ACC) */
-  void* pfnUSBHS_Handler;                        /* 34  SAMS70J19B USB High-Speed Interface (USBHS) */
+  void* pfnSSC_Handler;                          /* 22  SAMS70J19 Synchronous Serial Controller (SSC) */
+  void* pfnTC0_Handler;                          /* 23  SAMS70J19 Timer Counter (TC0)  */
+  void* pfnTC1_Handler;                          /* 24  SAMS70J19 Timer Counter (TC0)  */
+  void* pfnTC2_Handler;                          /* 25  SAMS70J19 Timer Counter (TC0)  */
+  void* pfnTC3_Handler;                          /* 26  SAMS70J19 Timer Counter (TC1)  */
+  void* pfnTC4_Handler;                          /* 27  SAMS70J19 Timer Counter (TC1)  */
+  void* pfnTC5_Handler;                          /* 28  SAMS70J19 Timer Counter (TC1)  */
+  void* pfnAFEC0_Handler;                        /* 29  SAMS70J19 Analog Front-End Controller (AFEC0) */
+  void* pfnDACC_Handler;                         /* 30  SAMS70J19 Digital-to-Analog Converter Controller (DACC) */
+  void* pfnPWM0_Handler;                         /* 31  SAMS70J19 Pulse Width Modulation Controller (PWM0) */
+  void* pfnICM_Handler;                          /* 32  SAMS70J19 Integrity Check Monitor (ICM) */
+  void* pfnACC_Handler;                          /* 33  SAMS70J19 Analog Comparator Controller (ACC) */
+  void* pfnUSBHS_Handler;                        /* 34  SAMS70J19 USB High-Speed Interface (USBHS) */
   void* pvReserved35;
   void* pvReserved36;
   void* pvReserved37;
   void* pvReserved38;
   void* pvReserved39;
-  void* pfnAFEC1_Handler;                        /* 40  SAMS70J19B Analog Front-End Controller (AFEC1) */
+  void* pfnAFEC1_Handler;                        /* 40  SAMS70J19 Analog Front-End Controller (AFEC1) */
   void* pvReserved41;
   void* pvReserved42;
-  void* pfnQSPI_Handler;                         /* 43  SAMS70J19B Quad Serial Peripheral Interface (QSPI) */
-  void* pfnUART2_Handler;                        /* 44  SAMS70J19B Universal Asynchronous Receiver Transmitter (UART2) */
+  void* pfnQSPI_Handler;                         /* 43  SAMS70J19 Quad Serial Peripheral Interface (QSPI) */
+  void* pfnUART2_Handler;                        /* 44  SAMS70J19 Universal Asynchronous Receiver Transmitter (UART2) */
   void* pvReserved45;
   void* pvReserved46;
-  void* pfnTC6_Handler;                          /* 47  SAMS70J19B Timer Counter (TC2) */
-  void* pfnTC7_Handler;                          /* 48  SAMS70J19B Timer Counter (TC2) */
-  void* pfnTC8_Handler;                          /* 49  SAMS70J19B Timer Counter (TC2) */
-  void* pfnTC9_Handler;                          /* 50  SAMS70J19B Timer Counter (TC3) */
-  void* pfnTC10_Handler;                         /* 51  SAMS70J19B Timer Counter (TC3) */
-  void* pfnTC11_Handler;                         /* 52  SAMS70J19B Timer Counter (TC3) */
+  void* pfnTC6_Handler;                          /* 47  SAMS70J19 Timer Counter (TC2)  */
+  void* pfnTC7_Handler;                          /* 48  SAMS70J19 Timer Counter (TC2)  */
+  void* pfnTC8_Handler;                          /* 49  SAMS70J19 Timer Counter (TC2)  */
+  void* pfnTC9_Handler;                          /* 50  SAMS70J19 Timer Counter (TC3)  */
+  void* pfnTC10_Handler;                         /* 51  SAMS70J19 Timer Counter (TC3)  */
+  void* pfnTC11_Handler;                         /* 52  SAMS70J19 Timer Counter (TC3)  */
   void* pvReserved53;
   void* pvReserved54;
   void* pvReserved55;
-  void* pfnAES_Handler;                          /* 56  SAMS70J19B Advanced Encryption Standard (AES) */
-  void* pfnTRNG_Handler;                         /* 57  SAMS70J19B True Random Number Generator (TRNG) */
-  void* pfnXDMAC_Handler;                        /* 58  SAMS70J19B Extensible DMA Controller (XDMAC) */
-  void* pfnISI_Handler;                          /* 59  SAMS70J19B Image Sensor Interface (ISI) */
-  void* pfnPWM1_Handler;                         /* 60  SAMS70J19B Pulse Width Modulation Controller (PWM1) */
-  void* pfnFPU_Handler;                          /* 61  SAMS70J19B Floating Point Unit (FPU) */
+  void* pfnAES_Handler;                          /* 56  SAMS70J19 Advanced Encryption Standard (AES) */
+  void* pfnTRNG_Handler;                         /* 57  SAMS70J19 True Random Number Generator (TRNG) */
+  void* pfnXDMAC_Handler;                        /* 58  SAMS70J19 Extensible DMA Controller (XDMAC) */
+  void* pfnISI_Handler;                          /* 59  SAMS70J19 Image Sensor Interface (ISI) */
+  void* pfnPWM1_Handler;                         /* 60  SAMS70J19 Pulse Width Modulation Controller (PWM1) */
+  void* pfnFPU_Handler;                          /* 61  SAMS70J19 Floating Point Unit (FPU) */
   void* pvReserved62;
-  void* pfnRSWDT_Handler;                        /* 63  SAMS70J19B Reinforced Safety Watchdog Timer (RSWDT) */
-  void* pfnCCW_Handler;                          /* 64  SAMS70J19B System Control Block (SCB) */
-  void* pfnCCF_Handler;                          /* 65  SAMS70J19B System Control Block (SCB) */
+  void* pfnRSWDT_Handler;                        /* 63  SAMS70J19 Reinforced Safety Watchdog Timer (RSWDT) */
+  void* pvReserved64;
+  void* pvReserved65;
   void* pvReserved66;
   void* pvReserved67;
-  void* pfnIXC_Handler;                          /* 68  SAMS70J19B Floating Point Unit (FPU) */
+  void* pfnIXC_Handler;                          /* 68  SAMS70J19 Floating Point Unit (FPU) */
 } DeviceVectors;
 
 /* Defines for Deprecated Interrupt and Exceptions handler names */
@@ -306,8 +304,6 @@ void ACC_Handler                   ( void );
 void AES_Handler                   ( void );
 void AFEC0_Handler                 ( void );
 void AFEC1_Handler                 ( void );
-void CCF_Handler                   ( void );
-void CCW_Handler                   ( void );
 void DACC_Handler                  ( void );
 void EFC_Handler                   ( void );
 void FPU_Handler                   ( void );
@@ -393,14 +389,14 @@ void XDMAC_Handler                 ( void );
 // #include "system_sams70.h"
 #endif /* DONT_USE_CMSIS_INIT */
 
-/** @}  end of SAMS70J19B_cmsis CMSIS Definitions */
+/** @}  end of SAMS70J19_cmsis CMSIS Definitions */
 
-/** \defgroup SAMS70J19B_api Peripheral Software API
+/** \defgroup SAMS70J19_api Peripheral Software API
  *  @{
  */
 
 /* ************************************************************************** */
-/**  SOFTWARE PERIPHERAL API DEFINITION FOR SAMS70J19B */
+/**  SOFTWARE PERIPHERAL API DEFINITION FOR SAMS70J19 */
 /* ************************************************************************** */
 #include "component/acc.h"
 #include "component/aes.h"
@@ -433,12 +429,12 @@ void XDMAC_Handler                 ( void );
 #include "component/xdmac.h"
 /** @}  end of Peripheral Software API */
 
-/** \defgroup SAMS70J19B_reg Registers Access Definitions
+/** \defgroup SAMS70J19_reg Registers Access Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   REGISTER ACCESS DEFINITIONS FOR SAMS70J19B */
+/*   REGISTER ACCESS DEFINITIONS FOR SAMS70J19 */
 /* ************************************************************************** */
 #include "instance/acc.h"
 #include "instance/aes.h"
@@ -482,12 +478,12 @@ void XDMAC_Handler                 ( void );
 #include "instance/xdmac.h"
 /** @}  end of Registers Access Definitions */
 
-/** \addtogroup SAMS70J19B_id Peripheral Ids Definitions
+/** \addtogroup SAMS70J19_id Peripheral Ids Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*  PERIPHERAL ID DEFINITIONS FOR SAMS70J19B */
+/*  PERIPHERAL ID DEFINITIONS FOR SAMS70J19 */
 /* ************************************************************************** */
 #define ID_SUPC         (  0) /**< \brief Supply Controller (SUPC) */
 #define ID_RSTC         (  1) /**< \brief Reset Controller (RSTC) */
@@ -537,12 +533,12 @@ void XDMAC_Handler                 ( void );
 #define ID_PERIPH_COUNT ( 64) /**< \brief Number of peripheral IDs */
 /** @}  end of Peripheral Ids Definitions */
 
-/** \addtogroup legacy_SAMS70J19B_id Legacy Peripheral Ids Definitions
+/** \addtogroup legacy_SAMS70J19_id Legacy Peripheral Ids Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*  LEGACY PERIPHERAL ID DEFINITIONS FOR SAMS70J19B */
+/*  LEGACY PERIPHERAL ID DEFINITIONS FOR SAMS70J19 */
 /* ************************************************************************** */
 #define ID_TC0                   TC0_INSTANCE_ID_CHANNEL0
 #define ID_TC1                   TC0_INSTANCE_ID_CHANNEL1
@@ -558,12 +554,12 @@ void XDMAC_Handler                 ( void );
 #define ID_TC11                  TC3_INSTANCE_ID_CHANNEL2
 /** @}  end of Legacy Peripheral Ids Definitions */
 
-/** \addtogroup SAMS70J19B_base Peripheral Base Address Definitions
+/** \addtogroup SAMS70J19_base Peripheral Base Address Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   BASE ADDRESS DEFINITIONS FOR SAMS70J19B */
+/*   BASE ADDRESS DEFINITIONS FOR SAMS70J19 */
 /* ************************************************************************** */
 #if (defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__))
 #define ACC                    (0x40044000)                   /**< \brief (ACC       ) Base Address */
@@ -739,18 +735,18 @@ void XDMAC_Handler                 ( void );
 #endif /* (defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__)) */
 /** @}  end of Peripheral Base Address Definitions */
 
-/** \addtogroup SAMS70J19B_pio Peripheral Pio Definitions
+/** \addtogroup SAMS70J19_pio Peripheral Pio Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   PIO DEFINITIONS FOR SAMS70J19B*/
+/*   PIO DEFINITIONS FOR SAMS70J19*/
 /* ************************************************************************** */
-#include "pio/sams70j19b.h"
+#include "pio/sams70j19.h"
 /** @}  end of Peripheral Pio Definitions */
 
 /* ************************************************************************** */
-/*   MEMORY MAPPING DEFINITIONS FOR SAMS70J19B*/
+/*   MEMORY MAPPING DEFINITIONS FOR SAMS70J19*/
 /* ************************************************************************** */
 
 #define PERIPHERALS_SIZE         _U_(0x20000000)       /* 524288kB Memory segment type: io */
@@ -777,25 +773,25 @@ void XDMAC_Handler                 ( void );
 #define IRAM_ADDR                _U_(0x20400000)       /**< IRAM base address (type: ram)*/
 
 /* ************************************************************************** */
-/**  DEVICE SIGNATURES FOR SAMS70J19B */
+/**  DEVICE SIGNATURES FOR SAMS70J19 */
 /* ************************************************************************** */
 #define JTAGID                   _UL_(0X05B3D03F)
 #define CHIP_JTAGID              _UL_(0X05B3D03F)
-#define CHIP_CIDR                _UL_(0XA11D0A01)
+#define CHIP_CIDR                _UL_(0XA11D0A00)
 #define CHIP_EXID                _UL_(0X00000000)
 
 /* ************************************************************************** */
-/**  ELECTRICAL DEFINITIONS FOR SAMS70J19B */
+/**  ELECTRICAL DEFINITIONS FOR SAMS70J19 */
 /* ************************************************************************** */
-#define CHIP_FREQ_SLCK_RC_MIN          _UL_(20000)     
+#define CHIP_FREQ_SLCK_RC_MIN          _UL_(20000)
 #define CHIP_FREQ_SLCK_RC              _UL_(32000)     /**< \brief Typical Slow Clock Internal RC frequency*/
-#define CHIP_FREQ_SLCK_RC_MAX          _UL_(44000)     
-#define CHIP_FREQ_MAINCK_RC_4MHZ       _UL_(4000000)   
-#define CHIP_FREQ_MAINCK_RC_8MHZ       _UL_(8000000)   
-#define CHIP_FREQ_MAINCK_RC_12MHZ      _UL_(12000000)  
-#define CHIP_FREQ_CPU_MAX              _UL_(300000000) 
-#define CHIP_FREQ_XTAL_32K             _UL_(32768)     
-#define CHIP_FREQ_XTAL_12M             _UL_(12000000)  
+#define CHIP_FREQ_SLCK_RC_MAX          _UL_(44000)
+#define CHIP_FREQ_MAINCK_RC_4MHZ       _UL_(4000000)
+#define CHIP_FREQ_MAINCK_RC_8MHZ       _UL_(8000000)
+#define CHIP_FREQ_MAINCK_RC_12MHZ      _UL_(12000000)
+#define CHIP_FREQ_CPU_MAX              _UL_(300000000)
+#define CHIP_FREQ_XTAL_32K             _UL_(32768)
+#define CHIP_FREQ_XTAL_12M             _UL_(12000000)
 #define CHIP_FREQ_FWS_0                _UL_(23000000)  /**< \brief Maximum operating frequency when FWS is 0*/
 #define CHIP_FREQ_FWS_1                _UL_(46000000)  /**< \brief Maximum operating frequency when FWS is 1*/
 #define CHIP_FREQ_FWS_2                _UL_(69000000)  /**< \brief Maximum operating frequency when FWS is 2*/
@@ -811,7 +807,7 @@ void XDMAC_Handler                 ( void );
 }
 #endif
 
-/** @}  end of SAMS70J19B definitions */
+/** @}  end of SAMS70J19 definitions */
 
 
-#endif /* _SAMS70J19B_H_ */
+#endif /* _SAMS70J19_H_ */

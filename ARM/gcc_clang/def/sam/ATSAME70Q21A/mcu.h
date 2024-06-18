@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief Header file for ATSAME70Q21B
+ * \brief Header file for ATSAME70Q21
  *
  * Copyright (c) 2019 Microchip Technology Inc.
  *
@@ -27,12 +27,12 @@
  *
  */
 
-/* file generated from device description version 2019-01-18T21:19:59Z */
-#ifndef _SAME70Q21B_H_
-#define _SAME70Q21B_H_
+/* file generated from device description version 2017-08-25T14:00:00Z */
+#ifndef _SAME70Q21_H_
+#define _SAME70Q21_H_
 
-/** \addtogroup SAME70Q21B_definitions SAME70Q21B definitions
-  This file defines all structures and symbols for SAME70Q21B:
+/** \addtogroup SAME70Q21_definitions SAME70Q21 definitions
+  This file defines all structures and symbols for SAME70Q21:
     - registers and bitfields
     - peripheral base address
     - peripheral ID
@@ -105,11 +105,11 @@ typedef volatile       uint8_t  RwReg8;  /**< Read-Write  8-bit register (volati
 #endif /* SKIP_INTEGER_LITERALS */
 /** @}  end of Atmel Global Defines */
 
-/** \addtogroup SAME70Q21B_cmsis CMSIS Definitions
+/** \addtogroup SAME70Q21_cmsis CMSIS Definitions
  *  @{
  */
 /* ************************************************************************** */
-/*   CMSIS DEFINITIONS FOR SAME70Q21B */
+/*   CMSIS DEFINITIONS FOR SAME70Q21 */
 /* ************************************************************************** */
 #if !(defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__))
 /** Interrupt Number Definition */
@@ -126,79 +126,72 @@ typedef enum IRQn
   DebugMonitor_IRQn         = -4 , /**< 12  Debug Monitor                        */
   PendSV_IRQn               = -2 , /**< 14  Pendable request for system service  */
   SysTick_IRQn              = -1 , /**< 15  System Tick Timer                    */
-/******  SAME70Q21B specific Interrupt Numbers ***********************************/
-  SUPC_IRQn                 = 0  , /**< 0   SAME70Q21B Supply Controller (SUPC) */
-  RSTC_IRQn                 = 1  , /**< 1   SAME70Q21B Reset Controller (RSTC)  */
-  RTC_IRQn                  = 2  , /**< 2   SAME70Q21B Real-time Clock (RTC)    */
-  RTT_IRQn                  = 3  , /**< 3   SAME70Q21B Real-time Timer (RTT)    */
-  WDT_IRQn                  = 4  , /**< 4   SAME70Q21B Watchdog Timer (WDT)     */
-  PMC_IRQn                  = 5  , /**< 5   SAME70Q21B Power Management Controller (PMC) */
-  EFC_IRQn                  = 6  , /**< 6   SAME70Q21B Embedded Flash Controller (EFC) */
-  UART0_IRQn                = 7  , /**< 7   SAME70Q21B Universal Asynchronous Receiver Transmitter (UART0) */
-  UART1_IRQn                = 8  , /**< 8   SAME70Q21B Universal Asynchronous Receiver Transmitter (UART1) */
-  PIOA_IRQn                 = 10 , /**< 10  SAME70Q21B Parallel Input/Output Controller (PIOA) */
-  PIOB_IRQn                 = 11 , /**< 11  SAME70Q21B Parallel Input/Output Controller (PIOB) */
-  PIOC_IRQn                 = 12 , /**< 12  SAME70Q21B Parallel Input/Output Controller (PIOC) */
-  USART0_IRQn               = 13 , /**< 13  SAME70Q21B Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
-  USART1_IRQn               = 14 , /**< 14  SAME70Q21B Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
-  USART2_IRQn               = 15 , /**< 15  SAME70Q21B Universal Synchronous Asynchronous Receiver Transmitter (USART2) */
-  PIOD_IRQn                 = 16 , /**< 16  SAME70Q21B Parallel Input/Output Controller (PIOD) */
-  PIOE_IRQn                 = 17 , /**< 17  SAME70Q21B Parallel Input/Output Controller (PIOE) */
-  HSMCI_IRQn                = 18 , /**< 18  SAME70Q21B High Speed MultiMedia Card Interface (HSMCI) */
-  TWIHS0_IRQn               = 19 , /**< 19  SAME70Q21B Two-wire Interface High Speed (TWIHS0) */
-  TWIHS1_IRQn               = 20 , /**< 20  SAME70Q21B Two-wire Interface High Speed (TWIHS1) */
-  SPI0_IRQn                 = 21 , /**< 21  SAME70Q21B Serial Peripheral Interface (SPI0) */
-  SSC_IRQn                  = 22 , /**< 22  SAME70Q21B Synchronous Serial Controller (SSC) */
-  TC0_IRQn                  = 23 , /**< 23  SAME70Q21B Timer Counter (TC0)      */
-  TC1_IRQn                  = 24 , /**< 24  SAME70Q21B Timer Counter (TC0)      */
-  TC2_IRQn                  = 25 , /**< 25  SAME70Q21B Timer Counter (TC0)      */
-  TC3_IRQn                  = 26 , /**< 26  SAME70Q21B Timer Counter (TC1)      */
-  TC4_IRQn                  = 27 , /**< 27  SAME70Q21B Timer Counter (TC1)      */
-  TC5_IRQn                  = 28 , /**< 28  SAME70Q21B Timer Counter (TC1)      */
-  AFEC0_IRQn                = 29 , /**< 29  SAME70Q21B Analog Front-End Controller (AFEC0) */
-  DACC_IRQn                 = 30 , /**< 30  SAME70Q21B Digital-to-Analog Converter Controller (DACC) */
-  PWM0_IRQn                 = 31 , /**< 31  SAME70Q21B Pulse Width Modulation Controller (PWM0) */
-  ICM_IRQn                  = 32 , /**< 32  SAME70Q21B Integrity Check Monitor (ICM) */
-  ACC_IRQn                  = 33 , /**< 33  SAME70Q21B Analog Comparator Controller (ACC) */
-  USBHS_IRQn                = 34 , /**< 34  SAME70Q21B USB High-Speed Interface (USBHS) */
-  MCAN0_INT0_IRQn           = 35 , /**< 35  SAME70Q21B Controller Area Network (MCAN0) */
-  MCAN0_INT1_IRQn           = 36 , /**< 36  SAME70Q21B Controller Area Network (MCAN0) */
-  MCAN1_INT0_IRQn           = 37 , /**< 37  SAME70Q21B Controller Area Network (MCAN1) */
-  MCAN1_INT1_IRQn           = 38 , /**< 38  SAME70Q21B Controller Area Network (MCAN1) */
-  GMAC_IRQn                 = 39 , /**< 39  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  AFEC1_IRQn                = 40 , /**< 40  SAME70Q21B Analog Front-End Controller (AFEC1) */
-  TWIHS2_IRQn               = 41 , /**< 41  SAME70Q21B Two-wire Interface High Speed (TWIHS2) */
-  SPI1_IRQn                 = 42 , /**< 42  SAME70Q21B Serial Peripheral Interface (SPI1) */
-  QSPI_IRQn                 = 43 , /**< 43  SAME70Q21B Quad Serial Peripheral Interface (QSPI) */
-  UART2_IRQn                = 44 , /**< 44  SAME70Q21B Universal Asynchronous Receiver Transmitter (UART2) */
-  UART3_IRQn                = 45 , /**< 45  SAME70Q21B Universal Asynchronous Receiver Transmitter (UART3) */
-  UART4_IRQn                = 46 , /**< 46  SAME70Q21B Universal Asynchronous Receiver Transmitter (UART4) */
-  TC6_IRQn                  = 47 , /**< 47  SAME70Q21B Timer Counter (TC2)      */
-  TC7_IRQn                  = 48 , /**< 48  SAME70Q21B Timer Counter (TC2)      */
-  TC8_IRQn                  = 49 , /**< 49  SAME70Q21B Timer Counter (TC2)      */
-  TC9_IRQn                  = 50 , /**< 50  SAME70Q21B Timer Counter (TC3)      */
-  TC10_IRQn                 = 51 , /**< 51  SAME70Q21B Timer Counter (TC3)      */
-  TC11_IRQn                 = 52 , /**< 52  SAME70Q21B Timer Counter (TC3)      */
-  AES_IRQn                  = 56 , /**< 56  SAME70Q21B Advanced Encryption Standard (AES) */
-  TRNG_IRQn                 = 57 , /**< 57  SAME70Q21B True Random Number Generator (TRNG) */
-  XDMAC_IRQn                = 58 , /**< 58  SAME70Q21B Extensible DMA Controller (XDMAC) */
-  ISI_IRQn                  = 59 , /**< 59  SAME70Q21B Image Sensor Interface (ISI) */
-  PWM1_IRQn                 = 60 , /**< 60  SAME70Q21B Pulse Width Modulation Controller (PWM1) */
-  FPU_IRQn                  = 61 , /**< 61  SAME70Q21B Floating Point Unit (FPU) */
-  SDRAMC_IRQn               = 62 , /**< 62  SAME70Q21B SDRAM Controller (SDRAMC) */
-  RSWDT_IRQn                = 63 , /**< 63  SAME70Q21B Reinforced Safety Watchdog Timer (RSWDT) */
-  CCW_IRQn                  = 64 , /**< 64  SAME70Q21B System Control Block (SCB) */
-  CCF_IRQn                  = 65 , /**< 65  SAME70Q21B System Control Block (SCB) */
-  GMAC_Q1_IRQn              = 66 , /**< 66  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  GMAC_Q2_IRQn              = 67 , /**< 67  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  IXC_IRQn                  = 68 , /**< 68  SAME70Q21B Floating Point Unit (FPU) */
-  I2SC0_IRQn                = 69 , /**< 69  SAME70Q21B Inter-IC Sound Controller (I2SC0) */
-  I2SC1_IRQn                = 70 , /**< 70  SAME70Q21B Inter-IC Sound Controller (I2SC1) */
-  GMAC_Q3_IRQn              = 71 , /**< 71  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  GMAC_Q4_IRQn              = 72 , /**< 72  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  GMAC_Q5_IRQn              = 73 , /**< 73  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
+/******  SAME70Q21 specific Interrupt Numbers ***********************************/
+  SUPC_IRQn                 = 0  , /**< 0   SAME70Q21 Supply Controller (SUPC)  */
+  RSTC_IRQn                 = 1  , /**< 1   SAME70Q21 Reset Controller (RSTC)   */
+  RTC_IRQn                  = 2  , /**< 2   SAME70Q21 Real-time Clock (RTC)     */
+  RTT_IRQn                  = 3  , /**< 3   SAME70Q21 Real-time Timer (RTT)     */
+  WDT_IRQn                  = 4  , /**< 4   SAME70Q21 Watchdog Timer (WDT)      */
+  PMC_IRQn                  = 5  , /**< 5   SAME70Q21 Power Management Controller (PMC) */
+  EFC_IRQn                  = 6  , /**< 6   SAME70Q21 Embedded Flash Controller (EFC) */
+  UART0_IRQn                = 7  , /**< 7   SAME70Q21 Universal Asynchronous Receiver Transmitter (UART0) */
+  UART1_IRQn                = 8  , /**< 8   SAME70Q21 Universal Asynchronous Receiver Transmitter (UART1) */
+  PIOA_IRQn                 = 10 , /**< 10  SAME70Q21 Parallel Input/Output Controller (PIOA) */
+  PIOB_IRQn                 = 11 , /**< 11  SAME70Q21 Parallel Input/Output Controller (PIOB) */
+  PIOC_IRQn                 = 12 , /**< 12  SAME70Q21 Parallel Input/Output Controller (PIOC) */
+  USART0_IRQn               = 13 , /**< 13  SAME70Q21 Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
+  USART1_IRQn               = 14 , /**< 14  SAME70Q21 Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
+  USART2_IRQn               = 15 , /**< 15  SAME70Q21 Universal Synchronous Asynchronous Receiver Transmitter (USART2) */
+  PIOD_IRQn                 = 16 , /**< 16  SAME70Q21 Parallel Input/Output Controller (PIOD) */
+  PIOE_IRQn                 = 17 , /**< 17  SAME70Q21 Parallel Input/Output Controller (PIOE) */
+  HSMCI_IRQn                = 18 , /**< 18  SAME70Q21 High Speed MultiMedia Card Interface (HSMCI) */
+  TWIHS0_IRQn               = 19 , /**< 19  SAME70Q21 Two-wire Interface High Speed (TWIHS0) */
+  TWIHS1_IRQn               = 20 , /**< 20  SAME70Q21 Two-wire Interface High Speed (TWIHS1) */
+  SPI0_IRQn                 = 21 , /**< 21  SAME70Q21 Serial Peripheral Interface (SPI0) */
+  SSC_IRQn                  = 22 , /**< 22  SAME70Q21 Synchronous Serial Controller (SSC) */
+  TC0_IRQn                  = 23 , /**< 23  SAME70Q21 Timer Counter (TC0)       */
+  TC1_IRQn                  = 24 , /**< 24  SAME70Q21 Timer Counter (TC0)       */
+  TC2_IRQn                  = 25 , /**< 25  SAME70Q21 Timer Counter (TC0)       */
+  TC3_IRQn                  = 26 , /**< 26  SAME70Q21 Timer Counter (TC1)       */
+  TC4_IRQn                  = 27 , /**< 27  SAME70Q21 Timer Counter (TC1)       */
+  TC5_IRQn                  = 28 , /**< 28  SAME70Q21 Timer Counter (TC1)       */
+  AFEC0_IRQn                = 29 , /**< 29  SAME70Q21 Analog Front-End Controller (AFEC0) */
+  DACC_IRQn                 = 30 , /**< 30  SAME70Q21 Digital-to-Analog Converter Controller (DACC) */
+  PWM0_IRQn                 = 31 , /**< 31  SAME70Q21 Pulse Width Modulation Controller (PWM0) */
+  ICM_IRQn                  = 32 , /**< 32  SAME70Q21 Integrity Check Monitor (ICM) */
+  ACC_IRQn                  = 33 , /**< 33  SAME70Q21 Analog Comparator Controller (ACC) */
+  USBHS_IRQn                = 34 , /**< 34  SAME70Q21 USB High-Speed Interface (USBHS) */
+  MCAN0_INT0_IRQn           = 35 , /**< 35  SAME70Q21 Controller Area Network (MCAN0) */
+  MCAN0_INT1_IRQn           = 36 , /**< 36  SAME70Q21 Controller Area Network (MCAN0) */
+  MCAN1_INT0_IRQn           = 37 , /**< 37  SAME70Q21 Controller Area Network (MCAN1) */
+  MCAN1_INT1_IRQn           = 38 , /**< 38  SAME70Q21 Controller Area Network (MCAN1) */
+  GMAC_IRQn                 = 39 , /**< 39  SAME70Q21 Gigabit Ethernet MAC (GMAC) */
+  AFEC1_IRQn                = 40 , /**< 40  SAME70Q21 Analog Front-End Controller (AFEC1) */
+  TWIHS2_IRQn               = 41 , /**< 41  SAME70Q21 Two-wire Interface High Speed (TWIHS2) */
+  SPI1_IRQn                 = 42 , /**< 42  SAME70Q21 Serial Peripheral Interface (SPI1) */
+  QSPI_IRQn                 = 43 , /**< 43  SAME70Q21 Quad Serial Peripheral Interface (QSPI) */
+  UART2_IRQn                = 44 , /**< 44  SAME70Q21 Universal Asynchronous Receiver Transmitter (UART2) */
+  UART3_IRQn                = 45 , /**< 45  SAME70Q21 Universal Asynchronous Receiver Transmitter (UART3) */
+  UART4_IRQn                = 46 , /**< 46  SAME70Q21 Universal Asynchronous Receiver Transmitter (UART4) */
+  TC6_IRQn                  = 47 , /**< 47  SAME70Q21 Timer Counter (TC2)       */
+  TC7_IRQn                  = 48 , /**< 48  SAME70Q21 Timer Counter (TC2)       */
+  TC8_IRQn                  = 49 , /**< 49  SAME70Q21 Timer Counter (TC2)       */
+  TC9_IRQn                  = 50 , /**< 50  SAME70Q21 Timer Counter (TC3)       */
+  TC10_IRQn                 = 51 , /**< 51  SAME70Q21 Timer Counter (TC3)       */
+  TC11_IRQn                 = 52 , /**< 52  SAME70Q21 Timer Counter (TC3)       */
+  AES_IRQn                  = 56 , /**< 56  SAME70Q21 Advanced Encryption Standard (AES) */
+  TRNG_IRQn                 = 57 , /**< 57  SAME70Q21 True Random Number Generator (TRNG) */
+  XDMAC_IRQn                = 58 , /**< 58  SAME70Q21 Extensible DMA Controller (XDMAC) */
+  ISI_IRQn                  = 59 , /**< 59  SAME70Q21 Image Sensor Interface (ISI) */
+  PWM1_IRQn                 = 60 , /**< 60  SAME70Q21 Pulse Width Modulation Controller (PWM1) */
+  FPU_IRQn                  = 61 , /**< 61  SAME70Q21 Floating Point Unit (FPU) */
+  SDRAMC_IRQn               = 62 , /**< 62  SAME70Q21 SDRAM Controller (SDRAMC) */
+  RSWDT_IRQn                = 63 , /**< 63  SAME70Q21 Reinforced Safety Watchdog Timer (RSWDT) */
+  GMAC_Q1_IRQn              = 66 , /**< 66  SAME70Q21 Gigabit Ethernet MAC (GMAC) */
+  GMAC_Q2_IRQn              = 67 , /**< 67  SAME70Q21 Gigabit Ethernet MAC (GMAC) */
+  IXC_IRQn                  = 68 , /**< 68  SAME70Q21 Floating Point Unit (FPU) */
 
-  PERIPH_COUNT_IRQn        = 74  /**< Number of peripheral IDs */
+  PERIPH_COUNT_IRQn        = 69  /**< Number of peripheral IDs */
 } IRQn_Type;
 #endif /* !(defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__)) */
 
@@ -226,80 +219,75 @@ typedef struct _DeviceVectors
 
 
   /* Peripheral handlers */
-  void* pfnSUPC_Handler;                         /* 0   SAME70Q21B Supply Controller (SUPC) */
-  void* pfnRSTC_Handler;                         /* 1   SAME70Q21B Reset Controller (RSTC) */
-  void* pfnRTC_Handler;                          /* 2   SAME70Q21B Real-time Clock (RTC) */
-  void* pfnRTT_Handler;                          /* 3   SAME70Q21B Real-time Timer (RTT) */
-  void* pfnWDT_Handler;                          /* 4   SAME70Q21B Watchdog Timer (WDT) */
-  void* pfnPMC_Handler;                          /* 5   SAME70Q21B Power Management Controller (PMC) */
-  void* pfnEFC_Handler;                          /* 6   SAME70Q21B Embedded Flash Controller (EFC) */
-  void* pfnUART0_Handler;                        /* 7   SAME70Q21B Universal Asynchronous Receiver Transmitter (UART0) */
-  void* pfnUART1_Handler;                        /* 8   SAME70Q21B Universal Asynchronous Receiver Transmitter (UART1) */
+  void* pfnSUPC_Handler;                         /* 0   SAME70Q21 Supply Controller (SUPC) */
+  void* pfnRSTC_Handler;                         /* 1   SAME70Q21 Reset Controller (RSTC) */
+  void* pfnRTC_Handler;                          /* 2   SAME70Q21 Real-time Clock (RTC) */
+  void* pfnRTT_Handler;                          /* 3   SAME70Q21 Real-time Timer (RTT) */
+  void* pfnWDT_Handler;                          /* 4   SAME70Q21 Watchdog Timer (WDT) */
+  void* pfnPMC_Handler;                          /* 5   SAME70Q21 Power Management Controller (PMC) */
+  void* pfnEFC_Handler;                          /* 6   SAME70Q21 Embedded Flash Controller (EFC) */
+  void* pfnUART0_Handler;                        /* 7   SAME70Q21 Universal Asynchronous Receiver Transmitter (UART0) */
+  void* pfnUART1_Handler;                        /* 8   SAME70Q21 Universal Asynchronous Receiver Transmitter (UART1) */
   void* pvReserved9;
-  void* pfnPIOA_Handler;                         /* 10  SAME70Q21B Parallel Input/Output Controller (PIOA) */
-  void* pfnPIOB_Handler;                         /* 11  SAME70Q21B Parallel Input/Output Controller (PIOB) */
-  void* pfnPIOC_Handler;                         /* 12  SAME70Q21B Parallel Input/Output Controller (PIOC) */
-  void* pfnUSART0_Handler;                       /* 13  SAME70Q21B Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
-  void* pfnUSART1_Handler;                       /* 14  SAME70Q21B Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
-  void* pfnUSART2_Handler;                       /* 15  SAME70Q21B Universal Synchronous Asynchronous Receiver Transmitter (USART2) */
-  void* pfnPIOD_Handler;                         /* 16  SAME70Q21B Parallel Input/Output Controller (PIOD) */
-  void* pfnPIOE_Handler;                         /* 17  SAME70Q21B Parallel Input/Output Controller (PIOE) */
-  void* pfnHSMCI_Handler;                        /* 18  SAME70Q21B High Speed MultiMedia Card Interface (HSMCI) */
-  void* pfnTWIHS0_Handler;                       /* 19  SAME70Q21B Two-wire Interface High Speed (TWIHS0) */
-  void* pfnTWIHS1_Handler;                       /* 20  SAME70Q21B Two-wire Interface High Speed (TWIHS1) */
-  void* pfnSPI0_Handler;                         /* 21  SAME70Q21B Serial Peripheral Interface (SPI0) */
-  void* pfnSSC_Handler;                          /* 22  SAME70Q21B Synchronous Serial Controller (SSC) */
-  void* pfnTC0_Handler;                          /* 23  SAME70Q21B Timer Counter (TC0) */
-  void* pfnTC1_Handler;                          /* 24  SAME70Q21B Timer Counter (TC0) */
-  void* pfnTC2_Handler;                          /* 25  SAME70Q21B Timer Counter (TC0) */
-  void* pfnTC3_Handler;                          /* 26  SAME70Q21B Timer Counter (TC1) */
-  void* pfnTC4_Handler;                          /* 27  SAME70Q21B Timer Counter (TC1) */
-  void* pfnTC5_Handler;                          /* 28  SAME70Q21B Timer Counter (TC1) */
-  void* pfnAFEC0_Handler;                        /* 29  SAME70Q21B Analog Front-End Controller (AFEC0) */
-  void* pfnDACC_Handler;                         /* 30  SAME70Q21B Digital-to-Analog Converter Controller (DACC) */
-  void* pfnPWM0_Handler;                         /* 31  SAME70Q21B Pulse Width Modulation Controller (PWM0) */
-  void* pfnICM_Handler;                          /* 32  SAME70Q21B Integrity Check Monitor (ICM) */
-  void* pfnACC_Handler;                          /* 33  SAME70Q21B Analog Comparator Controller (ACC) */
-  void* pfnUSBHS_Handler;                        /* 34  SAME70Q21B USB High-Speed Interface (USBHS) */
-  void* pfnMCAN0_INT0_Handler;                   /* 35  SAME70Q21B Controller Area Network (MCAN0) */
-  void* pfnMCAN0_INT1_Handler;                   /* 36  SAME70Q21B Controller Area Network (MCAN0) */
-  void* pfnMCAN1_INT0_Handler;                   /* 37  SAME70Q21B Controller Area Network (MCAN1) */
-  void* pfnMCAN1_INT1_Handler;                   /* 38  SAME70Q21B Controller Area Network (MCAN1) */
-  void* pfnGMAC_Handler;                         /* 39  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  void* pfnAFEC1_Handler;                        /* 40  SAME70Q21B Analog Front-End Controller (AFEC1) */
-  void* pfnTWIHS2_Handler;                       /* 41  SAME70Q21B Two-wire Interface High Speed (TWIHS2) */
-  void* pfnSPI1_Handler;                         /* 42  SAME70Q21B Serial Peripheral Interface (SPI1) */
-  void* pfnQSPI_Handler;                         /* 43  SAME70Q21B Quad Serial Peripheral Interface (QSPI) */
-  void* pfnUART2_Handler;                        /* 44  SAME70Q21B Universal Asynchronous Receiver Transmitter (UART2) */
-  void* pfnUART3_Handler;                        /* 45  SAME70Q21B Universal Asynchronous Receiver Transmitter (UART3) */
-  void* pfnUART4_Handler;                        /* 46  SAME70Q21B Universal Asynchronous Receiver Transmitter (UART4) */
-  void* pfnTC6_Handler;                          /* 47  SAME70Q21B Timer Counter (TC2) */
-  void* pfnTC7_Handler;                          /* 48  SAME70Q21B Timer Counter (TC2) */
-  void* pfnTC8_Handler;                          /* 49  SAME70Q21B Timer Counter (TC2) */
-  void* pfnTC9_Handler;                          /* 50  SAME70Q21B Timer Counter (TC3) */
-  void* pfnTC10_Handler;                         /* 51  SAME70Q21B Timer Counter (TC3) */
-  void* pfnTC11_Handler;                         /* 52  SAME70Q21B Timer Counter (TC3) */
+  void* pfnPIOA_Handler;                         /* 10  SAME70Q21 Parallel Input/Output Controller (PIOA) */
+  void* pfnPIOB_Handler;                         /* 11  SAME70Q21 Parallel Input/Output Controller (PIOB) */
+  void* pfnPIOC_Handler;                         /* 12  SAME70Q21 Parallel Input/Output Controller (PIOC) */
+  void* pfnUSART0_Handler;                       /* 13  SAME70Q21 Universal Synchronous Asynchronous Receiver Transmitter (USART0) */
+  void* pfnUSART1_Handler;                       /* 14  SAME70Q21 Universal Synchronous Asynchronous Receiver Transmitter (USART1) */
+  void* pfnUSART2_Handler;                       /* 15  SAME70Q21 Universal Synchronous Asynchronous Receiver Transmitter (USART2) */
+  void* pfnPIOD_Handler;                         /* 16  SAME70Q21 Parallel Input/Output Controller (PIOD) */
+  void* pfnPIOE_Handler;                         /* 17  SAME70Q21 Parallel Input/Output Controller (PIOE) */
+  void* pfnHSMCI_Handler;                        /* 18  SAME70Q21 High Speed MultiMedia Card Interface (HSMCI) */
+  void* pfnTWIHS0_Handler;                       /* 19  SAME70Q21 Two-wire Interface High Speed (TWIHS0) */
+  void* pfnTWIHS1_Handler;                       /* 20  SAME70Q21 Two-wire Interface High Speed (TWIHS1) */
+  void* pfnSPI0_Handler;                         /* 21  SAME70Q21 Serial Peripheral Interface (SPI0) */
+  void* pfnSSC_Handler;                          /* 22  SAME70Q21 Synchronous Serial Controller (SSC) */
+  void* pfnTC0_Handler;                          /* 23  SAME70Q21 Timer Counter (TC0)  */
+  void* pfnTC1_Handler;                          /* 24  SAME70Q21 Timer Counter (TC0)  */
+  void* pfnTC2_Handler;                          /* 25  SAME70Q21 Timer Counter (TC0)  */
+  void* pfnTC3_Handler;                          /* 26  SAME70Q21 Timer Counter (TC1)  */
+  void* pfnTC4_Handler;                          /* 27  SAME70Q21 Timer Counter (TC1)  */
+  void* pfnTC5_Handler;                          /* 28  SAME70Q21 Timer Counter (TC1)  */
+  void* pfnAFEC0_Handler;                        /* 29  SAME70Q21 Analog Front-End Controller (AFEC0) */
+  void* pfnDACC_Handler;                         /* 30  SAME70Q21 Digital-to-Analog Converter Controller (DACC) */
+  void* pfnPWM0_Handler;                         /* 31  SAME70Q21 Pulse Width Modulation Controller (PWM0) */
+  void* pfnICM_Handler;                          /* 32  SAME70Q21 Integrity Check Monitor (ICM) */
+  void* pfnACC_Handler;                          /* 33  SAME70Q21 Analog Comparator Controller (ACC) */
+  void* pfnUSBHS_Handler;                        /* 34  SAME70Q21 USB High-Speed Interface (USBHS) */
+  void* pfnMCAN0_INT0_Handler;                   /* 35  SAME70Q21 Controller Area Network (MCAN0) */
+  void* pfnMCAN0_INT1_Handler;                   /* 36  SAME70Q21 Controller Area Network (MCAN0) */
+  void* pfnMCAN1_INT0_Handler;                   /* 37  SAME70Q21 Controller Area Network (MCAN1) */
+  void* pfnMCAN1_INT1_Handler;                   /* 38  SAME70Q21 Controller Area Network (MCAN1) */
+  void* pfnGMAC_Handler;                         /* 39  SAME70Q21 Gigabit Ethernet MAC (GMAC) */
+  void* pfnAFEC1_Handler;                        /* 40  SAME70Q21 Analog Front-End Controller (AFEC1) */
+  void* pfnTWIHS2_Handler;                       /* 41  SAME70Q21 Two-wire Interface High Speed (TWIHS2) */
+  void* pfnSPI1_Handler;                         /* 42  SAME70Q21 Serial Peripheral Interface (SPI1) */
+  void* pfnQSPI_Handler;                         /* 43  SAME70Q21 Quad Serial Peripheral Interface (QSPI) */
+  void* pfnUART2_Handler;                        /* 44  SAME70Q21 Universal Asynchronous Receiver Transmitter (UART2) */
+  void* pfnUART3_Handler;                        /* 45  SAME70Q21 Universal Asynchronous Receiver Transmitter (UART3) */
+  void* pfnUART4_Handler;                        /* 46  SAME70Q21 Universal Asynchronous Receiver Transmitter (UART4) */
+  void* pfnTC6_Handler;                          /* 47  SAME70Q21 Timer Counter (TC2)  */
+  void* pfnTC7_Handler;                          /* 48  SAME70Q21 Timer Counter (TC2)  */
+  void* pfnTC8_Handler;                          /* 49  SAME70Q21 Timer Counter (TC2)  */
+  void* pfnTC9_Handler;                          /* 50  SAME70Q21 Timer Counter (TC3)  */
+  void* pfnTC10_Handler;                         /* 51  SAME70Q21 Timer Counter (TC3)  */
+  void* pfnTC11_Handler;                         /* 52  SAME70Q21 Timer Counter (TC3)  */
   void* pvReserved53;
   void* pvReserved54;
   void* pvReserved55;
-  void* pfnAES_Handler;                          /* 56  SAME70Q21B Advanced Encryption Standard (AES) */
-  void* pfnTRNG_Handler;                         /* 57  SAME70Q21B True Random Number Generator (TRNG) */
-  void* pfnXDMAC_Handler;                        /* 58  SAME70Q21B Extensible DMA Controller (XDMAC) */
-  void* pfnISI_Handler;                          /* 59  SAME70Q21B Image Sensor Interface (ISI) */
-  void* pfnPWM1_Handler;                         /* 60  SAME70Q21B Pulse Width Modulation Controller (PWM1) */
-  void* pfnFPU_Handler;                          /* 61  SAME70Q21B Floating Point Unit (FPU) */
-  void* pfnSDRAMC_Handler;                       /* 62  SAME70Q21B SDRAM Controller (SDRAMC) */
-  void* pfnRSWDT_Handler;                        /* 63  SAME70Q21B Reinforced Safety Watchdog Timer (RSWDT) */
-  void* pfnCCW_Handler;                          /* 64  SAME70Q21B System Control Block (SCB) */
-  void* pfnCCF_Handler;                          /* 65  SAME70Q21B System Control Block (SCB) */
-  void* pfnGMAC_Q1_Handler;                      /* 66  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  void* pfnGMAC_Q2_Handler;                      /* 67  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  void* pfnIXC_Handler;                          /* 68  SAME70Q21B Floating Point Unit (FPU) */
-  void* pfnI2SC0_Handler;                        /* 69  SAME70Q21B Inter-IC Sound Controller (I2SC0) */
-  void* pfnI2SC1_Handler;                        /* 70  SAME70Q21B Inter-IC Sound Controller (I2SC1) */
-  void* pfnGMAC_Q3_Handler;                      /* 71  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  void* pfnGMAC_Q4_Handler;                      /* 72  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
-  void* pfnGMAC_Q5_Handler;                      /* 73  SAME70Q21B Gigabit Ethernet MAC (GMAC) */
+  void* pfnAES_Handler;                          /* 56  SAME70Q21 Advanced Encryption Standard (AES) */
+  void* pfnTRNG_Handler;                         /* 57  SAME70Q21 True Random Number Generator (TRNG) */
+  void* pfnXDMAC_Handler;                        /* 58  SAME70Q21 Extensible DMA Controller (XDMAC) */
+  void* pfnISI_Handler;                          /* 59  SAME70Q21 Image Sensor Interface (ISI) */
+  void* pfnPWM1_Handler;                         /* 60  SAME70Q21 Pulse Width Modulation Controller (PWM1) */
+  void* pfnFPU_Handler;                          /* 61  SAME70Q21 Floating Point Unit (FPU) */
+  void* pfnSDRAMC_Handler;                       /* 62  SAME70Q21 SDRAM Controller (SDRAMC) */
+  void* pfnRSWDT_Handler;                        /* 63  SAME70Q21 Reinforced Safety Watchdog Timer (RSWDT) */
+  void* pvReserved64;
+  void* pvReserved65;
+  void* pfnGMAC_Q1_Handler;                      /* 66  SAME70Q21 Gigabit Ethernet MAC (GMAC) */
+  void* pfnGMAC_Q2_Handler;                      /* 67  SAME70Q21 Gigabit Ethernet MAC (GMAC) */
+  void* pfnIXC_Handler;                          /* 68  SAME70Q21 Floating Point Unit (FPU) */
 } DeviceVectors;
 
 /* Defines for Deprecated Interrupt and Exceptions handler names */
@@ -333,20 +321,13 @@ void ACC_Handler                   ( void );
 void AES_Handler                   ( void );
 void AFEC0_Handler                 ( void );
 void AFEC1_Handler                 ( void );
-void CCF_Handler                   ( void );
-void CCW_Handler                   ( void );
 void DACC_Handler                  ( void );
 void EFC_Handler                   ( void );
 void FPU_Handler                   ( void );
 void GMAC_Handler                  ( void );
 void GMAC_Q1_Handler               ( void );
 void GMAC_Q2_Handler               ( void );
-void GMAC_Q3_Handler               ( void );
-void GMAC_Q4_Handler               ( void );
-void GMAC_Q5_Handler               ( void );
 void HSMCI_Handler                 ( void );
-void I2SC0_Handler                 ( void );
-void I2SC1_Handler                 ( void );
 void ICM_Handler                   ( void );
 void ISI_Handler                   ( void );
 void IXC_Handler                   ( void );
@@ -442,14 +423,14 @@ void XDMAC_Handler                 ( void );
 // #include "system_same70.h"
 #endif /* DONT_USE_CMSIS_INIT */
 
-/** @}  end of SAME70Q21B_cmsis CMSIS Definitions */
+/** @}  end of SAME70Q21_cmsis CMSIS Definitions */
 
-/** \defgroup SAME70Q21B_api Peripheral Software API
+/** \defgroup SAME70Q21_api Peripheral Software API
  *  @{
  */
 
 /* ************************************************************************** */
-/**  SOFTWARE PERIPHERAL API DEFINITION FOR SAME70Q21B */
+/**  SOFTWARE PERIPHERAL API DEFINITION FOR SAME70Q21 */
 /* ************************************************************************** */
 #include "component/acc.h"
 #include "component/aes.h"
@@ -460,7 +441,6 @@ void XDMAC_Handler                 ( void );
 #include "component/gmac.h"
 #include "component/gpbr.h"
 #include "component/hsmci.h"
-#include "component/i2sc.h"
 #include "component/icm.h"
 #include "component/isi.h"
 #include "component/matrix.h"
@@ -489,12 +469,12 @@ void XDMAC_Handler                 ( void );
 #include "component/xdmac.h"
 /** @}  end of Peripheral Software API */
 
-/** \defgroup SAME70Q21B_reg Registers Access Definitions
+/** \defgroup SAME70Q21_reg Registers Access Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   REGISTER ACCESS DEFINITIONS FOR SAME70Q21B */
+/*   REGISTER ACCESS DEFINITIONS FOR SAME70Q21 */
 /* ************************************************************************** */
 #include "instance/acc.h"
 #include "instance/aes.h"
@@ -506,8 +486,6 @@ void XDMAC_Handler                 ( void );
 #include "instance/gmac.h"
 #include "instance/gpbr.h"
 #include "instance/hsmci.h"
-#include "instance/i2sc0.h"
-#include "instance/i2sc1.h"
 #include "instance/icm.h"
 #include "instance/isi.h"
 #include "instance/matrix.h"
@@ -554,12 +532,12 @@ void XDMAC_Handler                 ( void );
 #include "instance/xdmac.h"
 /** @}  end of Registers Access Definitions */
 
-/** \addtogroup SAME70Q21B_id Peripheral Ids Definitions
+/** \addtogroup SAME70Q21_id Peripheral Ids Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*  PERIPHERAL ID DEFINITIONS FOR SAME70Q21B */
+/*  PERIPHERAL ID DEFINITIONS FOR SAME70Q21 */
 /* ************************************************************************** */
 #define ID_SUPC         (  0) /**< \brief Supply Controller (SUPC) */
 #define ID_RSTC         (  1) /**< \brief Reset Controller (RSTC) */
@@ -619,18 +597,16 @@ void XDMAC_Handler                 ( void );
 #define ID_PWM1         ( 60) /**< \brief Pulse Width Modulation Controller (PWM1) */
 #define ID_SDRAMC       ( 62) /**< \brief SDRAM Controller (SDRAMC) */
 #define ID_RSWDT        ( 63) /**< \brief Reinforced Safety Watchdog Timer (RSWDT) */
-#define ID_I2SC0        ( 69) /**< \brief Inter-IC Sound Controller (I2SC0) */
-#define ID_I2SC1        ( 70) /**< \brief Inter-IC Sound Controller (I2SC1) */
 
-#define ID_PERIPH_COUNT ( 71) /**< \brief Number of peripheral IDs */
+#define ID_PERIPH_COUNT ( 64) /**< \brief Number of peripheral IDs */
 /** @}  end of Peripheral Ids Definitions */
 
-/** \addtogroup legacy_SAME70Q21B_id Legacy Peripheral Ids Definitions
+/** \addtogroup legacy_SAME70Q21_id Legacy Peripheral Ids Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*  LEGACY PERIPHERAL ID DEFINITIONS FOR SAME70Q21B */
+/*  LEGACY PERIPHERAL ID DEFINITIONS FOR SAME70Q21 */
 /* ************************************************************************** */
 #define ID_TC0                   TC0_INSTANCE_ID_CHANNEL0
 #define ID_TC1                   TC0_INSTANCE_ID_CHANNEL1
@@ -646,12 +622,12 @@ void XDMAC_Handler                 ( void );
 #define ID_TC11                  TC3_INSTANCE_ID_CHANNEL2
 /** @}  end of Legacy Peripheral Ids Definitions */
 
-/** \addtogroup SAME70Q21B_base Peripheral Base Address Definitions
+/** \addtogroup SAME70Q21_base Peripheral Base Address Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   BASE ADDRESS DEFINITIONS FOR SAME70Q21B */
+/*   BASE ADDRESS DEFINITIONS FOR SAME70Q21 */
 /* ************************************************************************** */
 #if (defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__))
 #define ACC                    (0x40044000)                   /**< \brief (ACC       ) Base Address */
@@ -664,8 +640,6 @@ void XDMAC_Handler                 ( void );
 #define GMAC                   (0x40050000)                   /**< \brief (GMAC      ) Base Address */
 #define GPBR                   (0x400E1890)                   /**< \brief (GPBR      ) Base Address */
 #define HSMCI                  (0x40000000)                   /**< \brief (HSMCI     ) Base Address */
-#define I2SC0                  (0x4008C000)                   /**< \brief (I2SC0     ) Base Address */
-#define I2SC1                  (0x40090000)                   /**< \brief (I2SC1     ) Base Address */
 #define ICM                    (0x40048000)                   /**< \brief (ICM       ) Base Address */
 #define ISI                    (0x4004C000)                   /**< \brief (ISI       ) Base Address */
 #define MATRIX                 (0x40088000)                   /**< \brief (MATRIX    ) Base Address */
@@ -749,11 +723,6 @@ void XDMAC_Handler                 ( void );
 #define HSMCI                  ((Hsmci *)0x40000000U)         /**< \brief (HSMCI     ) Base Address */
 #define HSMCI_INST_NUM         1                              /**< \brief (HSMCI     ) Number of instances */
 #define HSMCI_INSTS            { HSMCI }                      /**< \brief (HSMCI     ) Instances List */
-
-#define I2SC0                  ((I2sc *)0x4008C000U)          /**< \brief (I2SC0     ) Base Address */
-#define I2SC1                  ((I2sc *)0x40090000U)          /**< \brief (I2SC1     ) Base Address */
-#define I2SC_INST_NUM          2                              /**< \brief (I2SC      ) Number of instances */
-#define I2SC_INSTS             { I2SC0, I2SC1 }               /**< \brief (I2SC      ) Instances List */
 
 #define ICM                    ((Icm *)0x40048000U)           /**< \brief (ICM       ) Base Address */
 #define ICM_INST_NUM           1                              /**< \brief (ICM       ) Number of instances */
@@ -880,18 +849,18 @@ void XDMAC_Handler                 ( void );
 #endif /* (defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__)) */
 /** @}  end of Peripheral Base Address Definitions */
 
-/** \addtogroup SAME70Q21B_pio Peripheral Pio Definitions
+/** \addtogroup SAME70Q21_pio Peripheral Pio Definitions
  *  @{
  */
 
 /* ************************************************************************** */
-/*   PIO DEFINITIONS FOR SAME70Q21B*/
+/*   PIO DEFINITIONS FOR SAME70Q21*/
 /* ************************************************************************** */
-#include "pio/same70q21b.h"
+#include "pio/same70q21.h"
 /** @}  end of Peripheral Pio Definitions */
 
 /* ************************************************************************** */
-/*   MEMORY MAPPING DEFINITIONS FOR SAME70Q21B*/
+/*   MEMORY MAPPING DEFINITIONS FOR SAME70Q21*/
 /* ************************************************************************** */
 
 #define PERIPHERALS_SIZE         _U_(0x20000000)       /* 524288kB Memory segment type: io */
@@ -928,25 +897,25 @@ void XDMAC_Handler                 ( void );
 #define SDRAM_CS_ADDR            _U_(0x70000000)       /**< SDRAM_CS base address (type: other)*/
 
 /* ************************************************************************** */
-/**  DEVICE SIGNATURES FOR SAME70Q21B */
+/**  DEVICE SIGNATURES FOR SAME70Q21 */
 /* ************************************************************************** */
 #define JTAGID                   _UL_(0X05B3D03F)
 #define CHIP_JTAGID              _UL_(0X05B3D03F)
-#define CHIP_CIDR                _UL_(0XA1020E01)
+#define CHIP_CIDR                _UL_(0XA1020E00)
 #define CHIP_EXID                _UL_(0X00000002)
 
 /* ************************************************************************** */
-/**  ELECTRICAL DEFINITIONS FOR SAME70Q21B */
+/**  ELECTRICAL DEFINITIONS FOR SAME70Q21 */
 /* ************************************************************************** */
-#define CHIP_FREQ_SLCK_RC_MIN          _UL_(20000)     
+#define CHIP_FREQ_SLCK_RC_MIN          _UL_(20000)
 #define CHIP_FREQ_SLCK_RC              _UL_(32000)     /**< \brief Typical Slow Clock Internal RC frequency*/
-#define CHIP_FREQ_SLCK_RC_MAX          _UL_(44000)     
-#define CHIP_FREQ_MAINCK_RC_4MHZ       _UL_(4000000)   
-#define CHIP_FREQ_MAINCK_RC_8MHZ       _UL_(8000000)   
-#define CHIP_FREQ_MAINCK_RC_12MHZ      _UL_(12000000)  
-#define CHIP_FREQ_CPU_MAX              _UL_(300000000) 
-#define CHIP_FREQ_XTAL_32K             _UL_(32768)     
-#define CHIP_FREQ_XTAL_12M             _UL_(12000000)  
+#define CHIP_FREQ_SLCK_RC_MAX          _UL_(44000)
+#define CHIP_FREQ_MAINCK_RC_4MHZ       _UL_(4000000)
+#define CHIP_FREQ_MAINCK_RC_8MHZ       _UL_(8000000)
+#define CHIP_FREQ_MAINCK_RC_12MHZ      _UL_(12000000)
+#define CHIP_FREQ_CPU_MAX              _UL_(300000000)
+#define CHIP_FREQ_XTAL_32K             _UL_(32768)
+#define CHIP_FREQ_XTAL_12M             _UL_(12000000)
 #define CHIP_FREQ_FWS_0                _UL_(23000000)  /**< \brief Maximum operating frequency when FWS is 0*/
 #define CHIP_FREQ_FWS_1                _UL_(46000000)  /**< \brief Maximum operating frequency when FWS is 1*/
 #define CHIP_FREQ_FWS_2                _UL_(69000000)  /**< \brief Maximum operating frequency when FWS is 2*/
@@ -962,7 +931,7 @@ void XDMAC_Handler                 ( void );
 }
 #endif
 
-/** @}  end of SAME70Q21B definitions */
+/** @}  end of SAME70Q21 definitions */
 
 
-#endif /* _SAME70Q21B_H_ */
+#endif /* _SAME70Q21_H_ */
