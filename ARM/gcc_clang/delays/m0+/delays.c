@@ -1,14 +1,22 @@
-#include "core_header.h"
 #include "stdint.h"
+#include "core_header.h"
+
+/* Added because of compiler specific commands */
+#ifdef _CLANG_LLVM_
+    #define SUBS_MACRO "subs"
+#else
+    #define SUBS_MACRO "sub"
+#endif
 
 void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cycle_num )
 {
     asm volatile(
         "loopCycles%=: \n"
-        "   sub %[cycle_num], %[cycle_num], #1 \n"
+        "   " SUBS_MACRO " %[cycle_num], %[cycle_num], #1 \n"
         "   nop \n"
         "   bne loopCycles%= \n"
-        : [cycle_num] "+l"( cycle_num ) );
+        : [cycle_num] "+l"(cycle_num)
+    );
 }
 
 void __attribute__( ( noinline ) ) Delay_us( uint32_t time_us )
