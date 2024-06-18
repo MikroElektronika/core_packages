@@ -7,6 +7,7 @@ on:
 jobs:
   upload-release-asset:
     runs-on: ubuntu-latest
+    if: "!github.event.release.prerelease"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
