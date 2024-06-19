@@ -385,6 +385,8 @@ def compress_directory_7z(base_output_dir, arch, entry_name):
                 # Add individual file to the archive
                 archive.write(checkFile, os.path.basename(checkFile))
 
+    return archive_name
+
 def functionRegex(value, pattern):
     c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
     return c_pattern.search(value) is not None
