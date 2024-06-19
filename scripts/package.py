@@ -374,24 +374,26 @@ def compress_directory_7z(base_output_dir, arch, entry_name):
         print(f"The specified directory does not exist: {base_output_dir}")
         return False
 
+    with py7zr.SevenZipFile(archive_name, 'w') as archive:
+        archive.writeall(base_output_dir + '/')
     # Construct the command to compress the directory
-    command = [
-        '7z', 'a',  # 'a' stands for adding to an archive
-        '-t7z',     # Specify 7z archive type
-        '-mx3',
-        '-mtc=off', # Do not store timestamps
-        archive_name, # Path to the output .7z file
-        os.path.join(base_output_dir, '*')  # Path to the source directory content
-    ]
-
+    # command = [
+    #     '7z', 'a',  # 'a' stands for adding to an archive
+    #     '-t7z',     # Specify 7z archive type
+    #     '-mx3',
+    #     '-mtc=off', # Do not store timestamps
+    #     archive_name, # Path to the output .7z file
+    #     os.path.join(base_output_dir, '*')  # Path to the source directory content
+    # ]
+    
     # Execute the command
-    try:
-        subprocess.run(command, check=True)
-        print(f"Archive created successfully: {archive_name}")
-        return archive_name
-    except subprocess.CalledProcessError as e:
-        print(f"An error occurred while creating the archive: {e}")
-        return None
+    # try:
+    #     subprocess.run(command, check=True)
+    #     print(f"Archive created successfully: {archive_name}")
+    #     return archive_name
+    # except subprocess.CalledProcessError as e:
+    #     print(f"An error occurred while creating the archive: {e}")
+    #     return None
 
 def functionRegex(value, pattern):
     c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
