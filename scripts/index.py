@@ -112,8 +112,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'updated_at': asset['updated_at'],
                     'category': "MCU Package",
                     'download_link': asset['url'],
-                    'package_changed' : True,
-                    # 'package_changed' : metadata_item['hash'] != previous_metadata_item['hash'],
+                    'package_changed' : metadata_item['hash'] != previous_metadata_item['hash'],
                     'install_location' : install_location
                 }
 
