@@ -5,7 +5,7 @@ import aiofiles, hashlib
 import sqlite3
 from clocks import GenerateClocks
 from schemas import GenerateSchemas
-
+import py7zr
 from pathlib import Path
 
 def find_cmake_files(directory):
