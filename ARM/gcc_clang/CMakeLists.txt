@@ -109,26 +109,35 @@ install(
         ${CMAKE_INSTALL_PREFIX}/../FileLinker
 )
 
+# NOTE - Backslash at the end is important for DIRECTORY path
 install(
-    DIRECTORY "common/cmsis/"
-    DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/common/cmsis"
+    DIRECTORY
+        ${CMAKE_CURRENT_LIST_DIR}/common/cmsis/
+    DESTINATION
+        ${CMAKE_INSTALL_PREFIX}/include/core/common/cmsis
     FILES_MATCHING
         PATTERN "*.h"
 )
 
+# NOTE - Backslash at the end is important for DIRECTORY path
 get_mcu_vendor(vendor)
 install(
-    DIRECTORY "def/${vendor}/${MCU_NAME}/"
-    DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/${MCU_NAME}"
+    DIRECTORY
+        ${CMAKE_CURRENT_LIST_DIR}/def/${vendor}/${MCU_NAME}/
+    DESTINATION
+        ${CMAKE_INSTALL_PREFIX}/include/core/${MCU_NAME}
     FILES_MATCHING
         PATTERN "*.h"
 )
 
+# NOTE - Backslash at the end is important for DIRECTORY path
 if(thirdpartyInstall)
-    if(IS_DIRECTORY "system/src/${vendor}/${thirdpartyInstall}")
+    if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/system/src/${vendor}/${thirdpartyInstall})
         install(
-            DIRECTORY "system/src/${vendor}/${thirdpartyInstall}/"
-            DESTINATION "${CMAKE_INSTALL_PREFIX}/include/core/${MCU_NAME}"
+            DIRECTORY
+                ${CMAKE_CURRENT_LIST_DIR}/system/src/${vendor}/${thirdpartyInstall}/
+            DESTINATION
+                ${CMAKE_INSTALL_PREFIX}/include/core/${MCU_NAME}
             FILES_MATCHING
                 PATTERN "*.h"
         )
