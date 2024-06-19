@@ -117,8 +117,9 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 }
 
         # Index the document
-        resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
-        print(f"{resp["result"]} {resp['_id']}")
+        if asset['name'].endswith('.7z'):
+            resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
+            print(f"{resp["result"]} {resp['_id']}")
 
 if __name__ == '__main__':
     # Get arguments
