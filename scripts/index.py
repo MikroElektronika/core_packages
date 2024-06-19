@@ -14,9 +14,9 @@ def get_headers(api, token):
         }
 
 # Function to fetch release details from GitHub
-def fetch_release_details(owner, repo, token):
+def fetch_release_details(repo, token):
     api_headers = get_headers(True, token)
-    url = f'https://api.github.com/repos/{owner}/{repo}/releases/latest'
+    url = f'https://api.github.com/repos/{repo}/releases/latest'
     response = requests.get(url, headers=api_headers)
     response.raise_for_status()  # Raise an exception for HTTP errors
     return response.json()
@@ -119,12 +119,11 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 if __name__ == '__main__':
     # Get arguments
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
-    parser.add_argument("owner", help="Tag name from the release")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
     args = parser.parse_args()
     # Fetch release details
-    release_details = fetch_release_details(args.owner, args.repo, args.token)
+    release_details = fetch_release_details(args.repo, args.token)
     # Index release details into Elasticsearch
     num_of_retries = 1
     while True:

@@ -13,6 +13,9 @@ jobs:
   index:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -27,11 +30,11 @@ jobs:
           pip install elasticsearch==7.13.4
           sudo apt-get install p7zip-full
 
-      - name: Run Release Script
+      - name: Run Index Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ES_HOST: ${{ secrets.ES_HOST }}
           ES_INDEX: ${{ secrets.ES_INDEX }}
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        run: python -u scripts/index.py "MikroElektronika" ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }}
+        run: python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }}
