@@ -375,15 +375,11 @@ def compress_directory_7z(base_output_dir, arch, entry_name):
         print(f"The specified directory does not exist: {base_output_dir}")
         return False
 
+    working_dir = os.getcwd()
     with py7zr.SevenZipFile(archive_name, 'w') as archive:
-        for file in os.listdir(abspath(base_output_dir)):
-            checkFile = os.path.join(abspath(base_output_dir), file)
-            if os.path.isdir(checkFile):
-                # Add directory to the archive
-                archive.writeall(checkFile, os.path.basename(checkFile))
-            else:
-                # Add individual file to the archive
-                archive.write(checkFile, os.path.basename(checkFile))
+        os.chdir(abspath(base_output_dir))
+        archive.writeall('./')
+    os.chdir(working_dir)
 
     return archive_name
 
