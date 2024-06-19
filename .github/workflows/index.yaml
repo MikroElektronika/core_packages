@@ -32,7 +32,7 @@ jobs:
 
       - name: Fetch Previous Metadata
         run: |
-          wget https://github.com/MikroElektronika/core_packages/releases/tag/${{ github.event.inputs }}/metadata.json -o scripts/previous_metadata.json
+          wget https://github.com/MikroElektronika/core_packages/releases/tag/v1.0.59/metadata.json -o scripts/previous_metadata.json
 
       - name: Run Index Script
         env:
