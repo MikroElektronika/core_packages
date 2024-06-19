@@ -1,4 +1,4 @@
-import os, time, argparse, requests
+import os, time, argparse, requests, json
 from elasticsearch import Elasticsearch
 
 # Gets latest release headers from repository
@@ -57,6 +57,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
     metadata_download_url = metadata_asset['url']
     metadata_content, error = fetch_json_data(metadata_download_url, token)
 
+    previous_metadata_content = json.load(open(os.path.join(os.path.dirname(__file__), 'previous_metadata.json')))
+
     for asset in release_details.get('assets', []):
         name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
         if name_without_extension == "clocks":
@@ -91,12 +93,11 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             }
         else:
             metadata_item = find_item_by_name(metadata_content, name_without_extension)
+            previous_hash = find_item_by_name(previous_metadata_content, name_without_extension)
             if metadata_item:
                 display_name = metadata_item["display_name"]
-                current_version = metadata_item['version']
-                tag_name = release_details['tag_name']
                 install_location = metadata_item["install_location"]
-                version = tag_name.replace("v", "")
+                version = metadata_item['version']
 
                 doc = {
                     'name': name_without_extension,
@@ -109,7 +110,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'updated_at': asset['updated_at'],
                     'category': "MCU Package",
                     'download_link': asset['url'],
-                    'package_changed' : version != current_version,
+                    'package_changed' : metadata_item['hash'] != previous_hash,
                     'install_location' : install_location
                 }
         # Index the document

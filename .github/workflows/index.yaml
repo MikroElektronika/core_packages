@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'MikroE CORE Packages'
-        default: 'Latest'
+        description: 'MikroE CORE Packages previous release tag version'
+        default: 'v'
         required: true
         type: string
 
@@ -29,6 +29,10 @@ jobs:
           pip install requests
           pip install elasticsearch==7.13.4
           sudo apt-get install p7zip-full
+
+      - name: Fetch Previous Metadata
+        run: |
+          wget https://github.com/MikroElektronika/core_packages/releases/tag/${{ github.event.inputs }}/metadata.json -o scripts/previous_metadata.json
 
       - name: Run Index Script
         env:
