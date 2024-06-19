@@ -5,9 +5,8 @@ import aiofiles, hashlib
 import sqlite3
 from clocks import GenerateClocks
 from schemas import GenerateSchemas
-import py7zr
+
 from pathlib import Path
-from os.path import abspath
 
 def find_cmake_files(directory):
     """ Return a list of .cmake files in the directory, excluding specific files """
@@ -375,13 +374,24 @@ def compress_directory_7z(base_output_dir, arch, entry_name):
         print(f"The specified directory does not exist: {base_output_dir}")
         return False
 
-    working_dir = os.getcwd()
-    with py7zr.SevenZipFile(archive_name, 'w') as archive:
-        os.chdir(abspath(base_output_dir))
-        archive.writeall('./')
-    os.chdir(working_dir)
+    # Construct the command to compress the directory
+    command = [
+        '7z', 'a',  # 'a' stands for adding to an archive
+        '-t7z',     # Specify 7z archive type
+        '-mx3',
+        '-mtc=off', # Do not store timestamps
+        archive_name, # Path to the output .7z file
+        os.path.join(base_output_dir, '*')  # Path to the source directory content
+    ]
 
-    return archive_name
+    # Execute the command
+    try:
+        subprocess.run(command, check=True)
+        print(f"Archive created successfully: {archive_name}")
+        return archive_name
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred while creating the archive: {e}")
+        return None
 
 def functionRegex(value, pattern):
     c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
@@ -744,6 +754,7 @@ async def main(token, repo, tag_name):
     schemaGenerator.generate()
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
