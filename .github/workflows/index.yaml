@@ -3,7 +3,7 @@ name: Index Latest Release
 on:
   workflow_dispatch:
     inputs:
-      name:
+      tag_version:
         description: 'MikroE CORE Packages previous release tag version'
         default: 'v'
         required: true
@@ -30,15 +30,10 @@ jobs:
           pip install elasticsearch==7.13.4
           sudo apt-get install p7zip-full
 
-      - name: Fetch Previous Metadata
-        run: |
-          wget https://github.com/MikroElektronika/core_packages/releases/tag/v1.0.59/metadata.json -o scripts/previous_metadata.json
-
       - name: Run Index Script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ES_HOST: ${{ secrets.ES_HOST }}
           ES_INDEX: ${{ secrets.ES_INDEX }}
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        run: python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }}
+        run: python -u scripts/index.py ${{ github.repository }} ${{ github.event.tag_version }} ${{ secrets.GITHUB_TOKEN }}

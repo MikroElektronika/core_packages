@@ -14,9 +14,9 @@ def get_headers(api, token):
         }
 
 # Function to fetch release details from GitHub
-def fetch_release_details(repo, token):
+def fetch_release_details(repo, token, tag):
     api_headers = get_headers(True, token)
-    url = f'https://api.github.com/repos/{repo}/releases/latest'
+    url = f'https://api.github.com/repos/{repo}/releases/{tag}'
     response = requests.get(url, headers=api_headers)
     response.raise_for_status()  # Raise an exception for HTTP errors
     return response.json()
@@ -52,15 +52,16 @@ def find_item_by_name(items, name):
 
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token):
-    # Iterate over each asset in the release
-    metadata_asset = next((a for a in release_details['assets'] if a['name'] == "metadata.json"), None)
-    metadata_download_url = metadata_asset['url']
-    metadata_content, error = fetch_json_data(metadata_download_url, token)
+    # Iterate over each asset in the release and previous release
+    metadata_content = []
+    for each_release_details in release_details:
+        metadata_asset = next((a for a in each_release_details['assets'] if a['name'] == "metadata.json"), None)
+        metadata_download_url = metadata_asset['url']
+        metadata_content.append(fetch_json_data(metadata_download_url, token)[0])
 
-    previous_metadata_content = json.load(open(os.path.join(os.path.dirname(__file__), 'previous_metadata.json')))
-
-    for asset in release_details.get('assets', []):
+    for asset in release_details[0].get('assets', []):
         name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
+
         if name_without_extension == "clocks":
             doc = {
                 'name': "clocks",
@@ -68,7 +69,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'author' : "MIKROE",
                 'hidden' : True,
                 'type' : "mcu_clocks",
-                'version' : release_details['tag_name'],
+                'version' : release_details[0]['tag_name'],
                 'created_at': asset['created_at'],
                 'updated_at': asset['updated_at'],
                 'category': "MCU Package",
@@ -83,7 +84,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'author' : "MIKROE",
                 'hidden' : True,
                 'type' : "mcu_schemas",
-                'version' : release_details['tag_name'],
+                'version' : release_details[0]['tag_name'],
                 'created_at': asset['created_at'],
                 'updated_at': asset['updated_at'],
                 'category': "MCU Package",
@@ -92,8 +93,9 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'install_location' : "%APPLICATION_DATA_DIR%/schemas.json"
             }
         else:
-            metadata_item = find_item_by_name(metadata_content, name_without_extension)
-            previous_hash = find_item_by_name(previous_metadata_content, name_without_extension)
+            metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
+            previous_metadata_item = find_item_by_name(metadata_content[1], name_without_extension)
+
             if metadata_item:
                 display_name = metadata_item["display_name"]
                 install_location = metadata_item["install_location"]
@@ -110,9 +112,10 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'updated_at': asset['updated_at'],
                     'category': "MCU Package",
                     'download_link': asset['url'],
-                    'package_changed' : metadata_item['hash'] != previous_hash,
+                    'package_changed' : metadata_item['hash'] != previous_metadata_item['hash'],
                     'install_location' : install_location
                 }
+
         # Index the document
         resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
         print(f"{resp["result"]} {resp['_id']}")
@@ -121,11 +124,11 @@ if __name__ == '__main__':
     # Get arguments
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
+    parser.add_argument("tag", help="Previous release tag version")
     parser.add_argument("token", help="GitHub Token")
     args = parser.parse_args()
-    # Fetch release details
-    release_details = fetch_release_details(args.repo, args.token)
-    # Index release details into Elasticsearch
+
+    # Elasticsearch instance used for indexing
     num_of_retries = 1
     while True:
         print(f"Trying to connect to ES. Connection retry:  {num_of_retries}")
@@ -139,4 +142,13 @@ if __name__ == '__main__':
         num_of_retries += 1
 
         time.sleep(30)
-    index_release_to_elasticsearch(es, os.environ['ES_INDEX'], release_details, args.token)
+
+    # Now index the new release
+    index_release_to_elasticsearch(
+        es, os.environ['ES_INDEX'],
+        [
+            fetch_release_details(args.repo, args.token, 'latest'),
+            fetch_release_details(args.repo, args.token, f'tags/{args.tag}')
+        ],
+        args.token
+    )

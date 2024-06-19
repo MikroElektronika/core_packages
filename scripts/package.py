@@ -1,13 +1,12 @@
 import os, re, subprocess
 import shutil, requests, json
 import argparse, aiohttp, asyncio
-import aiofiles, hashlib, time
+import aiofiles, hashlib
 import sqlite3
 from clocks import GenerateClocks
 from schemas import GenerateSchemas
 
 from pathlib import Path
-from elasticsearch import Elasticsearch
 
 def find_cmake_files(directory):
     """ Return a list of .cmake files in the directory, excluding specific files """
@@ -590,26 +589,8 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             updateTable(
                 f'./output/databases/{name_without_extension}.db',
                 f'''UPDATE Devices SET sdk_support = ? WHERE uid = "{eachMcu.upper()}"''',
-                1  ## Set to 1 to use later for automated build tests
+                1  ## Set to 1 to use for automated build tests
             )
-        # Index to Elasticsearch
-        # doc = {
-        #     'name': name_without_extension,
-        #     'display_name': displayName,
-        #     'author': 'MIKROE',
-        #     'hidden': False,
-        #     'type': 'mcu',
-        #     'version': version,
-        #     'created_at' : upload_result['created_at'],
-        #     'updated_at' : upload_result['updated_at'],
-        #     'category': 'MCU support',
-        #     'download_link': upload_result['url'],  # Adjust as needed for actual URL
-        #     'package_changed': package_changed,
-        #     'install_location': install_location
-        # }
-
-        # resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
-        # print(f"INDEX RESPONSE: {resp}")
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
@@ -706,21 +687,6 @@ def update_metadata(current_metadata, new_files, version):
 
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
-    # num_of_retries = 1
-    # while True:
-    #     print(f"Trying to connect to ES. Connection retry:  {num_of_retries}")
-    #     es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
-    #     if es.ping():
-    #         break
-    #     # Wait for 30 seconds and try again if connection fails
-    #     if 10 == num_of_retries:
-    #         # Exit if it fails 10 times, something is wrong with the server
-    #         raise ValueError("Connection to ES failed!")
-    #     num_of_retries += 1
-
-    #     time.sleep(30)
-    # index_name = os.environ['ES_INDEX']
-
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
     # err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
     # err_check, db_path = downloadFile('https://s3.us-west-2.amazonaws.com/necto.mikroe.com/automation/test_db/necto_db.db',
@@ -773,52 +739,22 @@ async def main(token, repo, tag_name):
         async with aiohttp.ClientSession() as session:
             await upload_release_asset(session, token, repo, tag_name, f"output/databases/{each_package['name']}.db")
 
-    # generate clocks.json
+    # Generate clocks.json
     input_directory = "./"
     output_file = "./clocks.json"
     clocksGenerator = GenerateClocks(input_directory, output_file)
     clocksGenerator.generate()
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, "clocks.json")
-    #     doc = {
-    #         'name': "clocks",
-    #         'display_name' : "Clocks file",
-    #         'author' : "MIKROE",
-    #         'hidden' : True,
-    #         'type' : "mcu_clocks",
-    #         'version' : tag_name.replace("v", ""),
-    #         'created_at': upload_result['created_at'],
-    #         'updated_at': upload_result['updated_at'],
-    #         'category': "MCU Package",
-    #         'download_link': upload_result['url'],
-    #         'package_changed' : True,
-    #         'install_location' : "%APPLICATION_DATA_DIR%/clocks.json"
-    #     }
-    #     resp = es.index(index=index_name, doc_type='necto_package', id="clocks", body=doc)
-    #     print(f"INDEX RESPONSE: {resp}")
-    # generate schemas.json
+
+    # Generate schemas.json
     input_directory = "./"
     output_file = "./schemas.json"
     schemaGenerator = GenerateSchemas(input_directory, output_file)
     schemaGenerator.generate()
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
-    #     doc = {
-    #         'name': "schemas",
-    #         'display_name' : "schemas file",
-    #         'author' : "MIKROE",
-    #         'hidden' : True,
-    #         'type' : "mcu_schemas",
-    #         'version' : tag_name.replace("v", ""),
-    #         'created_at': upload_result['created_at'],
-    #         'updated_at': upload_result['updated_at'],
-    #         'category': "MCU Package",
-    #         'download_link': upload_result['url'],
-    #         'package_changed' : True,
-    #         'install_location' : "%APPLICATION_DATA_DIR%/schemas.json"
-    #     }
-    #     resp = es.index(index=index_name, doc_type='necto_package', id="schemas", body=doc)
-    #     print(f"INDEX RESPONSE: {resp}")
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
