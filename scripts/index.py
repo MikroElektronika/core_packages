@@ -22,7 +22,7 @@ def fetch_release_details(owner, repo, token):
     return response.json()
 
 # Function to fetch content as JSON from the link
-def fetch_json_data(download_link):
+def fetch_json_data(download_link, token):
     """
     Fetches JSON data from the specified URL using an authorization token and returns it as a dictionary.
 
@@ -33,7 +33,7 @@ def fetch_json_data(download_link):
         tuple: The first element is a dictionary containing the JSON data (or None in case of failure),
                 the second element is an error message or None if no errors occurred.
     """
-    headers = get_headers(False)
+    headers = get_headers(False, token)
 
     try:
         response = requests.get(download_link, headers=headers)
@@ -51,11 +51,11 @@ def find_item_by_name(items, name):
     return None
 
 # Function to index release details into Elasticsearch
-def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details):
+def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token):
     # Iterate over each asset in the release
     metadata_asset = next((a for a in release_details['assets'] if a['name'] == "metadata.json"), None)
     metadata_download_url = metadata_asset['url']
-    metadata_content, error = fetch_json_data(metadata_download_url)
+    metadata_content, error = fetch_json_data(metadata_download_url, token)
 
     for asset in release_details.get('assets', []):
         name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
@@ -139,4 +139,4 @@ if __name__ == '__main__':
         num_of_retries += 1
 
         time.sleep(30)
-    index_release_to_elasticsearch(es, os.environ['ES_INDEX'], release_details)
+    index_release_to_elasticsearch(es, os.environ['ES_INDEX'], release_details, args.token)

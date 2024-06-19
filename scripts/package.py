@@ -778,8 +778,8 @@ async def main(token, repo, tag_name):
     output_file = "./clocks.json"
     clocksGenerator = GenerateClocks(input_directory, output_file)
     clocksGenerator.generate()
-    # async with aiohttp.ClientSession() as session:
-    #     upload_result = await upload_release_asset(session, token, repo, tag_name, "clocks.json")
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, tag_name, "clocks.json")
     #     doc = {
     #         'name': "clocks",
     #         'display_name' : "Clocks file",
@@ -801,8 +801,8 @@ async def main(token, repo, tag_name):
     output_file = "./schemas.json"
     schemaGenerator = GenerateSchemas(input_directory, output_file)
     schemaGenerator.generate()
-    # async with aiohttp.ClientSession() as session:
-    #     upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
     #     doc = {
     #         'name': "schemas",
     #         'display_name' : "schemas file",
