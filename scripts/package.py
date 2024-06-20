@@ -363,7 +363,7 @@ def copy_delays(cores, source_dir, output_dir, base_path):
             os.makedirs(dest_path, exist_ok=True)
             shutil.copytree(delays_dir, dest_path, dirs_exist_ok=True)
 
-def compress_directory_7z(base_output_dir, arch, entry_name):
+def compress_directory_7z(base_output_dir, entry_name, arch=None):
     """
     Compresses the given directory into a 7z archive using the 7z command line tool.
 
@@ -375,7 +375,10 @@ def compress_directory_7z(base_output_dir, arch, entry_name):
     bool: True if compression was successful, False otherwise.
     """
     # Check if the source directory exists
-    archive_name = os.path.join(os.path.dirname(base_output_dir), f"{arch.lower()}_{entry_name.lower()}_{os.path.basename(base_output_dir)}.7z")
+    if arch:
+        archive_name = os.path.join(os.path.dirname(base_output_dir), f"{arch.lower()}_{entry_name.lower()}_{os.path.basename(base_output_dir)}.7z")
+    else:
+        archive_name = os.path.join(os.path.dirname(base_output_dir), entry_name)
     if not os.path.isdir(base_output_dir):
         print(f"The specified directory does not exist: {base_output_dir}")
         return False
@@ -555,7 +558,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
 
         # Create archive
-        archivePath = compress_directory_7z(base_output_dir, arch, entry_name)
+        archivePath = compress_directory_7z(base_output_dir, entry_name, arch)
         compiler = "mikroC"
         if entry_name == "gcc_clang":
             compiler = "GCC & Clang"
@@ -763,6 +766,21 @@ async def main(token, repo, tag_name):
     schemaGenerator.generate()
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
+
+    # Generate preinit package
+    archivePath = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, tag_name, archivePath)
+
+    # Generate unit_test_lib package
+    archivePath = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, tag_name, archivePath)
+
+    # Generate mikroe_utils_common package
+    archivePath = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, tag_name, archivePath)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
