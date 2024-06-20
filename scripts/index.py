@@ -121,7 +121,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 }
 
         # Index the document
-        if re.search('^.+\.(json|7z)$', asset['name']) and update_package:
+        if re.search(r'^.+\.(json|7z)$', asset['name']) and update_package:
             resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
             print(f"{resp["result"]} {resp['_id']}")
 
