@@ -2,6 +2,11 @@ name: Index Latest Release
 
 on:
   workflow_dispatch:
+    inputs:
+      force_index:
+        type: boolean
+        default: false
+        description: Force index packages (even if hash is the same, index with new package)
 
 jobs:
   index:
@@ -30,4 +35,4 @@ jobs:
           ES_INDEX: ${{ secrets.ES_INDEX }}
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        run: python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }}
+        run: python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ github.event.inputs.force_index }}

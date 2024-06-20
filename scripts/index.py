@@ -53,7 +53,7 @@ def find_item_by_name(items, name):
     return None
 
 # Function to index release details into Elasticsearch
-def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token):
+def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force):
     # Iterate over each asset in the release and previous release
     metadata_content = []
     for each_release_details in release_details:
@@ -126,7 +126,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 }
 
         # Index the document
-        if re.search(r'^.+\.(json|7z)$', asset['name']):# and update_package:
+        if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force):
             resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
             print(f"{resp["result"]} {resp['_id']}")
 
@@ -135,6 +135,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
+    parser.add_argument("force_index", help="If true will update packages even if hash is the same")
     args = parser.parse_args()
 
     # Elasticsearch instance used for indexing
@@ -156,5 +157,5 @@ if __name__ == '__main__':
     index_release_to_elasticsearch(
         es, os.environ['ES_INDEX'],
         fetch_release_details(args.repo, args.token),
-        args.token
+        args.token, args.force_index
     )
