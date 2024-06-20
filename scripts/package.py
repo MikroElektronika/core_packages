@@ -2,11 +2,15 @@ import os, re, subprocess
 import shutil, requests, json
 import argparse, aiohttp, asyncio
 import aiofiles, hashlib
-import sqlite3
+import sqlite3, inspect
 from clocks import GenerateClocks
 from schemas import GenerateSchemas
 
 from pathlib import Path
+
+def print_line_number(msg, line):
+    ''' Prints current line number with provided message '''
+    print(f"{msg} ::: Line number {line}")
 
 def find_cmake_files(directory):
     """ Return a list of .cmake files in the directory, excluding specific files """
@@ -507,7 +511,7 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path):
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, es, index_name, current_metadata, db_path):
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_path):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -615,6 +619,20 @@ def hash_directory_contents(directory):
     combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
     return combined_hash
 
+def get_previous_release(releases):
+    ''' Fetch the previously released version '''
+    for counter, release in enumerate(releases):
+        if not release['draft']:
+            if counter + 1 < len(releases):
+                return releases[counter + 1]
+            else:
+                return None
+    return None
+
+def get_latest_release(releases):
+    ''' Fetch the latest released version '''
+    return next((release for release in releases if not release['prerelease'] and not release['draft']), None)
+
 def fetch_current_metadata(repo, token):
     """ Fetch the current metadata from the GitHub repository """
     url = f"https://api.github.com/repos/{repo}/releases"
@@ -622,15 +640,19 @@ def fetch_current_metadata(repo, token):
     response = requests.get(url, headers=headers)
     releases = response.json()
     if len(releases) > 1:
-        previous_release = releases[1]
-        print(f"Release info: {previous_release}")
+        previous_release = get_previous_release(releases)
+        if not previous_release:
+            print_line_number('Error when fetching previous release version', inspect.currentframe().f_lineno)
+            exit(-1)
+        # Print relevant info without the full asset list
+        print(f"Release info:\n{json.dumps({key: val for key, val in previous_release.items() if key != 'assets'}, indent=4)}")
         for asset in previous_release.get('assets', []):
-                if asset['name'] == 'metadata.json':
-                    print("Found metadata.json")
-                    metadata_url = asset['url']
-                    print("Attempting to download metadata from:", metadata_url)
-                    metadata_response = fetch_json_data(metadata_url, token)
-                    return metadata_response
+            if asset['name'] == 'metadata.json':
+                print("Found metadata.json")
+                metadata_url = asset['url']
+                print("Attempting to download metadata from:", metadata_url)
+                metadata_response = fetch_json_data(metadata_url, token)
+                return metadata_response
     return []
 
 def get_version_based_on_hash(package_name, version, hash_value, current_metadata):
@@ -717,8 +739,7 @@ async def main(token, repo, tag_name):
                         await package_asset(
                             source_directory, output_directory, arch, entry.name,
                             token, repo, tag_name,
-                            packages, 0, 0,
-                            current_metadata, db_path
+                            packages, current_metadata, db_path
                         )
 
         except Exception as e:
