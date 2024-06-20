@@ -6,6 +6,8 @@ import sqlite3, inspect
 from clocks import GenerateClocks
 from schemas import GenerateSchemas
 
+import support as support
+
 from pathlib import Path
 
 def print_line_number(msg, line):
@@ -619,20 +621,6 @@ def hash_directory_contents(directory):
     combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
     return combined_hash
 
-def get_previous_release(releases):
-    ''' Fetch the previously released version '''
-    for counter, release in enumerate(releases):
-        if not release['draft']:
-            if counter + 1 < len(releases):
-                return releases[counter + 1]
-            else:
-                return None
-    return None
-
-def get_latest_release(releases):
-    ''' Fetch the latest released version '''
-    return next((release for release in releases if not release['prerelease'] and not release['draft']), None)
-
 def fetch_current_metadata(repo, token):
     """ Fetch the current metadata from the GitHub repository """
     url = f"https://api.github.com/repos/{repo}/releases"
@@ -640,7 +628,7 @@ def fetch_current_metadata(repo, token):
     response = requests.get(url, headers=headers)
     releases = response.json()
     if len(releases) > 1:
-        previous_release = get_previous_release(releases)
+        previous_release = support.get_previous_release(releases)
         if not previous_release:
             print_line_number('Error when fetching previous release version', inspect.currentframe().f_lineno)
             exit(-1)

@@ -27,8 +27,5 @@ jobs:
 
       - name: Run Release Script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-          TAG_NAME: ${{ github.event.release.tag_name }}
           DB_PATH: ${{ secrets.DB_PATH }}
         run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.release.tag_name }}

@@ -1,6 +1,8 @@
 import os, re, time, argparse, requests
 from elasticsearch import Elasticsearch
 
+import support as support
+
 # Gets latest release headers from repository
 def get_headers(api, token):
     if api:
@@ -14,12 +16,12 @@ def get_headers(api, token):
         }
 
 # Function to fetch release details from GitHub
-def fetch_release_details(repo, token, tag):
+def fetch_release_details(repo, token):
     api_headers = get_headers(True, token)
-    url = f'https://api.github.com/repos/{repo}/releases/{tag}'
+    url = f'https://api.github.com/repos/{repo}/releases'
     response = requests.get(url, headers=api_headers)
     response.raise_for_status()  # Raise an exception for HTTP errors
-    return response.json()
+    return support.get_latest_release(response.json()), support.get_previous_release(response.json(), True)
 
 # Function to fetch content as JSON from the link
 def fetch_json_data(download_link, token):
@@ -60,6 +62,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
         metadata_content.append(fetch_json_data(metadata_download_url, token)[0])
 
     for asset in release_details[0].get('assets', []):
+        update_package = True
         name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
 
         if name_without_extension == "clocks":
@@ -100,6 +103,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 display_name = metadata_item["display_name"]
                 install_location = metadata_item["install_location"]
                 version = metadata_item['version']
+                update_package = metadata_item['hash'] != previous_metadata_item['hash']
 
                 doc = {
                     'name': name_without_extension,
@@ -112,12 +116,12 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'updated_at': asset['updated_at'],
                     'category': "MCU Package",
                     'download_link': asset['url'],
-                    'package_changed' : metadata_item['hash'] != previous_metadata_item['hash'],
+                    'package_changed' : update_package,
                     'install_location' : install_location
                 }
 
         # Index the document
-        if re.search('^.+\.(json|7z)$', asset['name']):
+        if re.search('^.+\.(json|7z)$', asset['name']) and update_package:
             resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
             print(f"{resp["result"]} {resp['_id']}")
 
@@ -125,7 +129,6 @@ if __name__ == '__main__':
     # Get arguments
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
-    parser.add_argument("tag", help="Previous release tag version")
     parser.add_argument("token", help="GitHub Token")
     args = parser.parse_args()
 
@@ -147,9 +150,6 @@ if __name__ == '__main__':
     # Now index the new release
     index_release_to_elasticsearch(
         es, os.environ['ES_INDEX'],
-        [
-            fetch_release_details(args.repo, args.token, 'latest'),
-            fetch_release_details(args.repo, args.token, f'tags/{args.tag}')
-        ],
+        fetch_release_details(args.repo, args.token),
         args.token
     )

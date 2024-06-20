@@ -36,4 +36,4 @@ jobs:
           ES_INDEX: ${{ secrets.ES_INDEX }}
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        run: python -u scripts/index.py ${{ github.repository }} ${{ github.event.inputs.tag_version }} ${{ secrets.GITHUB_TOKEN }}
+        run: python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }}
