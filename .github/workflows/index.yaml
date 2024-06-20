@@ -2,12 +2,6 @@ name: Index Latest Release
 
 on:
   workflow_dispatch:
-    inputs:
-      tag_version:
-        description: 'MikroE CORE Packages previous release tag version'
-        default: 'v'
-        required: true
-        type: string
 
 jobs:
   index:
