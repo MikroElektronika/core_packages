@@ -1,4 +1,4 @@
-import os, time, argparse, requests, json
+import os, re, time, argparse, requests
 from elasticsearch import Elasticsearch
 
 # Gets latest release headers from repository
@@ -117,7 +117,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 }
 
         # Index the document
-        if asset['name'].endswith('.7z'):
+        if re.search('^.+\.(json|7z)$', asset['name']):
             resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
             print(f"{resp["result"]} {resp['_id']}")
 

@@ -755,7 +755,6 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
 
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("token", help="GitHub Token")
