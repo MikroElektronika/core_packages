@@ -282,7 +282,7 @@ endmacro()
 ## Macro to add preinit library
 #############################################################################
 macro(add_preinit_lib)
-    add_subdirectory(../../../../preinit preinit)
+    add_subdirectory(../../../preinit preinit)
 endmacro()
 
 #############################################################################
