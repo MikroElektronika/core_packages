@@ -65,6 +65,9 @@ __attribute__ ((interrupt("IRQ"))) void SysTick_Handler(void) {
 void clockConfig(void) {
     HAL_Init();
 
+    /* Enable FPU. */
+    SCB->CPACR |= (0xFUL << 20);
+
     // Enable system and power clocks.
     __HAL_RCC_SYSCFG_CLK_ENABLE();
     __HAL_RCC_PWR_CLK_ENABLE();
