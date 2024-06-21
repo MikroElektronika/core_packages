@@ -96,101 +96,41 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'install_location' : "%APPLICATION_DATA_DIR%/schemas.json"
             }
         else:
-            if name_without_extension == 'preinit':
-                display_name = 'preinit'
-                install_location = '%APPLICATION_DATA_DIR%/packages/preinit'
-                version = '1.0.0'
-                update_package = True
+            metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
+            previous_metadata_item = find_item_by_name(metadata_content[1], name_without_extension)
+
+            if metadata_item:
+                update_package = metadata_item['hash'] != previous_metadata_item['hash']
 
                 doc = {
                     'name': name_without_extension,
-                    'display_name' : display_name,
+                    'display_name' : metadata_item['display_name'],
                     'author' : "MIKROE",
-                    'hidden' : False,
-                    'type' : "preinit",
-                    'version' : version,
+                    'hidden' : metadata_item['hidden'],
+                    'type' : metadata_item['type'],
+                    'version' : metadata_item['version'],
                     'created_at': asset['created_at'],
                     'updated_at': asset['updated_at'],
-                    'category': "MCU Package",
+                    'category': metadata_item['category'],
                     'download_link': asset['url'],
                     'package_changed' : update_package,
-                    'install_location' : install_location
+                    'install_location' : metadata_item['install_location']
                 }
-            elif name_without_extension == 'unit_test_lib':
-                display_name = 'unit_test_lib'
-                install_location = '%APPLICATION_DATA_DIR%/packages/unit_test_lib'
-                version = '1.0.0'
-                update_package = True
-
-                doc = {
-                    'name': name_without_extension,
-                    'display_name' : display_name,
-                    'author' : "MIKROE",
-                    'hidden' : False,
-                    'type' : "unit_test_lib",
-                    'version' : version,
-                    'created_at': asset['created_at'],
-                    'updated_at': asset['updated_at'],
-                    'category': "MCU Package",
-                    'download_link': asset['url'],
-                    'package_changed' : update_package,
-                    'install_location' : install_location
-                }
-            elif name_without_extension == 'mikroe_utils_common':
-                display_name = 'mikroe_utils_common'
-                install_location = '%APPLICATION_DATA_DIR%/packages/mikroe_utils_common'
-                version = '1.0.0'
-                update_package = True
-
-                doc = {
-                    'name': name_without_extension,
-                    'display_name' : display_name,
-                    'author' : "MIKROE",
-                    'hidden' : False,
-                    'type' : "mikroe_utils_common",
-                    'version' : version,
-                    'created_at': asset['created_at'],
-                    'updated_at': asset['updated_at'],
-                    'category': "MCU Package",
-                    'download_link': asset['url'],
-                    'package_changed' : update_package,
-                    'install_location' : install_location
-                }
-            else:
-                metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
-                previous_metadata_item = find_item_by_name(metadata_content[1], name_without_extension)
-
-                if metadata_item:
-                    display_name = metadata_item["display_name"]
-                    install_location = metadata_item["install_location"]
-                    version = metadata_item['version']
-                    update_package = metadata_item['hash'] != previous_metadata_item['hash']
-
-                    doc = {
-                        'name': name_without_extension,
-                        'display_name' : display_name,
-                        'author' : "MIKROE",
-                        'hidden' : False,
-                        'type' : "mcu",
-                        'version' : version,
-                        'created_at': asset['created_at'],
-                        'updated_at': asset['updated_at'],
-                        'category': "MCU Package",
-                        'download_link': asset['url'],
-                        'package_changed' : update_package,
-                        'install_location' : install_location,
-                        'dependencies': [
-                            'preinit',
-                            'unit_test_lib',
-                            'mikroe_utils_common'
-                        ]
-                    }
+                if metadata_item['category'] == 'mcu':
+                    doc.update(
+                        {
+                            'dependencies': [
+                                'preinit',
+                                'unit_test_lib',
+                                'mikroe_utils_common'
+                            ]
+                        }
+                    )
 
         # Index the document
         if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force):
             resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
             print(f"{resp["result"]} {resp['_id']}")
-            print('TEST')
 
 if __name__ == '__main__':
     # Get arguments

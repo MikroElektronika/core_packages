@@ -558,7 +558,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
 
         # Create archive
-        archivePath = compress_directory_7z(base_output_dir, entry_name, arch)
+        archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
         compiler = "mikroC"
         if entry_name == "gcc_clang":
             compiler = "GCC & Clang"
@@ -567,13 +567,13 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
 
         displayName = f"{os.path.basename(base_output_dir.upper())} MCU Support package for {compiler}"
         archiveHash = hash_directory_contents(base_output_dir)
-        archiveName = os.path.basename(archivePath)
+        archiveName = os.path.basename(archive_path)
 
         shutil.rmtree(base_output_dir)
         # Upload archive
         upload_result= ""
         async with aiohttp.ClientSession() as session:
-            upload_tasks = [upload_release_asset(session, token, repo, tag_name, archivePath)]
+            upload_tasks = [upload_release_asset(session, token, repo, tag_name, archive_path)]
             results = await asyncio.gather(*upload_tasks, return_exceptions=True)
             for result in results:
                 upload_result = result
@@ -585,7 +585,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         # Add to packages list
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
 
-        packages.append({"name" : name_without_extension, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "hidden" : False, 'install_location': install_location})
+        packages.append({"name" : name_without_extension, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location})
         package_changed = (version == tag_name.replace("v", ""))
 
         # Mark package for appropriate device and toolchain
@@ -698,6 +698,20 @@ def update_metadata(current_metadata, new_files, version):
 
     return updated_metadata
 
+def append_package(packages, package, display_name, version):
+    ''' Append any additional, non MCU packages '''
+    packages.append({
+        "name": f"{os.path.basename(package.lower())[:-3]}",
+        "display_name": display_name,
+        "version": version,
+        "hash": hash_directory_contents(package[:-3]),
+        "vendor": "MIKROE",
+        "category": "utility",
+        "type": f"{os.path.basename(package.lower())[:-3]}",
+        "hidden": True,
+        "install_location": f"%APPLICATION_DATA_DIR%/packages/{os.path.basename(package.lower())[:-3]}"
+    })
+
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
@@ -736,14 +750,6 @@ async def main(token, repo, tag_name):
         except Exception as e:
             print(f"Failed to process directories in {root_source_directory}: {e}")
 
-    new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
-
-    with open('metadata.json', 'w') as f:
-        json.dump(new_metadata, f, indent=4)
-
-    async with aiohttp.ClientSession() as session:
-        await upload_release_asset(session, token, repo, tag_name, "metadata.json")
-
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "necto_db.db")
 
@@ -768,19 +774,50 @@ async def main(token, repo, tag_name):
         upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
 
     # Generate preinit package
-    archivePath = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
+    archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
+    append_package(
+        packages, archive_path,
+        "Preinit library",
+        get_version_based_on_hash(
+            'preinit', tag_name.replace("v", ""),
+            hash_directory_contents(archive_path), current_metadata
+        )
+    )
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archivePath)
+        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
     # Generate unit_test_lib package
-    archivePath = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
+    archive_path = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
+    append_package(
+        packages, archive_path,
+        "Unit test library",
+        get_version_based_on_hash(
+            'unit_test_lib', tag_name.replace("v", ""),
+            hash_directory_contents(archive_path), current_metadata
+        )
+    )
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archivePath)
+        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
     # Generate mikroe_utils_common package
-    archivePath = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
+    archive_path = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
+    append_package(
+        packages, archive_path,
+        "MikroE common utilities",
+        get_version_based_on_hash(
+            'mikroe_utils_common', tag_name.replace("v", ""),
+            hash_directory_contents(archive_path), current_metadata
+        )
+    )
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archivePath)
+        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+
+    new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
+    with open('metadata.json', 'w') as f:
+        json.dump(new_metadata, f, indent=4)
+
+    async with aiohttp.ClientSession() as session:
+        await upload_release_asset(session, token, repo, tag_name, "metadata.json")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
