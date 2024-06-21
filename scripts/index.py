@@ -100,7 +100,10 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             previous_metadata_item = find_item_by_name(metadata_content[1], name_without_extension)
 
             if metadata_item:
-                update_package = metadata_item['hash'] != previous_metadata_item['hash']
+                if previous_metadata_item:
+                    update_package = metadata_item['hash'] != previous_metadata_item['hash']
+                else:
+                    update_package = True
 
                 doc = {
                     'name': name_without_extension,
