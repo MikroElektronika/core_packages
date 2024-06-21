@@ -698,8 +698,12 @@ def update_metadata(current_metadata, new_files, version):
 
     return updated_metadata
 
-def append_package(packages, package, display_name, version):
+def append_package(packages, package, display_name, version, install=None):
     ''' Append any additional, non MCU packages '''
+    if install:
+        install_location = install
+    else:
+        install_location = f'packages/{os.path.basename(package.lower())[:-3]}'
     packages.append({
         "name": f"{os.path.basename(package.lower())[:-3]}",
         "display_name": display_name,
@@ -709,7 +713,7 @@ def append_package(packages, package, display_name, version):
         "category": "utility",
         "type": f"{os.path.basename(package.lower())[:-3]}",
         "hidden": True,
-        "install_location": f"%APPLICATION_DATA_DIR%/packages/{os.path.basename(package.lower())[:-3]}"
+        "install_location": f"%APPLICATION_DATA_DIR%/{install_location}"
     })
 
 async def main(token, repo, tag_name):
@@ -807,7 +811,8 @@ async def main(token, repo, tag_name):
         get_version_based_on_hash(
             'mikroe_utils_common', tag_name.replace("v", ""),
             hash_directory_contents(archive_path), current_metadata
-        )
+        ),
+        'cmake'
     )
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
