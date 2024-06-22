@@ -119,7 +119,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'package_changed' : update_package,
                     'install_location' : metadata_item['install_location']
                 }
-                if metadata_item['category'] == 'mcu':
+                if metadata_item['type'] == 'mcu':
                     doc.update(
                         {
                             'dependencies': [
