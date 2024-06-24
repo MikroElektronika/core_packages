@@ -817,7 +817,7 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
-    # Generate mikroe_utils_common package
+    # Generate databases package
     shutil.copy('./necto_db.db', './utils/databases/databases/necto_db.db')
     archive_path = compress_directory_7z(os.path.join('./utils', 'databases'), 'database.7z')
     append_package(
