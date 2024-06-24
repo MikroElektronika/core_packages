@@ -700,7 +700,7 @@ def update_metadata(current_metadata, new_files, version):
 
 def append_package(packages, package, display_name, version, install=None):
     ''' Append any additional, non MCU packages '''
-    if install:
+    if install or install == '':
         install_location = install
     else:
         install_location = f'packages/{os.path.basename(package.lower())[:-3]}'
@@ -719,13 +719,7 @@ def append_package(packages, package, display_name, version, install=None):
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
-    # err_check, db_path = downloadFile(os.environ['DB_PATH'], '', 'necto_db.db', True)
-    # err_check, db_path = downloadFile('https://s3.us-west-2.amazonaws.com/necto.mikroe.com/automation/test_db/necto_db.db',
-                                    #   '', 'necto_db.db', True)
-    err_check = 0
     db_path = 'necto_db.db'
-    if 0 != err_check:
-        raise ValueError("Failed to download database!")
 
     current_metadata = fetch_current_metadata(repo, token)
 
@@ -826,7 +820,8 @@ async def main(token, repo, tag_name):
         get_version_based_on_hash(
             'databases', tag_name.replace("v", ""),
             hash_directory_contents(archive_path), current_metadata
-        )
+        ),
+        ''
     )
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
