@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS 'SelectedBoard' (
+	`uid`	VARCHAR NOT NULL UNIQUE,
+	`name`	VARCHAR,
+	`icon`	VARCHAR,
+	`default_device`	VARCHAR,
+	`soldered_device`	VARCHAR,
+	`category`	VARCHAR,
+	`mikrobus_count`	INTEGER,
+	`sort_order`	INTEGER,
+	`min_pin_count`	INTEGER,
+	`display_socket`	VARCHAR,
+	`sdk_config`	VARCHAR,
+	`necto_config`	VARCHAR,
+	`display`	VARCHAR,
+	`package_uid`	VARCHAR,
+	FOREIGN KEY(`soldered_device`) REFERENCES `Devices`(`uid`) ON DELETE SET NULL ON UPDATE SET NULL,
+	FOREIGN KEY(`default_device`) REFERENCES `Devices`(`uid`) ON DELETE SET NULL ON UPDATE SET NULL,
+	PRIMARY KEY(`uid`),
+	FOREIGN KEY(`display_socket`) REFERENCES `DisplaySockets`(`uid`) ON DELETE SET NULL ON UPDATE SET NULL,
+	FOREIGN KEY(`display`) REFERENCES `Displays`(`uid`) ON DELETE SET NULL ON UPDATE SET NULL
+)
