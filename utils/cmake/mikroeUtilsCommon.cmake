@@ -15,6 +15,7 @@ endfunction()
 ## Macro for exporting the version of core lib
 #############################################################################
 macro(core_version_export lib)
+    set(COMPILER_REVISION 1.0)
     target_compile_definitions(${lib}
         INTERFACE
             MikroCCoreVersion=1
@@ -86,6 +87,7 @@ function(core_install targetAlias)
           "${PREINIT_ROUTINE_PATH}/include/preinit.h"
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/../include/core)
 endfunction()
+
 #############################################################################
 ## Function to create static library target
 #############################################################################
@@ -96,6 +98,7 @@ macro(core_add_library functionName functionAlias)
     set_property(TARGET ${functionName} PROPERTY C_STANDARD 99)
     set_target_properties(${functionName} PROPERTIES EXPORT_NAME ${functionAlias})
 endmacro()
+
 #############################################################################
 ## Function to create interface header only library target
 #############################################################################
@@ -309,7 +312,7 @@ function(add_ld_all_targets DIR project_dir linker_name)
             if(${target_type} STREQUAL "EXECUTABLE")
                 target_sources(${TGT}
                     PUBLIC
-                        ${project_dir}/.meproject/setup/FileLinker/${linker_name} ${project_dir}/
+                        ${project_dir}/.meproject/setup/FileLinker/${linker_name}
                 )
                 target_link_options(${TGT}
                     PUBLIC
@@ -349,7 +352,7 @@ function(add_startup_all_targets DIR project_dir startup_name)
             if(${target_type} STREQUAL "EXECUTABLE")
                 target_sources(${TGT}
                     PUBLIC
-                        ${project_dir}/.meproject/setup/FileStartup/${startup_name} ${project_dir}/
+                        ${project_dir}/.meproject/setup/FileStartup/${startup_name}
                 )
             endif()
         endforeach()

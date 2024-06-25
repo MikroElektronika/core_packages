@@ -4,7 +4,7 @@ include(CMakePackageConfigHelpers)
 ## Function to install and export static library target
 #############################################################################
 function(mikrosdk_install targetAlias)
-## Install library
+    ## Install library
     get_target_property(_targetName ${targetAlias} ALIASED_TARGET)
     get_target_property(linkLibs ${_targetName} INTERFACE_LINK_LIBRARIES)
     install(TARGETS ${_targetName}
