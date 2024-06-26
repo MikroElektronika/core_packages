@@ -78,6 +78,8 @@ foreach(cmakeFile ${CMAKE_FILES})
     include(${cmakeFile})
 endforeach()
 
+add_volatile_directives(lib_core)
+
 core_install(MikroC.Core)
 
 install(
