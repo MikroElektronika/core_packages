@@ -374,24 +374,26 @@ def compress_directory_7z(base_output_dir, entry_name, arch=None):
     Returns:
     bool: True if compression was successful, False otherwise.
     """
-    # Check if the source directory exists
-    if arch:
-        archive_name = os.path.join(os.path.dirname(base_output_dir), f"{arch.lower()}_{entry_name.lower()}_{os.path.basename(base_output_dir)}.7z")
-    else:
-        archive_name = os.path.join(os.path.dirname(base_output_dir), entry_name)
-    if not os.path.isdir(base_output_dir):
-        print(f"The specified directory does not exist: {base_output_dir}")
-        return False
-
     # Construct the command to compress the directory
     command = [
         '7z', 'a',  # 'a' stands for adding to an archive
         '-t7z',     # Specify 7z archive type
         '-mx3',
-        '-mtc=off', # Do not store timestamps
-        archive_name, # Path to the output .7z file
-        os.path.join(base_output_dir, '*')  # Path to the source directory content
+        '-mtc=off'  # Do not store timestamps
     ]
+
+    # Check if the source directory exists
+    if arch:
+        archive_name = base_output_dir + ".7z"
+        command.append(archive_name) # Path to the output .7z file
+        command.append(os.path.join(base_output_dir))  # Path to the source directory content
+    else:
+        archive_name = os.path.join(os.path.dirname(base_output_dir), entry_name)
+        command.append(archive_name) # Path to the output .7z file
+        command.append(os.path.join(base_output_dir, '*'))  # Path to the source directory content
+    if not os.path.isdir(base_output_dir):
+        print(f"The specified directory does not exist: {base_output_dir}")
+        return False
 
     # Execute the command
     try:
@@ -521,7 +523,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
     for cmake_file, data in file_paths.items():
-        base_output_dir = os.path.join(output_dir, cmake_file)  # Subdirectory for this .cmake file
+        base_output_dir = os.path.join(output_dir, f"{arch.lower()}_{entry_name.lower()}_{cmake_file}") # Subdirectory for this .cmake file
         # Copy the .cmake file into the package directory
         copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, data['regex'])
 
