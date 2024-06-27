@@ -5,10 +5,22 @@ import aiofiles, hashlib
 import sqlite3, inspect
 from clocks import GenerateClocks
 from schemas import GenerateSchemas
+import pandas as pd
 
 import support as support
 
 from pathlib import Path
+
+def create_table(data, table_out):
+    ''' Creates a table with data and saves it to table_out '''
+    # Define column names
+    columns = ['Package name', 'MCU from package', 'Toolchain']
+    # Convert the data to a DataFrame
+    df = pd.DataFrame(data, columns=columns)
+    # Specify the file path for the new Excel file
+    file_path = table_out
+    # Write the DataFrame to a new Excel file
+    df.to_excel(file_path, index=False)
 
 def print_line_number(msg, line):
     ''' Prints current line number with provided message '''
@@ -522,6 +534,10 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
+    package_to_mcu_json = []
+    package_to_mcu_xlsx = []
+    package_to_mcu_json_full = []
+    package_to_mcu_xlsx_full = []
     for cmake_file, data in file_paths.items():
         base_output_dir = os.path.join(output_dir, f"{arch.lower()}_{entry_name.lower()}_{cmake_file}") # Subdirectory for this .cmake file
         # Copy the .cmake file into the package directory
@@ -602,6 +618,32 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
                 f'''UPDATE Devices SET sdk_support = ? WHERE uid = "{eachMcu.upper()}"''',
                 1  ## Set to 1 to use for automated build tests
             )
+
+        mcu_check = None
+        mcu_full_list = []
+        for each_pack in mcuNames:
+            for each_mcu in mcuNames[each_pack]['mcu_names']:
+                if not mcu_check:
+                    mcu_check = each_mcu
+                mcu_full_list.append(each_mcu)
+        package_to_mcu_xlsx.append([name_without_extension, mcu_check, entry_name])
+        package_to_mcu_json.append({name_without_extension:[mcu_check, entry_name]})
+        package_to_mcu_xlsx_full.append([name_without_extension, ','.join(mcu_full_list), entry_name])
+        package_to_mcu_json_full.append({name_without_extension: {'mcus': mcu_full_list, 'toolchain': entry_name}})
+
+    # Create a table with package to mcus
+    os.makedirs(f'./output/docs/{arch}', exist_ok=True)
+    # Uncomment to get only one MCU for package
+    # create_table(package_to_mcu_xlsx, f'./output/docs/{arch}/packageToMcu-{arch}-{entry_name}.xlsx')
+    create_table(package_to_mcu_xlsx_full, f'./output/docs/{arch}/packageToMcu-{arch}-{entry_name}-full.xlsx')
+
+    # Uncomment to get only one MCU for package
+    # with open(f'./output/docs/{arch}/packageToMcu-{arch}-{entry_name}.json', 'w') as fp:
+        # fp.write(json.dumps(package_to_mcu_json, sort_keys=True, indent=4))
+    # fp.close()
+    with open(f'./output/docs/{arch}/packageToMcu-{arch}-{entry_name}-full.json', 'w') as fp:
+        fp.write(json.dumps(package_to_mcu_json_full, sort_keys=True, indent=4))
+    fp.close()
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
@@ -825,6 +867,11 @@ async def main(token, repo, tag_name):
         ),
         ''
     )
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+
+    # Generate document files asset
+    archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
