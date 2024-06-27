@@ -31,7 +31,22 @@ class GenerateClocks:
             }
             return extracted_data
         else:
-            return None
+            if 'XC' in file_path:
+                extracted_data = {
+                    "config_words": [],
+                    "mcu": data.get("mcu", ""),
+                    "clock": data.get("clock", ""),
+                    "core": data.get("core", "")
+                }
+                return extracted_data
+            else:
+                extracted_data = {
+                    "config_registers": [],
+                    "mcu": data.get("mcu", ""),
+                    "clock": data.get("clock", ""),
+                    "core": data.get("core", "")
+                }
+                return extracted_data
 
     def config_registers_hash(self, config_registers):
         """Create a hash for the config_registers to identify unique configurations."""
@@ -42,31 +57,45 @@ class GenerateClocks:
         merged_data = defaultdict(list)
 
         for json_file in json_files:
-            data = self.extract_data_from_json(json_file)
-            if data:
+            if 'def' in json_file:
+                data = self.extract_data_from_json(json_file)
+                if data:
 
-                if "config_registers" in data:
-                    config_registers = data["config_registers"]
-                    mcu = data["mcu"]
-                    clock = data["clock"]
-                    core = data["core"]
-                    config_hash = self.config_registers_hash(config_registers)
-                    merged_data[config_hash].append((mcu, config_registers, None, clock, core))
-                elif "config_words" in data:
-                    config_words = data["config_words"]
-                    mcu = data["mcu"]
-                    clock = data["clock"]
-                    core = data["core"]
-                    config_hash = self.config_registers_hash(config_words)
-                    merged_data[config_hash].append((mcu, None, config_words, clock, core))
+                    if "config_registers" in data:
+                        config_registers = data["config_registers"]
+                        mcu = data["mcu"]
+                        clock = data["clock"]
+                        core = data["core"]
+                        config_hash = self.config_registers_hash(config_registers)
+                        merged_data[config_hash].append((mcu, config_registers, None, clock, core))
+                    elif "config_words" in data:
+                        config_words = data["config_words"]
+                        mcu = data["mcu"]
+                        clock = data["clock"]
+                        core = data["core"]
+                        config_hash = self.config_registers_hash(config_words)
+                        merged_data[config_hash].append((mcu, None, config_words, clock, core))
+                    else:
+                        if 'XC' in json_file:
+                            config_words = {}
+                            mcu = data["mcu"]
+                            clock = data["clock"]
+                            core = data["core"]
+                            config_hash = self.config_registers_hash(config_words)
+                            merged_data[config_hash].append((mcu, None, config_words, clock, core))
+                        else:
+                            config_registers = {}
+                            mcu = data["mcu"]
+                            clock = data["clock"]
+                            core = data["core"]
+                            config_hash = self.config_registers_hash(config_registers)
+                            merged_data[config_hash].append((mcu, config_registers, None, clock, core))
 
 
         result = {}
         for mcus in merged_data.values():
             unique_mcus = sorted(set(mcu for mcu, _, __, ___, ____ in mcus))
             key = "^" + "$|^".join(unique_mcus) + "$"
-            if "PIC32MX675F512L" in key:
-                print("sadasd")
             config_registers = mcus[0][1]  # All config_registers are the same for this group
             config_words = mcus[0][2]  # All config_words are the same for this group
             clock = mcus[0][3]  # All clocks are the same for this group
@@ -106,6 +135,9 @@ class GenerateClocks:
         merged_data = self.merge_data(json_files)
 
         json_str = json.dumps(merged_data, indent=4)
+        # Uncomment following 2 lines to see the uncompressed JSON file
+        # with open('./output/clocks.json', 'w') as clocks_json:
+            # clocks_json.write(json.dumps(merged_data, indent=4))
         compressed_data = zlib.compress(json_str.encode('utf-8'))
 
         uncompressed_size = len(json_str)
