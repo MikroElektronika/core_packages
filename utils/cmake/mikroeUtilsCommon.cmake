@@ -14,8 +14,8 @@ endfunction()
 #############################################################################
 ## Macro for exporting the version of core lib
 #############################################################################
+set(COMPILER_REVISION 1.0)
 macro(core_version_export lib)
-    set(COMPILER_REVISION 1.0)
     target_compile_definitions(${lib}
         INTERFACE
             MikroCCoreVersion=1
