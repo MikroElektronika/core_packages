@@ -482,6 +482,8 @@ def deleteFromTable(db, sql_query):
 def update_database(package_name, mcus, db_path):
     for each_pack in mcus:
         for each_mcu in mcus[each_pack]['mcu_names']:
+            ## Replace for MCUs which have different json file names and UID in database
+            each_mcu = re.sub('_', '-', each_mcu)
             is_present, read_data_compiler = read_data_from_db(db_path, f'SELECT compiler_uid FROM CompilerToDevice WHERE device_uid IS "{each_mcu.replace('dsPIC', 'DSPIC')}"')
             is_present, read_data = read_data_from_db(db_path, f'SELECT * FROM Devices WHERE uid IS "{each_mcu.upper()}"')
             counter = 0
@@ -495,7 +497,7 @@ def update_database(package_name, mcus, db_path):
                     if 'mchp_xc' in each_compiler[0] and '_xc' in package_name:
                         existing_packages[each_compiler[0]] = package_name
                     else:
-                        if not '_xc' in package_name:
+                        if not re.search('xc(8|16|32)', package_name):
                             for each_split_check in package_name.split('_')[1:]:
                                 if re.search(each_split_check, each_compiler[0]):
                                     existing_packages[each_compiler[0]] = package_name
@@ -801,19 +803,19 @@ async def main(token, repo, tag_name):
 
     # Generate clocks.json
     input_directory = "./"
-    output_file = "./clocks.json"
+    output_file = "./output/docs/clocks.json"
     clocksGenerator = GenerateClocks(input_directory, output_file)
     clocksGenerator.generate()
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, "clocks.json")
+        upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
 
     # Generate schemas.json
     input_directory = "./"
-    output_file = "./schemas.json"
+    output_file = "./output/docs/schemas.json"
     schemaGenerator = GenerateSchemas(input_directory, output_file)
     schemaGenerator.generate()
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, "schemas.json")
+        upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
 
     # Generate preinit package
     archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')

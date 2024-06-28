@@ -94,6 +94,8 @@ class GenerateSchemas:
             logging.warning("No schema files found.")
             return
 
+        os.makedirs(os.path.dirname(self.output_file), exist_ok=True)
+
         merged_data = self.merge_data(json_files)
 
         json_str = json.dumps(merged_data, indent=4)

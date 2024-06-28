@@ -106,16 +106,19 @@ class GenerateClocks:
             if not config_obj:
                 config_obj = {}
             if config_registers:
-                 config_obj['other'] = {
+                config_obj['other'] = {
                     "config_registers": config_registers,
-                    "clock": clock,
-                    "core": core
+                    "clock": clock
                 }
-            if config_words:
-                 config_obj['xc'] = {
+            elif config_words:
+                config_obj['xc'] = {
                     "config_words": config_words,
-                    "clock": clock,
-                    "core": core
+                    "clock": clock
+                }
+            else:
+                config_obj['other'] = {
+                    "config_registers": [],
+                    "clock": clock
                 }
 
             result[key] = config_obj
@@ -134,10 +137,12 @@ class GenerateClocks:
         json_files = self.find_json_files(self.input_directory)
         merged_data = self.merge_data(json_files)
 
+        os.makedirs(os.path.dirname(self.output_file), exist_ok=True)
+
         json_str = json.dumps(merged_data, indent=4)
         # Uncomment following 2 lines to see the uncompressed JSON file
-        # with open('./output/clocks.json', 'w') as clocks_json:
-            # clocks_json.write(json.dumps(merged_data, indent=4))
+        with open(self.output_file.replace('.json', '_uncompressed.json'), 'w') as clocks_json:
+            clocks_json.write(json.dumps(merged_data, indent=4))
         compressed_data = zlib.compress(json_str.encode('utf-8'))
 
         uncompressed_size = len(json_str)
