@@ -52,6 +52,47 @@ def find_item_by_name(items, name):
             return item
     return None
 
+def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
+    # Search query to use
+    query_search = {
+        "size": 5000,
+        "query": {
+            "match_all": {}
+        }
+    }
+    # All package types to check for
+    typeCheck = [
+        'mcu',
+        'preinit',
+        'database',
+        'mcu_clocks',
+        'mcu_schemas',
+        'unit_test_lib',
+        'mikroe_utils_common'
+    ]
+
+    # Search the base with provided query
+    response = es.search(index=index_name, body=query_search)
+
+    checkDict = {}
+    for eachHit in response['hits']['hits']:
+        name = eachHit['_source']['name']
+        type = eachHit['_type']
+        id = eachHit['_id']
+        if eachHit['_source']['type'] in typeCheck:
+            if name in checkDict:
+                checkDict[name]['count'] += 1
+                checkDict[name]['id'].append([id, type])
+            else:
+                checkDict.update({name: { 'count': 1, 'id': [[id, type]]}})
+
+    # Proceed to remove all found IDs
+    for eachPackageName in checkDict.keys():
+        if checkDict[eachPackageName]['count'] > 1:
+            for eachId in checkDict[eachPackageName]['id']:
+                if eachId[0] == 'clocks':
+                    response = es.delete(index=index_name, id=eachId[0], doc_type=eachId[1])
+
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force):
     # Iterate over each asset in the release and previous release
@@ -157,6 +198,11 @@ if __name__ == '__main__':
         num_of_retries += 1
 
         time.sleep(30)
+
+    # Remove any previous multiple indexes, if any
+    remove_duplicate_indexed_files(
+        es, os.environ['ES_INDEX']
+    )
 
     # Now index the new release
     index_release_to_elasticsearch(
