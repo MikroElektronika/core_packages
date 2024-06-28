@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^PIC24(.+)$")
+if(${MCU_NAME} MATCHES "^PIC24E(.+)$")
     set(SYSTEM_LIB_SOURCE "system/src/__Lib_System.c")
     set(DELAY_SOURCE "delay/dspic_ep/__lib_delays.c")
     set(SYSTEM_LIB_INCLUDE_DIR "")
