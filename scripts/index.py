@@ -103,8 +103,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
         metadata_content.append(fetch_json_data(metadata_download_url, token)[0])
 
     for asset in release_details[0].get('assets', []):
-        # Do not index metadata
-        if asset['name'] == 'metadata.json':
+        # Do not index metadata or docs
+        if asset['name'] == 'metadata.json' or asset['name'] == 'docs.7z':
             continue
 
         update_package = True
