@@ -90,8 +90,7 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
     for eachPackageName in checkDict.keys():
         if checkDict[eachPackageName]['count'] > 1:
             for eachId in checkDict[eachPackageName]['id']:
-                if eachId[0] == 'clocks':
-                    response = es.delete(index=index_name, id=eachId[0], doc_type=eachId[1])
+                response = es.delete(index=index_name, id=eachId[0], doc_type=eachId[1])
 
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force):
