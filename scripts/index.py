@@ -103,6 +103,10 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
         metadata_content.append(fetch_json_data(metadata_download_url, token)[0])
 
     for asset in release_details[0].get('assets', []):
+        # Do not index metadata
+        if asset['name'] == 'metadata.json':
+            continue
+
         update_package = True
         name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
 
