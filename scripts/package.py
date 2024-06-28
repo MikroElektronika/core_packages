@@ -397,12 +397,12 @@ def compress_directory_7z(base_output_dir, entry_name, arch=None):
     # Check if the source directory exists
     if arch:
         archive_name = base_output_dir + ".7z"
-        command.append(archive_name) # Path to the output .7z file
-        command.append(os.path.join(base_output_dir))  # Path to the source directory content
     else:
         archive_name = os.path.join(os.path.dirname(base_output_dir), entry_name)
-        command.append(archive_name) # Path to the output .7z file
-        command.append(os.path.join(base_output_dir, '*'))  # Path to the source directory content
+
+    command.append(archive_name) # Path to the output .7z file
+    command.append(os.path.join(base_output_dir, '*'))  # Path to the source directory content
+
     if not os.path.isdir(base_output_dir):
         print(f"The specified directory does not exist: {base_output_dir}")
         return False
@@ -585,7 +585,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         elif "XC" in entry_name:
             compiler = entry_name
 
-        displayName = f"{os.path.basename(base_output_dir.upper())} MCU Support package for {compiler}"
+        displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archive_path)
 
@@ -600,10 +600,10 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
             print("All uploads completed.")
 
         # Determine the version based on the hash
-        install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name)
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
+        install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
 
         packages.append({"name" : name_without_extension, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location})
         package_changed = (version == tag_name.replace("v", ""))
@@ -858,7 +858,7 @@ async def main(token, repo, tag_name):
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
     # Generate databases package
-    shutil.copy('./necto_db.db', './utils/databases/databases/necto_db.db')
+    shutil.copy('./necto_db.db', './utils/databases/necto_db.db')
     archive_path = compress_directory_7z(os.path.join('./utils', 'databases'), 'database.7z')
     append_package(
         packages, archive_path,
@@ -867,7 +867,7 @@ async def main(token, repo, tag_name):
             'databases', tag_name.replace("v", ""),
             hash_directory_contents(archive_path), current_metadata
         ),
-        ''
+        'databases'
     )
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
