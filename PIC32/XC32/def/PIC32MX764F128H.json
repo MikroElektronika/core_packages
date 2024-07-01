@@ -40,7 +40,7 @@
             ]
         },
         {
-            "init": "ON",
+            "init": "OFF",
             "key": "FMIIEN",
             "label": "Ethernet RMII/MII Enable",
             "settings": [
