@@ -72,7 +72,13 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
     ]
 
     # Search the base with provided query
-    response = es.search(index=index_name, body=query_search)
+    num_of_retries = 1
+    while num_of_retries <= 10:
+        try:
+            response = es.search(index=index_name, body=query_search)
+        except:
+            print("Executing search query - retry number %i" % num_of_retries)
+        num_of_retries += 1
 
     checkDict = {}
     for eachHit in response['hits']['hits']:
