@@ -99,6 +99,9 @@ class GenerateSchemas:
         merged_data = self.merge_data(json_files)
 
         json_str = json.dumps(merged_data, indent=4)
+        # Uncomment following 2 lines to see the uncompressed JSON file
+        with open(self.output_file.replace('.json', '_uncompressed.json'), 'w') as clocks_json:
+            clocks_json.write(json.dumps(merged_data, indent=4))
         compressed_data = zlib.compress(json_str.encode('utf-8'))
 
         uncompressed_size = len(json_str)
