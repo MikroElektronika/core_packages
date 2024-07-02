@@ -188,8 +188,14 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
+    parser.add_argument("select_index", help="Provided index name")
     parser.add_argument("force_index", help="If true will update packages even if hash is the same")
     args = parser.parse_args()
+
+    if 'test' in args.select_index:
+        print("Indexing latest release for TEST.\n")
+    elif 'live' in args.select_index:
+        print("Indexing latest release for LIVE.\n")
 
     # Elasticsearch instance used for indexing
     num_of_retries = 1
@@ -208,12 +214,12 @@ if __name__ == '__main__':
 
     # Remove any previous multiple indexes, if any
     remove_duplicate_indexed_files(
-        es, os.environ['ES_INDEX']
+        es, args.select_index
     )
 
     # Now index the new release
     index_release_to_elasticsearch(
-        es, os.environ['ES_INDEX'],
+        es, args.select_index,
         fetch_release_details(args.repo, args.token),
         args.token, args.force_index
     )
