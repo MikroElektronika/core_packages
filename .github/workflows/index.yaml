@@ -35,22 +35,16 @@ jobs:
           pip install elasticsearch==7.13.4
           sudo apt-get install p7zip-full
 
-      - name: Run Index Script Test
+      - name: Run Index Script
         env:
           ES_HOST: ${{ secrets.ES_HOST }}
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        if: "contains(${{ github.event.inputs.select_index }}, 'test')"
         run: |
-          echo "Indexing to TEST"
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }}
-
-      - name: Run Index Script Live
-        env:
-          ES_HOST: ${{ secrets.ES_HOST }}
-          ES_USER: ${{ secrets.ES_USER }}
-          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        if: "contains(${{ github.event.inputs.select_index }}, 'live')"
-        run: |
-          echo "Indexing to LIVE"
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }}
+          if [[ ${{ github.event.inputs.select_index }} == "live" ]]; then
+            echo "Indexing to Live."
+            # python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }}
+          else
+            echo "Indexing to Test."
+            # python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }}
+          fi
