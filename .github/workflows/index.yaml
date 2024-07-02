@@ -7,8 +7,8 @@ on:
         type: choice
         description: Index as test or live
         options:
-          - test
-          - live
+          - Test
+          - Live
       force_index:
         type: boolean
         default: false
@@ -41,7 +41,7 @@ jobs:
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         run: |
-          if [[ ${{ github.event.inputs.select_index }} == "live" ]]; then
+          if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
             echo "Indexing to Live."
             python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }}
           else
