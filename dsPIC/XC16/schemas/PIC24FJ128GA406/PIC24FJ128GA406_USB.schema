@@ -1,0 +1,177 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/XC16/core/def/PIC24FJ128GA406.json",
+    "flash": 131072,
+    "ram": 16384,
+    "settings": {
+        "clock": "32",
+        "scheme": "PIC24FJ128GA406_USB",
+        "mcu": "PIC24FJ128GA406",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "BWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "BSS",
+                "value": "BSS_OFF"
+            },
+            {
+                "key": "BSEN",
+                "value": "OFF"
+            },
+            {
+                "key": "GWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "GSS",
+                "value": "GSS_OFF"
+            },
+            {
+                "key": "CWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "CSS",
+                "value": "CSS_DIS"
+            },
+            {
+                "key": "AIVTDIS",
+                "value": "DISABLE"
+            },
+            {
+                "key": "BSLIM",
+                "value": "BSLIM"
+            },
+            {
+                "key": "FNOSC",
+                "value": "PRIPLL"
+            },
+            {
+                "key": "PLLMODE",
+                "value": "PLL96DIV2"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "POSCMOD",
+                "value": "XT"
+            },
+            {
+                "key": "OSCIOFCN",
+                "value": "OFF"
+            },
+            {
+                "key": "SOSCSEL",
+                "value": "ON"
+            },
+            {
+                "key": "PLLSS",
+                "value": "PLL_PRI"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSECME"
+            },
+            {
+                "key": "WDTPS",
+                "value": "PS32768"
+            },
+            {
+                "key": "FWPSA",
+                "value": "PR128"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "ON"
+            },
+            {
+                "key": "WINDIS",
+                "value": "OFF"
+            },
+            {
+                "key": "WDTWIN",
+                "value": "PS25_0"
+            },
+            {
+                "key": "WDTCMX",
+                "value": "WDTCLK"
+            },
+            {
+                "key": "WDTCLK",
+                "value": "LPRC"
+            },
+            {
+                "key": "BOREN",
+                "value": "ON"
+            },
+            {
+                "key": "LPCFG",
+                "value": "OFF"
+            },
+            {
+                "key": "ICS",
+                "value": "PGx1"
+            },
+            {
+                "key": "JTAGEN",
+                "value": "ON"
+            },
+            {
+                "key": "BTSWP",
+                "value": "OFF"
+            },
+            {
+                "key": "DSWDTPS",
+                "value": "DSWDTPS1F"
+            },
+            {
+                "key": "DSWDTOSC",
+                "value": "LPRC"
+            },
+            {
+                "key": "DSBOREN",
+                "value": "ON"
+            },
+            {
+                "key": "DSWDTEN",
+                "value": "ON"
+            },
+            {
+                "key": "DSSWEN",
+                "value": "ON"
+            },
+            {
+                "key": "ALTCMPI",
+                "value": "DISABLE"
+            },
+            {
+                "key": "TMPRPIN",
+                "value": "OFF"
+            },
+            {
+                "key": "ALTVREF",
+                "value": "ALTVREFDIS"
+            },
+            {
+                "key": "BSEQ",
+                "value": "BSEQ"
+            },
+            {
+                "key": "IBSEQ",
+                "value": "IBSEQ"
+            }
+        ]
+    }
+}
