@@ -198,11 +198,6 @@ if __name__ == '__main__':
     parser.add_argument("force_index", help="If true will update packages even if hash is the same")
     args = parser.parse_args()
 
-    if 'test' in args.select_index:
-        print("Indexing latest release for TEST.\n")
-    elif 'live' in args.select_index:
-        print("Indexing latest release for LIVE.\n")
-
     # Elasticsearch instance used for indexing
     num_of_retries = 1
     while True:
