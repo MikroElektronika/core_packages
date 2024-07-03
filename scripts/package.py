@@ -797,9 +797,10 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         await upload_release_asset(session, token, repo, tag_name, "necto_db.db")
 
-    for each_package in packages:
-        async with aiohttp.ClientSession() as session:
-            await upload_release_asset(session, token, repo, tag_name, f"output/databases/{each_package['name']}.db")
+    # Uncomment to get specific test database per package
+    # for each_package in packages:
+    #     async with aiohttp.ClientSession() as session:
+    #         await upload_release_asset(session, token, repo, tag_name, f"output/databases/{each_package['name']}.db")
 
     # Generate clocks.json
     input_directory = "./"
