@@ -2,7 +2,7 @@
     "core": "M0+",
     "delay_src_path": "delays/m0+/__lib_delays.c",
     "mcu": "ATSAMC21G15A",
-    "clock": 1,
+    "clock": 4,
     "config_registers": [
     	{
         "address": "41004004",
@@ -715,7 +715,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 0 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
@@ -814,7 +814,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 1 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
@@ -910,7 +910,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 2 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
@@ -1009,7 +1009,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 3 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
@@ -1108,7 +1108,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 4 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
@@ -1207,7 +1207,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 5 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
@@ -1306,7 +1306,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 6 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
@@ -1405,7 +1405,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 7 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
@@ -1504,7 +1504,7 @@
                     "init": "00000000",
                     "key": "SRC",
                     "label": "Generator 8 Clock Source Selection",
-                    "mask": "00000001F",
+                    "mask": "00000006",
                     "settings": [
                         {
                             "label": "XOSC oscillator output",
