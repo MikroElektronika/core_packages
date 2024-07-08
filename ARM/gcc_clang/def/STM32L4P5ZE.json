@@ -40,7 +40,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1000000",
                     "key": "PLLON",
                     "label": "Main PLL enable",
                     "mask": "1000000",
@@ -142,7 +142,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "100",
                     "key": "HSION",
                     "label": "HSI clock enable",
                     "mask": "100",
@@ -250,7 +250,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "0",
                     "key": "MSION",
                     "label": "MSI clock enable",
                     "mask": "1",
@@ -476,7 +476,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "3",
                     "key": "SW",
                     "label": "System clock switch",
                     "mask": "3",
@@ -760,7 +760,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00001000",
+                    "init": "00000f00",
                     "key": "PLLN",
                     "label": "Main PLL multiplication factor for VCO",
                     "mask": "7f00",
@@ -1322,7 +1322,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "2",
                     "key": "PLLSRC",
                     "label": "Main PLL, PLLSAI1 and PLLSAI2 entry clock source",
                     "mask": "3",
@@ -1656,5 +1656,5 @@
     "core": "M4EF",
     "delay_src_path": "delays/m4ef/__lib_delays.c",
     "mcu": "STM32L4P5ZE",
-    "clock": 4
+    "clock": 120
 }
