@@ -1,0 +1,2 @@
+## Defines adequate SDK source files to include
+set(AI_GENERATED_SDK @AI_GENERATED_SDK@)

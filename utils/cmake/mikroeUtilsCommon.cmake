@@ -1,3 +1,7 @@
+if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/InstallCoreCmakeFile.cmake)
+    ## TODO - swith to databse use
+    include(InstallCoreCmakeFile)
+endif()
 #############################################################################
 ## Function to include adequate math library in GCC build and create macros.
 #############################################################################

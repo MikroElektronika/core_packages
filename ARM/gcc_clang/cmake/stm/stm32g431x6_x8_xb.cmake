@@ -2,6 +2,7 @@ if(${MCU_NAME} MATCHES "^STM32G431C6$|^STM32G431K6$|^STM32G431R6$|^STM32G431V6$|
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/stm/doc_ds_82/init_clock.c)
+    set(AI_GENERATED_SDK True)
     list(APPEND local_list_include system/src/stm/doc_ds_82/thirdparty/Src/system_stm32g4xx.c)
     list(APPEND local_list_include system/src/stm/doc_ds_82/thirdparty/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c)
     list(APPEND local_list_include system/src/stm/doc_ds_82/thirdparty/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c)

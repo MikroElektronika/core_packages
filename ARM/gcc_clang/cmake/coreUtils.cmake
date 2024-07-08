@@ -202,10 +202,19 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
     string(SUBSTRING ${MCU_NAME} 0 6 MCU_NAME_FIRST_6)
     string(TOLOWER ${MCU_NAME_FIRST_6} MCU_NAME_FIRST_6_LOWER)
 
+    ## TODO - swith to databse use
+    set(AI_GENERATED_SDK False)
     file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${vendor}/*.cmake)
     foreach(cmakeFile ${CMAKE_FILES})
         include(${cmakeFile})
     endforeach()
+
+    ## TODO - swith to databse use
+    configure_file(
+        ${CMAKE_CURRENT_LIST_DIR}/../../../../../cmake/InstallCoreCmakeFile.cmake.in
+        ${CMAKE_CURRENT_LIST_DIR}/../../../../../cmake/InstallCoreCmakeFile.cmake
+        @ONLY
+    )
 
     set(${list} ${local_dir_install} PARENT_SCOPE)
 

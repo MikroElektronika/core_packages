@@ -2,6 +2,7 @@ if(${MCU_NAME} MATCHES "^STM32L4P5AE$|^STM32L4P5AG$|^STM32L4P5CE$|^STM32L4P5CG$|
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/stm/doc_ds_160/init_clock.c)
+    set(AI_GENERATED_SDK True)
     list(APPEND local_list_include system/src/stm/doc_ds_160/thirdparty/Src/system_stm32l4xx.c)
     list(APPEND local_list_include system/src/stm/doc_ds_160/thirdparty/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c)
     list(APPEND local_list_include system/src/stm/doc_ds_160/thirdparty/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c)

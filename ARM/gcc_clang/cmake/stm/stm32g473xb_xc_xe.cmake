@@ -2,6 +2,7 @@ if(${MCU_NAME} MATCHES "^STM32G473CB$|^STM32G473MB$|^STM32G473PB$|^STM32G473RB$|
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/stm/doc_ds_84/init_clock.c)
+    set(AI_GENERATED_SDK True)
     list(APPEND local_list_include system/src/stm/doc_ds_84/thirdparty/Src/system_stm32g4xx.c)
     list(APPEND local_list_include system/src/stm/doc_ds_84/thirdparty/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c)
     list(APPEND local_list_include system/src/stm/doc_ds_84/thirdparty/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c)

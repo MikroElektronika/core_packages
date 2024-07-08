@@ -2,6 +2,7 @@ if(${MCU_NAME} MATCHES "^STM32G4A1CE$|^STM32G4A1KE$|^STM32G4A1ME$|^STM32G4A1RE$|
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/stm/doc_ds_89/init_clock.c)
+    set(AI_GENERATED_SDK True)
     list(APPEND local_list_include system/src/stm/doc_ds_89/thirdparty/Src/system_stm32g4xx.c)
     list(APPEND local_list_include system/src/stm/doc_ds_89/thirdparty/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c)
     list(APPEND local_list_include system/src/stm/doc_ds_89/thirdparty/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c)

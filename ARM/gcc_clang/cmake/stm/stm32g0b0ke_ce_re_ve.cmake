@@ -2,4 +2,5 @@ if(${MCU_NAME} MATCHES "^STM32G0B0KE$|^STM32G0B0CE$|^STM32G0B0RE$|^STM32G0B0VE$"
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/stm/doc_ds_79/init_clock.c)
+    set(AI_GENERATED_SDK True)
 endif()

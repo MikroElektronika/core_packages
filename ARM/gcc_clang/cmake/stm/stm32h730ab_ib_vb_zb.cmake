@@ -2,4 +2,5 @@ if(${MCU_NAME} MATCHES "^STM32H730AB$|^STM32H730IB$|^STM32H730VB$|^STM32H730ZB$"
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/stm/doc_ds_95/init_clock.c)
+    set(AI_GENERATED_SDK True)
 endif()

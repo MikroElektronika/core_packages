@@ -2,6 +2,7 @@ if(${MCU_NAME} MATCHES "^STM32G0C1CC$|^STM32G0C1KC$|^STM32G0C1MC$|^STM32G0C1RC$|
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/stm/doc_ds_81/init_clock.c)
+    set(AI_GENERATED_SDK True)
     list(APPEND local_list_include system/src/stm/doc_ds_81/thirdparty/Src/system_stm32g0xx.c)
     list(APPEND local_list_include system/src/stm/doc_ds_81/thirdparty/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_rcc.c)
     list(APPEND local_list_include system/src/stm/doc_ds_81/thirdparty/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c)
