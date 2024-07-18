@@ -24,7 +24,7 @@ string(TOLOWER ${MCU_NAME} MCU_NAME_LOWER)
 
 core_add_library(lib_core MikroC.Core
     ${local_list_include}
-    ${startupFile}
+    startup/${MCU_NAME_LOWER}.s
     linker_scripts/${MCU_NAME_LOWER}.ld
 
     common/rcu_typedef.h
@@ -77,7 +77,7 @@ install(
 
 install(
     FILES
-        ${startupFile}
+        startup/${MCU_NAME_LOWER}.s
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/../FileStartup
 )
