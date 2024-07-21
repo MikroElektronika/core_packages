@@ -151,7 +151,10 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             }
         else:
             metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
-            previous_metadata_item = find_item_by_name(metadata_content[1], name_without_extension)
+            if len(metadata_content) > 1:
+                previous_metadata_item = find_item_by_name(metadata_content[1], name_without_extension)
+            else:
+                previous_metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
 
             if metadata_item:
                 if previous_metadata_item:
