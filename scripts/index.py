@@ -106,9 +106,10 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
     # Iterate over each asset in the release and previous release
     metadata_content = []
     for each_release_details in release_details:
-        metadata_asset = next((a for a in each_release_details['assets'] if a['name'] == "metadata.json"), None)
-        metadata_download_url = metadata_asset['url']
-        metadata_content.append(fetch_json_data(metadata_download_url, token)[0])
+        if each_release_details:  ## TODO - hotfix for test index - check this
+            metadata_asset = next((a for a in each_release_details['assets'] if a['name'] == "metadata.json"), None)
+            metadata_download_url = metadata_asset['url']
+            metadata_content.append(fetch_json_data(metadata_download_url, token)[0])
 
     for asset in release_details[0].get('assets', []):
         # Do not index metadata or docs
