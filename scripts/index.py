@@ -82,6 +82,8 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
 
     checkDict = {}
     for eachHit in response['hits']['hits']:
+        if not 'name' in eachHit['_source']:
+            continue ## TODO - Check newly created bare metal package (is it created correctly)
         name = eachHit['_source']['name']
         type = eachHit['_type']
         id = eachHit['_id']
