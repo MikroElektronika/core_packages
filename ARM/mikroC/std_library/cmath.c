@@ -137,26 +137,20 @@ double round( double num )
     if ( expon < 0 )
     {
         if ( num < 0.0 )
-        {
             return -1.0;
-        }
         else
-        {
             return 0.0;
-        }
     }
 
     if ( ( unsigned int )expon > sizeof( float ) * CHAR_BIT - 8 )
-    {
         return num;
-    }
 
     i = _FRNDINT( num );
 
     double diff_down;
     double diff_up;
 
-    if( i < 0 )
+    if ( i < 0 )
     {
         diff_down = i - num;
         diff_up = i - 1.0 - num;
@@ -170,16 +164,16 @@ double round( double num )
     diff_down = ( diff_down >= 0.0 ) ? diff_down : diff_down * ( -1.0 );
     diff_up = ( diff_up >= 0.0 ) ? diff_up : diff_up * ( -1.0 );
 
-    if( i >= 0 )
+    if ( i >= 0 )
     {
-        if( diff_down < diff_up )
+        if ( diff_down < diff_up )
             return i;
         else
             return i + 1.0;
     }
     else
     {
-        if( diff_down >= diff_up )
+        if ( diff_down >= diff_up )
             return i - 1.0;
         else
             return i;
