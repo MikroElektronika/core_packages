@@ -233,7 +233,7 @@ def find_mcus_and_toolchains(extract_path, names):
         # Search for the JSON file inside the architecture folder.
         for root, dirs, files in os.walk(json_folder_path):
             for file in files:
-                if toolchain in file:
+                if toolchain in file and file.endswith('.json'):
                     json_file_path = os.path.join(root, file)
                     break
             if json_file_path:
