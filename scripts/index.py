@@ -1,5 +1,6 @@
 import os, re, time, argparse, requests
 from elasticsearch import Elasticsearch
+from pathlib import Path
 
 import support as support
 
@@ -111,6 +112,12 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             metadata_download_url = metadata_asset['url']
             metadata_content.append(fetch_json_data(metadata_download_url, token)[0])
 
+    # Fetch documentation regarding latest release
+    docs_path = os.path.join(str(Path(__file__).parent.parent.absolute()), 'output/docs')
+    docs_asset = next((a for a in release_details[0]['assets'] if a['name'] == "docs.7z"), None)
+    support.extract_archive_from_url(docs_asset['url'], docs_path, token)
+    mcu_check_list = support.fetch_package_mcus(docs_path)
+
     for asset in release_details[0].get('assets', []):
         # Do not index metadata or docs
         if asset['name'] == 'metadata.json' or asset['name'] == 'docs.7z':
@@ -186,7 +193,11 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                                 'preinit',
                                 'unit_test_lib',
                                 'mikroe_utils_common'
-                            ]
+                            ],
+                            'mcus': support.fetch_mcu_list(
+                                name_without_extension,
+                                mcu_check_list
+                            )
                         }
                     )
 
