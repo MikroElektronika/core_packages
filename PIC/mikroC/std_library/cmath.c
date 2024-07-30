@@ -139,9 +139,7 @@ double round( double num )
     }
 
     if ( ( unsigned int )expon > sizeof( float ) * CHAR_BIT - 8 )
-    {
         return num;
-    }
 
     i = _FRNDINT( num );
 
