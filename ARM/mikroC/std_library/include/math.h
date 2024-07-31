@@ -68,6 +68,17 @@ double floor( double num );
 double ceil( double num );
 
 /**
+ * @brief Rounds a number to the nearest integer.
+ * @details The round function rounds the given number to the nearest integer value.
+ *          If the fractional part of the number is exactly 0.5, the round function 
+ *          adjusts the number upwards to the next integer with greater magnitude.
+ * @param num Number to be rounded.
+ * @return The round function returns the nearest integer value to the given
+ *         number, expressed as a double.
+ */
+double round( double num );
+
+/**
  * @brief Function splits a floating-point number.
  *        The frexp function breaks a floating-point number into a normalized
  *        fraction and an integral power of 2. It stores the integer in the int

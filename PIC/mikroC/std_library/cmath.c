@@ -123,6 +123,59 @@ double ceil( double num )
     return i;
 }
 
+double round( double num )
+{
+    double i;
+    int expon;
+
+    expon = ( ( *( unsigned long * ) & num >> DBL_MANT_DIG ) & 255 ) - 127;
+
+    if ( expon < 0 )
+    {
+        if ( num < 0.0 )
+            return -1.0;
+        else
+            return 0.0;
+    }
+
+    if ( ( unsigned int )expon > sizeof( float ) * CHAR_BIT - 8 )
+        return num;
+
+    i = _FRNDINT( num );
+
+    double diff_down;
+    double diff_up;
+
+    if ( i < 0 )
+    {
+        diff_down = i - num;
+        diff_up = i - 1.0 - num;
+    }
+    else
+    {
+        diff_down = num - i;
+        diff_up = i + 1.0 - num;
+    }
+
+    diff_down = ( diff_down >= 0.0 ) ? diff_down : diff_down * ( -1.0 );
+    diff_up = ( diff_up >= 0.0 ) ? diff_up : diff_up * ( -1.0 );
+
+    if ( i >= 0 )
+    {
+        if ( diff_down < diff_up )
+            return i;
+        else
+            return i + 1.0;
+    }
+    else
+    {
+        if ( diff_down >= diff_up )
+            return i - 1.0;
+        else
+            return i;
+    }
+}
+
 double frexp( double num, int * exp_ptr )
 {
     #if defined(__MIKROC_AI_FOR_ARM__) || defined(__MIKROC_AI_FOR_PIC32__) || defined(__MIKROC_AI_FOR_DSPIC__) || defined(__MIKROC_AI_FOR_AVR__)
