@@ -212,10 +212,7 @@ def find_mcus_and_toolchains(extract_path, names):
         parts = name.split('_')
 
         # The first part is the architecture.
-        architecture = parts[0].upper()
-        if architecture == 'DSPIC':
-            # Make 'ds' lower case.
-            architecture = 'dsPIC'
+        architecture = parts[0].upper().replace('DSPIC', 'dsPIC')
 
         # The second part is the toolchain.
         toolchain = parts[1]
