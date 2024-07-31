@@ -77,6 +77,8 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
     while num_of_retries <= 10:
         try:
             response = es.search(index=index_name, body=query_search)
+            if not response['timed_out']:
+                break
         except:
             print("Executing search query - retry number %i" % num_of_retries)
         num_of_retries += 1
