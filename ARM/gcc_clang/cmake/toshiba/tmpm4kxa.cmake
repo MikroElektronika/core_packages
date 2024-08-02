@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^TMPM4KN..A.+$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/toshiba/tmpm4kxa/system_toshiba_tmpm4kxa.c)
+    list(APPEND local_dir_install system/src/toshiba/tmpm4kxa/thirdparty)
+    set(${thirdpartyInstall} tmpm4kxa/thirdparty PARENT_SCOPE)
+endif()

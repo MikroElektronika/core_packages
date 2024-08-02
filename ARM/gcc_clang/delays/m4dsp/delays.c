@@ -14,12 +14,16 @@ void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cy
 
 void __attribute__( ( noinline ) ) Delay_us( uint32_t time_us )
 {
+    #ifdef FOSC_KHZ_VALUE_DEFINED
     Delay_Cyc( ( time_us * getClockValue( FOSC_KHZ_VALUE ) ) - ( getClockValue( FOSC_KHZ_VALUE ) / 2 ) );
+    #endif
 }
 
 void __attribute__( ( noinline ) ) Delay_ms( uint32_t Time_ms )
 {
+    #ifdef FOSC_KHZ_VALUE_DEFINED
     Delay_Cyc( Time_ms * 1000ul * getClockValue( FOSC_KHZ_VALUE ) );
+    #endif
 }
 
 void __attribute__( ( noinline ) ) Delay_Advanced_ms( uint32_t Time_ms, uint32_t Current_Fosc_kHz )
