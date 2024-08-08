@@ -1,16 +1,18 @@
 /*
 ******************************************************************************
 **
-** @file        : LinkerScript.ld
+** @file        : tmpm4knfyafg.ld
 ** @author      : Strahinja Jacimovic (MikroE)
 ** @brief       : Linker script for tmpm4knfyafg Device
-**                      256Kbytes FLASH
-**                      24Kbytes RAM
+**                256Kbytes FLASH
+**                24Kbytes RAM
 *
 **                Set heap size, stack size and stack location according
 **                to application requirements.
 **
 **                Set memory bank area and size if external memory is used
+**
+**  Target      : TOSHIBA TMPM4KNFYAFG
 **
 **  Distribution: The file is distributed as is, without any warranty
 **                of any kind.
@@ -18,7 +20,7 @@
 ******************************************************************************
 ** @attention
 **
-** Copyright (c) 2024 MikroElektronika.
+** Copyright (c) ${COPYRIGHT_YEAR_MIKROE} MikroElektronika.
 ** All rights reserved.
 **
 ** This software is licensed under terms that can be found in the LICENSE file

@@ -5,9 +5,9 @@
  *          TOSHIBA 'TMPM4KNA' Device Series
  * @version V1.0.0.0
  * $Date::            #$
- * 
+ *
  * DO NOT USE THIS SOFTWARE WITHOUT THE SOFTWARE LICENSE AGREEMENT.
- * 
+ *
  * Copyright(C) Toshiba Electronic Device Solutions Corporation 2020
  *******************************************************************************
  */
@@ -15,7 +15,7 @@
 /** @addtogroup TOSHIBA_TXZ_MICROCONTROLLER
   * @{
   */
-  
+
 /** @addtogroup TMPM4KNA
   * @{
   */
@@ -179,7 +179,8 @@ typedef enum IRQn
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 #include "core_cm4.h"                       /* Cortex-M4 processor and core peripherals            */
-#include "system.h"                 /* TMPM4KNA System                                      */
+// Note: Changed for MikroE implementation
+// #include "system.h"                 /* TMPM4KNA System                                      */
 
 /** @addtogroup Device_Peripheral_registers
   * @{
@@ -405,7 +406,7 @@ typedef struct
   __I  uint32_t STATUS;            /*!< DMA Status Register                          */
   __O  uint32_t CFG;               /*!< DMA Configuration Register                   */
   __IO uint32_t CTRLBASEPTR;       /*!< DMA Control Data Base Pointer Register       */
-  __I  uint32_t ALTCTRLBASEPTR;    /*!< DMA Channel Alternate Control Data Base 
+  __I  uint32_t ALTCTRLBASEPTR;    /*!< DMA Channel Alternate Control Data Base
 Pointer Register*/
        uint32_t RESERVED0;
   __O  uint32_t CHNLSWREQUEST;     /*!< DMA Channel Software Request Register        */

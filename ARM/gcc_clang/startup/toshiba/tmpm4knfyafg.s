@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file      startup_tmpm4knfyafg.s
+  * @file      tmpm4knfyafg.s
   * @author    Strahinja Jacimovic (MikroE)
-  * @brief     tmpm4knxxaxx Devices vector table for GCC based toolchains.
+  * @brief     tmpm4knfyafg device vector table for GCC/CLANG based toolchains.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -14,7 +14,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 MikroElektronika.
+  * Copyright (c) ${COPYRIGHT_YEAR_MIKROE} MikroElektronika.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -40,12 +40,12 @@ Reset_Handler:
     /* set stack pointer */
     ldr sp, =_estack
     /* Call the clock system intitialization function.*/
-    bl  SystemInit
+    bl clockConfig
     /* Call static constructors */
     bl __libc_init_array
     /* Call the application's entry point.*/
-    bl  main
-    bx  lr
+    bl main
+    bx lr
 
 .size  Reset_Handler, .-Reset_Handler
 
