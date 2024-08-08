@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^TMPM4KNF10ADFG$|^TMPM4KNFDADFG$|^TMPM4KLF10AUG$|^TMPM4KLFDAUG$|^TMPM4KNF10AFG$|^TMPM4KNFDAFG$|^TMPM4KLF10AFG$|^TMPM4KLFDAFG$|^TMPM4KNFYADFG$|^TMPM4KNFWADFG$|^TMPM4KMFYAFG$|^TMPM4KMFWAFG$|^TMPM4KLFYAUG$|^TMPM4KLFWAUG$|^TMPM4KNFYAFG$|^TMPM4KNFWAFG$|^TMPM4KLFYAFG$|^TMPM4KLFWAFG$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/toshiba/tmpm4kxa/init_clock.c)
+endif()

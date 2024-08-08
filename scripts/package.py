@@ -744,7 +744,7 @@ def update_metadata(current_metadata, new_files, version):
 
     return updated_metadata
 
-def append_package(packages, package, display_name, version, install=None):
+def append_package(packages, package, display_name, version, install=None, category='utility'):
     ''' Append any additional, non MCU packages '''
     if install or install == '':
         install_location = install
@@ -756,7 +756,7 @@ def append_package(packages, package, display_name, version, install=None):
         "version": version,
         "hash": hash_directory_contents(package[:-3]),
         "vendor": "MIKROE",
-        "category": "utility",
+        "category": category,
         "type": f"{os.path.basename(package.lower())[:-3]}",
         "hidden": True,
         "install_location": f"%APPLICATION_DATA_DIR%/{install_location}"
@@ -817,6 +817,21 @@ async def main(token, repo, tag_name):
     schemaGenerator.generate()
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
+
+    # Generate images package
+    archive_path = compress_directory_7z(os.path.join('./resources', 'images'), 'images.7z')
+    append_package(
+        packages, archive_path,
+        "NECTO Resources - Images",
+        get_version_based_on_hash(
+            'resources_images', tag_name.replace("v", ""),
+            hash_directory_contents(archive_path), current_metadata
+        ),
+        'resources/images',
+        'resources'
+    )
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
     # Generate preinit package
     archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
