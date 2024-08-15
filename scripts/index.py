@@ -214,7 +214,7 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("select_index", help="Provided index name")
-    parser.add_argument("force_index", help="If true will update packages even if hash is the same")
+    parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=bool)
     args = parser.parse_args()
 
     print(type(args.force_index))
