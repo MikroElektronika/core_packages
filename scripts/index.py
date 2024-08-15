@@ -17,12 +17,22 @@ def get_headers(api, token):
         }
 
 # Function to fetch release details from GitHub
-def fetch_release_details(repo, token):
+def fetch_release_details(repo, token, release_version):
     api_headers = get_headers(True, token)
     url = f'https://api.github.com/repos/{repo}/releases'
     response = requests.get(url, headers=api_headers)
     response.raise_for_status()  # Raise an exception for HTTP errors
-    return support.get_latest_release(response.json()), support.get_previous_release(response.json(), True)
+    if "latest" == release_version:
+        return support.get_latest_release(response.json()), support.get_previous_release(response.json(), True)
+    else:
+        release_check = None
+        release_check = support.get_specified_release(response.json(), release_version)
+        if release_check:
+            return release_check, support.get_previous_release(response.json(), True)
+        else:
+            ## Always fallback to latest release
+            print("WARNING: Falling back to LATEST release.")
+            return support.get_latest_release(response.json()), support.get_previous_release(response.json(), True)
 
 # Function to fetch content as JSON from the link
 def fetch_json_data(download_link, token):
@@ -212,6 +222,7 @@ if __name__ == '__main__':
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("select_index", help="Provided index name")
     parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=bool)
+    parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
     args = parser.parse_args()
 
     # Elasticsearch instance used for indexing
@@ -237,6 +248,6 @@ if __name__ == '__main__':
     # Now index the new release
     index_release_to_elasticsearch(
         es, args.select_index,
-        fetch_release_details(args.repo, args.token),
+        fetch_release_details(args.repo, args.token, args.release_version),
         args.token, args.force_index
     )
