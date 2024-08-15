@@ -1,0 +1,5 @@
+aiohttp
+aiofiles
+requests
+py7zr
+elasticsearch==7.13.4

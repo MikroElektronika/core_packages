@@ -3,6 +3,10 @@ name: Index Latest Release
 on:
   workflow_dispatch:
     inputs:
+      release_version:
+        type: string
+        description: Which release version to index (type v1.0.6 for example)
+        default: "latest"
       select_index:
         type: choice
         description: Index as test or live
@@ -29,11 +33,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install aiohttp
-          pip install aiofiles
-          pip install requests
-          pip install py7zr
-          pip install elasticsearch==7.13.4
+          pip install -r scripts/requirements/shared.txt
           sudo apt-get install p7zip-full
 
       - name: Run Index Script
@@ -44,8 +44,8 @@ jobs:
         run: |
           if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
             echo "Indexing to Live."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }}
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }}
           else
             echo "Indexing to Test."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }}
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }}
           fi
