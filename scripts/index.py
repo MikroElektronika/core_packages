@@ -217,7 +217,7 @@ if __name__ == '__main__':
     parser.add_argument("force_index", help="If true will update packages even if hash is the same")
     args = parser.parse_args()
 
-    print(args.force_index)
+    print(type(args.force_index))
     exit
 
     # Elasticsearch instance used for indexing
