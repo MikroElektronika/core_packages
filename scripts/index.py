@@ -171,9 +171,6 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 else:
                     update_package = True
 
-                if force:
-                    update_package = True
-
                 doc = {
                     'name': name_without_extension,
                     'display_name' : metadata_item['display_name'],
@@ -214,7 +211,7 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("select_index", help="Provided index name")
-    parser.add_argument("force_index", help="If true will update packages even if hash is the same")
+    parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=bool)
     args = parser.parse_args()
 
     # Elasticsearch instance used for indexing
