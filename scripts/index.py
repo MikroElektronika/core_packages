@@ -171,8 +171,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 else:
                     update_package = True
 
-                if force:
-                    update_package = True
+                # if force:
+                #     update_package = True
 
                 doc = {
                     'name': name_without_extension,
@@ -218,7 +218,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     print(type(args.force_index))
-    exit
 
     # Elasticsearch instance used for indexing
     num_of_retries = 1
