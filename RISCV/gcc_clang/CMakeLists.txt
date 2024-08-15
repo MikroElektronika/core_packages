@@ -10,6 +10,10 @@ include(coreUtils)
 
 add_preinit_lib()
 
+if (${TOOLCHAIN_ID} STREQUAL "clang-llvm-riscv")
+    add_compile_definitions("CLANG_RISCV")
+endif()
+
 #include all .cmake files from cmake folder
 
 set(local_list_include "")

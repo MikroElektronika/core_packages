@@ -44,7 +44,7 @@
 #include "rcu_typedef.h"
 #include "core_header.h"
 #include "cstdio.h"
-#if !defined (__GNUC__)
+#ifdef CLANG_RISCV
 #include <stdio.h>
 #endif
 
@@ -151,7 +151,7 @@ typedef enum {
 static const uint8_t array_divider_apb1_2[ 4 ] = { 2, 4, 8, 16 };
 static const uint8_t array_divider_ahb[ 8 ] = { 0, 1, 2, 3, 5, 6, 7, 8 };
 
-#if !defined (__GNUC__)
+#ifdef CLANG_RISCV
 // stderr stream declaration.
 FILE * const stderr;
 #endif
@@ -210,7 +210,7 @@ static system_clock_update_t system_rcu_clock_check_err( uint32_t register_addre
 
 /* -----------------------PUBLIC FUNCTION DEFINITIONS------------------------ */
 
-#if !defined(__GNUC__)
+#ifdef CLANG_RISCV
 void _exit()
 {
     // No return function in clang-llvm.
