@@ -1,4 +1,4 @@
-name: Index Latest Release
+name: Index Release
 
 on:
   workflow_dispatch:
