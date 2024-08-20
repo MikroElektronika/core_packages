@@ -1,0 +1,414 @@
+{
+    "Familije": [
+        {
+            "Name": "AT80",
+            "Vendor": "Atmel",
+            "Architecture": "8051"
+        },
+        {
+            "Name": "AT83",
+            "Vendor": "Atmel",
+            "Architecture": "8051"
+        },
+        {
+            "Name": "AT87",
+            "Vendor": "Atmel",
+            "Architecture": "8051"
+        },
+        {
+            "Name": "AT89",
+            "Vendor": "Atmel",
+            "Architecture": "8051"
+        },
+        {
+            "Name": "T83",
+            "Vendor": "Atmel",
+            "Architecture": "8051"
+        },
+        {
+            "Name": "T87",
+            "Vendor": "Atmel",
+            "Architecture": "8051"
+        },
+        {
+            "Name": "T89",
+            "Vendor": "Atmel",
+            "Architecture": "8051"
+        },
+        {
+            "Name": "ATmega",
+            "Vendor": "Atmel",
+            "Architecture": "AVR"
+        },
+        {
+            "Name": "ATtiny",
+            "Vendor": "Atmel",
+            "Architecture": "AVR"
+        },
+        {
+            "Name": "AT90",
+            "Vendor": "Atmel",
+            "Architecture": "AVR"
+        },
+        {
+            "Name": "ATXMega",
+            "Vendor": "Atmel",
+            "Architecture": "AVR"
+        },
+        {
+            "Name": "AVR DA",
+            "Vendor": "Atmel",
+            "Architecture": "AVR"
+        },
+        {
+            "Name": "C8051",
+            "Vendor": "Silicon Labs",
+            "Architecture": "8051"
+        },
+        {
+            "Name": "K22",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "K64",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "K65",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "K66",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "K80",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "K82",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "MKV58",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "MK65",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "MK66",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "MK80",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "MK82",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "MK24",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "MK20",
+            "Vendor": "NXP",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "Kinetis K Series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "Kinetis V Series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "Kinetis E series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "Kinetis W series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "Kinetis E series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "Kinetis L series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "Kinetis M series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "Kinetis V series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "Kinetis W series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "Kinetis K Series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "Kinetis V Series",
+            "Vendor": "NXP",
+            "Architecture": "ARM Cortex-M7"
+        },
+        {
+            "Name": "Stellaris",
+            "Vendor": "Texas Instruments",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "TIVA TFT Intern",
+            "Vendor": "Texas Instruments",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "MSP432",
+            "Vendor": "Texas Instruments",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "Tiva",
+            "Vendor": "Texas Instruments",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "Stellaris",
+            "Vendor": "Texas Instruments",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "Stellaris",
+            "Vendor": "Texas Instruments",
+            "Architecture": "ARM Cortex-M3"
+        },
+        {
+            "Name": "dsPIC33",
+            "Vendor": "Microchip",
+            "Architecture": "dsPIC"
+        },
+        {
+            "Name": "PIC24",
+            "Vendor": "Microchip",
+            "Architecture": "dsPIC"
+        },
+        {
+            "Name": "dsPIC30",
+            "Vendor": "Microchip",
+            "Architecture": "dsPIC"
+        },
+        {
+            "Name": "PIC16",
+            "Vendor": "Microchip",
+            "Architecture": "PIC"
+        },
+        {
+            "Name": "PIC18",
+            "Vendor": "Microchip",
+            "Architecture": "PIC"
+        },
+        {
+            "Name": "PIC10",
+            "Vendor": "Microchip",
+            "Architecture": "PIC"
+        },
+        {
+            "Name": "PIC12",
+            "Vendor": "Microchip",
+            "Architecture": "PIC"
+        },
+        {
+            "Name": "PIC32MX",
+            "Vendor": "Microchip",
+            "Architecture": "PIC32"
+        },
+        {
+            "Name": "PIC32MZ",
+            "Vendor": "Microchip",
+            "Architecture": "PIC32"
+        },
+        {
+            "Name": "CEC",
+            "Vendor": "Microchip",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "SAMG",
+            "Vendor": "Microchip",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "SAME",
+            "Vendor": "Microchip",
+            "Architecture": "ARM Cortex-M7"
+        },
+        {
+            "Name": "SAMS",
+            "Vendor": "Microchip",
+            "Architecture": "ARM Cortex-M7"
+        },
+        {
+            "Name": "SAMV",
+            "Vendor": "Microchip",
+            "Architecture": "ARM Cortex-M7"
+        },
+        {
+            "Name": "SAMC",
+            "Vendor": "Microchip",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "SAMD",
+            "Vendor": "Microchip",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "STM32",
+            "Vendor": "STMicroelectronics",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "STM32",
+            "Vendor": "STMicroelectronics",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "STM32",
+            "Vendor": "STMicroelectronics",
+            "Architecture": "ARM Cortex-M3"
+        },
+        {
+            "Name": "STM32",
+            "Vendor": "STMicroelectronics",
+            "Architecture": "ARM Cortex-M0"
+        },
+        {
+            "Name": "STM32",
+            "Vendor": "STMicroelectronics",
+            "Architecture": "ARM Cortex-M7"
+        },
+        {
+            "Name": "FT90x",
+            "Vendor": "FTDI",
+            "Architecture": "FT90x"
+        },
+        {
+            "Name": "FT81x",
+            "Vendor": "FTDI",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "FT80x",
+            "Vendor": "FTDI",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "CY8C",
+            "Vendor": "Cypress",
+            "Architecture": "ARM"
+        },
+        {
+            "Name": "PSoC 5LP",
+            "Vendor": "Cypress",
+            "Architecture": "ARM Cortex-M3"
+        },
+        {
+            "Name": "ILI9",
+            "Vendor": "Ilitek",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "HX83",
+            "Vendor": "Himax",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "SSD",
+            "Vendor": "Solomon Systech",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "ST77",
+            "Vendor": "Sitronix",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "R6",
+            "Vendor": "Renesas Electronics",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "NT7",
+            "Vendor": "Neotec Semiconductor",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "RA69",
+            "Vendor": "RAIO",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "KS",
+            "Vendor": "Samsung",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "S6B",
+            "Vendor": "Samsung",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "T69",
+            "Vendor": "Toshiba",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "TXZ+",
+            "Vendor": "Toshiba",
+            "Architecture": "ARM Cortex-M4"
+        },
+        {
+            "Name": "S1D1",
+            "Vendor": "Epson",
+            "Architecture": "GCU"
+        },
+        {
+            "Name": "GD32VF103",
+            "Vendor": "GigaDevice",
+            "Architecture": "RISC-V"
+        }
+    ]
+}
