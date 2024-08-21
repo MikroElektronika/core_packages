@@ -450,8 +450,9 @@ async def upload_release_asset(session, token, repo, asset_path, release_version
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
     release_url = f"https://api.github.com/repos/{repo}/releases/latest"
-    if len(release_version):
-        release_url = f"https://api.github.com/repos/{repo}/releases/tags/{release_version}"
+    if release_version:
+        if len(release_version) and ('latest' != release_version):
+            release_url = f"https://api.github.com/repos/{repo}/releases/tags/{release_version}"
     async with session.get(release_url, headers=headers) as response:
         response_data = await response.json()
         release_id = response_data['id']
