@@ -115,7 +115,7 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
                 response = es.delete(index=index_name, id=eachId[0], doc_type=eachId[1])
 
 # Function to index release details into Elasticsearch
-def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force):
+def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False):
     # Iterate over each asset in the release and previous release
     metadata_content = []
     for each_release_details in release_details:
@@ -212,8 +212,13 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
         # Index the document
         if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force):
-            resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
-            print(f"{resp["result"]} {resp['_id']}")
+            if update_database:
+                if ('database' == name_without_extension):
+                    resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
+                    print(f"{resp["result"]} {resp['_id']}")
+            else:
+                resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
+                print(f"{resp["result"]} {resp['_id']}")
 
 if __name__ == '__main__':
     # Get arguments
@@ -223,6 +228,7 @@ if __name__ == '__main__':
     parser.add_argument("select_index", help="Provided index name")
     parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=bool)
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
+    parser.add_argument("update_database", help="If true will update database.7z", type=bool, default=False)
     args = parser.parse_args()
 
     # Elasticsearch instance used for indexing
@@ -249,5 +255,6 @@ if __name__ == '__main__':
     index_release_to_elasticsearch(
         es, args.select_index,
         fetch_release_details(args.repo, args.token, args.release_version),
-        args.token, args.force_index
+        args.token, args.force_index,
+        args.update_database
     )

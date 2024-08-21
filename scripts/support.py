@@ -34,6 +34,36 @@ def determine_archive_type(byte_stream):
     else:
         return '7z'
 
+def download_file_from_link(url, destination, token = None):
+    """
+    Dwonload from a URL directly
+    in memory, and save to file.
+    """
+    print(f"Download link: {url}")
+    headers = {
+        'Authorization': f'token {token}',
+        'Accept': 'application/octet-stream'
+    }
+    if 'github' in url:
+        response = requests.get(url, headers=headers, stream=True)
+    else:
+        response = requests.get(url, stream=True)
+
+    response.raise_for_status()
+
+    if response.status_code == 200: ## Response OK?
+        with io.BytesIO() as byte_stream:
+
+            for chunk in response.iter_content(chunk_size=8192):
+                byte_stream.write(chunk)
+
+            byte_stream.seek(0)
+
+            with open(destination, 'wb') as archive:
+                archive.write(byte_stream.read())
+    else:
+        raise Exception(f"Failed to download file: status code {response.status_code}")
+
 def extract_archive_from_url(url, destination, token = None):
     """
     Extract the contents of an archive (7z or zip) from a URL directly
