@@ -893,15 +893,6 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
-    # Generate erp_db database file asset
-    support.download_file_from_link(
-        'https://github.com/MikroElektronika/core_packages/releases/latest/download/erp_db.db',
-        os.path.join(os.path.dirname(__file__), 'erp_db.db'),
-        token
-    )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, os.path.join(os.path.dirname(__file__), 'erp_db.db'))
-
     new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
     with open('metadata.json', 'w') as f:
         json.dump(new_metadata, f, indent=4)

@@ -2,7 +2,11 @@ name: Update Latest Database
 
 on:
   workflow_dispatch:
-
+    inputs:
+      release_version:
+        type: string
+        description: Which release version to update the database for (type v1.0.6 for example)
+        default: "latest"
 jobs:
   Update-Database:
     runs-on: ubuntu-latest
@@ -24,7 +28,7 @@ jobs:
 
       - name: Upload new database asset
         run: |
-          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }}
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }}
 
       - name: Run Index Script
         env:
@@ -33,6 +37,6 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         run: |
           echo "Indexing database to TEST."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} False "latest" True
+          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} False ${{ github.event.inputs.release_version }} True
           echo "Indexing database to LIVE."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} False "latest" True
+          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} False ${{ github.event.inputs.release_version }} True

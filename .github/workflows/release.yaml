@@ -26,3 +26,6 @@ jobs:
         env:
           DB_PATH: ${{ secrets.DB_PATH }}
         run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.release.tag_name }}
+
+      - name: Update databases
+        run: python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.release.tag_name }}

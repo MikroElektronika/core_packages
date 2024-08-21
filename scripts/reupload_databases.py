@@ -2,7 +2,8 @@ import os, re, sys, \
        shutil, argparse, \
        sqlite3, json, \
        asyncio, aiohttp, \
-       subprocess, aiofiles
+       subprocess, aiofiles, \
+       requests
 from pathlib import Path
 
 ## Import utility modules
@@ -444,11 +445,13 @@ async def get_all_assets(session, token, repo, release_id):
 
     return assets
 
-async def upload_release_asset(session, token, repo, asset_path):
+async def upload_release_asset(session, token, repo, asset_path, release_version=None):
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
     release_url = f"https://api.github.com/repos/{repo}/releases/latest"
+    if len(release_version):
+        release_url = f"https://api.github.com/repos/{repo}/releases/tags/{release_version}"
     async with session.get(release_url, headers=headers) as response:
         response_data = await response.json()
         release_id = response_data['id']
@@ -478,14 +481,56 @@ async def upload_release_asset(session, token, repo, asset_path):
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
+# Gets latest release headers from repository
+def get_headers(api, token):
+    if api:
+        return {
+            'Authorization': f'token {token}'
+        }
+    else:
+        return {
+            'Authorization': f'Bearer {token}',
+            'Accept': 'application/octet-stream'
+        }
+
+# Function to fetch release details from GitHub
+def fetch_release_details(repo, token, release_version):
+    api_headers = get_headers(True, token)
+    url = f'https://api.github.com/repos/{repo}/releases'
+    response = requests.get(url, headers=api_headers)
+    response.raise_for_status()  # Raise an exception for HTTP errors
+    if "latest" == release_version:
+        return utility.get_latest_release(response.json())
+    else:
+        release_check = None
+        release_check = utility.get_specified_release(response.json(), release_version)
+        if release_check:
+            return release_check
+        else:
+            ## Always fallback to latest release
+            print("WARNING: Falling back to LATEST release.")
+            return utility.get_latest_release(response.json())
+
 ## Main runner
-async def main(token, repo):
+async def main(token, repo, doc_codegrip, doc_mikroprog, release_version=""):
     ## Step 1 - if links passed, download the database first
-    databaseNecto, databaseErp = downloadDb(
-        ## Always download database from latest release
-        'https://github.com/MikroElektronika/core_packages/releases/latest/download/database.7z',
-        False
-    )
+    if len(release_version):
+        release = fetch_release_details(repo, token, release_version)
+        for asset in release.get('assets', []):
+            if asset['name'] == 'database.7z':
+                break
+        databaseNecto, databaseErp = downloadDb(
+            ## Always download database from latest release
+            asset['browser_download_url'],
+            False
+        )
+    else:
+        ## Always fallback to latest release
+        databaseNecto, databaseErp = downloadDb(
+            ## Always download database from latest release
+            'https://github.com/MikroElektronika/core_packages/releases/latest/download/database.7z',
+            False
+        )
 
     ## Step 2 - add missing collumns to tables
     addCollumnsToTable(
@@ -514,7 +559,7 @@ async def main(token, repo):
 
     ## Step 7 - syncronize programmers for all devices - CODEGRIP first
     progDbgAsJson = getProgDbgAsJson(
-        f'https://docs.google.com/spreadsheets/d/{args.progDbgDocIdCodegrip}/export?format=csv',
+        f'https://docs.google.com/spreadsheets/d/{doc_codegrip}/export?format=csv',
         True
     )
     checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
@@ -524,7 +569,7 @@ async def main(token, repo):
 
     ## Step 8 - syncronize programmers for all devices - mikroProg next
     progDbgAsJson = getProgDbgAsJson(
-        f'https://docs.google.com/spreadsheets/d/{args.progDbgDocIdMikroProg}/export?format=csv',
+        f'https://docs.google.com/spreadsheets/d/{doc_mikroprog}/export?format=csv',
         True
     )
     checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
@@ -535,12 +580,12 @@ async def main(token, repo):
     ## Step 9 - update families
     update_families(databaseErp, allDevicesGithub)
 
-    ## Step 10 - re-upload over existing asset
+    ## Step 10 - re-upload over existing assets
     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), 'database.7z')
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, archive_path)
+        upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, databaseErp)
+        upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
@@ -549,11 +594,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
-    parser.add_argument('progDbgDocIdCodegrip', type=str, help='Spreadsheet table download link.')
-    parser.add_argument('progDbgDocIdMikroProg', type=str, help='Spreadsheet table download link.')
+    parser.add_argument('doc_codegrip', type=str, help='Spreadsheet table download link.')
+    parser.add_argument('doc_mikroprog', type=str, help='Spreadsheet table download link.')
+    parser.add_argument('specific_tag', type=str, help='Specific release tag for database update.', default="")
 
     ## Parse the arguments
     args = parser.parse_args()
 
     ## Run the main code
-    asyncio.run(main(args.token, args.repo))
+    asyncio.run(main(args.token, args.repo, args.doc_codegrip, args.doc_mikroprog, args.specific_tag))
