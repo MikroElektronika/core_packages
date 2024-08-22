@@ -513,7 +513,7 @@ def fetch_release_details(repo, token, release_version):
             return utility.get_latest_release(response.json())
 
 ## Main runner
-async def main(token, repo, doc_codegrip, doc_mikroprog, release_version=""):
+async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", release_version_sdk=""):
     ## Step 1 - if links passed, download the database first
     if len(release_version):
         release = fetch_release_details(repo, token, release_version)
@@ -581,7 +581,23 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version=""):
     ## Step 9 - update families
     update_families(databaseErp, allDevicesGithub)
 
-    ## Step 10 - re-upload over existing assets
+    ## Step 10 - Update database with mikroSDK settings
+    if release_version_sdk:
+        if "latest" == release_version_sdk:
+            utility.extract_archive_from_url(
+                'https://github.com/MikroElektronika/mikrosdk_v2/releases/latest/download/queries.7z',
+                os.path.join(os.path.dirname(__file__), 'tmp/queries'),
+                token
+            )
+        else:
+            utility.extract_archive_from_url(
+                f'https://github.com/MikroElektronika/mikrosdk_v2/releases/download/{release_version_sdk}/queries.7z'
+                os.path.join(os.path.dirname(__file__), 'tmp/queries'),
+                token
+            )
+    ## EOF Step 10
+
+    ## Step 11 - re-upload over existing assets
     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), 'database.7z')
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
@@ -598,6 +614,7 @@ if __name__ == "__main__":
     parser.add_argument('doc_codegrip', type=str, help='Spreadsheet table download link.')
     parser.add_argument('doc_mikroprog', type=str, help='Spreadsheet table download link.')
     parser.add_argument('specific_tag', type=str, help='Specific release tag for database update.', default="")
+    parser.add_argument('specific_tag_mikrosdk', type=str, help='Specific release tag from mikrosdk for database update.', default="")
 
     ## Parse the arguments
     args = parser.parse_args()
