@@ -7,6 +7,7 @@ on:
         type: string
         description: Which release version to update the database for (type v1.0.6 for example)
         default: "latest"
+
 jobs:
   Update-Database:
     runs-on: ubuntu-latest
@@ -28,7 +29,7 @@ jobs:
 
       - name: Upload new database asset
         run: |
-          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }}
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest"
 
       - name: Run Index Script
         env:
