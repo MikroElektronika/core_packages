@@ -1,4 +1,4 @@
-name: Update Latest Database
+name: Update Latest Database From mikroSDK
 
 on:
   repository_dispatch:
@@ -8,10 +8,18 @@ jobs:
   Update-Database-From-mikroSDK:
     runs-on: ubuntu-latest
     steps:
+      - name: Authorize Mikroe Actions App
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.MIKROE_ACTIONS }}
+          private-key: ${{ secrets.MIKROE_ACTIONS_KEY }}
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.client_payload.sha }}
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -29,19 +37,35 @@ jobs:
         id: mikrosdk_payload
         run: |
           tag_version=${{ github.event.client_payload.version }}
-          echo "Using mikroSDK version $version to update database."
+          echo "Using mikroSDK version $tag_version to update database."
 
-    #   - name: Upload new database asset
-    #     run: |
-    #       python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} ${{ steps.mikrosdk_payload.outputs.tag_version }}
+      - name: Upload new database asset
+        run: |
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} "latest" ${{ steps.mikrosdk_payload.outputs.tag_version }}
 
-    #   - name: Run Index Script
-    #     env:
-    #       ES_HOST: ${{ secrets.ES_HOST }}
-    #       ES_USER: ${{ secrets.ES_USER }}
-    #       ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-    #     run: |
-    #       echo "Indexing database to TEST."
-    #       python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} False ${{ github.event.inputs.release_version }} True
-    #       echo "Indexing database to LIVE."
-    #       python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} False ${{ github.event.inputs.release_version }} True
+      - name: Add GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Commit and Push Changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Updating with new CHANGELOG.md";
+            git add necto_db.db
+            git commit -m "Updated necto database with latest merged release."
+            git push
+          else
+            echo "No changes made to necto_db.db";
+          fi
+
+      - name: Run Index Script
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+        run: |
+          echo "Indexing database to TEST."
+          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} False ${{ github.event.inputs.release_version }} True
+          echo "Indexing database to LIVE."
+          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} False ${{ github.event.inputs.release_version }} True
