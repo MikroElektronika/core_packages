@@ -6,3 +6,4 @@ output
 __pycache__
 *.7z
 **/*/necto_db.db
+tmp
