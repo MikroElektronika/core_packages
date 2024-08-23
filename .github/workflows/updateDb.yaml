@@ -12,8 +12,17 @@ jobs:
   Update-Database:
     runs-on: ubuntu-latest
     steps:
+      - name: Authorize Mikroe Actions App
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.MIKROE_ACTIONS }}
+          private-key: ${{ secrets.MIKROE_ACTIONS_KEY }}
+
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -30,6 +39,22 @@ jobs:
       - name: Upload new database asset
         run: |
           python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest"
+
+      - name: Add GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Commit and Push Changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Updating with new CHANGELOG.md";
+            git add necto_db.db
+            git commit -m "Updated necto database with latest merged release."
+            git push
+          else
+            echo "No changes made to necto_db.db";
+          fi
 
       - name: Run Index Script
         env:
