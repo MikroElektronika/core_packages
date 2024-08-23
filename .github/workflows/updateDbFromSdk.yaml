@@ -1,4 +1,4 @@
-name: Update Latest Database
+name: Update Latest Database From mikroSDK
 
 on:
   repository_dispatch:
