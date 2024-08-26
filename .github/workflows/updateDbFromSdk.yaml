@@ -49,13 +49,15 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Updating with new CHANGELOG.md";
+          STATUS=$(git status --short "necto_db.db")
+          if [ -z "$STATUS" ]; then
+            echo "No changes made to necto_db.db";
+          else
+            echo "Updating with new necto_db.db";
+            echo "test"
             git add necto_db.db
             git commit -m "Updated necto database with latest merged release."
             git push
-          else
-            echo "No changes made to necto_db.db";
           fi
 
       - name: Run Index Script
