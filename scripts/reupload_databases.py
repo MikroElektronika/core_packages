@@ -833,7 +833,7 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
 ## EOF Main runner
 
 if __name__ == "__main__":
-# First, check for arguments passed
+    # First, check for arguments passed
     parser = argparse.ArgumentParser(description='')
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")

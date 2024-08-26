@@ -221,14 +221,25 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 print(f"{resp["result"]} {resp['_id']}")
 
 if __name__ == '__main__':
+    # First, check for arguments passed
+    def str2bool(v):
+        if isinstance(v, bool):
+            return v
+        if v.lower() in ('yes', 'true', 't', 'y', '1'):
+            return True
+        elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+            return False
+        else:
+            raise argparse.ArgumentTypeError('Boolean value expected.')
+
     # Get arguments
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("select_index", help="Provided index name")
-    parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=bool)
+    parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=str2bool)
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
-    parser.add_argument("update_database", help="If true will update database.7z", type=bool)
+    parser.add_argument("update_database", help="If true will update database.7z", type=str2bool)
     args = parser.parse_args()
 
     # Elasticsearch instance used for indexing
