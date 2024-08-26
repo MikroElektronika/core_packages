@@ -228,7 +228,7 @@ if __name__ == '__main__':
     parser.add_argument("select_index", help="Provided index name")
     parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=bool)
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
-    parser.add_argument("update_database", help="If true will update database.7z", type=bool, default=False)
+    parser.add_argument("update_database", help="If true will update database.7z", type=bool)
     args = parser.parse_args()
 
     # Elasticsearch instance used for indexing
