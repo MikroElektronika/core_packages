@@ -68,6 +68,6 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         run: |
           echo "Indexing database to TEST."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} "False" "latest" "True"
+          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} "True" "latest" "True"
           echo "Indexing database to LIVE."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} "False" "latest" "True"
+          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} "True" "latest" "True"
