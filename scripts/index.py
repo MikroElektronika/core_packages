@@ -192,7 +192,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'updated_at': asset['updated_at'],
                     'category': metadata_item['category'],
                     'download_link': asset['url'],
-                    'package_changed' : update_package,
+                    'package_changed' : update_package or force,
                     'install_location' : metadata_item['install_location']
                 }
                 if metadata_item['type'] == 'mcu':
