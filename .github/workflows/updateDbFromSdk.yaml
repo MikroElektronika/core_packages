@@ -36,7 +36,7 @@ jobs:
       - name: Extract payload version
         id: mikrosdk_payload
         run: |
-          echo "::set-output name=tag_version::${{ github.event.client_payload.version }}"
+          echo "tag_version=${{ github.event.client_payload.version }}" >> $GITHUB_OUTPUT
 
       - name: Upload new database asset
         run: |
