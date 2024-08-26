@@ -596,13 +596,15 @@ def updateBoardsFromSdk(dbs, queries):
 
                     if 'SDKToBoard' in eachTable:
                         sdkVersions = read_data_from_db(eachDb, 'SELECT DISTINCT version FROM SDKs WHERE name IS "mikroSDK"')
-                        filtered_versions = filter_versions(list(v[0] for v in sdkVersions[enums.dbSync.ELEMENTS.value]))
+                        versions = filter_versions(list(v[0] for v in sdkVersions[enums.dbSync.ELEMENTS.value]))
+                        threshold_version = version.parse(eachTable['SDKToBoard']['sdk_uid'][:-1])
+                        filtered_versions = [f'mikrosdk_v{v.replace('.','')}' for v in versions if version.parse(v) >= threshold_version]
                         for eachVersion in filtered_versions:
                             insertIntoTable(
                                 eachDb,
                                 'SDKToBoard',
                                 [
-                                    f'mikrosdk_v{eachVersion[0].replace('.','')}',
+                                    eachVersion,
                                     linkerTables['board_uid']
                                 ],
                                 'sdk_uid, board_uid'
@@ -626,13 +628,24 @@ def updateBoardsFromSdk(dbs, queries):
                                         'board_uid, device_uid'
                                     )
                         else:
-                            for eachDevice in eachTable['BoardToDevice']['device_uid']:
+                            if list == type(eachTable['BoardToDevice']['device_uid']):
+                                for eachDevice in eachTable['BoardToDevice']['device_uid']:
+                                    insertIntoTable(
+                                        eachDb,
+                                        'BoardToDevice',
+                                        [
+                                            linkerTables['board_uid'],
+                                            eachDevice
+                                        ],
+                                        'board_uid, device_uid'
+                                    )
+                            else:
                                 insertIntoTable(
                                     eachDb,
                                     'BoardToDevice',
                                     [
                                         linkerTables['board_uid'],
-                                        eachDevice
+                                        eachTable['BoardToDevice']['device_uid']
                                     ],
                                     'board_uid, device_uid'
                                 )
@@ -677,7 +690,7 @@ def updateDevicesFromSdk(dbs, queries):
                                 sdkVersions = read_data_from_db(eachDb, 'SELECT DISTINCT version FROM SDKs WHERE name IS "mikroSDK"')
                                 versions = filter_versions(list(v[0] for v in sdkVersions[enums.dbSync.ELEMENTS.value]))
                                 threshold_version = version.parse(eachKey[eachTableKey][collumns[1]][:-1])
-                                filtered_versions = [f'mikrosdk_v{v.replace('.','')}' for v in versions if version.parse(v) > threshold_version]
+                                filtered_versions = [f'mikrosdk_v{v.replace('.','')}' for v in versions if version.parse(v) >= threshold_version]
                                 values.append(filtered_versions)
                             else:
                                 values.append(eachKey[eachTableKey][collumns[1]])
