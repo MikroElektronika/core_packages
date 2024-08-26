@@ -766,8 +766,10 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
                 f'https://github.com/MikroElektronika/mikrosdk_v2/releases/{ghPath}/queries.7z',
                 sdkQueriesPath, token
             )
-        updateBoardsFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'boards')) ## If any new boards were added
-        updateDevicesFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'cards')) ## If any new mcu cards were added
+        if os.path.exists(os.path.join(sdkQueriesPath, 'boards')):
+            updateBoardsFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'boards')) ## If any new boards were added
+        if os.path.exists(os.path.join(sdkQueriesPath, 'cards')):
+            updateDevicesFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'cards')) ## If any new mcu cards were added
     ## EOF Step 3
 
     ## Step 4 - add missing collumns to tables
