@@ -36,8 +36,7 @@ jobs:
       - name: Extract payload version
         id: mikrosdk_payload
         run: |
-          tag_version=${{ github.event.client_payload.version }}
-          echo "Using mikroSDK version $tag_version to update database."
+          echo "tag_version=${{ github.event.client_payload.version }}"
 
       - name: Upload new database asset
         run: |
