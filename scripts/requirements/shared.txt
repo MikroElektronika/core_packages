@@ -3,3 +3,4 @@ aiofiles
 requests
 py7zr
 elasticsearch==7.13.4
+numpy<2
