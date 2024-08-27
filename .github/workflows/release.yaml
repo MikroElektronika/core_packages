@@ -25,6 +25,9 @@ jobs:
       - name: Run Release Script
         env:
           DB_PATH: ${{ secrets.DB_PATH }}
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.release.tag_name }}
 
       - name: Update databases
