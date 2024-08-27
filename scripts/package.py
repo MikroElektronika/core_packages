@@ -3,9 +3,11 @@ import shutil, requests, json
 import argparse, aiohttp, asyncio
 import aiofiles, hashlib
 import sqlite3, inspect
+import time
 from clocks import GenerateClocks
 from schemas import GenerateSchemas
 import pandas as pd
+from elasticsearch import Elasticsearch
 
 import support as support
 
@@ -722,6 +724,48 @@ def get_version_based_on_hash(package_name, version, hash_value, current_metadat
     # If the package is not found or the hash doesn't match, return the provided version
     return version
 
+def fetch_elasticsearch_data(index_name):
+    # Elasticsearch instance used for indexing
+    num_of_retries = 1
+    while True:
+        print(f"Trying to connect to ES. Connection retry:  {num_of_retries}")
+        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
+        if es.ping():
+            break
+        # Wait for 30 seconds and try again if connection fails
+        if 10 == num_of_retries:
+            # Exit if it fails 10 times, something is wrong with the server
+            raise ValueError("Connection to ES failed!")
+        num_of_retries += 1
+
+        time.sleep(30)
+
+    # Search query to use
+    query_search = {
+        "size": 5000,
+        "query": {
+            "match_all": {}
+        }
+    }
+
+    # Search the base with provided query
+    num_of_retries = 1
+    while num_of_retries <= 10:
+        try:
+            response = es.search(index=index_name, body=query_search)
+            if not response['timed_out']:
+                break
+        except:
+            print("Executing search query - retry number %i" % num_of_retries)
+        num_of_retries += 1
+
+    for eachHit in response['hits']['hits']:
+        if eachHit['_id'] == 'database':
+            if eachHit['_source']['name'] == 'database':
+                return eachHit['_source']['version']
+
+    return None
+
 def update_metadata(current_metadata, new_files, version):
     """ Update the metadata with the new files """
     updated_metadata = []
@@ -732,10 +776,17 @@ def update_metadata(current_metadata, new_files, version):
     for new_file in new_files:
         name = new_file['name']
         if name in current_files_dict:
-            if new_file['hash'] != current_files_dict[name]['hash']:
-                # Increment version
+            if 'database' == name:
                 print(f"Update version to: {version}")
-                new_file['version'] = version
+                db_version = fetch_elasticsearch_data(os.environ['ES_INDEX_LIVE'])
+                if not db_version:
+                    db_version = version
+                new_file['version'] = db_version
+            else:
+                if new_file['hash'] != current_files_dict[name]['hash']:
+                    # Increment version
+                    print(f"Update version to: {version}")
+                    new_file['version'] = version
         else:
             # If it's a new file, set the initial version
             new_file['version'] = "1.0.0"

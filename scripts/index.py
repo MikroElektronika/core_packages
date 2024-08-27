@@ -94,10 +94,13 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
         num_of_retries += 1
 
     checkDict = {}
+    db_version = None
     for eachHit in response['hits']['hits']:
         if not 'name' in eachHit['_source']:
             continue ## TODO - Check newly created bare metal package (is it created correctly)
         name = eachHit['_source']['name']
+        if name == 'database':
+            db_version = eachHit['_source']['version']
         type = eachHit['_type']
         id = eachHit['_id']
         if eachHit['_source']['type'] in typeCheck:
@@ -114,8 +117,10 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
                 print("Removed %s/%s" % (eachId[1], eachId[0]))
                 response = es.delete(index=index_name, id=eachId[0], doc_type=eachId[1])
 
+    return db_version
+
 # Function to index release details into Elasticsearch
-def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False):
+def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None):
     # Iterate over each asset in the release and previous release
     metadata_content = []
     for each_release_details in release_details:
@@ -210,6 +215,10 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                         }
                     )
 
+        # Update the database version
+        if ('database' == name_without_extension):
+            doc['version'] = db_version[:-1] + str(int(db_version.split('.')[-1]) + 1)
+
         # Index the document
         if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force):
             if update_database:
@@ -258,7 +267,7 @@ if __name__ == '__main__':
         time.sleep(30)
 
     # Remove any previous multiple indexes, if any
-    remove_duplicate_indexed_files(
+    db_version = remove_duplicate_indexed_files(
         es, args.select_index
     )
 
@@ -267,5 +276,6 @@ if __name__ == '__main__':
         es, args.select_index,
         fetch_release_details(args.repo, args.token, args.release_version),
         args.token, args.force_index,
-        args.update_database
+        args.update_database,
+        db_version
     )
