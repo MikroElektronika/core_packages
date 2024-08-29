@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS 'SelectedBoard' (
 	`necto_config`	VARCHAR,
 	`display`	VARCHAR,
 	`package_uid`	VARCHAR,
+	`installer_package`	Text,
 	FOREIGN KEY(`soldered_device`) REFERENCES `Devices`(`uid`) ON DELETE SET NULL ON UPDATE SET NULL,
 	FOREIGN KEY(`default_device`) REFERENCES `Devices`(`uid`) ON DELETE SET NULL ON UPDATE SET NULL,
 	PRIMARY KEY(`uid`),
