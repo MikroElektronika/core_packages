@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS 'SelectedDevice' (
 	`linker_flags`	Text,
 	`tft_socket`	BOOLEAN,
 	`sdk_support`	BOOLEAN,
+	`installer_package`	Text,
 	PRIMARY KEY(`uid`),
 	CONSTRAINT `unique_uid` UNIQUE(`uid`)
 )

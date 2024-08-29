@@ -85,12 +85,15 @@ def deleteFromTable(db, sql_query):
         if sqliteConnection:
             sqliteConnection.close()
 
-def updateTableCollumn(db, table, collumn, setNewValue, collumnIf, collumnIfValue):
+def updateTableCollumn(db, table, collumn, setNewValue, collumnIf, collumnIfValue, customQuery=None):
     import sqlite3
 
     conn = sqlite3.connect(db)
     cur = conn.cursor()
-    cur.execute(f'UPDATE {table} SET {collumn} = "{setNewValue}" WHERE {collumnIf} = "{collumnIfValue}"')
+    if customQuery:
+        cur.execute(customQuery)
+    else:
+        cur.execute(f'UPDATE {table} SET {collumn} = "{setNewValue}" WHERE {collumnIf} = "{collumnIfValue}"')
     conn.commit()
     conn.close()
 
@@ -758,6 +761,7 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
     ## Step 3 - Update database with mikroSDK settings
     if release_version_sdk:
         sdkQueriesPath = os.path.join(os.path.dirname(__file__), 'tmp/queries')
+        sdkMetadataPath = os.path.join(os.path.dirname(__file__), 'tmp/metadata.json')
         ghPath = f'download/{release_version_sdk}'
         if "latest" == release_version_sdk:
             ghPath = 'latest/download'
@@ -766,10 +770,26 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
                 f'https://github.com/MikroElektronika/mikrosdk_v2/releases/{ghPath}/queries.7z',
                 sdkQueriesPath, token
             )
+        if not os.path.isfile(sdkMetadataPath):
+            utility.download_file_from_link(
+                f'https://github.com/MikroElektronika/mikrosdk_v2/releases/{ghPath}/metadata.json',
+                sdkMetadataPath, token
+            )
         if os.path.exists(os.path.join(sdkQueriesPath, 'boards')):
             updateBoardsFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'boards')) ## If any new boards were added
         if os.path.exists(os.path.join(sdkQueriesPath, 'cards')):
             updateDevicesFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'cards')) ## If any new mcu cards were added
+
+        ## This part adds package dependencies for each board present in mikroSDK
+        jsonFile = json.load(open(sdkMetadataPath, 'r'))['packages']
+        for eachDb in [databaseErp, databaseNecto]:
+            addCollumnsToTable(
+                eachDb, ['installer_package'], 'Boards', ['Text'], ['NoDefault']
+            )
+            for eachBoard in jsonFile:
+                updateTableCollumn(
+                    eachDb, None, None, None, None, None, jsonFile[eachBoard]['db_query']
+                )
     ## EOF Step 3
 
     ## Step 4 - add missing collumns to tables
