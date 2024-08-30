@@ -3,7 +3,7 @@ import os, re, sys, \
        sqlite3, json, \
        asyncio, aiohttp, \
        subprocess, aiofiles, \
-       requests
+       requests, hashlib
 from pathlib import Path
 from packaging import version
 
@@ -719,6 +719,56 @@ def updateDevicesFromSdk(dbs, queries):
 
     return
 
+def hash_file(filename):
+    """Generate MD5 hash of a file."""
+    hash_md5 = hashlib.md5()
+    with open(filename, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
+def hash_directory_contents(directory):
+    """Generate a hash for the contents of a directory."""
+    all_hashes = []
+    for root, dirs, files in os.walk(directory):
+        dirs.sort()  # Ensure directory traversal is in a consistent order
+        files.sort()  # Ensure file traversal is in a consistent order
+        for filename in files:
+            file_path = os.path.join(root, filename)
+            file_hash = hash_file(file_path)
+            all_hashes.append(file_hash)
+
+    # Combine all file hashes into one hash
+    combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
+    return combined_hash
+
+def compare_hashes(dir1, dir2):
+    hash_dir1 = hash_directory_contents(dir1)
+    hash_dir2 = hash_directory_contents(dir2)
+    return hash_dir1 == hash_dir2
+
+def copy_folder_contents(source_folder, destination_folder):
+    # Ensure the source folder exists
+    if not os.path.exists(source_folder):
+        print(f"The source folder '{source_folder}' does not exist.")
+        return
+
+    # Ensure the destination folder exists, create it if it doesn't
+    if not os.path.exists(destination_folder):
+        os.makedirs(destination_folder)
+
+    # Copy the contents of the source folder to the destination folder
+    for item in os.listdir(source_folder):
+        source_path = os.path.join(source_folder, item)
+        destination_path = os.path.join(destination_folder, item)
+
+        if os.path.isdir(source_path):
+            shutil.copytree(source_path, destination_path)
+        else:
+            shutil.copy2(source_path, destination_path)
+
+    print(f"Contents of '{source_folder}' have been copied to '{destination_folder}'.")
+
 ## Main runner
 async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", release_version_sdk=""):
     ## Step 1 - download the database first
@@ -817,7 +867,7 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
     ## Step 8 - clear any empty rows from BoardToDevice
     clearDevicePackages(databaseErp)
 
-    ## Step 9 - syncronize programmers for all devices - CODEGRIP first
+    ## Step 9 - synchronize programmers for all devices - CODEGRIP first
     progDbgAsJson = getProgDbgAsJson(
         f'https://docs.google.com/spreadsheets/d/{doc_codegrip}/export?format=csv',
         True
@@ -840,7 +890,18 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
     ## Step 11 - update families
     update_families(databaseErp, allDevicesGithub)
 
-    ## Step 12 - re-upload over existing assets
+    ## Step 12 - if queries are different, add them to new file
+    if not compare_hashes(
+        os.path.join(os.path.dirname(__file__), 'databases/queries'),
+        os.path.join(os.path.dirname(os.getcwd()), 'utils/databases/queries')
+    ):
+        ## Hashes are different, so copy new files here
+        copy_folder_contents(
+            os.path.join(os.getcwd(), 'utils/databases/queries'),
+            os.path.join(os.path.dirname(__file__), 'databases/queries')
+        )
+
+    ## Step 13 - re-upload over existing assets
     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), 'database.7z')
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
