@@ -17,6 +17,10 @@ on:
         type: boolean
         default: false
         description: Force index packages (even if hash is the same, index with new package)
+      set_as_latest:
+        type: boolean
+        description: Promote selected version to latest? (Only applied if index is set to "live")
+        default: false
 
 jobs:
   index:
@@ -44,8 +48,11 @@ jobs:
         run: |
           if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
             echo "Indexing to Live."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False ${{ github.event.inputs.set_as_latest }}
           else
             echo "Indexing to Test."
+            if [[ ${{ github.event.inputs.set_as_latest }} ]]; then
+              echo "Promote to latest requested, but ignored. Only available for LIVE updates."
+            fi
             python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False
           fi

@@ -1,6 +1,7 @@
 import os, re, time, argparse, requests
 from elasticsearch import Elasticsearch
 from pathlib import Path
+from datetime import datetime, timezone
 
 import support as support
 
@@ -135,6 +136,11 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
     support.extract_archive_from_url(docs_asset['url'], docs_path, token)
     mcu_check_list = support.fetch_package_mcus(docs_path)
 
+    # Get the current time in UTC
+    current_time = datetime.now(timezone.utc).replace(microsecond=0)
+    # If you specifically want the 'Z' at the end instead of the offset
+    published_at = current_time.isoformat().replace('+00:00', 'Z')
+
     for asset in release_details[0].get('assets', []):
         # Do not index metadata or docs
         if asset['name'] == 'metadata.json' or asset['name'] == 'docs.7z':
@@ -195,6 +201,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'version' : metadata_item['version'],
                     'created_at': asset['created_at'],
                     'updated_at': asset['updated_at'],
+                    'published_at': published_at,
                     'category': metadata_item['category'],
                     'download_link': asset['url'],
                     'package_changed' : update_package or force,
@@ -229,6 +236,72 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
                 print(f"{resp["result"]} {resp['_id']}")
 
+def is_release_latest(repo, token, release_version):
+    api_headers = get_headers(True, token)
+    url = f'https://api.github.com/repos/{repo}/releases'
+    response = requests.get(url, headers=api_headers)
+    response.raise_for_status()  # Raise an exception for HTTP errors
+    latest_release = support.get_latest_release(response.json())
+    if 'latest' == release_version:
+        return None, True
+    else:
+        return response.json(), release_version == latest_release['tag_name']
+
+def promote_to_latest(releases, repo, token, release_version):
+    # Headers for authentication
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github+json"
+    }
+
+    # Step 1: Update the prerelease version and set it as not prerelease
+    selected_release = support.get_specified_release(releases, release_version=release_version)
+    if selected_release['prerelease']:
+        data_selected_release = {
+            "tag_name": selected_release['tag_name'],
+            "name": selected_release['name'],
+            "body": selected_release['body'],
+            "draft": False,
+            "prerelease": False
+        }
+
+        response_1 = requests.patch(
+            f"https://api.github.com/repos/{repo}/releases/{selected_release['id']}",
+            headers=headers,
+            json=data_selected_release
+        )
+
+    if not response_1.ok:
+        raise Exception(f"Failed to update release {selected_release['name']}: {response_1.status_code} - {response_1.text}")
+
+    # Step 2: Set the current latest release to prerelease
+    latest_release = support.get_latest_release(releases)
+    data_latest_release = {
+        "prerelease": True
+    }
+
+    response_2 = requests.patch(
+        f"https://api.github.com/repos/{repo}/releases/{latest_release['id']}",
+        headers=headers,
+        json=data_latest_release
+    )
+
+    if not response_2.ok:
+        raise Exception(f"Failed to demote release {selected_release['name']}: {response_2.status_code} - {response_2.text}")
+
+    # Step 3: Change the state of the current latest release back to not prerelease
+    data_latest_release['prerelease'] = False
+    response_3 = requests.patch(
+        f"https://api.github.com/repos/{repo}/releases/{latest_release['id']}",
+        headers=headers,
+        json=data_latest_release
+    )
+
+    if not response_3.ok:
+        raise Exception(f"Failed to revert status for release {selected_release['name']}: {response_3.status_code} - {response_3.text}")
+
+    return
+
 if __name__ == '__main__':
     # First, check for arguments passed
     def str2bool(v):
@@ -249,6 +322,7 @@ if __name__ == '__main__':
     parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=str2bool)
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
     parser.add_argument("update_database", help="If true will update database.7z", type=str2bool)
+    parser.add_argument("promote_release_to_latest", help="Sets current release as latest", type=str2bool, default=False)
     args = parser.parse_args()
 
     # Elasticsearch instance used for indexing
@@ -279,3 +353,10 @@ if __name__ == '__main__':
         args.update_database,
         db_version
     )
+
+    # And then promote to latest if requested
+    if (args.promote_release_to_latest):
+        # If current release isn't latest already
+        releases, is_latest = is_release_latest(args.repo, args.token, args.release_version)
+        if (not is_latest):
+            promote_to_latest(releases, args.repo, args.token, args.release_version)
