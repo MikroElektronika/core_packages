@@ -769,6 +769,22 @@ def copy_folder_contents(source_folder, destination_folder):
 
     print(f"Contents of '{source_folder}' have been copied to '{destination_folder}'.")
 
+def fix_icon_names(db, tableName):
+    numElements, elements = read_data_from_db(db, f'SELECT * FROM {tableName} WHERE icon NOT REGEXP "^images/boards/board-.+|images/boards/board.png$|images/displays/no_display.png$"')
+    if numElements:
+        for eachElement in elements:
+            newString = eachElement[2].replace(f"boards/", "boards/board-")
+            if 'displays' in eachElement[2]:
+                newString = eachElement[2].replace(f"displays/", "displays/display-")
+            updateTableCollumn(
+                db,
+                tableName,
+                "icon",
+                newString,
+                "uid",
+                eachElement[0]
+            )
+
 ## Main runner
 async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", release_version_sdk=""):
     ## Step 1 - download the database first
@@ -890,7 +906,12 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
     ## Step 11 - update families
     update_families(databaseErp, allDevicesGithub)
 
-    ## Step 12 - if queries are different, add them to new file
+    ## Step 12 - update the icon names
+    for eachDb in [databaseErp, databaseNecto]:
+        fix_icon_names(eachDb, "Boards")
+        fix_icon_names(eachDb, "Displays")
+
+    ## Step 13 - if queries are different, add them to new file
     if not compare_hashes(
         os.path.join(os.path.dirname(__file__), 'databases/queries'),
         os.path.join(os.path.dirname(os.getcwd()), 'utils/databases/queries')
@@ -901,14 +922,14 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
             os.path.join(os.path.dirname(__file__), 'databases/queries')
         )
 
-    ## Step 13 - re-upload over existing assets
+    ## Step 14 - re-upload over existing assets
     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), 'database.7z')
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
 
-    ## Step 13 - overwrite the existing necto_db.db in root with newly generated one
+    ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), 'necto_db.db'))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
