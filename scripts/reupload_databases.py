@@ -773,24 +773,17 @@ def fix_icon_names(db, tableName):
     numElements, elements = read_data_from_db(db, f'SELECT * FROM {tableName} WHERE icon NOT REGEXP "^images/boards/board-.+|images/boards/board.png$|images/displays/no_display.png$"')
     if numElements:
         for eachElement in elements:
+            newString = eachElement[2].replace(f"boards/", "boards/board-")
             if 'displays' in eachElement[2]:
-                updateTableCollumn(
-                    db,
-                    tableName,
-                    "icon",
-                    eachElement[2].replace(f"displays/", "displays/display-"),
-                    "uid",
-                    eachElement[0]
-                )
-            else:
-                updateTableCollumn(
-                    db,
-                    tableName,
-                    "icon",
-                    eachElement[2].replace(f"boards/", "boards/board-"),
-                    "uid",
-                    eachElement[0]
-                )
+                newString = eachElement[2].replace(f"displays/", "displays/display-")
+            updateTableCollumn(
+                db,
+                tableName,
+                "icon",
+                newString,
+                "uid",
+                eachElement[0]
+            )
 
 ## Main runner
 async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", release_version_sdk=""):
