@@ -770,7 +770,7 @@ def copy_folder_contents(source_folder, destination_folder):
     print(f"Contents of '{source_folder}' have been copied to '{destination_folder}'.")
 
 def fix_icon_names(db, tableName):
-    numElements, elements = read_data_from_db(db, f'SELECT * FROM {tableName} WHERE icon NOT REGEXP "^images/boards/board-.+|images/boards/board.png$|images/displays/no_display.png$"')
+    numElements, elements = read_data_from_db(db, f'SELECT * FROM {tableName} WHERE icon NOT REGEXP "^images/boards/board-.+|images/boards/board.png$|images/displays/no_display.png$|images/displays/display-.+"')
     if numElements:
         for eachElement in elements:
             newString = eachElement[2].replace(f"boards/", "boards/board-")
