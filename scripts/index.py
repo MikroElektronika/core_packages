@@ -120,6 +120,24 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
 
     return db_version
 
+def increase_version(version, part="patch"):
+    # Split the version string into major, minor, and patch
+    major, minor, patch = map(int, version.split('.'))
+
+    # Increase the selected part
+    if part == "major":
+        major += 1
+        minor = 0  # Reset minor and patch when major increases
+        patch = 0
+    elif part == "minor":
+        minor += 1
+        patch = 0  # Reset patch when minor increases
+    elif part == "patch":
+        patch += 1
+
+    # Return the new version string
+    return f"{major}.{minor}.{patch}"
+
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None):
     # Iterate over each asset in the release and previous release
@@ -149,6 +167,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
         update_package = True
         name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
 
+        doc = None
         if name_without_extension == "clocks":
             doc = {
                 'name': "clocks",
@@ -192,8 +211,18 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 else:
                     update_package = True
 
+                package_name = name_without_extension
+                if 'database' in name_without_extension:
+                    package_name = 'database'
+                    if ('dev' in name_without_extension) and ('test' in index_name):
+                       print("Database test version.")
+                    elif ('dev' not in name_without_extension) and ('live' in index_name):
+                       print("Database live version.")
+                    else:
+                        continue
+
                 doc = {
-                    'name': name_without_extension,
+                    'name': package_name,
                     'display_name' : metadata_item['display_name'],
                     'author' : "MIKROE",
                     'hidden' : metadata_item['hidden'],
@@ -223,18 +252,20 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     )
 
         # Update the database version
-        if ('database' == name_without_extension):
-            doc['version'] = db_version[:-1] + str(int(db_version.split('.')[-1]) + 1)
+        if ('database' == package_name):
+            if doc:
+                doc['version'] = increase_version(db_version, part="patch")
 
         # Index the document
-        if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force):
-            if update_database:
-                if ('database' == name_without_extension):
+        if doc:
+            if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force):
+                if update_database:
+                    if ('database' == package_name):
+                        resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
+                        print(f"{resp["result"]} {resp['_id']}")
+                else:
                     resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
                     print(f"{resp["result"]} {resp['_id']}")
-            else:
-                resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
-                print(f"{resp["result"]} {resp['_id']}")
 
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)

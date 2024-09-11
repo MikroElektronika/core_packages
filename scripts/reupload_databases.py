@@ -118,18 +118,19 @@ def get_highest_and_second_highest(versions):
 
 ## Download databases or fetch from disk
 def downloadDb(downloadLink, overwrite=True):
-    dbPath = None
+    dbPath1 = None
     dbPath2 = None
     if 'http' in downloadLink:
         if '.7z' in downloadLink:
             dbPath1 = os.path.join(os.path.dirname(__file__), "databases/necto_db.db")
-            dbPath2 = os.path.join(os.path.dirname(__file__), "erp_db.db")
             if overwrite or not os.path.isfile(dbPath1):
                 utility.extract_archive_from_url(
                     downloadLink, os.path.join(os.path.dirname(__file__), "databases")
                 )
-            if overwrite or not os.path.isfile(dbPath2):
-                shutil.copyfile(dbPath1, dbPath2)
+            if 'database_dev' not in downloadLink:
+                dbPath2 = os.path.join(os.path.dirname(__file__), "erp_db.db")
+                if overwrite or not os.path.isfile(dbPath2) and ():
+                    shutil.copyfile(dbPath1, dbPath2)
     else:
         dbPath1 = downloadLink ## Assume it is a local literal path
 
@@ -556,102 +557,103 @@ def updateBoardsFromSdk(dbs, queries):
         currentBoardFiles = os.listdir(currentBoardDir)
 
         for eachDb in dbs:
-            if 'Boards.json' in currentBoardFiles:
-                with open(os.path.join(currentBoardDir, 'Boards.json'), 'r') as file:
-                    board = json.load(file)
-                file.close()
-                values = []
-                collumns = []
-                for eachKey in board.keys():
-                    collumns.append(eachKey)
-                    values.append(board[eachKey])
-                insertIntoTable(
-                    eachDb,
-                    'Boards',
-                    values,
-                    ','.join(collumns)
-                )
+            if eachDb:
+                if 'Boards.json' in currentBoardFiles:
+                    with open(os.path.join(currentBoardDir, 'Boards.json'), 'r') as file:
+                        board = json.load(file)
+                    file.close()
+                    values = []
+                    collumns = []
+                    for eachKey in board.keys():
+                        collumns.append(eachKey)
+                        values.append(board[eachKey])
+                    insertIntoTable(
+                        eachDb,
+                        'Boards',
+                        values,
+                        ','.join(collumns)
+                    )
 
-            if 'LinkerTables.json' in currentBoardFiles:
-                with open(os.path.join(currentBoardDir, 'LinkerTables.json'), 'r') as file:
-                    linkerTables = json.load(file)
-                file.close()
-                for eachTable in linkerTables['tables']:
-                    if 'BoardToSocket' in eachTable:
-                        for eachSocket in eachTable['BoardToSocket']['socket_uid']:
-                            checkSocket = read_data_from_db(eachDb, f'SELECT uid FROM Sockets WHERE uid IS "{eachSocket}"')
-                            if not checkSocket[enums.dbSync.COUNT.value]:
-                                insertIntoTable(
-                                    eachDb,
-                                    'Sockets',
-                                    eachSocket,
-                                    'uid'
-                                )
-                            insertIntoTable(
-                                eachDb,
-                                'BoardToSocket',
-                                [
-                                    linkerTables['board_uid'],
-                                    eachSocket
-                                ],
-                                'board_uid, socket_uid'
-                            )
-
-                    if 'SDKToBoard' in eachTable:
-                        sdkVersions = read_data_from_db(eachDb, 'SELECT DISTINCT version FROM SDKs WHERE name IS "mikroSDK"')
-                        versions = filter_versions(list(v[0] for v in sdkVersions[enums.dbSync.ELEMENTS.value]))
-                        threshold_version = version.parse(eachTable['SDKToBoard']['sdk_uid'][:-1])
-                        filtered_versions = [f'mikrosdk_v{v.replace('.','')}' for v in versions if version.parse(v) >= threshold_version]
-                        for eachVersion in filtered_versions:
-                            insertIntoTable(
-                                eachDb,
-                                'SDKToBoard',
-                                [
-                                    eachVersion,
-                                    linkerTables['board_uid']
-                                ],
-                                'sdk_uid, board_uid'
-                            )
-
-                    if 'BoardToDevice' in eachTable:
-                        if 'regexes' in eachTable['BoardToDevice']['device_uid']:
-                            formedRegex = formRegexQuery('uid', eachTable['BoardToDevice']['device_uid']['regexes'])
-                            currentDeviceUids = read_data_from_db(
-                                eachDb, f'SELECT uid FROM Devices WHERE {formedRegex}'
-                            )
-                            if currentDeviceUids[enums.dbSync.COUNT.value]:
-                                for eachDeviceUid in currentDeviceUids[enums.dbSync.ELEMENTS.value]:
+                if 'LinkerTables.json' in currentBoardFiles:
+                    with open(os.path.join(currentBoardDir, 'LinkerTables.json'), 'r') as file:
+                        linkerTables = json.load(file)
+                    file.close()
+                    for eachTable in linkerTables['tables']:
+                        if 'BoardToSocket' in eachTable:
+                            for eachSocket in eachTable['BoardToSocket']['socket_uid']:
+                                checkSocket = read_data_from_db(eachDb, f'SELECT uid FROM Sockets WHERE uid IS "{eachSocket}"')
+                                if not checkSocket[enums.dbSync.COUNT.value]:
                                     insertIntoTable(
                                         eachDb,
-                                        'BoardToDevice',
-                                        [
-                                            linkerTables['board_uid'],
-                                            eachDeviceUid[0]
-                                        ],
-                                        'board_uid, device_uid'
+                                        'Sockets',
+                                        eachSocket,
+                                        'uid'
                                     )
-                        else:
-                            if list == type(eachTable['BoardToDevice']['device_uid']):
-                                for eachDevice in eachTable['BoardToDevice']['device_uid']:
-                                    insertIntoTable(
-                                        eachDb,
-                                        'BoardToDevice',
-                                        [
-                                            linkerTables['board_uid'],
-                                            eachDevice
-                                        ],
-                                        'board_uid, device_uid'
-                                    )
-                            else:
                                 insertIntoTable(
                                     eachDb,
-                                    'BoardToDevice',
+                                    'BoardToSocket',
                                     [
                                         linkerTables['board_uid'],
-                                        eachTable['BoardToDevice']['device_uid']
+                                        eachSocket
                                     ],
-                                    'board_uid, device_uid'
+                                    'board_uid, socket_uid'
                                 )
+
+                        if 'SDKToBoard' in eachTable:
+                            sdkVersions = read_data_from_db(eachDb, 'SELECT DISTINCT version FROM SDKs WHERE name IS "mikroSDK"')
+                            versions = filter_versions(list(v[0] for v in sdkVersions[enums.dbSync.ELEMENTS.value]))
+                            threshold_version = version.parse(eachTable['SDKToBoard']['sdk_uid'][:-1])
+                            filtered_versions = [f'mikrosdk_v{v.replace('.','')}' for v in versions if version.parse(v) >= threshold_version]
+                            for eachVersion in filtered_versions:
+                                insertIntoTable(
+                                    eachDb,
+                                    'SDKToBoard',
+                                    [
+                                        eachVersion,
+                                        linkerTables['board_uid']
+                                    ],
+                                    'sdk_uid, board_uid'
+                                )
+
+                        if 'BoardToDevice' in eachTable:
+                            if 'regexes' in eachTable['BoardToDevice']['device_uid']:
+                                formedRegex = formRegexQuery('uid', eachTable['BoardToDevice']['device_uid']['regexes'])
+                                currentDeviceUids = read_data_from_db(
+                                    eachDb, f'SELECT uid FROM Devices WHERE {formedRegex}'
+                                )
+                                if currentDeviceUids[enums.dbSync.COUNT.value]:
+                                    for eachDeviceUid in currentDeviceUids[enums.dbSync.ELEMENTS.value]:
+                                        insertIntoTable(
+                                            eachDb,
+                                            'BoardToDevice',
+                                            [
+                                                linkerTables['board_uid'],
+                                                eachDeviceUid[0]
+                                            ],
+                                            'board_uid, device_uid'
+                                        )
+                            else:
+                                if list == type(eachTable['BoardToDevice']['device_uid']):
+                                    for eachDevice in eachTable['BoardToDevice']['device_uid']:
+                                        insertIntoTable(
+                                            eachDb,
+                                            'BoardToDevice',
+                                            [
+                                                linkerTables['board_uid'],
+                                                eachDevice
+                                            ],
+                                            'board_uid, device_uid'
+                                        )
+                                else:
+                                    insertIntoTable(
+                                        eachDb,
+                                        'BoardToDevice',
+                                        [
+                                            linkerTables['board_uid'],
+                                            eachTable['BoardToDevice']['device_uid']
+                                        ],
+                                        'board_uid, device_uid'
+                                    )
 
     return
 
@@ -662,60 +664,61 @@ def updateDevicesFromSdk(dbs, queries):
         currentBoardFiles = os.listdir(currentBoardDir)
 
         for eachDb in dbs:
-            if 'Devices.json' in currentBoardFiles:
-                with open(os.path.join(currentBoardDir, 'Devices.json'), 'r') as file:
-                    board = json.load(file)
-                file.close()
-                values = []
-                collumns = []
-                for eachKey in board.keys():
-                    collumns.append(eachKey)
-                    values.append(board[eachKey])
-                insertIntoTable(
-                    eachDb,
-                    'Devices',
-                    values,
-                    ','.join(collumns)
-                )
+            if eachDb:
+                if 'Devices.json' in currentBoardFiles:
+                    with open(os.path.join(currentBoardDir, 'Devices.json'), 'r') as file:
+                        board = json.load(file)
+                    file.close()
+                    values = []
+                    collumns = []
+                    for eachKey in board.keys():
+                        collumns.append(eachKey)
+                        values.append(board[eachKey])
+                    insertIntoTable(
+                        eachDb,
+                        'Devices',
+                        values,
+                        ','.join(collumns)
+                    )
 
-            if 'LinkerTables.json' in currentBoardFiles:
-                with open(os.path.join(currentBoardDir, 'LinkerTables.json'), 'r') as file:
-                    linkerTables = json.load(file)
-                file.close()
-                table_keys = [list(table.keys())[0] for table in linkerTables['tables']]
-                for eachTableKey in table_keys:
-                    collumns = ['device_uid']
-                    values = [linkerTables['device_uid']]
-                    for eachKey in linkerTables['tables']:
-                        if eachTableKey in eachKey:
-                            collumns.append(list(eachKey[eachTableKey].keys())[0])
-                            if 'SDKToDevice' == eachTableKey:
-                                sdkVersions = read_data_from_db(eachDb, 'SELECT DISTINCT version FROM SDKs WHERE name IS "mikroSDK"')
-                                versions = filter_versions(list(v[0] for v in sdkVersions[enums.dbSync.ELEMENTS.value]))
-                                threshold_version = version.parse(eachKey[eachTableKey][collumns[1]][:-1])
-                                filtered_versions = [f'mikrosdk_v{v.replace('.','')}' for v in versions if version.parse(v) >= threshold_version]
-                                values.append(filtered_versions)
-                            else:
-                                values.append(eachKey[eachTableKey][collumns[1]])
-                            break
-                    if list == type(values[1]):
-                        for eachValue in values[1]:
+                if 'LinkerTables.json' in currentBoardFiles:
+                    with open(os.path.join(currentBoardDir, 'LinkerTables.json'), 'r') as file:
+                        linkerTables = json.load(file)
+                    file.close()
+                    table_keys = [list(table.keys())[0] for table in linkerTables['tables']]
+                    for eachTableKey in table_keys:
+                        collumns = ['device_uid']
+                        values = [linkerTables['device_uid']]
+                        for eachKey in linkerTables['tables']:
+                            if eachTableKey in eachKey:
+                                collumns.append(list(eachKey[eachTableKey].keys())[0])
+                                if 'SDKToDevice' == eachTableKey:
+                                    sdkVersions = read_data_from_db(eachDb, 'SELECT DISTINCT version FROM SDKs WHERE name IS "mikroSDK"')
+                                    versions = filter_versions(list(v[0] for v in sdkVersions[enums.dbSync.ELEMENTS.value]))
+                                    threshold_version = version.parse(eachKey[eachTableKey][collumns[1]][:-1])
+                                    filtered_versions = [f'mikrosdk_v{v.replace('.','')}' for v in versions if version.parse(v) >= threshold_version]
+                                    values.append(filtered_versions)
+                                else:
+                                    values.append(eachKey[eachTableKey][collumns[1]])
+                                break
+                        if list == type(values[1]):
+                            for eachValue in values[1]:
+                                insertIntoTable(
+                                    eachDb,
+                                    eachTableKey,
+                                    [
+                                        values[0],
+                                        eachValue
+                                    ],
+                                    ','.join(collumns)
+                                )
+                        else:
                             insertIntoTable(
                                 eachDb,
                                 eachTableKey,
-                                [
-                                    values[0],
-                                    eachValue
-                                ],
+                                values,
                                 ','.join(collumns)
                             )
-                    else:
-                        insertIntoTable(
-                            eachDb,
-                            eachTableKey,
-                            values,
-                            ','.join(collumns)
-                        )
 
     return
 
@@ -770,58 +773,66 @@ def copy_folder_contents(source_folder, destination_folder):
     print(f"Contents of '{source_folder}' have been copied to '{destination_folder}'.")
 
 def fix_icon_names(db, tableName):
-    numElements, elements = read_data_from_db(db, f'SELECT * FROM {tableName} WHERE icon NOT REGEXP "^images/boards/board-.+|images/boards/board.png$|images/displays/no_display.png$|images/displays/display-.+"')
-    if numElements:
-        for eachElement in elements:
-            newString = eachElement[2].replace(f"boards/", "boards/board-")
-            if 'displays' in eachElement[2]:
-                newString = eachElement[2].replace(f"displays/", "displays/display-")
-            updateTableCollumn(
-                db,
-                tableName,
-                "icon",
-                newString,
-                "uid",
-                eachElement[0]
-            )
+    if db:
+        numElements, elements = read_data_from_db(db, f'SELECT * FROM {tableName} WHERE icon NOT REGEXP "^images/boards/board-.+|images/boards/board.png$|images/displays/no_display.png$|images/displays/display-.+"')
+        if numElements:
+            for eachElement in elements:
+                newString = eachElement[2].replace(f"boards/", "boards/board-")
+                if 'displays' in eachElement[2]:
+                    newString = eachElement[2].replace(f"displays/", "displays/display-")
+                updateTableCollumn(
+                    db,
+                    tableName,
+                    "icon",
+                    newString,
+                    "uid",
+                    eachElement[0]
+                )
 
 ## Main runner
-async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", release_version_sdk=""):
+async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", release_version_sdk="", index="Test"):
     ## Step 1 - download the database first
     ## Always use latest release
+    dbName = 'necto_db_dev'
+    dbPackageName = 'database_dev'
+    if 'Live' == index:
+        dbName = 'necto_db'
+        dbPackageName = 'database'
     databaseNecto, databaseErp = downloadDb(
         ## Always download database from latest release
-        'https://github.com/MikroElektronika/core_packages/releases/latest/download/database.7z',
+        f'https://github.com/MikroElektronika/core_packages/releases/latest/download/{dbPackageName}.7z',
         False
     )
 
     ## Step 2 - Update database with new SDK if needed
     ## Add new sdk version
     for eachDb in [databaseNecto, databaseErp]:
-        sdkVersionUidNew, sdkVersionUidPrevious = sdk.addSdkVersion(eachDb, release_version_sdk.replace('mikroSDK-', ''))
+        if eachDb:
+            sdkVersionUidNew, sdkVersionUidPrevious = sdk.addSdkVersion(eachDb, release_version_sdk.replace('mikroSDK-', ''))
     ## Make sure to check if it exists already, so as not to add again
     if sdkVersionUidNew:
         ## Add data to tables
         for eachDb in [databaseNecto, databaseErp]:
-            sdk.insertIntoSdk(
-                eachDb,
-                [
-                    'SDKToBoard',
-                    'SDKToBuildSystem',
-                    'SDKToCompiler',
-                    'SDKToDevice',
-                    'SDKToDisplay'
-                ],
-                [
-                    'board_uid',
-                    'build_system_uid',
-                    'compiler_uid',
-                    'device_uid',
-                    'display_uid'
-                ],
-                sdkVersionUidPrevious,
-                sdkVersionUidNew
-            )
+            if eachDb:
+                sdk.insertIntoSdk(
+                    eachDb,
+                    [
+                        'SDKToBoard',
+                        'SDKToBuildSystem',
+                        'SDKToCompiler',
+                        'SDKToDevice',
+                        'SDKToDisplay'
+                    ],
+                    [
+                        'board_uid',
+                        'build_system_uid',
+                        'compiler_uid',
+                        'device_uid',
+                        'display_uid'
+                    ],
+                    sdkVersionUidPrevious,
+                    sdkVersionUidNew
+                )
     ## EOF Step 2
 
     ## Step 3 - Update database with mikroSDK settings
@@ -849,25 +860,27 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
         ## This part adds package dependencies for each board present in mikroSDK
         jsonFile = json.load(open(sdkMetadataPath, 'r'))['packages']
         for eachDb in [databaseErp, databaseNecto]:
-            addCollumnsToTable(
-                eachDb, ['installer_package'], 'Boards', ['Text'], ['NoDefault']
-            )
-            for eachBoard in jsonFile:
-                updateTableCollumn(
-                    eachDb, None, None, None, None, None, jsonFile[eachBoard]['db_query']
+            if eachDb:
+                addCollumnsToTable(
+                    eachDb, ['installer_package'], 'Boards', ['Text'], ['NoDefault']
                 )
+                for eachBoard in jsonFile:
+                    updateTableCollumn(
+                        eachDb, None, None, None, None, None, jsonFile[eachBoard]['db_query']
+                    )
     ## EOF Step 3
 
     ## Step 4 - add missing collumns to tables
-    addCollumnsToTable(
-        databaseErp, ['pid'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
-    )
-    addCollumnsToTable(
-        databaseErp, ['package_uid'], 'BoardToDevice', ['TEXT'], ['NoDefault']
-    )
-    addCollumnsToTable(
-        databaseErp, ['pid', 'graphic_tool'], 'Compilers', ['VARCHAR(50)', 'BOOLEAN'], ['NoDefault', 0]
-    )
+    if databaseErp:
+        addCollumnsToTable(
+            databaseErp, ['pid'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
+        )
+        addCollumnsToTable(
+            databaseErp, ['package_uid'], 'BoardToDevice', ['TEXT'], ['NoDefault']
+        )
+        addCollumnsToTable(
+            databaseErp, ['pid', 'graphic_tool'], 'Compilers', ['VARCHAR(50)', 'BOOLEAN'], ['NoDefault', 0]
+        )
 
     ## Step 5 - select all unique devices from github database
     allDevicesGithub = read_data_from_db(
@@ -875,21 +888,25 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
     )
 
     ## Step 6 - add any missing mcu device details
-    checkDeviceDetails(databaseErp, allDevicesGithub)
+    if databaseErp:
+        checkDeviceDetails(databaseErp, allDevicesGithub)
 
     ## Step 7 - add any missing package_uid to BoardToDevice
-    checkDevicePackages(databaseErp, allDevicesGithub)
+    if databaseErp:
+        checkDevicePackages(databaseErp, allDevicesGithub)
 
     ## Step 8 - clear any empty rows from BoardToDevice
-    clearDevicePackages(databaseErp)
+    if databaseErp:
+        clearDevicePackages(databaseErp)
 
     ## Step 9 - synchronize programmers for all devices - CODEGRIP first
     progDbgAsJson = getProgDbgAsJson(
         f'https://docs.google.com/spreadsheets/d/{doc_codegrip}/export?format=csv',
         True
     )
-    checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
-    checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
+    if databaseErp:
+        checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
+        checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
     checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
     checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
 
@@ -898,13 +915,15 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
         f'https://docs.google.com/spreadsheets/d/{doc_mikroprog}/export?format=csv',
         True
     )
-    checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
-    checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
+    if databaseErp:
+        checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
+        checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
     checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
     checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
 
     ## Step 11 - update families
-    update_families(databaseErp, allDevicesGithub)
+    if databaseErp:
+        update_families(databaseErp, allDevicesGithub)
 
     ## Step 12 - update the icon names
     for eachDb in [databaseErp, databaseNecto]:
@@ -923,14 +942,15 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
         )
 
     ## Step 14 - re-upload over existing assets
-    archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), 'database.7z')
+    archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
+    if databaseErp:
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
 
     ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
-    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), 'necto_db.db'))
+    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
@@ -943,9 +963,10 @@ if __name__ == "__main__":
     parser.add_argument('doc_mikroprog', type=str, help='Spreadsheet table download link.')
     parser.add_argument('specific_tag', type=str, help='Specific release tag for database update.', default="")
     parser.add_argument('specific_tag_mikrosdk', type=str, help='Specific release tag from mikrosdk for database update.', default="")
+    parser.add_argument('index', type=str, help='Index selection - Live/Test.', default="Test")
 
     ## Parse the arguments
     args = parser.parse_args()
 
     ## Run the main code
-    asyncio.run(main(args.token, args.repo, args.doc_codegrip, args.doc_mikroprog, args.specific_tag, args.specific_tag_mikrosdk))
+    asyncio.run(main(args.token, args.repo, args.doc_codegrip, args.doc_mikroprog, args.specific_tag, args.specific_tag_mikrosdk, args.index))

@@ -534,7 +534,7 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path):
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_path):
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -611,7 +611,8 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         package_changed = (version == tag_name.replace("v", ""))
 
         # Mark package for appropriate device and toolchain
-        update_database(name_without_extension, mcuNames, db_path)
+        for each_db in db_paths:
+            update_database(name_without_extension, mcuNames, each_db)
 
         # Then create a specific database used as asset later
         os.makedirs('./output/databases/', exist_ok=True)
@@ -801,6 +802,9 @@ def append_package(packages, package, display_name, version, install=None, categ
         install_location = install
     else:
         install_location = f'packages/{os.path.basename(package.lower())[:-3]}'
+    package_type = f"{os.path.basename(package.lower())[:-3]}"
+    if os.path.basename(package.lower()) == 'database_dev.7z':
+        package_type = 'database'
     packages.append({
         "name": f"{os.path.basename(package.lower())[:-3]}",
         "display_name": display_name,
@@ -808,7 +812,7 @@ def append_package(packages, package, display_name, version, install=None, categ
         "hash": hash_directory_contents(package[:-3]),
         "vendor": "MIKROE",
         "category": category,
-        "type": f"{os.path.basename(package.lower())[:-3]}",
+        "type": package_type,
         "hidden": True,
         "install_location": f"%APPLICATION_DATA_DIR%/{install_location}"
     })
@@ -816,7 +820,7 @@ def append_package(packages, package, display_name, version, install=None, categ
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
-    db_path = 'necto_db.db'
+    db_paths = ['necto_db.db', 'necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
 
@@ -839,14 +843,15 @@ async def main(token, repo, tag_name):
                         await package_asset(
                             source_directory, output_directory, arch, entry.name,
                             token, repo, tag_name,
-                            packages, current_metadata, db_path
+                            packages, current_metadata, db_paths
                         )
 
         except Exception as e:
             print(f"Failed to process directories in {root_source_directory}: {e}")
 
-    async with aiohttp.ClientSession() as session:
-        await upload_release_asset(session, token, repo, tag_name, "necto_db.db")
+    for each_db in db_paths:
+        async with aiohttp.ClientSession() as session:
+            await upload_release_asset(session, token, repo, tag_name, each_db)
 
     # Uncomment to get specific test database per package
     # for each_package in packages:
@@ -924,20 +929,25 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
-    # Generate databases package
-    shutil.copy('./necto_db.db', './utils/databases/necto_db.db')
-    archive_path = compress_directory_7z(os.path.join('./utils', 'databases'), 'database.7z')
-    append_package(
-        packages, archive_path,
-        "NECTO Database",
-        get_version_based_on_hash(
-            'databases', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        ),
-        'databases'
-    )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+    # Generate database packages
+    for each_db in db_paths:
+        shutil.copy(f'./{each_db}', './utils/databases/necto_db.db')
+        package_suffix = ''
+        if 'dev' in each_db:
+            package_suffix = '_dev'
+        archive_path = compress_directory_7z(os.path.join('./utils', 'databases'), f'database{package_suffix}.7z')
+        append_package(
+            packages, archive_path,
+            "NECTO Database",
+            get_version_based_on_hash(
+                f'databases{package_suffix}', tag_name.replace("v", ""),
+                hash_directory_contents(archive_path), current_metadata
+            ),
+            f'databases'
+        )
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+        os.remove(os.path.join('./utils', f'database{package_suffix}.7z'))
 
     # Generate document files asset
     archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
