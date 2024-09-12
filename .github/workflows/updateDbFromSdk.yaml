@@ -64,6 +64,8 @@ jobs:
             git add $DB_NAME
             git commit -m "Updated $DB_NAME with latest merged release."
             git push
+            curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
+            --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
           fi
 
       - name: Run Index Script

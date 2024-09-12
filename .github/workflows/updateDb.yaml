@@ -52,6 +52,8 @@ jobs:
             git add necto_db.db
             git commit -m "Updated necto database with latest merged release."
             git push
+            curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
+            --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
           else
             echo "No changes made to necto_db.db";
           fi
