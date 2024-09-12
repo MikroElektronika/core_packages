@@ -129,7 +129,7 @@ def downloadDb(downloadLink, overwrite=True):
                 )
             if 'database_dev' not in downloadLink:
                 dbPath2 = os.path.join(os.path.dirname(__file__), "erp_db.db")
-                if overwrite or not os.path.isfile(dbPath2) and ():
+                if overwrite or not os.path.isfile(dbPath2):
                     shutil.copyfile(dbPath1, dbPath2)
     else:
         dbPath1 = downloadLink ## Assume it is a local literal path
