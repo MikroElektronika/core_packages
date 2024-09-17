@@ -12,6 +12,38 @@ function (math_check_target _targetName)
 endfunction()
 
 #############################################################################
+# Macro to copy files from src to dest
+# TODO - Temporary fix, remove with NECTO release 7.0.4+
+#############################################################################
+macro(copy_files src dest)
+    if(NOT EXISTS "${dest}/bin")
+        file(COPY "${src}" DESTINATION "${dest}")
+    endif()
+endmacro()
+
+#############################################################################
+# Macro to append a specific legacy cmake path to CMAKE_MODULE_PATH
+# TODO - Temporary fix, remove with NECTO release 7.0.4+
+#############################################################################
+macro(legacy_cmake_path)
+    string(REGEX REPLACE "/compilers/.*" "" PACKAGES_PATH "${CMAKE_MikroC_COMPILER}")
+    string(REGEX REPLACE ".*mikroc/([^/]+)/mikroc.*" "\\1" ARCHITECTURE "${CMAKE_MikroC_COMPILER}")
+    set(full_path "${PACKAGES_PATH}/legacy/${ARCHITECTURE}/legacy-${ARCHITECTURE}")
+
+    # Optionally, verify that the constructed path exists
+    if(NOT EXISTS "${full_path}")
+        message(WARNING "The path '${full_path}' does not exist.")
+    endif()
+
+    # Copy the bin files to .meproject folder
+    copy_files("${full_path}/bin" "${CMAKE_CURRENT_LIST_DIR}/.meproject/setup/Debug")
+    copy_files("${full_path}/bin" "${CMAKE_CURRENT_LIST_DIR}/.meproject/setup/Release")
+
+    # Append the constructed path to CMAKE_MODULE_PATH in the parent scope
+    list(APPEND CMAKE_MODULE_PATH "${full_path}/cmake;" PARENT_SCOPE)
+endmacro()
+
+#############################################################################
 ## Macro for exporting the version of core lib
 #############################################################################
 set(COMPILER_REVISION 1.0)
