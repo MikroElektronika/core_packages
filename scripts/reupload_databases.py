@@ -658,22 +658,22 @@ def updateBoardsFromSdk(dbs, queries):
     return
 
 def updateDevicesFromSdk(dbs, queries):
-    allBoardDirs = os.listdir(queries)
-    for eachBoardDir in allBoardDirs:
-        currentBoardDir = os.path.join(queries, eachBoardDir)
-        currentBoardFiles = os.listdir(currentBoardDir)
+    allDevicesDirs = os.listdir(queries)
+    for eachDeviceDir in allDevicesDirs:
+        currentDeviceDir = os.path.join(queries, eachDeviceDir)
+        currentDeviceFiles = os.listdir(currentDeviceDir)
 
         for eachDb in dbs:
             if eachDb:
-                if 'Devices.json' in currentBoardFiles:
-                    with open(os.path.join(currentBoardDir, 'Devices.json'), 'r') as file:
-                        board = json.load(file)
+                if 'Devices.json' in currentDeviceFiles:
+                    with open(os.path.join(currentDeviceDir, 'Devices.json'), 'r') as file:
+                        device = json.load(file)
                     file.close()
                     values = []
                     collumns = []
-                    for eachKey in board.keys():
+                    for eachKey in device.keys():
                         collumns.append(eachKey)
-                        values.append(board[eachKey])
+                        values.append(device[eachKey])
                     insertIntoTable(
                         eachDb,
                         'Devices',
@@ -681,8 +681,8 @@ def updateDevicesFromSdk(dbs, queries):
                         ','.join(collumns)
                     )
 
-                if 'LinkerTables.json' in currentBoardFiles:
-                    with open(os.path.join(currentBoardDir, 'LinkerTables.json'), 'r') as file:
+                if 'LinkerTables.json' in currentDeviceFiles:
+                    with open(os.path.join(currentDeviceDir, 'LinkerTables.json'), 'r') as file:
                         linkerTables = json.load(file)
                     file.close()
                     table_keys = [list(table.keys())[0] for table in linkerTables['tables']]
