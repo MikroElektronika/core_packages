@@ -1,4 +1,10 @@
 #############################################################################
+## Including this directory will ensure that all necessary support files
+## are visible to any project.
+#############################################################################
+include_directories(BEFORE "${CMAKE_CURRENT_LIST_DIR}/include")
+
+#############################################################################
 ## Function to include adequate math library in GCC build and create macros.
 #############################################################################
 function (math_check_target _targetName)
@@ -12,8 +18,7 @@ function (math_check_target _targetName)
 endfunction()
 
 #############################################################################
-# Macro to copy files from src to dest
-# TODO - Temporary fix, remove with NECTO release 7.0.4+
+## Macro to copy files from src to dest
 #############################################################################
 macro(copy_files src dest)
     if(NOT EXISTS "${dest}/bin")
@@ -22,8 +27,7 @@ macro(copy_files src dest)
 endmacro()
 
 #############################################################################
-# Macro to append a specific legacy cmake path to CMAKE_MODULE_PATH
-# TODO - Temporary fix, remove with NECTO release 7.0.4+
+## Macro to append a specific legacy cmake path to CMAKE_MODULE_PATH
 #############################################################################
 macro(legacy_cmake_path)
     string(REGEX REPLACE "/compilers/.*" "" PACKAGES_PATH "${CMAKE_MikroC_COMPILER}")
