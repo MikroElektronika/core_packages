@@ -4,6 +4,7 @@
     "def_path": "PIC32/XC32/pic32_xc32_pic32/def/PIC32MZ2048EFH144.json",
     "flash": 2097152,
     "ram": 524288,
+    "board_regex":"MIKROMEDIA_5_FOR_PIC32MZ_.+",
     "settings": {
         "clock": "200",
         "scheme": "PIC32MZ2048EFH144_Mikromedia_5_for_PIC32MZ",
