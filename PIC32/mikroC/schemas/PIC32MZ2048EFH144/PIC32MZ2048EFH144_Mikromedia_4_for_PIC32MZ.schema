@@ -7,7 +7,7 @@
     "board_regex":"MIKROMEDIA_4_FOR_PIC32MZ_.+",
     "settings": {
         "clock": "200",
-        "scheme": "PIC32MZ2048EFH144_Mikromedia_4_for_PIC32MZ",
+        "scheme": "MIKROMEDIA",
         "mcu": "PIC32MZ2048EFH144",
         "core": "MICROAPTIV_FP",
         "delay_src_path": "delays/microaptiv_fp/__lib_delays.c",

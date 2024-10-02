@@ -7,7 +7,7 @@
     "board_regex":"MIKROMEDIA_3_FOR_PIC32MZ_.+",
     "settings": {
         "clock": "200",
-        "scheme": "PIC32MZ2048EFH100_Mikromedia_3_for_PIC32MZ",
+        "scheme": "MIKROMEDIA",
         "mcu": "PIC32MZ2048EFH100",
         "core": "",
         "delay_src_path": "",
