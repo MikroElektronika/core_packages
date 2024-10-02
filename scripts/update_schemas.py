@@ -88,7 +88,7 @@ async def initialize_es():
     num_of_retries = 1
     while True:
         print(f"Trying to connect to ES. Connection retry:  {num_of_retries}")
-        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
+        es = await Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
             break
         # Wait for 30 seconds and try again if connection fails
@@ -121,7 +121,7 @@ async def index_schemas(es: Elasticsearch, release_details, version, index_name)
     doc = None
     for asset in release_details.get('assets', []):
         if asset['name'] == 'schemas.json':
-            doc = {
+            doc = await {
                 'name': "schemas",
                 'display_name' : "schemas file",
                 'author' : "MIKROE",
@@ -138,12 +138,12 @@ async def index_schemas(es: Elasticsearch, release_details, version, index_name)
             break
 
     if doc:
-        resp = es.index(index=index_name, doc_type='necto_package', id='schemas', body=doc)
+        resp = await es.index(index=index_name, doc_type='necto_package', id='schemas', body=doc)
         print(f"{resp["result"]} {resp['_id']}")
         ## Special case - update live index elasticsearch base as well
         if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
             if index_name == os.environ['ES_INDEX_TEST']:
-                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id='schemas', body=doc)
+                resp = await  es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id='schemas', body=doc)
                 print(f"{resp["result"]} {resp['_id']}")
 
 async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo, tag_name, release_details):
@@ -156,19 +156,19 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
     schemaGenerator.generate()
     for asset in release_details.get('assets', []):
         if asset['name'] == 'schemas.json':
-            support.download_file_from_link(asset['url'], os.path.join(os.getcwd(), 'output/docs/current_schemas.json'), token)
+            await support.download_file_from_link(asset['url'], os.path.join(os.getcwd(), 'output/docs/current_schemas.json'), token)
             break
-    changed, version = is_version_changed(
+    changed, version = await is_version_changed(
         os.path.join(os.getcwd(), 'output/docs/current_schemas.json'),
         os.path.join(os.getcwd(), 'output/docs/schemas.json'),
-        fetch_current_indexed_version(
+        await fetch_current_indexed_version(
             es, index_name, 'schemas'
         )
     )
     if changed:
         # First, remove previous one
         print(f'Deleting existing asset: {asset['name']}')
-        delete_response = requests.delete(asset['url'], headers=get_headers(True, token))
+        delete_response = await requests.delete(asset['url'], headers=get_headers(True, token))
         delete_response.raise_for_status()
         print(f'Asset deleted: {asset['name']}')
         # Then, upload new one
