@@ -1,7 +1,6 @@
 import os, time, aiofiles, filecmp, \
-       argparse, aiohttp, asyncio, \
-       requests, \
-       support as support
+       argparse, aiohttp, requests, \
+       asyncio, support as support
 
 from elasticsearch import Elasticsearch
 from schemas import GenerateSchemas
@@ -51,16 +50,6 @@ def fetch_current_indexed_version(es : Elasticsearch, index_name, package_name):
             "match_all": {}
         }
     }
-    # All package types to check for
-    typeCheck = [
-        'mcu',
-        'preinit',
-        'database',
-        'mcu_clocks',
-        'mcu_schemas',
-        'unit_test_lib',
-        'mikroe_utils_common'
-    ]
 
     # Search the base with provided query
     num_of_retries = 1
@@ -83,12 +72,12 @@ def fetch_current_indexed_version(es : Elasticsearch, index_name, package_name):
 
     return None
 
-async def initialize_es():
+def initialize_es():
     # Elasticsearch instance used for indexing
     num_of_retries = 1
     while True:
         print(f"Trying to connect to ES. Connection retry:  {num_of_retries}")
-        es = await Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
+        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
             break
         # Wait for 30 seconds and try again if connection fails
@@ -101,27 +90,11 @@ async def initialize_es():
 
     return es
 
-async def upload_schemas(session, token, repo, tag_name, asset_path):
-    """ Upload a release asset to GitHub """
-    print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
-    headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
-    release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
-    async with session.get(release_url, headers=headers) as response:
-        response_data = await response.json()
-        release_id = response_data['id']
-    upload_url = f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={os.path.basename(asset_path)}"
-    async with aiofiles.open(asset_path, 'rb') as f:
-        data = await f.read()
-    async with session.post(upload_url, headers=headers, data=data) as response:
-        result = await response.json()
-    print(f"Upload completed for: {os.path.basename(asset_path)}.")
-    return result
-
-async def index_schemas(es: Elasticsearch, release_details, version, index_name):
+def index_schemas(es: Elasticsearch, release_details, version, index_name):
     doc = None
     for asset in release_details.get('assets', []):
         if asset['name'] == 'schemas.json':
-            doc = await {
+            doc = {
                 'name': "schemas",
                 'display_name' : "schemas file",
                 'author' : "MIKROE",
@@ -138,13 +111,35 @@ async def index_schemas(es: Elasticsearch, release_details, version, index_name)
             break
 
     if doc:
-        resp = await es.index(index=index_name, doc_type='necto_package', id='schemas', body=doc)
+        resp = es.index(index=index_name, doc_type='necto_package', id='schemas', body=doc)
         print(f"{resp["result"]} {resp['_id']}")
         ## Special case - update live index elasticsearch base as well
         if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
             if index_name == os.environ['ES_INDEX_TEST']:
-                resp = await  es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id='schemas', body=doc)
+                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id='schemas', body=doc)
                 print(f"{resp["result"]} {resp['_id']}")
+
+async def upload_schemas(session, token, repo, tag_name, asset_path):
+    """ Upload a release asset to GitHub asynchronously """
+    print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
+    headers = {
+        'Authorization': f'token {token}',
+        'Content-Type': 'application/octet-stream'
+    }
+    # Get the release ID
+    release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
+    async with session.get(release_url, headers=headers) as response:
+        response_data = await response.json()
+        release_id = response_data['id']
+    # Construct the upload URL
+    upload_url = f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={os.path.basename(asset_path)}"
+    # Read the asset file asynchronously and upload it
+    async with aiofiles.open(asset_path, 'rb') as f:
+        data = await f.read()
+    async with session.post(upload_url, headers=headers, data=data) as response:
+        result = await response.json()
+    print(f"Upload completed for: {os.path.basename(asset_path)}.")
+    return result
 
 async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo, tag_name, release_details):
     # Generate schemas.json
@@ -154,23 +149,26 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
     # At the moment we check only for 'board_regex' fields in JSON files
     schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
     schemaGenerator.generate()
+    current_asset = None
     for asset in release_details.get('assets', []):
         if asset['name'] == 'schemas.json':
-            await support.download_file_from_link(asset['url'], os.path.join(os.getcwd(), 'output/docs/current_schemas.json'), token)
+            current_asset = asset
+            support.download_file_from_link(asset['url'], os.path.join(os.getcwd(), 'output/docs/current_schemas.json'), token)
             break
-    changed, version = await is_version_changed(
+    changed, version = is_version_changed(
         os.path.join(os.getcwd(), 'output/docs/current_schemas.json'),
         os.path.join(os.getcwd(), 'output/docs/schemas.json'),
-        await fetch_current_indexed_version(
+        fetch_current_indexed_version(
             es, index_name, 'schemas'
         )
     )
     if changed:
-        # First, remove previous one
-        print(f'Deleting existing asset: {asset['name']}')
-        delete_response = await requests.delete(asset['url'], headers=get_headers(True, token))
-        delete_response.raise_for_status()
-        print(f'Asset deleted: {asset['name']}')
+        # First, remove previous one if it exists
+        if current_asset:
+            print(f'Deleting existing asset: {asset['name']}')
+            delete_response = requests.delete(asset['url'], headers=get_headers(True, token))
+            delete_response.raise_for_status()
+            print(f'Asset deleted: {asset['name']}')
         # Then, upload new one
         async with aiohttp.ClientSession() as session:
             upload_result = await upload_schemas(session, token, repo, tag_name, output_file)
@@ -187,12 +185,12 @@ if __name__ == '__main__':
     parser.add_argument("select_index", help="Provided index name")
     args = parser.parse_args()
     print("Starting the process...")
-    es = asyncio.run(initialize_es())
+    es = initialize_es()
     release_details = fetch_release_details(args.repo, args.token, args.release_version)
     new_version = asyncio.run(package_and_upload_schemas(es, args.select_index,  args.token, args.repo, args.release_version, release_details))
     if new_version:
         release_details = fetch_release_details(args.repo, args.token, args.release_version)
-        asyncio.run(index_schemas(es, release_details, new_version, args.select_index))
+        index_schemas(es, release_details, new_version, args.select_index)
         print("File has been updated. Version increased to %s." % new_version)
     else:
         print("File the same. No need to update.")
