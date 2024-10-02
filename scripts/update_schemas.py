@@ -143,7 +143,7 @@ async def index_schemas(es: Elasticsearch, release_details, version, index_name)
         ## Special case - update live index elasticsearch base as well
         if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
             if index_name == os.environ['ES_INDEX_TEST']:
-                resp = es.index(index='github_live_index', doc_type='necto_package', id='schemas', body=doc)
+                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id='schemas', body=doc)
                 print(f"{resp["result"]} {resp['_id']}")
 
 async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo, tag_name, release_details):
