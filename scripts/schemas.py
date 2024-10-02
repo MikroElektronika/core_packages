@@ -7,33 +7,54 @@ from collections import defaultdict
 from hashlib import md5
 
 class GenerateSchemas:
-    def __init__(self, input_directory, output_file):
+    def __init__(self, input_directory, output_file, regexes=None):
         self.input_directory = input_directory
         self.output_file = output_file
+        self.regexes = regexes
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    def extract_data_from_json(self, file_path):
+    def extract_data_from_json(self, file_path, regex_list=None):
         """Extract relevant data from a JSON file."""
+        settings, regexes = None, []
         try:
             with open(file_path, 'r') as file:
                 data = json.load(file)
             if "settings" in data:
-                return data["settings"]
+                settings = data["settings"]
+            if regex_list:
+                for each_regex in regex_list:
+                    if each_regex in data:
+                        regexes.append({each_regex: data[each_regex]})
+            return settings, regexes
         except Exception as e:
             logging.error(f"Error reading JSON file {file_path}: {e}")
-        return None
+        return None, None
 
     def config_registers_hash(self, config_registers):
         """Create a hash for the config_registers to identify unique configurations."""
         config_str = json.dumps(config_registers, sort_keys=True)
         return md5(config_str.encode('utf-8')).hexdigest()
 
-    def merge_data(self, json_files):
+    @staticmethod
+    def add_regexes(merged_data, regexes=None):
+        '''Adds regex for boards if present in JSON file.'''
+        if regexes:
+            for each_mcus_node in merged_data:
+                node_num = 0
+                for each_schema_node in merged_data[each_mcus_node]:
+                    for each_regex in regexes:
+                        if each_regex in each_schema_node['settings']:
+                            merged_data[each_mcus_node][node_num].update(
+                                {each_regex: each_schema_node['settings'][each_regex]}
+                            )
+                    node_num += 1
+
+    def merge_data(self, json_files, regex_list=None):
         """Merge data from multiple JSON files."""
         merged_data = defaultdict(lambda: defaultdict(list))
 
         for json_file in json_files:
-            settings = self.extract_data_from_json(json_file)
+            settings, regexes = self.extract_data_from_json(json_file, regex_list)
             if settings:
                 if "config_words" in settings:
                     config_registers = settings.get("config_words", [])
@@ -43,6 +64,14 @@ class GenerateSchemas:
                 config_hash = self.config_registers_hash(config_registers)
                 mcu = settings.get("mcu", "")
                 merged_data[config_hash][mcu].append(settings)
+                if regexes:
+                    for each_regex in regexes:
+                        # Always take last index, as values are appended to array
+                        last_index = len(merged_data[config_hash][mcu]) - 1
+                        keys = each_regex.keys()
+                        for each_key in keys:
+                            if each_key not in merged_data[config_hash][mcu][last_index]:
+                                merged_data[config_hash][mcu][0].update(each_regex)
 
         result = defaultdict(list)
         for config_hash, mcus in merged_data.items():
@@ -96,7 +125,9 @@ class GenerateSchemas:
 
         os.makedirs(os.path.dirname(self.output_file), exist_ok=True)
 
-        merged_data = self.merge_data(json_files)
+        merged_data = self.merge_data(json_files, self.regexes)
+
+        self.add_regexes(merged_data, self.regexes)
 
         json_str = json.dumps(merged_data, indent=4)
         # Uncomment following 2 lines to see the uncompressed JSON file

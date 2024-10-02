@@ -869,7 +869,9 @@ async def main(token, repo, tag_name):
     # Generate schemas.json
     input_directory = "./"
     output_file = "./output/docs/schemas.json"
-    schemaGenerator = GenerateSchemas(input_directory, output_file)
+    # TODO - Add regex definitions to the array if needed
+    # At the moment we check only for 'board_regex' fields in JSON files
+    schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
     schemaGenerator.generate()
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
