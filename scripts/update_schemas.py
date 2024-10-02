@@ -157,6 +157,7 @@ async def upload_schemas(session, token, repo, tag_name, asset_path):
     return result
 
 async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo, tag_name, release_details):
+    global new_version
     input_directory = "./"
     output_file = "./output/docs/schemas.json"
 
@@ -192,6 +193,7 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
         fetch_current_indexed_version(es, index_name, 'schemas')
     )
 
+    new_version = None
     if changed:
         if current_asset:
             print(f"Deleting existing asset: {current_asset['name']}")
@@ -203,7 +205,7 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
             upload_result = await upload_schemas(session, token, repo, tag_name, output_file)
 
         if upload_result['state'] == 'uploaded':
-            return version
+            new_version = version
     else:
         print("No changes detected. Skipping upload.")
         return None
@@ -219,12 +221,13 @@ if __name__ == '__main__':
     print("Starting the process...")
     es = initialize_es()
     release_details = fetch_release_details(args.repo, args.token, args.release_version)
-    new_version = asyncio.run(package_and_upload_schemas(es, args.select_index, args.token, args.repo, args.release_version, release_details))
+    asyncio.run(package_and_upload_schemas(es, args.select_index, args.token, args.repo, args.release_version, release_details))
 
-    if new_version:
-        time.sleep(10)
-        release_details = fetch_release_details(args.repo, args.token, args.release_version)
-        index_schemas(es, release_details, new_version, args.select_index)
-        print(f"File has been updated. Version increased to {new_version}.")
-    else:
-        print("File the same. No need to update.")
+    while not new_version:
+        time.sleep(1)
+        if new_version:
+            release_details = fetch_release_details(args.repo, args.token, args.release_version)
+            index_schemas(es, release_details, new_version, args.select_index)
+            print(f"File has been updated. Version increased to {new_version}.")
+        else:
+            print("File the same. No need to update.")
