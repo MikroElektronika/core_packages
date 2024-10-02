@@ -30,6 +30,7 @@ def fetch_release_details(repo, token, release_version):
     url = f'https://api.github.com/repos/{repo}/releases'
     response = requests.get(url, headers=api_headers)
     response.raise_for_status()  # Raise an exception for HTTP errors
+    response.close()
     if "latest" == release_version:
         return support.get_latest_release(response.json())
     else:
