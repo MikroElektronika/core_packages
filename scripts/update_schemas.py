@@ -122,7 +122,11 @@ async def upload_schemas(session, token, repo, tag_name, asset_path):
         'Content-Type': 'application/octet-stream'
     }
 
+    # Debugging: Print tag_name and release_url
     release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
+    print(f"Fetching release details for tag: {tag_name}")
+    print(f"Release URL: {release_url}")
+
     async with session.get(release_url, headers=headers) as response:
         if response.status != 200:
             error_message = await response.text()
@@ -136,6 +140,7 @@ async def upload_schemas(session, token, repo, tag_name, asset_path):
 
         release_id = response_data['id']
 
+    # Construct the upload URL
     upload_url = f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={os.path.basename(asset_path)}"
 
     async with aiofiles.open(asset_path, 'rb') as f:
@@ -155,19 +160,35 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
     input_directory = "./"
     output_file = "./output/docs/schemas.json"
 
+    # Generate schemas.json
     schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
     schemaGenerator.generate()
+
+    # Ensure the directory exists before downloading the file
+    output_dir = os.path.join(os.getcwd(), 'output/docs/')
+    os.makedirs(output_dir, exist_ok=True)
 
     current_asset = None
     for asset in release_details.get('assets', []):
         if asset['name'] == 'schemas.json':
             current_asset = asset
-            support.download_file_from_link(asset['url'], os.path.join(os.getcwd(), 'output/docs/current_schemas.json'), token)
+            try:
+                # Download the current schemas.json
+                support.download_file_from_link(asset['url'], os.path.join(output_dir, 'current_schemas.json'), token)
+            except Exception as e:
+                raise ValueError(f"Failed to download current_schemas.json: {e}")
             break
 
+    current_schemas_path = os.path.join(output_dir, 'current_schemas.json')
+
+    # Check if the file exists before proceeding with comparison
+    if not os.path.exists(current_schemas_path):
+        raise FileNotFoundError(f"current_schemas.json was not downloaded to {current_schemas_path}")
+
+    # Compare the current file and the new file
     changed, version = is_version_changed(
-        os.path.join(os.getcwd(), 'output/docs/current_schemas.json'),
-        os.path.join(os.getcwd(), 'output/docs/schemas.json'),
+        current_schemas_path,
+        output_file,
         fetch_current_indexed_version(es, index_name, 'schemas')
     )
 
