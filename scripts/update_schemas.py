@@ -222,6 +222,7 @@ if __name__ == '__main__':
     new_version = asyncio.run(package_and_upload_schemas(es, args.select_index, args.token, args.repo, args.release_version, release_details))
 
     if new_version:
+        time.sleep(10)
         release_details = fetch_release_details(args.repo, args.token, args.release_version)
         index_schemas(es, release_details, new_version, args.select_index)
         print(f"File has been updated. Version increased to {new_version}.")
