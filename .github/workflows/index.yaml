@@ -54,5 +54,5 @@ jobs:
             if [[ ${{ github.event.inputs.set_as_latest }} ]]; then
               echo "Promote to latest requested, but ignored. Only available for LIVE updates."
             fi
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False False
           fi
