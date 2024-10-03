@@ -29,6 +29,7 @@ jobs:
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
           ES_INDEX: ${{ secrets.ES_INDEX_LIVE }}
+          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.release.tag_name }}
 
       - name: Update databases
