@@ -71,7 +71,7 @@ class GenerateSchemas:
                         keys = each_regex.keys()
                         for each_key in keys:
                             if each_key not in merged_data[config_hash][mcu][last_index]:
-                                merged_data[config_hash][mcu][0].update(each_regex)
+                                merged_data[config_hash][mcu][last_index].update(each_regex)
 
         result = defaultdict(list)
         for config_hash, mcus in merged_data.items():
