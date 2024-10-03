@@ -21,6 +21,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scripts/requirements/shared.txt
           pip install -r scripts/requirements/release.txt
+          pip install -r scripts/requirements/databases.txt
 
       - name: Run Release Script
         env:
