@@ -824,7 +824,7 @@ def append_package(packages, package, display_name, version, install=None, categ
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
-    db_paths = ['necto_db.db', 'necto_db_dev.db']
+    db_paths = ['necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
 

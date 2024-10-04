@@ -814,18 +814,7 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
         fix_icon_names(eachDb, "Boards")
         fix_icon_names(eachDb, "Displays")
 
-    ## Step 13 - if queries are different, add them to new file
-    if not compare_hashes(
-        os.path.join(os.path.dirname(__file__), 'databases/queries'),
-        os.path.join(os.path.dirname(os.getcwd()), 'utils/databases/queries')
-    ):
-        ## Hashes are different, so copy new files here
-        copy_folder_contents(
-            os.path.join(os.getcwd(), 'utils/databases/queries'),
-            os.path.join(os.path.dirname(__file__), 'databases/queries')
-        )
-
-    ## Step 14 - overwrite the existing necto_db.db in root with newly generated one
+    ## Step 13 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
