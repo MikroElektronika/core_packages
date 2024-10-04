@@ -168,7 +168,11 @@ async def upload_asset(session, token, repo, tag_name, asset_path):
     }
 
     # Debugging: Print tag_name and release_url
-    release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
+    if 'latest' == tag_name:
+        release_url = f"https://api.github.com/repos/{repo}/releases/{tag_name}"
+    else:
+        release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
+
     print(f"Fetching release details for tag: {tag_name}")
     print(f"Release URL: {release_url}")
 
@@ -268,7 +272,11 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
                 print(f"Asset deleted: {docs_asset['name']}")
             async with aiohttp.ClientSession() as session:
                 upload_result = await upload_asset(session, token, repo, tag_name, archive_path)
+            if upload_result['state'] != 'uploaded':
+                raise ValueError(f'docs{test_version}.7z not uploaded!')
             return version
+        else:
+            raise ValueError(f'schemas{test_version}.json not uploaded!')
     else:
         print("No changes detected. Skipping upload.")
         return None
