@@ -18,7 +18,7 @@ on:
           - Live
       run_test:
         type: boolean
-        description: If checked generates - schemas_test.json/docs_test.7z\nIf left unchecked generates - schemas.json/docs.7z
+        description: If checked generates test files only - schemas_test.json/docs_test.7z
         default: true
 
 jobs:
