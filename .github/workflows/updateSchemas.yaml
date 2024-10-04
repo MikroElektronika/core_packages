@@ -16,6 +16,10 @@ on:
         options:
           - Test
           - Live
+      run_test:
+        type: boolean
+        description: Upload and index schemas_test.json/docs_test.7z files if checked
+        default: true
 
 jobs:
   update-schemas:
@@ -43,10 +47,15 @@ jobs:
           ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
-          if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
-            echo "Uploading and indexing to Live."
-            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }}
-          else
-            echo "Uploading and indexing to Test and Live."
-            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }}
+          INDEX_TEST="True"
+          if [[ ${{ github.event.inputs.run_test }} == "False" ]]; then
+            INDEX_TEST="False"
           fi
+          echo "Index test set to $INDEX_TEST"
+        #   if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
+        #     echo "Uploading and indexing to Live."
+        #     python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
+        #   else
+        #     echo "Uploading and indexing to Test and Live."
+        #     python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
+        #   fi

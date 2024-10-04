@@ -1,15 +1,59 @@
 import os, time, aiofiles, filecmp, \
        argparse, aiohttp, requests, \
-       asyncio, support as support
+       asyncio, support as support, \
+       shutil, subprocess
 
 from elasticsearch import Elasticsearch
 from schemas import GenerateSchemas
+
+def compress_directory_7z(base_output_dir, entry_name, arch=None):
+    """
+    Compresses the given directory into a 7z archive using the 7z command line tool.
+
+    Args:
+    source_dir (str): Path to the directory to be compressed.
+    output_file (str): Path where the output .7z file should be saved.
+
+    Returns:
+    bool: True if compression was successful, False otherwise.
+    """
+    # Construct the command to compress the directory
+    command = [
+        '7z', 'a',  # 'a' stands for adding to an archive
+        '-t7z',     # Specify 7z archive type
+        '-mx3',
+        '-mtc=off'  # Do not store timestamps
+    ]
+
+    # Check if the source directory exists
+    if arch:
+        archive_name = base_output_dir + ".7z"
+    else:
+        archive_name = os.path.join(os.path.dirname(base_output_dir), entry_name)
+
+    command.append(archive_name) # Path to the output .7z file
+    command.append(os.path.join(base_output_dir, '*'))  # Path to the source directory content
+
+    if not os.path.isdir(base_output_dir):
+        print(f"The specified directory does not exist: {base_output_dir}")
+        return False
+
+    # Execute the command
+    try:
+        subprocess.run(command, check=True)
+        print(f"Archive created successfully: {archive_name}")
+        return archive_name
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred while creating the archive: {e}")
+        return None
 
 def increment_version(version):
     major, minor, patch = map(int, version.split('.'))
     return f"{major}.{minor}.{patch + 1}"
 
 def is_version_changed(old_file, new_file, version_current):
+    if not version_current:
+        return True, 'v1.0.0' ## If not indexed, set to 1.0.0
     if not filecmp.cmp(old_file, new_file, shallow=False):
         return True, f'v{increment_version(version_current[1:])}'
     return False, version_current
@@ -85,13 +129,13 @@ def initialize_es():
 
     return es
 
-def index_schemas(es: Elasticsearch, release_details, version, index_name):
+def index_schemas(es: Elasticsearch, release_details, version, index_name, test_version=''):
     doc = None
     for asset in release_details.get('assets', []):
-        if asset['name'] == 'schemas.json':
+        if asset['name'] == f'schemas{test_version}.json':
             doc = {
-                'name': "schemas",
-                'display_name': "schemas file",
+                'name': f"schemas{test_version}",
+                'display_name': f"Schemas{test_version} file",
                 'author': "MIKROE",
                 'hidden': True,
                 'type': "mcu_schemas",
@@ -101,21 +145,21 @@ def index_schemas(es: Elasticsearch, release_details, version, index_name):
                 'category': "MCU Package",
                 'download_link': asset['url'],
                 'package_changed': True,
-                'install_location': "%APPLICATION_DATA_DIR%/schemas.json"
+                'install_location': f"%APPLICATION_DATA_DIR%/schemas{test_version}.json"
             }
             break
 
     if doc:
-        resp = es.index(index=index_name, doc_type='necto_package', id='schemas', body=doc)
+        resp = es.index(index=index_name, doc_type='necto_package', id=f'schemas{test_version}', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
         # Special case - update live index Elasticsearch base as well
         if 'ES_INDEX_TEST' in os.environ and 'ES_INDEX_LIVE' in os.environ:
             if index_name == os.environ['ES_INDEX_TEST']:
-                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id='schemas', body=doc)
+                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=f'schemas{test_version}', body=doc)
                 print(f"{resp['result']} {resp['_id']}")
 
-async def upload_schemas(session, token, repo, tag_name, asset_path):
+async def upload_asset(session, token, repo, tag_name, asset_path):
     """ Upload a release asset to GitHub asynchronously """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {
@@ -157,10 +201,11 @@ async def upload_schemas(session, token, repo, tag_name, asset_path):
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo, tag_name, release_details):
+async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo, tag_name, release_details, test_version=''):
     global new_version
     input_directory = "./"
-    output_file = "./output/docs/schemas.json"
+    output_file = f"./output/docs/schemas{test_version}.json"
+    output_file_full = f"./output/docs/schemas{test_version}_uncompressed.json"
 
     # Generate schemas.json
     schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
@@ -170,15 +215,18 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
     output_dir = os.path.join(os.getcwd(), 'output/docs/')
     os.makedirs(output_dir, exist_ok=True)
 
-    current_asset = None
+    docs_asset, current_asset = None, None
     for asset in release_details.get('assets', []):
-        if asset['name'] == 'schemas.json':
+        if asset['name'] == f'docs{test_version}.7z':
+            docs_asset = asset
+        if asset['name'] == f'schemas{test_version}.json':
             current_asset = asset
             try:
                 # Download the current schemas.json
                 support.download_file_from_link(asset['url'], os.path.join(output_dir, 'current_schemas.json'), token)
             except Exception as e:
                 raise ValueError(f"Failed to download current_schemas.json: {e}")
+        if docs_asset and current_asset:
             break
 
     current_schemas_path = os.path.join(output_dir, 'current_schemas.json')
@@ -191,11 +239,10 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
     changed, version = is_version_changed(
         current_schemas_path,
         output_file,
-        fetch_current_indexed_version(es, index_name, 'schemas')
+        fetch_current_indexed_version(es, index_name, f'schemas{test_version}')
     )
 
-    new_version = None
-    if changed:
+    if changed or not current_asset:
         if current_asset:
             print(f"Deleting existing asset: {current_asset['name']}")
             delete_response = requests.delete(current_asset['url'], headers=get_headers(True, token))
@@ -203,32 +250,65 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
             print(f"Asset deleted: {current_asset['name']}")
 
         async with aiohttp.ClientSession() as session:
-            upload_result = await upload_schemas(session, token, repo, tag_name, output_file)
+            upload_result = await upload_asset(session, token, repo, tag_name, output_file)
 
         if upload_result['state'] == 'uploaded':
-            new_version = version
+            # Download the current schemas.json
+            tmp_output_dir = os.path.join(os.getcwd(), 'output')
+            if docs_asset:
+                support.extract_archive_from_url(docs_asset['url'], os.path.join(tmp_output_dir, 'tmp_docs'), token)
+            os.makedirs(os.path.join(tmp_output_dir, 'tmp_docs'), exist_ok=True)
+            shutil.copyfile(output_file, os.path.join(tmp_output_dir, 'tmp_docs', os.path.basename(output_file)))
+            shutil.copyfile(output_file_full, os.path.join(tmp_output_dir, 'tmp_docs', os.path.basename(output_file_full)))
+            archive_path = compress_directory_7z(os.path.join('./output', 'tmp_docs'), f'docs{test_version}.7z')
+            if docs_asset:
+                print(f"Deleting existing asset: {docs_asset['name']}")
+                delete_response = requests.delete(docs_asset['url'], headers=get_headers(True, token))
+                delete_response.raise_for_status()
+                print(f"Asset deleted: {docs_asset['name']}")
+            async with aiohttp.ClientSession() as session:
+                upload_result = await upload_asset(session, token, repo, tag_name, archive_path)
+            return version
     else:
         print("No changes detected. Skipping upload.")
         return None
 
 if __name__ == '__main__':
+    # First, check for arguments passed
+    def str2bool(v):
+        if isinstance(v, bool):
+            return v
+        if v.lower() in ('yes', 'true', 't', 'y', '1'):
+            return True
+        elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+            return False
+        else:
+            raise argparse.ArgumentTypeError('Boolean value expected.')
+
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
     parser.add_argument("select_index", help="Provided index name")
+    parser.add_argument("test_version", help="Generates test version files for testing first", type=str2bool, default=False)
     args = parser.parse_args()
+
+    test_version = ''
+    # Test version if needed for debugging purposes
+    if args.test_version:
+        print("Running test version!")
+        test_version = '_test'
+    else:
+        print("Running live version!")
 
     print("Starting the process...")
     es = initialize_es()
     release_details = fetch_release_details(args.repo, args.token, args.release_version)
-    asyncio.run(package_and_upload_schemas(es, args.select_index, args.token, args.repo, args.release_version, release_details))
+    new_version = asyncio.run(package_and_upload_schemas(es, args.select_index, args.token, args.repo, args.release_version, release_details, test_version))
 
-    while not new_version:
-        time.sleep(1)
-        if new_version:
-            release_details = fetch_release_details(args.repo, args.token, args.release_version)
-            index_schemas(es, release_details, new_version, args.select_index)
-            print(f"File has been updated. Version increased to {new_version}.")
-        else:
-            print("File the same. No need to update.")
+    if new_version:
+        release_details = fetch_release_details(args.repo, args.token, args.release_version)
+        index_schemas(es, release_details, new_version, args.select_index, test_version)
+        print(f"File has been updated. Version increased to {new_version}.")
+    else:
+        print("File the same. No need to update.")
