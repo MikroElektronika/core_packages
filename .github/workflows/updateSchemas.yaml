@@ -63,10 +63,10 @@ jobs:
             INDEX_TEST="False"
           fi
           echo "Index test set to $INDEX_TEST"
-        #  if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
-        #    echo "Uploading and indexing to Live."
-        #    python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
-        #  else
-        #    echo "Uploading and indexing to Test and Live."
-        #    python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
-        #  fi
+          if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
+            echo "Uploading and indexing to Live."
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
+          else
+            echo "Uploading and indexing to Test and Live."
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
+          fi
