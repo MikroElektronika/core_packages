@@ -62,8 +62,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scripts/requirements/shared.txt
           pip install -r scripts/requirements/databases.txt
-          pip install chardet
-          pip install alive-progress
+          pip install -r scripts/requirements/support.txt
           sudo apt-get install p7zip-full
 
       - name: Upload new database asset
@@ -80,7 +79,7 @@ jobs:
             curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
             --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
           else
-            echo "No changes made to necto_db.db";
+            echo "No changes made to necto_db_dev.db";
           fi
 
       - name: Upload MCUs Asset
