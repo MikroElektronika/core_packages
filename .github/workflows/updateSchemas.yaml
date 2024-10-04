@@ -44,10 +44,10 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
               echo "Triggered by schedule. Setting run_test to False."
-              echo "run_test=False" >> $GITHUB_ENV
+              echo "run_test=False" >> $GITHUB_OUTPUT
           else
               echo "Triggered manually. Using provided run_test input."
-              echo "run_test=${{ github.event.inputs.run_test }}" >> $GITHUB_ENV
+              echo "run_test=${{ github.event.inputs.run_test }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Upload and re-index
@@ -59,14 +59,14 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
           INDEX_TEST="True"
-          if [[ ${{ env.run_test }} == "False" ]]; then
+          if [[ ${{ steps.determine-trigger.outputs.run_test }} == "False" ]]; then
             INDEX_TEST="False"
           fi
           echo "Index test set to $INDEX_TEST"
-        #  if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
-        #    echo "Uploading and indexing to Live."
-        #    python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
-        #  else
-        #    echo "Uploading and indexing to Test and Live."
-        #    python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
-        #  fi
+          if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
+            echo "Uploading and indexing to Live."
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
+          else
+            echo "Uploading and indexing to Test and Live."
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
+          fi
