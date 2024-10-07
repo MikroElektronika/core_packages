@@ -570,6 +570,9 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path, delet
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
+def fetch_existing_asset_names(release):
+    return [asset['name'] for asset in release['assets']]
+
 async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths, latest_release=None):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
@@ -632,7 +635,8 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
 
         shutil.rmtree(base_output_dir)
         # Don't re-upload already existing packages
-        if f"{arch.lower()}_{entry_name.lower()}_{cmake_file}" not in existing_packages:
+        if (f"{arch.lower()}_{entry_name.lower()}_{cmake_file}" not in existing_packages) or \
+           (f"{arch.lower()}_{entry_name.lower()}_{cmake_file}.7z" not in fetch_existing_asset_names(latest_release)):
             # Upload archive
             upload_result= ""
             async with aiohttp.ClientSession() as session:
@@ -892,10 +896,9 @@ async def main(token, repo, tag_name):
 
     current_metadata = fetch_current_metadata(repo, token)
 
-    if 'latest' == tag_name:
-        latest_release = fetch_latest_release_version(repo, token)
-    else:
-        latest_release = {'tag_name': tag_name}
+    latest_release = fetch_latest_release_version(repo, token)
+    if 'latest' != tag_name:
+        latest_release['tag_name'] = tag_name
 
     packages = []
     for arch in architectures:
