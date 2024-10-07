@@ -941,33 +941,6 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
-    # Generate unit_test_lib package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
-    append_package(
-        packages, archive_path,
-        "Unit test library",
-        get_version_based_on_hash(
-            'unit_test_lib', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        )
-    )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
-
-    # Generate mikroe_utils_common package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
-    append_package(
-        packages, archive_path,
-        "MikroE common utilities",
-        get_version_based_on_hash(
-            'mikroe_utils_common', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        ),
-        'cmake'
-    )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
-
     # Generate database packages
     for each_db in db_paths:
         shutil.copy(f'./{each_db}', './utils/databases/necto_db.db')
