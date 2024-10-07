@@ -721,7 +721,10 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
     ## Add new sdk version
     for eachDb in [databaseNecto, databaseErp]:
         if eachDb:
-            sdkVersionUidNew, sdkVersionUidPrevious = sdk.addSdkVersion(eachDb, release_version_sdk.replace('mikroSDK-', ''))
+            sdk_version = release_version_sdk
+            if 'latest' == release_version_sdk:
+                sdk_version = utility.fetch_sdk_version(eachDb)
+            sdkVersionUidNew, sdkVersionUidPrevious = sdk.addSdkVersion(eachDb, sdk_version.replace('mikroSDK-', ''))
     ## Make sure to check if it exists already, so as not to add again
     if sdkVersionUidNew:
         ## Add data to tables

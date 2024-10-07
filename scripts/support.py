@@ -1,4 +1,4 @@
-import os, io, json, requests
+import os, re, io, json, requests, sqlite3
 
 def get_previous_release(releases, prerelases=None):
     ''' Fetch the previously released version '''
@@ -121,4 +121,43 @@ def fetch_mcu_list(package_name, file_list):
         for item in json_file_content:
             if package_name in item:
                 return item[package_name]["mcus"]
+    return None
+
+def fetch_sdk_version(db, version='latest'):
+    def functionRegex(value, pattern):
+        reg = re.compile(value)
+        return reg.search(pattern) is not None
+
+    ## Open the database / connect to it
+    con = sqlite3.connect(db)
+    cur = con.cursor()
+
+    ## Create the REGEXP function to be used in DB
+    con.create_function("REGEXP", 2, functionRegex)
+
+    ## Execute the desired query
+    results = cur.execute('SELECT DISTINCT version from SDKs WHERE uid NOT LIKE "%legacy%"').fetchall()
+    # results = cur.fetchall()
+
+    ## Close the connection
+    cur.close()
+    con.close()
+
+    from packaging.version import Version, InvalidVersion
+    valid_versions = []
+    for v in results:
+        try:
+            # Check if the version is valid
+            valid_versions.append(Version(v[0]))
+        except InvalidVersion:
+            # Skip invalid versions
+            continue
+    if valid_versions:
+        if 'latest' == version:
+            return max(valid_versions).base_version
+        else:
+            for current_version in valid_versions:
+                if current_version == version:
+                    return current_version
+
     return None
