@@ -593,8 +593,7 @@ def updateDevicesFromCore(dbs, queries):
                                     values.append(filtered_versions)
                                 # Add Packages if they are not present in the database
                                 elif 'DeviceToPackage' == eachTableKey:
-                                    package_uids = []
-                                    package_uids.extend(table_keys['DeviceToPackage']['package_uid'])
+                                    package_uids = linkerTables['tables'][enums.dbSync.BOARDTODEVICEPACKAGES.value]['DeviceToPackage']['package_uid']
                                     for package_uid in package_uids:
                                         pin_count = package_uid.split('/')[0]
                                         package_name = package_uid.split('/')[1]
@@ -606,7 +605,7 @@ def updateDevicesFromCore(dbs, queries):
                                                 package_uid,
                                                 package_uid,
                                                 "",
-                                                f'{"_MSDK_PACKAGE_NAME_":"{package_name}","_MSDK_DIP_SOCKET_TYPE_":""}'
+                                                '{"_MSDK_PACKAGE_NAME_":"' + package_name + '","_MSDK_DIP_SOCKET_TYPE_":""}'
                                             ],
                                             'pin_count,name,uid,stm_sdk_config,sdk_config'
                                         )
@@ -752,7 +751,7 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
     ## EOF Step 2
 
     ## Step 3 - Update database with Core settings
-    coreQueriesPath = os.path.join(os.path.dirname(__file__), '../queries')
+    coreQueriesPath = os.path.join(os.getcwd(), 'resources/queries')
     if os.path.exists(os.path.join(coreQueriesPath, 'mcus')):
         updateDevicesFromCore([databaseErp, databaseNecto], os.path.join(coreQueriesPath, 'mcus')) ## If any new mcus were added
     ## EOF Step 3
