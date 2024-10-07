@@ -16,6 +16,10 @@ on:
         options:
           - Test
           - Live
+      run_test:
+        type: boolean
+        description: If checked generates test files only - schemas_test.json/docs_test.7z
+        default: true
 
 jobs:
   update-schemas:
@@ -35,6 +39,17 @@ jobs:
           pip install -r scripts/requirements/shared.txt
           sudo apt-get install p7zip-full
 
+      - name: Determine if schedule or manual trigger
+        id: determine-trigger
+        run: |
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+              echo "Triggered by schedule. Setting run_test to False."
+              echo "run_test=False" >> $GITHUB_OUTPUT
+          else
+              echo "Triggered manually. Using provided run_test input."
+              echo "run_test=${{ github.event.inputs.run_test }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Upload and re-index
         env:
           ES_HOST: ${{ secrets.ES_HOST }}
@@ -43,10 +58,15 @@ jobs:
           ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
+          INDEX_TEST="True"
+          if [[ ${{ steps.determine-trigger.outputs.run_test }} == "false" ]]; then
+            INDEX_TEST="False"
+          fi
+          echo "Index test set to $INDEX_TEST"
           if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
             echo "Uploading and indexing to Live."
-            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }}
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
           else
             echo "Uploading and indexing to Test and Live."
-            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }}
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
           fi
