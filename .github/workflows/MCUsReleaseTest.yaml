@@ -94,7 +94,7 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
           ES_INDEX: ${{ secrets.ES_INDEX_LIVE }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
-        run: python -u scripts/release_mcus.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.release.tag_name }}
+        run: python -u scripts/release_mcus.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }}
 
       - name: Run Index Script
         env:
@@ -103,4 +103,4 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         run: |
             echo "Indexing to Test."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} "False" "False"
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} "False" ${{ github.event.inputs.release_version }} "False" "False"
