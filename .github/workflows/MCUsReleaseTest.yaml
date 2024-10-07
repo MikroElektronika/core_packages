@@ -7,9 +7,13 @@ on:
         type: string
         description: Which Branch to release MCUs from? (change last number to desired number)
         default: "new-feature/mcus/1"
+      release_version:
+        type: string
+        description: Tag to use for script run (i.e. mikroSDK-2.11.3)
+        default: "mikroSDK-2.11.3"
 
 jobs:
-  upload_board_assets_dev:
+  upload_mcu_assets:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -65,7 +69,7 @@ jobs:
           pip install -r scripts/requirements/support.txt
           sudo apt-get install p7zip-full
 
-      - name: Upload new database asset
+      - name: Update database
         run: |
           python -u scripts/update_db_for_release.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest"
 
@@ -100,4 +104,3 @@ jobs:
         run: |
             echo "Indexing to Test."
             python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} "False" "False"
-
