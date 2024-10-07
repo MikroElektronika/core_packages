@@ -518,14 +518,47 @@ def update_database(package_name, mcus, db_path):
 
     return
 
-async def upload_release_asset(session, token, repo, tag_name, asset_path):
+async def upload_release_asset(session, token, repo, tag_name, asset_path, delete_existing=True):
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
+
     release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
     async with session.get(release_url, headers=headers) as response:
         response_data = await response.json()
         release_id = response_data['id']
+
+    # Handle pagination to get all assets
+    page = 1
+    asset_deleted = False
+    asset_name = os.path.basename(asset_path)
+    while True:
+        if asset_deleted:
+            break
+        url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets?page={page}&per_page=30'
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        assets = response.json()
+
+        # If no more assets, break out of loop
+        if not assets:
+            break
+
+        # Check if the asset already exists
+        for asset in assets:
+            if asset['name'] == asset_name:
+                # If the asset exists, delete it
+                delete_url = asset['url']
+                if delete_existing:
+                    print(f'Deleting existing asset: {asset_name}')
+                    delete_response = requests.delete(delete_url, headers=headers)
+                    delete_response.raise_for_status()
+                    print(f'Asset deleted: {asset_name}')
+                asset_deleted = True
+                break
+
+        page += 1
+
     upload_url = f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={os.path.basename(asset_path)}"
     async with aiofiles.open(asset_path, 'rb') as f:
         data = await f.read()
