@@ -1,4 +1,4 @@
-import os, re, time, argparse, requests
+import os, re, time, argparse, requests, hashlib, shutil
 from elasticsearch import Elasticsearch
 from pathlib import Path
 from datetime import datetime, timezone
@@ -138,6 +138,78 @@ def increase_version(version, part="patch"):
     # Return the new version string
     return f"{major}.{minor}.{patch}"
 
+def hash_file(filename):
+    """Generate MD5 hash of a file."""
+    hash_md5 = hashlib.md5()
+    with open(filename, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
+def hash_directory_contents(directory):
+    """Generate a hash for the contents of a directory."""
+    all_hashes = []
+    for root, dirs, files in os.walk(directory):
+        dirs.sort()  # Ensure directory traversal is in a consistent order
+        files.sort()  # Ensure file traversal is in a consistent order
+        for filename in files:
+            file_path = os.path.join(root, filename)
+            file_hash = hash_file(file_path)
+            all_hashes.append(file_hash)
+
+    # Combine all file hashes into one hash
+    combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
+    return combined_hash
+
+def increment_version(version):
+    major, minor, patch = map(int, version.split('.'))
+    return f"{major}.{minor}.{patch + 1}"
+
+def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_file=False):
+# Search query to use
+    query_search = {
+        "size": 5000,
+        "query": {
+            "match_all": {}
+        }
+    }
+
+    # Search the base with provided query
+    num_of_retries = 1
+    while num_of_retries <= 10:
+        try:
+            response = es.search(index=index_name, body=query_search)
+            if not response['timed_out']:
+                break
+        except:
+            print("Executing search query - retry number %i" % num_of_retries)
+        num_of_retries += 1
+
+    index_hash = '0'
+    for eachHit in response['hits']['hits']:
+        if not 'name' in eachHit['_source']:
+            continue ## TODO - Check newly created bare metal package (is it created correctly)
+        name = eachHit['_source']['name']
+        if name == asset:
+            if 'hash' in eachHit['_source']:
+                index_hash = eachHit['_source']['hash']
+            if 'version' in eachHit['_source']:
+                indexed_version = eachHit['_source']['version']
+
+    os.makedirs(os.path.join(os.getcwd(), 'output/tmp'), exist_ok=True)
+    if is_file:
+        support.download_file_from_link(url, os.path.join(os.getcwd(), 'output/tmp', f'{asset}.json'), token)
+    else:
+        support.extract_archive_from_url(url, os.path.join(os.getcwd(), 'output/tmp', asset), token)
+    uploaded_asset_hash = hash_directory_contents(os.path.join(os.getcwd(), 'output/tmp', asset))
+    shutil.rmtree(os.path.join(os.getcwd(), 'output/tmp'))
+
+    new_version = indexed_version
+    if (uploaded_asset_hash != index_hash):
+        new_version = f'v{increment_version(indexed_version[1:])}'
+
+    return uploaded_asset_hash, (uploaded_asset_hash != index_hash), new_version
+
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None):
     # Iterate over each asset in the release and previous release
@@ -177,33 +249,37 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
         doc = None
         if name_without_extension == "clocks":
+            current_hash, check_version, new_version = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
             doc = {
                 'name': "clocks",
                 'display_name' : "Clocks file",
                 'author' : "MIKROE",
                 'hidden' : True,
                 'type' : "mcu_clocks",
-                'version' : release_details[0]['tag_name'],
+                'hash' : current_hash,
+                'version' : new_version,
                 'created_at': asset['created_at'],
                 'updated_at': asset['updated_at'],
                 'category': "MCU Package",
                 'download_link': asset['url'],
-                'package_changed' : True,
+                'package_changed' : check_version,
                 'install_location' : "%APPLICATION_DATA_DIR%/clocks.json"
             }
         elif name_without_extension == "schemas":
+            current_hash, check_version, new_version = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
             doc = {
                 'name': "schemas",
                 'display_name' : "schemas file",
                 'author' : "MIKROE",
                 'hidden' : True,
                 'type' : "mcu_schemas",
-                'version' : release_details[0]['tag_name'],
+                'hash' : current_hash,
+                'version' : new_version,
                 'created_at': asset['created_at'],
                 'updated_at': asset['updated_at'],
                 'category': "MCU Package",
                 'download_link': asset['url'],
-                'package_changed' : True,
+                'package_changed' : check_version,
                 'install_location' : "%APPLICATION_DATA_DIR%/schemas.json"
             }
         else:
