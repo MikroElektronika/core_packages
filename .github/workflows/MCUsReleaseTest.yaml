@@ -71,7 +71,7 @@ jobs:
 
       - name: Update database
         run: |
-          python -u scripts/update_db_for_release.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest"
+          python -u scripts/update_db_for_release.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Test"
 
       - name: Commit and Push Changes
         run: |
