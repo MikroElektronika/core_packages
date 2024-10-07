@@ -167,6 +167,14 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
         update_package = True
         name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
 
+        always_index = [
+            'clocks',
+            'schemas',
+            'images',
+            'preinit',
+            'database'
+        ]
+
         doc = None
         if name_without_extension == "clocks":
             doc = {
@@ -266,6 +274,12 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 else:
                     resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
                     print(f"{resp["result"]} {resp['_id']}")
+                    if name_without_extension in always_index:
+                        if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
+                            if index_name == os.environ['ES_INDEX_TEST']:
+                                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=name_without_extension, body=doc)
+                                print(f"Indexed to LIVE as well.")
+                                print(f"{resp["result"]} {resp['_id']}")
 
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)
