@@ -146,7 +146,7 @@ def extract_mcu_names(file_name, source_dir, output_dir, regex):
                     if regex_pattern.match(mcu_name):
                         mcus[file_name]['mcu_names'].add(mcu_name)
                         if 'gcc_clang' in source_dir or 'XC32' in source_dir:
-                            isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config FROM Devices WHERE name IS "{mcu_name}"')
+                            isPresent, readData = read_data_from_db('necto_db_dev.db', f'SELECT sdk_config FROM Devices WHERE name IS "{mcu_name}"')
                             if isPresent:
                                 configJson = json.loads(readData[0][0])
                                 mcus[file_name]['cores'].add(configJson['CORE_NAME'])
