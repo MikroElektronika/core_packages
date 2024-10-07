@@ -524,6 +524,9 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path, delet
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
 
     release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
+    if 'latest' == tag_name:
+        release_url = f"https://api.github.com/repos/{repo}/releases/latest"
+
     async with session.get(release_url, headers=headers) as response:
         response_data = await response.json()
         release_id = response_data['id']
@@ -567,7 +570,7 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path, delet
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths):
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths, latest_release=None):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -640,7 +643,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
                 print(f"Added {archiveName} package to {tag_name}.")
 
         # Determine the version based on the hash
-        version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
+        version = get_version_based_on_hash(archiveName, (latest_release['tag_name']).replace("v", ""), archiveHash, current_metadata)
         # Add to packages list
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
         install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
@@ -831,6 +834,15 @@ def update_metadata(current_metadata, new_files, version):
 
         updated_metadata.append(new_file)
 
+    current_file_names = [object['name'] for object in current_metadata]
+    new_file_names = [object['name'] for object in updated_metadata]
+
+    diff_array = [name for name in current_file_names if name not in new_file_names]
+
+    for previous_file in current_metadata:
+        if previous_file['name'] in diff_array:
+            updated_metadata.append(previous_file)
+
     return updated_metadata
 
 def append_package(packages, package, display_name, version, install=None, category='utility'):
@@ -854,12 +866,36 @@ def append_package(packages, package, display_name, version, install=None, categ
         "install_location": f"%APPLICATION_DATA_DIR%/{install_location}"
     })
 
+# Gets latest release headers from repository
+def get_headers(api, token):
+    if api:
+        return {
+            'Authorization': f'token {token}'
+        }
+    else:
+        return {
+            'Authorization': f'Bearer {token}',
+            'Accept': 'application/octet-stream'
+        }
+
+def fetch_latest_release_version(repo, token):
+    api_headers = get_headers(True, token)
+    url = f'https://api.github.com/repos/{repo}/releases'
+    response = requests.get(url, headers=api_headers)
+    response.raise_for_status()  # Raise an exception for HTTP errors
+    return support.get_latest_release(response.json())
+
 async def main(token, repo, tag_name):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
     db_paths = ['necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
+
+    if 'latest' == tag_name:
+        latest_release = fetch_latest_release_version(repo, token)
+    else:
+        latest_release = {'tag_name': tag_name}
 
     packages = []
     for arch in architectures:
@@ -880,7 +916,8 @@ async def main(token, repo, tag_name):
                         await package_asset(
                             source_directory, output_directory, arch, entry.name,
                             token, repo, tag_name,
-                            packages, current_metadata, db_paths
+                            packages, current_metadata, db_paths,
+                            latest_release
                         )
 
         except Exception as e:
@@ -919,7 +956,7 @@ async def main(token, repo, tag_name):
         packages, archive_path,
         "NECTO Resources - Images",
         get_version_based_on_hash(
-            'resources_images', tag_name.replace("v", ""),
+            'resources_images', (latest_release['tag_name']).replace("v", ""),
             hash_directory_contents(archive_path), current_metadata
         ),
         'resources/images',
@@ -934,7 +971,7 @@ async def main(token, repo, tag_name):
         packages, archive_path,
         "Preinit library",
         get_version_based_on_hash(
-            'preinit', tag_name.replace("v", ""),
+            'preinit', (latest_release['tag_name']).replace("v", ""),
             hash_directory_contents(archive_path), current_metadata
         )
     )
@@ -952,7 +989,7 @@ async def main(token, repo, tag_name):
             packages, archive_path,
             "NECTO Database",
             get_version_based_on_hash(
-                f'databases{package_suffix}', tag_name.replace("v", ""),
+                f'databases{package_suffix}', (latest_release['tag_name']).replace("v", ""),
                 hash_directory_contents(archive_path), current_metadata
             ),
             f'databases'
@@ -966,7 +1003,7 @@ async def main(token, repo, tag_name):
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
-    new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
+    new_metadata = update_metadata(current_metadata, packages, (latest_release['tag_name']).replace("v", ""))
     with open('metadata.json', 'w') as f:
         json.dump(new_metadata, f, indent=4)
 

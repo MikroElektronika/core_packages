@@ -10,7 +10,7 @@ on:
       release_version:
         type: string
         description: Tag to use for script run (i.e. v1.0.7)
-        default: "v1.0.7"
+        default: "latest"
 
 jobs:
   upload_mcu_assets:
@@ -72,19 +72,6 @@ jobs:
       - name: Update database
         run: |
           python -u scripts/update_db_for_release.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Test"
-
-      - name: Commit and Push Changes
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Updating with new CHANGELOG.md";
-            git add necto_db_dev.db
-            git commit -m "Updated necto database with latest merged release."
-            git push
-            curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
-            --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
-          else
-            echo "No changes made to necto_db_dev.db";
-          fi
 
       - name: Upload MCUs Asset
         env:
