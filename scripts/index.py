@@ -196,13 +196,13 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
             if 'version' in eachHit['_source']:
                 indexed_version = eachHit['_source']['version']
 
-    os.makedirs(os.path.join(os.getcwd(), 'output/tmp'), exist_ok=True)
+    os.makedirs(os.path.join(os.getcwd(), 'output/tmp', asset), exist_ok=True)
     if is_file:
-        support.download_file_from_link(url, os.path.join(os.getcwd(), 'output/tmp', f'{asset}.json'), token)
+        support.download_file_from_link(url, os.path.join(os.getcwd(), 'output/tmp', asset, f'{asset}.json'), token)
     else:
         support.extract_archive_from_url(url, os.path.join(os.getcwd(), 'output/tmp', asset), token)
     uploaded_asset_hash = hash_directory_contents(os.path.join(os.getcwd(), 'output/tmp', asset))
-    shutil.rmtree(os.path.join(os.getcwd(), 'output/tmp'))
+    shutil.rmtree(os.path.join(os.getcwd(), 'output/tmp', asset))
 
     new_version = indexed_version
     if (uploaded_asset_hash != index_hash):
