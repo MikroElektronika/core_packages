@@ -633,6 +633,9 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archive_path)
 
+        ## TODO - implement hash check for current packed asset
+        ## If hash different - reupload with increased version
+
         shutil.rmtree(base_output_dir)
         # Don't re-upload already existing packages
         if (f"{arch.lower()}_{entry_name.lower()}_{cmake_file}" not in existing_packages) or \
@@ -849,20 +852,24 @@ def update_metadata(current_metadata, new_files, version):
 
     return updated_metadata
 
-def append_package(packages, package, display_name, version, install=None, category='utility'):
+def append_package(packages, package, display_name, version, install=None, category='utility', hash=None):
     ''' Append any additional, non MCU packages '''
     if install or install == '':
         install_location = install
     else:
         install_location = f'packages/{os.path.basename(package.lower())[:-3]}'
     package_type = f"{os.path.basename(package.lower())[:-3]}"
+    if hash:
+        hash_value = hash
+    else:
+        hash_value = hash_directory_contents(package[:-3])
     if os.path.basename(package.lower()) == 'database_dev.7z':
         package_type = 'database'
     packages.append({
         "name": f"{os.path.basename(package.lower())[:-3]}",
         "display_name": display_name,
         "version": version,
-        "hash": hash_directory_contents(package[:-3]),
+        "hash": hash_value,
         "vendor": "MIKROE",
         "category": category,
         "type": package_type,
@@ -988,14 +995,16 @@ async def main(token, repo, tag_name):
         if 'dev' in each_db:
             package_suffix = '_dev'
         archive_path = compress_directory_7z(os.path.join('./utils', 'databases'), f'database{package_suffix}.7z')
+        current_db_hash = hash_directory_contents(os.path.join('./utils', 'databases'))
         append_package(
             packages, archive_path,
             "NECTO Database",
             get_version_based_on_hash(
                 f'database{package_suffix}', (latest_release['tag_name']).replace("v", ""),
-                hash_directory_contents(os.path.join('./utils', 'databases')), current_metadata
+                current_db_hash, current_metadata
             ),
-            f'databases'
+            f'databases',
+            hash=current_db_hash
         )
         async with aiohttp.ClientSession() as session:
             upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
