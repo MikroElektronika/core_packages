@@ -79,14 +79,7 @@ jobs:
 
       - name: Update database
         run: |
-          python -u scripts/update_db_for_release.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Test"
-
-      - name: Commit database to current branch
-        run: |
-          echo "Updating with new database";
-          git add necto_db_dev.db
-          git commit -m "Updated database with latest release info."
-          git push
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Test" "--upload" "False"
 
       - name: Upload MCUs Asset
         env:

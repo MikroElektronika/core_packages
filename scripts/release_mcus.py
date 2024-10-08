@@ -901,8 +901,6 @@ async def main(token, repo, tag_name, live=False):
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
 
     db_paths = ['necto_db_dev.db']
-    if live:
-        db_paths = ['necto_db.db']
 
     current_metadata = fetch_current_metadata(repo, token)
 
