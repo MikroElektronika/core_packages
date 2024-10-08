@@ -992,8 +992,8 @@ async def main(token, repo, tag_name):
             packages, archive_path,
             "NECTO Database",
             get_version_based_on_hash(
-                f'databases{package_suffix}', (latest_release['tag_name']).replace("v", ""),
-                hash_directory_contents(archive_path), current_metadata
+                f'database{package_suffix}', (latest_release['tag_name']).replace("v", ""),
+                hash_directory_contents(os.path.join('./utils', 'databases')), current_metadata
             ),
             f'databases'
         )
