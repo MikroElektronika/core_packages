@@ -214,7 +214,7 @@ def getProgDbgAsJson(docLink, saveToFile=False):
     df = pd.read_csv(os.path.join(os.path.dirname(__file__), "devices.txt"))
     df.replace({np.nan: False}, inplace=True)
     data_dict = df.set_index('Name').to_dict(orient='index')
-    formatted_dict = {mcu: data for mcu, data in data_dict.items()}
+    formatted_dict = {mcu.lower(): data for mcu, data in data_dict.items()}
     if os.path.exists(os.path.join(os.path.dirname(__file__), "devices.txt")):
         os.remove(os.path.join(os.path.dirname(__file__), "devices.txt"))
 
@@ -246,11 +246,11 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
             print("Removed %s from database ProgrammerToDevice table.\n" % eachProgUid)
 
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
-        if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '') in progDbgInfo:
-            for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '')].keys():
+        if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
+            for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()].keys():
                 if re.search('Programmers',eachProgCheckKey):
-                    if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '')][eachProgCheckKey]:
-                        splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '')][eachProgCheckKey].split('/')
+                    if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey]:
+                        splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey].split('/')
                         for eachProgDebug in splitProgsDebuggers:
                             progDebugUid = read_data_from_db(
                                 database,
@@ -308,11 +308,11 @@ def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
             print("Removed %s from database DebuggerToDevice table.\n" % eachProgUid)
 
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
-        if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '') in progDbgInfo:
-            for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '')].keys():
+        if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
+            for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()].keys():
                 if re.search('Debuggers',eachProgCheckKey):
-                    if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '')][eachProgCheckKey]:
-                        splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '')][eachProgCheckKey].split('/')
+                    if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey]:
+                        splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey].split('/')
                         for eachProgDebug in splitProgsDebuggers:
                             progDebugUid = read_data_from_db(
                                 database,
