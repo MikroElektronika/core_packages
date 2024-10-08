@@ -13,7 +13,7 @@ on:
         default: "latest"
 
 jobs:
-  upload_mcu_assets:
+  upload_mcu_assets_test:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -61,6 +61,14 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Cache Python packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
@@ -72,6 +80,13 @@ jobs:
       - name: Update database
         run: |
           python -u scripts/update_db_for_release.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Test"
+
+      - name: Commit database to current branch
+        run: |
+          echo "Updating with new database";
+          git add necto_db_dev.db
+          git commit -m "Updated database with latest release info."
+          git push
 
       - name: Upload MCUs Asset
         env:
