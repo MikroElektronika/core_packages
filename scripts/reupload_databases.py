@@ -471,6 +471,7 @@ async def get_all_assets(session, token, repo, release_id):
     return assets
 
 async def upload_release_asset(session, token, repo, asset_path, release_version=None):
+    return 0
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
@@ -722,6 +723,90 @@ def updateDevicesFromSdk(dbs, queries):
 
     return
 
+def updateDevicesFromCore(dbs, queries):
+    allDevicesDirs = os.listdir(queries)
+    for eachDeviceDir in allDevicesDirs:
+        currentDeviceDir = os.path.join(queries, eachDeviceDir)
+        currentDeviceFiles = os.listdir(currentDeviceDir)
+
+        for eachDb in dbs:
+            if eachDb:
+                if 'Devices.json' in currentDeviceFiles:
+                    with open(os.path.join(currentDeviceDir, 'Devices.json'), 'r') as file:
+                        device = json.load(file)
+                    file.close()
+                    values = []
+                    collumns = []
+                    for eachKey in device.keys():
+                        collumns.append(eachKey)
+                        values.append(device[eachKey])
+                    insertIntoTable(
+                        eachDb,
+                        'Devices',
+                        values,
+                        ','.join(collumns)
+                    )
+
+                if 'LinkerTables.json' in currentDeviceFiles:
+                    with open(os.path.join(currentDeviceDir, 'LinkerTables.json'), 'r') as file:
+                        linkerTables = json.load(file)
+                    file.close()
+                    table_keys = [list(table.keys())[0] for table in linkerTables['tables']]
+                    for eachTableKey in table_keys:
+                        collumns = ['device_uid']
+                        values = [linkerTables['device_uid']]
+                        for eachKey in linkerTables['tables']:
+                            if eachTableKey in eachKey:
+                                collumns.append(list(eachKey[eachTableKey].keys())[0])
+                                if 'SDKToDevice' == eachTableKey:
+                                    sdkVersions = read_data_from_db(eachDb, 'SELECT DISTINCT version FROM SDKs WHERE name IS "mikroSDK"')
+                                    versions = filter_versions(list(v[0] for v in sdkVersions[enums.dbSync.ELEMENTS.value]))
+                                    threshold_version = version.parse(eachKey[eachTableKey][collumns[1]][:-1])
+                                    filtered_versions = [f'mikrosdk_v{v.replace('.','')}' for v in versions if version.parse(v) >= threshold_version]
+                                    values.append(filtered_versions)
+                                # Add Packages if they are not present in the database
+                                elif 'DeviceToPackage' == eachTableKey:
+                                    package_uids = linkerTables['tables'][enums.dbSync.BOARDTODEVICEPACKAGES.value]['DeviceToPackage']['package_uid']
+                                    for package_uid in package_uids:
+                                        pin_count = package_uid.split('/')[0]
+                                        package_name = package_uid.split('/')[1]
+                                        insertIntoTable(
+                                            eachDb,
+                                            'Packages',
+                                            [
+                                                pin_count,
+                                                package_uid,
+                                                package_uid,
+                                                "",
+                                                '{"_MSDK_PACKAGE_NAME_":"' + package_name + '","_MSDK_DIP_SOCKET_TYPE_":""}'
+                                            ],
+                                            'pin_count,name,uid,stm_sdk_config,sdk_config'
+                                        )
+                                    values.append(eachKey[eachTableKey][collumns[1]])
+                                else:
+                                    values.append(eachKey[eachTableKey][collumns[1]])
+                                break
+                        if list == type(values[1]):
+                            for eachValue in values[1]:
+                                insertIntoTable(
+                                    eachDb,
+                                    eachTableKey,
+                                    [
+                                        values[0],
+                                        eachValue
+                                    ],
+                                    ','.join(collumns)
+                                )
+                        else:
+                            insertIntoTable(
+                                eachDb,
+                                eachTableKey,
+                                values,
+                                ','.join(collumns)
+                            )
+
+    return
+
 def hash_file(filename):
     """Generate MD5 hash of a file."""
     hash_md5 = hashlib.md5()
@@ -790,7 +875,10 @@ def fix_icon_names(db, tableName):
                 )
 
 ## Main runner
-async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", release_version_sdk="", index="Test"):
+async def main(
+    token, repo, doc_codegrip, doc_mikroprog,
+    release_version="", release_version_sdk="", index="Test", mcus_only=True
+):
     ## Step 1 - download the database first
     ## Always use latest release
     dbName = 'necto_db_dev'
@@ -806,6 +894,9 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
 
     ## Step 2 - Update database with new SDK if needed
     ## Add new sdk version
+    if 'latest' == release_version_sdk:
+        release_version_sdk = fetch_release_details('MikroElektronika/mikrosdk_v2', token, release_version_sdk)['tag_name']
+
     for eachDb in [databaseNecto, databaseErp]:
         if eachDb:
             sdkVersionUidNew, sdkVersionUidPrevious = sdk.addSdkVersion(eachDb, release_version_sdk.replace('mikroSDK-', ''))
@@ -837,117 +928,134 @@ async def main(token, repo, doc_codegrip, doc_mikroprog, release_version="", rel
 
     ## Step 3 - Update database with mikroSDK settings
     if release_version_sdk:
-        sdkQueriesPath = os.path.join(os.path.dirname(__file__), 'tmp/queries')
-        sdkMetadataPath = os.path.join(os.path.dirname(__file__), 'tmp/metadata.json')
-        ghPath = f'download/{release_version_sdk}'
-        if "latest" == release_version_sdk:
-            ghPath = 'latest/download'
-        if not os.path.exists(sdkQueriesPath):
-            utility.extract_archive_from_url(
-                f'https://github.com/MikroElektronika/mikrosdk_v2/releases/{ghPath}/queries.7z',
-                sdkQueriesPath, token
-            )
-        if not os.path.isfile(sdkMetadataPath):
-            utility.download_file_from_link(
-                f'https://github.com/MikroElektronika/mikrosdk_v2/releases/{ghPath}/metadata.json',
-                sdkMetadataPath, token
-            )
-        if os.path.exists(os.path.join(sdkQueriesPath, 'boards')):
-            updateBoardsFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'boards')) ## If any new boards were added
-        if os.path.exists(os.path.join(sdkQueriesPath, 'cards')):
-            updateDevicesFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'cards')) ## If any new mcu cards were added
-
-        ## This part adds package dependencies for each board present in mikroSDK
-        jsonFile = json.load(open(sdkMetadataPath, 'r'))['packages']
-        for eachDb in [databaseErp, databaseNecto]:
-            if eachDb:
-                addCollumnsToTable(
-                    eachDb, ['installer_package'], 'Boards', ['Text'], ['NoDefault']
+        if not mcus_only:
+            sdkQueriesPath = os.path.join(os.path.dirname(__file__), 'tmp/queries')
+            sdkMetadataPath = os.path.join(os.path.dirname(__file__), 'tmp/metadata.json')
+            ghPath = f'download/{release_version_sdk}'
+            if "latest" == release_version_sdk:
+                ghPath = 'latest/download'
+            if not os.path.exists(sdkQueriesPath):
+                utility.extract_archive_from_url(
+                    f'https://github.com/MikroElektronika/mikrosdk_v2/releases/{ghPath}/queries.7z',
+                    sdkQueriesPath, token
                 )
-                for eachBoard in jsonFile:
-                    updateTableCollumn(
-                        eachDb, None, None, None, None, None, jsonFile[eachBoard]['db_query']
+            if not os.path.isfile(sdkMetadataPath):
+                utility.download_file_from_link(
+                    f'https://github.com/MikroElektronika/mikrosdk_v2/releases/{ghPath}/metadata.json',
+                    sdkMetadataPath, token
+                )
+            if os.path.exists(os.path.join(sdkQueriesPath, 'boards')):
+                updateBoardsFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'boards')) ## If any new boards were added
+            if os.path.exists(os.path.join(sdkQueriesPath, 'cards')):
+                updateDevicesFromSdk([databaseErp, databaseNecto], os.path.join(sdkQueriesPath, 'cards')) ## If any new mcu cards were added
+
+            ## This part adds package dependencies for each board present in mikroSDK
+            jsonFile = json.load(open(sdkMetadataPath, 'r'))['packages']
+            for eachDb in [databaseErp, databaseNecto]:
+                if eachDb:
+                    addCollumnsToTable(
+                        eachDb, ['installer_package'], 'Boards', ['Text'], ['NoDefault']
                     )
+                    for eachBoard in jsonFile:
+                        updateTableCollumn(
+                            eachDb, None, None, None, None, None, jsonFile[eachBoard]['db_query']
+                        )
+
+    ## Always add MCU information stored in CORE repo
+    coreQueriesPath = os.path.join(os.getcwd(), 'resources/queries')
+    if os.path.exists(os.path.join(coreQueriesPath, 'mcus')):
+        updateDevicesFromCore([databaseErp, databaseNecto], os.path.join(coreQueriesPath, 'mcus')) ## If any new mcus were added
     ## EOF Step 3
 
     ## Step 4 - add missing collumns to tables
-    if databaseErp:
-        addCollumnsToTable(
-            databaseErp, ['pid'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
-        )
-        addCollumnsToTable(
-            databaseErp, ['package_uid'], 'BoardToDevice', ['TEXT'], ['NoDefault']
-        )
-        addCollumnsToTable(
-            databaseErp, ['pid', 'graphic_tool'], 'Compilers', ['VARCHAR(50)', 'BOOLEAN'], ['NoDefault', 0]
-        )
+    if not mcus_only:
+        if databaseErp:
+            addCollumnsToTable(
+                databaseErp, ['pid'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
+            )
+            addCollumnsToTable(
+                databaseErp, ['package_uid'], 'BoardToDevice', ['TEXT'], ['NoDefault']
+            )
+            addCollumnsToTable(
+                databaseErp, ['pid', 'graphic_tool'], 'Compilers', ['VARCHAR(50)', 'BOOLEAN'], ['NoDefault', 0]
+            )
 
     ## Step 5 - select all unique devices from github database
-    allDevicesGithub = read_data_from_db(
-        databaseNecto, 'SELECT DISTINCT uid, def_file FROM Devices'
-    )
-
-    ## Step 6 - add any missing mcu device details
-    if databaseErp:
-        checkDeviceDetails(databaseErp, allDevicesGithub)
-
-    ## Step 7 - add any missing package_uid to BoardToDevice
-    if databaseErp:
-        checkDevicePackages(databaseErp, allDevicesGithub)
-
-    ## Step 8 - clear any empty rows from BoardToDevice
-    if databaseErp:
-        clearDevicePackages(databaseErp)
-
-    ## Step 9 - synchronize programmers for all devices - CODEGRIP first
-    progDbgAsJson = getProgDbgAsJson(
-        f'https://docs.google.com/spreadsheets/d/{doc_codegrip}/export?format=csv',
-        True
-    )
-    if databaseErp:
-        checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
-        checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
-    checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
-    checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
-
-    ## Step 10 - syncronize programmers for all devices - mikroProg next
-    progDbgAsJson = getProgDbgAsJson(
-        f'https://docs.google.com/spreadsheets/d/{doc_mikroprog}/export?format=csv',
-        True
-    )
-    if databaseErp:
-        checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
-        checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
-    checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
-    checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
-
-    ## Step 11 - update families
-    if databaseErp:
-        update_families(databaseErp, allDevicesGithub)
-
-    ## Step 12 - update the icon names
-    for eachDb in [databaseErp, databaseNecto]:
-        fix_icon_names(eachDb, "Boards")
-        fix_icon_names(eachDb, "Displays")
-
-    ## Step 13 - if queries are different, add them to new file
-    if not compare_hashes(
-        os.path.join(os.path.dirname(__file__), 'databases/queries'),
-        os.path.join(os.path.dirname(os.getcwd()), 'utils/databases/queries')
-    ):
-        ## Hashes are different, so copy new files here
-        copy_folder_contents(
-            os.path.join(os.getcwd(), 'utils/databases/queries'),
-            os.path.join(os.path.dirname(__file__), 'databases/queries')
+    if not mcus_only:
+        allDevicesGithub = read_data_from_db(
+            databaseNecto, 'SELECT DISTINCT uid, def_file FROM Devices'
         )
 
+    ## Step 6 - add any missing mcu device details
+    if not mcus_only:
+        if databaseErp:
+            checkDeviceDetails(databaseErp, allDevicesGithub)
+
+    ## Step 7 - add any missing package_uid to BoardToDevice
+    if not mcus_only:
+        if databaseErp:
+            checkDevicePackages(databaseErp, allDevicesGithub)
+
+    ## Step 8 - clear any empty rows from BoardToDevice
+    if not mcus_only:
+        if databaseErp:
+            clearDevicePackages(databaseErp)
+
+    ## Step 9 - synchronize programmers for all devices - CODEGRIP first
+    if not mcus_only:
+        progDbgAsJson = getProgDbgAsJson(
+            f'https://docs.google.com/spreadsheets/d/{doc_codegrip}/export?format=csv',
+            True
+        )
+        if databaseErp:
+            checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
+            checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
+        checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
+        checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
+
+    ## Step 10 - syncronize programmers for all devices - mikroProg next
+    if not mcus_only:
+        progDbgAsJson = getProgDbgAsJson(
+            f'https://docs.google.com/spreadsheets/d/{doc_mikroprog}/export?format=csv',
+            True
+        )
+        if databaseErp:
+            checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
+            checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
+        checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
+        checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
+
+    ## Step 11 - update families
+    if not mcus_only:
+        if databaseErp:
+            update_families(databaseErp, allDevicesGithub)
+
+    ## Step 12 - update the icon names
+    if not mcus_only:
+        for eachDb in [databaseErp, databaseNecto]:
+            fix_icon_names(eachDb, "Boards")
+            fix_icon_names(eachDb, "Displays")
+
+    ## Step 13 - if queries are different, add them to new file
+    if not mcus_only:
+        if not compare_hashes(
+            os.path.join(os.path.dirname(__file__), 'databases/queries'),
+            os.path.join(os.path.dirname(os.getcwd()), 'utils/databases/queries')
+        ):
+            ## Hashes are different, so copy new files here
+            copy_folder_contents(
+                os.path.join(os.getcwd(), 'utils/databases/queries'),
+                os.path.join(os.path.dirname(__file__), 'databases/queries')
+            )
+
     ## Step 14 - re-upload over existing assets
-    archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
-    if databaseErp:
+    if not mcus_only:
+        archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
         async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
+            upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
+        if databaseErp:
+            async with aiohttp.ClientSession() as session:
+                upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
 
     ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
@@ -964,9 +1072,17 @@ if __name__ == "__main__":
     parser.add_argument('specific_tag', type=str, help='Specific release tag for database update.', default="")
     parser.add_argument('specific_tag_mikrosdk', type=str, help='Specific release tag from mikrosdk for database update.', default="")
     parser.add_argument('index', type=str, help='Index selection - Live/Test.', default="Test")
+    parser.add_argument('--mcus_only', type=bool, help='If True - will upload asset.', default=False)
 
     ## Parse the arguments
     args = parser.parse_args()
 
     ## Run the main code
-    asyncio.run(main(args.token, args.repo, args.doc_codegrip, args.doc_mikroprog, args.specific_tag, args.specific_tag_mikrosdk, args.index))
+    asyncio.run(
+        main(
+            args.token, args.repo,
+            args.doc_codegrip, args.doc_mikroprog,
+            args.specific_tag, args.specific_tag_mikrosdk,
+            args.index, args.mcus_only
+        )
+    )

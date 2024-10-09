@@ -896,9 +896,10 @@ def fetch_latest_release_version(repo, token):
     response.raise_for_status()  # Raise an exception for HTTP errors
     return support.get_latest_release(response.json())
 
-async def main(token, repo, tag_name):
+async def main(token, repo, tag_name, live=False):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
+
     db_paths = ['necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
@@ -943,50 +944,54 @@ async def main(token, repo, tag_name):
     #         await upload_release_asset(session, token, repo, tag_name, f"output/databases/{each_package['name']}.db")
 
     # Generate clocks.json
-    input_directory = "./"
-    output_file = "./output/docs/clocks.json"
-    clocksGenerator = GenerateClocks(input_directory, output_file)
-    clocksGenerator.generate()
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
+    if not live:
+        input_directory = "./"
+        output_file = "./output/docs/clocks.json"
+        clocksGenerator = GenerateClocks(input_directory, output_file)
+        clocksGenerator.generate()
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
 
     # Generate schemas.json
-    input_directory = "./"
-    output_file = "./output/docs/schemas.json"
-    # TODO - Add regex definitions to the array if needed
-    # At the moment we check only for 'board_regex' fields in JSON files
-    schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
-    schemaGenerator.generate()
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
+    if not live:
+        input_directory = "./"
+        output_file = "./output/docs/schemas.json"
+        # TODO - Add regex definitions to the array if needed
+        # At the moment we check only for 'board_regex' fields in JSON files
+        schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
+        schemaGenerator.generate()
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
 
     # Generate images package
-    archive_path = compress_directory_7z(os.path.join('./resources', 'images'), 'images.7z')
-    append_package(
-        packages, archive_path,
-        "NECTO Resources - Images",
-        get_version_based_on_hash(
-            'resources_images', (latest_release['tag_name']).replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        ),
-        'resources/images',
-        'resources'
-    )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+    if not live:
+        archive_path = compress_directory_7z(os.path.join('./resources', 'images'), 'images.7z')
+        append_package(
+            packages, archive_path,
+            "NECTO Resources - Images",
+            get_version_based_on_hash(
+                'resources_images', (latest_release['tag_name']).replace("v", ""),
+                hash_directory_contents(archive_path), current_metadata
+            ),
+            'resources/images',
+            'resources'
+        )
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
     # Generate preinit package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
-    append_package(
-        packages, archive_path,
-        "Preinit library",
-        get_version_based_on_hash(
-            'preinit', (latest_release['tag_name']).replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
+    if not live:
+        archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
+        append_package(
+            packages, archive_path,
+            "Preinit library",
+            get_version_based_on_hash(
+                'preinit', (latest_release['tag_name']).replace("v", ""),
+                hash_directory_contents(archive_path), current_metadata
+            )
         )
-    )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
     # Generate database packages
     for each_db in db_paths:
@@ -1011,23 +1016,26 @@ async def main(token, repo, tag_name):
         os.remove(os.path.join('./utils', f'database{package_suffix}.7z'))
 
     # Generate document files asset
-    archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+    if not live:
+        archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
 
-    new_metadata = update_metadata(current_metadata, packages, (latest_release['tag_name']).replace("v", ""))
-    with open('metadata.json', 'w') as f:
-        json.dump(new_metadata, f, indent=4)
+    if not live:
+        new_metadata = update_metadata(current_metadata, packages, (latest_release['tag_name']).replace("v", ""))
+        with open('metadata.json', 'w') as f:
+            json.dump(new_metadata, f, indent=4)
 
-    async with aiohttp.ClientSession() as session:
-        await upload_release_asset(session, token, repo, tag_name, "metadata.json")
+        async with aiohttp.ClientSession() as session:
+            await upload_release_asset(session, token, repo, tag_name, "metadata.json")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
+    parser.add_argument("--live", help="Upload only database?", type=bool, default=False)
     args = parser.parse_args()
     print("Starting the upload process...")
-    asyncio.run(main(args.token, args.repo, args.tag_name))
+    asyncio.run(main(args.token, args.repo, args.tag_name, args.live))
     print("Upload process completed.")
