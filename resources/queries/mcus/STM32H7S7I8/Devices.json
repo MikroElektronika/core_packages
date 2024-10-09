@@ -1,0 +1,17 @@
+{
+    "def_file":"STM32H7S7I8.json",
+    "family_uid":"STM32",
+    "flash":"64",
+    "icon":"images/mcu/stm32.png",
+    "max_speed":"550.000",
+    "name":"STM32H7S7I8",
+    "ram":"634880",
+    "sdk_config":"{\"MCU_NAME\":\"STM32H7S7I8\",\"CORE_NAME\":\"M7\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config":"",
+    "uid":"STM32H7S7I8",
+    "vendor":"STMicroelectronics",
+    "compiler_flags":"",
+    "linker_flags":"",
+    "tft_socket":"1",
+    "sdk_support":"0"
+}
