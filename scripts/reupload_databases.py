@@ -471,7 +471,6 @@ async def get_all_assets(session, token, repo, release_id):
     return assets
 
 async def upload_release_asset(session, token, repo, asset_path, release_version=None):
-    return 0
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
@@ -1059,8 +1058,6 @@ async def main(
 
     ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
-    if mcus_only:
-        shutil.rmtree(os.path.join(os.path.dirname(__file__), "databases"))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
