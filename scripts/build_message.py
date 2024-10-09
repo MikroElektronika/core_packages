@@ -59,15 +59,27 @@ def find_latest_backup(folder_path):
 
     return None
 
+# Function to find the current date file
+def find_current_date_file(folder_path):
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    if os.path.exists(folder_path):
+        if os.path.isfile(os.path.join(folder_path, f'{current_date}.md')):
+            return os.path.join(folder_path, f'{current_date}.md')
+
+    return None
+
 # Main script execution
 if __name__ == "__main__":
     # Check if new_hw.md exists
     if not os.path.exists(file_path):
-        print(f"'{file_name}' not found. Looking for the most recent backup...")
         # Find the latest backup file
-        file_path = find_latest_backup(folder_path)
+        # Commented out call to API which retrieves newest file
+        # file_path = find_latest_backup(folder_path)
+        # Changed to always search for exact date file
+        file_path = find_current_date_file(folder_path)
 
         if not file_path:
+            print('Failed to find appropriate readme with logged changes.')
             exit(1)  # Exit if neither new_hw.md nor a backup exists
 
     # Extract information from the file
