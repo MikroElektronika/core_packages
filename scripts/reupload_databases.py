@@ -1059,6 +1059,8 @@ async def main(
 
     ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    if mcus_only:
+        shutil.rmtree(os.path.join(os.path.dirname(__file__), "databases"))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
