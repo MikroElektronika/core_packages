@@ -174,6 +174,10 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
         }
     }
 
+    search_es_name = asset
+    if asset.endswith('_dev'):
+        search_es_name = asset[:-4]
+
     # Search the base with provided query
     num_of_retries = 1
     while num_of_retries <= 10:
@@ -185,12 +189,13 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
             print("Executing search query - retry number %i" % num_of_retries)
         num_of_retries += 1
 
-    index_hash = '0'
+    index_hash = None
+    indexed_version = None
     for eachHit in response['hits']['hits']:
         if not 'name' in eachHit['_source']:
             continue ## TODO - Check newly created bare metal package (is it created correctly)
         name = eachHit['_source']['name']
-        if name == asset:
+        if name == search_es_name:
             if 'hash' in eachHit['_source']:
                 index_hash = eachHit['_source']['hash']
             if 'version' in eachHit['_source']:
@@ -205,10 +210,21 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
     shutil.rmtree(os.path.join(os.getcwd(), 'output/tmp', asset))
 
     new_version = indexed_version
-    if (uploaded_asset_hash != index_hash):
-        new_version = f'v{increment_version(indexed_version[1:])}'
+    if not new_version:
+        existed = False
+        index_hash = uploaded_asset_hash
 
-    return uploaded_asset_hash, (uploaded_asset_hash != index_hash), new_version
+    if new_version:
+        existed = True
+        if (uploaded_asset_hash != index_hash):
+            if indexed_version.startswith('v'):
+                new_version = f'v{increment_version(indexed_version[1:])}'
+            else:
+                new_version = increment_version(indexed_version)
+    else:
+        new_version = '1.0.0'
+
+    return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed
 
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None):
@@ -249,7 +265,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
         doc = None
         if name_without_extension == "clocks":
-            current_hash, check_version, new_version = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
+            current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
             doc = {
                 'name': "clocks",
                 'display_name' : "Clocks file",
@@ -266,7 +282,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'install_location' : "%APPLICATION_DATA_DIR%/clocks.json"
             }
         elif name_without_extension == "schemas":
-            current_hash, check_version, new_version = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
+            current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
             doc = {
                 'name': "schemas",
                 'display_name' : "schemas file",
@@ -305,16 +321,30 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     else:
                         continue
 
+                current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
+
+                current_version = metadata_item['version']
+                if index_hash and current_hash:
+                    if not existed:
+                        update_package = True
+                    else:
+                        if current_hash == index_hash:
+                            update_package = False
+                        else:
+                            update_package = True
+                            current_version = new_version
+
                 doc = {
                     'name': package_name,
                     'display_name' : metadata_item['display_name'],
                     'author' : "MIKROE",
                     'hidden' : metadata_item['hidden'],
                     'type' : metadata_item['type'],
-                    'version' : metadata_item['version'],
+                    'version' : current_version,
                     'created_at': asset['created_at'],
                     'updated_at': asset['updated_at'],
                     'published_at': published_at,
+                    'hash': current_hash,
                     'category': metadata_item['category'],
                     'download_link': asset['url'],
                     'package_changed' : update_package or force,
