@@ -77,9 +77,9 @@ jobs:
           pip install -r scripts/requirements/support.txt
           sudo apt-get install p7zip-full
 
-      - name: Update database
+      - name: Update database for packaging
         run: |
-          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Test" "--upload" "False"
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Test" "--mcus_only" "True"
 
       - name: Upload MCUs Asset
         env:
@@ -90,6 +90,10 @@ jobs:
           ES_INDEX: ${{ secrets.ES_INDEX_LIVE }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: python -u scripts/release_mcus.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }}
+
+      - name: Update and upload new database
+        run: |
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Test"
 
       - name: Run Index Script
         env:
