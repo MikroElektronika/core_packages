@@ -1,0 +1,155 @@
+name: Release MCUs from Branch to LIVE
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_branch:
+        type: string
+        description: Which Branch to release MCUs from? (change last number to desired number)
+        default: "new-feature/mcus/1"
+      release_version:
+        type: string
+        description: Tag to use for script run (i.e. v1.0.7)
+        default: "latest"
+      auto_merge:
+        type: boolean
+        description: If checked, PR shall be automatically merged to main branch.
+        default: false
+      notify_channel:
+        type: boolean
+        description: If checked, mikroe bot will notify mattermost channel with release details.
+        default: false
+
+jobs:
+  upload_mcu_assets_live:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      packages: write
+      actions: read
+    steps:
+      - name: Authorize Mikroe Actions App
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.MIKROE_ACTIONS }}
+          private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.release_branch }}  # Dynamically using the branch input
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Add GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Fetch Main Branch
+        run: git fetch origin main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Cache Python packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements/shared.txt
+          pip install -r scripts/requirements/databases.txt
+          pip install -r scripts/requirements/support.txt
+          sudo apt-get install p7zip-full
+
+      - name: Build Message with Python
+        run: |
+          python -u scripts/build_message.py > message.txt
+
+      - name: Remove original changelog file from git
+        run: |
+          git rm changelog/new_hw.md
+          git commit -m "Remove old changelog file after moving it"
+          git push
+
+      - name: Commit Changelog to current branch
+        run: |
+          echo "Updating with new changelog files";
+          git add changelog/**
+          git commit -m "Updated changelog files with latest release info."
+          git push
+
+      # Create a pull request using the GitHub API
+      - name: Create Pull Request
+        id: create_pr
+        run: |
+          PR_RESPONSE=$(curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls \
+            -d "{\"title\":\"Merge branch ${{ github.event.inputs.release_branch }} into main\",\"head\":\"${{ github.event.inputs.release_branch }}\",\"base\":\"main\",\"body\":\"Automatically created pull request to merge branch ${{ github.event.inputs.release_branch }} into main\"}")
+
+          echo "$PR_RESPONSE" > pr_response.json
+          PR_NUMBER=$(jq '.number' pr_response.json)
+          echo "PR NUMBER IS: ${PR_NUMBER}"
+          rm pr_response.json
+          echo "Pull request number is $PR_NUMBER"
+          echo "pull_request_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+      # Automatically approve PR
+      - name: Approve Pull Request
+        if: ${{ github.event.inputs.auto_merge == 'true' }}
+        run: |
+          curl -X POST \
+              -H "Authorization: token ${{ secrets.MIKROE_ACTIONS_KEY }}" \
+              -H "Accept: application/vnd.github+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ steps.create_pr.outputs.pull_request_number }}/reviews \
+              -d '{"event":"APPROVE"}'
+
+      # Automatically merge the pull request using the GitHub API
+      - name: Automatically Merge Pull Request
+        if: ${{ github.event.inputs.auto_merge == 'true' }}
+        run: |
+          curl -s -X PUT \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/${{ steps.create_pr.outputs.pull_request_number }}/merge \
+            -d "{\"commit_title\":\"Auto-merged PR from ${{ github.event.inputs.release_branch }} to main\",\"merge_method\":\"squash\"}"
+
+      - name: Handle Merge Conflict
+        if: failure()
+        run: echo "::error::Merge conflict occurred. Please resolve manually."
+
+      - name: Update and upload new database
+        run: |
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Live"
+
+      - name: Run Index Script
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
+        run: |
+            echo "Indexing to Live."
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} "False" ${{ github.event.inputs.release_version }} "False" "False"
+
+      - name: Send notification to Mattermost
+        if: ${{ github.event.inputs.notify_channel == 'true' }}
+        env:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+        run: |
+          MESSAGE=$(cat message.txt)
+          curl -X POST -H 'Content-Type: application/json' \
+          --data "{\"text\": \"$MESSAGE\"}" \
+          $MATTERMOST_WEBHOOK_URL
