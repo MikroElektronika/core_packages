@@ -582,10 +582,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
     package_to_mcu_json_full = []
     package_to_mcu_xlsx_full = []
 
-    existing_packages = []
-
-    for package_number in range(len(current_metadata)):
-        existing_packages.append(current_metadata[package_number]["name"])
+    existing_packages = [package.replace('.7z', '') for package in fetch_existing_asset_names(latest_release)]
 
     for cmake_file, data in file_paths.items():
         base_output_dir = os.path.join(output_dir, f"{arch.lower()}_{entry_name.lower()}_{cmake_file}") # Subdirectory for this .cmake file
@@ -638,8 +635,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
 
         shutil.rmtree(base_output_dir)
         # Don't re-upload already existing packages
-        if (f"{arch.lower()}_{entry_name.lower()}_{cmake_file}" not in existing_packages) or \
-           (f"{arch.lower()}_{entry_name.lower()}_{cmake_file}.7z" not in fetch_existing_asset_names(latest_release)):
+        if (f"{arch.lower()}_{entry_name.lower()}_{cmake_file}" not in existing_packages):
             # Upload archive
             upload_result= ""
             async with aiohttp.ClientSession() as session:
