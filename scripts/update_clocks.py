@@ -159,22 +159,77 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path, delet
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-async def main(token, repo, tag_name):
+def is_version_changed(old_file, new_file, version_current):
+    if not version_current:
+        return True, 'v1.0.0' ## If not indexed, set to 1.0.0
+    if not filecmp.cmp(old_file, new_file, shallow=False):
+        return True, f'v{increment_version(version_current[1:])}'
+    return False, version_current
+
+async def upload_clocks(es: Elasticsearch, token, repo, tag_name, release_details):
     # Generate clocks.json
     input_directory = "./"
-    output_file = "./output/docs/clocks.json"
+    output_dir = "./output/docs"
+    output_file = os.path.join(output_dir, 'clocks.json')
     clocksGenerator = GenerateClocks(input_directory, output_file)
     clocksGenerator.generate()
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
 
+    current_asset = None
+    for asset in release_details.get('assets', []):
+        if asset['name'] == 'clocks.json':
+            current_asset = asset
+            try:
+                # Download the current clocks.json
+                support.download_file_from_link(asset['url'], os.path.join(output_dir, 'current_clocks.json'), token)
+            except Exception as e:
+                raise ValueError(f"Failed to download current_clocks.json: {e}")
+        if current_asset:
+            break
+
+    current_clocks_path = os.path.join(output_dir, 'current_clocks.json')
+
+    # Check if the file exists before proceeding with comparison
+    if not os.path.exists(current_clocks_path):
+        raise FileNotFoundError(f"current_clocks.json was not downloaded to {current_clocks_path}")
+
+    # Compare the current file and the new file
+    changed, version = is_version_changed(
+        current_clocks_path,
+        output_file,
+        fetch_current_indexed_version(es, os.environ['ES_INDEX_LIVE'], 'clocks')
+    )
+
+    if changed or not current_asset:
+        if current_asset:
+            print(f"Deleting existing asset: {current_asset['name']}")
+            delete_response = requests.delete(current_asset['url'], headers=get_headers(True, token))
+            delete_response.raise_for_status()
+            print(f"Asset deleted: {current_asset['name']}")
+
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
+
+        if upload_result['state'] == 'uploaded':
+            return version
+        else:
+            raise ValueError('clocks.json not uploaded!')
+    else:
+        print("No changes detected. Skipping upload.")
+        return None
+
+def main(token, repo, tag_name):
     es = initialize_es()
-
-    # Update the version of clocks package
     release_details = fetch_release_details(args.repo, args.token, args.tag_name)
-    release_version = fetch_current_indexed_version(es, os.environ['ES_INDEX_LIVE'], 'clocks')
-    new_version = increment_version(release_version.replace('v', ''))
-    index_clocks(es, release_details, f'v{new_version}')
+
+    # Upload new clocks asset if needed
+    new_version = asyncio.run(upload_clocks(es, args.token, args.repo, args.tag_name, release_details))
+
+    if new_version:
+        release_details = fetch_release_details(args.repo, args.token, args.tag_name)
+        index_clocks(es, release_details, new_version)
+        print(f"File has been updated. Version increased to {new_version}.")
+    else:
+        print("File the same. No need to update.")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
@@ -183,5 +238,5 @@ if __name__ == '__main__':
     parser.add_argument("tag_name", help="Tag name from the release")
     args = parser.parse_args()
     print("Starting the upload process...")
-    asyncio.run(main(args.token, args.repo, args.tag_name))
+    main(args.token, args.repo, args.tag_name)
     print("Upload process completed.")
