@@ -50,6 +50,17 @@ jobs:
           pip install -r scripts/requirements/databases.txt
           sudo apt-get install p7zip-full
 
+      - name: Determine trigger (manual/merge)
+        id: determine-trigger
+        run: |
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+              echo "Triggered by merge to main. Setting run_test to False."
+              echo "run_test=False" >> $GITHUB_OUTPUT
+          else
+              echo "Triggered manually. Using provided run_test input."
+              echo "run_test=${{ github.event.inputs.run_test }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Add GitHub Actions credentials
         run: |
           git config user.name github-actions
@@ -86,4 +97,3 @@ jobs:
         run: |
             echo "Uploading and indexing to Test and Live."
             python -u scripts/update_clocks.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "latest"
-
