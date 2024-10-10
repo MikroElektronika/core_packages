@@ -108,7 +108,6 @@ def initialize_es():
     return es
 
 async def upload_release_asset(session, token, repo, tag_name, asset_path, delete_existing=True):
-    return 0
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
@@ -171,10 +170,11 @@ async def main(token, repo, tag_name):
 
     es = initialize_es()
 
+    # Update the version of clocks package
     release_details = fetch_release_details(args.repo, args.token, args.tag_name)
-
-    version = increment_version(release_details['tag_name'].replace('v', ''))
-    index_clocks(es, release_details, f'v{version}')
+    release_version = fetch_current_indexed_version(es, os.environ['ES_INDEX_LIVE'], 'clocks')
+    new_version = increment_version(release_version.replace('v', ''))
+    index_clocks(es, release_details, f'v{new_version}')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
