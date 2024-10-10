@@ -5,21 +5,21 @@ on:
     branches:
       - main
   workflow_dispatch:
-      inputs:
-        release_version:
-          type: string
-          description: Which release version to index (type v1.0.6 for example)
-          default: "latest"
-        select_index:
-          type: choice
-          description: Index as test or live (Live indexes only to live, Test indexes to both)
-          options:
-            - Test
-            - Live
-        run_test:
-          type: boolean
-          description: If checked generates test files only - schemas_test.json/docs_test.7z
-          default: true
+    inputs:
+      release_version:
+        type: string
+        description: Which release version to index (type v1.0.6 for example)
+        default: "latest"
+      select_index:
+        type: choice
+        description: Index as test or live (Live indexes only to live, Test indexes to both)
+        options:
+          - Test
+          - Live
+      run_test:
+        type: boolean
+        description: If checked generates test files only - schemas_test.json/docs_test.7z
+        default: true
 
 jobs:
   Update-Clocks-And-Schemas-After-Merge:
@@ -54,11 +54,13 @@ jobs:
         id: determine-trigger
         run: |
           if [[ "${{ github.event_name }}" == "push" ]]; then
-              echo "Triggered by merge to main. Setting run_test to False."
-              echo "run_test=False" >> $GITHUB_OUTPUT
+            echo "Triggered by merge to main. Setting run_test to False."
+            echo "run_test=False" >> $GITHUB_OUTPUT
+            echo "run_index=Test" >> $GITHUB_OUTPUT
           else
-              echo "Triggered manually. Using provided run_test input."
-              echo "run_test=${{ github.event.inputs.run_test }}" >> $GITHUB_OUTPUT
+            echo "Triggered manually. Using provided run_test input."
+            echo "run_test=${{ github.event.inputs.run_test }}" >> $GITHUB_OUTPUT
+            echo "run_index=${{ github.event.inputs.select_index }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Add GitHub Actions credentials
@@ -75,11 +77,11 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
           INDEX_TEST="True"
-          if [[ ${{ steps.determine-trigger.outputs.run_test }} == "false" ]]; then
+          if [[ ${{ steps.determine-trigger.outputs.run_test }} == "False" ]]; then
             INDEX_TEST="False"
           fi
           echo "Index test set to $INDEX_TEST"
-          if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
+          if [[ ${{ steps.determine-trigger.outputs.run_index }} == "Live" ]]; then
             echo "Uploading and indexing to Live."
             python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
           else
@@ -95,5 +97,5 @@ jobs:
           ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
-            echo "Uploading and indexing to Test and Live."
-            python -u scripts/update_clocks.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "latest"
+          echo "Uploading and indexing to Test and Live."
+          python -u scripts/update_clocks.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "latest"
