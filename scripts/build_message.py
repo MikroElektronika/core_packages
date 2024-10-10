@@ -13,9 +13,9 @@ def extract_info_from_md(file_path):
 
     # Set the desired timezone, for example, "Europe/Belgrade"
     timezone = pytz.timezone('Europe/Belgrade')
-    
+
     # Get current date and time
-    current_date = datetime.now().strftime("%a %b %d %H:%M:%S %Z %Y")
+    current_date = datetime.now(timezone).strftime("%a %b %d %H:%M:%S %Z %Y")
 
     # Extract the MCU package details
     hardware_section_match = re.search(r'Support added for following hardware:\s*\n\+ (.*?)\n((?:\s*\+\s.*?\n)+)', content, re.DOTALL)
