@@ -57,10 +57,12 @@ jobs:
             echo "Triggered by merge to main. Setting run_test to False."
             echo "run_test=False" >> $GITHUB_OUTPUT
             echo "run_index=Test" >> $GITHUB_OUTPUT
+            echo "run_version=latest" >> $GITHUB_OUTPUT
           else
             echo "Triggered manually. Using provided run_test input."
             echo "run_test=${{ github.event.inputs.run_test }}" >> $GITHUB_OUTPUT
             echo "run_index=${{ github.event.inputs.select_index }}" >> $GITHUB_OUTPUT
+            echo "run_version=${{ github.event.inputs.release_version }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Add GitHub Actions credentials
@@ -83,10 +85,10 @@ jobs:
           echo "Index test set to $INDEX_TEST"
           if [[ ${{ steps.determine-trigger.outputs.run_index }} == "Live" ]]; then
             echo "Uploading and indexing to Live."
-            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ steps.determine-trigger.outputs.run_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
           else
             echo "Uploading and indexing to Test and Live."
-            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.release_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ steps.determine-trigger.outputs.run_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
           fi
 
       - name: Upload and re-index Clocks
