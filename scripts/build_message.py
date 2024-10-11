@@ -8,9 +8,8 @@ file_path = os.path.join(folder_path, file_name)
 
 # Function to extract date and MCU packages from the file
 def extract_info_from_md(file_path):
-    current_date = datetime.now().strftime("%Y-%m-%d")
     with open(file_path, 'r', encoding='utf-8') as file:
-        content = file.read().replace('`DATE`', current_date).replace('#date', f'#{current_date}')
+        content = file.read()
 
     # Set the desired timezone, for example, "Europe/Belgrade"
     timezone = pytz.timezone('Europe/Belgrade')
@@ -48,6 +47,10 @@ def rename_file_with_date(folder_path, old_file_name):
 
     # Rename the file
     os.rename(old_file_path, new_file_path)
+    with open(new_file_path, 'r') as file:
+        new_content = file.read().replace('`DATE`', current_date).replace('#date', f'#{current_date}')
+    with open(new_file_path, 'w') as file:
+        file.write(new_content)
     return new_file_path
 
 # Function to find the most recent backup file (with format YYYY-MM-DD.md)
