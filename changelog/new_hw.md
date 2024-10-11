@@ -16,8 +16,8 @@
 
 Support added for following hardware:
 
-- STM32WL33C8_B MCU Support package for GCC & Clang
-  - STM32WL33C8
-  - STM32WL33CB
+- STM32U545CE_JE MCU Support package for GCC & Clang
+  - STM32U545CE
+  - STM32U545JE
 
 ---

@@ -1,5 +1,5 @@
 {
-    "device_uid": "STM32WL33CB",
+    "device_uid": "STM32U545CE",
     "tables": [
         {
             "BoardToDevice": {
@@ -17,7 +17,8 @@
         {
             "DeviceToPackage": {
                 "package_uid": [
-                    "48/VFQFPN"
+                    "48/LQFP",
+                    "48/UFQFPN"
                 ]
             }
         },
