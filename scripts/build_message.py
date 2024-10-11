@@ -10,7 +10,7 @@ file_path = os.path.join(folder_path, file_name)
 def extract_info_from_md(file_path):
     current_date = datetime.now().strftime("%Y-%m-%d")
     with open(file_path, 'r', encoding='utf-8') as file:
-        content = file.read().replace('`DATE`', current_date).replace('date', current_date)
+        content = file.read().replace('`DATE`', current_date).replace('#date', f'#{current_date}')
 
     # Set the desired timezone, for example, "Europe/Belgrade"
     timezone = pytz.timezone('Europe/Belgrade')
