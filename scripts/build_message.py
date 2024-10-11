@@ -1,4 +1,4 @@
-import re, re, pytz
+import os, re, pytz
 from datetime import datetime
 
 # Path to the folder and the MD file
