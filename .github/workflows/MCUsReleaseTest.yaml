@@ -105,3 +105,13 @@ jobs:
         run: |
             echo "Indexing to Test."
             python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} "False" ${{ github.event.inputs.release_version }} "False" "False"
+
+      - name: Notify Mattermost - Test ready
+        env:
+          MATTERMOST_WEBHOOK_URL_SDK: ${{ secrets.MATTERMOST_WEBHOOK_URL_SDK }}
+        run: |
+          CURRENT_DATE=$(date +'%Y-%m-%d')  # Get current date in YYYY-MM-DD format
+          MESSAGE="**MCU package update ready to test for $CURRENT_DATE.**\n> Test using latest NECTO dev\n  + [LIN](https://software-update.mikroe.com/NECTOStudio7/development/necto/linux/NECTOInstaller.zip)\n  + [MAC](https://software-update.mikroe.com/NECTOStudio7/development/necto/macos/NECTOInstaller.dmg)\n  + [WIN](https://software-update.mikroe.com/NECTOStudio7/development/necto/win/NECTOInstaller.zip)"
+          curl -X POST -H 'Content-Type: application/json' \
+          --data "{\"text\": \"$MESSAGE\"}" \
+          $MATTERMOST_WEBHOOK_URL_SDK

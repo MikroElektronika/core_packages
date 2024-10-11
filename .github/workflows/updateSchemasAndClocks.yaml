@@ -1,0 +1,103 @@
+name: Update Schemas and Clocks after Merge
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      release_version:
+        type: string
+        description: Which release version to index (type v1.0.6 for example)
+        default: "latest"
+      select_index:
+        type: choice
+        description: Index as test or live (Live indexes only to live, Test indexes to both)
+        options:
+          - Test
+          - Live
+      run_test:
+        type: boolean
+        description: If checked generates test files only - schemas_test.json/docs_test.7z
+        default: true
+
+jobs:
+  Update-Clocks-And-Schemas-After-Merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authorize Mikroe Actions App
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.MIKROE_ACTIONS }}
+          private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.client_payload.sha }}
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements/shared.txt
+          pip install -r scripts/requirements/databases.txt
+          sudo apt-get install p7zip-full
+
+      - name: Determine trigger (manual/merge)
+        id: determine-trigger
+        run: |
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            echo "Triggered by merge to main. Setting run_test to False."
+            echo "run_test=False" >> $GITHUB_OUTPUT
+            echo "run_index=Test" >> $GITHUB_OUTPUT
+            echo "run_version=latest" >> $GITHUB_OUTPUT
+          else
+            echo "Triggered manually. Using provided run_test input."
+            echo "run_test=${{ github.event.inputs.run_test }}" >> $GITHUB_OUTPUT
+            echo "run_index=${{ github.event.inputs.select_index }}" >> $GITHUB_OUTPUT
+            echo "run_version=${{ github.event.inputs.release_version }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Add GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Upload and re-index Schemas
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
+        run: |
+          INDEX_TEST="True"
+          if [[ ${{ steps.determine-trigger.outputs.run_test }} == "False" ]]; then
+            INDEX_TEST="False"
+          fi
+          echo "Index test set to $INDEX_TEST"
+          if [[ ${{ steps.determine-trigger.outputs.run_index }} == "Live" ]]; then
+            echo "Uploading and indexing to Live."
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ steps.determine-trigger.outputs.run_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
+          else
+            echo "Uploading and indexing to Test and Live."
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ steps.determine-trigger.outputs.run_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
+          fi
+
+      - name: Upload and re-index Clocks
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
+        run: |
+          echo "Uploading and indexing to Test and Live."
+          python -u scripts/update_clocks.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "latest"

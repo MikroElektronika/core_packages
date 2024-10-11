@@ -1,5 +1,4 @@
-import re
-import os
+import re, re, pytz
 from datetime import datetime
 
 # Path to the folder and the MD file
@@ -12,8 +11,11 @@ def extract_info_from_md(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         content = file.read()
 
+    # Set the desired timezone, for example, "Europe/Belgrade"
+    timezone = pytz.timezone('Europe/Belgrade')
+
     # Get current date and time
-    current_date = datetime.now().strftime("%a %b %d %H:%M:%S %Z %Y")
+    current_date = datetime.now(timezone).strftime("%a %b %d %H:%M:%S %Z %Y")
 
     # Extract the MCU package details
     hardware_section_match = re.search(r'Support added for following hardware:\s*\n\+ (.*?)\n((?:\s*\+\s.*?\n)+)', content, re.DOTALL)
