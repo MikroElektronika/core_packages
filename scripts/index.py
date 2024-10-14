@@ -260,8 +260,13 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             'schemas',
             'images',
             'preinit',
-            'database'
+            'database',
+            'database_dev'
         ]
+
+        if update_database:
+            if name_without_extension not in always_index:
+                continue
 
         doc = None
         if name_without_extension == "clocks":
@@ -373,9 +378,9 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
         # Index the document
         if doc:
-            if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force):
+            if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)):
                 if update_database:
-                    if ('database' == package_name):
+                    if name_without_extension in always_index:
                         resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
                         print(f"{resp["result"]} {resp['_id']}")
                 else:
