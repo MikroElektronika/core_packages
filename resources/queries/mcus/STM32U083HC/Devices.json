@@ -1,0 +1,18 @@
+{
+    "def_file":"STM32U083HC.json",
+    "family_uid":"STM32",
+    "flash":"256",
+    "icon":"images/mcu/stm32.png",
+    "max_speed":"56.000",
+    "name":"STM32U083HC",
+    "ram":"40960",
+    "sdk_config":"{\"MCU_NAME\":\"STM32U083HC\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config":"",
+    "uid":"STM32U083HC",
+    "vendor":"STMicroelectronics",
+    "compiler_flags":"",
+    "linker_flags":"",
+    "tft_socket":"1",
+    "sdk_support":"0",
+    "installer_package":"{\"clang-llvm\": \"arm_gcc_clang_stm32u083hc_kc\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_stm32u083hc_kc\"}"
+}
