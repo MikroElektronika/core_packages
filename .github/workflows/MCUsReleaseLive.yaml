@@ -71,11 +71,22 @@ jobs:
           pip install -r scripts/requirements/support.txt
           sudo apt-get install p7zip-full
 
+      - name: Check for new_hw.md file
+        id: check_new_hw_file
+        run: |
+          FILE_PATH="changelog/new_hw.md"
+          if [ -f "$FILE_PATH" ]; then
+            echo "new_hw_present=true" >> $GITHUB_OUTPUT
+          else
+            echo "new_hw_present=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Build Message with Python
         run: |
           python -u scripts/build_message.py > message.txt
 
       - name: Remove original changelog file from git
+        if: ${{ steps.check_new_hw_file.outputs.new_hw_present == 'true' }}
         run: |
           git rm changelog/new_hw.md
           git commit -m "Remove old changelog file after moving it"
