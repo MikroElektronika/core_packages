@@ -18,7 +18,7 @@ def extract_info_from_md(file_path):
     current_date = datetime.now(timezone).strftime("%a %b %d %H:%M:%S %Z %Y")
 
     # Extract the MCU package details
-    hardware_section_match = re.search(r'Support added for following hardware:\s*\n\+ (.*?)\n((?:\s*\+\s.*?\n)+)', content, re.DOTALL)
+    hardware_section_match = re.search(r'Support added for following hardware:\s*\n[+-] (.*?)\n((?:\s*[+-]\s.*?\n)+)', content, re.DOTALL)
 
     if hardware_section_match:
         mcu_package = hardware_section_match.group(1).strip()
