@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32U083CC$|^STM32U083RC$|^STM32U083MC$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/stm/doc_ds_196/init_clock.c)
+endif()
