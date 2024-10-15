@@ -284,13 +284,17 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'category': "MCU Package",
                 'download_link': asset['url'],
                 'package_changed' : check_version,
-                'install_location' : "%APPLICATION_DATA_DIR%/clocks.json"
+                'install_location' : "%APPLICATION_DATA_DIR%/clocks.json",
+                'gh_package_name': "clocks.json"
             }
-        elif name_without_extension == "schemas":
+        elif "schemas" in name_without_extension:
             current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
+            suffix = ''
+            if 'test' in name_without_extension:
+                suffix = '_test'
             doc = {
-                'name': "schemas",
-                'display_name' : "schemas file",
+                'name': f"schemas{suffix}",
+                'display_name' : f"schemas{suffix} file",
                 'author' : "MIKROE",
                 'hidden' : True,
                 'type' : "mcu_schemas",
@@ -301,7 +305,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'category': "MCU Package",
                 'download_link': asset['url'],
                 'package_changed' : check_version,
-                'install_location' : "%APPLICATION_DATA_DIR%/schemas.json"
+                'install_location' : f"%APPLICATION_DATA_DIR%/schemas{suffix}.json",
+                'gh_package_name': f"schemas{suffix}.json"
             }
         else:
             metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
@@ -353,7 +358,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'category': metadata_item['category'],
                     'download_link': asset['url'],
                     'package_changed' : update_package or force,
-                    'install_location' : metadata_item['install_location']
+                    'install_location' : metadata_item['install_location'],
+                    'gh_package_name': os.path.splitext(os.path.basename(asset['name']))[0]
                 }
                 if metadata_item['type'] == 'mcu':
                     doc.update(
