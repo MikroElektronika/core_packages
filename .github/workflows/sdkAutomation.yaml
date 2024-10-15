@@ -1,0 +1,111 @@
+# This is a basic workflow that is manually triggered
+
+name: CORE generation
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      mcu_name:
+        # Name of the MCU for which generation is running
+        description: 'MCU name'
+        # Default value if no value is explicitly provided
+        default: ''
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      vendor:
+        # Vendor of the MCU
+        description: 'Vendor'
+        # Default value if no value is explicitly provided
+        default: ''
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      pdfFile:
+        # Path to the reference manual PDF file
+        description: 'Reference manual PDF file path'
+        # Default value if no value is explicitly provided
+        default: ''
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      build_branch:
+        type: string
+        description: Which Branch to build MCUs on? (change last number to desired number)
+        default: "new-feature/mcus/1"
+      build_version:
+        type: string
+        description: Tag to use for script run (i.e. v1.0.7)
+        default: "latest"
+
+env:
+  NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "Generate CORE"
+  Generate_Core:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    # Runs a single command using the runners shell
+    - name: Send greeting
+      run: echo "Starting CORE generation workflow..."
+    # Checkout branch
+    - uses: actions/checkout@v2
+
+    - name: Authorize Mikroe Actions App
+      uses: actions/create-github-app-token@v1
+      id: app-token
+      with:
+        app-id: ${{ vars.MIKROE_ACTIONS }}
+        private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.build_branch }}  # Dynamically using the branch input
+        token: ${{ steps.app-token.outputs.token }}
+
+    - name: Add GitHub Actions credentials
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+
+    # - name: Fetch Main Branch
+    #     run: git fetch origin main
+
+    # Set up Python
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.12
+
+    # Get Chrome for automated datasheet download
+    - name: Chrome setup
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: 129
+        install-dependencies: true
+        install-chromedriver: false
+
+    # Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install --upgrade selenium
+
+    # Run generation
+    # - name: CORE generation
+    #   run: |
+    #     python core_files_generation.py --mcu_name ${{ github.event.inputs.mcu_name }} --vendor ${{ github.event.inputs.vendor }} --pdfFile ${{ github.event.inputs.pdfFile }} --workspace "True"
