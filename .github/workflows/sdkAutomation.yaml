@@ -70,11 +70,21 @@ jobs:
         app-id: ${{ vars.MIKROE_ACTIONS }}
         private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
 
+    - name: Add GitHub Actions credentials
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+
+    # Create a new branch
     - name: Create branch
       run: |
         git branch ${{ github.event.inputs.build_branch }}
         git checkout ${{ github.event.inputs.build_branch }}
         git push -u origin ${{ github.event.inputs.build_branch }}
+
+    # Create a new directory at the root of your repository
+    - name: Create automatization directory
+      run: mkdir -p automatization
 
     # - name: Checkout code
     #   uses: actions/checkout@v4
@@ -82,13 +92,24 @@ jobs:
     #     ref: ${{ github.event.inputs.build_branch }}  # Dynamically using the branch input
     #     token: ${{ steps.app-token.outputs.token }}
 
-    - name: Add GitHub Actions credentials
+    # Pull files from another repository and branch into the automatization directory
+    - name: Pull from sdk_automation repo
       run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
+        git remote add source https://github.com/MikroElektronika/sdk_automation.git
+        git fetch source danilo.milenkovic/main
+        git checkout source/danilo.milenkovic/main 
+        mv ./sdk_automation ./automatization/  
 
-    # - name: Fetch Main Branch
-    #     run: git fetch origin main
+    # Commit changes
+    - name: Commit changes
+      run: |
+        git add .
+        git commit -m "Pulled files from REPO/BRANCH into DIR"
+        
+    # Push changes back to your repository
+    - name: Push changes
+      run: |
+        git push -u origin ${{ github.event.inputs.build_branch }}
 
     # Set up Python
     - name: Set up Python 3.12
