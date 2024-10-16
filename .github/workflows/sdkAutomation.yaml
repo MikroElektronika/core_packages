@@ -86,53 +86,41 @@ jobs:
     - name: Create automatization directory
       run: mkdir -p automatization
 
-    # - name: Checkout code
-    #   uses: actions/checkout@v4
-    #   with:
-    #     ref: ${{ github.event.inputs.build_branch }}  # Dynamically using the branch input
-    #     token: ${{ steps.app-token.outputs.token }}
-
-    # Pull files from another repository and branch into the automatization directory
-    - name: Pull from sdk_automation repo
+    # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
+    - name: Trigger Workflow on Private Repository
+      env:
+        REPO: "MikroElektronika/sdk_automation"
+        ACTION: "CORE generation"         
+        TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}  
       run: |
-        git remote add source https://${{ steps.app-token.outputs.token }}@github.com/MikroElektronika/sdk_automation.git
+        curl -X POST \
+          -H "Authorization: token $TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/$REPO/actions/workflows/$ACTION/dispatches \
+          -d '{"ref":"main"}'
+
+    # Wait for the workflow to complete
+    - name: Wait for some 30 minutes
+      run: sleep 2000
+
+    # Get the latest release info from the private repository using GitHub API
+    
+      
+    # Pull files from sdk_automation repository to ours
+    - name: Pull files from sdk_automation repository to ours
+      run: |
+        git remote add source https://${{ secrets.PRIVATE_REPO_TOKEN }}@github.com/MikroElektronika/sdk_automation.git
         git fetch source danilo.milenkovic/main
-        git checkout source/danilo.milenkovic/main 
-        mv ./sdk_automation ./automatization/  
+        git checkout source/danilo.milenkovic/main -- output
+        mv output/* ./automatization/  
 
     # Commit changes
     - name: Commit changes
       run: |
         git add .
-        git commit -m "Pulled files from REPO/BRANCH into DIR"
+        git commit -m "Pulled files from sdk_automation into core_packages"
         
     # Push changes back to your repository
     - name: Push changes
       run: |
         git push -u origin ${{ github.event.inputs.build_branch }}
-
-    # Set up Python
-    - name: Set up Python 3.12
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.12
-
-    # Get Chrome for automated datasheet download
-    - name: Chrome setup
-      uses: browser-actions/setup-chrome@v1
-      with:
-        chrome-version: 129
-        install-dependencies: true
-        install-chromedriver: false
-
-    # Install dependencies
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        pip install --upgrade selenium
-
-    # Run generation
-    # - name: CORE generation
-    #   run: |
-    #     python core_files_generation.py --mcu_name ${{ github.event.inputs.mcu_name }} --vendor ${{ github.event.inputs.vendor }} --pdfFile ${{ github.event.inputs.pdfFile }} --workspace "True"
