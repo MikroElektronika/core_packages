@@ -97,7 +97,14 @@ jobs:
           -H "Authorization: token $TOKEN" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/$REPO/actions/workflows/$ACTION/dispatches \
-          -d '{"ref":"main"}'
+          -d '{
+                "ref": "danilo.milenkovic/main",
+                "inputs": {
+                  "mcu_name": ${{ github.event.inputs.mcu_name }},
+                  "vendor": ${{ github.event.inputs.vendor }},
+                  "pdfFile": ${{ github.event.inputs.pdfFile }}
+                }
+              }'
 
     # Wait for the workflow to complete
     - name: Wait for some 30 minutes
