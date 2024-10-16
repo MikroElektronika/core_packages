@@ -39,8 +39,14 @@
  * @brief Mikroe clock initialization API.
  */
 
+#include "mcu.h"
 #include "core_header.h"
 
 void clockConfig(void) {
     // TODO
+    /* Enable Power */
+    RCC->AHB3ENR |= RCC_AHB3ENR_PWREN;
+
+    /* Set CP10 and CP11 Full Access */
+    SCB->CPACR |= ((3UL << 20U)|(3UL << 22U));
 }
