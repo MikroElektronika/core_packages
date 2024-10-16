@@ -17,8 +17,16 @@
 
 **Support added for ARM Cortex-M33 Core!**
 
+> The Cortex-M33 is a powerful and flexible core that targets applications requiring
+> both performance and security, especially in the IoT space. Its inclusion of TrustZone
+> security and optional DSP and FPU extensions make it suitable for a wide range of use
+> cases in modern embedded systems.
+
 + Files added
   + [delays.c](https://github.com/MikroElektronika/core_packages/blob/main/ARM/gcc_clang/delays/m33ef/delays.c)
+
++ Files updated
+  + [coreUtils.cmake](https://github.com/MikroElektronika/core_packages/blob/main/ARM/gcc_clang/cmake/coreUtils.cmake)
 
 ### NEW HARDWARE
 
