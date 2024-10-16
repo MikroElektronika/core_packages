@@ -1,0 +1,6 @@
+{
+    "core": "M4",
+    "delay_src_path": "delays/m4/__lib_delays.c",
+    "mcu": "STM32WLE5J8",
+    "clock": 1
+}
