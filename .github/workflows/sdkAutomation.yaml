@@ -38,7 +38,7 @@ on:
       build_branch:
         type: string
         description: Which Branch to build MCUs on? (change last number to desired number)
-        default: "new-feature/mcus/1"
+        default: "new-feature/automation/1"
       build_version:
         type: string
         description: Tag to use for script run (i.e. v1.0.7)
@@ -70,11 +70,16 @@ jobs:
         app-id: ${{ vars.MIKROE_ACTIONS }}
         private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
 
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ github.event.inputs.build_branch }}  # Dynamically using the branch input
-        token: ${{ steps.app-token.outputs.token }}
+    - name: Create branch
+      run: |
+        git branch ${{ github.event.inputs.build_branch }}
+        git checkout ${{ github.event.inputs.build_branch }}
+
+    # - name: Checkout code
+    #   uses: actions/checkout@v4
+    #   with:
+    #     ref: ${{ github.event.inputs.build_branch }}  # Dynamically using the branch input
+    #     token: ${{ steps.app-token.outputs.token }}
 
     - name: Add GitHub Actions credentials
       run: |
