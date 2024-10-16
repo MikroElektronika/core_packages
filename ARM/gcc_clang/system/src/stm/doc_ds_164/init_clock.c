@@ -45,7 +45,7 @@
 void clockConfig(void) {
     // TODO
     /* Enable Power */
-    RCC->AHB3ENR |= RCC_AHB3ENR_PWREN;
+    RCC->APB1ENR1 |= RCC_APB1ENR1_PWREN;
 
     /* Set CP10 and CP11 Full Access */
     SCB->CPACR |= ((3UL << 20U)|(3UL << 22U));
