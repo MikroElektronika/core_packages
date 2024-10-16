@@ -95,7 +95,7 @@ jobs:
     # Pull files from another repository and branch into the automatization directory
     - name: Pull from sdk_automation repo
       run: |
-        git remote add source https://github.com/MikroElektronika/sdk_automation.git
+        git remote add source https://${{ steps.app-token.outputs.token }}@github.com/MikroElektronika/sdk_automation.git
         git fetch source danilo.milenkovic/main
         git checkout source/danilo.milenkovic/main 
         mv ./sdk_automation ./automatization/  
