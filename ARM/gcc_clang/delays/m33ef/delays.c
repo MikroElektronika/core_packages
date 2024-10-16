@@ -1,20 +1,11 @@
 #include "stdint.h"
 #include "core_header.h"
 
-/* Added because of compiler specific commands */
-#ifdef _CLANG_LLVM_
-    #define SUBS_MACRO "subs"
-#else
-    #define SUBS_MACRO "sub"
-#endif
-
-#define FOSC_KHZ_VALUE  1000
-
 void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cycle_num )
 {
     asm volatile(
         "loopCycles%=: \n"
-        "   " SUBS_MACRO " %[cycle_num], %[cycle_num], #1 \n"
+        "   " "subs" " %[cycle_num], %[cycle_num], #1 \n"
         "   nop \n"
         "   bne loopCycles%= \n"
         : [cycle_num] "+l"(cycle_num)
@@ -23,17 +14,17 @@ void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cy
 
 void __attribute__( ( noinline ) ) Delay_us( uint32_t time_us )
 {
-    Delay_Cyc( ( time_us * getClockValue( FOSC_KHZ_VALUE ) ) - ( getClockValue( FOSC_KHZ_VALUE ) / 2 ) );
+    Delay_Cyc( (uint32_t) ( ( time_us * getClockValue( ( float )FOSC_KHZ_VALUE ) ) - ( getClockValue( ( float )FOSC_KHZ_VALUE ) / 2.0 ) ) );
 }
 
 void __attribute__( ( noinline ) ) Delay_ms( uint32_t Time_ms )
 {
-    Delay_Cyc( Time_ms * 1000ul * getClockValue( FOSC_KHZ_VALUE ) );
+    Delay_Cyc( ( uint32_t ) ( Time_ms * 1000.0 * getClockValue( ( float )FOSC_KHZ_VALUE ) ) );
 }
 
 void __attribute__( ( noinline ) ) Delay_Advanced_ms( uint32_t Time_ms, uint32_t Current_Fosc_kHz )
 {
-    Delay_Cyc( Time_ms * 1000ul * getClockValue( Current_Fosc_kHz ) );
+    Delay_Cyc( ( uint32_t ) ( Time_ms * 1000.0 * getClockValue( ( float )Current_Fosc_kHz ) ) );
 }
 
 void Delay_1us()
