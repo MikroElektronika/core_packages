@@ -74,6 +74,7 @@ jobs:
       run: |
         git branch ${{ github.event.inputs.build_branch }}
         git checkout ${{ github.event.inputs.build_branch }}
+        git push -u origin ${{ github.event.inputs.build_branch }}
 
     # - name: Checkout code
     #   uses: actions/checkout@v4
