@@ -102,7 +102,8 @@ jobs:
                 "client_payload": {
                   "mcu_name": "${{ github.event.inputs.mcu_name }}", 
                   "vendor": "${{ github.event.inputs.vendor }}", 
-                  "pdfFile": "${{ github.event.inputs.pdfFile }}"
+                  "pdfFile": "${{ github.event.inputs.pdfFile }}",
+                  "branch_name": "danilo.milenkovic/main"
                 }
               }'
 
