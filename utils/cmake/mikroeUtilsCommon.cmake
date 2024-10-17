@@ -5,20 +5,17 @@ function(find_package_me PACKAGE_NAME REQUIRED_FLAG)
     # Attempt to find the package without the REQUIRED flag
     find_package(${PACKAGE_NAME})
 
-    # If the package is required and not found, trigger a custom error message
-    if(${REQUIRED_FLAG} STREQUAL "REQUIRED" AND NOT ${PACKAGE_NAME}_FOUND)
-        message("****************************************************************************")
-        message(" !!! FATAL ERROR: Setup configuration is incorrect !!!       ")
-        message(" If you are using graphical project, ensure that your setup has a display.")
-        message(" If you are using CAN/DMA/USB/Ethernet/etc. project, ensure that MCU")
-        message("    that you are using has this module supported by using this link:")
-        message("https://github.com/MikroElektronika/mikrosdk_v2/blob/master/SUPPORTED_CHIP_LIST.md")
-        message("****************************************************************************")
-        message(FATAL_ERROR)
-    elseif(NOT ${REQUIRED_FLAG} STREQUAL "REQUIRED" AND NOT ${PACKAGE_NAME}_FOUND)
-        message(WARNING "!!! WARNING: Optional package ${PACKAGE_NAME} not found.")
-    else()
-        message(STATUS "Found package: ${PACKAGE_NAME}")
+    # If the package is not found, manually trigger an error with a detailed message
+    if (NOT ${PACKAGE_NAME}_FOUND)
+        message(FATAL_ERROR "
+        ****************************************************************************
+        !!! FATAL ERROR: Setup configuration is incorrect !!!
+        If you are using graphical project, ensure that your setup has a display.
+        If you are using CAN/DMA/USB/Ethernet/etc. project, ensure that the MCU
+        that you are using supports this module. Refer to this link:
+        https://github.com/MikroElektronika/mikrosdk_v2/blob/master/SUPPORTED_CHIP_LIST.md
+        ****************************************************************************
+        ")
     endif()
 endfunction()
 
