@@ -2,11 +2,16 @@
 ## Function to find the packages with better error message handling.
 #############################################################################
 function(find_package_me PACKAGE_NAME REQUIRED_FLAG)
+    # Set default value for REQUIRED_FLAG if not provided
+    if(NOT DEFINED REQUIRED_FLAG)
+        set(REQUIRED_FLAG OPTIONAL)
+    endif()
+
     # Attempt to find the package without the REQUIRED flag
     find_package(${PACKAGE_NAME})
 
     # If the package is not found, manually trigger an error with a detailed message
-    if (NOT ${PACKAGE_NAME}_FOUND)
+    if (NOT ${PACKAGE_NAME}_FOUND AND ${REQUIRED_FLAG} STREQUAL "REQUIRED")
         message(FATAL_ERROR "
         ****************************************************************************
         !!! FATAL ERROR: Setup configuration is incorrect !!!
