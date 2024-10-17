@@ -16,7 +16,7 @@ function(find_package_me PACKAGE_NAME)
     # If the package is not found, manually trigger an error with a detailed message
     if (NOT ${PACKAGE_NAME}_FOUND AND ${REQUIRED_FLAG} STREQUAL "REQUIRED")
         message(FATAL_ERROR "
-        ****************************************************************************
+      ****************************************************************************
         !!! FATAL ERROR: Setup configuration is incorrect !!!
         If you are using graphical project, ensure that your setup has a display.
         If you are using CAN/DMA/USB/Ethernet/etc. project, ensure that the MCU
