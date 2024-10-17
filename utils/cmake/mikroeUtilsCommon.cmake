@@ -1,10 +1,13 @@
 #############################################################################
 ## Function to find the packages with better error message handling.
 #############################################################################
-function(find_package_me PACKAGE_NAME REQUIRED_FLAG)
-    # Set default value for REQUIRED_FLAG if not provided
-    if(NOT DEFINED REQUIRED_FLAG)
-        set(REQUIRED_FLAG OPTIONAL)
+function(find_package_me PACKAGE_NAME)
+    # Set the default value of REQUIRED_FLAG to OPTIONAL
+    set(REQUIRED_FLAG "OPTIONAL")
+
+    # If a second argument is passed, treat it as REQUIRED_FLAG
+    if(ARGC GREATER 1)
+        set(REQUIRED_FLAG ${ARGV1})
     endif()
 
     # Attempt to find the package without the REQUIRED flag
