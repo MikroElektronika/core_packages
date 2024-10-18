@@ -23,6 +23,15 @@ jobs:
           pip install -r scripts/requirements/release.txt
           pip install -r scripts/requirements/databases.txt
 
+      - name: Check if triggered
+        id: check_tag
+        run: |
+          if [[env.GITHUB_EVENT_NAME == 'workflow_dispatch']]
+            echo "tag_name=latest" >> $GITHUB_OUTPUT
+          else
+            echo "tag_name=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Run Release Script
         env:
           DB_PATH: ${{ secrets.DB_PATH }}
@@ -31,4 +40,4 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
           ES_INDEX: ${{ secrets.ES_INDEX_LIVE }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
-        run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.release.tag_name }}
+        run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.steps.check_tag.outputs.tag_name }}
