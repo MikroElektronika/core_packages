@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-def get_release_branches(prefix="new-feature/mcus"):
+def get_release_branches(prefix="test/test_branch_for_merge"):
     """Get all branches that start with the specified prefix."""
     try:
         # Fetch all remote branches
