@@ -100,34 +100,31 @@ jobs:
           -d '{
                 "event_type": "trigger-workflow",
                 "client_payload": {
-                  "mcu_name": "${{ github.event.inputs.mcu_name }}", 
-                  "vendor": "${{ github.event.inputs.vendor }}", 
+                  "mcu_name": "${{ github.event.inputs.mcu_name }}",
+                  "vendor": "${{ github.event.inputs.vendor }}",
                   "pdfFile": "${{ github.event.inputs.pdfFile }}",
                   "branch_name": "danilo.milenkovic/main"
                 }
               }'
 
     # Wait for the workflow to complete
-    - name: Wait for some 30 minutes
-      run: sleep 2000
+    - name: Wait for some 5 minutes
+      run: sleep 500
 
-    # Get the latest release info from the private repository using GitHub API
-    
-      
-    # Pull files from sdk_automation repository to ours
-    - name: Pull files from sdk_automation repository to ours
-      run: |
-        git remote add source https://${{ secrets.PRIVATE_REPO_TOKEN }}@github.com/MikroElektronika/sdk_automation.git
-        git fetch source danilo.milenkovic/main
-        git checkout source/danilo.milenkovic/main -- output
-        mv output/* ./automatization/  
+    - name: Fetch asset
+      run: gh release download --repo MikroElektronika/sdk_automation latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
+
+    - name: See what we downloaded
+      run: ls
 
     # Commit changes
     - name: Commit changes
       run: |
         git add .
         git commit -m "Pulled files from sdk_automation into core_packages"
-        
+
     # Push changes back to your repository
     - name: Push changes
       run: |
