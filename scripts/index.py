@@ -392,7 +392,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 else:
                     resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
                     print(f"{resp["result"]} {resp['_id']}")
-                    if name_without_extension in always_index:
+                    # Database is indexed as separate ID for both indexes, so skip it in this step
+                    if (name_without_extension in always_index) and ('database' not in name_without_extension):
                         if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
                             if index_name == os.environ['ES_INDEX_TEST']:
                                 resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=name_without_extension, body=doc)
