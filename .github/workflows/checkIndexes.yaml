@@ -49,6 +49,7 @@ jobs:
         run: |
           FIX_ACTION=${{ github.event.inputs.fix }}  # Capture the fix input
           LOG_ONLY=$([[ "$FIX_ACTION" == "false" ]] && echo true || echo false)  # Negate the fix input
+          echo "LOG_ONLY is set to $LOG_ONLY"
           python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" "$LOG_ONLY"
         continue-on-error: true # Ensure the workflow continues
 
@@ -57,6 +58,7 @@ jobs:
         run: |
           FIX_ACTION=${{ github.event.inputs.fix }}  # Capture the fix input
           LOG_ONLY=$([[ "$FIX_ACTION" == "false" ]] && echo true || echo false)  # Negate the fix input
+          echo "LOG_ONLY is set to $LOG_ONLY"
           python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" "$LOG_ONLY"
         continue-on-error: true # Ensure the workflow continues
 
