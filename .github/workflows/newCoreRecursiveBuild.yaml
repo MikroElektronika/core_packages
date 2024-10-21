@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure full history is fetched, not just the latest commit
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -23,7 +25,7 @@ jobs:
           git config user.email github-actions@github.com
 
       - name: Fetch Main Branch
-        run: git fetch origin main
+        run: git fetch origin main:main  # Ensure the main branch is fetched
 
       - name: Install Dependencies
         run: |
