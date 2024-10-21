@@ -107,6 +107,7 @@ jobs:
                 }
               }')
         echo "RUN_ID=${RUN_ID}" >> $GITHUB_ENV
+        echo "$RUN_ID"
 
     # Wait for the workflow to complete
     - name: Wait for the Triggered Workflow Finish
