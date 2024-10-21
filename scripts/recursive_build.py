@@ -484,7 +484,7 @@ def insertIntoTable(db, tableName, values, columns):
     numOfItems = ''
     for itemCount in range(1, len(values) + 1):
         numOfItems += '?,'
-    cur.execute(f'INSERT OR REPLACE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
+    cur.execute(f'INSERT OR IGNORE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
     conn.commit()
     conn.close()
 
