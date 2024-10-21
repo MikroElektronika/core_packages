@@ -153,13 +153,32 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
+def get_changed_files(branch='main'):
+    try:
+        # Run the git diff command to get the list of changed files
+        result = subprocess.run(
+            ['git', 'diff', '--name-only', branch],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True
+        )
+
+        # The output is a string of file paths separated by newlines
+        changed_files = result.stdout.splitlines()
+
+        return changed_files
+    except subprocess.CalledProcessError as e:
+        print(f"Error running git command: {e.stderr}")
+        return []
+
+
 def find_cmake_files(path):
-    """ Return a list of .cmake files in the directory, excluding specific files """
+    files = get_changed_files('main')
     cmake_files = []
-    with open(os.path.join(os.getcwd(), "core_build.txt"), "r") as file:
-        for line in file:
-            # Strip any leading/trailing whitespace (like newlines) and append to the array
-            cmake_files.append(path + '/cmake/stm/' + line.strip() + '.cmake')
+    for file in files:
+        if 'cmake/' in file and 'delays/' not in file and file not in cmake_files:
+            cmake_files.append(file)
     return cmake_files
 
 def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
@@ -437,9 +456,8 @@ def get_core_from_def(file_path):
 
             # Check if the "core" key exists in the JSON data
             if 'core' in data:
-                core = data['core'].replace('EF', '').replace('+', '')
-                if core == 'M33':
-                    core = 'M33EF'
+                if core == 'M7EF':
+                    core = 'M7'
             else:
                 print(f'Warning: "core" key not found in {file_path}')
     else:
@@ -616,34 +634,21 @@ def write_results_to_file(changes_dict):
 
     print(f"All the data for build has been written to {testPath}/built_changes.json")
 
-def get_changed_files(branch='main'):
-    try:
-        # Run the git diff command to get the list of changed files
-        result = subprocess.run(
-            ['git', 'diff', '--name-only', branch],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            check=True
-        )
-
-        # The output is a string of file paths separated by newlines
-        changed_files = result.stdout.splitlines()
-
-        return changed_files
-    except subprocess.CalledProcessError as e:
-        print(f"Error running git command: {e.stderr}")
-        return []
-
 def main():
     files = get_changed_files('main')
-    architectures = ["ARM"]
+    archs = []
+    architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
+    valid_entries = ["gcc_clang", "XC32", "XC16", "XC8"]
+    for file in files:
+        for architecture in architectures:
+            if architecture in file and architecture not in archs:
+                archs.append(architecture)
     changes_dict = {
         'mcu_list': [],
         'build_status': {}
     }
 
-    for arch in architectures:
+    for arch in archs:
         root_source_directory = f"./{arch}"
         root_output_directory = f"./output/{arch}"
         # List directories directly under the root source directory
@@ -651,6 +656,9 @@ def main():
             with os.scandir(root_source_directory) as entries:
                 print(entries)
                 for entry in entries:
+                    # Don't process packaging for the MikroC entries
+                    if entry.name not in valid_entries:
+                        continue
                     print(root_source_directory)
                     print(entry)
                     if entry.is_dir():
