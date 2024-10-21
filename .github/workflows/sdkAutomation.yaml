@@ -91,7 +91,7 @@ jobs:
       env:
         REPO: "MikroElektronika/sdk_automation"
       run: |
-        curl -L \
+        RUN_ID=$(curl -L \
           -X POST \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
@@ -105,11 +105,43 @@ jobs:
                   "pdfFile": "${{ github.event.inputs.pdfFile }}",
                   "branch_name": "danilo.milenkovic/main"
                 }
-              }'
+              }')
+        echo "RUN_ID=${RUN_ID}" >> $GITHUB_ENV
 
     # Wait for the workflow to complete
-    - name: Wait for some 5 minutes
-      run: sleep 500
+    - name: Wait for the Triggered Workflow Finish
+      env:
+        REPO: "MikroElektronika/sdk_automation"
+      run: |
+        while : ; do
+          STATUS=$(curl -s -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/$REPO/actions/runs/$RUN_ID \
+            | jq -r '.status')
+
+          CONCLUSION=$(curl -s -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/$REPO/actions/runs/$RUN_ID \
+            | jq -r '.conclusion')
+
+          echo "Workflow status: $STATUS"
+
+          if [[ "$STATUS" == "completed" ]]; then
+            echo "Workflow completed with conclusion: $CONCLUSION"
+            break
+          fi
+
+          # Wait for a few seconds before checking again
+          sleep 10
+        done
+
+        # Check the conclusion and fail the job if the triggered workflow failed
+        if [[ "$CONCLUSION" != "success" ]]; then
+          echo "Triggered workflow failed with conclusion: $CONCLUSION"
+          exit 1
+        fi
+
+        echo "Triggered workflow completed successfully!"
 
     - name: Fetch asset
       run: gh release download --repo MikroElektronika/sdk_automation latest
