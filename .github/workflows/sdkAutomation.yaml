@@ -120,12 +120,12 @@ jobs:
       run: ls
 
     # Commit changes
-    - name: Commit changes
-      run: |
-        git add .
-        git commit -m "Pulled files from sdk_automation into core_packages"
+    #- name: Commit changes
+    #  run: |
+    #    git add .
+    #    git commit -m "Pulled files from sdk_automation into core_packages"
 
     # Push changes back to your repository
-    - name: Push changes
-      run: |
-        git push -u origin ${{ github.event.inputs.build_branch }}
+    #- name: Push changes
+    #  run: |
+    #    git push -u origin ${{ github.event.inputs.build_branch }}
