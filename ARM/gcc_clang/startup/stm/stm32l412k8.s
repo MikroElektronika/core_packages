@@ -62,7 +62,7 @@ Reset_Handler:
   ldr   sp, =_estack    /* Set stack pointer */
 
 /* Call the clock system initialization function.*/
-    // bl  SystemInit /* Removed call for Mikroe implementation. */
+    bl systemInit /* Changed to call MikroE system init API. */
 
 /* Copy the data segment initializers from flash to SRAM */
   ldr r0, =_sdata
@@ -98,7 +98,6 @@ LoopFillZerobss:
 /* Call static constructors */
     bl __libc_init_array
 /* Call the application's entry point.*/
-  bl  clockConfig /* Added to call MikroE system clock configuration API. */
 	bl	main
 
 LoopForever:
