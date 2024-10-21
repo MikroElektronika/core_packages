@@ -114,8 +114,7 @@ jobs:
     - name: Fetch asset
       run: gh release download --repo MikroElektronika/sdk_automation latest
       env:
-        GH_TOKEN: ${{ github.token }}
-        GITHUB_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
+        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
     - name: See what we downloaded
       run: ls
