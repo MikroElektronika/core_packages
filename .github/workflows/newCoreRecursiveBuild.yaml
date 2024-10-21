@@ -1,26 +1,10 @@
-name: Core Packages Recursive Build
+name: New Core Files Build Test
 
 on:
   workflow_dispatch:
-    inputs:
-      build_type:
-        type: choice
-        description: Build all or only changed files
-        options:
-          - Only changed files
-          - All files
-      necto_type:
-        type: choice
-        description: Live or Development NECTO build
-        options:
-          - Development
-          - Live
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  recursiveBuild:
+  recursiveCoreBuild:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -33,10 +17,21 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Add GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Fetch Main Branch
+        run: git fetch origin main
+
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r scripts/requirements/shared.txt
+          pip install -r scripts/requirements/databases.txt
+          pip install colorama
+          pip install enums
           sudo apt-get update
           sudo apt-get install p7zip-full
           sudo apt-get install libopus-dev
@@ -51,23 +46,12 @@ jobs:
 
       - name: Install NECTO
         run: |
-          if [[ "${{ github.event.inputs.necto_type }}" == 'Live' ]]; then
-            export NECTO_DOWNLOAD_URL=${{ secrets.NECTO_LIVE_DOWNLOAD_URL }}
-          else
-            export NECTO_DOWNLOAD_URL=${{ secrets.NECTO_DEV_DOWNLOAD_URL }}
-          fi
+          export NECTO_DOWNLOAD_URL=${{ secrets.NECTO_DEV_DOWNLOAD_URL }}
           python -u scripts/install_necto.py
 
-      - name: Run Recursive Build
+      - name: Run Core Files Build
         run: |
-          if [[ "${{ github.event.inputs.build_type }}" == 'All files' ]]; then
-            export BUILD_ALL=1
-            echo "Building all files."
-          else
-            export BUILD_ALL=0
-            echo "Building only changed files."
-          fi
-          python -u scripts/recursive_build.py
+          python -u scripts/core_build.py
 
       - name: Archive test results
         uses: actions/upload-artifact@v4
