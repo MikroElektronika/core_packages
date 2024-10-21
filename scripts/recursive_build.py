@@ -456,6 +456,7 @@ def get_core_from_def(file_path):
 
             # Check if the "core" key exists in the JSON data
             if 'core' in data:
+                core = data['core']
                 if core == 'M7EF':
                     core = 'M7'
             else:
