@@ -53,7 +53,7 @@ jobs:
 
       - name: Run Core Files Build
         run: |
-          python -u scripts/core_build.py
+          python -u scripts/recursive_build.py
 
       - name: Archive test results
         uses: actions/upload-artifact@v4
