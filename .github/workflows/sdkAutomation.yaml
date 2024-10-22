@@ -94,7 +94,7 @@ jobs:
       env:
         REPO: "MikroElektronika/sdk_automation"
       run: |
-        RUN_ID=$(curl -s \
+        curl -s \
           -X POST \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
@@ -107,9 +107,20 @@ jobs:
                   "vendor": "${{ github.event.inputs.vendor }}",
                   "pdfFile": "${{ github.event.inputs.pdfFile }}"
                 }
-              }')
-        echo "RUN_ID=${RUN_ID}" >> $GITHUB_ENV
-        echo "$RUN_ID"
+              }'
+
+    - name: Wait for the run to trigger
+      run: sleep 10
+
+    - name: Get run ID
+      env:
+        REPO: "MikroElektronika/sdk_automation"
+      run: |
+        RUN_ID=$(curl -s -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/runs?status=in_progress" \
+            | jq -r '.workflow_runs[0].id')
+        echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
 
     # Wait for the workflow to complete
     - name: Wait for the Triggered Workflow Finish
