@@ -109,6 +109,10 @@ jobs:
                 }
               }'
 
+    # Wait for workflow start
+    - name: Wait for start
+      run: sleep 20
+
     - name: Get run ID
       id: get_id
       env:
