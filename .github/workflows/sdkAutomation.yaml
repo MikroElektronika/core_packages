@@ -117,7 +117,7 @@ jobs:
         while : ; do
           runID=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/runs?status=in_progress" \
+              "https://api.github.com/repos/$REPO/actions/runs?status=in_progress" \
               | jq -r '.workflow_runs[0].id')
 
           if [[ -z "$runID" ]]; then
@@ -139,12 +139,12 @@ jobs:
         while : ; do
           STATUS=$(curl -s -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/$REPO/actions/runs/11458782925 \
+            https://api.github.com/repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
             | jq -r '.status')
 
           CONCLUSION=$(curl -s -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/$REPO/actions/runs/11458782925 \
+            https://api.github.com/repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
             | jq -r '.conclusion')
 
           echo "Workflow status: $STATUS"
