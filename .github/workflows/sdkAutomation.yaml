@@ -113,6 +113,7 @@ jobs:
       run: sleep 10
 
     - name: Get run ID
+      id: get_id
       env:
         REPO: "MikroElektronika/sdk_automation"
       run: |
@@ -120,8 +121,8 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/runs?status=in_progress" \
             | jq -r '.workflow_runs[0].id')
-        echo "RUN_ID=$runID" >> $GITHUB_ENV
-        echo "$RUN_ID"
+        echo "run_id=$runID" >> $GITHUB_OUTPUT
+        echo "ID of the workflow we just run: $run_id"
 
     # Wait for the workflow to complete
     - name: Wait for the Triggered Workflow Finish
@@ -131,12 +132,12 @@ jobs:
         while : ; do
           STATUS=$(curl -s -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/runs/$RUN_ID \
+            https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/runs/${{ steps.get_id.outputs.run_id }} \
             | jq -r '.status')
 
           CONCLUSION=$(curl -s -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/runs/$RUN_ID \
+            https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/runs/${{ steps.get_id.outputs.run_id }} \
             | jq -r '.conclusion')
 
           echo "Workflow status: $STATUS"
