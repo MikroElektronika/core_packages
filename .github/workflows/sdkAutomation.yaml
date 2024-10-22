@@ -105,8 +105,7 @@ jobs:
                 "inputs": {
                   "mcu_name": "${{ github.event.inputs.mcu_name }}",
                   "vendor": "${{ github.event.inputs.vendor }}",
-                  "pdfFile": "${{ github.event.inputs.pdfFile }}",
-                  "branch_name": "danilo.milenkovic/main"
+                  "pdfFile": "${{ github.event.inputs.pdfFile }}"
                 }
               }')
         echo "RUN_ID=${RUN_ID}" >> $GITHUB_ENV
