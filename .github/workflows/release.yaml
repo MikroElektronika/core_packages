@@ -23,6 +23,10 @@ jobs:
           pip install -r scripts/requirements/release.txt
           pip install -r scripts/requirements/databases.txt
 
+      - name: Update database for packaging
+        run: |
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} "latest" "latest" "Live" "--mcus_only" "True"
+
       - name: Run Release Script
         env:
           DB_PATH: ${{ secrets.DB_PATH }}
