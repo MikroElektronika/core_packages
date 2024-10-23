@@ -78,8 +78,7 @@ jobs:
     # Create a new branch
     - name: Create branch
       run: |
-        git branch --list "*automation*"
-        if [ `git branch | grep "*automation*"` ]; then
+        if [ `git branch --list "*automation*"` ]; then
           highest=$(git branch --list "*new-feature/automation/*" | sed -n 's/.*-\([0-9]\+\)$/\1/p' | sort -n | tail -1)
           number=$(git branch --list "*new-feature/automation/*" | grep "$highest")
           if ${{ github.event.inputs.new_branch }} == true; then
