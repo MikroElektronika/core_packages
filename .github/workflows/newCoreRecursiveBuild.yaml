@@ -35,16 +35,7 @@ jobs:
           pip install colorama
           pip install enums
           sudo apt-get update
-          sudo apt-get install p7zip-full
-          sudo apt-get install libopus-dev
-          sudo apt-get install libevent-dev
-          sudo apt-get install freeglut3-dev
-          sudo apt-get install libminizip-dev
-          sudo apt-get install libxcb-shape0-dev
-          sudo apt-get install libxcb-icccm4-dev
-          sudo apt-get install libxcb-cursor-dev
-          sudo apt-get install libxcb-keysyms1-dev
-          sudo apt-get install libxkbcommon-x11-dev
+          sudo apt-get install $(cat scripts/requirements/recursive_build.txt)
 
       - name: Install NECTO
         run: |

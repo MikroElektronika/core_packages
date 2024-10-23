@@ -24,14 +24,9 @@ compiler_list = {
 }
 
 # Define a REGEXP function for SQLite.
-def regexp(expr, item):
-    # Handle the case where item is None
-    if item is None:
-        return False
-
-    # Compile the regular expression and search the item
-    reg = re.compile(expr)
-    return reg.search(item) is not None
+def functionRegex(value, pattern):
+    c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
+    return c_pattern.search(value) is not None
 
 # Extracts the SDK version from the manifest.json file.
 def get_sdk_version():
@@ -39,7 +34,7 @@ def get_sdk_version():
     conn = sqlite3.connect(os.path.join(local_app_data_path, 'databases', 'necto_db.db'))
 
     # Create REGEXP function for python script.
-    conn.create_function("REGEXP", 2, regexp)
+    conn.create_function("REGEXP", 2, functionRegex)
     cursor = conn.cursor()
 
     cursor.execute(f"""
@@ -118,7 +113,7 @@ def run_builds(changes_dict):
 # Returns the list of compilers based on the given name and type.
 def get_compilers(name, is_mcu=True):
     if is_mcu:
-        if any(substring in name for substring in ["ATSAM", "STM", "TM4C", "MK"]):
+        if any(substring in name for substring in ["SAM", "STM", "TM4C", "MK"]):
             return compiler_list["ARM"]
         elif any(substring in name for substring in ["GD32", "RISC"]):
             return compiler_list["RISCV"]
@@ -130,10 +125,6 @@ def get_compilers(name, is_mcu=True):
             return compiler_list["PIC"]
         elif "AT" in name and "ATSAM" not in name:
             return compiler_list["AVR"]
-
-def functionRegex(value, pattern):
-    c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
-    return c_pattern.search(value) is not None
 
 def read_data_from_db(db, sql_query):
     ## Open the database / connect to it
