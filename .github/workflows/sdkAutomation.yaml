@@ -78,7 +78,7 @@ jobs:
     # Create a new branch
     - name: Create branch
       run: |
-        highest=$(git branch --list "*new-feature/automation/*" | sed -n 's/.*-\([0-9]\+\)$/\1/p' | sort -n | tail -1)
+        highest=$(git branch --list "*new-feature/automation/*" | sort -n | tail -1)
         if [ -z "$highest" ]; then
           number=1
         else
