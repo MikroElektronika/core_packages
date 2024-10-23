@@ -87,6 +87,7 @@ jobs:
             number=$((number+1))
           fi
         fi
+        echo "Found number: $number"
 
         git branch "new-feature/automation/$number"
         git checkout "new-feature/automation/$number"
