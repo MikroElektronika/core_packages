@@ -23,7 +23,7 @@ def extract_info_from_md(file_path):
     if hardware_section_match:
         mcu_package = hardware_section_match.group(1).strip()
         mcu_models = hardware_section_match.group(2).strip().split("\n")
-        mcu_models = [model.strip().replace('+ ', '') for model in mcu_models]  # Clean up the model entries
+        mcu_models = [model.strip().replace('+ ', '').replace('- ', '') for model in mcu_models]  # Clean up the model entries
     else:
         mcu_package = "No hardware packages found."
         mcu_models = []
