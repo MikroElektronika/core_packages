@@ -24,9 +24,14 @@ compiler_list = {
 }
 
 # Define a REGEXP function for SQLite.
-def functionRegex(value, pattern):
-    c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
-    return c_pattern.search(value) is not None
+def regexp(expr, item):
+    # Handle the case where item is None
+    if item is None:
+        return False
+
+    # Compile the regular expression and search the item
+    reg = re.compile(expr)
+    return reg.search(item) is not None
 
 # Extracts the SDK version from the manifest.json file.
 def get_sdk_version():
@@ -34,7 +39,7 @@ def get_sdk_version():
     conn = sqlite3.connect(os.path.join(local_app_data_path, 'databases', 'necto_db.db'))
 
     # Create REGEXP function for python script.
-    conn.create_function("REGEXP", 2, functionRegex)
+    conn.create_function("REGEXP", 2, regexp)
     cursor = conn.cursor()
 
     cursor.execute(f"""
@@ -125,6 +130,10 @@ def get_compilers(name, is_mcu=True):
             return compiler_list["PIC"]
         elif "AT" in name and "ATSAM" not in name:
             return compiler_list["AVR"]
+
+def functionRegex(value, pattern):
+    c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
+    return c_pattern.search(value) is not None
 
 def read_data_from_db(db, sql_query):
     ## Open the database / connect to it
