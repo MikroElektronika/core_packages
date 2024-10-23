@@ -82,10 +82,7 @@ jobs:
         if [ -z "$highest" ]; then
           number=1
         else
-          number=$(git branch --list "*new-feature/automation/*" | grep "$highest")
-          if ${{ github.event.inputs.new_branch }} == true; then
-            number=$((number+1))
-          fi
+          number=2
         fi
         echo "Found number: $number"
 
