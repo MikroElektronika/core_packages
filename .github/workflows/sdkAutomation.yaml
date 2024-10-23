@@ -35,10 +35,10 @@ on:
         required: true
         # The data type of the input
         type: string
-      build_branch:
-        type: string
-        description: Which Branch to build MCUs on? (change last number to desired number)
-        default: "new-feature/automation/1"
+      new_branch:
+        type: bool
+        description: To create a new branch for this run or use the last one
+        default: true
       build_version:
         type: string
         description: Tag to use for script run (i.e. v1.0.7)
@@ -78,16 +78,27 @@ jobs:
     # Create a new branch
     - name: Create branch
       run: |
-        git branch ${{ github.event.inputs.build_branch }}
-        git checkout ${{ github.event.inputs.build_branch }}
-        git push -u origin ${{ github.event.inputs.build_branch }}
+        highest=$(git branch --list "*new-feature/automation/*" | sed -n 's/.*-\([0-9]\+\)$/\1/p' | sort -n | tail -1)
+        if [ -z "$highest" ]; then
+          number=1
+        else
+          number=$(git branch --list "*new-feature/automation/*" | grep "$highest")
+          if ${{ github.event.inputs.new_branch }} == true; then
+            number=$((number+1))
+          fi
+        fi
+
+        git branch "new-feature/automation/$number"
+        git checkout "new-feature/automation/$number"
+        git push -u origin "new-feature/automation/$number"
+
+    # Wait
+    - name: Wait
+      run: sleep 500
 
     # Create a new directory at the root of your repository
     - name: Create automatization directory
       run: mkdir -p automatization
-
-    - name: See what we downloaded
-      run: ls
 
     # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
     - name: Trigger Workflow on Private Repository
@@ -111,8 +122,9 @@ jobs:
 
     # Wait for workflow start
     - name: Wait for start
-      run: sleep 20
+      run: sleep 5
 
+    # Get the ID of the run that we just triggered
     - name: Get run ID
       id: get_id
       env:
@@ -126,7 +138,7 @@ jobs:
               repos/$REPO/actions/workflows/generate_core.yml/runs \
               --paginate \
               -q '.workflow_runs[] | select(.status == "in_progress") | .id' | head -n 1)
-            
+
           if [[ -z "$runID" ]]; then
             echo "No in-progress run found yet. Retrying in 10 seconds..."
             sleep 10
@@ -176,21 +188,26 @@ jobs:
 
         echo "Triggered workflow completed successfully!"
 
+    # Aquire the asset that we just generated with the sdk_automation script
     - name: Fetch asset
       run: gh release download --repo MikroElektronika/sdk_automation latest
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
-    - name: See what we downloaded
-      run: ls
+    # Move the asset we just downloaded to automatization and extract it
+    - name: Move to the directory we created and unzip
+      run: |
+        git mv generated_files.zip automatization
+        apt-get install unzip
+        unzip ./automatization/generated_files.zip
 
     # Commit changes
-    #- name: Commit changes
-    #  run: |
-    #    git add .
-    #    git commit -m "Pulled files from sdk_automation into core_packages"
+    - name: Commit changes
+      run: |
+        git add .
+        git commit -m "Pulled files from sdk_automation into core_packages"
 
     # Push changes back to your repository
-    #- name: Push changes
-    #  run: |
-    #    git push -u origin ${{ github.event.inputs.build_branch }}
+    - name: Push changes
+      run: |
+        git push -u origin ${{ github.event.inputs.build_branch }}
