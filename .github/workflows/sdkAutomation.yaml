@@ -94,10 +94,6 @@ jobs:
         git checkout "new-feature/automation/$number"
         git push -u origin "new-feature/automation/$number"
 
-    # Wait
-    - name: Wait
-      run: sleep 500
-
     # Create a new directory at the root of your repository
     - name: Create automatization directory
       run: mkdir -p automatization
