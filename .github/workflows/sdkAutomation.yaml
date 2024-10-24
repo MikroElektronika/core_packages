@@ -107,7 +107,7 @@ jobs:
     # Move the asset we just downloaded to automatization and extract it
     - name: Move to the directory we created and unzip
       run: |
-        mv generated_files.zip automatization/
+        sudo mv generated_files.zip automatization/
         apt-get install unzip
         unzip ./automatization/generated_files.zip
 
