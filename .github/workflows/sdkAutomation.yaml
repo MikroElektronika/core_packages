@@ -119,15 +119,17 @@ jobs:
         sudo mv generated_files.zip automatization/
         cd automatization
         unzip generated_files.zip
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/MK20DX128VMP5
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/mk20dx128vmp5
+        
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1
-        sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/MK20DX128VMP5/
-        sudo mv 'MK20DX128VMP5.json' ../${{ github.event.inputs.architecture }}/gcc_clang/def/
-        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/mk20dx128vmp5/
+ 
+        sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}/
+        sudo mv '$(grep -rl '.json')' ../${{ github.event.inputs.architecture }}/gcc_clang/def/
+        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}/
         sudo mv 'init_clock.c' ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1/
-        sudo mv 'MK20DX128VMP5.ld' ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/
-        sudo mv 'MK20DX128VMP5.s' ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/
-        sudo mv 'MK20DxVLH5|MK20DxVMP5.cmake' ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/
+        sudo mv '$(grep -rl '.ld')' ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/
+        sudo mv '$(grep -rl '.s')' ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/
+        sudo mv '$(grep -rl '.cmake')' ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/
         cd delays
-        sudo mv 'MK20DxVLH5|MK20DxVMP5.cmake' ../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/
+        sudo mv '$(grep -rl '.cmake')' ../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/
