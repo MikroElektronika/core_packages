@@ -108,4 +108,5 @@ jobs:
     - name: Move to the directory we created and unzip
       run: |
         sudo mv generated_files.zip automatization/
-        apt-get install unzip
+        cd automatization
+        unzip generated_files.zip
