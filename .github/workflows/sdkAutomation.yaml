@@ -98,94 +98,6 @@ jobs:
     - name: Create automatization directory
       run: mkdir -p automatization
 
-    # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
-    - name: Trigger Workflow on Private Repository
-      env:
-        REPO: "MikroElektronika/sdk_automation"
-      run: |
-        curl -s \
-          -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/dispatches \
-          -d '{
-                "ref": "danilo.milenkovic/main",
-                "inputs": {
-                  "mcu_name": "${{ github.event.inputs.mcu_name }}",
-                  "vendor": "${{ github.event.inputs.vendor }}",
-                  "pdfFile": "${{ github.event.inputs.pdfFile }}"
-                }
-              }'
-
-    # Wait for workflow start
-    - name: Wait for start
-      run: sleep 5
-
-    # Get the ID of the run that we just triggered
-    - name: Get run ID
-      id: get_id
-      env:
-        REPO: "MikroElektronika/sdk_automation"
-        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
-      run: |
-        while : ; do
-          runID=$(gh api \
-              -H "Accept: application/vnd.github+json" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              repos/$REPO/actions/workflows/generate_core.yml/runs \
-              --paginate \
-              -q '.workflow_runs[] | select(.status == "in_progress") | .id' | head -n 1)
-
-          if [[ -z "$runID" ]]; then
-            echo "No in-progress run found yet. Retrying in 10 seconds..."
-            sleep 10
-            continue
-          fi
-
-          echo "run_id=$runID" >> $GITHUB_OUTPUT
-          echo "Found in-progress workflow with RUN_ID: $run_id"
-          break
-        done
-
-    # Wait for the workflow to complete
-    - name: Wait for the Triggered Workflow Finish
-      env:
-        REPO: "MikroElektronika/sdk_automation"
-        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
-      run: |
-        while : ; do
-          STATUS=$(gh api \
-              -H "Accept: application/vnd.github+json" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
-              -q '.status')
-
-          CONCLUSION=$(gh api \
-              -H "Accept: application/vnd.github+json" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
-              -q '.conclusion')
-
-          echo "Workflow status: $STATUS"
-
-          if [[ "$STATUS" == "completed" ]]; then
-            echo "Workflow completed with conclusion: $CONCLUSION"
-            break
-          fi
-
-          # Wait for a few seconds before checking again
-          sleep 10
-        done
-
-        # Check the conclusion and fail the job if the triggered workflow failed
-        if [[ "$CONCLUSION" != "success" ]]; then
-          echo "Triggered workflow failed with conclusion: $CONCLUSION"
-          exit 1
-        fi
-
-        echo "Triggered workflow completed successfully!"
-
     # Aquire the asset that we just generated with the sdk_automation script
     - name: Fetch asset
       run: gh release download --repo MikroElektronika/sdk_automation latest
@@ -195,7 +107,7 @@ jobs:
     # Move the asset we just downloaded to automatization and extract it
     - name: Move to the directory we created and unzip
       run: |
-        git mv generated_files.zip automatization
+        mv generated_files.zip automatization/
         apt-get install unzip
         unzip ./automatization/generated_files.zip
 
