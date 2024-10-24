@@ -1,0 +1,54 @@
+name: New Core Files Build Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  recursiveCoreBuild:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure full history is fetched, not just the latest commit
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Add GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Fetch Main Branch
+        run: git fetch origin main:main  # Ensure the main branch is fetched
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements/shared.txt
+          pip install -r scripts/requirements/databases.txt
+          pip install colorama
+          pip install enums
+          sudo apt-get update
+          sudo apt-get install $(cat scripts/requirements/recursive_build.txt)
+
+      - name: Install NECTO
+        run: |
+          export NECTO_DOWNLOAD_URL=${{ secrets.NECTO_DEV_DOWNLOAD_URL }}
+          python -u scripts/install_necto.py
+
+      - name: Run Core Files Build
+        run: |
+          python -u scripts/recursive_build.py
+
+      - name: Archive test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: /home/runner/test_results
