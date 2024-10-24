@@ -127,6 +127,5 @@ jobs:
         sudo mv interrupts_mcu.h ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/mk20dx128vmp5/
         sudo mv init_clock.c ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1/
         sudo mv MK20DX128VMP5.ld ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/
-        sudo mv MK20DX128VMP5.s ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/
-        sudo mv MK20DxVLH5|MK20DxVMP5.cmake ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/
+        sudo mv MK20DX128VMP5.s ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/
         
