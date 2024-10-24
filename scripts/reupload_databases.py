@@ -15,6 +15,7 @@ sys.path.append(str(Path(os.path.dirname(__file__)).absolute()))
 import enums as enums
 import support as utility
 import addSdkVersion as sdk
+import read_microchip_index as MCHP
 
 entranceCheckProg = True
 entranceCheckDebug = True
@@ -891,6 +892,7 @@ async def main(
         False
     )
 
+
     ## Step 2 - Update database with new SDK if needed
     ## Add new sdk version
     if 'latest' == release_version_sdk:
@@ -1023,6 +1025,51 @@ async def main(
             checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
+    ## Step 10.1 add microchip info to programmers table
+    custom_link = 'https://packs.download.microchip.com/index.idx'
+    if not mcus_only:
+        # Download the index file
+        xml_content = MCHP.download_index_file(custom_link)
+        converted_data = MCHP.convert_idx_to_json(xml_content)
+
+        programmersColumns = 'uid,hidden,name,icon,installed,description,installer_package,device_support_package'
+        progToDeviceColumns = 'programer_uid,device_uid'
+        for eachDb in [databaseErp, databaseNecto]:
+            if eachDb:
+                ## Add missing columns to programmer table
+                addCollumnsToTable(
+                    eachDb, ['installer_package', 'device_support_package'], 'Programmers', ['Text', 'Text'], ['NoDefault', 'NoDefault']
+                )
+                ## Add all tools found in microchip index file to programmers table
+                for prog_item in converted_data:
+                    print(f"Inserting {prog_item['uid']} into Programmers table")
+                    insertIntoTable(
+                        eachDb,
+                        'Programmers',
+                        [
+                            prog_item['uid'],
+                            prog_item['hidden'],
+                            prog_item['display_name'],
+                            prog_item['icon'],
+                            prog_item['installed'],
+                            prog_item['description'],
+                            prog_item['installer_package'],
+                            prog_item['dfps']
+                        ],
+                        programmersColumns
+                    )
+                    ## Add MCU to Programmer mapping found in microchip index file
+                    for mcu in prog_item['mcus']:
+                        print(f"Inserting {mcu.upper()}:{prog_item['uid']} into ProgrammerToDevice table")
+                        insertIntoTable(
+                            eachDb,
+                            'ProgrammerToDevice',
+                            [
+                                prog_item['uid'],
+                                mcu.upper()
+                            ],
+                            progToDeviceColumns
+                        )
 
     ## Step 11 - update families
     if not mcus_only:
@@ -1048,16 +1095,16 @@ async def main(
             )
 
     ## Step 14 - re-upload over existing assets
-    if not mcus_only:
-        archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
-        async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
-        if databaseErp:
-            async with aiohttp.ClientSession() as session:
-                upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
+    # if not mcus_only:
+    #     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
+    #     async with aiohttp.ClientSession() as session:
+    #         upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
+    #     if databaseErp:
+    #         async with aiohttp.ClientSession() as session:
+    #             upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
 
-    ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
-    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    # ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
+    # shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
