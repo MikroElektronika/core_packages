@@ -108,16 +108,3 @@ jobs:
     - name: Move to the directory we created and unzip
       run: |
         sudo mv generated_files.zip automatization/
-        apt-get install unzip
-        unzip ./automatization/generated_files.zip
-
-    # Commit changes
-    - name: Commit changes
-      run: |
-        git add .
-        git commit -m "Pulled files from sdk_automation into core_packages"
-
-    # Push changes back to your repository
-    - name: Push changes
-      run: |
-        git push -u origin ${{ github.event.inputs.build_branch }}
