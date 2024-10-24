@@ -26,6 +26,15 @@ on:
         required: true
         # The data type of the input
         type: string
+      architecture:
+        # Architecture of the MCU
+        description: 'Architecture'
+        # Default value if no value is explicitly provided
+        default: 'ARM'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
       pdfFile:
         # Path to the reference manual PDF file
         description: 'Reference manual PDF file path'
@@ -105,8 +114,16 @@ jobs:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
     # Move the asset we just downloaded to automatization and extract it
-    - name: Move to the directory we created and unzip
+    - name: Move to the created directory unzip and distribute files 
       run: |
         sudo mv generated_files.zip automatization/
         cd automatization
         unzip generated_files.zip
+        sudo mv mcu.h ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/MK20DX128VMP5/
+        sudo mv MK20DX128VMP5.json ../${{ github.event.inputs.architecture }}/gcc_clang/def/
+        sudo mv interrupts_mcu.h ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/mk20dx128vmp5/
+        sudo mv MK20DxVLH5|MK20DxVMP5.cmake ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/
+        sudo mv delays/MK20DxVLH5|MK20DxVMP5.cmake ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/
+        sudo mv init_clock.c ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1/
+        sudo mv MK20DX128VMP5.ld ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/
+        sudo mv MK20DX128VMP5.s ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/
