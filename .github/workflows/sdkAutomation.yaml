@@ -105,11 +105,8 @@ jobs:
           git checkout "new-feature/automation/$number"
           git push -u origin "new-feature/automation/$number"
         else
-          ls
           git checkout "new-feature/automation/$number"
-          echo "Found number: $(git rev-list --max-parents=1 )"
           git reset --hard $(git rev-list --max-parents=1 )
-          ls
         fi
 
     # Create a new directory at the root of your repository
@@ -118,7 +115,7 @@ jobs:
 
     # Aquire the asset that we just generated with the sdk_automation script
     - name: Fetch asset
-      run: gh release download --repo MikroElektronika/sdk_automation latest
+      run: gh release download --repo MikroElektronika/sdk_automation latest --clobber
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
