@@ -94,15 +94,21 @@ jobs:
           highest=$(git branch -a | grep "new-feature/automation" | grep -E -o '[0-9]+' | sort -n | tail -1)
           if ${{ github.event.inputs.new_branch }} == true; then
             number=$((highest+1))
+          else
+            number=$(highest)
           fi
         else
           number=1
         fi
         echo "Found number: $number"
 
-        git branch "new-feature/automation/$number"
-        git checkout "new-feature/automation/$number"
-        git push -u origin "new-feature/automation/$number"
+        if ${{ github.event.inputs.new_branch }} == true; then
+          git branch "new-feature/automation/$number"
+          git checkout "new-feature/automation/$number"
+          git push -u origin "new-feature/automation/$number"
+        else
+          git checkout "new-feature/automation/$number"
+        fi
 
     # Create a new directory at the root of your repository
     - name: Create automatization directory
