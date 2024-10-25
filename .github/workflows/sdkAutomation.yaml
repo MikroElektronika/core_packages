@@ -86,6 +86,8 @@ jobs:
 
     # Create a new branch
     - name: Create branch
+      env:
+        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
       run: |
         echo "Found branches: $(gh api repos/$(gh repo view --json name --jq '.name')/branches --jq '.[] | .name' | grep "automation")"
         if [[ `git branch --list "*automation*"` ]]; then
