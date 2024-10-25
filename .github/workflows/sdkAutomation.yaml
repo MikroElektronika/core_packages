@@ -105,8 +105,11 @@ jobs:
           git checkout "new-feature/automation/$number"
           git push -u origin "new-feature/automation/$number"
         else
+          ls
           git checkout "new-feature/automation/$number"
+          echo "Found number: $(git rev-list --max-parents=0 HEAD)"
           git reset --hard $(git rev-list --max-parents=0 HEAD)
+          ls
         fi
 
     # Create a new directory at the root of your repository
@@ -140,13 +143,3 @@ jobs:
         cd delays
         sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/
 
-    # Commit changes
-    - name: Commit changes
-      run: |
-        git add .
-        git commit -m "Pulled files from sdk_automation into core_packages"
-
-    # Push changes back to your repository
-    - name: Push changes
-      run: |
-        git push -u origin ${{ github.event.inputs.build_branch }}
