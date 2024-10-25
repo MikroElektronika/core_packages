@@ -1,0 +1,10 @@
+p7zip-full
+libopus-dev
+libevent-dev
+freeglut3-dev
+libminizip-dev
+libxcb-shape0-dev
+libxcb-icccm4-dev
+libxcb-cursor-dev
+libxcb-keysyms1-dev
+libxkbcommon-x11-dev
