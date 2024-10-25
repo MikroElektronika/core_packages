@@ -106,6 +106,7 @@ jobs:
           git push -u origin "new-feature/automation/$number"
         else
           git checkout "new-feature/automation/$number"
+          git reset --hard $(git rev-list --max-parents=0 HEAD)
         fi
 
     # Create a new directory at the root of your repository
