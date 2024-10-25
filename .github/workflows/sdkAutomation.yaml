@@ -90,10 +90,13 @@ jobs:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
       run: |
         git fetch --all
-        echo "Found branches: $(git branch -a | grep "automation")"
         if [[ `git branch -a | grep "automation"` ]]; then
-          highest=$(git branch --list "automation" | sed -n 's/.*-\([0-9]\+\)$/\1/p' | sort -n | tail -1)
-          echo "Found highest: $highest"
+          branches=$(git branch --list "*automation*")
+          echo "Found branches: $branches"
+          numbers=$(echo "$branches" | sed -n 's/.*-\([0-9]\+\)$/\1/p')
+          echo "Found numbers: $numbers"
+          highest=$(echo "$numbers" | sort -n | tail -1)
+          echo "Found highest: $numbers"
           number=$(git branch -a | grep "$highest")
           echo "Found number: $number"
           if ${{ github.event.inputs.new_branch }} == true; then
