@@ -90,9 +90,8 @@ jobs:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
       run: |
         git fetch --all
-        if [[ `git branch -a | grep "automation"` ]]; then
-          highest=$(git branch -a | grep "automation" | grep -E -o '[0-9]+' | sort -n | tail -1)
-          echo "Found highest: $highest"
+        if [[ `git branch -a | grep "new-feature/automation"` ]]; then
+          highest=$(git branch -a | grep "new-feature/automation" | grep -E -o '[0-9]+' | sort -n | tail -1)
           if ${{ github.event.inputs.new_branch }} == true; then
             number=$((highest+1))
           fi
