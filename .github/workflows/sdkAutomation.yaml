@@ -93,7 +93,7 @@ jobs:
         if [[ `git branch -a | grep "automation"` ]]; then
           branches=$(git branch -a | grep "automation")
           echo "Found branches: $branches"
-          numbers=$(echo "$branches" | sed -n 's/[0-9]\+$/p')
+          numbers=$(echo "$branches" | grep -E -o '[0-9]+')
           echo "Found numbers: $numbers"
           highest=$(echo "$numbers" | sort -n | tail -1)
           echo "Found highest: $numbers"
