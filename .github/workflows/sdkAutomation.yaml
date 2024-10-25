@@ -107,8 +107,8 @@ jobs:
         else
           ls
           git checkout "new-feature/automation/$number"
-          echo "Found number: $(git rev-list --max-parents=0 HEAD)"
-          git reset --hard $(git rev-list --max-parents=0 HEAD)
+          echo "Found number: $(git rev-list --max-parents=1 )"
+          git reset --hard $(git rev-list --max-parents=1 )
           ls
         fi
 
