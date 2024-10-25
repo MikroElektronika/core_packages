@@ -91,16 +91,10 @@ jobs:
       run: |
         git fetch --all
         if [[ `git branch -a | grep "automation"` ]]; then
-          branches=$(git branch -a | grep "automation")
-          echo "Found branches: $branches"
-          numbers=$(echo "$branches" | grep -E -o '[0-9]+')
-          echo "Found numbers: $numbers"
-          highest=$(echo "$numbers" | sort -n | tail -1)
-          echo "Found highest: $numbers"
-          number=$(git branch -a | grep "$highest")
-          echo "Found number: $number"
+          highest=$(git branch -a | grep "automation" | grep -E -o '[0-9]+' | sort -n | tail -1)
+          echo "Found highest: $highest"
           if ${{ github.event.inputs.new_branch }} == true; then
-            number=$((number+1))
+            number=$((highest+1))
           fi
         else
           number=1
