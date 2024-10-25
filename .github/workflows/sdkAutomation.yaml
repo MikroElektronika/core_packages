@@ -90,7 +90,7 @@ jobs:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
       run: |
         git fetch --all
-        echo "Found branches: $(git branch -a)"
+        echo "Found branches: $(git branch -a | grep "automation")"
         if [[ `git branch --list "*automation*"` ]]; then
           highest=$(git branch --list "*new-feature/automation/*" | sed -n 's/.*-\([0-9]\+\)$/\1/p' | sort -n | tail -1)
           number=$(git branch --list "*new-feature/automation/*" | grep "$highest")
