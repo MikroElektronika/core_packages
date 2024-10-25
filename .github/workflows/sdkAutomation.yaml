@@ -91,7 +91,7 @@ jobs:
       run: |
         git fetch --all
         if [[ `git branch -a | grep "automation"` ]]; then
-          branches=$(git branch --list "*automation*")
+          branches=$(git branch -a | grep "automation")
           echo "Found branches: $branches"
           numbers=$(echo "$branches" | sed -n 's/.*-\([0-9]\+\)$/\1/p')
           echo "Found numbers: $numbers"
