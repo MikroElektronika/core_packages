@@ -103,16 +103,16 @@ jobs:
           else
             number=1
           fi
-          branch_name = "new-feature/automation/$number"
+          branchName = "new-feature/automation/$number"
         fi
-        echo "Found number: $branch_name"
+        echo "Found number: $branchName"
 
         if ${{ github.event.inputs.new_branch }} == true; then
-          git branch $branch_name
-          git checkout $branch_name
-          git push -u origin $branch_name
+          git branch $branchName
+          git checkout $branchName
+          git push -u origin $branchName
         else
-          git checkout $branch_name
+          git checkout $branchName
           git reset --hard $(git rev-list --max-parents=1 )
         fi
 
