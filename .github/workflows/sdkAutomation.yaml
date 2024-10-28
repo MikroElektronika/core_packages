@@ -89,7 +89,7 @@ jobs:
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        branch_name = $(python scripts/release_calendar.py "NECTO DAILY UPDATE" $RELEASES_SPREADSHEET)
+        branch_name = $(python scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET)
 
         if $branch_name == "new_branch"; then
           git fetch --all
