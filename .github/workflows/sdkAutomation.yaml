@@ -86,26 +86,33 @@ jobs:
 
     # Create a new branch
     - name: Create branch
+      env:
+        RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        git fetch --all
-        if [[ `git branch -a | grep "new-feature/automation"` ]]; then
-          highest=$(git branch -a | grep "new-feature/automation" | grep -E -o '[0-9]+' | sort -n | tail -1)
-          if ${{ github.event.inputs.new_branch }} == true; then
-            number=$((highest+1))
+        branch_name = $(python scripts/release_calendar.py "NECTO DAILY UPDATE" $RELEASES_SPREADSHEET)
+
+        if $branch_name == "new_branch"; then
+          git fetch --all
+          if [[ `git branch -a | grep "new-feature/automation"` ]]; then
+            highest=$(git branch -a | grep "new-feature/automation" | grep -E -o '[0-9]+' | sort -n | tail -1)
+            if ${{ github.event.inputs.new_branch }} == true; then
+              number=$((highest+1))
+            else
+              number=$((highest))
+            fi
           else
-            number=$((highest))
+            number=1
           fi
-        else
-          number=1
+          branch_name = "new-feature/automation/$number"
         fi
-        echo "Found number: $number"
+        echo "Found number: $branch_name"
 
         if ${{ github.event.inputs.new_branch }} == true; then
-          git branch "new-feature/automation/$number"
-          git checkout "new-feature/automation/$number"
-          git push -u origin "new-feature/automation/$number"
+          git branch $branch_name
+          git checkout $branch_name
+          git push -u origin $branch_name
         else
-          git checkout "new-feature/automation/$number"
+          git checkout $branch_name
           git reset --hard $(git rev-list --max-parents=1 )
         fi
 
@@ -208,16 +215,16 @@ jobs:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
     # Move the asset we just downloaded to automatization and extract it
-    - name: Move to the created directory unzip and distribute files 
+    - name: Move to the created directory unzip and distribute files
       run: |
         sudo mv generated_files.zip automatization/
         cd automatization
         unzip generated_files.zip
-        
+
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1
- 
+
         sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}/
         sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/def/
         sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}/
