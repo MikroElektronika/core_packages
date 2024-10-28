@@ -89,8 +89,6 @@ jobs:
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET
-
         if ${{ github.event.inputs.new_branch }} == true; then
           git fetch --all
           if [[ `git branch -a | grep "new-feature/automation"` ]]; then
@@ -115,6 +113,8 @@ jobs:
           git checkout $branchName
           git reset --hard $(git rev-list --max-parents=1 )
         fi
+        python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET
+
 
     # Create a new directory at the root of your repository
     - name: Create automatization directory
