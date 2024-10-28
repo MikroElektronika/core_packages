@@ -90,9 +90,8 @@ jobs:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
         python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET
-        branch_name = "new_branch"
 
-        if $branch_name == "new_branch"; then
+        if ${{ github.event.inputs.new_branch }} == true; then
           git fetch --all
           if [[ `git branch -a | grep "new-feature/automation"` ]]; then
             highest=$(git branch -a | grep "new-feature/automation" | grep -E -o '[0-9]+' | sort -n | tail -1)
