@@ -518,8 +518,11 @@ if __name__ == '__main__':
     db_version = remove_duplicate_indexed_files(
         es, args.select_index
     )
+
     # Index microchip device family packs
-    index_microchip_packs(es, args.select_index)
+    if 'live' not in args.select_index:
+        # TODO - uncomment once LIVE test is confirmed to work
+        index_microchip_packs(es, args.select_index)
 
     # Now index the new release
     index_release_to_elasticsearch(

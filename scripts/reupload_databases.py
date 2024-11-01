@@ -1027,7 +1027,7 @@ async def main(
 
     ## Step 11 add microchip info to programmers table
     custom_link = 'https://packs.download.microchip.com/index.idx'
-    if not mcus_only:
+    if not mcus_only and 'Test' == index:
         # Download the index file
         xml_content = MCHP.download_index_file(custom_link)
         converted_data, item_list_unused = MCHP.convert_idx_to_json(xml_content)
