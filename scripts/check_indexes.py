@@ -3,6 +3,9 @@ import sys, json, argparse, requests
 import classes.class_gh as gh
 import classes.class_es as es
 
+# Skip packages with these types
+type_skip = ['microchip_dfp', 'microchip_tp']
+
 if __name__ == "__main__":
     # First, check for arguments passed
     def str2bool(v):
@@ -43,6 +46,8 @@ if __name__ == "__main__":
 
     err = False
     for indexed_item in es_instance.indexed_items:
+        if indexed_item['source']['type'] in type_skip:
+            continue
         asset_status = requests.get(indexed_item['source']['download_link'], headers=headers)
         if es_instance.Status.ERROR.value == asset_status.status_code: ## code 404 - error, reindex with correct download link
             err = True
