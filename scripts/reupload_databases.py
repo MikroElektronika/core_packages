@@ -1107,16 +1107,16 @@ async def main(
             )
 
     ## Step 14 - re-upload over existing assets
-    # if not mcus_only:
-    #     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
-    #     async with aiohttp.ClientSession() as session:
-    #         upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
-    #     if databaseErp:
-    #         async with aiohttp.ClientSession() as session:
-    #             upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
+    if not mcus_only:
+        archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
+        if databaseErp:
+            async with aiohttp.ClientSession() as session:
+                upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
 
-    # ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
-    # shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
+    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
