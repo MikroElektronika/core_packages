@@ -1030,19 +1030,23 @@ async def main(
     if not mcus_only:
         # Download the index file
         xml_content = MCHP.download_index_file(custom_link)
-        converted_data = MCHP.convert_idx_to_json(xml_content)
+        converted_data, item_list = MCHP.convert_idx_to_json(xml_content)
 
-        programmersColumns = 'uid,hidden,name,icon,installed,description,installer_package,device_support_package'
-        progToDeviceColumns = 'programer_uid,device_uid'
+        programmersColumns = 'uid,hidden,name,icon,installed,description,installer_package'
+        progToDeviceColumns = 'programer_uid,device_uid, device_support_package'
         for eachDb in [databaseErp, databaseNecto]:
             if eachDb:
                 ## Add missing columns to programmer table
                 addCollumnsToTable(
-                    eachDb, ['installer_package', 'device_support_package'], 'Programmers', ['Text', 'Text'], ['NoDefault', 'NoDefault']
+                    eachDb, ['installer_package'], 'Programmers', ['Text'], ['NoDefault']
+                )
+                addCollumnsToTable(
+                    eachDb, ['device_support_package'], 'ProgrammerToDevice', ['Text'], ['NoDefault']
                 )
                 ## Add all tools found in microchip index file to programmers table
                 for prog_item in converted_data:
                     print(f"Inserting {prog_item['uid']} into Programmers table")
+                    dfpsMap = json.loads(prog_item['dfps'])
                     insertIntoTable(
                         eachDb,
                         'Programmers',
@@ -1053,23 +1057,31 @@ async def main(
                             prog_item['icon'],
                             prog_item['installed'],
                             prog_item['description'],
-                            prog_item['installer_package'],
-                            prog_item['dfps']
+                            prog_item['installer_package']
                         ],
                         programmersColumns
                     )
                     ## Add MCU to Programmer mapping found in microchip index file
+                    missingMcuDfp = []
                     for mcu in prog_item['mcus']:
                         print(f"Inserting {mcu.upper()}:{prog_item['uid']} into ProgrammerToDevice table")
-                        insertIntoTable(
-                            eachDb,
-                            'ProgrammerToDevice',
-                            [
-                                prog_item['uid'],
-                                mcu.upper()
-                            ],
-                            progToDeviceColumns
-                        )
+                        if mcu in dfpsMap:
+                            exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu.upper()}.json\"")
+                            if exists:
+                                for mcu_uid in uid_list:
+                                    insertIntoTable(
+                                        eachDb,
+                                        'ProgrammerToDevice',
+                                        [
+                                            prog_item['uid'],
+                                            mcu_uid[0],
+                                            json.dumps(dfpsMap[mcu])
+                                        ],
+                                        progToDeviceColumns
+                                    )
+                        else:
+                            missingMcuDfp.append(mcu)
+                    print(f"Following MCUs does not have DFP: {missingMcuDfp}")
 
     ## Step 11 - update families
     if not mcus_only:

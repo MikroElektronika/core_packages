@@ -70,14 +70,48 @@ def generate_list(item_list, tool_to_mcu_list):
         if item_type == 'microchip_tp':
             # Populate tool_to_mcu safely
             uid = name.replace('_tool_support', '')
+            #
+            displayNameMap = {"atmelice" : "ATMEL-ICE",
+                            "edbg" : "Atmel® Embedded Debugger (EDBG)",
+                            "icd4" : "MPLAB® ICD 4",
+                            "icd5" : "MPLAB® ICD 5",
+                            "ice4" : "MPLAB® ICE 4",
+                            "jtagice3" : "JTAGICE3",
+                            "pickit4" : "MPLAB® PICkit™ 4",
+                            "pickit5" : "MPLAB® PICkit™ 5",
+                            "pkob4" : "PICkit On-Board 4 (PKOB4)",
+                            "powerdebugger" : "Power Debugger",
+                            "simulator" : "",
+                            "snap" : "MPLAB Snap",
+                            "medbg" : "mEDBG (Mini Embedded Debugger)",
+                            "nedbg" : "PKOB nano",
+                            }
+            descriptionMap = {
+                            "atmelice": "Atmel-ICE is a debugging and programming tool for ARM Cortex-M and AVR microcontrollers.",
+                            "edbg": "Atmel Embedded Debugger (EDBG) is an onboard debugger for development kits with Atmel MCUs.",
+                            "icd4": "MPLAB ICD 4 is Microchip’s fast, cost-effective debugger for PIC, SAM, and dsPIC devices.",
+                            "icd5": "MPLAB ICD 5 provides advanced connectivity and power options for PIC, AVR, SAM, and dsPIC devices.",
+                            "ice4": "MPLAB ICE 4 offers feature-rich debugging for PIC, AVR, SAM, and dsPIC devices.",
+                            "jtagice3": "Mid-range tool for AVR and SAM D ARM Cortex-M0+ microcontrollers with on-chip debugging.",
+                            "pickit4": "MPLAB PICkit 4 allows fast debugging and programming of PIC, dsPIC, AVR, and SAM MCUs.",
+                            "pickit5": "MPLAB PICkit 5 supports quick prototyping and production-ready programming for Microchip devices.",
+                            "pkob4": "PKOB4 (PICkit On-Board 4) is an onboard debugger with no additional tools required.",
+                            "powerdebugger": "Power Debugger for AVR and ARM Cortex-M SAM microcontrollers using various interfaces.",
+                            "simulator": "",
+                            "snap": "MPLAB Snap is a cost-effective debugger for PIC, dsPIC, AVR, and SAM flash MCUs.",
+                            "medbg": "Mini Embedded Debugger (mEDBG).",
+                            "nedbg": "Curiosity Nano onboard debugger (nEDBG or PKOB nano)."
+                        }
+
+
             tool_item = {
                 'uid' : uid,
                 'installer_package' : name,
-                'display_name' : display_name,
+                'display_name' : displayNameMap.get(uid, display_name),
                 'icon' : f"images/programmers/{uid}.png",
                 'hidden' : 0,
                 'installed' : 0,
-                'description' : '',
+                'description' : descriptionMap.get(uid, ''),
                 'mcus' : mcus
             }
             tool_to_mcu_list.append(tool_item)
@@ -118,7 +152,7 @@ def convert_idx_to_json(xml_content):
             item_list.append(convert_item_to_es_json(item))
 
         generate_list(item_list, tool_to_mcu)
-        return tool_to_mcu
+        return tool_to_mcu, item_list
 
     except Exception as e:
         print(f"Error during conversion: {e} for item {item}")
@@ -146,13 +180,13 @@ def convert_item_to_es_json(input_item):
     if not release_date:
         print(f"Release date missing for item: {atmel_name} version: {version}")
         release_date = datetime.now().strftime('%Y-%m-%d')  # Use current date as a fallback
-
     download_link = f"https://packs.download.microchip.com/Microchip.{atmel_name}.{version}.atpack"
     if package_type == 'microchip_tp':
         display_name = f"{atmel_name.replace('_TP', '')} Tool Support"
     else:
         display_name = f"{atmel_name.replace('_DFP', '')} Device Support"
     name = display_name.lower().replace(" ", "_")
+    name = name.lower().replace("-", "_")
 
     # Check if 'atmel:devices' exists and is not None
     if package_type == 'microchip_tp':
@@ -185,7 +219,7 @@ def convert_item_to_es_json(input_item):
         "updated_at": release_date + "T00:00:00Z",  # Convert the release date to ISO format with time
         "category": "Microchip Device support",
         "download_link": download_link,
-        "package_changed": False,
+        "package_changed": True,
         "install_location": f"%APPLICATION_DATA_DIR%/packages/packsfolder/Microchip/{atmel_name}/{version}",
         "dependencies": [],
         "mcus": mcus  # This will be an empty list if no devices are found
