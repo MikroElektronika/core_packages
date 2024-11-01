@@ -466,6 +466,7 @@ def promote_to_latest(releases, repo, token, release_version):
         raise Exception(f"Failed to revert status for release {selected_release['name']}: {response_3.status_code} - {response_3.text}")
 
     return
+
 def index_microchip_packs(es: Elasticsearch, index_name: str):
     custom_link = 'https://packs.download.microchip.com/index.idx'
     # Download the index file
@@ -474,7 +475,6 @@ def index_microchip_packs(es: Elasticsearch, index_name: str):
     for eachItem in item_list:
         resp = es.index(index=index_name, doc_type='necto_package', id=eachItem['name'], body=eachItem)
         print(f"{resp["result"]} {resp['_id']}")
-
 
 if __name__ == '__main__':
     # First, check for arguments passed
@@ -518,9 +518,8 @@ if __name__ == '__main__':
     db_version = remove_duplicate_indexed_files(
         es, args.select_index
     )
-    #Index microchip device family packs
+    # Index microchip device family packs
     index_microchip_packs(es, args.select_index)
-
 
     # Now index the new release
     index_release_to_elasticsearch(

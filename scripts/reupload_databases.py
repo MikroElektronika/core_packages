@@ -892,7 +892,6 @@ async def main(
         False
     )
 
-
     ## Step 2 - Update database with new SDK if needed
     ## Add new sdk version
     if 'latest' == release_version_sdk:
@@ -1025,12 +1024,13 @@ async def main(
             checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
-    ## Step 10.1 add microchip info to programmers table
+
+    ## Step 11 add microchip info to programmers table
     custom_link = 'https://packs.download.microchip.com/index.idx'
     if not mcus_only:
         # Download the index file
         xml_content = MCHP.download_index_file(custom_link)
-        converted_data, item_list = MCHP.convert_idx_to_json(xml_content)
+        converted_data, item_list_unused = MCHP.convert_idx_to_json(xml_content)
 
         programmersColumns = 'uid,hidden,name,icon,installed,description,installer_package'
         progToDeviceColumns = 'programer_uid,device_uid, device_support_package'
@@ -1081,20 +1081,20 @@ async def main(
                                     )
                         else:
                             missingMcuDfp.append(mcu)
-                    print(f"Following MCUs does not have DFP: {missingMcuDfp}")
+                    print(f"Following MCUs do not have DFP: {missingMcuDfp}")
 
-    ## Step 11 - update families
+    ## Step 12 - update families
     if not mcus_only:
         if databaseErp:
             update_families(databaseErp, allDevicesGithub)
 
-    ## Step 12 - update the icon names
+    ## Step 13 - update the icon names
     if not mcus_only:
         for eachDb in [databaseErp, databaseNecto]:
             fix_icon_names(eachDb, "Boards")
             fix_icon_names(eachDb, "Displays")
 
-    ## Step 13 - if queries are different, add them to new file
+    ## Step 14 - if queries are different, add them to new file
     if not mcus_only:
         if not compare_hashes(
             os.path.join(os.path.dirname(__file__), 'databases/queries'),
@@ -1106,7 +1106,7 @@ async def main(
                 os.path.join(os.path.dirname(__file__), 'databases/queries')
             )
 
-    ## Step 14 - re-upload over existing assets
+    ## Step 15 - re-upload over existing assets
     if not mcus_only:
         archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
         async with aiohttp.ClientSession() as session:
@@ -1115,7 +1115,7 @@ async def main(
             async with aiohttp.ClientSession() as session:
                 upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
 
-    ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
+    ## Step 16 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
