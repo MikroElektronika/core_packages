@@ -202,13 +202,15 @@ def setSDKSupport(dbs, regex, ai_sdk, xc8_specific):
                 regex
             )
             if xc8_specific:
+                query = '''UPDATE Devices SET necto_config = '{\"XC8_SUPPORTED\":\"TRUE\"}' WHERE uid REGEXP "''' + regex + '"'
                 updateTableCollumn(
                     eachDb,
-                    "Devices",
-                    "necto_config",
-                    '{"XC8_SUPPORTED":"TRUE"}',
-                    "uid",
-                    regex
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    query
                 )
             if ai_sdk:
                 query = '''UPDATE Devices SET sdk_config = REPLACE(sdk_config, '}', ',"AI_GENERATED_SDK":"True"}') WHERE uid REGEXP "''' + regex + '"'
@@ -272,10 +274,10 @@ async def main(token, repo, index="Test", action="Set sdk_support", regex="", de
     ## Reupload databases over existing assets
     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
+        upload_result = await upload_release_asset(session, token, repo, archive_path, None)
     if databaseErp:
         async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
+            upload_result = await upload_release_asset(session, token, repo, databaseErp, None)
 
     ## Overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
