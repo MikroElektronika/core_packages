@@ -190,7 +190,7 @@ async def upload_release_asset(session, token, repo, asset_path, release_version
     print(f"Upload completed for: {os.path.basename(asset_path)}.")
     return result
 
-def setSDKSupport(dbs, regex, ai_sdk):
+def setSDKSupport(dbs, regex, ai_sdk, xc8_specific):
     for eachDb in dbs:
         if eachDb:
             updateTableCollumn(
@@ -201,6 +201,15 @@ def setSDKSupport(dbs, regex, ai_sdk):
                 "uid",
                 regex
             )
+            if xc8_specific:
+                updateTableCollumn(
+                    eachDb,
+                    "Devices",
+                    "necto_config",
+                    '{"XC8_SUPPORTED":"TRUE"}',
+                    "uid",
+                    regex
+                )
             if ai_sdk:
                 query = '''UPDATE Devices SET sdk_config = REPLACE(sdk_config, '}', ',"AI_GENERATED_SDK":"True"}') WHERE uid REGEXP "''' + regex + '"'
                 updateTableCollumn(
@@ -240,7 +249,7 @@ def removeDeviceFromDb(dbs, regex, delete_device):
     return
 
 ## Main runner
-async def main(token, repo, index="Test", action="Set sdk_support", regex="", delete_device=False, ai_sdk=False):
+async def main(token, repo, index="Test", action="Set sdk_support", regex="", delete_device=False, xc8_specific=False, ai_sdk=False):
     ## Download the database first
     ## Always use latest release
     dbName = 'necto_db_dev'
@@ -256,7 +265,7 @@ async def main(token, repo, index="Test", action="Set sdk_support", regex="", de
 
     ## Update database with requested settings
     if "Set sdk_support" == action:
-        setSDKSupport([databaseErp, databaseNecto], regex, ai_sdk)
+        setSDKSupport([databaseErp, databaseNecto], regex, ai_sdk, xc8_specific)
     else:
         removeDeviceFromDb([databaseErp, databaseNecto], regex, delete_device)
 
@@ -293,6 +302,7 @@ if __name__ == "__main__":
     parser.add_argument('action', type=str, help='Action selection - Remove/Update Devices.', default="Set sdk_support")
     parser.add_argument('regex', type=str, help='Regex for Devices that need to be updated.', default="")
     parser.add_argument('delete_device', type=str2bool, help='If True - will remove device from DB completely.', default=False)
+    parser.add_argument('xc8_specific', type=str2bool, help='If True - will add {"XC8_SUPPORTED":"TRUE"} to necto_config.', default=False)
     parser.add_argument('--ai_sdk', type=str2bool, help='If True - will add AI_GENERATED field to sdk_config.', default=False)
 
     ## Parse the arguments
@@ -304,6 +314,6 @@ if __name__ == "__main__":
             args.token, args.repo,
             args.index, args.action,
             args.regex, args.delete_device,
-            args.ai_sdk
+            args.xc8_specific, args.ai_sdk
         )
     )

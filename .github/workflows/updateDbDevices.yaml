@@ -17,14 +17,18 @@ on:
           - Set sdk_support
           - Remove Devices
         default: "Set SDKToDevice"
-      delete_device:
-        type: boolean
-        description: Remove Device completely? (only used for "Remove Devices" option, clears only sdk_support if not checked)
-        default: false
       regex:
         type: string
         description: Regex of Device uids to use
         default: "PIC32MZ2048EFH144|MCU_CARD_10_FOR_KINETIS_MK60DN512VLQ10"
+      delete_device:
+        type: boolean
+        description: Remove Device completely? (only used for "Remove Devices" option, clears only sdk_support if not checked)
+        default: false
+      xc8_specific:
+        type: boolean
+        description: Set XC8 support? (only used for "Set sdk_support" option)
+        default: false
       AI_generated_sdk:
         type: boolean
         description: AI generated SDK? (only used for "Set sdk_support" option)
@@ -61,7 +65,7 @@ jobs:
 
       - name: Upload new database asset
         run: |
-          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "Test" ${{ github.event.inputs.select_action }} ${{ github.event.inputs.regex }} ${{ github.event.inputs.delete_device }} "--ai_sdk" ${{ github.event.inputs.AI_generated_sdk }}
+          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "Test" ${{ github.event.inputs.select_action }} ${{ github.event.inputs.regex }} ${{ github.event.inputs.delete_device }} ${{ github.event.inputs.xc8_specific }} "--ai_sdk" ${{ github.event.inputs.AI_generated_sdk }}
 
       - name: Add GitHub Actions credentials
         run: |
@@ -120,7 +124,7 @@ jobs:
 
       - name: Upload new database asset
         run: |
-          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "Live" ${{ github.event.inputs.select_action }} ${{ github.event.inputs.regex }} ${{ github.event.inputs.delete_device }} "--ai_sdk" ${{ github.event.inputs.AI_generated_sdk }}
+          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "Live" ${{ github.event.inputs.select_action }} ${{ github.event.inputs.regex }} ${{ github.event.inputs.delete_device }} ${{ github.event.inputs.xc8_specific }} "--ai_sdk" ${{ github.event.inputs.AI_generated_sdk }}
 
       - name: Add GitHub Actions credentials
         run: |
