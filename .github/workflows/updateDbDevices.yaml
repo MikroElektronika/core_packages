@@ -35,7 +35,7 @@ on:
         default: false
 
 jobs:
-  Update Devices in Dev Database:
+  Update_Devices_in_Dev_Database:
     if: ${{ github.event.inputs.select_index == 'Test' }}
     runs-on: ubuntu-latest
     steps:
@@ -94,7 +94,7 @@ jobs:
           echo "Indexing database to TEST."
           python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} "True" "latest" "True" "False"
 
-  Update Devices in Live Database:
+  Update_Devices_in_Live_Database:
     if: ${{ github.event.inputs.select_index == 'Live' }}
     runs-on: ubuntu-latest
     steps:
