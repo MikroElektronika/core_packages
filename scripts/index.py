@@ -403,7 +403,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
             # Print new version after indexing
             if previous_version != doc['vesion']:
-                print(f"Version for asset {name_without_extension} has been updated from {previous_version} to {doc['vesion']}")
+                print(f"\033[95mVersion for asset {name_without_extension} has been updated from {previous_version} to {doc['vesion']}\033[0m")
 
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)
