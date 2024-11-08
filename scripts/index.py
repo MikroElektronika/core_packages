@@ -225,7 +225,7 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
     else:
         new_version = '1.0.0'
 
-    return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed
+    return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed, indexed_version
 
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None):
@@ -271,7 +271,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
         doc = None
         if name_without_extension == "clocks":
-            current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
+            current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
             doc = {
                 'name': "clocks",
                 'display_name' : "Clocks file",
@@ -289,7 +289,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'gh_package_name': "clocks.json"
             }
         elif "schemas" in name_without_extension:
-            current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
+            current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
             suffix = ''
             if 'test' in name_without_extension:
                 suffix = '_test'
@@ -332,7 +332,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     else:
                         continue
 
-                current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
+                current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
 
                 current_version = metadata_item['version']
                 if index_hash and current_hash:
@@ -400,6 +400,10 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                                 resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=name_without_extension, body=doc)
                                 print(f"Indexed to LIVE as well.")
                                 print(f"{resp["result"]} {resp['_id']}")
+
+            # Print new version after indexing
+            if previous_version != doc['vesion']:
+                print(f"Version for asset {name_without_extension} has been updated from {previous_version} to {doc['vesion']}")
 
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)
