@@ -402,7 +402,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                                 print(f"{resp["result"]} {resp['_id']}")
 
             # Print new version after indexing
-            if previous_version != doc['version']:
+            if previous_version != doc['version'] and True == doc['package_changed']:
                 print(f"\033[95mVersion for asset {name_without_extension} has been updated from {previous_version} to {doc['version']}")
 
 def is_release_latest(repo, token, release_version):
