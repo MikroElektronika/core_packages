@@ -121,7 +121,7 @@ def find_branch():
         if "2025-02-05" == date:
             return release["branch"]
 
-    return "new_branch"
+    return "NO_BRANCH_IN_SPREADSHEET"
 
 if __name__ == "__main__":
     ## Set up argument parsing

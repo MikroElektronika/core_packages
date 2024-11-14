@@ -90,19 +90,9 @@ jobs:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
         branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET)
-        if $branchName == "new_branch"; then
-          git fetch --all
-          if [[ `git branch -a | grep "new-feature/automation"` ]]; then
-            highest=$(git branch -a | grep "new-feature/automation" | grep -E -o '[0-9]+' | sort -n | tail -1)
-            if ${{ github.event.inputs.new_branch }} == true; then
-              number=$((highest+1))
-            else
-              number=$((highest))
-            fi
-          else
-            number=1
-          fi
-          branchName="new-feature/automation/$number"
+        if $branchName == "NO_BRANCH_IN_SPREADSHEET"; then
+          echo "Check the Google spreadsheet, it looks like no branch name for the current date exists!"
+          exit 1
         fi
         echo "Found branch: $branchName"
 
@@ -118,6 +108,94 @@ jobs:
     # Create a new directory at the root of your repository
     - name: Create automatization directory
       run: mkdir -p automatization
+
+    # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
+    - name: Trigger Workflow on Private Repository
+      env:
+        REPO: "MikroElektronika/sdk_automation"
+      run: |
+        curl -s \
+          -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/dispatches \
+          -d '{
+                "ref": "danilo.milenkovic/main",
+                "inputs": {
+                  "mcu_name": "${{ github.event.inputs.mcu_name }}",
+                  "vendor": "${{ github.event.inputs.vendor }}",
+                  "pdfFile": "${{ github.event.inputs.pdfFile }}"
+                }
+              }'
+
+    # Wait for workflow start
+    - name: Wait for start
+      run: sleep 5
+
+    # Get the ID of the run that we just triggered
+    - name: Get run ID
+      id: get_id
+      env:
+        REPO: "MikroElektronika/sdk_automation"
+        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+      run: |
+        while : ; do
+          runID=$(gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              repos/$REPO/actions/workflows/generate_core.yml/runs \
+              --paginate \
+              -q '.workflow_runs[] | select(.status == "in_progress") | .id' | head -n 1)
+
+          if [[ -z "$runID" ]]; then
+            echo "No in-progress run found yet. Retrying in 10 seconds..."
+            sleep 10
+            continue
+          fi
+
+          echo "run_id=$runID" >> $GITHUB_OUTPUT
+          echo "Found in-progress workflow with RUN_ID: $run_id"
+          break
+        done
+
+    # Wait for the workflow to complete
+    - name: Wait for the Triggered Workflow Finish
+      env:
+        REPO: "MikroElektronika/sdk_automation"
+        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+      run: |
+        while : ; do
+          STATUS=$(gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
+              -q '.status')
+
+          CONCLUSION=$(gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
+              -q '.conclusion')
+
+          echo "Workflow status: $STATUS"
+
+          if [[ "$STATUS" == "completed" ]]; then
+            echo "Workflow completed with conclusion: $CONCLUSION"
+            break
+          fi
+
+          # Wait for a few seconds before checking again
+          sleep 10
+        done
+
+        # Check the conclusion and fail the job if the triggered workflow failed
+        if [[ "$CONCLUSION" != "success" ]]; then
+          echo "Triggered workflow failed with conclusion: $CONCLUSION"
+          exit 1
+        fi
+
+        echo "Triggered workflow completed successfully!"
 
     # Aquire the asset that we just generated with the sdk_automation script
     - name: Fetch asset
@@ -156,7 +234,7 @@ jobs:
           echo "Core already exists: $CORE"
         else
           mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
-          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/   
+          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
           echo "Found new core: $CORE"
         fi
 
