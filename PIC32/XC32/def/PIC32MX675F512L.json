@@ -271,7 +271,7 @@
             ]
         },
         {
-            "init": "PRIPLL",
+            "init": "FRC",
             "key": "FNOSC",
             "label": "Oscillator Selection Bits",
             "settings": [
@@ -1110,5 +1110,5 @@
         }
     ],
     "mcu": "PIC32MX675F512L",
-    "clock": 80
+    "clock": 8
 }
