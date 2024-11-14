@@ -91,7 +91,7 @@ jobs:
       run: |
         branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET)
         if $branchName == "NO_BRANCH_IN_SPREADSHEET"; then
-          echo "Check the Google spreadsheet, it looks like no branch name for the current date exists!"
+          echo "Check the Google spreadsheet, $branchName!"
           exit 1
         fi
         echo "Found branch: $branchName"
