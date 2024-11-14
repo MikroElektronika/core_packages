@@ -154,11 +154,11 @@ jobs:
         echo "Current directory: $PWD"
         CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/${{ steps.move_files.outputs.json_name }} | tr '[:upper:]' '[:lower:]')
         echo "Found core value: $CORE"
-        if [! -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
-          mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
-          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
-        else
+        if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
           echo "Core already exists: $CORE"
+        else
+          mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
+          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/   
         fi
 
     # Commit changes
