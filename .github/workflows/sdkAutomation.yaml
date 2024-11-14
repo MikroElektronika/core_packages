@@ -151,7 +151,7 @@ jobs:
 
     - name: Create new core for delays if necessary
       run: |
-        CORE=$(jq -r '.core' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ steps.move_files.outputs.json_name }} | tr '[:upper:]' '[:lower:]')
+        CORE=$(jq -r '.core' ../${{ github.event.inputs.architecture }}/gcc_clang/def/MK20DX128VLH5.json | tr '[:upper:]' '[:lower:]')
         echo "Found core value: $CORE"
         if [[! -d "../${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]]; then
           mkdir "../${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
