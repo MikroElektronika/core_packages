@@ -1,5 +1,4 @@
 import sys, json, argparse, requests
-# from elasticsearch import Elasticsearch
 
 import classes.class_gh as gh
 import classes.class_es as es
@@ -8,17 +7,6 @@ import classes.class_es as es
 type_skip = ['microchip_dfp', 'microchip_tp']
 
 if __name__ == "__main__":
-    # First, check for arguments passed
-    def str2bool(v):
-        if isinstance(v, bool):
-            return v
-        if v.lower() in ('yes', 'true', 't', 'y', '1'):
-            return True
-        elif v.lower() in ('no', 'false', 'f', 'n', '0'):
-            return False
-        else:
-            raise argparse.ArgumentTypeError('Boolean value expected.')
-
     # Get arguments
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("gh_repo", help="Github repository name, e.g., 'username/repo'", type=str)
@@ -26,22 +14,16 @@ if __name__ == "__main__":
     parser.add_argument("es_host", help="ES instance host value", type=str)
     parser.add_argument("es_user", help="ES instance user value", type=str)
     parser.add_argument("es_password", help="ES instance password value", type=str)
-    # TODO https://kibana.mikroe.com
     parser.add_argument("me_es_host", help="MikroE ES instance host value", type=str)
-    # TODO sw-github
     parser.add_argument("me_es_user", help="MikroE ES instance user value", type=str)
-    # TODO sw-github334455
     parser.add_argument("me_es_password", help="MikroE ES instance password value", type=str)
-    parser.add_argument("es_index", help="ES instance index value", type=str) # github_[test|live]_index
     parser.add_argument("--es_regex", help="Regex to use to fetch indexed items", type=str, default=".+")
-    # TODO parser.add_argument("--log_only", help="If True, will not fix broken links, just log them to std out", type=str2bool, default=False)
-    # TODO parser.add_argument("--index_package_names", help="If True, will add \"gh_package_name\" to indexed item", type=str2bool, default=True)
     args = parser.parse_args()
 
-    # es_instance = es.index(
-        # es_host=args.es_host, es_user=args.es_user, es_password=args.es_password,
-        # index=args.es_index, token=args.gh_token
-    # )
+    es_instance = es.index(
+        es_host=args.es_host, es_user=args.es_user, es_password=args.es_password,
+        index=args.es_index, token=args.gh_token
+    )
 
     me_es_instance = es.index(
        es_host=args.me_es_host, es_user=args.me_es_user, es_password=args.me_es_password,
@@ -56,13 +38,11 @@ if __name__ == "__main__":
         'Authorization': f'token {args.gh_token}'
     }
 
-    err = False
     for indexed_item in es_instance.indexed_items:
         if indexed_item['source']['type'] in type_skip:
             continue
         asset_status = requests.get(indexed_item['source']['download_link'], headers=headers)
         if es_instance.Status.ERROR.value == asset_status.status_code: ## code 404 - error, reindex with correct download link
-            err = True
             print("%sERROR: Asset \"%s\" download link is incorrect. - %s" % (es_instance.Colors.FAIL, indexed_item['source']['name'], indexed_item['source']['download_link']))
             if 'gh_package_name' in indexed_item['source']:
                 url = gh_instance.asset_fetch_url_api(indexed_item['source']['gh_package_name'], loose=False)
@@ -83,8 +63,6 @@ if __name__ == "__main__":
                     print("%sINFO: Updated \"gh_package_name\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
             print("%sOK: Asset \"%s\" download link is correct. - %s" % (es_instance.Colors.OKBLUE, indexed_item['source']['name'], indexed_item['source']['download_link']))
 
-        # TODO - index to me_es
-        me_es_instance.update(indexed_item['doc']['type'], indexed_item['doc']['id'], indexed_item['source'])
-
-    if err and args.log_only:
-        sys.exit(-1)
+        # For new elasticsearch DBP it is crucial not to use doc_type for indexing
+        me_es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
+        print("%sINFO: Copied \"%s\" index from AWS to DBS" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name'], ))
