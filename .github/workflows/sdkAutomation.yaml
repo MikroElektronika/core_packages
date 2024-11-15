@@ -131,6 +131,7 @@ jobs:
     # Check if release asset exists - if CORE files are already generated for this MCU
     - id: check-asset-existence
       name: Check if files are previously generated
+      continue-on-error: true
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
