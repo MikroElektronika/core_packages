@@ -125,7 +125,7 @@ jobs:
     - id: lower-mcu-name
       name: Repository to lowercase
       run: |
-        echo "mcu_name=${github.event.inputs.mcu_name@L}" >> $GITHUB_OUTPUT
+        echo "mcu_name=${github.event.inputs.mcu_name^^}" >> $GITHUB_OUTPUT
     
     # Check if release asset exists - if CORE files are already generated for this MCU
     - name: Check if files are previously generated
