@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
         # For new elasticsearch DBP it is crucial not to use doc_type for indexing
         me_es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
-        print("%sINFO: Copied \"%s\" index from AWS to DBS" % (me_es_instance.Colors.UNDERLINE, indexed_item['source']['name'], ))
+        print("%sINFO: Copied \"%s\" index from AWS to DBS" % (me_es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
 
     if err and args.log_only:
         sys.exit(-1)
