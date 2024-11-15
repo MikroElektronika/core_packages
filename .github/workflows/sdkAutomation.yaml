@@ -122,10 +122,11 @@ jobs:
       run: mkdir -p automatization
 
     # MCU name to uppercase
-    - id: lower-mcu-name
-      name: Repository to lowercase
+    - id: upper-mcu-name
+      name: MCU name uppercase
       run: |
-        echo "mcu_name=${github.event.inputs.mcu_name^^}" >> $GITHUB_OUTPUT
+        mcu_name = ${{ github.event.inputs.mcu_name }}
+        echo "mcu_name=${mcu_name^^}" >> $GITHUB_OUTPUT
     
     # Check if release asset exists - if CORE files are already generated for this MCU
     - name: Check if files are previously generated
