@@ -128,22 +128,22 @@ jobs:
         mcu_name=${{ github.event.inputs.mcu_name }}
         echo "mcu_name=${mcu_name^^}" >> $GITHUB_OUTPUT
 
-    # Get a list of release assets (generated CORE files)
-    - id: get-asset-list
-      name: Fetch a list of release assets
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        gh api repos/MikroElektronika/sdk_automation/releases/latest | jq -r ".assets[].name"
-        # release=$(curl -s -H "Authorization: token ${{ env.GH_TOKEN }}" \
-        #   "https://api.github.com/repos/MikroElektronika/sdk_automation/releases/tags/latest")
+    # # Get a list of release assets (generated CORE files)
+    # - id: get-asset-list
+    #   name: Fetch a list of release assets
+    #   env:
+    #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   run: |
+    #     gh api repos/MikroElektronika/sdk_automation/releases/latest | jq -r ".assets[].name"
+    #     # release=$(curl -s -H "Authorization: token ${{ env.GH_TOKEN }}" \
+    #     #   "https://api.github.com/repos/MikroElektronika/sdk_automation/releases/tags/latest")
         
-        # assets=$(echo "$release" | jq -r '.assets[] | {name: .name, download_url: .browser_download_url}')
+    #     # assets=$(echo "$release" | jq -r '.assets[] | {name: .name, download_url: .browser_download_url}')
         
-        # echo "Assets: $assets"
-        # echo "::set-output name=assets::$assets"
+    #     # echo "Assets: $assets"
+    #     # echo "::set-output name=assets::$assets"
 
-        # echo "Assets: ${{ steps.get-assets.outputs.assets }}"
+    #     # echo "Assets: ${{ steps.get-assets.outputs.assets }}"
 
     
     # Check if release asset exists - if CORE files are already generated for this MCU
@@ -153,7 +153,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release download --repo 'MikroElektronika/sdk_automation' --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+        gh release download --repo 'MikroElektronika/sdk_automation' --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}*'
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: Verify if assets were found
