@@ -127,6 +127,16 @@ jobs:
       run: |
         mcu_name=${{ github.event.inputs.mcu_name }}
         echo "mcu_name=${mcu_name^^}" >> $GITHUB_OUTPUT
+
+    # Get a list of release assets (generated CORE files)
+    - id: get-asset-list
+      name: Fetch a list of release assets
+      run: |
+        gh api \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          /repos/MikroElektronika/sdk_automation/releases/latestd/assets
+
     
     # Check if release asset exists - if CORE files are already generated for this MCU
     - id: check-asset-existence
