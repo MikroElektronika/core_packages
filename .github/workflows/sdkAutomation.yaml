@@ -140,8 +140,9 @@ jobs:
 
     - name: print step res
       run: |
+        prevStep=${{ steps.check-asset-existence.outputs.exit_code }}
         echo "Result of previous step: "
-        echo ${{ steps.check-asset-existence.outputs.exit_code }}
+        echo $prevStep
     
     # # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
     # - name: Trigger Workflow on Private Repository
