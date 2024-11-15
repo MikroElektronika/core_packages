@@ -119,108 +119,119 @@ jobs:
     - name: Create automatization directory
       run: mkdir -p automatization
 
-    # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
-    - name: Trigger Workflow on Private Repository
-      env:
-        REPO: "MikroElektronika/sdk_automation"
+    # MCU name to uppercase
+    - id: lower-mcu-name
+      name: Repository to lowercase
       run: |
-        curl -s \
-          -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/dispatches \
-          -d '{
-                "ref": "main",
-                "inputs": {
-                  "mcu_name": "${{ github.event.inputs.mcu_name }}",
-                  "vendor": "${{ github.event.inputs.vendor }}",
-                  "pdfFile": "${{ github.event.inputs.pdfFile }}",
-                  "file_list": "${{ github.event.inputs.file_list }}"
-                }
-              }'
-
-    # Wait for workflow start
-    - name: Wait for start
-      run: sleep 5
-
-    # Get the ID of the run that we just triggered
-    - name: Get run ID
-      id: get_id
-      env:
-        REPO: "MikroElektronika/sdk_automation"
-        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+        echo "mcu_name=${github.event.inputs.mcu_name@L}" >> $GITHUB_OUTPUT
+    
+    # Check if release asset exists - if CORE files are already generated for this MCU
+    - name: Check if files are previously generated
       run: |
-        while : ; do
-          runID=$(gh api \
-              -H "Accept: application/vnd.github+json" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              repos/$REPO/actions/workflows/generate_core.yml/runs \
-              --paginate \
-              -q '.workflow_runs[] | select(.status == "in_progress") | .id' | head -n 1)
+        gh release download --pattern 'extracted_${{ steps.lower-mcu-name.outputs.mcu_name }}'
+    
+    # # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
+    # - name: Trigger Workflow on Private Repository
+    #   env:
+    #     REPO: "MikroElektronika/sdk_automation"
+    #   run: |
+    #     curl -s \
+    #       -X POST \
+    #       -H "Accept: application/vnd.github+json" \
+    #       -H "Authorization: Bearer ${{ secrets.MIKROE_ACTIONS_KEY }}" \
+    #       -H "X-GitHub-Api-Version: 2022-11-28" \
+    #       https://api.github.com/repos/$REPO/actions/workflows/generate_core.yml/dispatches \
+    #       -d '{
+    #             "ref": "main",
+    #             "inputs": {
+    #               "mcu_name": "${{ github.event.inputs.mcu_name }}",
+    #               "vendor": "${{ github.event.inputs.vendor }}",
+    #               "pdfFile": "${{ github.event.inputs.pdfFile }}",
+    #               "file_list": "${{ github.event.inputs.file_list }}"
+    #             }
+    #           }'
 
-          if [[ -z "$runID" ]]; then
-            echo "No in-progress run found yet. Retrying in 10 seconds..."
-            sleep 10
-            continue
-          fi
+    # # Wait for workflow start
+    # - name: Wait for start
+    #   run: sleep 5
 
-          echo "run_id=$runID" >> $GITHUB_OUTPUT
-          echo "Found in-progress workflow with RUN_ID: $run_id"
-          break
-        done
+    # # Get the ID of the run that we just triggered
+    # - name: Get run ID
+    #   id: get_id
+    #   env:
+    #     REPO: "MikroElektronika/sdk_automation"
+    #     GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+    #   run: |
+    #     while : ; do
+    #       runID=$(gh api \
+    #           -H "Accept: application/vnd.github+json" \
+    #           -H "X-GitHub-Api-Version: 2022-11-28" \
+    #           repos/$REPO/actions/workflows/generate_core.yml/runs \
+    #           --paginate \
+    #           -q '.workflow_runs[] | select(.status == "in_progress") | .id' | head -n 1)
 
-    # Wait for the workflow to complete
-    - name: Wait for the Triggered Workflow Finish
-      env:
-        REPO: "MikroElektronika/sdk_automation"
-        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
-      run: |
-        while : ; do
-          STATUS=$(gh api \
-              -H "Accept: application/vnd.github+json" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
-              -q '.status')
+    #       if [[ -z "$runID" ]]; then
+    #         echo "No in-progress run found yet. Retrying in 10 seconds..."
+    #         sleep 10
+    #         continue
+    #       fi
 
-          CONCLUSION=$(gh api \
-              -H "Accept: application/vnd.github+json" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
-              -q '.conclusion')
+    #       echo "run_id=$runID" >> $GITHUB_OUTPUT
+    #       echo "Found in-progress workflow with RUN_ID: $run_id"
+    #       break
+    #     done
 
-          echo "Workflow status: $STATUS"
+    # # Wait for the workflow to complete
+    # - name: Wait for the Triggered Workflow Finish
+    #   env:
+    #     REPO: "MikroElektronika/sdk_automation"
+    #     GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+    #   run: |
+    #     while : ; do
+    #       STATUS=$(gh api \
+    #           -H "Accept: application/vnd.github+json" \
+    #           -H "X-GitHub-Api-Version: 2022-11-28" \
+    #           repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
+    #           -q '.status')
 
-          if [[ "$STATUS" == "completed" ]]; then
-            echo "Workflow completed with conclusion: $CONCLUSION"
-            break
-          fi
+    #       CONCLUSION=$(gh api \
+    #           -H "Accept: application/vnd.github+json" \
+    #           -H "X-GitHub-Api-Version: 2022-11-28" \
+    #           repos/$REPO/actions/runs/${{ steps.get_id.outputs.run_id }} \
+    #           -q '.conclusion')
 
-          # Wait for a few seconds before checking again
-          sleep 10
-        done
+    #       echo "Workflow status: $STATUS"
 
-        # Check the conclusion and fail the job if the triggered workflow failed
-        if [[ "$CONCLUSION" != "success" ]]; then
-          echo "Triggered workflow failed with conclusion: $CONCLUSION"
-          exit 1
-        fi
+    #       if [[ "$STATUS" == "completed" ]]; then
+    #         echo "Workflow completed with conclusion: $CONCLUSION"
+    #         break
+    #       fi
 
-        echo "Triggered workflow completed successfully!"
+    #       # Wait for a few seconds before checking again
+    #       sleep 10
+    #     done
 
-    # Aquire the asset that we just generated with the sdk_automation script
-    - name: Fetch asset
-      run: gh release download --repo MikroElektronika/sdk_automation latest --clobber
-      env:
-        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+    #     # Check the conclusion and fail the job if the triggered workflow failed
+    #     if [[ "$CONCLUSION" != "success" ]]; then
+    #       echo "Triggered workflow failed with conclusion: $CONCLUSION"
+    #       exit 1
+    #     fi
+
+    #     echo "Triggered workflow completed successfully!"
+
+    # # Aquire the asset that we just generated with the sdk_automation script
+    # - name: Fetch asset
+    #   run: gh release download --repo MikroElektronika/sdk_automation latest --clobber
+    #   env:
+    #     GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
     # Move the asset we just downloaded to automatization and extract it
     - name: Move to the created directory unzip and distribute files
       id: move_files
       run: |
-        sudo mv generated_files.zip automatization/
+        sudo mv extracted_${{ steps.lower-mcu-name.outputs.mcu_name }}.zip automatization/
         cd automatization
-        unzip generated_files.zip
+        unzip extracted_${{ steps.lower-mcu-name.outputs.mcu_name }}.zip
 
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}
