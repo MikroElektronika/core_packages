@@ -129,11 +129,18 @@ jobs:
         echo "mcu_name=${mcu_name^^}" >> $GITHUB_OUTPUT
     
     # Check if release asset exists - if CORE files are already generated for this MCU
-    - name: Check if files are previously generated
+    - id: check-asset-existence
+      name: Check if files are previously generated
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         gh release download --repo 'MikroElektronika/sdk_automation' --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+        echo ::set-output name=exit_code::$?
+
+    - name: print step res
+      run: |
+        echo "Result of previous step: "
+        echo ${{ steps.check-asset-existence.outputs.exit_code }}
     
     # # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
     # - name: Trigger Workflow on Private Repository
