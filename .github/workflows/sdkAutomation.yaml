@@ -125,7 +125,7 @@ jobs:
     - id: upper-mcu-name
       name: MCU name uppercase
       run: |
-        mcu_name = ${{ github.event.inputs.mcu_name }}
+        mcu_name=${{ github.event.inputs.mcu_name }}
         echo "mcu_name=${mcu_name^^}" >> $GITHUB_OUTPUT
     
     # Check if release asset exists - if CORE files are already generated for this MCU
