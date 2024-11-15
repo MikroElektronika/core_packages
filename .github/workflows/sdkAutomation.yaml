@@ -242,9 +242,9 @@ jobs:
     - name: Move to the created directory unzip and distribute files
       id: move_files
       run: |
-        sudo mv extracted_${{ steps.lower-mcu-name.outputs.mcu_name }}.zip automatization/
+        sudo mv extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
         cd automatization
-        unzip extracted_${{ steps.lower-mcu-name.outputs.mcu_name }}.zip
+        unzip extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
 
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}
