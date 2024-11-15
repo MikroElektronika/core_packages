@@ -109,7 +109,6 @@ jobs:
         if ${{ github.event.inputs.new_branch }} == true; then
           git branch $branchName
           git checkout $branchName
-          git pull origin $branchName
           git push -u origin $branchName
         else
           git checkout $branchName
