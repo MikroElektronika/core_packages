@@ -130,13 +130,13 @@ jobs:
     
     # Check if release asset exists - if CORE files are already generated for this MCU
     - id: check-asset-existence
-      name: Check if files are previously generated
+      name: Fetch CORE files if already generated
       continue-on-error: true
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         gh release download --repo 'MikroElektronika/sdk_automation' --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
-        echo ::set-output name=exit_code::$?
+        echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: print step res
       run: |
