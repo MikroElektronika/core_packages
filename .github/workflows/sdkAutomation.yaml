@@ -46,12 +46,22 @@ on:
         type: string
       new_branch:
         type: bool
-        description: To create a new branch for this run or use the last one
+        description: 'To create a new branch for this run or use the last one'
         default: true
       build_version:
         type: string
-        description: Tag to use for script run (i.e. v1.0.7)
+        description: 'Tag to use for script run (i.e. v1.0.7)'
         default: "latest"
+      file_list:
+        # List of files to be generated
+        description: 'List of selected files to be generated. If set to "all", all files are generated.'
+        # Default value
+        default: 'all'
+        # Input is optional
+        required: false
+        # The data type of the input
+        type: string
+      
 
 env:
   NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
@@ -125,7 +135,8 @@ jobs:
                 "inputs": {
                   "mcu_name": "${{ github.event.inputs.mcu_name }}",
                   "vendor": "${{ github.event.inputs.vendor }}",
-                  "pdfFile": "${{ github.event.inputs.pdfFile }}"
+                  "pdfFile": "${{ github.event.inputs.pdfFile }}",
+                  "file_list": "${{ github.event.inputs.file_list }}"
                 }
               }'
 
