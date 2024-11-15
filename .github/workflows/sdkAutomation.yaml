@@ -139,10 +139,14 @@ jobs:
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: print step res
+      if: steps.check-asset-existence.outcome == 'success'
       run: |
-        prevStep=${{ steps.check-asset-existence.outputs.exit_code }}
-        echo "Result of previous step: "
-        echo $prevStep
+        echo "Success!
+
+      # run: |
+        # prevStep=${{ steps.check-asset-existence.outputs.exit_code }}
+        # echo "Result of previous step: "
+        # echo $prevStep
     
     # # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
     # - name: Trigger Workflow on Private Repository
