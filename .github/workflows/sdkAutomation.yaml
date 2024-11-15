@@ -130,6 +130,8 @@ jobs:
     
     # Check if release asset exists - if CORE files are already generated for this MCU
     - name: Check if files are previously generated
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         gh release download --pattern 'extracted_${{ steps.lower-mcu-name.outputs.mcu_name }}'
     
