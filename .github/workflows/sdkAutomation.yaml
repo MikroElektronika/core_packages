@@ -133,7 +133,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release download --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}'
+        gh release download --repo 'MikroElektronika/sdk_automation' --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}'
     
     # # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
     # - name: Trigger Workflow on Private Repository
