@@ -134,15 +134,16 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        release=$(curl -s -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-          "https://api.github.com/repos/MikroElektronika/sdk_automation/releases/tags/latest")
+        gh api repos/MikroElektronika/sdk_automation/releases/latest | jq -r ".assets[].name"
+        # release=$(curl -s -H "Authorization: token ${{ env.GH_TOKEN }}" \
+        #   "https://api.github.com/repos/MikroElektronika/sdk_automation/releases/tags/latest")
         
-        assets=$(echo "$release" | jq -r '.assets[] | {name: .name, download_url: .browser_download_url}')
+        # assets=$(echo "$release" | jq -r '.assets[] | {name: .name, download_url: .browser_download_url}')
         
-        echo "Assets: $assets"
-        echo "::set-output name=assets::$assets"
+        # echo "Assets: $assets"
+        # echo "::set-output name=assets::$assets"
 
-        echo "Assets: ${{ steps.get-assets.outputs.assets }}"
+        # echo "Assets: ${{ steps.get-assets.outputs.assets }}"
 
     
     # Check if release asset exists - if CORE files are already generated for this MCU
