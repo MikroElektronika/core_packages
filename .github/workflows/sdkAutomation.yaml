@@ -99,14 +99,14 @@ jobs:
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        # branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET)
-        # if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
-        #   echo "Check the Google spreadsheet, $branchName!"
-        #   exit 1
-        # fi
-        # echo "Found branch: $branchName"
+        branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET)
+        if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
+          echo "Check the Google spreadsheet, $branchName!"
+          exit 1
+        fi
+        echo "Found branch: $branchName"
 
-        branchName="workflow_test_branch_sz"
+        # branchName="workflow_test_branch_sz"
 
         if ${{ github.event.inputs.new_branch }} == true; then
           git branch $branchName
@@ -127,24 +127,6 @@ jobs:
       run: |
         mcu_name=${{ github.event.inputs.mcu_name }}
         echo "mcu_name=${mcu_name^^}" >> $GITHUB_OUTPUT
-
-    # # Get a list of release assets (generated CORE files)
-    # - id: get-asset-list
-    #   name: Fetch a list of release assets
-    #   env:
-    #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   run: |
-    #     gh api repos/MikroElektronika/sdk_automation/releases/latest | jq -r ".assets[].name"
-    #     # release=$(curl -s -H "Authorization: token ${{ env.GH_TOKEN }}" \
-    #     #   "https://api.github.com/repos/MikroElektronika/sdk_automation/releases/tags/latest")
-        
-    #     # assets=$(echo "$release" | jq -r '.assets[] | {name: .name, download_url: .browser_download_url}')
-        
-    #     # echo "Assets: $assets"
-    #     # echo "::set-output name=assets::$assets"
-
-    #     # echo "Assets: ${{ steps.get-assets.outputs.assets }}"
-
     
     # Check if release asset exists - if CORE files are already generated for this MCU
     - id: check-asset-existence
@@ -160,6 +142,7 @@ jobs:
       if: steps.check-asset-existence.outcome != 'success'
       run: |
         echo "Generated files not found. Starting generation workflow."
+        sleep 5
 
     
     # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
