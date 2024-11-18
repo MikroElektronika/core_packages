@@ -153,7 +153,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release download --repo 'MikroElektronika/sdk_automation' latest --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: Verify if assets were found
