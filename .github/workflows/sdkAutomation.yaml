@@ -153,7 +153,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release download --repo 'MikroElektronika/sdk_automation' --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}*'
+        gh release download --repo 'MikroElektronika/sdk_automation' latest --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: Verify if assets were found
@@ -257,7 +257,7 @@ jobs:
 
     # Aquire the asset that we just generated with the sdk_automation script
     - name: Fetch asset
-      run: gh release download --repo MikroElektronika/sdk_automation latest --clobber
+      run: gh release download --repo MikroElektronika/sdk_automation latest --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
