@@ -106,8 +106,6 @@ jobs:
         fi
         echo "Found branch: $branchName"
 
-        # branchName="workflow_test_branch_sz"
-
         if ${{ github.event.inputs.new_branch }} == true; then
           git branch $branchName
           git checkout $branchName
