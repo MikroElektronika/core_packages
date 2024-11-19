@@ -4,6 +4,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 import support as support
+import read_microchip_index as MCHP
 
 # Gets latest release headers from repository
 def get_headers(api, token):
@@ -224,7 +225,7 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
     else:
         new_version = '1.0.0'
 
-    return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed
+    return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed, indexed_version
 
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None):
@@ -270,7 +271,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
         doc = None
         if name_without_extension == "clocks":
-            current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
+            current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
             doc = {
                 'name': "clocks",
                 'display_name' : "Clocks file",
@@ -288,7 +289,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'gh_package_name': "clocks.json"
             }
         elif "schemas" in name_without_extension:
-            current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
+            current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
             suffix = ''
             if 'test' in name_without_extension:
                 suffix = '_test'
@@ -331,7 +332,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     else:
                         continue
 
-                current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
+                current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
 
                 current_version = metadata_item['version']
                 if index_hash and current_hash:
@@ -400,6 +401,10 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                                 print(f"Indexed to LIVE as well.")
                                 print(f"{resp["result"]} {resp['_id']}")
 
+            # Print new version after indexing
+            if previous_version != doc['version'] and True == doc['package_changed']:
+                print(f"\033[95mVersion for asset {name_without_extension} has been updated from {previous_version} to {doc['version']}")
+
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)
     url = f'https://api.github.com/repos/{repo}/releases'
@@ -466,6 +471,15 @@ def promote_to_latest(releases, repo, token, release_version):
 
     return
 
+def index_microchip_packs(es: Elasticsearch, index_name: str):
+    custom_link = 'https://packs.download.microchip.com/index.idx'
+    # Download the index file
+    xml_content = MCHP.download_index_file(custom_link)
+    converted_data, item_list = MCHP.convert_idx_to_json(xml_content)
+    for eachItem in item_list:
+        resp = es.index(index=index_name, doc_type='necto_package', id=eachItem['name'], body=eachItem)
+        print(f"{resp["result"]} {resp['_id']}")
+
 if __name__ == '__main__':
     # First, check for arguments passed
     def str2bool(v):
@@ -508,6 +522,11 @@ if __name__ == '__main__':
     db_version = remove_duplicate_indexed_files(
         es, args.select_index
     )
+
+    # Index microchip device family packs
+    if 'live' not in args.select_index:
+        # TODO - uncomment once LIVE test is confirmed to work
+        index_microchip_packs(es, args.select_index)
 
     # Now index the new release
     index_release_to_elasticsearch(
