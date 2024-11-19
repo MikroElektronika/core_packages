@@ -61,7 +61,7 @@ on:
         required: false
         # The data type of the input
         type: string
-      
+
 
 env:
   NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
@@ -125,7 +125,7 @@ jobs:
       run: |
         mcu_name=${{ github.event.inputs.mcu_name }}
         echo "mcu_name=${mcu_name^^}" >> $GITHUB_OUTPUT
-    
+
     # Check if release asset exists - if CORE files are already generated for this MCU
     - id: check-asset-existence
       name: Fetch CORE files if already generated
@@ -142,7 +142,7 @@ jobs:
         echo "Generated files not found. Starting generation workflow."
         sleep 5
 
-    
+
     # Trigger the workflow on the private repository (Assuming the private repository has a workflow that runs on repository_dispatch event)
     - name: Trigger Workflow on Private Repository
       if: steps.check-asset-existence.outcome != 'success'
@@ -255,6 +255,7 @@ jobs:
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1
 
+        sudo mv "${{ github.event.inputs.mcu_name }}" ../resources/queries/mcus/
         sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}/
         echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
         sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/def/
