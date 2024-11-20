@@ -158,7 +158,7 @@ jobs:
           -d '{
                 "ref": "main",
                 "inputs": {
-                  "": "${{ github.event.inputs. }}",
+                  "mcu_name": "${{ github.event.inputs.mcu_name }}",
                   "vendor": "${{ github.event.inputs.vendor }}",
                   "pdfFile": "${{ github.event.inputs.pdfFile }}",
                   "file_list": "${{ github.event.inputs.file_list }}"
