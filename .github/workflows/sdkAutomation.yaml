@@ -158,7 +158,7 @@ jobs:
           -d '{
                 "ref": "main",
                 "inputs": {
-                  "mcu_name": "${{ github.event.inputs.mcu_name }}",
+                  "": "${{ github.event.inputs. }}",
                   "vendor": "${{ github.event.inputs.vendor }}",
                   "pdfFile": "${{ github.event.inputs.pdfFile }}",
                   "file_list": "${{ github.event.inputs.file_list }}"
@@ -239,7 +239,7 @@ jobs:
     # Aquire the asset that we just generated with the sdk_automation script
     - name: Fetch asset
       if: steps.check-asset-existence.outcome != 'success'
-      run: gh release download --repo MikroElektronika/sdk_automation latest --pattern 'generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+      run: gh release download --repo MikroElektronika/sdk_automation latest --pattern 'generated_files_${{ steps.upper-mcu-name.outputs. }}.zip'
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
@@ -247,19 +247,19 @@ jobs:
     - name: Move to the created directory unzip and distribute files
       id: move_files
       run: |
-        sudo mv generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
+        sudo mv generated_files_${{ steps.upper-mcu-name.outputs. }}.zip automatization/
         cd automatization
-        unzip generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
+        unzip generated_files_${{ steps.upper-mcu-name.outputs. }}.zip
 
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ steps.upper-mcu-name.outputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1
 
-        sudo mv "${{ github.event.inputs.mcu_name }}" ../resources/queries/mcus/
-        sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}/
+        sudo mv "${{ steps.upper-mcu-name.outputs.mcu_name }}" ../resources/queries/mcus/
+        sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}/
         echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
         sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/def/
-        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}/
+        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ steps.upper-mcu-name.outputs.mcu_name }}/
         sudo mv 'init_clock.c' ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1/
         sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/
         sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/
