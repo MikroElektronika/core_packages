@@ -133,7 +133,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
       run: |
-        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: Verify if assets were found
@@ -239,7 +239,7 @@ jobs:
     # Aquire the asset that we just generated with the sdk_automation script
     - name: Fetch asset
       if: steps.check-asset-existence.outcome != 'success'
-      run: gh release download --repo MikroElektronika/sdk_automation latest --pattern 'extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+      run: gh release download --repo MikroElektronika/sdk_automation latest --pattern 'generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
 
@@ -247,9 +247,9 @@ jobs:
     - name: Move to the created directory unzip and distribute files
       id: move_files
       run: |
-        sudo mv extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
+        sudo mv generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
         cd automatization
-        unzip extracted_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
+        unzip generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
 
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ github.event.inputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ github.event.inputs.mcu_name }}
