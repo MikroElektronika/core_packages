@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     err = False
     for indexed_item in es_instance.indexed_items:
-        if indexed_item['source']['type'] in type_skip:
+        if indexed_item['source']['type'] in type_skip and 'live' in args.es_index:
             continue
         asset_status = requests.get(indexed_item['source']['download_link'], headers=headers)
         if es_instance.Status.ERROR.value == asset_status.status_code: ## code 404 - error, reindex with correct download link
