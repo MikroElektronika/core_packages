@@ -69,7 +69,10 @@ if __name__ == "__main__":
                     print("%sWARNING: Asset \"%s\" has no \"gh_package_name\" in the index." % (es_instance.Colors.WARNING, indexed_item['source']['name']))
         else: ## code 200 - success, no need to reindex
             if args.index_package_names:
-                package_name = (json.loads(asset_status.text))['name']
+                if 'packs.download.microchip.com' in indexed_item['source']['download_link']:
+                    package_name = indexed_item['source']['name']
+                else:
+                    package_name = (json.loads(asset_status.text))['name']
                 if 'gh_package_name' not in indexed_item['source']:
                     indexed_item['source'].update({"gh_package_name": package_name})
                     es_instance.update(indexed_item['doc']['type'], indexed_item['doc']['id'], indexed_item['source'])
