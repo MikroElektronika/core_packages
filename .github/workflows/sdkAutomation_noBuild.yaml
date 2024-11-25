@@ -139,11 +139,12 @@ jobs:
     - name: Verify if assets were found
       if: steps.check-asset-existence.outcome != 'success'
       run: |
-        echo "Generated files not found. Starting generation workflow."
-        sleep 5
+        echo "Generated files not found. Exiting."
+        exit 1
 
     # Move the asset we just downloaded to automatization and extract it
     - name: Move to the created directory unzip and distribute files
+      if: steps.check-asset-existence.outcome == 'success'
       id: move_files
       run: |
         sudo mv generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
@@ -168,6 +169,7 @@ jobs:
         cd ..
 
     - name: Create new core for delays if necessary
+      if: steps.check-asset-existence.outcome == 'success'
       run: |
         CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/${{ steps.move_files.outputs.json_name }} | tr '[:upper:]' '[:lower:]')
         if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
@@ -180,11 +182,13 @@ jobs:
 
     # Commit changes
     - name: Commit changes
+      if: steps.check-asset-existence.outcome == 'success'
       run: |
         git add .
         git commit -m "Pulled files from sdk_automation into core_packages"
 
     # Push changes back to your repository
     - name: Push changes
+      if: steps.check-asset-existence.outcome == 'success'
       run: |
         git push -u origin ${{ github.event.inputs.build_branch }}
