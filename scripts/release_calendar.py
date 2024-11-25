@@ -50,6 +50,7 @@ def get_data(link, calendar_title, saveToFile=None):
                 "branch": parts[1],
                 "tz": "Europe/Belgrade",
                 "start_dt": release_date.strftime("%Y-%m-%d"),
+                "additional": parts[7]
             }
         )
     ## Dictionary to merge nodes based on the start date
