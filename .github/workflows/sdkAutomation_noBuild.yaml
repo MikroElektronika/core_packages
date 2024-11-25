@@ -162,7 +162,7 @@ jobs:
         sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}/
         echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
         sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/def/
-        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ steps.upper-mcu-name.outputs.mcu_name }}/
+        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')/
         sudo mv 'init_clock.c' ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1/
         sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
         sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
