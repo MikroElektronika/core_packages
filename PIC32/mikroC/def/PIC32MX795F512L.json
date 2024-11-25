@@ -337,7 +337,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000003",
+                    "init": "00000000",
                     "key": "FNOSC",
                     "label": "Oscillator Selection Bits",
                     "mask": "00000007",
@@ -1564,5 +1564,5 @@
             "min_value": "2.700"
         }
     },
-    "clock": "80"
+    "clock": "8"
 }

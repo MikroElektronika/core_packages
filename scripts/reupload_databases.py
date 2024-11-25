@@ -15,6 +15,7 @@ sys.path.append(str(Path(os.path.dirname(__file__)).absolute()))
 import enums as enums
 import support as utility
 import addSdkVersion as sdk
+import read_microchip_index as MCHP
 
 entranceCheckProg = True
 entranceCheckDebug = True
@@ -1024,18 +1025,76 @@ async def main(
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
 
-    ## Step 11 - update families
+    ## Step 11 add microchip info to programmers table
+    custom_link = 'https://packs.download.microchip.com/index.idx'
+    if not mcus_only and 'Test' == index:
+        # Download the index file
+        xml_content = MCHP.download_index_file(custom_link)
+        converted_data, item_list_unused = MCHP.convert_idx_to_json(xml_content)
+
+        programmersColumns = 'uid,hidden,name,icon,installed,description,installer_package'
+        progToDeviceColumns = 'programer_uid,device_uid, device_support_package'
+        for eachDb in [databaseErp, databaseNecto]:
+            if eachDb:
+                ## Add missing columns to programmer table
+                addCollumnsToTable(
+                    eachDb, ['installer_package'], 'Programmers', ['Text'], ['NoDefault']
+                )
+                addCollumnsToTable(
+                    eachDb, ['device_support_package'], 'ProgrammerToDevice', ['Text'], ['NoDefault']
+                )
+                ## Add all tools found in microchip index file to programmers table
+                for prog_item in converted_data:
+                    print(f"Inserting {prog_item['uid']} into Programmers table")
+                    dfpsMap = json.loads(prog_item['dfps'])
+                    insertIntoTable(
+                        eachDb,
+                        'Programmers',
+                        [
+                            prog_item['uid'],
+                            prog_item['hidden'],
+                            prog_item['display_name'],
+                            prog_item['icon'],
+                            prog_item['installed'],
+                            prog_item['description'],
+                            prog_item['installer_package']
+                        ],
+                        programmersColumns
+                    )
+                    ## Add MCU to Programmer mapping found in microchip index file
+                    missingMcuDfp = []
+                    for mcu in prog_item['mcus']:
+                        print(f"Inserting {mcu.upper()}:{prog_item['uid']} into ProgrammerToDevice table")
+                        if mcu in dfpsMap:
+                            exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu.upper()}.json\"")
+                            if exists:
+                                for mcu_uid in uid_list:
+                                    insertIntoTable(
+                                        eachDb,
+                                        'ProgrammerToDevice',
+                                        [
+                                            prog_item['uid'],
+                                            mcu_uid[0],
+                                            json.dumps(dfpsMap[mcu])
+                                        ],
+                                        progToDeviceColumns
+                                    )
+                        else:
+                            missingMcuDfp.append(mcu)
+                    print(f"Following MCUs do not have DFP: {missingMcuDfp}")
+
+    ## Step 12 - update families
     if not mcus_only:
         if databaseErp:
             update_families(databaseErp, allDevicesGithub)
 
-    ## Step 12 - update the icon names
+    ## Step 13 - update the icon names
     if not mcus_only:
         for eachDb in [databaseErp, databaseNecto]:
             fix_icon_names(eachDb, "Boards")
             fix_icon_names(eachDb, "Displays")
 
-    ## Step 13 - if queries are different, add them to new file
+    ## Step 14 - if queries are different, add them to new file
     if not mcus_only:
         if not compare_hashes(
             os.path.join(os.path.dirname(__file__), 'databases/queries'),
@@ -1047,7 +1106,7 @@ async def main(
                 os.path.join(os.path.dirname(__file__), 'databases/queries')
             )
 
-    ## Step 14 - re-upload over existing assets
+    ## Step 15 - re-upload over existing assets
     if not mcus_only:
         archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
         async with aiohttp.ClientSession() as session:
@@ -1056,7 +1115,7 @@ async def main(
             async with aiohttp.ClientSession() as session:
                 upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
 
-    ## Step 15 - overwrite the existing necto_db.db in root with newly generated one
+    ## Step 16 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner

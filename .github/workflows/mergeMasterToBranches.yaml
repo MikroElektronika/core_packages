@@ -21,8 +21,8 @@ jobs:
 
       - name: Add GitHub Actions credentials
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ivan.ruzavin
+          git config user.email ivan.ruzavin@mikroe.com
 
       - name: Merge main to new-feature branches
         run: |

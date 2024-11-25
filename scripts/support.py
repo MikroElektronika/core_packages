@@ -72,7 +72,8 @@ def extract_archive_from_url(url, destination, token = None):
     print(f"Download link: {url}")
     headers = {
         'Authorization': f'token {token}',
-        'Accept': 'application/octet-stream'
+        'Accept': 'application/octet-stream',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
     }
     if 'github' in url:
         response = requests.get(url, headers=headers, stream=True)

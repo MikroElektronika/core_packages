@@ -1,0 +1,18 @@
+{
+    "def_file":"STM32H562RG.json",
+    "family_uid":"STM32",
+    "flash":"1024",
+    "icon":"images/mcu/stm32.png",
+    "max_speed":"250.000",
+    "name":"STM32H562RG",
+    "ram":"655360",
+    "sdk_config":"{\"MCU_NAME\":\"STM32H562RG\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config":"",
+    "uid":"STM32H562RG",
+    "vendor":"STMicroelectronics",
+    "compiler_flags":"",
+    "linker_flags":"",
+    "tft_socket":"1",
+    "sdk_support":"0",
+    "installer_package":"{\"clang-llvm\": \"arm_gcc_clang_stm32h562rg_i\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_stm32h562rg_i\"}"
+}

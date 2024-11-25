@@ -1,0 +1,194 @@
+# This is a basic workflow that is manually triggered
+
+name: CORE generation no build
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      mcu_name:
+        # Name of the MCU for which generation is running
+        description: 'MCU name'
+        # Default value if no value is explicitly provided
+        default: 'mk20dn32vlh5'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      vendor:
+        # Vendor of the MCU
+        description: 'Vendor'
+        # Default value if no value is explicitly provided
+        default: 'nxp'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      architecture:
+        # Architecture of the MCU
+        description: 'Architecture'
+        # Default value if no value is explicitly provided
+        default: 'ARM'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      pdfFile:
+        # Path to the reference manual PDF file
+        description: 'Reference manual PDF file path'
+        # Default value if no value is explicitly provided
+        default: '/tmp/documentation/mk20dn32vlh5_rm.pdf'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      new_branch:
+        type: bool
+        description: 'To create a new branch for this run or use the last one'
+        default: true
+      build_version:
+        type: string
+        description: 'Tag to use for script run (i.e. v1.0.7)'
+        default: "latest"
+      file_list:
+        # List of files to be generated
+        description: 'List of selected files to be generated. If set to "all", all files are generated.'
+        # Default value
+        default: 'all'
+        # Input is optional
+        required: false
+        # The data type of the input
+        type: string
+
+
+env:
+  NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "Generate CORE"
+  Generate_Core:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    # Runs a single command using the runners shell
+    - name: Send greeting
+      run: echo "Starting CORE generation workflow..."
+    # Checkout branch
+    - uses: actions/checkout@v2
+
+    - name: Authorize Mikroe Actions App
+      uses: actions/create-github-app-token@v1
+      id: app-token
+      with:
+        app-id: ${{ vars.MIKROE_ACTIONS }}
+        private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
+
+    - name: Add GitHub Actions credentials
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+
+    # Create a new branch
+    - name: Create branch
+      env:
+        RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
+      run: |
+        branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET)
+        if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
+          echo "Check the Google spreadsheet, $branchName!"
+          exit 1
+        fi
+        echo "Found branch: $branchName"
+
+        if ${{ github.event.inputs.new_branch }} == true; then
+          git branch $branchName
+          git checkout $branchName
+          git push -u origin $branchName
+        else
+          git checkout $branchName
+          git reset --hard $(git rev-list --max-parents=1 )
+        fi
+
+    # Create a new directory at the root of your repository
+    - name: Create automatization directory
+      run: mkdir -p automatization
+
+    # MCU name to uppercase
+    - id: upper-mcu-name
+      name: MCU name uppercase
+      run: |
+        mcu_name=${{ github.event.inputs.mcu_name }}
+        echo "mcu_name=${mcu_name^^}" >> $GITHUB_OUTPUT
+
+    # Check if release asset exists - if CORE files are already generated for this MCU
+    - id: check-asset-existence
+      name: Fetch CORE files if already generated
+      continue-on-error: true
+      env:
+        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+      run: |
+        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+        echo "exit_code=$?" >> $GITHUB_OUTPUT
+
+    - name: Verify if assets were found
+      if: steps.check-asset-existence.outcome != 'success'
+      run: |
+        echo "Generated files not found. Exiting."
+        exit 1
+
+    # Move the asset we just downloaded to automatization and extract it
+    - name: Move to the created directory unzip and distribute files
+      if: steps.check-asset-existence.outcome == 'success'
+      id: move_files
+      run: |
+        sudo mv generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
+        cd automatization
+        unzip generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
+
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ steps.upper-mcu-name.outputs.mcu_name }}
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1
+
+        sudo mv "${{ steps.upper-mcu-name.outputs.mcu_name }}" ../resources/queries/mcus/
+        sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}/
+        echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
+        sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/def/
+        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ steps.upper-mcu-name.outputs.mcu_name }}/
+        sudo mv 'init_clock.c' ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1/
+        sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/
+        sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/
+        sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/
+        cd delays
+        sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/
+        cd ..
+
+    - name: Create new core for delays if necessary
+      if: steps.check-asset-existence.outcome == 'success'
+      run: |
+        CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/${{ steps.move_files.outputs.json_name }} | tr '[:upper:]' '[:lower:]')
+        if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
+          echo "Core already exists: $CORE"
+        else
+          mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
+          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
+          echo "Found new core: $CORE"
+        fi
+
+    # Commit changes
+    - name: Commit changes
+      if: steps.check-asset-existence.outcome == 'success'
+      run: |
+        git add .
+        git commit -m "Pulled files from sdk_automation into core_packages"
+
+    # Push changes back to your repository
+    - name: Push changes
+      if: steps.check-asset-existence.outcome == 'success'
+      run: |
+        git push -u origin ${{ github.event.inputs.build_branch }}
