@@ -146,6 +146,8 @@ jobs:
     - name: Move to the created directory unzip and distribute files
       if: steps.check-asset-existence.outcome == 'success'
       id: move_files
+      env:
+        RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         sudo mv generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
