@@ -99,7 +99,7 @@ jobs:
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET)
+        branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branch")
         if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
           echo "Check the Google spreadsheet, $branchName!"
           exit 1
@@ -152,8 +152,9 @@ jobs:
         unzip generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
 
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/${{ steps.upper-mcu-name.outputs.mcu_name }}
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${{ github.event.inputs.vendor }}/doc_ds_1
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')
+        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
+        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
 
         sudo mv "${{ steps.upper-mcu-name.outputs.mcu_name }}" ../resources/queries/mcus/
         sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}/
