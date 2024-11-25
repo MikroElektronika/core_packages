@@ -50,6 +50,7 @@ def get_data(link, calendar_title, saveToFile=None):
                 "branch": parts[1],
                 "tz": "Europe/Belgrade",
                 "start_dt": release_date.strftime("%Y-%m-%d"),
+                "additional": parts[7]
             }
         )
     ## Dictionary to merge nodes based on the start date
@@ -118,16 +119,29 @@ def find_branch():
 
     for release in json_data['NECTO DAILY UPDATE']["events"]:
         date = release["start_dt"]
-        if "2025-02-05" == date:
+        if "2025-02-06" == date:
             return release["branch"]
 
     return "NO_BRANCH_IN_SPREADSHEET"
+
+def find_reference_manual():
+    with open(os.path.join(os.path.dirname(__file__), 'releases.json')) as file:
+        json_data = json.load(file)
+    current_date = f'{datetime.today().year}-{datetime.today().month}-{datetime.today().day}'
+
+    for release in json_data['NECTO DAILY UPDATE']["events"]:
+        date = release["start_dt"]
+        if "2025-02-06" == date:
+            return json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"].replace('.pdf', '')
+
+    return "none"
 
 if __name__ == "__main__":
     ## Set up argument parsing
     parser = argparse.ArgumentParser(description="Iterate through dates in a range and create calendar events if needed.")
     parser.add_argument("--title", type = str, help="Event title for calendar.", required=True)
     parser.add_argument("--doc_link", type = str, help="Spreadsheet table with release details - link.",required=True)
+    parser.add_argument("--chose_data", type = str, default = "branch", help="Chose data from spreadsheet to return.",required=False)
 
     ## Parse the arguments
     args = parser.parse_args()
@@ -136,8 +150,12 @@ if __name__ == "__main__":
     fileData = fetch_data(args.doc_link, args.title)
     ## Then generate the input file for teamup API
     generate_file(fileData, os.path.join(os.path.dirname(__file__), 'releases.json'))
-    ## Find branch name from the jsom data for the current time
-    print(find_branch())
+    if args.chose_data == 'branch':
+        ## Find branch name from the jsom data for the current time
+        print(find_branch())
+    else:
+        ## Find reference manual from the jsom data for the current time
+        print(find_reference_manual())
 
 
 
