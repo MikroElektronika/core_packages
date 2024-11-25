@@ -147,13 +147,13 @@ jobs:
       if: steps.check-asset-existence.outcome == 'success'
       id: move_files
       run: |
+        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         sudo mv generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
         cd automatization
         unzip generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
 
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')
-        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
 
         sudo mv "${{ steps.upper-mcu-name.outputs.mcu_name }}" ../resources/queries/mcus/
