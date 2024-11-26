@@ -61,6 +61,7 @@ jobs:
           else
             echo "Updating with new $DB_NAME";
             echo "test"
+            git pull
             git add $DB_NAME
             git commit -m "Updated $DB_NAME with latest merged release."
             git push
