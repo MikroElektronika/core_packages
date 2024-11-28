@@ -3,6 +3,9 @@ name: Notify Mattermost
 on:
   workflow_dispatch:
 
+  schedule:
+    - cron: "0 10 * * 1-5"  # 11:00 AM, Monday through Friday
+
 jobs:
   notify:
     runs-on: ubuntu-latest
