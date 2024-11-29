@@ -66,7 +66,7 @@ def generate_list(item_list, tool_to_mcu_list):
             print(f"MCUs should be a list but found: {mcus} for item: {name}")
             mcus = []
 
-        if item_type == 'microchip_tp':
+        if item_type == 'programmer_tp':
             # Populate tool_to_mcu safely
             uid = name.replace('_tool_support', '')
             displayNameMap = {
@@ -152,9 +152,11 @@ def convert_idx_to_json(xml_content):
 def convert_item_to_es_json(input_item):
     # Extract relevant fields
     atmel_name = input_item.get('@atmel:name')
-    package_type = 'microchip_dfp'
+    package_type = 'programmer_dfp'
+    package_category = 'MPLAB Device Pack'
     if '_TP' in atmel_name:
-        package_type = 'microchip_tp'
+        package_type = 'programmer_tp'
+        package_category = 'MPLAB Tool'
 
     version = input_item.get('@version')
 
@@ -171,7 +173,7 @@ def convert_item_to_es_json(input_item):
         print(f"Release date missing for item: {atmel_name} version: {version}")
         release_date = datetime.now().strftime('%Y-%m-%d')  # Use current date as a fallback
     download_link = f"https://packs.download.microchip.com/Microchip.{atmel_name}.{version}.atpack"
-    if package_type == 'microchip_tp':
+    if package_type == 'programmer_tp':
         display_name = f"{atmel_name.replace('_TP', '')} Tool Support"
     else:
         display_name = f"{atmel_name.replace('_DFP', '')} Device Support"
@@ -179,7 +181,7 @@ def convert_item_to_es_json(input_item):
     name = name.lower().replace("-", "_")
 
     # Check if 'atmel:devices' exists and is not None
-    if package_type == 'microchip_tp':
+    if package_type == 'programmer_tp':
         devices_section = input_item.get('atmel:devices', None)
     else:
         devices_section = releases[0].get('atmel:devices', None)
@@ -207,7 +209,7 @@ def convert_item_to_es_json(input_item):
         "version": version,
         "created_at": release_date + "T00:00:00Z",
         "updated_at": release_date + "T00:00:00Z",  # Convert the release date to ISO format with time
-        "category": "Microchip Device support",
+        "category": package_category,
         "download_link": download_link,
         "package_changed": True,
         "install_location": f"%APPLICATION_DATA_DIR%/packages/packsfolder/Microchip/{atmel_name}/{version}",
