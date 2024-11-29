@@ -227,7 +227,7 @@ def getProgDbgAsJson(docLink, saveToFile=False):
     return formatted_dict
 
 def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
-    ProgrammerToDeviceColumns = 'programer_uid, device_uid'
+    ProgrammerToDeviceColumns = 'programer_uid, device_uid, device_support_package'
 
     progUidList = [
         progUid[enums.dbSync.PROGRAMMERSPROGRAMMER.value] for progUid in
@@ -263,7 +263,8 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                     'ProgrammerToDevice',
                                     [
                                         progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value], ## programer_uid
-                                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value] ## device_uid
+                                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
+                                        progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()]['InstallerPackage']
                                     ],
                                     ProgrammerToDeviceColumns
                                 )
@@ -281,7 +282,8 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                 'ProgrammerToDevice',
                 [
                     'gdb_general', ## programer_uid
-                    eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value] ## device_uid
+                    eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
+                    ''
                 ],
                 ProgrammerToDeviceColumns
             )
@@ -1004,7 +1006,7 @@ async def main(
     ## Step 9 - synchronize programmers for all devices - CODEGRIP first
     if not mcus_only:
         progDbgAsJson = getProgDbgAsJson(
-            f'https://docs.google.com/spreadsheets/d/{doc_codegrip}/export?format=csv',
+            f'https://s3.us-west-2.amazonaws.com/software-update.mikroe.com/Codegrip/development/Codegrip-Prog-Debug.csv',
             True
         )
         if databaseErp:
@@ -1119,7 +1121,7 @@ async def main(
 
     ## Step 16 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
-    ## ------------------------------------------------------------------------------------ ##
+    # ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
 if __name__ == "__main__":
