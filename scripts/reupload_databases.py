@@ -1067,6 +1067,8 @@ async def main(
                         print(f"Inserting {mcu.upper()}:{prog_item['uid']} into ProgrammerToDevice table")
                         if mcu in dfpsMap:
                             exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu.upper()}.json\"")
+                            if not exists:
+                                exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu}.json\"")
                             if exists:
                                 for mcu_uid in uid_list:
                                     insertIntoTable(
