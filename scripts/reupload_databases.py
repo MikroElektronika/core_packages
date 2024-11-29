@@ -1124,6 +1124,17 @@ async def main(
 
 if __name__ == "__main__":
     # First, check for arguments passed
+    def str2bool(v):
+        if isinstance(v, bool):
+            return v
+        if v.lower() in ('yes', 'true', 't', 'y', '1'):
+            return True
+        elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+            return False
+        else:
+            raise argparse.ArgumentTypeError('Boolean value expected.')
+
+    # Then, check for arguments passed
     parser = argparse.ArgumentParser(description='')
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
@@ -1132,7 +1143,7 @@ if __name__ == "__main__":
     parser.add_argument('specific_tag', type=str, help='Specific release tag for database update.', default="")
     parser.add_argument('specific_tag_mikrosdk', type=str, help='Specific release tag from mikrosdk for database update.', default="")
     parser.add_argument('index', type=str, help='Index selection - Live/Test.', default="Test")
-    parser.add_argument('--mcus_only', type=bool, help='If True - will upload asset.', default=False)
+    parser.add_argument('--mcus_only', type=str2bool, help='If True - will upload asset.', default=False)
 
     ## Parse the arguments
     args = parser.parse_args()
