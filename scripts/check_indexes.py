@@ -4,7 +4,7 @@ import classes.class_gh as gh
 import classes.class_es as es
 
 # Skip packages with these types
-type_skip = ['microchip_dfp', 'microchip_tp']
+type_skip = ['programmer_dfp', 'programmer_tp']
 
 if __name__ == "__main__":
     # First, check for arguments passed
