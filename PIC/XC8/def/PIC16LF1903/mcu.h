@@ -1171,9 +1171,9 @@ asm("OPTION_REG equ 095h");
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PS0                    :1;
-        unsigned PS1                    :1;
-        unsigned PS2                    :1;
+        unsigned _PS0                    :1;  // Note: Changed by MikroE
+        unsigned _PS1                    :1;  // Note: Changed by MikroE
+        unsigned _PS2                    :1;  // Note: Changed by MikroE
         unsigned PSA                    :1;
         unsigned TMR0SE                 :1;
         unsigned TMR0CS                 :1;
@@ -4279,13 +4279,13 @@ extern volatile __bit                   OSTS                __at(0x4D5);	// @ (0
 extern volatile __bit                   PEIE                __at(0x5E);	// @ (0xB * 8 + 6)
 #define                                 PEIE_bit            _BIT_ACCESS(INTCON,6)
 // OPTION_REG<PS0>
-extern volatile __bit                   PS0                 __at(0x4A8);	// @ (0x95 * 8 + 0)
+extern volatile __bit                   _PS0                 __at(0x4A8);	// @ (0x95 * 8 + 0)  // Note: Changed by MikroE
 #define                                 PS0_bit             _BIT_ACCESS(OPTION_REG,0)
 // OPTION_REG<PS1>
-extern volatile __bit                   PS1                 __at(0x4A9);	// @ (0x95 * 8 + 1)
+extern volatile __bit                   _PS1                 __at(0x4A9);	// @ (0x95 * 8 + 1)  // Note: Changed by MikroE
 #define                                 PS1_bit             _BIT_ACCESS(OPTION_REG,1)
 // OPTION_REG<PS2>
-extern volatile __bit                   PS2                 __at(0x4AA);	// @ (0x95 * 8 + 2)
+extern volatile __bit                   _PS2                 __at(0x4AA);	// @ (0x95 * 8 + 2)  // Note: Changed by MikroE
 #define                                 PS2_bit             _BIT_ACCESS(OPTION_REG,2)
 // OPTION_REG<PSA>
 extern volatile __bit                   PSA                 __at(0x4AB);	// @ (0x95 * 8 + 3)
