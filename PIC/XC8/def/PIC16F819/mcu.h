@@ -876,9 +876,9 @@ typedef union {
         unsigned nRBPU                  :1;
     };
     struct {
-        unsigned PS0                    :1;
-        unsigned PS1                    :1;
-        unsigned PS2                    :1;
+        unsigned _PS0                    :1;  // Note: Changed by MikroE
+        unsigned _PS1                    :1;  // Note: Changed by MikroE
+        unsigned _PS2                    :1;  // Note: Changed by MikroE
     };
 } OPTION_REGbits_t;
 extern volatile OPTION_REGbits_t OPTION_REGbits __at(0x081);
@@ -1261,10 +1261,10 @@ extern volatile OSCTUNEbits_t OSCTUNEbits __at(0x090);
 #define _OSCTUNE_TUN5_MASK                                  0x20
 
 // Register: PR2
-#define PR2 PR2
-extern volatile unsigned char           PR2                 __at(0x092);
+#define _PR2 _PR2  // Note: Changed by MikroE
+extern volatile unsigned char           _PR2                 __at(0x092);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR2 equ 092h");
+asm("_PR2 equ 092h");  // Note: Changed by MikroE
 #endif
 
 // Register: SSPADD
@@ -1760,13 +1760,13 @@ extern volatile __bit                   PCFG3               __at(0x4FB);	// @ (0
 extern volatile __bit                   PEIE                __at(0x5E);	// @ (0xB * 8 + 6)
 #define                                 PEIE_bit            _BIT_ACCESS(INTCON,6)
 // OPTION_REG<PS0>
-extern volatile __bit                   PS0                 __at(0x408);	// @ (0x81 * 8 + 0)
+extern volatile __bit                   _PS0                 __at(0x408);	// @ (0x81 * 8 + 0)  // Note: Changed by MikroE
 #define                                 PS0_bit             _BIT_ACCESS(OPTION_REG,0)
 // OPTION_REG<PS1>
-extern volatile __bit                   PS1                 __at(0x409);	// @ (0x81 * 8 + 1)
+extern volatile __bit                   _PS1                 __at(0x409);	// @ (0x81 * 8 + 1)  // Note: Changed by MikroE
 #define                                 PS1_bit             _BIT_ACCESS(OPTION_REG,1)
 // OPTION_REG<PS2>
-extern volatile __bit                   PS2                 __at(0x40A);	// @ (0x81 * 8 + 2)
+extern volatile __bit                   _PS2                 __at(0x40A);	// @ (0x81 * 8 + 2)  // Note: Changed by MikroE
 #define                                 PS2_bit             _BIT_ACCESS(OPTION_REG,2)
 // OPTION_REG<PSA>
 extern volatile __bit                   PSA                 __at(0x40B);	// @ (0x81 * 8 + 3)

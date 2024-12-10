@@ -2165,9 +2165,9 @@ typedef union {
         unsigned nWPUEN                 :1;
     };
     struct {
-        unsigned PS0                    :1;
-        unsigned PS1                    :1;
-        unsigned PS2                    :1;
+        unsigned _PS0                    :1;  // Note: Changed by MikroE
+        unsigned _PS1                    :1;  // Note: Changed by MikroE
+        unsigned _PS2                    :1;  // Note: Changed by MikroE
         unsigned                        :1;
         unsigned T0SE                   :1;
         unsigned T0CS                   :1;
@@ -10288,9 +10288,9 @@ extern volatile unsigned char           T4PR                __at(0x414);
 asm("T4PR equ 0414h");
 #endif
 // aliases
-extern volatile unsigned char           PR4                 __at(0x414);
+extern volatile unsigned char           _PR4                 __at(0x414);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR4 equ 0414h");
+asm("_PR4 equ 0414h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -10842,9 +10842,9 @@ extern volatile unsigned char           T6PR                __at(0x41B);
 asm("T6PR equ 041Bh");
 #endif
 // aliases
-extern volatile unsigned char           PR6                 __at(0x41B);
+extern volatile unsigned char           _PR6                 __at(0x41B);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR6 equ 041Bh");
+asm("_PR6 equ 041Bh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -11534,9 +11534,9 @@ extern volatile unsigned char           T2PR                __at(0x494);
 asm("T2PR equ 0494h");
 #endif
 // aliases
-extern volatile unsigned char           PR2                 __at(0x494);
+extern volatile unsigned char           _PR2                 __at(0x494);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR2 equ 0494h");
+asm("_PR2 equ 0494h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -12088,9 +12088,9 @@ extern volatile unsigned char           T8PR                __at(0x49B);
 asm("T8PR equ 049Bh");
 #endif
 // aliases
-extern volatile unsigned char           PR8                 __at(0x49B);
+extern volatile unsigned char           _PR8                 __at(0x49B);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR8 equ 049Bh");
+asm("_PR8 equ 049Bh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -28626,9 +28626,9 @@ typedef union {
         unsigned CS1                    :1;
         unsigned CS2                    :1;
         unsigned                        :1;
-        unsigned PS0                    :1;
-        unsigned PS1                    :1;
-        unsigned PS2                    :1;
+        unsigned _PS0                    :1;  // Note: Changed by MikroE
+        unsigned _PS1                    :1;  // Note: Changed by MikroE
+        unsigned _PS2                    :1;  // Note: Changed by MikroE
     };
 } PWM5CLKCONbits_t;
 extern volatile PWM5CLKCONbits_t PWM5CLKCONbits __at(0xD9E);
@@ -30101,9 +30101,9 @@ typedef union {
         unsigned CS1                    :1;
         unsigned CS2                    :1;
         unsigned                        :1;
-        unsigned PS0                    :1;
-        unsigned PS1                    :1;
-        unsigned PS2                    :1;
+        unsigned _PS0                    :1;  // Note: Changed by MikroE
+        unsigned _PS1                    :1;  // Note: Changed by MikroE
+        unsigned _PS2                    :1;  // Note: Changed by MikroE
     };
 } PWM6CLKCONbits_t;
 extern volatile PWM6CLKCONbits_t PWM6CLKCONbits __at(0xDAE);
@@ -31576,9 +31576,9 @@ typedef union {
         unsigned CS1                    :1;
         unsigned CS2                    :1;
         unsigned                        :1;
-        unsigned PS0                    :1;
-        unsigned PS1                    :1;
-        unsigned PS2                    :1;
+        unsigned _PS0                    :1;  // Note: Changed by MikroE
+        unsigned _PS1                    :1;  // Note: Changed by MikroE
+        unsigned _PS2                    :1;  // Note: Changed by MikroE
     };
 } PWM11CLKCONbits_t;
 extern volatile PWM11CLKCONbits_t PWM11CLKCONbits __at(0xDBE);
