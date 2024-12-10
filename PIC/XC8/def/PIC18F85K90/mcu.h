@@ -1651,15 +1651,15 @@ extern volatile T4CONbits_t T4CONbits __at(0xF03);
 #define _T4CON_T4OUTPS_MASK                                 0x78
 
 // Register: PR4
-#define PR4 PR4
-extern volatile unsigned char           PR4                 __at(0xF04);
+#define _PR4 _PR4  // Note: Changed by MikroE
+extern volatile unsigned char           _PR4                 __at(0xF04);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR4 equ 0F04h");
+asm("_PR4 equ 0F04h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR4                    :8;
+        unsigned _PR4                    :8;  // Note: Changed by MikroE
     };
 } PR4bits_t;
 extern volatile PR4bits_t PR4bits __at(0xF04);
@@ -4719,15 +4719,15 @@ extern volatile T8CONbits_t T8CONbits __at(0xF36);
 #define _T8CON_T8OUTPS3_MASK                                0x40
 
 // Register: PR8
-#define PR8 PR8
-extern volatile unsigned char           PR8                 __at(0xF37);
+#define _PR8 _PR8  // Note: Changed by MikroE
+extern volatile unsigned char           _PR8                 __at(0xF37);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR8 equ 0F37h");
+asm("_PR8 equ 0F37h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR8                    :8;
+        unsigned _PR8                    :8;  // Note: Changed by MikroE
     };
 } PR8bits_t;
 extern volatile PR8bits_t PR8bits __at(0xF37);
@@ -4830,15 +4830,15 @@ extern volatile T6CONbits_t T6CONbits __at(0xF39);
 #define _T6CON_T6OUTPS3_MASK                                0x40
 
 // Register: PR6
-#define PR6 PR6
-extern volatile unsigned char           PR6                 __at(0xF3A);
+#define _PR6 _PR6  // Note: Changed by MikroE
+extern volatile unsigned char           _PR6                 __at(0xF3A);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR6 equ 0F3Ah");
+asm("_PR6 equ 0F3Ah");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR6                    :8;
+        unsigned _PR6                    :8;  // Note: Changed by MikroE
     };
 } PR6bits_t;
 extern volatile PR6bits_t PR6bits __at(0xF3A);
@@ -9710,8 +9710,8 @@ typedef union {
     };
     struct {
         unsigned                        :1;
-        unsigned PA2                    :1;
-        unsigned PA1                    :1;
+        unsigned _PA2                    :1;  // Note: Changed by MikroE
+        unsigned _PA1                    :1;  // Note: Changed by MikroE
     };
 } PORTCbits_t;
 extern volatile PORTCbits_t PORTCbits __at(0xF82);
@@ -10174,14 +10174,14 @@ typedef union {
         unsigned AD15                   :1;
     };
     struct {
-        unsigned PD2                    :1;
-        unsigned PC2                    :1;
-        unsigned PB2                    :1;
-        unsigned PC3                    :1;
-        unsigned PB3                    :1;
-        unsigned PC1                    :1;
-        unsigned PB1                    :1;
-        unsigned PA2                    :1;
+        unsigned _PD2                    :1;  // Note: Changed by MikroE
+        unsigned _PC2                    :1;  // Note: Changed by MikroE
+        unsigned _PB2                    :1;  // Note: Changed by MikroE
+        unsigned _PC3                    :1;  // Note: Changed by MikroE
+        unsigned _PB3                    :1;  // Note: Changed by MikroE
+        unsigned _PC1                    :1;  // Note: Changed by MikroE
+        unsigned _PB1                    :1;  // Note: Changed by MikroE
+        unsigned _PA2                    :1;  // Note: Changed by MikroE
     };
     struct {
         unsigned                        :2;
@@ -10755,11 +10755,11 @@ typedef union {
         unsigned C3INC                  :1;
     };
     struct {
-        unsigned PA3                    :1;
+        unsigned _PA3                    :1;  // Note: Changed by MikroE
         unsigned TX2                    :1;
         unsigned RX2                    :1;
-        unsigned PD3                    :1;
-        unsigned PD1                    :1;
+        unsigned _PD3                    :1;  // Note: Changed by MikroE
+        unsigned _PD1                    :1;  // Note: Changed by MikroE
     };
     struct {
         unsigned                        :1;
@@ -11001,10 +11001,10 @@ typedef union {
     };
     struct {
         unsigned                        :4;
-        unsigned PC3                    :1;
-        unsigned PB3                    :1;
-        unsigned PC1                    :1;
-        unsigned PB1                    :1;
+        unsigned _PC3                    :1;  // Note: Changed by MikroE
+        unsigned _PB3                    :1;  // Note: Changed by MikroE
+        unsigned _PC1                    :1;  // Note: Changed by MikroE
+        unsigned _PB1                    :1;  // Note: Changed by MikroE
     };
     struct {
         unsigned                        :4;
@@ -17739,10 +17739,10 @@ extern volatile T2CONbits_t T2CONbits __at(0xFCA);
 #define _T2CON_T2OUTPS3_MASK                                0x40
 
 // Register: PR2
-#define PR2 PR2
-extern volatile unsigned char           PR2                 __at(0xFCB);
+#define _PR2 _PR2  // Note: Changed by MikroE
+extern volatile unsigned char           _PR2                 __at(0xFCB);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR2 equ 0FCBh");
+asm("_PR2 equ 0FCBh");  // Note: Changed by MikroE
 #endif
 // aliases
 extern volatile unsigned char           MEMCON              __at(0xFCB);
@@ -17752,7 +17752,7 @@ asm("MEMCON equ 0FCBh");
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR2                    :8;
+        unsigned _PR2                    :8;  // Note: Changed by MikroE
     };
     struct {
         unsigned                        :7;
@@ -17809,7 +17809,7 @@ extern volatile PR2bits_t PR2bits __at(0xFCB);
 // alias bitfield definitions
 typedef union {
     struct {
-        unsigned PR2                    :8;
+        unsigned _PR2                    :8;  // Note: Changed by MikroE
     };
     struct {
         unsigned                        :7;
@@ -20881,7 +20881,7 @@ extern volatile __bit                   D_nA2               __at(0x7805);	// @ (
 #define                                 D_nA2_bit           _BIT_ACCESS(SSP2STAT,5)
 // PR2<EBDIS>
 extern volatile __bit                   EBDIS               __at(0x7E5F);	// @ (0xFCB * 8 + 7)
-#define                                 EBDIS_bit           _BIT_ACCESS(PR2,7)
+#define                                 EBDIS_bit           _BIT_ACCESS(_PR2,7)  // Note: Changed by MikroE
 // ECCP1AS<ECCP1AS0>
 extern volatile __bit                   ECCP1AS0            __at(0x7DFC);	// @ (0xFBF * 8 + 4)
 #define                                 ECCP1AS0_bit        _BIT_ACCESS(ECCP1AS,4)
@@ -22011,19 +22011,19 @@ extern volatile __bit                   P3M1                __at(0x7A4F);	// @ (
 extern volatile __bit                   P3RSEN              __at(0x7A67);	// @ (0xF4C * 8 + 7)
 #define                                 P3RSEN_bit          _BIT_ACCESS(ECCP3DEL,7)
 // PORTC<PA1>
-extern volatile __bit                   PA1                 __at(0x7C12);	// @ (0xF82 * 8 + 2)
+extern volatile __bit                   _PA1                 __at(0x7C12);	// @ (0xF82 * 8 + 2)  // Note: Changed by MikroE
 #define                                 PA1_bit             _BIT_ACCESS(PORTC,2)
 // PORTE<PA2E>
 extern volatile __bit                   PA2E                __at(0x7C27);	// @ (0xF84 * 8 + 7)
 #define                                 PA2E_bit            _BIT_ACCESS(PORTE,7)
 // PORTG<PA3>
-extern volatile __bit                   PA3                 __at(0x7C30);	// @ (0xF86 * 8 + 0)
+extern volatile __bit                   _PA3                 __at(0x7C30);	// @ (0xF86 * 8 + 0)  // Note: Changed by MikroE
 #define                                 PA3_bit             _BIT_ACCESS(PORTG,0)
 // PORTE<PB1E>
 extern volatile __bit                   PB1E                __at(0x7C26);	// @ (0xF84 * 8 + 6)
 #define                                 PB1E_bit            _BIT_ACCESS(PORTE,6)
 // PORTE<PB2>
-extern volatile __bit                   PB2                 __at(0x7C22);	// @ (0xF84 * 8 + 2)
+extern volatile __bit                   _PB2                 __at(0x7C22);	// @ (0xF84 * 8 + 2)  // Note: Changed by MikroE
 #define                                 PB2_bit             _BIT_ACCESS(PORTE,2)
 // PORTE<PB3E>
 extern volatile __bit                   PB3E                __at(0x7C24);	// @ (0xF84 * 8 + 4)
@@ -22032,7 +22032,7 @@ extern volatile __bit                   PB3E                __at(0x7C24);	// @ (
 extern volatile __bit                   PC1E                __at(0x7C25);	// @ (0xF84 * 8 + 5)
 #define                                 PC1E_bit            _BIT_ACCESS(PORTE,5)
 // PORTE<PC2>
-extern volatile __bit                   PC2                 __at(0x7C21);	// @ (0xF84 * 8 + 1)
+extern volatile __bit                   _PC2                 __at(0x7C21);	// @ (0xF84 * 8 + 1)  // Note: Changed by MikroE
 #define                                 PC2_bit             _BIT_ACCESS(PORTE,1)
 // PORTE<PC3E>
 extern volatile __bit                   PC3E                __at(0x7C23);	// @ (0xF84 * 8 + 3)
@@ -22113,13 +22113,13 @@ extern volatile __bit                   PCFG9               __at(0x7921);	// @ (
 extern volatile __bit                   PD                  __at(0x7E82);	// @ (0xFD0 * 8 + 2)
 #define                                 PD_bit              _BIT_ACCESS(RCON,2)
 // PORTG<PD1>
-extern volatile __bit                   PD1                 __at(0x7C34);	// @ (0xF86 * 8 + 4)
+extern volatile __bit                   _PD1                 __at(0x7C34);	// @ (0xF86 * 8 + 4)  // Note: Changed by MikroE
 #define                                 PD1_bit             _BIT_ACCESS(PORTG,4)
 // PORTE<PD2>
-extern volatile __bit                   PD2                 __at(0x7C20);	// @ (0xF84 * 8 + 0)
+extern volatile __bit                   _PD2                 __at(0x7C20);	// @ (0xF84 * 8 + 0)  // Note: Changed by MikroE
 #define                                 PD2_bit             _BIT_ACCESS(PORTE,0)
 // PORTG<PD3>
-extern volatile __bit                   PD3                 __at(0x7C33);	// @ (0xF86 * 8 + 3)
+extern volatile __bit                   _PD3                 __at(0x7C33);	// @ (0xF86 * 8 + 3)  // Note: Changed by MikroE
 #define                                 PD3_bit             _BIT_ACCESS(PORTG,3)
 // INTCON<PEIE>
 extern volatile __bit                   PEIE                __at(0x7F96);	// @ (0xFF2 * 8 + 6)
@@ -24649,10 +24649,10 @@ extern volatile __bit                   WA                  __at(0x77AC);	// @ (
 #define                                 WA_bit              _BIT_ACCESS(LCDPS,4)
 // PR2<WAIT0>
 extern volatile __bit                   WAIT0               __at(0x7E5C);	// @ (0xFCB * 8 + 4)
-#define                                 WAIT0_bit           _BIT_ACCESS(PR2,4)
+#define                                 WAIT0_bit           _BIT_ACCESS(_PR2,4)  // Note: Changed by MikroE
 // PR2<WAIT1>
 extern volatile __bit                   WAIT1               __at(0x7E5D);	// @ (0xFCB * 8 + 5)
-#define                                 WAIT1_bit           _BIT_ACCESS(PR2,5)
+#define                                 WAIT1_bit           _BIT_ACCESS(_PR2,5)  // Note: Changed by MikroE
 // RTCVALH<WAITB0>
 extern volatile __bit                   WAITB0              __at(0x7AEE);	// @ (0xF5D * 8 + 6)
 #define                                 WAITB0_bit          _BIT_ACCESS(RTCVALH,6)
@@ -24691,10 +24691,10 @@ extern volatile __bit                   WFT                 __at(0x77AF);	// @ (
 #define                                 WFT_bit             _BIT_ACCESS(LCDPS,7)
 // PR2<WM0>
 extern volatile __bit                   WM0                 __at(0x7E58);	// @ (0xFCB * 8 + 0)
-#define                                 WM0_bit             _BIT_ACCESS(PR2,0)
+#define                                 WM0_bit             _BIT_ACCESS(_PR2,0)  // Note: Changed by MikroE
 // PR2<WM1>
 extern volatile __bit                   WM1                 __at(0x7E59);	// @ (0xFCB * 8 + 1)
-#define                                 WM1_bit             _BIT_ACCESS(PR2,1)
+#define                                 WM1_bit             _BIT_ACCESS(_PR2,1)  // Note: Changed by MikroE
 // PORTE<WRE>
 extern volatile __bit                   WRE                 __at(0x7C21);	// @ (0xF84 * 8 + 1)
 #define                                 WRE_bit             _BIT_ACCESS(PORTE,1)
