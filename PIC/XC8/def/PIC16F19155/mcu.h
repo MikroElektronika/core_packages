@@ -7012,9 +7012,9 @@ extern volatile unsigned char           T1GCON              __at(0x20F);
 asm("T1GCON equ 020Fh");
 #endif
 // aliases
-extern volatile unsigned char           PR1                 __at(0x20F);
+extern volatile unsigned char           _PR1                 __at(0x20F);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR1 equ 020Fh");
+asm("_PR1 equ 020Fh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -7642,14 +7642,14 @@ extern volatile unsigned char           T2PR                __at(0x28D);
 asm("T2PR equ 028Dh");
 #endif
 // aliases
-extern volatile unsigned char           PR2                 __at(0x28D);
+extern volatile unsigned char           _PR2                 __at(0x28D);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR2 equ 028Dh");
+asm("_PR2 equ 028Dh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR2                    :8;
+        unsigned _PR2                    :8;  // Note: Changed by MikroE
     };
 } T2PRbits_t;
 extern volatile T2PRbits_t T2PRbits __at(0x28D);
@@ -7662,7 +7662,7 @@ extern volatile T2PRbits_t T2PRbits __at(0x28D);
 // alias bitfield definitions
 typedef union {
     struct {
-        unsigned PR2                    :8;
+        unsigned _PR2                    :8;  // Note: Changed by MikroE
     };
 } PR2bits_t;
 extern volatile PR2bits_t PR2bits __at(0x28D);
@@ -8230,14 +8230,14 @@ extern volatile unsigned char           T4PR                __at(0x293);
 asm("T4PR equ 0293h");
 #endif
 // aliases
-extern volatile unsigned char           PR4                 __at(0x293);
+extern volatile unsigned char           _PR4                 __at(0x293);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR4 equ 0293h");
+asm("_PR4 equ 0293h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR4                    :8;
+        unsigned _PR4                    :8;  // Note: Changed by MikroE
     };
 } T4PRbits_t;
 extern volatile T4PRbits_t T4PRbits __at(0x293);
@@ -8250,7 +8250,7 @@ extern volatile T4PRbits_t T4PRbits __at(0x293);
 // alias bitfield definitions
 typedef union {
     struct {
-        unsigned PR4                    :8;
+        unsigned _PR4                    :8;  // Note: Changed by MikroE
     };
 } PR4bits_t;
 extern volatile PR4bits_t PR4bits __at(0x293);
@@ -11694,9 +11694,9 @@ extern volatile unsigned char           TMR0H               __at(0x59D);
 asm("TMR0H equ 059Dh");
 #endif
 // aliases
-extern volatile unsigned char           PR0                 __at(0x59D);
+extern volatile unsigned char           _PR0                 __at(0x59D);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR0 equ 059Dh");
+asm("_PR0 equ 059Dh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {

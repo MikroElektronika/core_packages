@@ -1103,9 +1103,9 @@ extern volatile unsigned char           TMR0H               __at(0x01D);
 asm("TMR0H equ 01Dh");
 #endif
 // aliases
-extern volatile unsigned char           PR0                 __at(0x01D);
+extern volatile unsigned char           _PR0                 __at(0x01D);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR0 equ 01Dh");
+asm("_PR0 equ 01Dh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -6618,9 +6618,9 @@ extern volatile unsigned char           T1GCON              __at(0x20F);
 asm("T1GCON equ 020Fh");
 #endif
 // aliases
-extern volatile unsigned char           PR1                 __at(0x20F);
+extern volatile unsigned char           _PR1                 __at(0x20F);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR1 equ 020Fh");
+asm("_PR1 equ 020Fh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -7515,9 +7515,9 @@ extern volatile unsigned char           T3GCON              __at(0x215);
 asm("T3GCON equ 0215h");
 #endif
 // aliases
-extern volatile unsigned char           PR3                 __at(0x215);
+extern volatile unsigned char           _PR3                 __at(0x215);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR3 equ 0215h");
+asm("_PR3 equ 0215h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -8412,9 +8412,9 @@ extern volatile unsigned char           T5GCON              __at(0x21B);
 asm("T5GCON equ 021Bh");
 #endif
 // aliases
-extern volatile unsigned char           PR5                 __at(0x21B);
+extern volatile unsigned char           _PR5                 __at(0x21B);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR5 equ 021Bh");
+asm("_PR5 equ 021Bh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -9112,14 +9112,14 @@ extern volatile unsigned char           T2PR                __at(0x28D);
 asm("T2PR equ 028Dh");
 #endif
 // aliases
-extern volatile unsigned char           PR2                 __at(0x28D);
+extern volatile unsigned char           _PR2                 __at(0x28D);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR2 equ 028Dh");
+asm("_PR2 equ 028Dh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR2                    :8;
+        unsigned _PR2                    :8;  // Note: Changed by MikroE
     };
 } T2PRbits_t;
 extern volatile T2PRbits_t T2PRbits __at(0x28D);
@@ -9132,7 +9132,7 @@ extern volatile T2PRbits_t T2PRbits __at(0x28D);
 // alias bitfield definitions
 typedef union {
     struct {
-        unsigned PR2                    :8;
+        unsigned _PR2                    :8;  // Note: Changed by MikroE
     };
 } PR2bits_t;
 extern volatile PR2bits_t PR2bits __at(0x28D);
@@ -9712,14 +9712,14 @@ extern volatile unsigned char           T4PR                __at(0x293);
 asm("T4PR equ 0293h");
 #endif
 // aliases
-extern volatile unsigned char           PR4                 __at(0x293);
+extern volatile unsigned char           _PR4                 __at(0x293);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR4 equ 0293h");
+asm("_PR4 equ 0293h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR4                    :8;
+        unsigned _PR4                    :8;  // Note: Changed by MikroE
     };
 } T4PRbits_t;
 extern volatile T4PRbits_t T4PRbits __at(0x293);
@@ -9732,7 +9732,7 @@ extern volatile T4PRbits_t T4PRbits __at(0x293);
 // alias bitfield definitions
 typedef union {
     struct {
-        unsigned PR4                    :8;
+        unsigned _PR4                    :8;  // Note: Changed by MikroE
     };
 } PR4bits_t;
 extern volatile PR4bits_t PR4bits __at(0x293);
@@ -10312,14 +10312,14 @@ extern volatile unsigned char           T6PR                __at(0x299);
 asm("T6PR equ 0299h");
 #endif
 // aliases
-extern volatile unsigned char           PR6                 __at(0x299);
+extern volatile unsigned char           _PR6                 __at(0x299);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR6 equ 0299h");
+asm("_PR6 equ 0299h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR6                    :8;
+        unsigned _PR6                    :8;  // Note: Changed by MikroE
     };
 } T6PRbits_t;
 extern volatile T6PRbits_t T6PRbits __at(0x299);
@@ -10332,7 +10332,7 @@ extern volatile T6PRbits_t T6PRbits __at(0x299);
 // alias bitfield definitions
 typedef union {
     struct {
-        unsigned PR6                    :8;
+        unsigned _PR6                    :8;  // Note: Changed by MikroE
     };
 } PR6bits_t;
 extern volatile PR6bits_t PR6bits __at(0x299);
@@ -15199,14 +15199,14 @@ typedef union {
         unsigned PR                     :8;
     };
     struct {
-        unsigned PR0                    :1;
-        unsigned PR1                    :1;
-        unsigned PR2                    :1;
-        unsigned PR3                    :1;
-        unsigned PR4                    :1;
-        unsigned PR5                    :1;
-        unsigned PR6                    :1;
-        unsigned PR7                    :1;
+        unsigned _PR0                    :1;  // Note: Changed by MikroE
+        unsigned _PR1                    :1;  // Note: Changed by MikroE
+        unsigned _PR2                    :1;  // Note: Changed by MikroE
+        unsigned _PR3                    :1;  // Note: Changed by MikroE
+        unsigned _PR4                    :1;  // Note: Changed by MikroE
+        unsigned _PR5                    :1;  // Note: Changed by MikroE
+        unsigned _PR6                    :1;  // Note: Changed by MikroE
+        unsigned _PR7                    :1;  // Note: Changed by MikroE
     };
     struct {
         unsigned SMT1PR                 :8;
@@ -15327,8 +15327,8 @@ typedef union {
         unsigned PR                     :8;
     };
     struct {
-        unsigned PR8                    :1;
-        unsigned PR9                    :1;
+        unsigned _PR8                    :1;  // Note: Changed by MikroE
+        unsigned _PR9                    :1;  // Note: Changed by MikroE
         unsigned PR10                   :1;
         unsigned PR11                   :1;
         unsigned PR12                   :1;
@@ -15598,8 +15598,8 @@ typedef union {
         unsigned SMT1EN                 :1;
     };
     struct {
-        unsigned PS0                    :1;
-        unsigned PS1                    :1;
+        unsigned _PS0                    :1;  // Note: Changed by MikroE
+        unsigned _PS1                    :1;  // Note: Changed by MikroE
     };
     struct {
         unsigned SMT1PS0                :1;
@@ -17320,14 +17320,14 @@ typedef union {
         unsigned PR                     :8;
     };
     struct {
-        unsigned PR0                    :1;
-        unsigned PR1                    :1;
-        unsigned PR2                    :1;
-        unsigned PR3                    :1;
-        unsigned PR4                    :1;
-        unsigned PR5                    :1;
-        unsigned PR6                    :1;
-        unsigned PR7                    :1;
+        unsigned _PR0                    :1;  // Note: Changed by MikroE
+        unsigned _PR1                    :1;  // Note: Changed by MikroE
+        unsigned _PR2                    :1;  // Note: Changed by MikroE
+        unsigned _PR3                    :1;  // Note: Changed by MikroE
+        unsigned _PR4                    :1;  // Note: Changed by MikroE
+        unsigned _PR5                    :1;  // Note: Changed by MikroE
+        unsigned _PR6                    :1;  // Note: Changed by MikroE
+        unsigned _PR7                    :1;  // Note: Changed by MikroE
     };
     struct {
         unsigned SMT2PR                 :8;
@@ -17448,8 +17448,8 @@ typedef union {
         unsigned PR                     :8;
     };
     struct {
-        unsigned PR8                    :1;
-        unsigned PR9                    :1;
+        unsigned _PR8                    :1;  // Note: Changed by MikroE
+        unsigned _PR9                    :1;  // Note: Changed by MikroE
         unsigned PR10                   :1;
         unsigned PR11                   :1;
         unsigned PR12                   :1;
@@ -17719,8 +17719,8 @@ typedef union {
         unsigned SMT2EN                 :1;
     };
     struct {
-        unsigned PS0                    :1;
-        unsigned PS1                    :1;
+        unsigned _PS0                    :1;  // Note: Changed by MikroE
+        unsigned _PS1                    :1;  // Note: Changed by MikroE
     };
     struct {
         unsigned SMT2PS0                :1;
