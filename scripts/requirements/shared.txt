@@ -6,3 +6,5 @@ elasticsearch==7.13.4
 numpy<2
 pytz
 xmltodict
+packaging
+pandas
