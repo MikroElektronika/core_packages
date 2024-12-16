@@ -18,6 +18,10 @@ on:
         type: boolean
         description: Fix the broken links with new ones?
         default: false
+      index_legacy:
+        type: boolean
+        description: Re-index legacy compiler packages as well (MikroC libraries/only applicable to manual runs)?
+        default: false
 
   push:
     branches:
@@ -53,7 +57,7 @@ jobs:
           FIX_ACTION=${{ github.event.inputs.fix }}  # Capture the fix input
           LOG_ONLY=$([[ "$FIX_ACTION" == "false" ]] && echo true || echo false)  # Negate the fix input
           echo "LOG_ONLY is set to $LOG_ONLY"
-          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" "$LOG_ONLY"
+          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" "$LOG_ONLY" "--index_legacy_packages" "${{ github.event.inputs.index_legacy }}"
         continue-on-error: true # Ensure the workflow continues
 
       - name: Check Indexed Links - Test
@@ -62,7 +66,7 @@ jobs:
           FIX_ACTION=${{ github.event.inputs.fix }}  # Capture the fix input
           LOG_ONLY=$([[ "$FIX_ACTION" == "false" ]] && echo true || echo false)  # Negate the fix input
           echo "LOG_ONLY is set to $LOG_ONLY"
-          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" "$LOG_ONLY"
+          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" "$LOG_ONLY" "--index_legacy_packages" "${{ github.event.inputs.index_legacy }}"
         continue-on-error: true # Ensure the workflow continues
 
   push_to_main_run:
