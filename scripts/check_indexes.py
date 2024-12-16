@@ -32,6 +32,7 @@ if __name__ == "__main__":
     parser.add_argument("--es_regex", help="Regex to use to fetch indexed items", type=str, default=".+")
     parser.add_argument("--log_only", help="If True, will not fix broken links, just log them to std out", type=str2bool, default=False)
     parser.add_argument("--index_package_names", help="If True, will add \"gh_package_name\" to indexed item", type=str2bool, default=True)
+    parser.add_argument("--index_legacy_packages", help="If True, will re-index legacy compiler packages to DBP", type=str2bool, default=False)
     args = parser.parse_args()
 
     es_instance = es.index(
@@ -45,6 +46,9 @@ if __name__ == "__main__":
     )
 
     gh_instance = gh.repo(args.gh_repo, args.gh_token)
+
+    if args.index_legacy_packages:
+        args.es_regex += '|^legacy_.+$'
 
     es_instance.fetch(regex=args.es_regex)
 
