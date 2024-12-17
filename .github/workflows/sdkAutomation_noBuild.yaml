@@ -100,12 +100,13 @@ jobs:
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branch")
-        if [ "${branchName[0][1]}" == "NO_BRANCH_IN_SPREADSHEET" ]; then
-          echo "Check the Google spreadsheet, ${branchName[0][1]}!"
+        branchInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branch")
+        read -r mcu branchName <<< "${branchInfo[0]}"
+        if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
+          echo "Check the Google spreadsheet, $branchName!"
           exit 1
         fi
-        echo "branch_name=${branchName}" >> $GITHUB_OUTPUT
+        echo "branch_info=${branchInfo}" >> $GITHUB_OUTPUT
 
     # Create a new directory at the root of your repository
     - name: Create automatization directory
@@ -152,29 +153,30 @@ jobs:
           dirName="${dir%/}"
 
           # Check if the directory name matches any branch name in the array
-          for branch in "${${{ steps.branch-creation.outputs.branch_name }}[@]}"; do
-            if [[ "${branch[0][0]}" == *"$dirName"* ]]; then
+          for branch in "${${{ steps.branch-creation.outputs.branch_info }}[@]}"; do
+            read -r mcu branchName <<< "${branch}"
+            if [[ "$mcu" == *"$dirName"* ]]; then
               if ${{ github.event.inputs.new_branch }} == true; then
-                git branch ${branch[0][1]}
-                git checkout ${branch[0][1]}
-                git push -u origin ${branch[0][1]}
+                git branch $branchName
+                git checkout $branchName
+                git push -u origin $branchName
               else
-                git checkout ${branch[0][1]}
+                git checkout $branchName
                 git reset --hard $(git rev-list --max-parents=1 )
               fi
 
               cd $dirName
               cd generatedFiles
 
-              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}
-              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/$mcu
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo $mcu | tr '[:upper:]' '[:lower:]')
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
 
-              sudo mv "${{ steps.upper-mcu-name.outputs.mcu_name }}" ../../../resources/queries/mcus/
-              sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}/
+              sudo mv "$mcu" ../../../resources/queries/mcus/
+              sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/$mcu/
               echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
               sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/
-              sudo mv 'interrupts_mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')/
+              sudo mv 'interrupts_mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo $mcu | tr '[:upper:]' '[:lower:]')/
               sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber/
               sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
               sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
