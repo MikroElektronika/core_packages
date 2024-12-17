@@ -125,6 +125,7 @@ jobs:
       continue-on-error: true
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+        RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         refManNumber="${refManNumber//\//_}"
