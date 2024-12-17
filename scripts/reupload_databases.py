@@ -214,7 +214,10 @@ def getProgDbgAsJson(docLink, saveToFile=False):
 
     df = pd.read_csv(os.path.join(os.path.dirname(__file__), "devices.txt"))
     df.replace({np.nan: False}, inplace=True)
-    data_dict = df.set_index('name').to_dict(orient='index')
+    if 'amazonaws' in docLink:
+        data_dict = df.set_index('name').to_dict(orient='index')
+    else:
+        data_dict = df.set_index('Name').to_dict(orient='index')
     formatted_dict = {mcu.lower(): data for mcu, data in data_dict.items()}
     if os.path.exists(os.path.join(os.path.dirname(__file__), "devices.txt")):
         os.remove(os.path.join(os.path.dirname(__file__), "devices.txt"))
