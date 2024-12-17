@@ -252,7 +252,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
         if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
             for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()].keys():
-                if re.search('Programmers',eachProgCheckKey):
+                if re.search('Programmers',eachProgCheckKey) or re.search('programmers',eachProgCheckKey):
                     if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey]:
                         splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey].split('/')
                         for eachProgDebug in splitProgsDebuggers:
@@ -285,32 +285,22 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                         device_support_package
                                     )
                                 )
-        ## Always add gdb_general and codegrip package if exists
+        # Always add gdb_general
         if addGeneral:
-            if eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '') in progDbgInfo:
-                if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
-                    device_support_package = progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']
-                    if device_support_package == False:
-                        device_support_package = ''
-                else:
-                    device_support_package = ''
-            else:
-                device_support_package = ''
             insertIntoTable(
                 database,
                 'ProgrammerToDevice',
                 [
                     'gdb_general', ## programer_uid
                     eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
-                    device_support_package ## device_support_package
+                    '' ## device_support_package
                 ],
                 ProgrammerToDeviceColumns
             )
             print(
-                "Added gdb_general/%s/%s to database ProgrammerToDevice table.\n" %
+                "Added gdb_general/%s to database ProgrammerToDevice table.\n" %
                 (
                     eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value],
-                    device_support_package
                 )
             )
     return
