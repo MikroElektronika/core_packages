@@ -135,8 +135,6 @@ jobs:
       run: |
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         refManNumber="${refManNumber//\//_}"
-        echo "Found asset: extracted_${refManNumber}.7z"
-        echo "refManNumber='extracted_${refManNumber}.7z'"
         gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.7z"
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
@@ -164,7 +162,9 @@ jobs:
           # Check if the directory name matches any branch name in the array
           for branch in "${{ steps.branch-creation.outputs.branch_info }}[@]"; do
             read -r mcu branchName <<< "${branch}"
+            echo "Found branch name: ${branchName}"
             if [[ "$mcu" == *"$dirName"* ]]; then
+              echo "Found branch name again: ${branchName}"
               if ${{ github.event.inputs.new_branch }} == true; then
                 git branch $branchName
                 git checkout $branchName
