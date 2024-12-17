@@ -260,6 +260,10 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                 database,
                                 f'SELECT uid FROM Programmers WHERE name IS "{eachProgDebug}"'
                             )
+                            if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
+                                device_support_package = progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']
+                            else:
+                                device_support_package = ''
                             if progDebugUid[enums.dbSync.COUNT.value]:
                                 insertIntoTable(
                                     database,
@@ -267,7 +271,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                     [
                                         progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value], ## programer_uid
                                         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
-                                        progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name'] ## device_support_package
+                                        device_support_package
                                     ],
                                     ProgrammerToDeviceColumns
                                 )
@@ -276,7 +280,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                     (
                                         progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value],
                                         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value],
-                                        progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']
+                                        device_support_package
                                     )
                                 )
         ## Always add gdb_general and codegrip package if exists
