@@ -130,6 +130,7 @@ jobs:
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         refManNumber="${refManNumber//\//_}"
         echo "Found asset: extracted_${refManNumber}.7z"
+        gh release view --repo MikroElektronika/sdk_automation --json assets --jq '.assets[].name'
         gh release download --repo MikroElektronika/sdk_automation latest --pattern 'extracted_${refManNumber}.7z'
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
