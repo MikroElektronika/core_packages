@@ -262,8 +262,8 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                             )
                             if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
                                 device_support_package = progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']
-                                if programmer_package == False:
-                                    programmer_package = ''
+                                if device_support_package == False:
+                                    device_support_package = ''
                             else:
                                 device_support_package = ''
                             if progDebugUid[enums.dbSync.COUNT.value]:
@@ -290,19 +290,19 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
             if eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '') in progDbgInfo:
                 if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
                     device_support_package = progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']
-                    if programmer_package == False:
-                        programmer_package = ''
+                    if device_support_package == False:
+                        device_support_package = ''
                 else:
                     device_support_package = ''
             else:
-                programmer_package = ''
+                device_support_package = ''
             insertIntoTable(
                 database,
                 'ProgrammerToDevice',
                 [
                     'gdb_general', ## programer_uid
                     eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
-                    programmer_package ## device_support_package
+                    device_support_package ## device_support_package
                 ],
                 ProgrammerToDeviceColumns
             )
@@ -310,7 +310,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                 "Added gdb_general/%s/%s to database ProgrammerToDevice table.\n" %
                 (
                     eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value],
-                    programmer_package
+                    device_support_package
                 )
             )
     return
