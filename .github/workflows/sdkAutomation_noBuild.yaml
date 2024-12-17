@@ -131,7 +131,7 @@ jobs:
         refManNumber="${refManNumber//\//_}"
         echo "Found asset: extracted_${refManNumber}.7z"
         echo "refManNumber='extracted_${refManNumber}.7z'"
-        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'extracted_${refManNumber}.7z'
+        gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.7z"
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: Verify if assets were found
