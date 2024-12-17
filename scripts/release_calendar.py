@@ -1,4 +1,4 @@
-import os, argparse, json, urllib.request
+import os, argparse, json, urllib.request, re
 
 from datetime import datetime
 
@@ -47,6 +47,7 @@ def get_data(link, calendar_title, saveToFile=None):
         formatted_array.append(
             {
                 "notes": f"<ul>\n<li>{board_name}</li>\n</ul>",
+                "mcu": re.findall('(?<=\_)[^\_]+(?=\_[^\_]+$)', parts[0])[0] if re.search('(?<=\_)[^\_]+(?=\_[^\_]+$)', parts[0]) else '',
                 "branch": parts[1],
                 "tz": "Europe/Belgrade",
                 "start_dt": release_date.strftime("%Y-%m-%d"),
@@ -117,12 +118,17 @@ def find_branch():
         json_data = json.load(file)
     current_date = f'{datetime.today().year}-{datetime.today().month}-{datetime.today().day}'
 
-    for release in json_data['NECTO DAILY UPDATE']["events"]:
+    for indexRelease, release in enumerate(json_data['NECTO DAILY UPDATE']["events"]):
         date = release["start_dt"]
         if "2025-07-14" == date:
-            return release["branch"]
+            refManual = json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]
+            listOfBranches = []
+            for nextRlease in json_data['NECTO DAILY UPDATE']["events"][indexRelease:]:
+                if refManual == json.loads(nextRlease["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]:
+                    listOfBranches.append([nextRlease["mcu"], nextRlease["branch"]])
+            return listOfBranches
 
-    return "NO_BRANCH_IN_SPREADSHEET"
+    return [["NO_BRANCH_IN_SPREADSHEET", "NO_BRANCH_IN_SPREADSHEET"]]
 
 def find_reference_manual():
     with open(os.path.join(os.path.dirname(__file__), 'releases.json')) as file:

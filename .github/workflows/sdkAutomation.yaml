@@ -96,24 +96,16 @@ jobs:
 
     # Create a new branch
     - name: Create branch
+      id: branch-creation
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET)
-        if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
-          echo "Check the Google spreadsheet, $branchName!"
+        branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branch")
+        if [ "${branchName[0][1]}" == "NO_BRANCH_IN_SPREADSHEET" ]; then
+          echo "Check the Google spreadsheet, ${branchName[0][1]}!"
           exit 1
         fi
-        echo "Found branch: $branchName"
-
-        if ${{ github.event.inputs.new_branch }} == true; then
-          git branch $branchName
-          git checkout $branchName
-          git push -u origin $branchName
-        else
-          git checkout $branchName
-          git reset --hard $(git rev-list --max-parents=1 )
-        fi
+        echo "branch_name=${branchName}" >> $GITHUB_OUTPUT
 
     # Create a new directory at the root of your repository
     - name: Create automatization directory
@@ -133,7 +125,9 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
       run: |
-        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
+        refManNumber="${refManNumber//\//_}"
+        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'extracted_${refManNumber}.7z'
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: Verify if assets were found
@@ -239,9 +233,12 @@ jobs:
     # Aquire the asset that we just generated with the sdk_automation script
     - name: Fetch asset
       if: steps.check-asset-existence.outcome != 'success'
-      run: gh release download --repo MikroElektronika/sdk_automation latest --pattern 'generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+      run: |
+        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
+        refManNumber="${refManNumber//\//_}"
+        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'extracted_${refManNumber}.7z'
 
     # Move the asset we just downloaded to automatization and extract it
     - name: Move to the created directory unzip and distribute files
@@ -250,26 +247,51 @@ jobs:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
-        sudo mv generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
+        sudo mv extracted_${refManNumber//\//_}.7z automatization/
         cd automatization
-        unzip generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
+        py7zr x extracted_${refManNumber//\//_}.7z
 
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
+        for dir in */; do
+          dirName="${dir%/}"
 
-        sudo mv "${{ steps.upper-mcu-name.outputs.mcu_name }}" ../resources/queries/mcus/
-        sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}/
-        echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
-        sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/def/
-        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')/
-        sudo mv 'init_clock.c' ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber/
-        sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
-        sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
-        sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
-        cd delays
-        sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
-        cd ..
+          # Check if the directory name matches any branch name in the array
+          for branch in "${${{ steps.branch-creation.outputs.branch_name }}[@]}"; do
+            if [[ "${branch[0][0]}" == *"$dirName"* ]]; then
+              if ${{ github.event.inputs.new_branch }} == true; then
+                git branch ${branch[0][1]}
+                git checkout ${branch[0][1]}
+                git push -u origin ${branch[0][1]}
+              else
+                git checkout ${branch[0][1]}
+                git reset --hard $(git rev-list --max-parents=1 )
+              fi
+
+              cd $dirName
+              cd generatedFiles
+
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
+
+              sudo mv "${{ steps.upper-mcu-name.outputs.mcu_name }}" ../../../resources/queries/mcus/
+              sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}/
+              echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
+              sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/
+              sudo mv 'interrupts_mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')/
+              sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber/
+              sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              cd delays
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+
+              cd ..
+              cd ..
+              cd ..
+            fi
+          done
+        done
+
 
     - name: Create new core for delays if necessary
       run: |
