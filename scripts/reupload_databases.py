@@ -262,6 +262,8 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                             )
                             if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
                                 device_support_package = progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']
+                                if programmer_package == False:
+                                    programmer_package = ''
                             else:
                                 device_support_package = ''
                             if progDebugUid[enums.dbSync.COUNT.value]:
@@ -286,9 +288,12 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
         ## Always add gdb_general and codegrip package if exists
         if addGeneral:
             if eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '') in progDbgInfo:
-                programmer_package = progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']
-                if programmer_package == False:
-                    programmer_package = ''
+                if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
+                    device_support_package = progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']
+                    if programmer_package == False:
+                        programmer_package = ''
+                else:
+                    device_support_package = ''
             else:
                 programmer_package = ''
             insertIntoTable(
