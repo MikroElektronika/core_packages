@@ -120,7 +120,7 @@ def find_branch():
 
     for indexRelease, release in enumerate(json_data['NECTO DAILY UPDATE']["events"]):
         date = release["start_dt"]
-        if "2025-07-14" == date:
+        if "2030-01-01" == date:
             refManual = json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]
             listOfBranches = []
             for nextRlease in json_data['NECTO DAILY UPDATE']["events"][indexRelease:]:
@@ -137,7 +137,7 @@ def find_reference_manual():
 
     for release in json_data['NECTO DAILY UPDATE']["events"]:
         date = release["start_dt"]
-        if "2025-07-14" == date:
+        if "2030-01-01" == date:
             return json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"].replace('.pdf', '')
 
     return "none"
