@@ -1,0 +1,386 @@
+[
+    [
+        "0",
+        "-",
+        "ARM core",
+        "Initial Stack Pointer"
+    ],
+    [
+        "1",
+        "-",
+        "ARM core",
+        "Initial Program Counter"
+    ],
+    [
+        "2",
+        "-",
+        "ARM core",
+        "Non-maskable Interrupt (NMI)"
+    ],
+    [
+        "3",
+        "-",
+        "ARM core",
+        "Hard Fault"
+    ],
+    [
+        "4",
+        "-",
+        "ARM core",
+        "MemManage Fault"
+    ],
+    [
+        "5",
+        "-",
+        "ARM core",
+        "Bus Fault"
+    ],
+    [
+        "6",
+        "-",
+        "ARM core",
+        "Usage Fault"
+    ],
+    [
+        "7",
+        "-",
+        "-",
+        "-"
+    ],
+    [
+        "8",
+        "-",
+        "-",
+        "-"
+    ],
+    [
+        "9",
+        "-",
+        "-",
+        "-"
+    ],
+    [
+        "10",
+        "-",
+        "-",
+        "-"
+    ],
+    [
+        "11",
+        "-",
+        "ARM core",
+        "Supervisor call (SVCall)"
+    ],
+    [
+        "12",
+        "-",
+        "ARM core",
+        "Debug Monitor"
+    ],
+    [
+        "13",
+        "-",
+        "-",
+        "-"
+    ],
+    [
+        "14",
+        "-",
+        "ARM core",
+        "Pendable request for system service (PendableSrvReq)"
+    ],
+    [
+        "15",
+        "-",
+        "ARM core",
+        "System tick timer (SysTick)"
+    ],
+    [
+        "16",
+        "0",
+        "DMA",
+        "DMA channel 0 transfer complete"
+    ],
+    [
+        "17",
+        "1",
+        "DMA",
+        "DMA channel 1 transfer complete"
+    ],
+    [
+        "18",
+        "2",
+        "DMA",
+        "DMA channel 2 transfer complete"
+    ],
+    [
+        "19",
+        "3",
+        "DMA",
+        "DMA channel 3 transfer complete"
+    ],
+    [
+        "20",
+        "4",
+        "DMA",
+        "DMA error interrupt channel"
+    ],
+    [
+        "21",
+        "5",
+        "DMA",
+        "-"
+    ],
+    [
+        "22",
+        "6",
+        "Flash memory",
+        "Command complete"
+    ],
+    [
+        "23",
+        "7",
+        "Flash memory",
+        "Read collision"
+    ],
+    [
+        "24",
+        "8",
+        "Mode Controller",
+        "Low-voltage detect, low-voltage warning"
+    ],
+    [
+        "25",
+        "9",
+        "LLWU",
+        "Low Leakage Wakeup"
+    ],
+    [
+        "26",
+        "10",
+        "WDOG",
+        "Both EWM and WDOG interrupt sources set this IRQ"
+    ],
+    [
+        "27",
+        "11",
+        "I2C0",
+        "-"
+    ],
+    [
+        "28",
+        "12",
+        "SPI0",
+        "Single interrupt vector for all sources"
+    ],
+    [
+        "29",
+        "13",
+        "I2S0",
+        "Transmit"
+    ],
+    [
+        "30",
+        "14",
+        "I2S1",
+        "Receive"
+    ],
+    [
+        "31",
+        "15",
+        "UART0",
+        "Single interrupt vector for CEA7091-B (LON) status sources"
+    ],
+    [
+        "32",
+        "16",
+        "UART0",
+        "Single interrupt vector for UART status sources"
+    ],
+    [
+        "33",
+        "17",
+        "UART0",
+        "Single interrupt vector for UART error sources"
+    ],
+    [
+        "34",
+        "18",
+        "UART1",
+        "Single interrupt vector for UART status sources"
+    ],
+    [
+        "35",
+        "19",
+        "UART1",
+        "Single interrupt vector for UART error sources"
+    ],
+    [
+        "36",
+        "20",
+        "UART2",
+        "Single interrupt vector for UART status sources"
+    ],
+    [
+        "37",
+        "21",
+        "UART2",
+        "Single interrupt vector for UART error sources"
+    ],
+    [
+        "38",
+        "22",
+        "ADC0",
+        "-"
+    ],
+    [
+        "39",
+        "23",
+        "CMP0",
+        "-"
+    ],
+    [
+        "40",
+        "24",
+        "CMP1",
+        "-"
+    ],
+    [
+        "41",
+        "25",
+        "FTM0",
+        "-"
+    ],
+    [
+        "42",
+        "26",
+        "FTM1",
+        "-"
+    ],
+    [
+        "43",
+        "27",
+        "CMT",
+        "-"
+    ],
+    [
+        "44",
+        "28",
+        "RTC",
+        "Alarm interrupt"
+    ],
+    [
+        "45",
+        "29",
+        "RTC",
+        "Seconds interrupt"
+    ],
+    [
+        "46",
+        "30",
+        "PIT",
+        "Channel 0"
+    ],
+    [
+        "47",
+        "31",
+        "PIT",
+        "Channel 1"
+    ],
+    [
+        "48",
+        "32",
+        "PIT",
+        "Channel 2"
+    ],
+    [
+        "49",
+        "33",
+        "PIT",
+        "Channel 3"
+    ],
+    [
+        "50",
+        "34",
+        "PDB",
+        "-"
+    ],
+    [
+        "51",
+        "35",
+        "Reserved",
+        "-"
+    ],
+    [
+        "52",
+        "36",
+        "Reserved",
+        "-"
+    ],
+    [
+        "53",
+        "37",
+        "Reserved",
+        "-"
+    ],
+    [
+        "54",
+        "38",
+        "TSI",
+        "-"
+    ],
+    [
+        "55",
+        "39",
+        "MCG",
+        "-"
+    ],
+    [
+        "56",
+        "40",
+        "Low Power Timer",
+        "-"
+    ],
+    [
+        "57",
+        "41",
+        "Port control",
+        "Pin detect (Port A)"
+    ],
+    [
+        "58",
+        "42",
+        "Port control",
+        "Pin detect (Port B)"
+    ],
+    [
+        "59",
+        "43",
+        "Port control",
+        "Pin detect (Port C)"
+    ],
+    [
+        "60",
+        "44",
+        "Port control",
+        "Pin detect (Port D)"
+    ],
+    [
+        "61",
+        "45",
+        "Port control",
+        "Pin detect (Port E)"
+    ],
+    [
+        "62",
+        "46",
+        "Software initiated",
+        "-"
+    ],
+    [
+        "63",
+        "-",
+        "-",
+        "-"
+    ]
+]
