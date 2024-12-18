@@ -104,7 +104,7 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
             echo "Indexing to Test."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} "False" ${{ github.event.inputs.release_version }} "False" "False"
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP }} "False" ${{ github.event.inputs.release_version }} "False" "False"
 
       - name: Notify Mattermost - Test ready
         env:
