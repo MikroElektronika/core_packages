@@ -554,7 +554,7 @@
                 "additional": ""
             },
             {
-                "notes": "<ul>\n<li>STM32U5A9VJ_ZJ MCU Support package for GCC & Clang</li>\n\n<li>TM4C1294G LaunchPad Evaluation Kit</li>\n</ul>",
+                "notes": "<ul>\n<li>STM32U5A9VJ_ZJ MCU Support package for GCC & Clang</li>\n\n<li>TM4C1294 LaunchPad Evaluation Kit</li>\n</ul>",
                 "mcu": "",
                 "branch": "new-feature/mcus/48",
                 "tz": "Europe/Belgrade",
