@@ -111,8 +111,8 @@ jobs:
         branchInfoArray=($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
         mcuInfoArray=($(echo "$mcuInfo" | tr -d "[]'," | tr -s ' ' '\n'))
         echo "Branch Info Array:"
-        for branch in "${branchInfoArray[@]}"; do
-          echo "branch value: $branch"
+        for i in "${!branchInfoArray[@]}"; do
+          echo "MCU: ${mcuInfoArray[i]}, Branch Name: ${branchInfoArray[i]}"
         done
         
         read -r branchName <<< "${branchInfo[0]}"
@@ -165,17 +165,14 @@ jobs:
         cd automatization
         py7zr x extracted_${refManNumber//\//_}.7z
 
-        echo "Branch Info: ${{steps.branch-creation.outputs.branch_info}}"
-        echo "MCU Info: ${{steps.branch-creation.outputs.mcu_info}}"
-
-        # Split branch_info into an array
-        IFS=',' read -r -a branch_info_array <<< "${{steps.branch-creation.outputs.branch_info}}"
+        branchInfoArray=${{steps.branch-creation.outputs.branch_info}}
+        mcuInfoArray=${{steps.branch-creation.outputs.mcu_info}}
 
         for dir in */; do
           dirName="${dir%/}"
 
           # Check if the directory name matches any branch name in the array
-          for branch in "${{steps.branch-creation.outputs.branch_info}}[@]"; do
+          for branch in "$branchInfoArray[@]"; do
             echo "Found branch name: $branch"
             if [[ "$mcu" == *"$dirName"* ]]; then
               echo "Found branch name again: ${branchName}"
