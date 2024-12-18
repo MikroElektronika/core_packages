@@ -1,10 +1,11 @@
-import os, re, time, argparse, requests, hashlib, shutil
+import os, re, time, argparse, requests, hashlib, shutil, json
 from elasticsearch import Elasticsearch
 from pathlib import Path
 from datetime import datetime, timezone
 
 import support as support
 import read_microchip_index as MCHP
+import read_codegrip_index as CODEGRIP
 
 # Gets latest release headers from repository
 def get_headers(api, token):
@@ -480,6 +481,41 @@ def index_microchip_packs(es: Elasticsearch, index_name: str):
         resp = es.index(index=index_name, doc_type='necto_package', id=eachItem['name'], body=eachItem)
         print(f"{resp["result"]} {resp['_id']}")
 
+def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
+    package_items = CODEGRIP.convert_item_to_json(doc_codegrip, True)
+
+    # Get the current time in UTC
+    current_time = datetime.now(timezone.utc).replace(microsecond=0)
+    # If you specifically want the 'Z' at the end instead of the offset
+    published_at = current_time.isoformat().replace('+00:00', 'Z')
+
+    for package in package_items:
+        new_version, package_updated = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'])
+        major_new, minor_new, patch_new = map(int, new_version.split('.'))
+        major_csv, minor_csv, patch_csv = map(int, package_items[package]['package_version'].split('.'))
+        if major_new < major_csv or minor_new < minor_csv or patch_new < patch_csv:
+            new_version = package_items[package]['package_version']
+            package_updated = True
+        if package_updated:
+            doc = {
+                "name": package_items[package]['package_name'],
+                "display_name": package_items[package]['display_name'],
+                "author": "MikroElektronika",
+                "hidden": False,
+                "type": "programmer_dfp",
+                "version": new_version,
+                "package_version": package_items[package]['package_version'],
+                "published_at": published_at,
+                "category": "CODEGRIP Device Pack",
+                "download_link": package_items[package]['download_link'],
+                "package_changed": True,
+                "install_location": package_items[package]['install_location'],
+                "dependencies": json.loads(package_items[package]['dependencies']),
+                "mcus": package_items[package]['mcus']
+            }
+            resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
+            print(f"{resp["result"]} {resp['_id']}")
+
 if __name__ == '__main__':
     # First, check for arguments passed
     def str2bool(v):
@@ -497,6 +533,7 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("select_index", help="Provided index name")
+    parser.add_argument('doc_codegrip', type=str, help='Spreadsheet table download link.')
     parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=str2bool)
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
     parser.add_argument("update_database", help="If true will update database.7z", type=str2bool)
@@ -527,6 +564,7 @@ if __name__ == '__main__':
     if 'live' not in args.select_index:
         # TODO - uncomment once LIVE test is confirmed to work
         index_microchip_packs(es, args.select_index)
+        index_codegrip_packs(es, args.select_index, args.doc_codegrip)
 
     # Now index the new release
     index_release_to_elasticsearch(
