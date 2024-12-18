@@ -110,6 +110,11 @@ jobs:
         mcuInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "mcus")
         branchInfoArray=($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
         mcuInfoArray=($(echo "$mcuInfo" | tr -d "[]'," | tr -s ' ' '\n'))
+        echo "Branch Info Array:"
+        for branch in "${branchInfoArray[@]}"; do
+          echo "$branch"
+        done
+        
         echo "Branch Info: $branchInfo"
         echo "MCU Info: $mcuInfo"
 
