@@ -186,12 +186,7 @@ jobs:
                 git reset --hard $(git rev-list --max-parents=1 )
               fi
 
-              echo $(basename $(pwd))
-              cd $dirName
-              echo $(basename $(pwd))
-              cd generatedFiles
-              echo $(basename $(pwd))
-
+              unzip generated_files_${mcuInfoArray[i]}.zip
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${mcuInfoArray[i]} | tr '[:upper:]' '[:lower:]')
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
