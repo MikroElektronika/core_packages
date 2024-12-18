@@ -231,14 +231,14 @@ jobs:
 
               echo $(pwd)
 
-              CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
-              if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
-                echo "Core already exists: $CORE"
-              else
-                mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
-                sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
-                echo "Found new core: $CORE"
-              fi
+              #CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
+              #if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
+              #  echo "Core already exists: $CORE"
+              #else
+              #  mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
+              #  sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
+              #  echo "Found new core: $CORE"
+              #fi
 
               # Commit changes
               git add .
