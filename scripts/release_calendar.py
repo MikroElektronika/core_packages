@@ -122,13 +122,15 @@ def find_branch():
         date = release["start_dt"]
         if "2030-01-01" == date:
             refManual = json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]
+            listOfMcus = []
             listOfBranches = []
             for nextRlease in json_data['NECTO DAILY UPDATE']["events"][indexRelease:]:
                 if refManual == json.loads(nextRlease["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]:
-                    listOfBranches.append([nextRlease["mcu"], nextRlease["branch"]])
-            return listOfBranches
+                    listOfMcus.append(nextRlease["mcu"])
+                    listOfBranches.append(nextRlease["branch"])
+            return listOfMcus, listOfBranches
 
-    return [["NO_BRANCH_IN_SPREADSHEET", "NO_BRANCH_IN_SPREADSHEET"]]
+    return ["NO_BRANCH_IN_SPREADSHEET"], ["NO_BRANCH_IN_SPREADSHEET"]
 
 def find_reference_manual():
     with open(os.path.join(os.path.dirname(__file__), 'releases.json')) as file:
