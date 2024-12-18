@@ -153,7 +153,7 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
             echo "Indexing to Live."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} "False" ${{ github.event.inputs.release_version }} "False" "False"
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP }} "False" ${{ github.event.inputs.release_version }} "False" "False"
 
       - name: Send notification to Mattermost
         if: ${{ github.event.inputs.notify_channel == 'true' }}
