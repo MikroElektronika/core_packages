@@ -149,6 +149,18 @@ jobs:
         echo "Generated files not found. Exiting."
         exit 1
 
+    - name: Create new core for delays if necessary
+      if: steps.check-asset-existence.outcome == 'success'
+      run: |
+        CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/${{ steps.move_files.outputs.json_name }} | tr '[:upper:]' '[:lower:]')
+        if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
+          echo "Core already exists: $CORE"
+        else
+          mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
+          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
+          echo "Found new core: $CORE"
+        fi
+
     # Move the asset we just downloaded to automatization and extract it
     - name: Move to the created directory unzip and distribute files
       if: steps.check-asset-existence.outcome == 'success'
@@ -156,6 +168,8 @@ jobs:
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
+        currentBranch=$(git rev-parse --abbrev-ref HEAD)
+        echo "current branch is: $currentBranch"
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         sudo mv extracted_${refManNumber//\//_}.7z automatization/
         cd automatization
@@ -191,7 +205,7 @@ jobs:
               echo $(basename $(pwd))
               cd generatedFiles
               unzip generated_files_${mcuInfoArray[i]}.zip
-              
+
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${mcuInfoArray[i]} | tr '[:upper:]' '[:lower:]')
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
@@ -211,31 +225,23 @@ jobs:
               cd ..
               cd ..
               cd ..
+
+              CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
+              if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
+                echo "Core already exists: $CORE"
+              else
+                mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
+                sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
+                echo "Found new core: $CORE"
+              fi
+
+              # Commit changes
+              git add .
+              git commit -m "Pulled files from sdk_automation into core_packages"
+              # Push changes back to your repository
+              git push -u origin ${{ github.event.inputs.build_branch }}
+
+              git checkout ${currentBranch}
             fi
           done
         done
-
-    - name: Create new core for delays if necessary
-      if: steps.check-asset-existence.outcome == 'success'
-      run: |
-        CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/${{ steps.move_files.outputs.json_name }} | tr '[:upper:]' '[:lower:]')
-        if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
-          echo "Core already exists: $CORE"
-        else
-          mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
-          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
-          echo "Found new core: $CORE"
-        fi
-
-    # Commit changes
-    - name: Commit changes
-      if: steps.check-asset-existence.outcome == 'success'
-      run: |
-        git add .
-        git commit -m "Pulled files from sdk_automation into core_packages"
-
-    # Push changes back to your repository
-    - name: Push changes
-      if: steps.check-asset-existence.outcome == 'success'
-      run: |
-        git push -u origin ${{ github.event.inputs.build_branch }}
