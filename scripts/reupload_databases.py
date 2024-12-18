@@ -300,7 +300,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
             print(
                 "Added gdb_general/%s to database ProgrammerToDevice table.\n" %
                 (
-                    eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value],
+                    eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
                 )
             )
     return
