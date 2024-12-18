@@ -212,7 +212,7 @@ jobs:
 
               mkdir -p ../../../ARM/gcc_clang/def/nxp/MK10DN128VFM5
               mkdir -p ../../../ARM/gcc_clang/interrupts/include/interrupts_mcu/mk10dn128vfm5
-              mkdir -p /home/runner/work/core_packages/core_packages/ARM/gcc_clang/system/src/nxp/doc_ds_4
+              mkdir -p home/runner/work/core_packages/core_packages/ARM/gcc_clang/system/src/nxp/doc_ds_4
 
               sudo mv "${mcuInfoArray[i]}" ../../../resources/queries/mcus/
               sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}/
