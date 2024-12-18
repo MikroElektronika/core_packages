@@ -112,12 +112,9 @@ jobs:
         mcuInfoArray=($(echo "$mcuInfo" | tr -d "[]'," | tr -s ' ' '\n'))
         echo "Branch Info Array:"
         for branch in "${branchInfoArray[@]}"; do
-          echo "$branch"
+          echo "branch value: $branch"
         done
         
-        echo "Branch Info: $branchInfo"
-        echo "MCU Info: $mcuInfo"
-
         read -r branchName <<< "${branchInfo[0]}"
         if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
           echo "Check the Google spreadsheet, $branchName!"
