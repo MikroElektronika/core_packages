@@ -159,11 +159,11 @@ jobs:
         cd automatization
         py7zr x extracted_${refManNumber//\//_}.7z
 
-        echo "Branch Info: $branch_info"
-        echo "MCU Info: $mcu_info"
+        echo "Branch Info: ${{steps.branch-creation.output.branch_info}}"
+        echo "MCU Info: ${{steps.branch-creation.output.mcu_info}}"
 
         # Split branch_info into an array
-        IFS=',' read -r -a branch_info_array <<< "$branch_info"
+        IFS=',' read -r -a branch_info_array <<< "${{steps.branch-creation.output.branch_info}}"
 
         for dir in */; do
           dirName="${dir%/}"
