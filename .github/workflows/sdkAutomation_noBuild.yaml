@@ -187,7 +187,9 @@ jobs:
               fi
 
               echo $(basename $(pwd))
-              ls -als
+              cd $dirName
+              echo $(basename $(pwd))
+              cd generatedFiles
               unzip generated_files_${mcuInfoArray[i]}.zip
               
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}
