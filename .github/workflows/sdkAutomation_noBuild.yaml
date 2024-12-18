@@ -159,11 +159,17 @@ jobs:
         cd automatization
         py7zr x extracted_${refManNumber//\//_}.7z
 
+        echo "Branch Info: $branch_info"
+        echo "MCU Info: $mcu_info"
+
+        # Split branch_info into an array
+        IFS=',' read -r -a branch_info_array <<< "$branch_info"
+
         for dir in */; do
           dirName="${dir%/}"
 
           # Check if the directory name matches any branch name in the array
-          for branch in "${ steps.branch-creation.outputs.branch_info[@] }"; do
+          for branch in "${branch_info_array[@]}"; do
             echo "Found branch name: $branch"
             if [[ "$mcu" == *"$dirName"* ]]; then
               echo "Found branch name again: ${branchName}"
