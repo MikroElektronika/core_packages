@@ -175,7 +175,7 @@ jobs:
           for i in "${!branchInfoArray[@]}"; do
             echo "Found mcu name: ${mcuInfoArray[i]}"
             echo "Found dir name: $dirName"
-            if [ "${mcuInfoArray[i]}" = *"MK10DN128VFM5"* ]; then
+            if [ "$dirName" = *"MK10DN128VFM5"* ]; then
               echo "Found branch name again: ${branchInfoArray[i]}"
               if ${{ github.event.inputs.new_branch }} == true; then
                 git branch ${branchInfoArray[i]}
