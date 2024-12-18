@@ -214,6 +214,8 @@ jobs:
               sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}/
               json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))
               echo "JSON_NAME: $json_name"
+              absolute="$(cd $(dirname \"../../../${{ github.event.inputs.architecture }}/gcc_clang/def/\"); pwd)/$(basename \"../../../${{ github.event.inputs.architecture }}/gcc_clang/def/\")"
+              echo "ABSOLUTE PATH: $absolute"
               sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/
               sudo mv 'interrupts_mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${mcuInfoArray[i]} | tr '[:upper:]' '[:lower:]')/
               sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber/
