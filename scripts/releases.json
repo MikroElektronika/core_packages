@@ -1066,7 +1066,7 @@
                 "additional": ""
             },
             {
-                "notes": "<ul>\n<li>test_package_CORE_MK10DN32VFM5_K10P32M50SF0RM</li>\n\n<li>test_package_CORE_MK10DX32VFM5_K10P32M50SF0RM</li>\n\n<li>test_package_CORE_MK10DN64VFM5_K10P32M50SF0RM</li>\n\n<li>test_package_CORE_MK10DX64VFM5_K10P32M50SF0RM</li>\n\n<li>test_package_CORE_MK10DN128VFM5_K10P32M50SF0RM</li>\n\n<li>test_package_CORE_MK10DX128VFM5_K10P32M50SF0RM</li>\n</ul>",
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN32VFM5_K10P32M50SF0RM</li>\n</ul>",
                 "mcu": "MK10DN32VFM5",
                 "branch": "new-feature/automation/15",
                 "tz": "Europe/Belgrade",
@@ -1074,51 +1074,43 @@
                 "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
             },
             {
-                "notes": "<ul>\n<li>test_package_CORE_MK10DX128VFM5_K10P32M50SF0RM</li>\n</ul>",
-                "mcu": "MK10DX128VFM5",
-                "branch": "new-feature/automation/37",
-                "tz": "Europe/Belgrade",
-                "start_dt": "2025-07-04",
-                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
-            },
-            {
-                "notes": "<ul>\n<li>test_package_CORE_MK10DN128VFM5_K10P32M50SF0RM</li>\n</ul>",
-                "mcu": "MK10DN128VFM5",
-                "branch": "new-feature/automation/38",
-                "tz": "Europe/Belgrade",
-                "start_dt": "2025-07-07",
-                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
-            },
-            {
-                "notes": "<ul>\n<li>test_package_CORE_MK10DN32VFM5_K10P32M50SF0RM</li>\n</ul>",
-                "mcu": "MK10DN32VFM5",
-                "branch": "new-feature/automation/39",
-                "tz": "Europe/Belgrade",
-                "start_dt": "2025-07-08",
-                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
-            },
-            {
                 "notes": "<ul>\n<li>test_package_CORE_MK10DX32VFM5_K10P32M50SF0RM</li>\n</ul>",
                 "mcu": "MK10DX32VFM5",
-                "branch": "new-feature/automation/40",
+                "branch": "new-feature/automation/16",
                 "tz": "Europe/Belgrade",
-                "start_dt": "2025-07-09",
+                "start_dt": "2030-01-02",
                 "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
             },
             {
                 "notes": "<ul>\n<li>test_package_CORE_MK10DN64VFM5_K10P32M50SF0RM</li>\n</ul>",
                 "mcu": "MK10DN64VFM5",
-                "branch": "new-feature/automation/41",
+                "branch": "new-feature/automation/17",
                 "tz": "Europe/Belgrade",
-                "start_dt": "2025-07-10",
+                "start_dt": "2030-01-03",
                 "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
             },
             {
                 "notes": "<ul>\n<li>test_package_CORE_MK10DX64VFM5_K10P32M50SF0RM</li>\n</ul>",
                 "mcu": "MK10DX64VFM5",
-                "branch": "new-feature/automation/42",
+                "branch": "new-feature/automation/18",
                 "tz": "Europe/Belgrade",
-                "start_dt": "2025-07-11",
+                "start_dt": "2030-01-04",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN128VFM5_K10P32M50SF0RM</li>\n</ul>",
+                "mcu": "MK10DN128VFM5",
+                "branch": "new-feature/automation/19",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-01-05",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX128VFM5_K10P32M50SF0RM</li>\n</ul>",
+                "mcu": "MK10DX128VFM5",
+                "branch": "new-feature/automation/20",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-01-06",
                 "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\""
             },
             {
