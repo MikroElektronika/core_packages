@@ -206,21 +206,21 @@ jobs:
               cd generatedFiles
               unzip generated_files_${mcuInfoArray[i]}.zip
 
-              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}
-              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${mcuInfoArray[i]} | tr '[:upper:]' '[:lower:]')
-              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
+              mkdir -p ../../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}
+              mkdir -p ../../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${mcuInfoArray[i]} | tr '[:upper:]' '[:lower:]')
+              mkdir -p ../../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
 
-              sudo mv "${mcuInfoArray[i]}" ../../../resources/queries/mcus/
-              sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}/
+              sudo mv "${mcuInfoArray[i]}" ../../../../resources/queries/mcus/
+              sudo mv 'mcu.h' ../../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${mcuInfoArray[i]}/
               echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
-              sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/
-              sudo mv 'interrupts_mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${mcuInfoArray[i]} | tr '[:upper:]' '[:lower:]')/
-              sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber/
-              sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
-              sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
-              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/def/
+              sudo mv 'interrupts_mcu.h' ../../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${mcuInfoArray[i]} | tr '[:upper:]' '[:lower:]')/
+              sudo mv 'init_clock.c' ../../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber/
+              sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
               cd delays
-              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
 
               cd ..
               cd ..
