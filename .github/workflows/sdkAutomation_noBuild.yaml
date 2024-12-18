@@ -108,20 +108,14 @@ jobs:
       run: |
         branchInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branch")
         mcuInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "mcus")
-        branchInfoArray=($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
-        mcuInfoArray=($(echo "$mcuInfo" | tr -d "[]'," | tr -s ' ' '\n'))
-        echo "Branch Info Array:"
-        for i in "${!branchInfoArray[@]}"; do
-          echo "MCU: ${mcuInfoArray[i]}, Branch Name: ${branchInfoArray[i]}"
-        done
         
-        read -r branchName <<< "${branchInfo[0]}"
-        if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
+        branchInfoArray = ($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
+        if [ "$branchInfoArray[0]" == "NO_BRANCH_IN_SPREADSHEET" ]; then
           echo "Check the Google spreadsheet, $branchName!"
           exit 1
         fi
-        echo "branch_info=${branchInfoArray}" >> $GITHUB_OUTPUT
-        echo "mcu_info=${mcuInfoArray}" >> $GITHUB_OUTPUT
+        echo "branch_info=${branchInfo}" >> $GITHUB_OUTPUT
+        echo "mcu_info=${mcuInfo}" >> $GITHUB_OUTPUT
 
     # Create a new directory at the root of your repository
     - name: Create automatization directory
@@ -165,8 +159,12 @@ jobs:
         cd automatization
         py7zr x extracted_${refManNumber//\//_}.7z
 
-        branchInfoArray=${{steps.branch-creation.outputs.branch_info}}
-        mcuInfoArray=${{steps.branch-creation.outputs.mcu_info}}
+        branchInfoArray=($(echo "${{steps.branch-creation.outputs.branch_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
+        mcuInfoArray=($(echo "${{steps.branch-creation.outputs.mcu_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
+        echo "Branch Info Array:"
+        for i in "${!branchInfoArray[@]}"; do
+          echo "MCU: ${mcuInfoArray[i]}, Branch Name: ${branchInfoArray[i]}"
+        done
 
         for dir in */; do
           dirName="${dir%/}"
