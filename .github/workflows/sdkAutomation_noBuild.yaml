@@ -173,7 +173,8 @@ jobs:
 
           # Check if the directory name matches any branch name in the array
           for i in "${!branchInfoArray[@]}"; do
-            echo "Found branch name: ${branchInfoArray[i]}"
+            echo "Found mcu name: ${mcuInfoArray[i]}"
+            echo "Found dir name: $dirName"
             if [[ "${mcuInfoArray[i]}" == *"$dirName"* ]]; then
               echo "Found branch name again: ${branchInfoArray[i]}"
               if ${{ github.event.inputs.new_branch }} == true; then
