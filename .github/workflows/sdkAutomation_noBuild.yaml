@@ -162,7 +162,7 @@ jobs:
           # Check if the directory name matches any branch name in the array
           for branch in "${{ steps.branch-creation.outputs.branch_info }}[@]"; do
             read -r mcu branchName <<< "${branch[@]}"
-            echo "Found branch name: ${branchName}"
+            echo "Found branch name: ${branch[0]}"
             if [[ "$mcu" == *"$dirName"* ]]; then
               echo "Found branch name again: ${branchName}"
               if ${{ github.event.inputs.new_branch }} == true; then
