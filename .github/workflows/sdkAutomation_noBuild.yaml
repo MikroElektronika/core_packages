@@ -108,12 +108,13 @@ jobs:
       run: |
         branchInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branch")
         mcuInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "mcus")
-        
-        branchInfoArray = ($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
+        ($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
+        branchInfoArray=($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
         if [ "$branchInfoArray[0]" == "NO_BRANCH_IN_SPREADSHEET" ]; then
           echo "Check the Google spreadsheet, $branchName!"
           exit 1
         fi
+        echo "Found branch: $branchInfoArray[0]!"
         echo "branch_info=${branchInfo}" >> $GITHUB_OUTPUT
         echo "mcu_info=${mcuInfo}" >> $GITHUB_OUTPUT
 
