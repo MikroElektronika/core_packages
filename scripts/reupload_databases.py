@@ -214,7 +214,10 @@ def getProgDbgAsJson(docLink, saveToFile=False):
 
     df = pd.read_csv(os.path.join(os.path.dirname(__file__), "devices.txt"))
     df.replace({np.nan: False}, inplace=True)
-    data_dict = df.set_index('Name').to_dict(orient='index')
+    if 'amazonaws' in docLink:
+        data_dict = df.set_index('name').to_dict(orient='index')
+    else:
+        data_dict = df.set_index('Name').to_dict(orient='index')
     formatted_dict = {mcu.lower(): data for mcu, data in data_dict.items()}
     if os.path.exists(os.path.join(os.path.dirname(__file__), "devices.txt")):
         os.remove(os.path.join(os.path.dirname(__file__), "devices.txt"))
@@ -227,7 +230,7 @@ def getProgDbgAsJson(docLink, saveToFile=False):
     return formatted_dict
 
 def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
-    ProgrammerToDeviceColumns = 'programer_uid, device_uid'
+    ProgrammerToDeviceColumns = 'programer_uid, device_uid, device_support_package'
 
     progUidList = [
         progUid[enums.dbSync.PROGRAMMERSPROGRAMMER.value] for progUid in
@@ -249,7 +252,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
         if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
             for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()].keys():
-                if re.search('Programmers',eachProgCheckKey):
+                if re.search('Programmers',eachProgCheckKey) or re.search('programmers',eachProgCheckKey):
                     if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey]:
                         splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey].split('/')
                         for eachProgDebug in splitProgsDebuggers:
@@ -257,35 +260,49 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                 database,
                                 f'SELECT uid FROM Programmers WHERE name IS "{eachProgDebug}"'
                             )
+                            if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
+                                device_support_package = f'["{progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']}"]'
+                                if device_support_package == [False]:
+                                    device_support_package = ''
+                            else:
+                                device_support_package = ''
                             if progDebugUid[enums.dbSync.COUNT.value]:
                                 insertIntoTable(
                                     database,
                                     'ProgrammerToDevice',
                                     [
                                         progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value], ## programer_uid
-                                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value] ## device_uid
+                                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
+                                        device_support_package
                                     ],
                                     ProgrammerToDeviceColumns
                                 )
                                 print(
-                                    "Added %s/%s to database ProgrammerToDevice table.\n" %
+                                    "Added %s/%s/%s to database ProgrammerToDevice table.\n" %
                                     (
                                         progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value],
-                                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
+                                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value],
+                                        device_support_package
                                     )
                                 )
-        ## Always add gdb_general?
+        # Always add gdb_general
         if addGeneral:
             insertIntoTable(
                 database,
                 'ProgrammerToDevice',
                 [
                     'gdb_general', ## programer_uid
-                    eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value] ## device_uid
+                    eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
+                    '' ## device_support_package
                 ],
                 ProgrammerToDeviceColumns
             )
-            print("Added gdb_general/%s to database ProgrammerToDevice table.\n" % eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value])
+            print(
+                "Added gdb_general/%s to database ProgrammerToDevice table.\n" %
+                (
+                    eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
+                )
+            )
     return
 
 def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
@@ -1004,7 +1021,7 @@ async def main(
     ## Step 9 - synchronize programmers for all devices - CODEGRIP first
     if not mcus_only:
         progDbgAsJson = getProgDbgAsJson(
-            f'https://docs.google.com/spreadsheets/d/{doc_codegrip}/export?format=csv',
+            doc_codegrip,
             True
         )
         if databaseErp:
