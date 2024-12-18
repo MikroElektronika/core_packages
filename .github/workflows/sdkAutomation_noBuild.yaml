@@ -160,7 +160,7 @@ jobs:
           dirName="${dir%/}"
 
           # Check if the directory name matches any branch name in the array
-          for branch in ${{ steps.branch-creation.outputs.branch_info }}[@]; do
+          for branch in "${{ steps.branch-creation.outputs.branch_info }}[@]"; do
             read -r mcu branchName <<< "${branch[@]}"
             echo "Found branch name: ${branchName}"
             if [[ "$mcu" == *"$dirName"* ]]; then
