@@ -108,7 +108,8 @@ jobs:
       run: |
         branchInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branch")
         mcuInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "mcus")
-
+        branchInfoArray=($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
+        mcuInfoArray=($(echo "$mcuInfo" | tr -d "[]'," | tr -s ' ' '\n'))
         echo "Branch Info: $branchInfo"
         echo "MCU Info: $mcuInfo"
 
@@ -117,8 +118,8 @@ jobs:
           echo "Check the Google spreadsheet, $branchName!"
           exit 1
         fi
-        echo "branch_info=${branchInfo}" >> $GITHUB_OUTPUT
-        echo "mcu_info=${mcuInfo}" >> $GITHUB_OUTPUT
+        echo "branch_info=${branchInfoArray}" >> $GITHUB_OUTPUT
+        echo "mcu_info=${mcuInfoArray}" >> $GITHUB_OUTPUT
 
     # Create a new directory at the root of your repository
     - name: Create automatization directory
