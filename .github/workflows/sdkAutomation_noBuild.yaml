@@ -170,11 +170,11 @@ jobs:
 
         for dir in ${dirInfoArray[@]}; do
           dirName="${dir%/}"
-          
+
           # Check if the directory name matches any branch name in the array
           for i in "${!branchInfoArray[@]}"; do
             if [ "$dirName" = "extracted_${mcuInfoArray[i]}" ]; then
-                          
+
               if ${{ github.event.inputs.new_branch }} == true; then
                 git branch ${branchInfoArray[i]}
                 git checkout ${branchInfoArray[i]}
@@ -184,7 +184,7 @@ jobs:
                 git reset --hard $(git rev-list --max-parents=1 )
               fi
 
-              cd automatization 
+              cd automatization
               py7zr x extracted_${refManNumber//\//_}.7z
               cd $dirName
               cd generatedFiles
@@ -229,11 +229,10 @@ jobs:
               git commit -m "Pulled files from sdk_automation into core_packages"
               # Push changes back to your repository
               git push -u origin ${{ github.event.inputs.build_branch }}
-
               git checkout ${currentBranch}
 
               mkdir -p automatization
-              sudo mv extracted_${refManNumber//\//_}.7z automatization/              
+              sudo mv extracted_${refManNumber//\//_}.7z automatization/
             fi
           done
         done
