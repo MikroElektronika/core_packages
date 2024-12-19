@@ -3,7 +3,21 @@ import sys, json, argparse, requests
 import classes.class_gh as gh
 import classes.class_es as es
 
+# Skip packages with these types
+type_skip = ['programmer_dfp', 'programmer_tp']
+
 if __name__ == "__main__":
+    # First, check for arguments passed
+    def str2bool(v):
+        if isinstance(v, bool):
+            return v
+        if v.lower() in ('yes', 'true', 't', 'y', '1'):
+            return True
+        elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+            return False
+        else:
+            raise argparse.ArgumentTypeError('Boolean value expected.')
+
     # Get arguments
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("gh_repo", help="Github repository name, e.g., 'username/repo'", type=str)
@@ -11,10 +25,14 @@ if __name__ == "__main__":
     parser.add_argument("es_host", help="ES instance host value", type=str)
     parser.add_argument("es_user", help="ES instance user value", type=str)
     parser.add_argument("es_password", help="ES instance password value", type=str)
+    parser.add_argument("me_es_host", help="MikroE ES instance host value", type=str)
+    parser.add_argument("me_es_user", help="MikroE ES instance user value", type=str)
+    parser.add_argument("me_es_password", help="MikroE ES instance password value", type=str)
     parser.add_argument("es_index", help="ES instance index value", type=str)
     parser.add_argument("--es_regex", help="Regex to use to fetch indexed items", type=str, default=".+")
-    parser.add_argument("--log_only", help="If True, will not fix broken links, just log them to std out", type=bool, default=False)
-    parser.add_argument("--index_package_names", help="If True, will add \"gh_package_name\" to indexed item", type=bool, default=True)
+    parser.add_argument("--log_only", help="If True, will not fix broken links, just log them to std out", type=str2bool, default=False)
+    parser.add_argument("--index_package_names", help="If True, will add \"gh_package_name\" to indexed item", type=str2bool, default=True)
+    parser.add_argument("--index_legacy_packages", help="If True, will re-index legacy compiler packages to DBP", type=str2bool, default=False)
     args = parser.parse_args()
 
     es_instance = es.index(
@@ -22,7 +40,15 @@ if __name__ == "__main__":
         index=args.es_index, token=args.gh_token
     )
 
+    me_es_instance = es.index(
+        es_host=args.me_es_host, es_user=args.me_es_user, es_password=args.me_es_password,
+        index=args.es_index, token=args.gh_token
+    )
+
     gh_instance = gh.repo(args.gh_repo, args.gh_token)
+
+    if args.index_legacy_packages:
+        args.es_regex += '|^legacy_.+$'
 
     es_instance.fetch(regex=args.es_regex)
 
@@ -32,6 +58,8 @@ if __name__ == "__main__":
 
     err = False
     for indexed_item in es_instance.indexed_items:
+        if indexed_item['source']['type'] in type_skip and 'live' in args.es_index:
+            continue
         asset_status = requests.get(indexed_item['source']['download_link'], headers=headers)
         if es_instance.Status.ERROR.value == asset_status.status_code: ## code 404 - error, reindex with correct download link
             err = True
@@ -45,7 +73,10 @@ if __name__ == "__main__":
                     print("%sWARNING: Asset \"%s\" has no \"gh_package_name\" in the index." % (es_instance.Colors.WARNING, indexed_item['source']['name']))
         else: ## code 200 - success, no need to reindex
             if args.index_package_names:
-                package_name = (json.loads(asset_status.text))['name']
+                if 'packs.download.microchip.com' in indexed_item['source']['download_link'] or 'amazonaws' in indexed_item['source']['download_link']:
+                    package_name = indexed_item['source']['name']
+                else:
+                    package_name = (json.loads(asset_status.text))['name']
                 if 'gh_package_name' not in indexed_item['source']:
                     indexed_item['source'].update({"gh_package_name": package_name})
                     es_instance.update(indexed_item['doc']['type'], indexed_item['doc']['id'], indexed_item['source'])
@@ -56,6 +87,10 @@ if __name__ == "__main__":
                         es_instance.update(indexed_item['doc']['type'], indexed_item['doc']['id'], indexed_item['source'])
                         print("%sINFO: Updated \"gh_package_name\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
             print("%sOK: Asset \"%s\" download link is correct. - %s" % (es_instance.Colors.OKBLUE, indexed_item['source']['name'], indexed_item['source']['download_link']))
+
+        # For new elasticsearch DBP it is crucial not to use doc_type for indexing
+        me_es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
+        print("%sINFO: Copied \"%s\" index from AWS to DBS" % (me_es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
 
     if err and args.log_only:
         sys.exit(-1)

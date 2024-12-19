@@ -80,7 +80,7 @@ jobs:
     - name: Send greeting
       run: echo "Starting CORE generation workflow..."
     # Checkout branch
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Authorize Mikroe Actions App
       uses: actions/create-github-app-token@v1

@@ -1,9 +1,11 @@
-import os, re, time, argparse, requests, hashlib, shutil
+import os, re, time, argparse, requests, hashlib, shutil, json
 from elasticsearch import Elasticsearch
 from pathlib import Path
 from datetime import datetime, timezone
 
 import support as support
+import read_microchip_index as MCHP
+import read_codegrip_index as CODEGRIP
 
 # Gets latest release headers from repository
 def get_headers(api, token):
@@ -224,7 +226,7 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
     else:
         new_version = '1.0.0'
 
-    return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed
+    return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed, indexed_version
 
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None):
@@ -270,7 +272,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
         doc = None
         if name_without_extension == "clocks":
-            current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
+            current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
             doc = {
                 'name': "clocks",
                 'display_name' : "Clocks file",
@@ -288,7 +290,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'gh_package_name': "clocks.json"
             }
         elif "schemas" in name_without_extension:
-            current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
+            current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
             suffix = ''
             if 'test' in name_without_extension:
                 suffix = '_test'
@@ -331,7 +333,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     else:
                         continue
 
-                current_hash, index_hash, check_version, new_version, existed = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
+                current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
 
                 current_version = metadata_item['version']
                 if index_hash and current_hash:
@@ -392,12 +394,17 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 else:
                     resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
                     print(f"{resp["result"]} {resp['_id']}")
-                    if name_without_extension in always_index:
+                    # Database is indexed as separate ID for both indexes, so skip it in this step
+                    if (name_without_extension in always_index) and ('database' not in name_without_extension):
                         if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
                             if index_name == os.environ['ES_INDEX_TEST']:
                                 resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=name_without_extension, body=doc)
                                 print(f"Indexed to LIVE as well.")
                                 print(f"{resp["result"]} {resp['_id']}")
+
+            # Print new version after indexing
+            if previous_version != doc['version'] and True == doc['package_changed']:
+                print(f"\033[95mVersion for asset {name_without_extension} has been updated from {previous_version} to {doc['version']}")
 
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)
@@ -465,6 +472,50 @@ def promote_to_latest(releases, repo, token, release_version):
 
     return
 
+def index_microchip_packs(es: Elasticsearch, index_name: str):
+    custom_link = 'https://packs.download.microchip.com/index.idx'
+    # Download the index file
+    xml_content = MCHP.download_index_file(custom_link)
+    converted_data, item_list = MCHP.convert_idx_to_json(xml_content)
+    for eachItem in item_list:
+        resp = es.index(index=index_name, doc_type='necto_package', id=eachItem['name'], body=eachItem)
+        print(f"{resp["result"]} {resp['_id']}")
+
+def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
+    package_items = CODEGRIP.convert_item_to_json(doc_codegrip, True)
+
+    # Get the current time in UTC
+    current_time = datetime.now(timezone.utc).replace(microsecond=0)
+    # If you specifically want the 'Z' at the end instead of the offset
+    published_at = current_time.isoformat().replace('+00:00', 'Z')
+
+    for package in package_items:
+        new_version, package_updated = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'])
+        major_new, minor_new, patch_new = map(int, new_version.split('.'))
+        major_csv, minor_csv, patch_csv = map(int, package_items[package]['package_version'].split('.'))
+        if major_new < major_csv or minor_new < minor_csv or patch_new < patch_csv:
+            new_version = package_items[package]['package_version']
+            package_updated = True
+        if package_updated:
+            doc = {
+                "name": package_items[package]['package_name'],
+                "display_name": package_items[package]['display_name'],
+                "author": "MikroElektronika",
+                "hidden": False,
+                "type": "programmer_dfp",
+                "version": new_version,
+                "package_version": package_items[package]['package_version'],
+                "published_at": published_at,
+                "category": "CODEGRIP Device Pack",
+                "download_link": package_items[package]['download_link'],
+                "package_changed": True,
+                "install_location": package_items[package]['install_location'],
+                "dependencies": json.loads(package_items[package]['dependencies']),
+                "mcus": package_items[package]['mcus']
+            }
+            resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
+            print(f"{resp["result"]} {resp['_id']}")
+
 if __name__ == '__main__':
     # First, check for arguments passed
     def str2bool(v):
@@ -482,6 +533,7 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("select_index", help="Provided index name")
+    parser.add_argument('doc_codegrip', type=str, help='Spreadsheet table download link.')
     parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=str2bool)
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
     parser.add_argument("update_database", help="If true will update database.7z", type=str2bool)
@@ -507,6 +559,12 @@ if __name__ == '__main__':
     db_version = remove_duplicate_indexed_files(
         es, args.select_index
     )
+
+    # Index microchip device family packs
+    if 'live' not in args.select_index:
+        # TODO - uncomment once LIVE test is confirmed to work
+        index_microchip_packs(es, args.select_index)
+        index_codegrip_packs(es, args.select_index, args.doc_codegrip)
 
     # Now index the new release
     index_release_to_elasticsearch(

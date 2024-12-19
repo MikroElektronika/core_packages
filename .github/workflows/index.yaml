@@ -40,6 +40,10 @@ jobs:
           pip install -r scripts/requirements/shared.txt
           sudo apt-get install p7zip-full
 
+      - name: Update and upload new database
+        run: |
+          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" ${{ github.event.inputs.select_index }}
+
       - name: Run Index Script
         env:
           ES_HOST: ${{ secrets.ES_HOST }}
@@ -48,11 +52,20 @@ jobs:
         run: |
           if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
             echo "Indexing to Live."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False ${{ github.event.inputs.set_as_latest }}
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False ${{ github.event.inputs.set_as_latest }}
           else
             echo "Indexing to Test."
             if [[ ${{ github.event.inputs.set_as_latest }} ]]; then
               echo "Promote to latest requested, but ignored. Only available for LIVE updates."
             fi
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False False
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False False
           fi
+
+      - name: Send notification to Mattermost
+        env:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+        run: |
+          MESSAGE="Core version \"${{ github.event.inputs.release_version }}\" indexed."
+          curl -X POST -H 'Content-Type: application/json' \
+          --data "{\"text\": \"$MESSAGE\"}" \
+          $MATTERMOST_WEBHOOK_URL

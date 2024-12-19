@@ -13,10 +13,14 @@ on:
       regex:
         type: string
         description: Regex to use when searching for indexed items
-        default: "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|pic|preinit|riscv|schemas|unit_test_lib"
+        default: "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|avr|pic|preinit|riscv|schemas|unit_test_lib|.+[device|tool]_support$|^codegrip_pack"
       fix:
         type: boolean
         description: Fix the broken links with new ones?
+        default: false
+      index_legacy:
+        type: boolean
+        description: Re-index legacy compiler packages as well (MikroC libraries/only applicable to manual runs)?
         default: false
 
   push:
@@ -25,6 +29,9 @@ on:
 
   schedule:
     - cron: "0/30 7-16 * * 1-5"  # Every 30 minutes, between 07:00 AM and 04:59 PM, Monday through Friday
+
+env:
+  GLOBAL_REGEX: "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|avr|pic|preinit|riscv|schemas|unit_test_lib|.+[device|tool]_support$|^codegrip_pack"
 
 jobs:
   manual_run:
@@ -47,13 +54,19 @@ jobs:
       - name: Check Indexed Links - Live
         if: ${{ github.event.inputs.select_index == 'Live' || github.event.inputs.select_index == 'Both' }}
         run: |
-          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" ${{ !github.event.inputs.fix }}
+          FIX_ACTION=${{ github.event.inputs.fix }}  # Capture the fix input
+          LOG_ONLY=$([[ "$FIX_ACTION" == "false" ]] && echo true || echo false)  # Negate the fix input
+          echo "LOG_ONLY is set to $LOG_ONLY"
+          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" "$LOG_ONLY" "--index_legacy_packages" "${{ github.event.inputs.index_legacy }}"
         continue-on-error: true # Ensure the workflow continues
 
       - name: Check Indexed Links - Test
         if: ${{ github.event.inputs.select_index == 'Test' || github.event.inputs.select_index == 'Both' }}
         run: |
-          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" ${{ !github.event.inputs.fix }}
+          FIX_ACTION=${{ github.event.inputs.fix }}  # Capture the fix input
+          LOG_ONLY=$([[ "$FIX_ACTION" == "false" ]] && echo true || echo false)  # Negate the fix input
+          echo "LOG_ONLY is set to $LOG_ONLY"
+          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "${{ github.event.inputs.regex }}" "--log_only" "$LOG_ONLY" "--index_legacy_packages" "${{ github.event.inputs.index_legacy }}"
         continue-on-error: true # Ensure the workflow continues
 
   push_to_main_run:
@@ -75,12 +88,12 @@ jobs:
 
       - name: Check Indexed Links - Live
         run: |
-          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|pic|preinit|riscv|schemas|unit_test_lib"
+          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "$GLOBAL_REGEX"
         continue-on-error: true # Ensure the workflow continues
 
       - name: Check Indexed Links - Test
         run: |
-          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|pic|preinit|riscv|schemas|unit_test_lib"
+          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "$GLOBAL_REGEX"
         continue-on-error: true # Ensure the workflow continues
 
   scheduled_run:
@@ -102,10 +115,10 @@ jobs:
 
       - name: Check Indexed Links - Live
         run: |
-          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|pic|preinit|riscv|schemas|unit_test_lib"
+          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_LIVE }} "--es_regex" "$GLOBAL_REGEX"
         continue-on-error: true # Ensure the workflow continues
 
       - name: Check Indexed Links - Test
         run: |
-          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|pic|preinit|riscv|schemas|unit_test_lib"
+          python -u scripts/check_indexes.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_HOST }} ${{ secrets.ES_USER }} ${{ secrets.ES_PASSWORD }} ${{ secrets.ME_ES_HOST }} ${{ secrets.ME_ES_USER }} ${{ secrets.ME_ES_PASSWORD }} ${{ secrets.ES_INDEX_TEST }} "--es_regex" "$GLOBAL_REGEX"
         continue-on-error: true # Ensure the workflow continues

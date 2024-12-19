@@ -61,6 +61,7 @@ jobs:
           else
             echo "Updating with new $DB_NAME";
             echo "test"
+            git pull
             git add $DB_NAME
             git commit -m "Updated $DB_NAME with latest merged release."
             git push
@@ -78,9 +79,9 @@ jobs:
         run: |
           if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Test" ]]; then
             echo "Indexing database to TEST."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} "True" "latest" "True" "False"
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP }} "True" "latest" "True" "False"
           fi
           if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
             echo "Indexing database to LIVE."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} "True" "latest" "True" "False"
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP }} "True" "latest" "True" "False"
           fi

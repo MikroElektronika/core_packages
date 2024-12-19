@@ -61,7 +61,7 @@ Reset_Handler:
   ldr   sp, =_estack      /* set stack pointer */
 
 /* Call the clock system initialization function.*/
-  bl systemInit /* Changed to call MikroE system init API. */
+  // bl  SystemInit /* Removed call for Mikroe implementation. */
   
 /* Copy the data segment initializers from flash to SRAM */  
   ldr r0, =_sdata
@@ -96,6 +96,7 @@ LoopFillZerobss:
 /* Call static constructors */
     bl __libc_init_array
 /* Call the application's entry point.*/
+  bl  clockConfig /* Added to call MikroE system clock configuration API. */
   bl  main
   bx  lr
 .size  Reset_Handler, .-Reset_Handler
@@ -121,7 +122,6 @@ Infinite_Loop:
 *******************************************************************************/
    .section  .isr_vector,"a",%progbits
   .type  g_pfnVectors, %object
-  .size  g_pfnVectors, .-g_pfnVectors
    
    
 g_pfnVectors:
@@ -299,6 +299,8 @@ g_pfnVectors:
   .word     OTFDEC2_IRQHandler                /* OTFDEC2                      */
   .word     GFXMMU_IRQHandler                 /* GFXMMU                       */
   .word     BDMA1_IRQHandler                  /* BDMA1                        */
+
+  .size  g_pfnVectors, .-g_pfnVectors
 
 /*******************************************************************************
 *

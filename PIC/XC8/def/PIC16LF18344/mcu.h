@@ -945,9 +945,9 @@ extern volatile unsigned char           TMR0H               __at(0x016);
 asm("TMR0H equ 016h");
 #endif
 // aliases
-extern volatile unsigned char           PR0                 __at(0x016);
+extern volatile unsigned char           _PR0                 __at(0x016);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR0 equ 016h");
+asm("_PR0 equ 016h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
@@ -975,7 +975,7 @@ typedef union {
         unsigned PR07                   :1;
     };
     struct {
-        unsigned PR0                    :8;
+        unsigned _PR0                    :8;  // Note: Changed by MikroE
     };
 } TMR0Hbits_t;
 extern volatile TMR0Hbits_t TMR0Hbits __at(0x016);
@@ -1096,7 +1096,7 @@ typedef union {
         unsigned PR07                   :1;
     };
     struct {
-        unsigned PR0                    :8;
+        unsigned _PR0                    :8;  // Note: Changed by MikroE
     };
 } PR0bits_t;
 extern volatile PR0bits_t PR0bits __at(0x016);
@@ -1544,15 +1544,15 @@ extern volatile TMR2bits_t TMR2bits __at(0x01D);
 #define _TMR2_TMR2_MASK                                     0xFF
 
 // Register: PR2
-#define PR2 PR2
-extern volatile unsigned char           PR2                 __at(0x01E);
+#define _PR2 _PR2  // Note: Changed by MikroE
+extern volatile unsigned char           _PR2                 __at(0x01E);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR2 equ 01Eh");
+asm("_PR2 equ 01Eh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR2                    :8;
+        unsigned _PR2                    :8;  // Note: Changed by MikroE
     };
 } PR2bits_t;
 extern volatile PR2bits_t PR2bits __at(0x01E);
@@ -7629,15 +7629,15 @@ extern volatile TMR4bits_t TMR4bits __at(0x415);
 #define _TMR4_TMR4_MASK                                     0xFF
 
 // Register: PR4
-#define PR4 PR4
-extern volatile unsigned char           PR4                 __at(0x416);
+#define _PR4 _PR4  // Note: Changed by MikroE
+extern volatile unsigned char           _PR4                 __at(0x416);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR4 equ 0416h");
+asm("_PR4 equ 0416h");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR4                    :8;
+        unsigned _PR4                    :8;  // Note: Changed by MikroE
     };
 } PR4bits_t;
 extern volatile PR4bits_t PR4bits __at(0x416);
@@ -7929,15 +7929,15 @@ extern volatile TMR6bits_t TMR6bits __at(0x41C);
 #define _TMR6_TMR6_MASK                                     0xFF
 
 // Register: PR6
-#define PR6 PR6
-extern volatile unsigned char           PR6                 __at(0x41D);
+#define _PR6 _PR6  // Note: Changed by MikroE
+extern volatile unsigned char           _PR6                 __at(0x41D);  // Note: Changed by MikroE
 #ifndef _LIB_BUILD
-asm("PR6 equ 041Dh");
+asm("_PR6 equ 041Dh");  // Note: Changed by MikroE
 #endif
 // bitfield definitions
 typedef union {
     struct {
-        unsigned PR6                    :8;
+        unsigned _PR6                    :8;  // Note: Changed by MikroE
     };
 } PR6bits_t;
 extern volatile PR6bits_t PR6bits __at(0x41D);
