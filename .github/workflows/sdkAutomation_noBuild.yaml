@@ -181,15 +181,21 @@ jobs:
         for i in "${!branchInfoArray[@]}"; do
           echo "MCU: ${mcuInfoArray[i]}, Branch Name: ${branchInfoArray[i]}"
         done
+        dirInfoArray=( */ )
+        for i in "${!branchInfoArray[@]}"; do
+          echo "Subdirectory Name Array: ${dirInfoArray[i]}"
+        done
+        cd ..
 
-        for dir in */; do
-          dirName="${dir%/}"
+        for dirName in ${dirInfoArray[@]}; do
+          echo "Subdirectory Name Array: $dirName"
 
           # Check if the directory name matches any branch name in the array
           for i in "${!branchInfoArray[@]}"; do
             echo "Found mcu name: ${mcuInfoArray[i]}"
             echo "Found dir name: $dirName"
             if [ "$dirName" = *"${mcuInfoArray[i]}"* ]; then
+              cd automatization
               echo "Found branch name again: ${branchInfoArray[i]}"
               if ${{ github.event.inputs.new_branch }} == true; then
                 git branch ${branchInfoArray[i]}
@@ -225,6 +231,7 @@ jobs:
               cd delays
               #sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
 
+              cd ..
               cd ..
               cd ..
               cd ..
