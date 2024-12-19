@@ -148,6 +148,7 @@ jobs:
       if: steps.check-asset-existence.outcome == 'success'
       id: move_files
       env:
+        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
         currentBranch=$(git rev-parse --abbrev-ref HEAD)
