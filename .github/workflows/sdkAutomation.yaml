@@ -283,7 +283,7 @@ jobs:
               fi
 
               cd automatization
-              unzip extracted_${refManNumber//\//_}.zip
+              unzip -o extracted_${refManNumber//\//_}.zip
               cd $dirName
               cd generatedFiles
               unzip generated_files_${mcuInfoArray[i]}.zip
