@@ -192,9 +192,9 @@ jobs:
           
           # Check if the directory name matches any branch name in the array
           for i in "${!branchInfoArray[@]}"; do
-            echo "Found mcu name: ${mcuInfoArray[i]}"
+            echo "Found mcu name: extracted_${mcuInfoArray[i]}"
             echo "Found dir name: $dirName"
-            if [ "$dirName" = *"${mcuInfoArray[i]}"* ]; then
+            if [ "$dirName" = "extracted_${mcuInfoArray[i]}" ]; then
               echo "Found branch name again: ${branchInfoArray[i]}"
               cd automatization           
               if ${{ github.event.inputs.new_branch }} == true; then
