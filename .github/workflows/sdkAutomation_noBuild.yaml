@@ -187,7 +187,8 @@ jobs:
         done
         cd ..
 
-        for dirName in ${dirInfoArray[@]}; do
+        for dir in ${dirInfoArray[@]}; do
+          dirName="${dir%/}"
           echo "Subdirectory Name Array: $dirName"
 
           # Check if the directory name matches any branch name in the array
