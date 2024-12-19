@@ -149,19 +149,7 @@ jobs:
         echo "Generated files not found. Exiting."
         exit 1
 
-    - name: Create new core for delays if necessary
-      if: steps.check-asset-existence.outcome == 'success'
-      run: |
-        CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/${{ steps.move_files.outputs.json_name }} | tr '[:upper:]' '[:lower:]')
-        if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
-          echo "Core already exists: $CORE"
-        else
-          mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
-          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
-          echo "Found new core: $CORE"
-        fi
-
-    # Move the asset we just downloaded to automatization and extract it
+    # Move the asset we just downloaded to automatization, extract it and for each MCU create branch and copy files to where they should be
     - name: Move to the created directory unzip and distribute files
       if: steps.check-asset-existence.outcome == 'success'
       id: move_files
@@ -195,6 +183,7 @@ jobs:
             echo "Found mcu name: extracted_${mcuInfoArray[i]}"
             echo "Found dir name: $dirName"
             if [ "$dirName" = "extracted_${mcuInfoArray[i]}" ]; then
+              mkdir -p automatization
               cd automatization 
               py7zr x extracted_${refManNumber//\//_}.7z
               if ${{ github.event.inputs.new_branch }} == true; then
@@ -232,16 +221,16 @@ jobs:
               cd ..
               cd ..
 
-              echo $(pwd)
+              CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
+              if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
+                echo "Core already exists: $CORE"
+              else
+                mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
+                sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
+                echo "Found new core: $CORE"
+              fi
 
-              #CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
-              #if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
-              #  echo "Core already exists: $CORE"
-              #else
-              #  mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
-              #  sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
-              #  echo "Found new core: $CORE"
-              #fi
+              rm -rf automatization
 
               # Commit changes
               git add .
