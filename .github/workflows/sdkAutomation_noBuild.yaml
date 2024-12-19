@@ -165,14 +165,7 @@ jobs:
 
         branchInfoArray=($(echo "${{steps.branch-creation.outputs.branch_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
         mcuInfoArray=($(echo "${{steps.branch-creation.outputs.mcu_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
-        echo "Branch Info Array:"
-        for i in "${!branchInfoArray[@]}"; do
-          echo "MCU: ${mcuInfoArray[i]}, Branch Name: ${branchInfoArray[i]}"
-        done
         dirInfoArray=( */ )
-        for i in "${!branchInfoArray[@]}"; do
-          echo "Subdirectory Name Array: ${dirInfoArray[i]}"
-        done
         cd ..
 
         for dir in ${dirInfoArray[@]}; do
@@ -180,12 +173,8 @@ jobs:
           
           # Check if the directory name matches any branch name in the array
           for i in "${!branchInfoArray[@]}"; do
-            echo "Found mcu name: extracted_${mcuInfoArray[i]}"
-            echo "Found dir name: $dirName"
             if [ "$dirName" = "extracted_${mcuInfoArray[i]}" ]; then
-              mkdir -p automatization
-              cd automatization 
-              py7zr x extracted_${refManNumber//\//_}.7z
+                          
               if ${{ github.event.inputs.new_branch }} == true; then
                 git branch ${branchInfoArray[i]}
                 git checkout ${branchInfoArray[i]}
@@ -230,6 +219,7 @@ jobs:
                 echo "Found new core: $CORE"
               fi
 
+              sudo mv automatization/extracted_${refManNumber//\//_}.7z ./
               rm -rf automatization
 
               # Commit changes
@@ -239,6 +229,11 @@ jobs:
               git push -u origin ${{ github.event.inputs.build_branch }}
 
               git checkout ${currentBranch}
+
+              mkdir -p automatization
+              sudo mv extracted_${refManNumber//\//_}.7z automatization/
+              cd automatization 
+              py7zr x extracted_${refManNumber//\//_}.7z
             fi
           done
         done
