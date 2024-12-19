@@ -226,9 +226,7 @@ jobs:
               git checkout ${currentBranch}
 
               mkdir -p automatization
-              echo "EKSTRAKUJE SE: extracted_${refManNumber}.zip"
-              gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
-              echo "EKSTRAKOVAN JE: extracted_${refManNumber}.zip"
+              gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber//\//_}.zip"
               sudo mv extracted_${refManNumber//\//_}.zip automatization/
             fi
           done

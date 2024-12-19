@@ -252,6 +252,7 @@ jobs:
       if: steps.check-asset-existence.outcome == 'success'
       id: move_files
       env:
+        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
         currentBranch=$(git rev-parse --abbrev-ref HEAD)
@@ -319,7 +320,6 @@ jobs:
                 echo "Found new core: $CORE"
               fi
 
-              sudo mv automatization/extracted_${refManNumber//\//_}.zip ./
               rm -rf automatization
 
               # Commit changes
@@ -330,6 +330,7 @@ jobs:
               git checkout ${currentBranch}
 
               mkdir -p automatization
+              gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber//\//_}.zip"
               sudo mv extracted_${refManNumber//\//_}.zip automatization/
             fi
           done
