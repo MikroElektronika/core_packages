@@ -182,7 +182,7 @@ jobs:
               unzip -o extracted_${refManNumber//\//_}.zip
               cd $dirName
               cd generatedFiles
-              unzip generated_files_${mcuInfoArray[i]}.zip
+              unzip generated_files.zip
               json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))
               echo "JSON_NAME: $json_name"
 
