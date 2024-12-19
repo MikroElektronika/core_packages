@@ -94,12 +94,6 @@ jobs:
         git config user.name github-actions
         git config user.email github-actions@github.com
 
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r scripts/requirements/automation.txt
-        sudo apt-get install p7zip-full
-
     # Create a new branch
     - name: Create branch
       id: branch-creation
@@ -140,7 +134,7 @@ jobs:
       run: |
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         refManNumber="${refManNumber//\//_}"
-        gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.7z"
+        gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: Verify if assets were found
@@ -159,9 +153,9 @@ jobs:
         currentBranch=$(git rev-parse --abbrev-ref HEAD)
         echo "current branch is: $currentBranch"
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
-        sudo mv extracted_${refManNumber//\//_}.7z automatization/
+        sudo mv extracted_${refManNumber//\//_}.zip automatization/
         cd automatization
-        py7zr x extracted_${refManNumber//\//_}.7z
+        unzip extracted_${refManNumber//\//_}.zip
 
         branchInfoArray=($(echo "${{steps.branch-creation.outputs.branch_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
         mcuInfoArray=($(echo "${{steps.branch-creation.outputs.mcu_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
@@ -185,7 +179,7 @@ jobs:
               fi
 
               cd automatization
-              py7zr x extracted_${refManNumber//\//_}.7z
+              unzip extracted_${refManNumber//\//_}.zip
               cd $dirName
               cd generatedFiles
               unzip generated_files_${mcuInfoArray[i]}.zip
@@ -221,7 +215,7 @@ jobs:
                 echo "Found new core: $CORE"
               fi
 
-              sudo mv automatization/extracted_${refManNumber//\//_}.7z ./
+              sudo mv automatization/extracted_${refManNumber//\//_}.zip ./
               rm -rf automatization
 
               # Commit changes
@@ -232,7 +226,7 @@ jobs:
               git checkout ${currentBranch}
 
               mkdir -p automatization
-              sudo mv extracted_${refManNumber//\//_}.7z automatization/
+              sudo mv extracted_${refManNumber//\//_}.zip automatization/
             fi
           done
         done
