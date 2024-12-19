@@ -184,6 +184,8 @@ jobs:
                 git reset --hard $(git rev-list --max-parents=1 )
               fi
 
+              cd automatization 
+              py7zr x extracted_${refManNumber//\//_}.7z
               cd $dirName
               cd generatedFiles
               unzip generated_files_${mcuInfoArray[i]}.zip
@@ -231,9 +233,7 @@ jobs:
               git checkout ${currentBranch}
 
               mkdir -p automatization
-              sudo mv extracted_${refManNumber//\//_}.7z automatization/
-              cd automatization 
-              py7zr x extracted_${refManNumber//\//_}.7z
+              sudo mv extracted_${refManNumber//\//_}.7z automatization/              
             fi
           done
         done
