@@ -160,11 +160,3 @@ jobs:
         sudo mv extracted_${refManNumber}.zip automatization/
         cd automatization
         unzip extracted_${refManNumber}.zip
-
-        branchInfoArray=($(echo "${{steps.branch-creation.outputs.branch_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
-        mcuInfoArray=($(echo "${{steps.branch-creation.outputs.mcu_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
-        cmakeInfoArray=($(echo "${{steps.branch-creation.outputs.cmake_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
-        dirInfoArray=( */ )
-        cd ..
-
-        echo "MCU INFO ARRAY IS: ${mcuInfoArray}"
