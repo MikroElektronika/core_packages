@@ -156,9 +156,10 @@ jobs:
         currentBranch=$(git rev-parse --abbrev-ref HEAD)
         echo "current branch is: $currentBranch"
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
-        sudo mv extracted_${refManNumber//\//_}.zip automatization/
+        refManNumber="${refManNumber//\//_}"
+        sudo mv extracted_${refManNumber}.zip automatization/
         cd automatization
-        unzip extracted_${refManNumber//\//_}.zip
+        unzip extracted_${refManNumber}.zip
 
         branchInfoArray=($(echo "${{steps.branch-creation.outputs.branch_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
         mcuInfoArray=($(echo "${{steps.branch-creation.outputs.mcu_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
@@ -180,7 +181,7 @@ jobs:
           fi
 
           cd automatization
-          unzip -o extracted_${refManNumber//\//_}.zip
+          unzip -o extracted_${refManNumber}.zip
 
           for dir in ${dirInfoArray[@]}; do
             dirName="${dir%/}"
@@ -232,6 +233,6 @@ jobs:
           git checkout ${currentBranch}
 
           mkdir -p automatization
-          gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber//\//_}.zip"
-          sudo mv extracted_${refManNumber//\//_}.zip automatization/
+          gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
+          sudo mv extracted_${refManNumber}.zip automatization/
         done
