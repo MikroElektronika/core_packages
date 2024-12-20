@@ -490,13 +490,8 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
     published_at = current_time.isoformat().replace('+00:00', 'Z')
 
     for package in package_items:
-        new_version, package_updated = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'])
-        major_new, minor_new, patch_new = map(int, new_version.split('.'))
-        major_csv, minor_csv, patch_csv = map(int, package_items[package]['package_version'].split('.'))
-        if major_new < major_csv or minor_new < minor_csv or patch_new < patch_csv:
-            new_version = package_items[package]['package_version']
-            package_updated = True
-        if package_updated:
+        previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
+        if previous_version != new_version:
             doc = {
                 "name": package_items[package]['package_name'],
                 "display_name": package_items[package]['display_name'],
@@ -511,10 +506,11 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
                 "package_changed": True,
                 "install_location": package_items[package]['install_location'],
                 "dependencies": json.loads(package_items[package]['dependencies']),
-                "mcus": package_items[package]['mcus']
+                "mcus": mcus_to_index
             }
             resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
             print(f"{resp["result"]} {resp['_id']}")
+            print(f"\033[95mVersion for asset {package_items[package]['package_name']} has been updated from {previous_version} to {new_version}")
 
 if __name__ == '__main__':
     # First, check for arguments passed
