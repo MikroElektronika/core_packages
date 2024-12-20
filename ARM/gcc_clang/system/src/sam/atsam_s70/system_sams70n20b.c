@@ -409,6 +409,9 @@ void SystemInit(void)
     _pmc_init_usb_clock();
     _pmc_init_generic_clock();
 
+    // Enable Floating Point unit
+    SCB->CPACR |= ((3UL << 20) | (3UL << 22));
+
     return;
 }
 
