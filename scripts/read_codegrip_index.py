@@ -1,12 +1,60 @@
-import os, shutil
+import os, sqlite3, re
 import support as support
 from elasticsearch import Elasticsearch
+
+def functionRegex(value, pattern):
+    reg = re.compile(value)
+    return reg.search(pattern) is not None
+
+def read_data_from_db(db, sql_query):
+    ## Open the database / connect to it
+    con = sqlite3.connect(db)
+    cur = con.cursor()
+
+    ## Create the REGEXP function to be used in DB
+    con.create_function("REGEXP", 2, functionRegex)
+
+    ## Execute the desired query
+    cur.execute(sql_query)
+    results = []
+    for row in cur.fetchall():
+        results.append(row[0].lower())
+
+    ## Close the connection
+    cur.close()
+    con.close()
+
+    ## Return query results
+    return results
+
+def filter_versions(versions):
+    # Filter out versions that contain non-numeric characters (e.g., words or suffixes)
+    filtered_versions = [v for v in versions if all(part.isdigit() for part in v.split('.'))]
+    return filtered_versions
+
+def get_devices_from_latest_sdk(index_name):
+    if 'test' in index_name:
+        db = 'necto_db_dev.db'
+    else:
+        db = 'necto_db.db'
+    sdkVersions = read_data_from_db(db, 'SELECT DISTINCT version FROM SDKs WHERE name IS "mikroSDK"')
+    versions = filter_versions(list(v for v in sdkVersions))
+    max_version = f'mikrosdk_v{max(versions, key=lambda v: tuple(map(int, v.split('.')))).replace('.','')}'
+    # Get all the MCUs that are supported in NECTO
+    query = f'''
+        SELECT DISTINCT uid FROM Devices
+        INNER JOIN SDKToDevice ON SDKToDevice.device_uid = Devices.uid
+        WHERE SDKToDevice.sdk_uid REGEXP '{max_version}|mikroc\.legacy.+'
+    '''
+    mcu_list = read_data_from_db(db, query)
+
+    return mcu_list
 
 def increment_version(version):
     major, minor, patch = map(int, version.split('.'))
     return f"{major}.{minor}.{patch + 1}"
 
-def get_version(es: Elasticsearch, index_name, asset, mcu_list):
+def get_version(es: Elasticsearch, index_name, asset, csv_package_mcus, package_version):
     # Search query to use
     query_search = {
         "size": 5000,
@@ -28,6 +76,7 @@ def get_version(es: Elasticsearch, index_name, asset, mcu_list):
         num_of_retries += 1
 
     indexed_version = None
+    indexed_package_version = None
     for eachHit in response['hits']['hits']:
         if not 'name' in eachHit['_source']:
             continue
@@ -35,24 +84,22 @@ def get_version(es: Elasticsearch, index_name, asset, mcu_list):
         if name == search_es_name:
             if 'version' in eachHit['_source']:
                 indexed_version = eachHit['_source']['version']
+                indexed_package_version = eachHit['_source']['package_version']
                 indexed_mcus = eachHit['_source']['mcus']
 
-    new_version = indexed_version
+    mcu_list = get_devices_from_latest_sdk(index_name)
 
-    updated = False
-    if new_version:
-        for mcu in mcu_list:
-            if mcu not in indexed_mcus:
-                updated = True
-                if indexed_version.startswith('v'):
-                    new_version = f'v{increment_version(indexed_version[1:])}'
-                else:
-                    new_version = increment_version(indexed_version)
-                break
-    else:
-        new_version = '0.0.1'
+    mcus_to_index = []
+    for mcu in csv_package_mcus:
+        if mcu.lower() in mcu_list:
+            mcus_to_index.append(mcu)
 
-    return new_version, updated
+    new_version = package_version
+    if indexed_version:
+        if mcus_to_index != indexed_mcus or indexed_package_version != package_version:
+            new_version = increment_version(indexed_version)
+
+    return indexed_version, new_version, mcus_to_index
 
 def convert_item_to_json(docLink, saveToFile=False):
     import urllib.request
