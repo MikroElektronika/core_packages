@@ -168,10 +168,3 @@ jobs:
         cd ..
 
         echo "MCU INFO ARRAY IS: ${mcuInfoArray}"
-
-        # Check if the directory name matches any branch name in the array
-        for i in "${!branchInfoArray[@]}"; do
-          
-
-          
-        done
