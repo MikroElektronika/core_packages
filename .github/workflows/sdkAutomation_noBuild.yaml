@@ -111,6 +111,10 @@ jobs:
         fi
         echo "Found branch: ${branchInfoArray[0]}!"
 
+        echo "BRANCH INFO: ${branchInfo}"
+        echo "MCI INFO: ${mcuInfo}"
+        echo "CMAKE INFO: ${cmakeInfo}"
+
         echo "branch_info=${branchInfo}" >> $GITHUB_OUTPUT
         echo "mcu_info=${mcuInfo}" >> $GITHUB_OUTPUT
         echo "cmake_info=${cmakeInfo}" >> $GITHUB_OUTPUT
@@ -162,3 +166,4 @@ jobs:
         unzip extracted_${refManNumber}.zip
 
         branchInfoArray=($(echo "${{steps.branch-creation.outputs.branch_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
+        mcuInfoArray=($(echo "${{steps.branch-creation.outputs.mcu_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
