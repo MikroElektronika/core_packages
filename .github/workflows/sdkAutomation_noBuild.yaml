@@ -234,6 +234,6 @@ jobs:
 
           mkdir -p automatization
           echo "DOWNLOADING: ${refManNumber}"
-          gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
-          sudo mv extracted_${refManNumber}.zip automatization/
+          #gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
+          #sudo mv extracted_${refManNumber}.zip automatization/
         done
