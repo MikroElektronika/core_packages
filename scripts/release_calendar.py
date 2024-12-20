@@ -127,7 +127,7 @@ def find_listOf(selectedList):
             foundList = []
             for nextRelease in json_data['NECTO DAILY UPDATE']["events"][indexRelease:]:
                 if refManual == json.loads(nextRelease["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]:
-                    foundList.append(nextRelease[selectedList])
+                    foundList.append(nextRelease[selectedList].replace('\n',''))
             return foundList
 
     return ["NO_BRANCH_IN_SPREADSHEET"]
