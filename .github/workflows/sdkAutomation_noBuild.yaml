@@ -215,25 +215,5 @@ jobs:
           done
           cd ..
 
-          CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
-          if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
-            echo "Core already exists: $CORE"
-          else
-            mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
-            sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
-            echo "Found new core: $CORE"
-          fi
-
-          rm -rf automatization
-          # Commit changes
-          git add .
-          git commit -m "Pulled files from sdk_automation into core_packages"
-          # Push changes back to your repository
-          git push -u origin ${{ github.event.inputs.build_branch }}
-          git checkout ${currentBranch}
-
-          mkdir -p automatization
-          echo "DOWNLOADING: ${refManNumber}"
-          #gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
-          #sudo mv extracted_${refManNumber}.zip automatization/
+          
         done
