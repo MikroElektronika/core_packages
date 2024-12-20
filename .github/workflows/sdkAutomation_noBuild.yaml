@@ -167,3 +167,76 @@ jobs:
 
         branchInfoArray=($(echo "${{steps.branch-creation.outputs.branch_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
         mcuInfoArray=($(echo "${{steps.branch-creation.outputs.mcu_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
+        cmakeInfoArray=($(echo "${{steps.branch-creation.outputs.cmake_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
+        dirInfoArray=( */ )
+        cd ..
+
+        echo "MCU INFO ARRAY IS: ${mcuInfoArray}"
+
+        # Check if the directory name matches any branch name in the array
+        for i in "${!branchInfoArray[@]}"; do
+          if ${{ github.event.inputs.new_branch }} == true; then
+            git branch ${branchInfoArray[i]}
+            git checkout ${branchInfoArray[i]}
+            git push -u origin ${branchInfoArray[i]}
+          else
+            git checkout ${branchInfoArray[i]}
+            git reset --hard $(git rev-list --max-parents=1 )
+          fi
+
+          cd automatization
+          unzip -o extracted_${refManNumber}.zip
+
+          for dir in ${dirInfoArray[@]}; do
+            dirName="${dir%/}"
+            if [ ${mcuInfoArray[i]} = *"${dirName/#extracted_}"* ]; then
+
+              cd $dirName
+              cd generatedFiles
+              unzip generated_files.zip
+              json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))
+              echo "JSON_NAME: $json_name"
+
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${dirName/#extracted_}
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${dirName/#extracted_} | tr '[:upper:]' '[:lower:]')
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${refManNumber//rm/ds}
+
+              sudo mv "${dirName/#extracted_}" ../../../resources/queries/mcus/
+              sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${dirName/#extracted_}/
+              sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/
+              sudo mv 'interrupts_mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${dirName/#extracted_} | tr '[:upper:]' '[:lower:]')/
+              sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${refManNumber//rm/ds}/
+              sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              cd delays
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+
+              cd ..
+              cd ..
+              cd ..
+            fi
+          done
+          cd ..
+
+          CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
+          if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
+            echo "Core already exists: $CORE"
+          else
+            mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
+            sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
+            echo "Found new core: $CORE"
+          fi
+
+          rm -rf automatization
+          # Commit changes
+          git add .
+          git commit -m "Pulled files from sdk_automation into core_packages"
+          # Push changes back to your repository
+          git push -u origin ${{ github.event.inputs.build_branch }}
+          git checkout ${currentBranch}
+
+          mkdir -p automatization
+          gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
+          sudo mv extracted_${refManNumber}.zip automatization/
+        done
