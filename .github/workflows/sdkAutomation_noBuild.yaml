@@ -171,23 +171,7 @@ jobs:
 
         # Check if the directory name matches any branch name in the array
         for i in "${!branchInfoArray[@]}"; do
-          if ${{ github.event.inputs.new_branch }} == true; then
-            git branch ${branchInfoArray[i]}
-            git checkout ${branchInfoArray[i]}
-            git push -u origin ${branchInfoArray[i]}
-          else
-            git checkout ${branchInfoArray[i]}
-            git reset --hard $(git rev-list --max-parents=1 )
-          fi
-
-          cd automatization
-          unzip -o extracted_${refManNumber}.zip
-
-          for dir in ${dirInfoArray[@]}; do
-            dirName="${dir%/}"
-            
-          done
-          cd ..
+          
 
           
         done
