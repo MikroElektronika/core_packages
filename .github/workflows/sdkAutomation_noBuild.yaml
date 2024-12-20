@@ -229,7 +229,7 @@ jobs:
           git commit -m "Pulled files from sdk_automation into core_packages"
           # Push changes back to your repository
           git push -u origin ${{ github.event.inputs.build_branch }}
-          git checkout ${currentBranch
+          git checkout ${currentBranch}
 
           mkdir -p automatization
           gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber//\//_}.zip"
