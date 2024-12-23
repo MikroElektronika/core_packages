@@ -162,8 +162,6 @@ jobs:
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         systemPath=${refManNumber//rm/ds}
         refManNumber="${refManNumber//\//_}"
-        echo "REF MANUAL VALUE: ${refManNumber}"
-        echo "REF MANUAL VALUE PATH: ${refManNumber//rm/ds}"
         sudo mv extracted_${refManNumber}.zip automatization/
         cd automatization
         unzip extracted_${refManNumber}.zip
@@ -189,6 +187,7 @@ jobs:
 
           cd automatization
           unzip -o extracted_${refManNumber}.zip
+          python -u ../scripts/edit_cmake.py --cmake_name "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" --cmake_string "${mcuInfoArray[i]}"
 
           for dir in ${dirInfoArray[@]}; do
             dirName="${dir%/}"
@@ -211,9 +210,9 @@ jobs:
               sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${systemPath}/
               sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
               sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
-              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/${cmakeInfoArray[i]}
               cd delays
-              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/${cmakeInfoArray[i]}
 
               cd ..
               cd ..
