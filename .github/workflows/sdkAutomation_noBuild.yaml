@@ -191,8 +191,8 @@ jobs:
             dirName="${dir%/}"
             echo "CLEARED NAME: ${dirName/#extracted_}"
             echo "MCU INFO ARRAY ELEMENT: ${mcuInfoArray[i]}"
-            echo "MATCHING: ${mcuInfoArray[i]#${dirName/#extracted_}}"
-            if [ ${mcuInfoArray[i]} != ${mcuInfoArray[i]#${dirName/#extracted_}} ]; then
+            echo "MATCHING: ${${mcuInfoArray[i]#${dirName/#extracted_}}%${dirName/#extracted_}}"
+            if [ ${mcuInfoArray[i]} != ${${mcuInfoArray[i]#${dirName/#extracted_}}%${dirName/#extracted_}} ]; then
 
               cd $dirName
               cd generatedFiles
