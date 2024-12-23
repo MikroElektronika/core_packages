@@ -552,7 +552,7 @@ if __name__ == '__main__':
     else:
         es_host = os.environ['ES_HOST']
         es_user = os.environ['ES_USER']
-        es_pass76word = os.environ['ES_PASSWORD']
+        es_password = os.environ['ES_PASSWORD']
 
     # Elasticsearch instance used for indexing
     num_of_retries = 1
