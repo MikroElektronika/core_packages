@@ -6,7 +6,7 @@ def main(cmake_name, regex):
     original_working_dir = os.getcwd()
     print(f"Original working directory: {original_working_dir}")
 
-    cmakeContent = open(os.path.join(original_working_dir, 'automatization', cmake_name), mode='r', encoding='utf-8').read()
+    cmakeContent = open(os.path.join(original_working_dir, cmake_name), mode='r', encoding='utf-8').read()
     cmakeLines = cmakeContent.split('\n')
     newContent = ''
     for line in cmakeLines:
@@ -16,11 +16,11 @@ def main(cmake_name, regex):
             newRegex = '|'.join([f'^{expression}$' for expression in regex.split('|')])
             newContent += re.sub('MATCHES\s*\"[^\"]*\"', f'MATCHES "{newRegex}"', line) + '\n'
 
-    with open(os.path.join(original_working_dir, 'automatization', cmake_name),'w') as cmakeFile:
+    with open(os.path.join(original_working_dir, cmake_name),'w') as cmakeFile:
         cmakeFile.write(newContent)
         cmakeFile.close()
 
-    cmakeDelaysContent = open(os.path.join(original_working_dir, 'automatization', 'delays', cmake_name), mode='r', encoding='utf-8').read()
+    cmakeDelaysContent = open(os.path.join(original_working_dir, 'delays', cmake_name), mode='r', encoding='utf-8').read()
     cmakeLines = cmakeDelaysContent.split('\n')
     newContent = ''
     for line in cmakeLines:
@@ -30,7 +30,7 @@ def main(cmake_name, regex):
             newRegex = '|'.join([f'^{expression}$' for expression in regex.split('|')])
             newContent += re.sub('MATCHES\s*\"[^\"]*\"', f'MATCHES "{newRegex}"', line) + '\n'
 
-    with open(os.path.join(original_working_dir, 'automatization', 'delays', cmake_name),'w') as cmakeDelaysFile:
+    with open(os.path.join(original_working_dir, 'delays', cmake_name),'w') as cmakeDelaysFile:
         cmakeDelaysFile.write(newContent)
         cmakeDelaysFile.close()
 
