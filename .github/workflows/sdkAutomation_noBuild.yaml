@@ -12,7 +12,7 @@ on:
         # Name of the MCU for which generation is running
         description: 'MCU name'
         # Default value if no value is explicitly provided
-        default: 'mk20dn32vlh5'
+        default: 'mk10dn32vfm5'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
@@ -39,7 +39,7 @@ on:
         # Path to the reference manual PDF file
         description: 'Reference manual PDF file path'
         # Default value if no value is explicitly provided
-        default: '/tmp/documentation/mk20dn32vlh5_rm.pdf'
+        default: '/tmp/documentation/mk10dn32vfm5_rm.pdf'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
