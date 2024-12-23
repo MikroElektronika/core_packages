@@ -187,7 +187,7 @@ jobs:
 
           cd automatization
           unzip -o extracted_${refManNumber}.zip
-          python -u ../scripts/edit_cmake.py --cmake_name "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" --cmake_string "${mcuInfoArray[i]}"
+          python -u ../scripts/edit_cmake.py --cmake_name "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" --cmake_regex "${mcuInfoArray[i]}"
 
           for dir in ${dirInfoArray[@]}; do
             dirName="${dir%/}"
