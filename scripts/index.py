@@ -488,29 +488,34 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
     current_time = datetime.now(timezone.utc).replace(microsecond=0)
     # If you specifically want the 'Z' at the end instead of the offset
     published_at = current_time.isoformat().replace('+00:00', 'Z')
+    # Get the current date and time in UTC
+    current_date = datetime.now().date()
 
     for package in package_items:
-        previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
-        if previous_version != new_version:
-            doc = {
-                "name": package_items[package]['package_name'],
-                "display_name": package_items[package]['display_name'],
-                "author": "MikroElektronika",
-                "hidden": False,
-                "type": "programmer_dfp",
-                "version": new_version,
-                "package_version": package_items[package]['package_version'],
-                "published_at": published_at,
-                "category": "CODEGRIP Device Pack",
-                "download_link": package_items[package]['download_link'],
-                "package_changed": True,
-                "install_location": package_items[package]['install_location'],
-                "dependencies": json.loads(package_items[package]['dependencies']),
-                "mcus": mcus_to_index
-            }
-            resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
-            print(f"{resp["result"]} {resp['_id']}")
-            print(f"\033[95mVersion for asset {package_items[package]['package_name']} has been updated from {previous_version} to {new_version}")
+        package_release_date = datetime.strptime(package_items[package]['release_date'], "%Y-%m-%dT%H:%M:%SZ").date()
+        # Release only for packages with release date lower or equal than current date
+        if package_release_date <= current_date:
+            previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
+            if previous_version != new_version:
+                doc = {
+                    "name": package_items[package]['package_name'],
+                    "display_name": package_items[package]['display_name'],
+                    "author": "MikroElektronika",
+                    "hidden": False,
+                    "type": "programmer_dfp",
+                    "version": new_version,
+                    "package_version": package_items[package]['package_version'],
+                    "published_at": published_at,
+                    "category": "CODEGRIP Device Pack",
+                    "download_link": package_items[package]['download_link'],
+                    "package_changed": True,
+                    "install_location": package_items[package]['install_location'],
+                    "dependencies": json.loads(package_items[package]['dependencies']),
+                    "mcus": mcus_to_index
+                }
+                resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
+                print(f"{resp["result"]} {resp['_id']}")
+                print(f"\033[95mVersion for asset {package_items[package]['package_name']} has been updated from {previous_version} to {new_version}")
 
 if __name__ == '__main__':
     # First, check for arguments passed

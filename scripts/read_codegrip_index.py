@@ -138,6 +138,7 @@ def convert_item_to_json(docLink, saveToFile=False):
             "install_location",
             "download_link",
             "dependencies",
+            "release_date"
         ]].to_dict()
 
         # Add the list of MCU names under the key "mcus"
