@@ -191,8 +191,10 @@ jobs:
             dirName="${dir%/}"
             echo "CLEARED NAME: ${dirName/#extracted_}"
             echo "MCU INFO ARRAY ELEMENT: ${mcuInfoArray[i]}"
-            echo "MATCHING: ${${mcuInfoArray[i]#${dirName/#extracted_}}%${dirName/#extracted_}}"
-            if [ ${mcuInfoArray[i]} != ${${mcuInfoArray[i]#${dirName/#extracted_}}%${dirName/#extracted_}} ]; then
+            removedPrefix = mcuInfoArray[i]#${dirName/#extracted_}
+            removedPrefixSufix = removedPrefix%${dirName/#extracted_}
+            echo "MATCHING: ${removedPrefixSufix}"
+            if [ ${mcuInfoArray[i]} != ${removedPrefixSufix} ]; then
 
               cd $dirName
               cd generatedFiles
