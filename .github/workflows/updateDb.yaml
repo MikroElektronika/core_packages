@@ -7,6 +7,12 @@ on:
         type: string
         description: Which release version to update the database for (type v1.0.6 for example)
         default: "latest"
+      select_index:
+        type: choice
+        description: Index to test or live
+        options:
+          - Test
+          - Live
 
 jobs:
   Update-Database:
@@ -38,7 +44,11 @@ jobs:
 
       - name: Upload new database asset
         run: |
-          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest"
+          if [[ ${{ github.event.inputs.release_version }} == "Live" ]]; then
+            python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} "latest" "latest" ${{ secrets.ES_INDEX_LIVE }}
+          else
+            python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} ${{ secrets.PROG_DEBUG_MIKROPROG }} "latest" "latest" ${{ secrets.ES_INDEX_TEST }}
+          fi
 
       - name: Add GitHub Actions credentials
         run: |
@@ -64,7 +74,10 @@ jobs:
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         run: |
-          echo "Indexing database to TEST."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP }} False ${{ github.event.inputs.release_version }} True False
-          echo "Indexing database to LIVE."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP }} False ${{ github.event.inputs.release_version }} True False
+          if [[ ${{ github.event.inputs.release_version }} == "Live" ]]; then
+            echo "Indexing database to LIVE."
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} False ${{ github.event.inputs.release_version }} True False
+          else
+            echo "Indexing database to TEST."
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} False ${{ github.event.inputs.release_version }} True False
+          fi
