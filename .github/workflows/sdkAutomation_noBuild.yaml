@@ -160,6 +160,7 @@ jobs:
         currentBranch=$(git rev-parse --abbrev-ref HEAD)
         echo "current branch is: $currentBranch"
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
+        systemPath=${refManNumber//rm/ds}
         refManNumber="${refManNumber//\//_}"
         echo "REF MANUAL VALUE: ${refManNumber}"
         echo "REF MANUAL VALUE PATH: ${refManNumber//rm/ds}"
@@ -201,13 +202,13 @@ jobs:
 
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${dirName/#extracted_}
               mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${dirName/#extracted_} | tr '[:upper:]' '[:lower:]')
-              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${refManNumber//rm/ds}
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${systemPath}
 
               sudo mv "${dirName/#extracted_}" ../../../resources/queries/mcus/
               sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${dirName/#extracted_}/
               sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/
               sudo mv 'interrupts_mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${dirName/#extracted_} | tr '[:upper:]' '[:lower:]')/
-              sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${refManNumber//rm/ds}/
+              sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${systemPath}/
               sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
               sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
               sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
