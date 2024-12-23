@@ -191,8 +191,8 @@ jobs:
             dirName="${dir%/}"
             echo "CLEARED NAME: ${dirName/#extracted_}"
             echo "MCU INFO ARRAY ELEMENT: ${mcuInfoArray[i]}"
-            removedPrefix = ${mcuInfoArray[i]/#${dirName/#extracted_}}
-            removedPrefixSufix = ${removedPrefix/%${dirName/#extracted_}}
+            removedPrefix = "${mcuInfoArray[i]/#${dirName/#extracted_}}"
+            removedPrefixSufix = "${removedPrefix/%${dirName/#extracted_}}"
             echo "MATCHING: ${removedPrefixSufix}"
             if [ ${mcuInfoArray[i]} != ${removedPrefixSufix} ]; then
 
