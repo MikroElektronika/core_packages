@@ -488,29 +488,34 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
     current_time = datetime.now(timezone.utc).replace(microsecond=0)
     # If you specifically want the 'Z' at the end instead of the offset
     published_at = current_time.isoformat().replace('+00:00', 'Z')
+    # Get the current date and time in UTC
+    current_date = datetime.now().date()
 
     for package in package_items:
-        previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
-        if previous_version != new_version:
-            doc = {
-                "name": package_items[package]['package_name'],
-                "display_name": package_items[package]['display_name'],
-                "author": "MikroElektronika",
-                "hidden": False,
-                "type": "programmer_dfp",
-                "version": new_version,
-                "package_version": package_items[package]['package_version'],
-                "published_at": published_at,
-                "category": "CODEGRIP Device Pack",
-                "download_link": package_items[package]['download_link'],
-                "package_changed": True,
-                "install_location": package_items[package]['install_location'],
-                "dependencies": json.loads(package_items[package]['dependencies']),
-                "mcus": mcus_to_index
-            }
-            resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
-            print(f"{resp["result"]} {resp['_id']}")
-            print(f"\033[95mVersion for asset {package_items[package]['package_name']} has been updated from {previous_version} to {new_version}")
+        package_release_date = datetime.strptime(package_items[package]['release_date'], "%Y-%m-%dT%H:%M:%SZ").date()
+        # Release only for packages with release date lower or equal than current date
+        if package_release_date <= current_date:
+            previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
+            if previous_version != new_version:
+                doc = {
+                    "name": package_items[package]['package_name'],
+                    "display_name": package_items[package]['display_name'],
+                    "author": "MikroElektronika",
+                    "hidden": False,
+                    "type": "programmer_dfp",
+                    "version": new_version,
+                    "package_version": package_items[package]['package_version'],
+                    "published_at": published_at,
+                    "category": "CODEGRIP Device Pack",
+                    "download_link": package_items[package]['download_link'],
+                    "package_changed": True,
+                    "install_location": package_items[package]['install_location'],
+                    "dependencies": json.loads(package_items[package]['dependencies']),
+                    "mcus": mcus_to_index
+                }
+                resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
+                print(f"{resp["result"]} {resp['_id']}")
+                print(f"\033[95mVersion for asset {package_items[package]['package_name']} has been updated from {previous_version} to {new_version}")
 
 if __name__ == '__main__':
     # First, check for arguments passed
@@ -534,13 +539,26 @@ if __name__ == '__main__':
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
     parser.add_argument("update_database", help="If true will update database.7z", type=str2bool)
     parser.add_argument("promote_release_to_latest", help="Sets current release as latest", type=str2bool, default=False)
+    parser.add_argument("--es_host", help="Elasticsearch host value", default="")
+    parser.add_argument("--es_user", help="Elasticsearch username value", default="")
+    parser.add_argument("--es_password", help="Elasticsearch password value", default="")
     args = parser.parse_args()
+
+    # For local debug purposes
+    if args.es_host and args.es_user and args.es_password:
+        es_host = args.es_host
+        es_user = args.es_user
+        es_password = args.es_password
+    else:
+        es_host = os.environ['ES_HOST']
+        es_user = os.environ['ES_USER']
+        es_pass76word = os.environ['ES_PASSWORD']
 
     # Elasticsearch instance used for indexing
     num_of_retries = 1
     while True:
         print(f"Trying to connect to ES. Connection retry:  {num_of_retries}")
-        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
+        es = Elasticsearch([es_host], http_auth=(es_user, es_password))
         if es.ping():
             break
         # Wait for 30 seconds and try again if connection fails
