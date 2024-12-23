@@ -539,13 +539,26 @@ if __name__ == '__main__':
     parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
     parser.add_argument("update_database", help="If true will update database.7z", type=str2bool)
     parser.add_argument("promote_release_to_latest", help="Sets current release as latest", type=str2bool, default=False)
+    parser.add_argument("--es_host", help="Elasticsearch host value", default="")
+    parser.add_argument("--es_user", help="Elasticsearch username value", default="")
+    parser.add_argument("--es_password", help="Elasticsearch password value", default="")
     args = parser.parse_args()
+
+    # For local debug purposes
+    if args.es_host and args.es_user and args.es_password:
+        es_host = args.es_host
+        es_user = args.es_user
+        es_password = args.es_password
+    else:
+        es_host = os.environ['ES_HOST']
+        es_user = os.environ['ES_USER']
+        es_pass76word = os.environ['ES_PASSWORD']
 
     # Elasticsearch instance used for indexing
     num_of_retries = 1
     while True:
         print(f"Trying to connect to ES. Connection retry:  {num_of_retries}")
-        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
+        es = Elasticsearch([es_host], http_auth=(es_user, es_password))
         if es.ping():
             break
         # Wait for 30 seconds and try again if connection fails
