@@ -190,7 +190,9 @@ jobs:
           for dir in ${dirInfoArray[@]}; do
             dirName="${dir%/}"
             echo "SUBDIRECTORY: ${dirName}"
-            if [ ${mcuInfoArray[i]} = *"${dirName/#extracted_}"* ]; then
+            echo "CLEARED NAME: ${dirName/#extracted_}"
+            echo "MCU INFO ARRAY ELEMENT: ${mcuInfoArray[i]}"
+            if [ ${mcuInfoArray[i]} = "MK10DN32VFM5|MK10DX32VFM5" ]; then
 
               cd $dirName
               cd generatedFiles
