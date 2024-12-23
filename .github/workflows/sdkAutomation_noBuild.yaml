@@ -161,6 +161,8 @@ jobs:
         echo "current branch is: $currentBranch"
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
         refManNumber="${refManNumber//\//_}"
+        echo "REF MANUAL VALUE: ${refManNumber}"
+        echo "REF MANUAL VALUE PATH: ${refManNumber//rm/ds}"
         sudo mv extracted_${refManNumber}.zip automatization/
         cd automatization
         unzip extracted_${refManNumber}.zip
@@ -189,9 +191,6 @@ jobs:
 
           for dir in ${dirInfoArray[@]}; do
             dirName="${dir%/}"
-            echo "CLEARED NAME: ${dirName/#extracted_}"
-            echo "MCU INFO ARRAY ELEMENT: ${mcuInfoArray[i]}"
-            echo "MATCHING: ${mcuInfoArray[i]//${dirName/#extracted_}/}"
             if [ ${mcuInfoArray[i]} != ${mcuInfoArray[i]//${dirName/#extracted_}/} ]; then
 
               cd $dirName
