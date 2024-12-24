@@ -117,15 +117,16 @@ def fetch_current_indexed_version(es: Elasticsearch, index_name, package_name):
 
 def initialize_es():
     num_of_retries = 1
+    print("Trying to connect to ES.")
     while True:
-        print(f"Trying to connect to ES. Connection retry: {num_of_retries}")
         es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
             break
         if num_of_retries == 10:
             raise ValueError("Connection to ES failed!")
+        print(f"Connection retry: {num_of_retries}")
         num_of_retries += 1
-        time.sleep(30)
+        time.sleep(1)
 
     return es
 
@@ -150,13 +151,13 @@ def index_schemas(es: Elasticsearch, release_details, version, index_name, test_
             break
 
     if doc:
-        resp = es.index(index=index_name, doc_type='necto_package', id=f'schemas{test_version}', body=doc)
+        resp = es.index(index=index_name, doc_type=None, id=f'schemas{test_version}', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
         # Special case - update live index Elasticsearch base as well
         if 'ES_INDEX_TEST' in os.environ and 'ES_INDEX_LIVE' in os.environ:
             if index_name == os.environ['ES_INDEX_TEST']:
-                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=f'schemas{test_version}', body=doc)
+                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=f'schemas{test_version}', body=doc)
                 print(f"{resp['result']} {resp['_id']}")
 
 async def upload_asset(session, token, repo, tag_name, asset_path):
