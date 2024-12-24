@@ -26,10 +26,10 @@ def index_clocks(es: Elasticsearch, release_details, version):
             break
 
     if doc:
-        resp = es.index(index=os.environ['ES_INDEX_TEST'], doc_type='necto_package', id=f'clocks', body=doc)
+        resp = es.index(index=os.environ['ES_INDEX_TEST'], doc_type=None, id=f'clocks', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
-        resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=f'clocks', body=doc)
+        resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=f'clocks', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
 def increment_version(version):
@@ -95,15 +95,16 @@ def fetch_current_indexed_version(es: Elasticsearch, index_name, package_name):
 
 def initialize_es():
     num_of_retries = 1
+    print("Trying to connect to ES.")
     while True:
-        print(f"Trying to connect to ES. Connection retry: {num_of_retries}")
         es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
             break
         if num_of_retries == 10:
             raise ValueError("Connection to ES failed!")
+        print(f"Connection retry: {num_of_retries}")
         num_of_retries += 1
-        time.sleep(30)
+        time.sleep(1)
 
     return es
 
