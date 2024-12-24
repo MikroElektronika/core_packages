@@ -189,7 +189,7 @@ jobs:
           unzip -o extracted_${refManNumber}.zip
           echo "CMAKE NAME: $(find . -maxdepth 1 -name '*.cmake' | head -n 1)"
           echo "CMAKE REGEX: ${mcuInfoArray[i]}"
-      
+
           for dir in ${dirInfoArray[@]}; do
             dirName="${dir%/}"
             if [ ${mcuInfoArray[i]} != ${mcuInfoArray[i]//${dirName/#extracted_}/} ]; then
@@ -197,7 +197,7 @@ jobs:
               cd $dirName
               cd generatedFiles
               unzip generated_files.zip
-              python -u ../../../scripts/edit_cmake.py --cmake_name "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" --cmake_regex "${mcuInfoArray[i]}"
+              python -u ../../../scripts/edit_cmake.py --cmake_name "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" --cmake_regex "${mcuInfoArray[i]}" --cmake_new_name "${cmakeInfoArray[i]}"
               json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))
               echo "JSON_NAME: $json_name"
 
