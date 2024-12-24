@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     err = False
     for indexed_item in es_instance.indexed_items:
-        if indexed_item['name'] != 'database':
+        if indexed_item['source']['name'] != 'database':
             continue
         asset_status = requests.get(indexed_item['source']['download_link'], headers=headers)
         indexed_item['source']['version'] = '1.1.180'
