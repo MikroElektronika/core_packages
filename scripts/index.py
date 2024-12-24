@@ -493,6 +493,7 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
 
     for package in package_items:
         package_release_date = datetime.strptime(package_items[package]['release_date'], "%Y-%m-%dT%H:%M:%SZ").date()
+        package_release_date_time = datetime.strptime(package_items[package]['release_date'], "%Y-%m-%dT%H:%M:%SZ")
         # Release only for packages with release date lower or equal than current date
         if package_release_date <= current_date:
             previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
@@ -505,7 +506,7 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
                     "type": "programmer_dfp",
                     "version": new_version,
                     "package_version": package_items[package]['package_version'],
-                    "published_at": published_at,
+                    "published_at": package_release_date_time.isoformat().replace('+00:00', 'Z'),
                     "category": "CODEGRIP Device Pack",
                     "download_link": package_items[package]['download_link'],
                     "package_changed": True,
@@ -513,7 +514,12 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
                     "dependencies": json.loads(package_items[package]['dependencies']),
                     "mcus": mcus_to_index
                 }
+
+                if previous_version:
+                    doc["published_at"] = published_at
+
                 resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
+
                 print(f"{resp["result"]} {resp['_id']}")
                 print(f"\033[95mVersion for asset {package_items[package]['package_name']} has been updated from {previous_version} to {new_version}")
 
@@ -577,7 +583,7 @@ if __name__ == '__main__':
     # Index microchip device family packs
     if 'live' not in args.select_index:
         # TODO - uncomment once LIVE test is confirmed to work
-        index_microchip_packs(es, args.select_index)
+        # index_microchip_packs(es, args.select_index)
         index_codegrip_packs(es, args.select_index, args.doc_codegrip)
 
     # Now index the new release
