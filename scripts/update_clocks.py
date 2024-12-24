@@ -26,10 +26,10 @@ def index_clocks(es: Elasticsearch, release_details, version):
             break
 
     if doc:
-        resp = es.index(index=os.environ['ES_INDEX_TEST'], doc_type='necto_package', id=f'clocks', body=doc)
+        resp = es.index(index=os.environ['ES_INDEX_TEST'], doc_type=None, id=f'clocks', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
-        resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=f'clocks', body=doc)
+        resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=f'clocks', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
 def increment_version(version):

@@ -118,7 +118,7 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
         if checkDict[eachPackageName]['count'] > 1:
             for eachId in checkDict[eachPackageName]['id']:
                 print("Removed %s/%s" % (eachId[1], eachId[0]))
-                response = es.delete(index=index_name, id=eachId[0], doc_type=eachId[1])
+                response = es.delete(index=index_name, id=eachId[0], doc_type=None)
 
     return db_version
 
@@ -389,16 +389,16 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)):
                 if update_database:
                     if name_without_extension in always_index:
-                        resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
+                        resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
                         print(f"{resp["result"]} {resp['_id']}")
                 else:
-                    resp = es.index(index=index_name, doc_type='necto_package', id=name_without_extension, body=doc)
+                    resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
                     print(f"{resp["result"]} {resp['_id']}")
                     # Database is indexed as separate ID for both indexes, so skip it in this step
                     if (name_without_extension in always_index) and ('database' not in name_without_extension):
                         if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
                             if index_name == os.environ['ES_INDEX_TEST']:
-                                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type='necto_package', id=name_without_extension, body=doc)
+                                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=name_without_extension, body=doc)
                                 print(f"Indexed to LIVE as well.")
                                 print(f"{resp["result"]} {resp['_id']}")
 
@@ -478,7 +478,7 @@ def index_microchip_packs(es: Elasticsearch, index_name: str):
     xml_content = MCHP.download_index_file(custom_link)
     converted_data, item_list = MCHP.convert_idx_to_json(xml_content)
     for eachItem in item_list:
-        resp = es.index(index=index_name, doc_type='necto_package', id=eachItem['name'], body=eachItem)
+        resp = es.index(index=index_name, doc_type=None, id=eachItem['name'], body=eachItem)
         print(f"{resp["result"]} {resp['_id']}")
 
 def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
@@ -518,7 +518,7 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
                 if previous_version:
                     doc["published_at"] = published_at
 
-                resp = es.index(index=index_name, doc_type='necto_package', id=package_items[package]['package_name'], body=doc)
+                resp = es.index(index=index_name, doc_type=None, id=package_items[package]['package_name'], body=doc)
 
                 print(f"{resp["result"]} {resp['_id']}")
                 print(f"\033[95mVersion for asset {package_items[package]['package_name']} has been updated from {previous_version} to {new_version}")
@@ -581,10 +581,8 @@ if __name__ == '__main__':
     )
 
     # Index microchip device family packs
-    if 'live' not in args.select_index:
-        # TODO - uncomment once LIVE test is confirmed to work
-        # index_microchip_packs(es, args.select_index)
-        index_codegrip_packs(es, args.select_index, args.doc_codegrip)
+    index_microchip_packs(es, args.select_index)
+    index_codegrip_packs(es, args.select_index, args.doc_codegrip)
 
     # Now index the new release
     index_release_to_elasticsearch(
