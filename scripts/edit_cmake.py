@@ -34,7 +34,8 @@ def main(cmake_name, regex, cmake_new_name):
         cmakeDelaysFile.write(newContent)
         cmakeDelaysFile.close()
 
-    for mcu in regex.split('|'):
+    if re.search('(?<=\_)[^\_]+(?=\/generatedFiles)', original_working_dir):
+        mcu = re.findall('(?<=\_)[^\_]+(?=\/generatedFiles)', original_working_dir)[0]
         resourceContent = open(os.path.join(original_working_dir, mcu, 'Devices.json'), mode='r', encoding='utf-8').read()
         newContent = ''
         for line in resourceContent.split('\n'):
