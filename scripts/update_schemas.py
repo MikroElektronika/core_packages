@@ -117,15 +117,16 @@ def fetch_current_indexed_version(es: Elasticsearch, index_name, package_name):
 
 def initialize_es():
     num_of_retries = 1
+    print("Trying to connect to ES.")
     while True:
-        print(f"Trying to connect to ES. Connection retry: {num_of_retries}")
         es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
             break
         if num_of_retries == 10:
             raise ValueError("Connection to ES failed!")
+        print(f"Connection retry: {num_of_retries}")
         num_of_retries += 1
-        time.sleep(30)
+        time.sleep(1)
 
     return es
 
