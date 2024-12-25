@@ -111,10 +111,6 @@ jobs:
         fi
         echo "Found branch: ${branchInfoArray[0]}!"
 
-        echo "BRANCH INFO: ${branchInfo}"
-        echo "MCI INFO: ${mcuInfo}"
-        echo "CMAKE INFO: ${cmakeInfo}"
-
         echo "branch_info=${branchInfo}" >> $GITHUB_OUTPUT
         echo "mcu_info=${mcuInfo}" >> $GITHUB_OUTPUT
         echo "cmake_info=${cmakeInfo}" >> $GITHUB_OUTPUT
