@@ -32,6 +32,9 @@ on:
 
 env:
   GLOBAL_REGEX: "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|avr|pic|preinit|riscv|schemas|unit_test_lib|.+[device|tool]_support$|^codegrip_pack"
+  ES_HOST_LEGACY: ${{ secrets.ES_HOST_LEGACY }}
+  ES_USER_LEGACY: ${{ secrets.ES_USER_LEGACY }}
+  ES_PASSWORD_LEGACY: ${{ secrets.ES_PASSWORD_LEGACY }}
 
 jobs:
   manual_run:
