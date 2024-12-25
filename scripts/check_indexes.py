@@ -47,12 +47,7 @@ if __name__ == "__main__":
 
     err = False
     for indexed_item in es_instance.indexed_items:
-        if indexed_item['source']['name'] != 'database':
-            continue
         asset_status = requests.get(indexed_item['source']['download_link'], headers=headers)
-        indexed_item['source']['version'] = '1.1.180'
-        es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
-        break
         if es_instance.Status.ERROR.value == asset_status.status_code: ## code 404 - error, reindex with correct download link
             err = True
             print("%sERROR: Asset \"%s\" download link is incorrect. - %s" % (es_instance.Colors.FAIL, indexed_item['source']['name'], indexed_item['source']['download_link']))
