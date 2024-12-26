@@ -39,43 +39,6 @@ def fetch_current_indexed_cg_packs(es : Elasticsearch, index_name):
 
     return all_packages
 
-def fetch_current_indexed_click_boards(es : Elasticsearch, index_name):
-    # Search query to use
-    query_search = {
-        "size": 5000,
-        "query": {
-            "match_all": {}
-        }
-    }
-
-    # Search the base with provided query
-    num_of_retries = 1
-    while num_of_retries <= 10:
-        try:
-            response = es.search(index=index_name, body=query_search)
-            if not response['timed_out']:
-                break
-        except:
-            print("Executing search query - retry number %i" % num_of_retries)
-        num_of_retries += 1
-
-    all_packages = []
-    for eachHit in response['hits']['hits']:
-        if not 'name' in eachHit['_source']:
-            continue
-        if '_doc' == eachHit['_type']:
-            if 'mikroe.click' in eachHit['_source']['name']:
-                all_packages.append(eachHit['_source'])
-
-    return all_packages
-
-def create_message(date, mcu_package, mcu_models):
-    message = f"MCU packages Release for {date}:\n\n+ {mcu_package}\n"
-    for model in mcu_models:
-        message += f"  + {model}\n"
-    message += "\n---"
-    return message
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create the release post message for Web.")
     parser.add_argument("title", help="Event title for calendar.")
