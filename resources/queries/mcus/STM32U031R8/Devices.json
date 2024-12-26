@@ -1,0 +1,18 @@
+{
+    "def_file":"STM32U031R8.json",
+    "family_uid":"STM32",
+    "flash":"64",
+    "icon":"images/mcu/stm32.png",
+    "max_speed":"56.000",
+    "name":"STM32U031R8",
+    "ram":"12288",
+    "sdk_config":"{\"MCU_NAME\":\"STM32U031R8\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config":"",
+    "uid":"STM32U031R8",
+    "vendor":"STMicroelectronics",
+    "compiler_flags":"",
+    "linker_flags":"",
+    "tft_socket":"1",
+    "sdk_support":"0",
+    "installer_package":"{\"clang-llvm\": \"arm_gcc_clang_stm32u031g8_r8\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_stm32u031g8_r8\"}"
+}
