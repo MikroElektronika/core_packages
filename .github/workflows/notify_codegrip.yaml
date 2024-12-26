@@ -1,4 +1,4 @@
-name: Notify Core Release Mattermost
+name: Notify Codegrip Release Mattermost
 
 on:
   workflow_dispatch:
@@ -30,19 +30,32 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytz
-          pip install requests
           pip install py7zr
+          pip install aiohttp
           pip install chardet
-          pip install beautifulsoup4
-          pip install markdown
+          pip install aiofiles
+          pip install requests
+          pip install elasticsearch==7.13.4
+          sudo apt-get install p7zip-full
 
       - name: Build Message with Python
         run: |
-          python -u scripts/build_message.py > message.txt
+          python -u scripts/build_message_codegrip.py "NECTO DAILY UPDATE" "$RELEASES_SPREADSHEET" ${{ secrets.ES_INDEX_LIVE }}
 
-      - name: Send notification to Mattermost
+      - name: Send notification to Mattermost - Product Release
+        if: ${{ github.event_name == 'schedule' }}
         env:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+        run: |
+          MESSAGE=$(cat message.txt)
+          curl -X POST -H 'Content-Type: application/json' \
+          --data "{\"text\": \"$MESSAGE\"}" \
+          $MATTERMOST_WEBHOOK_URL
+
+      - name: Send notification to Mattermost - Test Channel
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL_TEST }}
         run: |
           MESSAGE=$(cat message.txt)
           curl -X POST -H 'Content-Type: application/json' \
