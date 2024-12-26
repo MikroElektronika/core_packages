@@ -39,6 +39,10 @@ jobs:
           sudo apt-get install p7zip-full
 
       - name: Build Message with Python
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         run: |
           python -u scripts/build_message_codegrip.py "NECTO DAILY UPDATE" "$RELEASES_SPREADSHEET" ${{ secrets.ES_INDEX_LIVE }}
 
