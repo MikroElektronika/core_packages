@@ -44,7 +44,7 @@ jobs:
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         run: |
-          python -u scripts/build_message_codegrip.py "NECTO DAILY UPDATE" "$RELEASES_SPREADSHEET" ${{ secrets.ES_INDEX_LIVE }}
+          python -u scripts/build_message_codegrip.py "NECTO DAILY UPDATE" ${{ secrets.RELEASES_SPREADSHEET }} ${{ secrets.ES_INDEX_LIVE }}
 
       - name: Send notification to Mattermost - Product Release
         if: ${{ github.event_name == 'schedule' }}
