@@ -12,7 +12,7 @@ on:
         # Name of the MCU for which generation is running
         description: 'MCU name'
         # Default value if no value is explicitly provided
-        default: 'mk20dn32vlh5'
+        default: 'mk10dn32vfm5'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
@@ -39,7 +39,7 @@ on:
         # Path to the reference manual PDF file
         description: 'Reference manual PDF file path'
         # Default value if no value is explicitly provided
-        default: '/tmp/documentation/mk20dn32vlh5_rm.pdf'
+        default: '/tmp/documentation/mk10dn32vfm5_rm.pdf'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
@@ -80,7 +80,7 @@ jobs:
     - name: Send greeting
       run: echo "Starting CORE generation workflow..."
     # Checkout branch
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Authorize Mikroe Actions App
       uses: actions/create-github-app-token@v1
@@ -96,24 +96,24 @@ jobs:
 
     # Create a new branch
     - name: Create branch
+      id: branch-creation
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        branchName=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branch")
-        if [ "$branchName" == "NO_BRANCH_IN_SPREADSHEET" ]; then
+        branchInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branches")
+        mcuInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "mcus")
+        cmakeInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "cmakes")
+
+        branchInfoArray=($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
+        if [ "${branchInfoArray[0]}" == "NO_BRANCH_IN_SPREADSHEET" ]; then
           echo "Check the Google spreadsheet, $branchName!"
           exit 1
         fi
-        echo "Found branch: $branchName"
+        echo "Found branch: ${branchInfoArray[0]}!"
 
-        if ${{ github.event.inputs.new_branch }} == true; then
-          git branch $branchName
-          git checkout $branchName
-          git push -u origin $branchName
-        else
-          git checkout $branchName
-          git reset --hard $(git rev-list --max-parents=1 )
-        fi
+        echo "branch_info=${branchInfo}" >> $GITHUB_OUTPUT
+        echo "mcu_info=${mcuInfo}" >> $GITHUB_OUTPUT
+        echo "cmake_info=${cmakeInfo}" >> $GITHUB_OUTPUT
 
     # Create a new directory at the root of your repository
     - name: Create automatization directory
@@ -132,8 +132,11 @@ jobs:
       continue-on-error: true
       env:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+        RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        gh release download --repo MikroElektronika/sdk_automation latest --pattern 'generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip'
+        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
+        refManNumber="${refManNumber//\//_}"
+        gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
         echo "exit_code=$?" >> $GITHUB_OUTPUT
 
     - name: Verify if assets were found
@@ -142,56 +145,98 @@ jobs:
         echo "Generated files not found. Exiting."
         exit 1
 
-    # Move the asset we just downloaded to automatization and extract it
+    # Move the asset we just downloaded to automatization, extract it and for each MCU create branch and copy files to where they should be
     - name: Move to the created directory unzip and distribute files
       if: steps.check-asset-existence.outcome == 'success'
       id: move_files
       env:
+        GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
+        currentBranch=$(git rev-parse --abbrev-ref HEAD)
+        echo "current branch is: $currentBranch"
         refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
-        sudo mv generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip automatization/
+        systemPath=${refManNumber//rm/ds}
+        refManNumber="${refManNumber//\//_}"
+        sudo mv extracted_${refManNumber}.zip automatization/
         cd automatization
-        unzip generated_files_${{ steps.upper-mcu-name.outputs.mcu_name }}.zip
+        unzip extracted_${refManNumber}.zip
 
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')
-        mkdir -p ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber
-
-        sudo mv "${{ steps.upper-mcu-name.outputs.mcu_name }}" ../resources/queries/mcus/
-        sudo mv 'mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${{ steps.upper-mcu-name.outputs.mcu_name }}/
-        echo "json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))" >> $GITHUB_OUTPUT
-        sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/def/
-        sudo mv 'interrupts_mcu.h' ../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${{ steps.upper-mcu-name.outputs.mcu_name }} | tr '[:upper:]' '[:lower:]')/
-        sudo mv 'init_clock.c' ../${{ github.event.inputs.architecture }}/gcc_clang/system/src/$refManNumber/
-        sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
-        sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
-        sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
-        cd delays
-        sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/$(echo $(find . -maxdepth 1 -name '*.cmake' | head -n 1) | tr '[:upper:]' '[:lower:]')
+        branchInfoArray=($(echo "${{steps.branch-creation.outputs.branch_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
+        mcuInfoArray=($(echo "${{steps.branch-creation.outputs.mcu_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
+        cmakeInfoArray=($(echo "${{steps.branch-creation.outputs.cmake_info}}" | tr -d "[]'," | tr -s ' ' '\n'))
+        dirInfoArray=( */ )
         cd ..
 
-    - name: Create new core for delays if necessary
-      if: steps.check-asset-existence.outcome == 'success'
-      run: |
-        CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/${{ steps.move_files.outputs.json_name }} | tr '[:upper:]' '[:lower:]')
-        if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
-          echo "Core already exists: $CORE"
-        else
-          mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
-          sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
-          echo "Found new core: $CORE"
-        fi
+        echo "MCU INFO ARRAY IS: ${mcuInfoArray}"
 
-    # Commit changes
-    - name: Commit changes
-      if: steps.check-asset-existence.outcome == 'success'
-      run: |
-        git add .
-        git commit -m "Pulled files from sdk_automation into core_packages"
+        # Check if the directory name matches any branch name in the array
+        for i in "${!branchInfoArray[@]}"; do
+          if ${{ github.event.inputs.new_branch }} == true; then
+            git branch ${branchInfoArray[i]}
+            git checkout ${branchInfoArray[i]}
+            git push -u origin ${branchInfoArray[i]}
+          else
+            git checkout ${branchInfoArray[i]}
+            git reset --hard $(git rev-list --max-parents=1 )
+          fi
 
-    # Push changes back to your repository
-    - name: Push changes
-      if: steps.check-asset-existence.outcome == 'success'
-      run: |
-        git push -u origin ${{ github.event.inputs.build_branch }}
+          cd automatization
+          unzip -o extracted_${refManNumber}.zip
+          echo "CMAKE NAME: $(find . -maxdepth 1 -name '*.cmake' | head -n 1)"
+          echo "CMAKE REGEX: ${mcuInfoArray[i]}"
+
+          for dir in ${dirInfoArray[@]}; do
+            dirName="${dir%/}"
+            if [ ${mcuInfoArray[i]} != ${mcuInfoArray[i]//${dirName/#extracted_}/} ]; then
+
+              cd $dirName
+              cd generatedFiles
+              unzip generated_files.zip
+              python -u ../../../scripts/edit_cmake.py --cmake_name "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" --cmake_regex "${mcuInfoArray[i]}" --cmake_new_name "${cmakeInfoArray[i]}"
+              json_name=$(basename $(find . -maxdepth 1 -name '*.json' | head -n 1))
+              echo "JSON_NAME: $json_name"
+
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${dirName/#extracted_}
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${dirName/#extracted_} | tr '[:upper:]' '[:lower:]')
+              mkdir -p ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${systemPath}
+
+              sudo mv "${dirName/#extracted_}" ../../../resources/queries/mcus/
+              sudo mv 'mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/${{ github.event.inputs.vendor }}/${dirName/#extracted_}/
+              sudo mv "$(find . -maxdepth 1 -name '*.json' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/def/
+              sudo mv 'interrupts_mcu.h' ../../../${{ github.event.inputs.architecture }}/gcc_clang/interrupts/include/interrupts_mcu/$(echo ${dirName/#extracted_} | tr '[:upper:]' '[:lower:]')/
+              sudo mv 'init_clock.c' ../../../${{ github.event.inputs.architecture }}/gcc_clang/system/src/${systemPath}/
+              sudo mv "$(find . -maxdepth 1 -name '*.ld' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/linker_scripts/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.ld' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.s' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/startup/${{ github.event.inputs.vendor }}/$(echo $(find . -maxdepth 1 -name '*.s' | head -n 1) | tr '[:upper:]' '[:lower:]')
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/"${cmakeInfoArray[i]}.cmake"
+              cd delays
+              sudo mv "$(find . -maxdepth 1 -name '*.cmake' | head -n 1)" ../../../../${{ github.event.inputs.architecture }}/gcc_clang/cmake/${{ github.event.inputs.vendor }}/delays/"${cmakeInfoArray[i]}.cmake"
+
+              cd ..
+              cd ..
+              cd ..
+            fi
+          done
+          cd ..
+
+          CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
+          if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
+            echo "Core already exists: $CORE"
+          else
+            mkdir "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE"
+            sudo mv './${{ github.event.inputs.architecture }}/gcc_clang/delays/m4/delays.c' ./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE/
+            echo "Found new core: $CORE"
+          fi
+
+          rm -rf automatization
+          # Commit changes
+          git add .
+          git commit -m "Pulled files from sdk_automation into core_packages"
+          # Push changes back to your repository
+          git push -u origin ${{ github.event.inputs.build_branch }}
+          git checkout ${currentBranch}
+
+          mkdir -p automatization
+          gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
+          sudo mv extracted_${refManNumber}.zip automatization/
+        done

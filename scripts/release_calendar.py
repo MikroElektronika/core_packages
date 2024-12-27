@@ -1,4 +1,4 @@
-import os, argparse, json, urllib.request
+import os, argparse, json, urllib.request, re
 
 from datetime import datetime
 
@@ -47,10 +47,13 @@ def get_data(link, calendar_title, saveToFile=None):
         formatted_array.append(
             {
                 "notes": f"<ul>\n<li>{board_name}</li>\n</ul>",
+                "display_name": parts[0],
                 "branch": parts[1],
                 "tz": "Europe/Belgrade",
                 "start_dt": release_date.strftime("%Y-%m-%d"),
-                "additional": parts[7]
+                "additional": parts[7],
+                "mcu_list": parts[8],
+                "cmake_name": parts[9]
             }
         )
     ## Dictionary to merge nodes based on the start date
@@ -112,17 +115,22 @@ def generate_file(file_data, file_out_path):
         ## Handle errors that may occur during file generation
         print(f"Error generating file: {e}")
 
-def find_branch():
+def find_listOf(selectedList):
     with open(os.path.join(os.path.dirname(__file__), 'releases.json')) as file:
         json_data = json.load(file)
     current_date = f'{datetime.today().year}-{datetime.today().month}-{datetime.today().day}'
 
-    for release in json_data['NECTO DAILY UPDATE']["events"]:
+    for indexRelease, release in enumerate(json_data['NECTO DAILY UPDATE']["events"]):
         date = release["start_dt"]
-        if "2025-02-06" == date:
-            return release["branch"]
+        if "2030-01-01" == date:
+            refManual = json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]
+            foundList = []
+            for nextRelease in json_data['NECTO DAILY UPDATE']["events"][indexRelease:]:
+                if refManual == json.loads(nextRelease["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]:
+                    foundList.append(nextRelease[selectedList].replace('\n',''))
+            return foundList
 
-    return "NO_BRANCH_IN_SPREADSHEET"
+    return ["NO_BRANCH_IN_SPREADSHEET"]
 
 def find_reference_manual():
     with open(os.path.join(os.path.dirname(__file__), 'releases.json')) as file:
@@ -131,7 +139,7 @@ def find_reference_manual():
 
     for release in json_data['NECTO DAILY UPDATE']["events"]:
         date = release["start_dt"]
-        if "2025-02-06" == date:
+        if "2030-01-01" == date:
             return json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"].replace('.pdf', '')
 
     return "none"
@@ -141,7 +149,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Iterate through dates in a range and create calendar events if needed.")
     parser.add_argument("--title", type = str, help="Event title for calendar.", required=True)
     parser.add_argument("--doc_link", type = str, help="Spreadsheet table with release details - link.",required=True)
-    parser.add_argument("--chose_data", type = str, default = "branch", help="Chose data from spreadsheet to return.",required=False)
+    parser.add_argument("--chose_data", type = str, default = "branches", help="Chose data from spreadsheet to return.",required=False)
 
     ## Parse the arguments
     args = parser.parse_args()
@@ -150,9 +158,15 @@ if __name__ == "__main__":
     fileData = fetch_data(args.doc_link, args.title)
     ## Then generate the input file for teamup API
     generate_file(fileData, os.path.join(os.path.dirname(__file__), 'releases.json'))
-    if args.chose_data == 'branch':
+    if args.chose_data == 'branches':
         ## Find branch name from the jsom data for the current time
-        print(find_branch())
+        print(find_listOf('branch'))
+    elif args.chose_data == 'mcus':
+        ## Find reference manual from the jsom data for the current time
+        print(find_listOf('mcu_list'))
+    elif args.chose_data == 'cmakes':
+        ## Find reference manual from the jsom data for the current time
+        print(find_listOf('cmake_name'))
     else:
         ## Find reference manual from the jsom data for the current time
         print(find_reference_manual())
