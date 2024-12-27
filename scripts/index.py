@@ -497,7 +497,7 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
         # Release only for packages with release date lower or equal than current date
         if package_release_date <= current_date:
             previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
-            if previous_version != new_version:
+            if previous_version != new_version and len(mcus_to_index):
                 doc = {
                     "name": package_items[package]['package_name'],
                     "display_name": package_items[package]['display_name'],
