@@ -2,6 +2,17 @@ import os, json, urllib.request
 from datetime import datetime, timedelta
 
 class events_json():
+    class Colors:
+        HEADER = '\033[95m'
+        OKBLUE = '\033[94m'
+        OKCYAN = '\033[96m'
+        OKGREEN = '\033[92m'
+        WARNING = '\033[93m'
+        FAIL = '\033[91m'
+        ENDC = '\033[0m'
+        BOLD = '\033[1m'
+        UNDERLINE = '\033[4m'
+
     @staticmethod
     def get_data(link, calendar_title, saveToFile=None):
         """
@@ -122,9 +133,11 @@ class events_json():
         :param save_to_file: Optional; path to save the processed JSON data.
         """
         ## Fetch data from the Google Sheets CSV export link and populate events
+        download_link = f'https://docs.google.com/spreadsheets/d/{self.table}/export?format=csv'
+        print("%sDownload link is: %s" % (self.Colors.WARNING, download_link))
         self.file_out[self.calendar_title]["events"] = \
             self.get_data(
-                f'https://docs.google.com/spreadsheets/d/{self.table}/export?format=csv',
+                download_link,
                 self.calendar_title,
                 save_to_file
             )
