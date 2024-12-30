@@ -897,6 +897,8 @@ async def main(
     token, repo, doc_codegrip, doc_mikroprog,
     release_version="", release_version_sdk="", index="Test", mcus_only=True
 ):
+    global entranceCheckProg
+    global entranceCheckDebug
     ## Step 1 - download the database first
     ## Always use latest release
     dbName = 'necto_db_dev'
@@ -1028,6 +1030,7 @@ async def main(
         if databaseErp:
             checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
             checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
+            entranceCheckProg, entranceCheckDebug = True,True
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
 
@@ -1040,6 +1043,7 @@ async def main(
         if databaseErp:
             checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
             checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
+            entranceCheckProg, entranceCheckDebug = True,True
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
 
