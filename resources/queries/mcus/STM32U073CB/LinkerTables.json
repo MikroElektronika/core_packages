@@ -1,0 +1,36 @@
+{
+    "device_uid": "STM32U073CB",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": ["GENERIC_ARM_BOARD"]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "clang-llvm",
+                    "gcc_arm_none_eabi"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "48/LQFP",
+                    "48/UFQFPN"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": ["NONE"]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.11.3+"
+            }
+        }
+    ]
+}
