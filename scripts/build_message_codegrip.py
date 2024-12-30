@@ -100,10 +100,16 @@ if __name__ == "__main__":
                 if cg_file['display_name'] in release_spreadsheet_data:
                     # Separate Codegrip Packs to display them at the beginning of the list
                     todays_release += f'  + {cg_file['display_name']}\n'
+                    for mcu in cg_file['mcus']:
+                        todays_release += f'    + {mcu}\n'
                 # If it is not newly released package - add it to UPDATED section
                 else:
                     todays_update += f'  + {cg_file['display_name']}\n'
                     update_present = 1
+
+    # Case for the days when we only updated existing Codegrip Packs, but don't release new
+    if todays_release == '+ New\n':
+        todays_release = ''
 
     # If there were any updates today - add them
     if update_present:
