@@ -262,11 +262,12 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                             )
                             if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
                                 device_support_package = f'["{progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']}"]'
-                                if device_support_package == [False]:
-                                    device_support_package = ''
                             else:
                                 device_support_package = ''
-                            if progDebugUid[enums.dbSync.COUNT.value]:
+                            # TODO - this '["False"]' check excludes the MCUs without Codegrip Debugger from the database completely.
+                            # As a future fix add MCU to the database with device_support_package as '' and a query file that will check if
+                            # this field is not empty and show Codegrip support for this MCU in NECTO.
+                            if progDebugUid[enums.dbSync.COUNT.value] and device_support_package != '["False"]':
                                 insertIntoTable(
                                     database,
                                     'ProgrammerToDevice',
