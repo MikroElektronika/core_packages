@@ -1043,7 +1043,6 @@ async def main(
         if databaseErp:
             checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
             checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
-            entranceCheckProg, entranceCheckDebug = True,True
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
 
