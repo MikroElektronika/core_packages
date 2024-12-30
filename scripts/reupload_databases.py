@@ -262,11 +262,9 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                             )
                             if 'package_name' in progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]:
                                 device_support_package = f'["{progDbgInfo[eachDevice[enums.dbSync.ELEMENTS.value].lower().replace('.json', '')]['package_name']}"]'
-                                if device_support_package == [False]:
-                                    device_support_package = ''
                             else:
                                 device_support_package = ''
-                            if progDebugUid[enums.dbSync.COUNT.value]:
+                            if progDebugUid[enums.dbSync.COUNT.value] and device_support_package != '["False"]':
                                 insertIntoTable(
                                     database,
                                     'ProgrammerToDevice',
