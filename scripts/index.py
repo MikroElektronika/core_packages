@@ -284,7 +284,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'created_at': asset['created_at'],
                 'updated_at': asset['updated_at'],
                 'category': "MCU Package",
-                'download_link': asset['url'],
+                'download_link': asset['browser_download_url'],
+                'download_link_api': asset['url'],
                 'package_changed' : check_version,
                 'install_location' : "%APPLICATION_DATA_DIR%/clocks.json",
                 'gh_package_name': "clocks.json"
@@ -305,7 +306,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 'created_at': asset['created_at'],
                 'updated_at': asset['updated_at'],
                 'category': "MCU Package",
-                'download_link': asset['url'],
+                'download_link': asset['browser_download_url'],
+                'download_link_api': asset['url'],
                 'package_changed' : check_version,
                 'install_location' : f"%APPLICATION_DATA_DIR%/schemas{suffix}.json",
                 'gh_package_name': f"schemas{suffix}.json"
@@ -358,7 +360,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'published_at': published_at,
                     'hash': current_hash,
                     'category': metadata_item['category'],
-                    'download_link': asset['url'],
+                    'download_link': asset['browser_download_url'],
+                    'download_link_api': asset['url'],
                     'package_changed' : update_package or force,
                     'install_location' : metadata_item['install_location'],
                     'gh_package_name': os.path.splitext(os.path.basename(asset['name']))[0]
