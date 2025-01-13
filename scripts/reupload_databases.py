@@ -825,6 +825,63 @@ def updateDevicesFromCore(dbs, queries):
 
     return
 
+def update_legacy_sdk_support(database):
+    # Get the list of all Legacy sdk_uid values
+    sql = """
+        SELECT uid FROM SDKs
+        WHERE uid LIKE "%legacy%"
+    """
+    numOfElements, results = read_data_from_db(database, sql)
+
+    sdk_uids = [row[0] for row in results]
+
+    # Iterate through legacy SDK uids
+    for sdk_uid in sdk_uids:
+        # Get all MCUs that have current legacy SDK support as a list
+        sql = f"""
+        SELECT DISTINCT device_uid FROM SDKToDevice
+        WHERE sdk_uid == '{sdk_uid}'
+        AND device_uid NOT LIKE "%\\_%" ESCAPE '\\';
+        """
+        numOfElements, results = read_data_from_db(database, sql)
+
+        current_legacy_sdk_device_uids = [row[0] for row in results]
+
+        # Get all Cards that don't have current legacy SDK support as a list
+        sql = f"""
+        SELECT DISTINCT device_uid FROM SDKToDevice
+        WHERE sdk_uid != '{sdk_uid}'
+        AND device_uid LIKE "%\\_%" ESCAPE '\\';
+        """
+        numOfElements, results = read_data_from_db(database, sql)
+
+        current_card_device_uids = [row[0] for row in results]
+
+        # Add current legacy SDK support for the Cards which MCUs have this legacy SDK support
+        for device_uid in current_legacy_sdk_device_uids:
+            for card_device_uid in current_card_device_uids:
+                if device_uid.lower() in card_device_uid.lower():
+                    insertIntoTable(database, 'SDKToDevice', [card_device_uid, sdk_uid], 'device_uid, sdk_uid')
+                    print(f"Added {sdk_uid} support for {card_device_uid}")
+
+        # Get all Boards that don't have current legacy SDK support,
+        # but that have Devices with this legacy SDK support
+        sql = f"""
+        SELECT DISTINCT SDKToBoard.board_uid, '{sdk_uid}'
+        FROM SDKToBoard
+        INNER JOIN BoardToDevice
+            ON BoardToDevice.board_uid = SDKToBoard.board_uid
+        INNER JOIN SDKToDevice
+            ON SDKToDevice.device_uid = BoardToDevice.device_uid
+        WHERE SDKToDevice.sdk_uid = '{sdk_uid}'
+        AND SDKToBoard.sdk_uid != '{sdk_uid}';
+        """
+        numOfElements, results = read_data_from_db(database, sql)
+        board_uids = [row[0] for row in results]
+        for board_uid in board_uids:
+            insertIntoTable(database, 'SDKToBoard', [board_uid, sdk_uid], 'board_uid, sdk_uid')
+            print(f"Added {sdk_uid} support for {board_uid}")
+
 def hash_file(filename):
     """Generate MD5 hash of a file."""
     hash_md5 = hashlib.md5()
@@ -1106,18 +1163,24 @@ async def main(
                             missingMcuDfp.append(mcu)
                     print(f"Following MCUs do not have DFP: {missingMcuDfp}")
 
-    ## Step 12 - update families
+    ## Step 12 - add legacy SDK support for Boards and Cards that should have it
+    if not mcus_only:
+        for eachDb in [databaseErp, databaseNecto]:
+            if eachDb:
+                update_legacy_sdk_support(eachDb)
+
+    ## Step 13 - update families
     if not mcus_only:
         if databaseErp:
             update_families(databaseErp, allDevicesGithub)
 
-    ## Step 13 - update the icon names
+    ## Step 14 - update the icon names
     if not mcus_only:
         for eachDb in [databaseErp, databaseNecto]:
             fix_icon_names(eachDb, "Boards")
             fix_icon_names(eachDb, "Displays")
 
-    ## Step 14 - if queries are different, add them to new file
+    ## Step 15 - if queries are different, add them to new file
     if not mcus_only:
         if not compare_hashes(
             os.path.join(os.path.dirname(__file__), 'databases/queries'),
@@ -1129,7 +1192,7 @@ async def main(
                 os.path.join(os.path.dirname(__file__), 'databases/queries')
             )
 
-    ## Step 15 - re-upload over existing assets
+    ## Step 16 - re-upload over existing assets
     if not mcus_only:
         archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
         async with aiohttp.ClientSession() as session:
@@ -1138,7 +1201,7 @@ async def main(
             async with aiohttp.ClientSession() as session:
                 upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
 
-    ## Step 16 - overwrite the existing necto_db.db in root with newly generated one
+    ## Step 17 - overwrite the existing necto_db.db in root with newly generated one
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
