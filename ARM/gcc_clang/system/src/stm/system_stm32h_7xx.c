@@ -318,7 +318,7 @@ void systemInit()
     }
 
     /* Wait till SYSCLK is stabilized (depending on selected clock) */
-    while ( ( _REG_VALUE_GET_( RCC->CFGR ) & RCC_CFGR_SWS_Pos ) != ( ( VALUE_RCC_CFGR << 3 ) & RCC_CFGR_SWS_Pos ) )
+    while ( ( _REG_VALUE_GET_( RCC->CFGR ) & RCC_CFGR_SWS_Msk ) != ( ( VALUE_RCC_CFGR << 3 ) & RCC_CFGR_SWS_Msk ) )
         ;
 
     systemEnableFPU();
