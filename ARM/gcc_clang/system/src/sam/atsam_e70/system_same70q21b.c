@@ -30,6 +30,12 @@
 // Note: Changed for MikroE implementation
 #include "mcu.h"
 #include "core_header.h"
+#include <stdbool.h>
+
+void sysclk_init(void);
+ bool osc_is_ready(uint32_t ul_id);
+ uint32_t pll_is_locked(uint32_t ul_pll_id);
+ uint32_t osc_get_rate(uint32_t ul_id);
 
 /** \cond 0 */
 /* *INDENT-OFF* */
@@ -45,351 +51,839 @@ extern "C" {
  */
 #define __SYSTEM_CLOCK    (FOSC_KHZ_VALUE * 1000)
 
-static void _efc_set_flash_wait_cycles()
+/** Using external oscillator */
+#define PMC_OSC_XTAL            0
+
+/** Oscillator in bypass mode */
+#define PMC_OSC_BYPASS          1
+
+#define SYS_BOARD_OSCOUNT   (CKGR_MOR_MOSCXTST(0x8U))
+#define SYS_BOARD_PLLAR     (CKGR_PLLAR_ONE | CKGR_PLLAR_MULA(0x31U) | \
+                            CKGR_PLLAR_PLLACOUNT(0x3fU) | CKGR_PLLAR_DIVA(0x1U))
+#define SYS_BOARD_MCKR      (PMC_MCKR_PRES_CLK_2 | PMC_MCKR_CSS_PLLA_CLK | (1<<8))
+
+#define PLL_OUTPUT_MIN_HZ       160000000
+#define PLL_OUTPUT_MAX_HZ       500000000
+
+#define PLL_INPUT_MIN_HZ        3000000
+#define PLL_INPUT_MAX_HZ        32000000
+
+#define NR_PLLS             2
+#define PLLA_ID             0
+#define UPLL_ID             1   //!< USB UTMI PLL.
+
+#define PLL_UPLL_HZ     480000000
+
+#define PLL_COUNT   0x3fU
+
+#  define Assert(expr) ((void) 0)
+
+//! \name Master Clock Prescalers (MCK)
+//@{
+#define SYSCLK_PRES_1   PMC_MCKR_PRES_CLK_1  //!< Set master clock prescaler to 1
+#define SYSCLK_PRES_2   PMC_MCKR_PRES_CLK_2  //!< Set master clock prescaler to 2
+#define SYSCLK_PRES_4   PMC_MCKR_PRES_CLK_4  //!< Set master clock prescaler to 4
+#define SYSCLK_PRES_8   PMC_MCKR_PRES_CLK_8  //!< Set master clock prescaler to 8
+#define SYSCLK_PRES_16  PMC_MCKR_PRES_CLK_16 //!< Set master clock prescaler to 16
+#define SYSCLK_PRES_32  PMC_MCKR_PRES_CLK_32 //!< Set master clock prescaler to 32
+#define SYSCLK_PRES_64  PMC_MCKR_PRES_CLK_64 //!< Set master clock prescaler to 64
+#define SYSCLK_PRES_3   PMC_MCKR_PRES_CLK_3  //!< Set master clock prescaler to 3
+//@}
+
+//! \name Master Clock Division (MCK)
+//@{
+#define SYSCLK_DIV_1   PMC_MCKR_MDIV_EQ_PCK  //!< Set master clock division to 1
+#define SYSCLK_DIV_2   PMC_MCKR_MDIV_PCK_DIV2  //!< Set master clock division to 2
+#define SYSCLK_DIV_4   PMC_MCKR_MDIV_PCK_DIV4  //!< Set master clock division to 4
+#define SYSCLK_DIV_3   PMC_MCKR_MDIV_PCK_DIV3  //!< Set master clock division to 3
+
+#define SYSCLK_SRC_SLCK_RC         0 //!< Internal 32kHz RC oscillator as master source clock
+#define SYSCLK_SRC_SLCK_XTAL       1 //!< External 32kHz crystal oscillator as master source clock
+#define SYSCLK_SRC_SLCK_BYPASS     2 //!< External 32kHz bypass oscillator as master source clock
+#define SYSCLK_SRC_MAINCK_4M_RC    3 //!< Internal 4MHz RC oscillator as master source clock
+#define SYSCLK_SRC_MAINCK_8M_RC    4 //!< Internal 8MHz RC oscillator as master source clock
+#define SYSCLK_SRC_MAINCK_12M_RC   5 //!< Internal 12MHz RC oscillator as master source clock
+#define SYSCLK_SRC_MAINCK_XTAL     6 //!< External crystal oscillator as master source clock
+#define SYSCLK_SRC_MAINCK_BYPASS   7 //!< External bypass oscillator as master source clock
+#define SYSCLK_SRC_PLLACK          8 //!< Use PLLACK as master source clock
+#define SYSCLK_SRC_UPLLCK          9       //!< Use UPLLCK as master source clock
+
+#define OSC_SLCK_32K_RC      0    //!< Internal 32kHz RC oscillator.
+#define OSC_SLCK_32K_XTAL    1    //!< External 32kHz crystal oscillator.
+#define OSC_SLCK_32K_BYPASS  2    //!< External 32kHz bypass oscillator.
+#define OSC_MAINCK_4M_RC     3    //!< Internal 4MHz RC oscillator.
+#define OSC_MAINCK_8M_RC     4    //!< Internal 8MHz RC oscillator.
+#define OSC_MAINCK_12M_RC    5    //!< Internal 12MHz RC oscillator.
+#define OSC_MAINCK_XTAL      6    //!< External crystal oscillator.
+#define OSC_MAINCK_BYPASS    7    //!< External bypass oscillator.
+//@}
+
+//! \name Oscillator clock speed in hertz
+//@{
+#define OSC_SLCK_32K_RC_HZ      CHIP_FREQ_SLCK_RC         //!< Internal 32kHz RC oscillator.
+#define OSC_SLCK_32K_XTAL_HZ    BOARD_FREQ_SLCK_XTAL      //!< External 32kHz crystal oscillator.
+#define OSC_SLCK_32K_BYPASS_HZ  BOARD_FREQ_SLCK_BYPASS    //!< External 32kHz bypass oscillator.
+#define OSC_MAINCK_4M_RC_HZ     CHIP_FREQ_MAINCK_RC_4MHZ  //!< Internal 4MHz RC oscillator.
+#define OSC_MAINCK_8M_RC_HZ     CHIP_FREQ_MAINCK_RC_8MHZ  //!< Internal 8MHz RC oscillator.
+#define OSC_MAINCK_12M_RC_HZ    CHIP_FREQ_MAINCK_RC_12MHZ //!< Internal 12MHz RC oscillator.
+#define OSC_MAINCK_XTAL_HZ      BOARD_FREQ_MAINCK_XTAL    //!< External crystal oscillator.
+#define OSC_MAINCK_BYPASS_HZ    BOARD_FREQ_MAINCK_BYPASS  //!< External bypass oscillator.
+
+enum pll_source {
+	PLL_SRC_MAINCK_4M_RC   = OSC_MAINCK_4M_RC,  //!< Internal 4MHz RC oscillator.
+	PLL_SRC_MAINCK_8M_RC   = OSC_MAINCK_8M_RC,  //!< Internal 8MHz RC oscillator.
+	PLL_SRC_MAINCK_12M_RC  = OSC_MAINCK_12M_RC, //!< Internal 12MHz RC oscillator.
+	PLL_SRC_MAINCK_XTAL    = OSC_MAINCK_XTAL,   //!< External crystal oscillator.
+	PLL_SRC_MAINCK_BYPASS  = OSC_MAINCK_BYPASS, //!< External bypass oscillator.
+	PLL_NR_SOURCES,                             //!< Number of PLL sources.
+};
+
+struct pll_config {
+	uint32_t ctrl;
+};
+
+#define pll_get_default_rate(pll_id)                                     \
+	((osc_get_rate((uint32_t)CONFIG_PLL0_SOURCE)                      \
+			* CONFIG_PLL0_MUL)                      \
+			/ CONFIG_PLL0_DIV)
+
+/* Force UTMI PLL parameters (Hardware defined) */
+#ifdef CONFIG_PLL1_SOURCE
+# undef CONFIG_PLL1_SOURCE
+#endif
+#ifdef CONFIG_PLL1_MUL
+# undef CONFIG_PLL1_MUL
+#endif
+#ifdef CONFIG_PLL1_DIV
+# undef CONFIG_PLL1_DIV
+#endif
+#define CONFIG_PLL1_SOURCE  PLL_SRC_MAINCK_XTAL
+#define CONFIG_PLL1_MUL     0
+#define CONFIG_PLL1_DIV     0
+
+// ===== System Clock (MCK) Source Options
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_RC
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_XTAL
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_BYPASS
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_4M_RC
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_8M_RC
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_12M_RC
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_XTAL
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_BYPASS
+#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_PLLACK
+//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_UPLLCK
+
+// ===== Processor Clock (HCLK) Prescaler Options   (Fhclk = Fsys / (SYSCLK_PRES))
+#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_1
+//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_2
+//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_4
+//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_8
+//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_16
+//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_32
+//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_64
+//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_3
+
+// ===== System Clock (MCK) Division Options     (Fmck = Fhclk / (SYSCLK_DIV))
+#define CONFIG_SYSCLK_DIV            2
+
+// ===== PLL0 (A) Options   (Fpll = (Fclk * PLL_mul) / PLL_div)
+// Use mul and div effective values here.
+#define CONFIG_PLL0_SOURCE          PLL_SRC_MAINCK_XTAL
+#define CONFIG_PLL0_MUL             25
+#define CONFIG_PLL0_DIV             1
+
+// ===== UPLL (UTMI) Hardware fixed at 480 MHz.
+
+// ===== USB Clock Source Options   (Fusb = FpllX / USB_div)
+// Use div effective value here.
+//#define CONFIG_USBCLK_SOURCE        USBCLK_SRC_PLL0
+#define CONFIG_USBCLK_SOURCE        USBCLK_SRC_UPLL
+#define CONFIG_USBCLK_DIV           1
+
+#define PMC_TIMEOUT             (4096)
+
+#if !defined(BOARD_FREQ_SLCK_XTAL)
+#  warning The board slow clock xtal frequency has not been defined.
+#  define BOARD_FREQ_SLCK_XTAL      (32768UL)
+#endif
+
+#if !defined(BOARD_FREQ_SLCK_BYPASS)
+#  warning The board slow clock bypass frequency has not been defined.
+#  define BOARD_FREQ_SLCK_BYPASS    (32768UL)
+#endif
+
+#if !defined(BOARD_FREQ_MAINCK_XTAL)
+#  warning The board main clock xtal frequency has not been defined.
+#  define BOARD_FREQ_MAINCK_XTAL    (12000000UL)
+#endif
+
+#if !defined(BOARD_FREQ_MAINCK_BYPASS)
+#  warning The board main clock bypass frequency has not been defined.
+#  define BOARD_FREQ_MAINCK_BYPASS  (12000000UL)
+#endif
+
+#if !defined(BOARD_OSC_STARTUP_US)
+#  warning The board main clock xtal startup time has not been defined.
+#  define BOARD_OSC_STARTUP_US      (15625UL)
+#endif
+
+#define pmc_us_to_moscxtst(startup_us, slowck_freq)      \
+	((startup_us * slowck_freq / 8 / 1000000) < 0x100 ?  \
+		(startup_us * slowck_freq / 8 / 1000000) : 0xFF)
+
+#define pmc_us_to_moscxtst(startup_us, slowck_freq)      \
+	((startup_us * slowck_freq / 8 / 1000000) < 0x100 ?  \
+		(startup_us * slowck_freq / 8 / 1000000) : 0xFF)
+
+void pmc_enable_upll_clock(void)
 {
-    uint32_t data = EFC->EEFC_FMR & ~EEFC_FMR_FWS_Msk;
-    data |= VALUE_EEFC_FMR & EEFC_FMR_FWS_Msk;
-    EFC->EEFC_FMR = data;
+	PMC->CKGR_UCKR = CKGR_UCKR_UPLLCOUNT(3) | CKGR_UCKR_UPLLEN;
+
+	/* Wait UTMI PLL Lock Status */
+	while (!(PMC->PMC_SR & PMC_SR_LOCKU));
 }
+
 /**
- * \brief Initialize clock sources
- *
- * All clock sources are running when this function returns.
+ * \brief Disable UPLL clock.
  */
-static void _pmc_init_sources(void)
+void pmc_disable_upll_clock(void)
 {
-    uint32_t data = 0;
+	PMC->CKGR_UCKR &= ~CKGR_UCKR_UPLLEN;
+}
 
-    // If XOSC32K is selected.
-    if (SUPC_CR_XTALSEL_CRYSTAL_SEL == (VALUE_SUPC_CR & SUPC_CR_XTALSEL_Msk)) {
-        // If Bypass mode is selected for XOSC32.
-        if (SUPC_MR_OSCBYPASS_BYPASS == (VALUE_SUPC_MR & SUPC_MR_OSCBYPASS_Msk)) {
-            // Set bypass mode for XOSC32K. Must be done before setting XOSC32K.
-            SUPC->SUPC_MR |= SUPC_MR_KEY_PASSWD | SUPC_MR_OSCBYPASS_BYPASS;
-        }
-        // Set XOSC32K as source for the SCLK(slow clock).
-        SUPC->SUPC_CR = SUPC_CR_KEY_PASSWD | SUPC_CR_XTALSEL_CRYSTAL_SEL;
-        while ((SUPC_SR_OSCSEL_CRYST != (SUPC->SUPC_SR & SUPC_SR_OSCSEL_Msk)) &&
-               (PMC_SR_OSCSELS != (PMC->PMC_SR & PMC_SR_OSCSELS_Msk))) {
-            /* Wait until the oscillator is ready */
-        }
-    }
+/**
+ * \brief Is UPLL locked?
+ *
+ * \retval 0 Not locked.
+ * \retval 1 Locked.
+ */
+uint32_t pmc_is_locked_upll(void)
+{
+	return (PMC->PMC_SR & PMC_SR_LOCKU);
+}
 
-    // If the Main RC oscillator is enabled and selected.
-    if ((CKGR_MOR_MOSCRCEN == (VALUE_CKGR_MOR & CKGR_MOR_MOSCRCEN_Msk)) &&
-        (CKGR_MOR_MOSCSEL != (VALUE_CKGR_MOR & CKGR_MOR_MOSCSEL_Msk))) {
-        /* Enable Fast RC oscillator but DO NOT switch to RC now */
-        PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCRCEN;
-        while (PMC_SR_MOSCRCS != (PMC->PMC_SR & PMC_SR_MOSCRCS_Msk)) {
-            /* Wait until the Fast RC to stabilize */
-        }
-        /* Set Fast RC oscillator clock frequency */
-        data = PMC->CKGR_MOR & ~CKGR_MOR_MOSCRCF_Msk;
-        data |= CKGR_MOR_KEY_PASSWD | (VALUE_CKGR_MOR & CKGR_MOR_MOSCRCF_Msk);
-        PMC->CKGR_MOR = data;
-        while (PMC_SR_MOSCRCS != (PMC->PMC_SR & PMC_SR_MOSCRCS_Msk)) {
-            /* Wait until the Fast RC to stabilize */
-        }
-        /* Switch to Fast RC */
-        data = PMC->CKGR_MOR & ~CKGR_MOR_MOSCSEL_Msk;
-        data |= CKGR_MOR_KEY_PASSWD;
-        PMC->CKGR_MOR = data;
-        while (PMC_SR_MOSCSELS != (PMC->PMC_SR & PMC_SR_MOSCSELS_Msk)) {
-            /* Wait until the oscillator selection is done */
-        }
-        // Disable the Main Crystal oscillator if needed.
-        if (CKGR_MOR_MOSCXTEN != (VALUE_CKGR_MOR & CKGR_MOR_MOSCXTEN_Msk)) {
-            PMC->CKGR_MOR &= ~CKGR_MOR_MOSCXTEN_Msk;
-        }
-        // Disable the Main Crystal oscillator Bypass if needed.
-        if (CKGR_MOR_MOSCXTBY != (VALUE_CKGR_MOR & CKGR_MOR_MOSCXTBY_Msk)) {
-            PMC->CKGR_MOR &= ~CKGR_MOR_MOSCXTBY_Msk;
-        }
-        data = PMC->PMC_SR;
-    }
+uint32_t pmc_is_locked_pllack(void)
+{
+	return (PMC->PMC_SR & PMC_SR_LOCKA);
+}
 
-    // If the Main Crystal oscillator is enabled/bypassed and selected.
-    if ((0 != (VALUE_CKGR_MOR & (CKGR_MOR_MOSCXTEN_Msk | CKGR_MOR_MOSCXTBY_Msk))) &&
-        (CKGR_MOR_MOSCSEL == (VALUE_CKGR_MOR & CKGR_MOR_MOSCSEL_Msk))) {
-        if (CKGR_MOR_MOSCXTBY == (VALUE_CKGR_MOR & CKGR_MOR_MOSCXTBY_Msk)) {
-            /* Enable Main XTAL oscillator bypass */
-            data = PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN;
-            data |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTBY | CKGR_MOR_MOSCSEL;
-            PMC->CKGR_MOR = data;
-        } else {
-            /* Enable Main XTAL oscillator */
-            data = PMC->CKGR_MOR & ~(CKGR_MOR_MOSCXTBY_Msk | CKGR_MOR_MOSCXTST_Msk);
-            data |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTEN | (VALUE_CKGR_MOR & CKGR_MOR_MOSCXTST_Msk);
-            PMC->CKGR_MOR = data;
-            while (PMC_SR_MOSCXTS != (PMC->PMC_SR & PMC_SR_MOSCXTS_Msk)) {
-                /* Wait until the XTAL to stabilize */
-            }
-            PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCSEL;
-        }
-        while (PMC_SR_MOSCSELS != (PMC->PMC_SR & PMC_SR_MOSCSELS_Msk)) {
-                /* Wait until the oscillator selection is done */
-        }
-        if (CKGR_MOR_MOSCRCEN != (VALUE_CKGR_MOR & CKGR_MOR_MOSCRCEN_Msk)) {
-            PMC->CKGR_MOR &= ~CKGR_MOR_MOSCRCEN_Msk;
-        }
-    }
+uint32_t pmc_osc_is_ready_mainck(void)
+{
+	return PMC->PMC_SR & PMC_SR_MOSCSELS;
+}
 
-    /* Stop PLL first */
-    // If the PLLA is enabled.
-    if ((CKGR_PLLAR_DIVA_0_Val != (VALUE_CKGR_PLLAR & CKGR_PLLAR_DIVA_Msk)) &&
-        (CKGR_PLLAR_MULA(0) < (VALUE_CKGR_PLLAR & CKGR_PLLAR_MULA_Msk))) {
-        /* Program PLL */
-        PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | VALUE_CKGR_PLLAR;
-        while (PMC_SR_LOCKA != (PMC->PMC_SR & PMC_SR_LOCKA_Msk)) {
-            /* Wait until PLLACK stabilize */
-        }
-    }
+uint32_t pmc_osc_is_ready_32kxtal(void)
+{
+	return ((SUPC->SUPC_SR & SUPC_SR_OSCSEL)
+			&& (PMC->PMC_SR & PMC_SR_OSCSELS));
+}
 
-    // If UPLL is enabled.
-    if (CKGR_UCKR_UPLLEN == (VALUE_CKGR_UCKR & CKGR_UCKR_UPLLEN_Msk)) {
-        UTMI->UTMI_CKTRIM = VALUE_UTMI_CKTRIM;
-        // Configure UPLL.
-        PMC->CKGR_UCKR = VALUE_CKGR_UCKR;
-	    while (PMC_SR_LOCKU != (PMC->PMC_SR & PMC_SR_LOCKU_Msk)) {
-		    /* Wait until USB UTMI stabilize */
-        }
-        data = PMC->PMC_MCKR & ~PMC_MCKR_UPLLDIV_Msk;
-        data |= VALUE_PMC_MCKR & PMC_MCKR_UPLLDIV_Msk;
-        PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY)) {
-            /* Wait until master clock is ready */
-        }
+void pmc_switch_mainck_to_xtal(uint32_t ul_bypass,
+		uint32_t ul_xtal_startup_time)
+{
+	/* Enable Main Xtal oscillator */
+	if (ul_bypass) {
+		PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN) |
+				CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTBY |
+				CKGR_MOR_MOSCSEL;
 	} else {
-        // Disasble UPLL.
-        PMC->CKGR_UCKR &= ~CKGR_UCKR_UPLLEN;
-    }
+		PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTBY) |
+				CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTEN |
+				CKGR_MOR_MOSCXTST(ul_xtal_startup_time);
+		/* Wait the Xtal to stabilize */
+		while (!(PMC->PMC_SR & PMC_SR_MOSCXTS));
 
-    if (VALUE_CKGR_MOR & (CKGR_MOR_MOSCRCEN_Msk | CKGR_MOR_MOSCXTEN_Msk | CKGR_MOR_MOSCXTBY_Msk)) {
-        /* Enable main clock failure detection */
-        PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | (VALUE_CKGR_MOR & CKGR_MOR_CFDEN_Msk);
-    }
+		PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCSEL;
+	}
+}
+
+void pmc_switch_mainck_to_fastrc(uint32_t ul_moscrcf)
+{
+	/* Enable Fast RC oscillator but DO NOT switch to RC now */
+	PMC->CKGR_MOR |= (CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCRCEN);
+
+	/* Wait the Fast RC to stabilize */
+	while (!(PMC->PMC_SR & PMC_SR_MOSCRCS));
+
+	/* Change Fast RC oscillator frequency */
+	PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCRCF_Msk) |
+			CKGR_MOR_KEY_PASSWD | ul_moscrcf;
+
+	/* Wait the Fast RC to stabilize */
+	while (!(PMC->PMC_SR & PMC_SR_MOSCRCS));
+
+	/* Switch to Fast RC */
+	PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCSEL) |
+			CKGR_MOR_KEY_PASSWD;
+}
+
+void pmc_switch_sclk_to_32kxtal(uint32_t ul_bypass)
+{
+	/* Set Bypass mode if required */
+	if (ul_bypass == 1) {
+		SUPC->SUPC_MR |= SUPC_MR_KEY_PASSWD |
+			SUPC_MR_OSCBYPASS;
+	}
+
+	SUPC->SUPC_CR = SUPC_CR_KEY_PASSWD | SUPC_CR_XTALSEL;
+}
+
+ uint32_t sysclk_get_main_hz(void)
+{
+#if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
+	if (!sysclk_initialized ) {
+		return OSC_MAINCK_4M_RC_HZ;
+	}
+#endif
+
+	/* Config system clock setting */
+	if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_RC) {
+		return OSC_SLCK_32K_RC_HZ;
+	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_XTAL) {
+		return OSC_SLCK_32K_XTAL_HZ;
+	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_BYPASS) {
+		return OSC_SLCK_32K_BYPASS_HZ;
+	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_4M_RC) {
+		return OSC_MAINCK_4M_RC_HZ;
+	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_8M_RC) {
+		return OSC_MAINCK_8M_RC_HZ;
+	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_12M_RC) {
+		return OSC_MAINCK_12M_RC_HZ;
+	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_XTAL) {
+		return OSC_MAINCK_XTAL_HZ;
+	} else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_MAINCK_BYPASS) {
+		return OSC_MAINCK_BYPASS_HZ;
+	}
+	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_PLLACK) {
+		return (osc_get_rate(CONFIG_PLL0_SOURCE) * CONFIG_PLL0_MUL) / CONFIG_PLL0_DIV;
+	}
+
+#ifdef CONFIG_PLL1_SOURCE
+	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_UPLLCK) {
+		return PLL_UPLL_HZ;
+	}
+#endif
+	else {
+		/* unhandled_case(CONFIG_SYSCLK_SOURCE); */
+		return 0;
+	}
+}
+
+ uint32_t sysclk_get_cpu_hz(void)
+{
+	/* CONFIG_SYSCLK_PRES is the register value for setting the expected */
+	/* prescaler, not an immediate value. */
+	return sysclk_get_main_hz() /
+		((CONFIG_SYSCLK_PRES == SYSCLK_PRES_3) ? 3 :
+			(1 << (CONFIG_SYSCLK_PRES >> PMC_MCKR_PRES_Pos)));
+}
+
+uint32_t pmc_switch_mck_to_sclk(uint32_t ul_pres)
+{
+	uint32_t ul_timeout;
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_CSS_Msk)) |
+			PMC_MCKR_CSS_SLOW_CLK;
+	for (ul_timeout = PMC_TIMEOUT; !(PMC->PMC_SR & PMC_SR_MCKRDY);
+			--ul_timeout) {
+		if (ul_timeout == 0) {
+			return 1;
+		}
+	}
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_PRES_Msk)) | ul_pres;
+	for (ul_timeout = PMC_TIMEOUT; !(PMC->PMC_SR & PMC_SR_MCKRDY);
+			--ul_timeout) {
+		if (ul_timeout == 0) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+uint32_t pmc_switch_mck_to_mainck(uint32_t ul_pres)
+{
+	uint32_t ul_timeout;
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_CSS_Msk)) |
+			PMC_MCKR_CSS_MAIN_CLK;
+	for (ul_timeout = PMC_TIMEOUT; !(PMC->PMC_SR & PMC_SR_MCKRDY);
+			--ul_timeout) {
+		if (ul_timeout == 0) {
+			return 1;
+		}
+	}
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_PRES_Msk)) | ul_pres;
+	for (ul_timeout = PMC_TIMEOUT; !(PMC->PMC_SR & PMC_SR_MCKRDY);
+			--ul_timeout) {
+		if (ul_timeout == 0) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+uint32_t pmc_switch_mck_to_pllack(uint32_t ul_pres)
+{
+	uint32_t ul_timeout;
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_PRES_Msk)) | ul_pres;
+	for (ul_timeout = PMC_TIMEOUT; !(PMC->PMC_SR & PMC_SR_MCKRDY);
+			--ul_timeout) {
+		if (ul_timeout == 0) {
+			return 1;
+		}
+	}
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_CSS_Msk)) |
+			PMC_MCKR_CSS_PLLA_CLK;
+
+	for (ul_timeout = PMC_TIMEOUT; !(PMC->PMC_SR & PMC_SR_MCKRDY);
+			--ul_timeout) {
+		if (ul_timeout == 0) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+uint32_t pmc_switch_mck_to_upllck(uint32_t ul_pres)
+{
+	uint32_t ul_timeout;
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_PRES_Msk)) | ul_pres;
+	for (ul_timeout = PMC_TIMEOUT; !(PMC->PMC_SR & PMC_SR_MCKRDY);
+			--ul_timeout) {
+		if (ul_timeout == 0) {
+			return 1;
+		}
+	}
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_CSS_Msk)) |
+			PMC_MCKR_CSS_UPLL_CLK;
+	for (ul_timeout = PMC_TIMEOUT; !(PMC->PMC_SR & PMC_SR_MCKRDY);
+			--ul_timeout) {
+		if (ul_timeout == 0) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+void pmc_mck_set_division(uint32_t ul_div)
+{
+	switch (ul_div) {
+		case 1:
+			ul_div = PMC_MCKR_MDIV_EQ_PCK;
+			break;
+		case 2:
+			ul_div = PMC_MCKR_MDIV_PCK_DIV2;
+			break;
+		case 3:
+			ul_div = PMC_MCKR_MDIV_PCK_DIV3;
+			break;
+		case 4:
+			ul_div = PMC_MCKR_MDIV_PCK_DIV4;
+			break;
+		default:
+			ul_div = PMC_MCKR_MDIV_EQ_PCK;
+			break;
+	}
+	PMC->PMC_MCKR =
+			(PMC->PMC_MCKR & (~PMC_MCKR_MDIV_Msk)) | ul_div;
+	while (!(PMC->PMC_SR & PMC_SR_MCKRDY));
+}
+
+ int pll_wait_for_lock(unsigned int pll_id)
+{
+	Assert(pll_id < NR_PLLS);
+
+	while (!pll_is_locked(pll_id)) {
+		/* Do nothing */
+	}
+
+	return 0;
+}
+
+ void osc_wait_ready(uint8_t id)
+{
+	while (!osc_is_ready(id)) {
+		/* Do nothing */
+	}
+}
+
+void pmc_disable_pllack(void)
+{
+	PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | CKGR_PLLAR_MULA(0);
+}
+
+ void osc_enable(uint32_t ul_id)
+{
+	switch (ul_id) {
+	case OSC_SLCK_32K_RC:
+		break;
+
+	case OSC_SLCK_32K_XTAL:
+		pmc_switch_sclk_to_32kxtal(PMC_OSC_XTAL);
+		break;
+
+	case OSC_SLCK_32K_BYPASS:
+		pmc_switch_sclk_to_32kxtal(PMC_OSC_BYPASS);
+		break;
+
+
+	case OSC_MAINCK_4M_RC:
+		pmc_switch_mainck_to_fastrc(CKGR_MOR_MOSCRCF_4_MHz);
+		break;
+
+	case OSC_MAINCK_8M_RC:
+		pmc_switch_mainck_to_fastrc(CKGR_MOR_MOSCRCF_8_MHz);
+		break;
+
+	case OSC_MAINCK_12M_RC:
+		pmc_switch_mainck_to_fastrc(CKGR_MOR_MOSCRCF_12_MHz);
+		break;
+
+
+	case OSC_MAINCK_XTAL:
+		pmc_switch_mainck_to_xtal(PMC_OSC_XTAL,
+			pmc_us_to_moscxtst(BOARD_OSC_STARTUP_US,
+				OSC_SLCK_32K_RC_HZ));
+		break;
+
+	case OSC_MAINCK_BYPASS:
+		pmc_switch_mainck_to_xtal(PMC_OSC_BYPASS,
+			pmc_us_to_moscxtst(BOARD_OSC_STARTUP_US,
+				OSC_SLCK_32K_RC_HZ));
+		break;
+	}
+}
+
+ void osc_disable(uint32_t ul_id)
+{
+	switch (ul_id) {
+	case OSC_SLCK_32K_RC:
+	case OSC_SLCK_32K_XTAL:
+	case OSC_SLCK_32K_BYPASS:
+		break;
+
+	case OSC_MAINCK_4M_RC:
+	case OSC_MAINCK_8M_RC:
+	case OSC_MAINCK_12M_RC:
+		pmc_osc_disable_fastrc();
+		break;
+
+	case OSC_MAINCK_XTAL:
+		pmc_osc_disable_xtal(PMC_OSC_XTAL);
+		break;
+
+	case OSC_MAINCK_BYPASS:
+		pmc_osc_disable_xtal(PMC_OSC_BYPASS);
+		break;
+	}
+}
+
+ bool osc_is_ready(uint32_t ul_id)
+{
+	switch (ul_id) {
+	case OSC_SLCK_32K_RC:
+		return 1;
+
+	case OSC_SLCK_32K_XTAL:
+	case OSC_SLCK_32K_BYPASS:
+		return pmc_osc_is_ready_32kxtal();
+
+	case OSC_MAINCK_4M_RC:
+	case OSC_MAINCK_8M_RC:
+	case OSC_MAINCK_12M_RC:
+	case OSC_MAINCK_XTAL:
+	case OSC_MAINCK_BYPASS:
+		return pmc_osc_is_ready_mainck();
+	}
+
+	return 0;
+}
+
+uint32_t osc_get_rate(uint32_t ul_id)
+{
+	switch (ul_id) {
+	case OSC_SLCK_32K_RC:
+		return OSC_SLCK_32K_RC_HZ;
+
+	case OSC_SLCK_32K_XTAL:
+		return BOARD_FREQ_SLCK_XTAL;
+
+	case OSC_SLCK_32K_BYPASS:
+		return BOARD_FREQ_SLCK_BYPASS;
+
+	case OSC_MAINCK_4M_RC:
+		return OSC_MAINCK_4M_RC_HZ;
+
+	case OSC_MAINCK_8M_RC:
+		return OSC_MAINCK_8M_RC_HZ;
+
+	case OSC_MAINCK_12M_RC:
+		return OSC_MAINCK_12M_RC_HZ;
+
+	case OSC_MAINCK_XTAL:
+		return BOARD_FREQ_MAINCK_XTAL;
+
+	case OSC_MAINCK_BYPASS:
+		return BOARD_FREQ_MAINCK_BYPASS;
+	}
+
+	return 0;
 }
 
 /**
- * \brief Initialize master clock
+ * \note The SAMV71 PLL hardware interprets mul as mul+1. For readability the
+ * hardware mul+1 is hidden in this implementation. Use mul as mul effective
+ * value.
  */
-static void _pmc_init_master_clock(void)
+ void pll_config_init(struct pll_config *p_cfg,
+		enum pll_source e_src, uint32_t ul_div, uint32_t ul_mul)
 {
-    uint32_t data;
+	uint32_t vco_hz;
 
-    if (CKGR_UCKR_UPLLEN == (VALUE_CKGR_UCKR & CKGR_UCKR_UPLLEN_Msk)) {
-        data = PMC->PMC_MCKR & ~PMC_MCKR_UPLLDIV2_Msk;
-        data |= VALUE_PMC_MCKR & PMC_MCKR_UPLLDIV2_Msk;
-        PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY_Msk)) {
-            /* Wait until master clock is ready */
-        }
-    }
+	Assert(e_src < PLL_NR_SOURCES);
 
-    // If Slow Clock or Main Clock is selected as source for the master clock.
-    if (PMC_MCKR_CSS_PLLA_CLK > (VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk)) {
-        // Select Host Clock source.
-        data = PMC->PMC_MCKR & ~PMC_MCKR_CSS_Msk;
-        data |= VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk;
-        PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY_Msk)) {
-            /* Wait until master clock is ready */
-        }
-        // Configure Processor Clock prescaler.
-        data = PMC->PMC_MCKR & ~PMC_MCKR_PRES_Msk;
-        data |= VALUE_PMC_MCKR & PMC_MCKR_PRES_Msk;
-        PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY_Msk)) {
-            /* Wait until master clock is ready */
-        }
-        // Configure Host Clock divisor.
-        data = PMC->PMC_MCKR & ~PMC_MCKR_MDIV_Msk;
-        data |= VALUE_PMC_MCKR & PMC_MCKR_MDIV_Msk;
-        PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY_Msk)) {
-            /* Wait until master clock is ready */
-        }
-    } else { // If PLLA Clock or UPLL Clock is selected as source for the host clock.
-        // Configure Processor Clock prescaler.
-        data = PMC->PMC_MCKR & ~PMC_MCKR_PRES_Msk;
-        data |= VALUE_PMC_MCKR & PMC_MCKR_PRES_Msk;
-        PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY_Msk)) {
-            /* Wait until master clock is ready */
-        }
-        // Configure Host Clock divisor.
-        data = PMC->PMC_MCKR & ~PMC_MCKR_MDIV_Msk;
-        data |= VALUE_PMC_MCKR & PMC_MCKR_MDIV_Msk;
-        PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY_Msk)) {
-            /* Wait until master clock is ready */
-        }
-        // Select Host Clock source.
-        data = PMC->PMC_MCKR & ~PMC_MCKR_CSS_Msk;
-        data |= VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk;
-        PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY_Msk)) {
-            /* Wait until master clock is ready */
-        }
-    }
+	if (ul_div == 0 && ul_mul == 0) { /* Must only be true for UTMI PLL */
+		p_cfg->ctrl = CKGR_UCKR_UPLLCOUNT(PLL_COUNT);
+	} else { /* PLLA */
+	/* Calculate internal VCO frequency */
+	vco_hz = osc_get_rate(e_src) / ul_div;
+	Assert(vco_hz >= PLL_INPUT_MIN_HZ);
+	Assert(vco_hz <= PLL_INPUT_MAX_HZ);
+
+	vco_hz *= ul_mul;
+	Assert(vco_hz >= PLL_OUTPUT_MIN_HZ);
+	Assert(vco_hz <= PLL_OUTPUT_MAX_HZ);
+
+	/* PMC hardware will automatically make it mul+1 */
+		p_cfg->ctrl = CKGR_PLLAR_MULA(ul_mul - 1) | CKGR_PLLAR_DIVA(ul_div)  \
+		| CKGR_PLLAR_PLLACOUNT(PLL_COUNT);
+	}
+}
+
+#define pll_config_defaults(cfg, pll_id)                                 \
+	pll_config_init(cfg,                                             \
+			CONFIG_PLL##pll_id##_SOURCE,                     \
+			CONFIG_PLL##pll_id##_DIV,                        \
+			CONFIG_PLL##pll_id##_MUL)
+
+ void pll_config_read(struct pll_config *p_cfg, uint32_t ul_pll_id)
+{
+	Assert(ul_pll_id < NR_PLLS);
+
+	if (ul_pll_id == PLLA_ID) {
+		p_cfg->ctrl = PMC->CKGR_PLLAR;
+	} else {
+		p_cfg->ctrl = PMC->CKGR_UCKR;
+	}
+}
+
+ void pll_config_write(const struct pll_config *p_cfg, uint32_t ul_pll_id)
+{
+	Assert(ul_pll_id < NR_PLLS);
+
+	if (ul_pll_id == PLLA_ID) {
+		pmc_disable_pllack(); // Always stop PLL first!
+		PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | p_cfg->ctrl;
+	} else {
+		PMC->CKGR_UCKR = p_cfg->ctrl;
+	}
+}
+
+ void pll_enable(const struct pll_config *p_cfg, uint32_t ul_pll_id)
+{
+	Assert(ul_pll_id < NR_PLLS);
+
+	if (ul_pll_id == PLLA_ID) {
+		pmc_disable_pllack(); // Always stop PLL first!
+		PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | p_cfg->ctrl;
+	} else {
+		PMC->CKGR_UCKR = p_cfg->ctrl | CKGR_UCKR_UPLLEN;
+	}
 }
 
 /**
- * \brief Initializes programmable clock generators
- *
- * Programmable clock are running when this function returns.
+ * \note This will only disable the selected PLL, not the underlying oscillator (mainck).
  */
-static void _pmc_init_program_clock(void)
+ void pll_disable(uint32_t ul_pll_id)
 {
-    uint32_t data;
+	Assert(ul_pll_id < NR_PLLS);
 
-    if (PMC_SCER_PCK0 == (VALUE_PMC_SCER & PMC_SCER_PCK0_Msk)) {
-        PMC->PMC_PCK[0] = VALUE_PMC_PCK0;
-        PMC->PMC_SCER |= PMC_SCER_PCK0;
-        while (!(PMC->PMC_SR & PMC_SR_PCKRDY0_Msk)) {
-            /* Wait until PCK0 clock is ready */
-        }
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_PCK0;
-    }
-
-    if (PMC_SCER_PCK1 == (VALUE_PMC_SCER & PMC_SCER_PCK1_Msk)) {
-        PMC->PMC_PCK[1] = VALUE_PMC_PCK1;
-        PMC->PMC_SCER |= PMC_SCER_PCK1;
-        while (!(PMC->PMC_SR & PMC_SR_PCKRDY1_Msk)) {
-            /* Wait until PCK1 clock is ready */
-        }
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_PCK1;
-    }
-
-    if (PMC_SCER_PCK2 == (VALUE_PMC_SCER & PMC_SCER_PCK2_Msk)) {
-        PMC->PMC_PCK[2] = VALUE_PMC_PCK2;
-        PMC->PMC_SCER |= PMC_SCER_PCK2;
-        while (!(PMC->PMC_SR & PMC_SR_PCKRDY2_Msk)) {
-            /* Wait until PCK2 clock is ready */
-        }
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_PCK2;
-    }
-
-    if (PMC_SCER_PCK3 == (VALUE_PMC_SCER & PMC_SCER_PCK3_Msk)) {
-        PMC->PMC_PCK[3] = VALUE_PMC_PCK3;
-        PMC->PMC_SCER |= PMC_SCER_PCK3;
-        while (!(PMC->PMC_SR & PMC_SR_PCKRDY3_Msk)) {
-            /* Wait until PCK3 clock is ready */
-        }
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_PCK3;
-    }
-
-    if (PMC_SCER_PCK4 == (VALUE_PMC_SCER & PMC_SCER_PCK4_Msk)) {
-        PMC->PMC_PCK[4] = VALUE_PMC_PCK4;
-        PMC->PMC_SCER |= PMC_SCER_PCK4;
-        while (!(PMC->PMC_SR & PMC_SR_PCKRDY4_Msk)) {
-            /* Wait until PCK4 clock is ready */
-        }
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_PCK4;
-    }
-
-    if (PMC_SCER_PCK5 == (VALUE_PMC_SCER & PMC_SCER_PCK5_Msk)) {
-        PMC->PMC_PCK[5] = VALUE_PMC_PCK5;
-        PMC->PMC_SCER |= PMC_SCER_PCK5;
-        while (!(PMC->PMC_SR & PMC_SR_PCKRDY5_Msk)) {
-            /* Wait until PCK5 clock is ready */
-        }
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_PCK5;
-    }
-
-    if (PMC_SCER_PCK6 == (VALUE_PMC_SCER & PMC_SCER_PCK6_Msk)) {
-        PMC->PMC_PCK[6] = VALUE_PMC_PCK6;
-        PMC->PMC_SCER |= PMC_SCER_PCK6;
-        while (!(PMC->PMC_SR & PMC_SR_PCKRDY6_Msk)) {
-            /* Wait until PCK6 clock is ready */
-        }
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_PCK6;
-    }
-
-    if (PMC_SCER_PCK7 == (VALUE_PMC_SCER & PMC_SCER_PCK7_Msk)) {
-        PMC->PMC_PCK[7] = VALUE_PMC_PCK7;
-        PMC->PMC_SCER |= PMC_SCER_PCK7;
-        while (!(PMC->PMC_SR & PMC_SR_PCKRDY7_Msk)) {
-            /* Wait until PCK7 clock is ready */
-        }
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_PCK7;
-    }
+	if (ul_pll_id == PLLA_ID) {
+		pmc_disable_pllack();
+	} else {
+		PMC->CKGR_UCKR &= ~CKGR_UCKR_UPLLEN;
+	}
 }
 
-/**
- * \brief Initializes USB FS clock generators
- *
- * USB FS clock are running when this function returns.
- */
-static void _pmc_init_usb_clock(void)
+ uint32_t pll_is_locked(uint32_t ul_pll_id)
 {
-    if (PMC_SCER_USBCLK == (VALUE_PMC_SCER & PMC_SCER_USBCLK_Msk)) {
-        PMC->PMC_USB = VALUE_PMC_USB;
-        PMC->PMC_SCER |= PMC_SCER_USBCLK;
-    } else {
-        PMC->PMC_SCDR |= PMC_SCDR_USBCLK;
-    }
+	Assert(ul_pll_id < NR_PLLS);
+
+	if (ul_pll_id == PLLA_ID) {
+	return pmc_is_locked_pllack();
+	} else {
+		return pmc_is_locked_upll();
+	}
 }
 
-/**
- * \brief Initializes generic clock generators
- *
- * Generic clock are running when this function returns.
- */
-static void _pmc_init_generic_clock(void)
+ void pll_enable_source(enum pll_source e_src)
 {
-    // Put PMC_PCR register into read mode for GCLK0/I2SC0
-    PMC->PMC_PCR = PMC_PCR_PID(69);
-    // If GCLK0 is enabled.
-    if (PMC_PCR_GCLKEN == (VALUE_PMC_PCR_I2SC0 & PMC_PCR_GCLKEN_Msk)) {
-        // Select generic clock for I2SC0.
-        MATRIX->CCFG_PCCR |= CCFG_PCCR_I2SC0CC;
-        // If GCLK0 is not actually enabled.
-        if (PMC_PCR_GCLKEN != (PMC->PMC_PCR & PMC_PCR_GCLKEN_Msk)) {
-            // Put PMC_PCR register into write mode and configure GCLK0.
-            PMC->PMC_PCR = PMC_PCR_CMD | VALUE_PMC_PCR_I2SC0;
-        }
-    } else {
-        // Select peripheral clock for I2SC0.
-        MATRIX->CCFG_PCCR &= ~CCFG_PCCR_I2SC0CC_Msk;
-        // If GCLK0 is actually enabled.
-        if (PMC_PCR_GCLKEN != (PMC->PMC_PCR & PMC_PCR_GCLKEN_Msk)) {
-            // Put PMC_PCR register into write mode and disable GCLK0.
-            PMC->PMC_PCR = PMC_PCR_CMD | PMC_PCR_PID(69);
-        }
-    }
+	switch (e_src) {
+	case PLL_SRC_MAINCK_4M_RC:
+	case PLL_SRC_MAINCK_8M_RC:
+	case PLL_SRC_MAINCK_12M_RC:
+	case PLL_SRC_MAINCK_XTAL:
+	case PLL_SRC_MAINCK_BYPASS:
+		osc_enable(e_src);
+		osc_wait_ready(e_src);
+		break;
 
-    // Put PMC_PCR register into read mode for GCLK1/I2SC1
-    PMC->PMC_PCR = PMC_PCR_PID(70);
-    // If GCLK0 is enabled.
-    if (PMC_PCR_GCLKEN == (VALUE_PMC_PCR_I2SC1 & PMC_PCR_GCLKEN_Msk)) {
-        // Select generic clock for I2SC1.
-        MATRIX->CCFG_PCCR |= CCFG_PCCR_I2SC1CC;
-        // If GCLK0 is not actually enabled.
-        if (PMC_PCR_GCLKEN != (PMC->PMC_PCR & PMC_PCR_GCLKEN_Msk)) {
-            // Put PMC_PCR register into write mode and configure GCLK0.
-            PMC->PMC_PCR = PMC_PCR_CMD | VALUE_PMC_PCR_I2SC1;
-        }
-    } else {
-        // Select peripheral clock for I2SC1.
-        MATRIX->CCFG_PCCR &= ~CCFG_PCCR_I2SC1CC_Msk;
-        // If GCLK0 is actually enabled.
-        if (PMC_PCR_GCLKEN != (PMC->PMC_PCR & PMC_PCR_GCLKEN_Msk)) {
-            // Put PMC_PCR register into write mode and disable GCLK0.
-            PMC->PMC_PCR = PMC_PCR_CMD | PMC_PCR_PID(70);
-        }
+	default:
+		Assert(false);
+		break;
+	}
+}
+
+ void pll_enable_config_defaults(unsigned int ul_pll_id)
+{
+	struct pll_config pllcfg;
+
+	if (pll_is_locked(ul_pll_id)) {
+		return; // Pll already running
+	}
+	switch (ul_pll_id) {
+#ifdef CONFIG_PLL0_SOURCE
+	case 0:
+		pll_enable_source(CONFIG_PLL0_SOURCE);
+		pll_config_init(&pllcfg,
+				CONFIG_PLL0_SOURCE,
+				CONFIG_PLL0_DIV,
+				CONFIG_PLL0_MUL);
+		break;
+#endif
+#ifdef CONFIG_PLL1_SOURCE
+	case 1:
+		pll_enable_source(CONFIG_PLL1_SOURCE);
+		pll_config_init(&pllcfg,
+				CONFIG_PLL1_SOURCE,
+				CONFIG_PLL1_DIV,
+				CONFIG_PLL1_MUL);
+		break;
+#endif
+	default:
+		Assert(false);
+		break;
+	}
+	pll_enable(&pllcfg, ul_pll_id);
+	while (!pll_is_locked(ul_pll_id));
+}
+
+void system_init_flash( uint32_t ul_clk )
+{
+  /* Set FWS for embedded Flash access according to operating frequency */
+  if ( ul_clk < CHIP_FREQ_FWS_0 )
+  {
+    EFC->EEFC_FMR = EEFC_FMR_FWS(0)|EEFC_FMR_CLOE;
+  }
+  else
+  {
+    if (ul_clk < CHIP_FREQ_FWS_1)
+    {
+      EFC->EEFC_FMR = EEFC_FMR_FWS(1)|EEFC_FMR_CLOE;
     }
+    else
+    {
+      if (ul_clk < CHIP_FREQ_FWS_2)
+      {
+        EFC->EEFC_FMR = EEFC_FMR_FWS(2)|EEFC_FMR_CLOE;
+      }
+      else
+      {
+        if ( ul_clk < CHIP_FREQ_FWS_3 )
+        {
+          EFC->EEFC_FMR = EEFC_FMR_FWS(3)|EEFC_FMR_CLOE;
+        }
+        else
+        {
+          if ( ul_clk < CHIP_FREQ_FWS_4 )
+          {
+            EFC->EEFC_FMR = EEFC_FMR_FWS(4)|EEFC_FMR_CLOE;
+          }
+          else
+          {
+            if ( ul_clk < CHIP_FREQ_FWS_5 )
+            {
+              EFC->EEFC_FMR = EEFC_FMR_FWS(5)|EEFC_FMR_CLOE;
+            }
+            else
+            {
+              EFC->EEFC_FMR = EEFC_FMR_FWS(6)|EEFC_FMR_CLOE;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 uint32_t SystemCoreClock = __SYSTEM_CLOCK;  /*!< System Clock Frequency (Core Clock)*/
+
+void extra_config()
+{
+	/* Set FWS according to SYS_BOARD_MCKR configuration */
+	EFC->EEFC_FMR = EEFC_FMR_FWS(5);
+
+	/* Initialize main oscillator */
+	if ( !(PMC->CKGR_MOR & CKGR_MOR_MOSCSEL) )
+	{
+		PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | SYS_BOARD_OSCOUNT | CKGR_MOR_MOSCRCEN | CKGR_MOR_MOSCXTEN;
+
+		while ( !(PMC->PMC_SR & PMC_SR_MOSCXTS) )
+		{
+		}
+	}
+
+	/* Switch to 3-20MHz Xtal oscillator */
+	PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | SYS_BOARD_OSCOUNT | CKGR_MOR_MOSCRCEN | CKGR_MOR_MOSCXTEN | CKGR_MOR_MOSCSEL;
+
+	while ( !(PMC->PMC_SR & PMC_SR_MOSCSELS) )
+	{
+	}
+
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & ~(uint32_t)PMC_MCKR_CSS_Msk) | PMC_MCKR_CSS_MAIN_CLK;
+
+	while ( !(PMC->PMC_SR & PMC_SR_MCKRDY) )
+	{
+	}
+
+	/* Initialize PLLA */
+	PMC->CKGR_PLLAR = SYS_BOARD_PLLAR;
+	while ( !(PMC->PMC_SR & PMC_SR_LOCKA) )
+	{
+	}
+
+	/* Switch to main clock */
+	PMC->PMC_MCKR = (SYS_BOARD_MCKR & ~PMC_MCKR_CSS_Msk) | PMC_MCKR_CSS_MAIN_CLK;
+	while ( !(PMC->PMC_SR & PMC_SR_MCKRDY) )
+	{
+	}
+
+	/* Switch to PLLA */
+	PMC->PMC_MCKR = SYS_BOARD_MCKR;
+	while ( !(PMC->PMC_SR & PMC_SR_MCKRDY) )
+	{
+	}
+}
 
 /**
  * Initialize the system
@@ -399,21 +893,9 @@ uint32_t SystemCoreClock = __SYSTEM_CLOCK;  /*!< System Clock Frequency (Core Cl
  */
 void SystemInit(void)
 {
-    // Keep the default device state after reset
-    SystemCoreClock = __SYSTEM_CLOCK;
+	SystemCoreClock = CHIP_FREQ_CPU_MAX;
 
-    _efc_set_flash_wait_cycles();
-    _pmc_init_sources();
-    _pmc_init_master_clock();
-    _pmc_init_program_clock();
-    _pmc_init_usb_clock();
-    _pmc_init_generic_clock();
-
-    // Disable Watchdog Timer
-    WDT->WDT_MR = WDT_MR_WDDIS;
-
-    // Enable Floating Point unit
-    SCB->CPACR |= ((3UL << 20) | (3UL << 22));
+    sysclk_init();
 
     return;
 }
@@ -424,11 +906,209 @@ void SystemInit(void)
  * \brief  Updates the SystemCoreClock with current core Clock
  *         retrieved from cpu registers.
  */
-void SystemCoreClockUpdate(void)
+void SystemCoreClockUpdate( void )
 {
-    // Not implemented
-    SystemCoreClock = __SYSTEM_CLOCK;
-    return;
+  /* Determine clock frequency according to clock register values */
+  switch (PMC->PMC_MCKR & (uint32_t) PMC_MCKR_CSS_Msk)
+  {
+    case PMC_MCKR_CSS_SLOW_CLK: /* Slow clock */
+      if ( SUPC->SUPC_SR & SUPC_SR_OSCSEL )
+      {
+        SystemCoreClock = CHIP_FREQ_XTAL_32K;
+      }
+      else
+      {
+        SystemCoreClock = CHIP_FREQ_SLCK_RC;
+      }
+    break;
+
+    case PMC_MCKR_CSS_MAIN_CLK: /* Main clock */
+      if ( PMC->CKGR_MOR & CKGR_MOR_MOSCSEL )
+      {
+        SystemCoreClock = CHIP_FREQ_XTAL_12M;
+      }
+      else
+      {
+        SystemCoreClock = CHIP_FREQ_MAINCK_RC_4MHZ;
+
+        switch ( PMC->CKGR_MOR & CKGR_MOR_MOSCRCF_Msk )
+        {
+          case CKGR_MOR_MOSCRCF_4_MHz:
+          break;
+
+          case CKGR_MOR_MOSCRCF_8_MHz:
+            SystemCoreClock *= 2U;
+          break;
+
+          case CKGR_MOR_MOSCRCF_12_MHz:
+            SystemCoreClock *= 3U;
+          break;
+
+          default:
+          break;
+        }
+      }
+    break;
+
+    case PMC_MCKR_CSS_PLLA_CLK:	/* PLLA clock */
+      if ( PMC->CKGR_MOR & CKGR_MOR_MOSCSEL )
+      {
+        SystemCoreClock = CHIP_FREQ_XTAL_12M ;
+      }
+      else
+      {
+        SystemCoreClock = CHIP_FREQ_MAINCK_RC_4MHZ;
+
+        switch ( PMC->CKGR_MOR & CKGR_MOR_MOSCRCF_Msk )
+        {
+          case CKGR_MOR_MOSCRCF_4_MHz:
+          break;
+
+          case CKGR_MOR_MOSCRCF_8_MHz:
+            SystemCoreClock *= 2U;
+          break;
+
+          case CKGR_MOR_MOSCRCF_12_MHz:
+            SystemCoreClock *= 3U;
+          break;
+
+          default:
+          break;
+        }
+      }
+
+      if ( (uint32_t) (PMC->PMC_MCKR & (uint32_t) PMC_MCKR_CSS_Msk) == PMC_MCKR_CSS_PLLA_CLK )
+      {
+        SystemCoreClock *= ((((PMC->CKGR_PLLAR) & CKGR_PLLAR_MULA_Msk) >> CKGR_PLLAR_MULA_Pos) + 1U);
+        SystemCoreClock /= ((((PMC->CKGR_PLLAR) & CKGR_PLLAR_DIVA_Msk) >> CKGR_PLLAR_DIVA_Pos));
+      }
+    break;
+
+    default:
+    break;
+  }
+
+  if ( (PMC->PMC_MCKR & PMC_MCKR_PRES_Msk) == PMC_MCKR_PRES_CLK_3 )
+  {
+    SystemCoreClock /= 3U;
+  }
+  else
+  {
+    SystemCoreClock >>= ((PMC->PMC_MCKR & PMC_MCKR_PRES_Msk) >> PMC_MCKR_PRES_Pos);
+  }
+}
+
+void sysclk_init(void)
+{
+	struct pll_config pllcfg;
+	uint8_t host_div;
+
+	/* Set flash wait state to max in case the below clock switching. */
+	system_init_flash(CHIP_FREQ_CPU_MAX/2);
+
+	switch ( ( VALUE_PMC_MCKR & PMC_MCKR_MDIV_Msk ) >> 8 ) {
+		case 0:
+			host_div = 1;
+			break;
+		case 1:
+			host_div = 2;
+			break;
+		case 2:
+			host_div = 4;
+			break;
+		case 3:
+			host_div = 3;
+			break;
+
+		default:
+			host_div = 2;
+			break;
+
+	}
+
+	/* Config system clock setting */
+	if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_SLOW_CLK ) && !( VALUE_SUPC_CR & 0x8 ) ) {
+		osc_enable(OSC_SLCK_32K_RC);
+		osc_wait_ready(OSC_SLCK_32K_RC);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
+	}
+
+	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_SLOW_CLK ) && ( VALUE_SUPC_CR & 0x8 ) && !( VALUE_SUPC_MR & 0x100000 ) ) {
+		osc_enable(OSC_SLCK_32K_XTAL);
+		osc_wait_ready(OSC_SLCK_32K_XTAL);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
+	}
+
+	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_SLOW_CLK ) && ( VALUE_SUPC_CR & 0x8 ) && ( VALUE_SUPC_MR & 0x100000 ) ) {
+		osc_enable(OSC_SLCK_32K_BYPASS);
+		osc_wait_ready(OSC_SLCK_32K_BYPASS);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
+	}
+
+	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && !( VALUE_CKGR_MOR & 0x70 ) && !( VALUE_CKGR_MOR & 0x1000000 ) ) {
+		/* Already running from SYSCLK_SRC_MAINCK_4M_RC */
+	}
+
+	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && ( VALUE_CKGR_MOR & 0x10 ) && !( VALUE_CKGR_MOR & 0x1000000 ) ) {
+		osc_enable(OSC_MAINCK_8M_RC);
+		osc_wait_ready(OSC_MAINCK_8M_RC);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
+	}
+
+	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && ( VALUE_CKGR_MOR & 0x20 ) && !( VALUE_CKGR_MOR & 0x1000000 ) ) {
+		osc_enable(OSC_MAINCK_12M_RC);
+		osc_wait_ready(OSC_MAINCK_12M_RC);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
+	}
+
+	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && !( VALUE_CKGR_MOR & 0x2 ) && ( VALUE_CKGR_MOR & 0x1000000 ) ) {
+		osc_enable(OSC_MAINCK_XTAL);
+		osc_wait_ready(OSC_MAINCK_XTAL);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
+	}
+
+	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && ( VALUE_CKGR_MOR & 0x2 ) && ( VALUE_CKGR_MOR & 0x1000000 ) ) {
+		osc_enable(OSC_MAINCK_BYPASS);
+		osc_wait_ready(OSC_MAINCK_BYPASS);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
+	}
+
+	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_PLLA_CLK ) ) {
+		extra_config();
+		pll_enable_source(CONFIG_PLL0_SOURCE);
+		pll_config_defaults(&pllcfg, 0);
+		pll_enable(&pllcfg, 0);
+		pll_wait_for_lock(0);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_pllack(CONFIG_SYSCLK_PRES);
+	}
+
+	else if ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_UPLL_CLK ) {
+		extra_config();
+		pll_enable_source(CONFIG_PLL1_SOURCE);
+		pll_config_defaults(&pllcfg, 1);
+		pll_enable(&pllcfg, 1);
+		pll_wait_for_lock(1);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_upllck(CONFIG_SYSCLK_PRES);
+	}
+	/* Update the SystemFrequency variable */
+	SystemCoreClockUpdate();
+
+	/* Set a flash wait state depending on the master clock frequency */
+	system_init_flash(sysclk_get_cpu_hz() / host_div);
+
+#if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
+	/* Signal that the internal frequencies are setup */
+	sysclk_initialized = 1;
+#endif
 }
 
 /** \cond 0 */
