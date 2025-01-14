@@ -83,6 +83,8 @@ if __name__ == "__main__":
         else: ## code 200 - success, no need to reindex
             if args.index_package_names:
                 package_name = f'{indexed_item['source']['name']}.7z'
+                if indexed_item['source']['name'] == 'database' and 'test' in args.es_index:
+                    package_name = 'database_dev.7z'
                 if 'gh_package_name' not in indexed_item['source']:
                     indexed_item['source'].update({"gh_package_name": package_name})
                     es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
