@@ -32,7 +32,7 @@
 #include "core_header.h"
 #include <stdbool.h>
 
-void sysclk_init(void);
+void sysclk_init(uint8_t host_div);
  bool osc_is_ready(uint32_t ul_id);
  uint32_t pll_is_locked(uint32_t ul_pll_id);
  uint32_t osc_get_rate(uint32_t ul_id);
@@ -231,10 +231,6 @@ struct pll_config {
 	((startup_us * slowck_freq / 8 / 1000000) < 0x100 ?  \
 		(startup_us * slowck_freq / 8 / 1000000) : 0xFF)
 
-#define pmc_us_to_moscxtst(startup_us, slowck_freq)      \
-	((startup_us * slowck_freq / 8 / 1000000) < 0x100 ?  \
-		(startup_us * slowck_freq / 8 / 1000000) : 0xFF)
-
 void pmc_enable_upll_clock(void)
 {
 	PMC->CKGR_UCKR = CKGR_UCKR_UPLLCOUNT(3) | CKGR_UCKR_UPLLEN;
@@ -330,12 +326,6 @@ void pmc_switch_sclk_to_32kxtal(uint32_t ul_bypass)
 
  uint32_t sysclk_get_main_hz(void)
 {
-#if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
-	if (!sysclk_initialized ) {
-		return OSC_MAINCK_4M_RC_HZ;
-	}
-#endif
-
 	/* Config system clock setting */
 	if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_SLCK_RC) {
 		return OSC_SLCK_32K_RC_HZ;
@@ -475,28 +465,29 @@ uint32_t pmc_switch_mck_to_upllck(uint32_t ul_pres)
 	return 0;
 }
 
-void pmc_mck_set_division(uint32_t ul_div)
+void pmc_mck_set_division( uint32_t ul_div )
 {
 	switch (ul_div) {
 		case 1:
-			ul_div = PMC_MCKR_MDIV_EQ_PCK;
+			PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_MDIV_Msk ) ) | PMC_MCKR_MDIV_EQ_PCK;
 			break;
 		case 2:
-			ul_div = PMC_MCKR_MDIV_PCK_DIV2;
+			PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_MDIV_Msk ) ) | PMC_MCKR_MDIV_PCK_DIV2;
 			break;
 		case 3:
-			ul_div = PMC_MCKR_MDIV_PCK_DIV3;
+			PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_MDIV_Msk ) ) | PMC_MCKR_MDIV_PCK_DIV3;
 			break;
 		case 4:
-			ul_div = PMC_MCKR_MDIV_PCK_DIV4;
+			PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_MDIV_Msk ) ) | PMC_MCKR_MDIV_PCK_DIV4;
 			break;
+
 		default:
-			ul_div = PMC_MCKR_MDIV_EQ_PCK;
+			PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_MDIV_Msk ) ) | PMC_MCKR_MDIV_EQ_PCK;
 			break;
 	}
-	PMC->PMC_MCKR =
-			(PMC->PMC_MCKR & (~PMC_MCKR_MDIV_Msk)) | ul_div;
-	while (!(PMC->PMC_SR & PMC_SR_MCKRDY));
+
+	// Wait till Power Module is ready.
+	while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
 }
 
  int pll_wait_for_lock(unsigned int pll_id)
@@ -840,10 +831,10 @@ uint32_t SystemCoreClock = __SYSTEM_CLOCK;  /*!< System Clock Frequency (Core Cl
 
 void extra_config()
 {
-	/* Set FWS according to SYS_BOARD_MCKR configuration */
+	// Set FWS according. 
 	EFC->EEFC_FMR = EEFC_FMR_FWS(5);
 
-	/* Initialize main oscillator */
+	// Initialize main oscillator.
 	if ( !(PMC->CKGR_MOR & CKGR_MOR_MOSCSEL) )
 	{
 		PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | SYS_BOARD_OSCOUNT | CKGR_MOR_MOSCRCEN | CKGR_MOR_MOSCXTEN;
@@ -885,128 +876,142 @@ void extra_config()
 	}
 }
 
-/**
- * Initialize the system
- *
- * \brief  Setup the microcontroller system.
- *         Initialize the System and update the SystemCoreClock variable.
- */
-void SystemInit(void)
-{
-	SystemCoreClock = CHIP_FREQ_CPU_MAX;
-
-    sysclk_init();
-
-    return;
-}
-
-/**
- * Update SystemCoreClock variable
- *
- * \brief  Updates the SystemCoreClock with current core Clock
- *         retrieved from cpu registers.
- */
-void SystemCoreClockUpdate( void )
-{
-  /* Determine clock frequency according to clock register values */
-  switch (PMC->PMC_MCKR & (uint32_t) PMC_MCKR_CSS_Msk)
-  {
-    case PMC_MCKR_CSS_SLOW_CLK: /* Slow clock */
-      if ( SUPC->SUPC_SR & SUPC_SR_OSCSEL )
-      {
-        SystemCoreClock = CHIP_FREQ_XTAL_32K;
-      }
-      else
-      {
-        SystemCoreClock = CHIP_FREQ_SLCK_RC;
-      }
-    break;
-
-    case PMC_MCKR_CSS_MAIN_CLK: /* Main clock */
-      if ( PMC->CKGR_MOR & CKGR_MOR_MOSCSEL )
-      {
-        SystemCoreClock = CHIP_FREQ_XTAL_12M;
-      }
-      else
-      {
-        SystemCoreClock = CHIP_FREQ_MAINCK_RC_4MHZ;
-
-        switch ( PMC->CKGR_MOR & CKGR_MOR_MOSCRCF_Msk )
-        {
-          case CKGR_MOR_MOSCRCF_4_MHz:
-          break;
-
-          case CKGR_MOR_MOSCRCF_8_MHz:
-            SystemCoreClock *= 2U;
-          break;
-
-          case CKGR_MOR_MOSCRCF_12_MHz:
-            SystemCoreClock *= 3U;
-          break;
-
-          default:
-          break;
-        }
-      }
-    break;
-
-    case PMC_MCKR_CSS_PLLA_CLK:	/* PLLA clock */
-      if ( PMC->CKGR_MOR & CKGR_MOR_MOSCSEL )
-      {
-        SystemCoreClock = CHIP_FREQ_XTAL_12M ;
-      }
-      else
-      {
-        SystemCoreClock = CHIP_FREQ_MAINCK_RC_4MHZ;
-
-        switch ( PMC->CKGR_MOR & CKGR_MOR_MOSCRCF_Msk )
-        {
-          case CKGR_MOR_MOSCRCF_4_MHz:
-          break;
-
-          case CKGR_MOR_MOSCRCF_8_MHz:
-            SystemCoreClock *= 2U;
-          break;
-
-          case CKGR_MOR_MOSCRCF_12_MHz:
-            SystemCoreClock *= 3U;
-          break;
-
-          default:
-          break;
-        }
-      }
-
-      if ( (uint32_t) (PMC->PMC_MCKR & (uint32_t) PMC_MCKR_CSS_Msk) == PMC_MCKR_CSS_PLLA_CLK )
-      {
-        SystemCoreClock *= ((((PMC->CKGR_PLLAR) & CKGR_PLLAR_MULA_Msk) >> CKGR_PLLAR_MULA_Pos) + 1U);
-        SystemCoreClock /= ((((PMC->CKGR_PLLAR) & CKGR_PLLAR_DIVA_Msk) >> CKGR_PLLAR_DIVA_Pos));
-      }
-    break;
-
-    default:
-    break;
-  }
-
-  if ( (PMC->PMC_MCKR & PMC_MCKR_PRES_Msk) == PMC_MCKR_PRES_CLK_3 )
-  {
-    SystemCoreClock /= 3U;
-  }
-  else
-  {
-    SystemCoreClock >>= ((PMC->PMC_MCKR & PMC_MCKR_PRES_Msk) >> PMC_MCKR_PRES_Pos);
-  }
-}
-
-void sysclk_init(void)
+void sysclk_init( uint8_t host_div )
 {
 	struct pll_config pllcfg;
+
+	// Slow Clock is chosen.
+	if ( PMC_MCKR_CSS_SLOW_CLK ==  ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) )
+	{
+		// Internal Slow Clock is chosen.
+		if ( !( VALUE_SUPC_CR & SUPC_CR_XTALSEL_Msk ) ) {
+			// No special setup is required as Internal Slow Clock is always enabled.
+		}
+
+		// External Slow Clock is chosen.
+		else {
+			// Set External Slow Clock to be Bypassed if requested.
+			if ( VALUE_SUPC_MR & SUPC_MR_OSCBYPASS_Msk ) {
+				SUPC->SUPC_MR |= SUPC_MR_KEY_PASSWD | SUPC_MR_OSCBYPASS;
+			}
+
+			// Set External Slow Clock to be a source for Slow Clock.
+			SUPC->SUPC_CR = SUPC_CR_KEY_PASSWD | SUPC_CR_XTALSEL;
+			// Wait for these changes to be processed.
+			while ( !( ( SUPC->SUPC_SR & SUPC_SR_OSCSEL ) && ( PMC->PMC_SR & PMC_SR_OSCSELS ) ) );
+		}
+		// Set Host Clock division.
+		pmc_mck_set_division( host_div );
+
+		// Set Slow Clock to be as a source for Host Clock. 
+		PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_CSS_Msk ) ) | PMC_MCKR_CSS_SLOW_CLK;
+		// Wait for these changes to be processed.
+		while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
+
+		// Set Processor Clock prescaler.
+		PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_PRES_Msk ) ) | ( VALUE_PMC_MCKR & PMC_MCKR_PRES_Msk );
+		// Wait for these changes to be processed.
+		while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
+	}
+
+	// Main CLock is chosen.
+	else if ( PMC_MCKR_CSS_MAIN_CLK == ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) )
+	{
+		// Internal Main Clock is chosen.
+		if ( !( VALUE_CKGR_MOR & CKGR_MOR_MOSCSEL_Msk ) ) {
+			// Enable Fast RC oscillator but DO NOT switch to RC now.
+			PMC->CKGR_MOR |= ( CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCRCEN );
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MOSCRCS ) );
+
+			// Change Fast RC oscillator frequency.
+			PMC->CKGR_MOR = ( PMC->CKGR_MOR & ~CKGR_MOR_MOSCRCF_Msk ) | CKGR_MOR_KEY_PASSWD | ( VALUE_CKGR_MOR & CKGR_MOR_MOSCRCF_Msk );
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MOSCRCS ) );
+
+			// Switch to Fast RC.
+			PMC->CKGR_MOR = ( PMC->CKGR_MOR & ~CKGR_MOR_MOSCSEL ) | CKGR_MOR_KEY_PASSWD;
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MOSCSELS ) );
+
+			// Set Host Clock division.
+			pmc_mck_set_division( host_div );
+
+			// Set Fast Clock to be as a source for Host Clock. 
+			PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_CSS_Msk ) ) | PMC_MCKR_CSS_MAIN_CLK;
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
+
+			// Set Processor Clock prescaler.
+			PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_PRES_Msk)) | ( VALUE_PMC_MCKR & PMC_MCKR_PRES_Msk );
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
+		}
+
+		// External Main Clock is chosen.
+		else {
+			// External Main Clock without Bypass is chosen.
+			if ( !( VALUE_CKGR_MOR & CKGR_MOR_MOSCXTBY_Msk ) ) {
+				// Enable Main Xtal oscillator.
+				PMC->CKGR_MOR = ( PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTBY ) | CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTEN | ( VALUE_CKGR_MOR & CKGR_MOR_MOSCXTST_Msk );
+				// Wait for these changes to be processed.
+				while (!(PMC->PMC_SR & PMC_SR_MOSCXTS));
+
+				// Switch to Main Xtal oscillator.
+				PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCSEL;
+			}
+			// External Main Clock with Bypass is chosen.
+			else {
+				// Enable Main Xtal oscillator with Bypass and switch to it.
+				PMC->CKGR_MOR = ( PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN ) | CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTBY | CKGR_MOR_MOSCSEL;
+			}
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MOSCSELS ) );
+
+			// Set Host Clock division.
+			pmc_mck_set_division( host_div );
+
+			// Set Fast Clock to be as a source for Host Clock. 
+			PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_CSS_Msk ) ) | PMC_MCKR_CSS_MAIN_CLK;
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
+
+			// Set Processor Clock prescaler.
+			PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_PRES_Msk)) | ( VALUE_PMC_MCKR & PMC_MCKR_PRES_Msk );
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
+		}
+	}
+
+	// PLLA is chosen.
+	else if ( ( PMC_MCKR_CSS_PLLA_CLK == ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) ) ) {
+		extra_config();
+		pll_enable_source(CONFIG_PLL0_SOURCE);
+		pll_config_defaults(&pllcfg, 0);
+		pll_enable(&pllcfg, 0);
+		pll_wait_for_lock(0);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_pllack(CONFIG_SYSCLK_PRES);
+	}
+
+	// UPLL is chosen.
+	else if ( PMC_MCKR_CSS_UPLL_CLK == ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) ) {
+		extra_config();
+		pll_enable_source(CONFIG_PLL1_SOURCE);
+		pll_config_defaults(&pllcfg, 1);
+		pll_enable(&pllcfg, 1);
+		pll_wait_for_lock(1);
+		pmc_mck_set_division(host_div);
+		pmc_switch_mck_to_upllck(CONFIG_SYSCLK_PRES);
+	}
+}
+
+void SystemInit(void)
+{
 	uint8_t host_div;
 
-	/* Set flash wait state to max in case the below clock switching. */
-	system_init_flash(CHIP_FREQ_CPU_MAX/2);
-
-	switch ( ( VALUE_PMC_MCKR & PMC_MCKR_MDIV_Msk ) >> 8 ) {
+	/* Get the Host Clock divider value. */ 
+	switch ( ( VALUE_PMC_MCKR & PMC_MCKR_MDIV_Msk ) >> PMC_MCKR_MDIV_Pos ) {
 		case 0:
 			host_div = 1;
 			break;
@@ -1023,98 +1028,20 @@ void sysclk_init(void)
 		default:
 			host_div = 2;
 			break;
-
 	}
 
-	/* Config system clock setting */
-	if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_SLOW_CLK ) && !( VALUE_SUPC_CR & 0x8 ) ) {
-		osc_enable(OSC_SLCK_32K_RC);
-		osc_wait_ready(OSC_SLCK_32K_RC);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
-	}
+	/* Set flash wait state to max in case the below clock switching. */
+	system_init_flash( CHIP_FREQ_CPU_MAX / 2 );
 
-	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_SLOW_CLK ) && ( VALUE_SUPC_CR & 0x8 ) && !( VALUE_SUPC_MR & 0x100000 ) ) {
-		osc_enable(OSC_SLCK_32K_XTAL);
-		osc_wait_ready(OSC_SLCK_32K_XTAL);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
-	}
+	/* Config system clock settings. */
+    sysclk_init( host_div );
 
-	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_SLOW_CLK ) && ( VALUE_SUPC_CR & 0x8 ) && ( VALUE_SUPC_MR & 0x100000 ) ) {
-		osc_enable(OSC_SLCK_32K_BYPASS);
-		osc_wait_ready(OSC_SLCK_32K_BYPASS);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_sclk(CONFIG_SYSCLK_PRES);
-	}
+	/* Set a flash wait state depending on the Host Clock frequency. */
+	system_init_flash( ( FOSC_KHZ_VALUE * 1000 ) / host_div );
 
-	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && !( VALUE_CKGR_MOR & 0x70 ) && !( VALUE_CKGR_MOR & 0x1000000 ) ) {
-		/* Already running from SYSCLK_SRC_MAINCK_4M_RC */
-	}
-
-	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && ( VALUE_CKGR_MOR & 0x10 ) && !( VALUE_CKGR_MOR & 0x1000000 ) ) {
-		osc_enable(OSC_MAINCK_8M_RC);
-		osc_wait_ready(OSC_MAINCK_8M_RC);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
-	}
-
-	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && ( VALUE_CKGR_MOR & 0x20 ) && !( VALUE_CKGR_MOR & 0x1000000 ) ) {
-		osc_enable(OSC_MAINCK_12M_RC);
-		osc_wait_ready(OSC_MAINCK_12M_RC);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
-	}
-
-	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && !( VALUE_CKGR_MOR & 0x2 ) && ( VALUE_CKGR_MOR & 0x1000000 ) ) {
-		osc_enable(OSC_MAINCK_XTAL);
-		osc_wait_ready(OSC_MAINCK_XTAL);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
-	}
-
-	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_MAIN_CLK ) && ( VALUE_CKGR_MOR & 0x2 ) && ( VALUE_CKGR_MOR & 0x1000000 ) ) {
-		osc_enable(OSC_MAINCK_BYPASS);
-		osc_wait_ready(OSC_MAINCK_BYPASS);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_mainck(CONFIG_SYSCLK_PRES);
-	}
-
-	else if ( ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_PLLA_CLK ) ) {
-		extra_config();
-		pll_enable_source(CONFIG_PLL0_SOURCE);
-		pll_config_defaults(&pllcfg, 0);
-		pll_enable(&pllcfg, 0);
-		pll_wait_for_lock(0);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_pllack(CONFIG_SYSCLK_PRES);
-	}
-
-	else if ( ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) == PMC_MCKR_CSS_UPLL_CLK ) {
-		extra_config();
-		pll_enable_source(CONFIG_PLL1_SOURCE);
-		pll_config_defaults(&pllcfg, 1);
-		pll_enable(&pllcfg, 1);
-		pll_wait_for_lock(1);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_upllck(CONFIG_SYSCLK_PRES);
-	}
-	/* Update the SystemFrequency variable */
-	SystemCoreClockUpdate();
-
-	/* Set a flash wait state depending on the master clock frequency */
-	system_init_flash(sysclk_get_cpu_hz() / host_div);
-
-#if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
-	/* Signal that the internal frequencies are setup */
-	sysclk_initialized = 1;
-#endif
+    return;
 }
 
-/** \cond 0 */
-/* *INDENT-OFF* */
 #ifdef __cplusplus
 }
 #endif
-/* *INDENT-ON* */
-/** \endcond */
