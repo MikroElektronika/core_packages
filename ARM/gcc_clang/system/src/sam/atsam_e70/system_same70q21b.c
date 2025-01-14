@@ -878,7 +878,8 @@ void extra_config()
 
 void sysclk_init( uint8_t host_div )
 {
-	struct pll_config pllcfg;
+	uint32_t pllcfg;
+	// struct pll_config pllcfg;
 
 	// Slow Clock is chosen.
 	if ( PMC_MCKR_CSS_SLOW_CLK ==  ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) )
@@ -985,21 +986,77 @@ void sysclk_init( uint8_t host_div )
 
 	// PLLA is chosen.
 	else if ( ( PMC_MCKR_CSS_PLLA_CLK == ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) ) ) {
-		extra_config();
-		pll_enable_source(CONFIG_PLL0_SOURCE);
-		pll_config_defaults(&pllcfg, 0);
-		pll_enable(&pllcfg, 0);
-		pll_wait_for_lock(0);
-		pmc_mck_set_division(host_div);
-		pmc_switch_mck_to_pllack(CONFIG_SYSCLK_PRES);
+		// Internal Main Clock is chosen.
+		if ( !( VALUE_CKGR_MOR & CKGR_MOR_MOSCSEL_Msk ) ) {
+			// Enable Fast RC oscillator but DO NOT switch to RC now.
+			PMC->CKGR_MOR |= ( CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCRCEN );
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MOSCRCS ) );
+
+			// Change Fast RC oscillator frequency.
+			PMC->CKGR_MOR = ( PMC->CKGR_MOR & ~CKGR_MOR_MOSCRCF_Msk ) | CKGR_MOR_KEY_PASSWD | ( VALUE_CKGR_MOR & CKGR_MOR_MOSCRCF_Msk );
+			// Wait for these changes to be processed.
+			while ( !( PMC->PMC_SR & PMC_SR_MOSCRCS ) );
+
+			// Switch to Fast RC.
+			PMC->CKGR_MOR = ( PMC->CKGR_MOR & ~CKGR_MOR_MOSCSEL ) | CKGR_MOR_KEY_PASSWD;
+		}
+		// External Main Clock is chosen.
+		else {
+			// External Main Clock without Bypass is chosen.
+			if ( !( VALUE_CKGR_MOR & CKGR_MOR_MOSCXTBY_Msk ) ) {
+				// Enable Main Xtal oscillator.
+				PMC->CKGR_MOR = ( PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTBY ) | CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTEN | ( VALUE_CKGR_MOR & CKGR_MOR_MOSCXTST_Msk );
+				// Wait for these changes to be processed.
+				while (!(PMC->PMC_SR & PMC_SR_MOSCXTS));
+
+				// Switch to Main Xtal oscillator.
+				PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCSEL;
+			}
+			// External Main Clock with Bypass is chosen.
+			else {
+				// Enable Main Xtal oscillator with Bypass and switch to it.
+				PMC->CKGR_MOR = ( PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN ) | CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTBY | CKGR_MOR_MOSCSEL;
+			}
+		}
+		// Wait for these changes to be processed.
+		while ( !( PMC->PMC_SR & PMC_SR_MOSCSELS ) );
+
+		// Set PLLA configuration.
+		// Note: PMC hardware will set MULA + 1.
+		uint8_t plla_mult = ( ( VALUE_CKGR_PLLAR & CKGR_PLLAR_MULA_Msk ) >> CKGR_PLLAR_MULA_Pos ) - 1;
+		pllcfg = plla_mult | ( VALUE_CKGR_PLLAR & ( CKGR_PLLAR_DIVA_Msk | CKGR_PLLAR_PLLACOUNT_Msk ) );
+		PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | pllcfg;
+		
+		
+		// pll_enable_source(CONFIG_PLL0_SOURCE);
+		// pll_config_defaults(&pllcfg, 0);
+		// pll_enable(&pllcfg, 0);
+		// pll_wait_for_lock(0);
+
+		// Wait for PLLA locking.
+		while ( !( PMC->PMC_SR & PMC_SR_LOCKA ) );
+
+		// Set Host Clock division.
+		pmc_mck_set_division( host_div );
+
+		// Set Processor Clock prescaler.
+		PMC->PMC_MCKR = (PMC->PMC_MCKR & (~PMC_MCKR_PRES_Msk)) | ( VALUE_PMC_MCKR & PMC_MCKR_PRES_Msk );
+		// Wait for these changes to be processed.
+		while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
+
+		// Set PLLA Clock to be as a source for Host Clock. 
+		PMC->PMC_MCKR = ( PMC->PMC_MCKR & ( ~PMC_MCKR_CSS_Msk ) ) | PMC_MCKR_CSS_PLLA_CLK;
+		// Wait for these changes to be processed.
+		while ( !( PMC->PMC_SR & PMC_SR_MCKRDY ) );
 	}
 
 	// UPLL is chosen.
 	else if ( PMC_MCKR_CSS_UPLL_CLK == ( VALUE_PMC_MCKR & PMC_MCKR_CSS_Msk ) ) {
 		extra_config();
 		pll_enable_source(CONFIG_PLL1_SOURCE);
-		pll_config_defaults(&pllcfg, 1);
-		pll_enable(&pllcfg, 1);
+		// pll_config_defaults(&pllcfg, 1);
+		// pll_enable(&pllcfg, 1);
 		pll_wait_for_lock(1);
 		pmc_mck_set_division(host_div);
 		pmc_switch_mck_to_upllck(CONFIG_SYSCLK_PRES);
