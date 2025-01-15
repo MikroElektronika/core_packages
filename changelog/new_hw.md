@@ -20,7 +20,13 @@
 
 Support added for following hardware:
 
-
++ STM32H573_MRVZ_I MCU Support package for GCC & Clang
+  + STM32H573MI
+  + STM32H573RI
+  + STM32H573VI
+  + STM32H573ZI
++ STM32L010RB MCU Support package for GCC & Clang
+  + STM32L010RB
 
 ---
 
