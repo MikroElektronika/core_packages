@@ -20,7 +20,13 @@
 
 Support added for following hardware:
 
-
++ STM32H523_RVZ_CE MCU Support package for GCC & Clang
+  + STM32H523ZC
+  + STM32H523RE
+  + STM32H523VE
+  + STM32H523ZE
++ STM32L162VD-X MCU Support package for GCC & Clang
+  + STM32L162VD-X
 
 ---
 
