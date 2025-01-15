@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32L562CE$|^STM32L562ME$|^STM32L562QE$|^STM32L562RE$|^STM32L562VE$|^STM32L562ZE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/stm/doc_ds_165/init_clock.c)
+endif()
