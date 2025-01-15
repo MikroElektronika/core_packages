@@ -16,11 +16,11 @@
 
 Support added for following hardware:
 
-- STM32U5G_79_BNVZ_J MCU Support package for GCC & Clang
-  - STM32U5G7VJ
-  - STM32U5G9BJ
-  - STM32U5G9NJ
-  - STM32U5G9VJ
-  - STM32U5G9ZJ
++ STM32U5G_79_BNVZ_J MCU Support package for GCC & Clang
+  + STM32U5G7VJ
+  + STM32U5G9BJ
+  + STM32U5G9NJ
+  + STM32U5G9VJ
+  + STM32U5G9ZJ
 
 ---
