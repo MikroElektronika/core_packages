@@ -16,11 +16,11 @@
 
 Support added for following hardware:
 
-- STM32H7A3_ILNRV_G MCU Support package for GCC & Clang
-  - STM32H7A3RG
-  - STM32H7A3VG
-  - STM32H7A3IG
-  - STM32H7A3NG
-  - STM32H7A3LG
++ STM32H7A3_ILNRV_G MCU Support package for GCC & Clang
+  + STM32H7A3RG
+  + STM32H7A3VG
+  + STM32H7A3IG
+  + STM32H7A3NG
+  + STM32H7A3LG
 
 ---
