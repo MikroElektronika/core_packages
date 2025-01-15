@@ -20,7 +20,12 @@
 
 Support added for following hardware:
 
-
++ STM32U585VI_ZI MCU Support package for GCC & Clang
+  + STM32U585VI
+  + STM32U585ZI
++ STM32U599ZI_J MCU Support package for GCC & Clang
+  + STM32U599ZI
+  + STM32U599ZJ
 
 ---
 
