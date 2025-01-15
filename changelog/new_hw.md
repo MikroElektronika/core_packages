@@ -16,11 +16,11 @@
 
 Support added for following hardware:
 
-- STM32H7A3_AIRZ_GI MCU Support package for GCC & Clang
-  - STM32H7A3ZG
-  - STM32H7A3AG
-  - STM32H7A3AI
-  - STM32H7A3II
-  - STM32H7A3RI
++ STM32H7A3_AIRZ_GI MCU Support package for GCC & Clang
+  + STM32H7A3ZG
+  + STM32H7A3AG
+  + STM32H7A3AI
+  + STM32H7A3II
+  + STM32H7A3RI
 
 ---
