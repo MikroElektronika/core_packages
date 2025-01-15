@@ -16,11 +16,11 @@
 
 Support added for following hardware:
 
-- STM32H7A3_LNQVZ_I MCU Support package for GCC & Clang
-  - STM32H7A3VI
-  - STM32H7A3NI
-  - STM32H7A3LI
-  - STM32H7A3QI
-  - STM32H7A3ZI
++ STM32H7A3_LNQVZ_I MCU Support package for GCC & Clang
+  + STM32H7A3VI
+  + STM32H7A3NI
+  + STM32H7A3LI
+  + STM32H7A3QI
+  + STM32H7A3ZI
 
 ---
