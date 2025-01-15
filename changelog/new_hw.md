@@ -16,11 +16,11 @@
 
 Support added for following hardware:
 
-- STM32H523_CHRV_CE MCU Support package for GCC & Clang
-  - STM32H523CC
-  - STM32H523RC
-  - STM32H523CE
-  - STM32H523HE
-  - STM32H523VC
++ STM32H523_CHRV_CE MCU Support package for GCC & Clang
+  + STM32H523CC
+  + STM32H523RC
+  + STM32H523CE
+  + STM32H523HE
+  + STM32H523VC
 
 ---
