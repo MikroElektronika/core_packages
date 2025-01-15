@@ -20,7 +20,13 @@
 
 Support added for following hardware:
 
-
++ STM32F750N8_V8_Z8 MCU Support package for GCC & Clang
+  + STM32F750V8
+  + STM32F750Z8
+  + STM32F750N8
++ STM32L010K8_R8 MCU Support package for GCC & Clang
+  + STM32L010K8
+  + STM32L010R8
 
 ---
 
