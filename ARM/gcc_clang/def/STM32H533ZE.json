@@ -1,0 +1,1452 @@
+{
+    "config_registers": [
+        {
+            "address": "54020c00",
+            "default": "0000002b",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PLL3RDY",
+                    "label": " PLL3 clock ready flag",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": " PLL3 unlocked (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " PLL3 locked",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PLL3ON",
+                    "label": " PLL3 enable",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": " PLL3 OFF (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " PLL3 ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PLL2RDY",
+                    "label": " PLL2 clock ready flag",
+                    "mask": "8000000",
+                    "settings": [
+                        {
+                            "label": " PLL2 unlocked",
+                            "value": "0"
+                        },
+                        {
+                            "label": " PLL2 locked",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PLL2ON",
+                    "label": " PLL2 enable",
+                    "mask": "4000000",
+                    "settings": [
+                        {
+                            "label": " PLL2 OFF (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " PLL2 ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PLL1RDY",
+                    "label": " PLL1 clock ready flag",
+                    "mask": "2000000",
+                    "settings": [
+                        {
+                            "label": " PLL1 unlocked (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " PLL1 locked",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PLL1ON",
+                    "label": " PLL1 enable",
+                    "mask": "1000000",
+                    "settings": [
+                        {
+                            "label": " PLL1 OFF (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " PLL1 ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSEEXT",
+                    "label": " external high speed clock type in Bypass mode",
+                    "mask": "100000",
+                    "settings": [
+                        {
+                            "label": " HSE in analog mode (default after reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSE in digital mode",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSECSSON",
+                    "label": " HSE clock security system enable",
+                    "mask": "80000",
+                    "settings": [
+                        {
+                            "label": " CSS on HSE OFF (clock detector OFF) (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " CSS on HSE ON (clock detector ON if the HSE oscillator is stable, OFF if not).",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSEBYP",
+                    "label": " HSE clock bypass",
+                    "mask": "40000",
+                    "settings": [
+                        {
+                            "label": " HSE oscillator not bypassed (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSE oscillator bypassed with an external clock",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSERDY",
+                    "label": " HSE clock ready flag",
+                    "mask": "20000",
+                    "settings": [
+                        {
+                            "label": " HSE clock is not ready (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSE clock is ready",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSEON",
+                    "label": " HSE clock enable",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": " HSE is OFF (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSE is ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSI48RDY",
+                    "label": " HSI48 clock ready flag",
+                    "mask": "2000",
+                    "settings": [
+                        {
+                            "label": " HSI48 clock is not ready (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSI48 clock is ready",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSI48ON",
+                    "label": " HSI48 clock enable",
+                    "mask": "1000",
+                    "settings": [
+                        {
+                            "label": " HSI48 is OFF (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSI48 is ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "CSIKERON",
+                    "label": " CSI clock enable in Stop mode",
+                    "mask": "400",
+                    "settings": [
+                        {
+                            "label": " no effect on CSI (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " CSI is forced to ON even in Stop mode ",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "CSIRDY",
+                    "label": " CSI clock ready flag",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": " CSI clock is not ready (default after reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " CSI clock is ready",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "CSION",
+                    "label": " CSI clock enable",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": " CSI is OFF (default after reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " CSI is ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "HSIDIVF",
+                    "label": " HSI divider flag ",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": " new division ratio not yet propagated to hsi_ck , hsi_ker_ck (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " hsi_ck , hsi_ker_ck clock frequency reflects the new HSIDIV value (default register value ",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "08",
+                    "key": "HSIDIV",
+                    "label": " HSI clock divider ",
+                    "mask": "18",
+                    "settings": [
+                        {
+                            "label": " division by 1, hsi_ck, hsi_ker_ck = 64 MHz",
+                            "value": "00"
+                        },
+                        {
+                            "label": " division by 2, hsi_ck, hsi_ker_ck = 32 MHz (default after reset)",
+                            "value": "01"
+                        },
+                        {
+                            "label": " division by 4, hsi_ck, hsi_ker_ck = 16 MHz",
+                            "value": "10"
+                        },
+                        {
+                            "label": " division by 8, hsi_ck, hsi_ker_ck = 8 MHz",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSIKERON",
+                    "label": " HSI clock enable in Stop mode",
+                    "mask": "04",
+                    "settings": [
+                        {
+                            "label": " no effect on HSI (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSI is forced to ON even in Stop mode",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "02",
+                    "key": "HSIRDY",
+                    "label": " HSI clock ready flag",
+                    "mask": "02",
+                    "settings": [
+                        {
+                            "label": " HSI clock is not ready (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSI clock is ready",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "01",
+                    "key": "HSION",
+                    "label": " HSI clock enable",
+                    "mask": "01",
+                    "settings": [
+                        {
+                            "label": " HSI is OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": " HSI is ON (default after reset)",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSITRIM",
+                    "label": " HSI clock trimming",
+                    "mask": "7f0000",
+                    "settings": []
+                }
+            ],
+            "key": "RCC_CR",
+            "unused": "ffffffd4"
+        },
+        {
+            "address": "54020c14",
+            "default": "00000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HSI48CAL",
+                    "label": " Internal RC 48 MHz clock calibration",
+                    "mask": "3ff",
+                    "settings": []
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "CSITRIM",
+                    "label": " CSI clock trimming ",
+                    "mask": "3f0000",
+                    "settings": []
+                }
+            ],
+            "key": "RCC_CRRCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "54020c1c",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "MCO2SEL",
+                    "label": " microcontroller clock output 2",
+                    "mask": "e0000000",
+                    "settings": [
+                        {
+                            "label": " system clock selected (sys_ck) (default after reset) ",
+                            "value": "000"
+                        },
+                        {
+                            "label": " PLL2 oscillator clock selected (pll2_p_ck)",
+                            "value": "001"
+                        },
+                        {
+                            "label": " HSE clock selected (hse_ck) ",
+                            "value": "010"
+                        },
+                        {
+                            "label": " PLL1 clock selected (pll1_p_ck) ",
+                            "value": "011"
+                        },
+                        {
+                            "label": " CSI clock selected (csi_ck) ",
+                            "value": "100"
+                        },
+                        {
+                            "label": " LSI clock selected (lsi_ck) ",
+                            "value": "101"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "MCO2PRE",
+                    "label": " MCO2 prescaler",
+                    "mask": "1e000000",
+                    "settings": [
+                        {
+                            "label": " prescaler disabled (default after reset) ",
+                            "value": "0000"
+                        },
+                        {
+                            "label": " division by 1 (bypass)",
+                            "value": "0001"
+                        },
+                        {
+                            "label": " division by 2",
+                            "value": "0010"
+                        },
+                        {
+                            "label": " division by 3",
+                            "value": "0011"
+                        },
+                        {
+                            "label": " division by 4",
+                            "value": "0100"
+                        },
+                        {
+                            "label": " division by 15",
+                            "value": "1111"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "MCO1SEL",
+                    "label": " Microcontroller clock output 1",
+                    "mask": "1c00000",
+                    "settings": [
+                        {
+                            "label": " HSI clock selected (hsi_ck) (default after reset) ",
+                            "value": "000"
+                        },
+                        {
+                            "label": " LSE oscillator clock selected (lse_ck)",
+                            "value": "001"
+                        },
+                        {
+                            "label": " HSE clock selected (hse_ck) ",
+                            "value": "010"
+                        },
+                        {
+                            "label": " PLL1 clock selected (pll1_q_ck) ",
+                            "value": "011"
+                        },
+                        {
+                            "label": " HSI48 clock selected (hsi48_ck) ",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "MCO1PRE",
+                    "label": " MCO1 prescaler",
+                    "mask": "3c0000",
+                    "settings": [
+                        {
+                            "label": " prescaler disabled (default after reset) ",
+                            "value": "0000"
+                        },
+                        {
+                            "label": " division by 1 (bypass)",
+                            "value": "0001"
+                        },
+                        {
+                            "label": " division by 2",
+                            "value": "0010"
+                        },
+                        {
+                            "label": " division by 3",
+                            "value": "0011"
+                        },
+                        {
+                            "label": " division by 4",
+                            "value": "0100"
+                        },
+                        {
+                            "label": " division by 15",
+                            "value": "1111"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "TIMPRE",
+                    "label": " timers clocks prescaler selection",
+                    "mask": "8000",
+                    "settings": [
+                        {
+                            "label": " The timers kernel clock is equal to rcc_hclk1 if PPRE1 or PPRE2 corresponds to a ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " The timers kernel clock is equal to 2 x Frcc_pclk1 or 2 x Frcc_pclk2 if PPRE1 or PPRE2 ",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "RTCPRE",
+                    "label": " HSE division factor for RTC clock",
+                    "mask": "3f00",
+                    "settings": [
+                        {
+                            "label": " no clock (default after reset)",
+                            "value": "000000"
+                        },
+                        {
+                            "label": " no clock",
+                            "value": "000001"
+                        },
+                        {
+                            "label": " HSE/2",
+                            "value": "000010"
+                        },
+                        {
+                            "label": " HSE/3",
+                            "value": "000011"
+                        },
+                        {
+                            "label": " HSE/4",
+                            "value": "000100"
+                        },
+                        {
+                            "label": " HSE/62",
+                            "value": "111110"
+                        },
+                        {
+                            "label": " HSE/63",
+                            "value": "111111"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "STOPKERWUCK",
+                    "label": " kernel clock selection after a wakeup from system Stop",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": " HSI selected as wakeup clock from system Stop (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " CSI selected as wakeup clock from system Stop",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "STOPWUCK",
+                    "label": " system clock selection after a wakeup from system Stop",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": " CSI selected as wakeup clock from system Stop",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "SWS",
+                    "label": " system clock switch status",
+                    "mask": "18",
+                    "settings": [
+                        {
+                            "label": " CSI used as system clock (csi_ck) ",
+                            "value": "01"
+                        },
+                        {
+                            "label": " HSE used as system clock (hse_ck) ",
+                            "value": "10"
+                        },
+                        {
+                            "label": " PLL1 used as system clock (pll1_p_ck) ",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "SW",
+                    "label": " system clock and trace clock switch",
+                    "mask": "03",
+                    "settings": [
+                        {
+                            "label": " HSI selected as system clock (hsi_ck) (default after reset) ",
+                            "value": "00"
+                        },
+                        {
+                            "label": " CSI selected as system clock (csi_ck)",
+                            "value": "01"
+                        },
+                        {
+                            "label": " HSE selected as system clock (hse_ck)",
+                            "value": "10"
+                        },
+                        {
+                            "label": " PLL1 selected as system clock (pll1_p_ck for sys_ck)",
+                            "value": "11"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CFGR1",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "54020c20",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "SWS",
+                    "label": " system clock switch status",
+                    "mask": "18",
+                    "settings": [
+                        {
+                            "label": " CSI used as system clock (csi_ck) ",
+                            "value": "01"
+                        },
+                        {
+                            "label": " HSE used as system clock (hse_ck) ",
+                            "value": "10"
+                        },
+                        {
+                            "label": " PLL1 used as system clock (pll1_p_ck) ",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "SW",
+                    "label": " system clock and trace clock switch",
+                    "mask": "03",
+                    "settings": [
+                        {
+                            "label": " HSI selected as system clock (hsi_ck) (default after reset) ",
+                            "value": "00"
+                        },
+                        {
+                            "label": " CSI selected as system clock (csi_ck)",
+                            "value": "01"
+                        },
+                        {
+                            "label": " HSE selected as system clock (hse_ck)",
+                            "value": "10"
+                        },
+                        {
+                            "label": " PLL1 selected as system clock (pll1_p_ck for sys_ck)",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "APB3DIS",
+                    "label": " APB3 clock disable value.Set and cleared by software",
+                    "mask": "400000",
+                    "settings": [
+                        {
+                            "label": " APB3 clock enabled, distributed to peripherals according to their dedicated clock enable ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " APB3 clock disabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "APB2DIS",
+                    "label": " APB2 clock disable value",
+                    "mask": "200000",
+                    "settings": [
+                        {
+                            "label": " APB2 clock enabled, distributed to peripherals according to their dedicated clock enable ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " APB2 clock disabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "APB1DIS",
+                    "label": " APB1 clock disable value",
+                    "mask": "100000",
+                    "settings": [
+                        {
+                            "label": " APB1 clock enabled, distributed to peripherals according to their dedicated clock enable ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " APB1 clock disabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "AHB4DIS",
+                    "label": " AHB4 clock disable",
+                    "mask": "80000",
+                    "settings": [
+                        {
+                            "label": " AHB4 clock enabled, distributed to peripherals according to their dedicated clock enable ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " AHB4 clock disabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "AHB2DIS",
+                    "label": " AHB2 clock disable",
+                    "mask": "20000",
+                    "settings": [
+                        {
+                            "label": " AHB2 clock enabled, distributed to peripherals according to their dedicated clock enable ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " AHB2 clock disabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "AHB1DIS",
+                    "label": " AHB1 clock disable",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": " AHB1 clock enabled, distributed to peripherals according to their dedicated clock enable ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " AHB1 clock disabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PPRE3",
+                    "label": " APB low-speed prescaler (APB3)",
+                    "mask": "7000",
+                    "settings": [
+                        {
+                            "label": " rcc_pclk3 = rcc_hclk1 / 2",
+                            "value": "100"
+                        },
+                        {
+                            "label": " rcc_pclk3 = rcc_hclk1 / 4",
+                            "value": "101"
+                        },
+                        {
+                            "label": " rcc_pclk3 = rcc_hclk1 / 8",
+                            "value": "110"
+                        },
+                        {
+                            "label": " rcc_pclk3 = rcc_hclk1 / 16 ",
+                            "value": "111"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PPRE2",
+                    "label": " APB high-speed prescaler (APB2)",
+                    "mask": "700",
+                    "settings": [
+                        {
+                            "label": " rcc_pclk2 = rcc_hclk1 / 2",
+                            "value": "100"
+                        },
+                        {
+                            "label": " rcc_pclk2 = rcc_hclk1 / 4",
+                            "value": "101"
+                        },
+                        {
+                            "label": " rcc_pclk2 = rcc_hclk1 / 8",
+                            "value": "110"
+                        },
+                        {
+                            "label": " rcc_pclk2 = rcc_hclk1 / 16",
+                            "value": "111"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PPRE1",
+                    "label": " APB low-speed prescaler (APB1) ",
+                    "mask": "70",
+                    "settings": [
+                        {
+                            "label": " rcc_pclk1 = rcc_hclk1 / 2",
+                            "value": "100"
+                        },
+                        {
+                            "label": " rcc_pclk1 = rcc_hclk1 / 4",
+                            "value": "101"
+                        },
+                        {
+                            "label": " rcc_pclk1 = rcc_hclk1 / 8",
+                            "value": "110"
+                        },
+                        {
+                            "label": " rcc_pclk1 = rcc_hclk1 / 16",
+                            "value": "111"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "HPRE",
+                    "label": " AHB prescaler",
+                    "mask": "0f",
+                    "settings": [
+                        {
+                            "label": " rcc_hclk = sys_ck / 2",
+                            "value": "1000"
+                        },
+                        {
+                            "label": " rcc_hclk = sys_ck / 4",
+                            "value": "1001"
+                        },
+                        {
+                            "label": " rcc_hclk = sys_ck / 8",
+                            "value": "1010"
+                        },
+                        {
+                            "label": " rcc_hclk = sys_ck / 16",
+                            "value": "1011"
+                        },
+                        {
+                            "label": " rcc_hclk = sys_ck / 64",
+                            "value": "1100"
+                        },
+                        {
+                            "label": " rcc_hclk = sys_ck / 128",
+                            "value": "1101"
+                        },
+                        {
+                            "label": " rcc_hclk = sys_ck / 256",
+                            "value": "1110"
+                        },
+                        {
+                            "label": " rcc_hclk = sys_ck / 512",
+                            "value": "1111"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PLL1REN",
+                    "label": " PLL1 DIVR divider output enable",
+                    "mask": "40000",
+                    "settings": [
+                        {
+                            "label": " pll1_r_ck output disabled (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " pll1_r_ck output enabled ",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "PLL1QEN",
+                    "label": " PLL1 DIVQ divider output enable",
+                    "mask": "20000",
+                    "settings": [
+                        {
+                            "label": " pll1_q_ck output disabled (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " pll1_q_ck output enabled ",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_CFGR2",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "54020cf0",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "SAI1SEL",
+                    "label": " SAI1 kernel clock source selection ",
+                    "mask": "70000",
+                    "settings": [
+                        {
+                            "label": " pll1_q_ck selected as kernel clock (default after reset)",
+                            "value": "000"
+                        },
+                        {
+                            "label": " pll2_p_ck selected as kernel clock",
+                            "value": "001"
+                        },
+                        {
+                            "label": " pll3_p_ck selected as kernel clock",
+                            "value": "010"
+                        },
+                        {
+                            "label": " AUDIOCLK selected as kernel clock",
+                            "value": "011"
+                        },
+                        {
+                            "label": " per_ck selected as kernel clock",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "FDCANSEL",
+                    "label": " FDCAN1 and FDCAN2 kernel clock source selection ",
+                    "mask": "300",
+                    "settings": [
+                        {
+                            "label": " hse_ck selected as kernel clock (default after reset)",
+                            "value": "00"
+                        },
+                        {
+                            "label": " pll1_q_ck selected as kernel clock",
+                            "value": "01"
+                        },
+                        {
+                            "label": " pll2_q_ck selected as kernel clock",
+                            "value": "10"
+                        },
+                        {
+                            "label": " reserved, the kernel clock is disabled",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "CECSEL",
+                    "label": " HSMI-CEC kernel clock source selection ",
+                    "mask": "c0",
+                    "settings": [
+                        {
+                            "label": " lse_ck selected as kernel clock (default after reset)",
+                            "value": "00"
+                        },
+                        {
+                            "label": " lsi_ker_ck selected as kernel clock",
+                            "value": "01"
+                        },
+                        {
+                            "label": " csi_ker_ck/122 selected as kernel clock",
+                            "value": "10"
+                        },
+                        {
+                            "label": " reserved, the kernel clock is disabled ",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "RNGSEL",
+                    "label": " RNG kernel clock source selection ",
+                    "mask": "30",
+                    "settings": [
+                        {
+                            "label": " hsi48_ker_ck selected as kernel clock (default after reset)",
+                            "value": "00"
+                        },
+                        {
+                            "label": " pll1_q_ck selected as kernel clock",
+                            "value": "01"
+                        },
+                        {
+                            "label": " lse_ck selected as kernel clock",
+                            "value": "10"
+                        },
+                        {
+                            "label": " lsi_ker_ck selected as kernel clock",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "DACSEL",
+                    "label": " DAC sample and hold clock",
+                    "mask": "08",
+                    "settings": [
+                        {
+                            "label": " dac_hold_ck selected as kernel clock (default after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " dac_hold_ck selected as kernel clock ",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "ADCDACSEL",
+                    "label": " ADC and DAC kernel clock source selection ",
+                    "mask": "07",
+                    "settings": [
+                        {
+                            "label": " rcc_hclk selected as kernel clock (default after reset)",
+                            "value": "000"
+                        },
+                        {
+                            "label": " sys_ck selected as kernel clock",
+                            "value": "001"
+                        },
+                        {
+                            "label": " pll2_r_ck selected as kernel clock",
+                            "value": "010"
+                        },
+                        {
+                            "label": " hse_ck selected as kernel clock",
+                            "value": "011"
+                        },
+                        {
+                            "label": " hsi_ker_ck selected as kernel clock",
+                            "value": "100"
+                        },
+                        {
+                            "label": " csi_ker_ck selected as kernel clock",
+                            "value": "101"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSIRDY",
+                    "label": " LSI oscillator ready",
+                    "mask": "8000000",
+                    "settings": [
+                        {
+                            "label": " LSI oscillator not ready",
+                            "value": "0"
+                        },
+                        {
+                            "label": " LSI oscillator ready",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSION",
+                    "label": " LSI oscillator enable ",
+                    "mask": "4000000",
+                    "settings": [
+                        {
+                            "label": " LSI oscillator off ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " LSI oscillator on",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSCOSEL",
+                    "label": " Low-speed clock output selection ",
+                    "mask": "2000000",
+                    "settings": [
+                        {
+                            "label": " LSI clock selected ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " LSE clock selected ",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSCOEN",
+                    "label": " Low-speed clock output (LSCO) enable ",
+                    "mask": "1000000",
+                    "settings": [
+                        {
+                            "label": " LSCO output disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": " LSCO output enabled ",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "VSWRST",
+                    "label": " VSwitch domain software reset",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": " reset not activated (default after Backup domain reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " resets the entire VSW domain",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "RTCEN",
+                    "label": " RTC clock enable ",
+                    "mask": "8000",
+                    "settings": [
+                        {
+                            "label": " rtc_ck disabled (default after Backup domain reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " rtc_ck enabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "RTCSEL",
+                    "label": "RTC clock source selection",
+                    "mask": "300",
+                    "settings": [
+                        {
+                            "label": " no clock (default after Backup domain reset) ",
+                            "value": "00"
+                        },
+                        {
+                            "label": " LSE selected as RTC clock",
+                            "value": "01"
+                        },
+                        {
+                            "label": " LSI selected as RTC clock",
+                            "value": "10"
+                        },
+                        {
+                            "label": " HSE divided by RTCPRE value selected as RTC clock",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSEEXT",
+                    "label": " low-speed external clock type in bypass mode",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": " LSE in analog mode (default after Backup domain reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " LSE in digital mode (do not use if RTC is active).",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSECSSD",
+                    "label": " LSE clock security system failure detection",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": " no failure detected on 32 kHz oscillator (default after Backup domain reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " failure detected on 32 kHz oscillator",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSECSSON",
+                    "label": " LSE clock security system enable",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": " CSS on 32 kHz oscillator OFF (default after Backup domain reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " CSS on 32 kHz oscillator ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSEDRV",
+                    "label": " LSE oscillator driving capability",
+                    "mask": "18",
+                    "settings": [
+                        {
+                            "label": " lowest drive (default after Backup domain reset)",
+                            "value": "00"
+                        },
+                        {
+                            "label": " medium-low drive",
+                            "value": "01"
+                        },
+                        {
+                            "label": " medium-high drive",
+                            "value": "10"
+                        },
+                        {
+                            "label": " highest drive",
+                            "value": "11"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSEBYP",
+                    "label": " LSE oscillator bypass",
+                    "mask": "04",
+                    "settings": [
+                        {
+                            "label": " LSE oscillator not bypassed (default after Backup domain reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " LSE oscillator bypassed",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSERDY",
+                    "label": " LSE oscillator ready",
+                    "mask": "02",
+                    "settings": [
+                        {
+                            "label": " LSE oscillator not ready (default after Backup domain reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " LSE oscillator ready",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LSEON",
+                    "label": " LSE oscillator enabled ",
+                    "mask": "01",
+                    "settings": [
+                        {
+                            "label": " LSE oscillator OFF (default after Backup domain reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": " LSE oscillator ON ",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "LPWRRSTF",
+                    "label": " Low-power reset flag",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": " No illegal low-power mode reset occurred",
+                            "value": "0"
+                        },
+                        {
+                            "label": " Illegal low-power mode reset occurred",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "WWDGRSTF",
+                    "label": " window watchdog reset flag ",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": " no window watchdog reset occurred from WWDG (default after power-on reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " window watchdog reset occurred from WWDG",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00",
+                    "key": "IWDGRSTF",
+                    "label": " independent watchdog reset flag ",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": " no independent watchdog reset occurred (default after power-on reset) ",
+                            "value": "0"
+                        },
+                        {
+                            "label": " independent watchdog reset occurred",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "RCC_BDCR",
+            "unused": "ffffffff"
+        }
+    ],
+    "core": "M33EF",
+    "delay_src_path": "delays/m33ef/__lib_delays.c",
+    "mcu": "STM32H533ZE",
+    "clock": 1
+}
