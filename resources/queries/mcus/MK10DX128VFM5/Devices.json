@@ -1,0 +1,18 @@
+{
+    "def_file":"MK10DX128VFM5.json",
+    "family_uid":"KINETIS_K_SERIES",
+    "flash":"160",
+    "icon":"images/mcu/nxp.png",
+    "max_speed":"50.000",
+    "name":"MK10DX128VFM5",
+    "ram":"16384",
+    "sdk_config":"{\"MCU_NAME\":\"MK10DX128VFM5\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config":"",
+    "uid":"MK10DX128VFM5",
+    "vendor":"NXP",
+    "compiler_flags":"",
+    "linker_flags":"",
+    "tft_socket":"1",
+    "sdk_support":"0",
+    "installer_package":"{\"clang-llvm\": \"arm_gcc_clang_mk10dn_dx128vfm5\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mk10dn_dx128vfm5\"}"
+}
