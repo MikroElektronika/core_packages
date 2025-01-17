@@ -115,14 +115,15 @@ def generate_file(file_data, file_out_path):
         ## Handle errors that may occur during file generation
         print(f"Error generating file: {e}")
 
-def find_listOf(selectedList):
+def find_listOf(selectedList, release_date=''):
     with open(os.path.join(os.path.dirname(__file__), 'releases.json')) as file:
         json_data = json.load(file)
     current_date = f'{datetime.today().year}-{datetime.today().month}-{datetime.today().day}'
+    used_date = release_date if release_date != '' else current_date
 
     for indexRelease, release in enumerate(json_data['NECTO DAILY UPDATE']["events"]):
         date = release["start_dt"]
-        if "2030-01-01" == date:
+        if used_date == date:
             refManual = json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]
             foundList = []
             for nextRelease in json_data['NECTO DAILY UPDATE']["events"][indexRelease:]:
@@ -132,14 +133,15 @@ def find_listOf(selectedList):
 
     return ["NO_BRANCH_IN_SPREADSHEET"]
 
-def find_reference_manual():
+def find_reference_manual(release_date=''):
     with open(os.path.join(os.path.dirname(__file__), 'releases.json')) as file:
         json_data = json.load(file)
     current_date = f'{datetime.today().year}-{datetime.today().month}-{datetime.today().day}'
+    used_date = release_date if release_date != '' else current_date
 
     for release in json_data['NECTO DAILY UPDATE']["events"]:
         date = release["start_dt"]
-        if "2030-01-01" == date:
+        if used_date == date:
             return json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"].replace('.pdf', '')
 
     return "none"
@@ -150,6 +152,7 @@ if __name__ == "__main__":
     parser.add_argument("--title", type = str, help="Event title for calendar.", required=True)
     parser.add_argument("--doc_link", type = str, help="Spreadsheet table with release details - link.",required=True)
     parser.add_argument("--chose_data", type = str, default = "branches", help="Chose data from spreadsheet to return.",required=False)
+    parser.add_argument("--release_date", type=str, default="2000-01-01", help="Release date from the release calendar. Takes current date if not changed.")
 
     ## Parse the arguments
     args = parser.parse_args()
@@ -159,17 +162,29 @@ if __name__ == "__main__":
     ## Then generate the input file for teamup API
     generate_file(fileData, os.path.join(os.path.dirname(__file__), 'releases.json'))
     if args.chose_data == 'branches':
-        ## Find branch name from the jsom data for the current time
-        print(find_listOf('branch'))
+        ## Find branch name from the jsom data for the current time or passed date
+        if args.release_date == "2000-01-01": # Default date value - use current date
+            print(find_listOf('branch'))
+        else: # Use passed date
+            print(find_listOf('branch', args.release_date))
     elif args.chose_data == 'mcus':
-        ## Find reference manual from the jsom data for the current time
-        print(find_listOf('mcu_list'))
+        ## Find reference manual from the jsom data for the current time or passed date
+        if args.release_date == "2000-01-01": # Default date value - use current date
+            print(find_listOf('mcu_list'))
+        else: # Use passed date
+            print(find_listOf('mcu_list', args.release_date))
     elif args.chose_data == 'cmakes':
-        ## Find reference manual from the jsom data for the current time
-        print(find_listOf('cmake_name'))
+        ## Find reference manual from the jsom data for the current time or passed date
+        if args.release_date == "2000-01-01": # Default date value - use current date
+            print(find_listOf('cmake_name'))
+        else: # Use passed date
+            print(find_listOf('cmake_name', args.release_date))
     else:
-        ## Find reference manual from the jsom data for the current time
-        print(find_reference_manual())
+        ## Find reference manual from the jsom data for the current time or passed date
+        if args.release_date == "2000-01-01": # Default date value - use current date
+            print(find_reference_manual())
+        else: # Use passed date
+            print(find_reference_manual(args.release_date))
 
 
 

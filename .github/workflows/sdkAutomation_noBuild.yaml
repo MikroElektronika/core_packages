@@ -44,6 +44,15 @@ on:
         required: true
         # The data type of the input
         type: string
+      release_date:
+        # Release date from the release calendar
+        description: 'Release date from the release calendar. Takes current date if not changed.'
+        # Default value if no value is explicitly provided
+        default: '2000-01-01'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
       new_branch:
         type: bool
         description: 'To create a new branch for this run or use the last one'
@@ -100,9 +109,9 @@ jobs:
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        branchInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branches")
-        mcuInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "mcus")
-        cmakeInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "cmakes")
+        branchInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branches" --release_date "${{ github.event.inputs.release_date }}")
+        mcuInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "mcus" --release_date "${{ github.event.inputs.release_date }}")
+        cmakeInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "cmakes" --release_date "${{ github.event.inputs.release_date }}")
 
         branchInfoArray=($(echo "$branchInfo" | tr -d "[]'," | tr -s ' ' '\n'))
         if [ "${branchInfoArray[0]}" == "NO_BRANCH_IN_SPREADSHEET" ]; then
@@ -134,7 +143,7 @@ jobs:
         GH_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
       run: |
-        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
+        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual" --release_date "${{ github.event.inputs.release_date }}")
         refManNumber="${refManNumber//\//_}"
         gh release download --repo MikroElektronika/sdk_automation latest --pattern "extracted_${refManNumber}.zip"
         echo "exit_code=$?" >> $GITHUB_OUTPUT
@@ -155,7 +164,7 @@ jobs:
       run: |
         currentBranch=$(git rev-parse --abbrev-ref HEAD)
         echo "current branch is: $currentBranch"
-        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual")
+        refManNumber=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "ref_manual" --release_date "${{ github.event.inputs.release_date }}")
         systemPath=${refManNumber//rm/ds}
         refManNumber="${refManNumber//\//_}"
         sudo mv extracted_${refManNumber}.zip automatization/
