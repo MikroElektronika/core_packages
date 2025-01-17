@@ -1,0 +1,18 @@
+{
+    "def_file":"MK10DX32VLF5.json",
+    "family_uid":"KINETIS_K_SERIES",
+    "flash":"64",
+    "icon":"images/mcu/nxp.png",
+    "max_speed":"50.000",
+    "name":"MK10DX32VLF5",
+    "ram":"8192",
+    "sdk_config":"{\"MCU_NAME\":\"MK10DX32VLF5\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config":"",
+    "uid":"MK10DX32VLF5",
+    "vendor":"NXP",
+    "compiler_flags":"",
+    "linker_flags":"",
+    "tft_socket":"1",
+    "sdk_support":"0",
+    "installer_package":"{\"clang-llvm\": \"arm_gcc_clang_mk10dn_dx32vlf5\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mk10dn_dx32vlf5\"}"
+}

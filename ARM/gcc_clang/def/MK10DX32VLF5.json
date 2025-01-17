@@ -1,0 +1,477 @@
+{
+    "config_registers": [
+        {
+            "address": "0x40048004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "PLLFLLSEL",
+                    "label": "PLL/FLL clock select",
+                    "mask": "0x00010000",
+                    "settings": [
+                        {
+                            "label": "MCGFLLCLK clock",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "MCGPLLCLK clock",
+                            "value": "0x00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "TRACECLKSEL",
+                    "label": "Debug trace clock select",
+                    "mask": "0x00001000",
+                    "settings": [
+                        {
+                            "label": "MCGOUTCLK",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "Core/system clock",
+                            "value": "0x00001000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "PTD7PAD",
+                    "label": "PTD7 pad drive strength",
+                    "mask": "0x00000800",
+                    "settings": [
+                        {
+                            "label": "Single-pad drive strength for PTD7",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "Double pad drive strength for PTD7",
+                            "value": "0x00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "CLKOUTSEL",
+                    "label": "CLKOUT select",
+                    "mask": "0x000000E0",
+                    "settings": [
+                        {
+                            "label": "Reserved",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "0x00000020"
+                        },
+                        {
+                            "label": "Flash clock",
+                            "value": "0x00000040"
+                        },
+                        {
+                            "label": "LPO clock (1 kHz)",
+                            "value": "0x00000060"
+                        },
+                        {
+                            "label": "MCGIRCLK",
+                            "value": "0x00000080"
+                        },
+                        {
+                            "label": "RTC 32.768kHz clock",
+                            "value": "0x000000A0"
+                        },
+                        {
+                            "label": "OSCERCLK0",
+                            "value": "0x000000C0"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "0x000000E0"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "RTCCLKOUTSEL",
+                    "label": "RTC clock out select",
+                    "mask": "0x00000010",
+                    "settings": [
+                        {
+                            "label": "RTC 1 Hz clock is output on the RTC_CLKOUT pin",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "RTC 32.768kHz clock is output on the RTC_CLKOUT pin",
+                            "value": "0x00000010"
+                        }
+                    ]
+                }
+            ],
+            "key": "SIM_SOPT2",
+            "unused": "0xFFFEE70F"
+        },
+        {
+            "address": "0x40048044",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "OUTDIV1",
+                    "label": "Clock 1 output divider value",
+                    "mask": "0xF0000000",
+                    "settings": [
+                        {
+                            "label": "Divide-by-1",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "Divide-by-2",
+                            "value": "0x10000000"
+                        },
+                        {
+                            "label": "Divide-by-3",
+                            "value": "0x20000000"
+                        },
+                        {
+                            "label": "Divide-by-4",
+                            "value": "0x30000000"
+                        },
+                        {
+                            "label": "Divide-by-5",
+                            "value": "0x40000000"
+                        },
+                        {
+                            "label": "Divide-by-6",
+                            "value": "0x50000000"
+                        },
+                        {
+                            "label": "Divide-by-7",
+                            "value": "0x60000000"
+                        },
+                        {
+                            "label": "Divide-by-8",
+                            "value": "0x70000000"
+                        },
+                        {
+                            "label": "Divide-by-9",
+                            "value": "0x80000000"
+                        },
+                        {
+                            "label": "Divide-by-10",
+                            "value": "0x90000000"
+                        },
+                        {
+                            "label": "Divide-by-11",
+                            "value": "0xa0000000"
+                        },
+                        {
+                            "label": "Divide-by-12",
+                            "value": "0xb0000000"
+                        },
+                        {
+                            "label": "Divide-by-13",
+                            "value": "0xc0000000"
+                        },
+                        {
+                            "label": "Divide-by-14",
+                            "value": "0xd0000000"
+                        },
+                        {
+                            "label": "Divide-by-15",
+                            "value": "0xe0000000"
+                        },
+                        {
+                            "label": "Divide-by-16",
+                            "value": "0xf0000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "OUTDIV2",
+                    "label": "Clock 2 output divider value",
+                    "mask": "0x0F000000",
+                    "settings": [
+                        {
+                            "label": "Divide-by-1",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "Divide-by-2",
+                            "value": "0x01000000"
+                        },
+                        {
+                            "label": "Divide-by-3",
+                            "value": "0x02000000"
+                        },
+                        {
+                            "label": "Divide-by-4",
+                            "value": "0x03000000"
+                        },
+                        {
+                            "label": "Divide-by-5",
+                            "value": "0x04000000"
+                        },
+                        {
+                            "label": "Divide-by-6",
+                            "value": "0x05000000"
+                        },
+                        {
+                            "label": "Divide-by-7",
+                            "value": "0x06000000"
+                        },
+                        {
+                            "label": "Divide-by-8",
+                            "value": "0x07000000"
+                        },
+                        {
+                            "label": "Divide-by-9",
+                            "value": "0x08000000"
+                        },
+                        {
+                            "label": "Divide-by-10",
+                            "value": "0x09000000"
+                        },
+                        {
+                            "label": "Divide-by-11",
+                            "value": "0x0A000000"
+                        },
+                        {
+                            "label": "Divide-by-12",
+                            "value": "0x0B000000"
+                        },
+                        {
+                            "label": "Divide-by-13",
+                            "value": "0x0C000000"
+                        },
+                        {
+                            "label": "Divide-by-14",
+                            "value": "0x0D000000"
+                        },
+                        {
+                            "label": "Divide-by-15",
+                            "value": "0x0E000000"
+                        },
+                        {
+                            "label": "Divide-by-16",
+                            "value": "0x0F000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "OUTDIV4",
+                    "label": "Clock 4 output divider value",
+                    "mask": "0x000F0000",
+                    "settings": [
+                        {
+                            "label": "Divide-by-1",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "Divide-by-2",
+                            "value": "0x00010000"
+                        },
+                        {
+                            "label": "Divide-by-3",
+                            "value": "0x00020000"
+                        },
+                        {
+                            "label": "Divide-by-4",
+                            "value": "0x00030000"
+                        },
+                        {
+                            "label": "Divide-by-5",
+                            "value": "0x00040000"
+                        },
+                        {
+                            "label": "Divide-by-6",
+                            "value": "0x00050000"
+                        },
+                        {
+                            "label": "Divide-by-7",
+                            "value": "0x00060000"
+                        },
+                        {
+                            "label": "Divide-by-8",
+                            "value": "0x00070000"
+                        },
+                        {
+                            "label": "Divide-by-9",
+                            "value": "0x00080000"
+                        },
+                        {
+                            "label": "Divide-by-10",
+                            "value": "0x00090000"
+                        },
+                        {
+                            "label": "Divide-by-11",
+                            "value": "0x000A0000"
+                        },
+                        {
+                            "label": "Divide-by-12",
+                            "value": "0x000B0000"
+                        },
+                        {
+                            "label": "Divide-by-13",
+                            "value": "0x000C0000"
+                        },
+                        {
+                            "label": "Divide-by-14",
+                            "value": "0x000D0000"
+                        },
+                        {
+                            "label": "Divide-by-15",
+                            "value": "0x000E0000"
+                        },
+                        {
+                            "label": "Divide-by-16",
+                            "value": "0x000F0000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SIM_CLKDIV1",
+            "unused": "0x00F0FFFF"
+        },
+        {
+            "address": "0x40064000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "CLKS",
+                    "label": "Clock Source Select",
+                    "mask": "0x000000C0",
+                    "settings": [
+                        {
+                            "label": "Output of FLL or PLL is selected (depends on PLLS control bit)",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "Internal reference clock is selected",
+                            "value": "0x00000040"
+                        },
+                        {
+                            "label": "External reference clock is selected",
+                            "value": "0x00000080"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "0x000000C0"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "FRDIV",
+                    "label": "FLL External Reference Divider",
+                    "mask": "0x00000038",
+                    "settings": [
+                        {
+                            "label": "If RANGE 0 = 0 or OSCSEL=1, Divide Factor is 1; for all other RANGE 0 values, Divide Factor is 32",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "If RANGE 0 = 0 or OSCSEL=1, Divide Factor is 2; for all other RANGE 0 values, Divide Factor is 64",
+                            "value": "0x00000008"
+                        },
+                        {
+                            "label": "If RANGE 0 = 0 or OSCSEL=1, Divide Factor is 4; for all other RANGE 0 values, Divide Factor is 128",
+                            "value": "0x00000010"
+                        },
+                        {
+                            "label": "If RANGE 0 = 0 or OSCSEL=1, Divide Factor is 8; for all other RANGE 0 values, Divide Factor is 256",
+                            "value": "0x00000018"
+                        },
+                        {
+                            "label": "If RANGE 0 = 0 or OSCSEL=1, Divide Factor is 16; for all other RANGE 0 values, Divide Factor is 512",
+                            "value": "0x00000020"
+                        },
+                        {
+                            "label": "If RANGE 0 = 0 or OSCSEL=1, Divide Factor is 32; for all other RANGE 0 values, Divide Factor is 1024",
+                            "value": "0x00000028"
+                        },
+                        {
+                            "label": "If RANGE 0 = 0 or OSCSEL=1, Divide Factor is 64; for all other RANGE 0 values, Divide Factor is 1280",
+                            "value": "0x00000030"
+                        },
+                        {
+                            "label": "If RANGE 0 = 0 or OSCSEL=1, Divide Factor is 128; for all other RANGE 0 values, Divide Factor is 1536",
+                            "value": "0x00000038"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "IREFS",
+                    "label": "Internal Reference Select",
+                    "mask": "0x00000004",
+                    "settings": [
+                        {
+                            "label": "External reference clock is selected",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "The slow internal reference clock is selected",
+                            "value": "0x00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "IRCLKEN",
+                    "label": "Internal Reference Clock Enable",
+                    "mask": "0x00000002",
+                    "settings": [
+                        {
+                            "label": "MCGIRCLK inactive",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "MCGIRCLK active",
+                            "value": "0x00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000000",
+                    "key": "IREFSTEN",
+                    "label": "Internal Reference Stop Enable",
+                    "mask": "0x00000001",
+                    "settings": [
+                        {
+                            "label": "Internal reference clock is disabled in Stop mode",
+                            "value": "0x00000000"
+                        },
+                        {
+                            "label": "Internal reference clock is enabled in Stop mode if IRCLKEN is set or if MCG is in FEI, FBI, or BLPI modes before entering Stop mode",
+                            "value": "0x00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "MCG_C1",
+            "unused": "0xFFFFFF00"
+        }
+    ],
+    "core": "M4",
+    "delay_src_path": "delays/m4/__lib_delays.c",
+    "mcu": "MK10DX32VLF5",
+    "clock": "50"
+}

@@ -1,0 +1,1836 @@
+{
+    "NECTO DAILY UPDATE": {
+        "events": [
+            {
+                "notes": "<ul>\n<li>Nucleo 144 with STM32F207ZG MCU</li>\n\n<li>Nucleo 144 with STM32F303ZE MCU</li>\n</ul>",
+                "display_name": "Nucleo 144 with STM32F207ZG MCU",
+                "branch": "new-feature/boards/1",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-11",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 144 with STM32F429ZI MCU</li>\n\n<li>Nucleo 144 with STM32F439ZI MCU</li>\n</ul>",
+                "display_name": "Nucleo 144 with STM32F429ZI MCU",
+                "branch": "new-feature/boards/2",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-12",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 144 with STM32F746ZG MCU</li>\n\n<li>Nucleo 144 with STM32F756ZG MCU</li>\n</ul>",
+                "display_name": "Nucleo 144 with STM32F746ZG MCU",
+                "branch": "new-feature/boards/3",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-13",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 144 with STM32L4A6ZG MCU</li>\n\n<li>Nucleo 32 with STM32F031K6 MCU</li>\n</ul>",
+                "display_name": "Nucleo 144 with STM32L4A6ZG MCU",
+                "branch": "new-feature/boards/5",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-16",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 32 with STM32F042K6 MCU</li>\n\n<li>Nucleo 32 with STM32F303K8 MCU</li>\n</ul>",
+                "display_name": "Nucleo 32 with STM32F042K6 MCU",
+                "branch": "new-feature/boards/6",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-17",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 32 with STM32G031K8 MCU</li>\n\n<li>Nucleo 32 with STM32G431KB MCU</li>\n</ul>",
+                "display_name": "Nucleo 32 with STM32G031K8 MCU",
+                "branch": "new-feature/boards/7",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-18",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 32 with STM32L011K4 MCU</li>\n\n<li>Nucleo 32 with STM32L031K6 MCU</li>\n</ul>",
+                "display_name": "Nucleo 32 with STM32L011K4 MCU",
+                "branch": "new-feature/boards/8",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-19",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 32 with STM32L432KC MCU</li>\n\n<li>Nucleo 64 with STM32G491RE MCU</li>\n</ul>",
+                "display_name": "Nucleo 32 with STM32L432KC MCU",
+                "branch": "new-feature/boards/9",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-20",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32C031C6 MCU</li>\n\n<li>Nucleo 64 with STM32F072RB MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32C031C6 MCU",
+                "branch": "new-feature/boards/10",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-23",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32F103RB MCU</li>\n\n<li>Nucleo 64 with STM32F302R8 MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32F103RB MCU",
+                "branch": "new-feature/boards/11",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-24",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32F303RE MCU</li>\n\n<li>Nucleo 64 with STM32F334R8 MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32F303RE MCU",
+                "branch": "new-feature/boards/12",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-25",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32F410RB MCU</li>\n\n<li>Nucleo 64 with STM32F411RE MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32F410RB MCU",
+                "branch": "new-feature/boards/13",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-26",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32F446RE MCU</li>\n\n<li>Nucleo 64 with STM32G070RB MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32F446RE MCU",
+                "branch": "new-feature/boards/14",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-27",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32G071RB MCU</li>\n\n<li>Nucleo 64 with STM32G0B1RE MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32G071RB MCU",
+                "branch": "new-feature/boards/15",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-09-30",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32G431RB MCU</li>\n\n<li>Nucleo 64 with STM32G474RE MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32G431RB MCU",
+                "branch": "new-feature/boards/16",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-01",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Mikromedia 5 for PIC32MZ Resistive FPI with frame</li>\n\n<li>Nucleo 144 with STM32F767ZI MCU</li>\n</ul>",
+                "display_name": "Mikromedia 5 for PIC32MZ Resistive FPI with frame",
+                "branch": "new-feature/boards/17",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-02",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32L053R8 MCU</li>\n\n<li>Nucleo 64 with STM32L152RE MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32L053R8 MCU",
+                "branch": "new-feature/boards/18",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-03",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Nucleo 64 with STM32L433RC MCU</li>\n\n<li>Nucleo 64 with STM32L452RE MCU</li>\n</ul>",
+                "display_name": "Nucleo 64 with STM32L433RC MCU",
+                "branch": "new-feature/boards/19",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-04",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7S3A8_I8 MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 2 for PIC PIC18F85J10</li>\n\n<li>Discovery kit with STM32C011F6 MCU</li>\n\n<li>Discovery kit with STM32C031C6 MCU</li>\n</ul>",
+                "display_name": "STM32H7S3A8_I8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/1",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-07",
+                "additional": "",
+                "mcu_list": "STM32H7S3A8|STM32H7S3I8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7S3L8_R8 MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 2 for PIC PIC18F86J10</li>\n\n<li>Discovery kit with STM32F051R8 MCU</li>\n\n<li>Discovery kit with STM32F469NI MCU</li>\n</ul>",
+                "display_name": "STM32H7S3L8_R8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/2",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-08",
+                "additional": "",
+                "mcu_list": "STM32H7S3L8|STM32H7S3R8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7S3V8_Z8 MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 2 for PIC PIC18F87J10</li>\n\n<li>Discovery kit with STM32F746NG MCU</li>\n\n<li>Discovery kit with STM32G431CB MCU</li>\n</ul>",
+                "display_name": "STM32H7S3V8_Z8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/3",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-09",
+                "additional": "",
+                "mcu_list": "STM32H7S3V8|STM32H7S3Z8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7S7A8_I8 MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 2 for PIC PIC18F86J11</li>\n\n<li>Mikromedia 3 for PIC32MZ Resistive FPI with frame</li>\n\n<li>Mikromedia 4 for PIC32MZ Resistive</li>\n</ul>",
+                "display_name": "STM32H7S7A8_I8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/4",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-10",
+                "additional": "",
+                "mcu_list": "STM32H7S7A8|STM32H7S7I8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7S7L8_Z8 MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 2 for PIC PIC18F85K90</li>\n\n<li>Mikromedia 4 for PIC32MZ Resistive FPI with frame</li>\n\n<li>Discovery kit with STM32F429ZI MCU</li>\n</ul>",
+                "display_name": "STM32H7S7L8_Z8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/5",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-11",
+                "additional": "",
+                "mcu_list": "STM32H7S7L8|STM32H7S7Z8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U083HC_KC MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32L4S5VI MCU</li>\n\n<li>Discovery kit with STM32H750XB MCU</li>\n</ul>",
+                "display_name": "STM32U083HC_KC MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/6",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-14",
+                "additional": "",
+                "mcu_list": "STM32U083KC|STM32U083HC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U083CC_MC_RC MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32F030R8 MCU</li>\n\n<li>Discovery kit with STM32F072RB MCU</li>\n</ul>",
+                "display_name": "STM32U083CC_MC_RC MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/7",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-15",
+                "additional": "",
+                "mcu_list": "STM32U083CC|STM32U083RC|STM32U083MC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U545CE_JE MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32F100RB MCU</li>\n\n<li>Discovery kit with STM32F334C8 MCU</li>\n</ul>",
+                "display_name": "STM32U545CE_JE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/8",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-16",
+                "additional": "",
+                "mcu_list": "STM32U545CE|STM32U545JE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U545NE_RE_VE MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32F411VE MCU</li>\n\n<li>Discovery kit with STM32F412ZG MCU</li>\n</ul>",
+                "display_name": "STM32U545NE_RE_VE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/9",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-17",
+                "additional": "",
+                "mcu_list": "STM32U545NE|STM32U545RE|STM32U545VE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>mikroSDK v2.11.4</li>\n\n<li>STM32WLE5C8_B MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 2 for PIC PIC18F86J16</li>\n\n<li>Discovery kit with STM32F413ZH MCU</li>\n\n<li>Mikromedia 5 for PIC32MZ Resistive</li>\n</ul>",
+                "display_name": "mikroSDK v2.11.4",
+                "branch": "master",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-18",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32WLE5CC_J8 MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32F723IE MCU</li>\n\n<li>Discovery kit with STM32F769NI MCU</li>\n</ul>",
+                "display_name": "STM32WLE5CC_J8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/11",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-21",
+                "additional": "",
+                "mcu_list": "STM32WLE5CC|STM32WLE5J8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32WLE5JB_C MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32G031J6 MCU</li>\n\n<li>Discovery kit with STM32G474RE MCU</li>\n</ul>",
+                "display_name": "STM32WLE5JB_C MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/12",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-22",
+                "additional": "",
+                "mcu_list": "STM32WLE5JB|STM32WLE5JC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32WLE4C8_B MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32L053C8 MCU</li>\n\n<li>Discovery kit with STM32L072CZ MCU</li>\n</ul>",
+                "display_name": "STM32WLE4C8_B MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/13",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-23",
+                "additional": "",
+                "mcu_list": "STM32WLE4C8|STM32WLE4CB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32WLE4CC_J8 MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32L100RC MCU</li>\n\n<li>Discovery kit with STM32L152RC MCU</li>\n</ul>",
+                "display_name": "STM32WLE4CC_J8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/14",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-24",
+                "additional": "",
+                "mcu_list": "STM32WLE4CC|STM32WLE4J8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32WLE4JB_C MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 10 for PIC PIC18F65K40</li>\n\n<li>Discovery kit with STM32L475VG MCU</li>\n\n<li>Discovery kit with STM32L476VG MCU</li>\n</ul>",
+                "display_name": "STM32WLE4JB_C MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/15",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-25",
+                "additional": "",
+                "mcu_list": "STM32WLE4JB|STM32WLE4JC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L412_X8 MCU Support package for GCC & Clang</li>\n\n<li>Discovery kit with STM32L496AG MCU</li>\n\n<li>Discovery kit with STM32L4P5AG MCU</li>\n</ul>",
+                "display_name": "STM32L412_X8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/64",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-28",
+                "additional": "",
+                "mcu_list": "STM32L412C8|STM32L412K8|STM32L412R8|STM32L412T8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L412_XB MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32F103ZE MCU</li>\n\n<li>Evaluation board with STM32F051R8 MCU</li>\n</ul>",
+                "display_name": "STM32L412_XB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/65",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-29",
+                "additional": "",
+                "mcu_list": "STM32L412CB|STM32L412KB|STM32L412RB|STM32L412TB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L422CB_KB MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32F072VB MCU</li>\n\n<li>Evaluation board with STM32F103ZG MCU</li>\n</ul>",
+                "display_name": "STM32L422CB_KB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/66",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-30",
+                "additional": "",
+                "mcu_list": "STM32L422CB|STM32L422KB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L422RB_TB MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32F373VC MCU</li>\n\n<li>Evaluation board with STM32F407IG MCU</li>\n</ul>",
+                "display_name": "STM32L422RB_TB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/67",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-10-31",
+                "additional": "",
+                "mcu_list": "STM32L422RB|STM32L422TB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L552CC_E MCU Support package for GCC & Clang</li>\n\n<li>mikroSDK v2.11.5</li>\n\n<li>MCU CARD 10 for PIC PIC18F66K40</li>\n\n<li>Evaluation board with STM32F207IG MCU</li>\n\n<li>Evaluation board with STM32F303VE MCU</li>\n</ul>",
+                "display_name": "STM32L552CC_E MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/16",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-01",
+                "additional": "",
+                "mcu_list": "STM32L552CC|STM32L552CE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L552ME_QC MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32F417IG MCU</li>\n\n<li>Evaluation board with STM32F429NI MCU</li>\n</ul>",
+                "display_name": "STM32L552ME_QC MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/17",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-04",
+                "additional": "",
+                "mcu_list": "STM32L552ME|STM32L552QC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L552QE_RC MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32F439NI MCU</li>\n\n<li>Evaluation board with STM32F446ZE MCU</li>\n</ul>",
+                "display_name": "STM32L552QE_RC MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/18",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-05",
+                "additional": "",
+                "mcu_list": "STM32L552QE|STM32L552RC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L552RE_VC MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32F756NG MCU</li>\n\n<li>Evaluation board with STM32F769NI MCU</li>\n</ul>",
+                "display_name": "STM32L552RE_VC MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/19",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-06",
+                "additional": "",
+                "mcu_list": "STM32L552RE|STM32L552VC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L552VE_ZC_ZE MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32G474QE MCU</li>\n\n<li>Evaluation board with STM32G484QE MCU</li>\n</ul>",
+                "display_name": "STM32L552VE_ZC_ZE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/20",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-07",
+                "additional": "",
+                "mcu_list": "STM32L552VE|STM32L552ZC|STM32L552ZE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H562AG_I MCU Support package for GCC & Clang</li>\n\n<li>mikroSDK v2.12.0</li>\n\n<li>MCU CARD 11 for PIC PIC18F55K42</li>\n\n<li>Evaluation board with STM32G081RB MCU</li>\n\n<li>Evaluation board with STM32G0C1VE MCU</li>\n</ul>",
+                "display_name": "STM32H562AG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/21",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-08",
+                "additional": "",
+                "mcu_list": "STM32H562AG|STM32H562AI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H562RG_I MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32L073VZ MCU</li>\n\n<li>Evaluation board with STM32L476ZG MCU</li>\n</ul>",
+                "display_name": "STM32H562RG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/23",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-12",
+                "additional": "",
+                "mcu_list": "STM32H562RG|STM32H562RI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H562VG_I MCU Support package for GCC & Clang</li>\n\n<li>Nucleo 64 with STM32L412RB MCU</li>\n\n<li>Evaluation board with STM32L4R9AI MCU</li>\n</ul>",
+                "display_name": "STM32H562VG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/24",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-13",
+                "additional": "",
+                "mcu_list": "STM32H562VG|STM32H562VI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H562ZG_I MCU Support package for GCC & Clang</li>\n\n<li>Nucleo 32 with STM32L412KB MCU</li>\n\n<li>32-Bit Multimedia Board</li>\n</ul>",
+                "display_name": "STM32H562ZG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/25",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-14",
+                "additional": "",
+                "mcu_list": "STM32H562ZG|STM32H562ZI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H563AG_I MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 11 for PIC PIC18F56K42</li>\n\n<li>Audio Development Board For PIC32 MCUs</li>\n\n<li>ChipKit MAX32 Development Board</li>\n</ul>",
+                "display_name": "STM32H563AG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/26",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-15",
+                "additional": "",
+                "mcu_list": "STM32H563AG|STM32H563AI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H563IG_I MCU Support package for GCC & Clang</li>\n\n<li>ChipKit UC32 Development Board</li>\n\n<li>ChipKit WF32 WiFi Development Board</li>\n</ul>",
+                "display_name": "STM32H563IG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/27",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-18",
+                "additional": "",
+                "mcu_list": "STM32H563IG|STM32H563II",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H563MI_RG MCU Support package for GCC & Clang</li>\n\n<li>PIC32MZ MXS Data Capture Board</li>\n</ul>",
+                "display_name": "STM32H563MI_RG MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/28",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-19",
+                "additional": "",
+                "mcu_list": "STM32H563MI|STM32H563RG",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H563RI_VG MCU Support package for GCC & Clang</li>\n\n<li>Mini-32 Board</li>\n</ul>",
+                "display_name": "STM32H563RI_VG MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/29",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-20",
+                "additional": "",
+                "mcu_list": "STM32H563RI|STM32H563VG",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H563VI_ZG_ZI MCU Support package for GCC & Clang</li>\n\n<li>PIC32 Bluetooth Starter Kit</li>\n</ul>",
+                "display_name": "STM32H563VI_ZG_ZI MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/30",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-21",
+                "additional": "",
+                "mcu_list": "STM32H563VI|STM32H563ZG|STM32H563ZI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H562IG_I MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 5 for Kinetis MKV42F128VLH16</li>\n\n<li>PIC32MX1/2/5 Starter Kit</li>\n</ul>",
+                "display_name": "STM32H562IG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/22",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-22",
+                "additional": "",
+                "mcu_list": "STM32H562IG|STM32H562II",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H503EB_KB MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32H743XI MCU</li>\n</ul>",
+                "display_name": "STM32H503EB_KB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/31",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-25",
+                "additional": "",
+                "mcu_list": "STM32H503EB|STM32H503KB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H503CB_RB MCU Support package for GCC & Clang</li>\n\n<li>PIC32MZ EF Starter Kit with PIC32MZ2048EFM144</li>\n</ul>",
+                "display_name": "STM32H503CB_RB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/32",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-26",
+                "additional": "",
+                "mcu_list": "STM32H503CB|STM32H503RB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7B3RI_VI MCU Support package for GCC & Clang</li>\n\n<li>Curiosity PIC32MX470 Development Board</li>\n</ul>",
+                "display_name": "STM32H7B3RI_VI MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/33",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-27",
+                "additional": "",
+                "mcu_list": "STM32H7B3RI|STM32H7B3VI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7B3QI_ZI MCU Support package for GCC & Clang</li>\n\n<li>PIC32 Ethernet Starter Kit II</li>\n</ul>",
+                "display_name": "STM32H7B3QI_ZI MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/34",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-28",
+                "additional": "",
+                "mcu_list": "STM32H7B3QI|STM32H7B3ZI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7B3AI_II MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 5 for Kinetis MKV42F256VLH16</li>\n\n<li>Digilent Cerebot 32MX7 Development Board</li>\n</ul>",
+                "display_name": "STM32H7B3AI_II MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/35",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-11-29",
+                "additional": "",
+                "mcu_list": "STM32H7B3AI|STM32H7B3II",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7B3LI_NI MCU Support package for GCC & Clang</li>\n\n<li>MPLab Starter Kit For PIC32MX1xx/2xx</li>\n</ul>",
+                "display_name": "STM32H7B3LI_NI MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/36",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-02",
+                "additional": "",
+                "mcu_list": "STM32H7B3NI|STM32H7B3LI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U575AG_I MCU Support package for GCC & Clang</li>\n\n<li>PIC32 Ethernet Starter Kit</li>\n</ul>",
+                "display_name": "STM32U575AG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/37",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-03",
+                "additional": "",
+                "mcu_list": "STM32U575AG|STM32U575AI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>mikroSDK v2.12.1</li>\n\n<li>STM32U575CG_I MCU Support package for GCC & Clang</li>\n\n<li>PIC32 USB Starter Kit II</li>\n</ul>",
+                "display_name": "mikroSDK v2.12.1",
+                "branch": "master",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-04",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U575OG_I MCU Support package for GCC & Clang</li>\n\n<li>PIC32 USB Starter Kit III</li>\n</ul>",
+                "display_name": "STM32U575OG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/39",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-05",
+                "additional": "",
+                "mcu_list": "STM32U575OG|STM32U575OI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U575QG_I MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 5 for Kinetis MKV44F64VLH16</li>\n\n<li>Curiosity PIC32MZ EF 2.0 Development Board</li>\n</ul>",
+                "display_name": "STM32U575QG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/40",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-06",
+                "additional": "",
+                "mcu_list": "STM32U575QG|STM32U575QI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U575RG_I MCU Support package for GCC & Clang</li>\n\n<li>Evaluation board with STM32H753XI MCU</li>\n</ul>",
+                "display_name": "STM32U575RG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/41",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-09",
+                "additional": "",
+                "mcu_list": "STM32U575RG|STM32U575RI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U575VG_I MCU Support package for GCC & Clang</li>\n\n<li>PIC32MZ EF Starter Kit with PIC32MZ2048EFH144</li>\n</ul>",
+                "display_name": "STM32U575VG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/42",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-10",
+                "additional": "",
+                "mcu_list": "STM32U575VG|STM32U575VI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U575ZG_I MCU Support package for GCC & Clang</li>\n</ul>",
+                "display_name": "STM32U575ZG_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/43",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-11",
+                "additional": "",
+                "mcu_list": "STM32U575ZG|STM32U575ZI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U5A5AJ_QI MCU Support package for GCC & Clang</li>\n\n<li>Freedom Development Platform for Kinetis K64 K63 and K24 MCUs</li>\n</ul>",
+                "display_name": "STM32U5A5AJ_QI MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/44",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-12",
+                "additional": "",
+                "mcu_list": "STM32U5A5AJ|STM32U5A5QI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U5A5QJ_RJ MCU Support package for GCC & Clang</li>\n\n<li>MCU CARD 5 for Kinetis MKV44F128VLH16</li>\n\n<li>Freedom Development Platform for Kinetis K82 K81 and K80 MCUs</li>\n</ul>",
+                "display_name": "STM32U5A5QJ_RJ MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/45",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-13",
+                "additional": "",
+                "mcu_list": "STM32U5A5QJ|STM32U5A5RJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U5A5VJ_ZJ MCU Support package for GCC & Clang</li>\n\n<li>GigaDevice GD32VF103 Eval Board</li>\n</ul>",
+                "display_name": "STM32U5A5VJ_ZJ MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/46",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-16",
+                "additional": "",
+                "mcu_list": "STM32U5A5VJ|STM32U5A5ZJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U5A9BJ_NJ MCU Support package for GCC & Clang</li>\n\n<li>TM4C123G LaunchPad Evaluation Kit</li>\n</ul>",
+                "display_name": "STM32U5A9BJ_NJ MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/47",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-17",
+                "additional": "",
+                "mcu_list": "STM32U5A9BJ|STM32U5A9NJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U5A9VJ_ZJ MCU Support package for GCC & Clang</li>\n\n<li>TM4C1294 LaunchPad Evaluation Kit</li>\n</ul>",
+                "display_name": "STM32U5A9VJ_ZJ MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/48",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-18",
+                "additional": "",
+                "mcu_list": "STM32U5A9VJ|STM32U5A9ZJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U031F4_K4 MCU Support package for GCC & Clang</li>\n\n<li>TM4C129E LaunchPad Evaluation Kit</li>\n</ul>",
+                "display_name": "STM32U031F4_K4 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/49",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-19",
+                "additional": "",
+                "mcu_list": "STM32U031F4|STM32U031K4",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U031F6_K6 MCU Support package for GCC & Clang</li>\n\n<li>STM32U031F6_K6 CODEGRIP Device Pack</li>\n\n<li>STM32U5 CODEGRIP Device Pack</li>\n\n<li>PIC18 POE Main Board</li>\n</ul>",
+                "display_name": "STM32U031F6_K6 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/50",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-20",
+                "additional": "",
+                "mcu_list": "STM32U031F6|STM32U031K6",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U031C6_R6 MCU Support package for GCC & Clang</li>\n\n<li>STM32U031C6_R6 CODEGRIP Device Pack</li>\n\n<li>Audio Development Board For dsPIC33E</li>\n</ul>",
+                "display_name": "STM32U031C6_R6 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/51",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-23",
+                "additional": "",
+                "mcu_list": "STM32U031C6|STM32U031R6",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U031F8_G6 MCU Support package for GCC & Clang</li>\n\n<li>STM32U031F8_G6 CODEGRIP Device Pack</li>\n\n<li>mikroSDK v2.13.0</li>\n\n<li>dsPIC33E USB Starter Kit With dsPIC33EP512MU810</li>\n</ul>",
+                "display_name": "STM32U031F8_G6 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/52",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-24",
+                "additional": "",
+                "mcu_list": "STM32U031G6|STM32U031F8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U031C8_K8 MCU Support package for GCC & Clang</li>\n\n<li>STM32U031C8_K8 CODEGRIP Device Pack</li>\n\n<li>dsPIC33E USB Starter Kit With PIC24EP512GU810</li>\n</ul>",
+                "display_name": "STM32U031C8_K8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/53",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-25",
+                "additional": "",
+                "mcu_list": "STM32U031K8|STM32U031C8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U031G8_R8 MCU Support package for GCC & Clang</li>\n\n<li>STM32U031G8_R8 CODEGRIP Device Pack</li>\n\n<li>dsPICDEM MC1 Motor Control Development Board</li>\n</ul>",
+                "display_name": "STM32U031G8_R8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/54",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-26",
+                "additional": "",
+                "mcu_list": "STM32U031R8|STM32U031G8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U073H8_K8 MCU Support package for GCC & Clang</li>\n\n<li>STM32U073H8_K8 CODEGRIP Device Pack</li>\n\n<li>mikroSDK v2.13.1</li>\n\n<li>PIM for PIC32MX270F512L</li>\n\n<li>Graphics PIC24FJ256DA210 Development Board</li>\n</ul>",
+                "display_name": "STM32U073H8_K8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/55",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-27",
+                "additional": "",
+                "mcu_list": "STM32U073K8|STM32U073H8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U073C8_R8 MCU Support package for GCC & Clang</li>\n\n<li>STM32U073C8_R8 CODEGRIP Device Pack</li>\n\n<li>MPLab Starter Kit For PIC24F MCUs</li>\n</ul>",
+                "display_name": "STM32U073C8_R8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/56",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-30",
+                "additional": "",
+                "mcu_list": "STM32U073C8|STM32U073R8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U073KB_M8 MCU Support package for GCC & Clang</li>\n\n<li>STM32U073KB_M8 CODEGRIP Device Pack</li>\n\n<li>MPLab Starter Kit For PIC24H MCUs</li>\n</ul>",
+                "display_name": "STM32U073KB_M8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/57",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2024-12-31",
+                "additional": "",
+                "mcu_list": "STM32U073M8|STM32U073KB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U073HC_KC MCU Support package for GCC & Clang</li>\n\n<li>STM32U073HC_KC CODEGRIP Device Pack</li>\n\n<li>MCU CARD 5 for Kinetis MKV44F256VLH16</li>\n\n<li>PIC24H Capacitive Touch Evaluation Board</li>\n</ul>",
+                "display_name": "STM32U073HC_KC MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/60",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-03",
+                "additional": "",
+                "mcu_list": "STM32U073KC|STM32U073HC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U073CB_HB MCU Support package for GCC & Clang</li>\n\n<li>STM32U073CB_HB CODEGRIP Device Pack</li>\n\n<li>PIC24F Accessory Development Starter Kit For Android</li>\n</ul>",
+                "display_name": "STM32U073CB_HB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/58",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-06",
+                "additional": "",
+                "mcu_list": "STM32U073HB|STM32U073CB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U073MB_RB MCU Support package for GCC & Clang</li>\n\n<li>STM32U073MB_RB CODEGRIP Device Pack</li>\n\n<li>PIC24F Curiosity Development Board</li>\n</ul>",
+                "display_name": "STM32U073MB_RB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/59",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-07",
+                "additional": "",
+                "mcu_list": "STM32U073RB|STM32U073MB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U073CC_MC_RC MCU Support package for GCC & Clang</li>\n\n<li>STM32U073CC_MC_RC CODEGRIP Device Pack</li>\n\n<li>Nucleo 144 with STM32H753ZI MCU</li>\n</ul>",
+                "display_name": "STM32U073CC_MC_RC MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/61",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-08",
+                "additional": "",
+                "mcu_list": "STM32U073CC|STM32U073RC|STM32U073MC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L010F4_K4 MCU Support package for GCC & Clang</li>\n\n<li>STM32L010F4_K4 CODEGRIP Device Pack</li>\n\n<li>SAM V71 XPLAINED ULTRA EVALUATION KIT</li>\n</ul>",
+                "display_name": "STM32L010F4_K4 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/80",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-09",
+                "additional": "",
+                "mcu_list": "STM32L010F4|STM32L010K4",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H573AI_II MCU Support package for GCC & Clang</li>\n\n<li>STM32H7B3AI_II CODEGRIP Device Pack</li>\n\n<li>PIM for PIC24FJ128GA010</li>\n\n<li>ATMEGA328P XPLAINED MINI</li>\n</ul>",
+                "display_name": "STM32H573AI_II MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/113",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-10",
+                "additional": "",
+                "mcu_list": "STM32H573AI|STM32H573II",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7B0AB_IB MCU Support package for GCC & Clang</li>\n\n<li>STM32H7B0AB_IB CODEGRIP Device Pack</li>\n\n<li>ATMEGA328PB XPLAINED MINI</li>\n</ul>",
+                "display_name": "STM32H7B0AB_IB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/78",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-13",
+                "additional": "",
+                "mcu_list": "STM32H7B0AB|STM32H7B0IB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H533CE_HE MCU Support package for GCC & Clang</li>\n\n<li>STM32H7S3A8_I8 CODEGRIP Device Pack</li>\n\n<li>MPLab Starter Kit For PIC18F MCUs</li>\n</ul>",
+                "display_name": "STM32H533CE_HE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/62",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-14",
+                "additional": "",
+                "mcu_list": "STM32H533CE|STM32H533HE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H533RE_VE_ZE MCU Support package for GCC & Clang</li>\n\n<li>STM32H7S3L8_R8 CODEGRIP Device Pack</li>\n\n<li>MPLab Xpress PIC18F46K42 Evaluation Board</li>\n</ul>",
+                "display_name": "STM32H533RE_VE_ZE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/63",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-15",
+                "additional": "",
+                "mcu_list": "STM32H533RE|STM32H533VE|STM32H533ZE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32F730I8_Z8 MCU Support package for GCC & Clang</li>\n\n<li>STM32F730I8_Z8 CODEGRIP Device Pack</li>\n\n<li>MPLab Xpress PIC18F47K40 Evaluation Board</li>\n</ul>",
+                "display_name": "STM32F730I8_Z8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/68",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-16",
+                "additional": "",
+                "mcu_list": "STM32F730Z8|STM32F730I8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32F730R8_V8 MCU Support package for GCC & Clang</li>\n\n<li>STM32F730R8_V8 CODEGRIP Device Pack</li>\n\n<li>MCU CARD 5 for Kinetis MKV46F128VLH16</li>\n\n<li>SAM E70 XPLAINED ULTRA EVALUATION KIT</li>\n</ul>",
+                "display_name": "STM32F730R8_V8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/69",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-17",
+                "additional": "",
+                "mcu_list": "STM32F730R8|STM32F730V8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7A3_AIRZ_GI MCU Support package for GCC & Clang</li>\n\n<li>STM32H7A3_AIRZ_GI CODEGRIP Device Pack</li>\n\n<li>PIC18F4XK22 Development Board</li>\n</ul>",
+                "display_name": "STM32H7A3_AIRZ_GI MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/70",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-20",
+                "additional": "",
+                "mcu_list": "STM32H7A3ZG|STM32H7A3AG|STM32H7A3AI|STM32H7A3II|STM32H7A3RI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7A3_LNQVZ_I MCU Support package for GCC & Clang</li>\n\n<li>STM32H7A3_LNQVZ_I CODEGRIP Device Pack</li>\n\n<li>PIC18F67J94 Development Board</li>\n</ul>",
+                "display_name": "STM32H7A3_LNQVZ_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/71",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-21",
+                "additional": "",
+                "mcu_list": "STM32H7A3VI|STM32H7A3NI|STM32H7A3LI|STM32H7A3QI|STM32H7A3ZI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7A3_ILNRV_G MCU Support package for GCC & Clang</li>\n\n<li>STM32H7A3_ILNRV_G CODEGRIP Device Pack</li>\n\n<li>PIC18F87J72 Energy Monitoring PICTail Plus Daughter Board</li>\n</ul>",
+                "display_name": "STM32H7A3_ILNRV_G MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/72",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-22",
+                "additional": "",
+                "mcu_list": "STM32H7A3RG|STM32H7A3VG|STM32H7A3IG|STM32H7A3NG|STM32H7A3LG",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32L562_CMQRVZ_E MCU Support package for GCC & Clang</li>\n\n<li>STM32L562_CMQRVZ_E CODEGRIP Device Pack</li>\n\n<li>PIC18F87J72 Evaluation Board</li>\n</ul>",
+                "display_name": "STM32L562_CMQRVZ_E MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/73",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-23",
+                "additional": "",
+                "mcu_list": "STM32L562CE|STM32L562ME|STM32L562QE|STM32L562RE|STM32L562VE|STM32L562ZE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U535_CJN_BCE MCU Support package for GCC & Clang</li>\n\n<li>STM32U535_CJN_BCE CODEGRIP Device Pack</li>\n\n<li>PIM for dsPIC33EP512GM710</li>\n\n<li>CLICKER 4 for STM32F3</li>\n</ul>",
+                "display_name": "STM32U535_CJN_BCE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/74",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-24",
+                "additional": "",
+                "mcu_list": "STM32U535CB|STM32U535CC|STM32U535CE|STM32U535JE|STM32U535NC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U535_NRV_BCE MCU Support package for GCC & Clang</li>\n\n<li>STM32U535_NRV_BCE CODEGRIP Device Pack</li>\n\n<li>PICDEM FS USB Demo Board</li>\n</ul>",
+                "display_name": "STM32U535_NRV_BCE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/75",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-27",
+                "additional": "",
+                "mcu_list": "STM32U535NE|STM32U535RB|STM32U535RC|STM32U535RE|STM32U535VC|STM32U535VE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U599ZI_J MCU Support package for GCC & Clang</li>\n\n<li>STM32U585VI_ZI MCU Support package for GCC & Clang</li>\n\n<li>STM32L010C6 MCU Support package for GCC & Clang</li>\n\n<li>STM32L010C6 CODEGRIP Device Pack</li>\n\n<li>STM32U585VI_ZI CODEGRIP Device Pack</li>\n\n<li>STM32U599ZI_J CODEGRIP Device Pack</li>\n\n<li>ATMEGA324PB XPLAINED PRO</li>\n</ul>",
+                "display_name": "STM32U599ZI_J MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/76",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-28",
+                "additional": "",
+                "mcu_list": "STM32U599ZI|STM32U599ZJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32F750N8_V8_Z8 MCU Support package for GCC & Clang</li>\n\n<li>STM32L010K8_R8 MCU Support package for GCC & Clang</li>\n\n<li>STM32F750N8_V8_Z8 CODEGRIP Device Pack</li>\n\n<li>STM32L010K8_R8 CODEGRIP Device Pack</li>\n\n<li>SAM E70 XPLAINED EVALUATION KIT</li>\n</ul>",
+                "display_name": "STM32F750N8_V8_Z8 MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/77",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-29",
+                "additional": "",
+                "mcu_list": "STM32F750V8|STM32F750Z8|STM32F750N8",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H7B0RB_VB_ZB MCU Support package for GCC & Clang</li>\n\n<li>STM32L162QC_ZC MCU Support package for GCC & Clang</li>\n\n<li>STM32H7B0RB_VB_ZB CODEGRIP Device Pack</li>\n\n<li>STM32L162QC_ZC CODEGRIP Device Pack</li>\n\n<li>Explorer 16 Development Board</li>\n</ul>",
+                "display_name": "STM32H7B0RB_VB_ZB MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/78",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-30",
+                "additional": "",
+                "mcu_list": "STM32H7B0RB|STM32H7B0ZB|STM32H7B0VB",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U585_ACOQR_I MCU Support package for GCC & Clang</li>\n\n<li>STM32U585_ACOQR_I CODEGRIP Device Pack</li>\n\n<li>MCU CARD 5 for Kinetis MKV46F256VLH16</li>\n\n<li>Low Pin Count USB Development Kit</li>\n</ul>",
+                "display_name": "STM32U585_ACOQR_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/79",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-01-31",
+                "additional": "",
+                "mcu_list": "STM32U585AI|STM32U585CI|STM32U585OI|STM32U585QI|STM32U585RI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U595_AQR_IJ MCU Support package for GCC & Clang</li>\n\n<li>STM32U595_AQR_IJ CODEGRIP Device Pack</li>\n\n<li>Arduino Leonardo with Headers</li>\n</ul>",
+                "display_name": "STM32U595_AQR_IJ MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/80",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-03",
+                "additional": "",
+                "mcu_list": "STM32U595AI|STM32U595AJ|STM32U595QI|STM32U595QJ|STM32U595RI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U595_RVZ_IJ MCU Support package for GCC & Clang</li>\n\n<li>STM32U595_RVZ_IJ CODEGRIP Device Pack</li>\n\n<li>dsPICDEM 80-Pin Starter Development Board</li>\n</ul>",
+                "display_name": "STM32U595_RVZ_IJ MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/81",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-04",
+                "additional": "",
+                "mcu_list": "STM32U595RJ|STM32U595VI|STM32U595VJ|STM32U595ZI|STM32U595ZJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U599_BNV_IJ MCU Support package for GCC & Clang</li>\n\n<li>STM32U599_BNV_IJ CODEGRIP Device Pack</li>\n\n<li>MCP3564 ADC Evaluation Board For PIC32 MCUs</li>\n</ul>",
+                "display_name": "STM32U599_BNV_IJ MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/82",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-05",
+                "additional": "",
+                "mcu_list": "STM32U599BJ|STM32U599NI|STM32U599NJ|STM32U599VI|STM32U599VJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U5F_79_BNVZ_J MCU Support package for GCC & Clang</li>\n\n<li>STM32U5F_79_BNVZ_J CODEGRIP Device Pack</li>\n\n<li>MCP3564 ADC Evaluation Board v2 For PIC32 MCUs</li>\n</ul>",
+                "display_name": "STM32U5F_79_BNVZ_J MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/83",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-06",
+                "additional": "",
+                "mcu_list": "STM32U5F7VJ|STM32U5F9BJ|STM32U5F9NJ|STM32U5F9VJ|STM32U5F9ZJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32U5G_79_BNVZ_J MCU Support package for GCC & Clang</li>\n\n<li>STM32U5G_79_BNVZ_J CODEGRIP Device Pack</li>\n\n<li>MCU CARD 5 for Kinetis MKV46F256VLH16</li>\n\n<li>PIC32 Bluetooth Audio Development Kit</li>\n</ul>",
+                "display_name": "STM32U5G_79_BNVZ_J MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/84",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-07",
+                "additional": "",
+                "mcu_list": "STM32U5G7VJ|STM32U5G9BJ|STM32U5G9NJ|STM32U5G9VJ|STM32U5G9ZJ",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H523_CHRV_CE MCU Support package for GCC & Clang</li>\n\n<li>STM32H7S3A8_I8 CODEGRIP Device Pack</li>\n\n<li>STM32H7S3L8_R8 CODEGRIP Device Pack</li>\n\n<li>STM32H7S3V8_Z8 CODEGRIP Device Pack</li>\n\n<li>16-Bit 28-Pin Starter Board</li>\n</ul>",
+                "display_name": "STM32H523_CHRV_CE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/85",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-10",
+                "additional": "",
+                "mcu_list": "STM32H523CC|STM32H523RC|STM32H523CE|STM32H523HE|STM32H523VC",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H573_MRVZ_I MCU Support package for GCC & Clang</li>\n\n<li>STM32L010RB MCU Support package for GCC & Clang</li>\n\n<li>STM32H7S7A8_I8 CODEGRIP Device Pack</li>\n\n<li>STM32H7S7L8_Z8 CODEGRIP Device Pack</li>\n\n<li>STM32L010RB CODEGRIP Device Pack</li>\n\n<li>Chameleon 16-Bit Development Kit</li>\n</ul>",
+                "display_name": "STM32H573_MRVZ_I MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/86",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-11",
+                "additional": "",
+                "mcu_list": "STM32H573MI|STM32H573RI|STM32H573VI|STM32H573ZI",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>STM32H523_RVZ_CE MCU Support package for GCC & Clang</li>\n\n<li>STM32L162VD-X MCU Support package for GCC & Clang</li>\n\n<li>STM32H7B3QI_ZI CODEGRIP Device Pack</li>\n\n<li>STM32H7B3RI_VI CODEGRIP Device Pack</li>\n\n<li>STM32L162VD-X CODEGRIP Device Pack</li>\n\n<li>dsPICDEM 2 Development Board</li>\n</ul>",
+                "display_name": "STM32H523_RVZ_CE MCU Support package for GCC & Clang",
+                "branch": "new-feature/mcus/87",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-12",
+                "additional": "",
+                "mcu_list": "STM32H523ZC|STM32H523RE|STM32H523VE|STM32H523ZE",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>dsPICDEM 28-Pin Starter Development Board</li>\n</ul>",
+                "display_name": "dsPICDEM 28-Pin Starter Development Board",
+                "branch": "new-feature/boards/88",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-13",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>PIM for PIC32MX570F512L</li>\n\n<li>CLICKER 4 for STM32F7</li>\n</ul>",
+                "display_name": "PIM for PIC32MX570F512L",
+                "branch": "new-feature/boards_cards/23",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-14",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>dsPICDEM MCSM Development Board</li>\n</ul>",
+                "display_name": "dsPICDEM MCSM Development Board",
+                "branch": "new-feature/boards/89",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-17",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>dsPICDEM.net Connectivity Development Board</li>\n</ul>",
+                "display_name": "dsPICDEM.net Connectivity Development Board",
+                "branch": "new-feature/boards/90",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-18",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>dsPICDEM MCHV-2 Development Board</li>\n</ul>",
+                "display_name": "dsPICDEM MCHV-2 Development Board",
+                "branch": "new-feature/boards/91",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-19",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>dsPICDEM MCHV-3 Development Board</li>\n</ul>",
+                "display_name": "dsPICDEM MCHV-3 Development Board",
+                "branch": "new-feature/boards/92",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-20",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>dsPICDEM MCLV-2 Development Board</li>\n</ul>",
+                "display_name": "dsPICDEM MCLV-2 Development Board",
+                "branch": "new-feature/boards_cards/24",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-21",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>PICDEM 2 Plus</li>\n</ul>",
+                "display_name": "PICDEM 2 Plus",
+                "branch": "new-feature/boards/93",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-24",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>PICDEM Lab II Development Platform</li>\n</ul>",
+                "display_name": "PICDEM Lab II Development Platform",
+                "branch": "new-feature/boards/94",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-25",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>PICKit PIC18 j-series 64/80-Pin Demo Board</li>\n</ul>",
+                "display_name": "PICKit PIC18 j-series 64/80-Pin Demo Board",
+                "branch": "new-feature/boards/95",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-26",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Explorer 8 Development Kit</li>\n</ul>",
+                "display_name": "Explorer 8 Development Kit",
+                "branch": "new-feature/boards/96",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-27",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>PIM for PIC24HJ256GP610A</li>\n\n<li>Arduino Micro</li>\n</ul>",
+                "display_name": "PIM for PIC24HJ256GP610A",
+                "branch": "new-feature/boards_cards/25",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-02-28",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>Arduino Nano</li>\n</ul>",
+                "display_name": "Arduino Nano",
+                "branch": "new-feature/boards/97",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-03-03",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX32VFM5_K10P32M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX32VFM5_K10P32M50SF0RM",
+                "branch": "new-feature/automation/15",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-01-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\"",
+                "mcu_list": "MK10DN32VFM5|MK10DX32VFM5",
+                "cmake_name": "mk10dn_dx32vfm5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX64VFM5_K10P32M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX64VFM5_K10P32M50SF0RM",
+                "branch": "new-feature/automation/16",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-01-02",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\"",
+                "mcu_list": "MK10DN64VFM5|MK10DX64VFM5",
+                "cmake_name": "mk10dn_dx64vfm5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX128VFM5_K10P32M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX128VFM5_K10P32M50SF0RM",
+                "branch": "new-feature/automation/17",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-01-03",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_4.pdf\"\"}\"",
+                "mcu_list": "MK10DN128VFM5|MK10DX128VFM5",
+                "cmake_name": "mk10dn_dx128vfm5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK02FN64VLF_FM_LH10_K02P64M100SFARM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK02FN64VLF_FM_LH10_K02P64M100SFARM",
+                "branch": "new-feature/automation/18",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-02-06",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_3.pdf\"\"}\"",
+                "mcu_list": "MK02FN64VLF10|MK02FN64VFM10|MK02FN64VLH10",
+                "cmake_name": "mk02fn64vlf_fm_lh10\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK02FN128VFM_LH10_K02P64M100SFARM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK02FN128VFM_LH10_K02P64M100SFARM",
+                "branch": "new-feature/automation/19",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-02-07",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_3.pdf\"\"}\"",
+                "mcu_list": "MK02FN128VFM10|MK02FN128VLH10",
+                "cmake_name": "mk02fn128fm_lh10\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX32VLF5_K10P48M50SF0RM</li>\n\n<li>test_package_CORE_MK10DX128VLF5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX32VLF5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/20",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-06",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_5.pdf\"\"}\"",
+                "mcu_list": "MK10DN32VLF5|MK10DX32VLF5",
+                "cmake_name": "mk10dn_dx32vlf5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX64VLF5_K10P48M50SF0RM</li>\n\n<li>test_package_CORE_MK10DN32VFT5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX64VLF5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/21",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-07",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_5.pdf\"\"}\"",
+                "mcu_list": "MK10DN64VLF5|MK10DX64VLF5",
+                "cmake_name": "mk10dn_dx64vlf5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX128VLF5_K10P48M50SF0RM</li>\n\n<li>test_package_CORE_MK10DX32VFT5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX128VLF5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/22",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-08",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_5.pdf\"\"}\"",
+                "mcu_list": "MK10DN128VLF5|MK10DX128VLF5",
+                "cmake_name": "mk10dn_dx128vlf5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX32VFT5_K10P48M50SF0RM</li>\n\n<li>test_package_CORE_MK10DN64VFT5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX32VFT5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/23",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-09",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_5.pdf\"\"}\"",
+                "mcu_list": "MK10DN32VFT5|MK10DX32VFT5",
+                "cmake_name": "mk10dn_dx32vft5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX64VFT5_K10P48M50SF0RM</li>\n\n<li>test_package_CORE_MK10DX64VFT5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX64VFT5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/24",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-10",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_5.pdf\"\"}\"",
+                "mcu_list": "MK10DN64VFT5|MK10DX64VFT5",
+                "cmake_name": "mk10dn_dx64vft5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN_DX128VFT5_K10P48M50SF0RM</li>\n\n<li>test_package_CORE_MK10DN128VFT5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN_DX128VFT5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/25",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-11",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_5.pdf\"\"}\"",
+                "mcu_list": "MK10DN128VFT5|MK10DX128VFT5",
+                "cmake_name": "mk10dn_dx128vft5\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK02FN64VLF10_K02P64M100SFARM_doc_rm_3</li>\n</ul>",
+                "display_name": "test_package_CORE_MK02FN64VLF10_K02P64M100SFARM_doc_rm_3",
+                "branch": "new-feature/automation/21",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-02-01",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK02FN64VFM10_K02P64M100SFARM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK02FN64VFM10_K02P64M100SFARM",
+                "branch": "new-feature/automation/22",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-02-02",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK02FN64VLH10_K02P64M100SFARM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK02FN64VLH10_K02P64M100SFARM",
+                "branch": "new-feature/automation/23",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-02-03",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK02FN128VFM10_K02P64M100SFARM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK02FN128VFM10_K02P64M100SFARM",
+                "branch": "new-feature/automation/24",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-02-04",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK02FN128VLH10_K02P64M100SFARM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK02FN128VLH10_K02P64M100SFARM",
+                "branch": "new-feature/automation/25",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-02-05",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN32VLF5_K10P48M50SF0RM_doc_rm_5</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN32VLF5_K10P48M50SF0RM_doc_rm_5",
+                "branch": "new-feature/automation/50",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-01",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX32VLF5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX32VLF5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/51",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-02",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN64VLF5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN64VLF5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/52",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-03",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX64VLF5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX64VLF5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/53",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-04",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN128VLF5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN128VLF5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/54",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-05",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX128VFT5_K10P48M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX128VFT5_K10P48M50SF0RM",
+                "branch": "new-feature/automation/61",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-03-12",
+                "additional": "",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN32VLH5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN32VLH5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/65",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX32VLH5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX32VLH5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/66",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-02",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN64VLH5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN64VLH5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/67",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-03",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX64VLH5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX64VLH5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/68",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-04",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN128VLH5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN128VLH5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/69",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-05",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX128VLH5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX128VLH5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/70",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-06",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN32VMP5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN32VMP5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/71",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-07",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX32VMP5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX32VMP5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/72",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-08",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN64VMP5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN64VMP5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/73",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-09",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX64VMP5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX64VMP5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/74",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-10",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN128VMP5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN128VMP5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/75",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-11",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX128VMP5_K10P64M50SF0RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX128VMP5_K10P64M50SF0RM",
+                "branch": "new-feature/automation/76",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-04-12",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_6.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX128VLH7_K10P64M72SF1RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX128VLH7_K10P64M72SF1RM",
+                "branch": "new-feature/automation/77",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-05-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_7.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX256VLH7_K10P64M72SF1RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX256VLH7_K10P64M72SF1RM",
+                "branch": "new-feature/automation/78",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-05-02",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_7.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX64VLH7_K10P64M72SF1RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX64VLH7_K10P64M72SF1RM",
+                "branch": "new-feature/automation/79",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-05-03",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_7.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_packge_CORE_MK10DX128VLK7_K10P81M72SF1RM</li>\n</ul>",
+                "display_name": "test_packge_CORE_MK10DX128VLK7_K10P81M72SF1RM",
+                "branch": "new-feature/automation/80",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-06-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_8.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_packge_CORE_MK10DX256VLK7_K10P81M72SF1RM</li>\n</ul>",
+                "display_name": "test_packge_CORE_MK10DX256VLK7_K10P81M72SF1RM",
+                "branch": "new-feature/automation/81",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-06-02",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_8.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_packge_CORE_MK10DX64VLK7_K10P81M72SF1RM</li>\n</ul>",
+                "display_name": "test_packge_CORE_MK10DX64VLK7_K10P81M72SF1RM",
+                "branch": "new-feature/automation/82",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-06-03",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_8.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX128VLL7_K10P100M72SF1RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX128VLL7_K10P100M72SF1RM",
+                "branch": "new-feature/automation/83",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-07-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_9.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX128VMC7_K10P100M72SF1RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX128VMC7_K10P100M72SF1RM",
+                "branch": "new-feature/automation/84",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-07-02",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_9.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX256VLL7_K10P100M72SF1RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX256VLL7_K10P100M72SF1RM",
+                "branch": "new-feature/automation/85",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-07-03",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_9.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX256VMC7_K10P100M72SF1RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX256VMC7_K10P100M72SF1RM",
+                "branch": "new-feature/automation/86",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-07-04",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_9.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DX64VMC7_K10P100M72SF1RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DX64VMC7_K10P100M72SF1RM",
+                "branch": "new-feature/automation/87",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-07-05",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_9.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN512ZVLK10_K10P81M100SF2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN512ZVLK10_K10P81M100SF2RM",
+                "branch": "new-feature/automation/88",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-08-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_10.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN512VLL10_K10P100M100SF2V2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN512VLL10_K10P100M100SF2V2RM",
+                "branch": "new-feature/automation/89",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-09-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_11.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN512ZVLL10_K10P100M100SF2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN512ZVLL10_K10P100M100SF2RM",
+                "branch": "new-feature/automation/90",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-10-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_12.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN512VMC10_K10P121M100SF2V2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN512VMC10_K10P121M100SF2V2RM",
+                "branch": "new-feature/automation/91",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-11-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_13.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN512ZVMC10_K10P121M100SF2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN512ZVMC10_K10P121M100SF2RM",
+                "branch": "new_feature/automation/92",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2030-12-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_14.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK11DN512AVLK5_K11P80M50SF4V2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK11DN512AVLK5_K11P80M50SF4V2RM",
+                "branch": "new-feature/automation/93",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-01-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_15.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK11DX128AVLK5_K11P80M50SF4V2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK11DX128AVLK5_K11P80M50SF4V2RM",
+                "branch": "new-feature/automation/94",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-01-02",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_15.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK11DX256AVLK5_K11P80M50SF4V2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK11DX256AVLK5_K11P80M50SF4V2RM",
+                "branch": "new_feature/automation/95-",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-01-03",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_15.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK21DN512AVLK5_K21P80M50SF4RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK21DN512AVLK5_K21P80M50SF4RM",
+                "branch": "new-feature/automation/96",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-02-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_16.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK21DX128AVLK5_K21P80M50SF4RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK21DX128AVLK5_K21P80M50SF4RM",
+                "branch": "new-feature/automation/97",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-02-02",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_16.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK21DX256AVLK5_K21P80M50SF4RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK21DX256AVLK5_K21P80M50SF4RM",
+                "branch": "new-feature/automation/98",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-02-03",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_16.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK26FN2M0VLQ18_K26P169M180SF5RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK26FN2M0VLQ18_K26P169M180SF5RM",
+                "branch": "new-feature/automation/100",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-03-01",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_17.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK26FN2M0VMD18_K26P169M180SF5RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK26FN2M0VMD18_K26P169M180SF5RM",
+                "branch": "new-feature/automation/101",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-03-02",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_17.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK26FN2M0VMI18_K26P169M180SF5RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK26FN2M0VMI18_K26P169M180SF5RM",
+                "branch": "new-feature/automation/102",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-03-03",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_17.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK26FN2M0CAC18R_K26P169M180SF5RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK26FN2M0CAC18R_K26P169M180SF5RM",
+                "branch": "new-feature/automation/103",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2031-03-04",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_17.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN512VLK10_K10P81M100SF2V2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN512VLK10_K10P81M100SF2V2RM",
+                "branch": "new-feature/automation/43",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-07-14",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_2.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": "\n"
+            },
+            {
+                "notes": "<ul>\n<li>test_package_CORE_MK10DN512VMB10_K10P81M100SF2V2RM</li>\n</ul>",
+                "display_name": "test_package_CORE_MK10DN512VMB10_K10P81M100SF2V2RM",
+                "branch": "new-feature/automation/44",
+                "tz": "Europe/Belgrade",
+                "start_dt": "2025-07-15",
+                "additional": "\"{\"\"pdf_link\"\": \"\"nxp/doc_rm_2.pdf\"\"}\"",
+                "mcu_list": "",
+                "cmake_name": ""
+            }
+        ]
+    }
+}
