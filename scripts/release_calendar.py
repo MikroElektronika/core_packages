@@ -127,8 +127,16 @@ def find_listOf(selectedList, release_date=''):
             refManual = json.loads(release["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]
             foundList = []
             for nextRelease in json_data['NECTO DAILY UPDATE']["events"][indexRelease:]:
-                if refManual == json.loads(nextRelease["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]:
-                    foundList.append(nextRelease[selectedList].replace('\n',''))
+                if "additional" not in nextRelease.keys() or nextRelease["additional"] == '':
+                    continue
+                try:
+                    if "pdf_link" not in json.loads(nextRelease["additional"].replace('""','"').replace('"{','{').replace('}"','}')).keys():
+                        continue
+                    if refManual == json.loads(nextRelease["additional"].replace('""','"').replace('"{','{').replace('}"','}'))["pdf_link"]:
+                        foundList.append(nextRelease[selectedList].replace('\n',''))
+                except Exception as e:
+                    print(f"Error loading additional data for {nextRelease['notes']}:   {e}")
+                    continue
             return foundList
 
     return ["NO_BRANCH_IN_SPREADSHEET"]
