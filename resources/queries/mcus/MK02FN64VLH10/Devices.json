@@ -1,0 +1,18 @@
+{
+    "def_file":"MK02FN64VLH10.json",
+    "family_uid":"KINETIS_K_SERIES",
+    "flash":"64",
+    "icon":"images/mcu/nxp.png",
+    "max_speed":"100.000",
+    "name":"MK02FN64VLH10",
+    "ram":"16384",
+    "sdk_config":"{\"MCU_NAME\":\"MK02FN64VLH10\",\"CORE_NAME\":\"\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config":"",
+    "uid":"MK02FN64VLH10",
+    "vendor":"NXP",
+    "compiler_flags":"",
+    "linker_flags":"",
+    "tft_socket":"1",
+    "sdk_support":"0",
+    "installer_package":"{\"clang-llvm\": \"arm_gcc_clang_mk02fn64vlf_fm_lh10\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mk02fn64vlf_fm_lh10\"}"
+}
