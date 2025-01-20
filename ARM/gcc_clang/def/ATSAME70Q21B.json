@@ -12812,5 +12812,5 @@
     "core": "M7",
     "delay_src_path": "delays/m7/__lib_delays.c",
     "mcu": "ATSAME70Q21B",
-    "clock": 12
+    "clock": 300
 }
