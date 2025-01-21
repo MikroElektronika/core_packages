@@ -1,0 +1,18 @@
+{
+    "def_file":"STM32H7A3QI.json",
+    "family_uid":"STM32",
+    "flash":"2048",
+    "icon":"images/mcu/stm32.png",
+    "max_speed":"280.000",
+    "name":"STM32H7A3QI",
+    "ram":"1458176",
+    "sdk_config":"{\"MCU_NAME\":\"STM32H7A3QI\",\"CORE_NAME\":\"M7\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config":"",
+    "uid":"STM32H7A3QI",
+    "vendor":"STMicroelectronics",
+    "compiler_flags":"",
+    "linker_flags":"",
+    "tft_socket":"1",
+    "sdk_support":"0",
+    "installer_package":"{\"clang-llvm\": \"arm_gcc_clang_stm32h7a3_lnqvz_i\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_stm32h7a3_lnqvz_i\"}"
+}
