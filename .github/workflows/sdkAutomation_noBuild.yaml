@@ -237,7 +237,11 @@ jobs:
           done
           cd ..
 
+          echo "finding CORE: ${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name"
+          echo "processing json to find CORE: ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]'"
           CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
+          echo "found CORE: ${CORE}"
+          echo "entering IF:"
           if [ -d "./${{ github.event.inputs.architecture }}/gcc_clang/delays/$CORE" ]; then
             echo "Core already exists: $CORE"
           else
