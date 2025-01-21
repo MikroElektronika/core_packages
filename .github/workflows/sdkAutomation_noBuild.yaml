@@ -237,8 +237,9 @@ jobs:
           done
           cd ..
 
-          echo "finding CORE: ${{ github.event.inputs.architecture }}/gcc_clang/def/${ json_name }"
-          echo "processing json to find CORE: ./${{ github.event.inputs.architecture }}/gcc_clang/def/${ json_name } | tr '[:upper:]' '[:lower:]'"
+          core_name=${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name
+          echo "finding CORE: ${core_name}"
+          echo "processing json to find CORE"
           CORE=$(jq -r '.core' ./${{ github.event.inputs.architecture }}/gcc_clang/def/$json_name | tr '[:upper:]' '[:lower:]')
           echo "found CORE: ${CORE}"
           echo "entering IF:"
