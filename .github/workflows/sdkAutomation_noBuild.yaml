@@ -108,6 +108,7 @@ jobs:
       id: branch-creation
       env:
         RELEASES_SPREADSHEET: ${{ secrets.RELEASES_SPREADSHEET }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         branchInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "branches" --release_date "${{ github.event.inputs.release_date }}")
         mcuInfo=$(python -u scripts/release_calendar.py --title "NECTO DAILY UPDATE" --doc_link $RELEASES_SPREADSHEET --chose_data "mcus" --release_date "${{ github.event.inputs.release_date }}")
