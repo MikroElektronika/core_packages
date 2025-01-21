@@ -1,0 +1,219 @@
+{
+    "config_registers": [
+        {
+            "address": "0x8007",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "0x00000080",
+                    "key": "SBOREN",
+                    "label": "Software Brown-Out Reset Enable",
+                    "mask": "0x00000080",
+                    "settings": [
+                        {
+                            "label": "BOR Enabled",
+                            "value": "0x00000080"
+                        },
+                        {
+                            "label": "BOR Disabled",
+                            "value": "0x00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000001",
+                    "key": "BORRDY",
+                    "label": "Brown-Out Reset Circuit Ready Status",
+                    "mask": "0x00000001",
+                    "settings": [
+                        {
+                            "label": "The Brown-out Reset circuit is active and armed",
+                            "value": "0x00000001"
+                        },
+                        {
+                            "label": "The Brown-out Reset circuit is disabled or is warming up",
+                            "value": "0x00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG1",
+            "unused": "0xFFFFFF7E"
+        },
+        {
+            "address": "0x8008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "0x00000080",
+                    "key": "STKOVF",
+                    "label": "Stack Overflow Flag",
+                    "mask": "0x00000080",
+                    "settings": [
+                        {
+                            "label": "A Stack Overflow occurred (more CALLs than fit on the stack)",
+                            "value": "0x00000080"
+                        },
+                        {
+                            "label": "A Stack Overflow has not occurred or set to ‘0’ by firmware",
+                            "value": "0x00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000040",
+                    "key": "STKUNF",
+                    "label": "Stack Underflow Flag",
+                    "mask": "0x00000040",
+                    "settings": [
+                        {
+                            "label": "A Stack Underflow occurred (more RETURNs than CALLs)",
+                            "value": "0x00000040"
+                        },
+                        {
+                            "label": "A Stack Underflow has not occurred or set to ‘0’ by firmware",
+                            "value": "0x00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000020",
+                    "key": "WDTWV",
+                    "label": "WDT Window Violation",
+                    "mask": "0x00000020",
+                    "settings": [
+                        {
+                            "label": "A WDT Window Violation has not occurred or set to ‘1’ by firmware",
+                            "value": "0x00000020"
+                        },
+                        {
+                            "label": "A CLRWDT instruction was issued when the WDT reset window was closed (set to '0' by hardware  when    a  WDT Window Violation reset occurs)",
+                            "value": "0x00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000010",
+                    "key": "RWDT",
+                    "label": "WDT Reset Flag",
+                    "mask": "0x00000010",
+                    "settings": [
+                        {
+                            "label": "A WDT Overflow/Time-out Reset has not occurred or set to ‘1’ by firmware",
+                            "value": "0x00000010"
+                        },
+                        {
+                            "label": "A WDT Overflow/Time-out Reset has occurred (set to ‘0’ in hardware when a WDT Reset occurs)",
+                            "value": "0x00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000008",
+                    "key": "RMCLR",
+                    "label": "MCLR Reset Flag",
+                    "mask": "0x00000008",
+                    "settings": [
+                        {
+                            "label": "A MCLR Reset has not occurred or set to ‘1’ by firmware",
+                            "value": "0x00000008"
+                        },
+                        {
+                            "label": "A MCLR Reset has occurred (set to ‘0’ in hardware when a MCLR Reset occurs)",
+                            "value": "0x00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000004",
+                    "key": "RI",
+                    "label": "RESET Instruction Flag",
+                    "mask": "0x00000004",
+                    "settings": [
+                        {
+                            "label": "A RESET instruction has not been executed or set to ‘1’ by firmware",
+                            "value": "0x00000004"
+                        },
+                        {
+                            "label": "A RESET instruction has been executed (set to ‘0’ in hardware upon executing  a  RESET  instruction)",
+                            "value": "0x00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000002",
+                    "key": "POR",
+                    "label": "Power-on Reset Status",
+                    "mask": "0x00000002",
+                    "settings": [
+                        {
+                            "label": "No Power-on Reset occurred or set to ‘1’ by firmware",
+                            "value": "0x00000002"
+                        },
+                        {
+                            "label": "A Power-on Reset occurred (set to ‘0’ in hardware when a Power-on Reset occurs)",
+                            "value": "0x00000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0x00000001",
+                    "key": "BOR",
+                    "label": "Brown-out Reset Status",
+                    "mask": "0x00000001",
+                    "settings": [
+                        {
+                            "label": "No Brown-out Reset occurred or set to ‘1’ by firmware",
+                            "value": "0x00000001"
+                        },
+                        {
+                            "label": "A Brown-out Reset occurred (set to ‘0’ in hardware when a Brown-out Reset occurs)",
+                            "value": "0x00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG2",
+            "unused": "0xFFFFFF00"
+        },
+        {
+            "address": "0x8009",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "0x00000002",
+                    "key": "MEMV",
+                    "label": "Memory Violation Flag",
+                    "mask": "0x00000002",
+                    "settings": [
+                        {
+                            "label": "No Memory Violation Reset occurred or set to ‘1’ by firmware",
+                            "value": "0x00000002"
+                        },
+                        {
+                            "label": "A Memory Violation Reset occurred (set to ‘0’ in hardware when a Memory Violation occurs)",
+                            "value": "0x00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CONFIG3",
+            "unused": "0xFFFFFFFD"
+        }
+    ],
+    "core": "P16_Enh",
+    "delay_src_path": "delays/p16_enh/__lib_delays.c",
+    "mcu": "PIC16F18176",
+    "clock": "32.000"
+}
