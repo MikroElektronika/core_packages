@@ -198,6 +198,9 @@ jobs:
 
           for dir in ${dirInfoArray[@]}; do
             dirName="${dir%/}"
+            echo "Directory $dirName in list: ${dirInfoArray[@]}"
+            echo "Processing directory: $dirName"
+            echo "Checking if ${mcuInfoArray[i]} is not equal to ${mcuInfoArray[i]//${dirName/#extracted_/}"
             if [ ${mcuInfoArray[i]} != ${mcuInfoArray[i]//${dirName/#extracted_}/} ]; then
 
               cd $dirName
