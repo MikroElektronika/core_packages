@@ -31,7 +31,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00008000",
                     "key": "PCK7",
                     "label": "Programmable Clock 7 Output Enable",
                     "mask": "00008000",
@@ -48,7 +48,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00004000",
                     "key": "PCK6",
                     "label": "Programmable Clock 6 Output Enable",
                     "mask": "00004000",
@@ -65,7 +65,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00002000",
                     "key": "PCK5",
                     "label": "Programmable Clock 5 Output Enable",
                     "mask": "00002000",
@@ -82,7 +82,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00001000",
                     "key": "PCK4",
                     "label": "Programmable Clock 4 Output Enable",
                     "mask": "00001000",
@@ -99,7 +99,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000800",
                     "key": "PCK3",
                     "label": "Programmable Clock 3 Output Enable",
                     "mask": "00000800",
@@ -116,7 +116,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000400",
                     "key": "PCK2",
                     "label": "Programmable Clock 2 Output Enable",
                     "mask": "00000400",
@@ -133,7 +133,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000200",
                     "key": "PCK1",
                     "label": "Programmable Clock 1 Output Enable",
                     "mask": "00000200",
@@ -150,7 +150,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000100",
                     "key": "PCK0",
                     "label": "Programmable Clock 0 Output Enable",
                     "mask": "00000100",
@@ -192,7 +192,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00200000",
+                    "init": "00F00000",
                     "key": "UPLLCOUNT",
                     "label": "UTMI PLL Startup Time",
                     "mask": "00F00000",
@@ -282,7 +282,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "0000FF00",
                     "key": "MOSCXTST",
                     "label": "Main Crystal Oscillator Startup Time",
                     "mask": "0000FF00",
@@ -393,7 +393,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00180000",
                     "key": "MULA",
                     "label": "PLLA Multiplier",
                     "mask": "07FF0000",
@@ -664,7 +664,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000001",
                     "key": "DIVA",
                     "label": "PLLA Front End Divider",
                     "mask": "000000FF",
@@ -1722,7 +1722,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000300",
                     "key": "MDIV",
                     "label": "Host Clock Division",
                     "mask": "00000300",
@@ -1788,7 +1788,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Host Clock Source Selection",
                     "mask": "00000003",
@@ -2952,7 +2952,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 0 Source Selection",
                     "mask": "00000007",
@@ -4026,7 +4026,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 1 Source Selection",
                     "mask": "00000007",
@@ -5100,7 +5100,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 2 Source Selection",
                     "mask": "00000007",
@@ -6174,7 +6174,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 3 Source Selection",
                     "mask": "00000007",
@@ -7248,7 +7248,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 4 Source Selection",
                     "mask": "00000007",
@@ -8322,7 +8322,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 5 Source Selection",
                     "mask": "00000007",
@@ -9396,7 +9396,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 6 Source Selection",
                     "mask": "00000007",
@@ -10470,7 +10470,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 7 Source Selection",
                     "mask": "00000007",
@@ -12812,5 +12812,5 @@
     "core": "M7",
     "delay_src_path": "delays/m7/__lib_delays.c",
     "mcu": "ATSAMV70J19B",
-    "clock": 12
+    "clock": 300
 }

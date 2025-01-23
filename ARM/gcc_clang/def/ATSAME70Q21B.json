@@ -2952,7 +2952,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 0 Source Selection",
                     "mask": "00000007",
@@ -4026,7 +4026,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 1 Source Selection",
                     "mask": "00000007",
@@ -5100,7 +5100,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 2 Source Selection",
                     "mask": "00000007",
@@ -6174,7 +6174,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 3 Source Selection",
                     "mask": "00000007",
@@ -7248,7 +7248,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 4 Source Selection",
                     "mask": "00000007",
@@ -8322,7 +8322,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 5 Source Selection",
                     "mask": "00000007",
@@ -9396,7 +9396,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 6 Source Selection",
                     "mask": "00000007",
@@ -10470,7 +10470,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Programmable Clock 7 Source Selection",
                     "mask": "00000007",
