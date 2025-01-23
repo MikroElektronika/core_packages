@@ -1,33 +1,24 @@
 /**
- * MCUs: MK20DN128VFM5
- *       MK20DN128VFT5
- *       MK20DN128VLF5
- *       MK20DN128VLH5
- *       MK20DN128VMP5
- *       MK20DN128XXX5
- *       MK20DX128VFM5
- *       MK20DX128VFT5
- *       MK20DX128VLF5
- *       MK20DX128VLH5
+ * MCUs:
  */
 
 ENTRY(Reset_Handler)
 
 
 /* Generate a link error if heap and stack don't fit into SRAM */
-HEAP_SIZE  = 0x400;
-STACK_SIZE = 0x400;
+HEAP_SIZE  = 0x1000;
+STACK_SIZE = 0x0400;
 
 MEMORY
 {
     INTERRUPTS (rx)       : ORIGIN = 0x00000000, LENGTH = 0x00000400
-    FLASH_CONFIG (rx)     : ORIGIN = 0x00000400, LENGTH = 0x00000010
-    FLASH (rx)            : ORIGIN = 0x00000410, LENGTH = 0x0001FBF0
-    RAM (rwx)             : ORIGIN = 0x20000000, LENGTH = 0x00002000
-    ROM (rwx)             : ORIGIN = 0x1FFFE000, LENGTH = 0x00002000
+    FLASH_CONFIG (rx)     : ORIGIN = 0x400, LENGTH = 0x00000010
+    FLASH (rx)            : ORIGIN = 0x410, LENGTH = 0x20000
+    RAM (rwx)             : ORIGIN = 0x1fffe000, LENGTH = 0x2000
+    RAM2 (rwx)             : ORIGIN = 0x20000000, LENGTH = 0x2000
 }
 
-_estack = ORIGIN(RAM) + LENGTH(RAM);    /* end of SRAM */
+_estack = ORIGIN(RAM2) + LENGTH(RAM2);    /* end of SRAM */
 
 SECTIONS
 {
@@ -158,17 +149,6 @@ SECTIONS
 
     __DATA_END = __DATA_ROM + (__data_end__ - __data_start__);
 
-    __data_ROMStart = __DATA_ROM + SIZEOF(.data);
-    .data_rom : AT(__data_ROMStart)
-    {
-        . = ALIGN(4);
-        __data_RAMStart = .;
-        *(.data_rom)     /* this is a user defined section */
-        __data_RAMEnd = .;
-        . = ALIGN(4);
-    } > ROM
-    __data_ROMSize = __data_RAMEnd - __data_RAMStart;
-
     .bss :
     {
         /* This is used by the startup in order to initialize the .bss section */
@@ -190,12 +170,12 @@ SECTIONS
         __HeapBase = .;
         . += HEAP_SIZE;
         __HeapLimit = .;
-    } > RAM
+    } > RAM2
 
     .stack : ALIGN(0x8) {
         . = ALIGN(8);
         . += STACK_SIZE;
-    } > RAM
+    } > RAM2
 
     /* Remove information from the standard libraries */
     /DISCARD/ :
@@ -206,11 +186,12 @@ SECTIONS
     }
 
     /* Initializes stack on the end of block */
-    __StackTop   = ORIGIN(RAM) + LENGTH(RAM);
+    __StackTop   = ORIGIN(RAM2) + LENGTH(RAM2);
     __StackLimit = __StackTop - STACK_SIZE;
     PROVIDE(__stack = __StackTop);
 
     .ARM.attributes 0 : { *(.ARM.attributes) }
 
-    ASSERT(__StackLimit >= __HeapLimit, "region RAM overflowed with stack and heap")
+    ASSERT(__StackLimit >= __HeapLimit, " last region RAM overflowed with stack and heap")
 }
+
