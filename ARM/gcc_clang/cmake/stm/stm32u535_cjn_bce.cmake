@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32U535CB$|^STM32U535CC$|^STM32U535CE$|^STM32U535JE$|^STM32U535NC$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/stm/doc_ds_178/init_clock.c)
+endif()
