@@ -1,0 +1,6 @@
+{
+    "core": "M33EF",
+    "delay_src_path": "delays/m33ef/__lib_delays.c",
+    "mcu": "STM32U535VC",
+    "clock": 1
+}
