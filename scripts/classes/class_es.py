@@ -75,7 +75,7 @@ class index():
     @staticmethod
     def api_index(es: Elasticsearch, doc_index, doc_type, doc_id, doc_body):
         # Kibana v8 requires _type to be in body in order to have doc_type defined
-        doc_type['_type'] = '_doc'
+        doc_body['_type'] = '_doc'
         return es.index(
             index=doc_index,
             doc_type=doc_type,
