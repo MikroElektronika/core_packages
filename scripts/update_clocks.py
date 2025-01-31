@@ -26,6 +26,8 @@ def index_clocks(es: Elasticsearch, release_details, version):
             break
 
     if doc:
+        # Kibana v8 requires _type to be in body in order to have doc_type defined
+        doc['_type'] = '_doc'
         resp = es.index(index=os.environ['ES_INDEX_TEST'], doc_type=None, id=f'clocks', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
