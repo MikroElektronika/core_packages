@@ -389,6 +389,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
         # Index the document
         if doc:
+            # Kibana v8 requires _type to be in body in order to have doc_type defined
+            doc['_type'] = '_doc'
             if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)):
                 if update_database:
                     if name_without_extension in always_index:
@@ -481,6 +483,8 @@ def index_microchip_packs(es: Elasticsearch, index_name: str):
     xml_content = MCHP.download_index_file(custom_link)
     converted_data, item_list = MCHP.convert_idx_to_json(xml_content)
     for eachItem in item_list:
+        # Kibana v8 requires _type to be in body in order to have doc_type defined
+        eachItem['_type'] = '_doc'
         resp = es.index(index=index_name, doc_type=None, id=eachItem['name'], body=eachItem)
         print(f"{resp["result"]} {resp['_id']}")
 
@@ -521,6 +525,8 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
                 if previous_version:
                     doc["published_at"] = published_at
 
+                # Kibana v8 requires _type to be in body in order to have doc_type defined
+                doc['_type'] = '_doc'
                 resp = es.index(index=index_name, doc_type=None, id=package_items[package]['package_name'], body=doc)
 
                 print(f"{resp["result"]} {resp['_id']}")
