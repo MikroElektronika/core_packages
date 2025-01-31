@@ -151,6 +151,8 @@ def index_schemas(es: Elasticsearch, release_details, version, index_name, test_
             break
 
     if doc:
+        # Kibana v8 requires _type to be in body in order to have doc_type defined
+        doc['_type'] = '_doc'
         resp = es.index(index=index_name, doc_type=None, id=f'schemas{test_version}', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
