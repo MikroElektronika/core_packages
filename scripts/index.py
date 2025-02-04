@@ -104,14 +104,15 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
         name = eachHit['_source']['name']
         if name == 'database':
             db_version = eachHit['_source']['version']
-        type = eachHit['_type']
-        id = eachHit['_id']
-        if eachHit['_source']['type'] in typeCheck:
-            if name in checkDict:
-                checkDict[name]['count'] += 1
-                checkDict[name]['id'].append([id, type])
-            else:
-                checkDict.update({name: { 'count': 1, 'id': [[id, type]]}})
+        if '_type' in eachHit:
+            type = eachHit['_type']
+            id = eachHit['_id']
+            if eachHit['_source']['type'] in typeCheck:
+                if name in checkDict:
+                    checkDict[name]['count'] += 1
+                    checkDict[name]['id'].append([id, type])
+                else:
+                    checkDict.update({name: { 'count': 1, 'id': [[id, type]]}})
 
     # Proceed to remove all found IDs
     for eachPackageName in checkDict.keys():
