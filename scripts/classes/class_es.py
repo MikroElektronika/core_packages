@@ -94,7 +94,7 @@ class index():
         response = self.response(self.es_instance, self.index, query_size)
 
         for eachHit in response['hits']['hits']:
-            if 'name' in eachHit['_source']:
+            if 'name' in eachHit['_source'] and '_type' in eachHit:
                 if pattern.match(eachHit['_source']['name']):
                     self.indexed_items.append(
                         {
