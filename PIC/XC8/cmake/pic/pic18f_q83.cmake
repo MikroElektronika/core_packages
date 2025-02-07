@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^PIC18F26Q83$|^PIC18F27Q83$|^PIC18F46Q83$|^PIC18F47Q83$|^PIC18F56Q83$")
+    list(APPEND fileListInclude def/${MCU_NAME}/mcu.h)
+endif()

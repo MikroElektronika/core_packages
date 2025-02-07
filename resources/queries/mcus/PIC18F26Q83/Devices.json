@@ -1,0 +1,18 @@
+{
+    "def_file": "PIC18F26Q83.json",
+    "family_uid": "PIC18",
+    "flash": "64",
+    "icon": "images/mcu/microchip.png",
+    "max_speed": "64.000",
+    "name": "PIC18F26Q83",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"PIC18F26Q83\",\"CORE_NAME\":\"P18\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "{\"XC8_SUPPORTED\":\"TRUE\"}",
+    "uid": "PIC18F26Q83",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"mchp_xc8\": \"pic_xc8_pic18f_q83\"}"
+}
