@@ -20,12 +20,13 @@
 
 Support added for following hardware:
 
-+ STM32U585VI_ZI MCU Support package for GCC & Clang
-  + STM32U585VI
-  + STM32U585ZI
-+ STM32U599ZI_J MCU Support package for GCC & Clang
-  + STM32U599ZI
-  + STM32U599ZJ
++ PIC18F4xQ43 MCU Support package for XC8
+  + PIC18F45Q43
+  + PIC18F46Q43
+  + PIC18F47Q43
++ PIC18F5xQ43 MCU Support package for XC8
+  + PIC18F55Q43
+  + PIC18F56Q43
 
 ---
 
