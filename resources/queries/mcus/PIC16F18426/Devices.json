@@ -1,0 +1,18 @@
+{
+    "def_file": "PIC16F18426.json",
+    "family_uid": "PIC16",
+    "flash": "28",
+    "icon": "images/mcu/microchip.png",
+    "max_speed": "8.000",
+    "name": "PIC16F18426",
+    "ram": "2048",
+    "sdk_config": "{\"MCU_NAME\":\"PIC16F18426\",\"CORE_NAME\":\"P16_Enh\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "{\"XC8_SUPPORTED\":\"TRUE\"}",
+    "uid": "PIC16F18426",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"mchp_xc8\": \"pic_xc8_pic16_l_f18426_46\"}"
+}

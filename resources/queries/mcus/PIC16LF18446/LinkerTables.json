@@ -1,0 +1,44 @@
+{
+    "device_uid": "PIC16LF18446",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_PIC_BOARD",
+                    "EASYPIC_V8",
+                    "EASYPIC_V7",
+                    "EASYPIC_V7A"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "mchp_xc8"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "20/SSOP",
+                    "20/SOIC",
+                    "20/PDIP",
+                    "20/UQFN"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.11.3+"
+            }
+        }
+    ]
+}
