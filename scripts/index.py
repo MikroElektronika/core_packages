@@ -123,6 +123,39 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
 
     return db_version
 
+def resolve_publish_date(es: Elasticsearch, index_name, package_name):
+    # Search query to use
+    query_search = {
+        "size": 5000,
+        "query": {
+            "match_all": {}
+        }
+    }
+
+    # Search the base with provided query
+    num_of_retries = 1
+    while num_of_retries <= 10:
+        try:
+            response = es.search(index=index_name, body=query_search)
+            if not response['timed_out']:
+                break
+        except:
+            print("Executing search query - retry number %i" % num_of_retries)
+        num_of_retries += 1
+
+    index_publish_date = None
+    for eachHit in response['hits']['hits']:
+        if not 'name' in eachHit['_source']:
+            continue
+        name = eachHit['_source']['name']
+        if name == package_name:
+            if 'published_at' in eachHit['_source']:
+                return eachHit['_source']['published_at']
+            else:
+                # Notify user about failed package publish date fetching
+                print("%sNo release date found for %s!" % (support.Colors.FAIL, package_name))
+                return None
+
 def increase_version(version, part="patch"):
     # Split the version string into major, minor, and patch
     major, minor, patch = map(int, version.split('.'))
@@ -169,7 +202,7 @@ def increment_version(version):
     return f"{major}.{minor}.{patch + 1}"
 
 def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_file=False):
-# Search query to use
+    # Search query to use
     query_search = {
         "size": 5000,
         "query": {
@@ -196,7 +229,7 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
     indexed_version = None
     for eachHit in response['hits']['hits']:
         if not 'name' in eachHit['_source']:
-            continue ## TODO - Check newly created bare metal package (is it created correctly)
+            continue
         name = eachHit['_source']['name']
         if name == search_es_name:
             if 'hash' in eachHit['_source']:
@@ -230,7 +263,7 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
     return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed, indexed_version
 
 # Function to index release details into Elasticsearch
-def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None):
+def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None, keep_previous_date=False):
     # Iterate over each asset in the release and previous release
     metadata_content = []
     for each_release_details in release_details:
@@ -338,6 +371,13 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
                 current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
 
+                if keep_previous_date:
+                    publish_date = resolve_publish_date(es, index_name, name_without_extension)
+                    # Revert to current date if not updated correctly
+                    publish_date = published_at if not publish_date else publish_date
+                else:
+                    publish_date = published_at
+
                 current_version = metadata_item['version']
                 if index_hash and current_hash:
                     if not existed:
@@ -349,6 +389,9 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                             update_package = True
                             current_version = new_version
 
+                if keep_previous_date:
+                    current_version = metadata_item['version']
+
                 doc = {
                     'name': package_name,
                     'display_name' : metadata_item['display_name'],
@@ -358,7 +401,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     'version' : current_version,
                     'created_at': asset['created_at'],
                     'updated_at': asset['updated_at'],
-                    'published_at': published_at,
+                    'published_at': publish_date,
                     'hash': current_hash,
                     'category': metadata_item['category'],
                     'download_link': asset['browser_download_url'],
@@ -558,6 +601,7 @@ if __name__ == '__main__':
     parser.add_argument("--es_host", help="Elasticsearch host value", default="")
     parser.add_argument("--es_user", help="Elasticsearch username value", default="")
     parser.add_argument("--es_password", help="Elasticsearch password value", default="")
+    parser.add_argument("--keep_previous_dates", help="Repacks and uploads all packages with new copyright year, but keeps previous release dates.", type=str2bool, default=False)
     args = parser.parse_args()
 
     # For local debug purposes
@@ -601,7 +645,8 @@ if __name__ == '__main__':
         fetch_release_details(args.repo, args.token, args.release_version),
         args.token, args.force_index,
         args.update_database,
-        db_version
+        db_version,
+        args.keep_previous_dates
     )
 
     # And then promote to latest if requested
