@@ -636,8 +636,8 @@ if __name__ == '__main__':
     )
 
     # Index microchip device family packs
-    # index_microchip_packs(es, args.select_index)
-    # index_codegrip_packs(es, args.select_index, args.doc_codegrip)
+    index_microchip_packs(es, args.select_index)
+    index_codegrip_packs(es, args.select_index, args.doc_codegrip)
 
     # Now index the new release
     index_release_to_elasticsearch(
