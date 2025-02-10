@@ -573,7 +573,40 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path, delet
 def fetch_existing_asset_names(release):
     return [asset['name'] for asset in release['assets']]
 
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths, latest_release=None):
+def fetch_current_indexed_packages(es : Elasticsearch, index_name):
+    # Search query to use
+    query_search = {
+        "size": 5000,
+        "query": {
+            "match_all": {}
+        }
+    }
+
+    # Search the base with provided query
+    num_of_retries = 1
+    while num_of_retries <= 10:
+        try:
+            response = es.search(index=index_name, body=query_search)
+            if not response['timed_out']:
+                break
+        except:
+            print("Executing search query - retry number %i" % num_of_retries)
+        num_of_retries += 1
+
+    all_packages = []
+    for eachHit in response['hits']['hits']:
+        if not 'name' in eachHit['_source']:
+            continue
+        if '_type' in eachHit:
+            if '_doc' == eachHit['_type']:
+                all_packages.append(eachHit['_source'])
+
+    # Sort all_packages alphabetically by the 'name' field
+    all_packages.sort(key=lambda x: x['name'])
+
+    return all_packages
+
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths, indexed_items, latest_release=None):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -630,20 +663,18 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archive_path)
 
-        ## TODO - implement hash check for current packed asset
-        ## If hash different - reupload with increased version
-
         shutil.rmtree(base_output_dir)
-        # Don't re-upload already existing packages
-        if (f"{arch.lower()}_{entry_name.lower()}_{cmake_file}" not in existing_packages):
-            # Upload archive
-            upload_result= ""
-            async with aiohttp.ClientSession() as session:
-                upload_tasks = [upload_release_asset(session, token, repo, tag_name, archive_path)]
-                results = await asyncio.gather(*upload_tasks, return_exceptions=True)
-                for result in results:
-                    upload_result = result
-                print(f"Added {archiveName} package to {tag_name}.")
+        # Re-upload package if hash is different or upload package if it is new
+        for item in indexed_items:
+            if (item['name'] == archiveName.replace('.7z', '') and item['hash'] != archiveHash) or archiveName.replace('.7z', '') not in existing_packages:
+                # Upload archive
+                upload_result = ""
+                async with aiohttp.ClientSession() as session:
+                    upload_tasks = [upload_release_asset(session, token, repo, tag_name, archive_path)]
+                    results = await asyncio.gather(*upload_tasks, return_exceptions=True)
+                    for result in results:
+                        upload_result = result
+                    print(f"Added {archiveName} package to {tag_name}.")
 
         # Determine the version based on the hash
         version = get_version_based_on_hash(archiveName, (latest_release['tag_name']).replace("v", ""), archiveHash, current_metadata)
@@ -905,6 +936,23 @@ async def main(token, repo, tag_name, live=False):
     if 'latest' != tag_name:
         latest_release['tag_name'] = tag_name
 
+    # Elasticsearch instance used for fetching indexed items details
+    num_of_retries = 1
+    print("Trying to connect to ES.")
+    while True:
+        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
+        if es.ping():
+            break
+        # Wait 1 second and try again if connection fails
+        if 10 == num_of_retries:
+            # Exit if it fails 10 times, something is wrong with the server
+            raise ValueError("Connection to ES failed!")
+        print(f"Connection retry: {num_of_retries}")
+        num_of_retries += 1
+
+        time.sleep(1)
+    indexed_items = fetch_current_indexed_packages(es, os.environ['ES_INDEX'])
+
     packages = []
     for arch in architectures:
         root_source_directory = f"./{arch}"
@@ -924,7 +972,7 @@ async def main(token, repo, tag_name, live=False):
                         await package_asset(
                             source_directory, output_directory, arch, entry.name,
                             token, repo, tag_name,
-                            packages, current_metadata, db_paths,
+                            packages, current_metadata, db_paths, indexed_items,
                             latest_release
                         )
 
