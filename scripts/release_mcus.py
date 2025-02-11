@@ -675,6 +675,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
                     for result in results:
                         upload_result = result
                     print(f"Added {archiveName} package to {tag_name}.")
+                    break
 
         # Determine the version based on the hash
         version = get_version_based_on_hash(archiveName, (latest_release['tag_name']).replace("v", ""), archiveHash, current_metadata)
