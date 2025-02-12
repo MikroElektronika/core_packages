@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^PIC32MZ1024ECM064$|^PIC32MZ1024ECM100$|^PIC32MZ1024ECM124$|^PIC32MZ1024ECM144$")
+    set(${linkerScript} linker_scripts/${mcu_match}.ld PARENT_SCOPE)
+endif()
