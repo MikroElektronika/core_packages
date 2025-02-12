@@ -1,99 +1,9 @@
 {
     "config_words": [
         {
-            "init": "OFF",
-            "key": "FMIIEN",
-            "label": "Ethernet RMII/MII Enable",
-            "settings": [
-                {
-                    "label": "RMII Enabled",
-                    "value": "OFF"
-                },
-                {
-                    "label": "MII Enabled",
-                    "value": "ON"
-                }
-            ]
-        },
-        {
-            "init": "ON",
-            "key": "FETHIO",
-            "label": "Ethernet I/O Pin Select",
-            "settings": [
-                {
-                    "label": "Alternate Ethernet I/O",
-                    "value": "OFF"
-                },
-                {
-                    "label": "Default Ethernet I/O",
-                    "value": "ON"
-                }
-            ]
-        },
-        {
-            "init": "ON",
-            "key": "PGL1WAY",
-            "label": "Permission Group Lock One Way Configuration",
-            "settings": [
-                {
-                    "label": "Allow multiple reconfigurations",
-                    "value": "OFF"
-                },
-                {
-                    "label": "Allow only one reconfiguration",
-                    "value": "ON"
-                }
-            ]
-        },
-        {
-            "init": "ON",
-            "key": "PMDL1WAY",
-            "label": "Peripheral Module Disable Configuration",
-            "settings": [
-                {
-                    "label": "Allow multiple reconfigurations",
-                    "value": "OFF"
-                },
-                {
-                    "label": "Allow only one reconfiguration",
-                    "value": "ON"
-                }
-            ]
-        },
-        {
-            "init": "ON",
-            "key": "IOL1WAY",
-            "label": "Peripheral Pin Select Configuration",
-            "settings": [
-                {
-                    "label": "Allow multiple reconfigurations",
-                    "value": "OFF"
-                },
-                {
-                    "label": "Allow only one reconfiguration",
-                    "value": "ON"
-                }
-            ]
-        },
-        {
-            "init": "ON",
-            "key": "FUSBIDIO",
-            "label": "USB USBID Selection",
-            "settings": [
-                {
-                    "label": "Controlled by Port Function",
-                    "value": "OFF"
-                },
-                {
-                    "label": "Controlled by the USB Module",
-                    "value": "ON"
-                }
-            ]
-        },
-        {
             "init": "DIV_8",
             "key": "FPLLIDIV",
-            "label": "System PLL Input Divider",
+            "label": "Short name for DEVCFG2_FPLLIDIV",
             "settings": [
                 {
                     "label": "1x Divider",
@@ -130,9 +40,9 @@
             ]
         },
         {
-            "init": "RANGE_34_68_MHZ",
+            "init": "RANGE_BYPASS",
             "key": "FPLLRNG",
-            "label": "System PLL Input Range",
+            "label": "Short name for DEVCFG2_FPLLRNG",
             "settings": [
                 {
                     "label": "Bypass",
@@ -163,22 +73,22 @@
         {
             "init": "PLL_FRC",
             "key": "FPLLICLK",
-            "label": "System PLL Input Clock Selection",
+            "label": "Short name for DEVCFG2_FPLLICLK",
             "settings": [
-                {
-                    "label": "POSC is input to the System PLL",
-                    "value": "PLL_POSC"
-                },
                 {
                     "label": "FRC is input to the System PLL",
                     "value": "PLL_FRC"
+                },
+                {
+                    "label": "POSC is input to the System PLL",
+                    "value": "PLL_POSC"
                 }
             ]
         },
         {
             "init": "MUL_128",
             "key": "FPLLMULT",
-            "label": "System PLL Multiplier",
+            "label": "Short name for DEVCFG2_FPLLMULT",
             "settings": [
                 {
                     "label": "PLL Multiply by 1",
@@ -697,7 +607,7 @@
         {
             "init": "DIV_32",
             "key": "FPLLODIV",
-            "label": "System PLL Output Clock Divider",
+            "label": "Short name for DEVCFG2_FPLLODIV",
             "settings": [
                 {
                     "label": "2x Divider",
@@ -724,38 +634,42 @@
         {
             "init": "FREQ_24MHZ",
             "key": "UPLLFSEL",
-            "label": "USB PLL Input Frequency Selection",
+            "label": "Short name for DEVCFG2_UPLLFSEL",
             "settings": [
-                {
-                    "label": "USB PLL input is 12 MHz",
-                    "value": "FREQ_12MHZ"
-                },
                 {
                     "label": "USB PLL input is 24 MHz",
                     "value": "FREQ_24MHZ"
+                },
+                {
+                    "label": "USB PLL input is 12 MHz",
+                    "value": "FREQ_12MHZ"
                 }
             ]
         },
         {
             "init": "ON",
             "key": "UPLLEN",
-            "label": "USB PLL Enable",
+            "label": "Short name for DEVCFG2_UPLLEN",
             "settings": [
-                {
-                    "label": "USB PLL is disabled",
-                    "value": "OFF"
-                },
                 {
                     "label": "USB PLL is enabled",
                     "value": "ON"
+                },
+                {
+                    "label": "USB PLL is disabled",
+                    "value": "OFF"
                 }
             ]
         },
         {
             "init": "FRCDIV",
             "key": "FNOSC",
-            "label": "Oscillator Selection Bits",
+            "label": "Short name for DEVCFG1_FNOSC",
             "settings": [
+                {
+                    "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
+                    "value": "FRCDIV"
+                },
                 {
                     "label": "System PLL",
                     "value": "SPLL"
@@ -771,17 +685,13 @@
                 {
                     "label": "Low Power RC Osc (LPRC)",
                     "value": "LPRC"
-                },
-                {
-                    "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
-                    "value": "FRCDIV"
                 }
             ]
         },
         {
             "init": "WIN_127_128",
             "key": "DMTINTV",
-            "label": "DMT Count Window Interval",
+            "label": "Short name for DEVCFG1_DMTINTV",
             "settings": [
                 {
                     "label": "Window/Interval value is zero",
@@ -820,7 +730,7 @@
         {
             "init": "ON",
             "key": "FSOSCEN",
-            "label": "Secondary Oscillator Enable",
+            "label": "Short name for DEVCFG1_FSOSCEN",
             "settings": [
                 {
                     "label": "Disable SOSC",
@@ -835,7 +745,7 @@
         {
             "init": "ON",
             "key": "IESO",
-            "label": "Internal/External Switch Over",
+            "label": "Short name for DEVCFG1_IESO",
             "settings": [
                 {
                     "label": "Disabled",
@@ -850,7 +760,7 @@
         {
             "init": "OFF",
             "key": "POSCMOD",
-            "label": "Primary Oscillator Configuration",
+            "label": "Short name for DEVCFG1_POSCMOD",
             "settings": [
                 {
                     "label": "External clock mode",
@@ -869,22 +779,22 @@
         {
             "init": "OFF",
             "key": "OSCIOFNC",
-            "label": "CLKO Output Signal Active on the OSCO Pin",
+            "label": "Short name for DEVCFG1_OSCIOFNC",
             "settings": [
-                {
-                    "label": "Enabled",
-                    "value": "ON"
-                },
                 {
                     "label": "Disabled",
                     "value": "OFF"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "ON"
                 }
             ]
         },
         {
             "init": "CSECME",
             "key": "FCKSM",
-            "label": "Clock Switching and Monitor Selection",
+            "label": "Short name for DEVCFG1_FCKSM",
             "settings": [
                 {
                     "label": "Clock Switch Disabled, FSCM Disabled",
@@ -905,9 +815,9 @@
             ]
         },
         {
-            "init": "PS1048576",
+            "init": "PS1",
             "key": "WDTPS",
-            "label": "Watchdog Timer Postscaler",
+            "label": "Short name for DEVCFG1_WDTPS",
             "settings": [
                 {
                     "label": "1:1",
@@ -998,7 +908,7 @@
         {
             "init": "STOP",
             "key": "WDTSPGM",
-            "label": "Watchdog Timer Stop During Flash Programming",
+            "label": "Short name for DEVCFG1_WDTSPGM",
             "settings": [
                 {
                     "label": "WDT runs during Flash programming",
@@ -1013,22 +923,22 @@
         {
             "init": "NORMAL",
             "key": "WINDIS",
-            "label": "Watchdog Timer Window Mode",
+            "label": "Short name for DEVCFG1_WINDIS",
             "settings": [
-                {
-                    "label": "Watchdog Timer is in Window mode",
-                    "value": "WINDOW"
-                },
                 {
                     "label": "Watchdog Timer is in non-Window mode",
                     "value": "NORMAL"
+                },
+                {
+                    "label": "Watchdog Timer is in Window mode",
+                    "value": "WINDOW"
                 }
             ]
         },
         {
             "init": "ON",
             "key": "FWDTEN",
-            "label": "Watchdog Timer Enable",
+            "label": "Short name for DEVCFG1_FWDTEN",
             "settings": [
                 {
                     "label": "WDT Disabled",
@@ -1043,30 +953,30 @@
         {
             "init": "WINSZ_25",
             "key": "FWDTWINSZ",
-            "label": "Watchdog Timer Window Size",
+            "label": "Short name for DEVCFG1_FWDTWINSZ",
             "settings": [
                 {
-                    "label": "Window size is 75%",
-                    "value": "WINSZ_75"
-                },
-                {
-                    "label": "Window size is 50%",
-                    "value": "WINSZ_50"
+                    "label": "Window size is 25%",
+                    "value": "WINSZ_25"
                 },
                 {
                     "label": "Window size is 37.5%",
                     "value": "WINSZ_37"
                 },
                 {
-                    "label": "Window size is 25%",
-                    "value": "WINSZ_25"
+                    "label": "Window size is 50%",
+                    "value": "WINSZ_50"
+                },
+                {
+                    "label": "Window size is 75%",
+                    "value": "WINSZ_75"
                 }
             ]
         },
         {
-            "init": "DMT31",
+            "init": "DMT8",
             "key": "DMTCNT",
-            "label": "Deadman Timer Count Selection",
+            "label": "Short name for DEVCFG1_DMTCNT",
             "settings": [
                 {
                     "label": "2^8 (256)",
@@ -1169,22 +1079,22 @@
         {
             "init": "ON",
             "key": "FDMTEN",
-            "label": "Deadman Timer Enable",
+            "label": "Short name for DEVCFG1_FDMTEN",
             "settings": [
-                {
-                    "label": "Deadman Timer is disabled",
-                    "value": "OFF"
-                },
                 {
                     "label": "Deadman Timer is enabled",
                     "value": "ON"
+                },
+                {
+                    "label": "Deadman Timer is disabled",
+                    "value": "OFF"
                 }
             ]
         },
         {
             "init": "OFF",
             "key": "DEBUG",
-            "label": "Background Debugger Enable",
+            "label": "Short name for DEVCFG0_DEBUG",
             "settings": [
                 {
                     "label": "Debugger is enabled",
@@ -1199,67 +1109,67 @@
         {
             "init": "ON",
             "key": "JTAGEN",
-            "label": "JTAG Enable",
+            "label": "Short name for DEVCFG0_JTAGEN",
             "settings": [
-                {
-                    "label": "JTAG Disabled",
-                    "value": "OFF"
-                },
                 {
                     "label": "JTAG Port Enabled",
                     "value": "ON"
+                },
+                {
+                    "label": "JTAG Disabled",
+                    "value": "OFF"
                 }
             ]
         },
         {
             "init": "ICS_PGx1",
             "key": "ICESEL",
-            "label": "ICE/ICD Comm Channel Select",
+            "label": "Short name for DEVCFG0_ICESEL",
             "settings": [
-                {
-                    "label": "Communicate on PGEC2/PGED2",
-                    "value": "ICS_PGx2"
-                },
                 {
                     "label": "Communicate on PGEC1/PGED1",
                     "value": "ICS_PGx1"
+                },
+                {
+                    "label": "Communicate on PGEC2/PGED2",
+                    "value": "ICS_PGx2"
                 }
             ]
         },
         {
             "init": "ON",
             "key": "TRCEN",
-            "label": "Trace Enable",
+            "label": "Short name for DEVCFG0_TRCEN",
             "settings": [
-                {
-                    "label": "Trace features in the CPU are disabled",
-                    "value": "OFF"
-                },
                 {
                     "label": "Trace features in the CPU are enabled",
                     "value": "ON"
+                },
+                {
+                    "label": "Trace features in the CPU are disabled",
+                    "value": "OFF"
                 }
             ]
         },
         {
             "init": "MIPS32",
             "key": "BOOTISA",
-            "label": "Boot ISA Selection",
+            "label": "Short name for DEVCFG0_BOOTISA",
             "settings": [
-                {
-                    "label": "Boot code and Exception code is microMIPS",
-                    "value": "MICROMIPS"
-                },
                 {
                     "label": "Boot code and Exception code is MIPS32",
                     "value": "MIPS32"
+                },
+                {
+                    "label": "Boot code and Exception code is microMIPS",
+                    "value": "MICROMIPS"
                 }
             ]
         },
         {
             "init": "OFF_UNLOCKED",
             "key": "FECCCON",
-            "label": "Dynamic Flash ECC Configuration",
+            "label": "Short name for DEVCFG0_FECCCON",
             "settings": [
                 {
                     "label": "Flash ECC is enabled (ECCCON bits are locked)",
@@ -1282,42 +1192,38 @@
         {
             "init": "OFF",
             "key": "FSLEEP",
-            "label": "Flash Sleep Mode",
+            "label": "Short name for DEVCFG0_FSLEEP",
             "settings": [
-                {
-                    "label": "Flash power down is controlled by the VREGS bit",
-                    "value": "VREGS"
-                },
                 {
                     "label": "Flash is powered down when the device is in Sleep mode",
                     "value": "OFF"
+                },
+                {
+                    "label": "Flash power down is controlled by the VREGS bit",
+                    "value": "VREGS"
                 }
             ]
         },
         {
             "init": "PG_ALL",
             "key": "DBGPER",
-            "label": "Debug Mode CPU Access Permission",
+            "label": "Short name for DEVCFG0_DBGPER",
             "settings": [
                 {
-                    "label": "Deny CPU access to all permission regions",
-                    "value": "PG_NONE"
-                },
-                {
-                    "label": "Allow CPU access to Permission Group 0 permission regions",
-                    "value": "ALLOW_PG0"
+                    "label": "Allow CPU access to Permission Group 2 permission regions",
+                    "value": "ALLOW_PG2"
                 },
                 {
                     "label": "Allow CPU access to Permission Group 1 permission regions",
                     "value": "ALLOW_PG1"
                 },
                 {
-                    "label": "PG0: Allow PG1: Allow PG2: Deny",
-                    "value": "PG_1_0"
+                    "label": "Allow CPU access to Permission Group 0 permission regions",
+                    "value": "ALLOW_PG0"
                 },
                 {
-                    "label": "Allow CPU access to Permission Group 2 permission regions",
-                    "value": "ALLOW_PG2"
+                    "label": "PG0: Allow PG1: Allow PG2: Deny",
+                    "value": "PG_1_0"
                 },
                 {
                     "label": "PG0: Allow PG1: Deny PG2: Allow",
@@ -1330,28 +1236,32 @@
                 {
                     "label": "Allow CPU access to all permission regions",
                     "value": "PG_ALL"
+                },
+                {
+                    "label": "Deny CPU access to all permission regions",
+                    "value": "PG_NONE"
                 }
             ]
         },
         {
             "init": "NORMAL",
             "key": "EJTAGBEN",
-            "label": "EJTAG Boot",
+            "label": "Short name for DEVCFG0_EJTAGBEN",
             "settings": [
-                {
-                    "label": "Reduced EJTAG functionality",
-                    "value": "REDUCED"
-                },
                 {
                     "label": "Normal EJTAG functionality",
                     "value": "NORMAL"
+                },
+                {
+                    "label": "Reduced EJTAG functionality",
+                    "value": "REDUCED"
                 }
             ]
         },
         {
             "init": "OFF",
             "key": "CP",
-            "label": "Code Protect",
+            "label": "Short name for DEVCP0_CP",
             "settings": [
                 {
                     "label": "Protection Enabled",
@@ -1365,5 +1275,5 @@
         }
     ],
     "mcu": "PIC32MZ1024ECG144",
-    "clock": 1
+    "clock": "1"
 }
