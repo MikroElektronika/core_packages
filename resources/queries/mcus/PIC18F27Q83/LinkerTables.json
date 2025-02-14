@@ -1,0 +1,44 @@
+{
+    "device_uid": "PIC18F27Q83",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_PIC_BOARD",
+                    "EASYPIC_V8",
+                    "EASYPIC_V7",
+                    "EASYPIC_V7A"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "mchp_xc8"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "28/SSOP",
+                    "28/SOIC",
+                    "28/SPDIP",
+                    "28/VQFN"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.11.3+"
+            }
+        }
+    ]
+}
