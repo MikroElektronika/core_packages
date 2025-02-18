@@ -44,6 +44,8 @@
 #ifndef _INTERRUPTS_MCU_H_
 #define _INTERRUPTS_MCU_H_
 
+#include "mcu.h"
+
 // Interrupt table
 #define INTERRUPTS_CT (0)
 #define INTERRUPTS_CS0 (1)
