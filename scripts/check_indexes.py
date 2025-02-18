@@ -80,6 +80,10 @@ if __name__ == "__main__":
                     assign_urls(indexed_item, gh_instance, es_instance)
                 else:
                     print("%sWARNING: Asset \"%s\" has no \"gh_package_name\" in the index." % (es_instance.Colors.WARNING, indexed_item['source']['name']))
+                if 'MikroE' in indexed_item['source']['author']:
+                    indexed_item['source']['author'] = 'MIKROE'
+                    es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
+                    print("%sINFO: Updated \"author\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
         else: ## code 200 - success, no need to reindex
             if args.index_package_names:
                 package_name = f'{indexed_item['source']['name']}.7z'
@@ -94,6 +98,10 @@ if __name__ == "__main__":
                         indexed_item['source']['gh_package_name'] = package_name
                         es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
                         print("%sINFO: Updated \"gh_package_name\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
+                if 'MikroE' in indexed_item['source']['author']:
+                    indexed_item['source']['author'] = 'MIKROE'
+                    es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
+                    print("%sINFO: Updated \"author\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
 
                 # Assign correct URLs
                 assign_urls(indexed_item, gh_instance, es_instance)
