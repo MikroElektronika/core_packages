@@ -6,16 +6,25 @@ import classes.class_es as es
 # Legacy packages for NECTO version 7.0.4 and lower
 legacy_packages = ["clocks", "schemas", "database", "images", "images_sdk"]
 
-def assign_urls(indexed_item, gh_instance, es_instance):
-    # Check if download link for all github assets is direct github download url
-    url = gh_instance.asset_fetch_url_browser(indexed_item['source']['gh_package_name'], loose=False)
-    url_api = gh_instance.asset_fetch_url_api(indexed_item['source']['gh_package_name'], loose=False)
-    # For non-github packages url is None, so we should skip it
-    if indexed_item['source']['download_link'] != url and url != None:
-        indexed_item['source']['download_link'] = url
-        indexed_item['source']['download_link_api'] = url_api
-        es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
-        print("%sINFO: Updated \"download_link\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
+# Thirdparty authors for packages that are used in NECTO
+thirdparty_authors = ["Microchip"]
+
+def assign_urls(indexed_item, gh_instance, es_instance, fix_url_api=False):
+    # All indexed github packages except clocks.json and schemas.json are 7z archives
+    if 'gh_package_name' in indexed_item['source']:
+        if 'clocks' in indexed_item['source']['gh_package_name'] or 'schemas' in indexed_item['source']['gh_package_name']:
+            indexed_item['source']['gh_package_name'] = indexed_item['source']['gh_package_name'].replace('.7z', '').replace('.json', '') + '.json'
+        elif '.7z' not in indexed_item['source']['gh_package_name']:
+            indexed_item['source']['gh_package_name'] += '.7z'
+        # Check if download link for all github assets is direct github download url
+        url = gh_instance.asset_fetch_url_browser(indexed_item['source']['gh_package_name'], loose=False)
+        url_api = gh_instance.asset_fetch_url_api(indexed_item['source']['gh_package_name'], loose=False)
+        # For non-github packages url is None, so we should skip it
+        if (indexed_item['source']['download_link'] != url and url != None) or (fix_url_api and url != None):
+            indexed_item['source']['download_link'] = url
+            indexed_item['source']['download_link_api'] = url_api
+            es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
+            print("%sINFO: Updated \"download_link\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
 
 if __name__ == "__main__":
     # First, check for arguments passed
@@ -77,28 +86,40 @@ if __name__ == "__main__":
             if not args.log_only:
                 if 'gh_package_name' in indexed_item['source']:
                     # Assign correct URLs
-                    assign_urls(indexed_item, gh_instance, es_instance)
+                    assign_urls(indexed_item, gh_instance, es_instance, fix_url_api=True)
                 else:
                     print("%sWARNING: Asset \"%s\" has no \"gh_package_name\" in the index." % (es_instance.Colors.WARNING, indexed_item['source']['name']))
-                if 'mikroe' in indexed_item['source']['author'].lower():
+                if 'MIKROE' != indexed_item['source']['author'] and indexed_item['source']['author'] not in thirdparty_authors:
                     indexed_item['source']['author'] = 'MIKROE'
                     es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
                     print("%sINFO: Updated \"author\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
         else: ## code 200 - success, no need to reindex
             if args.index_package_names:
-                package_name = f'{indexed_item['source']['name']}.7z'
+                # All indexed github packages except clocks.json and schemas.json are 7z archives
+                if ('clocks' not in indexed_item['source']['name'] and 'schemas' not in indexed_item['source']['name']):
+                    package_name = f'{indexed_item['source']['name']}.7z'
+                else:
+                    package_name = f'{indexed_item['source']['name']}.json'
                 if indexed_item['source']['name'] == 'database' and 'test' in args.es_index:
                     package_name = 'database_dev.7z'
-                if 'gh_package_name' not in indexed_item['source']:
+                # Set gh_package_name only for github assets
+                if 'gh_package_name' not in indexed_item['source'] and 'Device Pack' not in indexed_item['source']['category'] and indexed_item['source']['author'] not in thirdparty_authors:
                     indexed_item['source'].update({"gh_package_name": package_name})
                     es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
                     print("%sINFO: Added \"gh_package_name\" to %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
                 else:
-                    if package_name != indexed_item['source']['gh_package_name']:
-                        indexed_item['source']['gh_package_name'] = package_name
-                        es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
-                        print("%sINFO: Updated \"gh_package_name\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
-                if 'mikroe' in indexed_item['source']['author'].lower():
+                    # Set gh_package_name only for github assets
+                    if 'gh_package_name' in indexed_item['source']:
+                        if package_name != indexed_item['source']['gh_package_name']:
+                            indexed_item['source']['gh_package_name'] = package_name
+                            es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
+                            print("%sINFO: Updated \"gh_package_name\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
+                # Set author to MIKROE for packages that don't have it
+                if 'author' not in indexed_item['source']:
+                    indexed_item['source']['author'] = 'MIKROE'
+                    es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
+                    print("%sINFO: Updated \"author\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
+                if 'MIKROE' != indexed_item['source']['author'] and indexed_item['source']['author'] not in thirdparty_authors:
                     indexed_item['source']['author'] = 'MIKROE'
                     es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
                     print("%sINFO: Updated \"author\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
