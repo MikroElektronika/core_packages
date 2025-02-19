@@ -80,7 +80,7 @@ if __name__ == "__main__":
                     assign_urls(indexed_item, gh_instance, es_instance)
                 else:
                     print("%sWARNING: Asset \"%s\" has no \"gh_package_name\" in the index." % (es_instance.Colors.WARNING, indexed_item['source']['name']))
-                if 'MikroE' in indexed_item['source']['author']:
+                if 'mikroe' in indexed_item['source']['author'].lower():
                     indexed_item['source']['author'] = 'MIKROE'
                     es_instance.update(None, indexed_item['doc']['id'], indexed_item['source'])
                     print("%sINFO: Updated \"author\" for %s" % (es_instance.Colors.UNDERLINE, indexed_item['source']['name']))
