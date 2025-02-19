@@ -19,6 +19,7 @@ WHERE
                 LIMIT
                     1
             )
+            AND device_support_package != '[""]'
     )
     AND Programmers.uid IN (
         SELECT
