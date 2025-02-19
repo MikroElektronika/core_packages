@@ -552,7 +552,7 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
                 doc = {
                     "name": package_items[package]['package_name'],
                     "display_name": package_items[package]['display_name'],
-                    "author": "MikroElektronika",
+                    "author": "MIKROE",
                     "hidden": False,
                     "type": "programmer_dfp",
                     "version": new_version,
