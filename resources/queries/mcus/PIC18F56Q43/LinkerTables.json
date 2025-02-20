@@ -4,10 +4,7 @@
         {
             "BoardToDevice": {
                 "board_uid": [
-                    "GENERIC_PIC_BOARD",
-                    "EASYPIC_V8",
-                    "EASYPIC_V7",
-                    "EASYPIC_V7A"
+                    "GENERIC_PIC_BOARD"
                 ]
             }
         },
