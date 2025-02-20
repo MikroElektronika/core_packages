@@ -1,5 +1,5 @@
 {
-    "device_uid": "PIC32MZ1024ECG124",
+    "device_uid": "PIC32MZ1024ECM144",
     "tables": [
         {
             "BoardToDevice": {
@@ -18,7 +18,7 @@
         {
             "DeviceToPackage": {
                 "package_uid": [
-                    "124/VTLA"
+                    "144/LQFP"
                 ]
             }
         },

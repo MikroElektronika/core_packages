@@ -1,24 +1,24 @@
 {
-    "device_uid": "PIC32MZ1024ECG124",
+    "device_uid": "PIC18F96J99",
     "tables": [
         {
             "BoardToDevice": {
                 "board_uid": [
-                    "GENERIC_PIC32_BOARD"
+                    "GENERIC_PIC_BOARD"
                 ]
             }
         },
         {
             "CompilerToDevice": {
                 "compiler_uid": [
-                    "mchp_xc32"
+                    "mchp_xc8"
                 ]
             }
         },
         {
             "DeviceToPackage": {
                 "package_uid": [
-                    "124/VTLA"
+                    "100/TQFP"
                 ]
             }
         },

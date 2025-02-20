@@ -4,7 +4,7 @@
         {
             "BoardToDevice": {
                 "board_uid": [
-                    "GENERIC_PIC_BOARD"
+                    "GENERIC_PIC32_BOARD"
                 ]
             }
         },
