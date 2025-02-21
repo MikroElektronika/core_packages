@@ -28,8 +28,8 @@
 ** included in all copies or substantial portions of the Software.
 **
 ** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-** OF MERCHANTABILITY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-** TO THE WARRANTIES FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+** OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 ** DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
 ** OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
@@ -45,47 +45,47 @@
 #define _INTERRUPTS_MCU_H_
 
 // Interrupt table
-static const int INTERRUPTS_EECR_EERIE = 0; 
-static const int INTERRUPTS_SPCR0_SPIE = 1; 
-static const int INTERRUPTS_ACSR_ACIE = 2; 
-static const int INTERRUPTS_SPMCSR_SPMIE = 3; 
-static const int INTERRUPTS_SREG_I = 4; 
-static const int INTERRUPTS_WDTCSR_WDIE = 5; 
-static const int INTERRUPTS_XFDCSR_XFDIE = 6; 
-static const int INTERRUPTS_PCICR_PCIE = 7; 
-static const int INTERRUPTS_TIMSK0_TOIE0 = 8; 
-static const int INTERRUPTS_TIMSK0_OCIE0A = 9; 
-static const int INTERRUPTS_TIMSK0_OCIE0B = 10; 
-static const int INTERRUPTS_TIMSK1_TOIE1 = 11; 
-static const int INTERRUPTS_TIMSK1_OCIE1A = 12; 
-static const int INTERRUPTS_TIMSK1_OCIE1B = 13; 
-static const int INTERRUPTS_TIMSK1_ICIE1 = 14; 
-static const int INTERRUPTS_TIMSK2_TOIE2 = 15; 
-static const int INTERRUPTS_TIMSK2_OCIE2A = 16; 
-static const int INTERRUPTS_TIMSK2_OCIE2B = 17; 
-static const int INTERRUPTS_TIMSK3_TOIE3 = 18; 
-static const int INTERRUPTS_TIMSK3_OCIE3A = 19; 
-static const int INTERRUPTS_TIMSK3_OCIE3B = 20; 
-static const int INTERRUPTS_TIMSK3_ICIE3 = 21; 
-static const int INTERRUPTS_TIMSK4_TOIE4 = 22; 
-static const int INTERRUPTS_TIMSK4_OCIE4A = 23; 
-static const int INTERRUPTS_TIMSK4_OCIE4B = 24; 
-static const int INTERRUPTS_TIMSK4_ICIE4 = 25; 
-static const int INTERRUPTS_ADCSRA_ADIE = 26; 
-static const int INTERRUPTS_SPCR1_SPIE = 27; 
-static const int INTERRUPTS_TWCR0_TWIE = 28; 
-static const int INTERRUPTS_UCSR0B_UDRIE = 29; 
-static const int INTERRUPTS_UCSR0B_TXCIE = 30; 
-static const int INTERRUPTS_UCSR0B_RXCIE = 31; 
-static const int INTERRUPTS_UCSR0D_RXSIE = 32; 
-static const int INTERRUPTS_UCSR1B_UDRIE = 33; 
-static const int INTERRUPTS_UCSR1B_TXCIE = 34; 
-static const int INTERRUPTS_UCSR1B_RXCIE = 35; 
-static const int INTERRUPTS_UCSR1D_RXSIE = 36; 
-static const int INTERRUPTS_UCSR2B_UDRIE = 37; 
-static const int INTERRUPTS_UCSR2B_TXCIE = 38; 
-static const int INTERRUPTS_UCSR2B_RXCIE = 39; 
-static const int INTERRUPTS_UCSR2D_RXSIE = 40; 
+static const int INTERRUPTS_EECR_EERIE = 0;
+static const int INTERRUPTS_SPCR0_SPIE = 1;
+static const int INTERRUPTS_ACSR_ACIE = 2;
+static const int INTERRUPTS_SPMCSR_SPMIE = 3;
+static const int INTERRUPTS_SREG_I = 4;
+static const int INTERRUPTS_WDTCSR_WDIE = 5;
+static const int INTERRUPTS_XFDCSR_XFDIE = 6;
+static const int INTERRUPTS_PCICR_PCIE = 7;
+static const int INTERRUPTS_TIMSK0_TOIE0 = 8;
+static const int INTERRUPTS_TIMSK0_OCIE0A = 9;
+static const int INTERRUPTS_TIMSK0_OCIE0B = 10;
+static const int INTERRUPTS_TIMSK1_TOIE1 = 11;
+static const int INTERRUPTS_TIMSK1_OCIE1A = 12;
+static const int INTERRUPTS_TIMSK1_OCIE1B = 13;
+static const int INTERRUPTS_TIMSK1_ICIE1 = 14;
+static const int INTERRUPTS_TIMSK2_TOIE2 = 15;
+static const int INTERRUPTS_TIMSK2_OCIE2A = 16;
+static const int INTERRUPTS_TIMSK2_OCIE2B = 17;
+static const int INTERRUPTS_TIMSK3_TOIE3 = 18;
+static const int INTERRUPTS_TIMSK3_OCIE3A = 19;
+static const int INTERRUPTS_TIMSK3_OCIE3B = 20;
+static const int INTERRUPTS_TIMSK3_ICIE3 = 21;
+static const int INTERRUPTS_TIMSK4_TOIE4 = 22;
+static const int INTERRUPTS_TIMSK4_OCIE4A = 23;
+static const int INTERRUPTS_TIMSK4_OCIE4B = 24;
+static const int INTERRUPTS_TIMSK4_ICIE4 = 25;
+static const int INTERRUPTS_ADCSRA_ADIE = 26;
+static const int INTERRUPTS_SPCR1_SPIE = 27;
+static const int INTERRUPTS_TWCR0_TWIE = 28;
+static const int INTERRUPTS_UCSR0B_UDRIE = 29;
+static const int INTERRUPTS_UCSR0B_TXCIE = 30;
+static const int INTERRUPTS_UCSR0B_RXCIE = 31;
+static const int INTERRUPTS_UCSR0D_RXSIE = 32;
+static const int INTERRUPTS_UCSR1B_UDRIE = 33;
+static const int INTERRUPTS_UCSR1B_TXCIE = 34;
+static const int INTERRUPTS_UCSR1B_RXCIE = 35;
+static const int INTERRUPTS_UCSR1D_RXSIE = 36;
+static const int INTERRUPTS_UCSR2B_UDRIE = 37;
+static const int INTERRUPTS_UCSR2B_TXCIE = 38;
+static const int INTERRUPTS_UCSR2B_RXCIE = 39;
+static const int INTERRUPTS_UCSR2D_RXSIE = 40;
 static const int INTERRUPTS_TWCR1_TWIE = 41;
 // EOF Interrupt table
 

@@ -28,8 +28,8 @@
 ** included in all copies or substantial portions of the Software.
 **
 ** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-** OF MERCHANTABILITY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-** TO THE WARRANTIES FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+** OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 ** DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
 ** OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
@@ -45,36 +45,36 @@
 #define _INTERRUPTS_MCU_H_
 
 // Interrupt table
-static const int INTERRUPTS_EECR_EERIE = 0; 
-static const int INTERRUPTS_SPCR_SPIE = 1; 
-static const int INTERRUPTS_SPMCSR_SPMIE = 2; 
-static const int INTERRUPTS_SREG_I = 3; 
-static const int INTERRUPTS_WDTCSR_WDIE = 4; 
-static const int INTERRUPTS_TIMSK0_TOIE0 = 5; 
-static const int INTERRUPTS_TIMSK0_OCIE0A = 6; 
-static const int INTERRUPTS_TIMSK0_OCIE0B = 7; 
-static const int INTERRUPTS_TIMSK1_TOIE1 = 8; 
-static const int INTERRUPTS_TIMSK1_OCIE1A = 9; 
-static const int INTERRUPTS_TIMSK1_OCIE1B = 10; 
-static const int INTERRUPTS_TIMSK1_ICIE1 = 11; 
-static const int INTERRUPTS_ADCSRA_ADIE = 12; 
-static const int INTERRUPTS_PIM0_PEOPE0 = 13; 
-static const int INTERRUPTS_PIM0_PEVE0A = 14; 
-static const int INTERRUPTS_PIM0_PEVE0B = 15; 
-static const int INTERRUPTS_PIM0_PSEIE0 = 16; 
-static const int INTERRUPTS_PIM1_PEOPE1 = 17; 
-static const int INTERRUPTS_PIM1_PEVE1A = 18; 
-static const int INTERRUPTS_PIM1_PEVE1B = 19; 
-static const int INTERRUPTS_PIM1_PSEIE1 = 20; 
-static const int INTERRUPTS_PIM2_PEOPE2 = 21; 
-static const int INTERRUPTS_PIM2_PEVE2A = 22; 
-static const int INTERRUPTS_PIM2_PEVE2B = 23; 
-static const int INTERRUPTS_PIM2_PSEIE2 = 24; 
-static const int INTERRUPTS_AC0CON_AC0IE = 25; 
-static const int INTERRUPTS_AC1CON_AC1IE = 26; 
-static const int INTERRUPTS_AC2CON_AC2IE = 27; 
-static const int INTERRUPTS_UCSRB_UDRIE = 28; 
-static const int INTERRUPTS_UCSRB_TXCIE = 29; 
+static const int INTERRUPTS_EECR_EERIE = 0;
+static const int INTERRUPTS_SPCR_SPIE = 1;
+static const int INTERRUPTS_SPMCSR_SPMIE = 2;
+static const int INTERRUPTS_SREG_I = 3;
+static const int INTERRUPTS_WDTCSR_WDIE = 4;
+static const int INTERRUPTS_TIMSK0_TOIE0 = 5;
+static const int INTERRUPTS_TIMSK0_OCIE0A = 6;
+static const int INTERRUPTS_TIMSK0_OCIE0B = 7;
+static const int INTERRUPTS_TIMSK1_TOIE1 = 8;
+static const int INTERRUPTS_TIMSK1_OCIE1A = 9;
+static const int INTERRUPTS_TIMSK1_OCIE1B = 10;
+static const int INTERRUPTS_TIMSK1_ICIE1 = 11;
+static const int INTERRUPTS_ADCSRA_ADIE = 12;
+static const int INTERRUPTS_PIM0_PEOPE0 = 13;
+static const int INTERRUPTS_PIM0_PEVE0A = 14;
+static const int INTERRUPTS_PIM0_PEVE0B = 15;
+static const int INTERRUPTS_PIM0_PSEIE0 = 16;
+static const int INTERRUPTS_PIM1_PEOPE1 = 17;
+static const int INTERRUPTS_PIM1_PEVE1A = 18;
+static const int INTERRUPTS_PIM1_PEVE1B = 19;
+static const int INTERRUPTS_PIM1_PSEIE1 = 20;
+static const int INTERRUPTS_PIM2_PEOPE2 = 21;
+static const int INTERRUPTS_PIM2_PEVE2A = 22;
+static const int INTERRUPTS_PIM2_PEVE2B = 23;
+static const int INTERRUPTS_PIM2_PSEIE2 = 24;
+static const int INTERRUPTS_AC0CON_AC0IE = 25;
+static const int INTERRUPTS_AC1CON_AC1IE = 26;
+static const int INTERRUPTS_AC2CON_AC2IE = 27;
+static const int INTERRUPTS_UCSRB_UDRIE = 28;
+static const int INTERRUPTS_UCSRB_TXCIE = 29;
 static const int INTERRUPTS_UCSRB_RXCIE = 30;
 // EOF Interrupt table
 
