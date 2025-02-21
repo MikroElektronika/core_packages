@@ -3,7 +3,7 @@
         {
             "init": "SPS1",
             "key": "SWDTPS",
-            "label": "Short name for DEVCFG4_SWDTPS",
+            "label": "DEVCFG4_SWDTPS",
             "settings": [
                 {
                     "label": "1:1",
@@ -94,7 +94,7 @@
         {
             "init": "DIV_8",
             "key": "FPLLIDIV",
-            "label": "Short name for DEVCFG2_FPLLIDIV",
+            "label": "DEVCFG2_FPLLIDIV",
             "settings": [
                 {
                     "label": "1x Divider",
@@ -133,7 +133,7 @@
         {
             "init": "RANGE_BYPASS",
             "key": "FPLLRNG",
-            "label": "Short name for DEVCFG2_FPLLRNG",
+            "label": "DEVCFG2_FPLLRNG",
             "settings": [
                 {
                     "label": "Bypass",
@@ -164,7 +164,7 @@
         {
             "init": "PLL_FRC",
             "key": "FPLLICLK",
-            "label": "Short name for DEVCFG2_FPLLICLK",
+            "label": "DEVCFG2_FPLLICLK",
             "settings": [
                 {
                     "label": "FRC is input to the System PLL",
@@ -179,7 +179,7 @@
         {
             "init": "MUL_128",
             "key": "FPLLMULT",
-            "label": "Short name for DEVCFG2_FPLLMULT",
+            "label": "DEVCFG2_FPLLMULT",
             "settings": [
                 {
                     "label": "PLL Multiply by 1",
@@ -698,7 +698,7 @@
         {
             "init": "DIV_32",
             "key": "FPLLODIV",
-            "label": "Short name for DEVCFG2_FPLLODIV",
+            "label": "DEVCFG2_FPLLODIV",
             "settings": [
                 {
                     "label": "2x Divider",
@@ -725,7 +725,7 @@
         {
             "init": "ON",
             "key": "VBATBOREN",
-            "label": "Short name for DEVCFG2_VBATBOREN",
+            "label": "DEVCFG2_VBATBOREN",
             "settings": [
                 {
                     "label": "Disable ZPBOR during VBAT Mode",
@@ -740,7 +740,7 @@
         {
             "init": "ON",
             "key": "DSBOREN",
-            "label": "Short name for DEVCFG2_DSBOREN",
+            "label": "DEVCFG2_DSBOREN",
             "settings": [
                 {
                     "label": "Disable ZPBOR during Deep Sleep Mode",
@@ -755,7 +755,7 @@
         {
             "init": "DSPS32",
             "key": "DSWDTPS",
-            "label": "Short name for DEVCFG2_DSWDTPS",
+            "label": "DEVCFG2_DSWDTPS",
             "settings": [
                 {
                     "label": "1:2^5",
@@ -890,7 +890,7 @@
         {
             "init": "LPRC",
             "key": "DSWDTOSC",
-            "label": "Short name for DEVCFG2_DSWDTOSC",
+            "label": "DEVCFG2_DSWDTOSC",
             "settings": [
                 {
                     "label": "Select SOSC as DSWDT Reference Clock",
@@ -905,7 +905,7 @@
         {
             "init": "ON",
             "key": "DSWDTEN",
-            "label": "Short name for DEVCFG2_DSWDTEN",
+            "label": "DEVCFG2_DSWDTEN",
             "settings": [
                 {
                     "label": "Disable DSWDT during Deep Sleep Mode",
@@ -920,7 +920,7 @@
         {
             "init": "ON",
             "key": "FDSEN",
-            "label": "Short name for DEVCFG2_FDSEN",
+            "label": "DEVCFG2_FDSEN",
             "settings": [
                 {
                     "label": "Disable DSEN bit in DSCON",
@@ -935,7 +935,7 @@
         {
             "init": "FREQ_24MHZ",
             "key": "UPLLFSEL",
-            "label": "Short name for DEVCFG2_UPLLFSEL",
+            "label": "DEVCFG2_UPLLFSEL",
             "settings": [
                 {
                     "label": "USB PLL input is 24 MHz",
@@ -950,7 +950,7 @@
         {
             "init": "FRCDIV",
             "key": "FNOSC",
-            "label": "Short name for DEVCFG1_FNOSC",
+            "label": "DEVCFG1_FNOSC",
             "settings": [
                 {
                     "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
@@ -977,7 +977,7 @@
         {
             "init": "WIN_127_128",
             "key": "DMTINTV",
-            "label": "Short name for DEVCFG1_DMTINTV",
+            "label": "DEVCFG1_DMTINTV",
             "settings": [
                 {
                     "label": "Window/Interval value is zero",
@@ -1016,7 +1016,7 @@
         {
             "init": "ON",
             "key": "FSOSCEN",
-            "label": "Short name for DEVCFG1_FSOSCEN",
+            "label": "DEVCFG1_FSOSCEN",
             "settings": [
                 {
                     "label": "Disable Secondary Oscillator",
@@ -1031,7 +1031,7 @@
         {
             "init": "ON",
             "key": "IESO",
-            "label": "Short name for DEVCFG1_IESO",
+            "label": "DEVCFG1_IESO",
             "settings": [
                 {
                     "label": "Disabled",
@@ -1046,7 +1046,7 @@
         {
             "init": "OFF",
             "key": "POSCMOD",
-            "label": "Short name for DEVCFG1_POSCMOD",
+            "label": "DEVCFG1_POSCMOD",
             "settings": [
                 {
                     "label": "External clock mode",
@@ -1065,7 +1065,7 @@
         {
             "init": "OFF",
             "key": "OSCIOFNC",
-            "label": "Short name for DEVCFG1_OSCIOFNC",
+            "label": "DEVCFG1_OSCIOFNC",
             "settings": [
                 {
                     "label": "Disabled",
@@ -1080,7 +1080,7 @@
         {
             "init": "CSECME",
             "key": "FCKSM",
-            "label": "Short name for DEVCFG1_FCKSM",
+            "label": "DEVCFG1_FCKSM",
             "settings": [
                 {
                     "label": "Clock Switch Disabled, FSCM Disabled",
@@ -1103,7 +1103,7 @@
         {
             "init": "PS1",
             "key": "WDTPS",
-            "label": "Short name for DEVCFG1_WDTPS",
+            "label": "DEVCFG1_WDTPS",
             "settings": [
                 {
                     "label": "1:1",
@@ -1194,7 +1194,7 @@
         {
             "init": "STOP",
             "key": "WDTSPGM",
-            "label": "Short name for DEVCFG1_WDTSPGM",
+            "label": "DEVCFG1_WDTSPGM",
             "settings": [
                 {
                     "label": "WDT runs during Flash programming",
@@ -1209,7 +1209,7 @@
         {
             "init": "NORMAL",
             "key": "WINDIS",
-            "label": "Short name for DEVCFG1_WINDIS",
+            "label": "DEVCFG1_WINDIS",
             "settings": [
                 {
                     "label": "Watchdog Timer is in non-Window mode",
@@ -1224,7 +1224,7 @@
         {
             "init": "ON",
             "key": "FWDTEN",
-            "label": "Short name for DEVCFG1_FWDTEN",
+            "label": "DEVCFG1_FWDTEN",
             "settings": [
                 {
                     "label": "WDT Disabled",
@@ -1239,7 +1239,7 @@
         {
             "init": "WINSZ_25",
             "key": "FWDTWINSZ",
-            "label": "Short name for DEVCFG1_FWDTWINSZ",
+            "label": "DEVCFG1_FWDTWINSZ",
             "settings": [
                 {
                     "label": "Window size is 25%",
@@ -1262,7 +1262,7 @@
         {
             "init": "DMT8",
             "key": "DMTCNT",
-            "label": "Short name for DEVCFG1_DMTCNT",
+            "label": "DEVCFG1_DMTCNT",
             "settings": [
                 {
                     "label": "2^8 (256)",
@@ -1365,7 +1365,7 @@
         {
             "init": "ON",
             "key": "FDMTEN",
-            "label": "Short name for DEVCFG1_FDMTEN",
+            "label": "DEVCFG1_FDMTEN",
             "settings": [
                 {
                     "label": "Deadman Timer is enabled",
@@ -1380,7 +1380,7 @@
         {
             "init": "OFF",
             "key": "DEBUG",
-            "label": "Short name for DEVCFG0_DEBUG",
+            "label": "DEVCFG0_DEBUG",
             "settings": [
                 {
                     "label": "Debugger is enabled",
@@ -1395,7 +1395,7 @@
         {
             "init": "ON",
             "key": "JTAGEN",
-            "label": "Short name for DEVCFG0_JTAGEN",
+            "label": "DEVCFG0_JTAGEN",
             "settings": [
                 {
                     "label": "JTAG Port Enabled",
@@ -1410,7 +1410,7 @@
         {
             "init": "ICS_PGx1",
             "key": "ICESEL",
-            "label": "Short name for DEVCFG0_ICESEL",
+            "label": "DEVCFG0_ICESEL",
             "settings": [
                 {
                     "label": "Communicate on PGEC1/PGED1",
@@ -1425,7 +1425,7 @@
         {
             "init": "ON",
             "key": "TRCEN",
-            "label": "Short name for DEVCFG0_TRCEN",
+            "label": "DEVCFG0_TRCEN",
             "settings": [
                 {
                     "label": "Trace features in the CPU are enabled",
@@ -1440,7 +1440,7 @@
         {
             "init": "MIPS32",
             "key": "BOOTISA",
-            "label": "Short name for DEVCFG0_BOOTISA",
+            "label": "DEVCFG0_BOOTISA",
             "settings": [
                 {
                     "label": "Boot code and Exception code is MIPS32",
@@ -1455,7 +1455,7 @@
         {
             "init": "OFF_UNLOCKED",
             "key": "FECCCON",
-            "label": "Short name for DEVCFG0_FECCCON",
+            "label": "DEVCFG0_FECCCON",
             "settings": [
                 {
                     "label": "Flash ECC is enabled (ECCCON bits are locked)",
@@ -1478,7 +1478,7 @@
         {
             "init": "OFF",
             "key": "FSLEEP",
-            "label": "Short name for DEVCFG0_FSLEEP",
+            "label": "DEVCFG0_FSLEEP",
             "settings": [
                 {
                     "label": "Flash power down is controlled by the VREGS bit",
@@ -1493,7 +1493,7 @@
         {
             "init": "PG_ALL",
             "key": "DBGPER",
-            "label": "Short name for DEVCFG0_DBGPER",
+            "label": "DEVCFG0_DBGPER",
             "settings": [
                 {
                     "label": "Allow CPU access to Permission Group 2 permission regions",
@@ -1532,7 +1532,7 @@
         {
             "init": "MCLR_NORM",
             "key": "SMCLR",
-            "label": "Short name for DEVCFG0_SMCLR",
+            "label": "DEVCFG0_SMCLR",
             "settings": [
                 {
                     "label": "MCLR pin generates an emulated POR Reset",
@@ -1547,7 +1547,7 @@
         {
             "init": "GAIN_LEVEL_3",
             "key": "SOSCGAIN",
-            "label": "Short name for DEVCFG0_SOSCGAIN",
+            "label": "DEVCFG0_SOSCGAIN",
             "settings": [
                 {
                     "label": "2x gain setting",
@@ -1586,7 +1586,7 @@
         {
             "init": "ON",
             "key": "SOSCBOOST",
-            "label": "Short name for DEVCFG0_SOSCBOOST",
+            "label": "DEVCFG0_SOSCBOOST",
             "settings": [
                 {
                     "label": "Boost the kick start of the oscillator",
@@ -1601,7 +1601,7 @@
         {
             "init": "GAIN_LEVEL_3",
             "key": "POSCGAIN",
-            "label": "Short name for DEVCFG0_POSCGAIN",
+            "label": "DEVCFG0_POSCGAIN",
             "settings": [
                 {
                     "label": "2x gain setting",
@@ -1640,7 +1640,7 @@
         {
             "init": "ON",
             "key": "POSCBOOST",
-            "label": "Short name for DEVCFG0_POSCBOOST",
+            "label": "DEVCFG0_POSCBOOST",
             "settings": [
                 {
                     "label": "Boost the kick start of the oscillator",
@@ -1655,7 +1655,7 @@
         {
             "init": "GAIN_G3",
             "key": "POSCFGAIN",
-            "label": "Short name for DEVCFG0_POSCFGAIN",
+            "label": "DEVCFG0_POSCFGAIN",
             "settings": [
                 {
                     "label": "Gain is G3",
@@ -1678,7 +1678,7 @@
         {
             "init": "CRYSTAL_12MHZ",
             "key": "POSCTYPE",
-            "label": "Short name for DEVCFG0_POSCTYPE",
+            "label": "DEVCFG0_POSCTYPE",
             "settings": [
                 {
                     "label": "12 MHz Crystal used as Primary Oscillator",
@@ -1701,7 +1701,7 @@
         {
             "init": "RANGE_1X",
             "key": "POSCAGCRNG",
-            "label": "Short name for DEVCFG0_POSCAGCRNG",
+            "label": "DEVCFG0_POSCAGCRNG",
             "settings": [
                 {
                     "label": "Range 1x",
@@ -1716,7 +1716,7 @@
         {
             "init": "ON",
             "key": "POSCAGC",
-            "label": "Short name for DEVCFG0_POSCAGC",
+            "label": "DEVCFG0_POSCAGC",
             "settings": [
                 {
                     "label": "POSC Auto Gain Control Enabled",
@@ -1731,7 +1731,7 @@
         {
             "init": "NORMAL",
             "key": "EJTAGBEN",
-            "label": "Short name for DEVCFG0_EJTAGBEN",
+            "label": "DEVCFG0_EJTAGBEN",
             "settings": [
                 {
                     "label": "Reduced EJTAG functionality",
@@ -1746,7 +1746,7 @@
         {
             "init": "OFF",
             "key": "CP",
-            "label": "Short name for DEVCP0_CP",
+            "label": "DEVCP0_CP",
             "settings": [
                 {
                     "label": "Protection Enabled",
