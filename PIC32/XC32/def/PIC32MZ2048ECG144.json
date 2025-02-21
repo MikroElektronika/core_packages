@@ -1274,6 +1274,6 @@
             ]
         }
     ],
-    "mcu": "PIC32MZ1024ECH124",
+    "mcu": "PIC32MZ2048ECG144",
     "clock": "1"
 }

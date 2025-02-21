@@ -1,6 +1,97 @@
 {
     "config_words": [
         {
+            "init": "SPS1",
+            "key": "SWDTPS",
+            "label": "DEVCFG4_SWDTPS",
+            "settings": [
+                {
+                    "label": "1:1",
+                    "value": "SPS1"
+                },
+                {
+                    "label": "1:2",
+                    "value": "SPS2"
+                },
+                {
+                    "label": "1:4",
+                    "value": "SPS4"
+                },
+                {
+                    "label": "1:8",
+                    "value": "SPS8"
+                },
+                {
+                    "label": "1:16",
+                    "value": "SPS16"
+                },
+                {
+                    "label": "1:32",
+                    "value": "SPS32"
+                },
+                {
+                    "label": "1:64",
+                    "value": "SPS64"
+                },
+                {
+                    "label": "1:128",
+                    "value": "SPS128"
+                },
+                {
+                    "label": "1:256",
+                    "value": "SPS256"
+                },
+                {
+                    "label": "1:512",
+                    "value": "SPS512"
+                },
+                {
+                    "label": "1:1024",
+                    "value": "SPS1024"
+                },
+                {
+                    "label": "1:2048",
+                    "value": "SPS2048"
+                },
+                {
+                    "label": "1:4096",
+                    "value": "SPS4096"
+                },
+                {
+                    "label": "1:8192",
+                    "value": "SPS8192"
+                },
+                {
+                    "label": "1:16384",
+                    "value": "SPS16384"
+                },
+                {
+                    "label": "1:32768",
+                    "value": "SPS32768"
+                },
+                {
+                    "label": "1:65536",
+                    "value": "SPS65536"
+                },
+                {
+                    "label": "1:131072",
+                    "value": "SPS131072"
+                },
+                {
+                    "label": "1:262144",
+                    "value": "SPS262144"
+                },
+                {
+                    "label": "1:524288",
+                    "value": "SPS524288"
+                },
+                {
+                    "label": "1:1048576",
+                    "value": "SPS1048576"
+                }
+            ]
+        },
+        {
             "init": "DIV_8",
             "key": "FPLLIDIV",
             "label": "DEVCFG2_FPLLIDIV",
@@ -632,6 +723,216 @@
             ]
         },
         {
+            "init": "ON",
+            "key": "VBATBOREN",
+            "label": "DEVCFG2_VBATBOREN",
+            "settings": [
+                {
+                    "label": "Disable ZPBOR during VBAT Mode",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enable ZPBOR during VBAT Mode",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSBOREN",
+            "label": "DEVCFG2_DSBOREN",
+            "settings": [
+                {
+                    "label": "Disable ZPBOR during Deep Sleep Mode",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enable ZPBOR during Deep Sleep Mode",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "DSPS32",
+            "key": "DSWDTPS",
+            "label": "DEVCFG2_DSWDTPS",
+            "settings": [
+                {
+                    "label": "1:2^5",
+                    "value": "DSPS1"
+                },
+                {
+                    "label": "1:2^6",
+                    "value": "DSPS2"
+                },
+                {
+                    "label": "1:2^7",
+                    "value": "DSPS3"
+                },
+                {
+                    "label": "1:2^8",
+                    "value": "DSPS4"
+                },
+                {
+                    "label": "1:2^9",
+                    "value": "DSPS5"
+                },
+                {
+                    "label": "1:2^10",
+                    "value": "DSPS6"
+                },
+                {
+                    "label": "1:2^11",
+                    "value": "DSPS7"
+                },
+                {
+                    "label": "1:2^12",
+                    "value": "DSPS8"
+                },
+                {
+                    "label": "1:2^13",
+                    "value": "DSPS9"
+                },
+                {
+                    "label": "1:2^14",
+                    "value": "DSPS10"
+                },
+                {
+                    "label": "1:2^15",
+                    "value": "DSPS11"
+                },
+                {
+                    "label": "1:2^16",
+                    "value": "DSPS12"
+                },
+                {
+                    "label": "1:2^17",
+                    "value": "DSPS13"
+                },
+                {
+                    "label": "1:2^18",
+                    "value": "DSPS14"
+                },
+                {
+                    "label": "1:2^19",
+                    "value": "DSPS15"
+                },
+                {
+                    "label": "1:2^20",
+                    "value": "DSPS16"
+                },
+                {
+                    "label": "1:2^21",
+                    "value": "DSPS17"
+                },
+                {
+                    "label": "1:2^22",
+                    "value": "DSPS18"
+                },
+                {
+                    "label": "1:2^23",
+                    "value": "DSPS19"
+                },
+                {
+                    "label": "1:2^24",
+                    "value": "DSPS20"
+                },
+                {
+                    "label": "1:2^25",
+                    "value": "DSPS21"
+                },
+                {
+                    "label": "1:2^26",
+                    "value": "DSPS22"
+                },
+                {
+                    "label": "1:2^27",
+                    "value": "DSPS23"
+                },
+                {
+                    "label": "1:2^28",
+                    "value": "DSPS24"
+                },
+                {
+                    "label": "1:2^29",
+                    "value": "DSPS25"
+                },
+                {
+                    "label": "1:2^30",
+                    "value": "DSPS26"
+                },
+                {
+                    "label": "1:2^31",
+                    "value": "DSPS27"
+                },
+                {
+                    "label": "1:2^32",
+                    "value": "DSPS28"
+                },
+                {
+                    "label": "1:2^33",
+                    "value": "DSPS29"
+                },
+                {
+                    "label": "1:2^34",
+                    "value": "DSPS30"
+                },
+                {
+                    "label": "1:2^35",
+                    "value": "DSPS31"
+                },
+                {
+                    "label": "1:2^36",
+                    "value": "DSPS32"
+                }
+            ]
+        },
+        {
+            "init": "LPRC",
+            "key": "DSWDTOSC",
+            "label": "DEVCFG2_DSWDTOSC",
+            "settings": [
+                {
+                    "label": "Select SOSC as DSWDT Reference Clock",
+                    "value": "SOSC"
+                },
+                {
+                    "label": "Select LPRC as DSWDT Reference clock",
+                    "value": "LPRC"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "DSWDTEN",
+            "label": "DEVCFG2_DSWDTEN",
+            "settings": [
+                {
+                    "label": "Disable DSWDT during Deep Sleep Mode",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enable DSWDT during Deep Sleep Mode",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "FDSEN",
+            "label": "DEVCFG2_FDSEN",
+            "settings": [
+                {
+                    "label": "Disable DSEN bit in DSCON",
+                    "value": "OFF"
+                },
+                {
+                    "label": "Enable DSEN bit in DSCON",
+                    "value": "ON"
+                }
+            ]
+        },
+        {
             "init": "FREQ_24MHZ",
             "key": "UPLLFSEL",
             "label": "DEVCFG2_UPLLFSEL",
@@ -643,21 +944,6 @@
                 {
                     "label": "USB PLL input is 12 MHz",
                     "value": "FREQ_12MHZ"
-                }
-            ]
-        },
-        {
-            "init": "ON",
-            "key": "UPLLEN",
-            "label": "DEVCFG2_UPLLEN",
-            "settings": [
-                {
-                    "label": "USB PLL is enabled",
-                    "value": "ON"
-                },
-                {
-                    "label": "USB PLL is disabled",
-                    "value": "OFF"
                 }
             ]
         },
@@ -733,11 +1019,11 @@
             "label": "DEVCFG1_FSOSCEN",
             "settings": [
                 {
-                    "label": "Disable SOSC",
+                    "label": "Disable Secondary Oscillator",
                     "value": "OFF"
                 },
                 {
-                    "label": "Enable SOSC",
+                    "label": "Enable Secondary Oscillator",
                     "value": "ON"
                 }
             ]
@@ -1195,12 +1481,12 @@
             "label": "DEVCFG0_FSLEEP",
             "settings": [
                 {
-                    "label": "Flash is powered down when the device is in Sleep mode",
-                    "value": "OFF"
-                },
-                {
                     "label": "Flash power down is controlled by the VREGS bit",
                     "value": "VREGS"
+                },
+                {
+                    "label": "Flash is powered down when the device is in Sleep mode",
+                    "value": "OFF"
                 }
             ]
         },
@@ -1244,17 +1530,216 @@
             ]
         },
         {
+            "init": "MCLR_NORM",
+            "key": "SMCLR",
+            "label": "DEVCFG0_SMCLR",
+            "settings": [
+                {
+                    "label": "MCLR pin generates an emulated POR Reset",
+                    "value": "MCLR_POR"
+                },
+                {
+                    "label": "MCLR pin generates a normal system Reset",
+                    "value": "MCLR_NORM"
+                }
+            ]
+        },
+        {
+            "init": "GAIN_LEVEL_3",
+            "key": "SOSCGAIN",
+            "label": "DEVCFG0_SOSCGAIN",
+            "settings": [
+                {
+                    "label": "2x gain setting",
+                    "value": "GAIN_2X"
+                },
+                {
+                    "label": "1.5x gain setting",
+                    "value": "GAIN_1_5X"
+                },
+                {
+                    "label": "0.5x gain setting",
+                    "value": "GAIN_0_5X"
+                },
+                {
+                    "label": "1x gain setting",
+                    "value": "GAIN_1X"
+                },
+                {
+                    "label": "Gain level 3 (Highest)",
+                    "value": "GAIN_LEVEL_3"
+                },
+                {
+                    "label": "Gain level 2",
+                    "value": "GAIN_LEVEL_2"
+                },
+                {
+                    "label": "Gain level 1",
+                    "value": "GAIN_LEVEL_1"
+                },
+                {
+                    "label": "Gain level 0 (Lowest)",
+                    "value": "GAIN_LEVEL_0"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "SOSCBOOST",
+            "label": "DEVCFG0_SOSCBOOST",
+            "settings": [
+                {
+                    "label": "Boost the kick start of the oscillator",
+                    "value": "ON"
+                },
+                {
+                    "label": "Normal start of the oscillator",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "GAIN_LEVEL_3",
+            "key": "POSCGAIN",
+            "label": "DEVCFG0_POSCGAIN",
+            "settings": [
+                {
+                    "label": "2x gain setting",
+                    "value": "GAIN_2X"
+                },
+                {
+                    "label": "1.5x gain setting",
+                    "value": "GAIN_1_5X"
+                },
+                {
+                    "label": "0.5x gain setting",
+                    "value": "GAIN_0_5X"
+                },
+                {
+                    "label": "1x gain setting",
+                    "value": "GAIN_1X"
+                },
+                {
+                    "label": "Gain level 3 (Highest)",
+                    "value": "GAIN_LEVEL_3"
+                },
+                {
+                    "label": "Gain level 2",
+                    "value": "GAIN_LEVEL_2"
+                },
+                {
+                    "label": "Gain level 1",
+                    "value": "GAIN_LEVEL_1"
+                },
+                {
+                    "label": "Gain level 0 (Lowest)",
+                    "value": "GAIN_LEVEL_0"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "POSCBOOST",
+            "label": "DEVCFG0_POSCBOOST",
+            "settings": [
+                {
+                    "label": "Boost the kick start of the oscillator",
+                    "value": "ON"
+                },
+                {
+                    "label": "Normal start of the oscillator",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
+            "init": "GAIN_G3",
+            "key": "POSCFGAIN",
+            "label": "DEVCFG0_POSCFGAIN",
+            "settings": [
+                {
+                    "label": "Gain is G3",
+                    "value": "GAIN_G3"
+                },
+                {
+                    "label": "Gain is G2",
+                    "value": "GAIN_G2"
+                },
+                {
+                    "label": "Gain is G1",
+                    "value": "GAIN_G1"
+                },
+                {
+                    "label": "Gain is G0",
+                    "value": "GAIN_G0"
+                }
+            ]
+        },
+        {
+            "init": "CRYSTAL_12MHZ",
+            "key": "POSCTYPE",
+            "label": "DEVCFG0_POSCTYPE",
+            "settings": [
+                {
+                    "label": "12 MHz Crystal used as Primary Oscillator",
+                    "value": "CRYSTAL_12MHZ"
+                },
+                {
+                    "label": "24 MHz Crystal used as Primary Oscillator",
+                    "value": "CRYSTAL_24MHZ"
+                },
+                {
+                    "label": "Resonator used as Primary Oscillator",
+                    "value": "RESONATOR"
+                },
+                {
+                    "label": "8 MHz Crystal used as Primary Oscillator",
+                    "value": "CRYSTAL_8MHZ"
+                }
+            ]
+        },
+        {
+            "init": "RANGE_1X",
+            "key": "POSCAGCRNG",
+            "label": "DEVCFG0_POSCAGCRNG",
+            "settings": [
+                {
+                    "label": "Range 1x",
+                    "value": "RANGE_1X"
+                },
+                {
+                    "label": "Range 5x",
+                    "value": "RANGE_5X"
+                }
+            ]
+        },
+        {
+            "init": "ON",
+            "key": "POSCAGC",
+            "label": "DEVCFG0_POSCAGC",
+            "settings": [
+                {
+                    "label": "POSC Auto Gain Control Enabled",
+                    "value": "ON"
+                },
+                {
+                    "label": "POSC Auto Gain Control Disabled/Manual Gain Control Enabled",
+                    "value": "OFF"
+                }
+            ]
+        },
+        {
             "init": "NORMAL",
             "key": "EJTAGBEN",
             "label": "DEVCFG0_EJTAGBEN",
             "settings": [
                 {
-                    "label": "Normal EJTAG functionality",
-                    "value": "NORMAL"
-                },
-                {
                     "label": "Reduced EJTAG functionality",
                     "value": "REDUCED"
+                },
+                {
+                    "label": "Normal EJTAG functionality",
+                    "value": "NORMAL"
                 }
             ]
         },
@@ -1274,6 +1759,6 @@
             ]
         }
     ],
-    "mcu": "PIC32MZ1024ECH124",
+    "mcu": "PIC32MZ1025DAR176",
     "clock": "1"
 }
