@@ -1,0 +1,18 @@
+{
+    "def_file": "PIC32MZ1064DAA176.json",
+    "family_uid": "PIC32MZ",
+    "flash": "1024",
+    "icon": "images/mcu/microchip.png",
+    "max_speed": "200.000",
+    "name": "PIC32MZ1064DAA176",
+    "ram": "655360",
+    "sdk_config": "{\"MCU_NAME\":\"PIC32MZ1064DAA176\",\"CORE_NAME\":\"MICROAPTIV\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "PIC32MZ1064DAA176",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"mchp_xc32\": \"pic32_xc32_pic32mzx064daa\"}"
+}
