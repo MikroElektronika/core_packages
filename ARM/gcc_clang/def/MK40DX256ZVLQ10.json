@@ -1,0 +1,133 @@
+{
+    "config_registers": [
+        {
+            "address": "40064000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "CLKS",
+                    "label": "Clock Source Select",
+                    "mask": "000000C0",
+                    "settings": [
+                        {
+                            "label": "Output of FLL or PLL is selected (depends on PLLS control bit)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Internal reference clock is selected",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "External reference clock is selected",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Reserved, defaults to 00",
+                            "value": "000000C0"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FRDIV",
+                    "label": "FLL External Reference Divider",
+                    "mask": "00000038",
+                    "settings": [
+                        {
+                            "label": "If RANGE = 0 , Divide Factor is 1; for all other RANGE values, Divide Factor is 32",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "If RANGE = 0 , Divide Factor is 2; for all other RANGE values, Divide Factor is 64",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "If RANGE = 0 , Divide Factor is 4; for all other RANGE values, Divide Factor is 128",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "If RANGE = 0 , Divide Factor is 8; for all other RANGE values, Divide Factor is 256",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "If RANGE = 0 , Divide Factor is 16; for all other RANGE values, Divide Factor is 512",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "If RANGE = 0 , Divide Factor is 32; for all other RANGE values, Divide Factor is 1024",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "If RANGE = 0 , Divide Factor is 64; for all other RANGE values, Divide Factor is Reserved",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "If RANGE = 0 , Divide Factor is 128; for all other RANGE values, Divide Factor is Reserved",
+                            "value": "00000038"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "IREFS",
+                    "label": "Internal Reference Select",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "External reference clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The slow internal reference clock is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "IRCLKEN",
+                    "label": "Internal Reference Clock Enable",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "MCGIRCLK inactive",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MCGIRCLK active",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "IREFSTEN",
+                    "label": "Internal Reference Stop Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Internal reference clock is disabled in Stop mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Internal reference clock is enabled in Stop mode if IRCLKEN is set or if MCG is in FEI, FBI, or BLPI modes before entering Stop mode",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "MCG_C1",
+            "unused": "FFFFFF00"
+        }
+    ],
+    "core": "M4",
+    "delay_src_path": "delays/m4/__lib_delays.c",
+    "mcu": "MK40DX256ZVLQ10",
+    "clock": "1"
+}
