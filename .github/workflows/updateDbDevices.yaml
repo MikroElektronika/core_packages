@@ -2,7 +2,7 @@ name: Remove/Update Devices in the Database
 
 on:
   repository_dispatch:
-    types: [trigger-workflow-release-mcu-sdk-support]
+    types: [trigger-workflow-update-database-devices]
   workflow_dispatch:
     inputs:
       select_index:

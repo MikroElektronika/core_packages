@@ -2,7 +2,7 @@ name: Update Latest Database From mikroSDK
 
 on:
   repository_dispatch:
-    types: [trigger-workflow-release-sdk]
+    types: [trigger-workflow-update-database-from-sdk]
 
 jobs:
   Update-Database-From-mikroSDK:
