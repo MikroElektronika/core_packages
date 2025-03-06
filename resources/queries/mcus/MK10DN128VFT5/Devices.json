@@ -1,7 +1,7 @@
 {
     "def_file": "MK10DN128VFT5.json",
     "family_uid": "KINETIS_K_SERIES",
-    "flash": "128",
+    "flash": "131072",
     "icon": "images/mcu/nxp.png",
     "max_speed": "50.000",
     "name": "MK10DN128VFT5",
