@@ -24,6 +24,15 @@ Support added for following hardware:
   + MK21DN512AVLK5
   + MK21DX128AVLK5
   + MK21DX256AVLK5
++ STM32H573_MRVZ_I MCU Support package for GCC & Clang
+  + STM32H573MI
+  + STM32H573RI
+  + STM32H573VI
+  + STM32H573ZI
++ STM32L010RB MCU Support package for GCC & Clang
+  + STM32L010RB
++ STM32L162VD-X MCU Support package for GCC & Clang
+  + STM32L162VD-X
 
 ---
 
