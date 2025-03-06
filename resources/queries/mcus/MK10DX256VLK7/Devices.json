@@ -1,7 +1,7 @@
 {
     "def_file": "MK10DX256VLK7.json",
     "family_uid": "KINETIS_K_SERIES",
-    "flash": "288",
+    "flash": "294912",
     "icon": "images/mcu/nxp.png",
     "max_speed": "72.000",
     "name": "MK10DX256VLK7",

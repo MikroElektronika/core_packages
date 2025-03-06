@@ -1,7 +1,7 @@
 {
     "def_file": "MK10DX64VFM5.json",
     "family_uid": "KINETIS_K_SERIES",
-    "flash": "96",
+    "flash": "98304",
     "icon": "images/mcu/nxp.png",
     "max_speed": "50.000",
     "name": "MK10DX64VFM5",
