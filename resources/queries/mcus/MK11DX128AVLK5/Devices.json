@@ -1,7 +1,7 @@
 {
     "def_file": "MK11DX128AVLK5.json",
     "family_uid": "KINETIS_K_SERIES",
-    "flash": "192",
+    "flash": "196608",
     "icon": "images/mcu/nxp.png",
     "max_speed": "50.000",
     "name": "MK11DX128AVLK5",
