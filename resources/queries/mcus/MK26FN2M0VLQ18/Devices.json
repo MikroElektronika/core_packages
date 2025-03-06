@@ -1,7 +1,7 @@
 {
     "def_file": "MK26FN2M0VLQ18.json",
     "family_uid": "KINETIS_K_SERIES",
-    "flash": "2048",
+    "flash": "2097152",
     "icon": "images/mcu/nxp.png",
     "max_speed": "180.000",
     "name": "MK26FN2M0VLQ18",

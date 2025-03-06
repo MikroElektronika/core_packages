@@ -1,7 +1,7 @@
 {
     "def_file": "MK28FN2M0AVMI15.json",
     "family_uid": "KINETIS_K_SERIES",
-    "flash": "2048",
+    "flash": "2097152",
     "icon": "images/mcu/nxp.png",
     "max_speed": "150.000",
     "name": "MK28FN2M0AVMI15",
