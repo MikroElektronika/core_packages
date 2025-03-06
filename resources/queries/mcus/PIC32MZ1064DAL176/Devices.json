@@ -1,7 +1,7 @@
 {
     "def_file": "PIC32MZ1064DAL176.json",
     "family_uid": "PIC32MZ",
-    "flash": "1024",
+    "flash": "1048576",
     "icon": "images/mcu/microchip.png",
     "max_speed": "200.000",
     "name": "PIC32MZ1064DAL176",
