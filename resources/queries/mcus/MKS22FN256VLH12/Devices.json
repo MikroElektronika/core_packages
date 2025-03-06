@@ -1,7 +1,7 @@
 {
     "def_file": "MKS22FN256VLH12.json",
     "family_uid": "KINETIS_S_SERIES",
-    "flash": "256",
+    "flash": "262144",
     "icon": "images/mcu/nxp.png",
     "max_speed": "120.000",
     "name": "MKS22FN256VLH12",
