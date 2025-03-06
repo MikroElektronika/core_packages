@@ -1,7 +1,7 @@
 {
     "def_file": "MK40DX128VMD10.json",
     "family_uid": "KINETIS_K_SERIES",
-    "flash": "512",
+    "flash": "524288",
     "icon": "images/mcu/nxp.png",
     "max_speed": "100.000",
     "name": "MK40DX128VMD10",
