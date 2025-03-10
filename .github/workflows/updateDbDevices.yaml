@@ -1,6 +1,8 @@
 name: Remove/Update Devices in the Database
 
 on:
+  repository_dispatch:
+    types: [trigger-workflow-update-database-devices]
   workflow_dispatch:
     inputs:
       select_index:
@@ -36,7 +38,7 @@ on:
 
 jobs:
   Update_Devices_in_Dev_Database:
-    if: ${{ github.event.inputs.select_index == 'Test' }}
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.select_index == 'Test' }}
     runs-on: ubuntu-latest
     steps:
       - name: Authorize Mikroe Actions App
@@ -79,8 +81,6 @@ jobs:
             git add necto_db_dev.db
             git commit -m "Updated necto dev database with latest merged release."
             git push
-            curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
-            --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
           else
             echo "No changes made to necto_db_dev.db";
           fi
@@ -95,7 +95,7 @@ jobs:
           python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} "True" "latest" "True" "False"
 
   Update_Devices_in_Live_Database:
-    if: ${{ github.event.inputs.select_index == 'Live' }}
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.select_index == 'Live' }}
     runs-on: ubuntu-latest
     steps:
       - name: Authorize Mikroe Actions App
@@ -152,3 +152,84 @@ jobs:
         run: |
           echo "Indexing database to LIVE."
           python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} "True" "latest" "True" "False"
+
+  Update_Devices_from_SDK:
+    if: ${{ github.event_name == 'repository_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authorize Mikroe Actions App
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.MIKROE_ACTIONS }}
+          private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements/shared.txt
+          pip install -r scripts/requirements/databases.txt
+          sudo apt-get install p7zip-full
+
+      - name: Extract payload version
+        id: mikrosdk_payload
+        run: |
+          echo "mcu_regex=${{ github.event.client_payload.mcu_regex }}" >> $GITHUB_OUTPUT
+          echo "index=${{ github.event.client_payload.index }}" >> $GITHUB_OUTPUT
+
+      - name: Upload new database asset
+        run: |
+          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ steps.mikrosdk_payload.outputs.index }} "Set sdk_support" "${{ steps.mikrosdk_payload.outputs.mcu_regex }}" "false" "false"
+
+      - name: Add GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Commit and Push Changes
+        run: |
+          if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
+            DB_NAME="necto_db.db"
+          else
+            DB_NAME="necto_db_dev.db"
+          fi
+          STATUS=$(git status --short "$DB_NAME")
+          if [ -z "$STATUS" ]; then
+            echo "No changes made to $DB_NAME";
+          else
+            echo "Updating with new $DB_NAME";
+            echo "test"
+            git pull
+            git add $DB_NAME
+            git commit -m "Updated $DB_NAME with latest merged release."
+            git push
+            if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
+              curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
+              --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
+            fi
+          fi
+
+      - name: Run Index Script
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+        run: |
+          if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Test" ]]; then
+            echo "Indexing database to TEST."
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} "True" "latest" "True" "False"
+          fi
+          if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
+            echo "Indexing database to LIVE."
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} "True" "latest" "True" "False"
+          fi
