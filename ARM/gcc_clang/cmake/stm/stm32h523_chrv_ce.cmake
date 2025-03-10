@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32H523CC$|^STM32H523RC$|^STM32H523CE$|^STM32H523HE$|^STM32H523VC$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/stm/doc_ds_199/init_clock.c)
+endif()
