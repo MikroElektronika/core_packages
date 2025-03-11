@@ -31,8 +31,6 @@ Support added for following hardware:
   + STM32H573ZI
 + STM32L010RB MCU Support package for GCC & Clang
   + STM32L010RB
-+ STM32L162VD-X MCU Support package for GCC & Clang
-  + STM32L162VD-X
 
 ---
 
