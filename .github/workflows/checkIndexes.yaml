@@ -28,7 +28,7 @@ on:
       - main  # This will trigger on every push (merge) to the 'main' branch
 
   schedule:
-    - cron: "0/30 7-16 * * 1-5"  # Every 30 minutes, between 07:00 AM and 04:59 PM, Monday through Friday
+    - cron: "0 7-16/2 * * 1-5"  # Every 2 hours, between 07:00 AM and 04:59 PM, Monday through Friday
 
 env:
   GLOBAL_REGEX: "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|avr|pic|preinit|riscv|schemas|unit_test_lib|.+[device|tool]_support$|^codegrip_pack"
