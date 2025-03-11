@@ -14,5 +14,5 @@
     "linker_flags": "",
     "tft_socket": "1",
     "sdk_support": "0",
-    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_stm32l162vd-x\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_stm32l162vd-x\"}"
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_stm32l162vd_x\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_stm32l162vd_x\"}"
 }
