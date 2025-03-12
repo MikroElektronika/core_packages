@@ -4,6 +4,10 @@
 #include "common.h"
 #include "mcu.h"
 
+#ifdef PREINIT_SUPPORTED
+#include "preinit.h"
+#endif
+
 #define CPU_APSR              (0)
 #define CPU_IAPSR             (1)
 #define CPU_EAPSR             (2)
@@ -198,4 +202,8 @@ void systemInit()
         ;
 
     systemEnableFPU();
+
+    #ifdef PREINIT_SUPPORTED
+    preinit();
+    #endif
 }
