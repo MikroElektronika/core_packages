@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^MK20.+64.+$")
+if(${MCU_NAME} MATCHES "^MK20DN64VFM5$|^MK20DN64VLH5$|^MK20DN64VMP5$|^MK20DX64VFM5$|^MK20DX64VLH5$|^MK20DX64VMP5$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/system_nxp_mk20xx_mk5xx_mk60xx.c)
