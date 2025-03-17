@@ -7,4 +7,3 @@ __pycache__
 **/*/necto_db.db
 tmp
 scripts/databases
-update_license_text.py
