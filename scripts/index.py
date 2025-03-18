@@ -490,7 +490,11 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             if previous_version != doc['version'] and True == doc['package_changed']:
                 print(f"\033[95mVersion for asset {name_without_extension} has been updated from {previous_version} to {doc['version']}")
             elif keep_previous_date:
-                print(f'\033[95mKept the release date for asset {doc['name']} as {doc['published_at']} with the {doc['version']} version. New hash is {doc['hash']}\033[0m')
+                if name_without_extension not in always_index:
+                    print(f'\033[95mKept the release date for asset {doc['name']} as {doc['published_at']} with the {doc['version']} version. New hash is {doc['hash']}\033[0m')
+                else:
+                    print(f'\033[95mUpdated hash for {doc['name']} to be {doc['hash']}\033[0m')
+
 
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)
