@@ -2,6 +2,11 @@ name: Re-Release Without Release Date Updates
 
 on:
   workflow_dispatch:
+    inputs:
+        tag_name:
+          type: string
+          description: Which release version to repack (v1.0.10 for example)
+          default: "v1.0.10"
   schedule:
     - cron: "0 0 1 1 *"  # First calendar day of every year (Every January 1-st)
 
@@ -50,16 +55,17 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
           ES_INDEX: ${{ secrets.ES_INDEX_LIVE }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
-        run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.release.tag_name }}
+        run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.tag_name }}
 
-      - name: Run Index Script
-        env:
-          ES_HOST: ${{ secrets.ES_HOST }}
-          ES_USER: ${{ secrets.ES_USER }}
-          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        run: |
-          echo "Indexing to Test first."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} False latest False False "--es_host" ${{ secrets.ES_HOST }} "--es_user" "${{ secrets.ES_USER }}" "--es_password" "${{ secrets.ES_PASSWORD }}" "--keep_previous_dates" "True"
-          echo "Indexing to Live next."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} False latest False False "--es_host" ${{ secrets.ES_HOST }} "--es_user" "${{ secrets.ES_USER }}" "--es_password" "${{ secrets.ES_PASSWORD }}" "--keep_previous_dates" "True"
-          fi
+      ## Left commented out for potential future use.
+      # - name: Run Index Script
+      #   env:
+      #     ES_HOST: ${{ secrets.ES_HOST }}
+      #     ES_USER: ${{ secrets.ES_USER }}
+      #     ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+      #   run: |
+      #     echo "Indexing to Test first."
+      #     python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} False latest False False "--es_host" ${{ secrets.ES_HOST }} "--es_user" "${{ secrets.ES_USER }}" "--es_password" "${{ secrets.ES_PASSWORD }}" "--keep_previous_dates" "True"
+      #     echo "Indexing to Live next."
+      #     python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} False latest False False "--es_host" ${{ secrets.ES_HOST }} "--es_user" "${{ secrets.ES_USER }}" "--es_password" "${{ secrets.ES_PASSWORD }}" "--keep_previous_dates" "True"
+      #     fi
