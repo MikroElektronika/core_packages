@@ -457,18 +457,17 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             if ('database' == package_name):
                 if doc:
                     doc['version'] = increase_version(db_version, part="patch")
-                    
-        # If requested to keep previous date, only update the hash value
-        if keep_previous_date:
-            for item in indexed_items:
-                if item['name'] == name_without_extension:
-                    hash_new = doc['hash']
-                    doc = item
-                    doc['hash'] = hash_new
-                    break
 
         # Index the document
         if doc:
+            # If requested to keep previous date, only update the hash value
+            if keep_previous_date:
+                for item in indexed_items:
+                    if item['name'] == name_without_extension:
+                        hash_new = doc['hash']
+                        doc = item
+                        doc['hash'] = hash_new
+                        break
             # Kibana v8 requires _type to be in body in order to have doc_type defined
             doc['_type'] = '_doc'
             if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)) or keep_previous_date:
