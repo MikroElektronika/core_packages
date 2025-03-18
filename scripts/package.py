@@ -518,24 +518,59 @@ def update_database(package_name, mcus, db_path):
 
     return
 
-async def upload_release_asset(session, token, repo, tag_name, asset_path):
-    """ Upload a release asset to GitHub """
-    print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
-    headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
-    release_url = f"https://api.github.com/repos/{repo}/releases/tags/{tag_name}"
-    async with session.get(release_url, headers=headers) as response:
-        response_data = await response.json()
-        release_id = response_data['id']
-    upload_url = f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={os.path.basename(asset_path)}"
-    async with aiofiles.open(asset_path, 'rb') as f:
-        data = await f.read()
-    async with session.post(upload_url, headers=headers, data=data) as response:
-        result = await response.json()
-    print(f"Upload completed for: {os.path.basename(asset_path)}.")
-    return result
+async def upload_release_asset(session, token, repo, release_id, asset_path, assets, delete_existing=True):
+    """Upload an asset to a specific GitHub release. If the asset exists, delete it first."""
+    asset_name = os.path.basename(asset_path)
+    url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets'
+    headers = {
+        'Authorization': f'token {token}',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    }
 
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths):
+    # Check if the asset already exists
+    for asset in assets:
+        if asset['name'] == asset_name:
+            # If the asset exists, delete it
+            delete_url = asset['url']
+            if delete_existing:
+                print(f'Deleting existing asset: {asset_name}')
+                delete_response = requests.delete(delete_url, headers=headers)
+                delete_response.raise_for_status()
+                assets.remove(asset)
+                print(f'\033[91mAsset deleted: {asset_name}\033[0m')
+            break
+
+    # Upload the new asset
+    url = f'https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={os.path.basename(asset_path)}'
+    headers = {
+        'Authorization': f'token {token}',
+        'Content-Type': 'application/x-7z-compressed',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    }
+    if delete_existing:
+        with open(asset_path, 'rb') as file:
+            print(f'Uploading new asset: {asset_name}')
+            response = requests.post(url, headers=headers, data=file)
+            response.raise_for_status()
+            print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
+            return response.json()
+    else:
+        asset_exists = False
+        for asset in assets:
+            if asset['name'] == asset_name:
+                asset_exists = True
+                break
+        if not asset_exists:
+            with open(asset_path, 'rb') as file:
+                print(f'Uploading new asset: {asset_name}')
+                response = requests.post(url, headers=headers, data=file)
+                response.raise_for_status()
+                print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
+                return response.json()
+
+async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths, assets):
     """ Package and upload an asset as a release to GitHub """
+    release_id = get_release_id(repo, tag_name, token)
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
     package_to_mcu_json = []
@@ -595,7 +630,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         # Upload archive
         upload_result= ""
         async with aiohttp.ClientSession() as session:
-            upload_tasks = [upload_release_asset(session, token, repo, tag_name, archive_path)]
+            upload_tasks = [upload_release_asset(session, token, repo, release_id, archive_path, assets)]
             results = await asyncio.gather(*upload_tasks, return_exceptions=True)
             for result in results:
                 upload_result = result
@@ -725,6 +760,40 @@ def get_version_based_on_hash(package_name, version, hash_value, current_metadat
     # If the package is not found or the hash doesn't match, return the provided version
     return version
 
+def get_release_id(repo, tag_name, token):
+    """Get the release ID for a given tag name."""
+    url = f'https://api.github.com/repos/{repo}/releases/tags/{tag_name}'
+    headers = {
+        'Authorization': f'token {token}',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    }
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    return response.json()['id']
+
+def get_all_release_assets(repo, release_id, token):
+    all_assets = []
+    headers = {
+        'Authorization': f'token {token}',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    }
+    page = 1
+    while True:
+        url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets?page={page}&per_page=30'
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        assets = response.json()
+
+        # If no more assets, break out of loop
+        if not assets:
+            break
+
+        all_assets += (asset for asset in assets)
+
+        page += 1
+
+    return all_assets
+
 def fetch_elasticsearch_data(index_name):
     # Elasticsearch instance used for indexing
     num_of_retries = 1
@@ -824,6 +893,10 @@ async def main(token, repo, tag_name):
     db_paths = ['necto_db.db', 'necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
+    
+    # Get the release ID used to upload assets
+    release_id = get_release_id(repo, tag_name, token)
+    assets = get_all_release_assets(repo, release_id, token)
 
     packages = []
     for arch in architectures:
@@ -844,7 +917,7 @@ async def main(token, repo, tag_name):
                         await package_asset(
                             source_directory, output_directory, arch, entry.name,
                             token, repo, tag_name,
-                            packages, current_metadata, db_paths
+                            packages, current_metadata, db_paths, assets
                         )
 
         except Exception as e:
@@ -852,12 +925,12 @@ async def main(token, repo, tag_name):
 
     for each_db in db_paths:
         async with aiohttp.ClientSession() as session:
-            await upload_release_asset(session, token, repo, tag_name, each_db)
+            await upload_release_asset(session, token, repo, release_id, each_db, assets)
 
     # Uncomment to get specific test database per package
     # for each_package in packages:
     #     async with aiohttp.ClientSession() as session:
-    #         await upload_release_asset(session, token, repo, tag_name, f"output/databases/{each_package['name']}.db")
+    #         await upload_release_asset(session, token, repo, release_id, f"output/databases/{each_package['name']}.db", assets)
 
     # Generate clocks.json
     input_directory = "./"
@@ -865,7 +938,7 @@ async def main(token, repo, tag_name):
     clocksGenerator = GenerateClocks(input_directory, output_file)
     clocksGenerator.generate()
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
+        upload_result = await upload_release_asset(session, token, repo, release_id, output_file, assets)
 
     # Generate schemas.json
     input_directory = "./"
@@ -875,7 +948,7 @@ async def main(token, repo, tag_name):
     schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
     schemaGenerator.generate()
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
+        upload_result = await upload_release_asset(session, token, repo, release_id, output_file, assets)
 
     # Generate images package
     archive_path = compress_directory_7z(os.path.join('./resources', 'images'), 'images.7z')
@@ -890,7 +963,7 @@ async def main(token, repo, tag_name):
         'resources'
     )
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
 
     # Generate preinit package
     archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
@@ -903,7 +976,7 @@ async def main(token, repo, tag_name):
         )
     )
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
 
     # Generate unit_test_lib package
     archive_path = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
@@ -916,7 +989,7 @@ async def main(token, repo, tag_name):
         )
     )
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
 
     # Generate mikroe_utils_common package
     archive_path = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
@@ -930,7 +1003,7 @@ async def main(token, repo, tag_name):
         'cmake'
     )
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
 
     # Generate database packages
     for each_db in db_paths:
@@ -949,20 +1022,20 @@ async def main(token, repo, tag_name):
             f'databases'
         )
         async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+            upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
         os.remove(os.path.join('./utils', f'database{package_suffix}.7z'))
 
     # Generate document files asset
     archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
     async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
+        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
 
     new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
     with open('metadata.json', 'w') as f:
         json.dump(new_metadata, f, indent=4)
 
     async with aiohttp.ClientSession() as session:
-        await upload_release_asset(session, token, repo, tag_name, "metadata.json")
+        await upload_release_asset(session, token, repo, release_id, "metadata.json", assets)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
