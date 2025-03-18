@@ -252,7 +252,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
         if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
             for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()].keys():
-                if re.search('Programmers',eachProgCheckKey) or re.search('programmers',eachProgCheckKey):
+                if re.search('Programmers',eachProgCheckKey, re.IGNORECASE):
                     if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey]:
                         splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey].split('/')
                         for eachProgDebug in splitProgsDebuggers:
@@ -329,7 +329,7 @@ def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
         if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
             for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()].keys():
-                if re.search('Debuggers',eachProgCheckKey):
+                if re.search('Debuggers',eachProgCheckKey, re.IGNORECASE):
                     if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey]:
                         splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey].split('/')
                         for eachProgDebug in splitProgsDebuggers:
@@ -342,7 +342,7 @@ def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                     database,
                                     'DebuggerToDevice',
                                     [
-                                        progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value].split('_')[0], ## debugger_uid
+                                        progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value], ## debugger_uid
                                         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value] ## device_uid
                                     ],
                                     DebuggerToDeviceColumns
@@ -350,7 +350,7 @@ def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                 print(
                                     "Added %s/%s to database DebuggerToDevice table.\n" %
                                     (
-                                        progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value].split('_')[0],
+                                        progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value],
                                         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
                                     )
                                 )
