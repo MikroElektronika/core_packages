@@ -197,6 +197,39 @@ def hash_directory_contents(directory):
     combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
     return combined_hash
 
+def fetch_current_indexed_packages(es : Elasticsearch, index_name):
+    # Search query to use
+    query_search = {
+        "size": 5000,
+        "query": {
+            "match_all": {}
+        }
+    }
+
+    # Search the base with provided query
+    num_of_retries = 1
+    while num_of_retries <= 10:
+        try:
+            response = es.search(index=index_name, body=query_search)
+            if not response['timed_out']:
+                break
+        except:
+            print("Executing search query - retry number %i" % num_of_retries)
+        num_of_retries += 1
+
+    all_packages = []
+    for eachHit in response['hits']['hits']:
+        if not 'name' in eachHit['_source']:
+            continue
+        if '_type' in eachHit:
+            if '_doc' == eachHit['_type']:
+                all_packages.append(eachHit['_source'])
+
+    # Sort all_packages alphabetically by the 'name' field
+    all_packages.sort(key=lambda x: x['name'])
+
+    return all_packages
+
 def increment_version(version):
     major, minor, patch = map(int, version.split('.'))
     return f"{major}.{minor}.{patch + 1}"
@@ -264,6 +297,8 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
 
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None, keep_previous_date=False):
+    # Get all currently indexed items
+    indexed_items = fetch_current_indexed_packages(es, index_name)
     # Iterate over each asset in the release and previous release
     metadata_content = []
     for each_release_details in release_details:
@@ -371,12 +406,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
                 current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
 
-                if keep_previous_date:
-                    publish_date = resolve_publish_date(es, index_name, name_without_extension)
-                    # Revert to current date if not updated correctly
-                    publish_date = published_at if not publish_date else publish_date
-                else:
-                    publish_date = published_at
+                publish_date = published_at
 
                 current_version = metadata_item['version']
                 if index_hash and current_hash:
@@ -388,9 +418,6 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                         else:
                             update_package = True
                             current_version = new_version
-
-                if keep_previous_date:
-                    current_version = metadata_item['version']
 
                 doc = {
                     'name': package_name,
@@ -430,12 +457,21 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             if ('database' == package_name):
                 if doc:
                     doc['version'] = increase_version(db_version, part="patch")
+                    
+        # If requested to keep previous date, only update the hash value
+        if keep_previous_date:
+            for item in indexed_items:
+                if item['name'] == name_without_extension:
+                    hash_new = doc['hash']
+                    doc = item
+                    doc['hash'] = hash_new
+                    break
 
         # Index the document
         if doc:
             # Kibana v8 requires _type to be in body in order to have doc_type defined
             doc['_type'] = '_doc'
-            if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)):
+            if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)) or keep_previous_date:
                 if update_database:
                     if name_without_extension in always_index:
                         resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
@@ -454,6 +490,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             # Print new version after indexing
             if previous_version != doc['version'] and True == doc['package_changed']:
                 print(f"\033[95mVersion for asset {name_without_extension} has been updated from {previous_version} to {doc['version']}")
+            elif keep_previous_date:
+                print(f'\033[95mKept the release date for asset {doc['name']} as {doc['published_at']} with the {doc['version']} version. New hash is {doc['hash']}\033[0m')
 
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)
