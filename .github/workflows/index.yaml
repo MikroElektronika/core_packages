@@ -45,6 +45,7 @@ jobs:
           sudo apt-get install p7zip-full
 
       - name: Update and upload new database
+        if: ${{ github.event.inputs.keep_dates == 'false' }}
         run: |
           if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
             echo "Updating Live DB."
