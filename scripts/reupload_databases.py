@@ -4,12 +4,13 @@ import os, re, sys, \
        asyncio, aiohttp, \
        subprocess, aiofiles, \
        requests, hashlib, \
-       xmltodict
+       xmltodict, time
 
 
 from pathlib import Path
 from packaging import version
 from urllib.parse import urlparse
+from collections import defaultdict
 from packaging.version import Version
 
 import xml.etree.ElementTree as ET
@@ -125,7 +126,7 @@ def get_highest_and_second_highest(versions):
     return highest_version, second_highest_version
 
 def find_and_convert_xml_files(base_path):
-    result = []
+    device_dict = defaultdict(list)
 
     for root, _, files in os.walk(base_path):
         if 'device_support.xml' in files:
@@ -134,29 +135,23 @@ def find_and_convert_xml_files(base_path):
             try:
                 tree = ET.parse(xml_path)
                 root_element = tree.getroot()
-                json_data = extract_devices(root_element, root_folder)
-                result.extend(json_data)
+                extract_devices(root_element, root_folder, device_dict)
             except ET.ParseError as e:
                 print(f"Error parsing {xml_path}: {e}")
 
-    return result
+    return dict(device_dict)
 
-def extract_devices(root, root_folder, namespace="{http://crownking/mplab}"):
-    devices = []
-
+def extract_devices(root, root_folder, device_dict, namespace="{http://crownking/mplab}"):
     for family in root.findall(f"{namespace}family"):
         for device in family.findall(f"{namespace}device"):
             device_name = device.attrib.get(f"{{http://crownking/mplab}}name", "Unknown")
             support = device.find(f"{namespace}support")
             support_attributes = support.attrib if support is not None else {}
 
-            devices.append({
-                "device_name": device_name,
-                "support": support_attributes,
-                "root_folder": root_folder
+            device_dict[device_name].append({
+                "root_folder": root_folder,
+                "support": support_attributes
             })
-
-    return devices
 
 def filter_releases_by_version(json_data):
     def get_highest_version(versions):
@@ -1223,8 +1218,12 @@ async def main(
                     eachDb, ['device_support_package'], 'ProgrammerToDevice', ['Text'], ['NoDefault']
                 )
                 ## Add all tools found in microchip index file to programmers table
+                counter = 1
                 for prog_item in converted_data:
-                    print(f"Inserting {prog_item['uid']} into Programmers table")
+                    print("\n%sProg item number %s/%s : %s" % (utility.Colors.OKGREEN, counter, len(converted_data), prog_item['display_name']))
+                    time.sleep(3)
+                    counter += 1
+                    print("%sInserting %s into Programmers table" % (utility.Colors.OKCYAN, prog_item['uid']))
                     dfpsMap = json.loads(prog_item['dfps'])
                     insertIntoTable(
                         eachDb,
@@ -1257,16 +1256,23 @@ async def main(
                     ## Add MCU to Programmer mapping found in microchip index file
                     missingMcuDfp = []
                     for mcu in prog_item['mcus']:
+
+                        ## DebuggerToDevice Section
                         has_debug = False
-                        for element in json_data_list:
-                            if element['device_name'].lower() == mcu.lower():
-                                if re.search(prog_item['uid'], element['root_folder'], re.IGNORECASE):
-                                    for each_support in element['support']:
+                        element_found = False
+                        if mcu in json_data_list:
+                            for each_sub_element in json_data_list[mcu]:
+                                if re.search(prog_item['uid'], each_sub_element['root_folder'], re.IGNORECASE):
+                                    for each_support in each_sub_element['support']:
                                         if each_support.endswith('d'):
-                                            if element['support'][each_support].lower() != 'no':
+                                            element_found = True
+                                            if each_sub_element['support'][each_support].lower() != 'no':
                                                 has_debug = True
                                                 break
+                                if element_found:
                                     break
+                        ## EOF DebuggerToDevice Section
+
                         print(f"Inserting {mcu.upper()}:{prog_item['uid']} into ProgrammerToDevice table")
                         if mcu in dfpsMap:
                             exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu.upper()}.json\"")
@@ -1297,7 +1303,7 @@ async def main(
                                         )
                         else:
                             missingMcuDfp.append(mcu)
-                    print(f"Following MCUs do not have DFP: {missingMcuDfp}")
+                    print("%sFollowing MCUs do not have DFP: %s" % (utility.Colors.WARNING, missingMcuDfp))
 
     ## Step 12 - add legacy SDK support for Boards and Cards that should have it
     if not mcus_only:
