@@ -3,9 +3,16 @@ import os, re, sys, \
        sqlite3, json, \
        asyncio, aiohttp, \
        subprocess, aiofiles, \
-       requests, hashlib
+       requests, hashlib, \
+       xmltodict
+
+
 from pathlib import Path
 from packaging import version
+from urllib.parse import urlparse
+from packaging.version import Version
+
+import xml.etree.ElementTree as ET
 
 ## Import utility modules
 ## Append to system path
@@ -116,6 +123,80 @@ def get_highest_and_second_highest(versions):
     second_highest_version = str(sorted_versions[1]) if len(sorted_versions) > 1 else None
 
     return highest_version, second_highest_version
+
+def find_and_convert_xml_files(base_path):
+    result = []
+
+    for root, _, files in os.walk(base_path):
+        if 'device_support.xml' in files:
+            xml_path = os.path.join(root, 'device_support.xml')
+            root_folder = os.path.basename(root)  # Get the root folder name
+            try:
+                tree = ET.parse(xml_path)
+                root_element = tree.getroot()
+                json_data = extract_devices(root_element, root_folder)
+                result.extend(json_data)
+            except ET.ParseError as e:
+                print(f"Error parsing {xml_path}: {e}")
+
+    return result
+
+def extract_devices(root, root_folder, namespace="{http://crownking/mplab}"):
+    devices = []
+
+    for family in root.findall(f"{namespace}family"):
+        for device in family.findall(f"{namespace}device"):
+            device_name = device.attrib.get(f"{{http://crownking/mplab}}name", "Unknown")
+            support = device.find(f"{namespace}support")
+            support_attributes = support.attrib if support is not None else {}
+
+            devices.append({
+                "device_name": device_name,
+                "support": support_attributes,
+                "root_folder": root_folder
+            })
+
+    return devices
+
+def filter_releases_by_version(json_data):
+    def get_highest_version(versions):
+        return max(versions, key=Version)
+
+    def fetch_latest_release(releases, version):
+        if isinstance(releases, (list, tuple)):
+            for release in releases:
+                if release['@version'] == version:
+                    return release['atmel:devices']['atmel:device']
+        else:
+            return releases['atmel:devices']['atmel:device']
+
+    # Extract the pdsc items from the JSON data
+    pdsc_items = json_data.get('idx', {}).get('pdsc', [])
+
+    # Then filter out only the TP packs
+    dfp_tp_packs = [pdsc_item for pdsc_item in pdsc_items if re.search('TP\.pdsc', pdsc_item['@name'])]
+
+    # Iterate through each pdsc item
+    dfp_tp_link_list = []
+    for dfp_tp_pack in dfp_tp_packs:
+        releases = dfp_tp_pack.get('atmel:releases', {}).get('atmel:release', [])
+        if isinstance(releases, (list, tuple)):
+            max_version = get_highest_version([release['@version'] for release in releases])
+        else:
+            max_version = releases['@version']
+
+        if '@version' in releases:
+            dfp_tp_link_list.append(f'https://{dfp_tp_pack['@url']}/{utility.drop_extension(dfp_tp_pack['@name'])}.{dfp_tp_pack['@version']}.atpack')
+        else:
+            for release in releases:
+                if release['@version'] == max_version:
+                    dfp_tp_link_list.append(f'https://{dfp_tp_pack['@url']}/{utility.drop_extension(dfp_tp_pack['@name'])}.{dfp_tp_pack['@version']}.atpack')
+
+    return dfp_tp_link_list
+
+def fetch_latest_package_links(xml_content):
+    # Form download links to latest packages
+    return filter_releases_by_version(xml_content)
 
 ## Download databases or fetch from disk
 def downloadDb(downloadLink, overwrite=True):
@@ -1111,7 +1192,27 @@ async def main(
         converted_data, item_list_unused = MCHP.convert_idx_to_json(xml_content)
 
         programmersColumns = 'uid,hidden,name,icon,installed,description,installer_package'
-        progToDeviceColumns = 'programer_uid,device_uid, device_support_package'
+        debuggersColumns = 'uid,hidden,name,icon,description'
+        progToDeviceColumns = 'programer_uid,device_uid,device_support_package'
+        debuggerToDeviceColumns = 'debugger_uid,device_uid'
+
+        ## Fetch all DFP TP packs from Microchips website
+        dfp_links = fetch_latest_package_links(xmltodict.parse(xml_content))
+        dfp_file_path = os.path.join(os.path.dirname(__file__), 'tmp/dfp_packs')
+        os.makedirs(dfp_file_path, exist_ok=True)
+        ## Download and extract all found tool packs
+        for link in dfp_links:
+            url = urlparse(link)
+            pack_name = os.path.basename(url.path)
+            pack_path=os.path.join(dfp_file_path, utility.drop_extension(pack_name))
+            if not os.path.exists(pack_path):
+                utility.extract_archive_from_url(
+                    url=link,
+                    destination=pack_path
+                )
+        ## Gather all 'device_support.xml' content into one dictionary
+        json_data_list = find_and_convert_xml_files(dfp_file_path)
+
         for eachDb in [databaseErp, databaseNecto]:
             if eachDb:
                 ## Add missing columns to programmer table
@@ -1139,9 +1240,33 @@ async def main(
                         ],
                         programmersColumns
                     )
+                    print(f"Inserting {prog_item['uid']} into Debuggers table")
+                    dfpsMap = json.loads(prog_item['dfps'])
+                    insertIntoTable(
+                        eachDb,
+                        'Debuggers',
+                        [
+                            prog_item['uid'],
+                            prog_item['hidden'],
+                            prog_item['display_name'],
+                            prog_item['icon'],
+                            prog_item['description']
+                        ],
+                        debuggersColumns
+                    )
                     ## Add MCU to Programmer mapping found in microchip index file
                     missingMcuDfp = []
                     for mcu in prog_item['mcus']:
+                        has_debug = False
+                        for element in json_data_list:
+                            if element['device_name'].lower() == mcu.lower():
+                                if re.search(prog_item['uid'], element['root_folder'], re.IGNORECASE):
+                                    for each_support in element['support']:
+                                        if each_support.endswith('d'):
+                                            if element['support'][each_support].lower() != 'no':
+                                                has_debug = True
+                                                break
+                                    break
                         print(f"Inserting {mcu.upper()}:{prog_item['uid']} into ProgrammerToDevice table")
                         if mcu in dfpsMap:
                             exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu.upper()}.json\"")
@@ -1159,6 +1284,17 @@ async def main(
                                         ],
                                         progToDeviceColumns
                                     )
+                                    if has_debug:
+                                        print(f"Inserting {mcu.upper()}:{prog_item['uid']} into DebuggerToDevice table")
+                                        insertIntoTable(
+                                            eachDb,
+                                            'DebuggerToDevice',
+                                            [
+                                                prog_item['uid'],
+                                                mcu_uid[0]
+                                            ],
+                                            debuggerToDeviceColumns
+                                        )
                         else:
                             missingMcuDfp.append(mcu)
                     print(f"Following MCUs do not have DFP: {missingMcuDfp}")
