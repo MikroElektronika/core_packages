@@ -1,0 +1,18 @@
+{
+    "def_file": "MK11DX128AVLK5.json",
+    "family_uid": "KINETIS_K_SERIES",
+    "flash": "196608",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "50.000",
+    "name": "MK11DX128AVLK5",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"MK11DX128AVLK5\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MK11DX128AVLK5",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mk11d_avlk_5\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mk11d_avlk_5\"}"
+}
