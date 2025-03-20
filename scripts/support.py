@@ -173,3 +173,6 @@ def fetch_sdk_version(db, version='latest'):
                     return current_version
 
     return None
+
+def drop_extension(file_path):
+    return os.path.splitext(file_path)[0]
