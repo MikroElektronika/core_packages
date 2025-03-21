@@ -1,0 +1,18 @@
+{
+    "def_file": "MK26FN2M0VLQ18.json",
+    "family_uid": "KINETIS_K_SERIES",
+    "flash": "2097152",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "180.000",
+    "name": "MK26FN2M0VLQ18",
+    "ram": "262144",
+    "sdk_config": "{\"MCU_NAME\":\"MK26FN2M0VLQ18\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MK26FN2M0VLQ18",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mk26fn_cac_vlq_vmd_vmi_18\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mk26fn_cac_vlq_vmd_vmi_18\"}"
+}
