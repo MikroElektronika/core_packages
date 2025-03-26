@@ -1,0 +1,18 @@
+{
+    "def_file": "MK40DX128VMC7.json",
+    "family_uid": "KINETIS_K_SERIES",
+    "flash": "163840",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "72.000",
+    "name": "MK40DX128VMC7",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"MK40DX128VMC7\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MK40DX128VMC7",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mk40dx_vll_vmc_7\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mk40dx_vll_vmc_7\"}"
+}
