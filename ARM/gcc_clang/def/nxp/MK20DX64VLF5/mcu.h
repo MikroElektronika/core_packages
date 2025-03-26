@@ -37,8 +37,8 @@
 **
 ****************************************************************************/
 
-#ifndef __MK20DX64VFT5_H__
-#define __MK20DX64VFT5_H__
+#ifndef __MK20DX64VLF5_H__
+#define __MK20DX64VLF5_H__
 
 
 
@@ -5139,5 +5139,5 @@
 
 
 
-#endif // __MK20DX64VFT5_H__
+#endif // __MK20DX64VLF5_H__
 
