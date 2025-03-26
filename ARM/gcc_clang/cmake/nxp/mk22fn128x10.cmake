@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^MK22FN128.+10$")
+if(${MCU_NAME} MATCHES "^MK22FN128VDC10$|^MK22FN128VLH10$|^MK22FN128VLL10$|^MK22FN128VMP10$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/system_nxp_mk22fxx_mk64fxx.c)
