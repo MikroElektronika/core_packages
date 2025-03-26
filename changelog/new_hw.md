@@ -1,0 +1,41 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ MKL25Z MCU Support package for GCC & Clang
+  + MKL25Z128VFM4
+  + MKL25Z128VFT4
+  + MKL25Z128VLH4
+  + MKL25Z128VLK4
+  + MKL25Z32VFM4
+  + MKL25Z32VFT4
+  + MKL25Z32VLH4
+  + MKL25Z32VLK4
+  + MKL25Z64VFM4
+  + MKL25Z64VFT4
+  + MKL25Z64VLH4
+  + MKL25Z64VLK4
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
