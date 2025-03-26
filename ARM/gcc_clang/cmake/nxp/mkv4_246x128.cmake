@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^MKV4[246]F128.+16$")
+if(${MCU_NAME} MATCHES "^MKV42F128VLF16$|^MKV42F128VLH16$|^MKV42F128VLL16$|^MKV44F128VLF16$|^MKV44F128VLH16$|^MKV44F128VLL16$|^MKV46F128VLH16$|^MKV46F128VLL16$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/system_nxp_mkv4xfxx.c)
