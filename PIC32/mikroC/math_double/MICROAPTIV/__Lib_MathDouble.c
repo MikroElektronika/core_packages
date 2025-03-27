@@ -3538,7 +3538,7 @@ static void _F_155C()
 /**
  * @brief Converts unsigned long long integers from registers R4 and R5 to floating-point numbers.
  */
-void _UnsignedLongLongToFloat_UnsignedLongLongToFloat()
+void _UnsignedLongLongToFloat()
 {
     asm {
         ADDIU       R29,R29,-16
