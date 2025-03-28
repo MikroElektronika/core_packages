@@ -5,7 +5,7 @@
     "icon": "images/mcu/nxp.png",
     "max_speed": "48.000",
     "name": "MKL26Z256VMC4",
-    "ram": "33554432",
+    "ram": "32768",
     "sdk_config": "{\"MCU_NAME\":\"MKL26Z256VMC4\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
     "necto_config": "",
     "uid": "MKL26Z256VMC4",
