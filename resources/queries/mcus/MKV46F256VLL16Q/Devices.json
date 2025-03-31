@@ -1,0 +1,18 @@
+{
+    "def_file": "MKV46F256VLL16Q.json",
+    "family_uid": "KINETIS_V_SERIES",
+    "flash": "262144",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "168.000",
+    "name": "MKV46F256VLL16Q",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"MKV46F256VLL16Q\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MKV46F256VLL16Q",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mkv46f256vll16q\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mkv46f256vll16q\"}"
+}
