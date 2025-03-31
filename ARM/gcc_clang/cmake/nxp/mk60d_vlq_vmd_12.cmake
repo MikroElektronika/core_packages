@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MK60DN256ZVLQ10$|^MK60DN256ZVMD10$|^MK60DN512ZVLQ10$|^MK60DN512ZVMD10$|^MK60DX256ZVLQ10$|^MK60DX256ZVMD10$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mk60d_vlq_vmd_12/init_clock.c)
+endif()
