@@ -654,9 +654,12 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         # Create archive
         archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
         compiler = "mikroC"
+        compilers = ['mikroC AI']
         if entry_name == "gcc_clang":
+            compilers = ['GCC', 'Clang']
             compiler = "GCC & Clang"
         elif "XC" in entry_name:
+            compilers = [entry_name]
             compiler = entry_name
 
         displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
@@ -683,7 +686,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
         install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
 
-        packages.append({"name" : name_without_extension, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location})
+        packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location})
 
         # Mark package for appropriate device and toolchain
         for each_db in db_paths:
