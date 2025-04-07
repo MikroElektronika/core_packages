@@ -1,0 +1,18 @@
+{
+    "def_file": "MK50DX256CMD10.json",
+    "family_uid": "KINETIS_K_SERIES",
+    "flash": "262144",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "100.000",
+    "name": "MK50DX256CMD10",
+    "ram": "65536",
+    "sdk_config": "{\"MCU_NAME\":\"MK50DX256CMD10\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MK50DX256CMD10",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mk50d\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mk50d\"}"
+}
