@@ -655,6 +655,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
 
         displayName = f"{cmake_file.upper()} Bare Metal Package"
+        displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archive_path)
 
