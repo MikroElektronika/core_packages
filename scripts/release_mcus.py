@@ -659,7 +659,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         elif "XC" in entry_name:
             compiler = entry_name
 
-        displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
+        displayName = f"{cmake_file.upper()} Bare Metal Package for {compiler}"
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archive_path)
 
