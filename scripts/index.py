@@ -440,6 +440,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 if metadata_item['type'] == 'mcu':
                     doc.update(
                         {
+                            'compilers': metadata_item['compilers'],
                             'dependencies': [
                                 'preinit',
                                 'unit_test_lib',
