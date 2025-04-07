@@ -617,9 +617,12 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         # Create archive
         archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
         compiler = "mikroC"
+        compilers = ['mikroC AI']
         if entry_name == "gcc_clang":
+            compilers = ['GCC', 'Clang']
             compiler = "GCC & Clang"
         elif "XC" in entry_name:
+            compilers = [entry_name]
             compiler = entry_name
 
         displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
@@ -642,7 +645,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
         install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
 
-        packages.append({"name" : name_without_extension, "display_name": displayName, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location})
+        packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location})
         package_changed = (version == tag_name.replace("v", ""))
 
         # Mark package for appropriate device and toolchain
@@ -893,7 +896,7 @@ async def main(token, repo, tag_name):
     db_paths = ['necto_db.db', 'necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
-    
+
     # Get the release ID used to upload assets
     release_id = get_release_id(repo, tag_name, token)
     assets = get_all_release_assets(repo, release_id, token)
