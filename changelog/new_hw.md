@@ -20,7 +20,7 @@
 
 Support added for following hardware:
 
-+ MK10D_VLK_VLQ_VMD_10 Bare Metal Package
++ MK10D_VLK_VLQ_VMD_10 MCU Support package for GCC & Clang
   + MK10DN512VLK10
   + MK10DN512VLQ10
   + MK10DN512VMD10
@@ -28,7 +28,7 @@ Support added for following hardware:
   + MK10DX128VMD10
   + MK10DX256VLQ10
   + MK10DX256VMD10
-+ MK24F Bare Metal Package
++ MK24F MCU Support package for GCC & Clang
   + MK24FN1M0VDC12
   + MK24FN1M0VLL12
   + MK24FN1M0VLQ12
