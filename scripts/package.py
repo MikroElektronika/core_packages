@@ -616,13 +616,8 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
 
         # Create archive
         archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
-        compiler = "mikroC"
-        if entry_name == "gcc_clang":
-            compiler = "GCC & Clang"
-        elif "XC" in entry_name:
-            compiler = entry_name
 
-        displayName = f"{cmake_file.upper()} Bare Metal Package for {compiler}"
+        displayName = f"{cmake_file.upper()} Bare Metal Package"
         archiveHash = hash_directory_contents(base_output_dir)
         archiveName = os.path.basename(archive_path)
 
