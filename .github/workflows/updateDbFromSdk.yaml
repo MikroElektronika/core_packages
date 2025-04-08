@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.client_payload.sha }}
+          ref: ${{ github.event.client_payload.branch }}
           token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
@@ -74,6 +74,40 @@ jobs:
               --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
             fi
           fi
+
+      - name: Upload and re-index Schemas
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
+        run: |
+          if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
+            echo "Uploading and indexing to Live."
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "latest" ${{ secrets.ES_INDEX_LIVE }} "False"
+          else
+            echo "Uploading and indexing to Test and Live."
+            python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "latest" ${{ secrets.ES_INDEX_TEST }} "False"
+          fi
+
+      # Create a pull request using the GitHub API
+      - name: Create Pull Request
+        id: create_pr
+        if: ${{ github.event.client_payload.branch != 'main' }}
+        run: |
+          PR_RESPONSE=$(curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls \
+            -d "{\"title\":\"Merge branch ${{ github.event.client_payload.branch }} into main\",\"head\":\"${{ github.event.client_payload.branch }}\",\"base\":\"main\",\"body\":\"Automatically created pull request to merge branch ${{ github.event.client_payload.branch }} into main\"}")
+
+          echo "$PR_RESPONSE" > pr_response.json
+          PR_NUMBER=$(jq '.number' pr_response.json)
+          echo "PR NUMBER IS: ${PR_NUMBER}"
+          rm pr_response.json
+          echo "Pull request number is $PR_NUMBER"
+          echo "pull_request_number=$PR_NUMBER" >> $GITHUB_OUTPUT
 
       - name: Run Index Script
         env:
