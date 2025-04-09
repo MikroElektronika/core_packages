@@ -94,7 +94,7 @@ jobs:
       # Create a pull request using the GitHub API
       - name: Create Pull Request
         id: create_pr
-        if: ${{ github.event.client_payload.branch != 'main' }}
+        if: ${{ github.event.client_payload.branch != 'main' && steps.mikrosdk_payload.outputs.index == 'Live' }}
         run: |
           PR_RESPONSE=$(curl -s -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
