@@ -1,11 +1,9 @@
 {
-    "device_uid": "MKL27Z64VFT4",
+    "device_uid": "MKL27Z64VFM4",
     "tables": [
         {
             "BoardToDevice": {
-                "board_uid": [
-                    "GENERIC_ARM_BOARD"
-                ]
+                "board_uid": ["GENERIC_ARM_BOARD"]
             }
         },
         {
@@ -18,16 +16,12 @@
         },
         {
             "DeviceToPackage": {
-                "package_uid": [
-                    "40/HUQFN"
-                ]
+                "package_uid": ["32/HUQFN"]
             }
         },
         {
             "DeviceToSocket": {
-                "socket_uid": [
-                    "NONE"
-                ]
+                "socket_uid": ["NONE"]
             }
         },
         {
