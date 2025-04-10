@@ -24,16 +24,12 @@ Support added for following hardware:
   + MKW41Z256VHT4
   + MKW41Z512CAT4
   + MKW41Z512VHT4
-+ MKW37A512VFT4 MCU Support package for GCC & Clang
-  + MKW37A512VFT4
-+ MKW37Z512VFT4 MCU Support package for GCC & Clang
-  + MKW37Z512VFT4
-+ MKW38A512VFT4 MCU Support package for GCC & Clang
-  + MKW38A512VFT4
-+ MKW38Z512VFT4 MCU Support package for GCC & Clang
-  + MKW38Z512VFT4
-+ MKW39A512VFT4 MCU Support package for GCC & Clang
-  + MKW39A512VFT4
++ MCXC_VFM_VLH MCU Support package for GCC & Clang
+  + MCXC141VFM
+  + MCXC141VLH
+  + MCXC142VFM
+  + MCXC242VFM
+  + MCXC242VLH
 + MK27FN_VMI_AVMI_15 MCU Support package for GCC & Clang
   + MK27FN2M0AVMI15
   + MK27FN2M0VMI15
