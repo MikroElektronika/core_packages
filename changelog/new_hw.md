@@ -30,10 +30,11 @@ Support added for following hardware:
   + MKL36Z256VMP4
   + MKL36Z64VLH4
   + MKL36Z64VLL4
-+ MKW36A MCU Support package for GCC & Clang
-  + MKW36A512VHT4
-  + MKW36A512VFP4
-  + MKW36A512VFT4
++ MKE16F MCU Support package for GCC & Clang
+  + MKE16F256VLL16
+  + MKE16F256VLH16
+  + MKE16F512VLL16
+  + MKE16F512VLH16
 
 ---
 
