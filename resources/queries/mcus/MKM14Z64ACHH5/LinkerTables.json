@@ -1,5 +1,5 @@
 {
-    "device_uid": "MKL13Z32VFT4",
+    "device_uid": "MKM14Z64ACHH5",
     "tables": [
         {
             "BoardToDevice": {
@@ -19,7 +19,7 @@
         {
             "DeviceToPackage": {
                 "package_uid": [
-                    "40/HUQFN"
+                    "44/LGA"
                 ]
             }
         },

@@ -31,9 +31,9 @@ Support added for following hardware:
   + MKL13Z64VMP4
   + MKL13Z64VFM4
   + MKL13Z64VLK4
-+ MKW36Z MCU Support package for GCC & Clang
-  + MKW36Z512VHT4
-  + MKW36Z512VFP4
++ MKM14Z MCU Support package for GCC & Clang
+  + MKM14Z128ACHH5
+  + MKM14Z64ACHH5
 
 ---
 
