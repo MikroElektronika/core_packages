@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^MK21DX128AVMC5$|^MK21DX128VLK5$|^MK21DX128VMC5$|^MK21DX256AVMC5$|^MK21DX256VLK5$|^MK21DX256VMC5$")
+    list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/4)")
+endif()
