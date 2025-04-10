@@ -27,12 +27,11 @@ Support added for following hardware:
   + MKV31F256VLL12
   + MKV31F512VLL12
   + MKV31F512VLH12
-+ MKW35A MCU Support package for GCC & Clang
-  + MKW35A512VFP4
-  + MKW35A512VFT4
-  + MKW35Z512VHT4
-+ MKW34A512VFT4 MCU Support package for GCC & Clang
-  + MKW34A512VFT4
++ MKM33Z MCU Support package for GCC & Clang
+  + MKM33Z128ACLH5
+  + MKM33Z128ACLL5
+  + MKM33Z64ACLH5
+  + MKM33Z64ACLL5
 + MKL27Z64_VFM_VLH_4 MCU Support package for GCC & Clang
   + MKL27Z64VFM4
   + MKL27Z64VLH4
