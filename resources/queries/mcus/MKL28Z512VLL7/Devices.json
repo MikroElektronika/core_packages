@@ -1,0 +1,18 @@
+{
+    "def_file": "MKL28Z512VLL7.json",
+    "family_uid": "KINETIS_L_SERIES",
+    "flash": "524288",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "96.000",
+    "name": "MKL28Z512VLL7",
+    "ram": "131072",
+    "sdk_config": "{\"MCU_NAME\":\"MKL28Z512VLL7\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MKL28Z512VLL7",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mkl28z\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mkl28z\"}"
+}
