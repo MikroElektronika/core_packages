@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MKL26Z128CAL4$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mkl26z128cal4/init_clock.c)
+endif()
