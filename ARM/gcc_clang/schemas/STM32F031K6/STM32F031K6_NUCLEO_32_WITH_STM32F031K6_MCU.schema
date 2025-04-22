@@ -1,0 +1,423 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc_clang/arm_gcc_clang_stm32f0x/def/STM32F031K6.json",
+    "flash": "32768",
+    "ram": "4096",
+    "board_regex": "NUCLEO_32_WITH_STM32F031K6_MCU",
+    "settings": {
+        "clock": "48",
+        "scheme": "Nucleo 32 with STM32F031K6 MCU",
+        "mcu": "STM32F031K6",
+        "core": "M0",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLNODIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PREDIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14DIS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14TRIM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "RCC_CR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLNODIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PREDIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14DIS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14TRIM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "RCC_CFGR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLNODIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PREDIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14DIS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14TRIM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "RCC_CFGR2"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLNODIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PREDIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14DIS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14TRIM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "RCC_CSR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLNODIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PREDIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14DIS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI14TRIM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "RCC_CR2"
+            }
+        ]
+    }
+}
