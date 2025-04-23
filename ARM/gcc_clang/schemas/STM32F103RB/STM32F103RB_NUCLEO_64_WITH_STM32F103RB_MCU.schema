@@ -1,0 +1,156 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc_clang/arm_gcc_clang_stm32f10_123/def/STM32F103RB.json",
+    "flash": "131072",
+    "ram": "20480",
+    "board_regex": "NUCLEO_64_WITH_STM32F103RB_MCU",
+    "settings": {
+        "clock": "72",
+        "scheme": "Nucleo 64 with STM32F103RB MCU",
+        "mcu": "STM32F103RB",
+        "core": "M3",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00010000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00000400"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ADCPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00010000"
+                    },
+                    {
+                        "key": "PLLXTPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "001c0000"
+                    },
+                    {
+                        "key": "USBPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "RCC_CR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00010000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00000400"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ADCPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00010000"
+                    },
+                    {
+                        "key": "PLLXTPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "001c0000"
+                    },
+                    {
+                        "key": "USBPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "RCC_CFGR"
+            }
+        ]
+    }
+}
