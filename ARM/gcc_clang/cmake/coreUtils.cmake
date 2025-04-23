@@ -165,7 +165,7 @@ function(get_mcu_vendor vendor)
 
     if(${MCU_NAME} MATCHES "^STM32.+$")
         set(${vendor} stm PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^MK.+$")
+    elseif(${MCU_NAME} MATCHES "^(M(C|K)|K(W45|32L)).+$")
         set(${vendor} nxp PARENT_SCOPE)
     elseif(${MCU_NAME} MATCHES "^TM4C.+$")
         set(${vendor} ti PARENT_SCOPE)
