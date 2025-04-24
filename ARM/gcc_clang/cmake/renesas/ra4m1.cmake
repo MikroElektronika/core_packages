@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^R7FA4M1AB2CLJ$|^R7FA4M1AB3CFL$|^R7FA4M1AB3CFP$|^R7FA4M1AB3CNB$|^R7FA4M1AB3CFM$|^R7FA4M1AB3CNE$|^R7FA4M1AB3CNF$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/renesas/ra4m1/init_clock.c)
+endif()
