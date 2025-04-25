@@ -1,0 +1,7 @@
+{
+    "mcu": "ATSAMV71Q21RT",
+    "clock": "1",
+    "core": "M7",
+    "delay_src_path": "delays/m7/__lib_delays.c",
+    "config_registers": []
+}
