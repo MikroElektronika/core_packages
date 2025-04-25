@@ -1,0 +1,5 @@
+{
+    "mcu": "PIC18F57Q84",
+    "config_registers": [],
+    "clock": "1"
+}
