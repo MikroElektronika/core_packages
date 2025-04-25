@@ -13,8 +13,8 @@
  *
  * The CPU macro should be declared in the project or makefile.
  */
-#if (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7.h"
 #else
   #error "No valid CPU defined!"
 #endif

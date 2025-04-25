@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file PMC.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for PMC
  *
  * CMSIS Peripheral Access Layer for PMC
@@ -40,12 +39,8 @@
 #if !defined(PMC_H_)
 #define PMC_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -195,14 +190,6 @@ typedef struct {
  *  0b1..Bandgap buffer enabled
  */
 #define PMC_REGSC_BGBE(x)                        (((uint8_t)(((uint8_t)(x)) << PMC_REGSC_BGBE_SHIFT)) & PMC_REGSC_BGBE_MASK)
-
-#define PMC_REGSC_BGBDS_MASK                     (0x2U)
-#define PMC_REGSC_BGBDS_SHIFT                    (1U)
-/*! BGBDS - Bandgap Buffer Drive Select
- *  0b0..Low drive
- *  0b1..High drive
- */
-#define PMC_REGSC_BGBDS(x)                       (((uint8_t)(((uint8_t)(x)) << PMC_REGSC_BGBDS_SHIFT)) & PMC_REGSC_BGBDS_MASK)
 
 #define PMC_REGSC_REGONS_MASK                    (0x4U)
 #define PMC_REGSC_REGONS_SHIFT                   (2U)

@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file PORT.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for PORT
  *
  * CMSIS Peripheral Access Layer for PORT
@@ -40,12 +39,8 @@
 #if !defined(PORT_H_)
 #define PORT_H_                                  /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -103,9 +98,9 @@ typedef struct {
        uint8_t RESERVED_1[24];
   __IO uint32_t ISFR;                              /**< Interrupt Status Flag Register, offset: 0xA0 */
        uint8_t RESERVED_2[28];
-  __IO uint32_t DFER;                              /**< Digital Filter Enable Register, offset: 0xC0, available only on: PORTE (missing on PORTA, PORTB, PORTC, PORTD, PORTF, PORTG, PORTH, PORTI) */
-  __IO uint32_t DFCR;                              /**< Digital Filter Clock Register, offset: 0xC4, available only on: PORTE (missing on PORTA, PORTB, PORTC, PORTD, PORTF, PORTG, PORTH, PORTI) */
-  __IO uint32_t DFWR;                              /**< Digital Filter Width Register, offset: 0xC8, available only on: PORTE (missing on PORTA, PORTB, PORTC, PORTD, PORTF, PORTG, PORTH, PORTI) */
+  __IO uint32_t DFER;                              /**< Digital Filter Enable Register, offset: 0xC0, not available in all instances (available on 2 out of 26) */
+  __IO uint32_t DFCR;                              /**< Digital Filter Clock Register, offset: 0xC4, not available in all instances (available on 2 out of 26) */
+  __IO uint32_t DFWR;                              /**< Digital Filter Width Register, offset: 0xC8, not available in all instances (available on 2 out of 26) */
 } PORT_Type;
 
 /* ----------------------------------------------------------------------------
@@ -123,8 +118,8 @@ typedef struct {
 #define PORT_PCR_PS_MASK                         (0x1U)
 #define PORT_PCR_PS_SHIFT                        (0U)
 /*! PS - Pull Select
- *  0b0..Internal pulldown resistor is enabled on the corresponding pin, if the corresponding Port Pull Enable field is set.
- *  0b1..Internal pullup resistor is enabled on the corresponding pin, if the corresponding Port Pull Enable field is set.
+ *  0b0..Internal pulldown resistor is enabled on the corresponding pin, if the corresponding PE field is set.
+ *  0b1..Internal pullup resistor is enabled on the corresponding pin, if the corresponding PE field is set.
  */
 #define PORT_PCR_PS(x)                           (((uint32_t)(((uint32_t)(x)) << PORT_PCR_PS_SHIFT)) & PORT_PCR_PS_MASK)
 
@@ -144,10 +139,18 @@ typedef struct {
  */
 #define PORT_PCR_SRE(x)                          (((uint32_t)(((uint32_t)(x)) << PORT_PCR_SRE_SHIFT)) & PORT_PCR_SRE_MASK)
 
+#define PORT_PCR_ODE_MASK                        (0x20U)
+#define PORT_PCR_ODE_SHIFT                       (5U)
+/*! ODE - Open Drain Enable
+ *  0b0..Open drain output is disabled on the corresponding pin.
+ *  0b1..Open drain output is enabled on the corresponding pin, if the pin is configured as a digital output.
+ */
+#define PORT_PCR_ODE(x)                          (((uint32_t)(((uint32_t)(x)) << PORT_PCR_ODE_SHIFT)) & PORT_PCR_ODE_MASK)
+
 #define PORT_PCR_MUX_MASK                        (0x700U)
 #define PORT_PCR_MUX_SHIFT                       (8U)
 /*! MUX - Pin Mux Control
- *  0b000..Pin disabled (analog).
+ *  0b000..Pin disabled (Alternative 0) (analog).
  *  0b001..Alternative 1 (GPIO).
  *  0b010..Alternative 2 (chip-specific).
  *  0b011..Alternative 3 (chip-specific).
@@ -169,15 +172,22 @@ typedef struct {
 #define PORT_PCR_IRQC_MASK                       (0xF0000U)
 #define PORT_PCR_IRQC_SHIFT                      (16U)
 /*! IRQC - Interrupt Configuration
- *  0b0000..Interrupt/DMA request disabled.
- *  0b0001..DMA request on rising edge.
- *  0b0010..DMA request on falling edge.
- *  0b0011..DMA request on either edge.
- *  0b1000..Interrupt when logic zero.
- *  0b1001..Interrupt on rising edge.
- *  0b1010..Interrupt on falling edge.
- *  0b1011..Interrupt on either edge.
- *  0b1100..Interrupt when logic one.
+ *  0b0000..Interrupt Status Flag (ISF) is disabled.
+ *  0b0001..ISF flag and DMA request on rising edge.
+ *  0b0010..ISF flag and DMA request on falling edge.
+ *  0b0011..ISF flag and DMA request on either edge.
+ *  0b0100..Reserved.
+ *  0b0101..Reserved.
+ *  0b0110..Reserved.
+ *  0b0111..Reserved.
+ *  0b1000..ISF flag and Interrupt when logic 0.
+ *  0b1001..ISF flag and Interrupt on rising-edge.
+ *  0b1010..ISF flag and Interrupt on falling-edge.
+ *  0b1011..ISF flag and Interrupt on either edge.
+ *  0b1100..ISF flag and Interrupt when logic 1.
+ *  0b1101..Reserved.
+ *  0b1110..Reserved.
+ *  0b1111..Reserved.
  */
 #define PORT_PCR_IRQC(x)                         (((uint32_t)(((uint32_t)(x)) << PORT_PCR_IRQC_SHIFT)) & PORT_PCR_IRQC_MASK)
 
@@ -187,7 +197,7 @@ typedef struct {
  *  0b0..Configured interrupt is not detected.
  *  0b1..Configured interrupt is detected. If the pin is configured to generate a DMA request, then the
  *       corresponding flag will be cleared automatically at the completion of the requested DMA transfer. Otherwise, the
- *       flag remains set until a logic one is written to the flag. If the pin is configured for a level sensitive
+ *       flag remains set until a logic 1 is written to the flag. If the pin is configured for a level sensitive
  *       interrupt and the pin remains asserted, then the flag is set again immediately after it is cleared.
  */
 #define PORT_PCR_ISF(x)                          (((uint32_t)(((uint32_t)(x)) << PORT_PCR_ISF_SHIFT)) & PORT_PCR_ISF_MASK)
@@ -237,7 +247,7 @@ typedef struct {
  *  0b00000000000000000000000000000001..Configured interrupt is detected. If the pin is configured to generate a
  *                                      DMA request, then the corresponding flag will be cleared automatically at
  *                                      the completion of the requested DMA transfer. Otherwise, the flag remains set
- *                                      until a logic one is written to the flag. If the pin is configured for a
+ *                                      until a logic 1 is written to the flag. If the pin is configured for a
  *                                      level sensitive interrupt and the pin remains asserted, then the flag is set
  *                                      again immediately after it is cleared.
  */
@@ -263,7 +273,7 @@ typedef struct {
 #define PORT_DFCR_CS_SHIFT                       (0U)
 /*! CS - Clock Source
  *  0b0..Digital filters are clocked by the bus clock.
- *  0b1..Digital filters are clocked by the 1 kHz LPO clock.
+ *  0b1..Digital filters are clocked by the LPO clock.
  */
 #define PORT_DFCR_CS(x)                          (((uint32_t)(((uint32_t)(x)) << PORT_DFCR_CS_SHIFT)) & PORT_DFCR_CS_MASK)
 /*! @} */

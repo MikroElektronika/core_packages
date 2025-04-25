@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file DMAMUX.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for DMAMUX
  *
  * CMSIS Peripheral Access Layer for DMAMUX
@@ -40,12 +39,8 @@
 #if !defined(DMAMUX_H_)
 #define DMAMUX_H_                                /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -92,7 +87,7 @@
  */
 
 /** DMAMUX - Size of Registers Arrays */
-#define DMAMUX_CHCFG_COUNT                        1u
+#define DMAMUX_CHCFG_COUNT                        4u
 
 /** DMAMUX - Register Layout Typedef */
 typedef struct {
@@ -113,7 +108,60 @@ typedef struct {
 
 #define DMAMUX_CHCFG_SOURCE_MASK                 (0x3FU)
 #define DMAMUX_CHCFG_SOURCE_SHIFT                (0U)
-/*! SOURCE - DMA Channel Source (Slot) */
+/*! SOURCE - DMA Channel Source (Slot)
+ *  0b000000..Disable_Signal
+ *  0b000010..UART0_Rx_Signal
+ *  0b000011..UART0_Tx_Signal
+ *  0b000100..UART1_Rx_Signal
+ *  0b000101..UART1_Tx_Signal
+ *  0b000110..UART2_Rx_Signal
+ *  0b000111..UART2_Tx_Signal
+ *  0b001000..UART3_Rx_Signal
+ *  0b001001..UART3_Tx_Signal
+ *  0b010000..SPI0_Rx_Signal
+ *  0b010001..SPI0_Tx_Signal
+ *  0b010010..SPI1_Rx_Signal
+ *  0b010011..SPI1_Tx_Signal
+ *  0b010110..I2C0_Signal
+ *  0b010111..I2C1_Signal
+ *  0b011000..TMR0_Channel0_Signal
+ *  0b011001..TMR0_Channel1_Signal
+ *  0b011010..TMR0_Channel2_Signal
+ *  0b011011..TMR0_Channel3_Signal
+ *  0b011100..XBAR_Request0_Signal
+ *  0b011101..XBAR_Request1_Signal
+ *  0b011110..XBAR_Request2_Signal
+ *  0b011111..XBAR_Request3_Signal
+ *  0b100000..AFE_Channel0_Signal
+ *  0b100001..AFE_Channel1_Signal
+ *  0b100010..AFE_Channel2_Signal
+ *  0b100011..AFE_Channel3_Signal
+ *  0b100100..Port_J_Signal
+ *  0b100101..Port_K_Signal
+ *  0b100110..Port_L_Signal
+ *  0b100111..Port_M_Signal
+ *  0b101000..SarADC_Signal
+ *  0b101010..CMP0_Signal
+ *  0b101011..CMP1_Signal
+ *  0b101100..CMP2_Signal
+ *  0b101111..MMAU_Signal
+ *  0b110000..PDB0_Signal
+ *  0b110001..PORT_A_Signal
+ *  0b110010..PORT_B_Signal
+ *  0b110011..PORT_C_Signal
+ *  0b110100..PORT_D_Signal
+ *  0b110101..PORT_E_Signal
+ *  0b110110..PORT_F_Signal
+ *  0b110111..PORT_G_Signal
+ *  0b111000..PORT_H_Signal
+ *  0b111001..PORT_I_Signal
+ *  0b111010..LPUART0_Rx_Signal
+ *  0b111011..LPUART0_Tx_Signal
+ *  0b111100..AlwaysOn60_Signal
+ *  0b111101..AlwaysOn61_Signal
+ *  0b111110..AlwaysOn62_Signal
+ *  0b111111..AlwaysOn63_Signal
+ */
 #define DMAMUX_CHCFG_SOURCE(x)                   (((uint8_t)(((uint8_t)(x)) << DMAMUX_CHCFG_SOURCE_SHIFT)) & DMAMUX_CHCFG_SOURCE_MASK)
 
 #define DMAMUX_CHCFG_TRIG_MASK                   (0x40U)

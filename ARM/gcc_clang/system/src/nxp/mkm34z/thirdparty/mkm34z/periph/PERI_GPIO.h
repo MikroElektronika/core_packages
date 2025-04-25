@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file GPIO.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for GPIO
  *
  * CMSIS Peripheral Access Layer for GPIO
@@ -40,12 +39,8 @@
 #if !defined(GPIO_H_)
 #define GPIO_H_                                  /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -94,11 +89,17 @@
 /** GPIO - Register Layout Typedef */
 typedef struct {
   __IO uint8_t PDOR;                               /**< Port Data Output Register, offset: 0x0 */
-       uint8_t RESERVED_0[15];
-  __I  uint8_t PDIR;                               /**< Port Data Input Register, offset: 0x10 */
+       uint8_t RESERVED_0[3];
+  __O  uint8_t PSOR;                               /**< Port Set Output Register, offset: 0x4 */
        uint8_t RESERVED_1[3];
+  __O  uint8_t PCOR;                               /**< Port Clear Output Register, offset: 0x8 */
+       uint8_t RESERVED_2[3];
+  __O  uint8_t PTOR;                               /**< Port Toggle Output Register, offset: 0xC */
+       uint8_t RESERVED_3[3];
+  __I  uint8_t PDIR;                               /**< Port Data Input Register, offset: 0x10 */
+       uint8_t RESERVED_4[3];
   __IO uint8_t PDDR;                               /**< Port Data Direction Register, offset: 0x14 */
-       uint8_t RESERVED_2[7];
+       uint8_t RESERVED_5[7];
   __IO uint8_t GACR;                               /**< GPIO Attribute Checker Register, offset: 0x1C */
 } GPIO_Type;
 
@@ -121,6 +122,42 @@ typedef struct {
  *  0b00000001..Logic level 1 is driven on pin, provided pin is configured for general-purpose output.
  */
 #define GPIO_PDOR_PDO(x)                         (((uint8_t)(((uint8_t)(x)) << GPIO_PDOR_PDO_SHIFT)) & GPIO_PDOR_PDO_MASK)
+/*! @} */
+
+/*! @name PSOR - Port Set Output Register */
+/*! @{ */
+
+#define GPIO_PSOR_PTSO_MASK                      (0xFFU)
+#define GPIO_PSOR_PTSO_SHIFT                     (0U)
+/*! PTSO - Port Set Output
+ *  0b00000000..Corresponding bit in PDORn does not change.
+ *  0b00000001..Corresponding bit in PDORn is set to logic 1.
+ */
+#define GPIO_PSOR_PTSO(x)                        (((uint8_t)(((uint8_t)(x)) << GPIO_PSOR_PTSO_SHIFT)) & GPIO_PSOR_PTSO_MASK)
+/*! @} */
+
+/*! @name PCOR - Port Clear Output Register */
+/*! @{ */
+
+#define GPIO_PCOR_PTCO_MASK                      (0xFFU)
+#define GPIO_PCOR_PTCO_SHIFT                     (0U)
+/*! PTCO - Port Clear Output
+ *  0b00000000..Corresponding bit in PDORn does not change.
+ *  0b00000001..Corresponding bit in PDORn is cleared to logic 0.
+ */
+#define GPIO_PCOR_PTCO(x)                        (((uint8_t)(((uint8_t)(x)) << GPIO_PCOR_PTCO_SHIFT)) & GPIO_PCOR_PTCO_MASK)
+/*! @} */
+
+/*! @name PTOR - Port Toggle Output Register */
+/*! @{ */
+
+#define GPIO_PTOR_PTTO_MASK                      (0xFFU)
+#define GPIO_PTOR_PTTO_SHIFT                     (0U)
+/*! PTTO - Port Toggle Output
+ *  0b00000000..Corresponding bit in PDORn does not change.
+ *  0b00000001..Corresponding bit in PDORn is set to the inverse of its existing logic state.
+ */
+#define GPIO_PTOR_PTTO(x)                        (((uint8_t)(((uint8_t)(x)) << GPIO_PTOR_PTTO_SHIFT)) & GPIO_PTOR_PTTO_MASK)
 /*! @} */
 
 /*! @name PDIR - Port Data Input Register */

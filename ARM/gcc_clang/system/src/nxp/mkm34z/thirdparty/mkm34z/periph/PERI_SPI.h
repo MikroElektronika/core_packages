@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file SPI.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for SPI
  *
  * CMSIS Peripheral Access Layer for SPI
@@ -40,12 +39,8 @@
 #if !defined(SPI_H_)
 #define SPI_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -102,8 +97,8 @@ typedef struct {
   __IO uint8_t DL;                                 /**< SPI Data Register low, offset: 0x6 */
   __IO uint8_t DH;                                 /**< SPI data register high, offset: 0x7 */
        uint8_t RESERVED_0[2];
-  __IO uint8_t CI;                                 /**< SPI clear interrupt register, offset: 0xA */
-  __IO uint8_t C3;                                 /**< SPI control register 3, offset: 0xB */
+  __IO uint8_t CI;                                 /**< SPI clear interrupt register, offset: 0xA, available only on: SPI1 (missing on SPI0) */
+  __IO uint8_t C3;                                 /**< SPI control register 3, offset: 0xB, available only on: SPI1 (missing on SPI0) */
 } SPI_Type;
 
 /* ----------------------------------------------------------------------------
@@ -137,16 +132,18 @@ typedef struct {
 #define SPI_S_TNEAREF_MASK                       (0x4U)
 #define SPI_S_TNEAREF_SHIFT                      (2U)
 /*! TNEAREF - Transmit FIFO nearly empty flag
- *  0b0..Transmit FIFO has more than 16 bits (when C3[5] is 0) or more than 32 bits (when C3[5] is 1) remaining to transmit
- *  0b1..Transmit FIFO has an amount of data equal to or less than 16 bits (when C3[5] is 0) or 32 bits (when C3[5] is 1) remaining to transmit
+ *  0b0..Transmit FIFO has more than 16 bits (when C3[TNEAREF_MARK] is 0) or more than 32 bits (when C3[TNEAREF_MARK] is 1) remaining to transmit
+ *  0b1..Transmit FIFO has an amount of data equal to or less than 16 bits (when C3[TNEAREF_MARK] is 0) or 32 bits
+ *       (when C3[TNEAREF_MARK] is 1) remaining to transmit
  */
 #define SPI_S_TNEAREF(x)                         (((uint8_t)(((uint8_t)(x)) << SPI_S_TNEAREF_SHIFT)) & SPI_S_TNEAREF_MASK)
 
 #define SPI_S_RNFULLF_MASK                       (0x8U)
 #define SPI_S_RNFULLF_SHIFT                      (3U)
 /*! RNFULLF - Receive FIFO nearly full flag
- *  0b0..Receive FIFO has received less than 48 bits (when C3[4] is 0) or less than 32 bits (when C3[4] is 1)
- *  0b1..Receive FIFO has received data of an amount equal to or greater than 48 bits (when C3[4] is 0) or 32 bits (when C3[4] is 1)
+ *  0b0..Receive FIFO has received less than 48 bits (when C3[RNFULLF_MARK] is 0) or less than 32 bits (when C3[RNFULLF_MARK] is 1)
+ *  0b1..Receive FIFO has received data of an amount equal to or greater than 48 bits (when C3[RNFULLF_MARK] is 0)
+ *       or 32 bits (when C3[RNFULLF_MARK] is 1)
  */
 #define SPI_S_RNFULLF(x)                         (((uint8_t)(((uint8_t)(x)) << SPI_S_RNFULLF_SHIFT)) & SPI_S_RNFULLF_MASK)
 
@@ -464,8 +461,8 @@ typedef struct {
 #define SPI_C3_FIFOMODE_MASK                     (0x1U)
 #define SPI_C3_FIFOMODE_SHIFT                    (0U)
 /*! FIFOMODE - FIFO mode enable
- *  0b0..Buffer mode disabled
- *  0b1..Data available in the receive data buffer
+ *  0b0..FIFO mode disabled
+ *  0b1..FIFO mode enabled
  */
 #define SPI_C3_FIFOMODE(x)                       (((uint8_t)(((uint8_t)(x)) << SPI_C3_FIFOMODE_SHIFT)) & SPI_C3_FIFOMODE_MASK)
 

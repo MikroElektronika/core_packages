@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file PIT.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for PIT
  *
  * CMSIS Peripheral Access Layer for PIT
@@ -40,12 +39,8 @@
 #if !defined(PIT_H_)
 #define PIT_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -97,7 +92,10 @@
 /** PIT - Register Layout Typedef */
 typedef struct {
   __IO uint32_t MCR;                               /**< PIT Module Control Register, offset: 0x0 */
-       uint8_t RESERVED_0[252];
+       uint8_t RESERVED_0[220];
+  __I  uint32_t LTMR64H;                           /**< PIT Upper Lifetime Timer Register, offset: 0xE0 */
+  __I  uint32_t LTMR64L;                           /**< PIT Lower Lifetime Timer Register, offset: 0xE4 */
+       uint8_t RESERVED_1[24];
   struct {                                         /* offset: 0x100, array step: 0x10 */
     __IO uint32_t LDVAL;                             /**< Timer Load Value Register, array offset: 0x100, array step: 0x10 */
     __I  uint32_t CVAL;                              /**< Current Timer Value Register, array offset: 0x104, array step: 0x10 */
@@ -133,6 +131,24 @@ typedef struct {
  *  0b1..Clock for standard PIT timers is disabled.
  */
 #define PIT_MCR_MDIS(x)                          (((uint32_t)(((uint32_t)(x)) << PIT_MCR_MDIS_SHIFT)) & PIT_MCR_MDIS_MASK)
+/*! @} */
+
+/*! @name LTMR64H - PIT Upper Lifetime Timer Register */
+/*! @{ */
+
+#define PIT_LTMR64H_LTH_MASK                     (0xFFFFFFFFU)
+#define PIT_LTMR64H_LTH_SHIFT                    (0U)
+/*! LTH - Life Timer value */
+#define PIT_LTMR64H_LTH(x)                       (((uint32_t)(((uint32_t)(x)) << PIT_LTMR64H_LTH_SHIFT)) & PIT_LTMR64H_LTH_MASK)
+/*! @} */
+
+/*! @name LTMR64L - PIT Lower Lifetime Timer Register */
+/*! @{ */
+
+#define PIT_LTMR64L_LTL_MASK                     (0xFFFFFFFFU)
+#define PIT_LTMR64L_LTL_SHIFT                    (0U)
+/*! LTL - Life Timer value */
+#define PIT_LTMR64L_LTL(x)                       (((uint32_t)(((uint32_t)(x)) << PIT_LTMR64L_LTL_SHIFT)) & PIT_LTMR64L_LTL_MASK)
 /*! @} */
 
 /*! @name LDVAL - Timer Load Value Register */

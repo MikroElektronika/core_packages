@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file UART.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for UART
  *
  * CMSIS Peripheral Access Layer for UART
@@ -40,12 +39,8 @@
 #if !defined(UART_H_)
 #define UART_H_                                  /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -119,14 +114,26 @@ typedef struct {
   __IO uint8_t C7816;                              /**< UART 7816 Control Register, offset: 0x18, available only on: UART1, UART3 (missing on UART0, UART2) */
   __IO uint8_t IE7816;                             /**< UART 7816 Interrupt Enable Register, offset: 0x19, available only on: UART1, UART3 (missing on UART0, UART2) */
   __IO uint8_t IS7816;                             /**< UART 7816 Interrupt Status Register, offset: 0x1A, available only on: UART1, UART3 (missing on UART0, UART2) */
-  union {                                          /* offset: 0x1B */
-    __IO uint8_t WP7816T0;                           /**< UART 7816 Wait Parameter Register, offset: 0x1B, available only on: UART1, UART3 (missing on UART0, UART2) */
-    __IO uint8_t WP7816T1;                           /**< UART 7816 Wait Parameter Register, offset: 0x1B, available only on: UART1, UART3 (missing on UART0, UART2) */
-  };
+  __IO uint8_t WP7816;                             /**< UART 7816 Wait Parameter Register, offset: 0x1B, available only on: UART1, UART3 (missing on UART0, UART2) */
   __IO uint8_t WN7816;                             /**< UART 7816 Wait N Register, offset: 0x1C, available only on: UART1, UART3 (missing on UART0, UART2) */
   __IO uint8_t WF7816;                             /**< UART 7816 Wait FD Register, offset: 0x1D, available only on: UART1, UART3 (missing on UART0, UART2) */
   __IO uint8_t ET7816;                             /**< UART 7816 Error Threshold Register, offset: 0x1E, available only on: UART1, UART3 (missing on UART0, UART2) */
   __IO uint8_t TL7816;                             /**< UART 7816 Transmit Length Register, offset: 0x1F, available only on: UART1, UART3 (missing on UART0, UART2) */
+       uint8_t RESERVED_2[26];
+  __IO uint8_t AP7816A_T0;                         /**< UART 7816 ATR Duration Timer Register A, offset: 0x3A, available only on: UART1, UART3 (missing on UART0, UART2) */
+  __IO uint8_t AP7816B_T0;                         /**< UART 7816 ATR Duration Timer Register B, offset: 0x3B, available only on: UART1, UART3 (missing on UART0, UART2) */
+  union {                                          /* offset: 0x3C */
+    struct {                                         /* offset: 0x3C */
+      __IO uint8_t WP7816A_T0;                         /**< UART 7816 Wait Parameter Register A, offset: 0x3C, available only on: UART1, UART3 (missing on UART0, UART2) */
+      __IO uint8_t WP7816B_T0;                         /**< UART 7816 Wait Parameter Register B, offset: 0x3D, available only on: UART1, UART3 (missing on UART0, UART2) */
+    } TYPE0;
+    struct {                                         /* offset: 0x3C */
+      __IO uint8_t WP7816A_T1;                         /**< UART 7816 Wait Parameter Register A, offset: 0x3C, available only on: UART1, UART3 (missing on UART0, UART2) */
+      __IO uint8_t WP7816B_T1;                         /**< UART 7816 Wait Parameter Register B, offset: 0x3D, available only on: UART1, UART3 (missing on UART0, UART2) */
+    } TYPE1;
+  };
+  __IO uint8_t WGP7816_T1;                         /**< UART 7816 Wait and Guard Parameter Register, offset: 0x3E, available only on: UART1, UART3 (missing on UART0, UART2) */
+  __IO uint8_t WP7816C_T1;                         /**< UART 7816 Wait Parameter Register C, offset: 0x3F, available only on: UART1, UART3 (missing on UART0, UART2) */
 } UART_Type;
 
 /* ----------------------------------------------------------------------------
@@ -262,9 +269,9 @@ typedef struct {
 
 #define UART_C2_ILIE_MASK                        (0x10U)
 #define UART_C2_ILIE_SHIFT                       (4U)
-/*! ILIE - Idle Line Interrupt Enable
- *  0b0..IDLE interrupt requests disabled.
- *  0b1..IDLE interrupt requests enabled.
+/*! ILIE - Idle Line Interrupt DMA Transfer Enable
+ *  0b0..IDLE interrupt requests disabled. and DMA transfer
+ *  0b1..IDLE interrupt requests enabled. or DMA transfer
  */
 #define UART_C2_ILIE(x)                          (((uint8_t)(((uint8_t)(x)) << UART_C2_ILIE_SHIFT)) & UART_C2_ILIE_MASK)
 
@@ -549,6 +556,14 @@ typedef struct {
 
 /*! @name C5 - UART Control Register 5 */
 /*! @{ */
+
+#define UART_C5_ILDMAS_MASK                      (0x10U)
+#define UART_C5_ILDMAS_SHIFT                     (4U)
+/*! ILDMAS - Idle Line DMA Select
+ *  0b0..If C2[ILIE] and S1[IDLE] are set, the IDLE interrupt request signal is asserted to request an interrupt service.
+ *  0b1..If C2[ILIE] and S1[IDLE] are set, the IDLE DMA request signal is asserted to request a DMA transfer.
+ */
+#define UART_C5_ILDMAS(x)                        (((uint8_t)(((uint8_t)(x)) << UART_C5_ILDMAS_SHIFT)) & UART_C5_ILDMAS_MASK)
 
 #define UART_C5_RDMAS_MASK                       (0x20U)
 #define UART_C5_RDMAS_SHIFT                      (5U)
@@ -874,6 +889,14 @@ typedef struct {
  */
 #define UART_IE7816_GTVE(x)                      (((uint8_t)(((uint8_t)(x)) << UART_IE7816_GTVE_SHIFT)) & UART_IE7816_GTVE_MASK)
 
+#define UART_IE7816_ADTE_MASK                    (0x8U)
+#define UART_IE7816_ADTE_SHIFT                   (3U)
+/*! ADTE - ATR Duration Timer Interrupt Enable
+ *  0b0..The assertion of IS7816[ADT] does not result in the generation of an interrupt.
+ *  0b1..The assertion of IS7816[ADT] results in the generation of an interrupt.
+ */
+#define UART_IE7816_ADTE(x)                      (((uint8_t)(((uint8_t)(x)) << UART_IE7816_ADTE_SHIFT)) & UART_IE7816_ADTE_MASK)
+
 #define UART_IE7816_INITDE_MASK                  (0x10U)
 #define UART_IE7816_INITDE_SHIFT                 (4U)
 /*! INITDE - Initial Character Detected Interrupt Enable
@@ -935,6 +958,14 @@ typedef struct {
  */
 #define UART_IS7816_GTV(x)                       (((uint8_t)(((uint8_t)(x)) << UART_IS7816_GTV_SHIFT)) & UART_IS7816_GTV_MASK)
 
+#define UART_IS7816_ADT_MASK                     (0x8U)
+#define UART_IS7816_ADT_SHIFT                    (3U)
+/*! ADT - ATR Duration Time Interrupt
+ *  0b0..ATR Duration time (ADT) has not been violated.
+ *  0b1..ATR Duration time (ADT) has been violated.
+ */
+#define UART_IS7816_ADT(x)                       (((uint8_t)(((uint8_t)(x)) << UART_IS7816_ADT_SHIFT)) & UART_IS7816_ADT_MASK)
+
 #define UART_IS7816_INITD_MASK                   (0x10U)
 #define UART_IS7816_INITD_SHIFT                  (4U)
 /*! INITD - Initial Character Detected Interrupt
@@ -968,27 +999,13 @@ typedef struct {
 #define UART_IS7816_WT(x)                        (((uint8_t)(((uint8_t)(x)) << UART_IS7816_WT_SHIFT)) & UART_IS7816_WT_MASK)
 /*! @} */
 
-/*! @name WP7816T0 - UART 7816 Wait Parameter Register */
+/*! @name WP7816 - UART 7816 Wait Parameter Register */
 /*! @{ */
 
-#define UART_WP7816T0_WI_MASK                    (0xFFU)
-#define UART_WP7816T0_WI_SHIFT                   (0U)
-/*! WI - Wait Time Integer (C7816[TTYPE] = 0) */
-#define UART_WP7816T0_WI(x)                      (((uint8_t)(((uint8_t)(x)) << UART_WP7816T0_WI_SHIFT)) & UART_WP7816T0_WI_MASK)
-/*! @} */
-
-/*! @name WP7816T1 - UART 7816 Wait Parameter Register */
-/*! @{ */
-
-#define UART_WP7816T1_BWI_MASK                   (0xFU)
-#define UART_WP7816T1_BWI_SHIFT                  (0U)
-/*! BWI - Block Wait Time Integer(C7816[TTYPE] = 1) */
-#define UART_WP7816T1_BWI(x)                     (((uint8_t)(((uint8_t)(x)) << UART_WP7816T1_BWI_SHIFT)) & UART_WP7816T1_BWI_MASK)
-
-#define UART_WP7816T1_CWI_MASK                   (0xF0U)
-#define UART_WP7816T1_CWI_SHIFT                  (4U)
-/*! CWI - Character Wait Time Integer (C7816[TTYPE] = 1) */
-#define UART_WP7816T1_CWI(x)                     (((uint8_t)(((uint8_t)(x)) << UART_WP7816T1_CWI_SHIFT)) & UART_WP7816T1_CWI_MASK)
+#define UART_WP7816_WTX_MASK                     (0xFFU)
+#define UART_WP7816_WTX_SHIFT                    (0U)
+/*! WTX - Wait Time Multiplier (C7816[TTYPE] = 1) */
+#define UART_WP7816_WTX(x)                       (((uint8_t)(((uint8_t)(x)) << UART_WP7816_WTX_SHIFT)) & UART_WP7816_WTX_MASK)
 /*! @} */
 
 /*! @name WN7816 - UART 7816 Wait N Register */
@@ -1033,6 +1050,83 @@ typedef struct {
 #define UART_TL7816_TLEN_SHIFT                   (0U)
 /*! TLEN - Transmit Length */
 #define UART_TL7816_TLEN(x)                      (((uint8_t)(((uint8_t)(x)) << UART_TL7816_TLEN_SHIFT)) & UART_TL7816_TLEN_MASK)
+/*! @} */
+
+/*! @name AP7816A_T0 - UART 7816 ATR Duration Timer Register A */
+/*! @{ */
+
+#define UART_AP7816A_T0_ADTI_H_MASK              (0xFFU)
+#define UART_AP7816A_T0_ADTI_H_SHIFT             (0U)
+/*! ADTI_H - ATR Duration Time Integer High (C7816[TTYPE] = 0) */
+#define UART_AP7816A_T0_ADTI_H(x)                (((uint8_t)(((uint8_t)(x)) << UART_AP7816A_T0_ADTI_H_SHIFT)) & UART_AP7816A_T0_ADTI_H_MASK)
+/*! @} */
+
+/*! @name AP7816B_T0 - UART 7816 ATR Duration Timer Register B */
+/*! @{ */
+
+#define UART_AP7816B_T0_ADTI_L_MASK              (0xFFU)
+#define UART_AP7816B_T0_ADTI_L_SHIFT             (0U)
+/*! ADTI_L - ATR Duration Time Integer Low (C7816[TTYPE] = 0) */
+#define UART_AP7816B_T0_ADTI_L(x)                (((uint8_t)(((uint8_t)(x)) << UART_AP7816B_T0_ADTI_L_SHIFT)) & UART_AP7816B_T0_ADTI_L_MASK)
+/*! @} */
+
+/*! @name WP7816A_T0 - UART 7816 Wait Parameter Register A */
+/*! @{ */
+
+#define UART_WP7816A_T0_WI_H_MASK                (0xFFU)
+#define UART_WP7816A_T0_WI_H_SHIFT               (0U)
+/*! WI_H - Wait Time Integer High (C7816[TTYPE] = 0) */
+#define UART_WP7816A_T0_WI_H(x)                  (((uint8_t)(((uint8_t)(x)) << UART_WP7816A_T0_WI_H_SHIFT)) & UART_WP7816A_T0_WI_H_MASK)
+/*! @} */
+
+/*! @name WP7816B_T0 - UART 7816 Wait Parameter Register B */
+/*! @{ */
+
+#define UART_WP7816B_T0_WI_L_MASK                (0xFFU)
+#define UART_WP7816B_T0_WI_L_SHIFT               (0U)
+/*! WI_L - Wait Time Integer Low (C7816[TTYPE] = 0) */
+#define UART_WP7816B_T0_WI_L(x)                  (((uint8_t)(((uint8_t)(x)) << UART_WP7816B_T0_WI_L_SHIFT)) & UART_WP7816B_T0_WI_L_MASK)
+/*! @} */
+
+/*! @name WP7816A_T1 - UART 7816 Wait Parameter Register A */
+/*! @{ */
+
+#define UART_WP7816A_T1_BWI_H_MASK               (0xFFU)
+#define UART_WP7816A_T1_BWI_H_SHIFT              (0U)
+/*! BWI_H - Block Wait Time Integer High (C7816[TTYPE] = 1) */
+#define UART_WP7816A_T1_BWI_H(x)                 (((uint8_t)(((uint8_t)(x)) << UART_WP7816A_T1_BWI_H_SHIFT)) & UART_WP7816A_T1_BWI_H_MASK)
+/*! @} */
+
+/*! @name WP7816B_T1 - UART 7816 Wait Parameter Register B */
+/*! @{ */
+
+#define UART_WP7816B_T1_BWI_L_MASK               (0xFFU)
+#define UART_WP7816B_T1_BWI_L_SHIFT              (0U)
+/*! BWI_L - Block Wait Time Integer Low (C7816[TTYPE] = 1) */
+#define UART_WP7816B_T1_BWI_L(x)                 (((uint8_t)(((uint8_t)(x)) << UART_WP7816B_T1_BWI_L_SHIFT)) & UART_WP7816B_T1_BWI_L_MASK)
+/*! @} */
+
+/*! @name WGP7816_T1 - UART 7816 Wait and Guard Parameter Register */
+/*! @{ */
+
+#define UART_WGP7816_T1_BGI_MASK                 (0xFU)
+#define UART_WGP7816_T1_BGI_SHIFT                (0U)
+/*! BGI - Block Guard Time Integer (C7816[TTYPE] = 1) */
+#define UART_WGP7816_T1_BGI(x)                   (((uint8_t)(((uint8_t)(x)) << UART_WGP7816_T1_BGI_SHIFT)) & UART_WGP7816_T1_BGI_MASK)
+
+#define UART_WGP7816_T1_CWI1_MASK                (0xF0U)
+#define UART_WGP7816_T1_CWI1_SHIFT               (4U)
+/*! CWI1 - Character Wait Time Integer 1 (C7816[TTYPE] = 1) */
+#define UART_WGP7816_T1_CWI1(x)                  (((uint8_t)(((uint8_t)(x)) << UART_WGP7816_T1_CWI1_SHIFT)) & UART_WGP7816_T1_CWI1_MASK)
+/*! @} */
+
+/*! @name WP7816C_T1 - UART 7816 Wait Parameter Register C */
+/*! @{ */
+
+#define UART_WP7816C_T1_CWI2_MASK                (0x1FU)
+#define UART_WP7816C_T1_CWI2_SHIFT               (0U)
+/*! CWI2 - Character Wait Time Integer 2 (C7816[TTYPE] = 1) */
+#define UART_WP7816C_T1_CWI2(x)                  (((uint8_t)(((uint8_t)(x)) << UART_WP7816C_T1_CWI2_SHIFT)) & UART_WP7816C_T1_CWI2_MASK)
 /*! @} */
 
 

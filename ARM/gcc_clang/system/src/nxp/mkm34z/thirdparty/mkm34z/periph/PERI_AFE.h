@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file AFE.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for AFE
  *
  * CMSIS Peripheral Access Layer for AFE
@@ -40,12 +39,8 @@
 #if !defined(AFE_H_)
 #define AFE_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -166,8 +161,8 @@ typedef struct {
 #define AFE_CFR_SD_MOD_EN_MASK                   (0x4000U)
 #define AFE_CFR_SD_MOD_EN_SHIFT                  (14U)
 /*! SD_MOD_EN - Sigma Delta Modulator enable
- *  0b0..SD ADC1 is disabled
- *  0b1..SD ADC1 is enabled
+ *  0b0..SD ADC0 is disabled
+ *  0b1..SD ADC0 is enabled
  */
 #define AFE_CFR_SD_MOD_EN(x)                     (((uint32_t)(((uint32_t)(x)) << AFE_CFR_SD_MOD_EN_SHIFT)) & AFE_CFR_SD_MOD_EN_MASK)
 
@@ -383,7 +378,7 @@ typedef struct {
 
 #define AFE_SR_RDY3_MASK                         (0x10000U)
 #define AFE_SR_RDY3_SHIFT                        (16U)
-/*! RDY3 - AFE Ready4
+/*! RDY3 - AFE Ready3
  *  0b0..AFE Channel3 is disabled or has not completed its start up period
  *  0b1..AFE Channel3 is ready to initiate conversions.
  */
@@ -391,7 +386,7 @@ typedef struct {
 
 #define AFE_SR_RDY2_MASK                         (0x20000U)
 #define AFE_SR_RDY2_SHIFT                        (17U)
-/*! RDY2 - AFE Ready3
+/*! RDY2 - AFE Ready2
  *  0b0..AFE Channel2 is disabled or has not completed its start up period
  *  0b1..AFE Channel2 is ready to initiate conversions.
  */
@@ -399,7 +394,7 @@ typedef struct {
 
 #define AFE_SR_RDY1_MASK                         (0x40000U)
 #define AFE_SR_RDY1_SHIFT                        (18U)
-/*! RDY1 - AFE Ready2
+/*! RDY1 - AFE Ready1
  *  0b0..AFE Channel1 is disabled or has not completed its start up period
  *  0b1..AFE Channel1 is ready to initiate conversions.
  */
@@ -407,7 +402,7 @@ typedef struct {
 
 #define AFE_SR_RDY0_MASK                         (0x80000U)
 #define AFE_SR_RDY0_SHIFT                        (19U)
-/*! RDY0 - AFE Ready1
+/*! RDY0 - AFE Ready0
  *  0b0..AFE Channel0 is disabled or has not completed its start up period
  *  0b1..AFE Channel0 is ready to initiate conversions.
  */

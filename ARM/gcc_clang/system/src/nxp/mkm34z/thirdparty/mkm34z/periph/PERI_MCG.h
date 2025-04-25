@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MCG.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for MCG
  *
  * CMSIS Peripheral Access Layer for MCG
@@ -40,12 +39,8 @@
 #if !defined(MCG_H_)
 #define MCG_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -149,14 +144,14 @@ typedef struct {
 #define MCG_C1_FRDIV_MASK                        (0x38U)
 #define MCG_C1_FRDIV_SHIFT                       (3U)
 /*! FRDIV - FLL External Reference Divider
- *  0b000..If RANGE = 0 , Divide Factor is 1; for all other RANGE values, Divide Factor is 32.
- *  0b001..If RANGE = 0 , Divide Factor is 2; for all other RANGE values, Divide Factor is 64.
- *  0b010..If RANGE = 0 , Divide Factor is 4; for all other RANGE values, Divide Factor is 128.
- *  0b011..If RANGE = 0 , Divide Factor is 8; for all other RANGE values, Divide Factor is 256.
- *  0b100..If RANGE = 0 , Divide Factor is 16; for all other RANGE values, Divide Factor is 512.
- *  0b101..If RANGE = 0 , Divide Factor is 32; for all other RANGE values, Divide Factor is 1024.
- *  0b110..If RANGE = 0 , Divide Factor is 64; for all other RANGE values, Divide Factor is 1280 .
- *  0b111..If RANGE = 0 , Divide Factor is 128; for all other RANGE values, Divide Factor is 1536 .
+ *  0b000..If RANGE = 0 or OSCSEL=1 , Divide Factor is 1; for all other RANGE values, Divide Factor is 32.
+ *  0b001..If RANGE = 0 or OSCSEL=1 , Divide Factor is 2; for all other RANGE values, Divide Factor is 64.
+ *  0b010..If RANGE = 0 or OSCSEL=1 , Divide Factor is 4; for all other RANGE values, Divide Factor is 128.
+ *  0b011..If RANGE = 0 or OSCSEL=1 , Divide Factor is 8; for all other RANGE values, Divide Factor is 256.
+ *  0b100..If RANGE = 0 or OSCSEL=1 , Divide Factor is 16; for all other RANGE values, Divide Factor is 512.
+ *  0b101..If RANGE = 0 or OSCSEL=1 , Divide Factor is 32; for all other RANGE values, Divide Factor is 1024.
+ *  0b110..If RANGE = 0 or OSCSEL=1 , Divide Factor is 64; for all other RANGE values, Divide Factor is 1280 .
+ *  0b111..If RANGE = 0 or OSCSEL=1 , Divide Factor is 128; for all other RANGE values, Divide Factor is 1536 .
  */
 #define MCG_C1_FRDIV(x)                          (((uint8_t)(((uint8_t)(x)) << MCG_C1_FRDIV_SHIFT)) & MCG_C1_FRDIV_MASK)
 
@@ -218,8 +213,8 @@ typedef struct {
 #define MCG_C2_LOCRE0_MASK                       (0x80U)
 #define MCG_C2_LOCRE0_SHIFT                      (7U)
 /*! LOCRE0 - Loss of Clock Reset Enable
- *  0b0..Interrupt request is generated on a loss of OSC external reference clock.
- *  0b1..Generate a reset request on a loss of OSC external reference clock.
+ *  0b0..Interrupt request is generated on a loss of OSC0 external reference clock.
+ *  0b1..Generate a reset request on a loss of OSC0 external reference clock.
  */
 #define MCG_C2_LOCRE0(x)                         (((uint8_t)(((uint8_t)(x)) << MCG_C2_LOCRE0_SHIFT)) & MCG_C2_LOCRE0_MASK)
 /*! @} */
@@ -292,16 +287,16 @@ typedef struct {
 #define MCG_C6_CHGPMP_BIAS_SHIFT                 (0U)
 /*! CHGPMP_BIAS - Directly controls the PLL Charge Pump Current. Appropiate selection of this value
  *    is imperative to ensure stable operation of the PLL closed loop system. The default value for
- *    this field is set to 5'b01000 out of reset which generates a nominal 750nA charge pump current
- *    (lcp).
+ *    this field is set to 5'b01000 out of reset which generates a nominal 750 nA charge pump
+ *    current (lcp).
  */
 #define MCG_C6_CHGPMP_BIAS(x)                    (((uint8_t)(((uint8_t)(x)) << MCG_C6_CHGPMP_BIAS_SHIFT)) & MCG_C6_CHGPMP_BIAS_MASK)
 
 #define MCG_C6_CME0_MASK                         (0x20U)
 #define MCG_C6_CME0_SHIFT                        (5U)
 /*! CME0 - Clock Monitor Enable
- *  0b0..External clock monitor is disabled for OSC.
- *  0b1..External clock monitor is enabled for OSC.
+ *  0b0..External clock monitor is disabled for OSC0.
+ *  0b1..External clock monitor is enabled for OSC0.
  */
 #define MCG_C6_CME0(x)                           (((uint8_t)(((uint8_t)(x)) << MCG_C6_CME0_SHIFT)) & MCG_C6_CME0_MASK)
 
@@ -344,7 +339,7 @@ typedef struct {
  *  0b00..Encoding 0 - Output of the FLL is selected (reset default).
  *  0b01..Encoding 1 - Internal reference clock is selected.
  *  0b10..Encoding 2 - External reference clock is selected.
- *  0b11..Encoding 3 - Output of the PLL is selected .
+ *  0b11..Encoding 3 - Output of the PLL is selected.
  */
 #define MCG_S_CLKST(x)                           (((uint8_t)(((uint8_t)(x)) << MCG_S_CLKST_SHIFT)) & MCG_S_CLKST_MASK)
 
@@ -386,9 +381,9 @@ typedef struct {
 
 #define MCG_SC_LOCS0_MASK                        (0x1U)
 #define MCG_SC_LOCS0_SHIFT                       (0U)
-/*! LOCS0 - OSC Loss of Clock Status
- *  0b0..Loss of OSC has not occurred.
- *  0b1..Loss of OSC has occurred.
+/*! LOCS0 - OSC0 Loss of Clock Status
+ *  0b0..Loss of OSC0 has not occurred.
+ *  0b1..Loss of OSC0 has occurred.
  */
 #define MCG_SC_LOCS0(x)                          (((uint8_t)(((uint8_t)(x)) << MCG_SC_LOCS0_SHIFT)) & MCG_SC_LOCS0_MASK)
 

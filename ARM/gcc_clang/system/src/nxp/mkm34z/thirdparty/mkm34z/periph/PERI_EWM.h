@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file EWM.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for EWM
  *
  * CMSIS Peripheral Access Layer for EWM
@@ -40,12 +39,8 @@
 #if !defined(EWM_H_)
 #define EWM_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -97,6 +92,8 @@ typedef struct {
   __O  uint8_t SERV;                               /**< Service Register, offset: 0x1 */
   __IO uint8_t CMPL;                               /**< Compare Low Register, offset: 0x2 */
   __IO uint8_t CMPH;                               /**< Compare High Register, offset: 0x3 */
+  __IO uint8_t CLKCTRL;                            /**< Clock Control Register, offset: 0x4 */
+  __IO uint8_t CLKPRESCALER;                       /**< Clock Prescaler Register, offset: 0x5 */
 } EWM_Type;
 
 /* ----------------------------------------------------------------------------
@@ -154,6 +151,28 @@ typedef struct {
 #define EWM_CMPH_COMPAREH_MASK                   (0xFFU)
 #define EWM_CMPH_COMPAREH_SHIFT                  (0U)
 #define EWM_CMPH_COMPAREH(x)                     (((uint8_t)(((uint8_t)(x)) << EWM_CMPH_COMPAREH_SHIFT)) & EWM_CMPH_COMPAREH_MASK)
+/*! @} */
+
+/*! @name CLKCTRL - Clock Control Register */
+/*! @{ */
+
+#define EWM_CLKCTRL_CLKSEL_MASK                  (0x3U)
+#define EWM_CLKCTRL_CLKSEL_SHIFT                 (0U)
+/*! CLKSEL
+ *  0b00..lpo_clk[0] will be selected for running EWM counter.
+ *  0b01..lpo_clk[1] will be selected for running EWM counter.
+ *  0b10..lpo_clk[2] will be selected for running EWM counter.
+ *  0b11..lpo_clk[3] will be selected for running EWM counter.
+ */
+#define EWM_CLKCTRL_CLKSEL(x)                    (((uint8_t)(((uint8_t)(x)) << EWM_CLKCTRL_CLKSEL_SHIFT)) & EWM_CLKCTRL_CLKSEL_MASK)
+/*! @} */
+
+/*! @name CLKPRESCALER - Clock Prescaler Register */
+/*! @{ */
+
+#define EWM_CLKPRESCALER_CLK_DIV_MASK            (0xFFU)
+#define EWM_CLKPRESCALER_CLK_DIV_SHIFT           (0U)
+#define EWM_CLKPRESCALER_CLK_DIV(x)              (((uint8_t)(((uint8_t)(x)) << EWM_CLKPRESCALER_CLK_DIV_SHIFT)) & EWM_CLKPRESCALER_CLK_DIV_MASK)
 /*! @} */
 
 

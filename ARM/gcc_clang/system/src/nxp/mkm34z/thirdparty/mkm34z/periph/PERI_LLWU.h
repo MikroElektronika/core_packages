@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file LLWU.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for LLWU
  *
  * CMSIS Peripheral Access Layer for LLWU
@@ -40,12 +39,8 @@
 #if !defined(LLWU_H_)
 #define LLWU_H_                                  /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -97,12 +92,18 @@ typedef struct {
   __IO uint8_t PE2;                                /**< LLWU Pin Enable 2 register, offset: 0x1 */
   __IO uint8_t PE3;                                /**< LLWU Pin Enable 3 register, offset: 0x2 */
   __IO uint8_t PE4;                                /**< LLWU Pin Enable 4 register, offset: 0x3 */
-  __IO uint8_t ME;                                 /**< LLWU Module Enable register, offset: 0x4 */
-  __IO uint8_t F1;                                 /**< LLWU Flag 1 register, offset: 0x5 */
-  __IO uint8_t F2;                                 /**< LLWU Flag 2 register, offset: 0x6 */
-  __I  uint8_t F3;                                 /**< LLWU Flag 3 register, offset: 0x7 */
-  __IO uint8_t FILT1;                              /**< LLWU Pin Filter 1 register, offset: 0x8 */
-  __IO uint8_t FILT2;                              /**< LLWU Pin Filter 2 register, offset: 0x9 */
+  __IO uint8_t PE5;                                /**< LLWU Pin Enable 5 register, offset: 0x4 */
+  __IO uint8_t PE6;                                /**< LLWU Pin Enable 6 register, offset: 0x5 */
+  __IO uint8_t PE7;                                /**< LLWU Pin Enable 7 register, offset: 0x6 */
+  __IO uint8_t PE8;                                /**< LLWU Pin Enable 8 register, offset: 0x7 */
+  __IO uint8_t ME;                                 /**< LLWU Module Enable register, offset: 0x8 */
+  __IO uint8_t PF1;                                /**< LLWU Pin Flag 1 register, offset: 0x9 */
+  __IO uint8_t PF2;                                /**< LLWU Pin Flag 2 register, offset: 0xA */
+  __IO uint8_t PF3;                                /**< LLWU Pin Flag 3 register, offset: 0xB */
+  __IO uint8_t PF4;                                /**< LLWU Pin Flag 4 register, offset: 0xC */
+  __I  uint8_t MF5;                                /**< LLWU Module Flag 5 register, offset: 0xD */
+  __IO uint8_t FILT1;                              /**< LLWU Pin Filter 1 register, offset: 0xE */
+  __IO uint8_t FILT2;                              /**< LLWU Pin Filter 2 register, offset: 0xF */
 } LLWU_Type;
 
 /* ----------------------------------------------------------------------------
@@ -290,6 +291,182 @@ typedef struct {
 #define LLWU_PE4_WUPE15(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE4_WUPE15_SHIFT)) & LLWU_PE4_WUPE15_MASK)
 /*! @} */
 
+/*! @name PE5 - LLWU Pin Enable 5 register */
+/*! @{ */
+
+#define LLWU_PE5_WUPE16_MASK                     (0x3U)
+#define LLWU_PE5_WUPE16_SHIFT                    (0U)
+/*! WUPE16 - Wakeup Pin Enable For LLWU_P16
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE5_WUPE16(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE5_WUPE16_SHIFT)) & LLWU_PE5_WUPE16_MASK)
+
+#define LLWU_PE5_WUPE17_MASK                     (0xCU)
+#define LLWU_PE5_WUPE17_SHIFT                    (2U)
+/*! WUPE17 - Wakeup Pin Enable For LLWU_P17
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE5_WUPE17(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE5_WUPE17_SHIFT)) & LLWU_PE5_WUPE17_MASK)
+
+#define LLWU_PE5_WUPE18_MASK                     (0x30U)
+#define LLWU_PE5_WUPE18_SHIFT                    (4U)
+/*! WUPE18 - Wakeup Pin Enable For LLWU_P18
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE5_WUPE18(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE5_WUPE18_SHIFT)) & LLWU_PE5_WUPE18_MASK)
+
+#define LLWU_PE5_WUPE19_MASK                     (0xC0U)
+#define LLWU_PE5_WUPE19_SHIFT                    (6U)
+/*! WUPE19 - Wakeup Pin Enable For LLWU_P19
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE5_WUPE19(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE5_WUPE19_SHIFT)) & LLWU_PE5_WUPE19_MASK)
+/*! @} */
+
+/*! @name PE6 - LLWU Pin Enable 6 register */
+/*! @{ */
+
+#define LLWU_PE6_WUPE20_MASK                     (0x3U)
+#define LLWU_PE6_WUPE20_SHIFT                    (0U)
+/*! WUPE20 - Wakeup Pin Enable For LLWU_P20
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE6_WUPE20(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE6_WUPE20_SHIFT)) & LLWU_PE6_WUPE20_MASK)
+
+#define LLWU_PE6_WUPE21_MASK                     (0xCU)
+#define LLWU_PE6_WUPE21_SHIFT                    (2U)
+/*! WUPE21 - Wakeup Pin Enable For LLWU_P21
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE6_WUPE21(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE6_WUPE21_SHIFT)) & LLWU_PE6_WUPE21_MASK)
+
+#define LLWU_PE6_WUPE22_MASK                     (0x30U)
+#define LLWU_PE6_WUPE22_SHIFT                    (4U)
+/*! WUPE22 - Wakeup Pin Enable For LLWU_P22
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE6_WUPE22(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE6_WUPE22_SHIFT)) & LLWU_PE6_WUPE22_MASK)
+
+#define LLWU_PE6_WUPE23_MASK                     (0xC0U)
+#define LLWU_PE6_WUPE23_SHIFT                    (6U)
+/*! WUPE23 - Wakeup Pin Enable For LLWU_P23
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE6_WUPE23(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE6_WUPE23_SHIFT)) & LLWU_PE6_WUPE23_MASK)
+/*! @} */
+
+/*! @name PE7 - LLWU Pin Enable 7 register */
+/*! @{ */
+
+#define LLWU_PE7_WUPE24_MASK                     (0x3U)
+#define LLWU_PE7_WUPE24_SHIFT                    (0U)
+/*! WUPE24 - Wakeup Pin Enable For LLWU_P24
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE7_WUPE24(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE7_WUPE24_SHIFT)) & LLWU_PE7_WUPE24_MASK)
+
+#define LLWU_PE7_WUPE25_MASK                     (0xCU)
+#define LLWU_PE7_WUPE25_SHIFT                    (2U)
+/*! WUPE25 - Wakeup Pin Enable For LLWU_P25
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE7_WUPE25(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE7_WUPE25_SHIFT)) & LLWU_PE7_WUPE25_MASK)
+
+#define LLWU_PE7_WUPE26_MASK                     (0x30U)
+#define LLWU_PE7_WUPE26_SHIFT                    (4U)
+/*! WUPE26 - Wakeup Pin Enable For LLWU_P26
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE7_WUPE26(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE7_WUPE26_SHIFT)) & LLWU_PE7_WUPE26_MASK)
+
+#define LLWU_PE7_WUPE27_MASK                     (0xC0U)
+#define LLWU_PE7_WUPE27_SHIFT                    (6U)
+/*! WUPE27 - Wakeup Pin Enable For LLWU_P27
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE7_WUPE27(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE7_WUPE27_SHIFT)) & LLWU_PE7_WUPE27_MASK)
+/*! @} */
+
+/*! @name PE8 - LLWU Pin Enable 8 register */
+/*! @{ */
+
+#define LLWU_PE8_WUPE28_MASK                     (0x3U)
+#define LLWU_PE8_WUPE28_SHIFT                    (0U)
+/*! WUPE28 - Wakeup Pin Enable For LLWU_P28
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE8_WUPE28(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE8_WUPE28_SHIFT)) & LLWU_PE8_WUPE28_MASK)
+
+#define LLWU_PE8_WUPE29_MASK                     (0xCU)
+#define LLWU_PE8_WUPE29_SHIFT                    (2U)
+/*! WUPE29 - Wakeup Pin Enable For LLWU_P29
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE8_WUPE29(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE8_WUPE29_SHIFT)) & LLWU_PE8_WUPE29_MASK)
+
+#define LLWU_PE8_WUPE30_MASK                     (0x30U)
+#define LLWU_PE8_WUPE30_SHIFT                    (4U)
+/*! WUPE30 - Wakeup Pin Enable For LLWU_P30
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE8_WUPE30(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE8_WUPE30_SHIFT)) & LLWU_PE8_WUPE30_MASK)
+
+#define LLWU_PE8_WUPE31_MASK                     (0xC0U)
+#define LLWU_PE8_WUPE31_SHIFT                    (6U)
+/*! WUPE31 - Wakeup Pin Enable For LLWU_P31
+ *  0b00..External input pin disabled as wakeup input
+ *  0b01..External input pin enabled with rising edge detection
+ *  0b10..External input pin enabled with falling edge detection
+ *  0b11..External input pin enabled with any change detection
+ */
+#define LLWU_PE8_WUPE31(x)                       (((uint8_t)(((uint8_t)(x)) << LLWU_PE8_WUPE31_SHIFT)) & LLWU_PE8_WUPE31_MASK)
+/*! @} */
+
 /*! @name ME - LLWU Module Enable register */
 /*! @{ */
 
@@ -358,218 +535,354 @@ typedef struct {
 #define LLWU_ME_WUME7(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_ME_WUME7_SHIFT)) & LLWU_ME_WUME7_MASK)
 /*! @} */
 
-/*! @name F1 - LLWU Flag 1 register */
+/*! @name PF1 - LLWU Pin Flag 1 register */
 /*! @{ */
 
-#define LLWU_F1_WUF0_MASK                        (0x1U)
-#define LLWU_F1_WUF0_SHIFT                       (0U)
+#define LLWU_PF1_WUF0_MASK                       (0x1U)
+#define LLWU_PF1_WUF0_SHIFT                      (0U)
 /*! WUF0 - Wakeup Flag For LLWU_P0
  *  0b0..LLWU_P0 input was not a wakeup source
  *  0b1..LLWU_P0 input was a wakeup source
  */
-#define LLWU_F1_WUF0(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F1_WUF0_SHIFT)) & LLWU_F1_WUF0_MASK)
+#define LLWU_PF1_WUF0(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF1_WUF0_SHIFT)) & LLWU_PF1_WUF0_MASK)
 
-#define LLWU_F1_WUF1_MASK                        (0x2U)
-#define LLWU_F1_WUF1_SHIFT                       (1U)
+#define LLWU_PF1_WUF1_MASK                       (0x2U)
+#define LLWU_PF1_WUF1_SHIFT                      (1U)
 /*! WUF1 - Wakeup Flag For LLWU_P1
  *  0b0..LLWU_P1 input was not a wakeup source
  *  0b1..LLWU_P1 input was a wakeup source
  */
-#define LLWU_F1_WUF1(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F1_WUF1_SHIFT)) & LLWU_F1_WUF1_MASK)
+#define LLWU_PF1_WUF1(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF1_WUF1_SHIFT)) & LLWU_PF1_WUF1_MASK)
 
-#define LLWU_F1_WUF2_MASK                        (0x4U)
-#define LLWU_F1_WUF2_SHIFT                       (2U)
+#define LLWU_PF1_WUF2_MASK                       (0x4U)
+#define LLWU_PF1_WUF2_SHIFT                      (2U)
 /*! WUF2 - Wakeup Flag For LLWU_P2
  *  0b0..LLWU_P2 input was not a wakeup source
  *  0b1..LLWU_P2 input was a wakeup source
  */
-#define LLWU_F1_WUF2(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F1_WUF2_SHIFT)) & LLWU_F1_WUF2_MASK)
+#define LLWU_PF1_WUF2(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF1_WUF2_SHIFT)) & LLWU_PF1_WUF2_MASK)
 
-#define LLWU_F1_WUF3_MASK                        (0x8U)
-#define LLWU_F1_WUF3_SHIFT                       (3U)
+#define LLWU_PF1_WUF3_MASK                       (0x8U)
+#define LLWU_PF1_WUF3_SHIFT                      (3U)
 /*! WUF3 - Wakeup Flag For LLWU_P3
- *  0b0..LLWU_P3 input was not a wake-up source
- *  0b1..LLWU_P3 input was a wake-up source
+ *  0b0..LLWU_P3 input was not a wakeup source
+ *  0b1..LLWU_P3 input was a wakeup source
  */
-#define LLWU_F1_WUF3(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F1_WUF3_SHIFT)) & LLWU_F1_WUF3_MASK)
+#define LLWU_PF1_WUF3(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF1_WUF3_SHIFT)) & LLWU_PF1_WUF3_MASK)
 
-#define LLWU_F1_WUF4_MASK                        (0x10U)
-#define LLWU_F1_WUF4_SHIFT                       (4U)
+#define LLWU_PF1_WUF4_MASK                       (0x10U)
+#define LLWU_PF1_WUF4_SHIFT                      (4U)
 /*! WUF4 - Wakeup Flag For LLWU_P4
  *  0b0..LLWU_P4 input was not a wakeup source
  *  0b1..LLWU_P4 input was a wakeup source
  */
-#define LLWU_F1_WUF4(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F1_WUF4_SHIFT)) & LLWU_F1_WUF4_MASK)
+#define LLWU_PF1_WUF4(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF1_WUF4_SHIFT)) & LLWU_PF1_WUF4_MASK)
 
-#define LLWU_F1_WUF5_MASK                        (0x20U)
-#define LLWU_F1_WUF5_SHIFT                       (5U)
+#define LLWU_PF1_WUF5_MASK                       (0x20U)
+#define LLWU_PF1_WUF5_SHIFT                      (5U)
 /*! WUF5 - Wakeup Flag For LLWU_P5
  *  0b0..LLWU_P5 input was not a wakeup source
  *  0b1..LLWU_P5 input was a wakeup source
  */
-#define LLWU_F1_WUF5(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F1_WUF5_SHIFT)) & LLWU_F1_WUF5_MASK)
+#define LLWU_PF1_WUF5(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF1_WUF5_SHIFT)) & LLWU_PF1_WUF5_MASK)
 
-#define LLWU_F1_WUF6_MASK                        (0x40U)
-#define LLWU_F1_WUF6_SHIFT                       (6U)
+#define LLWU_PF1_WUF6_MASK                       (0x40U)
+#define LLWU_PF1_WUF6_SHIFT                      (6U)
 /*! WUF6 - Wakeup Flag For LLWU_P6
  *  0b0..LLWU_P6 input was not a wakeup source
  *  0b1..LLWU_P6 input was a wakeup source
  */
-#define LLWU_F1_WUF6(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F1_WUF6_SHIFT)) & LLWU_F1_WUF6_MASK)
+#define LLWU_PF1_WUF6(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF1_WUF6_SHIFT)) & LLWU_PF1_WUF6_MASK)
 
-#define LLWU_F1_WUF7_MASK                        (0x80U)
-#define LLWU_F1_WUF7_SHIFT                       (7U)
+#define LLWU_PF1_WUF7_MASK                       (0x80U)
+#define LLWU_PF1_WUF7_SHIFT                      (7U)
 /*! WUF7 - Wakeup Flag For LLWU_P7
  *  0b0..LLWU_P7 input was not a wakeup source
  *  0b1..LLWU_P7 input was a wakeup source
  */
-#define LLWU_F1_WUF7(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F1_WUF7_SHIFT)) & LLWU_F1_WUF7_MASK)
+#define LLWU_PF1_WUF7(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF1_WUF7_SHIFT)) & LLWU_PF1_WUF7_MASK)
 /*! @} */
 
-/*! @name F2 - LLWU Flag 2 register */
+/*! @name PF2 - LLWU Pin Flag 2 register */
 /*! @{ */
 
-#define LLWU_F2_WUF8_MASK                        (0x1U)
-#define LLWU_F2_WUF8_SHIFT                       (0U)
+#define LLWU_PF2_WUF8_MASK                       (0x1U)
+#define LLWU_PF2_WUF8_SHIFT                      (0U)
 /*! WUF8 - Wakeup Flag For LLWU_P8
  *  0b0..LLWU_P8 input was not a wakeup source
  *  0b1..LLWU_P8 input was a wakeup source
  */
-#define LLWU_F2_WUF8(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F2_WUF8_SHIFT)) & LLWU_F2_WUF8_MASK)
+#define LLWU_PF2_WUF8(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF2_WUF8_SHIFT)) & LLWU_PF2_WUF8_MASK)
 
-#define LLWU_F2_WUF9_MASK                        (0x2U)
-#define LLWU_F2_WUF9_SHIFT                       (1U)
+#define LLWU_PF2_WUF9_MASK                       (0x2U)
+#define LLWU_PF2_WUF9_SHIFT                      (1U)
 /*! WUF9 - Wakeup Flag For LLWU_P9
  *  0b0..LLWU_P9 input was not a wakeup source
  *  0b1..LLWU_P9 input was a wakeup source
  */
-#define LLWU_F2_WUF9(x)                          (((uint8_t)(((uint8_t)(x)) << LLWU_F2_WUF9_SHIFT)) & LLWU_F2_WUF9_MASK)
+#define LLWU_PF2_WUF9(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_PF2_WUF9_SHIFT)) & LLWU_PF2_WUF9_MASK)
 
-#define LLWU_F2_WUF10_MASK                       (0x4U)
-#define LLWU_F2_WUF10_SHIFT                      (2U)
+#define LLWU_PF2_WUF10_MASK                      (0x4U)
+#define LLWU_PF2_WUF10_SHIFT                     (2U)
 /*! WUF10 - Wakeup Flag For LLWU_P10
  *  0b0..LLWU_P10 input was not a wakeup source
  *  0b1..LLWU_P10 input was a wakeup source
  */
-#define LLWU_F2_WUF10(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F2_WUF10_SHIFT)) & LLWU_F2_WUF10_MASK)
+#define LLWU_PF2_WUF10(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF2_WUF10_SHIFT)) & LLWU_PF2_WUF10_MASK)
 
-#define LLWU_F2_WUF11_MASK                       (0x8U)
-#define LLWU_F2_WUF11_SHIFT                      (3U)
+#define LLWU_PF2_WUF11_MASK                      (0x8U)
+#define LLWU_PF2_WUF11_SHIFT                     (3U)
 /*! WUF11 - Wakeup Flag For LLWU_P11
  *  0b0..LLWU_P11 input was not a wakeup source
  *  0b1..LLWU_P11 input was a wakeup source
  */
-#define LLWU_F2_WUF11(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F2_WUF11_SHIFT)) & LLWU_F2_WUF11_MASK)
+#define LLWU_PF2_WUF11(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF2_WUF11_SHIFT)) & LLWU_PF2_WUF11_MASK)
 
-#define LLWU_F2_WUF12_MASK                       (0x10U)
-#define LLWU_F2_WUF12_SHIFT                      (4U)
+#define LLWU_PF2_WUF12_MASK                      (0x10U)
+#define LLWU_PF2_WUF12_SHIFT                     (4U)
 /*! WUF12 - Wakeup Flag For LLWU_P12
  *  0b0..LLWU_P12 input was not a wakeup source
  *  0b1..LLWU_P12 input was a wakeup source
  */
-#define LLWU_F2_WUF12(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F2_WUF12_SHIFT)) & LLWU_F2_WUF12_MASK)
+#define LLWU_PF2_WUF12(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF2_WUF12_SHIFT)) & LLWU_PF2_WUF12_MASK)
 
-#define LLWU_F2_WUF13_MASK                       (0x20U)
-#define LLWU_F2_WUF13_SHIFT                      (5U)
+#define LLWU_PF2_WUF13_MASK                      (0x20U)
+#define LLWU_PF2_WUF13_SHIFT                     (5U)
 /*! WUF13 - Wakeup Flag For LLWU_P13
  *  0b0..LLWU_P13 input was not a wakeup source
  *  0b1..LLWU_P13 input was a wakeup source
  */
-#define LLWU_F2_WUF13(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F2_WUF13_SHIFT)) & LLWU_F2_WUF13_MASK)
+#define LLWU_PF2_WUF13(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF2_WUF13_SHIFT)) & LLWU_PF2_WUF13_MASK)
 
-#define LLWU_F2_WUF14_MASK                       (0x40U)
-#define LLWU_F2_WUF14_SHIFT                      (6U)
+#define LLWU_PF2_WUF14_MASK                      (0x40U)
+#define LLWU_PF2_WUF14_SHIFT                     (6U)
 /*! WUF14 - Wakeup Flag For LLWU_P14
  *  0b0..LLWU_P14 input was not a wakeup source
  *  0b1..LLWU_P14 input was a wakeup source
  */
-#define LLWU_F2_WUF14(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F2_WUF14_SHIFT)) & LLWU_F2_WUF14_MASK)
+#define LLWU_PF2_WUF14(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF2_WUF14_SHIFT)) & LLWU_PF2_WUF14_MASK)
 
-#define LLWU_F2_WUF15_MASK                       (0x80U)
-#define LLWU_F2_WUF15_SHIFT                      (7U)
+#define LLWU_PF2_WUF15_MASK                      (0x80U)
+#define LLWU_PF2_WUF15_SHIFT                     (7U)
 /*! WUF15 - Wakeup Flag For LLWU_P15
  *  0b0..LLWU_P15 input was not a wakeup source
  *  0b1..LLWU_P15 input was a wakeup source
  */
-#define LLWU_F2_WUF15(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F2_WUF15_SHIFT)) & LLWU_F2_WUF15_MASK)
+#define LLWU_PF2_WUF15(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF2_WUF15_SHIFT)) & LLWU_PF2_WUF15_MASK)
 /*! @} */
 
-/*! @name F3 - LLWU Flag 3 register */
+/*! @name PF3 - LLWU Pin Flag 3 register */
 /*! @{ */
 
-#define LLWU_F3_MWUF0_MASK                       (0x1U)
-#define LLWU_F3_MWUF0_SHIFT                      (0U)
+#define LLWU_PF3_WUF16_MASK                      (0x1U)
+#define LLWU_PF3_WUF16_SHIFT                     (0U)
+/*! WUF16 - Wakeup Flag For LLWU_P16
+ *  0b0..LLWU_P16 input was not a wakeup source
+ *  0b1..LLWU_P16 input was a wakeup source
+ */
+#define LLWU_PF3_WUF16(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF3_WUF16_SHIFT)) & LLWU_PF3_WUF16_MASK)
+
+#define LLWU_PF3_WUF17_MASK                      (0x2U)
+#define LLWU_PF3_WUF17_SHIFT                     (1U)
+/*! WUF17 - Wakeup Flag For LLWU_P17
+ *  0b0..LLWU_P17 input was not a wakeup source
+ *  0b1..LLWU_P17 input was a wakeup source
+ */
+#define LLWU_PF3_WUF17(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF3_WUF17_SHIFT)) & LLWU_PF3_WUF17_MASK)
+
+#define LLWU_PF3_WUF18_MASK                      (0x4U)
+#define LLWU_PF3_WUF18_SHIFT                     (2U)
+/*! WUF18 - Wakeup Flag For LLWU_P18
+ *  0b0..LLWU_P18 input was not a wakeup source
+ *  0b1..LLWU_P18 input was a wakeup source
+ */
+#define LLWU_PF3_WUF18(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF3_WUF18_SHIFT)) & LLWU_PF3_WUF18_MASK)
+
+#define LLWU_PF3_WUF19_MASK                      (0x8U)
+#define LLWU_PF3_WUF19_SHIFT                     (3U)
+/*! WUF19 - Wakeup Flag For LLWU_P19
+ *  0b0..LLWU_P19 input was not a wakeup source
+ *  0b1..LLWU_P19 input was a wakeup source
+ */
+#define LLWU_PF3_WUF19(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF3_WUF19_SHIFT)) & LLWU_PF3_WUF19_MASK)
+
+#define LLWU_PF3_WUF20_MASK                      (0x10U)
+#define LLWU_PF3_WUF20_SHIFT                     (4U)
+/*! WUF20 - Wakeup Flag For LLWU_P20
+ *  0b0..LLWU_P20 input was not a wakeup source
+ *  0b1..LLWU_P20 input was a wakeup source
+ */
+#define LLWU_PF3_WUF20(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF3_WUF20_SHIFT)) & LLWU_PF3_WUF20_MASK)
+
+#define LLWU_PF3_WUF21_MASK                      (0x20U)
+#define LLWU_PF3_WUF21_SHIFT                     (5U)
+/*! WUF21 - Wakeup Flag For LLWU_P21
+ *  0b0..LLWU_P21 input was not a wakeup source
+ *  0b1..LLWU_P21 input was a wakeup source
+ */
+#define LLWU_PF3_WUF21(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF3_WUF21_SHIFT)) & LLWU_PF3_WUF21_MASK)
+
+#define LLWU_PF3_WUF22_MASK                      (0x40U)
+#define LLWU_PF3_WUF22_SHIFT                     (6U)
+/*! WUF22 - Wakeup Flag For LLWU_P22
+ *  0b0..LLWU_P22 input was not a wakeup source
+ *  0b1..LLWU_P22 input was a wakeup source
+ */
+#define LLWU_PF3_WUF22(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF3_WUF22_SHIFT)) & LLWU_PF3_WUF22_MASK)
+
+#define LLWU_PF3_WUF23_MASK                      (0x80U)
+#define LLWU_PF3_WUF23_SHIFT                     (7U)
+/*! WUF23 - Wakeup Flag For LLWU_P23
+ *  0b0..LLWU_P23 input was not a wakeup source
+ *  0b1..LLWU_P23 input was a wakeup source
+ */
+#define LLWU_PF3_WUF23(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF3_WUF23_SHIFT)) & LLWU_PF3_WUF23_MASK)
+/*! @} */
+
+/*! @name PF4 - LLWU Pin Flag 4 register */
+/*! @{ */
+
+#define LLWU_PF4_WUF24_MASK                      (0x1U)
+#define LLWU_PF4_WUF24_SHIFT                     (0U)
+/*! WUF24 - Wakeup Flag For LLWU_P24
+ *  0b0..LLWU_P24 input was not a wakeup source
+ *  0b1..LLWU_P24 input was a wakeup source
+ */
+#define LLWU_PF4_WUF24(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF4_WUF24_SHIFT)) & LLWU_PF4_WUF24_MASK)
+
+#define LLWU_PF4_WUF25_MASK                      (0x2U)
+#define LLWU_PF4_WUF25_SHIFT                     (1U)
+/*! WUF25 - Wakeup Flag For LLWU_P25
+ *  0b0..LLWU_P25 input was not a wakeup source
+ *  0b1..LLWU_P25 input was a wakeup source
+ */
+#define LLWU_PF4_WUF25(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF4_WUF25_SHIFT)) & LLWU_PF4_WUF25_MASK)
+
+#define LLWU_PF4_WUF26_MASK                      (0x4U)
+#define LLWU_PF4_WUF26_SHIFT                     (2U)
+/*! WUF26 - Wakeup Flag For LLWU_P26
+ *  0b0..LLWU_P26 input was not a wakeup source
+ *  0b1..LLWU_P26 input was a wakeup source
+ */
+#define LLWU_PF4_WUF26(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF4_WUF26_SHIFT)) & LLWU_PF4_WUF26_MASK)
+
+#define LLWU_PF4_WUF27_MASK                      (0x8U)
+#define LLWU_PF4_WUF27_SHIFT                     (3U)
+/*! WUF27 - Wakeup Flag For LLWU_P27
+ *  0b0..LLWU_P27 input was not a wakeup source
+ *  0b1..LLWU_P27 input was a wakeup source
+ */
+#define LLWU_PF4_WUF27(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF4_WUF27_SHIFT)) & LLWU_PF4_WUF27_MASK)
+
+#define LLWU_PF4_WUF28_MASK                      (0x10U)
+#define LLWU_PF4_WUF28_SHIFT                     (4U)
+/*! WUF28 - Wakeup Flag For LLWU_P28
+ *  0b0..LLWU_P28 input was not a wakeup source
+ *  0b1..LLWU_P28 input was a wakeup source
+ */
+#define LLWU_PF4_WUF28(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF4_WUF28_SHIFT)) & LLWU_PF4_WUF28_MASK)
+
+#define LLWU_PF4_WUF29_MASK                      (0x20U)
+#define LLWU_PF4_WUF29_SHIFT                     (5U)
+/*! WUF29 - Wakeup Flag For LLWU_P29
+ *  0b0..LLWU_P29 input was not a wakeup source
+ *  0b1..LLWU_P29 input was a wakeup source
+ */
+#define LLWU_PF4_WUF29(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF4_WUF29_SHIFT)) & LLWU_PF4_WUF29_MASK)
+
+#define LLWU_PF4_WUF30_MASK                      (0x40U)
+#define LLWU_PF4_WUF30_SHIFT                     (6U)
+/*! WUF30 - Wakeup Flag For LLWU_P30
+ *  0b0..LLWU_P30 input was not a wakeup source
+ *  0b1..LLWU_P30 input was a wakeup source
+ */
+#define LLWU_PF4_WUF30(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF4_WUF30_SHIFT)) & LLWU_PF4_WUF30_MASK)
+
+#define LLWU_PF4_WUF31_MASK                      (0x80U)
+#define LLWU_PF4_WUF31_SHIFT                     (7U)
+/*! WUF31 - Wakeup Flag For LLWU_P31
+ *  0b0..LLWU_P31 input was not a wakeup source
+ *  0b1..LLWU_P31 input was a wakeup source
+ */
+#define LLWU_PF4_WUF31(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_PF4_WUF31_SHIFT)) & LLWU_PF4_WUF31_MASK)
+/*! @} */
+
+/*! @name MF5 - LLWU Module Flag 5 register */
+/*! @{ */
+
+#define LLWU_MF5_MWUF0_MASK                      (0x1U)
+#define LLWU_MF5_MWUF0_SHIFT                     (0U)
 /*! MWUF0 - Wakeup flag For module 0
  *  0b0..Module 0 input was not a wakeup source
  *  0b1..Module 0 input was a wakeup source
  */
-#define LLWU_F3_MWUF0(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F3_MWUF0_SHIFT)) & LLWU_F3_MWUF0_MASK)
+#define LLWU_MF5_MWUF0(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_MF5_MWUF0_SHIFT)) & LLWU_MF5_MWUF0_MASK)
 
-#define LLWU_F3_MWUF1_MASK                       (0x2U)
-#define LLWU_F3_MWUF1_SHIFT                      (1U)
+#define LLWU_MF5_MWUF1_MASK                      (0x2U)
+#define LLWU_MF5_MWUF1_SHIFT                     (1U)
 /*! MWUF1 - Wakeup flag For module 1
  *  0b0..Module 1 input was not a wakeup source
  *  0b1..Module 1 input was a wakeup source
  */
-#define LLWU_F3_MWUF1(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F3_MWUF1_SHIFT)) & LLWU_F3_MWUF1_MASK)
+#define LLWU_MF5_MWUF1(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_MF5_MWUF1_SHIFT)) & LLWU_MF5_MWUF1_MASK)
 
-#define LLWU_F3_MWUF2_MASK                       (0x4U)
-#define LLWU_F3_MWUF2_SHIFT                      (2U)
+#define LLWU_MF5_MWUF2_MASK                      (0x4U)
+#define LLWU_MF5_MWUF2_SHIFT                     (2U)
 /*! MWUF2 - Wakeup flag For module 2
  *  0b0..Module 2 input was not a wakeup source
  *  0b1..Module 2 input was a wakeup source
  */
-#define LLWU_F3_MWUF2(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F3_MWUF2_SHIFT)) & LLWU_F3_MWUF2_MASK)
+#define LLWU_MF5_MWUF2(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_MF5_MWUF2_SHIFT)) & LLWU_MF5_MWUF2_MASK)
 
-#define LLWU_F3_MWUF3_MASK                       (0x8U)
-#define LLWU_F3_MWUF3_SHIFT                      (3U)
+#define LLWU_MF5_MWUF3_MASK                      (0x8U)
+#define LLWU_MF5_MWUF3_SHIFT                     (3U)
 /*! MWUF3 - Wakeup flag For module 3
  *  0b0..Module 3 input was not a wakeup source
  *  0b1..Module 3 input was a wakeup source
  */
-#define LLWU_F3_MWUF3(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F3_MWUF3_SHIFT)) & LLWU_F3_MWUF3_MASK)
+#define LLWU_MF5_MWUF3(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_MF5_MWUF3_SHIFT)) & LLWU_MF5_MWUF3_MASK)
 
-#define LLWU_F3_MWUF4_MASK                       (0x10U)
-#define LLWU_F3_MWUF4_SHIFT                      (4U)
+#define LLWU_MF5_MWUF4_MASK                      (0x10U)
+#define LLWU_MF5_MWUF4_SHIFT                     (4U)
 /*! MWUF4 - Wakeup flag For module 4
  *  0b0..Module 4 input was not a wakeup source
  *  0b1..Module 4 input was a wakeup source
  */
-#define LLWU_F3_MWUF4(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F3_MWUF4_SHIFT)) & LLWU_F3_MWUF4_MASK)
+#define LLWU_MF5_MWUF4(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_MF5_MWUF4_SHIFT)) & LLWU_MF5_MWUF4_MASK)
 
-#define LLWU_F3_MWUF5_MASK                       (0x20U)
-#define LLWU_F3_MWUF5_SHIFT                      (5U)
+#define LLWU_MF5_MWUF5_MASK                      (0x20U)
+#define LLWU_MF5_MWUF5_SHIFT                     (5U)
 /*! MWUF5 - Wakeup flag For module 5
  *  0b0..Module 5 input was not a wakeup source
  *  0b1..Module 5 input was a wakeup source
  */
-#define LLWU_F3_MWUF5(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F3_MWUF5_SHIFT)) & LLWU_F3_MWUF5_MASK)
+#define LLWU_MF5_MWUF5(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_MF5_MWUF5_SHIFT)) & LLWU_MF5_MWUF5_MASK)
 
-#define LLWU_F3_MWUF6_MASK                       (0x40U)
-#define LLWU_F3_MWUF6_SHIFT                      (6U)
+#define LLWU_MF5_MWUF6_MASK                      (0x40U)
+#define LLWU_MF5_MWUF6_SHIFT                     (6U)
 /*! MWUF6 - Wakeup flag For module 6
  *  0b0..Module 6 input was not a wakeup source
  *  0b1..Module 6 input was a wakeup source
  */
-#define LLWU_F3_MWUF6(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F3_MWUF6_SHIFT)) & LLWU_F3_MWUF6_MASK)
+#define LLWU_MF5_MWUF6(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_MF5_MWUF6_SHIFT)) & LLWU_MF5_MWUF6_MASK)
 
-#define LLWU_F3_MWUF7_MASK                       (0x80U)
-#define LLWU_F3_MWUF7_SHIFT                      (7U)
+#define LLWU_MF5_MWUF7_MASK                      (0x80U)
+#define LLWU_MF5_MWUF7_SHIFT                     (7U)
 /*! MWUF7 - Wakeup flag For module 7
  *  0b0..Module 7 input was not a wakeup source
  *  0b1..Module 7 input was a wakeup source
  */
-#define LLWU_F3_MWUF7(x)                         (((uint8_t)(((uint8_t)(x)) << LLWU_F3_MWUF7_SHIFT)) & LLWU_F3_MWUF7_MASK)
+#define LLWU_MF5_MWUF7(x)                        (((uint8_t)(((uint8_t)(x)) << LLWU_MF5_MWUF7_SHIFT)) & LLWU_MF5_MWUF7_MASK)
 /*! @} */
 
 /*! @name FILT1 - LLWU Pin Filter 1 register */
 /*! @{ */
 
-#define LLWU_FILT1_FILTSEL_MASK                  (0xFU)
+#define LLWU_FILT1_FILTSEL_MASK                  (0x1FU)
 #define LLWU_FILT1_FILTSEL_SHIFT                 (0U)
 /*! FILTSEL - Filter Pin Select
- *  0b0000..Select LLWU_P0 for filter
- *  0b1111..Select LLWU_P15 for filter
+ *  0b00000..Select LLWU_P0 for filter
+ *  0b11111..Select LLWU_P31 for filter
  */
 #define LLWU_FILT1_FILTSEL(x)                    (((uint8_t)(((uint8_t)(x)) << LLWU_FILT1_FILTSEL_SHIFT)) & LLWU_FILT1_FILTSEL_MASK)
 
@@ -595,11 +908,11 @@ typedef struct {
 /*! @name FILT2 - LLWU Pin Filter 2 register */
 /*! @{ */
 
-#define LLWU_FILT2_FILTSEL_MASK                  (0xFU)
+#define LLWU_FILT2_FILTSEL_MASK                  (0x1FU)
 #define LLWU_FILT2_FILTSEL_SHIFT                 (0U)
 /*! FILTSEL - Filter Pin Select
- *  0b0000..Select LLWU_P0 for filter
- *  0b1111..Select LLWU_P15 for filter
+ *  0b00000..Select LLWU_P0 for filter
+ *  0b11111..Select LLWU_P31 for filter
  */
 #define LLWU_FILT2_FILTSEL(x)                    (((uint8_t)(((uint8_t)(x)) << LLWU_FILT2_FILTSEL_SHIFT)) & LLWU_FILT2_FILTSEL_MASK)
 

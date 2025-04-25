@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file DMA.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for DMA
  *
  * CMSIS Peripheral Access Layer for DMA
@@ -40,12 +39,8 @@
 #if !defined(DMA_H_)
 #define DMA_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -81,261 +76,69 @@
 typedef enum _dma_request_source
 {
     kDmaRequestMux0Disable          = 0|0x100U,    /**< DMAMUX TriggerDisabled */
-    kDmaRequestMux0SPI0Tx           = 1|0x100U,    /**< SPI0 Transmit (DMAMUX0) */
-    kDmaRequestMux0SPI0Rx           = 2|0x100U,    /**< SPI0 Receive (DMAMUX0) */
-    kDmaRequestMux0UART0Tx          = 3|0x100U,    /**< UART0 Transmit (DMAMUX0) */
-    kDmaRequestMux0UART0Rx          = 4|0x100U,    /**< UART0 Receive (DMAMUX0) */
-    kDmaRequestMux0I2C0             = 5|0x100U,    /**< I2C0 (DMAMUX0) */
-    kDmaRequestMux0XBAR             = 6|0x100U,    /**< XBAR (DMAMUX0) */
-    kDmaRequestMux0UART3Tx          = 7|0x100U,    /**< UART3 Transmit (DMAMUX0) */
-    kDmaRequestMux0UART3Rx          = 8|0x100U,    /**< UART3 Receive (DMAMUX0) */
-    kDmaRequestMux0AFEChannel0      = 9|0x100U,    /**< AFE channel 0 (DMAMUX0) */
-    kDmaRequestMux0TMR0             = 10|0x100U,   /**< TMR0 (DMAMUX0) */
-    kDmaRequestMux0TMR3             = 11|0x100U,   /**< TMR3 (DMAMUX0) */
-    kDmaRequestMux0AFEChannel2      = 12|0x100U,   /**< AFE channel 2 (DMAMUX0) */
-    kDmaRequestMux0ADC              = 13|0x100U,   /**< ADC (DMAMUX0) */
-    kDmaRequestMux0CMP0             = 14|0x100U,   /**< CMP0 (DMAMUX0) */
-    kDmaRequestMux0PTE              = 15|0x100U,   /**< PTE (DMAMUX0) */
-    kDmaRequestMux0PTA              = 16|0x100U,   /**< PTA (DMAMUX0) */
-    kDmaRequestMux0AlwaysEnabledslot17 = 17|0x100U, /**< DMAMUX Always Enabled slot */
-    kDmaRequestMux0AlwaysEnabledslot18 = 18|0x100U, /**< DMAMUX Always Enabled slot */
-    kDmaRequestMux0Reserved19       = 19|0x100U,   /**< Reserved19 */
+    kDmaRequestMux0Reserved1        = 1|0x100U,    /**< Reserved1 */
+    kDmaRequestMux0UART0Rx          = 2|0x100U,    /**< UART0 Receive */
+    kDmaRequestMux0UART0Tx          = 3|0x100U,    /**< UART0 Transmit */
+    kDmaRequestMux0UART1Rx          = 4|0x100U,    /**< UART1 Receive */
+    kDmaRequestMux0UART1Tx          = 5|0x100U,    /**< UART1 Transmit */
+    kDmaRequestMux0UART2Rx          = 6|0x100U,    /**< UART2 Receive */
+    kDmaRequestMux0UART2Tx          = 7|0x100U,    /**< UART2 Transmit */
+    kDmaRequestMux0UART3Rx          = 8|0x100U,    /**< UART3 Receive */
+    kDmaRequestMux0UART3Tx          = 9|0x100U,    /**< UART3 Transmit */
+    kDmaRequestMux0Reserved10       = 10|0x100U,   /**< Reserved10 */
+    kDmaRequestMux0Reserved11       = 11|0x100U,   /**< Reserved11 */
+    kDmaRequestMux0Reserved12       = 12|0x100U,   /**< Reserved12 */
+    kDmaRequestMux0Reserved13       = 13|0x100U,   /**< Reserved13 */
+    kDmaRequestMux0Reserved14       = 14|0x100U,   /**< Reserved14 */
+    kDmaRequestMux0Reserved15       = 15|0x100U,   /**< Reserved15 */
+    kDmaRequestMux0SPI0Rx           = 16|0x100U,   /**< SPI0 Receive */
+    kDmaRequestMux0SPI0Tx           = 17|0x100U,   /**< SPI0 Transmit */
+    kDmaRequestMux0SPI1Rx           = 18|0x100U,   /**< SPI1 Receive */
+    kDmaRequestMux0SPI1Tx           = 19|0x100U,   /**< SPI1 Transmit */
     kDmaRequestMux0Reserved20       = 20|0x100U,   /**< Reserved20 */
     kDmaRequestMux0Reserved21       = 21|0x100U,   /**< Reserved21 */
-    kDmaRequestMux0Reserved22       = 22|0x100U,   /**< Reserved22 */
-    kDmaRequestMux0Reserved23       = 23|0x100U,   /**< Reserved23 */
-    kDmaRequestMux0Reserved24       = 24|0x100U,   /**< Reserved24 */
-    kDmaRequestMux0Reserved25       = 25|0x100U,   /**< Reserved25 */
-    kDmaRequestMux0Reserved26       = 26|0x100U,   /**< Reserved26 */
-    kDmaRequestMux0Reserved27       = 27|0x100U,   /**< Reserved27 */
-    kDmaRequestMux0Reserved28       = 28|0x100U,   /**< Reserved28 */
-    kDmaRequestMux0Reserved29       = 29|0x100U,   /**< Reserved29 */
-    kDmaRequestMux0Reserved30       = 30|0x100U,   /**< Reserved30 */
-    kDmaRequestMux0Reserved31       = 31|0x100U,   /**< Reserved31 */
-    kDmaRequestMux0Reserved32       = 32|0x100U,   /**< Reserved32 */
-    kDmaRequestMux0Reserved33       = 33|0x100U,   /**< Reserved33 */
-    kDmaRequestMux0Reserved34       = 34|0x100U,   /**< Reserved34 */
-    kDmaRequestMux0Reserved35       = 35|0x100U,   /**< Reserved35 */
-    kDmaRequestMux0Reserved36       = 36|0x100U,   /**< Reserved36 */
-    kDmaRequestMux0Reserved37       = 37|0x100U,   /**< Reserved37 */
-    kDmaRequestMux0Reserved38       = 38|0x100U,   /**< Reserved38 */
-    kDmaRequestMux0Reserved39       = 39|0x100U,   /**< Reserved39 */
-    kDmaRequestMux0Reserved40       = 40|0x100U,   /**< Reserved40 */
+    kDmaRequestMux0I2C0             = 22|0x100U,   /**< I2C0 */
+    kDmaRequestMux0I2C1             = 23|0x100U,   /**< I2C1 */
+    kDmaRequestMux0TMR0Channel0     = 24|0x100U,   /**< TPMCH0 */
+    kDmaRequestMux0TMR0Channel1     = 25|0x100U,   /**< TPMCH1 */
+    kDmaRequestMux0TMR0Channel2     = 26|0x100U,   /**< TPMCH2 */
+    kDmaRequestMux0TMR0Channel3     = 27|0x100U,   /**< TPMCH3 */
+    kDmaRequestMux0XBARRequest0     = 28|0x100U,   /**< XBARCH0 */
+    kDmaRequestMux0XBARRequest1     = 29|0x100U,   /**< XBARCH1 */
+    kDmaRequestMux0XBARRequest2     = 30|0x100U,   /**< XBARCH2 */
+    kDmaRequestMux0XBARRequest3     = 31|0x100U,   /**< XBARCH3 */
+    kDmaRequestMux0AFEChannel0      = 32|0x100U,   /**< AFECH0 */
+    kDmaRequestMux0AFEChannel1      = 33|0x100U,   /**< AFECH1 */
+    kDmaRequestMux0AFEChannel2      = 34|0x100U,   /**< AFECH2 */
+    kDmaRequestMux0AFEChannel3      = 35|0x100U,   /**< AFECH3 */
+    kDmaRequestMux0PortJ            = 36|0x100U,   /**< GPIO Port J */
+    kDmaRequestMux0PortK            = 37|0x100U,   /**< GPIO Port K */
+    kDmaRequestMux0PortL            = 38|0x100U,   /**< GPIO Port L */
+    kDmaRequestMux0PortM            = 39|0x100U,   /**< GPIO Port M */
+    kDmaRequestMux0SarADC           = 40|0x100U,   /**< ADC */
     kDmaRequestMux0Reserved41       = 41|0x100U,   /**< Reserved41 */
-    kDmaRequestMux0Reserved42       = 42|0x100U,   /**< Reserved42 */
-    kDmaRequestMux0Reserved43       = 43|0x100U,   /**< Reserved43 */
-    kDmaRequestMux0Reserved44       = 44|0x100U,   /**< Reserved44 */
+    kDmaRequestMux0CMP0             = 42|0x100U,   /**< CMP0 */
+    kDmaRequestMux0CMP1             = 43|0x100U,   /**< CMP1 */
+    kDmaRequestMux0CMP2             = 44|0x100U,   /**< CMP2 */
     kDmaRequestMux0Reserved45       = 45|0x100U,   /**< Reserved45 */
     kDmaRequestMux0Reserved46       = 46|0x100U,   /**< Reserved46 */
-    kDmaRequestMux0Reserved47       = 47|0x100U,   /**< Reserved47 */
-    kDmaRequestMux0Reserved48       = 48|0x100U,   /**< Reserved48 */
-    kDmaRequestMux0Reserved49       = 49|0x100U,   /**< Reserved49 */
-    kDmaRequestMux0Reserved50       = 50|0x100U,   /**< Reserved50 */
-    kDmaRequestMux0Reserved51       = 51|0x100U,   /**< Reserved51 */
-    kDmaRequestMux0Reserved52       = 52|0x100U,   /**< Reserved52 */
-    kDmaRequestMux0Reserved53       = 53|0x100U,   /**< Reserved53 */
-    kDmaRequestMux0Reserved54       = 54|0x100U,   /**< Reserved54 */
-    kDmaRequestMux0Reserved55       = 55|0x100U,   /**< Reserved55 */
-    kDmaRequestMux0Reserved56       = 56|0x100U,   /**< Reserved56 */
-    kDmaRequestMux0Reserved57       = 57|0x100U,   /**< Reserved57 */
-    kDmaRequestMux0Reserved58       = 58|0x100U,   /**< Reserved58 */
-    kDmaRequestMux0Reserved59       = 59|0x100U,   /**< Reserved59 */
-    kDmaRequestMux0Reserved60       = 60|0x100U,   /**< Reserved60 */
-    kDmaRequestMux0Reserved61       = 61|0x100U,   /**< Reserved61 */
-    kDmaRequestMux0Reserved62       = 62|0x100U,   /**< Reserved62 */
-    kDmaRequestMux0Reserved63       = 63|0x100U,   /**< Reserved63 */
-    kDmaRequestMux1Disable          = 0|0x200U,    /**< DMAMUX TriggerDisabled */
-    kDmaRequestMux1SPI0Tx           = 1|0x200U,    /**< SPI0 Transmit (DMAMUX1) */
-    kDmaRequestMux1SPI0Rx           = 2|0x200U,    /**< SPI0 Receive (DMAMUX1) */
-    kDmaRequestMux1UART1Tx          = 3|0x200U,    /**< UART1 Transmit (DMAMUX1) */
-    kDmaRequestMux1UART1Rx          = 4|0x200U,    /**< UART1 Receive (DMAMUX1) */
-    kDmaRequestMux1I2C0             = 5|0x200U,    /**< I2C0 (DMAMUX1) */
-    kDmaRequestMux1XBAR             = 6|0x200U,    /**< XBAR (DMAMUX1) */
-    kDmaRequestMux1UART3Tx          = 7|0x200U,    /**< UART3 Transmit (DMAMUX1) */
-    kDmaRequestMux1UART3Rx          = 8|0x200U,    /**< UART3 Receive (DMAMUX1) */
-    kDmaRequestMux1AFEChannel0      = 9|0x200U,    /**< AFE channel 0 (DMAMUX1) */
-    kDmaRequestMux1TMR0             = 10|0x200U,   /**< TMR0 (DMAMUX1) */
-    kDmaRequestMux1TMR3             = 11|0x200U,   /**< TMR3 (DMAMUX1) */
-    kDmaRequestMux1AFEChannel2      = 12|0x200U,   /**< AFE channel 2 (DMAMUX1) */
-    kDmaRequestMux1PTE              = 13|0x200U,   /**< PTE (DMAMUX1) */
-    kDmaRequestMux1CMP0             = 14|0x200U,   /**< CMP0 (DMAMUX1) */
-    kDmaRequestMux1PTF              = 15|0x200U,   /**< PTF (DMAMUX1) */
-    kDmaRequestMux1PTB              = 16|0x200U,   /**< PTB (DMAMUX1) */
-    kDmaRequestMux1AlwaysEnabledslot17 = 17|0x200U, /**< DMAMUX Always Enabled slot */
-    kDmaRequestMux1AlwaysEnabledslot18 = 18|0x200U, /**< DMAMUX Always Enabled slot */
-    kDmaRequestMux1Reserved19       = 19|0x200U,   /**< Reserved19 */
-    kDmaRequestMux1Reserved20       = 20|0x200U,   /**< Reserved20 */
-    kDmaRequestMux1Reserved21       = 21|0x200U,   /**< Reserved21 */
-    kDmaRequestMux1Reserved22       = 22|0x200U,   /**< Reserved22 */
-    kDmaRequestMux1Reserved23       = 23|0x200U,   /**< Reserved23 */
-    kDmaRequestMux1Reserved24       = 24|0x200U,   /**< Reserved24 */
-    kDmaRequestMux1Reserved25       = 25|0x200U,   /**< Reserved25 */
-    kDmaRequestMux1Reserved26       = 26|0x200U,   /**< Reserved26 */
-    kDmaRequestMux1Reserved27       = 27|0x200U,   /**< Reserved27 */
-    kDmaRequestMux1Reserved28       = 28|0x200U,   /**< Reserved28 */
-    kDmaRequestMux1Reserved29       = 29|0x200U,   /**< Reserved29 */
-    kDmaRequestMux1Reserved30       = 30|0x200U,   /**< Reserved30 */
-    kDmaRequestMux1Reserved31       = 31|0x200U,   /**< Reserved31 */
-    kDmaRequestMux1Reserved32       = 32|0x200U,   /**< Reserved32 */
-    kDmaRequestMux1Reserved33       = 33|0x200U,   /**< Reserved33 */
-    kDmaRequestMux1Reserved34       = 34|0x200U,   /**< Reserved34 */
-    kDmaRequestMux1Reserved35       = 35|0x200U,   /**< Reserved35 */
-    kDmaRequestMux1Reserved36       = 36|0x200U,   /**< Reserved36 */
-    kDmaRequestMux1Reserved37       = 37|0x200U,   /**< Reserved37 */
-    kDmaRequestMux1Reserved38       = 38|0x200U,   /**< Reserved38 */
-    kDmaRequestMux1Reserved39       = 39|0x200U,   /**< Reserved39 */
-    kDmaRequestMux1Reserved40       = 40|0x200U,   /**< Reserved40 */
-    kDmaRequestMux1Reserved41       = 41|0x200U,   /**< Reserved41 */
-    kDmaRequestMux1Reserved42       = 42|0x200U,   /**< Reserved42 */
-    kDmaRequestMux1Reserved43       = 43|0x200U,   /**< Reserved43 */
-    kDmaRequestMux1Reserved44       = 44|0x200U,   /**< Reserved44 */
-    kDmaRequestMux1Reserved45       = 45|0x200U,   /**< Reserved45 */
-    kDmaRequestMux1Reserved46       = 46|0x200U,   /**< Reserved46 */
-    kDmaRequestMux1Reserved47       = 47|0x200U,   /**< Reserved47 */
-    kDmaRequestMux1Reserved48       = 48|0x200U,   /**< Reserved48 */
-    kDmaRequestMux1Reserved49       = 49|0x200U,   /**< Reserved49 */
-    kDmaRequestMux1Reserved50       = 50|0x200U,   /**< Reserved50 */
-    kDmaRequestMux1Reserved51       = 51|0x200U,   /**< Reserved51 */
-    kDmaRequestMux1Reserved52       = 52|0x200U,   /**< Reserved52 */
-    kDmaRequestMux1Reserved53       = 53|0x200U,   /**< Reserved53 */
-    kDmaRequestMux1Reserved54       = 54|0x200U,   /**< Reserved54 */
-    kDmaRequestMux1Reserved55       = 55|0x200U,   /**< Reserved55 */
-    kDmaRequestMux1Reserved56       = 56|0x200U,   /**< Reserved56 */
-    kDmaRequestMux1Reserved57       = 57|0x200U,   /**< Reserved57 */
-    kDmaRequestMux1Reserved58       = 58|0x200U,   /**< Reserved58 */
-    kDmaRequestMux1Reserved59       = 59|0x200U,   /**< Reserved59 */
-    kDmaRequestMux1Reserved60       = 60|0x200U,   /**< Reserved60 */
-    kDmaRequestMux1Reserved61       = 61|0x200U,   /**< Reserved61 */
-    kDmaRequestMux1Reserved62       = 62|0x200U,   /**< Reserved62 */
-    kDmaRequestMux1Reserved63       = 63|0x200U,   /**< Reserved63 */
-    kDmaRequestMux2Disable          = 0|0x300U,    /**< DMAMUX TriggerDisabled */
-    kDmaRequestMux2SPI1Tx           = 1|0x300U,    /**< SPI1 Transmit (DMAMUX2) */
-    kDmaRequestMux2SPI1Rx           = 2|0x300U,    /**< SPI1 Receive (DMAMUX2) */
-    kDmaRequestMux2UART1Tx          = 3|0x300U,    /**< UART1 Transmit (DMAMUX2) */
-    kDmaRequestMux2UART1Rx          = 4|0x300U,    /**< UART1 Receive (DMAMUX2) */
-    kDmaRequestMux2I2C1             = 5|0x300U,    /**< I2C1 (DMAMUX2) */
-    kDmaRequestMux2XBAR             = 6|0x300U,    /**< XBAR (DMAMUX2) */
-    kDmaRequestMux2UART2Tx          = 7|0x300U,    /**< UART2 Transmit (DMAMUX2) */
-    kDmaRequestMux2UART2Rx          = 8|0x300U,    /**< UART2 Receive (DMAMUX2) */
-    kDmaRequestMux2AFEChannel1      = 9|0x300U,    /**< AFE channel 1 (DMAMUX2) */
-    kDmaRequestMux2TMR2             = 10|0x300U,   /**< TMR2 (DMAMUX2) */
-    kDmaRequestMux2TMR1             = 11|0x300U,   /**< TMR1 (DMAMUX2) */
-    kDmaRequestMux2AFEChannel3      = 12|0x300U,   /**< AFE channel 3 (DMAMUX2) */
-    kDmaRequestMux2PTI              = 13|0x300U,   /**< PTI (DMAMUX2) */
-    kDmaRequestMux2CMP1             = 14|0x300U,   /**< CMP1 (DMAMUX2) */
-    kDmaRequestMux2PTG              = 15|0x300U,   /**< PTG (DMAMUX2) */
-    kDmaRequestMux2PTC              = 16|0x300U,   /**< PTC (DMAMUX2) */
-    kDmaRequestMux2AlwaysEnabledslot17 = 17|0x300U, /**< DMAMUX Always Enabled slot */
-    kDmaRequestMux2AlwaysEnabledslot18 = 18|0x300U, /**< DMAMUX Always Enabled slot */
-    kDmaRequestMux2Reserved19       = 19|0x300U,   /**< Reserved19 */
-    kDmaRequestMux2Reserved20       = 20|0x300U,   /**< Reserved20 */
-    kDmaRequestMux2Reserved21       = 21|0x300U,   /**< Reserved21 */
-    kDmaRequestMux2Reserved22       = 22|0x300U,   /**< Reserved22 */
-    kDmaRequestMux2Reserved23       = 23|0x300U,   /**< Reserved23 */
-    kDmaRequestMux2Reserved24       = 24|0x300U,   /**< Reserved24 */
-    kDmaRequestMux2Reserved25       = 25|0x300U,   /**< Reserved25 */
-    kDmaRequestMux2Reserved26       = 26|0x300U,   /**< Reserved26 */
-    kDmaRequestMux2Reserved27       = 27|0x300U,   /**< Reserved27 */
-    kDmaRequestMux2Reserved28       = 28|0x300U,   /**< Reserved28 */
-    kDmaRequestMux2Reserved29       = 29|0x300U,   /**< Reserved29 */
-    kDmaRequestMux2Reserved30       = 30|0x300U,   /**< Reserved30 */
-    kDmaRequestMux2Reserved31       = 31|0x300U,   /**< Reserved31 */
-    kDmaRequestMux2Reserved32       = 32|0x300U,   /**< Reserved32 */
-    kDmaRequestMux2Reserved33       = 33|0x300U,   /**< Reserved33 */
-    kDmaRequestMux2Reserved34       = 34|0x300U,   /**< Reserved34 */
-    kDmaRequestMux2Reserved35       = 35|0x300U,   /**< Reserved35 */
-    kDmaRequestMux2Reserved36       = 36|0x300U,   /**< Reserved36 */
-    kDmaRequestMux2Reserved37       = 37|0x300U,   /**< Reserved37 */
-    kDmaRequestMux2Reserved38       = 38|0x300U,   /**< Reserved38 */
-    kDmaRequestMux2Reserved39       = 39|0x300U,   /**< Reserved39 */
-    kDmaRequestMux2Reserved40       = 40|0x300U,   /**< Reserved40 */
-    kDmaRequestMux2Reserved41       = 41|0x300U,   /**< Reserved41 */
-    kDmaRequestMux2Reserved42       = 42|0x300U,   /**< Reserved42 */
-    kDmaRequestMux2Reserved43       = 43|0x300U,   /**< Reserved43 */
-    kDmaRequestMux2Reserved44       = 44|0x300U,   /**< Reserved44 */
-    kDmaRequestMux2Reserved45       = 45|0x300U,   /**< Reserved45 */
-    kDmaRequestMux2Reserved46       = 46|0x300U,   /**< Reserved46 */
-    kDmaRequestMux2Reserved47       = 47|0x300U,   /**< Reserved47 */
-    kDmaRequestMux2Reserved48       = 48|0x300U,   /**< Reserved48 */
-    kDmaRequestMux2Reserved49       = 49|0x300U,   /**< Reserved49 */
-    kDmaRequestMux2Reserved50       = 50|0x300U,   /**< Reserved50 */
-    kDmaRequestMux2Reserved51       = 51|0x300U,   /**< Reserved51 */
-    kDmaRequestMux2Reserved52       = 52|0x300U,   /**< Reserved52 */
-    kDmaRequestMux2Reserved53       = 53|0x300U,   /**< Reserved53 */
-    kDmaRequestMux2Reserved54       = 54|0x300U,   /**< Reserved54 */
-    kDmaRequestMux2Reserved55       = 55|0x300U,   /**< Reserved55 */
-    kDmaRequestMux2Reserved56       = 56|0x300U,   /**< Reserved56 */
-    kDmaRequestMux2Reserved57       = 57|0x300U,   /**< Reserved57 */
-    kDmaRequestMux2Reserved58       = 58|0x300U,   /**< Reserved58 */
-    kDmaRequestMux2Reserved59       = 59|0x300U,   /**< Reserved59 */
-    kDmaRequestMux2Reserved60       = 60|0x300U,   /**< Reserved60 */
-    kDmaRequestMux2Reserved61       = 61|0x300U,   /**< Reserved61 */
-    kDmaRequestMux2Reserved62       = 62|0x300U,   /**< Reserved62 */
-    kDmaRequestMux2Reserved63       = 63|0x300U,   /**< Reserved63 */
-    kDmaRequestMux3Disable          = 0|0x400U,    /**< DMAMUX TriggerDisabled */
-    kDmaRequestMux3SPI1Tx           = 1|0x400U,    /**< SPI1 Transmit (DMAMUX3) */
-    kDmaRequestMux3SPI1Rx           = 2|0x400U,    /**< SPI1 Receive (DMAMUX3) */
-    kDmaRequestMux3UART0Tx          = 3|0x400U,    /**< UART0 Transmit (DMAMUX3) */
-    kDmaRequestMux3UART0Rx          = 4|0x400U,    /**< UART0 Receive (DMAMUX3) */
-    kDmaRequestMux3I2C1             = 5|0x400U,    /**< I2C1 (DMAMUX3) */
-    kDmaRequestMux3XBAR             = 6|0x400U,    /**< XBAR (DMAMUX3) */
-    kDmaRequestMux3UART2Tx          = 7|0x400U,    /**< UART2 Transmit (DMAMUX3) */
-    kDmaRequestMux3UART2Rx          = 8|0x400U,    /**< UART2 Receive (DMAMUX3) */
-    kDmaRequestMux3AFEChannel1      = 9|0x400U,    /**< AFE channel 1 (DMAMUX3) */
-    kDmaRequestMux3TMR2             = 10|0x400U,   /**< TMR2 (DMAMUX3) */
-    kDmaRequestMux3TMR1             = 11|0x400U,   /**< TMR1 (DMAMUX3) */
-    kDmaRequestMux3AFEChannel3      = 12|0x400U,   /**< AFE channel 3 (DMAMUX3) */
-    kDmaRequestMux3ADC              = 13|0x400U,   /**< ADC (DMAMUX3) */
-    kDmaRequestMux3CMP1             = 14|0x400U,   /**< CMP1 (DMAMUX3) */
-    kDmaRequestMux3PTH              = 15|0x400U,   /**< PTH (DMAMUX3) */
-    kDmaRequestMux3PTD              = 16|0x400U,   /**< PTD (DMAMUX3) */
-    kDmaRequestMux3AlwaysEnabledslot17 = 17|0x400U, /**< DMAMUX Always Enabled slot */
-    kDmaRequestMux3AlwaysEnabledslot18 = 18|0x400U, /**< DMAMUX Always Enabled slot */
-    kDmaRequestMux3Reserved19       = 19|0x400U,   /**< Reserved19 */
-    kDmaRequestMux3Reserved20       = 20|0x400U,   /**< Reserved20 */
-    kDmaRequestMux3Reserved21       = 21|0x400U,   /**< Reserved21 */
-    kDmaRequestMux3Reserved22       = 22|0x400U,   /**< Reserved22 */
-    kDmaRequestMux3Reserved23       = 23|0x400U,   /**< Reserved23 */
-    kDmaRequestMux3Reserved24       = 24|0x400U,   /**< Reserved24 */
-    kDmaRequestMux3Reserved25       = 25|0x400U,   /**< Reserved25 */
-    kDmaRequestMux3Reserved26       = 26|0x400U,   /**< Reserved26 */
-    kDmaRequestMux3Reserved27       = 27|0x400U,   /**< Reserved27 */
-    kDmaRequestMux3Reserved28       = 28|0x400U,   /**< Reserved28 */
-    kDmaRequestMux3Reserved29       = 29|0x400U,   /**< Reserved29 */
-    kDmaRequestMux3Reserved30       = 30|0x400U,   /**< Reserved30 */
-    kDmaRequestMux3Reserved31       = 31|0x400U,   /**< Reserved31 */
-    kDmaRequestMux3Reserved32       = 32|0x400U,   /**< Reserved32 */
-    kDmaRequestMux3Reserved33       = 33|0x400U,   /**< Reserved33 */
-    kDmaRequestMux3Reserved34       = 34|0x400U,   /**< Reserved34 */
-    kDmaRequestMux3Reserved35       = 35|0x400U,   /**< Reserved35 */
-    kDmaRequestMux3Reserved36       = 36|0x400U,   /**< Reserved36 */
-    kDmaRequestMux3Reserved37       = 37|0x400U,   /**< Reserved37 */
-    kDmaRequestMux3Reserved38       = 38|0x400U,   /**< Reserved38 */
-    kDmaRequestMux3Reserved39       = 39|0x400U,   /**< Reserved39 */
-    kDmaRequestMux3Reserved40       = 40|0x400U,   /**< Reserved40 */
-    kDmaRequestMux3Reserved41       = 41|0x400U,   /**< Reserved41 */
-    kDmaRequestMux3Reserved42       = 42|0x400U,   /**< Reserved42 */
-    kDmaRequestMux3Reserved43       = 43|0x400U,   /**< Reserved43 */
-    kDmaRequestMux3Reserved44       = 44|0x400U,   /**< Reserved44 */
-    kDmaRequestMux3Reserved45       = 45|0x400U,   /**< Reserved45 */
-    kDmaRequestMux3Reserved46       = 46|0x400U,   /**< Reserved46 */
-    kDmaRequestMux3Reserved47       = 47|0x400U,   /**< Reserved47 */
-    kDmaRequestMux3Reserved48       = 48|0x400U,   /**< Reserved48 */
-    kDmaRequestMux3Reserved49       = 49|0x400U,   /**< Reserved49 */
-    kDmaRequestMux3Reserved50       = 50|0x400U,   /**< Reserved50 */
-    kDmaRequestMux3Reserved51       = 51|0x400U,   /**< Reserved51 */
-    kDmaRequestMux3Reserved52       = 52|0x400U,   /**< Reserved52 */
-    kDmaRequestMux3Reserved53       = 53|0x400U,   /**< Reserved53 */
-    kDmaRequestMux3Reserved54       = 54|0x400U,   /**< Reserved54 */
-    kDmaRequestMux3Reserved55       = 55|0x400U,   /**< Reserved55 */
-    kDmaRequestMux3Reserved56       = 56|0x400U,   /**< Reserved56 */
-    kDmaRequestMux3Reserved57       = 57|0x400U,   /**< Reserved57 */
-    kDmaRequestMux3Reserved58       = 58|0x400U,   /**< Reserved58 */
-    kDmaRequestMux3Reserved59       = 59|0x400U,   /**< Reserved59 */
-    kDmaRequestMux3Reserved60       = 60|0x400U,   /**< Reserved60 */
-    kDmaRequestMux3Reserved61       = 61|0x400U,   /**< Reserved61 */
-    kDmaRequestMux3Reserved62       = 62|0x400U,   /**< Reserved62 */
-    kDmaRequestMux3Reserved63       = 63|0x400U,   /**< Reserved63 */
+    kDmaRequestMux0MMAU             = 47|0x100U,   /**< MMAU */
+    kDmaRequestMux0PDB0             = 48|0x100U,   /**< PDB0 */
+    kDmaRequestMux0PORTA            = 49|0x100U,   /**< GPIO Port A */
+    kDmaRequestMux0PORTB            = 50|0x100U,   /**< GPIO Port B */
+    kDmaRequestMux0PORTC            = 51|0x100U,   /**< GPIO Port C */
+    kDmaRequestMux0PORTD            = 52|0x100U,   /**< GPIO Port D */
+    kDmaRequestMux0PORTE            = 53|0x100U,   /**< GPIO Port E */
+    kDmaRequestMux0PORTF            = 54|0x100U,   /**< GPIO Port F */
+    kDmaRequestMux0PORTG            = 55|0x100U,   /**< GPIO Port G */
+    kDmaRequestMux0PORTH            = 56|0x100U,   /**< GPIO Port H */
+    kDmaRequestMux0PORTI            = 57|0x100U,   /**< GPIO Port I */
+    kDmaRequestMux0LPUART0Rx        = 58|0x100U,   /**< LPUART0 Receive */
+    kDmaRequestMux0LPUART0Tx        = 59|0x100U,   /**< LPUART0 Transmit */
+    kDmaRequestMux0AlwaysOn60       = 60|0x100U,   /**< DMAMUX Always Enabled slot */
+    kDmaRequestMux0AlwaysOn61       = 61|0x100U,   /**< DMAMUX Always Enabled slot */
+    kDmaRequestMux0AlwaysOn62       = 62|0x100U,   /**< DMAMUX Always Enabled slot */
+    kDmaRequestMux0AlwaysOn63       = 63|0x100U,   /**< DMAMUX Always Enabled slot */
 } dma_request_source_t;
 
 /* @} */

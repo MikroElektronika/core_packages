@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file I2C.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for I2C
  *
  * CMSIS Peripheral Access Layer for I2C
@@ -40,12 +39,8 @@
 #if !defined(I2C_H_)
 #define I2C_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -105,6 +100,7 @@ typedef struct {
   __IO uint8_t A2;                                 /**< I2C Address Register 2, offset: 0x9 */
   __IO uint8_t SLTH;                               /**< I2C SCL Low Timeout Register High, offset: 0xA */
   __IO uint8_t SLTL;                               /**< I2C SCL Low Timeout Register Low, offset: 0xB */
+  __IO uint8_t S2;                                 /**< I2C Status register 2, offset: 0xC */
 } I2C_Type;
 
 /* ----------------------------------------------------------------------------
@@ -489,6 +485,26 @@ typedef struct {
 #define I2C_SLTL_SSLT_SHIFT                      (0U)
 /*! SSLT - SSLT[7:0] */
 #define I2C_SLTL_SSLT(x)                         (((uint8_t)(((uint8_t)(x)) << I2C_SLTL_SSLT_SHIFT)) & I2C_SLTL_SSLT_MASK)
+/*! @} */
+
+/*! @name S2 - I2C Status register 2 */
+/*! @{ */
+
+#define I2C_S2_EMPTY_MASK                        (0x1U)
+#define I2C_S2_EMPTY_SHIFT                       (0U)
+/*! EMPTY - Empty flag
+ *  0b0..Tx or Rx buffer is not empty and cannot be written to, that is new data cannot be loaded into the buffer.
+ *  0b1..Tx or Rx buffer is empty and can be written to, that is new data can be loaded into the buffer.
+ */
+#define I2C_S2_EMPTY(x)                          (((uint8_t)(((uint8_t)(x)) << I2C_S2_EMPTY_SHIFT)) & I2C_S2_EMPTY_MASK)
+
+#define I2C_S2_ERROR_MASK                        (0x2U)
+#define I2C_S2_ERROR_SHIFT                       (1U)
+/*! ERROR - Error flag
+ *  0b0..The buffer is not full and all write/read operations have no errors.
+ *  0b1..There are 3 or more write/read errors during the data transfer phase (when the Empty flag is not set and the buffer is busy).
+ */
+#define I2C_S2_ERROR(x)                          (((uint8_t)(((uint8_t)(x)) << I2C_S2_ERROR_SHIFT)) & I2C_S2_ERROR_MASK)
 /*! @} */
 
 

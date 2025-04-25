@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file TMR.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for TMR
  *
  * CMSIS Peripheral Access Layer for TMR
@@ -40,12 +39,8 @@
 #if !defined(TMR_H_)
 #define TMR_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -206,7 +201,7 @@ typedef struct {
 #define TMR_CTRL_LENGTH_MASK                     (0x20U)
 #define TMR_CTRL_LENGTH_SHIFT                    (5U)
 /*! LENGTH - Count Length
- *  0b0..Roll over.
+ *  0b0..Count until roll over at $FFFF and continue from $0000.
  *  0b1..Count until compare, then re-initialize. If counting up, a successful compare occurs when the counter
  *       reaches a COMP1 value. If counting down, a successful compare occurs when the counter reaches a COMP2 value.
  *       When output mode $4 is used, alternating values of COMP1 and COMP2 are used to generate successful
@@ -425,6 +420,11 @@ typedef struct {
 #define TMR_CSCTRL_TCF2EN_SHIFT                  (7U)
 /*! TCF2EN - Timer Compare 2 Interrupt Enable */
 #define TMR_CSCTRL_TCF2EN(x)                     (((uint16_t)(((uint16_t)(x)) << TMR_CSCTRL_TCF2EN_SHIFT)) & TMR_CSCTRL_TCF2EN_MASK)
+
+#define TMR_CSCTRL_OFLAG_MASK                    (0x100U)
+#define TMR_CSCTRL_OFLAG_SHIFT                   (8U)
+/*! OFLAG - Output flag */
+#define TMR_CSCTRL_OFLAG(x)                      (((uint16_t)(((uint16_t)(x)) << TMR_CSCTRL_OFLAG_SHIFT)) & TMR_CSCTRL_OFLAG_MASK)
 
 #define TMR_CSCTRL_UP_MASK                       (0x200U)
 #define TMR_CSCTRL_UP_SHIFT                      (9U)

@@ -24,10 +24,23 @@ Support added for following hardware:
   + MKW35A512VFP4
   + MKW35A512VFT4
   + MKW35Z512VHT4
-+ MKM34Z MCU Support package for GCC & Clang
++ MKM34Z128ACLL5 MCU Support package for GCC & Clang
   + MKM34Z128ACLL5
++ MKM34Z MCU Support package for GCC & Clang
   + MKM34Z256VLL7
   + MKM34Z256VLQ7
++ ATSAMR35 MCU Support package for GCC & Clang
+  + ATSAMR35J16B
+  + ATSAMR35J17B
+  + ATSAMR35J18B
++ RA4M1 MCU Support package for GCC & Clang
+  + R7FA4M1AB2CLJ
+  + R7FA4M1AB3CFL
+  + R7FA4M1AB3CFP
+  + R7FA4M1AB3CNB
+  + R7FA4M1AB3CFM
+  + R7FA4M1AB3CNE
+  + R7FA4M1AB3CNF
 
 ---
 

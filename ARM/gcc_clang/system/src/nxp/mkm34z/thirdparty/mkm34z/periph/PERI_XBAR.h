@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file XBAR.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for XBAR
  *
  * CMSIS Peripheral Access Layer for XBAR
@@ -40,12 +39,8 @@
 #if !defined(XBAR_H_)
 #define XBAR_H_                                  /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -67,8 +62,8 @@ typedef enum _xbar_input_signal
     kXBAR_InputVdd                  = 0|0x100U,    /**< Logic 1 (VDD) output assigned to XBAR_IN0 input. */
     kXBAR_InputVss                  = 1|0x100U,    /**< Logic 0 (VSS) output assigned to XBAR_IN1 input. */
     kXBAR_InputAfeClock             = 2|0x100U,    /**< AFE modulator clock output output assigned to XBAR_IN2 input. */
-    kXBAR_InputAfeModDataOutput     = 3|0x100U,    /**< AFE modulator data output output assigned to XBAR_IN3 input. */
-    kXBAR_InputLptmrOutput          = 4|0x100U,    /**< LPTimer Output output assigned to XBAR_IN4 input. */
+    kXBAR_InputAfeMod0DataOutput    = 3|0x100U,    /**< AFE modulator 0 data output output assigned to XBAR_IN3 input. */
+    kXBAR_InputLptmr0Output         = 4|0x100U,    /**< LPTimer Output output assigned to XBAR_IN4 input. */
     kXBAR_InputClockOutput          = 5|0x100U,    /**< Clock Output output assigned to XBAR_IN5 input. */
     kXBAR_InputTmrCh0Output         = 6|0x100U,    /**< Quad Timer channel 0 output output assigned to XBAR_IN6 input. */
     kXBAR_InputTmrCh1Output         = 7|0x100U,    /**< Quad Timer channel 1 output output assigned to XBAR_IN7 input. */
@@ -80,7 +75,7 @@ typedef enum _xbar_input_signal
     kXBAR_InputRtcAlarmOutput       = 13|0x100U,   /**< iRTC Alarm Output output assigned to XBAR_IN13 input. */
     kXBAR_InputUartTxOutput         = 14|0x100U,   /**< UART TX Output (after modulation) output assigned to XBAR_IN14 input. */
     kXBAR_InputEwmOutput            = 15|0x100U,   /**< EWM Output (EWM_OUT) output assigned to XBAR_IN15 input. */
-    kXBAR_InputPitOut               = 16|0x100U,   /**< PIT Output output assigned to XBAR_IN16 input. */
+    kXBAR_InputPit0Tif0             = 16|0x100U,   /**< PIT 0 Timer Interrupt Flag 0 (Timeout 0) output assigned to XBAR_IN16 input. */
     kXBAR_InputXbarIn0              = 17|0x100U,   /**< XBAR Input pin 0 output assigned to XBAR_IN17 input. */
     kXBAR_InputXbarIn1              = 18|0x100U,   /**< XBAR Input pin 1 output assigned to XBAR_IN18 input. */
     kXBAR_InputXbarIn2              = 19|0x100U,   /**< XBAR Input pin 2 output assigned to XBAR_IN19 input. */
@@ -97,6 +92,25 @@ typedef enum _xbar_input_signal
     kXBAR_InputAfeCh2CocFlag        = 30|0x100U,   /**< AFE Channel 2 conversion complete output assigned to XBAR_IN30 input. */
     kXBAR_InputAfeCh3CocFlag        = 31|0x100U,   /**< AFE Channel 3 conversion complete output assigned to XBAR_IN31 input. */
     kXBAR_InputDmaDoneSignal        = 32|0x100U,   /**< DMA Done Signal output assigned to XBAR_IN32 input. */
+    kXBAR_InputXbarIn9              = 33|0x100U,   /**< XBAR Input pin 9 output assigned to XBAR_IN33 input. */
+    kXBAR_InputXbarIn10             = 34|0x100U,   /**< XBAR Input pin 10 output assigned to XBAR_IN34 input. */
+    kXBAR_InputCmp2Output           = 35|0x100U,   /**< CMP2 Output output assigned to XBAR_IN35 input. */
+    kXBAR_InputPit0Tif1             = 36|0x100U,   /**< PIT 0 Timer Interrupt Flag 1 (Timeout 1) output assigned to XBAR_IN36 input. */
+    kXBAR_InputPit1Tif0             = 37|0x100U,   /**< PIT 1 Timer Interrupt Flag 0 (Timeout 0) output assigned to XBAR_IN37 input. */
+    kXBAR_InputPit1Tif1             = 38|0x100U,   /**< PIT 1 Timer Interrupt Flag 1 (Timeout 1) output assigned to XBAR_IN38 input. */
+    kXBAR_InputAfeMod1DataOutput    = 39|0x100U,   /**< AFE modulator 1 data output output assigned to XBAR_IN39 input. */
+    kXBAR_InputAfeMod2DataOutput    = 40|0x100U,   /**< AFE modulator 2 data output output assigned to XBAR_IN40 input. */
+    kXBAR_InputAfeMod3DataOutput    = 41|0x100U,   /**< AFE modulator 3 data output output assigned to XBAR_IN41 input. */
+    kXBAR_InputAdcCocoA             = 42|0x100U,   /**< SAR ADC conversion complete A output assigned to XBAR_IN42 input. */
+    kXBAR_InputAdcCocoB             = 43|0x100U,   /**< SAR ADC conversion complete B output assigned to XBAR_IN43 input. */
+    kXBAR_InputAdcCocoC             = 44|0x100U,   /**< SAR ADC conversion complete C output assigned to XBAR_IN44 input. */
+    kXBAR_InputAdcCocoD             = 45|0x100U,   /**< SAR ADC conversion complete D output assigned to XBAR_IN45 input. */
+    kXBAR_InputPdb0Ch0Pretrigger0   = 46|0x100U,   /**< PDB0 CH0 Pre-trigger 0 output assigned to XBAR_IN46 input. */
+    kXBAR_InputPdb0Ch0Pretrigger1   = 47|0x100U,   /**< PDB0 CH0 Pre-trigger 1 output assigned to XBAR_IN47 input. */
+    kXBAR_InputPdb0Ch0Pretrigger2   = 48|0x100U,   /**< PDB0 CH0 Pre-trigger 2 output assigned to XBAR_IN48 input. */
+    kXBAR_InputPdb0Ch0Pretrigger3   = 49|0x100U,   /**< PDB0 CH0 Pre-trigger 3 output assigned to XBAR_IN49 input. */
+    kXBAR_InputPdb0Ch0Trigger       = 50|0x100U,   /**< PDB0 CH0 Trigger output assigned to XBAR_IN50 input. */
+    kXBAR_InputPdb0PulseOut0        = 51|0x100U,   /**< PDB0 Pulse-Out 0 output assigned to XBAR_IN51 input. */
 } xbar_input_signal_t;
 #endif /* XBAR_INPUT_SIGNAL_T_ */
 
@@ -104,11 +118,11 @@ typedef enum _xbar_input_signal
 #define XBAR_OUTPUT_SIGNAL_T_
 typedef enum _xbar_output_signal
 {
-    kXBAR_OutputXbDmaInt            = 0|0x100U,    /**< XBAR_OUT0 output assigned to XBAR DMA request or Interrupt */
-    kXBAR_OutputAfeCh0ExmodData     = 1|0x100U,    /**< XBAR_OUT1 output assigned to External modulator data input for AFE Channel 0 */
-    kXBAR_OutputAfeCh1ExmodData     = 2|0x100U,    /**< XBAR_OUT2 output assigned to External modulator data input for AFE Channel 1 */
-    kXBAR_OutputAfeCh2ExmodData     = 3|0x100U,    /**< XBAR_OUT3 output assigned to External modulator data input for AFE Channel 2 */
-    kXBAR_OutputAfeCh3ExmodData     = 4|0x100U,    /**< XBAR_OUT4 output assigned to External modulator data input for AFE Channel 3 */
+    kXBAR_OutputXbDmaInt0           = 0|0x100U,    /**< XBAR_OUT0 output assigned to XBAR DMA request or Interrupt 0 */
+    kXBAR_OutputXbDmaInt1           = 1|0x100U,    /**< XBAR_OUT1 output assigned to XBAR DMA request or Interrupt 1 */
+    kXBAR_OutputXbDmaInt2           = 2|0x100U,    /**< XBAR_OUT2 output assigned to XBAR DMA request or Interrupt 2 */
+    kXBAR_OutputXbDmaInt3           = 3|0x100U,    /**< XBAR_OUT3 output assigned to XBAR DMA request or Interrupt 3 */
+    kXBAR_OutputCmp2SampleWinInput  = 4|0x100U,    /**< XBAR_OUT4 output assigned to CMP2 Sample Window input */
     kXBAR_OutputTmrCh0SecInput      = 5|0x100U,    /**< XBAR_OUT5 output assigned to Quad Timer channel 0 secondary input */
     kXBAR_OutputTmrCh1SecInput      = 6|0x100U,    /**< XBAR_OUT6 output assigned to Quad Timer channel 1 secondary input */
     kXBAR_OutputTmrCh2SecInput      = 7|0x100U,    /**< XBAR_OUT7 output assigned to Quad Timer channel 2 secondary input */
@@ -137,6 +151,17 @@ typedef enum _xbar_output_signal
     kXBAR_OutputAfeCh2Trg           = 30|0x100U,   /**< XBAR_OUT30 output assigned to AFE Channel 2 Trigger */
     kXBAR_OutputAfeCh3Trg           = 31|0x100U,   /**< XBAR_OUT31 output assigned to AFE Channel 3 Trigger */
     kXBAR_OutputEwmIn               = 32|0x100U,   /**< XBAR_OUT32 output assigned to EWM input (EWM_IN) */
+    kXBAR_OutputXbOut9              = 33|0x100U,   /**< XBAR_OUT33 output assigned to XBAR Output pin 9 */
+    kXBAR_OutputXbOut10             = 34|0x100U,   /**< XBAR_OUT34 output assigned to XBAR Output pin 10 */
+    kXBAR_OutputPdb0PreTrigger0Ack  = 35|0x100U,   /**< XBAR_OUT35 output assigned to PDB0 Pre-trigger0 B2B Ack */
+    kXBAR_OutputPdb0PreTrigger1Ack  = 36|0x100U,   /**< XBAR_OUT36 output assigned to PDB0 Pre-trigger1 B2B Ack */
+    kXBAR_OutputPdb0PreTrigger2Ack  = 37|0x100U,   /**< XBAR_OUT37 output assigned to PDB0 Pre-trigger2 B2B Ack */
+    kXBAR_OutputPdb0PreTrigger3Ack  = 38|0x100U,   /**< XBAR_OUT38 output assigned to PDB0 Pre-trigger3 B2B Ack */
+    kXBAR_OutputPdb0TriggerInput    = 39|0x100U,   /**< XBAR_OUT39 output assigned to PDB0 Trigger Input */
+    kXBAR_OutputAfeCh0ExmodData     = 40|0x100U,   /**< XBAR_OUT40 output assigned to External modulator data input for AFE Channel 0 */
+    kXBAR_OutputAfeCh1ExmodData     = 41|0x100U,   /**< XBAR_OUT41 output assigned to External modulator data input for AFE Channel 1 */
+    kXBAR_OutputAfeCh2ExmodData     = 42|0x100U,   /**< XBAR_OUT42 output assigned to External modulator data input for AFE Channel 2 */
+    kXBAR_OutputAfeCh3ExmodData     = 43|0x100U,   /**< XBAR_OUT43 output assigned to External modulator data input for AFE Channel 3 */
 } xbar_output_signal_t;
 #endif /* XBAR_OUTPUT_SIGNAL_T_ */
 
@@ -206,7 +231,13 @@ typedef struct {
   __IO uint16_t SEL14;                             /**< Crossbar Select Register 14, offset: 0x1C */
   __IO uint16_t SEL15;                             /**< Crossbar Select Register 15, offset: 0x1E */
   __IO uint16_t SEL16;                             /**< Crossbar Select Register 16, offset: 0x20 */
-  __IO uint16_t CTRL0;                             /**< Crossbar Control Register 0, offset: 0x22 */
+  __IO uint16_t SEL17;                             /**< Crossbar Select Register 17, offset: 0x22 */
+  __IO uint16_t SEL18;                             /**< Crossbar Select Register 18, offset: 0x24 */
+  __IO uint16_t SEL19;                             /**< Crossbar Select Register 19, offset: 0x26 */
+  __IO uint16_t SEL20;                             /**< Crossbar Select Register 20, offset: 0x28 */
+  __IO uint16_t SEL21;                             /**< Crossbar Select Register 21, offset: 0x2A */
+  __IO uint16_t CTRL0;                             /**< Crossbar Control Register 0, offset: 0x2C */
+  __IO uint16_t CTRL1;                             /**< Crossbar Control Register 1, offset: 0x2E */
 } XBAR_Type;
 
 /* ----------------------------------------------------------------------------
@@ -227,7 +258,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -240,7 +271,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -257,6 +288,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL0_SEL0(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL0_SEL0_SHIFT)) & XBAR_SEL0_SEL0_MASK)
 
@@ -266,7 +316,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -279,7 +329,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -296,6 +346,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL0_SEL1(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL0_SEL1_SHIFT)) & XBAR_SEL0_SEL1_MASK)
 /*! @} */
@@ -309,7 +378,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -322,7 +391,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -339,6 +408,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL1_SEL2(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL1_SEL2_SHIFT)) & XBAR_SEL1_SEL2_MASK)
 
@@ -348,7 +436,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -361,7 +449,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -378,6 +466,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL1_SEL3(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL1_SEL3_SHIFT)) & XBAR_SEL1_SEL3_MASK)
 /*! @} */
@@ -391,7 +498,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -404,7 +511,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -421,6 +528,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL2_SEL4(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL2_SEL4_SHIFT)) & XBAR_SEL2_SEL4_MASK)
 
@@ -430,7 +556,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -443,7 +569,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -460,6 +586,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL2_SEL5(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL2_SEL5_SHIFT)) & XBAR_SEL2_SEL5_MASK)
 /*! @} */
@@ -473,7 +618,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -486,7 +631,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -503,6 +648,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL3_SEL6(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL3_SEL6_SHIFT)) & XBAR_SEL3_SEL6_MASK)
 
@@ -512,7 +676,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -525,7 +689,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -542,6 +706,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL3_SEL7(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL3_SEL7_SHIFT)) & XBAR_SEL3_SEL7_MASK)
 /*! @} */
@@ -555,7 +738,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -568,7 +751,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -585,6 +768,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL4_SEL8(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL4_SEL8_SHIFT)) & XBAR_SEL4_SEL8_MASK)
 
@@ -594,7 +796,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -607,7 +809,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -624,6 +826,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL4_SEL9(x)                        (((uint16_t)(((uint16_t)(x)) << XBAR_SEL4_SEL9_SHIFT)) & XBAR_SEL4_SEL9_MASK)
 /*! @} */
@@ -637,7 +858,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -650,7 +871,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -667,6 +888,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL5_SEL10(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL5_SEL10_SHIFT)) & XBAR_SEL5_SEL10_MASK)
 
@@ -676,7 +916,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -689,7 +929,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -706,6 +946,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL5_SEL11(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL5_SEL11_SHIFT)) & XBAR_SEL5_SEL11_MASK)
 /*! @} */
@@ -719,7 +978,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -732,7 +991,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -749,6 +1008,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL6_SEL12(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL6_SEL12_SHIFT)) & XBAR_SEL6_SEL12_MASK)
 
@@ -758,7 +1036,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -771,7 +1049,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -788,6 +1066,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL6_SEL13(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL6_SEL13_SHIFT)) & XBAR_SEL6_SEL13_MASK)
 /*! @} */
@@ -801,7 +1098,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -814,7 +1111,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -831,6 +1128,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL7_SEL14(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL7_SEL14_SHIFT)) & XBAR_SEL7_SEL14_MASK)
 
@@ -840,7 +1156,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -853,7 +1169,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -870,6 +1186,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL7_SEL15(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL7_SEL15_SHIFT)) & XBAR_SEL7_SEL15_MASK)
 /*! @} */
@@ -883,7 +1218,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -896,7 +1231,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -913,6 +1248,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL8_SEL16(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL8_SEL16_SHIFT)) & XBAR_SEL8_SEL16_MASK)
 
@@ -922,7 +1276,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -935,7 +1289,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -952,6 +1306,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL8_SEL17(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL8_SEL17_SHIFT)) & XBAR_SEL8_SEL17_MASK)
 /*! @} */
@@ -965,7 +1338,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -978,7 +1351,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -995,6 +1368,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL9_SEL18(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL9_SEL18_SHIFT)) & XBAR_SEL9_SEL18_MASK)
 
@@ -1004,7 +1396,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1017,7 +1409,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1034,6 +1426,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL9_SEL19(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_SEL9_SEL19_SHIFT)) & XBAR_SEL9_SEL19_MASK)
 /*! @} */
@@ -1047,7 +1458,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1060,7 +1471,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1077,6 +1488,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL10_SEL20(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL10_SEL20_SHIFT)) & XBAR_SEL10_SEL20_MASK)
 
@@ -1086,7 +1516,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1099,7 +1529,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1116,6 +1546,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL10_SEL21(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL10_SEL21_SHIFT)) & XBAR_SEL10_SEL21_MASK)
 /*! @} */
@@ -1129,7 +1578,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1142,7 +1591,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1159,6 +1608,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL11_SEL22(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL11_SEL22_SHIFT)) & XBAR_SEL11_SEL22_MASK)
 
@@ -1168,7 +1636,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1181,7 +1649,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1198,6 +1666,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL11_SEL23(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL11_SEL23_SHIFT)) & XBAR_SEL11_SEL23_MASK)
 /*! @} */
@@ -1211,7 +1698,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1224,7 +1711,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1241,6 +1728,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL12_SEL24(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL12_SEL24_SHIFT)) & XBAR_SEL12_SEL24_MASK)
 
@@ -1250,7 +1756,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1263,7 +1769,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1280,6 +1786,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL12_SEL25(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL12_SEL25_SHIFT)) & XBAR_SEL12_SEL25_MASK)
 /*! @} */
@@ -1293,7 +1818,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1306,7 +1831,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1323,6 +1848,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL13_SEL26(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL13_SEL26_SHIFT)) & XBAR_SEL13_SEL26_MASK)
 
@@ -1332,7 +1876,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1345,7 +1889,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1362,6 +1906,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL13_SEL27(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL13_SEL27_SHIFT)) & XBAR_SEL13_SEL27_MASK)
 /*! @} */
@@ -1375,7 +1938,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1388,7 +1951,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1405,6 +1968,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL14_SEL28(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL14_SEL28_SHIFT)) & XBAR_SEL14_SEL28_MASK)
 
@@ -1414,7 +1996,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1427,7 +2009,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1444,6 +2026,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL14_SEL29(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL14_SEL29_SHIFT)) & XBAR_SEL14_SEL29_MASK)
 /*! @} */
@@ -1457,7 +2058,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1470,7 +2071,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1487,6 +2088,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL15_SEL30(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL15_SEL30_SHIFT)) & XBAR_SEL15_SEL30_MASK)
 
@@ -1496,7 +2116,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1509,7 +2129,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1526,6 +2146,25 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL15_SEL31(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL15_SEL31_SHIFT)) & XBAR_SEL15_SEL31_MASK)
 /*! @} */
@@ -1539,7 +2178,7 @@ typedef struct {
  *  0b000000..Logic 1 (VDD)
  *  0b000001..Logic 0 (VSS)
  *  0b000010..AFE modulator clock output
- *  0b000011..AFE modulator data output
+ *  0b000011..AFE modulator 0 data output
  *  0b000100..LPTimer Output
  *  0b000101..Clock Output
  *  0b000110..Quad Timer channel 0 output
@@ -1552,7 +2191,7 @@ typedef struct {
  *  0b001101..iRTC Alarm Output
  *  0b001110..UART TX Output (after modulation)
  *  0b001111..EWM Output (EWM_OUT)
- *  0b010000..PIT Output
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
  *  0b010001..XBAR Input pin 0
  *  0b010010..XBAR Input pin 1
  *  0b010011..XBAR Input pin 2
@@ -1569,8 +2208,685 @@ typedef struct {
  *  0b011110..AFE Channel 2 conversion complete
  *  0b011111..AFE Channel 3 conversion complete
  *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
  */
 #define XBAR_SEL16_SEL32(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL16_SEL32_SHIFT)) & XBAR_SEL16_SEL32_MASK)
+
+#define XBAR_SEL16_SEL33_MASK                    (0x3F00U)
+#define XBAR_SEL16_SEL33_SHIFT                   (8U)
+/*! SEL33
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL16_SEL33(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL16_SEL33_SHIFT)) & XBAR_SEL16_SEL33_MASK)
+/*! @} */
+
+/*! @name SEL17 - Crossbar Select Register 17 */
+/*! @{ */
+
+#define XBAR_SEL17_SEL34_MASK                    (0x3FU)
+#define XBAR_SEL17_SEL34_SHIFT                   (0U)
+/*! SEL34
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL17_SEL34(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL17_SEL34_SHIFT)) & XBAR_SEL17_SEL34_MASK)
+
+#define XBAR_SEL17_SEL35_MASK                    (0x3F00U)
+#define XBAR_SEL17_SEL35_SHIFT                   (8U)
+/*! SEL35
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL17_SEL35(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL17_SEL35_SHIFT)) & XBAR_SEL17_SEL35_MASK)
+/*! @} */
+
+/*! @name SEL18 - Crossbar Select Register 18 */
+/*! @{ */
+
+#define XBAR_SEL18_SEL36_MASK                    (0x3FU)
+#define XBAR_SEL18_SEL36_SHIFT                   (0U)
+/*! SEL36
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL18_SEL36(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL18_SEL36_SHIFT)) & XBAR_SEL18_SEL36_MASK)
+
+#define XBAR_SEL18_SEL37_MASK                    (0x3F00U)
+#define XBAR_SEL18_SEL37_SHIFT                   (8U)
+/*! SEL37
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL18_SEL37(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL18_SEL37_SHIFT)) & XBAR_SEL18_SEL37_MASK)
+/*! @} */
+
+/*! @name SEL19 - Crossbar Select Register 19 */
+/*! @{ */
+
+#define XBAR_SEL19_SEL38_MASK                    (0x3FU)
+#define XBAR_SEL19_SEL38_SHIFT                   (0U)
+/*! SEL38
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL19_SEL38(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL19_SEL38_SHIFT)) & XBAR_SEL19_SEL38_MASK)
+
+#define XBAR_SEL19_SEL39_MASK                    (0x3F00U)
+#define XBAR_SEL19_SEL39_SHIFT                   (8U)
+/*! SEL39
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL19_SEL39(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL19_SEL39_SHIFT)) & XBAR_SEL19_SEL39_MASK)
+/*! @} */
+
+/*! @name SEL20 - Crossbar Select Register 20 */
+/*! @{ */
+
+#define XBAR_SEL20_SEL40_MASK                    (0x3FU)
+#define XBAR_SEL20_SEL40_SHIFT                   (0U)
+/*! SEL40
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL20_SEL40(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL20_SEL40_SHIFT)) & XBAR_SEL20_SEL40_MASK)
+
+#define XBAR_SEL20_SEL41_MASK                    (0x3F00U)
+#define XBAR_SEL20_SEL41_SHIFT                   (8U)
+/*! SEL41
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL20_SEL41(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL20_SEL41_SHIFT)) & XBAR_SEL20_SEL41_MASK)
+/*! @} */
+
+/*! @name SEL21 - Crossbar Select Register 21 */
+/*! @{ */
+
+#define XBAR_SEL21_SEL42_MASK                    (0x3FU)
+#define XBAR_SEL21_SEL42_SHIFT                   (0U)
+/*! SEL42
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL21_SEL42(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL21_SEL42_SHIFT)) & XBAR_SEL21_SEL42_MASK)
+
+#define XBAR_SEL21_SEL43_MASK                    (0x3F00U)
+#define XBAR_SEL21_SEL43_SHIFT                   (8U)
+/*! SEL43
+ *  0b000000..Logic 1 (VDD)
+ *  0b000001..Logic 0 (VSS)
+ *  0b000010..AFE modulator clock output
+ *  0b000011..AFE modulator 0 data output
+ *  0b000100..LPTimer Output
+ *  0b000101..Clock Output
+ *  0b000110..Quad Timer channel 0 output
+ *  0b000111..Quad Timer channel 1 output
+ *  0b001000..Quad Timer channel 2 output
+ *  0b001001..Quad Timer channel 3 output
+ *  0b001010..iRTC Clock Output
+ *  0b001011..CMP0 Output
+ *  0b001100..CMP1 Output
+ *  0b001101..iRTC Alarm Output
+ *  0b001110..UART TX Output (after modulation)
+ *  0b001111..EWM Output (EWM_OUT)
+ *  0b010000..PIT 0 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b010001..XBAR Input pin 0
+ *  0b010010..XBAR Input pin 1
+ *  0b010011..XBAR Input pin 2
+ *  0b010100..XBAR Input pin 3
+ *  0b010101..XBAR Input pin 4
+ *  0b010110..XBAR Input pin 5
+ *  0b010111..XBAR Input pin 6
+ *  0b011000..XBAR Input pin 7
+ *  0b011001..XBAR Input pin 8
+ *  0b011010..ORed conversion complete flag for all SAR ADC channels
+ *  0b011011..ORed conversion complete flag for all AFE channels
+ *  0b011100..AFE Channel 0 conversion complete
+ *  0b011101..AFE Channel 1 conversion complete
+ *  0b011110..AFE Channel 2 conversion complete
+ *  0b011111..AFE Channel 3 conversion complete
+ *  0b100000..DMA Done Signal
+ *  0b100001..XBAR Input pin 9
+ *  0b100010..XBAR Input pin 10
+ *  0b100011..CMP2 Output
+ *  0b100100..PIT 0 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100101..PIT 1 Timer Interrupt Flag 0 (Timeout 0)
+ *  0b100110..PIT 1 Timer Interrupt Flag 1 (Timeout 1)
+ *  0b100111..AFE modulator 1 data output
+ *  0b101000..AFE modulator 2 data output
+ *  0b101001..AFE modulator 3 data output
+ *  0b101010..SAR ADC conversion complete A
+ *  0b101011..SAR ADC conversion complete B
+ *  0b101100..SAR ADC conversion complete C
+ *  0b101101..SAR ADC conversion complete D
+ *  0b101110..PDB0 CH0 Pre-trigger 0
+ *  0b101111..PDB0 CH0 Pre-trigger 1
+ *  0b110000..PDB0 CH0 Pre-trigger 2
+ *  0b110001..PDB0 CH0 Pre-trigger 3
+ *  0b110010..PDB0 CH0 Trigger
+ *  0b110011..PDB0 Pulse-Out 0
+ */
+#define XBAR_SEL21_SEL43(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_SEL21_SEL43_SHIFT)) & XBAR_SEL21_SEL43_MASK)
 /*! @} */
 
 /*! @name CTRL0 - Crossbar Control Register 0 */
@@ -1609,6 +2925,112 @@ typedef struct {
  *  0b1..Active edge detected on XBAR_OUT0
  */
 #define XBAR_CTRL0_STS0(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL0_STS0_SHIFT)) & XBAR_CTRL0_STS0_MASK)
+
+#define XBAR_CTRL0_DEN1_MASK                     (0x100U)
+#define XBAR_CTRL0_DEN1_SHIFT                    (8U)
+/*! DEN1 - DMA Enable for XBAR_OUT1
+ *  0b0..DMA disabled
+ *  0b1..DMA enabled
+ */
+#define XBAR_CTRL0_DEN1(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL0_DEN1_SHIFT)) & XBAR_CTRL0_DEN1_MASK)
+
+#define XBAR_CTRL0_IEN1_MASK                     (0x200U)
+#define XBAR_CTRL0_IEN1_SHIFT                    (9U)
+/*! IEN1 - Interrupt Enable for XBAR_OUT1
+ *  0b0..Interrupt disabled
+ *  0b1..Interrupt enabled
+ */
+#define XBAR_CTRL0_IEN1(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL0_IEN1_SHIFT)) & XBAR_CTRL0_IEN1_MASK)
+
+#define XBAR_CTRL0_EDGE1_MASK                    (0xC00U)
+#define XBAR_CTRL0_EDGE1_SHIFT                   (10U)
+/*! EDGE1 - Active edge for edge detection on XBAR_OUT1
+ *  0b00..STS1 never asserts
+ *  0b01..STS1 asserts on rising edges of XBAR_OUT1
+ *  0b10..STS1 asserts on falling edges of XBAR_OUT1
+ *  0b11..STS1 asserts on rising and falling edges of XBAR_OUT1
+ */
+#define XBAR_CTRL0_EDGE1(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL0_EDGE1_SHIFT)) & XBAR_CTRL0_EDGE1_MASK)
+
+#define XBAR_CTRL0_STS1_MASK                     (0x1000U)
+#define XBAR_CTRL0_STS1_SHIFT                    (12U)
+/*! STS1 - Edge detection status for XBAR_OUT1
+ *  0b0..Active edge not yet detected on XBAR_OUT1
+ *  0b1..Active edge detected on XBAR_OUT1
+ */
+#define XBAR_CTRL0_STS1(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL0_STS1_SHIFT)) & XBAR_CTRL0_STS1_MASK)
+/*! @} */
+
+/*! @name CTRL1 - Crossbar Control Register 1 */
+/*! @{ */
+
+#define XBAR_CTRL1_DEN2_MASK                     (0x1U)
+#define XBAR_CTRL1_DEN2_SHIFT                    (0U)
+/*! DEN2 - DMA Enable for XBAR_OUT2
+ *  0b0..DMA disabled
+ *  0b1..DMA enabled
+ */
+#define XBAR_CTRL1_DEN2(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL1_DEN2_SHIFT)) & XBAR_CTRL1_DEN2_MASK)
+
+#define XBAR_CTRL1_IEN2_MASK                     (0x2U)
+#define XBAR_CTRL1_IEN2_SHIFT                    (1U)
+/*! IEN2 - Interrupt Enable for XBAR_OUT2
+ *  0b0..Interrupt disabled
+ *  0b1..Interrupt enabled
+ */
+#define XBAR_CTRL1_IEN2(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL1_IEN2_SHIFT)) & XBAR_CTRL1_IEN2_MASK)
+
+#define XBAR_CTRL1_EDGE2_MASK                    (0xCU)
+#define XBAR_CTRL1_EDGE2_SHIFT                   (2U)
+/*! EDGE2 - Active edge for edge detection on XBAR_OUT2
+ *  0b00..STS2 never asserts
+ *  0b01..STS2 asserts on rising edges of XBAR_OUT2
+ *  0b10..STS2 asserts on falling edges of XBAR_OUT2
+ *  0b11..STS2 asserts on rising and falling edges of XBAR_OUT2
+ */
+#define XBAR_CTRL1_EDGE2(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL1_EDGE2_SHIFT)) & XBAR_CTRL1_EDGE2_MASK)
+
+#define XBAR_CTRL1_STS2_MASK                     (0x10U)
+#define XBAR_CTRL1_STS2_SHIFT                    (4U)
+/*! STS2 - Edge detection status for XBAR_OUT2
+ *  0b0..Active edge not yet detected on XBAR_OUT2
+ *  0b1..Active edge detected on XBAR_OUT2
+ */
+#define XBAR_CTRL1_STS2(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL1_STS2_SHIFT)) & XBAR_CTRL1_STS2_MASK)
+
+#define XBAR_CTRL1_DEN3_MASK                     (0x100U)
+#define XBAR_CTRL1_DEN3_SHIFT                    (8U)
+/*! DEN3 - DMA Enable for XBAR_OUT3
+ *  0b0..DMA disabled
+ *  0b1..DMA enabled
+ */
+#define XBAR_CTRL1_DEN3(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL1_DEN3_SHIFT)) & XBAR_CTRL1_DEN3_MASK)
+
+#define XBAR_CTRL1_IEN3_MASK                     (0x200U)
+#define XBAR_CTRL1_IEN3_SHIFT                    (9U)
+/*! IEN3 - Interrupt Enable for XBAR_OUT3
+ *  0b0..Interrupt disabled
+ *  0b1..Interrupt enabled
+ */
+#define XBAR_CTRL1_IEN3(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL1_IEN3_SHIFT)) & XBAR_CTRL1_IEN3_MASK)
+
+#define XBAR_CTRL1_EDGE3_MASK                    (0xC00U)
+#define XBAR_CTRL1_EDGE3_SHIFT                   (10U)
+/*! EDGE3 - Active edge for edge detection on XBAR_OUT3
+ *  0b00..STS3 never asserts
+ *  0b01..STS3 asserts on rising edges of XBAR_OUT3
+ *  0b10..STS3 asserts on falling edges of XBAR_OUT3
+ *  0b11..STS3 asserts on rising and falling edges of XBAR_OUT3
+ */
+#define XBAR_CTRL1_EDGE3(x)                      (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL1_EDGE3_SHIFT)) & XBAR_CTRL1_EDGE3_MASK)
+
+#define XBAR_CTRL1_STS3_MASK                     (0x1000U)
+#define XBAR_CTRL1_STS3_SHIFT                    (12U)
+/*! STS3 - Edge detection status for XBAR_OUT3
+ *  0b0..Active edge not yet detected on XBAR_OUT3
+ *  0b1..Active edge detected on XBAR_OUT3
+ */
+#define XBAR_CTRL1_STS3(x)                       (((uint16_t)(((uint16_t)(x)) << XBAR_CTRL1_STS3_SHIFT)) & XBAR_CTRL1_STS3_MASK)
 /*! @} */
 
 

@@ -1,14 +1,9 @@
 /*
 ** ###################################################################
-**     Processors:          MKM14Z128ACHH5
-**                          MKM14Z64ACHH5
-**                          MKM33Z128ACLH5
-**                          MKM33Z128ACLL5
-**                          MKM33Z64ACLH5
-**                          MKM33Z64ACLL5
-**                          MKM34Z128ACLL5
+**     Processors:          MKM34Z256VLL7
+**                          MKM34Z256VLQ7
 **
-**     Version:             rev. 1.0, 2014-07-22
+**     Version:             rev. 1.2, 2015-03-06
 **     Build:               b240710
 **
 **     Abstract:
@@ -22,16 +17,20 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2014-07-22)
+**     - rev. 1.0 (2014-10-17)
 **         Initial version.
+**     - rev. 1.1 (2015-01-27)
+**         Update according to reference manual rev. 1, RC.
+**     - rev. 1.2 (2015-03-06)
+**         Update according to reference manual rev. 1.
 **
 ** ###################################################################
 */
 
 /*!
  * @file RCM.h
- * @version 1.0
- * @date 2014-07-22
+ * @version 1.2
+ * @date 2015-03-06
  * @brief CMSIS Peripheral Access Layer for RCM
  *
  * CMSIS Peripheral Access Layer for RCM
@@ -40,12 +39,8 @@
 #if !defined(RCM_H_)
 #define RCM_H_                                   /**< Symbol preventing repeated inclusion */
 
-#if (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
-#include "MKM14ZA5_COMMON.h"
-#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || defined(CPU_MKM33Z64ACLL5))
-#include "MKM33ZA5_COMMON.h"
-#elif (defined(CPU_MKM34Z128ACLL5))
-#include "MKM34ZA5_COMMON.h"
+#if (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+#include "MKM34Z7_COMMON.h"
 #else
   #error "No valid CPU defined!"
 #endif
@@ -98,6 +93,9 @@ typedef struct {
        uint8_t RESERVED_0[2];
   __IO uint8_t RPFC;                               /**< Reset Pin Filter Control register, offset: 0x4 */
   __IO uint8_t RPFW;                               /**< Reset Pin Filter Width register, offset: 0x5 */
+       uint8_t RESERVED_1[2];
+  __IO uint8_t SSRS0;                              /**< Sticky System Reset Status Register 0, offset: 0x8 */
+  __IO uint8_t SSRS1;                              /**< Sticky System Reset Status Register 1, offset: 0x9 */
 } RCM_Type;
 
 /* ----------------------------------------------------------------------------
@@ -115,8 +113,8 @@ typedef struct {
 #define RCM_SRS0_WAKEUP_MASK                     (0x1U)
 #define RCM_SRS0_WAKEUP_SHIFT                    (0U)
 /*! WAKEUP - Low Leakage Wakeup Reset
- *  0b0..Reset not caused by wakeup source
- *  0b1..Reset caused by wakeup source
+ *  0b0..Reset not caused by LLWU module wakeup source
+ *  0b1..Reset caused by LLWU module wakeup source
  */
 #define RCM_SRS0_WAKEUP(x)                       (((uint8_t)(((uint8_t)(x)) << RCM_SRS0_WAKEUP_SHIFT)) & RCM_SRS0_WAKEUP_MASK)
 
@@ -267,6 +265,94 @@ typedef struct {
  *  0b11111..Bus clock filter count is 32
  */
 #define RCM_RPFW_RSTFLTSEL(x)                    (((uint8_t)(((uint8_t)(x)) << RCM_RPFW_RSTFLTSEL_SHIFT)) & RCM_RPFW_RSTFLTSEL_MASK)
+/*! @} */
+
+/*! @name SSRS0 - Sticky System Reset Status Register 0 */
+/*! @{ */
+
+#define RCM_SSRS0_SWAKEUP_MASK                   (0x1U)
+#define RCM_SSRS0_SWAKEUP_SHIFT                  (0U)
+/*! SWAKEUP - Sticky Low Leakage Wakeup Reset
+ *  0b0..Reset not caused by LLWU module wakeup source
+ *  0b1..Reset caused by LLWU module wakeup source
+ */
+#define RCM_SSRS0_SWAKEUP(x)                     (((uint8_t)(((uint8_t)(x)) << RCM_SSRS0_SWAKEUP_SHIFT)) & RCM_SSRS0_SWAKEUP_MASK)
+
+#define RCM_SSRS0_SLVD_MASK                      (0x2U)
+#define RCM_SSRS0_SLVD_SHIFT                     (1U)
+/*! SLVD - Sticky Low-Voltage Detect Reset
+ *  0b0..Reset not caused by LVD trip or POR
+ *  0b1..Reset caused by LVD trip or POR
+ */
+#define RCM_SSRS0_SLVD(x)                        (((uint8_t)(((uint8_t)(x)) << RCM_SSRS0_SLVD_SHIFT)) & RCM_SSRS0_SLVD_MASK)
+
+#define RCM_SSRS0_SLOL_MASK                      (0x8U)
+#define RCM_SSRS0_SLOL_SHIFT                     (3U)
+/*! SLOL - Sticky Loss-of-Lock Reset
+ *  0b0..Reset not caused by a loss of lock in the PLL
+ *  0b1..Reset caused by a loss of lock in the PLL
+ */
+#define RCM_SSRS0_SLOL(x)                        (((uint8_t)(((uint8_t)(x)) << RCM_SSRS0_SLOL_SHIFT)) & RCM_SSRS0_SLOL_MASK)
+
+#define RCM_SSRS0_SWDOG_MASK                     (0x20U)
+#define RCM_SSRS0_SWDOG_SHIFT                    (5U)
+/*! SWDOG - Sticky Watchdog
+ *  0b0..Reset not caused by watchdog timeout
+ *  0b1..Reset caused by watchdog timeout
+ */
+#define RCM_SSRS0_SWDOG(x)                       (((uint8_t)(((uint8_t)(x)) << RCM_SSRS0_SWDOG_SHIFT)) & RCM_SSRS0_SWDOG_MASK)
+
+#define RCM_SSRS0_SPIN_MASK                      (0x40U)
+#define RCM_SSRS0_SPIN_SHIFT                     (6U)
+/*! SPIN - Sticky External Reset Pin
+ *  0b0..Reset not caused by external reset pin
+ *  0b1..Reset caused by external reset pin
+ */
+#define RCM_SSRS0_SPIN(x)                        (((uint8_t)(((uint8_t)(x)) << RCM_SSRS0_SPIN_SHIFT)) & RCM_SSRS0_SPIN_MASK)
+
+#define RCM_SSRS0_SPOR_MASK                      (0x80U)
+#define RCM_SSRS0_SPOR_SHIFT                     (7U)
+/*! SPOR - Sticky Power-On Reset
+ *  0b0..Reset not caused by POR
+ *  0b1..Reset caused by POR
+ */
+#define RCM_SSRS0_SPOR(x)                        (((uint8_t)(((uint8_t)(x)) << RCM_SSRS0_SPOR_SHIFT)) & RCM_SSRS0_SPOR_MASK)
+/*! @} */
+
+/*! @name SSRS1 - Sticky System Reset Status Register 1 */
+/*! @{ */
+
+#define RCM_SSRS1_SLOCKUP_MASK                   (0x2U)
+#define RCM_SSRS1_SLOCKUP_SHIFT                  (1U)
+/*! SLOCKUP - Sticky Core Lockup
+ *  0b0..Reset not caused by core LOCKUP event
+ *  0b1..Reset caused by core LOCKUP event
+ */
+#define RCM_SSRS1_SLOCKUP(x)                     (((uint8_t)(((uint8_t)(x)) << RCM_SSRS1_SLOCKUP_SHIFT)) & RCM_SSRS1_SLOCKUP_MASK)
+
+#define RCM_SSRS1_SSW_MASK                       (0x4U)
+#define RCM_SSRS1_SSW_SHIFT                      (2U)
+/*! SSW - Sticky Software
+ *  0b0..Reset not caused by software setting of SYSRESETREQ bit
+ *  0b1..Reset caused by software setting of SYSRESETREQ bit
+ */
+#define RCM_SSRS1_SSW(x)                         (((uint8_t)(((uint8_t)(x)) << RCM_SSRS1_SSW_SHIFT)) & RCM_SSRS1_SSW_MASK)
+
+#define RCM_SSRS1_SMDM_AP_MASK                   (0x8U)
+#define RCM_SSRS1_SMDM_AP_SHIFT                  (3U)
+/*! SMDM_AP - Sticky MDM-AP System Reset Request
+ *  0b0..Reset not caused by host debugger system setting of the System Reset Request bit
+ *  0b1..Reset caused by host debugger system setting of the System Reset Request bit
+ */
+#define RCM_SSRS1_SMDM_AP(x)                     (((uint8_t)(((uint8_t)(x)) << RCM_SSRS1_SMDM_AP_SHIFT)) & RCM_SSRS1_SMDM_AP_MASK)
+
+#define RCM_SSRS1_SSACKERR_MASK                  (0x20U)
+#define RCM_SSRS1_SSACKERR_SHIFT                 (5U)
+/*! SSACKERR - Sticky Stop Mode Acknowledge Error Reset
+ *  0b0..Reset not caused by peripheral failure to acknowledge attempt to enter stop mode
+ *  0b1..Reset caused by peripheral failure to acknowledge attempt to enter stop mode
+ */
+#define RCM_SSRS1_SSACKERR(x)                    (((uint8_t)(((uint8_t)(x)) << RCM_SSRS1_SSACKERR_SHIFT)) & RCM_SSRS1_SSACKERR_MASK)
 /*! @} */
 
 
