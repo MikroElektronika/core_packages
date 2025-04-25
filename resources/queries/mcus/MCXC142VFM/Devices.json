@@ -1,7 +1,7 @@
 {
     "def_file": "MCXC142VFM.json",
     "family_uid": "KINETIS_C_SERIES",
-    "flash": "67108864",
+    "flash": "65536",
     "icon": "images/mcu/nxp.png",
     "max_speed": "48.000",
     "name": "MCXC142VFM",

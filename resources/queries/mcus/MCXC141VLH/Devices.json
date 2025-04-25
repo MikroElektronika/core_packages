@@ -1,7 +1,7 @@
 {
     "def_file": "MCXC141VLH.json",
     "family_uid": "KINETIS_C_SERIES",
-    "flash": "33554432",
+    "flash": "32768",
     "icon": "images/mcu/nxp.png",
     "max_speed": "48.000",
     "name": "MCXC141VLH",
