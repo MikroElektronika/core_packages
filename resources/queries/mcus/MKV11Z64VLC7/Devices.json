@@ -1,0 +1,18 @@
+{
+    "def_file": "MKV11Z64VLC7.json",
+    "family_uid": "KINETIS_V_SERIES",
+    "flash": "65536",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "75.000",
+    "name": "MKV11Z64VLC7",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"MKV11Z64VLC7\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MKV11Z64VLC7",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mkv11z\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mkv11z\"}"
+}
