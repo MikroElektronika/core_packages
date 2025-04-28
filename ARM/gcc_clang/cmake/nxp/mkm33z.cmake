@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^MKM33Z128ACLH5$|^MKM33Z128ACLL5$|^MKM33Z64ACLH5$|^MKM33Z64ACLL5$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mkm33z/init_clock.c)
+    list(APPEND local_dir_install system/src/nxp/mkm33z/thirdparty/mkm33z)
+    set(${thirdpartyInstall} mkm33z/thirdparty/mkm33z PARENT_SCOPE)
+endif()
