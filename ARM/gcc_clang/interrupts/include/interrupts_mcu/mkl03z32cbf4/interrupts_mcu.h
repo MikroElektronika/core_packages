@@ -1,0 +1,95 @@
+/****************************************************************************
+**
+** Copyright (C) 2025 MikroElektronika d.o.o.
+** Contact: https://www.mikroe.com/contact
+**
+** This file is part of the mikroSDK package
+**
+** Commercial License Usage
+**
+** Licensees holding valid commercial NECTO compilers AI licenses may use this
+** file in accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and The MikroElektronika Company.
+** For licensing terms and conditions see
+** https://www.mikroe.com/legal/software-license-agreement.
+** For further information use the contact form at
+** https://www.mikroe.com/contact.
+**
+**
+** GNU Lesser General Public License Usage
+**
+** Alternatively, this file may be used for
+** non-commercial projects under the terms of the GNU Lesser
+** General Public License version 3 as published by the Free Software
+** Foundation: https://www.gnu.org/licenses/lgpl-3.0.html.
+**
+** The above copyright notice and this permission notice shall be
+** included in all copies or substantial portions of the Software.
+**
+** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+** OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+** DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+** OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+** OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+**
+****************************************************************************/
+/*!
+* @file  interrupts_mcu.h
+* @brief MKL03Z32CBF4 MCU specific interrupt per module definitions.
+*/
+
+#ifndef _INTERRUPTS_MCU_H_
+#define _INTERRUPTS_MCU_H_
+
+// Interrupt table
+static const int INTERRUPTS_NMI = 2;
+static const int INTERRUPTS_RESERVED = 16;
+static const int INTERRUPTS_RESERVED_1 = 17;
+static const int INTERRUPTS_RESERVED_2 = 18;
+static const int INTERRUPTS_RESERVED_3 = 19;
+static const int INTERRUPTS_RESERVED_4 = 20;
+static const int INTERRUPTS_COMMAND_COMPLETE_AND_READ_COLLISION = 21;
+static const int INTERRUPTS_PMC = 22;
+static const int INTERRUPTS_LLWU = 23;
+static const int INTERRUPTS_I2C0 = 24;
+static const int INTERRUPTS_RESERVED_5 = 25;
+static const int INTERRUPTS_SPI0 = 26;
+static const int INTERRUPTS_RESERVED_6 = 27;
+static const int INTERRUPTS_STATUS_AND_ERROR = 28;
+static const int INTERRUPTS_RESERVED_7 = 29;
+static const int INTERRUPTS_RESERVED_8 = 30;
+static const int INTERRUPTS_ADC0 = 31;
+static const int INTERRUPTS_CMP0 = 32;
+static const int INTERRUPTS_OVERFLOW_OR_CHANNEL_INTERRUPT = 33;
+static const int INTERRUPTS_OVERFLOW_OR_CHANNEL_INTERRUPT_1 = 34;
+static const int INTERRUPTS_RESERVED_9 = 35;
+static const int INTERRUPTS_ALARM_INTERRUPT = 36;
+static const int INTERRUPTS_SECONDS_INTERRUPT = 37;
+static const int INTERRUPTS_RESERVED_10 = 38;
+static const int INTERRUPTS_RESERVED_11 = 39;
+static const int INTERRUPTS_RESERVED_12 = 40;
+static const int INTERRUPTS_RESERVED_13 = 41;
+static const int INTERRUPTS_RESERVED_14 = 42;
+static const int INTERRUPTS_RESERVED_15 = 43;
+static const int INTERRUPTS_LPTMR0 = 44;
+static const int INTERRUPTS_RESERVED_16 = 45;
+static const int INTERRUPTS_PORTA = 46;
+static const int INTERRUPTS_PORTB = 47;
+
+
+// EOF Interrupt table
+
+// Interrupt addresses
+// No interrupt registers for MKL03Z32CBF4.
+// EOF Interrupt addresses
+
+// Interrupt register bit values
+// No interrupt bits for mk20dn32vlh5.
+// EOF Interrupt register bit values
+
+#endif // _INTERRUPTS_MCU_H_
+// ------------------------------------------------------------------------- END
+
