@@ -1,0 +1,18 @@
+{
+    "def_file": "MKV31F128VLL10.json",
+    "family_uid": "KINETIS_V_SERIES",
+    "flash": "131072",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "120.000",
+    "name": "MKV31F128VLL10",
+    "ram": "24576",
+    "sdk_config": "{\"MCU_NAME\":\"MKV31F128VLL10\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MKV31F128VLL10",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mkv31f\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mkv31f\"}"
+}
