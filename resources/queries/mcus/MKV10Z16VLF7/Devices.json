@@ -1,0 +1,18 @@
+{
+    "def_file": "MKV10Z16VLF7.json",
+    "family_uid": "KINETIS_V_SERIES",
+    "flash": "16384",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "75.000",
+    "name": "MKV10Z16VLF7",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"MKV10Z16VLF7\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MKV10Z16VLF7",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mkv10z\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mkv10z\"}"
+}
