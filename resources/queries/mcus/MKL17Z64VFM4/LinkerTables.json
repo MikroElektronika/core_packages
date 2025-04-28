@@ -3,7 +3,9 @@
     "tables": [
         {
             "BoardToDevice": {
-                "board_uid": ["GENERIC_ARM_BOARD"]
+                "board_uid": [
+                    "GENERIC_ARM_BOARD"
+                ]
             }
         },
         {
@@ -16,12 +18,16 @@
         },
         {
             "DeviceToPackage": {
-                "package_uid": ["32/HUQFN"]
+                "package_uid": [
+                    "32/HUQFN"
+                ]
             }
         },
         {
             "DeviceToSocket": {
-                "socket_uid": ["NONE"]
+                "socket_uid": [
+                    "NONE"
+                ]
             }
         },
         {
