@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MKV11Z128VFM7$|^MKV11Z128VLC7$|^MKV11Z128VLF7$|^MKV11Z128VLH7$|^MKV11Z64VFM7$|^MKV11Z64VLC7$|^MKV11Z64VLF7$|^MKV11Z64VLH7$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mkv11z/init_clock.c)
+endif()
