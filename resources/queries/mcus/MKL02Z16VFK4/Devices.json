@@ -5,7 +5,7 @@
     "icon": "images/mcu/nxp.png",
     "max_speed": "48.000",
     "name": "MKL02Z16VFK4",
-    "ram": "2097152",
+    "ram": "2048",
     "sdk_config": "{\"MCU_NAME\":\"MKL02Z16VFK4\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
     "necto_config": "",
     "uid": "MKL02Z16VFK4",
