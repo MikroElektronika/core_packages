@@ -16,7 +16,9 @@
         },
         {
             "DeviceToPackage": {
-                "package_uid": [""]
+                "package_uid": [
+                    "48/QFN"
+                ]
             }
         },
         {
