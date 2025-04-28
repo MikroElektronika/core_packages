@@ -17,7 +17,7 @@
                 "fields": [
                     {
                         "key": "HSION",
-                        "value": "00000000"
+                        "value": "00000001"
                     },
                     {
                         "key": "HSEON",
@@ -33,7 +33,7 @@
                     },
                     {
                         "key": "PLLON",
-                        "value": "00000000"
+                        "value": "01000000"
                     },
                     {
                         "key": "HSITRIM",
@@ -41,7 +41,7 @@
                     },
                     {
                         "key": "SW",
-                        "value": "00000003"
+                        "value": "00000002"
                     },
                     {
                         "key": "HPRE",
@@ -57,7 +57,7 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "00000000"
+                        "value": "00280000"
                     },
                     {
                         "key": "MCO",
@@ -90,7 +90,7 @@
                 "fields": [
                     {
                         "key": "HSION",
-                        "value": "00000000"
+                        "value": "00000001"
                     },
                     {
                         "key": "HSEON",
@@ -106,7 +106,7 @@
                     },
                     {
                         "key": "PLLON",
-                        "value": "00000000"
+                        "value": "01000000"
                     },
                     {
                         "key": "HSITRIM",
@@ -114,7 +114,7 @@
                     },
                     {
                         "key": "SW",
-                        "value": "00000003"
+                        "value": "00000002"
                     },
                     {
                         "key": "HPRE",
@@ -130,7 +130,7 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "00000000"
+                        "value": "00280000"
                     },
                     {
                         "key": "MCO",
@@ -163,7 +163,7 @@
                 "fields": [
                     {
                         "key": "HSION",
-                        "value": "00000000"
+                        "value": "00000001"
                     },
                     {
                         "key": "HSEON",
@@ -179,7 +179,7 @@
                     },
                     {
                         "key": "PLLON",
-                        "value": "00000000"
+                        "value": "01000000"
                     },
                     {
                         "key": "HSITRIM",
@@ -187,7 +187,7 @@
                     },
                     {
                         "key": "SW",
-                        "value": "00000003"
+                        "value": "00000002"
                     },
                     {
                         "key": "HPRE",
@@ -203,7 +203,7 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "00000000"
+                        "value": "00280000"
                     },
                     {
                         "key": "MCO",
@@ -236,7 +236,7 @@
                 "fields": [
                     {
                         "key": "HSION",
-                        "value": "00000000"
+                        "value": "00000001"
                     },
                     {
                         "key": "HSEON",
@@ -252,7 +252,7 @@
                     },
                     {
                         "key": "PLLON",
-                        "value": "00000000"
+                        "value": "01000000"
                     },
                     {
                         "key": "HSITRIM",
@@ -260,7 +260,7 @@
                     },
                     {
                         "key": "SW",
-                        "value": "00000003"
+                        "value": "00000002"
                     },
                     {
                         "key": "HPRE",
@@ -276,7 +276,7 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "00000000"
+                        "value": "00280000"
                     },
                     {
                         "key": "MCO",
@@ -309,7 +309,7 @@
                 "fields": [
                     {
                         "key": "HSION",
-                        "value": "00000000"
+                        "value": "00000001"
                     },
                     {
                         "key": "HSEON",
@@ -325,7 +325,7 @@
                     },
                     {
                         "key": "PLLON",
-                        "value": "00000000"
+                        "value": "01000000"
                     },
                     {
                         "key": "HSITRIM",
@@ -333,7 +333,7 @@
                     },
                     {
                         "key": "SW",
-                        "value": "00000003"
+                        "value": "00000002"
                     },
                     {
                         "key": "HPRE",
@@ -349,7 +349,7 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "00000000"
+                        "value": "00280000"
                     },
                     {
                         "key": "MCO",
