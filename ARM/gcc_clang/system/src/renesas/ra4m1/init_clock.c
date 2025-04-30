@@ -351,6 +351,27 @@ const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENT
 #define BSP_IO_PWPR_PFSWE_OFFSET (6)
 
 #define NULL ((void *)0)
+
+// ---------------------------------------------------------
+
+#ifndef BSP_CLOCK_CFG_MAIN_OSC_POPULATED
+#define BSP_CLOCK_CFG_MAIN_OSC_POPULATED (1)
+#endif
+
+#define SCKSCR_CKSEL_HOCO 0x0
+#define SCKSCR_CKSEL_MOCO 0x1
+#define SCKSCR_CKSEL_LOCO 0x2
+#define SCKSCR_CKSEL_MOSC 0x3
+#define SCKSCR_CKSEL_SOSC 0x4
+#define SCKSCR_CKSEL_PLL 0x5
+
+// ---------------------------------------------------------
+/*
+* TODO
+*/
+static void system_clock_configuration();
+
+// ---------------------------------------------------------
 /**
  * Initialize the system
  * @param  none
@@ -378,13 +399,7 @@ void SystemInit(void)
     R_FCACHE->FCACHEE = 0U; // Flash cache disable
 
     // CLOCK OVDE TREBA DA SE SETUJE
-    R_SYSTEM->MOSCCR_b.MOSTP   = 1;            // Stop XTAL
-    R_SYSTEM->MOMCR_b.MODRV1    = 0;            // 10-20 MHz
-    R_SYSTEM->MOMCR_b.MOSEL    = 0;            // External clock input
-    R_SYSTEM->MOSCWTCR_b.MSTS = 9;            // XTAL wait time
-    R_SYSTEM->MOSCCR_b.MOSTP   = 0;            // Start XTAL
-    while (!(R_SYSTEM->OSCSF_b.MOSCSF));    // Wait for XTAL
-    R_SYSTEM->SCKSCR_b.CKSEL = 3;
+    system_clock_configuration();
     // CLOCK OVDE TREBA DA SE SETUJE
 
     /* Configure main oscillator drive. */
@@ -413,7 +428,7 @@ void SystemInit(void)
 
     /* To prevent an undesired current draw, this MCU requires a reset
      * of the TRNG circuit after the clocks are initialized */
-    // bsp_reset_trng_circuit(); // TODO idk?
+    // bsp_reset_trng_circuit(); // TODO
 
     /* Disable MSP monitoring  */
     R_MPU_SPMON->SP[0].CTL = 0;
@@ -456,7 +471,248 @@ void SystemInit(void)
             R_ICU->IELSR[i] = (uint32_t) g_interrupt_event_link_select[i];
         }
     }
+}
 
-    /* Call any BSP specific code. No arguments are needed so NULL is sent. */
-    // bsp_init(NULL); // TODO?
+static void system_clock_configuration() {
+    // R_SYSTEM->MOSCCR_b.MOSTP   = 1;            // Stop XTAL
+    // R_SYSTEM->MOMCR_b.MODRV1    = 0;           // 10-20 MHz
+    // R_SYSTEM->MOMCR_b.MOSEL    = 0;            // External clock input
+    // R_SYSTEM->MOSCWTCR_b.MSTS = 9;             // XTAL wait time
+    // R_SYSTEM->MOSCCR_b.MOSTP   = 0;            // Start XTAL
+    // while (!(R_SYSTEM->OSCSF_b.MOSCSF));       // Wait for XTAL
+    // R_SYSTEM->SCKSCR_b.CKSEL = 3;
+
+    // Unlock write protection register
+    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
+
+    // Disable cache before modifying MEMWAIT, SOPCCR or OPCCR
+    R_FCACHE->FCACHEE = 0U;
+
+    // bsp_clock_freq_var_init();
+
+    /*
+        - System Clock Division Control Register (SCKDIVCR)
+        - System Clock Source Control Register (SCKSCR) ?
+        - PLL Clock Control Register 2 (PLLCCR2) ?
+        - PLL Control Register (PLLCR) ?
+        - Main Clock Oscillator Control Register (MOSCCR) ?
+        - Sub-Clock Oscillator Control Register (SOSCCR)
+        - Low-Speed On-Chip Oscillator Control Register (LOCOCR)
+        - High-Speed On-Chip Oscillator Control Register (HOCOCR)
+        - High-Speed On-Chip Oscillator Control Register 2 (HOCOCR2)
+        - Middle-Speed On-Chip Oscillator Control Register (MOCOCR)
+        - Oscillation Stabilization Flag Register (OSCSF) ?
+        - Main Clock Oscillator Wait Control Register (MOSCWTCR) ?
+        - High-Speed On-Chip Oscillator Wait Control Register (HOCOWTCR)
+        - Main Clock Oscillator Mode Oscillation Control Register (MOMCR) ?
+        - Sub-Clock Oscillator Mode Control Register (SOMCR)
+        - Clock Out Control Register (CKOCR)
+        - USB Clock Control Register (USBCKCR)
+    */
+    if ( VALUE_SYSTEM_MOSCCR & R_SYSTEM_MOSCCR_MOSTP_Msk ) { // TODO - 0 is for ON, 1 is for OFF - handle this
+        // Main oscillator selected
+        R_SYSTEM->MOSCCR_b.MOSTP = 1; // Stop XTAL
+
+        if ( VALUE_SYSTEM_MOSCCR & R_SYSTEM_MOMCR_MODRV1_Msk )
+            // 1 MHz to 10 MHz
+            R_SYSTEM->MOMCR_b.MODRV1 = 1; // 1 MHz to 10 MHz
+        else
+            // 10 MHz to 20 MHz
+            R_SYSTEM->MOMCR_b.MODRV1 = 0; // 10 MHz to 20 MHz
+
+        if ( VALUE_SYSTEM_MOSCCR & R_SYSTEM_MOMCR_MOSEL_Msk )
+            // External clock input
+            R_SYSTEM->MOMCR_b.MOSEL = 1; // External clock input
+        else
+            // Resonator
+            R_SYSTEM->MOMCR_b.MOSEL = 0; // Resonator
+
+        if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 0 )
+            // Wait time = 2 cycles (0.25 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 0;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 1 )
+            // Wait time = 1024 cycles (128 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 1;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 2 )
+            // Wait time = 2048 cycles (256 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 2;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 3 )
+            // Wait time = 4096 cycles (512 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 3;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 4 )
+            // Wait time = 8192 cycles (1024 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 4;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 5 )
+            // Wait time = 16384 cycles (2048 탎) (value after reset)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 5;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 6 )
+            // Wait time = 32768 cycles (4096 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 6;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 7 )
+            // Wait time = 65536 cycles (8192 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 7;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 8 )
+            // Wait time = 131072 cycles (16384 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 8;
+        else if ( ( ( VALUE_SYSTEM_MOSCWTCR & R_SYSTEM_MOSCWTCR_MSTS_Msk ) >> R_SYSTEM_MOSCWTCR_MSTS_Pos ) == 9 )
+            // Wait time = 262144 cycles (32768 탎)
+            R_SYSTEM->MOSCWTCR_b.MSTS = 9;
+
+        R_SYSTEM->MOSCCR_b.MOSTP = 0; // Start XTAL
+
+        while ( !( R_SYSTEM->OSCSF_b.MOSCSF ) ) {
+            // Wait for XTAL to stabilize
+        }
+
+        if ( VALUE_SYSTEM_PLLCR & R_SYSTEM_PLLCR_PLLSTP_Msk ) { // TODO - 0 is for ON, 1 is for OFF - handle this
+            R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
+
+            uint8_t pllmul_value = ( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLLMUL_Msk ) >> R_SYSTEM_PLLCCR2_PLLMUL_Pos;
+            R_SYSTEM->PLLCCR2_b.PLLMUL = pllmul_value; // PLL Frequency Multiplication Factor Select
+
+            if ( ( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIV_Msk ) >> R_SYSTEM_PLLCCR2_PLODIV_Pos == 1 )
+                // PLL Output Frequency Division Ratio Select
+                R_SYSTEM->PLLCCR2_b.PLODIV = 1; // Divide by /2
+            else if ( ( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIV_Msk ) >> R_SYSTEM_PLLCCR2_PLODIV_Pos == 2 )
+                R_SYSTEM->PLLCCR2_b.PLODIV = 2; // Divide by /4
+
+            R_SYSTEM->PLLCR_b.PLLSTP = 0; // PLL is operating
+
+            // TODO here or no?
+            // R_SYSTEM->SCKSCR_b.CKSEL = SCKSCR_CKSEL_PLL; // PLL is the clock source
+
+            while ( !( R_SYSTEM->OSCSF_b.PLLSF ) ) {
+                // Wait for PLL to stabilize
+            }
+        } else {
+            R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
+
+            // TODO here or no?
+            // R_SYSTEM->SCKSCR_b.CKSEL = SCKSCR_CKSEL_MOSC; // MOSC is the clock source
+        }
+    }
+    // TODO else ili ne?
+    if ( VALUE_SYSTEM_HOCOCR & R_SYSTEM_HOCOCR_HCSTP_Msk ) { // TODO - 0 is for ON, 1 is for OFF - handle this
+        R_SYSTEM->HOCOCR_b.HCSTP = 1; // Stop HOCO (until HOCO is fully configured)
+
+        if ( ( VALUE_SYSTEM_HOCOCR2 & R_SYSTEM_HOCOCR2_HCFRQ1_Msk ) >> R_SYSTEM_HOCOCR2_HCFRQ1_Pos == 0 )
+            // HOCO Frequency = 24 MHz
+            R_SYSTEM->HOCOCR2_b.HCFRQ1 = 0;
+        else if ( ( VALUE_SYSTEM_HOCOCR2 & R_SYSTEM_HOCOCR2_HCFRQ1_Msk ) >> R_SYSTEM_HOCOCR2_HCFRQ1_Pos == 2 )
+            // HOCO Frequency = 32 MHz
+            R_SYSTEM->HOCOCR2_b.HCFRQ1 = 2;
+        else if ( ( VALUE_SYSTEM_HOCOCR2 & R_SYSTEM_HOCOCR2_HCFRQ1_Msk ) >> R_SYSTEM_HOCOCR2_HCFRQ1_Pos == 4 )
+            // HOCO Frequency = 48 MHz
+            R_SYSTEM->HOCOCR2_b.HCFRQ1 = 4;
+        else if ( ( VALUE_SYSTEM_HOCOCR2 & R_SYSTEM_HOCOCR2_HCFRQ1_Msk ) >> R_SYSTEM_HOCOCR2_HCFRQ1_Pos == 5 )
+            // HOCO Frequency = 64 MHz
+            R_SYSTEM->HOCOCR2_b.HCFRQ1 = 5;
+
+        if ( ( VALUE_SYSTEM_HOCOWTCR & R_SYSTEM_HOCOWTCR_HSTS_Msk ) >> R_SYSTEM_HOCOWTCR_HSTS_Pos == 5 )
+            // Wait time for 24, 32 or 48 MHz HOCO frequency or low-voltage mode
+            R_SYSTEM->HOCOWTCR_b.HSTS = 5;
+        else if ( ( VALUE_SYSTEM_HOCOWTCR & R_SYSTEM_HOCOWTCR_HSTS_Msk ) >> R_SYSTEM_HOCOWTCR_HSTS_Pos == 6 )
+            // Wait time for 64 MHz HOCO frequency
+            R_SYSTEM->HOCOWTCR_b.HSTS = 6;
+
+        R_SYSTEM->HOCOCR_b.HCSTP = 0; // Start HOCO
+
+        while ( !( R_SYSTEM->OSCSF_b.HOCOSF ) ) {
+            // Wait for HOCO to stabilize
+        }
+    }
+
+    if ( VALUE_SYSTEM_LOCOCR & R_SYSTEM_LOCOCR_LCSTP_Msk ) { // TODO - 0 is for ON, 1 is for OFF - handle this
+        R_SYSTEM->LOCOCR_b.LCSTP = 0; // Start LOCO
+    }
+
+    if ( VALUE_SYSTEM_MOCOCR & R_SYSTEM_MOCOCR_MCSTP_Msk ) { // TODO - 0 is for ON, 1 is for OFF - handle this
+        R_SYSTEM->MOCOCR_b.MCSTP = 0; // Start MOCO
+    }
+
+    if ( VALUE_SYSTEM_SOSCCR & R_SYSTEM_SOSCCR_SOSTP_Msk ) { // TODO - 0 is for ON, 1 is for OFF - handle this
+        R_SYSTEM->SOSCCR_b.SOSTP = 1; // Stop SOSC
+
+        if ( ( VALUE_SYSTEM_SOMCR & R_SYSTEM_SOMCR_SODRV_Msk ) >> R_SYSTEM_SOMCR_SODRV_Pos == 0 )
+            // Normal mode
+            R_SYSTEM->SOMCR_b.SODRV = 0;
+        else if ( ( VALUE_SYSTEM_SOMCR & R_SYSTEM_SOMCR_SODRV_Msk ) >> R_SYSTEM_SOMCR_SODRV_Pos == 1 )
+            // Low power mode 1
+            R_SYSTEM->SOMCR_b.SODRV = 1;
+        else if ( ( VALUE_SYSTEM_SOMCR & R_SYSTEM_SOMCR_SODRV_Msk ) >> R_SYSTEM_SOMCR_SODRV_Pos == 2 )
+            // Low power mode 2
+            R_SYSTEM->SOMCR_b.SODRV = 2;
+        else if ( ( VALUE_SYSTEM_SOMCR & R_SYSTEM_SOMCR_SODRV_Msk ) >> R_SYSTEM_SOMCR_SODRV_Pos == 3 )
+            // Low power mode 3
+            R_SYSTEM->SOMCR_b.SODRV = 3;
+
+        R_SYSTEM->SOSCCR_b.SOSTP = 0; // Start SOSC
+    }
+
+    if ( ( VALUE_SYSTEM_SCKSCR & R_SYSTEM_SCKSCR_CKSEL_Msk ) >> R_SYSTEM_SCKSCR_CKSEL_Pos == 0 )
+        // Clock source is HOCO
+        R_SYSTEM->SCKSCR_b.CKSEL = 0;
+    else if ( ( VALUE_SYSTEM_SCKSCR & R_SYSTEM_SCKSCR_CKSEL_Msk ) >> R_SYSTEM_SCKSCR_CKSEL_Pos == 1 )
+        // Clock source is MOCO
+        R_SYSTEM->SCKSCR_b.CKSEL = 1;
+    else if ( ( VALUE_SYSTEM_SCKSCR & R_SYSTEM_SCKSCR_CKSEL_Msk ) >> R_SYSTEM_SCKSCR_CKSEL_Pos == 2 )
+        // Clock source is LOCO
+        R_SYSTEM->SCKSCR_b.CKSEL = 2;
+    else if ( ( VALUE_SYSTEM_SCKSCR & R_SYSTEM_SCKSCR_CKSEL_Msk ) >> R_SYSTEM_SCKSCR_CKSEL_Pos == 3 )
+        // Clock source is MOSC
+        R_SYSTEM->SCKSCR_b.CKSEL = 3;
+    else if ( ( VALUE_SYSTEM_SCKSCR & R_SYSTEM_SCKSCR_CKSEL_Msk ) >> R_SYSTEM_SCKSCR_CKSEL_Pos == 4 )
+        // Clock source is SOSC
+        R_SYSTEM->SCKSCR_b.CKSEL = 4;
+    else if ( ( VALUE_SYSTEM_SCKSCR & R_SYSTEM_SCKSCR_CKSEL_Msk ) >> R_SYSTEM_SCKSCR_CKSEL_Pos == 5 )
+        // Clock source is PLL
+        R_SYSTEM->SCKSCR_b.CKSEL = 5;
+
+    if ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOEN_Msk ) {
+        if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOSEL_Msk ) >> R_SYSTEM_CKOCR_CKOSEL_Pos == 0 )
+            // Clock out source is HOCO
+            R_SYSTEM->CKOCR_b.CKOSEL = 0;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOSEL_Msk ) >> R_SYSTEM_CKOCR_CKOSEL_Pos == 1 )
+            // Clock out source is MOCO
+            R_SYSTEM->CKOCR_b.CKOSEL = 1;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOSEL_Msk ) >> R_SYSTEM_CKOCR_CKOSEL_Pos == 2 )
+            // Clock out source is LOCO
+            R_SYSTEM->CKOCR_b.CKOSEL = 2;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOSEL_Msk ) >> R_SYSTEM_CKOCR_CKOSEL_Pos == 3 )
+            // Clock out source is MOSC
+            R_SYSTEM->CKOCR_b.CKOSEL = 3;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOSEL_Msk ) >> R_SYSTEM_CKOCR_CKOSEL_Pos == 4 )
+            // Clock out source is SOSC
+            R_SYSTEM->CKOCR_b.CKOSEL = 4;
+
+        if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKODIV_Msk ) >> R_SYSTEM_CKOCR_CKODIV_Pos == 0 )
+            // Clock out input frequency division is 1
+            R_SYSTEM->CKOCR_b.CKODIV = 0;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKODIV_Msk ) >> R_SYSTEM_CKOCR_CKODIV_Pos == 1 )
+            // Clock out input frequency division is 2
+            R_SYSTEM->CKOCR_b.CKODIV = 1;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKODIV_Msk ) >> R_SYSTEM_CKOCR_CKODIV_Pos == 2 )
+            // Clock out input frequency division is 4
+            R_SYSTEM->CKOCR_b.CKODIV = 2;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKODIV_Msk ) >> R_SYSTEM_CKOCR_CKODIV_Pos == 3 )
+            // Clock out input frequency division is 8
+            R_SYSTEM->CKOCR_b.CKODIV = 3;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKODIV_Msk ) >> R_SYSTEM_CKOCR_CKODIV_Pos == 4 )
+            // Clock out input frequency division is 16
+            R_SYSTEM->CKOCR_b.CKOSEL = 4;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKODIV_Msk ) >> R_SYSTEM_CKOCR_CKODIV_Pos == 5 )
+            // Clock out input frequency division is 32
+            R_SYSTEM->CKOCR_b.CKOSEL = 5;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKODIV_Msk ) >> R_SYSTEM_CKOCR_CKODIV_Pos == 6 )
+            // Clock out input frequency division is 64
+            R_SYSTEM->CKOCR_b.CKOSEL = 6;
+        else if ( ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKODIV_Msk ) >> R_SYSTEM_CKOCR_CKODIV_Pos == 7 )
+            // Clock out input frequency division is 128
+            R_SYSTEM->CKOCR_b.CKOSEL = 7;
+
+        R_SYSTEM->CKOCR_b.CKOEN = 1; // Enable clock out
+    }
+
+    // Lock write protection register
+    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK; // TODO check if it's done here
 }
