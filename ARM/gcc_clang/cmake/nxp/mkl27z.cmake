@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MKL27Z128VLH4$|^MKL27Z128VFM4$|^MKL27Z128VMP4$|^MKL27Z128VFT4$|^MKL27Z256VMP4$|^MKL27Z256VFT4$|^MKL27Z256VFM4$|^MKL27Z256VLH4$|^MKL27Z32VDA4$|^MKL27Z32VLH4$|^MKL27Z32VFM4$|^MKL27Z32VMP4$|^MKL27Z32VFT4$|^MKL27Z64VDA4$|^MKL27Z64VFT4$|^MKL27Z64VMP4$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mkl27z/init_clock.c)
+endif()
