@@ -13,6 +13,6 @@
 ---
 
 > Note that this repository will be updated regularly, so make sure to check frequently.
-> If you wish to submit a request, please create an issue.
+> If you wish to submit a request, please create an issue. 
 
 ---
