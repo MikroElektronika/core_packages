@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^K32L2B11VFM0A$|^K32L2B11VFT0A$|^K32L2B11VLH0A$|^K32L2B11VMP0A$|^K32L2B21VFM0A$|^K32L2B21VFT0A$|^K32L2B21VLH0A$|^K32L2B21VMP0A$|^K32L2B31VFM0A$|^K32L2B31VFT0A$|^K32L2B31VLH0A$|^K32L2B31VMP0A$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/k32l2b/init_clock.c)
+    list(APPEND local_dir_install system/src/nxp/k32l2b/thirdparty/k32l2b)
+    set(${thirdpartyInstall} k32l2b/thirdparty/k32l2b PARENT_SCOPE)
+endif()
