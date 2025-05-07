@@ -37,6 +37,10 @@ Support added for following hardware:
   + MKE14F256VLH16
   + MKE14F512VLL16
   + MKE14F512VLH16
++ PIC18Q83 MCU Support package for mikroC
+  + PIC18F27Q83
+  + PIC18F47Q83
+  + PIC18F57Q83
 
 ---
 
