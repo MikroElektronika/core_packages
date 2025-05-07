@@ -39,6 +39,10 @@ Support added for following hardware:
 + MKE12Z9 MCU Support package for GCC & Clang
   + MKE12Z512VLH9
   + MKE12Z512VLL9
++ PIC18Q84 MCU Support package for mikroC
+  + PIC18F27Q84
+  + PIC18F47Q84
+  + PIC18F57Q84
 
 ---
 
