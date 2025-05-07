@@ -44,6 +44,8 @@
 #ifndef _INTERRUPTS_MCU_H_
 #define _INTERRUPTS_MCU_H_
 
+#define INTCON INTCON0
+
 // Interrupt table
 static const int INTERRUPTS_SW = 0;
 static const int INTERRUPTS_HLVD = 1;
