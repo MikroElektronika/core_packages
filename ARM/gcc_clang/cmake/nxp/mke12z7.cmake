@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^MKE12Z128VLF7$|^MKE12Z128VLH7$|^MKE12Z128VLL7$|^MKE12Z256VLF7$|^MKE12Z256VLH7$|^MKE12Z256VLL7$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mke12z7/init_clock.c)
+    list(APPEND local_dir_install system/src/nxp/mke12z7/thirdparty/mke12z7)
+    set(${thirdpartyInstall} mke12z7/thirdparty/mke12z7 PARENT_SCOPE)
+endif()
