@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MKW36A512VHT4$|^MKW36A512VFP4$|^MKW36A512VFT4$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mkw36a/init_clock.c)
+endif()
