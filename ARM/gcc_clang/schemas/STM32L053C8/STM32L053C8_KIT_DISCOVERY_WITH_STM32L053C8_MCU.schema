@@ -1,0 +1,342 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc_clang/arm_gcc_clang_stm32l0x/def/STM32L053C8.json",
+    "flash": "65536",
+    "ram": "8192",
+    "board_regex": "KIT_DISCOVERY_WITH_STM32L053C8_MCU",
+    "settings": {
+        "clock": "32",
+        "scheme": "Discovery kit with STM32L053C8 MCU",
+        "mcu": "STM32L053C8",
+        "core": "M0",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "HSI48ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI16ON",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "HSI16DIVEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSHSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RTCPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00040000"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "00400000"
+                    },
+                    {
+                        "key": "MCOSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "VCORE",
+                        "value": "00001000"
+                    }
+                ],
+                "key": "RCC_CRRCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSI48ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI16ON",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "HSI16DIVEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSHSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RTCPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00040000"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "00400000"
+                    },
+                    {
+                        "key": "MCOSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "VCORE",
+                        "value": "00001000"
+                    }
+                ],
+                "key": "RCC_CR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSI48ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI16ON",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "HSI16DIVEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSHSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RTCPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00040000"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "00400000"
+                    },
+                    {
+                        "key": "MCOSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "VCORE",
+                        "value": "00001000"
+                    }
+                ],
+                "key": "RCC_CFGR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSI48ON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSI16ON",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "HSI16DIVEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MSION",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSHSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RTCPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00040000"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "00400000"
+                    },
+                    {
+                        "key": "MCOSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCOPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "VCORE",
+                        "value": "00001000"
+                    }
+                ],
+                "key": "PWR_CR"
+            }
+        ]
+    }
+}
