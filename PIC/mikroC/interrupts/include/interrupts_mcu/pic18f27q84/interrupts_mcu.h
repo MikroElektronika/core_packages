@@ -1,0 +1,438 @@
+/****************************************************************************
+**
+** Copyright (C) 2025 MikroElektronika d.o.o.
+** Contact: https://www.mikroe.com/contact
+**
+** This file is part of the mikroSDK package
+**
+** Commercial License Usage
+**
+** Licensees holding valid commercial NECTO compilers AI licenses may use this
+** file in accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and The MikroElektronika Company.
+** For licensing terms and conditions see
+** https://www.mikroe.com/legal/software-license-agreement.
+** For further information use the contact form at
+** https://www.mikroe.com/contact.
+**
+**
+** GNU Lesser General Public License Usage
+**
+** Alternatively, this file may be used for
+** non-commercial projects under the terms of the GNU Lesser
+** General Public License version 3 as published by the Free Software
+** Foundation: https://www.gnu.org/licenses/lgpl-3.0.html.
+**
+** The above copyright notice and this permission notice shall be
+** included in all copies or substantial portions of the Software.
+**
+** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+** OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+** DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+** OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+** OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+**
+****************************************************************************/
+/*!
+* @file  interrupts_mcu.h
+* @brief PIC18F27Q84 MCU specific interrupt per module definitions.
+*/
+
+#ifndef _INTERRUPTS_MCU_H_
+#define _INTERRUPTS_MCU_H_
+
+#define INTCON INTCON0
+
+// Interrupt table
+static const int INTERRUPTS_SW = 0;
+static const int INTERRUPTS_HLVD = 1;
+static const int INTERRUPTS_OSF = 2;
+static const int INTERRUPTS_CSW = 3;
+static const int INTERRUPTS_TU16A = 4;
+static const int INTERRUPTS_CLC1 = 5;
+static const int INTERRUPTS_CAN = 6;
+static const int INTERRUPTS_IOC = 7;
+static const int INTERRUPTS_INT0 = 8;
+static const int INTERRUPTS_ZCD = 9;
+static const int INTERRUPTS_AD = 10;
+static const int INTERRUPTS_ACT = 11;
+static const int INTERRUPTS_C1 = 12;
+static const int INTERRUPTS_SMT1 = 13;
+static const int INTERRUPTS_SMT1PRA = 14;
+static const int INTERRUPTS_SMT1PWA = 15;
+static const int INTERRUPTS_ADT = 16;
+static const int INTERRUPTS_ADCH2 = 17;
+static const int INTERRUPTS_ADCH3 = 18;
+static const int INTERRUPTS_ADCH4 = 19;
+static const int INTERRUPTS_DMA1SCNT = 20;
+static const int INTERRUPTS_DMA1DCNT = 21;
+static const int INTERRUPTS_DMA1OR = 22;
+static const int INTERRUPTS_DMA1A = 23;
+static const int INTERRUPTS_ADCH1 = 24;
+static const int INTERRUPTS_SPI1RX = 25;
+static const int INTERRUPTS_SPI1TX = 26;
+static const int INTERRUPTS_SPI1 = 27;
+static const int INTERRUPTS_TMR2 = 28;
+static const int INTERRUPTS_TMR1 = 29;
+static const int INTERRUPTS_TMR1G = 30;
+static const int INTERRUPTS_CCP1 = 31;
+static const int INTERRUPTS_TMR0 = 32;
+static const int INTERRUPTS_U1RX = 33;
+static const int INTERRUPTS_U1TX = 34;
+static const int INTERRUPTS_U1E = 35;
+static const int INTERRUPTS_U1 = 36;
+static const int INTERRUPTS_CANRX = 37;
+static const int INTERRUPTS_CANTX = 38;
+static const int INTERRUPTS_PWM1P = 39;
+static const int INTERRUPTS_PWM1 = 40;
+static const int INTERRUPTS_SPI2RX = 41;
+static const int INTERRUPTS_SPI2TX = 42;
+static const int INTERRUPTS_SPI2 = 43;
+static const int INTERRUPTS_TU16B = 44;
+static const int INTERRUPTS_TMR3 = 45;
+static const int INTERRUPTS_TMR3G = 46;
+static const int INTERRUPTS_PWM2P = 47;
+static const int INTERRUPTS_PWM2 = 48;
+static const int INTERRUPTS_INT1 = 49;
+static const int INTERRUPTS_CLC2 = 50;
+static const int INTERRUPTS_CWG1 = 51;
+static const int INTERRUPTS_NCO1 = 52;
+static const int INTERRUPTS_DMA2SCNT = 53;
+static const int INTERRUPTS_DMA2DCNT = 54;
+static const int INTERRUPTS_DMA2OR = 55;
+static const int INTERRUPTS_DMA2A = 56;
+static const int INTERRUPTS_I2C1RX = 57;
+static const int INTERRUPTS_I2C1TX = 58;
+static const int INTERRUPTS_I2C1 = 59;
+static const int INTERRUPTS_I2C1E = 60;
+static const int INTERRUPTS_CLC3 = 61;
+static const int INTERRUPTS_PWM3P = 62;
+static const int INTERRUPTS_PWM3 = 63;
+static const int INTERRUPTS_U2RX = 64;
+static const int INTERRUPTS_U2TX = 65;
+static const int INTERRUPTS_U2E = 66;
+static const int INTERRUPTS_U2 = 67;
+static const int INTERRUPTS_TMR5 = 68;
+static const int INTERRUPTS_TMR5G = 69;
+static const int INTERRUPTS_CCP2 = 70;
+static const int INTERRUPTS_SCAN = 71;
+static const int INTERRUPTS_U3RX = 72;
+static const int INTERRUPTS_U3TX = 73;
+static const int INTERRUPTS_U3E = 74;
+static const int INTERRUPTS_U3 = 75;
+static const int INTERRUPTS_CLC4 = 76;
+static const int INTERRUPTS_PWM4P = 77;
+static const int INTERRUPTS_PWM4 = 78;
+static const int INTERRUPTS_INT2 = 79;
+static const int INTERRUPTS_CLC5 = 80;
+static const int INTERRUPTS_CWG2 = 81;
+static const int INTERRUPTS_NCO2 = 82;
+static const int INTERRUPTS_DMA3SCNT = 83;
+static const int INTERRUPTS_DMA3DCNT = 84;
+static const int INTERRUPTS_DMA3OR = 85;
+static const int INTERRUPTS_DMA3A = 86;
+static const int INTERRUPTS_CCP3 = 87;
+static const int INTERRUPTS_CLC6 = 88;
+static const int INTERRUPTS_CWG3 = 89;
+static const int INTERRUPTS_TMR4 = 90;
+static const int INTERRUPTS_DMA4SCNT = 91;
+static const int INTERRUPTS_DMA4DCNT = 92;
+static const int INTERRUPTS_DMA4OR = 93;
+static const int INTERRUPTS_DMA4A = 94;
+static const int INTERRUPTS_U4RX = 95;
+static const int INTERRUPTS_U4TX = 96;
+static const int INTERRUPTS_U4E = 97;
+static const int INTERRUPTS_U4 = 98;
+static const int INTERRUPTS_DMA5SCNT = 99;
+static const int INTERRUPTS_DMA5DCNT = 100;
+static const int INTERRUPTS_DMA5OR = 101;
+static const int INTERRUPTS_DMA5A = 102;
+static const int INTERRUPTS_U5RX = 103;
+static const int INTERRUPTS_U5TX = 104;
+static const int INTERRUPTS_U5E = 105;
+static const int INTERRUPTS_U5 = 106;
+static const int INTERRUPTS_DMA6SCNT = 107;
+static const int INTERRUPTS_DMA6DCNT = 108;
+static const int INTERRUPTS_DMA6OR = 109;
+static const int INTERRUPTS_DMA6A = 110;
+static const int INTERRUPTS_CLC7 = 111;
+static const int INTERRUPTS_C2 = 112;
+static const int INTERRUPTS_NCO3 = 113;
+static const int INTERRUPTS_DMA7SCNT = 114;
+static const int INTERRUPTS_DMA7DCNT = 115;
+static const int INTERRUPTS_DMA7OR = 116;
+static const int INTERRUPTS_DMA7A = 117;
+static const int INTERRUPTS_NVM = 118;
+static const int INTERRUPTS_CLC8 = 119;
+static const int INTERRUPTS_CRC = 120;
+static const int INTERRUPTS_TMR6 = 121;
+static const int INTERRUPTS_DMA8SCNT = 122;
+static const int INTERRUPTS_DMA8DCNT = 123;
+static const int INTERRUPTS_DMA8OR = 124;
+static const int INTERRUPTS_DMA8A = 125;
+// EOF Interrupt table
+
+// Interrupt addresses
+#define INTERRUPT_SW_REGISTER (PIE0)
+#define INTERRUPT_HLVD_REGISTER (PIE0)
+#define INTERRUPT_OSF_REGISTER (PIE0)
+#define INTERRUPT_CSW_REGISTER (PIE0)
+#define INTERRUPT_TU16A_REGISTER (PIE0)
+#define INTERRUPT_CLC1_REGISTER (PIE0)
+#define INTERRUPT_CAN_REGISTER (PIE0)
+#define INTERRUPT_IOC_REGISTER (PIE0)
+#define INTERRUPT_INT0_REGISTER (PIE1)
+#define INTERRUPT_ZCD_REGISTER (PIE1)
+#define INTERRUPT_AD_REGISTER (PIE1)
+#define INTERRUPT_ACT_REGISTER (PIE1)
+#define INTERRUPT_C1_REGISTER (PIE1)
+#define INTERRUPT_SMT1_REGISTER (PIE1)
+#define INTERRUPT_SMT1PRA_REGISTER (PIE1)
+#define INTERRUPT_SMT1PWA_REGISTER (PIE1)
+#define INTERRUPT_ADT_REGISTER (PIE2)
+#define INTERRUPT_ADCH2_REGISTER (PIE2)
+#define INTERRUPT_ADCH3_REGISTER (PIE2)
+#define INTERRUPT_ADCH4_REGISTER (PIE2)
+#define INTERRUPT_DMA1SCNT_REGISTER (PIE2)
+#define INTERRUPT_DMA1DCNT_REGISTER (PIE2)
+#define INTERRUPT_DMA1OR_REGISTER (PIE2)
+#define INTERRUPT_DMA1A_REGISTER (PIE2)
+#define INTERRUPT_ADCH1_REGISTER (PIE2)
+#define INTERRUPT_SPI1RX_REGISTER (PIE3)
+#define INTERRUPT_SPI1TX_REGISTER (PIE3)
+#define INTERRUPT_SPI1_REGISTER (PIE3)
+#define INTERRUPT_TMR2_REGISTER (PIE3)
+#define INTERRUPT_TMR1_REGISTER (PIE3)
+#define INTERRUPT_TMR1G_REGISTER (PIE3)
+#define INTERRUPT_CCP1_REGISTER (PIE3)
+#define INTERRUPT_TMR0_REGISTER (PIE3)
+#define INTERRUPT_U1RX_REGISTER (PIE4)
+#define INTERRUPT_U1TX_REGISTER (PIE4)
+#define INTERRUPT_U1E_REGISTER (PIE4)
+#define INTERRUPT_U1_REGISTER (PIE4)
+#define INTERRUPT_CANRX_REGISTER (PIE4)
+#define INTERRUPT_CANTX_REGISTER (PIE4)
+#define INTERRUPT_PWM1P_REGISTER (PIE4)
+#define INTERRUPT_PWM1_REGISTER (PIE4)
+#define INTERRUPT_SPI2RX_REGISTER (PIE5)
+#define INTERRUPT_SPI2TX_REGISTER (PIE5)
+#define INTERRUPT_SPI2_REGISTER (PIE5)
+#define INTERRUPT_TU16B_REGISTER (PIE5)
+#define INTERRUPT_TMR3_REGISTER (PIE5)
+#define INTERRUPT_TMR3G_REGISTER (PIE5)
+#define INTERRUPT_PWM2P_REGISTER (PIE5)
+#define INTERRUPT_PWM2_REGISTER (PIE5)
+#define INTERRUPT_INT1_REGISTER (PIE6)
+#define INTERRUPT_CLC2_REGISTER (PIE6)
+#define INTERRUPT_CWG1_REGISTER (PIE6)
+#define INTERRUPT_NCO1_REGISTER (PIE6)
+#define INTERRUPT_DMA2SCNT_REGISTER (PIE6)
+#define INTERRUPT_DMA2DCNT_REGISTER (PIE6)
+#define INTERRUPT_DMA2OR_REGISTER (PIE6)
+#define INTERRUPT_DMA2A_REGISTER (PIE6)
+#define INTERRUPT_I2C1RX_REGISTER (PIE7)
+#define INTERRUPT_I2C1TX_REGISTER (PIE7)
+#define INTERRUPT_I2C1_REGISTER (PIE7)
+#define INTERRUPT_I2C1E_REGISTER (PIE7)
+#define INTERRUPT_CLC3_REGISTER (PIE7)
+#define INTERRUPT_PWM3P_REGISTER (PIE7)
+#define INTERRUPT_PWM3_REGISTER (PIE7)
+#define INTERRUPT_U2RX_REGISTER (PIE8)
+#define INTERRUPT_U2TX_REGISTER (PIE8)
+#define INTERRUPT_U2E_REGISTER (PIE8)
+#define INTERRUPT_U2_REGISTER (PIE8)
+#define INTERRUPT_TMR5_REGISTER (PIE8)
+#define INTERRUPT_TMR5G_REGISTER (PIE8)
+#define INTERRUPT_CCP2_REGISTER (PIE8)
+#define INTERRUPT_SCAN_REGISTER (PIE8)
+#define INTERRUPT_U3RX_REGISTER (PIE9)
+#define INTERRUPT_U3TX_REGISTER (PIE9)
+#define INTERRUPT_U3E_REGISTER (PIE9)
+#define INTERRUPT_U3_REGISTER (PIE9)
+#define INTERRUPT_CLC4_REGISTER (PIE9)
+#define INTERRUPT_PWM4P_REGISTER (PIE9)
+#define INTERRUPT_PWM4_REGISTER (PIE9)
+#define INTERRUPT_INT2_REGISTER (PIE10)
+#define INTERRUPT_CLC5_REGISTER (PIE10)
+#define INTERRUPT_CWG2_REGISTER (PIE10)
+#define INTERRUPT_NCO2_REGISTER (PIE10)
+#define INTERRUPT_DMA3SCNT_REGISTER (PIE10)
+#define INTERRUPT_DMA3DCNT_REGISTER (PIE10)
+#define INTERRUPT_DMA3OR_REGISTER (PIE10)
+#define INTERRUPT_DMA3A_REGISTER (PIE10)
+#define INTERRUPT_CCP3_REGISTER (PIE11)
+#define INTERRUPT_CLC6_REGISTER (PIE11)
+#define INTERRUPT_CWG3_REGISTER (PIE11)
+#define INTERRUPT_TMR4_REGISTER (PIE11)
+#define INTERRUPT_DMA4SCNT_REGISTER (PIE11)
+#define INTERRUPT_DMA4DCNT_REGISTER (PIE11)
+#define INTERRUPT_DMA4OR_REGISTER (PIE11)
+#define INTERRUPT_DMA4A_REGISTER (PIE11)
+#define INTERRUPT_U4RX_REGISTER (PIE12)
+#define INTERRUPT_U4TX_REGISTER (PIE12)
+#define INTERRUPT_U4E_REGISTER (PIE12)
+#define INTERRUPT_U4_REGISTER (PIE12)
+#define INTERRUPT_DMA5SCNT_REGISTER (PIE12)
+#define INTERRUPT_DMA5DCNT_REGISTER (PIE12)
+#define INTERRUPT_DMA5OR_REGISTER (PIE12)
+#define INTERRUPT_DMA5A_REGISTER (PIE12)
+#define INTERRUPT_U5RX_REGISTER (PIE13)
+#define INTERRUPT_U5TX_REGISTER (PIE13)
+#define INTERRUPT_U5E_REGISTER (PIE13)
+#define INTERRUPT_U5_REGISTER (PIE13)
+#define INTERRUPT_DMA6SCNT_REGISTER (PIE13)
+#define INTERRUPT_DMA6DCNT_REGISTER (PIE13)
+#define INTERRUPT_DMA6OR_REGISTER (PIE13)
+#define INTERRUPT_DMA6A_REGISTER (PIE13)
+#define INTERRUPT_CLC7_REGISTER (PIE14)
+#define INTERRUPT_C2_REGISTER (PIE14)
+#define INTERRUPT_NCO3_REGISTER (PIE14)
+#define INTERRUPT_DMA7SCNT_REGISTER (PIE14)
+#define INTERRUPT_DMA7DCNT_REGISTER (PIE14)
+#define INTERRUPT_DMA7OR_REGISTER (PIE14)
+#define INTERRUPT_DMA7A_REGISTER (PIE14)
+#define INTERRUPT_NVM_REGISTER (PIE15)
+#define INTERRUPT_CLC8_REGISTER (PIE15)
+#define INTERRUPT_CRC_REGISTER (PIE15)
+#define INTERRUPT_TMR6_REGISTER (PIE15)
+#define INTERRUPT_DMA8SCNT_REGISTER (PIE15)
+#define INTERRUPT_DMA8DCNT_REGISTER (PIE15)
+#define INTERRUPT_DMA8OR_REGISTER (PIE15)
+#define INTERRUPT_DMA8A_REGISTER (PIE15)
+
+// EOF Interrupt addresses
+
+// Interrupt register bit values
+#define INTERRUPT_SW_BIT (0)
+#define INTERRUPT_HLVD_BIT (1)
+#define INTERRUPT_OSF_BIT (2)
+#define INTERRUPT_CSW_BIT (3)
+#define INTERRUPT_TU16A_BIT (4)
+#define INTERRUPT_CLC1_BIT (5)
+#define INTERRUPT_CAN_BIT (6)
+#define INTERRUPT_IOC_BIT (7)
+#define INTERRUPT_INT0_BIT (0)
+#define INTERRUPT_ZCD_BIT (1)
+#define INTERRUPT_AD_BIT (2)
+#define INTERRUPT_ACT_BIT (3)
+#define INTERRUPT_C1_BIT (4)
+#define INTERRUPT_SMT1_BIT (5)
+#define INTERRUPT_SMT1PRA_BIT (6)
+#define INTERRUPT_SMT1PWA_BIT (7)
+#define INTERRUPT_ADT_BIT (0)
+#define INTERRUPT_ADCH2_BIT (1)
+#define INTERRUPT_ADCH3_BIT (2)
+#define INTERRUPT_ADCH4_BIT (3)
+#define INTERRUPT_DMA1SCNT_BIT (4)
+#define INTERRUPT_DMA1DCNT_BIT (5)
+#define INTERRUPT_DMA1OR_BIT (6)
+#define INTERRUPT_DMA1A_BIT (7)
+#define INTERRUPT_ADCH1_BIT (0)
+#define INTERRUPT_SPI1RX_BIT (0)
+#define INTERRUPT_SPI1TX_BIT (1)
+#define INTERRUPT_SPI1_BIT (2)
+#define INTERRUPT_TMR2_BIT (3)
+#define INTERRUPT_TMR1_BIT (4)
+#define INTERRUPT_TMR1G_BIT (5)
+#define INTERRUPT_CCP1_BIT (6)
+#define INTERRUPT_TMR0_BIT (7)
+#define INTERRUPT_U1RX_BIT (0)
+#define INTERRUPT_U1TX_BIT (1)
+#define INTERRUPT_U1E_BIT (2)
+#define INTERRUPT_U1_BIT (3)
+#define INTERRUPT_CANRX_BIT (4)
+#define INTERRUPT_CANTX_BIT (5)
+#define INTERRUPT_PWM1P_BIT (6)
+#define INTERRUPT_PWM1_BIT (7)
+#define INTERRUPT_SPI2RX_BIT (0)
+#define INTERRUPT_SPI2TX_BIT (1)
+#define INTERRUPT_SPI2_BIT (2)
+#define INTERRUPT_TU16B_BIT (3)
+#define INTERRUPT_TMR3_BIT (4)
+#define INTERRUPT_TMR3G_BIT (5)
+#define INTERRUPT_PWM2P_BIT (6)
+#define INTERRUPT_PWM2_BIT (7)
+#define INTERRUPT_INT1_BIT (0)
+#define INTERRUPT_CLC2_BIT (1)
+#define INTERRUPT_CWG1_BIT (2)
+#define INTERRUPT_NCO1_BIT (3)
+#define INTERRUPT_DMA2SCNT_BIT (4)
+#define INTERRUPT_DMA2DCNT_BIT (5)
+#define INTERRUPT_DMA2OR_BIT (6)
+#define INTERRUPT_DMA2A_BIT (7)
+#define INTERRUPT_I2C1RX_BIT (0)
+#define INTERRUPT_I2C1TX_BIT (1)
+#define INTERRUPT_I2C1_BIT (2)
+#define INTERRUPT_I2C1E_BIT (3)
+#define INTERRUPT_CLC3_BIT (5)
+#define INTERRUPT_PWM3P_BIT (6)
+#define INTERRUPT_PWM3_BIT (7)
+#define INTERRUPT_U2RX_BIT (0)
+#define INTERRUPT_U2TX_BIT (1)
+#define INTERRUPT_U2E_BIT (2)
+#define INTERRUPT_U2_BIT (3)
+#define INTERRUPT_TMR5_BIT (4)
+#define INTERRUPT_TMR5G_BIT (5)
+#define INTERRUPT_CCP2_BIT (6)
+#define INTERRUPT_SCAN_BIT (7)
+#define INTERRUPT_U3RX_BIT (0)
+#define INTERRUPT_U3TX_BIT (1)
+#define INTERRUPT_U3E_BIT (2)
+#define INTERRUPT_U3_BIT (3)
+#define INTERRUPT_CLC4_BIT (5)
+#define INTERRUPT_PWM4P_BIT (6)
+#define INTERRUPT_PWM4_BIT (7)
+#define INTERRUPT_INT2_BIT (0)
+#define INTERRUPT_CLC5_BIT (1)
+#define INTERRUPT_CWG2_BIT (2)
+#define INTERRUPT_NCO2_BIT (3)
+#define INTERRUPT_DMA3SCNT_BIT (4)
+#define INTERRUPT_DMA3DCNT_BIT (5)
+#define INTERRUPT_DMA3OR_BIT (6)
+#define INTERRUPT_DMA3A_BIT (7)
+#define INTERRUPT_CCP3_BIT (0)
+#define INTERRUPT_CLC6_BIT (1)
+#define INTERRUPT_CWG3_BIT (2)
+#define INTERRUPT_TMR4_BIT (3)
+#define INTERRUPT_DMA4SCNT_BIT (4)
+#define INTERRUPT_DMA4DCNT_BIT (5)
+#define INTERRUPT_DMA4OR_BIT (6)
+#define INTERRUPT_DMA4A_BIT (7)
+#define INTERRUPT_U4RX_BIT (0)
+#define INTERRUPT_U4TX_BIT (1)
+#define INTERRUPT_U4E_BIT (2)
+#define INTERRUPT_U4_BIT (3)
+#define INTERRUPT_DMA5SCNT_BIT (4)
+#define INTERRUPT_DMA5DCNT_BIT (5)
+#define INTERRUPT_DMA5OR_BIT (6)
+#define INTERRUPT_DMA5A_BIT (7)
+#define INTERRUPT_U5RX_BIT (0)
+#define INTERRUPT_U5TX_BIT (1)
+#define INTERRUPT_U5E_BIT (2)
+#define INTERRUPT_U5_BIT (3)
+#define INTERRUPT_DMA6SCNT_BIT (4)
+#define INTERRUPT_DMA6DCNT_BIT (5)
+#define INTERRUPT_DMA6OR_BIT (6)
+#define INTERRUPT_DMA6A_BIT (7)
+#define INTERRUPT_CLC7_BIT (1)
+#define INTERRUPT_C2_BIT (2)
+#define INTERRUPT_NCO3_BIT (3)
+#define INTERRUPT_DMA7SCNT_BIT (4)
+#define INTERRUPT_DMA7DCNT_BIT (5)
+#define INTERRUPT_DMA7OR_BIT (6)
+#define INTERRUPT_DMA7A_BIT (7)
+#define INTERRUPT_NVM_BIT (0)
+#define INTERRUPT_CLC8_BIT (1)
+#define INTERRUPT_CRC_BIT (2)
+#define INTERRUPT_TMR6_BIT (3)
+#define INTERRUPT_DMA8SCNT_BIT (4)
+#define INTERRUPT_DMA8DCNT_BIT (5)
+#define INTERRUPT_DMA8OR_BIT (6)
+#define INTERRUPT_DMA8A_BIT (7)
+// EOF Interrupt register bit values
+
+#endif // _INTERRUPTS_MCU_H_
+// ------------------------------------------------------------------------- END
