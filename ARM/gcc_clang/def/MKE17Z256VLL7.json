@@ -1,0 +1,7 @@
+{
+    "config_registers": [],
+    "core": "M0",
+    "delay_src_path": "delays/m0/__lib_delays.c",
+    "mcu": "MKE17Z256VLL7",
+    "clock": "1"
+}
