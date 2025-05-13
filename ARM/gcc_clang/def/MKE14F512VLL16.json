@@ -1,0 +1,7 @@
+{
+    "config_registers": [],
+    "core": "M4",
+    "delay_src_path": "delays/m4/__lib_delays.c",
+    "mcu": "MKE14F512VLL16",
+    "clock": "1"
+}
