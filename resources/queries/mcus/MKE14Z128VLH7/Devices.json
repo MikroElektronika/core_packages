@@ -1,7 +1,7 @@
 {
     "def_file": "MKE14Z128VLH7.json",
     "family_uid": "KINETIS_E_SERIES",
-    "flash": "167772160",
+    "flash": "163840",
     "icon": "images/mcu/nxp.png",
     "max_speed": "72.000",
     "name": "MKE14Z128VLH7",
