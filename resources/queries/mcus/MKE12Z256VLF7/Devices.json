@@ -1,0 +1,18 @@
+{
+    "def_file": "MKE12Z256VLF7.json",
+    "family_uid": "KINETIS_E_SERIES",
+    "flash": "262144",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "75.000",
+    "name": "MKE12Z256VLF7",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"MKE12Z256VLF7\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MKE12Z256VLF7",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mke12z7\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mke12z7\"}"
+}
