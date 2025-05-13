@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^MKE12Z512VLH9$|^MKE12Z512VLL9$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mke12z9/init_clock.c)
+    list(APPEND local_dir_install system/src/nxp/mke12z9/thirdparty/mke12z9)
+    set(${thirdpartyInstall} mke12z9/thirdparty/mke12z9 PARENT_SCOPE)
+endif()
