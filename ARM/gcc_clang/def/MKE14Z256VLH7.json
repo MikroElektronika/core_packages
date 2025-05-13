@@ -1,0 +1,826 @@
+{
+    "config_registers": [
+        {
+            "address": "40048004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "RTC32KCLKSEL",
+                    "label": "RTC 32K clock input select",
+                    "mask": "000C0000",
+                    "settings": [
+                        {
+                            "label": "OSC32 clock output",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "RTC_CLKIN",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "000C0000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "PWTCLKSEL",
+                    "label": "PWT clock source select",
+                    "mask": "00030000",
+                    "settings": [
+                        {
+                            "label": "PWT alternative clock is from the TCLK0 pin",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PWT alternative clock is from the TCLK1 pin",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "PWT alternative clock is from the TCLK2 pin",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "00030000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "PDB_BB_SEL",
+                    "label": "PDB back-to-back select",
+                    "mask": "00002000",
+                    "settings": [
+                        {
+                            "label": "PDB0 channel 0 back-to-back operation with ADC0 COCO[1:0] and PDB0 channel 1 back-to-back operation with ADC1 COCO[1:0]",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PDB0 Channel 0 back-to-back operation with COCO[0] of ADC0 and COCO[1] of ADC1 ; PDB0 Channel 1 back-to-back operation with COCO[0] of ADC1 and COCO[1] of ADC0",
+                            "value": "00002000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "CLKOUTSEL",
+                    "label": "CLKOUT Select",
+                    "mask": "000000C0",
+                    "settings": [
+                        {
+                            "label": "Reserved",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "SCGCLKOUT(SIRC/FIRC/SOSC/LPFLL), see SCG_CLKOUTCNFG register",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "RTC oscillator (OSC32) clock (32 kHz) ",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "LPO clock (128 kHz)",
+                            "value": "000000C0"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "CLKOUTDIV",
+                    "label": "CLKOUT divider ratio",
+                    "mask": "00000030",
+                    "settings": [
+                        {
+                            "label": "Divided by 1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divided by 8",
+                            "value": "00000030"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "ADC_INTERLEAVE_EN",
+                    "label": "ADC interleave channel enable",
+                    "mask": "0000000C",
+                    "settings": [
+                        {
+                            "label": "No interleave channel",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SIM_CHIPCTL",
+            "unused": "FFF0DF03"
+        },
+        {
+            "address": "4004800C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM2CLKSEL",
+                    "label": "FTM2 External Clock Pin Select",
+                    "mask": "30000000",
+                    "settings": [
+                        {
+                            "label": "FTM2 external clock driven by TCLK0 pin",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "FTM2 external clock driven by TCLK1 pin",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "FTM2 external clock driven by TCLK2 pin",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "No clock input",
+                            "value": "30000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM1CLKSEL",
+                    "label": "FTM1 External Clock Pin Select",
+                    "mask": "0C000000",
+                    "settings": [
+                        {
+                            "label": "FTM1 external clock driven by TCLK0 pin",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "FTM1 external clock driven by TCLK1 pin",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "FTM1 external clock driven by TCLK2 pin",
+                            "value": "08000000"
+                        },
+                        {
+                            "label": "No clock input",
+                            "value": "0C000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM0CLKSEL",
+                    "label": "FTM0 External Clock Pin Select",
+                    "mask": "03000000",
+                    "settings": [
+                        {
+                            "label": "FTM0 external clock driven by TCLK0 pin",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "FTM0 external clock driven by TCLK1 pin",
+                            "value": "01000000"
+                        },
+                        {
+                            "label": "FTM0 external clock driven by TCLK2 pin",
+                            "value": "02000000"
+                        },
+                        {
+                            "label": "No clock input",
+                            "value": "03000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0",
+                    "key": "FTM0FLTxSEL",
+                    "label": "FTM0 Fault x Select",
+                    "mask": "00FFFFF8",
+                    "settings": []
+                }
+            ],
+            "key": "SIM_FTMOPT0",
+            "unused": "C0000007"
+        },
+        {
+            "address": "40048018",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "ADC1PRETRGSEL",
+                    "label": "ADC1 pre-trigger source select",
+                    "mask": "00003000",
+                    "settings": [
+                        {
+                            "label": "PDB output",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "TRGMUX output",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "ADC1 software pre-trigger",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "00003000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "ADC1SWPRETRG",
+                    "label": "ADC1 software pre-trigger sources",
+                    "mask": "00000600",
+                    "settings": [
+                        {
+                            "label": "disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "software pre-trigger 0",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "software pre-trigger 1",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "disabled",
+                            "value": "00000600"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "ADC1TRGSEL",
+                    "label": "ADC1 trigger source select",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "PDB output",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "TRGMUX output",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "ADC0PRETRGSEL",
+                    "label": "ADC0 pre-trigger source select",
+                    "mask": "00000030",
+                    "settings": [
+                        {
+                            "label": "PDB output",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "TRGMUX output",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "ADC0 software pre-trigger",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "00000030"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "ADC0SWPRETRG",
+                    "label": "ADC0 software pre-trigger sources",
+                    "mask": "00000006",
+                    "settings": [
+                        {
+                            "label": "disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "software pre-trigger 0",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "software pre-trigger 1",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "disabled",
+                            "value": "00000006"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "ADC0TRGSEL",
+                    "label": "ADC0 trigger source select",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "PDB output",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "TRGMUX output",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "SIM_ADCOPT",
+            "unused": "FFFFC8C8"
+        },
+        {
+            "address": "4004801C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM0_OUTSEL",
+                    "label": "FTM0 channel modulation select with FTM1_CH1",
+                    "mask": "00FF0000",
+                    "settings": [
+                        {
+                            "label": "No modulation with FTM1_CH1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Modulation with FTM1_CH1",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM2CH1SEL",
+                    "label": "FTM2 CH1 Select",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "FTM2_CH1 input",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "exclusive OR of FTM2_CH0, FTM2_CH1, and FTM1_CH1",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM2CH0SEL",
+                    "label": "FTM2 CH0 Select",
+                    "mask": "000000C0",
+                    "settings": [
+                        {
+                            "label": "FTM2_CH0 input",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CMP0 output",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "CMP1 output",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "000000C0"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM1CH0SEL",
+                    "label": "FTM1 CH0 Select",
+                    "mask": "00000030",
+                    "settings": [
+                        {
+                            "label": "FTM1_CH0 input",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CMP0 output",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "CMP1 output",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Reserved",
+                            "value": "00000030"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM2SYNCBIT",
+                    "label": "FTM2 Sync Bit",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "No effect",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Write 1 to assert the TRIG1 input to FTM2. Software must clear this bit to allow other trigger sources to assert",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM1SYNCBIT",
+                    "label": "FTM1 Sync Bit",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "No effect",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Write 1 to assert the TRIG1 input to FTM1. Software must clear this bit to allow other trigger sources to assert",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FTM0SYNCBIT",
+                    "label": "FTM0 Sync Bit",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "No effect",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Write 1 to assert the TRIG1 input to FTM0. Software must clear this bit to allow other trigger sources to assert",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "SIM_FTMOPT1",
+            "unused": "FF00FE08"
+        },
+        {
+            "address": "40048024",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "10000000",
+                    "key": "FAMILYID",
+                    "label": "Kinetis E-series Family ID",
+                    "mask": "F0000000",
+                    "settings": [
+                        {
+                            "label": "KE1x Family (Enhanced features)",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0",
+                    "key": "SUBFAMID",
+                    "label": "Kinetis E-series Sub-Family ID",
+                    "mask": "0F000000",
+                    "settings": []
+                },
+                {
+                    "hidded": false,
+                    "init": "00200000",
+                    "key": "SERIESID",
+                    "label": "Kinetis Series ID",
+                    "mask": "00F00000",
+                    "settings": [
+                        {
+                            "label": "Kinetis E+ series",
+                            "value": "00200000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00050000",
+                    "key": "RAMSIZE",
+                    "label": "RAM size",
+                    "mask": "000F0000",
+                    "settings": [
+                        {
+                            "label": "16 KB",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "32 KB",
+                            "value": "00060000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0",
+                    "key": "REVID",
+                    "label": "Device revision number",
+                    "mask": "0000F000",
+                    "settings": []
+                },
+                {
+                    "hidded": false,
+                    "init": "0",
+                    "key": "PROJECTID",
+                    "label": "Project ID",
+                    "mask": "00000F80",
+                    "settings": []
+                },
+                {
+                    "hidded": false,
+                    "init": "00000007",
+                    "key": "PINID",
+                    "label": "Pin identification",
+                    "mask": "0000007F",
+                    "settings": [
+                        {
+                            "label": "64-pin",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "100-pin",
+                            "value": "0000000A"
+                        }
+                    ]
+                }
+            ],
+            "key": "SIM_SDID",
+            "unused": "00000000"
+        },
+        {
+            "address": "4004804C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "NVMSIZE",
+                    "label": "FlexNVM size",
+                    "mask": "F0000000",
+                    "settings": [
+                        {
+                            "label": "0 KB of FlexNVM",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "32 KB of FlexNVM",
+                            "value": "30000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "07000000",
+                    "key": "PFSIZE",
+                    "label": "Program flash size",
+                    "mask": "0F000000",
+                    "settings": [
+                        {
+                            "label": "128 KB of program flash memory, 4 KB protection region",
+                            "value": "07000000"
+                        },
+                        {
+                            "label": "256 KB of program flash memory, 8 KB protection region",
+                            "value": "09000000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00030000",
+                    "key": "EEERAMSIZE",
+                    "label": "EEE SRAM SIZE",
+                    "mask": "000F0000",
+                    "settings": [
+                        {
+                            "label": "2 KB",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "1 KB",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "512 Bytes",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "256 Bytes",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "128 Bytes",
+                            "value": "00070000"
+                        },
+                        {
+                            "label": "64 Bytes",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "32 Bytes",
+                            "value": "00090000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0",
+                    "key": "DEPART",
+                    "label": "FlexNVM partition",
+                    "mask": "0000F000",
+                    "settings": []
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FLASHDOZE",
+                    "label": "Flash Doze",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Flash remains enabled during Doze mode",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Flash is disabled for the duration of Doze mode",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "FLASHDIS",
+                    "label": "Flash Disable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Flash is enabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Flash is disabled",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "SIM_FCFG1",
+            "unused": "00F00FFC"
+        },
+        {
+            "address": "40048050",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "0",
+                    "key": "MAXADDR0",
+                    "label": "Max address block 0",
+                    "mask": "7F000000",
+                    "settings": []
+                },
+                {
+                    "hidded": false,
+                    "init": "0",
+                    "key": "MAXADDR1",
+                    "label": "Max address block 1",
+                    "mask": "007F0000",
+                    "settings": []
+                }
+            ],
+            "key": "SIM_FCFG2",
+            "unused": "8080FFFF"
+        },
+        {
+            "address": "4004806C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "UART2ODE",
+                    "label": "UART2 Open Drain Enable",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "Open drain is disabled on UART2",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Open drain is enabled on UART2",
+                            "value": "00040000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "UART1ODE",
+                    "label": "UART1 Open Drain Enable",
+                    "mask": "00020000",
+                    "settings": [
+                        {
+                            "label": "Open drain is disabled on UART1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Open drain is enabled on UART1",
+                            "value": "00020000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "00000000",
+                    "key": "UART0ODE",
+                    "label": "UART0 Open Drain Enable",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "Open drain is disabled on UART0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Open drain is enabled on UART0",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidded": false,
+                    "init": "0",
+                    "key": "DMA_INT_SEL",
+                    "label": "DMA channel interrupt OR select",
+                    "mask": "000000F0",
+                    "settings": []
+                }
+            ],
+            "key": "SIM_MISCTRL",
+            "unused": "FFF8FF0F"
+        }
+    ],
+    "core": "M0+",
+    "delay_src_path": "delays/m0+/__lib_delays.c",
+    "mcu": "MKE14Z256VLH7",
+    "clock": "1"
+}
