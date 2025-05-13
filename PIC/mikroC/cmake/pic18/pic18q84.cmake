@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "(^PIC18F27Q84$|^PIC18F47Q84$|^PIC18F57Q84$)")
+    set(SYSTEM_LIB_SOURCE "system/P18/src/__Lib_System_Q84.c")
+    set(SYSTEM_LIB_INCLUDE_DIR "")
+    set(MATH_LIB_SOURCE "math/P18/__Lib_Math.c")
+    set(MATH_DOUBLE_SOURCE "math_double/P18/__Lib_MathDouble.c")
+    set(DELAY_SOURCE "delay/p18/__lib_delays.c")
+endif()
