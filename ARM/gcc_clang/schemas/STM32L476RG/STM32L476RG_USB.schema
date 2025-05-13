@@ -5,7 +5,7 @@
     "flash": 1048575,
     "ram": 98303,
     "settings": {
-        "clock": "80",
+        "clock": "48",
         "scheme": "STM32L476RG_USB",
         "mcu": "STM32L476RG",
         "core": "M4EF",
@@ -114,7 +114,7 @@
                     },
                     {
                         "key": "PLLN",
-                        "value": "00000a00"
+                        "value": "00000c00"
                     },
                     {
                         "key": "PLLPEN",
@@ -126,11 +126,11 @@
                     },
                     {
                         "key": "PLLQEN",
-                        "value": "00000000"
+                        "value": "00100000"
                     },
                     {
                         "key": "PLLQ",
-                        "value": "00000000"
+                        "value": "00200000"
                     },
                     {
                         "key": "PLLREN",
@@ -138,7 +138,7 @@
                     },
                     {
                         "key": "PLLR",
-                        "value": "00000000"
+                        "value": "02000000"
                     }
                 ],
                 "key": "RCC_PLLCFGR"
