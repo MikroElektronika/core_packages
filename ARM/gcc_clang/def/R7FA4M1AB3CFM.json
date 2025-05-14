@@ -457,7 +457,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "MOSTP",
                     "label": "Main Clock Oscillator Stop",
                     "mask": "1",
@@ -862,6 +862,39 @@
             "unused": "ffffff08"
         },
         {
+            "address": "4001e0a0",
+            "default": "00000002",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OPCM",
+                    "label": "Operating Power Control Mode Select",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "High-speed mode",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Middle-speed mode",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Low-voltage mode",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Low-speed mode",
+                            "value": "3"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_OPCCR",
+            "unused": "fffffffc"
+        },
+        {
             "address": "4001e0d0",
             "default": "00000000",
             "fields": [
@@ -885,331 +918,6 @@
             ],
             "key": "SYSTEM_USBCKCR",
             "unused": "fffffffe"
-        },
-        {
-            "address": "00000400",
-            "default": "ffffffff",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "2",
-                    "key": "IWDTSTRT",
-                    "label": "IWDT Start Mode Select",
-                    "mask": "2",
-                    "settings": [
-                        {
-                            "label": "Automatically activate IWDT after a reset (auto-start mode)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Disable IWDT",
-                            "value": "2"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "c",
-                    "key": "IWDTTOPS",
-                    "label": "IWDT Timeout Period Select",
-                    "mask": "c",
-                    "settings": [
-                        {
-                            "label": "128 cycles (007Fh)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "512 cycles (01FFh)",
-                            "value": "4"
-                        },
-                        {
-                            "label": "1024 cycles (03FFh)",
-                            "value": "8"
-                        },
-                        {
-                            "label": "2048 cycles (07FFh)",
-                            "value": "c"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "f0",
-                    "key": "IWDTCKS",
-                    "label": "IWDT-Dedicated Clock Frequency Division Ratio Select",
-                    "mask": "f0",
-                    "settings": [
-                        {
-                            "label": "×1",
-                            "value": "0"
-                        },
-                        {
-                            "label": "×1/16",
-                            "value": "20"
-                        },
-                        {
-                            "label": "×1/32",
-                            "value": "30"
-                        },
-                        {
-                            "label": "×1/64",
-                            "value": "40"
-                        },
-                        {
-                            "label": "×1/128",
-                            "value": "f0"
-                        },
-                        {
-                            "label": "×1/256",
-                            "value": "50"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "300",
-                    "key": "IWDTRPES",
-                    "label": "IWDT Window End Position Select",
-                    "mask": "300",
-                    "settings": [
-                        {
-                            "label": "75%",
-                            "value": "0"
-                        },
-                        {
-                            "label": "50%",
-                            "value": "100"
-                        },
-                        {
-                            "label": "25%",
-                            "value": "200"
-                        },
-                        {
-                            "label": "0%",
-                            "value": "300"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "c00",
-                    "key": "IWDTRPSS",
-                    "label": "IWDT Window Start Position Select",
-                    "mask": "c00",
-                    "settings": [
-                        {
-                            "label": "25%",
-                            "value": "0"
-                        },
-                        {
-                            "label": "50%",
-                            "value": "400"
-                        },
-                        {
-                            "label": "75%",
-                            "value": "800"
-                        },
-                        {
-                            "label": "100%",
-                            "value": "c00"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "1000",
-                    "key": "IWDTRSTIRQS",
-                    "label": "IWDT Reset Interrupt Request Select",
-                    "mask": "1000",
-                    "settings": [
-                        {
-                            "label": "Interrupt",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Reset",
-                            "value": "1000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "4000",
-                    "key": "IWDTSTPCTL",
-                    "label": "IWDT Stop Control",
-                    "mask": "4000",
-                    "settings": [
-                        {
-                            "label": "Continue counting",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop counting",
-                            "value": "4000"
-                        }
-                    ]
-                },{
-                    "hidden": false,
-                    "init": "20000",
-                    "key": "WDTSTRT",
-                    "label": "WDT Start Mode Select",
-                    "mask": "20000",
-                    "settings": [
-                        {
-                            "label": "Automatically activate WDT after a reset (auto-start mode)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop WDT after a reset (register-start mode)",
-                            "value": "20000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "c0000",
-                    "key": "WDTTOPS",
-                    "label": "WDT Timeout Period Select",
-                    "mask": "c0000",
-                    "settings": [
-                        {
-                            "label": "1024 cycles (03FFh)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "4096 cycles (0FFFh)",
-                            "value": "40000"
-                        },
-                        {
-                            "label": "8192 cycles (1FFFh)",
-                            "value": "80000"
-                        },
-                        {
-                            "label": "16384 cycles (3FFFh)",
-                            "value": "c0000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "f00000",
-                    "key": "WDTCKS",
-                    "label": "WDT Clock Frequency Division Ratio Select",
-                    "mask": "f00000",
-                    "settings": [
-                        {
-                            "label": "PCLKB devided by 4",
-                            "value": "100000"
-                        },
-                        {
-                            "label": "PCLKB devided by 64",
-                            "value": "400000"
-                        },
-                        {
-                            "label": "PCLKB devided by 128",
-                            "value": "f00000"
-                        },
-                        {
-                            "label": "PCLKB devided by 512",
-                            "value": "600000"
-                        },
-                        {
-                            "label": "PCLKB devided by 2048",
-                            "value": "700000"
-                        },
-                        {
-                            "label": "PCLKB devided by 8192",
-                            "value": "800000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "3000000",
-                    "key": "WDTRPES",
-                    "label": "WDT Window End Position Select",
-                    "mask": "3000000",
-                    "settings": [
-                        {
-                            "label": "75%",
-                            "value": "0"
-                        },
-                        {
-                            "label": "50%",
-                            "value": "1000000"
-                        },
-                        {
-                            "label": "25%",
-                            "value": "2000000"
-                        },
-                        {
-                            "label": "0%",
-                            "value": "3000000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "c000000",
-                    "key": "WDTRPSS",
-                    "label": "WDT Window Start Position Select",
-                    "mask": "c000000",
-                    "settings": [
-                        {
-                            "label": "25%",
-                            "value": "0"
-                        },
-                        {
-                            "label": "50%",
-                            "value": "4000000"
-                        },
-                        {
-                            "label": "75%",
-                            "value": "8000000"
-                        },
-                        {
-                            "label": "100%",
-                            "value": "c000000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "10000000",
-                    "key": "WDTRSTIRQS",
-                    "label": "WDT Reset Interrupt Request Select",
-                    "mask": "10000000",
-                    "settings": [
-                        {
-                            "label": "Interrupt",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Reset",
-                            "value": "10000000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "40000000",
-                    "key": "WDTSTPCTL",
-                    "label": "WDT Stop Control",
-                    "mask": "40000000",
-                    "settings": [
-                        {
-                            "label": "Continue counting",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop counting",
-                            "value": "40000000"
-                        }
-                    ]
-                }
-            ],
-            "key": "OFS0",
-            "unused": "a001a001"
         }
     ],
     "core": "M4EF",
