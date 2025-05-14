@@ -41,39 +41,9 @@
 
 #include "core_header.h"
 #include "mcu.h"
-#define     __IM     volatile const      /*! Defines 'read only' structure member permissions */
-#define     __IOM    volatile            /*! Defines 'read / write' structure member permissions */
 
-#define SCnSCB              ((SCnSCB_Type    *)     SCS_BASE      )   /*!< System control Register not in SCB */
-#define SCB                 ((SCB_Type       *)     SCB_BASE      )   /*!< SCB configuration struct */
-#define SCS_BASE            (0xE000E000UL)                            /*!< System Control Space Base Address */
-#define SCB_BASE            (SCS_BASE +  0x0D00UL)                    /*!< System Control Block Base Address */
-
-typedef struct
-{
-    __IM  uint32_t CPUID;                  /*!< Offset: 0x000 (R/ )  CPUID Base Register */
-    __IOM uint32_t ICSR;                   /*!< Offset: 0x004 (R/W)  Interrupt Control and State Register */
-    __IOM uint32_t VTOR;                   /*!< Offset: 0x008 (R/W)  Vector Table Offset Register */
-    __IOM uint32_t AIRCR;                  /*!< Offset: 0x00C (R/W)  Application Interrupt and Reset Control Register */
-    __IOM uint32_t SCR;                    /*!< Offset: 0x010 (R/W)  System Control Register */
-    __IOM uint32_t CCR;                    /*!< Offset: 0x014 (R/W)  Configuration Control Register */
-    __IOM uint8_t  SHP[12U];               /*!< Offset: 0x018 (R/W)  System Handlers Priority Registers (4-7, 8-11, 12-15) */
-    __IOM uint32_t SHCSR;                  /*!< Offset: 0x024 (R/W)  System Handler Control and State Register */
-    __IOM uint32_t CFSR;                   /*!< Offset: 0x028 (R/W)  Configurable Fault Status Register */
-    __IOM uint32_t HFSR;                   /*!< Offset: 0x02C (R/W)  HardFault Status Register */
-    __IOM uint32_t DFSR;                   /*!< Offset: 0x030 (R/W)  Debug Fault Status Register */
-    __IOM uint32_t MMFAR;                  /*!< Offset: 0x034 (R/W)  MemManage Fault Address Register */
-    __IOM uint32_t BFAR;                   /*!< Offset: 0x038 (R/W)  BusFault Address Register */
-    __IOM uint32_t AFSR;                   /*!< Offset: 0x03C (R/W)  Auxiliary Fault Status Register */
-    __IM  uint32_t PFR[2U];                /*!< Offset: 0x040 (R/ )  Processor Feature Register */
-    __IM  uint32_t DFR;                    /*!< Offset: 0x048 (R/ )  Debug Feature Register */
-    __IM  uint32_t ADR;                    /*!< Offset: 0x04C (R/ )  Auxiliary Feature Register */
-    __IM  uint32_t MMFR[4U];               /*!< Offset: 0x050 (R/ )  Memory Model Feature Register */
-    __IM  uint32_t ISAR[5U];               /*!< Offset: 0x060 (R/ )  Instruction Set Attributes Register */
-          uint32_t RESERVED0[5U];
-    __IOM uint32_t CPACR;                  /*!< Offset: 0x088 (R/W)  Coprocessor Access Control Register */
-} SCB_Type;
 extern void * __Vectors[];
+
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
 #define BSP_PRV_PRCR_PRC1_UNLOCK                      ((BSP_PRV_PRCR_KEY) | 0x2U)
@@ -308,101 +278,159 @@ const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENT
 
 #define BSP_IO_PWPR_PFSWE_OFFSET (6)
 
-// ---------------------------------------------------------
+// -----------------------------------------------------------------------------------------
 
+/***********************************************************************
+ * ID Code Configuration for On-Chip Flash Protection
+ * This section places the user-defined 128-bit ID code into a special
+ * memory section. These values can be used to lock/unlock the flash.
+ *
+ * If BSP_FEATURE_BSP_OSIS_PADDING is enabled, each 32-bit word is
+ * followed by 0xFFFFFFFF as padding.
+ ***********************************************************************/
 #if BSP_FEATURE_FLASH_SUPPORTS_ID_CODE == 1
 
-/** ID code definitions defined here. */
-BSP_DONT_REMOVE static const uint32_t g_bsp_id_codes[] BSP_PLACE_IN_SECTION (BSP_SECTION_ID_CODE) =
+/** ID code values (4 x 32-bit, optionally padded) */
+BSP_DONT_REMOVE static const uint32_t g_bsp_id_codes[] BSP_PLACE_IN_SECTION(BSP_SECTION_ID_CODE) =
 {
     BSP_CFG_ID_CODE_LONG_1,
     #if BSP_FEATURE_BSP_OSIS_PADDING
-    0xFFFFFFFFU,
+    0xFFFFFFFFU,  // Padding after ID code 1
     #endif
+
     BSP_CFG_ID_CODE_LONG_2,
     #if BSP_FEATURE_BSP_OSIS_PADDING
-    0xFFFFFFFFU,
+    0xFFFFFFFFU,  // Padding after ID code 2
     #endif
+
     BSP_CFG_ID_CODE_LONG_3,
     #if BSP_FEATURE_BSP_OSIS_PADDING
-    0xFFFFFFFFU,
+    0xFFFFFFFFU,  // Padding after ID code 3
     #endif
+
     BSP_CFG_ID_CODE_LONG_4
 };
-#endif
 
-#define BSP_PLACE_IN_SECTION(x) __attribute__((section(x))) __attribute__((__used__))
-#define BSP_DONT_REMOVE __attribute__((used))
-#define BSP_SECTION_ID_CODE ".id_code"
-#define BSP_SECTION_ROM_REGISTERS ".rom_registers"
-#define OFS_SEQ1 0xA001A001 | (1 << 1) | (3 << 2)
-#define OFS_SEQ2 (15 << 4) | (3 << 8) | (3 << 10)
-#define OFS_SEQ3 (1 << 12) | (1 << 14) | (1 << 17)
-#define OFS_SEQ4 (3 << 18) |(15 << 20) | (3 << 24) | (3 << 26)
-#define OFS_SEQ5 (1 << 28) | (1 << 30)
-#define BSP_CFG_ROM_REG_OFS0 (OFS_SEQ1 | OFS_SEQ2 | OFS_SEQ3 | OFS_SEQ4 | OFS_SEQ5)
-#define BSP_CFG_ROM_REG_OFS1 (0xFFFFFEC3 | (1 << 2) | (3 << 3) | (0 << 8))
-#define BSP_CFG_USE_LOW_VOLTAGE_MODE ((0))
-#define BSP_CFG_ROM_REG_MPU_PC0_ENABLE (1)
-#define BSP_CFG_ROM_REG_MPU_PC0_START (0x00FFFFFC)
-#define BSP_CFG_ROM_REG_MPU_PC0_END (0x00FFFFFF)
-#define BSP_CFG_ROM_REG_MPU_PC1_ENABLE (1)
-#define BSP_CFG_ROM_REG_MPU_PC1_START (0x00FFFFFC)
-#define BSP_CFG_ROM_REG_MPU_PC1_END (0x00FFFFFF)
-#define BSP_CFG_ROM_REG_MPU_REGION0_ENABLE (1)
-#define BSP_CFG_ROM_REG_MPU_REGION0_START (0x00FFFFFC)
-#define BSP_CFG_ROM_REG_MPU_REGION0_END (0x00FFFFFF)
-#define BSP_CFG_ROM_REG_MPU_REGION1_ENABLE (1)
-#define BSP_CFG_ROM_REG_MPU_REGION1_START (0x200FFFFC)
-#define BSP_CFG_ROM_REG_MPU_REGION1_END (0x200FFFFF)
-#define BSP_CFG_ROM_REG_MPU_REGION2_ENABLE (1)
-#define BSP_CFG_ROM_REG_MPU_REGION2_START (0x407FFFFC)
-#define BSP_CFG_ROM_REG_MPU_REGION2_END (0x407FFFFF)
-#define BSP_CFG_ROM_REG_MPU_REGION3_ENABLE (1)
-#define BSP_CFG_ROM_REG_MPU_REGION3_START (0x400DFFFC)
-#define BSP_CFG_ROM_REG_MPU_REGION3_END (0x400DFFFF)
+#endif  // BSP_FEATURE_FLASH_SUPPORTS_ID_CODE
 
-#define BSP_FEATURE_BSP_MPU_REGION0_MASK (0x00FFFFFFUL)
+/***********************************************************************
+ * BSP ROM Register Configuration for RA4M1
+ * This section defines various ROM register settings including:
+ * - Option Function Select (OFS) values
+ * - Memory Protection Unit (MPU) configuration
+ * - High-speed On-Chip Oscillator (HOCO) frequency
+ * These values are placed in a special memory section used during boot.
+ ***********************************************************************/
+
+#define BSP_PLACE_IN_SECTION(x)            __attribute__((section(x))) __attribute__((__used__))
+#define BSP_DONT_REMOVE                    __attribute__((used))
+
+#define BSP_SECTION_ID_CODE                ".id_code"
+#define BSP_SECTION_ROM_REGISTERS          ".rom_registers"
+
+/***********************************************************************
+ * Option Function Select (OFS) Settings
+ ***********************************************************************/
+#define OFS_SEQ1                           (0xA001A001 | (1 << 1) | (3 << 2))
+#define OFS_SEQ2                           ((15 << 4) | (3 << 8) | (3 << 10))
+#define OFS_SEQ3                           ((1 << 12) | (1 << 14) | (1 << 17))
+#define OFS_SEQ4                           ((3 << 18) | (15 << 20) | (3 << 24) | (3 << 26))
+#define OFS_SEQ5                           ((1 << 28) | (1 << 30))
+
+#define BSP_CFG_ROM_REG_OFS0              (OFS_SEQ1 | OFS_SEQ2 | OFS_SEQ3 | OFS_SEQ4 | OFS_SEQ5)
+
+/***********************************************************************
+ * OFS1 Configuration - HOCO Frequency and other boot options
+ ***********************************************************************/
+#define BSP_CFG_ROM_REG_OFS1              (0xFFFFFEC3 | (1 << 2) | (3 << 3) | (0 << 8))  // HOCO-related
+#define BSP_CFG_HOCO_FREQUENCY            (4)       // HOCO frequency selection (e.g., 4 = 48 MHz)
 #define BSP_FEATURE_BSP_OFS1_HOCOFRQ_MASK (0xFFFF8FFFUL)
-#define BSP_CFG_HOCO_FREQUENCY (4)
 #define BSP_FEATURE_BSP_OFS1_HOCOFRQ_OFFSET (12UL)
-#define BSP_ROM_REG_OFS1_SETTING                                             \
+
+#define BSP_ROM_REG_OFS1_SETTING \
     (((uint32_t) BSP_CFG_ROM_REG_OFS1 & BSP_FEATURE_BSP_OFS1_HOCOFRQ_MASK) | \
      ((uint32_t) BSP_CFG_HOCO_FREQUENCY << BSP_FEATURE_BSP_OFS1_HOCOFRQ_OFFSET))
 
-/** Build up SECMPUAC register based on MPU settings. */
-#define BSP_ROM_REG_MPU_CONTROL_SETTING                    \
-    ((0xFFFFFCF0U) |                                       \
-    ((uint32_t) BSP_CFG_ROM_REG_MPU_PC0_ENABLE << 8) |     \
-    ((uint32_t) BSP_CFG_ROM_REG_MPU_PC1_ENABLE << 9) |     \
-    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION0_ENABLE) |      \
-    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION1_ENABLE << 1) | \
-    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION2_ENABLE << 2) | \
-    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION3_ENABLE << 3))
+/***********************************************************************
+ * MPU Configuration
+ ***********************************************************************/
+#define BSP_CFG_USE_LOW_VOLTAGE_MODE              (0)
 
-/** ROM registers defined here. Some have masks to make sure reserved bits are set appropriately. */
-BSP_DONT_REMOVE static const uint32_t g_bsp_rom_registers[] BSP_PLACE_IN_SECTION (BSP_SECTION_ROM_REGISTERS) =
+#define BSP_CFG_ROM_REG_MPU_PC0_ENABLE            (1)
+#define BSP_CFG_ROM_REG_MPU_PC0_START             (0x00FFFFFC)
+#define BSP_CFG_ROM_REG_MPU_PC0_END               (0x00FFFFFF)
+
+#define BSP_CFG_ROM_REG_MPU_PC1_ENABLE            (1)
+#define BSP_CFG_ROM_REG_MPU_PC1_START             (0x00FFFFFC)
+#define BSP_CFG_ROM_REG_MPU_PC1_END               (0x00FFFFFF)
+
+#define BSP_CFG_ROM_REG_MPU_REGION0_ENABLE        (1)
+#define BSP_CFG_ROM_REG_MPU_REGION0_START         (0x00FFFFFC)
+#define BSP_CFG_ROM_REG_MPU_REGION0_END           (0x00FFFFFF)
+
+#define BSP_CFG_ROM_REG_MPU_REGION1_ENABLE        (1)
+#define BSP_CFG_ROM_REG_MPU_REGION1_START         (0x200FFFFC)
+#define BSP_CFG_ROM_REG_MPU_REGION1_END           (0x200FFFFF)
+
+#define BSP_CFG_ROM_REG_MPU_REGION2_ENABLE        (1)
+#define BSP_CFG_ROM_REG_MPU_REGION2_START         (0x407FFFFC)
+#define BSP_CFG_ROM_REG_MPU_REGION2_END           (0x407FFFFF)
+
+#define BSP_CFG_ROM_REG_MPU_REGION3_ENABLE        (1)
+#define BSP_CFG_ROM_REG_MPU_REGION3_START         (0x400DFFFC)
+#define BSP_CFG_ROM_REG_MPU_REGION3_END           (0x400DFFFF)
+
+#define BSP_FEATURE_BSP_MPU_REGION0_MASK          (0x00FFFFFFUL)
+
+/* MPU Control Register value based on the configuration above */
+#define BSP_ROM_REG_MPU_CONTROL_SETTING           \
+    ((0xFFFFFCF0U) | \
+    ((uint32_t) BSP_CFG_ROM_REG_MPU_PC0_ENABLE        <<  8) | \
+    ((uint32_t) BSP_CFG_ROM_REG_MPU_PC1_ENABLE        <<  9) | \
+    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION0_ENABLE    <<  0) | \
+    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION1_ENABLE    <<  1) | \
+    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION2_ENABLE    <<  2) | \
+    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION3_ENABLE    <<  3))
+
+/***********************************************************************
+ * ROM Register Table (stored in a dedicated memory section)
+ ***********************************************************************/
+BSP_DONT_REMOVE static const uint32_t g_bsp_rom_registers[] BSP_PLACE_IN_SECTION(BSP_SECTION_ROM_REGISTERS) =
 {
-    (uint32_t) BSP_CFG_ROM_REG_OFS0,
-    (uint32_t) BSP_ROM_REG_OFS1_SETTING,
-    #if __MPU_PRESENT
+    (uint32_t) BSP_CFG_ROM_REG_OFS0,           // OFS0 register value
+    (uint32_t) BSP_ROM_REG_OFS1_SETTING,       // OFS1 register value (with HOCO frequency)
+
+#if __MPU_PRESENT
+    // PC0 settings
     ((uint32_t) BSP_CFG_ROM_REG_MPU_PC0_START & 0xFFFFFFFCU),
     ((uint32_t) BSP_CFG_ROM_REG_MPU_PC0_END | 0x00000003U),
+
+    // PC1 settings
     ((uint32_t) BSP_CFG_ROM_REG_MPU_PC1_START & 0xFFFFFFFCU),
     ((uint32_t) BSP_CFG_ROM_REG_MPU_PC1_END | 0x00000003U),
-    ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION0_START & BSP_FEATURE_BSP_MPU_REGION0_MASK & 0xFFFFFFFCU),
-    (((uint32_t) BSP_CFG_ROM_REG_MPU_REGION0_END & BSP_FEATURE_BSP_MPU_REGION0_MASK) | 0x00000003U),
+
+    // MPU Region 0
+    ((uint32_t)(BSP_CFG_ROM_REG_MPU_REGION0_START & BSP_FEATURE_BSP_MPU_REGION0_MASK & 0xFFFFFFFCU)),
+    ((uint32_t)((BSP_CFG_ROM_REG_MPU_REGION0_END & BSP_FEATURE_BSP_MPU_REGION0_MASK) | 0x00000003U)),
+
+    // MPU Region 1
     ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION1_START & 0xFFFFFFFCU),
     ((uint32_t) BSP_CFG_ROM_REG_MPU_REGION1_END | 0x00000003U),
+
+    // MPU Region 2
     (((uint32_t) BSP_CFG_ROM_REG_MPU_REGION2_START & 0x407FFFFCU) | 0x40000000U),
     (((uint32_t) BSP_CFG_ROM_REG_MPU_REGION2_END & 0x407FFFFCU) | 0x40000003U),
+
+    // MPU Region 3
     (((uint32_t) BSP_CFG_ROM_REG_MPU_REGION3_START & 0x407FFFFCU) | 0x40000000U),
     (((uint32_t) BSP_CFG_ROM_REG_MPU_REGION3_END & 0x407FFFFCU) | 0x40000003U),
+
+    // MPU Control Register
     (uint32_t) BSP_ROM_REG_MPU_CONTROL_SETTING
-    #endif
+#endif
 };
 
-// ---------------------------------------------------------
+// -----------------------------------------------------------------------------------------
 
 /**
  * @brief Sets the system clock based on user preferences.
@@ -417,7 +445,7 @@ BSP_DONT_REMOVE static const uint32_t g_bsp_rom_registers[] BSP_PLACE_IN_SECTION
  */
 static void system_clock_configuration();
 
-// ---------------------------------------------------------
+// -----------------------------------------------------------------------------------------
 
 /**
  * @brief Initializes the microcontroller system.
@@ -498,6 +526,8 @@ void SystemInit(void)
         }
     }
 }
+
+// -----------------------------------------------------------------------------------------
 
 static void system_clock_configuration() {
     // Unlock write protection register

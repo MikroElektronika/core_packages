@@ -47,13 +47,11 @@ extern "C" {
 
 // Note: Changed for MikroE implementation.
 //  #include "core_cm4.h"                     /*!< ARM Cortex-M4 processor and core peripherals                              */
+// Note: Added for MikroE implementation.
+#include "ra4m1_core_cm4.h"                     /*!< ARM Cortex-M4 processor and core peripherals                              */
 // Note: Changed for MikroE implementation.
 //  #include "system.h"                       /*!< R7FA4M1AB System                                                          */
 #include <stdint.h>
-
-#define __I volatile // Note: Added for MikroE implementation.
-#define __O __I // Note: Added for MikroE implementation.
-#define __IO __I // Note: Added for MikroE implementation.
 
  #ifndef __IM                              /*!< Fallback for older CMSIS versions                                         */
   #define __IM     __I
