@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^MKM35Z256VLL7$|^MKM35Z256VLL7R$|^MKM35Z256VLQ7$|^MKM35Z256VLQ7R$|^MKM35Z512VLL7$|^MKM35Z512VLL7R$|^MKM35Z512VLQ7$|^MKM35Z512VLQ7R$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mkm35z/init_clock.c)
+    list(APPEND local_dir_install system/src/nxp/mkm35z/thirdparty/mkm35z)
+    set(${thirdpartyInstall} mkm35z/thirdparty/mkm35z PARENT_SCOPE)
+endif()
