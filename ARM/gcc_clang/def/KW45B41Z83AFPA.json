@@ -1,0 +1,7 @@
+{
+    "config_registers": [],
+    "core": "M33EF",
+    "delay_src_path": "delays/m33ef/__lib_delays.c",
+    "mcu": "KW45B41Z83AFPA",
+    "clock": "1"
+}
