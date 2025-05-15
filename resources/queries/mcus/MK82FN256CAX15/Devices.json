@@ -1,0 +1,18 @@
+{
+    "def_file": "MK82FN256CAX15.json",
+    "family_uid": "KINETIS_K_SERIES",
+    "flash": "262144",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "150.000",
+    "name": "MK82FN256CAX15",
+    "ram": "262144",
+    "sdk_config": "{\"MCU_NAME\":\"MK82FN256CAX15\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MK82FN256CAX15",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mk82fn256cax15\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mk82fn256cax15\"}"
+}
