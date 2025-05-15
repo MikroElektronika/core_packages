@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^MKE02Z16VFM4$|^MKE02Z16VLC4$|^MKE02Z16VLD4$|^MKE02Z32VFM4$|^MKE02Z32VLC4$|^MKE02Z32VLD4$|^MKE02Z32VLH4$|^MKE02Z32VQH4$|^MKE02Z64VFM4$|^MKE02Z64VLC4$|^MKE02Z64VLD4$|^MKE02Z64VLH4$|^MKE02Z64VQH4$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mke02z/init_clock.c)
+    list(APPEND local_dir_install system/src/nxp/mke02z/thirdparty/mke02z)
+    set(${thirdpartyInstall} mke02z/thirdparty/mke02z PARENT_SCOPE)
+endif()
