@@ -533,12 +533,10 @@ static void system_clock_configuration() {
     // Unlock write protection register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
 
-    // Disable cache before modifying MEMWAIT, SOPCCR or OPCCR
+    // Disable cache before modifying SOPCCR or OPCCR
     R_FCACHE->FCACHEE = 0U;
 
     R_SYSTEM->OPCCR = VALUE_SYSTEM_OPCCR;
-
-    R_SYSTEM->MEMWAIT = VALUE_SYSTEM_MEMWAIT;
 
     if ( !( VALUE_SYSTEM_MOSCCR & R_SYSTEM_MOSCCR_MOSTP_Msk ) ) {
         // Main oscillator selected
