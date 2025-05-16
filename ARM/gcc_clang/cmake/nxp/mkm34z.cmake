@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^MKM34Z256VLL7$|^MKM34Z256VLQ7$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/mkm34z/init_clock.c)
+    list(APPEND local_dir_install system/src/nxp/mkm34z/thirdparty/mkm34z)
+    set(${thirdpartyInstall} mkm34z/thirdparty/mkm34z PARENT_SCOPE)
+endif()
