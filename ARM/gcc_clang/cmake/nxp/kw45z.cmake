@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^KW45Z41052AFPA$|^KW45Z41052AFTA$|^KW45Z41053AFPA$|^KW45Z41053AFTA$|^KW45Z41082AFPA$|^KW45Z41082AFTA$|^KW45Z41083AFPA$|^KW45Z41083AFTA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nxp/kw45z/init_clock.c)
+    list(APPEND local_dir_install system/src/nxp/kw45z/thirdparty/kw45z)
+    set(${thirdpartyInstall} kw45z/thirdparty/kw45z PARENT_SCOPE)
+endif()
