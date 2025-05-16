@@ -552,7 +552,7 @@ static void system_clock_configuration() {
 
         if ( !( VALUE_SYSTEM_PLLCR & R_SYSTEM_PLLCR_PLLSTP_Msk ) ) {
             R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
-            R_SYSTEM->PLLCCR2 = VALUE_SYSTEM_PLLCCR2;
+            R_SYSTEM->PLLCCR = VALUE_SYSTEM_PLLCCR;
             R_SYSTEM->PLLCR_b.PLLSTP = 0; // PLL is operating
 
             while ( !( R_SYSTEM->OSCSF_b.PLLSF ) ) {
