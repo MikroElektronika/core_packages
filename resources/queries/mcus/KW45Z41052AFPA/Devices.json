@@ -1,0 +1,18 @@
+{
+    "def_file": "KW45Z41052AFPA.json",
+    "family_uid": "KINETIS_KW_SERIES",
+    "flash": "524288",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "96.000",
+    "name": "KW45Z41052AFPA",
+    "ram": "131072",
+    "sdk_config": "{\"MCU_NAME\":\"KW45Z41052AFPA\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "KW45Z41052AFPA",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_kw45z\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_kw45z\"}"
+}
