@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAMR35J16B$|^ATSAMR35J17B$|^ATSAMR35J18B$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamr35/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsamr35/thirdparty/atsamr35)
+    set(${thirdpartyInstall} atsamr35/thirdparty/atsamr35 PARENT_SCOPE)
+endif()
