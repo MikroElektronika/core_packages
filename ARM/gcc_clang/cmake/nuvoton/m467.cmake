@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M467HJHAN$|^M467JJHAN$|^M467KJHAN$|^M467SJHAN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} m467/thirdparty/m467 PARENT_SCOPE)
+endif()
