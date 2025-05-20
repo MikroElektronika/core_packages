@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^ATSAMD20J14$|^ATSAMD20J14B$|^ATSAMD20J15$|^ATSAMD20J15B$|^ATSAMD20J16$|^ATSAMD20J16B$|^ATSAMD20J17$|^ATSAMD20J18$")
+if(${MCU_NAME} MATCHES "^ATSAMD20J14A$|^ATSAMD20J14B$|^ATSAMD20J15A$|^ATSAMD20J15B$|^ATSAMD20J16A$|^ATSAMD20J16B$|^ATSAMD20J17A$|^ATSAMD20J18A$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
     list(APPEND local_list_include system/src/sam/atsamd20j/init_clock.c)
