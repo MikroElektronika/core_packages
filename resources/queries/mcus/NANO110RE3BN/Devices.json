@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "131072",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "42.000",
     "name": "NANO110RE3BN",
     "ram": "16384",
     "sdk_config": "{\"MCU_NAME\": \"NANO110RE3BN\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",

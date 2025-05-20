@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "262144",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "192.000",
     "name": "M482SGCAE",
     "ram": "131072",
     "sdk_config": "{\"MCU_NAME\": \"M482SGCAE\", \"CORE_NAME\": \"M4\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",

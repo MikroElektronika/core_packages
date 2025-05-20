@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "4096",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "24.000",
     "name": "MINI51LDE",
     "ram": "2048",
     "sdk_config": "{\"MCU_NAME\": \"MINI51LDE\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",

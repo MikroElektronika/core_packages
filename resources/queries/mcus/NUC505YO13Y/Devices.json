@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "2048K*",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "100.000",
     "name": "NUC505YO13Y",
     "ram": "131072",
     "sdk_config": "{\"MCU_NAME\": \"NUC505YO13Y\", \"CORE_NAME\": \"M4\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",

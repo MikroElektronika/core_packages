@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "32768",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "72.000",
     "name": "M032EC1AE",
     "ram": "4096",
     "sdk_config": "{\"MCU_NAME\": \"M032EC1AE\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",

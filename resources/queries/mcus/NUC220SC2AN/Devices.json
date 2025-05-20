@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "32768",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "50.000",
     "name": "NUC220SC2AN",
     "ram": "8192",
     "sdk_config": "{\"MCU_NAME\": \"NUC220SC2AN\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",

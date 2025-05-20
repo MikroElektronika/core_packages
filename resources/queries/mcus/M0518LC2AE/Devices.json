@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "36864",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "50.000",
     "name": "M0518LC2AE",
     "ram": "8192",
     "sdk_config": "{\"MCU_NAME\": \"M0518LC2AE\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",

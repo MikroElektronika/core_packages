@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "1048576",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "200.000",
     "name": "M467SJHAN",
     "ram": "524288",
     "sdk_config": "{\"MCU_NAME\": \"M467SJHAN\", \"CORE_NAME\": \"M4\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",

@@ -3,7 +3,7 @@
     "family_uid": "NUVOTON",
     "flash": "131072",
     "icon": "images/mcu/nuvoton.png",
-    "max_speed": "1.000",
+    "max_speed": "72.000",
     "name": "M453RE6AE",
     "ram": "32768",
     "sdk_config": "{\"MCU_NAME\": \"M453RE6AE\", \"CORE_NAME\": \"M4\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
