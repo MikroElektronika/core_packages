@@ -1,7 +1,7 @@
 {
     "def_file": "NUC505DLA.json",
     "family_uid": "NUVOTON",
-    "flash": "512K*",
+    "flash": "524288",
     "icon": "images/mcu/nuvoton.png",
     "max_speed": "100.000",
     "name": "NUC505DLA",
