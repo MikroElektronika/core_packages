@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAMC20J17AU$|^ATSAMC20J18AU$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamc20/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsamc20/thirdparty/atsamc20)
+    set(${thirdpartyInstall} atsamc20/thirdparty/atsamc20 PARENT_SCOPE)
+endif()
