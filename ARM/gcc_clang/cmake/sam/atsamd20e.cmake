@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAMD20E14A$|^ATSAMD20E14B$|^ATSAMD20E15A$|^ATSAMD20E15B$|^ATSAMD20E15BU$|^ATSAMD20E16A$|^ATSAMD20E16B$|^ATSAMD20E16BU$|^ATSAMD20E17A$|^ATSAMD20E18A$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamd20e/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsamd20e/thirdparty/atsamd20e)
+    set(${thirdpartyInstall} atsamd20e/thirdparty/atsamd20e PARENT_SCOPE)
+endif()
