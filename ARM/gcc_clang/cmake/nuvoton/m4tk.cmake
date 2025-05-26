@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M4TKLE6AE$|^M4TKLG6AE$|^M4TKRE6AE$|^M4TKRG6AE$|^M4TKVE6AE$|^M4TKVG6AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} m4tk/thirdparty/m4tk PARENT_SCOPE)
+endif()

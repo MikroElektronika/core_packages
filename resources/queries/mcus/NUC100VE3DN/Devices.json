@@ -1,0 +1,18 @@
+{
+    "def_file": "NUC100VE3DN.json",
+    "family_uid": "NUVOTON",
+    "flash": "131072",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "50.000",
+    "name": "NUC100VE3DN",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\": \"NUC100VE3DN\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "NUC100VE3DN",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nuc100\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nuc100\"}"
+}

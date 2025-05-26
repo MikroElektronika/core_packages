@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NUC029LAN$|^NUC029NAN$|^NUC029TAN$|^NUC029ZAN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} nuc029_an/thirdparty/nuc029_an PARENT_SCOPE)
+endif()
