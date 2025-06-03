@@ -52,7 +52,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-      # TODO: Revert once ERP API Database upload is fixed
+      # TODO: Revert once ERP Database upload API is fixed
       # - name: Commit and Push Changes
       #   run: |
       #     if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
