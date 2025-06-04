@@ -1,0 +1,18 @@
+{
+    "def_file": "NANO130SD2BN.json",
+    "family_uid": "NUVOTON",
+    "flash": "65536",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "42.000",
+    "name": "NANO130SD2BN",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\": \"NANO130SD2BN\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "NANO130SD2BN",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nano130\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nano130\"}"
+}

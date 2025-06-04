@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAML22G16A$|^ATSAML22G17A$|^ATSAML22G18A$|^ATSAML22J16A$|^ATSAML22J17A$|^ATSAML22J18A$|^ATSAML22N16A$|^ATSAML22N17A$|^ATSAML22N18A$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsaml22/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsaml22/thirdparty/atsaml22)
+    set(${thirdpartyInstall} atsaml22/thirdparty/atsaml22 PARENT_SCOPE)
+endif()

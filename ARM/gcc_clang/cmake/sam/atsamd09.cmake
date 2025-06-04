@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAMD09C13A$|^ATSAMD09D14A$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamd09/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsamd09/thirdparty/atsamd09)
+    set(${thirdpartyInstall} atsamd09/thirdparty/atsamd09 PARENT_SCOPE)
+endif()

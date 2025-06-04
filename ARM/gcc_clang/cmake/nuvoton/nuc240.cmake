@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NUC240LC2AE$|^NUC240LD2AE$|^NUC240LE3AE$|^NUC240SC2AE$|^NUC240SD2AE$|^NUC240SE3AE$|^NUC240VE3AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} nuc240/thirdparty/nuc240 PARENT_SCOPE)
+endif()
