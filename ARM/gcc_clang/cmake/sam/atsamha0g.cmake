@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAMHA0G14AB$|^ATSAMHA0G14RB$|^ATSAMHA0G14WB$|^ATSAMHA0G15AB$|^ATSAMHA0G15RB$|^ATSAMHA0G15WB$|^ATSAMHA0G16AB$|^ATSAMHA0G16RB$|^ATSAMHA0G16WB$|^ATSAMHA0G17AB$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamha0g/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsamha0g/thirdparty/atsamha0g)
+    set(${thirdpartyInstall} atsamha0g/thirdparty/atsamha0g PARENT_SCOPE)
+endif()
