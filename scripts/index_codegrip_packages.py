@@ -5,63 +5,6 @@ from datetime import datetime, timezone
 import support as support
 import read_codegrip_index as CODEGRIP
 
-def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
-    # Search query to use
-    query_search = {
-        "size": 5000,
-        "query": {
-            "match_all": {}
-        }
-    }
-    # All package types to check for
-    typeCheck = [
-        'mcu',
-        'preinit',
-        'database',
-        'mcu_clocks',
-        'mcu_schemas',
-        'unit_test_lib',
-        'mikroe_utils_common'
-    ]
-
-    # Search the base with provided query
-    num_of_retries = 1
-    while num_of_retries <= 10:
-        try:
-            response = es.search(index=index_name, body=query_search)
-            if not response['timed_out']:
-                break
-        except:
-            print("Executing search query - retry number %i" % num_of_retries)
-        num_of_retries += 1
-
-    checkDict = {}
-    db_version = None
-    for eachHit in response['hits']['hits']:
-        if not 'name' in eachHit['_source']:
-            continue ## TODO - Check newly created bare metal package (is it created correctly)
-        name = eachHit['_source']['name']
-        if name == 'database':
-            db_version = eachHit['_source']['version']
-        if '_type' in eachHit:
-            type = eachHit['_type']
-            id = eachHit['_id']
-            if eachHit['_source']['type'] in typeCheck:
-                if name in checkDict:
-                    checkDict[name]['count'] += 1
-                    checkDict[name]['id'].append([id, type])
-                else:
-                    checkDict.update({name: { 'count': 1, 'id': [[id, type]]}})
-
-    # Proceed to remove all found IDs
-    for eachPackageName in checkDict.keys():
-        if checkDict[eachPackageName]['count'] > 1:
-            for eachId in checkDict[eachPackageName]['id']:
-                print("Removed %s/%s" % (eachId[1], eachId[0]))
-                response = es.delete(index=index_name, id=eachId[0], doc_type=None)
-
-    return db_version
-
 def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip, start_date, end_date):
     package_items = CODEGRIP.convert_item_to_json(doc_codegrip, True)
 
@@ -71,12 +14,15 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip, start_date
     current_date = current_time.isoformat().replace('+00:00', 'Z')
 
     print(f"Codegrip Packages Release action has been triggered for {start_date} - {end_date} dates!")
-    print("Here are the changes:")
+    if 'test' in index_name:
+        print(f"Here are the changes (for Dev NECTO):")
+    else:
+        print(f"Here are the changes (for Live NECTO):")
 
     for package in package_items:
         package_release_date = datetime.strptime(package_items[package]['release_date'], "%Y-%m-%dT%H:%M:%SZ").date()
         # Release only for packages with release date in between of requested days
-        if package_release_date >= start_date and package_release_date <= end_date:
+        if package_release_date.strftime("%Y-%m-%d") >= start_date and package_release_date.strftime("%Y-%m-%d") <= end_date:
             previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
             if previous_version != new_version and len(mcus_to_index):
                 
@@ -113,7 +59,7 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip, start_date
                 if ('created' == resp['result'] or 'updated' == resp['result']):
                     print(f"- {package_items[package]['package_name']}")
                     print(f'  - "version": {previous_version} -> {new_version}')
-                    print(f'  - "published_at": "{published_at_date}"')
+                    print(f'  - "published_at": {published_at_date.split('T')[0]} instead of {package_release_date.strftime("%Y-%m-%d")}')
 
 if __name__ == '__main__':
     # First, check for arguments passed
@@ -163,11 +109,6 @@ if __name__ == '__main__':
         num_of_retries += 1
 
         time.sleep(1)
-
-    # Remove any previous multiple indexes, if any
-    db_version = remove_duplicate_indexed_files(
-        es, args.select_index
-    )
 
     index_codegrip_packs(es, args.select_index, args.doc_codegrip, args.start_date, args.end_date)
 
