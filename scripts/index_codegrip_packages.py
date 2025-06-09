@@ -111,4 +111,3 @@ if __name__ == '__main__':
         time.sleep(1)
 
     index_codegrip_packs(es, args.select_index, args.doc_codegrip, args.start_date, args.end_date)
-
