@@ -12,11 +12,11 @@ on:
       start_date:
         type: string
         description: First date for codegrip releases to release (better use csv, not spreadsheet to see the date)
-        default: "12.06.2025"
+        default: "2025-06-12"
       end_date:
         type: string
         description: Last date for codegrip releases (better use csv, not spreadsheet to see the date)
-        default: "12.06.2025"
+        default: "2025-06-13"
   schedule:
     - cron: "0 6 12-13 4 *" # 6:00 AM, 12th-13th of June
 
