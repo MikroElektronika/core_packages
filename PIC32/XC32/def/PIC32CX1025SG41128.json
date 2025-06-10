@@ -1,0 +1,21 @@
+{
+    "config_words": [
+        {
+            "init": "SET",
+            "key": "BOD33_DIS",
+            "label": "USER_WORD_0_BOD33_DIS",
+            "settings": [
+                {
+                    "label": "SET",
+                    "value": "SET"
+                },
+                {
+                    "label": "CLEAR",
+                    "value": "CLEAR"
+                }
+            ]
+        }
+    ],
+    "mcu": "PIC32CX1025SG41128",
+    "clock": "1"
+}
