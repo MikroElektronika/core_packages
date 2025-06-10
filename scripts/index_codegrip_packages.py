@@ -26,7 +26,7 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip, start_date
             previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
             if previous_version != new_version and len(mcus_to_index):
                 
-                if package_items[package]['release_date'] == current_date:
+                if package_items[package]['release_date'].split('T')[0] == current_date.split('T')[0]:
                     published_at_date = current_date
                 else:
                     published_at_date = "2023-11-16T06:00:00Z"
