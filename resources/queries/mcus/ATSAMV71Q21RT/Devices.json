@@ -1,0 +1,18 @@
+{
+    "def_file": "ATSAMV71Q21RT.json",
+    "family_uid": "SAMV",
+    "flash": "2097152",
+    "icon": "images/mcu/microchip.png",
+    "max_speed": "300.000",
+    "name": "ATSAMV71Q21RT",
+    "ram": "393216",
+    "sdk_config": "{\"MCU_NAME\":\"ATSAMV71Q21RT\",\"CORE_NAME\":\"M7\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ATSAMV71Q21RT",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_atsamv71q21rt\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_atsamv71q21rt\"}"
+}
