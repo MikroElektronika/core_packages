@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NUC029LGE$|^NUC029KGE$|^NUC029SGE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} nuc029_ge/thirdparty/nuc029_ge PARENT_SCOPE)
+endif()
