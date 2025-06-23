@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M481LE8AE$|^M481LGCAE$|^M481LIDAE$|^M481SE8AE$|^M481SGCAE$|^M481SGCAE2A$|^M481SIDAE$|^M481ZE8AE$|^M481ZGCAE$|^M481ZIDAE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} m481/thirdparty/m481 PARENT_SCOPE)
+endif()
