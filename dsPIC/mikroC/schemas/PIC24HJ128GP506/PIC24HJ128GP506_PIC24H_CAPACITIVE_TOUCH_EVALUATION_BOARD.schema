@@ -1,0 +1,858 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/mikroC/dspic_mikroc_pic24/def/PIC24HJ128GP506.json",
+    "flash": "131072",
+    "ram": "8192",
+    "board_regex": "PIC24H_CAPACITIVE_TOUCH_EVALUATION_BOARD",
+    "settings": {
+        "clock": "25",
+        "scheme": "PIC24H Capacitive Touch Evaluation Board",
+        "mcu": "PIC24HJ128GP506",
+        "core": "DSPIC",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FBS"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FSS"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FGS"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSCSEL"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FOSC"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FWDT"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FPOR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RBS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "SWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "SSS",
+                        "value": "0000000E"
+                    },
+                    {
+                        "key": "RSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TEMP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "OSCIOFNC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPOST",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "WDTPRE",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "FPWRT",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "RES",
+                        "value": "000000E0"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "COE",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "FICD"
+            }
+        ]
+    }
+}
