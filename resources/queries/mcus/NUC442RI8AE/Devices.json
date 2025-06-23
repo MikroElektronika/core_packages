@@ -1,0 +1,18 @@
+{
+    "def_file": "NUC442RI8AE.json",
+    "family_uid": "NUVOTON",
+    "flash": "524288",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "84.000",
+    "name": "NUC442RI8AE",
+    "ram": "65536",
+    "sdk_config": "{\"MCU_NAME\": \"NUC442RI8AE\", \"CORE_NAME\": \"M4\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "NUC442RI8AE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nuc442\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nuc442\"}"
+}
