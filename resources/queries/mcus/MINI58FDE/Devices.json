@@ -1,0 +1,18 @@
+{
+    "def_file": "MINI58FDE.json",
+    "family_uid": "NUVOTON",
+    "flash": "32768",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "50.000",
+    "name": "MINI58FDE",
+    "ram": "4096",
+    "sdk_config": "{\"MCU_NAME\": \"MINI58FDE\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "MINI58FDE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mini58\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mini58\"}"
+}
