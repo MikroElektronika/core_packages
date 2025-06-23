@@ -1,0 +1,2142 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/mikroC/pic_mikroc_pic18k40/def/PIC18F47K40.json",
+    "flash": "131072",
+    "ram": "3728",
+    "board_regex": "MPLAB_XPRESS_PIC18F47K40_EVAL_BOARD",
+    "settings": {
+        "clock": "64",
+        "scheme": "MPLab Xpress PIC18F47K40 Evaluation Board",
+        "mcu": "PIC18F47K40",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG1L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG1H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG2L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG2H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG3L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG3H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG4L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG4H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG5L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG5H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG6L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "FEXTOSC",
+                        "value": "7"
+                    },
+                    {
+                        "key": "RSTOSC",
+                        "value": "70"
+                    },
+                    {
+                        "key": "CLKOUTEN",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CSWEN",
+                        "value": "8"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "MCLRE",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PWRTE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "LPBOREN",
+                        "value": "20"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "ZCD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "PPS1WAY",
+                        "value": "8"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WDTCPS",
+                        "value": "1F"
+                    },
+                    {
+                        "key": "WDTE",
+                        "value": "60"
+                    },
+                    {
+                        "key": "WDTCWS",
+                        "value": "7"
+                    },
+                    {
+                        "key": "WDTCCS",
+                        "value": "38"
+                    },
+                    {
+                        "key": "WRT0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRT1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRT2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "WRT3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WRT4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "WRT5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "WRT6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "WRT7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "WRTC",
+                        "value": "1"
+                    },
+                    {
+                        "key": "WRTB",
+                        "value": "2"
+                    },
+                    {
+                        "key": "WRTD",
+                        "value": "4"
+                    },
+                    {
+                        "key": "SCANE",
+                        "value": "10"
+                    },
+                    {
+                        "key": "LVP",
+                        "value": "20"
+                    },
+                    {
+                        "key": "CP",
+                        "value": "1"
+                    },
+                    {
+                        "key": "CPD",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR0",
+                        "value": "1"
+                    },
+                    {
+                        "key": "EBTR1",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EBTR2",
+                        "value": "4"
+                    },
+                    {
+                        "key": "EBTR3",
+                        "value": "8"
+                    },
+                    {
+                        "key": "EBTR4",
+                        "value": "10"
+                    },
+                    {
+                        "key": "EBTR5",
+                        "value": "20"
+                    },
+                    {
+                        "key": "EBTR6",
+                        "value": "40"
+                    },
+                    {
+                        "key": "EBTR7",
+                        "value": "80"
+                    },
+                    {
+                        "key": "EBTRB",
+                        "value": "2"
+                    }
+                ],
+                "key": "CONFIG6H"
+            }
+        ]
+    }
+}
