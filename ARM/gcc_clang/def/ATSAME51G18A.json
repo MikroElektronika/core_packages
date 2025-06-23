@@ -1,0 +1,7 @@
+{
+    "mcu": "ATSAME51G18A",
+    "clock": "1",
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "config_registers": []
+}

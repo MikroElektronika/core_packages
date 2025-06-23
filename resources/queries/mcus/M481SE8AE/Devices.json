@@ -1,0 +1,18 @@
+{
+    "def_file": "M481SE8AE.json",
+    "family_uid": "NUVOTON",
+    "flash": "131072",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "192.000",
+    "name": "M481SE8AE",
+    "ram": "65536",
+    "sdk_config": "{\"MCU_NAME\": \"M481SE8AE\", \"CORE_NAME\": \"M4\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "M481SE8AE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_m481\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_m481\"}"
+}
