@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAME54N19A$|^ATSAME54N20A$|^ATSAME54P19A$|^ATSAME54P20A$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsame54/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsame54/thirdparty/atsame54)
+    set(${thirdpartyInstall} atsame54/thirdparty/atsame54 PARENT_SCOPE)
+endif()
