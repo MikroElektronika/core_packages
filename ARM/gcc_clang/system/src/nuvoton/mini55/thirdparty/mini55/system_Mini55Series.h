@@ -1,0 +1,64 @@
+/**************************************************************************//**
+ * @file     system_Mini55Series.h
+ * @version  V1.00
+ * $Revision: 4 $
+ * $Date: 15/06/29 11:16a $
+ * @brief    Mini55 series system clock definition file
+ *
+ * @note
+ * SPDX-License-Identifier: Apache-2.0
+ * Copyright (C) 2014 Nuvoton Technology Corp. All rights reserved.
+ *****************************************************************************/
+
+
+#ifndef __SYSTEM_MINI55SERIES_H__
+#define __SYSTEM_MINI55SERIES_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*---------------------------------------------------------------------------------------------------------*/
+/* Macro Definition                                                                                        */
+/*---------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------
+  Define SYSCLK
+ *----------------------------------------------------------------------------*/
+
+#define __XTAL12M        (12000000UL)
+#define __XTAL32K        (32768UL)
+#define __IRC44M         (44236800UL)    /* Internal high speed RC oscillator will be trimmed to 44.2368MHz */
+#define __IRC48M         (48000000UL)    /* Internal high speed RC will be trimmed to 48MHz */
+#define __IRC44M_DIV2    (22118400UL)    /* Clock output of Internal high speed RC 44.2368M divided by 2 */
+#define __IRC48M_DIV2    (24000000UL)    /* Clock output of Internal high speed RC 48M divided by 2 */
+#define __IRC10K         (10000UL)
+#define __XTAL            __XTAL12M
+
+#define __SYSTEM_CLOCK   (1*__XTAL)
+
+extern uint32_t __HSI;
+extern uint32_t SystemCoreClock;        /*!< System Clock Frequency (Core Clock) */
+extern uint32_t CyclesPerUs;            /*!< Cycles per micro second */
+
+/**
+ * Up2025-07-03 SystemCoreClock variable
+ *
+ * @param  None
+ * @return None
+ *
+ * @brief  Up2025-07-03s the SystemCoreClock with current core Clock
+ *         retrieved from CPU registers.
+ */
+
+extern void SystemCoreClockUp2025-07-03 (void);
+extern int32_t SystemInit (void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  //__SYSTEM_MINI55SERIES_H__
+
+
+/*** (C) COPYRIGHT 2014 Nuvoton Technology Corp. ***/
