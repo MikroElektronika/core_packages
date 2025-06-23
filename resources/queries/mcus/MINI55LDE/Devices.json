@@ -1,0 +1,18 @@
+{
+    "def_file": "MINI55LDE.json",
+    "family_uid": "NUVOTON",
+    "flash": "17920",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "48.000",
+    "name": "MINI55LDE",
+    "ram": "2048",
+    "sdk_config": "{\"MCU_NAME\": \"MINI55LDE\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "MINI55LDE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mini55\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mini55\"}"
+}
