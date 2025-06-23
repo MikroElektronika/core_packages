@@ -1,0 +1,49 @@
+{
+    "device_uid": "NANO130KD3BN",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "128/LQFP",
+                    "128/LQFP",
+                    "128/LQFP"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE",
+                    "NONE",
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.14.3+"
+            }
+        }
+    ]
+}

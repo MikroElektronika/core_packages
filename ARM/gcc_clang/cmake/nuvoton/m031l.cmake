@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M031LC2AE$|^M031LD2AE$|^M031LE3AE$|^M031LG6AE$|^M031LG8AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} m031l/thirdparty/m031l PARENT_SCOPE)
+endif()
