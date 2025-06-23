@@ -1,0 +1,18 @@
+{
+    "def_file": "M032SG6AE.json",
+    "family_uid": "NUVOTON",
+    "flash": "262144",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "72.000",
+    "name": "M032SG6AE",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\": \"M032SG6AE\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "M032SG6AE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_m032s\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_m032s\"}"
+}
