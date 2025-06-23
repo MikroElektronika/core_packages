@@ -1,0 +1,64 @@
+{
+    "device_uid": "NUC120RE3DN",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "48/LQFP",
+                    "48/LQFP",
+                    "48/LQFP",
+                    "64/LQFP",
+                    "64/LQFP",
+                    "64/LQFP"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE",
+                    "NONE",
+                    "NONE",
+                    "NONE",
+                    "NONE",
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.14.3+"
+            }
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M4521LE6AE$|^M4521SE6AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} m4521/thirdparty/m4521 PARENT_SCOPE)
+endif()

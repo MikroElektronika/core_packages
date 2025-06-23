@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NANO102LB1AN$|^NANO102LC2AN$|^NANO102SC2AN$|^NANO102ZB1AN$|^NANO102ZC2AN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} nano102/thirdparty/nano102 PARENT_SCOPE)
+endif()
