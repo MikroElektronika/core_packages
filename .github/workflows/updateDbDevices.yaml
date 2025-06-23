@@ -131,6 +131,20 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
+      # TODO: Revert once ERP Database upload API is fixed
+      # - name: Commit and Push Changes
+      #   run: |
+      #     if [ -n "$(git status --porcelain)" ]; then
+      #       echo "Updating with new CHANGELOG.md";
+      #       git add necto_db.db
+      #       git commit -m "Updated necto database with latest merged release."
+      #       git push
+      #       curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
+      #       --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
+      #     else
+      #       echo "No changes made to necto_db.db";
+      #     fi
+
       - name: Commit and Push Changes
         run: |
           if [ -n "$(git status --porcelain)" ]; then
@@ -138,8 +152,6 @@ jobs:
             git add necto_db.db
             git commit -m "Updated necto live database with latest merged release."
             git push
-            curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
-            --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
           else
             echo "No changes made to necto_db.db";
           fi
@@ -196,6 +208,30 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
+      # TODO: Revert once ERP Database upload API is fixed
+      # - name: Commit and Push Changes
+      #   run: |
+      #     if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
+      #       DB_NAME="necto_db.db"
+      #     else
+      #       DB_NAME="necto_db_dev.db"
+      #     fi
+      #     STATUS=$(git status --short "$DB_NAME")
+      #     if [ -z "$STATUS" ]; then
+      #       echo "No changes made to $DB_NAME";
+      #     else
+      #       echo "Updating with new $DB_NAME";
+      #       echo "test"
+      #       git pull
+      #       git add $DB_NAME
+      #       git commit -m "Updated $DB_NAME with latest merged release."
+      #       git push
+      #       if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
+      #         curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
+      #         --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
+      #       fi
+      #     fi
+
       - name: Commit and Push Changes
         run: |
           if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
@@ -213,10 +249,6 @@ jobs:
             git add $DB_NAME
             git commit -m "Updated $DB_NAME with latest merged release."
             git push
-            if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
-              curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
-              --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
-            fi
           fi
 
       - name: Run Index Script
