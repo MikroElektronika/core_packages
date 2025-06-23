@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MINI51FDE$|^MINI51LDE$|^MINI51TDE$|^MINI51ZDE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} mini51/thirdparty/mini51 PARENT_SCOPE)
+endif()
