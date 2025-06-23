@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAMG51G18$|^ATSAMG51N18$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsamg51/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsamg51/thirdparty/atsamg51)
+    set(${thirdpartyInstall} atsamg51/thirdparty/atsamg51 PARENT_SCOPE)
+endif()
