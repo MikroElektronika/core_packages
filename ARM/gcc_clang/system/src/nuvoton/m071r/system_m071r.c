@@ -1,0 +1,71 @@
+/**************************************************************************//**
+ * @file     system_M071R_M071S.c
+ * @version  V3.0
+ * @brief    M071R_M071S Series CMSIS System File
+ *
+ * @note
+ * SPDX-License-Identifier: Apache-2.0
+ * Copyright (C) 2014 Nuvoton Technology Corp. All rights reserved.
+ *
+ ******************************************************************************/
+#include <stdint.h>
+// #include "NuMicro.h" // Note: Changed for MikroE implementation.
+#include "mcu.h" // Note: Added for MikroE implementation.
+
+
+/*----------------------------------------------------------------------------
+  Clock Variable definitions
+ *----------------------------------------------------------------------------*/
+uint32_t SystemCoreClock  = __HSI;             /*!< System Clock Frequency (Core Clock) */
+uint32_t CyclesPerUs      = (__HSI / 1000000); /* Cycles per micro second */
+uint32_t PllClock         = __HSI;             /*!< PLL Output Clock Frequency */
+uint32_t gau32ClkSrcTbl[] = {__HXT, __LXT, __HSI, __LIRC, NULL, NULL, NULL, __HIRC};
+
+
+/*----------------------------------------------------------------------------
+  Clock functions
+  This function is used to up2025-07-04 the variable SystemCoreClock
+  and must be called whenever the core clock is changed.
+ *----------------------------------------------------------------------------*/
+void SystemCoreClockUp2025-07-04(void)             /* Get Core Clock Frequency      */
+{
+    uint32_t u32Freq, u32ClkSrc;
+    uint32_t u32HclkDiv;
+
+    /* Up2025-07-04 PLL Clock */
+    PllClock = CLK_GetPLLClockFreq();
+
+    u32ClkSrc = CLK->CLKSEL0 & CLK_CLKSEL0_HCLK_S_Msk;
+
+    if(u32ClkSrc != CLK_CLKSEL0_HCLK_S_PLL) {
+        /* Use the clock sources directly */
+        u32Freq = gau32ClkSrcTbl[u32ClkSrc];
+    } else {
+        /* Use PLL clock */
+        u32Freq = PllClock;
+    }
+
+    u32HclkDiv = (CLK->CLKDIV & CLK_CLKDIV_HCLK_N_Msk) + 1;
+
+    /* Up2025-07-04 System Core Clock */
+    SystemCoreClock = u32Freq / u32HclkDiv;
+
+    CyclesPerUs = (SystemCoreClock + 500000) / 1000000;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/* Function: SystemInit                                                                                    */
+/*                                                                                                         */
+/* Parameters:                                                                                             */
+/*      None                                                                                               */
+/*                                                                                                         */
+/* Returns:                                                                                                */
+/*      None                                                                                               */
+/*                                                                                                         */
+/* Description:                                                                                            */
+/*      The necessary initializaiton of systerm.                                                           */
+/*                                                                                                         */
+/*---------------------------------------------------------------------------------------------------------*/
+void SystemInit(void)
+{
+}
