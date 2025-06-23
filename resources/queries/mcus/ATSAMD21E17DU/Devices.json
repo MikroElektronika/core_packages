@@ -1,0 +1,18 @@
+{
+    "def_file": "ATSAMD21E17DU.json",
+    "family_uid": "SAMD",
+    "flash": "131072",
+    "icon": "images/mcu/microchip.png",
+    "max_speed": "48.000",
+    "name": "ATSAMD21E17DU",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"ATSAMD21E17DU\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ATSAMD21E17DU",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_atsamd21e\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_atsamd21e\"}"
+}
