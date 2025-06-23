@@ -1,0 +1,18 @@
+{
+    "def_file": "NUC123SC2AN1.json",
+    "family_uid": "NUVOTON",
+    "flash": "36864",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "72.000",
+    "name": "NUC123SC2AN1",
+    "ram": "12288",
+    "sdk_config": "{\"MCU_NAME\": \"NUC123SC2AN1\", \"CORE_NAME\": \"M0\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "NUC123SC2AN1",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nuc123\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nuc123\"}"
+}
