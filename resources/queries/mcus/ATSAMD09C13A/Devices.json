@@ -1,0 +1,18 @@
+{
+    "def_file": "ATSAMD09C13A.json",
+    "family_uid": "SAMD",
+    "flash": "8192",
+    "icon": "images/mcu/microchip.png",
+    "max_speed": "48.000",
+    "name": "ATSAMD09C13A",
+    "ram": "4096",
+    "sdk_config": "{\"MCU_NAME\":\"ATSAMD09C13A\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ATSAMD09C13A",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_atsamd09\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_atsamd09\"}"
+}
