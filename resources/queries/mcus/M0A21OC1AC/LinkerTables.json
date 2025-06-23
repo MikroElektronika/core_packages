@@ -1,0 +1,54 @@
+{
+    "device_uid": "M0A21OC1AC",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD",
+                    "GENERIC_ARM_BOARD"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm",
+                    "gcc_arm_none_eabi",
+                    "clang-llvm"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "28/TSSOP",
+                    "28/TSSOP",
+                    "20/SSOP",
+                    "20/SSOP"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE",
+                    "NONE",
+                    "NONE",
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.14.3+"
+            }
+        }
+    ]
+}
