@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAML21E15B$|^ATSAML21E16B$|^ATSAML21E17B$|^ATSAML21E18A$|^ATSAML21E18B$|^ATSAML21G16B$|^ATSAML21G17B$|^ATSAML21G18A$|^ATSAML21G18B$|^ATSAML21J16B$|^ATSAML21J17B$|^ATSAML21J17BU$|^ATSAML21J18A$|^ATSAML21J18B$|^ATSAML21J18BU$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/sam/atsaml21/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsaml21/thirdparty/atsaml21)
+    set(${thirdpartyInstall} atsaml21/thirdparty/atsaml21 PARENT_SCOPE)
+endif()
