@@ -77,11 +77,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -210,11 +210,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -343,11 +343,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -476,11 +476,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -609,11 +609,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -742,11 +742,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -875,11 +875,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -1008,11 +1008,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -1141,11 +1141,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",
@@ -1274,11 +1274,11 @@
                     },
                     {
                         "key": "STVREN",
-                        "value": "00000020"
+                        "value": "00000000"
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000080"
+                        "value": "00000020"
                     },
                     {
                         "key": "XINST",

@@ -57,7 +57,7 @@
                     },
                     {
                         "key": "BODLEVEL",
-                        "value": "80"
+                        "value": "00000007"
                     },
                     {
                         "key": "CFD",
@@ -110,7 +110,7 @@
                     },
                     {
                         "key": "BODLEVEL",
-                        "value": "80"
+                        "value": "00000007"
                     },
                     {
                         "key": "CFD",
@@ -163,7 +163,7 @@
                     },
                     {
                         "key": "BODLEVEL",
-                        "value": "80"
+                        "value": "00000007"
                     },
                     {
                         "key": "CFD",

@@ -73,7 +73,7 @@
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "00000000"
                     },
                     {
                         "key": "RESERVED",
@@ -81,7 +81,7 @@
                     },
                     {
                         "key": "DSWDTOSC",
-                        "value": "00000002"
+                        "value": "00000000"
                     },
                     {
                         "key": "RTCOSC",
@@ -89,7 +89,7 @@
                     },
                     {
                         "key": "DSBOREN",
-                        "value": "00000008"
+                        "value": "00000000"
                     },
                     {
                         "key": "DSWDTEN",
@@ -97,7 +97,7 @@
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "00000000"
                     },
                     {
                         "key": "IOL1WAY",
@@ -113,15 +113,15 @@
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "0000003f"
                     },
                     {
                         "key": "WPEND",
-                        "value": "00000002"
+                        "value": "00000040"
                     },
                     {
                         "key": "WPCFG",
-                        "value": "00000004"
+                        "value": "00000080"
                     },
                     {
                         "key": "WPDIS",
@@ -194,7 +194,7 @@
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "00000000"
                     },
                     {
                         "key": "RESERVED",
@@ -202,7 +202,7 @@
                     },
                     {
                         "key": "DSWDTOSC",
-                        "value": "00000002"
+                        "value": "00000000"
                     },
                     {
                         "key": "RTCOSC",
@@ -210,7 +210,7 @@
                     },
                     {
                         "key": "DSBOREN",
-                        "value": "00000008"
+                        "value": "00000000"
                     },
                     {
                         "key": "DSWDTEN",
@@ -218,7 +218,7 @@
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "00000000"
                     },
                     {
                         "key": "IOL1WAY",
@@ -234,15 +234,15 @@
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "0000003f"
                     },
                     {
                         "key": "WPEND",
-                        "value": "00000002"
+                        "value": "00000040"
                     },
                     {
                         "key": "WPCFG",
-                        "value": "00000004"
+                        "value": "00000080"
                     },
                     {
                         "key": "WPDIS",
@@ -315,7 +315,7 @@
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "00000000"
                     },
                     {
                         "key": "RESERVED",
@@ -323,7 +323,7 @@
                     },
                     {
                         "key": "DSWDTOSC",
-                        "value": "00000002"
+                        "value": "00000000"
                     },
                     {
                         "key": "RTCOSC",
@@ -331,7 +331,7 @@
                     },
                     {
                         "key": "DSBOREN",
-                        "value": "00000008"
+                        "value": "00000000"
                     },
                     {
                         "key": "DSWDTEN",
@@ -339,7 +339,7 @@
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "00000000"
                     },
                     {
                         "key": "IOL1WAY",
@@ -355,15 +355,15 @@
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "0000003f"
                     },
                     {
                         "key": "WPEND",
-                        "value": "00000002"
+                        "value": "00000040"
                     },
                     {
                         "key": "WPCFG",
-                        "value": "00000004"
+                        "value": "00000080"
                     },
                     {
                         "key": "WPDIS",
@@ -436,7 +436,7 @@
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "00000000"
                     },
                     {
                         "key": "RESERVED",
@@ -444,7 +444,7 @@
                     },
                     {
                         "key": "DSWDTOSC",
-                        "value": "00000002"
+                        "value": "00000000"
                     },
                     {
                         "key": "RTCOSC",
@@ -452,7 +452,7 @@
                     },
                     {
                         "key": "DSBOREN",
-                        "value": "00000008"
+                        "value": "00000000"
                     },
                     {
                         "key": "DSWDTEN",
@@ -460,7 +460,7 @@
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "00000000"
                     },
                     {
                         "key": "IOL1WAY",
@@ -476,15 +476,15 @@
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "0000003f"
                     },
                     {
                         "key": "WPEND",
-                        "value": "00000002"
+                        "value": "00000040"
                     },
                     {
                         "key": "WPCFG",
-                        "value": "00000004"
+                        "value": "00000080"
                     },
                     {
                         "key": "WPDIS",
@@ -557,7 +557,7 @@
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "00000000"
                     },
                     {
                         "key": "RESERVED",
@@ -565,7 +565,7 @@
                     },
                     {
                         "key": "DSWDTOSC",
-                        "value": "00000002"
+                        "value": "00000000"
                     },
                     {
                         "key": "RTCOSC",
@@ -573,7 +573,7 @@
                     },
                     {
                         "key": "DSBOREN",
-                        "value": "00000008"
+                        "value": "00000000"
                     },
                     {
                         "key": "DSWDTEN",
@@ -581,7 +581,7 @@
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "00000000"
                     },
                     {
                         "key": "IOL1WAY",
@@ -597,15 +597,15 @@
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "0000003f"
                     },
                     {
                         "key": "WPEND",
-                        "value": "00000002"
+                        "value": "00000040"
                     },
                     {
                         "key": "WPCFG",
-                        "value": "00000004"
+                        "value": "00000080"
                     },
                     {
                         "key": "WPDIS",
@@ -678,7 +678,7 @@
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "00000000"
                     },
                     {
                         "key": "RESERVED",
@@ -686,7 +686,7 @@
                     },
                     {
                         "key": "DSWDTOSC",
-                        "value": "00000002"
+                        "value": "00000000"
                     },
                     {
                         "key": "RTCOSC",
@@ -694,7 +694,7 @@
                     },
                     {
                         "key": "DSBOREN",
-                        "value": "00000008"
+                        "value": "00000000"
                     },
                     {
                         "key": "DSWDTEN",
@@ -702,7 +702,7 @@
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "00000000"
                     },
                     {
                         "key": "IOL1WAY",
@@ -718,15 +718,15 @@
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "0000003f"
                     },
                     {
                         "key": "WPEND",
-                        "value": "00000002"
+                        "value": "00000040"
                     },
                     {
                         "key": "WPCFG",
-                        "value": "00000004"
+                        "value": "00000080"
                     },
                     {
                         "key": "WPDIS",
@@ -799,7 +799,7 @@
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "00000000"
                     },
                     {
                         "key": "RESERVED",
@@ -807,7 +807,7 @@
                     },
                     {
                         "key": "DSWDTOSC",
-                        "value": "00000002"
+                        "value": "00000000"
                     },
                     {
                         "key": "RTCOSC",
@@ -815,7 +815,7 @@
                     },
                     {
                         "key": "DSBOREN",
-                        "value": "00000008"
+                        "value": "00000000"
                     },
                     {
                         "key": "DSWDTEN",
@@ -823,7 +823,7 @@
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "00000000"
                     },
                     {
                         "key": "IOL1WAY",
@@ -839,15 +839,15 @@
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "0000003f"
                     },
                     {
                         "key": "WPEND",
-                        "value": "00000002"
+                        "value": "00000040"
                     },
                     {
                         "key": "WPCFG",
-                        "value": "00000004"
+                        "value": "00000080"
                     },
                     {
                         "key": "WPDIS",
@@ -920,7 +920,7 @@
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "00000000"
                     },
                     {
                         "key": "RESERVED",
@@ -928,7 +928,7 @@
                     },
                     {
                         "key": "DSWDTOSC",
-                        "value": "00000002"
+                        "value": "00000000"
                     },
                     {
                         "key": "RTCOSC",
@@ -936,7 +936,7 @@
                     },
                     {
                         "key": "DSBOREN",
-                        "value": "00000008"
+                        "value": "00000000"
                     },
                     {
                         "key": "DSWDTEN",
@@ -944,7 +944,7 @@
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "00000000"
                     },
                     {
                         "key": "IOL1WAY",
@@ -960,15 +960,15 @@
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "0000003f"
                     },
                     {
                         "key": "WPEND",
-                        "value": "00000002"
+                        "value": "00000040"
                     },
                     {
                         "key": "WPCFG",
-                        "value": "00000004"
+                        "value": "00000080"
                     },
                     {
                         "key": "WPDIS",

@@ -57,7 +57,7 @@
                     },
                     {
                         "key": "BODLEVEL",
-                        "value": "80"
+                        "value": "00000007"
                     }
                 ],
                 "key": "LOW"
@@ -106,7 +106,7 @@
                     },
                     {
                         "key": "BODLEVEL",
-                        "value": "80"
+                        "value": "00000007"
                     }
                 ],
                 "key": "HIGH"
@@ -155,7 +155,7 @@
                     },
                     {
                         "key": "BODLEVEL",
-                        "value": "80"
+                        "value": "00000007"
                     }
                 ],
                 "key": "EXTENDED"

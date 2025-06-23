@@ -67,7 +67,7 @@
             },
             {
                 "key": "DSWDTOSC",
-                "value": "LPRC"
+                "value": "T1OSCREF"
             },
             {
                 "key": "RTCOSC",
@@ -83,7 +83,7 @@
             },
             {
                 "key": "DSWDTPS",
-                "value": "DSWDTPS1F"
+                "value": "2"
             },
             {
                 "key": "IOL1WAY",
@@ -95,19 +95,19 @@
             },
             {
                 "key": "WPFP",
-                "value": "WPFP255"
+                "value": "PAGE_63"
             },
             {
                 "key": "WPEND",
-                "value": "WPENDMEM"
+                "value": "PAGE_WPFP"
             },
             {
                 "key": "WPCFG",
-                "value": "WPCFGDIS"
+                "value": "OFF"
             },
             {
                 "key": "WPDIS",
-                "value": "WPDIS"
+                "value": "OFF"
             }
         ]
     }
