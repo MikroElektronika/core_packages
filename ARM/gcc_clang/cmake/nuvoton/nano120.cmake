@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NANO120KD3BN$|^NANO120KE3BN$|^NANO120LC2BN$|^NANO120LD2BN$|^NANO120LD3BN$|^NANO120LE3BN$|^NANO120SC2BN$|^NANO120SD2BN$|^NANO120SD3BN$|^NANO120SE3BN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    set(${thirdpartyInstall} nano120/thirdparty/nano120 PARENT_SCOPE)
+endif()
