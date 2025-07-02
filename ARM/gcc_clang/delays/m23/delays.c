@@ -1,11 +1,18 @@
 #include "stdint.h"
 #include "core_header.h"
 
+/* Added because of compiler specific commands */
+#ifdef _CLANG_LLVM_
+    #define SUBS_MACRO "subs"
+#else
+    #define SUBS_MACRO "sub"
+#endif
+
 void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cycle_num )
 {
     asm volatile(
         "loopCycles%=: \n"
-        "   subs %[cycle_num], %[cycle_num], #1 \n"
+        "   " SUBS_MACRO " %[cycle_num], %[cycle_num], #1 \n"
         "   nop \n"
         "   bne loopCycles%= \n"
         : [cycle_num] "+l"(cycle_num)
@@ -14,12 +21,16 @@ void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cy
 
 void __attribute__( ( noinline ) ) Delay_us( uint32_t time_us )
 {
+    // #ifdef FOSC_KHZ_VALUE_DEFINED // TODO - return in next NECTO update
     Delay_Cyc( ( time_us * getClockValue( FOSC_KHZ_VALUE ) ) - ( getClockValue( FOSC_KHZ_VALUE ) / 2 ) );
+    // #endif
 }
 
 void __attribute__( ( noinline ) ) Delay_ms( uint32_t Time_ms )
 {
+    // #ifdef FOSC_KHZ_VALUE_DEFINED // TODO - return in next NECTO update
     Delay_Cyc( Time_ms * 1000ul * getClockValue( FOSC_KHZ_VALUE ) );
+    // #endif
 }
 
 void __attribute__( ( noinline ) ) Delay_Advanced_ms( uint32_t Time_ms, uint32_t Current_Fosc_kHz )
