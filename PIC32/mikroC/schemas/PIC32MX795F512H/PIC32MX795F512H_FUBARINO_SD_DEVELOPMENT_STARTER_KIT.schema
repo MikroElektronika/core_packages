@@ -85,7 +85,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -109,7 +109,7 @@
                     },
                     {
                         "key": "PWP",
-                        "value": "000ff000"
+                        "value": "000FF000"
                     },
                     {
                         "key": "BWP",
@@ -194,7 +194,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -218,7 +218,7 @@
                     },
                     {
                         "key": "PWP",
-                        "value": "000ff000"
+                        "value": "000FF000"
                     },
                     {
                         "key": "BWP",
@@ -303,7 +303,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -327,7 +327,7 @@
                     },
                     {
                         "key": "PWP",
-                        "value": "000ff000"
+                        "value": "000FF000"
                     },
                     {
                         "key": "BWP",
@@ -412,7 +412,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -436,7 +436,7 @@
                     },
                     {
                         "key": "PWP",
-                        "value": "000ff000"
+                        "value": "000FF000"
                     },
                     {
                         "key": "BWP",
