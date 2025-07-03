@@ -1,0 +1,186 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/XC8/pic_xc8_pic/def/PIC18F45K50.json",
+    "flash": "32768",
+    "ram": "2048",
+    "board_regex": "PICDEM_FS_USB_DEMO_BOARD",
+    "settings": {
+        "clock": 64,
+        "scheme": "PICDEM FS USB Demo Board",
+        "mcu": "PIC18F45K50",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "PLLSEL",
+                "value": "PLL4X"
+            },
+            {
+                "key": "CFGPLLEN",
+                "value": "OFF"
+            },
+            {
+                "key": "CPUDIV",
+                "value": "NOCLKDIV"
+            },
+            {
+                "key": "LS48MHZ",
+                "value": "SYSX2"
+            },
+            {
+                "key": "FOSC",
+                "value": "PRIPLL"
+            },
+            {
+                "key": "PCLKEN",
+                "value": "ON"
+            },
+            {
+                "key": "FCMEN",
+                "value": "OFF"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "nPWRTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "BOREN",
+                "value": "ON"
+            },
+            {
+                "key": "BORV",
+                "value": "1"
+            },
+            {
+                "key": "nLPBOR",
+                "value": "OFF"
+            },
+            {
+                "key": "WDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "WDTPS",
+                "value": "32768"
+            },
+            {
+                "key": "CCP2MX",
+                "value": "RC1"
+            },
+            {
+                "key": "PBADEN",
+                "value": "ON"
+            },
+            {
+                "key": "T3CMX",
+                "value": "RC0"
+            },
+            {
+                "key": "SDOMX",
+                "value": "RB3"
+            },
+            {
+                "key": "MCLRE",
+                "value": "ON"
+            },
+            {
+                "key": "STVREN",
+                "value": "ON"
+            },
+            {
+                "key": "LVP",
+                "value": "ON"
+            },
+            {
+                "key": "ICPRT",
+                "value": "OFF"
+            },
+            {
+                "key": "XINST",
+                "value": "OFF"
+            },
+            {
+                "key": "DEBUG",
+                "value": "OFF"
+            },
+            {
+                "key": "CP0",
+                "value": "OFF"
+            },
+            {
+                "key": "CP1",
+                "value": "OFF"
+            },
+            {
+                "key": "CP2",
+                "value": "OFF"
+            },
+            {
+                "key": "CP3",
+                "value": "OFF"
+            },
+            {
+                "key": "CPB",
+                "value": "OFF"
+            },
+            {
+                "key": "CPD",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT0",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT1",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT2",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT3",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTC",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTB",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTD",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR0",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR1",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR2",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR3",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTRB",
+                "value": "OFF"
+            }
+        ]
+    }
+}

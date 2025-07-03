@@ -1,0 +1,2978 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/mikroC/pic_mikroc_pic18/def/PIC18F67J94.json",
+    "flash": "131072",
+    "ram": "3862",
+    "board_regex": "PIC18F67J94_DEVELOPMENT_BOARD",
+    "settings": {
+        "clock": "64",
+        "scheme": "PIC18F67J94 Development Board",
+        "mcu": "PIC18F67J94",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG1L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG1H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG2L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG2H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG3L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG3H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG4L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG4H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG5L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG5H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG6L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG6H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG7L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG7H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG8L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BORV",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "FOSC",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "CLKOEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLDIV",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "FSCM",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WPFP",
+                        "value": "000000FF"
+                    },
+                    {
+                        "key": "WPDIS",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "WPEND",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "WPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "T5GSEL",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "CINASEL",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LS48MHZ",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "MSSPMSK2",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "MSSPMSK1",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "0000000C"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "WPSA",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RETEN",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "VBTBOR",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DSBOREN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "DSBITEN",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "DSWDTPS",
+                        "value": "000000F8"
+                    },
+                    {
+                        "key": "DSWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DSWDTOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG8H"
+            }
+        ]
+    }
+}
