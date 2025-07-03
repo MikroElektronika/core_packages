@@ -1,0 +1,174 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/XC8/pic_xc8_pic/def/PIC18LF46K22.json",
+    "flash": "65536",
+    "ram": "3896",
+    "board_regex": "PIC18F4XK22_DEVELOPMENT_BOARD",
+    "settings": {
+        "clock": 64,
+        "scheme": "PIC18F4XK22 Development Board",
+        "mcu": "PIC18LF46K22",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "FOSC",
+                "value": "PRIPLL"
+            },
+            {
+                "key": "PLLCFG",
+                "value": "OFF"
+            },
+            {
+                "key": "PRICLKEN",
+                "value": "ON"
+            },
+            {
+                "key": "FCMEN",
+                "value": "OFF"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "PWRTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "BOREN",
+                "value": "ON"
+            },
+            {
+                "key": "BORV",
+                "value": "1"
+            },
+            {
+                "key": "WDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "WDTPS",
+                "value": "32768"
+            },
+            {
+                "key": "CCP2MX",
+                "value": "PORTC1"
+            },
+            {
+                "key": "PBADEN",
+                "value": "ON"
+            },
+            {
+                "key": "CCP3MX",
+                "value": "PORTB5"
+            },
+            {
+                "key": "HFOFST",
+                "value": "ON"
+            },
+            {
+                "key": "T3CMX",
+                "value": "PORTC0"
+            },
+            {
+                "key": "P2BMX",
+                "value": "PORTD2"
+            },
+            {
+                "key": "MCLRE",
+                "value": "EXTMCLR"
+            },
+            {
+                "key": "STVREN",
+                "value": "ON"
+            },
+            {
+                "key": "LVP",
+                "value": "ON"
+            },
+            {
+                "key": "XINST",
+                "value": "OFF"
+            },
+            {
+                "key": "DEBUG",
+                "value": "OFF"
+            },
+            {
+                "key": "CP0",
+                "value": "OFF"
+            },
+            {
+                "key": "CP1",
+                "value": "OFF"
+            },
+            {
+                "key": "CP2",
+                "value": "OFF"
+            },
+            {
+                "key": "CP3",
+                "value": "OFF"
+            },
+            {
+                "key": "CPB",
+                "value": "OFF"
+            },
+            {
+                "key": "CPD",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT0",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT1",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT2",
+                "value": "OFF"
+            },
+            {
+                "key": "WRT3",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTC",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTB",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTD",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR0",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR1",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR2",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTR3",
+                "value": "OFF"
+            },
+            {
+                "key": "EBTRB",
+                "value": "OFF"
+            }
+        ]
+    }
+}
