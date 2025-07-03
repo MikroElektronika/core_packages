@@ -1,0 +1,66 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/XC8/pic_xc8_pic/def/PIC18F87J72.json",
+    "flash": "131072",
+    "ram": "3923",
+    "board_regex": "PIC18F87J72_ENERGY_MONITORING_PICTAIL_PLUS_DAUGHTER_BOARD",
+    "settings": {
+        "clock": 64,
+        "scheme": "PIC18F87J72 Energy Monitoring PICTail Plus Daughter Board",
+        "mcu": "PIC18F87J72",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "WDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "STVREN",
+                "value": "ON"
+            },
+            {
+                "key": "XINST",
+                "value": "OFF"
+            },
+            {
+                "key": "CP0",
+                "value": "OFF"
+            },
+            {
+                "key": "OSC",
+                "value": "ECPLL"
+            },
+            {
+                "key": "T1DIG",
+                "value": "ON"
+            },
+            {
+                "key": "LPT1OSC",
+                "value": "OFF"
+            },
+            {
+                "key": "FCMEN",
+                "value": "ON"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "WDTPS",
+                "value": "32768"
+            },
+            {
+                "key": "RTCSOSC",
+                "value": "T1OSCREF"
+            },
+            {
+                "key": "CCP2MX",
+                "value": "DEFAULT"
+            }
+        ]
+    }
+}
