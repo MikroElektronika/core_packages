@@ -77,7 +77,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -97,7 +97,7 @@
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000002"
+                        "value": "00000003"
                     },
                     {
                         "key": "JTAGEN",
@@ -186,7 +186,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -206,7 +206,7 @@
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000002"
+                        "value": "00000003"
                     },
                     {
                         "key": "JTAGEN",
@@ -295,7 +295,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -315,7 +315,7 @@
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000002"
+                        "value": "00000003"
                     },
                     {
                         "key": "JTAGEN",
@@ -404,7 +404,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -424,7 +424,7 @@
                     },
                     {
                         "key": "DEBUG",
-                        "value": "00000002"
+                        "value": "00000003"
                     },
                     {
                         "key": "JTAGEN",
