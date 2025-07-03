@@ -89,7 +89,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -113,7 +113,7 @@
                     },
                     {
                         "key": "DMTCNT",
-                        "value": "5c000000"
+                        "value": "5C000000"
                     },
                     {
                         "key": "FDMTEN",
@@ -177,19 +177,19 @@
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "CP",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     }
                 ],
                 "key": "DEVCFG3"
@@ -270,7 +270,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -294,7 +294,7 @@
                     },
                     {
                         "key": "DMTCNT",
-                        "value": "5c000000"
+                        "value": "5C000000"
                     },
                     {
                         "key": "FDMTEN",
@@ -358,19 +358,19 @@
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "CP",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     }
                 ],
                 "key": "DEVCFG2"
@@ -451,7 +451,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -475,7 +475,7 @@
                     },
                     {
                         "key": "DMTCNT",
-                        "value": "5c000000"
+                        "value": "5C000000"
                     },
                     {
                         "key": "FDMTEN",
@@ -539,19 +539,19 @@
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "CP",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     }
                 ],
                 "key": "DEVCFG1"
@@ -632,7 +632,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -656,7 +656,7 @@
                     },
                     {
                         "key": "DMTCNT",
-                        "value": "5c000000"
+                        "value": "5C000000"
                     },
                     {
                         "key": "FDMTEN",
@@ -720,19 +720,19 @@
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "CP",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     }
                 ],
                 "key": "DEVCFG0"
@@ -813,7 +813,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -837,7 +837,7 @@
                     },
                     {
                         "key": "DMTCNT",
-                        "value": "5c000000"
+                        "value": "5C000000"
                     },
                     {
                         "key": "FDMTEN",
@@ -901,19 +901,19 @@
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "CP",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     }
                 ],
                 "key": "DEVCP3"
@@ -994,7 +994,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -1018,7 +1018,7 @@
                     },
                     {
                         "key": "DMTCNT",
-                        "value": "5c000000"
+                        "value": "5C000000"
                     },
                     {
                         "key": "FDMTEN",
@@ -1082,19 +1082,19 @@
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "CP",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     }
                 ],
                 "key": "DEVCP2"
@@ -1175,7 +1175,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -1199,7 +1199,7 @@
                     },
                     {
                         "key": "DMTCNT",
-                        "value": "5c000000"
+                        "value": "5C000000"
                     },
                     {
                         "key": "FDMTEN",
@@ -1263,19 +1263,19 @@
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "CP",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     }
                 ],
                 "key": "DEVCP1"
@@ -1356,7 +1356,7 @@
                     },
                     {
                         "key": "FCKSM",
-                        "value": "0000c000"
+                        "value": "0000C000"
                     },
                     {
                         "key": "WDTPS",
@@ -1380,7 +1380,7 @@
                     },
                     {
                         "key": "DMTCNT",
-                        "value": "5c000000"
+                        "value": "5C000000"
                     },
                     {
                         "key": "FDMTEN",
@@ -1444,19 +1444,19 @@
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "Hidden",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     },
                     {
                         "key": "CP",
-                        "value": "ffffffff"
+                        "value": "FFFFFFFF"
                     }
                 ],
                 "key": "DEVCP0"
