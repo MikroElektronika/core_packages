@@ -65,7 +65,7 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "001c0000"
+                        "value": "00000000"
                     },
                     {
                         "key": "USBPRE",
@@ -150,7 +150,7 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "001c0000"
+                        "value": "00000000"
                     },
                     {
                         "key": "USBPRE",
@@ -235,7 +235,7 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "001c0000"
+                        "value": "00000000"
                     },
                     {
                         "key": "USBPRE",
