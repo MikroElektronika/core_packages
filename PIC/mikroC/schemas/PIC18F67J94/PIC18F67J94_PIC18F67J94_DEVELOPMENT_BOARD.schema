@@ -45,7 +45,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -65,11 +65,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -81,11 +81,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -101,7 +101,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -129,7 +129,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -137,11 +137,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -157,7 +157,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -177,11 +177,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -193,7 +193,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG1L"
@@ -230,7 +230,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -250,11 +250,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -266,11 +266,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -286,7 +286,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -314,7 +314,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -322,11 +322,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -342,7 +342,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -362,11 +362,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -378,7 +378,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG1H"
@@ -415,7 +415,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -435,11 +435,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -451,11 +451,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -471,7 +471,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -499,7 +499,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -507,11 +507,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -527,7 +527,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -547,11 +547,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -563,7 +563,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG2L"
@@ -600,7 +600,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -620,11 +620,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -636,11 +636,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -656,7 +656,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -684,7 +684,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -692,11 +692,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -712,7 +712,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -732,11 +732,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -748,7 +748,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG2H"
@@ -785,7 +785,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -805,11 +805,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -821,11 +821,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -841,7 +841,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -869,7 +869,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -877,11 +877,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -897,7 +897,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -917,11 +917,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -933,7 +933,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG3L"
@@ -970,7 +970,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -990,11 +990,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -1006,11 +1006,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -1026,7 +1026,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -1054,7 +1054,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -1062,11 +1062,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -1082,7 +1082,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -1102,11 +1102,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -1118,7 +1118,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG3H"
@@ -1155,7 +1155,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -1175,11 +1175,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -1191,11 +1191,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -1211,7 +1211,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -1239,7 +1239,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -1247,11 +1247,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -1267,7 +1267,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -1287,11 +1287,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -1303,7 +1303,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG4L"
@@ -1340,7 +1340,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -1360,11 +1360,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -1376,11 +1376,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -1396,7 +1396,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -1424,7 +1424,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -1432,11 +1432,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -1452,7 +1452,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -1472,11 +1472,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -1488,7 +1488,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG4H"
@@ -1525,7 +1525,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -1545,11 +1545,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -1561,11 +1561,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -1581,7 +1581,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -1609,7 +1609,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -1617,11 +1617,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -1637,7 +1637,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -1657,11 +1657,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -1673,7 +1673,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG5L"
@@ -1710,7 +1710,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -1730,11 +1730,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -1746,11 +1746,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -1766,7 +1766,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -1794,7 +1794,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -1802,11 +1802,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -1822,7 +1822,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -1842,11 +1842,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -1858,7 +1858,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG5H"
@@ -1895,7 +1895,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -1915,11 +1915,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -1931,11 +1931,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -1951,7 +1951,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -1979,7 +1979,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -1987,11 +1987,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -2007,7 +2007,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -2027,11 +2027,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -2043,7 +2043,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG6L"
@@ -2080,7 +2080,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -2100,11 +2100,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -2116,11 +2116,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -2136,7 +2136,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -2164,7 +2164,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -2172,11 +2172,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -2192,7 +2192,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -2212,11 +2212,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -2228,7 +2228,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG6H"
@@ -2265,7 +2265,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -2285,11 +2285,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -2301,11 +2301,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -2321,7 +2321,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -2349,7 +2349,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -2357,11 +2357,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -2377,7 +2377,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -2397,11 +2397,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -2413,7 +2413,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG7L"
@@ -2450,7 +2450,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -2470,11 +2470,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -2486,11 +2486,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -2506,7 +2506,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -2534,7 +2534,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -2542,11 +2542,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -2562,7 +2562,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -2582,11 +2582,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -2598,7 +2598,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG7H"
@@ -2635,7 +2635,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -2655,11 +2655,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -2671,11 +2671,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -2691,7 +2691,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -2719,7 +2719,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -2727,11 +2727,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -2747,7 +2747,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -2767,11 +2767,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -2783,7 +2783,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG8L"
@@ -2820,7 +2820,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "FOSC",
@@ -2840,11 +2840,11 @@
                     },
                     {
                         "key": "PLLDIV",
-                        "value": "0000000c"
+                        "value": "0000000F"
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "POSCMD",
@@ -2856,11 +2856,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WPFP",
-                        "value": "000000ff"
+                        "value": "000000FF"
                     },
                     {
                         "key": "WPDIS",
@@ -2876,7 +2876,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "T5GSEL",
@@ -2904,7 +2904,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTWIN",
@@ -2912,11 +2912,11 @@
                     },
                     {
                         "key": "WDTCLK",
-                        "value": "0000000c"
+                        "value": "0000000C"
                     },
                     {
                         "key": "WDTPS",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "WDTEN",
@@ -2932,7 +2932,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "RETEN",
@@ -2952,11 +2952,11 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     },
                     {
                         "key": "DSWDTPS",
-                        "value": "000000f8"
+                        "value": "000000F8"
                     },
                     {
                         "key": "DSWDTEN",
@@ -2968,7 +2968,7 @@
                     },
                     {
                         "key": "RESERVED",
-                        "value": "000000f0"
+                        "value": "000000F0"
                     }
                 ],
                 "key": "CONFIG8H"
