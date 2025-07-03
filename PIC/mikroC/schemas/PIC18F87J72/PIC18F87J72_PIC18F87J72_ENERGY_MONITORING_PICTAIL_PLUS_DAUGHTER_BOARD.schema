@@ -1,0 +1,456 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/mikroC/pic_mikroc_pic18/def/PIC18F87J72.json",
+    "flash": "131072",
+    "ram": "3923",
+    "board_regex": "PIC18F87J72_ENERGY_MONITORING_PICTAIL_PLUS_DAUGHTER_BOARD",
+    "settings": {
+        "clock": "64",
+        "scheme": "PIC18F87J72 Energy Monitoring PICTail Plus Daughter Board",
+        "mcu": "PIC18F87J72",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "OSC",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "T1DIG",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "LPT1OSC",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RTCSOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CCP2MX",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG1L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "OSC",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "T1DIG",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "LPT1OSC",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RTCSOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CCP2MX",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG1H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "OSC",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "T1DIG",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "LPT1OSC",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RTCSOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CCP2MX",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG2L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "OSC",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "T1DIG",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "LPT1OSC",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RTCSOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CCP2MX",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG2H"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "OSC",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "T1DIG",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "LPT1OSC",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RTCSOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CCP2MX",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG3L"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "WDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "STVREN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "XINST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "CP0",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SIGN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "OSC",
+                        "value": "00000007"
+                    },
+                    {
+                        "key": "T1DIG",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "LPT1OSC",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FCMEN",
+                        "value": "00000040"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    },
+                    {
+                        "key": "RTCSOSC",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "CCP2MX",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "RESERVED",
+                        "value": "000000F0"
+                    }
+                ],
+                "key": "CONFIG3H"
+            }
+        ]
+    }
+}
