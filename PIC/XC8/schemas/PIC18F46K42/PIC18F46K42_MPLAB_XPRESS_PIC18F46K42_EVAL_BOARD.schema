@@ -1,0 +1,146 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/XC8/pic_xc8_pic/def/PIC18F46K42.json",
+    "flash": "65536",
+    "ram": "4096",
+    "board_regex": "MPLAB_XPRESS_PIC18F46K42_EVAL_BOARD",
+    "settings": {
+        "clock": 64,
+        "scheme": "MPLab Xpress PIC18F46K42 Evaluation Board",
+        "mcu": "PIC18F46K42",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "FEXTOSC",
+                "value": "ECH"
+            },
+            {
+                "key": "RSTOSC",
+                "value": "EXTOSC"
+            },
+            {
+                "key": "CLKOUTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "PR1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "CSWEN",
+                "value": "ON"
+            },
+            {
+                "key": "FCMEN",
+                "value": "OFF"
+            },
+            {
+                "key": "MCLRE",
+                "value": "EXTMCLR"
+            },
+            {
+                "key": "PWRTS",
+                "value": "PWRT_OFF"
+            },
+            {
+                "key": "MVECEN",
+                "value": "ON"
+            },
+            {
+                "key": "IVT1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "LPBOREN",
+                "value": "OFF"
+            },
+            {
+                "key": "BOREN",
+                "value": "ON"
+            },
+            {
+                "key": "BORV",
+                "value": "VBOR_2P85"
+            },
+            {
+                "key": "ZCD",
+                "value": "OFF"
+            },
+            {
+                "key": "PPS1WAY",
+                "value": "ON"
+            },
+            {
+                "key": "STVREN",
+                "value": "ON"
+            },
+            {
+                "key": "DEBUG",
+                "value": "OFF"
+            },
+            {
+                "key": "XINST",
+                "value": "OFF"
+            },
+            {
+                "key": "WDTCPS",
+                "value": "WDTCPS_31"
+            },
+            {
+                "key": "WDTE",
+                "value": "ON"
+            },
+            {
+                "key": "WDTCWS",
+                "value": "WDTCWS_7"
+            },
+            {
+                "key": "WDTCCS",
+                "value": "SC"
+            },
+            {
+                "key": "BBSIZE",
+                "value": "BBSIZE_512"
+            },
+            {
+                "key": "BBEN",
+                "value": "OFF"
+            },
+            {
+                "key": "SAFEN",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTAPP",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTB",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTC",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTD",
+                "value": "OFF"
+            },
+            {
+                "key": "WRTSAF",
+                "value": "OFF"
+            },
+            {
+                "key": "LVP",
+                "value": "ON"
+            },
+            {
+                "key": "CP",
+                "value": "OFF"
+            }
+        ]
+    }
+}

@@ -59,7 +59,7 @@ WHERE
                 LIMIT
                     1
             )
-    )         
+    )
     AND CASE
         WHEN (
             SELECT
@@ -69,8 +69,13 @@ WHERE
             LIMIT
                 1
         ) LIKE '%legacy%' THEN 1
-        WHEN 1 == %2 THEN 1
-        WHEN (SELECT uid FROM SelectedCompiler) == "mchp_xc8" THEN (Boards.uid IN (SELECT board_uid FROM BoardToDevice WHERE BoardToDevice.device_uid IN (SELECT Devices.uid FROM Devices WHERE Devices.necto_config != "")))        
+        WHEN 0 == %2 THEN EXISTS (
+                SELECT 1
+                FROM BoardToDevice btd
+                JOIN Devices d ON btd.device_uid = d.uid
+                WHERE btd.board_uid = Boards.uid AND d.sdk_support = 1
+            )
+        WHEN (SELECT uid FROM SelectedCompiler) == "mchp_xc8" THEN (Boards.uid IN (SELECT board_uid FROM BoardToDevice WHERE BoardToDevice.device_uid IN (SELECT Devices.uid FROM Devices WHERE Devices.necto_config != "")))
         ELSE 1
     END
     AND (
@@ -83,9 +88,9 @@ WHERE
     )
 
 ORDER BY CASE
-		WHEN 
+		WHEN
 		EXISTS (SELECT uid FROM SelectedBoard WHERE SelectedBoard.uid = Boards.uid
 			AND Boards.uid LIKE 'CUSTOM_BOARD_%') THEN 1
 		WHEN Boards.uid LIKE 'CUSTOM_BOARD_%' THEN 2
 		WHEN Boards.uid LIKE '%generic%' THEN 3 ELSE 4 END, sort_order DESC
-    -- 
+    --
