@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^M2354KJFAE$|^M2354LJFAE$|^M2354SJFAE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nuvoton/m2354/system_m2354.c)
+    list(APPEND local_dir_install system/src/nuvoton/m2354/thirdparty/m2354)
+    set(${thirdpartyInstall} m2354/thirdparty/m2354 PARENT_SCOPE)
+endif()
