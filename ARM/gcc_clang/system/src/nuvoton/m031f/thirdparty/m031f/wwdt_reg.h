@@ -96,7 +96,7 @@ typedef struct
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
      * |[5:0]   |CNTDAT    |WWDT Counter Value
-     * |        |          |CNTDAT will be up2025-07-08d continuously to monitor 6-bit WWDT down counter value.
+     * |        |          |CNTDAT will be updated continuously to monitor 6-bit WWDT down counter value.
      */
     __O  uint32_t RLDCNT;                /*!< [0x0000] WWDT Reload Counter Register                                     */
     __IO uint32_t CTL;                   /*!< [0x0004] WWDT Control Register                                            */
