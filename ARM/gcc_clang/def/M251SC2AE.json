@@ -1,0 +1,6 @@
+{
+    "core": "M23",
+    "delay_src_path": "delays/m23/__lib_delays.c",
+    "mcu": "M251SC2AE",
+    "clock": "1"
+}

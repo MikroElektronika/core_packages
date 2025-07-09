@@ -131,10 +131,14 @@ typedef enum IRQn
 
 /*@}*/ /* end of group CMSIS_Device */
 
-// Note: Changed for MikroE implementation.
-// #include "core_cm0.h"                   /*!< Cortex-M0 processor and core peripherals             */
+#include "core_cm0.h"                   /*!< Cortex-M0 processor and core peripherals             */
 // Note: Changed for MikroE implementation.
 // #include "system_M031Series.h"          /*!< M031 System                                    */
+#include <stdint.h>
+
+#define __I volatile // Note: Added for MikroE implementation.
+#define __O __I // Note: Added for MikroE implementation.
+#define __IO __I // Note: Added for MikroE implementation.
 #include <stdint.h>
 
 #define __I volatile // Note: Added for MikroE implementation.
@@ -154,7 +158,7 @@ typedef enum IRQn
  * @return None
  *
  * @brief  Setup the microcontroller system
- *         Initialize the PLL and up2025-07-08 the SystemFrequency variable
+ *         Initialize the PLL and up2025-07-15 the SystemFrequency variable
  */
 extern void SystemInit(void);
 

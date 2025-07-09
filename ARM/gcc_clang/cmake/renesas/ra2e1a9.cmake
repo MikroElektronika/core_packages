@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA2E1A92DBU$|^R7FA2E1A92DDA$|^R7FA2E1A92DFJ$|^R7FA2E1A92DFK$|^R7FA2E1A92DFL$|^R7FA2E1A92DFM$|^R7FA2E1A92DLM$|^R7FA2E1A92DNB$|^R7FA2E1A92DNE$|^R7FA2E1A92DNH$|^R7FA2E1A93CBU$|^R7FA2E1A93CDA$|^R7FA2E1A93CFJ$|^R7FA2E1A93CFK$|^R7FA2E1A93CFL$|^R7FA2E1A93CFM$|^R7FA2E1A93CLM$|^R7FA2E1A93CNB$|^R7FA2E1A93CNE$|^R7FA2E1A93CNH$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/renesas/ra2e1a9/init_clock.c)
+    list(APPEND local_dir_install system/src/renesas/ra2e1a9/thirdparty/ra2e1a9)
+    set(${thirdpartyInstall} ra2e1a9/thirdparty/ra2e1a9 PARENT_SCOPE)
+endif()

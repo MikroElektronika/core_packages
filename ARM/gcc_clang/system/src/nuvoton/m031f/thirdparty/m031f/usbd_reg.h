@@ -127,8 +127,8 @@ typedef struct
      * |        |          |0 = USB wake-up function Disabled.
      * |        |          |1 = USB wake-up function Enabled.
      * |[15]    |INNAKEN   |Active NAK Function and Its Status in IN Token
-     * |        |          |0 = When device responds NAK after receiving IN token, IN NAK status will not be up2025-07-08d to USBD_EPSTS0 register, so that the USB interrupt event will not be asserted.
-     * |        |          |1 = IN NAK status will be up2025-07-08d to USBD_EPSTS0 register and the USB interrupt event will be asserted, when the device responds NAK after receiving IN token.
+     * |        |          |0 = When device responds NAK after receiving IN token, IN NAK status will not be up2025-07-15d to USBD_EPSTS0 register, so that the USB interrupt event will not be asserted.
+     * |        |          |1 = IN NAK status will be up2025-07-15d to USBD_EPSTS0 register and the USB interrupt event will be asserted, when the device responds NAK after receiving IN token.
      * @var USBD_T::INTSTS
      * Offset: 0x04  USB Device Interrupt Event Status Register
      * ---------------------------------------------------------------------------------------------------

@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA6M1AD2CLJ$|^R7FA6M1AD3CFM$|^R7FA6M1AD3CFP$|^R7FA6M1AD3CLJ$|^R7FA6M1AD3CNB$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/renesas/ra6m1/init_clock.c)
+    list(APPEND local_dir_install system/src/renesas/ra6m1/thirdparty/ra6m1)
+    set(${thirdpartyInstall} ra6m1/thirdparty/ra6m1 PARENT_SCOPE)
+endif()

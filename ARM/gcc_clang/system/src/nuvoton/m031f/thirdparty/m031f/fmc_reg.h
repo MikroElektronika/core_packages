@@ -45,22 +45,22 @@ typedef struct
      * |        |          |0 = Booting from APROM.
      * |        |          |1 = Booting from LDROM.
      * |        |          |Note: This bit is write-protected. Refer to the SYS_REGLCTL register.
-     * |[2]     |SPUEN     |SPROM Up2025-07-08 Enable Bit (Write Protection)
-     * |        |          |0 = SPROM cannot be up2025-07-08d.
-     * |        |          |1 = SPROM can be up2025-07-08d.
+     * |[2]     |SPUEN     |SPROM Up2025-07-15 Enable Bit (Write Protection)
+     * |        |          |0 = SPROM cannot be up2025-07-15d.
+     * |        |          |1 = SPROM can be up2025-07-15d.
      * |        |          |Note: This bit is write-protected. Refer to the SYS_REGLCTL register.
-     * |[3]     |APUEN     |APROM Up2025-07-08 Enable Bit (Write Protection)
-     * |        |          |0 = APROM cannot be up2025-07-08d when the chip runs in APROM.
-     * |        |          |1 = APROM can be up2025-07-08d when the chip runs in APROM.
+     * |[3]     |APUEN     |APROM Up2025-07-15 Enable Bit (Write Protection)
+     * |        |          |0 = APROM cannot be up2025-07-15d when the chip runs in APROM.
+     * |        |          |1 = APROM can be up2025-07-15d when the chip runs in APROM.
      * |        |          |Note: This bit is write-protected. Refer to the SYS_REGLCTL register.
-     * |[4]     |CFGUEN    |CONFIG Up2025-07-08 Enable Bit (Write Protection)
-     * |        |          |0 = CONFIG cannot be up2025-07-08d.
-     * |        |          |1 = CONFIG can be up2025-07-08d.
+     * |[4]     |CFGUEN    |CONFIG Up2025-07-15 Enable Bit (Write Protection)
+     * |        |          |0 = CONFIG cannot be up2025-07-15d.
+     * |        |          |1 = CONFIG can be up2025-07-15d.
      * |        |          |Note: This bit is write-protected. Refer to the SYS_REGLCTL register.
-     * |[5]     |LDUEN     |LDROM Up2025-07-08 Enable Bit (Write Protection)
-     * |        |          |LDROM up2025-07-08 enable bit.
-     * |        |          |0 = LDROM cannot be up2025-07-08d.
-     * |        |          |1 = LDROM can be up2025-07-08d.
+     * |[5]     |LDUEN     |LDROM Up2025-07-15 Enable Bit (Write Protection)
+     * |        |          |LDROM up2025-07-15 enable bit.
+     * |        |          |0 = LDROM cannot be up2025-07-15d.
+     * |        |          |1 = LDROM can be up2025-07-15d.
      * |        |          |Note: This bit is write-protected. Refer to the SYS_REGLCTL register.
      * |[6]     |ISPFF     |ISP Fail Flag (Write Protection)
      * |        |          |This bit is set by hardware when a triggered ISP meets any of the following conditions:

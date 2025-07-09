@@ -1,0 +1,18 @@
+{
+    "def_file": "M251KG6AE.json",
+    "family_uid": "NUVOTON",
+    "flash": "256",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "1.000",
+    "name": "M251KG6AE",
+    "ram": "32",
+    "sdk_config": "{\"MCU_NAME\": \"M251KG6AE\", \"CORE_NAME\": \"M23\", \"_MSDK_HAL_LOW_LEVEL_TARGET_\": \"mikroe\", \"_MSDK_ETH_PHY_CHIP_\": \"NULL\"}",
+    "necto_config": "",
+    "uid": "M251KG6AE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_m251\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_m251\"}"
+}
