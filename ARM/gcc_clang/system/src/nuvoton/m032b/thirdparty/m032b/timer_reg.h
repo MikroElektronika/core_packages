@@ -35,7 +35,7 @@ typedef struct
      * | :----: | :----:   | :---- |
      * |[7:0]   |PSC       |Prescale Counter
      * |        |          |Timer input clock or event source is divided by (PSC+1) before it is fed to the timer up counter. If this field is 0 (PSC = 0), then there is no scaling.
-     * |        |          |Note: Up2025-07-08 prescale counter value will reset internal 8-bit prescale counter and 24-bit up counter value.
+     * |        |          |Note: Update prescale counter value will reset internal 8-bit prescale counter and 24-bit up counter value.
      * |[8]     |TRGPDMA   |Trigger PDMA Enable Bit
      * |        |          |If this bit is set to 1, timer time-out interrupt or capture interrupt can trigger PDMA.
      * |        |          |0 = Timer interrupt trigger PDMA Disabled.

@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^M256KE3AE$|^M256MD2AE$|^M256QE3AE$|^M256SD2AE$|^M256SE3AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/nuvoton/m256/system_m256.c)
+    list(APPEND local_dir_install system/src/nuvoton/m256/thirdparty/m256)
+    set(${thirdpartyInstall} m256/thirdparty/m256 PARENT_SCOPE)
+endif()

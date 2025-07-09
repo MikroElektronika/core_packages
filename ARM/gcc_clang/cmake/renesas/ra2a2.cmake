@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA2A2AD3CFP$|^R7FA2A2BD3CFM$|^R7FA2A2BD3CFN$|^R7FA2A2BD3CFP$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/renesas/ra2a2/init_clock.c)
+    list(APPEND local_dir_install system/src/renesas/ra2a2/thirdparty/ra2a2)
+    set(${thirdpartyInstall} ra2a2/thirdparty/ra2a2 PARENT_SCOPE)
+endif()

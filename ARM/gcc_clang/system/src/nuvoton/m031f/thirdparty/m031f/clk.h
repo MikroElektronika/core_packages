@@ -505,7 +505,7 @@ static __INLINE uint32_t CLK_GetPLLClockFreq(void)
   * @retval     CLK_TIMEOUT_ERR Delay function execute failed due to SysTick stop working
   * @details    Use the SysTick to generate the delay time and the UNIT is in us.
   *             The SysTick clock source is from HCLK, i.e. the same as system core clock.
-  *             User can use SystemCoreClockUp2025-07-08() to calculate CyclesPerUs automatically before using this function.
+  *             User can use SystemCoreClockUpdate() to calculate CyclesPerUs automatically before using this function.
   * \hideinitializer
   */
 __STATIC_INLINE int32_t CLK_SysTickDelay(uint32_t us)

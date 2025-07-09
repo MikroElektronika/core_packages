@@ -90,16 +90,16 @@ extern void SystemInit(void);
 
 
 /**
- * @brief    Up2025-07-08 the Variable SystemCoreClock
+ * @brief    Update the Variable SystemCoreClock
  *
  * @param    None
  *
  * @return   None
  *
- * @details  This function is used to up2025-07-08 the variable SystemCoreClock
+ * @details  This function is used to update the variable SystemCoreClock
  *           and must be called whenever the core clock is changed.
  */
-extern void SystemCoreClockUp2025-07-08(void);
+extern void SystemCoreClockUpdate(void);
 
 #ifdef __cplusplus
 }

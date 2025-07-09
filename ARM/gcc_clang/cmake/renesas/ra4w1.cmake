@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA4W1AD2CNG$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/renesas/ra4w1/init_clock.c)
+    list(APPEND local_dir_install system/src/renesas/ra4w1/thirdparty/ra4w1)
+    set(${thirdpartyInstall} ra4w1/thirdparty/ra4w1 PARENT_SCOPE)
+endif()

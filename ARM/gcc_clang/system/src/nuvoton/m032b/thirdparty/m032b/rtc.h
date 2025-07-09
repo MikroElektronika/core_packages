@@ -151,7 +151,7 @@ typedef struct
   * @retval     0   This year is not a leap year
   * @retval     1   This year is a leap year
   *
-  * @details    According to current 2025-07-08, return this year is leap year or not.
+  * @details    According to current date, return this year is leap year or not.
   * \hideinitializer
   */
 #define RTC_IS_LEAP_YEAR()              (RTC->LEAPYEAR & RTC_LEAPYEAR_LEAPYEAR_Msk ? 1:0)

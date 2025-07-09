@@ -99,7 +99,7 @@ typedef struct
      * |        |          |Note: The maximum value of DSCNT is 0xF on UART mode and suggest to set over 4 to confirm the receiver data is sampled in right value.
      * |[25:16] |CLKDIV    |Clock Divider
      * |        |          |This bit field defines the ratio between the protocol clock frequency fPROT_CLK and the clock divider frequency fDIV_CLK (fDIV_CLK = fPROT_CLK / (CLKDIV+1) ).
-     * |        |          |Note: In UART function, it can be up2025-07-08d by hardware in the 4th falling edge of the input data 0x55 when the auto baud rate function (ABREN(UUART_PROTCTL[6])) is enabled.
+     * |        |          |Note: In UART function, it can be updated by hardware in the 4th falling edge of the input data 0x55 when the auto baud rate function (ABREN(UUART_PROTCTL[6])) is enabled.
      * |        |          |The revised value is the average bit time between bit 5 and bit 6.
      * |        |          |The user can use revised CLKDIV and new BRDETITV (UUART_PROTCTL[24:16]) to calculate the precise baud rate.
      * @var UUART_T::DATIN0

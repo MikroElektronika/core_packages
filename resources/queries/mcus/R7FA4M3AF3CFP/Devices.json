@@ -1,0 +1,18 @@
+{
+    "def_file": "R7FA4M3AF3CFP.json",
+    "family_uid": "RA4M3",
+    "flash": "1048576",
+    "icon": "images/mcu/renesas.png",
+    "max_speed": "100.000",
+    "name": "R7FA4M3AF3CFP",
+    "ram": "262144",
+    "sdk_config": "{\"MCU_NAME\":\"R7FA4M3AF3CFP\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "R7FA4M3AF3CFP",
+    "vendor": "Renesas",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ra4m3\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ra4m3\"}"
+}
