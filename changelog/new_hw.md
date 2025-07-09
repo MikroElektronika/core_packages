@@ -1,0 +1,33 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ RA6T1 MCU Support package for GCC & Clang
+  + R7FA6T1AB3CFM
+  + R7FA6T1AB3CFP
+  + R7FA6T1AD3CFM
+  + R7FA6T1AD3CFP
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
