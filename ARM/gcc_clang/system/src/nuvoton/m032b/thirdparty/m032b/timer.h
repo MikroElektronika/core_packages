@@ -93,7 +93,7 @@ extern "C"
   *
   * @details    This macro is used to set timer compared value to adjust timer time-out interval.
   * @note       1. Never write 0x0 or 0x1 in this field, or the core will run into unknown state.
-  * @note       2. If up2025-07-15 timer compared value in continuous counting mode, timer counter value will keep counting continuously.
+  * @note       2. If up2025-07-08 timer compared value in continuous counting mode, timer counter value will keep counting continuously.
   *                But if timer is operating at other modes, the timer up counter will restart counting and start from 0.
   *
   * \hideinitializer

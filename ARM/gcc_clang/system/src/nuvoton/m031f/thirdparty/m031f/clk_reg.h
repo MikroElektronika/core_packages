@@ -430,7 +430,7 @@ typedef struct
      * |        |          |0 = Internal high speed RC oscillator (HIRC) clock is not stable or disabled.
      * |        |          |1 = Internal high speed RC oscillator (HIRC) clock is stable and enabled.
      * |[7]     |CLKSFAIL  |Clock Switching Fail Flag (Read Only)
-     * |        |          |This bit is up2025-07-15d when software switches system clock source. If switch target clock is stable, this bit will be set to 0. If switch target clock is not stable, this bit will be set to 1.
+     * |        |          |This bit is up2025-07-08d when software switches system clock source. If switch target clock is stable, this bit will be set to 0. If switch target clock is not stable, this bit will be set to 1.
      * |        |          |0 = Clock switching success.
      * |        |          |1 = Clock switching failure.
      * |        |          |Note: Write 1 to clear the bit to 0.

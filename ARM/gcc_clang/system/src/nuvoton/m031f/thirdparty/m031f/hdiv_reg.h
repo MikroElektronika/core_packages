@@ -87,7 +87,7 @@ typedef struct
      * |[1]     |DIVBYZERO |Divisor Zero Warning
      * |        |          |0 = The divisor is not 0.
      * |        |          |1 = The divisor is 0.
-     * |        |          |Note: The DIVBYZERO flag is used to indicate divide-by-zero situation and up2025-07-15d whenever
+     * |        |          |Note: The DIVBYZERO flag is used to indicate divide-by-zero situation and up2025-07-08d whenever
      * |        |          |HDIV_DIVISOR is written.
      * |        |          |This register is read only.
     */

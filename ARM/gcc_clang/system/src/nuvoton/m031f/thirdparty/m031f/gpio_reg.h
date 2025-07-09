@@ -71,7 +71,7 @@ typedef struct
      * | :----: | :----:   | :---- |
      * |[n]     |DATMSKn   |Port A-F Pin[n] Data Output Write Mask
      * |        |          |These bits are used to protect the corresponding DOUT (Px_DOUT[n]) bit. When the DATMSK (Px_DATMSK[n]) bit is set to 1, the corresponding DOUT (Px_DOUT[n]) bit is protected. If the write signal is masked, writing data to the protect bit is ignored.
-     * |        |          |0 = Corresponding DOUT (Px_DOUT[n]) bit can be up2025-07-15d.
+     * |        |          |0 = Corresponding DOUT (Px_DOUT[n]) bit can be up2025-07-08d.
      * |        |          |1 = Corresponding DOUT (Px_DOUT[n]) bit protected.
      * |        |          |Note1: This function only protects the corresponding DOUT (Px_DOUT[n]) bit, and will not protect the corresponding PDIO (Pxn_PDIO[0]) bit.
      * |        |          |Note2:

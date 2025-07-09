@@ -483,10 +483,10 @@ typedef struct
      * |        |          |10 = Trim value calculation is based on average difference in 16 clocks of reference clock.
      * |        |          |11 = Trim value calculation is based on average difference in 32 clocks of reference clock.
      * |        |          |Note: For example, if LOOPSEL is set as 00, auto trim circuit will calculate trim value based on the average frequency difference in 4 clocks of reference clock.
-     * |[7:6]   |RETRYCNT  |Trim Value Up2025-07-15 Limitation Count
-     * |        |          |This field defines that how many times the auto trim circuit will try to up2025-07-15 the HIRC trim value before the frequency of HIRC locked.
-     * |        |          |Once the HIRC locked, the internal trim value up2025-07-15 counter will be reset.
-     * |        |          |If the trim value up2025-07-15 counter reached this limitation value and frequency of HIRC still doesn't lock, the auto trim operation will be disabled and FREQSEL will be cleared to 00.
+     * |[7:6]   |RETRYCNT  |Trim Value Up2025-07-08 Limitation Count
+     * |        |          |This field defines that how many times the auto trim circuit will try to up2025-07-08 the HIRC trim value before the frequency of HIRC locked.
+     * |        |          |Once the HIRC locked, the internal trim value up2025-07-08 counter will be reset.
+     * |        |          |If the trim value up2025-07-08 counter reached this limitation value and frequency of HIRC still doesn't lock, the auto trim operation will be disabled and FREQSEL will be cleared to 00.
      * |        |          |00 = Trim retry count limitation is 64 loops.
      * |        |          |01 = Trim retry count limitation is 128 loops.
      * |        |          |10 = Trim retry count limitation is 256 loops.
@@ -515,8 +515,8 @@ typedef struct
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
      * |[1]     |TFALIEN   |Trim Failure Interrupt Enable Bit
-     * |        |          |This bit controls if an interrupt will be triggered while HIRC trim value up2025-07-15 limitation count reached and HIRC frequency still not locked on target frequency set by FREQSEL(SYS_HIRCTRIMCTL[1:0]).
-     * |        |          |If this bit is high and TFAILIF(SYS_HIRCTRIMSTS[1]) is set during auto trim operation, an interrupt will be triggered to notify that HIRC trim value up2025-07-15 limitation count was reached.
+     * |        |          |This bit controls if an interrupt will be triggered while HIRC trim value up2025-07-08 limitation count reached and HIRC frequency still not locked on target frequency set by FREQSEL(SYS_HIRCTRIMCTL[1:0]).
+     * |        |          |If this bit is high and TFAILIF(SYS_HIRCTRIMSTS[1]) is set during auto trim operation, an interrupt will be triggered to notify that HIRC trim value up2025-07-08 limitation count was reached.
      * |        |          |0 = Disable TFAILIF(SYS_HIRCTRIMSTS[1]) status to trigger an interrupt to CPU.
      * |        |          |1 = Enable TFAILIF(SYS_HIRCTRIMSTS[1]) status to trigger an interrupt to CPU.
      * |[2]     |CLKEIEN   |Clock Error Interrupt Enable Bit
@@ -536,11 +536,11 @@ typedef struct
      * |        |          |1 = The internal high-speed oscillator frequency locked at 48 MHz.
      * |        |          |Note: Reset by powr on reset.
      * |[1]     |TFAILIF   |Trim Failure Interrupt Status
-     * |        |          |This bit indicates that HIRC trim value up2025-07-15 limitation count reached and the HIRC clock frequency still doesn't be locked
+     * |        |          |This bit indicates that HIRC trim value up2025-07-08 limitation count reached and the HIRC clock frequency still doesn't be locked
      * |        |          |Once this bit is set, the auto trim operation stopped and FREQSEL(SYS_HIRCTRIMCTL[1:0]) will be cleared to 00 by hardware automatically.
-     * |        |          |If this bit is set and TFAILIEN(SYS_HIRCIEN[1]) is high, an interrupt will be triggered to notify that HIRC trim value up2025-07-15 limitation count was reached. Write 1 to clear this to 0.
-     * |        |          |0 = Trim value up2025-07-15 limitation count does not reach.
-     * |        |          |1 = Trim value up2025-07-15 limitation count reached and HIRC frequency still not locked.
+     * |        |          |If this bit is set and TFAILIEN(SYS_HIRCIEN[1]) is high, an interrupt will be triggered to notify that HIRC trim value up2025-07-08 limitation count was reached. Write 1 to clear this to 0.
+     * |        |          |0 = Trim value up2025-07-08 limitation count does not reach.
+     * |        |          |1 = Trim value up2025-07-08 limitation count reached and HIRC frequency still not locked.
      * |        |          |Note: Reset by powr on reset.
      * |[2]     |CLKERIF   |Clock Error Interrupt Status
      * |        |          |When the frequency of 38.4 kHz external low speed crystal oscillator (LXT) or 48MHz internal high speed RC oscillator (HIRC) is shift larger to unreasonable value, this bit will be set and to be an indicate that clock frequency is inaccuracy. Once this bit is set to 1, the auto trim operation stopped and FREQSEL(SYS_HIRCTRIMCTL[1:0]) will be cleared to 00 by hardware automatically if CESTOPEN(SYS_HIRCTRIMCTL[8]) is set to 1.

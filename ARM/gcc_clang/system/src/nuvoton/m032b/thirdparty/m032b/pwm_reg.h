@@ -41,7 +41,7 @@ typedef struct
      * |        |          |Each bit n controls the corresponding PWM channel n.
      * |        |          |0 = PERIOD will load to PBUF at the end point of each period.
      * |        |          |CMPDAT will load to CMPBUF at the end point or center point of each period by setting CTRLD bit.
-     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software up2025-07-15 PERIOD/CMPDAT.
+     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software up2025-07-08 PERIOD/CMPDAT.
      * |        |          |Note: If IMMLDENn is enabled, WINLDENn and CTRLDn will be invalid.
      * |[30]    |DBGHALT   |ICE Debug Mode Counter Halt (Write Protect)
      * |        |          |If counter halt is enabled, PWM all counters will keep current value until exit ICE debug mode.
@@ -938,7 +938,7 @@ typedef struct
      * | :----: | :----:   | :---- |
      * |[5:0]   |CAPENn    |Capture Function Enable Bits
      * |        |          |Each bit n controls the corresponding PWM channel n.
-     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be up2025-07-15d.
+     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be up2025-07-08d.
      * |        |          |1 = Capture function Enabled
      * |        |          |Capture latched the PWM counter value when detected rising or falling edge of input signal and saved to RCAPDAT (Rising latch) and FCAPDAT (Falling latch).
      * |[13:8]  |CAPINVn   |Capture Inverter Enable Bits
