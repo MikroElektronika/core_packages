@@ -83,37 +83,37 @@ typedef struct
      * |        |          |Each bit n controls the corresponding BPWM channel n.
      * |        |          |0 = PERIOD will load to PBUF at the end point of each period
      * |        |          |CMPDAT will load to CMPBUF at the end point or center point of each period by setting CTRLD bit.
-     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software up2025-07-08 PERIOD/CMPDAT.
+     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software update PERIOD/CMPDAT.
      * |        |          |Note: If IMMLDENn is Enabled, WINLDENn and CTRLDn will be invalid.
      * |[17]    |IMMLDEN1  |Immediately Load Enable Bit(S)
      * |        |          |Each bit n controls the corresponding BPWM channel n.
      * |        |          |0 = PERIOD will load to PBUF at the end point of each period
      * |        |          |CMPDAT will load to CMPBUF at the end point or center point of each period by setting CTRLD bit.
-     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software up2025-07-08 PERIOD/CMPDAT.
+     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software update PERIOD/CMPDAT.
      * |        |          |Note: If IMMLDENn is Enabled, WINLDENn and CTRLDn will be invalid.
      * |[18]    |IMMLDEN2  |Immediately Load Enable Bit(S)
      * |        |          |Each bit n controls the corresponding BPWM channel n.
      * |        |          |0 = PERIOD will load to PBUF at the end point of each period
      * |        |          |CMPDAT will load to CMPBUF at the end point or center point of each period by setting CTRLD bit.
-     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software up2025-07-08 PERIOD/CMPDAT.
+     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software update PERIOD/CMPDAT.
      * |        |          |Note: If IMMLDENn is Enabled, WINLDENn and CTRLDn will be invalid.
      * |[19]    |IMMLDEN3  |Immediately Load Enable Bit(S)
      * |        |          |Each bit n controls the corresponding BPWM channel n.
      * |        |          |0 = PERIOD will load to PBUF at the end point of each period
      * |        |          |CMPDAT will load to CMPBUF at the end point or center point of each period by setting CTRLD bit.
-     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software up2025-07-08 PERIOD/CMPDAT.
+     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software update PERIOD/CMPDAT.
      * |        |          |Note: If IMMLDENn is Enabled, WINLDENn and CTRLDn will be invalid.
      * |[20]    |IMMLDEN4  |Immediately Load Enable Bit(S)
      * |        |          |Each bit n controls the corresponding BPWM channel n.
      * |        |          |0 = PERIOD will load to PBUF at the end point of each period
      * |        |          |CMPDAT will load to CMPBUF at the end point or center point of each period by setting CTRLD bit.
-     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software up2025-07-08 PERIOD/CMPDAT.
+     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software update PERIOD/CMPDAT.
      * |        |          |Note: If IMMLDENn is Enabled, WINLDENn and CTRLDn will be invalid.
      * |[21]    |IMMLDEN5  |Immediately Load Enable Bit(S)
      * |        |          |Each bit n controls the corresponding BPWM channel n.
      * |        |          |0 = PERIOD will load to PBUF at the end point of each period
      * |        |          |CMPDAT will load to CMPBUF at the end point or center point of each period by setting CTRLD bit.
-     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software up2025-07-08 PERIOD/CMPDAT.
+     * |        |          |1 = PERIOD/CMPDAT will load to PBUF and CMPBUF immediately when software update PERIOD/CMPDAT.
      * |        |          |Note: If IMMLDENn is Enabled, WINLDENn and CTRLDn will be invalid.
      * |[30]    |DBGHALT   |ICE Debug Mode Counter Halt (Write Protect)
      * |        |          |If counter halt is enabled, BPWM all counters will keep current value until exit ICE debug mode.
@@ -835,32 +835,32 @@ typedef struct
      * | :----: | :----:   | :---- |
      * |[0]     |CAPEN0    |Capture Function Enable Bits
      * |        |          |Each bit n controls the corresponding BPWM channel n.
-     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be up2025-07-08d.
+     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be updated.
      * |        |          |1 = Capture function Enabled
      * |        |          |Capture latched the BPWM counter value when detected rising or falling edge of input signal and saved to RCAPDAT (Rising latch) and FCAPDAT (Falling latch).
      * |[1]     |CAPEN1    |Capture Function Enable Bits
      * |        |          |Each bit n controls the corresponding BPWM channel n.
-     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be up2025-07-08d.
+     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be updated.
      * |        |          |1 = Capture function Enabled
      * |        |          |Capture latched the BPWM counter value when detected rising or falling edge of input signal and saved to RCAPDAT (Rising latch) and FCAPDAT (Falling latch).
      * |[2]     |CAPEN2    |Capture Function Enable Bits
      * |        |          |Each bit n controls the corresponding BPWM channel n.
-     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be up2025-07-08d.
+     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be updated.
      * |        |          |1 = Capture function Enabled
      * |        |          |Capture latched the BPWM counter value when detected rising or falling edge of input signal and saved to RCAPDAT (Rising latch) and FCAPDAT (Falling latch).
      * |[3]     |CAPEN3    |Capture Function Enable Bits
      * |        |          |Each bit n controls the corresponding BPWM channel n.
-     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be up2025-07-08d.
+     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be updated.
      * |        |          |1 = Capture function Enabled
      * |        |          |Capture latched the BPWM counter value when detected rising or falling edge of input signal and saved to RCAPDAT (Rising latch) and FCAPDAT (Falling latch).
      * |[4]     |CAPEN4    |Capture Function Enable Bits
      * |        |          |Each bit n controls the corresponding BPWM channel n.
-     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be up2025-07-08d.
+     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be updated.
      * |        |          |1 = Capture function Enabled
      * |        |          |Capture latched the BPWM counter value when detected rising or falling edge of input signal and saved to RCAPDAT (Rising latch) and FCAPDAT (Falling latch).
      * |[5]     |CAPEN5    |Capture Function Enable Bits
      * |        |          |Each bit n controls the corresponding BPWM channel n.
-     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be up2025-07-08d.
+     * |        |          |0 = Capture function Disabled. RCAPDAT/FCAPDAT register will not be updated.
      * |        |          |1 = Capture function Enabled
      * |        |          |Capture latched the BPWM counter value when detected rising or falling edge of input signal and saved to RCAPDAT (Rising latch) and FCAPDAT (Falling latch).
      * |[8]     |CAPINV0   |Capture Inverter Enable Bits
