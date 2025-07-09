@@ -1,0 +1,3225 @@
+{
+    "config_registers": [
+        {
+            "address": "4001e020",
+            "default": "22022222",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "22022222",
+                    "key": "FCK",
+                    "label": "Flash IF Clock (FCLK) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "22022222",
+                    "key": "ICK",
+                    "label": "System Clock (ICLK) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "22022222",
+                    "key": "BCK",
+                    "label": "External Bus Clock (BCLK) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "22022222",
+                    "key": "PCKA",
+                    "label": "Peripheral Module Clock A (PCLKA) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "22022222",
+                    "key": "PCKB",
+                    "label": "Peripheral Module Clock B (PCLKB) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "22022222",
+                    "key": "PCKC",
+                    "label": "Peripheral Module Clock C (PCLKC) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "22022222",
+                    "key": "PCKD",
+                    "label": "Peripheral Module Clock D (PCLKD) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_SCKDIVCR",
+            "unused": "ddfddddd"
+        },
+        {
+            "address": "4001e024",
+            "default": "40",
+            "fields": [],
+            "key": "SYSTEM_SCKDIVCR2",
+            "unused": "ffffffbf"
+        },
+        {
+            "address": "4001e026",
+            "default": "01",
+            "fields": [],
+            "key": "SYSTEM_SCKSCR",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e028",
+            "default": "1300",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "1300",
+                    "key": "PLLMUL",
+                    "label": "",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLSRCSEL",
+                    "label": "PLL Clock Source Select",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "PLSRCSEL bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLSRCSEL bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "1300",
+                    "key": "PLIDIV",
+                    "label": "PLL Input Frequency Division Ratio Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_PLLCCR",
+            "unused": "ffffecff"
+        },
+        {
+            "address": "4001e02a",
+            "default": "01",
+            "fields": [],
+            "key": "SYSTEM_PLLCR",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e030",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_BCKCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e032",
+            "default": "01",
+            "fields": [],
+            "key": "SYSTEM_MOSCCR",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e036",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_HOCOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e038",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_MOCOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e039",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_FLLCR1",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e03a",
+            "default": "0000",
+            "fields": [],
+            "key": "SYSTEM_FLLCR2",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e03c",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_OSCSF",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e03e",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKOEN",
+                    "label": "Clock out enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "CKOEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "CKOEN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "CKODIV",
+                    "label": "Clock out input frequency Division Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "CKOSEL",
+                    "label": "Clock out source select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_CKOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e03f",
+            "default": "01",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "TRCKEN",
+                    "label": "Trace Clock operating Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "TRCKEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "TRCKEN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "TRCK",
+                    "label": "Trace Clock operating frequency select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_TRCKCR",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e040",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OSTDE",
+                    "label": "Oscillation Stop Detection Function Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "OSTDE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "OSTDE bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OSTDIE",
+                    "label": "Oscillation Stop Detection Interrupt Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "OSTDIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "OSTDIE bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_OSTDCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e041",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_OSTDSR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e052",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_EBCKOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e053",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_SDCKOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e061",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_MOCOUTCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e062",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_HOCOUTCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e413",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AUTODRVEN",
+                    "label": "Main Clock Oscillator Drive Capability Auto Switching Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "AUTODRVEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AUTODRVEN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MOSEL",
+                    "label": "Main Clock Oscillator Switching",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "MOSEL bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOSEL bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "MODRV0",
+                    "label": "Main Clock Oscillator Drive Capability 0 Switching",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_MOMCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e480",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_SOSCCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e481",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_SOMCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e490",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_LOCOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e492",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_LOCOUTCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e0a2",
+            "default": "05",
+            "fields": [],
+            "key": "SYSTEM_MOSCWTCR",
+            "unused": "fffffffa"
+        },
+        {
+            "address": "4001e0a5",
+            "default": "02",
+            "fields": [],
+            "key": "SYSTEM_HOCOWTCR",
+            "unused": "fffffffd"
+        },
+        {
+            "address": "4001e00c",
+            "default": "4000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SSBY",
+                    "label": "Software Standby",
+                    "mask": "8000",
+                    "settings": [
+                        {
+                            "label": "SSBY bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SSBY bit ON",
+                            "value": "8000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OPE",
+                    "label": "Output Port Enable",
+                    "mask": "4000",
+                    "settings": [
+                        {
+                            "label": "OPE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "OPE bit ON",
+                            "value": "4000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SBYCR",
+            "unused": "ffffbfff"
+        },
+        {
+            "address": "4001e01c",
+            "default": "FFBFFF1C",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MSTPA22",
+                    "label": "DMA Controller/Data Transfer Controller Module Stop",
+                    "mask": "400000",
+                    "settings": [
+                        {
+                            "label": "MSTPA22 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MSTPA22 bit ON",
+                            "value": "400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MSTPA7",
+                    "label": "Standny RAM Module Stop",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "MSTPA7 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MSTPA7 bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MSTPA6",
+                    "label": "ECCRAM Module Stop",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "MSTPA6 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MSTPA6 bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MSTPA5",
+                    "label": "High-Speed RAM Module Stop",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "MSTPA5 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MSTPA5 bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MSTPA1",
+                    "label": "RAM1 Module Stop",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "MSTPA1 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MSTPA1 bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MSTPA0",
+                    "label": "RAM0 Module Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "MSTPA0 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MSTPA0 bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MSTPCRA",
+            "unused": "4000e3"
+        },
+        {
+            "address": "4001e092",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZE",
+                    "label": "Snooze Mode Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "SNZE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZE bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZDTCEN",
+                    "label": "DTC Enable in Snooze Mode",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "SNZDTCEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZDTCEN bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RXDREQEN",
+                    "label": "RXD0 Snooze Request Enable NOTE: Do not set to 1 other than in asynchronous mode",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "RXDREQEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RXDREQEN bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SNZCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e094",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SCI0UMTED",
+                    "label": "SCI0 address unmatch Snooze End EnableNote: Do not set to 1 other than in asynchronous mode",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "SCI0UMTED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SCI0UMTED bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AD1UMTED",
+                    "label": "AD compare mismatch 1 Snooze End Enable",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "AD1UMTED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AD1UMTED bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AD1MATED",
+                    "label": "AD compare match 1 Snooze End Enable",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "AD1MATED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AD1MATED bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AD0UMTED",
+                    "label": "AD compare mismatch 0 Snooze End Enable",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "AD0UMTED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AD0UMTED bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AD0MATED",
+                    "label": "AD compare match 0 Snooze End Enable",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "AD0MATED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AD0MATED bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DTCNZRED",
+                    "label": "Not Last DTC transmission completion Snooze End Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DTCNZRED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DTCNZRED bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DTCZRED",
+                    "label": "Last DTC transmission completion Snooze End Enable",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DTCZRED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DTCZRED bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AGT1UNFED",
+                    "label": "AGT1 underflow Snooze End Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "AGT1UNFED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AGT1UNFED bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SNZEDCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e098",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN30",
+                    "label": "Snooze Request Enable 30Enable AGT1 compare match B snooze request",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN30 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN30 bit ON",
+                            "value": "40000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN29",
+                    "label": "Snooze Request Enable 29Enable AGT1 compare match A snooze request",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN29 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN29 bit ON",
+                            "value": "20000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN28",
+                    "label": "Snooze Request Enable 28Enable AGT1 underflow snooze request",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN28 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN28 bit ON",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN25",
+                    "label": "Snooze Request Enable 25Enable RTC period snooze request",
+                    "mask": "2000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN25 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN25 bit ON",
+                            "value": "2000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN24",
+                    "label": "Snooze Request Enable 24Enable RTC alarm snooze request",
+                    "mask": "1000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN24 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN24 bit ON",
+                            "value": "1000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN22",
+                    "label": "Snooze Request Enable 22Enable Comparator-OC0 snooze request",
+                    "mask": "400000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN22 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN22 bit ON",
+                            "value": "400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN17",
+                    "label": "Snooze Request Enable 17Enable KR snooze request",
+                    "mask": "20000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN17 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN17 bit ON",
+                            "value": "20000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN15",
+                    "label": "Snooze Request Enable 15Enable IRQ15 pin snooze request",
+                    "mask": "8000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN15 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN15 bit ON",
+                            "value": "8000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN14",
+                    "label": "Snooze Request Enable 14Enable IRQ14 pin snooze request",
+                    "mask": "4000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN14 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN14 bit ON",
+                            "value": "4000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN13",
+                    "label": "Snooze Request Enable 13Enable IRQ13 pin snooze request",
+                    "mask": "2000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN13 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN13 bit ON",
+                            "value": "2000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN12",
+                    "label": "Snooze Request Enable 12Enable IRQ12 pin snooze request",
+                    "mask": "1000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN12 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN12 bit ON",
+                            "value": "1000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN11",
+                    "label": "Snooze Request Enable 11Enable IRQ11 pin snooze request",
+                    "mask": "800",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN11 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN11 bit ON",
+                            "value": "800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN10",
+                    "label": "Snooze Request Enable 10Enable IRQ10 pin snooze request",
+                    "mask": "400",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN10 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN10 bit ON",
+                            "value": "400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN9",
+                    "label": "Snooze Request Enable 9Enable IRQ9 pin snooze request",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN9 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN9 bit ON",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN8",
+                    "label": "Snooze Request Enable 8Enable IRQ8 pin snooze request",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN8 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN8 bit ON",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN7",
+                    "label": "Snooze Request Enable 7Enable IRQ7 pin snooze request",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN7 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN7 bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN6",
+                    "label": "Snooze Request Enable 6Enable IRQ6 pin snooze request",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN6 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN6 bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN5",
+                    "label": "Snooze Request Enable 5Enable IRQ5 pin snooze request",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN5 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN5 bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN4",
+                    "label": "Snooze Request Enable 4Enable IRQ4 pin snooze request",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN4 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN4 bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN3",
+                    "label": "Snooze Request Enable 3Enable IRQ3 pin snooze request",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN3 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN3 bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN2",
+                    "label": "Snooze Request Enable 2Enable IRQ2 pin snooze request",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN2 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN2 bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN1",
+                    "label": "Snooze Request Enable 1Enable IRQ1 pin snooze request",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN1 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN1 bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN0",
+                    "label": "Snooze Request Enable 0Enable IRQ0 pin snooze request",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN0 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN0 bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SNZREQCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e0a0",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "OPCM",
+                    "label": "Operating Power Control Mode Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_OPCCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e0aa",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SOPCM",
+                    "label": "Sub Operating Power Control Mode Select",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "SOPCM bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SOPCM bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SOPCCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e400",
+            "default": "01",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DPSBY",
+                    "label": "Deep Software Standby",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "DPSBY bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DPSBY bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IOKEEP",
+                    "label": "I/O Port Retention",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "IOKEEP bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IOKEEP bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "DEEPCUT",
+                    "label": "Power-Supply Control",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_DPSBYCR",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e402",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ7E",
+                    "label": "IRQ7-DS Pin Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "DIRQ7E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ7E bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ6E",
+                    "label": "IRQ6-DS Pin Enable",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "DIRQ6E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ6E bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ5E",
+                    "label": "IRQ5-DS Pin Enable",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "DIRQ5E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ5E bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ4E",
+                    "label": "IRQ4-DS Pin Enable",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DIRQ4E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ4E bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ3E",
+                    "label": "IRQ3-DS Pin Enable",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "DIRQ3E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ3E bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ2E",
+                    "label": "IRQ2-DS Pin Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DIRQ2E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ2E bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ1E",
+                    "label": "IRQ1-DS Pin Enable",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DIRQ1E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ1E bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ0E",
+                    "label": "IRQ0-DS Pin Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DIRQ0E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ0E bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIER0",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e403",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ14E",
+                    "label": "IRQ14-DS Pin Enable",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "DIRQ14E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ14E bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ13E",
+                    "label": "IRQ13-DS Pin Enable",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "DIRQ13E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ13E bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ12E",
+                    "label": "IRQ12-DS Pin Enable",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DIRQ12E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ12E bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ11E",
+                    "label": "IRQ11-DS Pin Enable",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "DIRQ11E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ11E bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ10E",
+                    "label": "IRQ10-DS Pin Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DIRQ10E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ10E bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ9E",
+                    "label": "IRQ9-DS Pin Enable",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DIRQ9E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ9E bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ8E",
+                    "label": "IRQ8-DS Pin Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DIRQ8E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ8E bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIER1",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e404",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DNMIE",
+                    "label": "NMI Pin Enable",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DNMIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DNMIE bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DRTCAIE",
+                    "label": "RTC Alarm interrupt Deep Standby Cancel Signal Enable",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "DRTCAIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DRTCAIE bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DTRTCIIE",
+                    "label": "RTC Interval interrupt Deep Standby Cancel Signal Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DTRTCIIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DTRTCIIE bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DLVD2IE",
+                    "label": "LVD2 Deep Standby Cancel Signal Enable",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DLVD2IE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DLVD2IE bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DLVD1IE",
+                    "label": "LVD1 Deep Standby Cancel Signal Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DLVD1IE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DLVD1IE bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIER2",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e405",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DAGT1IE",
+                    "label": "AGT1 Underflow Deep Standby Cancel Signal Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DAGT1IE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DAGT1IE bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DUSBHSIE",
+                    "label": "USBHS Suspend/Resume Deep Standby Cancel Signal Enable",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DUSBHSIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DUSBHSIE bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DUSBFSIE",
+                    "label": "USBFS Suspend/Resume Deep Standby Cancel Signal Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DUSBFSIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DUSBFSIE bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIER3",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e406",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ7F",
+                    "label": "IRQ7-DS Pin Deep Standby Cancel Flag",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "DIRQ7F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ7F bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ6F",
+                    "label": "IRQ6-DS Pin Deep Standby Cancel Flag",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "DIRQ6F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ6F bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ5F",
+                    "label": "IRQ5-DS Pin Deep Standby Cancel Flag",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "DIRQ5F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ5F bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ4F",
+                    "label": "IRQ4-DS Pin Deep Standby Cancel Flag",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DIRQ4F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ4F bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ3F",
+                    "label": "IRQ3-DS Pin Deep Standby Cancel Flag",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "DIRQ3F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ3F bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ2F",
+                    "label": "IRQ2-DS Pin Deep Standby Cancel Flag",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DIRQ2F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ2F bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ1F",
+                    "label": "IRQ1-DS Pin Deep Standby Cancel Flag",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DIRQ1F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ1F bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ0F",
+                    "label": "IRQ0-DS Pin Deep Standby Cancel Flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DIRQ0F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ0F bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIFR0",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e407",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ14F",
+                    "label": "IRQ14-DS Pin Deep Standby Cancel Flag",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "DIRQ14F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ14F bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ13F",
+                    "label": "IRQ13-DS Pin Deep Standby Cancel Flag",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "DIRQ13F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ13F bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ12F",
+                    "label": "IRQ12-DS Pin Deep Standby Cancel Flag",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DIRQ12F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ12F bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ11F",
+                    "label": "IRQ11-DS Pin Deep Standby Cancel Flag",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "DIRQ11F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ11F bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ10F",
+                    "label": "IRQ10-DS Pin Deep Standby Cancel Flag",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DIRQ10F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ10F bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ9F",
+                    "label": "IRQ9-DS Pin Deep Standby Cancel Flag",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DIRQ9F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ9F bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ8F",
+                    "label": "IRQ8-DS Pin Deep Standby Cancel Flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DIRQ8F bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ8F bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIFR1",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e408",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DNMIF",
+                    "label": "NMI Pin Deep Standby Cancel Flag",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DNMIF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DNMIF bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DRTCAIF",
+                    "label": "RTC Alarm interrupt Deep Standby Cancel Flag",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "DRTCAIF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DRTCAIF bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DTRTCIIF",
+                    "label": "RTC Interval interrupt Deep Standby Cancel Flag",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DTRTCIIF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DTRTCIIF bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DLVD2IF",
+                    "label": "LVD2 Deep Standby Cancel Flag",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DLVD2IF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DLVD2IF bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DLVD1IF",
+                    "label": "LVD1 Deep Standby Cancel Flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DLVD1IF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DLVD1IF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIFR2",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e409",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DAGT1IF",
+                    "label": "AGT1 Underflow Deep Standby Cancel Flag",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DAGT1IF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DAGT1IF bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DUSBHSIF",
+                    "label": "USBHS Suspend/Resume Deep Standby Cancel Flag",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DUSBHSIF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DUSBHSIF bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DUSBFSIF",
+                    "label": "USBFS Suspend/Resume Deep Standby Cancel Flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DUSBFSIF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DUSBFSIF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIFR3",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e40a",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ7EG",
+                    "label": "IRQ7-DS Pin Edge Select",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "DIRQ7EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ7EG bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ6EG",
+                    "label": "IRQ6-DS Pin Edge Select",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "DIRQ6EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ6EG bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ5EG",
+                    "label": "IRQ5-DS Pin Edge Select",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "DIRQ5EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ5EG bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ4EG",
+                    "label": "IRQ4-DS Pin Edge Select",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DIRQ4EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ4EG bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ3EG",
+                    "label": "IRQ3-DS Pin Edge Select",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "DIRQ3EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ3EG bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ2EG",
+                    "label": "IRQ2-DS Pin Edge Select",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DIRQ2EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ2EG bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ1EG",
+                    "label": "IRQ1-DS Pin Edge Select",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DIRQ1EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ1EG bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ0EG",
+                    "label": "IRQ0-DS Pin Edge Select",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DIRQ0EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ0EG bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIEGR0",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e40b",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ14EG",
+                    "label": "IRQ14-DS Pin Edge Select",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "DIRQ14EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ14EG bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ13EG",
+                    "label": "IRQ13-DS Pin Edge Select",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "DIRQ13EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ13EG bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ12EG",
+                    "label": "IRQ12-DS Pin Edge Select",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DIRQ12EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ12EG bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ11EG",
+                    "label": "IRQ11-DS Pin Edge Select",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "DIRQ11EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ11EG bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ10EG",
+                    "label": "IRQ10-DS Pin Edge Select",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DIRQ10EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ10EG bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ9EG",
+                    "label": "IRQ9-DS Pin Edge Select",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DIRQ9EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ9EG bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIRQ8EG",
+                    "label": "IRQ8-DS Pin Edge Select",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DIRQ8EG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DIRQ8EG bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIEGR1",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e40c",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DNMIEG",
+                    "label": "NMI Pin Edge Select",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "DNMIEG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DNMIEG bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DLVD2IEG",
+                    "label": "LVD2 Edge Select",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DLVD2IEG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DLVD2IEG bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DLVD1IEG",
+                    "label": "LVD1 Edge Select",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DLVD1IEG bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DLVD1IEG bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DPSIEGR2",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e40e",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DBGEN",
+                    "label": "Debugger Enable bit",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "DBGEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DBGEN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DOCDF",
+                    "label": "Deep Standby OCD flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DOCDF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DOCDF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SYOCDCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e40f",
+            "default": "C3",
+            "fields": [],
+            "key": "SYSTEM_STCONR",
+            "unused": "ffffff3c"
+        },
+        {
+            "address": "4001e0e0",
+            "default": "01",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IRQSEL",
+                    "label": "Voltage Monitor Interrupt Type Select",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "IRQSEL bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IRQSEL bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "IDTSEL",
+                    "label": "Voltage Monitor Interrupt Generation Condition Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_LVD%sCR1",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e0e1",
+            "default": "02",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DET",
+                    "label": "Voltage Monitor Voltage Change Detection Flag NOTE: Only 0 can be written to this bit. After writing 0 to this bit, it takes 2 system clock cycles for the bit to be read as 0",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DET bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DET bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LVD%sSR",
+            "unused": "fffffffd"
+        },
+        {
+            "address": "4001e417",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD2E",
+                    "label": "Voltage Detection 2 Enable",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "LVD2E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD2E bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD1E",
+                    "label": "Voltage Detection 1 Enable",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "LVD1E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD1E bit ON",
+                            "value": "20"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LVCMPCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e418",
+            "default": "F3",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "F3",
+                    "key": "LVD2LVL",
+                    "label": "Voltage Detection 2 Level Select (Standard voltage during fall in voltage)",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "F3",
+                    "key": "LVD1LVL",
+                    "label": "Voltage Detection 1 Level Select (Standard voltage during fall in voltage)",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_LVDLVLR",
+            "unused": "ffffff0c"
+        },
+        {
+            "address": "4001e41a",
+            "default": "8A",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RN",
+                    "label": "Voltage Monitor Reset Negate Select",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "RN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RI",
+                    "label": "Voltage Monitor Circuit Mode Select",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "RI bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RI bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "8A",
+                    "key": "FSAMP",
+                    "label": "Sampling Clock Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPE",
+                    "label": "Voltage Monitor Circuit Comparison Result Output Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "CMPE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "CMPE bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DFDIS",
+                    "label": "Voltage Monitor Digital Filter Disable Mode Select",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DFDIS bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DFDIS bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RIE",
+                    "label": "Voltage Monitor Interrupt/Reset Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "RIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RIE bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LVD%sCR0",
+            "unused": "ffffff75"
+        },
+        {
+            "address": "4001e4bb",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "VCH2INEN",
+                    "label": "RTCIC2 Input Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "VCH2INEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "VCH2INEN bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "VCH1INEN",
+                    "label": "RTCIC1 Input Enable",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "VCH1INEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "VCH1INEN bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "VCH0INEN",
+                    "label": "RTCIC0 Input Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "VCH0INEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "VCH0INEN bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_VBTICTLR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e500",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_VBTBKR[%s]",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e3fe",
+            "default": "0000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "0000",
+                    "key": "PRKEY",
+                    "label": "PRKEY Key Code",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PRC3",
+                    "label": "Enables writing to the registers related to the LVD",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "PRC3 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PRC3 bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PRC1",
+                    "label": "Enables writing to the registers related to the operating modes,  the low power consumption modes and the battery backup function",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "PRC1 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PRC1 bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PRC0",
+                    "label": "Enables writing to the registers related to the clock generation circuit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PRC0 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PRC0 bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_PRCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e410",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DPSRSTF",
+                    "label": "Deep Software Standby Reset FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "DPSRSTF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DPSRSTF bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD2RF",
+                    "label": "Voltage Monitor 2 Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "LVD2RF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD2RF bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD1RF",
+                    "label": "Voltage Monitor 1 Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "LVD1RF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD1RF bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD0RF",
+                    "label": "Voltage Monitor 0 Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "LVD0RF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD0RF bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PORF",
+                    "label": "Power-On Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PORF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PORF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_RSTSR0",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e411",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_RSTSR2",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e0c0",
+            "default": "0000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SPERF",
+                    "label": "SP Error Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "1000",
+                    "settings": [
+                        {
+                            "label": "SPERF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SPERF bit ON",
+                            "value": "1000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "BUSMRF",
+                    "label": "Bus Master MPU Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "800",
+                    "settings": [
+                        {
+                            "label": "BUSMRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "BUSMRF bit ON",
+                            "value": "800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "BUSSRF",
+                    "label": "Bus Slave MPU Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "400",
+                    "settings": [
+                        {
+                            "label": "BUSSRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "BUSSRF bit ON",
+                            "value": "400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "REERF",
+                    "label": "RAM ECC Error Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "REERF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "REERF bit ON",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RPERF",
+                    "label": "RAM Parity Error Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "RPERF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RPERF bit ON",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SWRF",
+                    "label": "Software Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "SWRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SWRF bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "WDTRF",
+                    "label": "Watchdog Timer Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "WDTRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "WDTRF bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IWDTRF",
+                    "label": "Independent Watchdog Timer Reset Detect FlagNOTE: Writable only to clear the flag. Confirm the value is 1 and then write 0",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "IWDTRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IWDTRF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_RSTSR1",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e416",
+            "default": "02",
+            "fields": [],
+            "key": "SYSTEM_FWEPROR",
+            "unused": "fffffffd"
+        }
+    ],
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "mcu": "R7FA6M2AF3CFP",
+    "clock": "1"
+}
