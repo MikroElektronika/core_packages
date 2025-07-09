@@ -718,7 +718,7 @@ int32_t FMC_WriteMultiple(uint32_t u32Addr, uint32_t pu32Buf[], uint32_t u32Len)
             {
                 retval += 8;
 
-                /* Up2025-07-15 new data for D0 */
+                /* Update new data for D0 */
                 FMC->MPDAT0 = pu32Buf[i];
                 FMC->MPDAT1 = pu32Buf[i + 1u];
                 tout = FMC_TIMEOUT_MUL_WRITE;
@@ -744,7 +744,7 @@ int32_t FMC_WriteMultiple(uint32_t u32Addr, uint32_t pu32Buf[], uint32_t u32Len)
                 {
                     retval += 8;
 
-                    /* Up2025-07-15 new data for D2*/
+                    /* Update new data for D2*/
                     FMC->MPDAT2 = pu32Buf[i + 2u];
                     FMC->MPDAT3 = pu32Buf[i + 3u];
                     __set_PRIMASK(0u);

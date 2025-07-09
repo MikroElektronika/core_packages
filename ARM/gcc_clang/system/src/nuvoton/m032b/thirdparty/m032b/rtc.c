@@ -44,7 +44,7 @@ static volatile uint32_t g_u32HiHour, g_u32LoHour, g_u32HiMin, g_u32LoMin, g_u32
 /**
   * @brief      Initialize RTC module and start counting
   *
-  * @param[in]  psPt    Specify the time property and current 2025-07-15 and time. It includes:           \n
+  * @param[in]  psPt    Specify the time property and current date and time. It includes:           \n
   *                     u32Year: Year value, range between 2000 ~ 2099.                             \n
   *                     u32Month: Month value, range between 1 ~ 12.                                \n
   *                     u32Day: Day value, range between 1 ~ 31.                                    \n
@@ -62,9 +62,9 @@ static volatile uint32_t g_u32HiHour, g_u32LoHour, g_u32HiMin, g_u32LoMin, g_u32
   *
   * @details    This function is used to: \n
   *                 1. Write initial key to let RTC start count.  \n
-  *                 2. Input parameter indicates start 2025-07-15/time. \n
-  *                 3. User has to make sure that parameters of RTC 2025-07-15/time are reasonable. \n
-  * @note       Null pointer for using default starting 2025-07-15/time.
+  *                 2. Input parameter indicates start date/time. \n
+  *                 3. User has to make sure that parameters of RTC date/time are reasonable. \n
+  * @note       Null pointer for using default starting date/time.
   */
 int32_t RTC_Open(S_RTC_TIME_DATA_T *psPt)
 {
@@ -85,11 +85,11 @@ int32_t RTC_Open(S_RTC_TIME_DATA_T *psPt)
 
     if (psPt == NULL)
     {
-        /* No RTC 2025-07-15/time data */
+        /* No RTC date/time data */
     }
     else
     {
-        /* Set RTC 2025-07-15 and time */
+        /* Set RTC date and time */
         RTC_SetDateAndTime(psPt);
     }
     return 0;
@@ -177,7 +177,7 @@ void RTC_32KCalibration(int32_t i32FrequencyX10000)
   *
   * @return     None
   *
-  * @details    This API is used to get the current RTC 2025-07-15 and time value.
+  * @details    This API is used to get the current RTC date and time value.
   */
 void RTC_GetDateAndTime(S_RTC_TIME_DATA_T *psPt)
 {
@@ -272,7 +272,7 @@ void RTC_GetDateAndTime(S_RTC_TIME_DATA_T *psPt)
   *
   * @return     None
   *
-  * @details    This API is used to get the RTC alarm 2025-07-15 and time setting.
+  * @details    This API is used to get the RTC alarm date and time setting.
   */
 void RTC_GetAlarmDateAndTime(S_RTC_TIME_DATA_T *psPt)
 {
@@ -353,9 +353,9 @@ void RTC_GetAlarmDateAndTime(S_RTC_TIME_DATA_T *psPt)
 }
 
 /**
-  * @brief      Up2025-07-15 Current RTC Date and Time
+  * @brief      Update Current RTC Date and Time
   *
-  * @param[in]  psPt    Specify the time property and current 2025-07-15 and time. It includes:           \n
+  * @param[in]  psPt    Specify the time property and current date and time. It includes:           \n
   *                     u32Year: Year value, range between 2000 ~ 2099.                             \n
   *                     u32Month: Month value, range between 1 ~ 12.                                \n
   *                     u32Day: Day value, range between 1 ~ 31.                                    \n
@@ -370,7 +370,7 @@ void RTC_GetAlarmDateAndTime(S_RTC_TIME_DATA_T *psPt)
   *
   * @return     None
   *
-  * @details    This API is used to up2025-07-15 current 2025-07-15 and time to RTC.
+  * @details    This API is used to update current date and time to RTC.
   */
 void RTC_SetDateAndTime(S_RTC_TIME_DATA_T *psPt)
 {
@@ -378,7 +378,7 @@ void RTC_SetDateAndTime(S_RTC_TIME_DATA_T *psPt)
 
     if (psPt == NULL)
     {
-        /* No RTC 2025-07-15/time data */
+        /* No RTC date/time data */
     }
     else
     {
@@ -433,9 +433,9 @@ void RTC_SetDateAndTime(S_RTC_TIME_DATA_T *psPt)
 }
 
 /**
-  * @brief      Up2025-07-15 RTC Alarm Date and Time
+  * @brief      Update RTC Alarm Date and Time
   *
-  * @param[in]  psPt    Specify the time property and alarm 2025-07-15 and time. It includes:             \n
+  * @param[in]  psPt    Specify the time property and alarm date and time. It includes:             \n
   *                     u32Year: Year value, range between 2000 ~ 2099.                             \n
   *                     u32Month: Month value, range between 1 ~ 12.                                \n
   *                     u32Day: Day value, range between 1 ~ 31.                                    \n
@@ -450,7 +450,7 @@ void RTC_SetDateAndTime(S_RTC_TIME_DATA_T *psPt)
   *
   * @return     None
   *
-  * @details    This API is used to up2025-07-15 alarm 2025-07-15 and time setting to RTC.
+  * @details    This API is used to update alarm date and time setting to RTC.
   */
 void RTC_SetAlarmDateAndTime(S_RTC_TIME_DATA_T *psPt)
 {
@@ -458,7 +458,7 @@ void RTC_SetAlarmDateAndTime(S_RTC_TIME_DATA_T *psPt)
 
     if (psPt == NULL)
     {
-        /* No RTC 2025-07-15/time data */
+        /* No RTC date/time data */
     }
     else
     {
@@ -507,7 +507,7 @@ void RTC_SetAlarmDateAndTime(S_RTC_TIME_DATA_T *psPt)
 }
 
 /**
-  * @brief      Up2025-07-15 RTC Current Date
+  * @brief      Update RTC Current Date
   *
   * @param[in]  u32Year         The year calendar digit of current RTC setting.
   * @param[in]  u32Month        The month calendar digit of current RTC setting.
@@ -518,7 +518,7 @@ void RTC_SetAlarmDateAndTime(S_RTC_TIME_DATA_T *psPt)
   *
   * @return     None
   *
-  * @details    This API is used to up2025-07-15 current 2025-07-15 to RTC.
+  * @details    This API is used to update current date to RTC.
   */
 void RTC_SetDate(uint32_t u32Year, uint32_t u32Month, uint32_t u32Day, uint32_t u32DayOfWeek)
 {
@@ -539,7 +539,7 @@ void RTC_SetDate(uint32_t u32Year, uint32_t u32Month, uint32_t u32Day, uint32_t 
 }
 
 /**
-  * @brief      Up2025-07-15 RTC Current Time
+  * @brief      Update RTC Current Time
   *
   * @param[in]  u32Hour         The hour time digit of current RTC setting.
   * @param[in]  u32Minute       The minute time digit of current RTC setting.
@@ -549,7 +549,7 @@ void RTC_SetDate(uint32_t u32Year, uint32_t u32Month, uint32_t u32Day, uint32_t 
   *
   * @return     None
   *
-  * @details    This API is used to up2025-07-15 current time to RTC.
+  * @details    This API is used to update current time to RTC.
   */
 void RTC_SetTime(uint32_t u32Hour, uint32_t u32Minute, uint32_t u32Second, uint32_t u32TimeMode, uint32_t u32AmPm)
 {
@@ -584,7 +584,7 @@ void RTC_SetTime(uint32_t u32Hour, uint32_t u32Minute, uint32_t u32Second, uint3
 }
 
 /**
-  * @brief      Up2025-07-15 RTC Alarm Date
+  * @brief      Update RTC Alarm Date
   *
   * @param[in]  u32Year         The year calendar digit of RTC alarm setting.
   * @param[in]  u32Month        The month calendar digit of RTC alarm setting.
@@ -592,7 +592,7 @@ void RTC_SetTime(uint32_t u32Hour, uint32_t u32Minute, uint32_t u32Second, uint3
   *
   * @return     None
   *
-  * @details    This API is used to up2025-07-15 alarm 2025-07-15 setting to RTC.
+  * @details    This API is used to update alarm date setting to RTC.
   */
 void RTC_SetAlarmDate(uint32_t u32Year, uint32_t u32Month, uint32_t u32Day)
 {
@@ -610,7 +610,7 @@ void RTC_SetAlarmDate(uint32_t u32Year, uint32_t u32Month, uint32_t u32Day)
 }
 
 /**
-  * @brief      Up2025-07-15 RTC Alarm Time
+  * @brief      Update RTC Alarm Time
   *
   * @param[in]  u32Hour         The hour time digit of RTC alarm setting.
   * @param[in]  u32Minute       The minute time digit of RTC alarm setting.
@@ -620,7 +620,7 @@ void RTC_SetAlarmDate(uint32_t u32Year, uint32_t u32Month, uint32_t u32Day)
   *
   * @return     None
   *
-  * @details    This API is used to up2025-07-15 alarm time setting to RTC.
+  * @details    This API is used to update alarm time setting to RTC.
   */
 void RTC_SetAlarmTime(uint32_t u32Hour, uint32_t u32Minute, uint32_t u32Second, uint32_t u32TimeMode, uint32_t u32AmPm)
 {
@@ -667,7 +667,7 @@ void RTC_SetAlarmTime(uint32_t u32Hour, uint32_t u32Minute, uint32_t u32Second, 
   *
   * @return     None
   *
-  * @details    This API is used to enable or disable RTC alarm 2025-07-15 mask function.
+  * @details    This API is used to enable or disable RTC alarm date mask function.
   */
 void RTC_SetAlarmDateMask(uint8_t u8IsTenYMsk, uint8_t u8IsYMsk, uint8_t u8IsTenMMsk, uint8_t u8IsMMsk, uint8_t u8IsTenDMsk, uint8_t u8IsDMsk)
 {
@@ -716,7 +716,7 @@ void RTC_SetAlarmTimeMask(uint8_t u8IsTenHMsk, uint8_t u8IsHMsk, uint8_t u8IsTen
   * @retval     5   Friday
   * @retval     6   Saturday
   *
-  * @details    This API is used to get day of the week of current RTC 2025-07-15.
+  * @details    This API is used to get day of the week of current RTC date.
   */
 uint32_t RTC_GetDayOfWeek(void)
 {

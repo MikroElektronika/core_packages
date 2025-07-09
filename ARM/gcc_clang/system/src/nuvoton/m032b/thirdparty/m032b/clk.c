@@ -165,7 +165,7 @@ uint32_t CLK_GetPCLK0Freq(void)
 {
     uint32_t PCLK0Div;
 
-    SystemCoreClockUp2025-07-15();
+    SystemCoreClockUpdate();
     PCLK0Div = (CLK->PCLKDIV & CLK_PCLKDIV_APB0DIV_Msk) >> CLK_PCLKDIV_APB0DIV_Pos;
     return (SystemCoreClock >> PCLK0Div);
 }
@@ -180,7 +180,7 @@ uint32_t CLK_GetPCLK1Freq(void)
 {
     uint32_t PCLK1Div;
 
-    SystemCoreClockUp2025-07-15();
+    SystemCoreClockUpdate();
     PCLK1Div = (CLK->PCLKDIV & CLK_PCLKDIV_APB1DIV_Msk) >> CLK_PCLKDIV_APB1DIV_Pos;
     return (SystemCoreClock >> PCLK1Div);
 }
@@ -193,7 +193,7 @@ uint32_t CLK_GetPCLK1Freq(void)
   */
 uint32_t CLK_GetHCLKFreq(void)
 {
-    SystemCoreClockUp2025-07-15();
+    SystemCoreClockUpdate();
     return SystemCoreClock;
 }
 
@@ -205,7 +205,7 @@ uint32_t CLK_GetHCLKFreq(void)
   */
 uint32_t CLK_GetCPUFreq(void)
 {
-    SystemCoreClockUp2025-07-15();
+    SystemCoreClockUpdate();
     return SystemCoreClock;
 }
 
@@ -260,7 +260,7 @@ uint32_t CLK_SetCoreClock(uint32_t u32Hclk)
 
     /* Select HCLK clock source to PLL,
        Select HCLK clock source divider as 2
-       and up2025-07-15 system core clock
+       and update system core clock
     */
     CLK_SetHCLK(CLK_CLKSEL0_HCLKSEL_PLL, CLK_CLKDIV0_HCLK(2));
 
@@ -304,8 +304,8 @@ void CLK_SetHCLK(uint32_t u32ClkSrc, uint32_t u32ClkDiv)
     /* Switch HCLK to new HCLK source */
     CLK->CLKSEL0 = (CLK->CLKSEL0 & (~CLK_CLKSEL0_HCLKSEL_Msk)) | u32ClkSrc;
 
-    /* Up2025-07-15 System Core Clock */
-    SystemCoreClockUp2025-07-15();
+    /* Update System Core Clock */
+    SystemCoreClockUpdate();
 
     /* Disable HIRC if HIRC is disabled before switching HCLK source */
     if(u32HIRCSTB == 0)
