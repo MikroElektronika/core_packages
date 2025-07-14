@@ -1,0 +1,158 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/XC8/pic_xc8_pic/def/PIC18F67J94.json",
+    "flash": "131072",
+    "ram": "3862",
+    "board_regex": "PIC18F67J94_DEVELOPMENT_BOARD",
+    "settings": {
+        "clock": 64,
+        "scheme": "PIC18F67J94 Development Board",
+        "mcu": "PIC18F67J94",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "STVREN",
+                "value": "ON"
+            },
+            {
+                "key": "XINST",
+                "value": "OFF"
+            },
+            {
+                "key": "BOREN",
+                "value": "ON"
+            },
+            {
+                "key": "BORV",
+                "value": "1"
+            },
+            {
+                "key": "CP0",
+                "value": "OFF"
+            },
+            {
+                "key": "FOSC",
+                "value": "PRIPLL"
+            },
+            {
+                "key": "SOSCSEL",
+                "value": "LOW"
+            },
+            {
+                "key": "CLKOEN",
+                "value": "ON"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "PLLDIV",
+                "value": "PLL4X"
+            },
+            {
+                "key": "POSCMD",
+                "value": "HS"
+            },
+            {
+                "key": "FSCM",
+                "value": "CSDCMD"
+            },
+            {
+                "key": "WPFP",
+                "value": "WPFP255"
+            },
+            {
+                "key": "WPDIS",
+                "value": "WPDIS"
+            },
+            {
+                "key": "WPEND",
+                "value": "WPENDMEM"
+            },
+            {
+                "key": "WPCFG",
+                "value": "WPCFGDIS"
+            },
+            {
+                "key": "T5GSEL",
+                "value": "T5G"
+            },
+            {
+                "key": "CINASEL",
+                "value": "DEFAULT"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "OFF"
+            },
+            {
+                "key": "LS48MHZ",
+                "value": "SYSX2"
+            },
+            {
+                "key": "MSSPMSK2",
+                "value": "MSK7"
+            },
+            {
+                "key": "MSSPMSK1",
+                "value": "MSK7"
+            },
+            {
+                "key": "WDTWIN",
+                "value": "PS25_0"
+            },
+            {
+                "key": "WDTCLK",
+                "value": "FRC"
+            },
+            {
+                "key": "WDTPS",
+                "value": "32768"
+            },
+            {
+                "key": "WDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "WINDIS",
+                "value": "WDTSTD"
+            },
+            {
+                "key": "WPSA",
+                "value": "128"
+            },
+            {
+                "key": "RETEN",
+                "value": "OFF"
+            },
+            {
+                "key": "VBTBOR",
+                "value": "ON"
+            },
+            {
+                "key": "DSBOREN",
+                "value": "ON"
+            },
+            {
+                "key": "DSBITEN",
+                "value": "ON"
+            },
+            {
+                "key": "DSWDTPS",
+                "value": "DSWDTPS1F"
+            },
+            {
+                "key": "DSWDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "DSWDTOSC",
+                "value": "LPRC"
+            }
+        ]
+    }
+}
