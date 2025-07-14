@@ -1,0 +1,2540 @@
+{
+    "config_registers": [
+        {
+            "address": "4001e020",
+            "default": "44000404",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "Reserved",
+                    "label": "This bit is read as 0. The write value should be 0",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": "Reserved bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reserved bit ON",
+                            "value": "80000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "44000404",
+                    "key": "FCK",
+                    "label": "Flash IF Clock (FCLK) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "44000404",
+                    "key": "ICK",
+                    "label": "System Clock (ICLK) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "44000404",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000000000. The write value should be 0000000000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "8191",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "44000404",
+                    "key": "PCKB",
+                    "label": "Peripheral Module Clock B (PCLKB) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "44000404",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "44000404",
+                    "key": "PCKD",
+                    "label": "Peripheral Module Clock D (PCLKD) Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_SCKDIVCR",
+            "unused": "bbfffbfb"
+        },
+        {
+            "address": "4001e026",
+            "default": "01",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "CKSEL",
+                    "label": "Clock Source Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_SCKSCR",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e031",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MEMWAIT",
+                    "label": "Memory Wait Cycle Select",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "MEMWAIT bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MEMWAIT bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MEMWAIT",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e032",
+            "default": "01",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MOSTP",
+                    "label": "Main Clock Oscillator Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "MOSTP bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOSTP bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCCR",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e036",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HCSTP",
+                    "label": "HOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "HCSTP bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HCSTP bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e038",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCSTP",
+                    "label": "MOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "MCSTP bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MCSTP bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOCOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e03c",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_OSCSF",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e03e",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKOEN",
+                    "label": "Clock out enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "CKOEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "CKOEN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "CKODIV",
+                    "label": "Clock out input frequency Division Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "Reserved",
+                    "label": "This bit is read as 0. The write value should be 0",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "Reserved bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reserved bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "CKOSEL",
+                    "label": "Clock out source select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_CKOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e040",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OSTDE",
+                    "label": "Oscillation Stop Detection Function Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "OSTDE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "OSTDE bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000000. The write value should be 000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OSTDIE",
+                    "label": "Oscillation Stop Detection Interrupt Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "OSTDIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "OSTDIE bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_OSTDCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e041",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OSTDF",
+                    "label": "Oscillation Stop Detection Flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "OSTDF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "OSTDF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_OSTDSR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e061",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_MOCOUTCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e062",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_HOCOUTCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e0d1",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SDADCCKEN",
+                    "label": "24-bit Sigma-Delta A/D Converter Clock Select",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "SDADCCKEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SDADCCKEN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000000. The write value should be 000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SDADCCKSEL",
+                    "label": "24-bit Sigma-Delta A/D Converter Clock Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "SDADCCKSEL bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SDADCCKSEL bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SDADCCKCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e413",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "Reserved",
+                    "label": "This bit is read as 0. The write value should be 0",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Reserved bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reserved bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MOSEL",
+                    "label": "Main Clock Oscillator Switching",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "MOSEL bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOSEL bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00. The write value should be 00",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MODRV1",
+                    "label": "Main Clock Oscillator Drive Capability 1 Switching",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "MODRV1 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MODRV1 bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_MOMCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e480",
+            "default": "01",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SOSTP",
+                    "label": "Sub-Clock Oscillator Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "SOSTP bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SOSTP bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SOSCCR",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e481",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000000. The write value should be 000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "SODRV",
+                    "label": "Sub Clock Oscillator Drive Capability Switching",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_SOMCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e490",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LCSTP",
+                    "label": "LOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "LCSTP bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LCSTP bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LOCOCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e492",
+            "default": "00",
+            "fields": [],
+            "key": "SYSTEM_LOCOUTCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e0a2",
+            "default": "05",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "05",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000. The write value should be 0000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "05",
+                    "key": "MSTS",
+                    "label": "Main clock oscillator wait time setting",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_MOSCWTCR",
+            "unused": "fffffffa"
+        },
+        {
+            "address": "4001e0a5",
+            "default": "05",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "05",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "05",
+                    "key": "HSTS",
+                    "label": "HOCO wait time setting",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_HOCOWTCR",
+            "unused": "fffffffa"
+        },
+        {
+            "address": "4001e00c",
+            "default": "0000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SSBY",
+                    "label": "Software Standby",
+                    "mask": "8000",
+                    "settings": [
+                        {
+                            "label": "SSBY bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SSBY bit ON",
+                            "value": "8000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0000",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000000000000000. The write value should be 000000000000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "32767",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_SBYCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e01c",
+            "default": "FFBFFFFF",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "FFBFFFFF",
+                    "key": "Reserved",
+                    "label": "These bits are read as 111111111. The write value should be 111111111",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "511",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MSTPA22",
+                    "label": "Data Transfer Controller Module Stop",
+                    "mask": "400000",
+                    "settings": [
+                        {
+                            "label": "MSTPA22 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MSTPA22 bit ON",
+                            "value": "400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "FFBFFFFF",
+                    "key": "Reserved",
+                    "label": "These bits are read as 1111111111111111111111. The write value should be 1111111111111111111111",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "4194303",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_MSTPCRA",
+            "unused": "400000"
+        },
+        {
+            "address": "4001e092",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZE",
+                    "label": "Snooze Mode Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "SNZE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZE bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZDTCEN",
+                    "label": "DTC Enable in Snooze Mode",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "SNZDTCEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZDTCEN bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RXDREQEN",
+                    "label": "RXD0 Snooze Request Enable NOTE: Do not set to 1 other than in asynchronous mode",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "RXDREQEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RXDREQEN bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SNZCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e094",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SCI0UMTED",
+                    "label": "SCI0 address unmatch Snooze End EnableNote: Do not set to 1 other than in asynchronous mode",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "SCI0UMTED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SCI0UMTED bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00. The write value should be 00",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AD0UMTED",
+                    "label": "AD compare mismatch 0 Snooze End Enable",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "AD0UMTED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AD0UMTED bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AD0MATED",
+                    "label": "AD compare match 0 Snooze End Enable",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "AD0MATED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AD0MATED bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DTCNZRED",
+                    "label": "Not Last DTC transmission completion Snooze End Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "DTCNZRED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DTCNZRED bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DTCZRED",
+                    "label": "Last DTC transmission completion Snooze End Enable",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "DTCZRED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DTCZRED bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "AGTUNFED",
+                    "label": "AGT1 underflow Snooze End Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "AGTUNFED bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "AGTUNFED bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SNZEDCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e098",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "Reserved",
+                    "label": "This bit is read as 0. The write value should be 0",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": "Reserved bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reserved bit ON",
+                            "value": "80000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN30",
+                    "label": "Snooze Request Enable 30Enable AGT1 compare match B snooze request",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN30 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN30 bit ON",
+                            "value": "40000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN29",
+                    "label": "Snooze Request Enable 29Enable AGT1 compare match A snooze request",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN29 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN29 bit ON",
+                            "value": "20000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN28",
+                    "label": "Snooze Request Enable 28Enable AGT1 underflow snooze request",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN28 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN28 bit ON",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00. The write value should be 00",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN25",
+                    "label": "Snooze Request Enable 25Enable RTC period snooze request",
+                    "mask": "2000000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN25 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN25 bit ON",
+                            "value": "2000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN",
+                    "label": "Snooze Request Enable 24Enable RTC alarm snooze request",
+                    "mask": "1800000",
+                    "settings": [
+                        {
+                            "label": "TODO SNZREQEN - value 0 shifted by 23",
+                            "value": "0"
+                        },
+                        {
+                            "label": "TODO SNZREQEN - value 1 shifted by 23",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "TODO SNZREQEN - value 2 shifted by 23",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "TODO SNZREQEN - value 3 shifted by 23",
+                            "value": "1800000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN17",
+                    "label": "Snooze Request Enable 17Enable KINT snooze request",
+                    "mask": "20000",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN17 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN17 bit ON",
+                            "value": "20000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000000000. The write value should be 000000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "511",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN7",
+                    "label": "Snooze Request Enable 7Enable IRQ7 pin snooze request",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN7 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN7 bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN6",
+                    "label": "Snooze Request Enable 6Enable IRQ6 pin snooze request",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN6 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN6 bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN5",
+                    "label": "Snooze Request Enable 5Enable IRQ5 pin snooze request",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN5 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN5 bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN4",
+                    "label": "Snooze Request Enable 4Enable IRQ4 pin snooze request",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN4 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN4 bit ON",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN3",
+                    "label": "Snooze Request Enable 3Enable IRQ3 pin snooze request",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN3 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN3 bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN2",
+                    "label": "Snooze Request Enable 2Enable IRQ2 pin snooze request",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN2 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN2 bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN1",
+                    "label": "Snooze Request Enable 1Enable IRQ1 pin snooze request",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN1 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN1 bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SNZREQEN0",
+                    "label": "Snooze Request Enable 0Enable IRQ0 pin snooze request",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "SNZREQEN0 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SNZREQEN0 bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SNZREQCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e09e",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "FLSTOP",
+                    "label": "Selecting ON/OFF of the Flash Memory Operation",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "FLSTOP bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "FLSTOP bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_FLSTOP",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e0a0",
+            "default": "02",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "02",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "02",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00. The write value should be 00",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "02",
+                    "key": "OPCM",
+                    "label": "Operating Power Control Mode Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_OPCCR",
+            "unused": "fffffffd"
+        },
+        {
+            "address": "4001e0aa",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SOPCM",
+                    "label": "Sub Operating Power Control Mode Select",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "SOPCM bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SOPCM bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SOPCCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e417",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "Reserved",
+                    "label": "This bit is read as 0. The write value should be 0",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Reserved bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reserved bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD2E",
+                    "label": "Voltage Detection 2 Enable",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "LVD2E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD2E bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD1E",
+                    "label": "Voltage Detection 1 Enable",
+                    "mask": "20",
+                    "settings": [
+                        {
+                            "label": "LVD1E bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD1E bit ON",
+                            "value": "20"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_LVCMPCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e418",
+            "default": "07",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "07",
+                    "key": "LVD2LVL",
+                    "label": "Voltage Detection 2 Level Select (Standard voltage during drop in voltage)",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "07",
+                    "key": "LVD1LVL",
+                    "label": "Voltage Detection 1 Level Select (Standard voltage during drop in voltage)",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_LVDLVLR",
+            "unused": "fffffff8"
+        },
+        {
+            "address": "4001e41a",
+            "default": "80",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RN",
+                    "label": "Voltage Monitor 1 Reset Negate Select",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "RN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RI",
+                    "label": "Voltage Monitor 1 Circuit Mode Select",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "RI bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RI bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "80",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPE",
+                    "label": "Voltage Monitor 1 Circuit Comparison Result Output Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "CMPE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "CMPE bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "Reserved",
+                    "label": "This bit is read as 0. The write value should be 0",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Reserved bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reserved bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RIE",
+                    "label": "Voltage Monitor 1 Interrupt/ Reset Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "RIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RIE bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LVD1CR0",
+            "unused": "ffffff7f"
+        },
+        {
+            "address": "4001e41b",
+            "default": "80",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RN",
+                    "label": "Voltage Monitor 2 Reset Negate Select",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "RN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RI",
+                    "label": "Voltage Monitor 2 Circuit Mode Select",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "RI bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RI bit ON",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "80",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CMPE",
+                    "label": "Voltage Monitor 2 Circuit Comparison Result Output Enable",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "CMPE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "CMPE bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "Reserved",
+                    "label": "This bit is read as 0. The write value should be 0",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Reserved bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reserved bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RIE",
+                    "label": "Voltage Monitor 2 Interrupt/Reset Enable",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "RIE bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RIE bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LVD2CR0",
+            "unused": "ffffff7f"
+        },
+        {
+            "address": "4001e0e0",
+            "default": "01",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IRQSEL",
+                    "label": "Voltage Monitor 1 Interrupt Type Select",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "IRQSEL bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IRQSEL bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "IDTSEL",
+                    "label": "Voltage Monitor 1 Interrupt Generation Condition Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_LVD1CR1",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e0e1",
+            "default": "02",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "02",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000000. The write value should be 000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DET",
+                    "label": "Voltage Monitor 1 Voltage Change Detection Flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DET bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DET bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LVD1SR",
+            "unused": "fffffffd"
+        },
+        {
+            "address": "4001e0e2",
+            "default": "01",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IRQSEL",
+                    "label": "Voltage Monitor 2 Interrupt Type Select",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "IRQSEL bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IRQSEL bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "01",
+                    "key": "IDTSEL",
+                    "label": "Voltage Monitor 2 Interrupt Generation Condition Select",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "3",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_LVD2CR1",
+            "unused": "fffffffe"
+        },
+        {
+            "address": "4001e0e3",
+            "default": "02",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "02",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000000. The write value should be 000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DET",
+                    "label": "Voltage Monitor 2 Voltage Change Detection Flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "DET bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DET bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LVD2SR",
+            "unused": "fffffffd"
+        },
+        {
+            "address": "4001e40e",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DBGEN",
+                    "label": "Debugger Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "DBGEN bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "DBGEN bit ON",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSTEM_SYOCDCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e3fe",
+            "default": "0000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "0000",
+                    "key": "PRKEY",
+                    "label": "PRKEY Key Code",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "0000",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000. The write value should be 0000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PRC3",
+                    "label": "Enables writing to the registers related to the LVD",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "PRC3 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PRC3 bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "Reserved",
+                    "label": "This bit is read as 0. The write value should be 0",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "Reserved bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Reserved bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PRC1",
+                    "label": "Enables writing to the registers related to the operating modes,  the low power consumption modes and the battery backup function",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "PRC1 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PRC1 bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PRC0",
+                    "label": "Enables writing to the registers related to the clock generation circuit",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PRC0 bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PRC0 bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_PRCR",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e410",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000. The write value should be 0000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD2RF",
+                    "label": "Voltage Monitor 2 Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written with 0 after the reset flag is read as 1",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "LVD2RF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD2RF bit ON",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD1RF",
+                    "label": "Voltage Monitor 1 Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written with 0 after the reset flag is read as 1",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "LVD1RF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD1RF bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LVD0RF",
+                    "label": "Voltage Monitor 0 Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written with 0 after the reset flag is read as 1",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "LVD0RF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LVD0RF bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PORF",
+                    "label": "Power-On Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written with 0 after the reset flag is read as 1",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PORF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PORF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_RSTSR0",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e411",
+            "default": "00",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00",
+                    "key": "Reserved",
+                    "label": "These bits are read as 0000000. The write value should be 0000000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CWSF",
+                    "label": "Cold/Warm Start Determination FlagNote: Only 1 can be written to set the flag",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "CWSF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "CWSF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_RSTSR2",
+            "unused": "ffffffff"
+        },
+        {
+            "address": "4001e0c0",
+            "default": "0000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "0000",
+                    "key": "Reserved",
+                    "label": "These bits are read as 000. The write value should be 000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SPERF",
+                    "label": "SP Error Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written as 0 after the reset flag is read as 1",
+                    "mask": "1000",
+                    "settings": [
+                        {
+                            "label": "SPERF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SPERF bit ON",
+                            "value": "1000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "BUSMRF",
+                    "label": "Bus Master MPU Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written as 0 after the reset flag is read as 1",
+                    "mask": "800",
+                    "settings": [
+                        {
+                            "label": "BUSMRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "BUSMRF bit ON",
+                            "value": "800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "BUSSRF",
+                    "label": "Bus Slave MPU Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written as 0 after the reset flag is read as 1",
+                    "mask": "400",
+                    "settings": [
+                        {
+                            "label": "BUSSRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "BUSSRF bit ON",
+                            "value": "400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "REERF",
+                    "label": "RAM ECC Error Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written as 0 after the reset flag is read as 1",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "REERF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "REERF bit ON",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RPERF",
+                    "label": "RAM Parity Error Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written as 0 after the reset flag is read as 1",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "RPERF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "RPERF bit ON",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0000",
+                    "key": "Reserved",
+                    "label": "These bits are read as 00000. The write value should be 00000",
+                    "mask": "0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "31",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SWRF",
+                    "label": "Software Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written as 0 after the reset flag is read as 1",
+                    "mask": "4",
+                    "settings": [
+                        {
+                            "label": "SWRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SWRF bit ON",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "WDTRF",
+                    "label": "Watchdog Timer Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written as 0 after the reset flag is read as 1",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "WDTRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "WDTRF bit ON",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IWDTRF",
+                    "label": "Independent Watchdog Timer Reset Detect FlagNote: Only 0 can be written to clear the flag. The reset flag must be written as 0 after the reset flag is read as 1",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "IWDTRF bit OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IWDTRF bit ON",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_RSTSR1",
+            "unused": "ffffffff"
+        }
+    ],
+    "core": "M23",
+    "delay_src_path": "delays/m23/__lib_delays.c",
+    "mcu": "R7FA2A1AB3CNF",
+    "clock": "1"
+}

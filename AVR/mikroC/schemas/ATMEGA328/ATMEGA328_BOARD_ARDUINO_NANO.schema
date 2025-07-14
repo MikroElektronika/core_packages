@@ -1,0 +1,165 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "AVR/mikroC/avr_mikroc_avr_lte64k/def/ATMEGA328.json",
+    "flash": "32768",
+    "ram": "2048",
+    "board_regex": "BOARD_ARDUINO_NANO",
+    "settings": {
+        "clock": "8",
+        "scheme": "Arduino Nano",
+        "mcu": "ATMEGA328",
+        "core": "LTE64K",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "SUT_CKSEL",
+                        "value": "22"
+                    },
+                    {
+                        "key": "CKOUT",
+                        "value": "40"
+                    },
+                    {
+                        "key": "CKDIV8",
+                        "value": "0"
+                    },
+                    {
+                        "key": "BOOTRST",
+                        "value": "1"
+                    },
+                    {
+                        "key": "BOOTSZ",
+                        "value": "0"
+                    },
+                    {
+                        "key": "EESAVE",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WDTON",
+                        "value": "10"
+                    },
+                    {
+                        "key": "SPIEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "DWEN",
+                        "value": "40"
+                    },
+                    {
+                        "key": "RSTDISBL",
+                        "value": "80"
+                    },
+                    {
+                        "key": "BODLEVEL",
+                        "value": "7"
+                    }
+                ],
+                "key": "LOW"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SUT_CKSEL",
+                        "value": "22"
+                    },
+                    {
+                        "key": "CKOUT",
+                        "value": "40"
+                    },
+                    {
+                        "key": "CKDIV8",
+                        "value": "0"
+                    },
+                    {
+                        "key": "BOOTRST",
+                        "value": "1"
+                    },
+                    {
+                        "key": "BOOTSZ",
+                        "value": "0"
+                    },
+                    {
+                        "key": "EESAVE",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WDTON",
+                        "value": "10"
+                    },
+                    {
+                        "key": "SPIEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "DWEN",
+                        "value": "40"
+                    },
+                    {
+                        "key": "RSTDISBL",
+                        "value": "80"
+                    },
+                    {
+                        "key": "BODLEVEL",
+                        "value": "7"
+                    }
+                ],
+                "key": "HIGH"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SUT_CKSEL",
+                        "value": "22"
+                    },
+                    {
+                        "key": "CKOUT",
+                        "value": "40"
+                    },
+                    {
+                        "key": "CKDIV8",
+                        "value": "0"
+                    },
+                    {
+                        "key": "BOOTRST",
+                        "value": "1"
+                    },
+                    {
+                        "key": "BOOTSZ",
+                        "value": "0"
+                    },
+                    {
+                        "key": "EESAVE",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WDTON",
+                        "value": "10"
+                    },
+                    {
+                        "key": "SPIEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "DWEN",
+                        "value": "40"
+                    },
+                    {
+                        "key": "RSTDISBL",
+                        "value": "80"
+                    },
+                    {
+                        "key": "BODLEVEL",
+                        "value": "7"
+                    }
+                ],
+                "key": "EXTENDED"
+            }
+        ]
+    }
+}
