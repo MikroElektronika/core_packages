@@ -1,0 +1,177 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "AVR/mikroC/avr_mikroc_avr_gt64k/def/ATMEGA324PB.json",
+    "flash": "32768",
+    "ram": "2048",
+    "board_regex": "ATMEGA324PB_XPLAINED_PRO",
+    "settings": {
+        "clock": "8",
+        "scheme": "ATMEGA324PB XPLAINED PRO",
+        "mcu": "ATMEGA324PB",
+        "core": "LTE64K",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "SUT_CKSEL",
+                        "value": "22"
+                    },
+                    {
+                        "key": "CKOUT",
+                        "value": "40"
+                    },
+                    {
+                        "key": "CKDIV8",
+                        "value": "0"
+                    },
+                    {
+                        "key": "BOOTRST",
+                        "value": "1"
+                    },
+                    {
+                        "key": "BOOTSZ",
+                        "value": "0"
+                    },
+                    {
+                        "key": "EESAVE",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WDTON",
+                        "value": "10"
+                    },
+                    {
+                        "key": "SPIEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "OCDEN",
+                        "value": "80"
+                    },
+                    {
+                        "key": "BODLEVEL",
+                        "value": "7"
+                    },
+                    {
+                        "key": "CFD",
+                        "value": "0"
+                    }
+                ],
+                "key": "LOW"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SUT_CKSEL",
+                        "value": "22"
+                    },
+                    {
+                        "key": "CKOUT",
+                        "value": "40"
+                    },
+                    {
+                        "key": "CKDIV8",
+                        "value": "0"
+                    },
+                    {
+                        "key": "BOOTRST",
+                        "value": "1"
+                    },
+                    {
+                        "key": "BOOTSZ",
+                        "value": "0"
+                    },
+                    {
+                        "key": "EESAVE",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WDTON",
+                        "value": "10"
+                    },
+                    {
+                        "key": "SPIEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "OCDEN",
+                        "value": "80"
+                    },
+                    {
+                        "key": "BODLEVEL",
+                        "value": "7"
+                    },
+                    {
+                        "key": "CFD",
+                        "value": "0"
+                    }
+                ],
+                "key": "HIGH"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SUT_CKSEL",
+                        "value": "22"
+                    },
+                    {
+                        "key": "CKOUT",
+                        "value": "40"
+                    },
+                    {
+                        "key": "CKDIV8",
+                        "value": "0"
+                    },
+                    {
+                        "key": "BOOTRST",
+                        "value": "1"
+                    },
+                    {
+                        "key": "BOOTSZ",
+                        "value": "0"
+                    },
+                    {
+                        "key": "EESAVE",
+                        "value": "8"
+                    },
+                    {
+                        "key": "WDTON",
+                        "value": "10"
+                    },
+                    {
+                        "key": "SPIEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "OCDEN",
+                        "value": "80"
+                    },
+                    {
+                        "key": "BODLEVEL",
+                        "value": "7"
+                    },
+                    {
+                        "key": "CFD",
+                        "value": "0"
+                    }
+                ],
+                "key": "EXTENDED"
+            }
+        ]
+    }
+}
