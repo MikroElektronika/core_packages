@@ -1,0 +1,18 @@
+{
+    "def_file": "R7FA0E2094CFL.json",
+    "family_uid": "RA0E2",
+    "flash": "131072",
+    "icon": "images/mcu/renesas.png",
+    "max_speed": "32.000",
+    "name": "R7FA0E2094CFL",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"R7FA0E2094CFL\",\"CORE_NAME\":\"M23\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "R7FA0E2094CFL",
+    "vendor": "Renesas",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ra0e2\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ra0e2\"}"
+}
