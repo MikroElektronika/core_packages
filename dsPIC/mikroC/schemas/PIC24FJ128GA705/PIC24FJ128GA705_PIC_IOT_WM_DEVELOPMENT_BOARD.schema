@@ -1,0 +1,1178 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/mikroC/dspic_mikroc_pic24/def/PIC24FJ128GA705.json",
+    "flash": "131072",
+    "ram": "16384",
+    "board_regex": "PIC_IOT_WM_DEVELOPMENT_BOARD",
+    "settings": {
+        "clock": "4",
+        "scheme": "PIC-IOT WM DEVELOPMENT BOARD",
+        "mcu": "PIC24FJ128GA705",
+        "core": "DSPIC",
+        "delay_src_path": "",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "BSLIM",
+                        "value": "00001FFD"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000078"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FSEC"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "BSLIM",
+                        "value": "00001FFD"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000078"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FBSLIM"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "BSLIM",
+                        "value": "00001FFD"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000078"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FOSCSEL"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "BSLIM",
+                        "value": "00001FFD"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000078"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FOSC"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "BSLIM",
+                        "value": "00001FFD"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000078"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FWDT"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "BSLIM",
+                        "value": "00001FFD"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000078"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FPOR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "BSLIM",
+                        "value": "00001FFD"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000078"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FICD"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "BWRP",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "BSS",
+                        "value": "00000006"
+                    },
+                    {
+                        "key": "BSEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "GWRP",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "GSS",
+                        "value": "000000C0"
+                    },
+                    {
+                        "key": "CWRP",
+                        "value": "00000100"
+                    },
+                    {
+                        "key": "CSS",
+                        "value": "00000E00"
+                    },
+                    {
+                        "key": "AIVTDIS",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "BSLIM",
+                        "value": "00001FFD"
+                    },
+                    {
+                        "key": "FNOSC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMODE",
+                        "value": "00000078"
+                    },
+                    {
+                        "key": "IESO",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "POSCMD",
+                        "value": "00000003"
+                    },
+                    {
+                        "key": "OSCIOFCN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCSEL",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "PLLSS",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "IOL1WAY",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "FCKSM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTPS",
+                        "value": "0000000F"
+                    },
+                    {
+                        "key": "FWPSA",
+                        "value": "00000010"
+                    },
+                    {
+                        "key": "FWDTEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "WINDIS",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "WDTWIN",
+                        "value": "00000300"
+                    },
+                    {
+                        "key": "WDTCMX",
+                        "value": "00000800"
+                    },
+                    {
+                        "key": "WDTCLK",
+                        "value": "00006000"
+                    },
+                    {
+                        "key": "BOREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LPCFG",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "DNVPEN",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ICS",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "JTAGEN",
+                        "value": "00000020"
+                    },
+                    {
+                        "key": "DEBUG",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ALTCMPI",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "TMPRPIN",
+                        "value": "00000004"
+                    },
+                    {
+                        "key": "SOSCHP",
+                        "value": "00000008"
+                    },
+                    {
+                        "key": "ALTI2C1",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "FDEVOPT1"
+            }
+        ]
+    }
+}

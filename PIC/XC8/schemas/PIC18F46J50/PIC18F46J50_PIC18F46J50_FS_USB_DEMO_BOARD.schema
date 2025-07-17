@@ -1,0 +1,114 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "PIC/XC8/pic_xc8_pic/def/PIC18F46J50.json",
+    "flash": "65536",
+    "ram": "3800",
+    "board_regex": "PIC18F46J50_FS_USB_DEMO_BOARD",
+    "settings": {
+        "clock": 64,
+        "scheme": "PIC18F46J50 FS USB DEMO BOARD",
+        "mcu": "PIC18F46J50",
+        "core": "P18",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "WDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "PLLDIV",
+                "value": "PLL4X"
+            },
+            {
+                "key": "STVREN",
+                "value": "ON"
+            },
+            {
+                "key": "XINST",
+                "value": "OFF"
+            },
+            {
+                "key": "DEBUG",
+                "value": "OFF"
+            },
+            {
+                "key": "CPUDIV",
+                "value": "OSC1"
+            },
+            {
+                "key": "CP0",
+                "value": "OFF"
+            },
+            {
+                "key": "OSC",
+                "value": "ECPLL"
+            },
+            {
+                "key": "T1DIG",
+                "value": "ON"
+            },
+            {
+                "key": "LPT1OSC",
+                "value": "OFF"
+            },
+            {
+                "key": "FCMEN",
+                "value": "ON"
+            },
+            {
+                "key": "IESO",
+                "value": "ON"
+            },
+            {
+                "key": "WDTPS",
+                "value": "32768"
+            },
+            {
+                "key": "DSWDTOSC",
+                "value": "LPRC"
+            },
+            {
+                "key": "RTCOSC",
+                "value": "T1OSCREF"
+            },
+            {
+                "key": "DSBOREN",
+                "value": "ON"
+            },
+            {
+                "key": "DSWDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "DSWDTPS",
+                "value": "DSWDTPS1F"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "OFF"
+            },
+            {
+                "key": "MSSP7B_EN",
+                "value": "MSK7"
+            },
+            {
+                "key": "WPFP",
+                "value": "WPFP255"
+            },
+            {
+                "key": "WPEND",
+                "value": "WPENDMEM"
+            },
+            {
+                "key": "WPCFG",
+                "value": "WPCFGDIS"
+            },
+            {
+                "key": "WPDIS",
+                "value": "WPDIS"
+            }
+        ]
+    }
+}
