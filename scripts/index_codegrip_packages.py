@@ -25,7 +25,7 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip, start_date
         if package_release_date.strftime("%Y-%m-%d") >= start_date and package_release_date.strftime("%Y-%m-%d") <= end_date:
             previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
             if previous_version != new_version and len(mcus_to_index):
-                
+
                 if package_items[package]['release_date'].split('T')[0] == current_date.split('T')[0]:
                     published_at_date = current_date
                 else:
@@ -35,12 +35,12 @@ def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip, start_date
                     "name": package_items[package]['package_name'],
                     "display_name": package_items[package]['display_name'],
                     "author": "MIKROE",
-                    "hidden": False,
+                    "hidden": True,
                     "type": "programmer_dfp",
                     "version": new_version,
                     "package_version": package_items[package]['package_version'],
                     # Index it to the date that is not visible in NECTO.
-                    # After script is finished make sure to run 
+                    # After script is finished make sure to run
                     # https://github.com/MikroElektronika/mikrosdk_v2/actions/workflows/updateReleaseIndexDate.yaml
                     # with the settings set according to release spreadsheet.
                     "published_at": published_at_date,
