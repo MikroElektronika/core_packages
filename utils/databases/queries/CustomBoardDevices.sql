@@ -37,6 +37,18 @@ WHERE
                 )
         )
     )
+    AND CASE
+        WHEN (
+            SELECT
+                SelectedSDK.uid
+            FROM
+                SelectedSDK
+            LIMIT
+                1
+        ) LIKE '%legacy%' THEN 1
+        WHEN 0 == %3 THEN (Devices.sdk_support == 1)
+        ELSE 1
+    END
     AND
     (
         (Devices.name LIKE '%%2%')
