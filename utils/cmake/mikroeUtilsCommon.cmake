@@ -375,14 +375,18 @@ function(add_ld_all_targets DIR project_dir linker_name)
         foreach(TGT IN LISTS TGTS)
             get_target_property(target_type ${TGT} TYPE)
             if(${target_type} STREQUAL "EXECUTABLE")
-                target_sources(${TGT}
-                    PUBLIC
-                        ${project_dir}/.meproject/setup/FileLinker/${linker_name}
-                )
-                target_link_options(${TGT}
-                    PUBLIC
-                        -T ${project_dir}/.meproject/setup/FileLinker/${linker_name}
-                )
+                set(dualcore_path "${project_dir}/${linker_name}")
+                set(singlecore_path "${project_dir}/.meproject/setup/FileLinker/${linker_name}")
+
+                if(EXISTS "${dualcore_path}")
+                    target_sources(${TGT} PUBLIC "${dualcore_path}")
+                    target_link_options(${TGT} PUBLIC -T "${dualcore_path}")
+                elseif(EXISTS "${singlecore_path}")
+                    target_sources(${TGT} PUBLIC "${singlecore_path}")
+                    target_link_options(${TGT} PUBLIC -T "${singlecore_path}")
+                else()
+                    message(WARNING "Linker script not found for target ${TGT}: ${linker_name}")
+                endif()
             endif()
         endforeach()
 
@@ -407,7 +411,7 @@ function(fetch_startup_name search_path startup_name)
 endfunction()
 
 #############################################################################
-## Function to link linker script for all executable targets
+## Function to link startup files for all executable targets
 #############################################################################
 function(add_startup_all_targets DIR project_dir startup_name)
     if(${TOOLCHAIN_LANGUAGE} STREQUAL "GNU")
@@ -415,10 +419,16 @@ function(add_startup_all_targets DIR project_dir startup_name)
         foreach(TGT IN LISTS TGTS)
             get_target_property(target_type ${TGT} TYPE)
             if(${target_type} STREQUAL "EXECUTABLE")
-                target_sources(${TGT}
-                    PUBLIC
-                        ${project_dir}/.meproject/setup/FileStartup/${startup_name}
-                )
+                set(dualcore_path "${project_dir}/${startup_name}")
+                set(singlecore_path "${project_dir}/.meproject/setup/FileStartup/${startup_name}")
+
+                if(EXISTS "${dualcore_path}")
+                    target_sources(${TGT} PUBLIC "${dualcore_path}")
+                elseif(EXISTS "${singlecore_path}")
+                    target_sources(${TGT} PUBLIC "${singlecore_path}")
+                else()
+                    message(WARNING "Startup file not found for target ${TGT}: ${startup_name}")
+                endif()
             endif()
         endforeach()
 
