@@ -127,13 +127,13 @@ def copy_interrupt_files(source_dir, output_dir):
     os.makedirs(dest_dir_c, exist_ok=True)
     shutil.copy(source_file_c, dest_dir_c)
 
-def extract_mcu_names(file_name, source_dir, output_dir, regex):
+def extract_mcu_names(file_name, source_dir, regex):
     """
     Copy files from a specific subdirectory in source_dir that match a regex to a corresponding subdirectory in output_dir,
     maintaining the folder structure.
     """
     mcus = {}
-    mcus[file_name] = {'mcu_names': set(), 'cores': set()}
+    mcus[file_name] = {'mcu_names': set(), 'cores': set(), 'core_dirs': set()}
     source_subdir = os.path.join(source_dir, 'def')
 
     if regex:
@@ -146,10 +146,17 @@ def extract_mcu_names(file_name, source_dir, output_dir, regex):
                     if regex_pattern.match(mcu_name):
                         mcus[file_name]['mcu_names'].add(mcu_name)
                         if 'gcc_clang' in source_dir or 'XC32' in source_dir:
-                            isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config FROM Devices WHERE name IS "{mcu_name}"')
+                            isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config, core_info FROM Devices WHERE name IS "{mcu_name}"')
                             if isPresent:
-                                configJson = json.loads(readData[0][0])
-                                mcus[file_name]['cores'].add(configJson['CORE_NAME'])
+                                if readData[0][1] == None:
+                                    configJson = json.loads(readData[0][0])
+                                    mcus[file_name]['cores'].add(configJson['CORE_NAME'])
+                                else:
+                                    configJson = json.loads(readData[0][0])
+                                    core_info = json.loads(readData[0][1])
+                                    for core in core_info:
+                                        mcus[file_name]['cores'].add(core['core_name_define'])
+                                        mcus[file_name]['core_dirs'].add(core['core_dir'])
 
     return mcus
 
@@ -341,32 +348,33 @@ def copy_interrupts(mcus, source_dir, output_dir, base_path):
 
     copy_interrupt_files(source_dir, base_path)
 
-def copy_files_from_dir(mcus, source_dir, output_dir, base_path, subdirectory):
+def copy_files_from_dir(mcus, source_dir, base_path, subdirectory, core_dirs={"":""}):
 
-    source_subdir = os.path.join(source_dir, subdirectory)
-    output_subdir = os.path.join(base_path, subdirectory)
+    for core_dir in core_dirs:
+        source_subdir = os.path.join(source_dir, subdirectory)
+        output_subdir = os.path.join(base_path, subdirectory)
 
-    for root, dirs, files in os.walk(source_subdir):
-        for file in files:
-            if os.path.basename(file) == 'mcu.h':
-                # Special rule for 'mcu.h' files, ensure the directory matches the regex
-                if 'XC16' in root:
-                    mcuCheck = os.path.basename(root)
-                else:
-                    mcuCheck = os.path.basename(root).upper()
-                if mcuCheck in mcus:
-                    relative_path = os.path.relpath(root, start=source_subdir)
-                    full_dest_path = os.path.join(output_subdir, relative_path)
-                    shutil.copytree(root, full_dest_path, dirs_exist_ok=True)
-            if os.path.splitext(os.path.basename(file))[0].upper().replace('DSPIC', 'dsPIC') in mcus:
-                if 'gcc_clang' in source_subdir and re.match('^MKV?.+XXX.+$', file):
-                    continue
-                else:
-                    full_source_path = os.path.join(root, file)
-                    relative_path = os.path.relpath(full_source_path, start=source_subdir)
-                    full_dest_path = os.path.join(output_subdir, relative_path)
-                    os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
-                    shutil.copy(full_source_path, full_dest_path)
+        for root, dirs, files in os.walk(source_subdir):
+            for file in files:
+                if os.path.basename(file) == 'mcu.h':
+                    # Special rule for 'mcu.h' files, ensure the directory matches the regex
+                    if 'XC16' in root:
+                        mcuCheck = os.path.basename(root)
+                    else:
+                        mcuCheck = os.path.basename(root).upper()
+                    if mcuCheck in mcus:
+                        relative_path = os.path.relpath(root, start=source_subdir)
+                        full_dest_path = os.path.join(output_subdir, relative_path)
+                        shutil.copytree(root, full_dest_path, dirs_exist_ok=True)
+                if os.path.splitext(os.path.basename(file))[0].upper().replace('DSPIC', 'dsPIC') in mcus:
+                    if 'gcc_clang' in source_subdir and re.match('^MKV?.+XXX.+$', file):
+                        continue
+                    else:
+                        full_source_path = os.path.join(root, file)
+                        relative_path = os.path.relpath(full_source_path, start=source_subdir)
+                        full_dest_path = os.path.join(output_subdir, relative_path)
+                        os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
+                        shutil.copy(full_source_path, full_dest_path)
 
 def copy_delays(cores, source_dir, output_dir, base_path):
 
@@ -519,6 +527,7 @@ def update_database(package_name, mcus, db_path):
     return
 
 async def upload_release_asset(session, token, repo, release_id, asset_path, assets, delete_existing=True):
+    return
     """Upload an asset to a specific GitHub release. If the asset exists, delete it first."""
     asset_name = os.path.basename(asset_path)
     url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets'
@@ -578,22 +587,24 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
     package_to_mcu_json_full = []
     package_to_mcu_xlsx_full = []
     for cmake_file, data in file_paths.items():
+        if cmake_file != 'stm32h7x5':
+            continue
         base_output_dir = os.path.join(output_dir, f"{arch.lower()}_{entry_name.lower()}_{cmake_file}") # Subdirectory for this .cmake file
         # Copy the .cmake file into the package directory
         copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, data['regex'])
 
-        mcuNames = extract_mcu_names(cmake_file, source_dir, output_dir, data['regex'])
+        mcuNames = extract_mcu_names(cmake_file, source_dir, data['regex'])
         # Copy individual files
         copy_files(data['files'], base_output_dir, source_dir)
         # Copy schema directories
         copy_schemas(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir)
         copy_interrupts(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir)
         # Copy defs
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir, 'def')
+        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'def')
         # Copy startups
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir, 'startup')
+        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'startup', mcuNames[cmake_file]['core_dirs'])
         # Copy linker scirpts
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir, 'linker_scripts')
+        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'linker_scripts', mcuNames[cmake_file]['core_dirs'])
         # Copy delay files
         copy_delays(mcuNames[cmake_file]['cores'], source_dir, output_dir, base_output_dir)
         # Copy std_library to every package
@@ -912,7 +923,7 @@ async def main(token, repo, tag_name):
                 for entry in entries:
                     print(root_source_directory)
                     print(entry)
-                    if entry.is_dir():
+                    if entry.is_dir() and 'gcc_clang' in entry.name:
                         source_directory = os.path.join(root_source_directory, entry.name)
                         output_directory = os.path.join(root_output_directory, entry.name)
 
