@@ -1,0 +1,49 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# 2025-07-30
+
+## Changes
+
+- [2025-07-30](#2025-07-30)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ RA0E2 MCU Support package for GCC & Clang
+  + R7FA0E2073CFJ
+  + R7FA0E2073CFL
+  + R7FA0E2073CFM
+  + R7FA0E2073CNE
+  + R7FA0E2073CNH
+  + R7FA0E2074CFJ
+  + R7FA0E2074CFL
+  + R7FA0E2074CFM
+  + R7FA0E2074CNE
+  + R7FA0E2074CNH
+  + R7FA0E2093CFJ
+  + R7FA0E2093CFL
+  + R7FA0E2093CFM
+  + R7FA0E2093CNE
+  + R7FA0E2093CNH
+  + R7FA0E2094CFJ
+  + R7FA0E2094CFL
+  + R7FA0E2094CFM
+  + R7FA0E2094CNE
+  + R7FA0E2094CNH
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
