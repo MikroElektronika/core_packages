@@ -349,7 +349,6 @@ def copy_interrupts(mcus, source_dir, output_dir, base_path):
 
 def copy_files_from_dir(mcus, source_dir, base_path, subdirectory):
 
-    # for core_dir in core_dirs:
     source_subdir = os.path.join(source_dir, subdirectory)
     output_subdir = os.path.join(base_path, subdirectory)
 
@@ -530,7 +529,6 @@ def update_database(package_name, mcus, db_path):
     return
 
 async def upload_release_asset(session, token, repo, release_id, asset_path, assets, delete_existing=True):
-    return
     """Upload an asset to a specific GitHub release. If the asset exists, delete it first."""
     asset_name = os.path.basename(asset_path)
     url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets'
