@@ -101,20 +101,35 @@ install(
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/include/core
 )
+if(MCU_IS_DUALCORE)
+    install(
+        FILES
+            ${startupFile}
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/FileStartup
+    )
 
-install(
-    FILES
-        ${startupFile}
-    DESTINATION
-        ${CMAKE_INSTALL_PREFIX}/../FileStartup
-)
+    install(
+        FILES
+            ${linkerScript}
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/FileLinker
+    )
+else()
+    install(
+        FILES
+            ${startupFile}
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/../FileStartup
+    )
 
-install(
-    FILES
-        ${linkerScript}
-    DESTINATION
-        ${CMAKE_INSTALL_PREFIX}/../FileLinker
-)
+    install(
+        FILES
+            ${linkerScript}
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/../FileLinker
+    )
+endif()
 
 # NOTE - Backslash at the end is important for DIRECTORY path
 install(
