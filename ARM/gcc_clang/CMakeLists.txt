@@ -72,6 +72,11 @@ if (NOT ${CORE_NAME} STREQUAL "M0")
     )
 endif()
 
+target_compile_definitions(lib_core
+    PRIVATE
+        ${MCU_HEADER_CORE_DEFINE}
+)
+
 ## Add all thirdparty generated cmake files recursivelly
 file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/system/src/*.cmake)
 foreach(cmakeFile ${CMAKE_FILES})
