@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^STM32H745BG$|^STM32H745BI$|^STM32H745IG$|^STM32H745II$|^STM32H745XG$|^STM32H745XI$|^STM32H745ZG$|^STM32H745ZI$|^STM32H755BI$|^STM32H755II$|^STM32H755XI$|^STM32H755ZI$")
+    set(${linkerScript} linker_scripts/${vendor}/${CORE_DIR}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${CORE_DIR}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/stm32h7x5/init_clock.c)
+endif()
