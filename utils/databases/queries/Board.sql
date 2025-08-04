@@ -85,6 +85,7 @@ WHERE
         OR (Boards.soldered_device LIKE '%%1%')
         OR (Boards.mikrobus_count LIKE '%%1%')
         OR (Boards.display_socket LIKE '%%1%')
+	OR (Boards.uid LIKE '%%1%')
     )
 
 ORDER BY CASE
