@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^STM32H745BG$|^STM32H745BI$|^STM32H745IG$|^STM32H745II$|^STM32H745XG$|^STM32H745XI$|^STM32H745ZG$|^STM32H745ZI$|^STM32H755BI$|^STM32H755II$|^STM32H755XI$|^STM32H755ZI$")
+    if(${CORE_NAME} MATCHES "^M7")
+        list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/2)")
+    elseif(${CORE_NAME} MATCHES "^M4")
+        list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/6)")
+    endif()
+endif()

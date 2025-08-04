@@ -72,6 +72,11 @@ if (NOT ${CORE_NAME} STREQUAL "M0")
     )
 endif()
 
+target_compile_definitions(lib_core
+    PRIVATE
+        ${MCU_HEADER_CORE_DEFINE}
+)
+
 ## Add all thirdparty generated cmake files recursivelly
 file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/system/src/*.cmake)
 foreach(cmakeFile ${CMAKE_FILES})
@@ -96,20 +101,35 @@ install(
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/include/core
 )
+if(MCU_IS_DUALCORE)
+    install(
+        FILES
+            ${startupFile}
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/FileStartup
+    )
 
-install(
-    FILES
-        ${startupFile}
-    DESTINATION
-        ${CMAKE_INSTALL_PREFIX}/../FileStartup
-)
+    install(
+        FILES
+            ${linkerScript}
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/FileLinker
+    )
+else()
+    install(
+        FILES
+            ${startupFile}
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/../FileStartup
+    )
 
-install(
-    FILES
-        ${linkerScript}
-    DESTINATION
-        ${CMAKE_INSTALL_PREFIX}/../FileLinker
-)
+    install(
+        FILES
+            ${linkerScript}
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/../FileLinker
+    )
+endif()
 
 # NOTE - Backslash at the end is important for DIRECTORY path
 install(
