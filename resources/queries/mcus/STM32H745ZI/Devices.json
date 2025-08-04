@@ -1,0 +1,19 @@
+{
+    "def_file": "STM32H745ZI.json",
+    "family_uid": "STM32",
+    "flash": "2097152",
+    "icon": "images/mcu/stm32.png",
+    "max_speed": "480.000",
+    "name": "STM32H745ZI",
+    "ram": "1081344",
+    "sdk_config": "{\"MCU_NAME\":\"STM32H745ZI\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "STM32H745ZI",
+    "vendor": "STMicroelectronics",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\":\"arm_gcc_clang_stm32h7x5\",\"gcc_arm_none_eabi\":\"arm_gcc_clang_stm32h7x5\"}",
+    "core_info": "[{\"compiler_flags\":\"-mcpu=cortex-m7\",\"core_dir\":\"core_m7\",\"core_name_define\":\"M7\",\"mcu_header_core_define\":\"CORE_CM7\",\"primary_core\":true},{\"compiler_flags\":\"-mcpu=cortex-m4\",\"core_dir\":\"core_m4\",\"core_name_define\":\"M4EF\",\"mcu_header_core_define\":\"CORE_CM4\",\"primary_core\":false}]"
+}
