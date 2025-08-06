@@ -44,6 +44,18 @@
 
 extern void * __Vectors[];
 
+typedef struct
+{
+    uint32_t ICLK_Frequency;    // System clock frequency in Hz
+    uint32_t PCLKA_Frequency;   // PCLKA clock frequency in Hz
+    uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
+    uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
+    uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
+    uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
+} SYSTEM_ClocksTypeDef;
+
+static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
+
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
 #define BSP_PRV_PRCR_PRC1_UNLOCK                      ((BSP_PRV_PRCR_KEY) | 0x2U)
@@ -446,6 +458,45 @@ BSP_DONT_REMOVE static const uint32_t g_bsp_rom_registers[] BSP_PLACE_IN_SECTION
 static void system_clock_configuration();
 
 // -----------------------------------------------------------------------------------------
+
+/**
+ * @brief Gets the system clock values.
+ *
+ * Calculates configured clock frequency for system clocks which are used by different
+ * MCU modules.
+ *
+ * @return None
+ */
+void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
+    uint32_t prescaler, source_clock;
+
+    // Get the frequency of main clock.
+    SYSTEM_Clocks->ICLK_Frequency = FOSC_KHZ_VALUE * 1000;
+
+    // Get the source frequency for all clocks.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000000 ) >> 24 ];
+    source_clock = SYSTEM_Clocks->ICLK_Frequency * prescaler;
+
+    // Get PCLKA clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
+    SYSTEM_Clocks->PCLKA_Frequency = source_clock / prescaler;
+
+    // Get PCLKB clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x700 ) >> 8 ];
+    SYSTEM_Clocks->PCLKB_Frequency = source_clock / prescaler;
+
+    // Get PCLKC clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x70 ) >> 4 ];
+    SYSTEM_Clocks->PCLKC_Frequency = source_clock / prescaler;
+
+    // Get PCLKD clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7 ) ];
+    SYSTEM_Clocks->PCLKD_Frequency = source_clock / prescaler;
+
+    // Get FCLK clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
+    SYSTEM_Clocks->FCLK_Frequency = source_clock / prescaler;
+}
 
 /**
  * @brief Initializes the microcontroller system.
