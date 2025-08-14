@@ -20,7 +20,7 @@
 
 Support added for following hardware:
 
-+ XMC4800-F MCU Support package for GCC & Clang
++ XMC4800_F MCU Support package for GCC & Clang
   + XMC4800-F100F1024
   + XMC4800-F100F1536
   + XMC4800-F100F2048
@@ -33,7 +33,7 @@ Support added for following hardware:
   + XMC4800-F144K1024
   + XMC4800-F144K1536
   + XMC4800-F144K2048
-+ XMC4700-F MCU Support package for GCC & Clang
++ XMC4700_F MCU Support package for GCC & Clang
   + XMC4700-F100F1536
   + XMC4700-F100F2048
   + XMC4700-F100K1536
