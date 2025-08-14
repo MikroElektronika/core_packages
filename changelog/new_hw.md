@@ -20,7 +20,7 @@
 
 Support added for following hardware:
 
-+ XMC1201-Q MCU Support package for GCC & Clang
++ XMC1201_Q MCU Support package for GCC & Clang
   + XMC1201-Q040F0016
   + XMC1201-Q040F0032
   + XMC1201-Q040F0064
@@ -35,7 +35,7 @@ Support added for following hardware:
   + XMC4400-F64F512
   + XMC4400-F64K256
   + XMC4400-F64K512
-+ XMC4700-E MCU Support package for GCC & Clang
++ XMC4700_E MCU Support package for GCC & Clang
   + XMC4700-E196F1536
   + XMC4700-E196F2048
   + XMC4700-E196K1536

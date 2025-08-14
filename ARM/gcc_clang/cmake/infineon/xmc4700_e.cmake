@@ -1,5 +1,5 @@
 if(${MCU_NAME} MATCHES "^XMC4700-E196F1536$|^XMC4700-E196F2048$|^XMC4700-E196K1536$|^XMC4700-E196K2048$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
-    list(APPEND local_list_include system/src/${vendor}/xmc4700-e/init_clock.c)
+    list(APPEND local_list_include system/src/${vendor}/xmc4700_e/init_clock.c)
 endif()
