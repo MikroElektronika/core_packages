@@ -1,0 +1,18 @@
+{
+    "def_file": "XMC4800-F144K2048.json",
+    "family_uid": "XMC4800",
+    "flash": "2097152",
+    "icon": "images/mcu/infineon.png",
+    "max_speed": "144.000",
+    "name": "XMC4800-F144K2048",
+    "ram": "360448",
+    "sdk_config": "{\"MCU_NAME\":\"XMC4800-F144K2048\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "XMC4800-F144K2048",
+    "vendor": "Infineon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_xmc4800_f\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_xmc4800_f\"}"
+}
