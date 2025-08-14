@@ -20,7 +20,7 @@
 
 Support added for following hardware:
 
-+ XMC1302-T MCU Support package for GCC & Clang
++ XMC1302_T MCU Support package for GCC & Clang
   + XMC1302-T016X0008
   + XMC1302-T016X0016
   + XMC1302-T016X0032
@@ -39,7 +39,7 @@ Support added for following hardware:
   + XMC1401-F064F0128
   + XMC1401-Q048F0064
   + XMC1401-Q048F0128
-+ XMC1402-F MCU Support package for GCC & Clang
++ XMC1402_F MCU Support package for GCC & Clang
   + XMC1402-F064X0064
   + XMC1402-F064X0128
   + XMC1402-F064X0200
