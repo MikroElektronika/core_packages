@@ -20,7 +20,7 @@
 
 Support added for following hardware:
 
-+ XMC1402-Q MCU Support package for GCC & Clang
++ XMC1402_Q MCU Support package for GCC & Clang
   + XMC1402-Q040X0032
   + XMC1402-Q040X0064
   + XMC1402-Q040X0128
