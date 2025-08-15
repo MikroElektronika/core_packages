@@ -1,0 +1,6 @@
+{
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "mcu": "XMC4700-F144F1536",
+    "clock": "1"
+}
