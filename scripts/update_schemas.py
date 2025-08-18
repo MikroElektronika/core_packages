@@ -1,10 +1,33 @@
 import os, time, aiofiles, filecmp, \
        argparse, aiohttp, requests, \
        asyncio, support as support, \
-       shutil, subprocess
+       shutil, subprocess, hashlib
 
 from elasticsearch import Elasticsearch
 from schemas import GenerateSchemas
+
+def hash_file(filename):
+    """Generate MD5 hash of a file."""
+    hash_md5 = hashlib.md5()
+    with open(filename, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
+def hash_directory_contents(directory):
+    """Generate a hash for the contents of a directory."""
+    all_hashes = []
+    for root, dirs, files in os.walk(directory):
+        dirs.sort()  # Ensure directory traversal is in a consistent order
+        files.sort()  # Ensure file traversal is in a consistent order
+        for filename in files:
+            file_path = os.path.join(root, filename)
+            file_hash = hash_file(file_path)
+            all_hashes.append(file_hash)
+
+    # Combine all file hashes into one hash
+    combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
+    return combined_hash
 
 def compress_directory_7z(base_output_dir, entry_name, arch=None):
     """
@@ -130,23 +153,26 @@ def initialize_es():
 
     return es
 
-def index_schemas(es: Elasticsearch, release_details, version, index_name, test_version=''):
+def index_schemas(es: Elasticsearch, release_details, version, index_name, current_hash, test_version=''):
     doc = None
     for asset in release_details.get('assets', []):
         if asset['name'] == f'schemas{test_version}.json':
             doc = {
                 'name': f"schemas{test_version}",
-                'display_name': f"Schemas{test_version} file",
-                'author': "MIKROE",
-                'hidden': True,
-                'type': "mcu_schemas",
-                'version': version,
+                'display_name' : f"schemas{test_version} file",
+                'author' : "MIKROE",
+                'hidden' : True,
+                'type' : "mcu_schemas",
+                'hash' : current_hash,
+                'version' : version,
                 'created_at': asset['created_at'],
                 'updated_at': asset['updated_at'],
                 'category': "MCU Package",
-                'download_link': asset['url'],
-                'package_changed': True,
-                'install_location': f"%APPLICATION_DATA_DIR%/schemas{test_version}.json"
+                'download_link': asset['browser_download_url'],
+                'download_link_api': asset['url'],
+                'package_changed' : True,
+                'install_location' : f"%APPLICATION_DATA_DIR%/schemas{test_version}.json",
+                'gh_package_name': f"schemas{test_version}.json"
             }
             break
 
@@ -214,6 +240,12 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
     output_file = f"./output/docs/schemas{test_version}.json"
     output_file_full = f"./output/docs/schemas{test_version}_uncompressed.json"
 
+    # Create the hash value for schemas
+    output_file_hash = f"./output/hash_tmp/schemas/schemas{test_version}.json"
+    schemaGeneratorHash = GenerateSchemas(input_directory, output_file_hash, ['board_regex'])
+    schemaGeneratorHash.generate()
+    uploaded_asset_hash = hash_directory_contents(output_file_hash)
+
     # Generate schemas.json
     schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
     schemaGenerator.generate()
@@ -277,12 +309,12 @@ async def package_and_upload_schemas(es: Elasticsearch, index_name, token, repo,
                 upload_result = await upload_asset(session, token, repo, tag_name, archive_path)
             if upload_result['state'] != 'uploaded':
                 raise ValueError(f'docs{test_version}.7z not uploaded!')
-            return version
+            return version, uploaded_asset_hash
         else:
             raise ValueError(f'schemas{test_version}.json not uploaded!')
     else:
         print("No changes detected. Skipping upload.")
-        return None
+        return None, None
 
 if __name__ == '__main__':
     # First, check for arguments passed
@@ -315,11 +347,12 @@ if __name__ == '__main__':
     print("Starting the process...")
     es = initialize_es()
     release_details = fetch_release_details(args.repo, args.token, args.release_version)
-    new_version = asyncio.run(package_and_upload_schemas(es, args.select_index, args.token, args.repo, args.release_version, release_details, test_version))
+    new_version, new_hash = asyncio.run(package_and_upload_schemas(es, args.select_index, args.token, args.repo, args.release_version, release_details, test_version))
 
     if new_version:
         release_details = fetch_release_details(args.repo, args.token, args.release_version)
-        index_schemas(es, release_details, new_version, args.select_index, test_version)
-        print(f"File has been updated. Version increased to {new_version}.")
+        index_schemas(es, release_details, new_version, args.select_index, new_hash, test_version)
+        print(f"Asset schemas version changed to {new_version}.")
+        print(f"Asset schemas hash changed to {new_hash}.")
     else:
         print("File the same. No need to update.")
