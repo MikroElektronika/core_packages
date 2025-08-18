@@ -1,0 +1,18 @@
+{
+    "def_file": "XMC1403-Q064X0128.json",
+    "family_uid": "XMC1400",
+    "flash": "131072",
+    "icon": "images/mcu/infineon.png",
+    "max_speed": "48.000",
+    "name": "XMC1403-Q064X0128",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"XMC1403-Q064X0128\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "XMC1403-Q064X0128",
+    "vendor": "Infineon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_xmc1403\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_xmc1403\"}"
+}
