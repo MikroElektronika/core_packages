@@ -1,27 +1,53 @@
 import os, requests, aiofiles, filecmp, time
-import argparse, aiohttp, asyncio
+import argparse, aiohttp, asyncio, hashlib
 
 from clocks import GenerateClocks
 from elasticsearch import Elasticsearch
 import support as support
 
-def index_clocks(es: Elasticsearch, release_details, version):
+def hash_file(filename):
+    """Generate MD5 hash of a file."""
+    hash_md5 = hashlib.md5()
+    with open(filename, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
+def hash_directory_contents(directory):
+    """Generate a hash for the contents of a directory."""
+    all_hashes = []
+    for root, dirs, files in os.walk(directory):
+        dirs.sort()  # Ensure directory traversal is in a consistent order
+        files.sort()  # Ensure file traversal is in a consistent order
+        for filename in files:
+            file_path = os.path.join(root, filename)
+            file_hash = hash_file(file_path)
+            all_hashes.append(file_hash)
+
+    # Combine all file hashes into one hash
+    combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
+    return combined_hash
+
+def index_clocks(es: Elasticsearch, release_details, version, current_hash):
     doc = None
     for asset in release_details.get('assets', []):
         if asset['name'] == f'clocks.json':
             doc = {
-                'name': f"clocks",
-                'display_name': f"clocks file",
-                'author': "MIKROE",
-                'hidden': True,
-                'type': "mcu_clocks",
-                'version': version,
+                'name': "clocks",
+                'display_name' : "Clocks file",
+                'author' : "MIKROE",
+                'hidden' : True,
+                'type' : "mcu_clocks",
+                'hash' : current_hash,
+                'version' : version,
                 'created_at': asset['created_at'],
                 'updated_at': asset['updated_at'],
                 'category': "MCU Package",
-                'download_link': asset['url'],
-                'package_changed': True,
-                'install_location': f"%APPLICATION_DATA_DIR%/clocks.json"
+                'download_link': asset['browser_download_url'],
+                'download_link_api': asset['url'],
+                'package_changed' : True,
+                'install_location' : "%APPLICATION_DATA_DIR%/clocks.json",
+                'gh_package_name': "clocks.json"
             }
             break
 
@@ -174,6 +200,13 @@ async def upload_clocks(es: Elasticsearch, token, repo, tag_name, release_detail
     input_directory = "./"
     output_dir = "./output/docs"
     output_file = os.path.join(output_dir, 'clocks.json')
+
+    # Create the hash value for clocks
+    output_file_hash = f"./output/hash_tmp/clocks/clocks.json"
+    clocksGeneratorHash = GenerateClocks(input_directory, output_file_hash)
+    clocksGeneratorHash.generate()
+    uploaded_asset_hash = hash_directory_contents(output_file_hash)
+
     clocksGenerator = GenerateClocks(input_directory, output_file)
     clocksGenerator.generate()
 
@@ -213,24 +246,25 @@ async def upload_clocks(es: Elasticsearch, token, repo, tag_name, release_detail
             upload_result = await upload_release_asset(session, token, repo, tag_name, output_file)
 
         if upload_result['state'] == 'uploaded':
-            return version
+            return version, uploaded_asset_hash
         else:
             raise ValueError('clocks.json not uploaded!')
     else:
         print("No changes detected. Skipping upload.")
-        return None
+        return None, None
 
 def main(token, repo, tag_name):
     es = initialize_es()
     release_details = fetch_release_details(args.repo, args.token, args.tag_name)
 
     # Upload new clocks asset if needed
-    new_version = asyncio.run(upload_clocks(es, args.token, args.repo, args.tag_name, release_details))
+    new_version, new_hash = asyncio.run(upload_clocks(es, args.token, args.repo, args.tag_name, release_details))
 
     if new_version:
         release_details = fetch_release_details(args.repo, args.token, args.tag_name)
-        index_clocks(es, release_details, new_version)
-        print(f"File has been updated. Version increased to {new_version}.")
+        index_clocks(es, release_details, new_version, new_hash)
+        print(f"Asset clocks version changed to {new_version}.")
+        print(f"Asset clocks hash changed to {new_hash}.")
     else:
         print("File the same. No need to update.")
 
