@@ -396,9 +396,47 @@ SECTIONS
         __data_end__ = .;
 
     } > RAM AT > FLASH
+    __etext = LOADADDR(.data);
+
+    /*
+     * Needs to be in its own segment with the PLT entries first
+     * so that the linker will compute the offsets to those
+     * entries correctly.
+     */
+    .got : {
+        *(.got.plt)
+        *(.got)
+    } > FLASH
+
+    .tdata :  {
+        *(.tdata .tdata.* .gnu.linkonce.td.*)
+        /* Dummy byte to work with LLVM linker bug. Without this, the ALIGN for this section will carry through and affect the next if this section ends up empty */
+        BYTE(0xFF);
+        PROVIDE(__tdata_end = .);
+    } > RAM AT > FLASH
+	PROVIDE( __tls_base = ADDR(.tdata));
+	PROVIDE( __tdata_start = ADDR(.tdata));
+	PROVIDE( __tdata_source = LOADADDR(.tdata) );
+	PROVIDE( __tdata_size = SIZEOF(.tdata) );
+	PROVIDE( __tls_align = MAX(ALIGNOF(.tdata),ALIGNOF(.tbss)) );
+
+    .tbss (NOLOAD):
+    {
+		*(.tbss .tbss.* .gnu.linkonce.tb.*)
+		*(.tcommon)
+		PROVIDE( __tls_end = . );
+		PROVIDE( __tbss_end = . );
+    } > RAM AT > RAM
+	PROVIDE( __tbss_start = ADDR(.tbss));
+	PROVIDE( __tbss_offset = ADDR(.tbss) - ADDR(.tdata) );
+	PROVIDE( __tbss_size = SIZEOF(.tbss) );
+	PROVIDE( __tls_size = __tls_end - __tls_base );
+	PROVIDE( __tls_align = MAX(ALIGNOF(.tdata), ALIGNOF(.tbss)) );
+	PROVIDE( __arm32_tls_tcb_offset = MAX(8, __tls_align) );
+	PROVIDE( __arm64_tls_tcb_offset = MAX(16, __tls_align) );
 
     . = .;
-    __dtcm_data_pre_location = LOADADDR(.data) + SIZEOF(.data);
+    __dtcm_data_pre_location = LOADADDR(.tdata) + SIZEOF(.tdata);
 
     /* Initialized DTCM data. */
     /* Aligned to FCACHE2 for RA8. */
