@@ -1,0 +1,59 @@
+name: Check Indexed File Links
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 4 * * 1-5"      # At 6:00, Monday–Friday
+    - cron: "0 9 * * 1-5"      # At 11:00, Monday–Friday
+    - cron: "0 13 * * 1-5"      # At 15:00, Monday–Friday
+
+jobs:
+  # 1st 3 jobs are for installing NECTO on different OSs - run in parallel
+  install_necto:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements/check_necto_links.txt
+
+      - name: Verify NECTO installation
+        run: |
+          python -u scripts/install_necto.py ${{ matrix.os }}
+
+  # After this checking the correspondance of asset packages - runs in parallel after 3 previous checkings are successfuly passed
+  packages_verification:
+    needs: install_necto
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        packages: [bsp_packages, mchp_programmers, core_packages, codegrip_packages]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements/check_necto_links.txt
+
+      - name: Verify packages
+        run: |
+          python -u scripts/check_necto_packages.py ${{ matrix.packages }}
