@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^XMC4800-F100F1024$|^XMC4800-F100F1536$|^XMC4800-F100F2048$|^XMC4800-F100K1024$|^XMC4800-F100K1536$|^XMC4800-F100K2048$|^XMC4800-F144F1024$|^XMC4800-F144F1536$|^XMC4800-F144F2048$|^XMC4800-F144K1024$|^XMC4800-F144K1536$|^XMC4800-F144K2048$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/xmc4800_f/init_clock.c)
+endif()

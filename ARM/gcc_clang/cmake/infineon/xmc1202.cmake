@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^XMC1202-Q024X0016$|^XMC1202-Q024X0032$|^XMC1202-Q040X0016$|^XMC1202-Q040X0032$|^XMC1202-T016X0016$|^XMC1202-T016X0032$|^XMC1202-T016X0064$|^XMC1202-T028X0016$|^XMC1202-T028X0032$|^XMC1202-T028X0064$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/xmc1202/init_clock.c)
+endif()
