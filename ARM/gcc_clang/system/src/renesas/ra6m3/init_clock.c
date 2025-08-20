@@ -516,8 +516,11 @@ BSP_DONT_REMOVE static const uint32_t g_bsp_id_codes[] BSP_PLACE_IN_SECTION(BSP_
 /***********************************************************************
  * OFS1 Configuration - HOCO Frequency and other boot options
  ***********************************************************************/
-#define BSP_CFG_ROM_REG_OFS1                (0xFFFFFEF8 | (1 << 2) | (3) |  (1 << 8)) // TODO HOCO options
-#define BSP_CFG_HOCO_FREQUENCY              (2)                                       // TODO HOCO options
+#define HOCO_ENABLE (VALUE_SYSTEM_HOCOCR & 0x1)
+#define HOCO_FREQ (VALUE_SYSTEM_HOCOCR2 & 0x3)
+
+#define BSP_CFG_ROM_REG_OFS1                (0xFFFFFEF8 | (1 << 2) | (3) |  (1 << 8))   // TODO HOCO options
+#define BSP_CFG_HOCO_FREQUENCY              (HOCO_FREQ)                                 // TODO HOCO options
 #define BSP_FEATURE_BSP_OFS1_HOCOFRQ_MASK   (0xFFFFF9FFUL)
 #define BSP_FEATURE_BSP_OFS1_HOCOFRQ_OFFSET (9UL)
 
@@ -757,18 +760,6 @@ static void system_clock_configuration() {
         while ( !( R_SYSTEM->OSCSF_b.MOSCSF ) ) {
             // Wait for XTAL to stabilize
         }
-
-        if ( !( VALUE_SYSTEM_PLLCR & R_SYSTEM_PLLCR_PLLSTP_Msk ) ) {
-            R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
-            R_SYSTEM->PLLCCR = VALUE_SYSTEM_PLLCCR;
-            R_SYSTEM->PLLCR_b.PLLSTP = 0; // PLL is operating
-
-            while ( !( R_SYSTEM->OSCSF_b.PLLSF ) ) {
-                // Wait for PLL to stabilize
-            }
-        } else {
-            R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
-        }
     }
 
     if ( !( VALUE_SYSTEM_SOSCCR & R_SYSTEM_SOSCCR_SOSTP_Msk ) ) {
@@ -778,14 +769,19 @@ static void system_clock_configuration() {
     }
 
     if ( !( VALUE_SYSTEM_HOCOCR & R_SYSTEM_HOCOCR_HCSTP_Msk ) ) {
-        if ( R_SYSTEM->OSCSF_b.HOCOSF ) {
-            R_SYSTEM->HOCOCR_b.HCSTP = 1; // Stop HOCO (until HOCO is fully configured)
-            while ( R_SYSTEM->OSCSF_b.HOCOSF ) {
-                // Wait for HOCOSF to be cleared
-            }
+        if( 0x2 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ) ) // 20MHz
+        {
+            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x263;
+        } else if ( 0x1 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ) ) // 18MHz
+        {
+            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x226;
+        } else if ( 0x0 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ) ) // 16MHz
+        {
+            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x1E9;
         }
-        R_SYSTEM->FLLCR2_b.FLLCNTL = 0x263;
+
         R_SYSTEM->FLLCR1_b.FLLEN = 0x1;
+
         R_SYSTEM->HOCOCR2 = VALUE_SYSTEM_HOCOCR2;
         R_SYSTEM->HOCOWTCR = VALUE_SYSTEM_HOCOWTCR;
         R_SYSTEM->HOCOCR_b.HCSTP = 0; // Start HOCO
@@ -795,18 +791,42 @@ static void system_clock_configuration() {
         }
     }
 
+    if ( !( VALUE_SYSTEM_PLLCR & R_SYSTEM_PLLCR_PLLSTP_Msk ) ) {
+        R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
+        R_SYSTEM->PLLCCR = VALUE_SYSTEM_PLLCCR;
+        R_SYSTEM->PLLCR_b.PLLSTP = 0; // PLL is operating
+
+        while ( !( R_SYSTEM->OSCSF_b.PLLSF ) ) {
+            // Wait for PLL to stabilize
+        }
+    } else {
+        R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
+    }
+
     R_SYSTEM->LOCOCR = VALUE_SYSTEM_LOCOCR;
 
     R_SYSTEM->MOCOCR = VALUE_SYSTEM_MOCOCR;
 
+    Delay_1ms();
+
     R_SYSTEM->SCKSCR = VALUE_SYSTEM_SCKSCR;
+
+    Delay_1ms();
+
+    if ( 80000 < FOSC_KHZ_VALUE && 120000 >= FOSC_KHZ_VALUE ) {
+        R_FCACHE->FLWT = 2; // 2 waits
+    } else if ( 40000 < FOSC_KHZ_VALUE ) {
+        R_FCACHE->FLWT = 1; // 1 wait
+    } else {
+        R_FCACHE->FLWT = 0; // 0 waits
+    }
+
+    R_SYSTEM->SCKDIVCR = VALUE_SYSTEM_SCKDIVCR;
 
     if ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOEN_Msk ) {
         R_SYSTEM->CKOCR = VALUE_SYSTEM_CKOCR & ( R_SYSTEM_CKOCR_CKODIV_Msk | R_SYSTEM_CKOCR_CKOSEL_Msk );
         R_SYSTEM->CKOCR_b.CKOEN = 1; // Enable clock out
     }
-
-    R_SYSTEM->SCKDIVCR = VALUE_SYSTEM_SCKDIVCR;
 
     // Lock write protection register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
