@@ -1,5 +1,5 @@
 if(${MCU_NAME} MATCHES "^R7FA4M3AD2CBM$|^R7FA4M3AD2CBQ$|^R7FA4M3AD3CBM$|^R7FA4M3AD3CBQ$|^R7FA4M3AD3CFB$|^R7FA4M3AE2CBM$|^R7FA4M3AE2CBQ$|^R7FA4M3AE3CBM$|^R7FA4M3AE3CBQ$|^R7FA4M3AE3CFB$|^R7FA4M3AE3CFM$|^R7FA4M3AE3CFP$|^R7FA4M3AF2CBM$|^R7FA4M3AF2CBQ$|^R7FA4M3AF3CBM$|^R7FA4M3AF3CBQ$|^R7FA4M3AF3CFB$|^R7FA4M3AF3CFM$|^R7FA4M3AF3CFP$")
-    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
     list(APPEND local_list_include system/src/renesas/ra4m3/init_clock.c)
     list(APPEND local_dir_install system/src/renesas/ra4m3/thirdparty/ra4m3)
