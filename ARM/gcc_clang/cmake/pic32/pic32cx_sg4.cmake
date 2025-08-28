@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^PIC32CX1025SG41064$|^PIC32CX1025SG41080$|^PIC32CX1025SG41100$|^PIC32CX1025SG41128$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/pic32cx_sg4/init_clock.c)
+    list(APPEND local_dir_install system/src/pic32/pic32cx_sg4/thirdparty/pic32cx_sg4)
+    set(${thirdpartyInstall} pic32cx_sg4/thirdparty/pic32cx_sg4 PARENT_SCOPE)
+endif()
