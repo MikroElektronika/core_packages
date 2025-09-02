@@ -220,6 +220,14 @@ def checkDeviceDetails(db, allDevicesGithub):
             currentDevice = read_data_from_db(
                 db, f'SELECT * FROM DeviceDetails WHERE uid IS "{eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]}"'
             )
+            # If '_' character is met - it is MCU card uid
+            if '_' in eachDevice[0]:
+                mcu = eachDevice[1].replace(".json", "")
+                datasheet_url = f'https://download.mikroe.com/documents/datasheets/erp/{eachDevice[1].replace(".json", "")}.pdf'
+                device_uid = mcu
+            else:
+                datasheet_url = f'https://download.mikroe.com/documents/datasheets/erp/{eachDevice[0]}.pdf'
+                device_uid = ''
             if not currentDevice[0]:
                 insertIntoTable(
                     db,
@@ -228,9 +236,9 @@ def checkDeviceDetails(db, allDevicesGithub):
                         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## uid
                         False, ## graphic_mcu
                         '', ## notes
-                        '', ## datasheet_url TODO - proslediti uvek link ka sajtu
+                        datasheet_url, ## datasheet_url
                         any(element in eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value] for element in mcuCardCheckList),
-                        '' ## device_uid
+                        device_uid ## device_uid
                     ],
                     deviceDetailsColumns
                 )
@@ -1141,8 +1149,9 @@ async def main(
 
     ## Step 6 - add any missing mcu device details
     if not mcus_only:
-        if databaseErp:
-            checkDeviceDetails(databaseErp, allDevicesGithub)
+        for eachDb in [databaseNecto, databaseErp]:
+            if eachDb:
+                checkDeviceDetails(eachDb, allDevicesGithub)
 
     ## Step 7 - add any missing package_uid to BoardToDevice
     if not mcus_only:
