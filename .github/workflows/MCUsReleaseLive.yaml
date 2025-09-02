@@ -104,7 +104,7 @@ jobs:
         id: create_pr
         run: |
           PR_RESPONSE=$(curl -s -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: token ${{ steps.app-token.outputs.token }}" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/${{ github.repository }}/pulls \
             -d "{\"title\":\"Merge branch ${{ github.event.inputs.release_branch }} into main\",\"head\":\"${{ github.event.inputs.release_branch }}\",\"base\":\"main\",\"body\":\"Automatically created pull request to merge branch ${{ github.event.inputs.release_branch }} into main\"}")
@@ -131,7 +131,7 @@ jobs:
         if: ${{ github.event.inputs.auto_merge == 'true' }}
         run: |
           curl -s -X PUT \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: token ${{ steps.app-token.outputs.token }}" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/${{ github.repository }}/pulls/${{ steps.create_pr.outputs.pull_request_number }}/merge \
             -d "{\"commit_title\":\"Auto-merged PR from ${{ github.event.inputs.release_branch }} to main\",\"merge_method\":\"squash\"}"
@@ -142,7 +142,7 @@ jobs:
 
       - name: Update and upload new database
         run: |
-          python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Live"
+          python -u scripts/reupload_databases.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ github.event.inputs.release_version }} "latest" "Live"
 
       - name: Run Index Script
         env:
@@ -153,7 +153,7 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
             echo "Indexing to Live."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} "False" ${{ github.event.inputs.release_version }} "False" "False"
+            python -u scripts/index.py ${{ github.repository }} ${{ steps.app-token.outputs.token }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} "False" ${{ github.event.inputs.release_version }} "False" "False"
 
       - name: Send notification to Mattermost
         if: ${{ github.event.inputs.notify_channel == 'true' }}
