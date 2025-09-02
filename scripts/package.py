@@ -498,12 +498,12 @@ def update_database(package_name, mcus, db_path):
             data_as_list_joined = []
             while counter != len(read_data):
                 existing_packages = {}
-                if read_data[counter][len(read_data[counter])-1]:
-                    if 'compiler_flags' not in read_data[counter][len(read_data[counter])-1]:
-                        existing_packages = json.loads(read_data[counter][len(read_data[counter])-1])
+                if read_data[counter][len(read_data[counter])-2]:
+                    if 'compiler_flags' not in read_data[counter][len(read_data[counter])-2]:
+                        existing_packages = json.loads(read_data[counter][len(read_data[counter])-2])
                     else:
-                        if read_data[counter][len(read_data[counter])-2]:
-                            existing_packages = json.loads(read_data[counter][len(read_data[counter])-2])
+                        if read_data[counter][len(read_data[counter])-3]:
+                            existing_packages = json.loads(read_data[counter][len(read_data[counter])-3])
                 data_as_list = list(read_data[counter])
                 for each_compiler in list(read_data_compiler):
                     if 'mchp_xc' in each_compiler[0] and '_xc' in package_name:
@@ -513,7 +513,7 @@ def update_database(package_name, mcus, db_path):
                             for each_split_check in package_name.split('_')[1:]:
                                 if re.search(each_split_check, each_compiler[0]):
                                     existing_packages[each_compiler[0]] = package_name
-                data_as_list[len(data_as_list)-1] = existing_packages
+                data_as_list[len(data_as_list)-2] = existing_packages
                 data_as_list_joined.append(data_as_list)
                 counter += 1
             for each_list in data_as_list_joined:
@@ -521,7 +521,7 @@ def update_database(package_name, mcus, db_path):
                     updateTable(
                         db_path,
                         f'''UPDATE Devices SET installer_package = ? WHERE uid = "{each_mcu.upper()}"''',
-                        json.dumps(each_list[len(each_list)-1])
+                        json.dumps(each_list[len(each_list)-2])
                     )
                 else:
                     raise ValueError("%s does not exist in database!" % each_mcu)
