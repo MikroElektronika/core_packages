@@ -1148,9 +1148,10 @@ async def main(
         )
 
     ## Step 6 - add any missing mcu device details
-    for eachDb in [databaseNecto, databaseErp]:
-        if eachDb:
-            checkDeviceDetails(eachDb, allDevicesGithub)
+    if not mcus_only:
+        for eachDb in [databaseNecto, databaseErp]:
+            if eachDb:
+                checkDeviceDetails(eachDb, allDevicesGithub)
 
     ## Step 7 - add any missing package_uid to BoardToDevice
     if not mcus_only:
