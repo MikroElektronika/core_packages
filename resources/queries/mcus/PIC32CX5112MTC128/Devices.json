@@ -1,6 +1,6 @@
 {
     "def_file": "PIC32CX5112MTC128.json",
-    "family_uid": "PIC32CXMTC",
+    "family_uid": "PIC32CXMT",
     "flash": "262144",
     "icon": "images/mcu/microchip.png",
     "max_speed": "240.000",

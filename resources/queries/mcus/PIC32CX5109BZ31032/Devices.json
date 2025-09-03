@@ -1,6 +1,6 @@
 {
     "def_file": "PIC32CX5109BZ31032.json",
-    "family_uid": "PIC32CXBZ31",
+    "family_uid": "PIC32CX",
     "flash": "4096",
     "icon": "images/mcu/microchip.png",
     "max_speed": "64.000",
