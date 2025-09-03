@@ -1,0 +1,18 @@
+{
+    "def_file": "ATSAM4E16CA.json",
+    "family_uid": "SAM4E",
+    "flash": "1048576",
+    "icon": "images/mcu/microchip.png",
+    "max_speed": "120.000",
+    "name": "ATSAM4E16CA",
+    "ram": "131072",
+    "sdk_config": "{\"MCU_NAME\":\"ATSAM4E16CA\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ATSAM4E16CA",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_atsam4e\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_atsam4e\"}"
+}

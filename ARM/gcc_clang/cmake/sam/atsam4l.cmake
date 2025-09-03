@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAM4LC2AA$|^ATSAM4LC2BA$|^ATSAM4LC2CA$|^ATSAM4LC4AA$|^ATSAM4LC4BA$|^ATSAM4LC4CA$|^ATSAM4LC8AA$|^ATSAM4LC8BA$|^ATSAM4LC8CA$|^ATSAM4LS2AA$|^ATSAM4LS2BA$|^ATSAM4LS2CA$|^ATSAM4LS4AA$|^ATSAM4LS4BA$|^ATSAM4LS4CA$|^ATSAM4LS8AA$|^ATSAM4LS8BA$|^ATSAM4LS8CA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/atsam4l/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsam4l/thirdparty/atsam4l)
+    set(${thirdpartyInstall} atsam4l/thirdparty/atsam4l PARENT_SCOPE)
+endif()
