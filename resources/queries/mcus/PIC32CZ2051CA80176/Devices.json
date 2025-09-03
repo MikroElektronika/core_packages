@@ -1,6 +1,6 @@
 {
     "def_file": "PIC32CZ2051CA80176.json",
-    "family_uid": "PIC32CZCA80",
+    "family_uid": "PIC32C",
     "flash": "2097152",
     "icon": "images/mcu/microchip.png",
     "max_speed": "200.000",
