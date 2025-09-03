@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^PIC32CX0525SG12084$|^PIC32CX0525SG12144$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/pic32cx_sg1/init_clock.c)
+    list(APPEND local_dir_install system/src/pic32/pic32cx_sg1/thirdparty/pic32cx_sg1)
+    set(${thirdpartyInstall} pic32cx_sg1/thirdparty/pic32cx_sg1 PARENT_SCOPE)
+endif()
