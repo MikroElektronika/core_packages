@@ -1,6 +1,6 @@
 {
     "def_file": "PIC32CX0525SG12084.json",
-    "family_uid": "0525SG12",
+    "family_uid": "PIC32CX",
     "flash": "134217728",
     "icon": "images/mcu/microchip.png",
     "max_speed": "48.000",
