@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^ATSAM4S8CA$|^ATSAM4S8CB$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/atsam4s8c/init_clock.c)
+    list(APPEND local_dir_install system/src/sam/atsam4s8c/thirdparty/atsam4s8c)
+    set(${thirdpartyInstall} atsam4s8c/thirdparty/atsam4s8c PARENT_SCOPE)
+endif()
