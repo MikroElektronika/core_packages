@@ -1,0 +1,18 @@
+{
+    "def_file": "ATSAM4LC8AA.json",
+    "family_uid": "SAM4L",
+    "flash": "524288",
+    "icon": "images/mcu/microchip.png",
+    "max_speed": "48.000",
+    "name": "ATSAM4LC8AA",
+    "ram": "67584",
+    "sdk_config": "{\"MCU_NAME\":\"ATSAM4LC8AA\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ATSAM4LC8AA",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_atsam4l\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_atsam4l\"}"
+}
