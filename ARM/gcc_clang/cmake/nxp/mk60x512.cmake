@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^MK60DN512VLL10$|^MK60DN512VLQ10$|^MK60DN512VMC10$|^MK60DN512VMD10$|^MK60FX512VLQ12$|^MK60FX512VLQ15$|^MK60FX512VMD12$|^MK60FX512VMD15$")
+if(${MCU_NAME} MATCHES "^MK60DN512VLL10$|^MK60DN512VLQ10$|^MK60DN512VMC10$|^MK60DN512VMD10$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/system_nxp_mk20xx_mk5xx_mk60xx.c)
