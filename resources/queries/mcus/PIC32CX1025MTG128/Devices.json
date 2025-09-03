@@ -1,6 +1,6 @@
 {
     "def_file": "PIC32CX1025MTG128.json",
-    "family_uid": "PIC32CXMTG",
+    "family_uid": "PIC32CXMT",
     "flash": "524288",
     "icon": "images/mcu/microchip.png",
     "max_speed": "240.000",

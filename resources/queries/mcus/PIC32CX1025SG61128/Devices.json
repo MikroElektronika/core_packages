@@ -1,6 +1,6 @@
 {
     "def_file": "PIC32CX1025SG61128.json",
-    "family_uid": "PIC32CXSG61",
+    "family_uid": "PIC32CX",
     "flash": "1048576",
     "icon": "images/mcu/microchip.png",
     "max_speed": "100.000",
