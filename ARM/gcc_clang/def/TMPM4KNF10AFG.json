@@ -1,4 +1,1387 @@
 {
+    "config_registers": [
+        {
+            "address": "40083004",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IHOSC1EN",
+                    "label": "IHOSC1 operation",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Stop",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable IHOSC1",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EOSCEN",
+                    "label": "External high-speed oscillator operation",
+                    "mask": "6",
+                    "settings": [
+                        {
+                            "label": "External high-speed oscillator is not used",
+                            "value": "0"
+                        },
+                        {
+                            "label": "EHOSC is used",
+                            "value": "2"
+                        },
+                        {
+                            "label": "EHCLKIN is used",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IHOSC2EN",
+                    "label": "IHOSC2 operation",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "Stop",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable IHOSC2",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OSCSEL",
+                    "label": "Fosc source selection",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "IHOSC1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "EHOSC",
+                            "value": "100"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCKSCR",
+            "unused": "FFFFF0F0"
+        },
+        {
+            "address": "40083008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "GEAR",
+                    "label": "High-speed system clock gear",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "Fc",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Fc/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Fc/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Fc/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Fc/16",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCKSEL",
+                    "label": "Middle-speed system clock settings",
+                    "mask": "C0",
+                    "settings": [
+                        {
+                            "label": "High-speed system clock gear and prescaler",
+                            "value": "0"
+                        },
+                        {
+                            "label": "High-speed system clock gear and prescaler / 2",
+                            "value": "40"
+                        },
+                        {
+                            "label": "High-speed system clock gear and prescaler / 4",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PRCK",
+                    "label": "Prescaler clock for the peripheral functions",
+                    "mask": "F00",
+                    "settings": [
+                        {
+                            "label": "Fc",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Fc/2",
+                            "value": "100"
+                        },
+                        {
+                            "label": "Fc/4",
+                            "value": "200"
+                        },
+                        {
+                            "label": "Fc/8",
+                            "value": "300"
+                        },
+                        {
+                            "label": "Fc/16",
+                            "value": "400"
+                        },
+                        {
+                            "label": "Fc/32",
+                            "value": "500"
+                        },
+                        {
+                            "label": "Fc/64",
+                            "value": "600"
+                        },
+                        {
+                            "label": "Fc/128",
+                            "value": "700"
+                        },
+                        {
+                            "label": "Fc/256",
+                            "value": "800"
+                        },
+                        {
+                            "label": "Fc/512",
+                            "value": "900"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_PLLCCR2",
+            "unused": "FFFFF038"
+        },
+        {
+            "address": "40083020",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLL0ON",
+                    "label": "PLL0 operation",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PLL0 OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL0 ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLL0SEL",
+                    "label": "System clock source",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Internal oscillator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLL0SETIM",
+                    "label": "PLL0 integer part multiplicator",
+                    "mask": "FF00",
+                    "settings": [
+                        {
+                            "label": "0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "1",
+                            "value": "0100"
+                        },
+                        {
+                            "label": "2",
+                            "value": "0200"
+                        },
+                        {
+                            "label": "3",
+                            "value": "0300"
+                        },
+                        {
+                            "label": "4",
+                            "value": "0400"
+                        },
+                        {
+                            "label": "5",
+                            "value": "0500"
+                        },
+                        {
+                            "label": "6",
+                            "value": "0600"
+                        },
+                        {
+                            "label": "7",
+                            "value": "0700"
+                        },
+                        {
+                            "label": "8",
+                            "value": "0800"
+                        },
+                        {
+                            "label": "9",
+                            "value": "0900"
+                        },
+                        {
+                            "label": "10",
+                            "value": "0A00"
+                        },
+                        {
+                            "label": "11",
+                            "value": "0B00"
+                        },
+                        {
+                            "label": "12",
+                            "value": "0C00"
+                        },
+                        {
+                            "label": "13",
+                            "value": "0D00"
+                        },
+                        {
+                            "label": "14",
+                            "value": "0E00"
+                        },
+                        {
+                            "label": "15",
+                            "value": "0F00"
+                        },
+                        {
+                            "label": "16",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "17",
+                            "value": "1100"
+                        },
+                        {
+                            "label": "18",
+                            "value": "1200"
+                        },
+                        {
+                            "label": "19",
+                            "value": "1300"
+                        },
+                        {
+                            "label": "20",
+                            "value": "1400"
+                        },
+                        {
+                            "label": "21",
+                            "value": "1500"
+                        },
+                        {
+                            "label": "22",
+                            "value": "1600"
+                        },
+                        {
+                            "label": "23",
+                            "value": "1700"
+                        },
+                        {
+                            "label": "24",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "25",
+                            "value": "1900"
+                        },
+                        {
+                            "label": "26",
+                            "value": "1A00"
+                        },
+                        {
+                            "label": "27",
+                            "value": "1B00"
+                        },
+                        {
+                            "label": "28",
+                            "value": "1C00"
+                        },
+                        {
+                            "label": "29",
+                            "value": "1D00"
+                        },
+                        {
+                            "label": "30",
+                            "value": "1E00"
+                        },
+                        {
+                            "label": "31",
+                            "value": "1F00"
+                        },
+                        {
+                            "label": "32",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "33",
+                            "value": "2100"
+                        },
+                        {
+                            "label": "34",
+                            "value": "2200"
+                        },
+                        {
+                            "label": "35",
+                            "value": "2300"
+                        },
+                        {
+                            "label": "36",
+                            "value": "2400"
+                        },
+                        {
+                            "label": "37",
+                            "value": "2500"
+                        },
+                        {
+                            "label": "38",
+                            "value": "2600"
+                        },
+                        {
+                            "label": "39",
+                            "value": "2700"
+                        },
+                        {
+                            "label": "40",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "41",
+                            "value": "2900"
+                        },
+                        {
+                            "label": "42",
+                            "value": "2A00"
+                        },
+                        {
+                            "label": "43",
+                            "value": "2B00"
+                        },
+                        {
+                            "label": "44",
+                            "value": "2C00"
+                        },
+                        {
+                            "label": "45",
+                            "value": "2D00"
+                        },
+                        {
+                            "label": "46",
+                            "value": "2E00"
+                        },
+                        {
+                            "label": "47",
+                            "value": "2F00"
+                        },
+                        {
+                            "label": "48",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "49",
+                            "value": "3100"
+                        },
+                        {
+                            "label": "50",
+                            "value": "3200"
+                        },
+                        {
+                            "label": "51",
+                            "value": "3300"
+                        },
+                        {
+                            "label": "52",
+                            "value": "3400"
+                        },
+                        {
+                            "label": "53",
+                            "value": "3500"
+                        },
+                        {
+                            "label": "54",
+                            "value": "3600"
+                        },
+                        {
+                            "label": "55",
+                            "value": "3700"
+                        },
+                        {
+                            "label": "56",
+                            "value": "3800"
+                        },
+                        {
+                            "label": "57",
+                            "value": "3900"
+                        },
+                        {
+                            "label": "58",
+                            "value": "3A00"
+                        },
+                        {
+                            "label": "59",
+                            "value": "3B00"
+                        },
+                        {
+                            "label": "60",
+                            "value": "3C00"
+                        },
+                        {
+                            "label": "61",
+                            "value": "3D00"
+                        },
+                        {
+                            "label": "62",
+                            "value": "3E00"
+                        },
+                        {
+                            "label": "63",
+                            "value": "3F00"
+                        },
+                        {
+                            "label": "64",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "65",
+                            "value": "4100"
+                        },
+                        {
+                            "label": "66",
+                            "value": "4200"
+                        },
+                        {
+                            "label": "67",
+                            "value": "4300"
+                        },
+                        {
+                            "label": "68",
+                            "value": "4400"
+                        },
+                        {
+                            "label": "69",
+                            "value": "4500"
+                        },
+                        {
+                            "label": "70",
+                            "value": "4600"
+                        },
+                        {
+                            "label": "71",
+                            "value": "4700"
+                        },
+                        {
+                            "label": "72",
+                            "value": "4800"
+                        },
+                        {
+                            "label": "73",
+                            "value": "4900"
+                        },
+                        {
+                            "label": "74",
+                            "value": "4A00"
+                        },
+                        {
+                            "label": "75",
+                            "value": "4B00"
+                        },
+                        {
+                            "label": "76",
+                            "value": "4C00"
+                        },
+                        {
+                            "label": "77",
+                            "value": "4D00"
+                        },
+                        {
+                            "label": "78",
+                            "value": "4E00"
+                        },
+                        {
+                            "label": "79",
+                            "value": "4F00"
+                        },
+                        {
+                            "label": "80",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "81",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "82",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "83",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "84",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "85",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "86",
+                            "value": "5600"
+                        },
+                        {
+                            "label": "87",
+                            "value": "5700"
+                        },
+                        {
+                            "label": "88",
+                            "value": "5800"
+                        },
+                        {
+                            "label": "89",
+                            "value": "5900"
+                        },
+                        {
+                            "label": "90",
+                            "value": "5A00"
+                        },
+                        {
+                            "label": "91",
+                            "value": "5B00"
+                        },
+                        {
+                            "label": "92",
+                            "value": "5C00"
+                        },
+                        {
+                            "label": "93",
+                            "value": "5D00"
+                        },
+                        {
+                            "label": "94",
+                            "value": "5E00"
+                        },
+                        {
+                            "label": "95",
+                            "value": "5F00"
+                        },
+                        {
+                            "label": "96",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "97",
+                            "value": "6100"
+                        },
+                        {
+                            "label": "98",
+                            "value": "6200"
+                        },
+                        {
+                            "label": "99",
+                            "value": "6300"
+                        },
+                        {
+                            "label": "100",
+                            "value": "6400"
+                        },
+                        {
+                            "label": "101",
+                            "value": "6500"
+                        },
+                        {
+                            "label": "102",
+                            "value": "6600"
+                        },
+                        {
+                            "label": "103",
+                            "value": "6700"
+                        },
+                        {
+                            "label": "104",
+                            "value": "6800"
+                        },
+                        {
+                            "label": "105",
+                            "value": "6900"
+                        },
+                        {
+                            "label": "106",
+                            "value": "6A00"
+                        },
+                        {
+                            "label": "107",
+                            "value": "6B00"
+                        },
+                        {
+                            "label": "108",
+                            "value": "6C00"
+                        },
+                        {
+                            "label": "109",
+                            "value": "6D00"
+                        },
+                        {
+                            "label": "110",
+                            "value": "6E00"
+                        },
+                        {
+                            "label": "111",
+                            "value": "6F00"
+                        },
+                        {
+                            "label": "112",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "113",
+                            "value": "7100"
+                        },
+                        {
+                            "label": "114",
+                            "value": "7200"
+                        },
+                        {
+                            "label": "115",
+                            "value": "7300"
+                        },
+                        {
+                            "label": "116",
+                            "value": "7400"
+                        },
+                        {
+                            "label": "117",
+                            "value": "7500"
+                        },
+                        {
+                            "label": "118",
+                            "value": "7600"
+                        },
+                        {
+                            "label": "119",
+                            "value": "7700"
+                        },
+                        {
+                            "label": "120",
+                            "value": "7800"
+                        },
+                        {
+                            "label": "121",
+                            "value": "7900"
+                        },
+                        {
+                            "label": "122",
+                            "value": "7A00"
+                        },
+                        {
+                            "label": "123",
+                            "value": "7B00"
+                        },
+                        {
+                            "label": "124",
+                            "value": "7C00"
+                        },
+                        {
+                            "label": "125",
+                            "value": "7D00"
+                        },
+                        {
+                            "label": "126",
+                            "value": "7E00"
+                        },
+                        {
+                            "label": "127",
+                            "value": "7F00"
+                        },
+                        {
+                            "label": "128",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "129",
+                            "value": "8100"
+                        },
+                        {
+                            "label": "130",
+                            "value": "8200"
+                        },
+                        {
+                            "label": "131",
+                            "value": "8300"
+                        },
+                        {
+                            "label": "132",
+                            "value": "8400"
+                        },
+                        {
+                            "label": "133",
+                            "value": "8500"
+                        },
+                        {
+                            "label": "134",
+                            "value": "8600"
+                        },
+                        {
+                            "label": "135",
+                            "value": "8700"
+                        },
+                        {
+                            "label": "136",
+                            "value": "8800"
+                        },
+                        {
+                            "label": "137",
+                            "value": "8900"
+                        },
+                        {
+                            "label": "138",
+                            "value": "8A00"
+                        },
+                        {
+                            "label": "139",
+                            "value": "8B00"
+                        },
+                        {
+                            "label": "140",
+                            "value": "8C00"
+                        },
+                        {
+                            "label": "141",
+                            "value": "8D00"
+                        },
+                        {
+                            "label": "142",
+                            "value": "8E00"
+                        },
+                        {
+                            "label": "143",
+                            "value": "8F00"
+                        },
+                        {
+                            "label": "144",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "145",
+                            "value": "9100"
+                        },
+                        {
+                            "label": "146",
+                            "value": "9200"
+                        },
+                        {
+                            "label": "147",
+                            "value": "9300"
+                        },
+                        {
+                            "label": "148",
+                            "value": "9400"
+                        },
+                        {
+                            "label": "149",
+                            "value": "9500"
+                        },
+                        {
+                            "label": "150",
+                            "value": "9600"
+                        },
+                        {
+                            "label": "151",
+                            "value": "9700"
+                        },
+                        {
+                            "label": "152",
+                            "value": "9800"
+                        },
+                        {
+                            "label": "153",
+                            "value": "9900"
+                        },
+                        {
+                            "label": "154",
+                            "value": "9A00"
+                        },
+                        {
+                            "label": "155",
+                            "value": "9B00"
+                        },
+                        {
+                            "label": "156",
+                            "value": "9C00"
+                        },
+                        {
+                            "label": "157",
+                            "value": "9D00"
+                        },
+                        {
+                            "label": "158",
+                            "value": "9E00"
+                        },
+                        {
+                            "label": "159",
+                            "value": "9F00"
+                        },
+                        {
+                            "label": "160",
+                            "value": "A000"
+                        },
+                        {
+                            "label": "161",
+                            "value": "A100"
+                        },
+                        {
+                            "label": "162",
+                            "value": "A200"
+                        },
+                        {
+                            "label": "163",
+                            "value": "A300"
+                        },
+                        {
+                            "label": "164",
+                            "value": "A400"
+                        },
+                        {
+                            "label": "165",
+                            "value": "A500"
+                        },
+                        {
+                            "label": "166",
+                            "value": "A600"
+                        },
+                        {
+                            "label": "167",
+                            "value": "A700"
+                        },
+                        {
+                            "label": "168",
+                            "value": "A800"
+                        },
+                        {
+                            "label": "169",
+                            "value": "A900"
+                        },
+                        {
+                            "label": "170",
+                            "value": "AA00"
+                        },
+                        {
+                            "label": "171",
+                            "value": "AB00"
+                        },
+                        {
+                            "label": "172",
+                            "value": "AC00"
+                        },
+                        {
+                            "label": "173",
+                            "value": "AD00"
+                        },
+                        {
+                            "label": "174",
+                            "value": "AE00"
+                        },
+                        {
+                            "label": "175",
+                            "value": "AF00"
+                        },
+                        {
+                            "label": "176",
+                            "value": "B000"
+                        },
+                        {
+                            "label": "177",
+                            "value": "B100"
+                        },
+                        {
+                            "label": "178",
+                            "value": "B200"
+                        },
+                        {
+                            "label": "179",
+                            "value": "B300"
+                        },
+                        {
+                            "label": "180",
+                            "value": "B400"
+                        },
+                        {
+                            "label": "181",
+                            "value": "B500"
+                        },
+                        {
+                            "label": "182",
+                            "value": "B600"
+                        },
+                        {
+                            "label": "183",
+                            "value": "B700"
+                        },
+                        {
+                            "label": "184",
+                            "value": "B800"
+                        },
+                        {
+                            "label": "185",
+                            "value": "B900"
+                        },
+                        {
+                            "label": "186",
+                            "value": "BA00"
+                        },
+                        {
+                            "label": "187",
+                            "value": "BB00"
+                        },
+                        {
+                            "label": "188",
+                            "value": "BC00"
+                        },
+                        {
+                            "label": "189",
+                            "value": "BD00"
+                        },
+                        {
+                            "label": "190",
+                            "value": "BE00"
+                        },
+                        {
+                            "label": "191",
+                            "value": "BF00"
+                        },
+                        {
+                            "label": "192",
+                            "value": "C000"
+                        },
+                        {
+                            "label": "193",
+                            "value": "C100"
+                        },
+                        {
+                            "label": "194",
+                            "value": "C200"
+                        },
+                        {
+                            "label": "195",
+                            "value": "C300"
+                        },
+                        {
+                            "label": "196",
+                            "value": "C400"
+                        },
+                        {
+                            "label": "197",
+                            "value": "C500"
+                        },
+                        {
+                            "label": "198",
+                            "value": "C600"
+                        },
+                        {
+                            "label": "199",
+                            "value": "C700"
+                        },
+                        {
+                            "label": "200",
+                            "value": "C800"
+                        },
+                        {
+                            "label": "201",
+                            "value": "C900"
+                        },
+                        {
+                            "label": "202",
+                            "value": "CA00"
+                        },
+                        {
+                            "label": "203",
+                            "value": "CB00"
+                        },
+                        {
+                            "label": "204",
+                            "value": "CC00"
+                        },
+                        {
+                            "label": "205",
+                            "value": "CD00"
+                        },
+                        {
+                            "label": "206",
+                            "value": "CE00"
+                        },
+                        {
+                            "label": "207",
+                            "value": "CF00"
+                        },
+                        {
+                            "label": "208",
+                            "value": "D000"
+                        },
+                        {
+                            "label": "209",
+                            "value": "D100"
+                        },
+                        {
+                            "label": "210",
+                            "value": "D200"
+                        },
+                        {
+                            "label": "211",
+                            "value": "D300"
+                        },
+                        {
+                            "label": "212",
+                            "value": "D400"
+                        },
+                        {
+                            "label": "213",
+                            "value": "D500"
+                        },
+                        {
+                            "label": "214",
+                            "value": "D600"
+                        },
+                        {
+                            "label": "215",
+                            "value": "D700"
+                        },
+                        {
+                            "label": "216",
+                            "value": "D800"
+                        },
+                        {
+                            "label": "217",
+                            "value": "D900"
+                        },
+                        {
+                            "label": "218",
+                            "value": "DA00"
+                        },
+                        {
+                            "label": "219",
+                            "value": "DB00"
+                        },
+                        {
+                            "label": "220",
+                            "value": "DC00"
+                        },
+                        {
+                            "label": "221",
+                            "value": "DD00"
+                        },
+                        {
+                            "label": "222",
+                            "value": "DE00"
+                        },
+                        {
+                            "label": "223",
+                            "value": "DF00"
+                        },
+                        {
+                            "label": "224",
+                            "value": "E000"
+                        },
+                        {
+                            "label": "225",
+                            "value": "E100"
+                        },
+                        {
+                            "label": "226",
+                            "value": "E200"
+                        },
+                        {
+                            "label": "227",
+                            "value": "E300"
+                        },
+                        {
+                            "label": "228",
+                            "value": "E400"
+                        },
+                        {
+                            "label": "229",
+                            "value": "E500"
+                        },
+                        {
+                            "label": "230",
+                            "value": "E600"
+                        },
+                        {
+                            "label": "231",
+                            "value": "E700"
+                        },
+                        {
+                            "label": "232",
+                            "value": "E800"
+                        },
+                        {
+                            "label": "233",
+                            "value": "E900"
+                        },
+                        {
+                            "label": "234",
+                            "value": "EA00"
+                        },
+                        {
+                            "label": "235",
+                            "value": "EB00"
+                        },
+                        {
+                            "label": "236",
+                            "value": "EC00"
+                        },
+                        {
+                            "label": "237",
+                            "value": "ED00"
+                        },
+                        {
+                            "label": "238",
+                            "value": "EE00"
+                        },
+                        {
+                            "label": "239",
+                            "value": "EF00"
+                        },
+                        {
+                            "label": "240",
+                            "value": "F000"
+                        },
+                        {
+                            "label": "241",
+                            "value": "F100"
+                        },
+                        {
+                            "label": "242",
+                            "value": "F200"
+                        },
+                        {
+                            "label": "243",
+                            "value": "F300"
+                        },
+                        {
+                            "label": "244",
+                            "value": "F400"
+                        },
+                        {
+                            "label": "245",
+                            "value": "F500"
+                        },
+                        {
+                            "label": "246",
+                            "value": "F600"
+                        },
+                        {
+                            "label": "247",
+                            "value": "F700"
+                        },
+                        {
+                            "label": "248",
+                            "value": "F800"
+                        },
+                        {
+                            "label": "249",
+                            "value": "F900"
+                        },
+                        {
+                            "label": "250",
+                            "value": "FA00"
+                        },
+                        {
+                            "label": "251",
+                            "value": "FB00"
+                        },
+                        {
+                            "label": "252",
+                            "value": "FC00"
+                        },
+                        {
+                            "label": "253",
+                            "value": "FD00"
+                        },
+                        {
+                            "label": "254",
+                            "value": "FE00"
+                        },
+                        {
+                            "label": "255",
+                            "value": "FF00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLL0SELFM",
+                    "label": "PLL0 fraction part multiplicator",
+                    "mask": "F0000",
+                    "settings": [
+                        {
+                            "label": "0.0000",
+                            "value": "0"
+                        },
+                        {
+                            "label": "0.0625",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "0.1250",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "0.1875",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "0.2500",
+                            "value": "40000"
+                        },
+                        {
+                            "label": "0.3125",
+                            "value": "50000"
+                        },
+                        {
+                            "label": "0.3750",
+                            "value": "60000"
+                        },
+                        {
+                            "label": "0.4375",
+                            "value": "70000"
+                        },
+                        {
+                            "label": "0.5000",
+                            "value": "80000"
+                        },
+                        {
+                            "label": "0.5625",
+                            "value": "90000"
+                        },
+                        {
+                            "label": "0.6250",
+                            "value": "A0000"
+                        },
+                        {
+                            "label": "0.6875",
+                            "value": "B0000"
+                        },
+                        {
+                            "label": "0.7500",
+                            "value": "C0000"
+                        },
+                        {
+                            "label": "0.8125",
+                            "value": "D0000"
+                        },
+                        {
+                            "label": "0.8750",
+                            "value": "E0000"
+                        },
+                        {
+                            "label": "0.9375",
+                            "value": "F0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLL0SELD",
+                    "label": "PLL0 divider",
+                    "mask": "300000",
+                    "settings": [
+                        {
+                            "label": "Divide by 2",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "Divide by 4",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "Divide by 8",
+                            "value": "300000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLL0SELFOSC",
+                    "label": "PLL clock source frequency",
+                    "mask": "1C00000",
+                    "settings": [
+                        {
+                            "label": "6 < Fosc ≤ 7",
+                            "value": "0"
+                        },
+                        {
+                            "label": "7 < Fosc ≤ 8",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "8 < Fosc ≤ 10",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "10 < Fosc ≤ 12",
+                            "value": "C00000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CGPLL0SEL",
+            "unused": "000000FC"
+        }
+    ],
     "core": "M4EF",
     "delay_src_path": "delays/m4ef/__lib_delays.c",
     "mcu": "TMPM4KNF10AFG",
