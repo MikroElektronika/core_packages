@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^PIC32CZ2051MC70064$|^PIC32CZ2051MC70100$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/pic32cz_mc7/init_clock.c)
+    list(APPEND local_dir_install system/src/pic32/pic32cz_mc7/thirdparty/pic32cz_mc7)
+    set(${thirdpartyInstall} pic32cz_mc7/thirdparty/pic32cz_mc7 PARENT_SCOPE)
+endif()
