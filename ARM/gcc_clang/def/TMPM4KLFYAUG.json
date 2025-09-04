@@ -77,7 +77,7 @@
                     ]
                 }
             ],
-            "key": "SYSTEM_SCKSCR",
+            "key": "SYSTEM_CGOSCCR",
             "unused": "FFFFF0F0"
         },
         {
@@ -1374,7 +1374,7 @@
                     ]
                 }
             ],
-            "key": "SYSTEM_PLLCCR2",
+            "key": "SYSTEM_CGSYSCR",
             "unused": "FFFFF038"
         }
     ],
