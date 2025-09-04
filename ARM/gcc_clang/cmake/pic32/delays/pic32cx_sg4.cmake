@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^PIC32CX1025SG41064$|^PIC32CX1025SG41080$|^PIC32CX1025SG41100$|^PIC32CX1025SG41128$")
+    list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/6)")
+endif()
