@@ -1268,7 +1268,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "3C000000",
                     "key": "PLL0SELCORR",
                     "label": "PLL correction value (Fosc / 450000)",
                     "mask": "FE000000",
