@@ -1,0 +1,40 @@
+{
+    "device_uid": "PIC32CZ2051MC70064",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_ARM_BOARD"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "clang-llvm",
+                    "gcc_arm_none_eabi"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "64/ETQFP",
+                    "64/ETQFP"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.15.0+"
+            }
+        }
+    ]
+}
