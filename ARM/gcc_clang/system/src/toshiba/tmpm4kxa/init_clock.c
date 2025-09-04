@@ -46,6 +46,26 @@
 #define SIWDEN_Val (0x00000000UL) /* SIWD Disable */
 #define SIWDCR_Val (0x000000B1UL) /* SIWD Disable code */
 
+extern uint32_t __data_load__;
+extern uint32_t __data_start__;
+extern uint32_t __data_end__;
+extern uint32_t __bss_start__;
+extern uint32_t __bss_end__;
+
+static void data_init(void) {
+    /* Copy .data */
+    uint32_t *src = &__data_load__;
+    uint32_t *dst = &__data_start__;
+    while (dst < &__data_end__) {
+        *dst++ = *src++;
+    }
+
+    /* Zero .bss */
+    for (dst = &__bss_start__; dst < &__bss_end__; ) {
+        *dst++ = 0;
+    }
+}
+
 /**
  * Initialize the system
  * @param  none
@@ -54,10 +74,38 @@
  */
 void clockConfig(void)
 {
+    data_init();
+
     /* Disable SIWD. */
     TSB_SIWD0->EN = SIWDEN_Val;
     TSB_SIWD0->CR = SIWDCR_Val;
 
     /* Set-up FPU settings. */
     SCB->CPACR |= ((3UL << (10*2)) | (3UL << (11*2)));
+
+    /* If external clock selection requested. */
+    if ( VALUE_SYSTEM_CGOSCCR & 0x100 ) {
+        /* Enable external oscillator. */
+        TSB_CG->OSCCR |= VALUE_SYSTEM_CGOSCCR & 0x6;
+        /* Set external clock source. */
+        TSB_CG_OSCCR_OSCSEL = 1;
+        /* Wait for external clock source to be set. */
+        while (!( TSB_CG_OSCCR_OSCF ));
+    }
+
+    /* Set all the rest oscillator configuration parameters. */
+    TSB_CG->OSCCR |= VALUE_SYSTEM_CGOSCCR & ~0x100;
+
+    /* If PLL is requested to be system clock source. */
+    if ( VALUE_SYSTEM_CGPLL0SEL & 0x2 ) {
+        /* Set PLL divisors and multiplicators. */
+        TSB_CG->PLL0SEL = ( VALUE_SYSTEM_CGPLL0SEL & 0xFFFFFF00 );
+        /* Enable PLL. */
+        TSB_CG->PLL0SEL |= ( VALUE_SYSTEM_CGPLL0SEL & 0x1 );
+        /* Set PLL as system clock. */
+        TSB_CG->PLL0SEL |= ( VALUE_SYSTEM_CGPLL0SEL & 0x2 );
+    }
+
+    /* Set requested system configuration. */
+    TSB_CG->SYSCR = VALUE_SYSTEM_CGSYSCR;
 }
