@@ -1265,6 +1265,31 @@
                             "value": "C00000"
                         }
                     ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLL0SELCORR",
+                    "label": "PLL correction value (Fosc / 450000)",
+                    "mask": "FE000000",
+                    "settings": [
+                        {
+                            "label": "Fosc = 6 MHz",
+                            "value": "1C000000"
+                        },
+                        {
+                            "label": "Fosc = 8 MHz",
+                            "value": "24000000"
+                        },
+                        {
+                            "label": "Fosc = 10 MHz",
+                            "value": "3C000000"
+                        },
+                        {
+                            "label": "Fosc = 12 MHz",
+                            "value": "4C000000"
+                        }
+                    ]
                 }
             ],
             "key": "SYSTEM_CGPLL0SEL",
