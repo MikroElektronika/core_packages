@@ -120,7 +120,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "0100",
                     "key": "PLL0SETIM",
                     "label": "PLL0 integer part multiplicator",
                     "mask": "FF00",
@@ -1360,15 +1360,15 @@
                     "mask": "C0",
                     "settings": [
                         {
-                            "label": "Fsysm = Fc, FT0m = FT0h",
+                            "label": "Fsysm = Fc and FT0m = FT0h",
                             "value": "0"
                         },
                         {
-                            "label": "Fsysm = Fc / 2, FT0m = FT0h / 2",
+                            "label": "Fsysm = Fc / 2 and FT0m = FT0h / 2",
                             "value": "40"
                         },
                         {
-                            "label": "Fsysm = Fc / 4, FT0m = FT0h / 4",
+                            "label": "Fsysm = Fc / 4 and FT0m = FT0h / 4",
                             "value": "80"
                         }
                     ]
