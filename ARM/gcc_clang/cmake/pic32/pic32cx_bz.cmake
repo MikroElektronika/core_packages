@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^PIC32CX1012BZ24032$|^PIC32CX1012BZ25048$|^PIC32CX2051BZ62132$|^PIC32CX5109BZ31032$|^PIC32CX5109BZ31048$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/pic32cx_bz/init_clock.c)
+    list(APPEND local_dir_install system/src/pic32/pic32cx_bz/thirdparty/pic32cx_bz)
+    set(${thirdpartyInstall} pic32cx_bz/thirdparty/pic32cx_bz PARENT_SCOPE)
+endif()
