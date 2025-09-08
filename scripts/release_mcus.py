@@ -530,7 +530,6 @@ def update_database(package_name, mcus, db_path):
     return
 
 async def upload_release_asset(session, token, repo, tag_name, asset_path, delete_existing=True):
-    return
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
@@ -955,9 +954,6 @@ async def main(token, repo, tag_name, live=False):
     # Elasticsearch instance used for fetching indexed items details
     num_of_retries = 1
     print("Trying to connect to ES.")
-    os.environ['ES_HOST'] = 'https://api.mikroe.com/elasticsearch'
-    os.environ['ES_USER'] = 'sw-github'
-    os.environ['ES_PASSWORD'] = 'iZMbHtLW670wRAjWFUZxTBmiZXpt7T'
     while True:
         es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
@@ -970,7 +966,7 @@ async def main(token, repo, tag_name, live=False):
         num_of_retries += 1
 
         time.sleep(1)
-    indexed_items = fetch_current_indexed_packages(es, 'github_test_index')
+    indexed_items = fetch_current_indexed_packages(es, os.environ['ES_INDEX'])
 
     packages = []
     for arch in architectures:
