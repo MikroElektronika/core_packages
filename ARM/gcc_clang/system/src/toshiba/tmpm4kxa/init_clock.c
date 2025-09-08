@@ -73,9 +73,9 @@ typedef struct
     uint32_t CG_FT0M_Frequency;     // Middle-speed system prescaler clock.
 } CG_ClocksTypeDef;
 
-static char FSYSH_Prescaler_Table[ 5 ] = { 1, 2, 4, 8, 16 };
-static char FSYSM_Prescaler_Table[ 3 ] = { 1, 2, 4 };
-static char FT0H_Prescaler_Table[ 10 ] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
+static uint8_t FSYSH_Prescaler_Table[ 5 ] = { 1, 2, 4, 8, 16 };
+static uint8_t FSYSM_Prescaler_Table[ 3 ] = { 1, 2, 4 };
+static uint16_t FT0H_Prescaler_Table[ 10 ] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
 
 void CG_GetClocksFrequency( CG_ClocksTypeDef *CG_Clocks )
 {
@@ -83,22 +83,20 @@ void CG_GetClocksFrequency( CG_ClocksTypeDef *CG_Clocks )
     uint16_t ft0h_prescaler = FT0H_Prescaler_Table[( VALUE_SYSTEM_CGSYSCR & CGSYSCR_PRCK_MASK ) \
                                                         >> CGSYSCR_PRCK_OFFSET ];
     uint8_t fsysm_prescaler = FSYSM_Prescaler_Table[( VALUE_SYSTEM_CGSYSCR & CGSYSCR_MCKSEL_MASK ) \
-                                                        >> CGSYSCR_MCKSEL_OFFSET ]
+                                                        >> CGSYSCR_MCKSEL_OFFSET ];
 
     /* System frequency is always the same as general clock value. */
-    CG_Clocks->CG_FC_Frequency = FOSC_KHZ_VALUE;
+    CG_Clocks->CG_FC_Frequency = ( uint32_t )FOSC_KHZ_VALUE * 1000;
 
     /* Get high-speed system clock. */
     CG_Clocks->CG_FSYSH_Frequency = CG_Clocks->CG_FC_Frequency / fsysh_prescaler;
 
     /* Get high-speed system prescaler clock. */
-    CG_Clocks->CG_FT0H_Frequency = CG_Clocks->CG_FSYSH_Frequency / fsysh_prescaler;
+    CG_Clocks->CG_FT0H_Frequency = CG_Clocks->CG_FSYSH_Frequency / ft0h_prescaler;
 
     /* Get middle-speed system clock and middle-speed system prescaler clock. */
     CG_Clocks->CG_FSYSM_Frequency = CG_Clocks->CG_FSYSH_Frequency / fsysm_prescaler;
     CG_Clocks->CG_FT0M_Frequency = CG_Clocks->CG_FT0H_Frequency / fsysm_prescaler;
-
-    return CG_Clocks;
 }
 
 /**
