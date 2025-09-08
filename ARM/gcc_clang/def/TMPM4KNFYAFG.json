@@ -1385,15 +1385,15 @@
                     "mask": "C0",
                     "settings": [
                         {
-                            "label": "Fsysm = Fc and FT0m = FT0h",
+                            "label": "Fsysm = Fsysh and FT0m = FT0h",
                             "value": "0"
                         },
                         {
-                            "label": "Fsysm = Fc / 2 and FT0m = FT0h / 2",
+                            "label": "Fsysm = Fsysh / 2 and FT0m = FT0h / 2",
                             "value": "40"
                         },
                         {
-                            "label": "Fsysm = Fc / 4 and FT0m = FT0h / 4",
+                            "label": "Fsysm = Fsysh / 4 and FT0m = FT0h / 4",
                             "value": "80"
                         }
                     ]
