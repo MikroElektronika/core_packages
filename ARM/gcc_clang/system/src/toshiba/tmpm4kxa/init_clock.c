@@ -46,6 +46,12 @@
 #define SIWDEN_Val (0x00000000UL) /* SIWD Disable */
 #define SIWDCR_Val (0x000000B1UL) /* SIWD Disable code */
 
+#define CGPLL0SEL_PLL0ON_MASK   0x1
+#define CGPLL0SEL_PLL0SEL_MASK  0x2
+#define CGOSCCR_EOSCEN_MASK     0x60
+#define CGOSCCR_OSCSEL_MASK     0x100
+#define CGPLL0SEL_PLL0SET_MASK  0xFFFFFF00
+
 extern uint32_t __data_load__;
 extern uint32_t __data_start__;
 extern uint32_t __data_end__;
@@ -84,9 +90,9 @@ void clockConfig(void)
     SCB->CPACR |= ((3UL << (10*2)) | (3UL << (11*2)));
 
     /* If external clock selection requested. */
-    if ( VALUE_SYSTEM_CGOSCCR & 0x100 ) {
+    if ( VALUE_SYSTEM_CGOSCCR & CGOSCCR_OSCSEL_MASK ) {
         /* Enable external oscillator. */
-        TSB_CG->OSCCR |= VALUE_SYSTEM_CGOSCCR & 0x6;
+        TSB_CG->OSCCR |= VALUE_SYSTEM_CGOSCCR & CGOSCCR_EOSCEN_MASK;
         /* Set external clock source. */
         TSB_CG_OSCCR_OSCSEL = 1;
         /* Wait for external clock source to be set. */
@@ -94,16 +100,16 @@ void clockConfig(void)
     }
 
     /* Set all the rest oscillator configuration parameters. */
-    TSB_CG->OSCCR |= VALUE_SYSTEM_CGOSCCR & ~0x100;
+    TSB_CG->OSCCR |= VALUE_SYSTEM_CGOSCCR & ~CGOSCCR_OSCSEL_MASK;
 
     /* If PLL is requested to be system clock source. */
-    if ( VALUE_SYSTEM_CGPLL0SEL & 0x2 ) {
+    if ( VALUE_SYSTEM_CGPLL0SEL & CGPLL0SEL_PLL0SEL_MASK ) {
         /* Set PLL divisors and multiplicators. */
-        TSB_CG->PLL0SEL = ( VALUE_SYSTEM_CGPLL0SEL & 0xFFFFFF00 );
+        TSB_CG->PLL0SEL = VALUE_SYSTEM_CGPLL0SEL & CGPLL0SEL_PLL0SET_MASK;
         /* Enable PLL. */
-        TSB_CG->PLL0SEL |= ( VALUE_SYSTEM_CGPLL0SEL & 0x1 );
+        TSB_CG->PLL0SEL |= VALUE_SYSTEM_CGPLL0SEL & CGPLL0SEL_PLL0ON_MASK;
         /* Set PLL as system clock. */
-        TSB_CG->PLL0SEL |= ( VALUE_SYSTEM_CGPLL0SEL & 0x2 );
+        TSB_CG->PLL0SEL |= VALUE_SYSTEM_CGPLL0SEL & CGPLL0SEL_PLL0SEL_MASK;
     }
 
     /* Set requested system configuration. */
