@@ -86,7 +86,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLL0ON",
                     "label": "PLL0 operation state",
                     "mask": "1",
@@ -103,7 +103,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "PLL0SEL",
                     "label": "System frequency (Fc) clock source",
                     "mask": "2",
@@ -120,7 +120,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0100",
+                    "init": "2000",
                     "key": "PLL0SETIM",
                     "label": "PLL0 integer part multiplicator",
                     "mask": "FF00",
@@ -1243,7 +1243,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "800000",
                     "key": "PLL0SELFOSC",
                     "label": "PLL clock source frequency",
                     "mask": "1C00000",
@@ -1406,5 +1406,5 @@
     "core": "M4EF",
     "delay_src_path": "delays/m4ef/__lib_delays.c",
     "mcu": "TMPM4KLF10AFG",
-    "clock": 10
+    "clock": 160
 }
