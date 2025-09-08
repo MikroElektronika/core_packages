@@ -503,8 +503,8 @@ def update_database(package_name, mcus, db_path):
                     if 'compiler_flags' not in read_data[counter][installer_package_column]:
                         existing_packages = json.loads(read_data[counter][installer_package_column])
                     else:
-                        if read_data[counter][installer_package_column]:
-                            existing_packages = json.loads(read_data[counter][installer_package_column])
+                        if read_data[counter][installer_package_column - 1]:
+                            existing_packages = json.loads(read_data[counter][installer_package_column - 1])
                 data_as_list = list(read_data[counter])
                 for each_compiler in list(read_data_compiler):
                     if 'mchp_xc' in each_compiler[0] and '_xc' in package_name:
