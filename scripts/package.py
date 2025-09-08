@@ -514,7 +514,7 @@ def update_database(package_name, mcus, db_path):
                             for each_split_check in package_name.split('_')[1:]:
                                 if re.search(each_split_check, each_compiler[0]):
                                     existing_packages[each_compiler[0]] = package_name
-                data_as_list[len(data_as_list)-2] = existing_packages
+                data_as_list[installer_package_column] = existing_packages
                 data_as_list_joined.append(data_as_list)
                 counter += 1
             for each_list in data_as_list_joined:
@@ -522,7 +522,7 @@ def update_database(package_name, mcus, db_path):
                     updateTable(
                         db_path,
                         f'''UPDATE Devices SET installer_package = ? WHERE uid = "{each_mcu.upper()}"''',
-                        json.dumps(each_list[len(each_list)-2])
+                        json.dumps(each_list[installer_package_column])
                     )
                 else:
                     raise ValueError("%s does not exist in database!" % each_mcu)

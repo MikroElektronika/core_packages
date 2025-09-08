@@ -514,7 +514,7 @@ def update_database(package_name, mcus, db_path):
                             for each_split_check in package_name.split('_')[1:]:
                                 if re.search(each_split_check, each_compiler[0]):
                                     existing_packages[each_compiler[0]] = package_name
-                data_as_list[len(data_as_list)-2] = existing_packages
+                data_as_list[installer_package_column] = existing_packages
                 data_as_list_joined.append(data_as_list)
                 counter += 1
             for each_list in data_as_list_joined:
@@ -522,7 +522,7 @@ def update_database(package_name, mcus, db_path):
                     updateTable(
                         db_path,
                         f'''UPDATE Devices SET installer_package = ? WHERE uid = "{each_mcu.upper()}"''',
-                        json.dumps(each_list[len(each_list)-2])
+                        json.dumps(each_list[installer_package_column])
                     )
                 else:
                     raise ValueError("%s does not exist in database!" % each_mcu)
@@ -530,6 +530,7 @@ def update_database(package_name, mcus, db_path):
     return
 
 async def upload_release_asset(session, token, repo, tag_name, asset_path, delete_existing=True):
+    return
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
@@ -954,6 +955,9 @@ async def main(token, repo, tag_name, live=False):
     # Elasticsearch instance used for fetching indexed items details
     num_of_retries = 1
     print("Trying to connect to ES.")
+    os.environ['ES_HOST'] = 'https://api.mikroe.com/elasticsearch'
+    os.environ['ES_USER'] = 'sw-github'
+    os.environ['ES_PASSWORD'] = 'iZMbHtLW670wRAjWFUZxTBmiZXpt7T'
     while True:
         es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():
@@ -966,7 +970,7 @@ async def main(token, repo, tag_name, live=False):
         num_of_retries += 1
 
         time.sleep(1)
-    indexed_items = fetch_current_indexed_packages(es, os.environ['ES_INDEX'])
+    indexed_items = fetch_current_indexed_packages(es, 'github_test_index')
 
     packages = []
     for arch in architectures:
