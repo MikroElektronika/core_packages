@@ -1,6 +1,1410 @@
 {
+    "config_registers": [
+        {
+            "address": "40083004",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IHOSC1EN",
+                    "label": "Internal high-speed oscillator1 (IHOSC1) operation",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "IHOSC1 is stopped",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IHOSC1 is enabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EOSCEN",
+                    "label": "External high-speed oscillator operation",
+                    "mask": "6",
+                    "settings": [
+                        {
+                            "label": "External high-speed oscillator is not used",
+                            "value": "0"
+                        },
+                        {
+                            "label": "EHOSC is used as external high-speed oscillator",
+                            "value": "2"
+                        },
+                        {
+                            "label": "EHCLKIN is used as external high-speed oscillator",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "Internal high-speed oscillator2 (IHOSC2EN) operation",
+                    "label": "IHOSC2 operation",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "IHOSC2EN is stopped",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IHOSC2 is enabled",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OSCSEL",
+                    "label": "Internal oscillation circuit frequency (Fosc) source selection",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "IHOSC1 is selected as Fosc source",
+                            "value": "0"
+                        },
+                        {
+                            "label": "EHOSC is selected as Fosc source",
+                            "value": "100"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CGOSCCR",
+            "unused": "FFFFF0F0"
+        },
+        {
+            "address": "40083020",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "PLL0ON",
+                    "label": "PLL0 operation state",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PLL0 is OFF",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL0 is ON",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "PLL0SEL",
+                    "label": "System frequency (Fc) clock source",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Clock without PLL (Fosc) selected as system clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL selected as system clock",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2000",
+                    "key": "PLL0SETIM",
+                    "label": "PLL0 integer part multiplicator",
+                    "mask": "FF00",
+                    "settings": [
+                        {
+                            "label": "PLL = Fosc",
+                            "value": "0100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 2",
+                            "value": "0200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 3",
+                            "value": "0300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 4",
+                            "value": "0400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 5",
+                            "value": "0500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 6",
+                            "value": "0600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 7",
+                            "value": "0700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 8",
+                            "value": "0800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 9",
+                            "value": "0900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 10",
+                            "value": "0A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 11",
+                            "value": "0B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 12",
+                            "value": "0C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 13",
+                            "value": "0D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 14",
+                            "value": "0E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 15",
+                            "value": "0F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 16",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 17",
+                            "value": "1100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 18",
+                            "value": "1200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 19",
+                            "value": "1300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 20",
+                            "value": "1400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 21",
+                            "value": "1500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 22",
+                            "value": "1600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 23",
+                            "value": "1700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 24",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 25",
+                            "value": "1900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 26",
+                            "value": "1A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 27",
+                            "value": "1B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 28",
+                            "value": "1C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 29",
+                            "value": "1D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 30",
+                            "value": "1E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 31",
+                            "value": "1F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 32",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 33",
+                            "value": "2100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 34",
+                            "value": "2200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 35",
+                            "value": "2300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 36",
+                            "value": "2400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 37",
+                            "value": "2500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 38",
+                            "value": "2600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 39",
+                            "value": "2700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 40",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 41",
+                            "value": "2900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 42",
+                            "value": "2A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 43",
+                            "value": "2B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 44",
+                            "value": "2C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 45",
+                            "value": "2D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 46",
+                            "value": "2E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 47",
+                            "value": "2F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 48",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 49",
+                            "value": "3100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 50",
+                            "value": "3200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 51",
+                            "value": "3300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 52",
+                            "value": "3400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 53",
+                            "value": "3500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 54",
+                            "value": "3600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 55",
+                            "value": "3700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 56",
+                            "value": "3800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 57",
+                            "value": "3900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 58",
+                            "value": "3A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 59",
+                            "value": "3B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 60",
+                            "value": "3C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 61",
+                            "value": "3D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 62",
+                            "value": "3E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 63",
+                            "value": "3F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 64",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 65",
+                            "value": "4100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 66",
+                            "value": "4200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 67",
+                            "value": "4300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 68",
+                            "value": "4400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 69",
+                            "value": "4500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 70",
+                            "value": "4600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 71",
+                            "value": "4700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 72",
+                            "value": "4800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 73",
+                            "value": "4900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 74",
+                            "value": "4A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 75",
+                            "value": "4B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 76",
+                            "value": "4C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 77",
+                            "value": "4D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 78",
+                            "value": "4E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 79",
+                            "value": "4F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 80",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 81",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 82",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 83",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 84",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 85",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 86",
+                            "value": "5600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 87",
+                            "value": "5700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 88",
+                            "value": "5800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 89",
+                            "value": "5900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 90",
+                            "value": "5A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 91",
+                            "value": "5B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 92",
+                            "value": "5C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 93",
+                            "value": "5D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 94",
+                            "value": "5E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 95",
+                            "value": "5F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 96",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 97",
+                            "value": "6100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 98",
+                            "value": "6200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 99",
+                            "value": "6300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 100",
+                            "value": "6400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 101",
+                            "value": "6500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 102",
+                            "value": "6600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 103",
+                            "value": "6700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 104",
+                            "value": "6800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 105",
+                            "value": "6900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 106",
+                            "value": "6A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 107",
+                            "value": "6B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 108",
+                            "value": "6C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 109",
+                            "value": "6D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 110",
+                            "value": "6E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 111",
+                            "value": "6F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 112",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 113",
+                            "value": "7100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 114",
+                            "value": "7200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 115",
+                            "value": "7300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 116",
+                            "value": "7400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 117",
+                            "value": "7500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 118",
+                            "value": "7600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 119",
+                            "value": "7700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 120",
+                            "value": "7800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 121",
+                            "value": "7900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 122",
+                            "value": "7A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 123",
+                            "value": "7B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 124",
+                            "value": "7C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 125",
+                            "value": "7D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 126",
+                            "value": "7E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 127",
+                            "value": "7F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 128",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 129",
+                            "value": "8100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 130",
+                            "value": "8200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 131",
+                            "value": "8300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 132",
+                            "value": "8400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 133",
+                            "value": "8500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 134",
+                            "value": "8600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 135",
+                            "value": "8700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 136",
+                            "value": "8800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 137",
+                            "value": "8900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 138",
+                            "value": "8A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 139",
+                            "value": "8B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 140",
+                            "value": "8C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 141",
+                            "value": "8D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 142",
+                            "value": "8E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 143",
+                            "value": "8F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 144",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 145",
+                            "value": "9100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 146",
+                            "value": "9200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 147",
+                            "value": "9300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 148",
+                            "value": "9400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 149",
+                            "value": "9500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 150",
+                            "value": "9600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 151",
+                            "value": "9700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 152",
+                            "value": "9800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 153",
+                            "value": "9900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 154",
+                            "value": "9A00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 155",
+                            "value": "9B00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 156",
+                            "value": "9C00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 157",
+                            "value": "9D00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 158",
+                            "value": "9E00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 159",
+                            "value": "9F00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 160",
+                            "value": "A000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 161",
+                            "value": "A100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 162",
+                            "value": "A200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 163",
+                            "value": "A300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 164",
+                            "value": "A400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 165",
+                            "value": "A500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 166",
+                            "value": "A600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 167",
+                            "value": "A700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 168",
+                            "value": "A800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 169",
+                            "value": "A900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 170",
+                            "value": "AA00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 171",
+                            "value": "AB00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 172",
+                            "value": "AC00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 173",
+                            "value": "AD00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 174",
+                            "value": "AE00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 175",
+                            "value": "AF00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 176",
+                            "value": "B000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 177",
+                            "value": "B100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 178",
+                            "value": "B200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 179",
+                            "value": "B300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 180",
+                            "value": "B400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 181",
+                            "value": "B500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 182",
+                            "value": "B600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 183",
+                            "value": "B700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 184",
+                            "value": "B800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 185",
+                            "value": "B900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 186",
+                            "value": "BA00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 187",
+                            "value": "BB00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 188",
+                            "value": "BC00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 189",
+                            "value": "BD00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 190",
+                            "value": "BE00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 191",
+                            "value": "BF00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 192",
+                            "value": "C000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 193",
+                            "value": "C100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 194",
+                            "value": "C200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 195",
+                            "value": "C300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 196",
+                            "value": "C400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 197",
+                            "value": "C500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 198",
+                            "value": "C600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 199",
+                            "value": "C700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 200",
+                            "value": "C800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 201",
+                            "value": "C900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 202",
+                            "value": "CA00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 203",
+                            "value": "CB00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 204",
+                            "value": "CC00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 205",
+                            "value": "CD00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 206",
+                            "value": "CE00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 207",
+                            "value": "CF00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 208",
+                            "value": "D000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 209",
+                            "value": "D100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 210",
+                            "value": "D200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 211",
+                            "value": "D300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 212",
+                            "value": "D400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 213",
+                            "value": "D500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 214",
+                            "value": "D600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 215",
+                            "value": "D700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 216",
+                            "value": "D800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 217",
+                            "value": "D900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 218",
+                            "value": "DA00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 219",
+                            "value": "DB00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 220",
+                            "value": "DC00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 221",
+                            "value": "DD00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 222",
+                            "value": "DE00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 223",
+                            "value": "DF00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 224",
+                            "value": "E000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 225",
+                            "value": "E100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 226",
+                            "value": "E200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 227",
+                            "value": "E300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 228",
+                            "value": "E400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 229",
+                            "value": "E500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 230",
+                            "value": "E600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 231",
+                            "value": "E700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 232",
+                            "value": "E800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 233",
+                            "value": "E900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 234",
+                            "value": "EA00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 235",
+                            "value": "EB00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 236",
+                            "value": "EC00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 237",
+                            "value": "ED00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 238",
+                            "value": "EE00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 239",
+                            "value": "EF00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 240",
+                            "value": "F000"
+                        },
+                        {
+                            "label": "PLL = Fosc * 241",
+                            "value": "F100"
+                        },
+                        {
+                            "label": "PLL = Fosc * 242",
+                            "value": "F200"
+                        },
+                        {
+                            "label": "PLL = Fosc * 243",
+                            "value": "F300"
+                        },
+                        {
+                            "label": "PLL = Fosc * 244",
+                            "value": "F400"
+                        },
+                        {
+                            "label": "PLL = Fosc * 245",
+                            "value": "F500"
+                        },
+                        {
+                            "label": "PLL = Fosc * 246",
+                            "value": "F600"
+                        },
+                        {
+                            "label": "PLL = Fosc * 247",
+                            "value": "F700"
+                        },
+                        {
+                            "label": "PLL = Fosc * 248",
+                            "value": "F800"
+                        },
+                        {
+                            "label": "PLL = Fosc * 249",
+                            "value": "F900"
+                        },
+                        {
+                            "label": "PLL = Fosc * 250",
+                            "value": "FA00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 251",
+                            "value": "FB00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 252",
+                            "value": "FC00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 253",
+                            "value": "FD00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 254",
+                            "value": "FE00"
+                        },
+                        {
+                            "label": "PLL = Fosc * 255",
+                            "value": "FF00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLL0SELFM",
+                    "label": "PLL0 fraction part multiplicator",
+                    "mask": "F0000",
+                    "settings": [
+                        {
+                            "label": "PLL += Fosc * 0.0000",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.0625",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.1250",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.1875",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.2500",
+                            "value": "40000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.3125",
+                            "value": "50000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.3750",
+                            "value": "60000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.4375",
+                            "value": "70000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.5000",
+                            "value": "80000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.5625",
+                            "value": "90000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.6250",
+                            "value": "A0000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.6875",
+                            "value": "B0000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.7500",
+                            "value": "C0000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.8125",
+                            "value": "D0000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.8750",
+                            "value": "E0000"
+                        },
+                        {
+                            "label": "PLL += Fosc * 0.9375",
+                            "value": "F0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "100000",
+                    "key": "PLL0SELD",
+                    "label": "PLL0 divider",
+                    "mask": "300000",
+                    "settings": [
+                        {
+                            "label": "PLL divided by 2",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "PLL divided by 4",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "PLL divided by 8",
+                            "value": "300000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "800000",
+                    "key": "PLL0SELFOSC",
+                    "label": "PLL clock source frequency",
+                    "mask": "1C00000",
+                    "settings": [
+                        {
+                            "label": "6 < Fosc ≤ 7",
+                            "value": "0"
+                        },
+                        {
+                            "label": "7 < Fosc ≤ 8",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "8 < Fosc ≤ 10",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "10 < Fosc ≤ 12",
+                            "value": "C00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "3C000000",
+                    "key": "PLL0SELCORR",
+                    "label": "PLL correction value (Fosc / 450000)",
+                    "mask": "FE000000",
+                    "settings": [
+                        {
+                            "label": "Fosc = 6 MHz",
+                            "value": "1C000000"
+                        },
+                        {
+                            "label": "Fosc = 8 MHz",
+                            "value": "24000000"
+                        },
+                        {
+                            "label": "Fosc = 10 MHz",
+                            "value": "3C000000"
+                        },
+                        {
+                            "label": "Fosc = 12 MHz",
+                            "value": "4C000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CGPLL0SEL",
+            "unused": "000000FC"
+        },
+        {
+            "address": "40083008",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "GEAR",
+                    "label": "High-speed system clock gear selection (Fsysh)",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "Fsysh = Fc",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Fsysh = Fc / 2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Fsysh = Fc / 4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Fsysh = Fc / 8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Fsysh = Fc / 16",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PRCK",
+                    "label": "Prescaler clock for the peripheral functions (FT0h)",
+                    "mask": "F00",
+                    "settings": [
+                        {
+                            "label": "FT0h = Fc",
+                            "value": "0"
+                        },
+                        {
+                            "label": "FT0h = Fc / 2",
+                            "value": "100"
+                        },
+                        {
+                            "label": "FT0h = Fc / 4",
+                            "value": "200"
+                        },
+                        {
+                            "label": "FT0h = Fc / 8",
+                            "value": "300"
+                        },
+                        {
+                            "label": "FT0h = Fc / 16",
+                            "value": "400"
+                        },
+                        {
+                            "label": "FT0h = Fc / 32",
+                            "value": "500"
+                        },
+                        {
+                            "label": "FT0h = Fc / 64",
+                            "value": "600"
+                        },
+                        {
+                            "label": "FT0h = Fc / 128",
+                            "value": "700"
+                        },
+                        {
+                            "label": "FT0h = Fc / 256",
+                            "value": "800"
+                        },
+                        {
+                            "label": "FT0h = Fc / 512",
+                            "value": "900"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCKSEL",
+                    "label": "Middle-speed system clock and prescaler settings (Fsysm and FT0m)",
+                    "mask": "C0",
+                    "settings": [
+                        {
+                            "label": "Fsysm = Fsysh and FT0m = FT0h",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Fsysm = Fsysh / 2 and FT0m = FT0h / 2",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Fsysm = Fsysh / 4 and FT0m = FT0h / 4",
+                            "value": "80"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CGSYSCR",
+            "unused": "FFFFF038"
+        }
+    ],
     "core": "M4EF",
     "delay_src_path": "delays/m4ef/__lib_delays.c",
     "mcu": "TMPM4KLFWAUG",
-    "clock": 10
+    "clock": 160
 }
