@@ -46,10 +46,16 @@
 #define SIWDEN_Val (0x00000000UL) /* SIWD Disable */
 #define SIWDCR_Val (0x000000B1UL) /* SIWD Disable code */
 
+#define CGSYSCR_MCKSEL_OFFSET   6
+#define CGSYSCR_PRCK_OFFSET     8
+
 #define CGPLL0SEL_PLL0ON_MASK   0x1
 #define CGPLL0SEL_PLL0SEL_MASK  0x2
+#define CGSYSCR_GEAR_MASK       0x3
 #define CGOSCCR_EOSCEN_MASK     0x60
+#define CGSYSCR_MCKSEL_MASK     0xC0
 #define CGOSCCR_OSCSEL_MASK     0x100
+#define CGSYSCR_PRCK_MASK       0xF00
 #define CGPLL0SEL_PLL0SET_MASK  0xFFFFFF00
 
 extern uint32_t __data_load__;
@@ -58,6 +64,62 @@ extern uint32_t __data_end__;
 extern uint32_t __bss_start__;
 extern uint32_t __bss_end__;
 
+typedef struct
+{
+    uint32_t CG_FC_Frequency;       // System frequency.
+    uint32_t CG_FSYSH_Frequency;    // High-speed system clock.
+    uint32_t CG_FSYSM_Frequency;    // Middle-speed system clock.
+    uint32_t CG_FT0H_Frequency;     // High-speed system prescaler clock.
+    uint32_t CG_FT0M_Frequency;     // Middle-speed system prescaler clock.
+} CG_ClocksTypeDef;
+
+static char FSYSH_Prescaler_Table[ 5 ] = { 1, 2, 4, 8, 16 };
+static char FSYSM_Prescaler_Table[ 3 ] = { 1, 2, 4 };
+static char FT0H_Prescaler_Table[ 10 ] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
+
+void CG_GetClocksFrequency( CG_ClocksTypeDef *CG_Clocks )
+{
+    uint8_t fsysh_prescaler = FSYSH_Prescaler_Table[ VALUE_SYSTEM_CGSYSCR & CGSYSCR_GEAR_MASK ];
+    uint16_t ft0h_prescaler = FT0H_Prescaler_Table[( VALUE_SYSTEM_CGSYSCR & CGSYSCR_PRCK_MASK ) \
+                                                        >> CGSYSCR_PRCK_OFFSET ];
+    uint8_t fsysm_prescaler = FSYSM_Prescaler_Table[( VALUE_SYSTEM_CGSYSCR & CGSYSCR_MCKSEL_MASK ) \
+                                                        >> CGSYSCR_MCKSEL_OFFSET ]
+
+    /* System frequency is always the same as general clock value. */
+    CG_Clocks->CG_FC_Frequency = FOSC_KHZ_VALUE;
+
+    /* Get high-speed system clock. */
+    CG_Clocks->CG_FSYSH_Frequency = CG_Clocks->CG_FC_Frequency / fsysh_prescaler;
+
+    /* Get high-speed system prescaler clock. */
+    CG_Clocks->CG_FT0H_Frequency = CG_Clocks->CG_FSYSH_Frequency / fsysh_prescaler;
+
+    /* Get middle-speed system clock and middle-speed system prescaler clock. */
+    CG_Clocks->CG_FSYSM_Frequency = CG_Clocks->CG_FSYSH_Frequency / fsysm_prescaler;
+    CG_Clocks->CG_FT0M_Frequency = CG_Clocks->CG_FT0H_Frequency / fsysm_prescaler;
+
+    return CG_Clocks;
+}
+
+/**
+ * @brief Initialize the data and BSS sections in RAM.
+ *
+ * This function performs the startup memory initialization typically done
+ * before calling main():
+ * - Copies the initialized data section (.data) from flash (load address)
+ *   to its runtime location in RAM.
+ * - Clears the uninitialized data section (.bss) in RAM by setting it to zero.
+ *
+ * It relies on linker-provided symbols:
+ * - __data_load__  : Start of .data in flash
+ * - __data_start__ : Start of .data in RAM
+ * - __data_end__   : End of .data in RAM
+ * - __bss_start__  : Start of .bss in RAM
+ * - __bss_end__    : End of .bss in RAM
+ *
+ * @note This function should be called during system startup,
+ *       before global/static variables are accessed.
+ */
 static void data_init(void) {
     /* Copy .data */
     uint32_t *src = &__data_load__;
