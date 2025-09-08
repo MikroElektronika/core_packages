@@ -488,6 +488,7 @@ def deleteFromTable(db, sql_query):
             sqliteConnection.close()
 
 def update_database(package_name, mcus, db_path):
+    installer_package_column = 15
     for each_pack in mcus:
         for each_mcu in mcus[each_pack]['mcu_names']:
             ## Replace for MCUs which have different json file names and UID in database
@@ -498,12 +499,12 @@ def update_database(package_name, mcus, db_path):
             data_as_list_joined = []
             while counter != len(read_data):
                 existing_packages = {}
-                if read_data[counter][len(read_data[counter])-2]:
-                    if 'compiler_flags' not in read_data[counter][len(read_data[counter])-2]:
-                        existing_packages = json.loads(read_data[counter][len(read_data[counter])-2])
+                if read_data[counter][installer_package_column]:
+                    if 'compiler_flags' not in read_data[counter][installer_package_column]:
+                        existing_packages = json.loads(read_data[counter][installer_package_column])
                     else:
-                        if read_data[counter][len(read_data[counter])-3]:
-                            existing_packages = json.loads(read_data[counter][len(read_data[counter])-3])
+                        if read_data[counter][installer_package_column]:
+                            existing_packages = json.loads(read_data[counter][installer_package_column])
                 data_as_list = list(read_data[counter])
                 for each_compiler in list(read_data_compiler):
                     if 'mchp_xc' in each_compiler[0] and '_xc' in package_name:
