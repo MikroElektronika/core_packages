@@ -1,7 +1,7 @@
 {
     "def_file": "CY8C4147LWE-HVS005.json",
     "family_uid": "PSoC 4 HV MS 128k",
-    "flash": "0",
+    "flash": "34816",
     "icon": "images/mcu/infineon.png",
     "max_speed": "48.000",
     "name": "CY8C4147LWE-HVS005",
