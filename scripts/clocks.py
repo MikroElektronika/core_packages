@@ -94,34 +94,40 @@ class GenerateClocks:
 
         result = {}
         for mcus in merged_data.values():
-            unique_mcus = sorted(set(mcu for mcu, _, __, ___, ____ in mcus))
-            key = "^" + "$|^".join(unique_mcus) + "$"
-            config_registers = mcus[0][1]  # All config_registers are the same for this group
-            config_words = mcus[0][2]  # All config_words are the same for this group
-            clock = mcus[0][3]  # All clocks are the same for this group
-            core = mcus[0][4]  # All cores are the same for this group
-            config_obj = None
-            if key in result:
-                config_obj = result[key]
-            if not config_obj:
-                config_obj = {}
-            if config_registers:
-                config_obj['other'] = {
-                    "config_registers": config_registers,
-                    "clock": clock
-                }
-            elif config_words:
-                config_obj['xc'] = {
-                    "config_words": config_words,
-                    "clock": clock
-                }
-            else:
-                config_obj['other'] = {
-                    "config_registers": [],
-                    "clock": clock
-                }
+            unique_mcus_all = sorted(set(mcu for mcu, _, __, ___, ____ in mcus))
+            # As regex parser cna't handle lines with 40k+ characters
+            # we divide MCUs in chunks of 500 MCUs max
+            unique_mcus_chunks = []
+            for i in range(0, len(unique_mcus_all), 500):
+                unique_mcus_chunks.append(unique_mcus_all[i:i+500])
+            for unique_mcus in unique_mcus_chunks:
+                key = "^" + "$|^".join(unique_mcus) + "$"
+                config_registers = mcus[0][1]  # All config_registers are the same for this group
+                config_words = mcus[0][2]  # All config_words are the same for this group
+                clock = mcus[0][3]  # All clocks are the same for this group
+                core = mcus[0][4]  # All cores are the same for this group
+                config_obj = None
+                if key in result:
+                    config_obj = result[key]
+                if not config_obj:
+                    config_obj = {}
+                if config_registers:
+                    config_obj['other'] = {
+                        "config_registers": config_registers,
+                        "clock": clock
+                    }
+                elif config_words:
+                    config_obj['xc'] = {
+                        "config_words": config_words,
+                        "clock": clock
+                    }
+                else:
+                    config_obj['other'] = {
+                        "config_registers": [],
+                        "clock": clock
+                    }
 
-            result[key] = config_obj
+                result[key] = config_obj
 
         return result
 
