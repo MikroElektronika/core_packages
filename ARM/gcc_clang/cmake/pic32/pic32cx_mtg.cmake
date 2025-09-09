@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^PIC32CX1025MTG128$|^PIC32CX1025MTG64$|^PIC32CX2051MTG128$|^PIC32CX2051MTG64$|^PIC32CX5112MTG128$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/pic32cx_mtg/init_clock.c)
+    list(APPEND local_dir_install system/src/pic32/pic32cx_mtg/thirdparty/pic32cx_mtg)
+    set(${thirdpartyInstall} pic32cx_mtg/thirdparty/pic32cx_mtg PARENT_SCOPE)
+endif()
