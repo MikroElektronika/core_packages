@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^CY8C4147LWE-HVS005$|^CY8C4147LWE-HVS015$|^CY8C4147LWE-HVS025$|^CY8C4147LWE-HVS025X$|^CY8C4147LWE-HVS035$|^CY8C4147LWE-HVS035X$|^CY8C4147LWE-HVS105$|^CY8C4147LWE-HVS115$|^CY8C4147LWE-HVS125$|^CY8C4147LWE-HVS125X$|^CY8C4147LWE-HVS135$|^CY8C4147LWE-HVS135X$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cy8c4147lwe/init_clock.c)
+    list(APPEND local_dir_install system/src/infineon/cy8c4147lwe/thirdparty/cy8c4147lwe)
+    set(${thirdpartyInstall} cy8c4147lwe/thirdparty/cy8c4147lwe PARENT_SCOPE)
+endif()

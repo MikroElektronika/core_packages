@@ -1,0 +1,6 @@
+{
+    "core": "M0+",
+    "delay_src_path": "delays/m0+/__lib_delays.c",
+    "mcu": "CY8C4147LDE-HVS034",
+    "clock": "1"
+}

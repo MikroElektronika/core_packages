@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^CY8C4125FNI-S413$|^CY8C4125FNI-S423$|^CY8C4125FNI-S433$|^CY8C4125FNQ-S433$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cy8c4125f/init_clock.c)
+    list(APPEND local_dir_install system/src/infineon/cy8c4125f/thirdparty/cy8c4125f)
+    set(${thirdpartyInstall} cy8c4125f/thirdparty/cy8c4125f PARENT_SCOPE)
+endif()
