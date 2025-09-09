@@ -42,7 +42,7 @@ Support added for following hardware:
   + CY8C4124PVE-S432
   + CY8C4124PVS-S412
   + CY8C4124PVS-S422
-  + CY8C4124PVS-S432
+  + CY8C4124PVS-S43
 
 ---
 
