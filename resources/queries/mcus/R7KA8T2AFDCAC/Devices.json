@@ -1,0 +1,19 @@
+{
+    "def_file": "R7KA8T2AFDCAC.json",
+    "family_uid": "RA8T2",
+    "flash": "524288",
+    "icon": "images/mcu/renesas.png",
+    "max_speed": "1000000.000",
+    "name": "R7KA8T2AFDCAC",
+    "ram": "262144",
+    "sdk_config": "{\"MCU_NAME\":\"R7KA8T2AFDCAC\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "R7KA8T2AFDCAC",
+    "vendor": "Renesas",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ra8t2\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ra8t2\"}",
+    "core_info": "[{\"compiler_flags\":\"-mcpu=cortex-m85\",\"core_dir\":\"core_m85\",\"core_name_define\":\"M85\",\"mcu_header_core_define\":\"CORE_CM85\",\"primary_core\":true},{\"compiler_flags\":\"-mcpu=cortex-m33\",\"core_dir\":\"core_33\",\"core_name_define\":\"M33\",\"mcu_header_core_define\":\"CORE_CM33\",\"primary_core\":false}]"
+}
