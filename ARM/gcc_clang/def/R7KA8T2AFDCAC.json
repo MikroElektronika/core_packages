@@ -1,0 +1,6 @@
+{
+    "core": "M85",
+    "delay_src_path": "delays/m85/__lib_delays.c",
+    "mcu": "R7KA8T2AFDCAC",
+    "clock": "1"
+}
