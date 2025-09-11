@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^R7KA8T2AFDCAC$")
+if(${MCU_NAME} MATCHES "^R7KA8T2LFECAC$")
     set(${linkerScript} linker_scripts/${vendor}/${CORE_DIR}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${CORE_DIR}/${mcu_match}.c PARENT_SCOPE)
     list(APPEND local_list_include system/src/renesas/ra8t2/init_clock.c)

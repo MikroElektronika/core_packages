@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^R7KA8T2AFDCAC$")
+if(${MCU_NAME} MATCHES "^R7KA8T2LFECAC$")
     if(${CORE_NAME} MATCHES "^M85")
         list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/5)")
     elseif(${CORE_NAME} MATCHES "^M33")
