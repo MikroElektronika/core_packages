@@ -8,7 +8,7 @@
 #include "bsp_clock_cfg.h"
 #include "bsp_mcu_family_cfg.h"
 #include "bsp_mcu_ofs_cfg.h"
-#include "board_cfg.h"
+// #include "board_cfg.h"
 #include "vector_data.h"
 #define RA_NOT_DEFINED 0
 #ifndef BSP_CFG_RTOS
@@ -51,7 +51,7 @@
 #define BSP_CLOCK_CFG_SUBCLOCK_DRIVE (0)
 #endif
 #ifndef BSP_CLOCK_CFG_SUBCLOCK_POPULATED
-#define BSP_CLOCK_CFG_SUBCLOCK_POPULATED (1)
+#define BSP_CLOCK_CFG_SUBCLOCK_POPULATED (0)
 #endif
 #ifndef BSP_CLOCK_CFG_SUBCLOCK_STABILIZATION_MS
 #define BSP_CLOCK_CFG_SUBCLOCK_STABILIZATION_MS 1000

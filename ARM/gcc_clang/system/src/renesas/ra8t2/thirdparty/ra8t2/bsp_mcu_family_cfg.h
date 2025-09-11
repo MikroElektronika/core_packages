@@ -3,9 +3,9 @@
 #define BSP_MCU_FAMILY_CFG_H_
 #include "bsp_mcu_device_pn_cfg.h"
 #include "bsp_mcu_device_cfg.h"
-#include "../../../ra/fsp/src/bsp/mcu/ra8t2/bsp_override.h"
-#include "../../../ra/fsp/src/bsp/mcu/ra8t2/bsp_mcu_info.h"
-#include "../../../ra/fsp/src/bsp/mcu/ra8t2/r_adc_device_types.h"
+// #include "../../../ra/fsp/src/bsp/mcu/ra8t2/bsp_override.h"
+// #include "../../../ra/fsp/src/bsp/mcu/ra8t2/bsp_mcu_info.h"
+// #include "../../../ra/fsp/src/bsp/mcu/ra8t2/r_adc_device_types.h"
 #include "bsp_clock_cfg.h"
 #define BSP_MCU_GROUP_RA8T2 (1)
 #define BSP_MCU_GROUP_RA8_GEN2 (1)

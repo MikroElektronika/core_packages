@@ -12,34 +12,7 @@
 /***********************************************************************************************************************
  * Includes   <System Includes> , "Project Includes"
  **********************************************************************************************************************/
-// Note: Changed for MikroE implementation.
-// #include "bsp_api.h"
-
-// Note: Added for MikroE implementation.
-#include <stdint.h>
-#define BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(x)    while(1)
-#define BSP_UNINIT_SECTION_PREFIX
-#ifndef BSP_SECTION_HEAP
-#define BSP_SECTION_HEAP                 ".heap"
-#endif
-#define BSP_DONT_REMOVE                 __attribute__((used))
-#define BSP_ATTRIBUTE_STACKLESS         __attribute__((naked))
-#define BSP_FORCE_INLINE                __attribute__((always_inline))
-#define BSP_SECTION_STACK               BSP_UNINIT_SECTION_PREFIX ".stack"
-#define BSP_SECTION_FLASH_GAP
-#define BSP_SECTION_NOINIT              BSP_UNINIT_SECTION_PREFIX ".noinit"
-#define BSP_SECTION_FIXED_VECTORS       ".fixed_vectors"
-#define BSP_SECTION_APPLICATION_VECTORS ".application_vectors"
-#define BSP_SECTION_ROM_REGISTERS       ".rom_registers"
-#define BSP_SECTION_ID_CODE             ".id_code"
-#define BSP_PLACE_IN_SECTION(x)         __attribute__((section(x))) __attribute__((__used__))
-#define BSP_ALIGN_VARIABLE(x)           __attribute__((aligned(x)))
-#define BSP_PACKED                      __attribute__((aligned(1))) // DEPRECATED
-#define BSP_WEAK_REFERENCE              __attribute__((weak))
-#define BSP_STACK_ALIGNMENT             (8)
-#define BSP_CORTEX_VECTOR_TABLE_ENTRIES (16)
-#define BSP_CFG_STACK_MAIN_BYTES        (0x400)
-#define BSP_CFG_HEAP_BYTES (0)
+#include "bsp_api.h"
 
 /***********************************************************************************************************************
  * Macro definitions
