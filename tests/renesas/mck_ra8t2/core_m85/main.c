@@ -81,7 +81,7 @@ int main(void)
     while (1)
     {
         // Toggle LED1.
-        pin_toggle( R_PORT6->PODR, LED1_PIN_MASK );
+        pin_toggle( ( volatile uint16_t* )&R_PORT6->PODR, LED1_PIN_MASK );
     }
 
     return 0;
