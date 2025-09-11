@@ -1,5 +1,5 @@
 {
-    "device_uid": "R7KA8T2AFDCAC",
+    "device_uid": "R7KA8T2LFECAC",
     "tables": [
         {
             "BoardToDevice": {
@@ -19,7 +19,7 @@
         {
             "DeviceToPackage": {
                 "package_uid": [
-                    "217/LQFP"
+                    "289/BGA"
                 ]
             }
         },
