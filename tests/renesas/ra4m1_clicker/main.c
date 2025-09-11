@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @brief Main function for RENESAS_TEST application.
- 8 @note J-Flash Lite V8.24 was used for testing.
+ * @note J-Flash Lite V8.24 was used for testing.
  */
 
 /**
