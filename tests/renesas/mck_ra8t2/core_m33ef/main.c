@@ -10,7 +10,6 @@
  * 3) Create the blank dual-core project and configure it with R7KA8T2LFECAC bare-metal setup
  * 4) Build the project and locate the merged.hex file in the build folder
  * 6) Run JLinkExe with the following commands after you enter JLink cli:
- *   - JLinkExe
  *   - connect
  *   - R7KA8T2AF
  *   - -- Enter --
