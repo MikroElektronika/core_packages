@@ -229,21 +229,33 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
 endfunction()
 
 #############################################################################
+## Function to execute compiler command with provided flag
+#############################################################################
+function(run_compiler_flag flag out_var)
+    execute_process(
+        COMMAND ${CMAKE_C_COMPILER} ${flag}
+        OUTPUT_VARIABLE _out
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+        ERROR_STRIP_TRAILING_WHITESPACE
+    )
+    set(${out_var} "${_out}" PARENT_SCOPE)
+endfunction()
+
+#############################################################################
 ## Function to set appropriate linker flags
 #############################################################################
 function(set_flags flags)
 
     # Fetch GCC/Clang compiler version
-    execute_process(
-        COMMAND ${CMAKE_C_COMPILER} --version
-        OUTPUT_VARIABLE GCC_VERSION_STR
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
-    string(REGEX MATCH "[0-9]+\\.[0-9]+\\.?[0-9]*" GCC_VERSION_PARSED "${GCC_VERSION_STR}")
-    message(STATUS "Cross compiler version (parsed): ${GCC_VERSION_PARSED}")
+    run_compiler_flag("--version" GCC_VERSION_STR)
+    # Fetch compiler name
+    string(REGEX MATCH "(arm-none-eabi-gcc|clang)" COMPILER_PASSED "${GCC_VERSION_STR}")
+    string(REGEX MATCH "[0-9]+\\.[0-9]+\\.?[0-9]*" COMPILER_VERSION_PARSED "${GCC_VERSION_STR}")
+    message(STATUS "Compiler: ${COMPILER_PASSED}")
+    message(STATUS "Compiler version: ${COMPILER_VERSION_PARSED}")
 
     # Set the flag for ignoring incompatible pointer types for GCC compiler version 14.2.1
-    if (${GCC_VERSION_PARSED} STREQUAL "14.2.1")
+    if ((${COMPILER_VERSION_PARSED} VERSION_GREATER_EQUAL "14.2.1") AND (${COMPILER_PASSED} STREQUAL "arm-none-eabi-gcc"))
         set(POINTER_TYPE_ERROR -Wno-incompatible-pointer-types)
     endif()
 
