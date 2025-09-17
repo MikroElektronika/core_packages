@@ -53,8 +53,6 @@ int main(void)
     preinit();
     #endif
 
-    SystemInit();
-
     // Set AN pin as output low
     R_PORT0->PDR_b.PDR0 = 1;
     R_PORT0->PODR_b.PODR0 = 0;
