@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "0",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "7",
@@ -43,7 +43,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "20",
+                    "init": "10",
                     "key": "PCKC",
                     "label": "Peripheral Module Clock C (PCLKC) Select",
                     "mask": "70",
@@ -80,7 +80,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "200",
+                    "init": "100",
                     "key": "PCKB",
                     "label": "Peripheral Module Clock B (PCLKB) Select",
                     "mask": "700",
@@ -117,7 +117,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2000",
+                    "init": "0",
                     "key": "PCKA",
                     "label": "Peripheral Module Clock A (PCLKA) Select",
                     "mask": "7000",
@@ -154,7 +154,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2000000",
+                    "init": "0",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "7000000",
@@ -191,7 +191,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "20000000",
+                    "init": "10000000",
                     "key": "FCK",
                     "label": "FlashIF Clock (FCLK) Select",
                     "mask": "70000000",
@@ -236,7 +236,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "5",
                     "key": "CKSEL",
                     "label": "Clock Source Select",
                     "mask": "7",
@@ -277,7 +277,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLIDIV",
                     "label": "PLL Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -298,7 +298,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "PLSRCSEL",
                     "label": "PLL Clock Source Select",
                     "mask": "10",
@@ -496,7 +496,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLLSTP",
                     "label": "PLL Stop Control",
                     "mask": "1",
@@ -571,7 +571,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "HCFRQ0",
                     "label": "HOCO Frequency Setting 0",
                     "mask": "3",
@@ -600,7 +600,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "MCSTP",
                     "label": "MOCO Stop",
                     "mask": "1",
@@ -715,309 +715,6 @@
             "unused": "00000008"
         },
         {
-            "address": "4001e048",
-            "default": "1300",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PL2IDIV",
-                    "label": "PLL2 Input Frequency Division Ratio Select",
-                    "mask": "3",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "2"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PL2SRCSEL",
-                    "label": "PLL2 Clock Source Select",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Main clock oscillator",
-                            "value": "0"
-                        },
-                        {
-                            "label": "HOCO",
-                            "value": "10"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "1300",
-                    "key": "PLL2MUL",
-                    "label": "PLL2 Frequency Multiplication Factor Select",
-                    "mask": "3f00",
-                    "settings": [
-                        {
-                            "label": "x10.0",
-                            "value": "1300"
-                        },
-                        {
-                            "label": "x10.5",
-                            "value": "1400"
-                        },
-                        {
-                            "label": "x11.0",
-                            "value": "1500"
-                        },
-                        {
-                            "label": "x11.5",
-                            "value": "1600"
-                        },
-                        {
-                            "label": "x12.0",
-                            "value": "1700"
-                        },
-                        {
-                            "label": "x12.5",
-                            "value": "1800"
-                        },
-                        {
-                            "label": "x13.0",
-                            "value": "1900"
-                        },
-                        {
-                            "label": "x13.5",
-                            "value": "1a00"
-                        },
-                        {
-                            "label": "x14.0",
-                            "value": "1b00"
-                        },
-                        {
-                            "label": "x14.5",
-                            "value": "1c00"
-                        },
-                        {
-                            "label": "x15.0",
-                            "value": "1d00"
-                        },
-                        {
-                            "label": "x15.5",
-                            "value": "1e00"
-                        },
-                        {
-                            "label": "x16.0",
-                            "value": "1f00"
-                        },
-                        {
-                            "label": "x16.5",
-                            "value": "2000"
-                        },
-                        {
-                            "label": "x17.0",
-                            "value": "2100"
-                        },
-                        {
-                            "label": "x17.5",
-                            "value": "2200"
-                        },
-                        {
-                            "label": "x18.0",
-                            "value": "2300"
-                        },
-                        {
-                            "label": "x18.5",
-                            "value": "2400"
-                        },
-                        {
-                            "label": "x19.0",
-                            "value": "2500"
-                        },
-                        {
-                            "label": "x19.5",
-                            "value": "2600"
-                        },
-                        {
-                            "label": "x20.0",
-                            "value": "2700"
-                        },
-                        {
-                            "label": "x20.5",
-                            "value": "2800"
-                        },
-                        {
-                            "label": "x21.0",
-                            "value": "2900"
-                        },
-                        {
-                            "label": "x21.5",
-                            "value": "2a00"
-                        },
-                        {
-                            "label": "x22.0",
-                            "value": "2b00"
-                        },
-                        {
-                            "label": "x22.5",
-                            "value": "2c00"
-                        },
-                        {
-                            "label": "x23.0",
-                            "value": "2d00"
-                        },
-                        {
-                            "label": "x23.5",
-                            "value": "2e00"
-                        },
-                        {
-                            "label": "x24.0",
-                            "value": "2f00"
-                        },
-                        {
-                            "label": "x24.5",
-                            "value": "3000"
-                        },
-                        {
-                            "label": "x25.0",
-                            "value": "3100"
-                        },
-                        {
-                            "label": "x25.5",
-                            "value": "3200"
-                        },
-                        {
-                            "label": "x26.0",
-                            "value": "3300"
-                        },
-                        {
-                            "label": "x26.5",
-                            "value": "3400"
-                        },
-                        {
-                            "label": "x27.0",
-                            "value": "3500"
-                        },
-                        {
-                            "label": "x27.5",
-                            "value": "3600"
-                        },
-                        {
-                            "label": "x28.0",
-                            "value": "3700"
-                        },
-                        {
-                            "label": "x28.5",
-                            "value": "3800"
-                        },
-                        {
-                            "label": "x29.0",
-                            "value": "3900"
-                        },
-                        {
-                            "label": "x29.5",
-                            "value": "3a00"
-                        },
-                        {
-                            "label": "x30.0",
-                            "value": "3b00"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_PLL2CCR",
-            "unused": "0000c0ec"
-        },
-        {
-            "address": "4001e04a",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "1",
-                    "key": "PLL2STP",
-                    "label": "PLL2 Stop Control",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "PLL2 is operating",
-                            "value": "0"
-                        },
-                        {
-                            "label": "PLL2 is stopped.",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_PLL2CR",
-            "unused": "000000fe"
-        },
-        {
-            "address": "4001e074",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "5",
-                    "key": "USBCKSEL",
-                    "label": "USB Clock (USBCLK) Source Select",
-                    "mask": "7",
-                    "settings": [
-                        {
-                            "label": "PLL",
-                            "value": "5"
-                        },
-                        {
-                            "label": "PLL2",
-                            "value": "6"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "USBCKSREQ",
-                    "label": "USB Clock (USBCLK) Switching Request",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "No request",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Request switching.",
-                            "value": "40"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "USBCKSRDY",
-                    "label": "USB Clock (USBCLK) Switching Ready state flag",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "Impossible to Switch",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Possible to Switch",
-                            "value": "80"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_USBCKCR",
-            "unused": "00000038"
-        },
-        {
             "address": "4001e0a0",
             "default": "0",
             "fields": [
@@ -1065,7 +762,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "9",
                     "key": "MSTS",
                     "label": "Main Clock Oscillator Wait Time Setting",
                     "mask": "f",
@@ -1264,7 +961,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "LCSTP",
                     "label": "LOCO Stop",
                     "mask": "1",
@@ -1287,5 +984,5 @@
     "core": "M33EF",
     "delay_src_path": "delays/m33ef/__lib_delays.c",
     "mcu": "R7FA4M3AE3CFP",
-    "clock": "1"
+    "clock": "100"
 }
