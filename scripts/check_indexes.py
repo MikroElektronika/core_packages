@@ -63,7 +63,22 @@ if __name__ == "__main__":
             index=args.es_index, token=args.gh_token
         )
 
-    gh_instance = gh.repo(args.gh_repo, args.gh_token)
+    release_id = 'latest'
+    # For Development NECTO Studio there can be releases that are tagged as "pre-release".
+    # We need to handle this case to get appropriate url download link from this pre-release,
+    # because they are different from the "latest" release.
+    if 'test' in args.es_index:
+        url = f'https://api.github.com/repos/{args.gh_repo}/releases'
+        r = requests.get(url)
+        r.raise_for_status()
+        releases = r.json()
+
+        # Find the newest pre-release, if any
+        pre_releases = [rel for rel in releases if rel.get('prerelease')]
+        if len(pre_releases):
+            release_id = pre_releases[0]['id']
+
+    gh_instance = gh.repo(args.gh_repo, args.gh_token, release_id)
 
     if args.index_legacy_packages:
         args.es_regex += '|^legacy_.+$'

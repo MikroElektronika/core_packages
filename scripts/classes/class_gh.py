@@ -54,7 +54,7 @@ class repo():
         if 'latest' == release_id:
             self.repo_url = f'https://api.github.com/repos/{repo}/releases/latest'
         else:
-            self.repo_url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets'
+            self.repo_url = f'https://api.github.com/repos/{repo}/releases/{release_id}'
         self.assets = self.fetch_all_assets(self.repo_url, self.token)
 
     def asset_exists(self, asset_name, loose=False):
