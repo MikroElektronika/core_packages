@@ -47,7 +47,7 @@ extern "C" {
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 // Note: Changed for MikroE implementation.
-//  #include "core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
+#include "ra2e3_core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
 // Note: Changed for MikroE implementation.
 //  #include "system.h"                       /*!< R7FA2E307 System                                                          */
 #include <stdint.h>
