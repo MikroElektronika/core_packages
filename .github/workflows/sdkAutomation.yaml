@@ -92,7 +92,7 @@ jobs:
 
     # Get Chrome for automated datasheet download
     - name: Chrome setup
-      uses: browser-actions/setup-chrome@v1
+      uses: browser-actions/setup-chrome@v2
       with:
         chrome-version: 129
         install-dependencies: true
