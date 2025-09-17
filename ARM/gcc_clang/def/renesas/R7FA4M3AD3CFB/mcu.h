@@ -49,7 +49,7 @@ extern "C" {
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 // Note: Changed for MikroE implementation.
-//  #include "core_cm33.h"                    /*!< ARM Cortex-M33 processor and core peripherals                             */
+#include "ra4m3_core_cm33.h"              /*!< ARM Cortex-M33 processor and core peripherals                             */
 // Note: Changed for MikroE implementation.
 //  #include "system.h"                       /*!< R7FA4M3AF System                                                          */
 #include <stdint.h>
