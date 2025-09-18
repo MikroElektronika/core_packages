@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^CY8C4148LQI-S446$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cy8c4148lqi_s446/init_clock.c)
+    list(APPEND local_dir_install system/src/infineon/cy8c4148lqi_s446/thirdparty/cy8c4148lqi_s446)
+    set(${thirdpartyInstall} cy8c4148lqi_s446/thirdparty/cy8c4148lqi_s446 PARENT_SCOPE)
+endif()
