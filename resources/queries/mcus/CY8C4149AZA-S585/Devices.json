@@ -1,0 +1,18 @@
+{
+    "def_file": "CY8C4149AZA-S585.json",
+    "family_uid": "PSoC 4100S Max",
+    "flash": "393216",
+    "icon": "images/mcu/infineon.png",
+    "max_speed": "48.000",
+    "name": "CY8C4149AZA-S585",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"CY8C4149AZA-S585\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "CY8C4149AZA-S585",
+    "vendor": "Infineon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_cy8c4149aza\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_cy8c4149aza\"}"
+}
