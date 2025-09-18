@@ -63,7 +63,7 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
                 if isGCC and 'list(APPEND local_list_include' in line:
 
                     systemPath = line.split()[-1][:-1].replace("${vendor}", vendor)
-                    if 'doc_ds' in systemPath or ('sam' in systemPath and re.search('^(at)?sam.+$', file_name)) or 'renesas' in systemPath or 'nuvoton' in systemPath or 'pic32' in systemPath:
+                    if 'doc_ds' in systemPath or ('sam' in systemPath and re.search('^(at)?sam.+$', file_name)) or 'renesas' in systemPath or 'nuvoton' in systemPath or 'pic32' in systemPath or ('infineon' in systemPath and 'cy8c' in file_name):
                         systemPath = os.path.dirname(systemPath)
                     systemPath = os.path.join(source_dir, systemPath)
                     paths[file_name]['files'].add(systemPath)
@@ -488,6 +488,7 @@ def deleteFromTable(db, sql_query):
             sqliteConnection.close()
 
 def update_database(package_name, mcus, db_path):
+    installer_package_column = 15
     for each_pack in mcus:
         for each_mcu in mcus[each_pack]['mcu_names']:
             ## Replace for MCUs which have different json file names and UID in database
@@ -498,12 +499,12 @@ def update_database(package_name, mcus, db_path):
             data_as_list_joined = []
             while counter != len(read_data):
                 existing_packages = {}
-                if read_data[counter][len(read_data[counter])-1]:
-                    if 'compiler_flags' not in read_data[counter][len(read_data[counter])-1]:
-                        existing_packages = json.loads(read_data[counter][len(read_data[counter])-1])
+                if read_data[counter][installer_package_column]:
+                    if 'compiler_flags' not in read_data[counter][installer_package_column]:
+                        existing_packages = json.loads(read_data[counter][installer_package_column])
                     else:
-                        if read_data[counter][len(read_data[counter])-2]:
-                            existing_packages = json.loads(read_data[counter][len(read_data[counter])-2])
+                        if read_data[counter][installer_package_column - 1]:
+                            existing_packages = json.loads(read_data[counter][installer_package_column - 1])
                 data_as_list = list(read_data[counter])
                 for each_compiler in list(read_data_compiler):
                     if 'mchp_xc' in each_compiler[0] and '_xc' in package_name:
@@ -513,7 +514,7 @@ def update_database(package_name, mcus, db_path):
                             for each_split_check in package_name.split('_')[1:]:
                                 if re.search(each_split_check, each_compiler[0]):
                                     existing_packages[each_compiler[0]] = package_name
-                data_as_list[len(data_as_list)-1] = existing_packages
+                data_as_list[installer_package_column] = existing_packages
                 data_as_list_joined.append(data_as_list)
                 counter += 1
             for each_list in data_as_list_joined:
@@ -521,7 +522,7 @@ def update_database(package_name, mcus, db_path):
                     updateTable(
                         db_path,
                         f'''UPDATE Devices SET installer_package = ? WHERE uid = "{each_mcu.upper()}"''',
-                        json.dumps(each_list[len(each_list)-1])
+                        json.dumps(each_list[installer_package_column])
                     )
                 else:
                     raise ValueError("%s does not exist in database!" % each_mcu)

@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^CY8C4126AXI-S423$|^CY8C4126AXI-S433$|^CY8C4126AXI-S443$|^CY8C4126AXI-S445$|^CY8C4126AXI-S455$|^CY8C4126AXQ-S433$|^CY8C4126AZA-S455$|^CY8C4126AZE-S455$|^CY8C4126AZI-S423$|^CY8C4126AZI-S433$|^CY8C4126AZI-S445$|^CY8C4126AZI-S455$|^CY8C4126AZQ-S423$|^CY8C4126AZQ-S433$|^CY8C4126AZS-S455$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cy8c4126a/init_clock.c)
+    list(APPEND local_dir_install system/src/infineon/cy8c4126a/thirdparty/cy8c4126a)
+    set(${thirdpartyInstall} cy8c4126a/thirdparty/cy8c4126a PARENT_SCOPE)
+endif()
