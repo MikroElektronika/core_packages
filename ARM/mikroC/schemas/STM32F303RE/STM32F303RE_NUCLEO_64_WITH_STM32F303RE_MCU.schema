@@ -1,7 +1,7 @@
 {
     "compiler_flags": "",
     "linker_flags": "",
-    "def_path": "ARM/mikroC/arm_mikroc_stm32f3xx/def/STM32F303RE.json",
+    "def_path": "ARM/gcc_clang/arm_gcc_clang_stm32f3x/def/STM32F303RE.json",
     "flash": "524288",
     "ram": "81920",
     "board_regex": "NUCLEO_64_WITH_STM32F303RE_MCU",

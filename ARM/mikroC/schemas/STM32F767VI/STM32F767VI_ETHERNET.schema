@@ -1,0 +1,135 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc-arm-none-eabi/core/def/STM32F767VI.json",
+    "flash": 2097151,
+    "ram": 524287,
+    "settings": {
+        "clock": "200",
+        "scheme": "STM32F767VI_ETH",
+        "mcu": "STM32F767VI",
+        "core": "M7",
+        "delay_src_path": "delays/m7/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00010000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "PLLI2SON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    },
+                    {
+                        "key": "PLLSAION",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "RCC_CR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "PLLM",
+                        "value": "00000019"
+                    },
+                    {
+                        "key": "PLLN",
+                        "value": "00006400"
+                    },
+                    {
+                        "key": "PLLP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00400000"
+                    },
+                    {
+                        "key": "PLLQ",
+                        "value": "02000000"
+                    },
+                    {
+                        "key": "PLLR",
+                        "value": "20000000"
+                    }
+                ],
+                "key": "RCC_PLLCFGR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SW",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00001400"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00008000"
+                    },
+                    {
+                        "key": "RTCPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO1",
+                        "value": "00600000"
+                    },
+                    {
+                        "key": "I2SSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO1PRE",
+                        "value": "06000000"
+                    },
+                    {
+                        "key": "MCO2PRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO2",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "RCC_CFGR"
+            },
+            {
+                "fields": {
+                    "key": "VRANGE",
+                    "value": "00000003"
+                },
+                "key": "SVRANGE"
+            }
+        ]
+    }
+}
