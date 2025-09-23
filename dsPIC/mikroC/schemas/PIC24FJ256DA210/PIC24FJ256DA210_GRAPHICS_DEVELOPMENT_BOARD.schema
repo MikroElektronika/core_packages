@@ -12,7 +12,7 @@
         "core": "",
         "delay_src_path": "",
         "name": null,
-        "config_words": [
+        "config_registers": [
             {
                 "key": "WPFP",
                 "value": "000000FF"
