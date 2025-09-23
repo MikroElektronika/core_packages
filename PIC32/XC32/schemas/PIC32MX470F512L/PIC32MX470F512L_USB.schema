@@ -4,13 +4,6 @@
     "def_path": "PIC32/XC32/core/def/PIC32MX470F512L.json",
     "flash": 524288,
     "ram": 131072,
-    "settings": {
-        "clock": "80",
-        "scheme": "PIC32MX470F512L_USB",
-        "mcu": "PIC32MX470F512L",
-        "core": "",
-        "delay_src_path": "",
-        "name": null,
         "config_words": [
             {
                 "key": "FSRSSEL",
@@ -54,7 +47,7 @@
             },
             {
                 "key": "FNOSC",
-                "value": "PRI"
+                "value": "PRIPLL"
             },
             {
                 "key": "FSOSCEN",

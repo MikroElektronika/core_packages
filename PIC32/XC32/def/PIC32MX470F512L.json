@@ -271,7 +271,7 @@
             ]
         },
         {
-            "init": "PRI",
+            "init": "PRIPLL",
             "key": "FNOSC",
             "label": "Oscillator Selection Bits",
             "settings": [
