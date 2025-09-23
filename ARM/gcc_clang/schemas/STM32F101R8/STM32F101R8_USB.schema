@@ -5,7 +5,7 @@
     "flash": 65536,
     "ram": 10240,
     "settings": {
-        "clock": "64",
+        "clock": "48",
         "scheme": "STM32F101R8_USB",
         "mcu": "STM32F101R8",
         "core": "M3",
@@ -73,11 +73,11 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "00380000"
+                        "value": "00280000"
                     },
                     {
                         "key": "USBPRE",
-                        "value": "00000000"
+                        "value": "00400000"
                     },
                     {
                         "key": "MCO",

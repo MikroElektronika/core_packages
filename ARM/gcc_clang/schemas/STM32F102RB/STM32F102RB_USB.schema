@@ -5,7 +5,7 @@
     "flash": 131072,
     "ram": 16384,
     "settings": {
-        "clock": "64",
+        "clock": "48",
         "scheme": "STM32F102RB_USB",
         "mcu": "STM32F102RB",
         "core": "M3",
@@ -73,11 +73,11 @@
                     },
                     {
                         "key": "PLLMUL",
-                        "value": "00380000"
+                        "value": "00280000"
                     },
                     {
                         "key": "USBPRE",
-                        "value": "00000000"
+                        "value": "00400000"
                     },
                     {
                         "key": "MCO",
