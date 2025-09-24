@@ -1,0 +1,48 @@
+{
+    "device_uid": "MSPM0G1505",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_ARM_BOARD"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "clang-llvm",
+                    "gcc_arm_none_eabi"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "24/LQFP",
+                    "28/LQFP",
+                    "32/LQFP",
+                    "48/LQFP",
+                    "64/LQFP",
+                    "24/VQFN",
+                    "28/VQFN",
+                    "32/VQFN",
+                    "48/VQFN",
+                    "64/VQFN"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.15.0+"
+            }
+        }
+    ]
+}
