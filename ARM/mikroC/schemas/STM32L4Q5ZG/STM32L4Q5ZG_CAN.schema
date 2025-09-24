@@ -1,0 +1,234 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc_clang/def/STM32L4Q5ZG.json",
+    "flash": 0,
+    "ram": 0,
+    "settings": {
+        "clock": "120",
+        "scheme": "STM32L4Q5ZG_CAN",
+        "mcu": "STM32L4Q5ZG",
+        "core": "M4EF",
+        "delay_src_path": "delays/m4ef/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "PLLSAI2ON",
+                        "value": "0"
+                    },
+                    {
+                        "key": "PLLSAI1ON",
+                        "value": "0"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "1000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "0"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "0"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "0"
+                    },
+                    {
+                        "key": "HSIASFS",
+                        "value": "0"
+                    },
+                    {
+                        "key": "HSIKERON",
+                        "value": "0"
+                    },
+                    {
+                        "key": "HSION",
+                        "value": "100"
+                    },
+                    {
+                        "key": "MSIRANGE",
+                        "value": "00000060"
+                    },
+                    {
+                        "key": "MSIRGSEL",
+                        "value": "0"
+                    },
+                    {
+                        "key": "MSIPLLEN",
+                        "value": "0"
+                    },
+                    {
+                        "key": "MSION",
+                        "value": "0"
+                    }
+                ],
+                "key": "RCC_CR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSITRIM",
+                        "value": "40000000"
+                    },
+                    {
+                        "key": "MSITRIM",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "RCC_ICSCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MCOSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "STOPWUCK",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "SW",
+                        "value": "3"
+                    }
+                ],
+                "key": "RCC_CFGR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "PLLPDIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLR",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLREN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLQ",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLQEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLPEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLN",
+                        "value": "00000f00"
+                    },
+                    {
+                        "key": "PLLM",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "2"
+                    }
+                ],
+                "key": "RCC_PLLCFGR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "LSCOSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSCOEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "BDRST",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RTCEN",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "RTCSEL",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSESYSDIS",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSECSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSEDRV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSEON",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "RCC_BDCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "RMVF",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MSISRANGE",
+                        "value": "00000600"
+                    },
+                    {
+                        "key": "LSIPREDIV",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "LSION",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "RCC_CSR"
+            },
+            {
+                "fields": {
+                    "key": "HSI48ON",
+                    "value": "00000000"
+                },
+                "key": "RCC_CRRCR"
+            }
+        ]
+    }
+}

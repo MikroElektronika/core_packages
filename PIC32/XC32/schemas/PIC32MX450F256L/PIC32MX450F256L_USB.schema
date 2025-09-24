@@ -54,7 +54,7 @@
             },
             {
                 "key": "FNOSC",
-                "value": "PRI"
+                "value": "PRIPLL"
             },
             {
                 "key": "FSOSCEN",

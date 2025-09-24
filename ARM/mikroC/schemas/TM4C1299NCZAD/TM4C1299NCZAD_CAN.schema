@@ -74,7 +74,7 @@
                 "fields": [
                     {
                         "key": "PLLPWR",
-                        "value": "00000000"
+                        "value": "00800000"
                     },
                     {
                         "key": "MFRAC",
