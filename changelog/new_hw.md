@@ -20,6 +20,13 @@
 
 Support added for following hardware:
 
++ MSPM0C1 MCU Support package for GCC & Clang
+  + MSPM0C1103
+  + MSPM0C1103-Q1
+  + MSPM0C1104
+  + MSPM0C1104-Q1
+  + MSPM0C1106
+  + MSPM0C1106-Q1
 
 ---
 
