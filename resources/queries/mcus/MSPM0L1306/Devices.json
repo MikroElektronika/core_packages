@@ -1,0 +1,18 @@
+{
+    "def_file": "MSPM0L1306.json",
+    "family_uid": "MSPM0",
+    "flash": "65536",
+    "icon": "images/mcu/ti.png",
+    "max_speed": "32.000",
+    "name": "MSPM0L1306",
+    "ram": "4096",
+    "sdk_config": "{\"MCU_NAME\":\"MSPM0L1306\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MSPM0L1306",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mspm0l13\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mspm0l13\"}"
+}
