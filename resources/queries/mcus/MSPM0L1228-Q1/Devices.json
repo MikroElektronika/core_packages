@@ -1,0 +1,18 @@
+{
+    "def_file": "MSPM0L1228-Q1.json",
+    "family_uid": "MSPM0",
+    "flash": "262144",
+    "icon": "images/mcu/ti.png",
+    "max_speed": "32.000",
+    "name": "MSPM0L1228-Q1",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"MSPM0L1228-Q1\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MSPM0L1228-Q1",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mspm0l12\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mspm0l12\"}"
+}
