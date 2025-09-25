@@ -1,0 +1,44 @@
+{
+    "device_uid": "MSPM0C1104",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_ARM_BOARD"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "clang-llvm",
+                    "gcc_arm_none_eabi"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "8/DSBGA",
+                    "16/DSBGA",
+                    "20/DSBGA",
+                    "8/WQFN",
+                    "16/WQFN",
+                    "20/WQFN"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.15.0+"
+            }
+        }
+    ]
+}

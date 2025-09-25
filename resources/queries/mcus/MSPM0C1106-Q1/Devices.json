@@ -1,0 +1,18 @@
+{
+    "def_file": "MSPM0C1106-Q1.json",
+    "family_uid": "MSPM0",
+    "flash": "65536",
+    "icon": "images/mcu/ti.png",
+    "max_speed": "32.000",
+    "name": "MSPM0C1106-Q1",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"MSPM0C1106-Q1\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MSPM0C1106-Q1",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mspm0c1\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mspm0c1\"}"
+}
