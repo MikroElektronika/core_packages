@@ -1,5 +1,5 @@
 if(${MCU_NAME} MATCHES "^MSPM0L1105$|^MSPM0L1106$|^MSPM0L1117$")
-    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.lds PARENT_SCOPE)
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/mspm0l11/init_clock.c)
     list(APPEND local_dir_install system/src/ti/mspm0l11/thirdparty/mspm0l11)
