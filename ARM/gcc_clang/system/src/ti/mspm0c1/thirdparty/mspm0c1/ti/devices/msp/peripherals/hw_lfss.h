@@ -309,10 +309,10 @@ typedef struct {
 /* LFSS_SPMWPROT0 Bits */
 /* LFSS_SPMWPROT0[KEY] Bits */
 #define LFSS_SPMWPROT0_KEY_OFS                   (24)                            /* !< KEY Offset */
-#define LFSS_SPMWPROT0_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to up2025-10-01
+#define LFSS_SPMWPROT0_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to update
                                                                                     this register */
 #define LFSS_SPMWPROT0_KEY_UNLOCK_W              ((uint32_t)0xE8000000U)         /* !< This field must be written with
-                                                                                    0xE8 to be up2025-10-01 the write protect
+                                                                                    0xE8 to be update the write protect
                                                                                     bits. */
 /* LFSS_SPMWPROT0[WP_3_3] Bits */
 #define LFSS_SPMWPROT0_WP_3_3_OFS                (15)                            /* !< WP_3_3 Offset */
@@ -398,10 +398,10 @@ typedef struct {
 /* LFSS_SPMWPROT1 Bits */
 /* LFSS_SPMWPROT1[KEY] Bits */
 #define LFSS_SPMWPROT1_KEY_OFS                   (24)                            /* !< KEY Offset */
-#define LFSS_SPMWPROT1_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to up2025-10-01
+#define LFSS_SPMWPROT1_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to update
                                                                                     this register */
 #define LFSS_SPMWPROT1_KEY_UNLOCK_W              ((uint32_t)0xE8000000U)         /* !< This field must be written with
-                                                                                    0xE8 to be up2025-10-01 the write protect
+                                                                                    0xE8 to be update the write protect
                                                                                     bits. */
 /* LFSS_SPMWPROT1[WP_7_3] Bits */
 #define LFSS_SPMWPROT1_WP_7_3_OFS                (15)                            /* !< WP_7_3 Offset */
@@ -487,10 +487,10 @@ typedef struct {
 /* LFSS_SPMWPROT2 Bits */
 /* LFSS_SPMWPROT2[KEY] Bits */
 #define LFSS_SPMWPROT2_KEY_OFS                   (24)                            /* !< KEY Offset */
-#define LFSS_SPMWPROT2_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to up2025-10-01
+#define LFSS_SPMWPROT2_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to update
                                                                                     this register */
 #define LFSS_SPMWPROT2_KEY_UNLOCK_W              ((uint32_t)0xE8000000U)         /* !< This field must be written with
-                                                                                    0xE8 to be up2025-10-01 the write protect
+                                                                                    0xE8 to be update the write protect
                                                                                     bits. */
 /* LFSS_SPMWPROT2[WP_11_3] Bits */
 #define LFSS_SPMWPROT2_WP_11_3_OFS               (15)                            /* !< WP_11_3 Offset */
@@ -576,10 +576,10 @@ typedef struct {
 /* LFSS_SPMWPROT3 Bits */
 /* LFSS_SPMWPROT3[KEY] Bits */
 #define LFSS_SPMWPROT3_KEY_OFS                   (24)                            /* !< KEY Offset */
-#define LFSS_SPMWPROT3_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to up2025-10-01
+#define LFSS_SPMWPROT3_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to update
                                                                                     this register */
 #define LFSS_SPMWPROT3_KEY_UNLOCK_W              ((uint32_t)0xE8000000U)         /* !< This field must be written with
-                                                                                    0xE8 to be up2025-10-01 the write protect
+                                                                                    0xE8 to be update the write protect
                                                                                     bits. */
 /* LFSS_SPMWPROT3[WP_15_3] Bits */
 #define LFSS_SPMWPROT3_WP_15_3_OFS               (15)                            /* !< WP_15_3 Offset */
@@ -665,10 +665,10 @@ typedef struct {
 /* LFSS_SPMWPROT4 Bits */
 /* LFSS_SPMWPROT4[KEY] Bits */
 #define LFSS_SPMWPROT4_KEY_OFS                   (24)                            /* !< KEY Offset */
-#define LFSS_SPMWPROT4_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to up2025-10-01
+#define LFSS_SPMWPROT4_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to update
                                                                                     this register */
 #define LFSS_SPMWPROT4_KEY_UNLOCK_W              ((uint32_t)0xE8000000U)         /* !< This field must be written with
-                                                                                    0xE8 to be up2025-10-01 the write protect
+                                                                                    0xE8 to be update the write protect
                                                                                     bits. */
 /* LFSS_SPMWPROT4[WP_19_3] Bits */
 #define LFSS_SPMWPROT4_WP_19_3_OFS               (15)                            /* !< WP_19_3 Offset */
@@ -754,10 +754,10 @@ typedef struct {
 /* LFSS_SPMWPROT5 Bits */
 /* LFSS_SPMWPROT5[KEY] Bits */
 #define LFSS_SPMWPROT5_KEY_OFS                   (24)                            /* !< KEY Offset */
-#define LFSS_SPMWPROT5_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to up2025-10-01
+#define LFSS_SPMWPROT5_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to update
                                                                                     this register */
 #define LFSS_SPMWPROT5_KEY_UNLOCK_W              ((uint32_t)0xE8000000U)         /* !< This field must be written with
-                                                                                    0xE8 to be up2025-10-01 the write protect
+                                                                                    0xE8 to be update the write protect
                                                                                     bits. */
 /* LFSS_SPMWPROT5[WP_23_3] Bits */
 #define LFSS_SPMWPROT5_WP_23_3_OFS               (15)                            /* !< WP_23_3 Offset */
@@ -843,10 +843,10 @@ typedef struct {
 /* LFSS_SPMWPROT6 Bits */
 /* LFSS_SPMWPROT6[KEY] Bits */
 #define LFSS_SPMWPROT6_KEY_OFS                   (24)                            /* !< KEY Offset */
-#define LFSS_SPMWPROT6_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to up2025-10-01
+#define LFSS_SPMWPROT6_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to update
                                                                                     this register */
 #define LFSS_SPMWPROT6_KEY_UNLOCK_W              ((uint32_t)0xE8000000U)         /* !< This field must be written with
-                                                                                    0xE8 to be up2025-10-01 the write protect
+                                                                                    0xE8 to be update the write protect
                                                                                     bits. */
 /* LFSS_SPMWPROT6[WP_27_3] Bits */
 #define LFSS_SPMWPROT6_WP_27_3_OFS               (15)                            /* !< WP_27_3 Offset */
@@ -932,10 +932,10 @@ typedef struct {
 /* LFSS_SPMWPROT7 Bits */
 /* LFSS_SPMWPROT7[KEY] Bits */
 #define LFSS_SPMWPROT7_KEY_OFS                   (24)                            /* !< KEY Offset */
-#define LFSS_SPMWPROT7_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to up2025-10-01
+#define LFSS_SPMWPROT7_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE8) to update
                                                                                     this register */
 #define LFSS_SPMWPROT7_KEY_UNLOCK_W              ((uint32_t)0xE8000000U)         /* !< This field must be written with
-                                                                                    0xE8 to be up2025-10-01 the write protect
+                                                                                    0xE8 to be update the write protect
                                                                                     bits. */
 /* LFSS_SPMWPROT7[WP_31_3] Bits */
 #define LFSS_SPMWPROT7_WP_31_3_OFS               (15)                            /* !< WP_31_3 Offset */
@@ -1021,10 +1021,10 @@ typedef struct {
 /* LFSS_SPMTERASE0 Bits */
 /* LFSS_SPMTERASE0[KEY] Bits */
 #define LFSS_SPMTERASE0_KEY_OFS                  (24)                            /* !< KEY Offset */
-#define LFSS_SPMTERASE0_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to up2025-10-01
+#define LFSS_SPMTERASE0_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to update
                                                                                     this register */
 #define LFSS_SPMTERASE0_KEY_UNLOCK_W             ((uint32_t)0xA3000000U)         /* !< This field must be written with
-                                                                                    0xA3 to be up2025-10-01 the tamper erase
+                                                                                    0xA3 to be update the tamper erase
                                                                                     enable bit. */
 /* LFSS_SPMTERASE0[TE_3_3] Bits */
 #define LFSS_SPMTERASE0_TE_3_3_OFS               (15)                            /* !< TE_3_3 Offset */
@@ -1142,10 +1142,10 @@ typedef struct {
 /* LFSS_SPMTERASE1 Bits */
 /* LFSS_SPMTERASE1[KEY] Bits */
 #define LFSS_SPMTERASE1_KEY_OFS                  (24)                            /* !< KEY Offset */
-#define LFSS_SPMTERASE1_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to up2025-10-01
+#define LFSS_SPMTERASE1_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to update
                                                                                     this register */
 #define LFSS_SPMTERASE1_KEY_UNLOCK_W             ((uint32_t)0xA3000000U)         /* !< This field must be written with
-                                                                                    0xA3 to be up2025-10-01 the tamper erase
+                                                                                    0xA3 to be update the tamper erase
                                                                                     enable bit. */
 /* LFSS_SPMTERASE1[TE_7_3] Bits */
 #define LFSS_SPMTERASE1_TE_7_3_OFS               (15)                            /* !< TE_7_3 Offset */
@@ -1263,10 +1263,10 @@ typedef struct {
 /* LFSS_SPMTERASE2 Bits */
 /* LFSS_SPMTERASE2[KEY] Bits */
 #define LFSS_SPMTERASE2_KEY_OFS                  (24)                            /* !< KEY Offset */
-#define LFSS_SPMTERASE2_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to up2025-10-01
+#define LFSS_SPMTERASE2_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to update
                                                                                     this register */
 #define LFSS_SPMTERASE2_KEY_UNLOCK_W             ((uint32_t)0xA3000000U)         /* !< This field must be written with
-                                                                                    0xA3 to be up2025-10-01 the tamper erase
+                                                                                    0xA3 to be update the tamper erase
                                                                                     enable bit. */
 /* LFSS_SPMTERASE2[TE_11_3] Bits */
 #define LFSS_SPMTERASE2_TE_11_3_OFS              (15)                            /* !< TE_11_3 Offset */
@@ -1384,10 +1384,10 @@ typedef struct {
 /* LFSS_SPMTERASE3 Bits */
 /* LFSS_SPMTERASE3[KEY] Bits */
 #define LFSS_SPMTERASE3_KEY_OFS                  (24)                            /* !< KEY Offset */
-#define LFSS_SPMTERASE3_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to up2025-10-01
+#define LFSS_SPMTERASE3_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to update
                                                                                     this register */
 #define LFSS_SPMTERASE3_KEY_UNLOCK_W             ((uint32_t)0xA3000000U)         /* !< This field must be written with
-                                                                                    0xA3 to be up2025-10-01 the tamper erase
+                                                                                    0xA3 to be update the tamper erase
                                                                                     enable bit. */
 /* LFSS_SPMTERASE3[TE_15_3] Bits */
 #define LFSS_SPMTERASE3_TE_15_3_OFS              (15)                            /* !< TE_15_3 Offset */
@@ -1505,10 +1505,10 @@ typedef struct {
 /* LFSS_SPMTERASE4 Bits */
 /* LFSS_SPMTERASE4[KEY] Bits */
 #define LFSS_SPMTERASE4_KEY_OFS                  (24)                            /* !< KEY Offset */
-#define LFSS_SPMTERASE4_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to up2025-10-01
+#define LFSS_SPMTERASE4_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to update
                                                                                     this register */
 #define LFSS_SPMTERASE4_KEY_UNLOCK_W             ((uint32_t)0xA3000000U)         /* !< This field must be written with
-                                                                                    0xA3 to be up2025-10-01 the tamper erase
+                                                                                    0xA3 to be update the tamper erase
                                                                                     enable bit. */
 /* LFSS_SPMTERASE4[TE_19_3] Bits */
 #define LFSS_SPMTERASE4_TE_19_3_OFS              (15)                            /* !< TE_19_3 Offset */
@@ -1626,10 +1626,10 @@ typedef struct {
 /* LFSS_SPMTERASE5 Bits */
 /* LFSS_SPMTERASE5[KEY] Bits */
 #define LFSS_SPMTERASE5_KEY_OFS                  (24)                            /* !< KEY Offset */
-#define LFSS_SPMTERASE5_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to up2025-10-01
+#define LFSS_SPMTERASE5_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to update
                                                                                     this register */
 #define LFSS_SPMTERASE5_KEY_UNLOCK_W             ((uint32_t)0xA3000000U)         /* !< This field must be written with
-                                                                                    0xA3 to be up2025-10-01 the tamper erase
+                                                                                    0xA3 to be update the tamper erase
                                                                                     enable bit. */
 /* LFSS_SPMTERASE5[TE_23_3] Bits */
 #define LFSS_SPMTERASE5_TE_23_3_OFS              (15)                            /* !< TE_23_3 Offset */
@@ -1747,10 +1747,10 @@ typedef struct {
 /* LFSS_SPMTERASE6 Bits */
 /* LFSS_SPMTERASE6[KEY] Bits */
 #define LFSS_SPMTERASE6_KEY_OFS                  (24)                            /* !< KEY Offset */
-#define LFSS_SPMTERASE6_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to up2025-10-01
+#define LFSS_SPMTERASE6_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to update
                                                                                     this register */
 #define LFSS_SPMTERASE6_KEY_UNLOCK_W             ((uint32_t)0xA3000000U)         /* !< This field must be written with
-                                                                                    0xA3 to be up2025-10-01 the tamper erase
+                                                                                    0xA3 to be update the tamper erase
                                                                                     enable bit. */
 /* LFSS_SPMTERASE6[TE_27_3] Bits */
 #define LFSS_SPMTERASE6_TE_27_3_OFS              (15)                            /* !< TE_27_3 Offset */
@@ -1868,10 +1868,10 @@ typedef struct {
 /* LFSS_SPMTERASE7 Bits */
 /* LFSS_SPMTERASE7[KEY] Bits */
 #define LFSS_SPMTERASE7_KEY_OFS                  (24)                            /* !< KEY Offset */
-#define LFSS_SPMTERASE7_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to up2025-10-01
+#define LFSS_SPMTERASE7_KEY_MASK                 ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xA3) to update
                                                                                     this register */
 #define LFSS_SPMTERASE7_KEY_UNLOCK_W             ((uint32_t)0xA3000000U)         /* !< This field must be written with
-                                                                                    0xA3 to be up2025-10-01 the tamper erase
+                                                                                    0xA3 to be update the tamper erase
                                                                                     enable bit. */
 /* LFSS_SPMTERASE7[TE_31_3] Bits */
 #define LFSS_SPMTERASE7_TE_31_3_OFS              (15)                            /* !< TE_31_3 Offset */
@@ -1999,7 +1999,7 @@ typedef struct {
                                                                                     with an incorrect key causes a POR
                                                                                     level reset. Read as 0. */
 #define LFSS_WDTEN_KEY_UNLOCK_W                  ((uint32_t)0xEE000000U)         /* !< This field must be written with
-                                                                                    0xEE to be up2025-10-01 the enable bit. */
+                                                                                    0xEE to be update the enable bit. */
 
 /* LFSS_WDTDBGCTL Bits */
 /* LFSS_WDTDBGCTL[FREE] Bits */
@@ -2071,7 +2071,7 @@ typedef struct {
                                                                                     access. */
 /* LFSS_WDTLOCK[KEY] Bits */
 #define LFSS_WDTLOCK_KEY_OFS                     (24)                            /* !< KEY Offset */
-#define LFSS_WDTLOCK_KEY_MASK                    ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xBD) to up2025-10-01
+#define LFSS_WDTLOCK_KEY_MASK                    ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xBD) to update
                                                                                     this register */
 #define LFSS_WDTLOCK_KEY_UNLOCK_W                ((uint32_t)0xBD000000U)         /* !< This field must be written with
                                                                                     0xBD to be able to clear any of the
@@ -2512,7 +2512,7 @@ typedef struct {
                                                                                     access. */
 /* LFSS_TIOLOCK[KEY] Bits */
 #define LFSS_TIOLOCK_KEY_OFS                     (24)                            /* !< KEY Offset */
-#define LFSS_TIOLOCK_KEY_MASK                    ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x18) to up2025-10-01
+#define LFSS_TIOLOCK_KEY_MASK                    ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x18) to update
                                                                                     this register */
 #define LFSS_TIOLOCK_KEY_UNLOCK_W                ((uint32_t)0x18000000U)         /* !< This field must be written with
                                                                                     0x18 to be able to clear any of the
@@ -2543,7 +2543,7 @@ typedef struct {
 #define LFSS_DBGCTL_DBGINT_MASK                  ((uint32_t)0x00000002U)         /* !< Debug Interrupt Enable. */
 #define LFSS_DBGCTL_DBGINT_OFF                   ((uint32_t)0x00000000U)         /* !< Interrupts of the module will not
                                                                                     be captured anymore if CPU is in
-                                                                                    debug state. Which means no up2025-10-01 to
+                                                                                    debug state. Which means no update to
                                                                                     the RTCRIS, RTCMISC and RTCIIDX
                                                                                     register. */
 #define LFSS_DBGCTL_DBGINT_ON                    ((uint32_t)0x00000002U)         /* !< Interrupts are enabled in debug
@@ -2653,7 +2653,7 @@ typedef struct {
                                                                                     register at any time returns the
                                                                                     cumulative value which is the signed
                                                                                     addition of RTCOCALx and RTCTCMPX
-                                                                                    values, and the up2025-10-01d sign bit
+                                                                                    values, and the updated sign bit
                                                                                     (RTCTCMPS) of the addition result. */
 #define LFSS_TCMP_RTCTCMPX_MINIMUM               ((uint32_t)0x00000000U)         /* !< Smallest value */
 #define LFSS_TCMP_RTCTCMPX_MAXIMUM               ((uint32_t)0x000000FFU)         /* !< Highest possible value */
@@ -3527,7 +3527,7 @@ typedef struct {
                                                                                     last occurrence of time stamp event. */
 /* LFSS_TSCTL[KEY] Bits */
 #define LFSS_TSCTL_KEY_OFS                       (24)                            /* !< KEY Offset */
-#define LFSS_TSCTL_KEY_MASK                      ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xC5) to up2025-10-01
+#define LFSS_TSCTL_KEY_MASK                      ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xC5) to update
                                                                                     this register */
 #define LFSS_TSCTL_KEY_UNLOCK_W                  ((uint32_t)0xC5000000U)         /* !< This field must be written with
                                                                                     0xC5 to be able to clear any of the
@@ -3542,7 +3542,7 @@ typedef struct {
 #define LFSS_TSCLR_CLR_CLR                       ((uint32_t)0x00000001U)         /* !< clear time stamp event */
 /* LFSS_TSCLR[KEY] Bits */
 #define LFSS_TSCLR_KEY_OFS                       (24)                            /* !< KEY Offset */
-#define LFSS_TSCLR_KEY_MASK                      ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE2) to up2025-10-01
+#define LFSS_TSCLR_KEY_MASK                      ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE2) to update
                                                                                     this register */
 #define LFSS_TSCLR_KEY_UNLOCK_W                  ((uint32_t)0xE2000000U)         /* !< This field must be written with
                                                                                     0xE2 to be able to clear any of the
@@ -3558,7 +3558,7 @@ typedef struct {
 #define LFSS_LFSSRST_VBATPOR_SET                 ((uint32_t)0x00000001U)         /* !< Request power on reset to the LFSS. */
 /* LFSS_LFSSRST[KEY] Bits */
 #define LFSS_LFSSRST_KEY_OFS                     (24)                            /* !< KEY Offset */
-#define LFSS_LFSSRST_KEY_MASK                    ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x12) to up2025-10-01
+#define LFSS_LFSSRST_KEY_MASK                    ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x12) to update
                                                                                     this register */
 #define LFSS_LFSSRST_KEY_UNLOCK_W                ((uint32_t)0x12000000U)         /* !< This field must be written with
                                                                                     0x12 to be able to request the power
@@ -3575,10 +3575,10 @@ typedef struct {
 #define LFSS_RTCLOCK_PROTECT_SET                 ((uint32_t)0x00000001U)         /* !< RTC counter is read only access. */
 /* LFSS_RTCLOCK[KEY] Bits */
 #define LFSS_RTCLOCK_KEY_OFS                     (24)                            /* !< KEY Offset */
-#define LFSS_RTCLOCK_KEY_MASK                    ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x22) to up2025-10-01
+#define LFSS_RTCLOCK_KEY_MASK                    ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x22) to update
                                                                                     this register */
 #define LFSS_RTCLOCK_KEY_UNLOCK_W                ((uint32_t)0x22000000U)         /* !< This field must be written with
-                                                                                    0x22 to be able to up2025-10-01 any of the
+                                                                                    0x22 to be able to update any of the
                                                                                     bits. */
 
 /* LFSS_GEN_EVENT_IIDX Bits */

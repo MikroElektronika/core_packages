@@ -442,7 +442,7 @@ typedef struct {
 /* TRNG_CTL[CMD] Bits */
 #define TRNG_CTL_CMD_OFS                         (0)                             /* !< CMD Offset */
 #define TRNG_CTL_CMD_MASK                        ((uint32_t)0x00000003U)         /* !< Sets the TRNG mode through a
-                                                                                    command. The mode will not be up2025-09-29d
+                                                                                    command. The mode will not be updated
                                                                                     until the previous command is done,
                                                                                     as indicated by IRQ_CMD_DONE. 00 -->
                                                                                     OFF 01 --> PWRUP_DIG 10 --> PWRUP_ANA
@@ -481,7 +481,7 @@ typedef struct {
 #define TRNG_STAT_ISSUED_CMD_MASK                ((uint32_t)0x00000300U)         /* !< Indicates the last accepted command
                                                                                     that is issued to the TRNG interface.
                                                                                     Upon writing a valid command, this
-                                                                                    register will up2025-09-29 and the command
+                                                                                    register will update and the command
                                                                                     will be in progress until
                                                                                     CMD_DONE_IRQ is set. CMD_DONE_IRQ
                                                                                     indicates that the state is in

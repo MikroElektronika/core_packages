@@ -1100,12 +1100,12 @@ typedef struct {
                                                                                     completes the current character
                                                                                     before stopping.  If the ENABLE bit
                                                                                     is not set, all registers can still
-                                                                                    be accessed and up2025-10-02d. It is
+                                                                                    be accessed and updated. It is
                                                                                     recommended to setup and change the
                                                                                     UART operation mode with having the
                                                                                     ENABLE bit cleared to avoid
                                                                                     unpredictable behavior during the
-                                                                                    setup or up2025-10-02. If disabled the UART
+                                                                                    setup or update. If disabled the UART
                                                                                     module will not send or receive any
                                                                                     data and the logic is held in reset
                                                                                     state. */

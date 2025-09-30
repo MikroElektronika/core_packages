@@ -665,11 +665,11 @@ typedef struct {
                                                                                     completes the current character
                                                                                     before stopping.      If ENABLE bit
                                                                                     is not set, all registers can still
-                                                                                    be accessed and up2025-09-30d. It is
+                                                                                    be accessed and updated. It is
                                                                                     recommended to setup and change I2S
                                                                                     operation mode whhile ENABLE bit is
                                                                                     cleared to avoid unpredictable
-                                                                                    behavior during setup or up2025-09-30.
+                                                                                    behavior during setup or update.
                                                                                     If disabled,  I2S module will not
                                                                                     send or receive any data. */
 #define I2S_FMTCFG_ENABLE_DISABLE                ((uint32_t)0x00000000U)         /* !< Disable Module */

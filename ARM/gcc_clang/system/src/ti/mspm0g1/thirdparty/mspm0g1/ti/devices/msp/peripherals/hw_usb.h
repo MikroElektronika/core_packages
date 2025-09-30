@@ -1012,7 +1012,7 @@ typedef struct {
 #define USB_POWER_SOFT_CONN_ENABLE               ((uint8_t)0x00000040U)          /* !< The USB D+/D- lines are enabled. */
 /* USB_POWER[ISOUP] Bits */
 #define USB_POWER_ISOUP_OFS                      (7)                             /* !< ISOUP Offset */
-#define USB_POWER_ISOUP_MASK                     ((uint8_t)0x00000080U)          /* !< Isochronous Up2025-09-30. When set by the
+#define USB_POWER_ISOUP_MASK                     ((uint8_t)0x00000080U)          /* !< Isochronous Update. When set by the
                                                                                     CPU, the USB module will wait for an
                                                                                     SOF token from the time TXRDY bit is
                                                                                     set in the USBTXCSRLn before sending

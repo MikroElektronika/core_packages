@@ -1312,7 +1312,7 @@ typedef struct {
 #define SYSCTL_SYSTEMCFG_KEY_OFS                 (24)                            /* !< KEY Offset */
 #define SYSCTL_SYSTEMCFG_KEY_MASK                ((uint32_t)0xFF000000U)         /* !< The key value of 1Bh (27) must be
                                                                                     written to KEY together with contents
-                                                                                    to be up2025-09-29d. Reads as 0 */
+                                                                                    to be updated. Reads as 0 */
 #define SYSCTL_SYSTEMCFG_KEY_VALUE               ((uint32_t)0x1B000000U)         /* !< Issue write */
 /* SYSCTL_SYSTEMCFG[FLASHECCRSTDIS] Bits */
 #define SYSCTL_SYSTEMCFG_FLASHECCRSTDIS_OFS      (2)                             /* !< FLASHECCRSTDIS Offset */
@@ -1345,7 +1345,7 @@ typedef struct {
 #define SYSCTL_SRAMCFG_KEY_OFS                   (24)                            /* !< KEY Offset */
 #define SYSCTL_SRAMCFG_KEY_MASK                  ((uint32_t)0xFF000000U)         /* !< The key value of B5h (181) must be
                                                                                     written to KEY together with contents
-                                                                                    to be up2025-09-29d. Reads as 0 */
+                                                                                    to be updated. Reads as 0 */
 #define SYSCTL_SRAMCFG_KEY_VALUE                 ((uint32_t)0xB5000000U)         /* !< Issue write */
 /* SYSCTL_SRAMCFG[BANKSTOP1] Bits */
 #define SYSCTL_SRAMCFG_BANKSTOP1_OFS             (9)                             /* !< BANKSTOP1 Offset */

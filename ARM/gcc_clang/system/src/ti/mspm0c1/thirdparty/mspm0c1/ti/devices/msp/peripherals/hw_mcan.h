@@ -1312,7 +1312,7 @@ typedef struct {
 #define MCAN_TEST_TX_OFS                         (5)                             /* !< TX Offset */
 #define MCAN_TEST_TX_MASK                        ((uint32_t)0x00000060U)         /* !< Control of Transmit Pin   00  CAN
                                                                                     TX pin controlled by the CAN Core,
-                                                                                    up2025-10-01d at the end of the CAN bit
+                                                                                    updated at the end of the CAN bit
                                                                                     time   01  Sample Point can be
                                                                                     monitored at CAN TX pin   10
                                                                                     Dominant ('0') level at CAN TX pin
@@ -1984,7 +1984,7 @@ typedef struct {
                                                                                     - was not able to write a message to
                                                                                     the Message RAM. In this case message
                                                                                     storage is aborted.   In both cases
-                                                                                    the FIFO put index is not up2025-10-01d
+                                                                                    the FIFO put index is not updated
                                                                                     resp. the New Data flag for a
                                                                                     dedicated Rx Buffer is not set, a
                                                                                     partly stored message is overwritten
@@ -2011,7 +2011,7 @@ typedef struct {
                                                                                     Buffer. The flag is set whenever a
                                                                                     received message has been stored into
                                                                                     a dedicated Rx Buffer.   0  No Rx
-                                                                                    Buffer up2025-10-01d   1  At least one
+                                                                                    Buffer updated   1  At least one
                                                                                     received message stored into an Rx
                                                                                     Buffer */
 /* MCAN_IR[BEU] Bits */
@@ -2511,325 +2511,325 @@ typedef struct {
 /* MCAN_NDAT1[ND0] Bits */
 #define MCAN_NDAT1_ND0_OFS                       (0)                             /* !< ND0 Offset */
 #define MCAN_NDAT1_ND0_MASK                      ((uint32_t)0x00000001U)         /* !< New Data RX Buffer 0   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND1] Bits */
 #define MCAN_NDAT1_ND1_OFS                       (1)                             /* !< ND1 Offset */
 #define MCAN_NDAT1_ND1_MASK                      ((uint32_t)0x00000002U)         /* !< New Data RX Buffer 1   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND2] Bits */
 #define MCAN_NDAT1_ND2_OFS                       (2)                             /* !< ND2 Offset */
 #define MCAN_NDAT1_ND2_MASK                      ((uint32_t)0x00000004U)         /* !< New Data RX Buffer 2   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND3] Bits */
 #define MCAN_NDAT1_ND3_OFS                       (3)                             /* !< ND3 Offset */
 #define MCAN_NDAT1_ND3_MASK                      ((uint32_t)0x00000008U)         /* !< New Data RX Buffer 3   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND4] Bits */
 #define MCAN_NDAT1_ND4_OFS                       (4)                             /* !< ND4 Offset */
 #define MCAN_NDAT1_ND4_MASK                      ((uint32_t)0x00000010U)         /* !< New Data RX Buffer 4   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND5] Bits */
 #define MCAN_NDAT1_ND5_OFS                       (5)                             /* !< ND5 Offset */
 #define MCAN_NDAT1_ND5_MASK                      ((uint32_t)0x00000020U)         /* !< New Data RX Buffer 5   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND6] Bits */
 #define MCAN_NDAT1_ND6_OFS                       (6)                             /* !< ND6 Offset */
 #define MCAN_NDAT1_ND6_MASK                      ((uint32_t)0x00000040U)         /* !< New Data RX Buffer 6   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND7] Bits */
 #define MCAN_NDAT1_ND7_OFS                       (7)                             /* !< ND7 Offset */
 #define MCAN_NDAT1_ND7_MASK                      ((uint32_t)0x00000080U)         /* !< New Data RX Buffer 7   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND8] Bits */
 #define MCAN_NDAT1_ND8_OFS                       (8)                             /* !< ND8 Offset */
 #define MCAN_NDAT1_ND8_MASK                      ((uint32_t)0x00000100U)         /* !< New Data RX Buffer 8   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND9] Bits */
 #define MCAN_NDAT1_ND9_OFS                       (9)                             /* !< ND9 Offset */
 #define MCAN_NDAT1_ND9_MASK                      ((uint32_t)0x00000200U)         /* !< New Data RX Buffer 9   0  Rx Buffer
-                                                                                    not up2025-10-01d   1  Rx Buffer up2025-10-01d
+                                                                                    not updated   1  Rx Buffer updated
                                                                                     from new message */
 /* MCAN_NDAT1[ND10] Bits */
 #define MCAN_NDAT1_ND10_OFS                      (10)                            /* !< ND10 Offset */
 #define MCAN_NDAT1_ND10_MASK                     ((uint32_t)0x00000400U)         /* !< New Data RX Buffer 10   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND11] Bits */
 #define MCAN_NDAT1_ND11_OFS                      (11)                            /* !< ND11 Offset */
 #define MCAN_NDAT1_ND11_MASK                     ((uint32_t)0x00000800U)         /* !< New Data RX Buffer 11   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND12] Bits */
 #define MCAN_NDAT1_ND12_OFS                      (12)                            /* !< ND12 Offset */
 #define MCAN_NDAT1_ND12_MASK                     ((uint32_t)0x00001000U)         /* !< New Data RX Buffer 12   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND13] Bits */
 #define MCAN_NDAT1_ND13_OFS                      (13)                            /* !< ND13 Offset */
 #define MCAN_NDAT1_ND13_MASK                     ((uint32_t)0x00002000U)         /* !< New Data RX Buffer 13   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND14] Bits */
 #define MCAN_NDAT1_ND14_OFS                      (14)                            /* !< ND14 Offset */
 #define MCAN_NDAT1_ND14_MASK                     ((uint32_t)0x00004000U)         /* !< New Data RX Buffer 14   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND15] Bits */
 #define MCAN_NDAT1_ND15_OFS                      (15)                            /* !< ND15 Offset */
 #define MCAN_NDAT1_ND15_MASK                     ((uint32_t)0x00008000U)         /* !< New Data RX Buffer 15   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND16] Bits */
 #define MCAN_NDAT1_ND16_OFS                      (16)                            /* !< ND16 Offset */
 #define MCAN_NDAT1_ND16_MASK                     ((uint32_t)0x00010000U)         /* !< New Data RX Buffer 16   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND17] Bits */
 #define MCAN_NDAT1_ND17_OFS                      (17)                            /* !< ND17 Offset */
 #define MCAN_NDAT1_ND17_MASK                     ((uint32_t)0x00020000U)         /* !< New Data RX Buffer 17   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND18] Bits */
 #define MCAN_NDAT1_ND18_OFS                      (18)                            /* !< ND18 Offset */
 #define MCAN_NDAT1_ND18_MASK                     ((uint32_t)0x00040000U)         /* !< New Data RX Buffer 18   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND19] Bits */
 #define MCAN_NDAT1_ND19_OFS                      (19)                            /* !< ND19 Offset */
 #define MCAN_NDAT1_ND19_MASK                     ((uint32_t)0x00080000U)         /* !< New Data RX Buffer 19   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND20] Bits */
 #define MCAN_NDAT1_ND20_OFS                      (20)                            /* !< ND20 Offset */
 #define MCAN_NDAT1_ND20_MASK                     ((uint32_t)0x00100000U)         /* !< New Data RX Buffer 20   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND21] Bits */
 #define MCAN_NDAT1_ND21_OFS                      (21)                            /* !< ND21 Offset */
 #define MCAN_NDAT1_ND21_MASK                     ((uint32_t)0x00200000U)         /* !< New Data RX Buffer 21   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND22] Bits */
 #define MCAN_NDAT1_ND22_OFS                      (22)                            /* !< ND22 Offset */
 #define MCAN_NDAT1_ND22_MASK                     ((uint32_t)0x00400000U)         /* !< New Data RX Buffer 22   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND23] Bits */
 #define MCAN_NDAT1_ND23_OFS                      (23)                            /* !< ND23 Offset */
 #define MCAN_NDAT1_ND23_MASK                     ((uint32_t)0x00800000U)         /* !< New Data RX Buffer 23   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND24] Bits */
 #define MCAN_NDAT1_ND24_OFS                      (24)                            /* !< ND24 Offset */
 #define MCAN_NDAT1_ND24_MASK                     ((uint32_t)0x01000000U)         /* !< New Data RX Buffer 24   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND25] Bits */
 #define MCAN_NDAT1_ND25_OFS                      (25)                            /* !< ND25 Offset */
 #define MCAN_NDAT1_ND25_MASK                     ((uint32_t)0x02000000U)         /* !< New Data RX Buffer 25   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND26] Bits */
 #define MCAN_NDAT1_ND26_OFS                      (26)                            /* !< ND26 Offset */
 #define MCAN_NDAT1_ND26_MASK                     ((uint32_t)0x04000000U)         /* !< New Data RX Buffer 26   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND27] Bits */
 #define MCAN_NDAT1_ND27_OFS                      (27)                            /* !< ND27 Offset */
 #define MCAN_NDAT1_ND27_MASK                     ((uint32_t)0x08000000U)         /* !< New Data RX Buffer 27   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND28] Bits */
 #define MCAN_NDAT1_ND28_OFS                      (28)                            /* !< ND28 Offset */
 #define MCAN_NDAT1_ND28_MASK                     ((uint32_t)0x10000000U)         /* !< New Data RX Buffer 28   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND29] Bits */
 #define MCAN_NDAT1_ND29_OFS                      (29)                            /* !< ND29 Offset */
 #define MCAN_NDAT1_ND29_MASK                     ((uint32_t)0x20000000U)         /* !< New Data RX Buffer 29   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND30] Bits */
 #define MCAN_NDAT1_ND30_OFS                      (30)                            /* !< ND30 Offset */
 #define MCAN_NDAT1_ND30_MASK                     ((uint32_t)0x40000000U)         /* !< New Data RX Buffer 30   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT1[ND31] Bits */
 #define MCAN_NDAT1_ND31_OFS                      (31)                            /* !< ND31 Offset */
 #define MCAN_NDAT1_ND31_MASK                     ((uint32_t)0x80000000U)         /* !< New Data RX Buffer 31   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 
 /* MCAN_NDAT2 Bits */
 /* MCAN_NDAT2[ND32] Bits */
 #define MCAN_NDAT2_ND32_OFS                      (0)                             /* !< ND32 Offset */
 #define MCAN_NDAT2_ND32_MASK                     ((uint32_t)0x00000001U)         /* !< New Data RX Buffer 32   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND33] Bits */
 #define MCAN_NDAT2_ND33_OFS                      (1)                             /* !< ND33 Offset */
 #define MCAN_NDAT2_ND33_MASK                     ((uint32_t)0x00000002U)         /* !< New Data RX Buffer 33   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND34] Bits */
 #define MCAN_NDAT2_ND34_OFS                      (2)                             /* !< ND34 Offset */
 #define MCAN_NDAT2_ND34_MASK                     ((uint32_t)0x00000004U)         /* !< New Data RX Buffer 34   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND35] Bits */
 #define MCAN_NDAT2_ND35_OFS                      (3)                             /* !< ND35 Offset */
 #define MCAN_NDAT2_ND35_MASK                     ((uint32_t)0x00000008U)         /* !< New Data RX Buffer 35   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND36] Bits */
 #define MCAN_NDAT2_ND36_OFS                      (4)                             /* !< ND36 Offset */
 #define MCAN_NDAT2_ND36_MASK                     ((uint32_t)0x00000010U)         /* !< New Data RX Buffer 36   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND37] Bits */
 #define MCAN_NDAT2_ND37_OFS                      (5)                             /* !< ND37 Offset */
 #define MCAN_NDAT2_ND37_MASK                     ((uint32_t)0x00000020U)         /* !< New Data RX Buffer 37   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND38] Bits */
 #define MCAN_NDAT2_ND38_OFS                      (6)                             /* !< ND38 Offset */
 #define MCAN_NDAT2_ND38_MASK                     ((uint32_t)0x00000040U)         /* !< New Data RX Buffer 38   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND39] Bits */
 #define MCAN_NDAT2_ND39_OFS                      (7)                             /* !< ND39 Offset */
 #define MCAN_NDAT2_ND39_MASK                     ((uint32_t)0x00000080U)         /* !< New Data RX Buffer 39   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND40] Bits */
 #define MCAN_NDAT2_ND40_OFS                      (8)                             /* !< ND40 Offset */
 #define MCAN_NDAT2_ND40_MASK                     ((uint32_t)0x00000100U)         /* !< New Data RX Buffer 40   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND41] Bits */
 #define MCAN_NDAT2_ND41_OFS                      (9)                             /* !< ND41 Offset */
 #define MCAN_NDAT2_ND41_MASK                     ((uint32_t)0x00000200U)         /* !< New Data RX Buffer 41   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND42] Bits */
 #define MCAN_NDAT2_ND42_OFS                      (10)                            /* !< ND42 Offset */
 #define MCAN_NDAT2_ND42_MASK                     ((uint32_t)0x00000400U)         /* !< New Data RX Buffer 42   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND43] Bits */
 #define MCAN_NDAT2_ND43_OFS                      (11)                            /* !< ND43 Offset */
 #define MCAN_NDAT2_ND43_MASK                     ((uint32_t)0x00000800U)         /* !< New Data RX Buffer 43   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND44] Bits */
 #define MCAN_NDAT2_ND44_OFS                      (12)                            /* !< ND44 Offset */
 #define MCAN_NDAT2_ND44_MASK                     ((uint32_t)0x00001000U)         /* !< New Data RX Buffer 44   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND45] Bits */
 #define MCAN_NDAT2_ND45_OFS                      (13)                            /* !< ND45 Offset */
 #define MCAN_NDAT2_ND45_MASK                     ((uint32_t)0x00002000U)         /* !< New Data RX Buffer 45   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND46] Bits */
 #define MCAN_NDAT2_ND46_OFS                      (14)                            /* !< ND46 Offset */
 #define MCAN_NDAT2_ND46_MASK                     ((uint32_t)0x00004000U)         /* !< New Data RX Buffer 46   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND47] Bits */
 #define MCAN_NDAT2_ND47_OFS                      (15)                            /* !< ND47 Offset */
 #define MCAN_NDAT2_ND47_MASK                     ((uint32_t)0x00008000U)         /* !< New Data RX Buffer 47   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND48] Bits */
 #define MCAN_NDAT2_ND48_OFS                      (16)                            /* !< ND48 Offset */
 #define MCAN_NDAT2_ND48_MASK                     ((uint32_t)0x00010000U)         /* !< New Data RX Buffer 48   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND49] Bits */
 #define MCAN_NDAT2_ND49_OFS                      (17)                            /* !< ND49 Offset */
 #define MCAN_NDAT2_ND49_MASK                     ((uint32_t)0x00020000U)         /* !< New Data RX Buffer 49   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND50] Bits */
 #define MCAN_NDAT2_ND50_OFS                      (18)                            /* !< ND50 Offset */
 #define MCAN_NDAT2_ND50_MASK                     ((uint32_t)0x00040000U)         /* !< New Data RX Buffer 50   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND51] Bits */
 #define MCAN_NDAT2_ND51_OFS                      (19)                            /* !< ND51 Offset */
 #define MCAN_NDAT2_ND51_MASK                     ((uint32_t)0x00080000U)         /* !< New Data RX Buffer 51   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND52] Bits */
 #define MCAN_NDAT2_ND52_OFS                      (20)                            /* !< ND52 Offset */
 #define MCAN_NDAT2_ND52_MASK                     ((uint32_t)0x00100000U)         /* !< New Data RX Buffer 52   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND53] Bits */
 #define MCAN_NDAT2_ND53_OFS                      (21)                            /* !< ND53 Offset */
 #define MCAN_NDAT2_ND53_MASK                     ((uint32_t)0x00200000U)         /* !< New Data RX Buffer 53   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND54] Bits */
 #define MCAN_NDAT2_ND54_OFS                      (22)                            /* !< ND54 Offset */
 #define MCAN_NDAT2_ND54_MASK                     ((uint32_t)0x00400000U)         /* !< New Data RX Buffer 54   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND55] Bits */
 #define MCAN_NDAT2_ND55_OFS                      (23)                            /* !< ND55 Offset */
 #define MCAN_NDAT2_ND55_MASK                     ((uint32_t)0x00800000U)         /* !< New Data RX Buffer 55   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND56] Bits */
 #define MCAN_NDAT2_ND56_OFS                      (24)                            /* !< ND56 Offset */
 #define MCAN_NDAT2_ND56_MASK                     ((uint32_t)0x01000000U)         /* !< New Data RX Buffer 56   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND57] Bits */
 #define MCAN_NDAT2_ND57_OFS                      (25)                            /* !< ND57 Offset */
 #define MCAN_NDAT2_ND57_MASK                     ((uint32_t)0x02000000U)         /* !< New Data RX Buffer 57   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND58] Bits */
 #define MCAN_NDAT2_ND58_OFS                      (26)                            /* !< ND58 Offset */
 #define MCAN_NDAT2_ND58_MASK                     ((uint32_t)0x04000000U)         /* !< New Data RX Buffer 58   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND59] Bits */
 #define MCAN_NDAT2_ND59_OFS                      (27)                            /* !< ND59 Offset */
 #define MCAN_NDAT2_ND59_MASK                     ((uint32_t)0x08000000U)         /* !< New Data RX Buffer 59   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND60] Bits */
 #define MCAN_NDAT2_ND60_OFS                      (28)                            /* !< ND60 Offset */
 #define MCAN_NDAT2_ND60_MASK                     ((uint32_t)0x10000000U)         /* !< New Data RX Buffer 60   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND61] Bits */
 #define MCAN_NDAT2_ND61_OFS                      (29)                            /* !< ND61 Offset */
 #define MCAN_NDAT2_ND61_MASK                     ((uint32_t)0x20000000U)         /* !< New Data RX Buffer 61   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND62] Bits */
 #define MCAN_NDAT2_ND62_OFS                      (30)                            /* !< ND62 Offset */
 #define MCAN_NDAT2_ND62_MASK                     ((uint32_t)0x40000000U)         /* !< New Data RX Buffer 62   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 /* MCAN_NDAT2[ND63] Bits */
 #define MCAN_NDAT2_ND63_OFS                      (31)                            /* !< ND63 Offset */
 #define MCAN_NDAT2_ND63_MASK                     ((uint32_t)0x80000000U)         /* !< New Data RX Buffer 63   0  Rx
-                                                                                    Buffer not up2025-10-01d   1  Rx Buffer
-                                                                                    up2025-10-01d from new message */
+                                                                                    Buffer not updated   1  Rx Buffer
+                                                                                    updated from new message */
 
 /* MCAN_RXF0C Bits */
 /* MCAN_RXF0C[F0SA] Bits */
@@ -2907,7 +2907,7 @@ typedef struct {
                                                                                     the last element read from Rx FIFO 0
                                                                                     to F0AI. This will set the Rx FIFO 0
                                                                                     Get Index RXF0S.F0GI to F0AI + 1 and
-                                                                                    up2025-10-01 the FIFO 0 Fill Level
+                                                                                    update the FIFO 0 Fill Level
                                                                                     RXF0S.F0FL. */
 
 /* MCAN_RXBC Bits */
@@ -3001,7 +3001,7 @@ typedef struct {
                                                                                     the last element read from Rx FIFO 1
                                                                                     to F1AI. This will set the Rx FIFO 1
                                                                                     Get Index RXF1S.F1GI to F1AI + 1 and
-                                                                                    up2025-10-01 the FIFO 1 Fill Level
+                                                                                    update the FIFO 1 Fill Level
                                                                                     RXF1S.F1FL. */
 
 /* MCAN_RXESC Bits */
@@ -4501,7 +4501,7 @@ typedef struct {
                                                                                     of the last element read from Tx
                                                                                     Event FIFO to EFAI. This will set the
                                                                                     Tx Event FIFO Get Index TXEFS.EFGI to
-                                                                                    EFAI + 1 and up2025-10-01 the Event FIFO
+                                                                                    EFAI + 1 and update the Event FIFO
                                                                                     Fill Level TXEFS.EFFL. */
 
 /* MCAN_PWREN Bits */
