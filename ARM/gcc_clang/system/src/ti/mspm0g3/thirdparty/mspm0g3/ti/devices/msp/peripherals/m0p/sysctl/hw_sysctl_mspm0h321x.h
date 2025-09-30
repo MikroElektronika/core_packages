@@ -907,7 +907,7 @@ typedef struct {
 #define SYSCTL_SYSTEMCFG_KEY_OFS                 (24)                            /* !< KEY Offset */
 #define SYSCTL_SYSTEMCFG_KEY_MASK                ((uint32_t)0xFF000000U)         /* !< The key value of 1Bh (27) must be
                                                                                     written to KEY together with contents
-                                                                                    to be updated. Reads as 0 */
+                                                                                    to be up2025-09-29d. Reads as 0 */
 #define SYSCTL_SYSTEMCFG_KEY_VALUE               ((uint32_t)0x1B000000U)         /* !< Issue write */
 /* SYSCTL_SYSTEMCFG[WWDTLP0RSTDIS] Bits */
 #define SYSCTL_SYSTEMCFG_WWDTLP0RSTDIS_OFS       (0)                             /* !< WWDTLP0RSTDIS Offset */

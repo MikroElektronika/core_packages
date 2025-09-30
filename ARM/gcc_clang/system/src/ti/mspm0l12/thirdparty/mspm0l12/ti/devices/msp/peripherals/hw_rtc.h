@@ -1705,7 +1705,7 @@ typedef struct {
 #define RTC_DBGCTL_DBGINT_MASK                   ((uint32_t)0x00000002U)         /* !< Debug Interrupt Enable. */
 #define RTC_DBGCTL_DBGINT_OFF                    ((uint32_t)0x00000000U)         /* !< Interrupts of the module will not
                                                                                     be captured anymore if CPU is in
-                                                                                    debug state. Which means no update to
+                                                                                    debug state. Which means no up2025-09-29 to
                                                                                     the RTCRIS, RTCMISC and RTCIIDX
                                                                                     register. */
 #define RTC_DBGCTL_DBGINT_ON                     ((uint32_t)0x00000002U)         /* !< Interrupts are enabled in debug
@@ -1820,7 +1820,7 @@ typedef struct {
                                                                                     register at any time returns the
                                                                                     cumulative value which is the signed
                                                                                     addition of RTCOCALx and RTCTCMPX
-                                                                                    values, and the updated sign bit
+                                                                                    values, and the up2025-09-29d sign bit
                                                                                     (RTCTCMPS) of the addition result. */
 #define RTC_TCMP_RTCTCMPX_MINIMUM                ((uint32_t)0x00000000U)         /* !< Minimum value */
 #define RTC_TCMP_RTCTCMPX_MAXIMUM                ((uint32_t)0x000000FFU)         /* !< Maximum value */
@@ -2692,7 +2692,7 @@ typedef struct {
                                                                                     last occurrence of time stamp event. */
 /* RTC_TSCTL[KEY] Bits */
 #define RTC_TSCTL_KEY_OFS                        (24)                            /* !< KEY Offset */
-#define RTC_TSCTL_KEY_MASK                       ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xC5) to update
+#define RTC_TSCTL_KEY_MASK                       ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xC5) to up2025-09-29
                                                                                     this register */
 #define RTC_TSCTL_KEY_UNLOCK_W                   ((uint32_t)0xC5000000U)         /* !< This field must be written with
                                                                                     0xC5 to be able to clear any of the
@@ -2707,7 +2707,7 @@ typedef struct {
 #define RTC_TSCLR_CLR_CLR                        ((uint32_t)0x00000001U)         /* !< clear time stamp event */
 /* RTC_TSCLR[KEY] Bits */
 #define RTC_TSCLR_KEY_OFS                        (24)                            /* !< KEY Offset */
-#define RTC_TSCLR_KEY_MASK                       ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE2) to update
+#define RTC_TSCLR_KEY_MASK                       ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0xE2) to up2025-09-29
                                                                                     this register */
 #define RTC_TSCLR_KEY_UNLOCK_W                   ((uint32_t)0xE2000000U)         /* !< This field must be written with
                                                                                     0xE2 to be able to clear any of the
@@ -2723,7 +2723,7 @@ typedef struct {
 #define RTC_LFSSRST_VBATPOR_SET                  ((uint32_t)0x00000001U)         /* !< Request power on reset to the LFSS. */
 /* RTC_LFSSRST[KEY] Bits */
 #define RTC_LFSSRST_KEY_OFS                      (24)                            /* !< KEY Offset */
-#define RTC_LFSSRST_KEY_MASK                     ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x12) to update
+#define RTC_LFSSRST_KEY_MASK                     ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x12) to up2025-09-29
                                                                                     this register */
 #define RTC_LFSSRST_KEY_UNLOCK_W                 ((uint32_t)0x12000000U)         /* !< This field must be written with
                                                                                     0x12 to be able to request the power
@@ -2740,10 +2740,10 @@ typedef struct {
 #define RTC_RTCLOCK_PROTECT_SET                  ((uint32_t)0x00000001U)         /* !< RTC counter is read only access. */
 /* RTC_RTCLOCK[KEY] Bits */
 #define RTC_RTCLOCK_KEY_OFS                      (24)                            /* !< KEY Offset */
-#define RTC_RTCLOCK_KEY_MASK                     ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x22) to update
+#define RTC_RTCLOCK_KEY_MASK                     ((uint32_t)0xFF000000U)         /* !< need to write (KEY=0x22) to up2025-09-29
                                                                                     this register */
 #define RTC_RTCLOCK_KEY_UNLOCK_W                 ((uint32_t)0x22000000U)         /* !< This field must be written with
-                                                                                    0x22 to be able to update any of the
+                                                                                    0x22 to be able to up2025-09-29 any of the
                                                                                     bits. */
 
 

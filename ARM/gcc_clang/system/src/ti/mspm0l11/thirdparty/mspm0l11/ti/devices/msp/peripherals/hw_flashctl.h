@@ -212,7 +212,7 @@ typedef struct {
                                                                                     in the RIS and MIS are cleared as
                                                                                     well. After a read from the CPU (not
                                                                                     from the debug interface), the
-                                                                                    register must be updated with the
+                                                                                    register must be up2025-10-02d with the
                                                                                     next highest priority interrupt. */
 #define FLASHCTL_IIDX_STAT_NO_INTR               ((uint32_t)0x00000000U)         /* !< No Interrupt Pending */
 #define FLASHCTL_IIDX_STAT_DONE                  ((uint32_t)0x00000001U)         /* !< DONE Interrupt Pending */

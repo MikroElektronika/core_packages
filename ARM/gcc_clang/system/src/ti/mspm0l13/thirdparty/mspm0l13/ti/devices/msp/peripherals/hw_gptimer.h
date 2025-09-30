@@ -553,8 +553,8 @@ typedef struct {
                                                                                     register value is 0. */
 /* GPTIMER_CCCTL_01[CCUPD] Bits */
 #define GPTIMER_CCCTL_01_CCUPD_OFS               (18)                            /* !< CCUPD Offset */
-#define GPTIMER_CCCTL_01_CCUPD_MASK              ((uint32_t)0x001C0000U)         /* !< Capture and Compare Update Method
-                                                                                    This field controls how updates to
+#define GPTIMER_CCCTL_01_CCUPD_MASK              ((uint32_t)0x001C0000U)         /* !< Capture and Compare Up2025-10-02 Method
+                                                                                    This field controls how up2025-10-02s to
                                                                                     the shadow capture and compare
                                                                                     register are performed (when
                                                                                     operating in compare mode, COC=0). */
@@ -584,7 +584,7 @@ typedef struct {
                                                                                     register and transferred to ECCx_y in
                                                                                     the TIMCLK cycle following CTR equals
                                                                                     0 or CTR. Equals LD.  Note this
-                                                                                    update mechanism is defined for use
+                                                                                    up2025-10-02 mechanism is defined for use
                                                                                     only in configurations using up/down
                                                                                     counting. This mode is not intended
                                                                                     for use in down count configurations. */
@@ -601,8 +601,8 @@ typedef struct {
                                                                                     CCx_y */
 /* GPTIMER_CCCTL_01[CCACTUPD] Bits */
 #define GPTIMER_CCCTL_01_CCACTUPD_OFS            (26)                            /* !< CCACTUPD Offset */
-#define GPTIMER_CCCTL_01_CCACTUPD_MASK           ((uint32_t)0x1C000000U)         /* !< CCACT shadow register Update Method
-                                                                                    This field controls how updates to
+#define GPTIMER_CCCTL_01_CCACTUPD_MASK           ((uint32_t)0x1C000000U)         /* !< CCACT shadow register Up2025-10-02 Method
+                                                                                    This field controls how up2025-10-02s to
                                                                                     the CCACT shadow register are
                                                                                     performed */
 #define GPTIMER_CCCTL_01_CCACTUPD_IMMEDIATELY    ((uint32_t)0x00000000U)         /* !< Value written to the CCACT register
@@ -630,7 +630,7 @@ typedef struct {
                                                                                     shadow register and transferred to
                                                                                     CCACTx_y in the TIMCLK cycle
                                                                                     following CTR equals 0 or CTR. Equals
-                                                                                    LDn.  Note this update mechanism is
+                                                                                    LDn.  Note this up2025-10-02 mechanism is
                                                                                     defined for use only in
                                                                                     configurations using up/down
                                                                                     counting. This mode is not intended
@@ -743,8 +743,8 @@ typedef struct {
                                                                                     register value is 0. */
 /* GPTIMER_CCCTL_23[CCUPD] Bits */
 #define GPTIMER_CCCTL_23_CCUPD_OFS               (18)                            /* !< CCUPD Offset */
-#define GPTIMER_CCCTL_23_CCUPD_MASK              ((uint32_t)0x001C0000U)         /* !< Capture and Compare Update Method
-                                                                                    This field controls how updates to
+#define GPTIMER_CCCTL_23_CCUPD_MASK              ((uint32_t)0x001C0000U)         /* !< Capture and Compare Up2025-10-02 Method
+                                                                                    This field controls how up2025-10-02s to
                                                                                     the shadow capture and compare
                                                                                     register are performed (when
                                                                                     operating in compare mode, COC=0). */
@@ -773,7 +773,7 @@ typedef struct {
                                                                                     stored in shadow register and
                                                                                     transferred to CCx_y in the TIMCLK
                                                                                     cycle following CTR equals 0 or CTR.
-                                                                                    Equals LDn.  Note this update
+                                                                                    Equals LDn.  Note this up2025-10-02
                                                                                     mechanism is defined for use only in
                                                                                     configurations using up/down
                                                                                     counting. This mode is not intended
@@ -791,8 +791,8 @@ typedef struct {
                                                                                     CCx_y #xD; 0. */
 /* GPTIMER_CCCTL_23[CCACTUPD] Bits */
 #define GPTIMER_CCCTL_23_CCACTUPD_OFS            (26)                            /* !< CCACTUPD Offset */
-#define GPTIMER_CCCTL_23_CCACTUPD_MASK           ((uint32_t)0x1C000000U)         /* !< CCACT shadow register Update Method
-                                                                                    This field controls how updates to
+#define GPTIMER_CCCTL_23_CCACTUPD_MASK           ((uint32_t)0x1C000000U)         /* !< CCACT shadow register Up2025-10-02 Method
+                                                                                    This field controls how up2025-10-02s to
                                                                                     the CCCACT shadow register are
                                                                                     performed */
 #define GPTIMER_CCCTL_23_CCACTUPD_IMMEDIATELY    ((uint32_t)0x00000000U)         /* !< Value written to the CCACTx_y
@@ -820,7 +820,7 @@ typedef struct {
                                                                                     shadow register and transferred to
                                                                                     CCACTx_y in the TIMCLK cycle
                                                                                     following CTR equals 0 or CTR. Equals
-                                                                                    LDn.  Note this update mechanism is
+                                                                                    LDn.  Note this up2025-10-02 mechanism is
                                                                                     defined for use only in
                                                                                     configurations using up/down
                                                                                     counting. This mode is not intended
@@ -874,8 +874,8 @@ typedef struct {
                                                                                     register value is 0. */
 /* GPTIMER_CCCTL_45[CCUPD] Bits */
 #define GPTIMER_CCCTL_45_CCUPD_OFS               (18)                            /* !< CCUPD Offset */
-#define GPTIMER_CCCTL_45_CCUPD_MASK              ((uint32_t)0x001C0000U)         /* !< Capture and Compare Update Method
-                                                                                    This field controls how updates to
+#define GPTIMER_CCCTL_45_CCUPD_MASK              ((uint32_t)0x001C0000U)         /* !< Capture and Compare Up2025-10-02 Method
+                                                                                    This field controls how up2025-10-02s to
                                                                                     the shadow capture and compare
                                                                                     register are performed (when
                                                                                     operating in compare mode, COC=0). */
@@ -905,7 +905,7 @@ typedef struct {
                                                                                     register and transferred to CCx_y in
                                                                                     the TIMCLK cycle following CTR equals
                                                                                     0 or CTR. Equals LD.  Note this
-                                                                                    update mechanism is defined for use
+                                                                                    up2025-10-02 mechanism is defined for use
                                                                                     only in configurations using up/down
                                                                                     counting. This mode is not intended
                                                                                     for use in down count configurations. */
@@ -1099,7 +1099,7 @@ typedef struct {
                                                                                     Output  This field describes the
                                                                                     resulting action of software force.
                                                                                     This action has a shadow register,
-                                                                                    which will be updated under specific
+                                                                                    which will be up2025-10-02d under specific
                                                                                     condition.  So that this register
                                                                                     cannot take into effect immediately. */
 #define GPTIMER_CCACT_01_SWFRCACT_DISABLED       ((uint32_t)0x00000000U)         /* !< This event is disabled and a lower
@@ -1115,7 +1115,7 @@ typedef struct {
                                                                                     describes the resulting action of
                                                                                     software force.  This action has a
                                                                                     shadow register, which will be
-                                                                                    updated under specific condition.  So
+                                                                                    up2025-10-02d under specific condition.  So
                                                                                     that this register cannot take into
                                                                                     effect immediately. */
 #define GPTIMER_CCACT_01_SWFRCACT_CMPL_DISABLED  ((uint32_t)0x00000000U)         /* !< This event is disabled and a lower
@@ -1234,7 +1234,7 @@ typedef struct {
                                                                                     Output  This field describes the
                                                                                     resulting action of software force.
                                                                                     This action has a shadow register,
-                                                                                    which will be updated under specific
+                                                                                    which will be up2025-10-02d under specific
                                                                                     condition.  So that this register
                                                                                     cannot take into effect immediately. */
 #define GPTIMER_CCACT_23_SWFRCACT_DISABLED       ((uint32_t)0x00000000U)         /* !< This event is disabled and a lower
@@ -1250,7 +1250,7 @@ typedef struct {
                                                                                     describes the resulting action of
                                                                                     software force.  This action has a
                                                                                     shadow register, which will be
-                                                                                    updated under specific condition.  So
+                                                                                    up2025-10-02d under specific condition.  So
                                                                                     that this register cannot take into
                                                                                     effect immediately. */
 #define GPTIMER_CCACT_23_SWFRCACT_CMPL_DISABLED  ((uint32_t)0x00000000U)         /* !< This event is disabled and a lower
