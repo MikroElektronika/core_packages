@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @brief Main function for RENESAS_RA2E3_TEST application.
- 8 @note CODEGRIP and Arduino UNO Click Shield were used for testing.
+ * @note CODEGRIP and Arduino UNO Click Shield were used for testing.
  */
 
 /**
