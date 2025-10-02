@@ -257,6 +257,21 @@ typedef union
 #define APSR_V_Pos                         28U                                            /*!< APSR: V Position */
 #define APSR_V_Msk                         (1UL << APSR_V_Pos)                            /*!< APSR: V Mask */
 
+
+/**
+  \brief  Union type to access the Interrupt Program Status Register (IPSR).
+ */
+typedef union
+{
+  struct
+  {
+    uint32_t ISR:9;                      /*!< bit:  0.. 8  Exception number */
+    uint32_t _reserved0:23;              /*!< bit:  9..31  Reserved */
+  } b;                                   /*!< Structure used for bit  access */
+  uint32_t w;                            /*!< Type      used for word access */
+} IPSR_Type;
+
+// Note: Added for MikroE implementation.
 /* This list includes only Arm standard exceptions. Renesas interrupts are defined in vector_data.h. */
 typedef enum IRQn
 {
@@ -272,19 +287,6 @@ typedef enum IRQn
     PendSV_IRQn           = -2,        /* 14 Pendable request for system service */
     SysTick_IRQn          = -1,        /* 15 System Tick Timer */
 } IRQn_Type;
-
-/**
-  \brief  Union type to access the Interrupt Program Status Register (IPSR).
- */
-typedef union
-{
-  struct
-  {
-    uint32_t ISR:9;                      /*!< bit:  0.. 8  Exception number */
-    uint32_t _reserved0:23;              /*!< bit:  9..31  Reserved */
-  } b;                                   /*!< Structure used for bit  access */
-  uint32_t w;                            /*!< Type      used for word access */
-} IPSR_Type;
 
 /** \brief IPSR Register Definitions */
 #define IPSR_ISR_Pos                        0U                                            /*!< IPSR: ISR Position */
