@@ -1,7 +1,7 @@
 {
     "compiler_flags": "",
     "linker_flags": "",
-    "def_path": "ARM/mikroC/arm_mikroc_stm32l4hs/def/STM32L4A6ZG.json",
+    "def_path": "ARM/gcc_clang/arm_gcc_clang_stm32l4x/def/STM32L4A6ZG.json",
     "flash": "1048576",
     "ram": "327680",
     "board_regex": "NUCLEO_144_WITH_STM32L4A6ZG_MCU",

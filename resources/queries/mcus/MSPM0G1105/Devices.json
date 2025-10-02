@@ -1,0 +1,18 @@
+{
+    "def_file": "MSPM0G1105.json",
+    "family_uid": "MSPM0",
+    "flash": "32768",
+    "icon": "images/mcu/ti.png",
+    "max_speed": "80.000",
+    "name": "MSPM0G1105",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"MSPM0G1105\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MSPM0G1105",
+    "vendor": "Microchip",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mspm0g1\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mspm0g1\"}"
+}

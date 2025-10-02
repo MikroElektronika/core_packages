@@ -228,7 +228,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00800000",
                     "key": "PLLPWR",
                     "label": "PLL Power",
                     "mask": "00800000",

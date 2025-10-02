@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^MSPM0C1103$|^MSPM0C1103-Q1$|^MSPM0C1104$|^MSPM0C1104-Q1$|^MSPM0C1106$|^MSPM0C1106-Q1$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/mspm0c1/init_clock.c)
+    list(APPEND local_dir_install system/src/ti/mspm0c1/thirdparty/mspm0c1)
+    set(${thirdpartyInstall} mspm0c1/thirdparty/mspm0c1 PARENT_SCOPE)
+endif()

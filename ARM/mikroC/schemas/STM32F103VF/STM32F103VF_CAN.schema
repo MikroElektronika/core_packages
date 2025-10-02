@@ -2,14 +2,90 @@
     "compiler_flags": "",
     "linker_flags": "",
     "def_path": "ARM/gcc-arm-none-eabi/core/def/STM32F103VF.json",
-    "flash": 786431,
-    "ram": 98303,
+    "flash": 786432,
+    "ram": 98304,
     "settings": {
         "clock": "64",
         "scheme": "STM32F103VF_CAN",
         "mcu": "STM32F103VF",
         "core": "M3",
         "delay_src_path": "delays/m3/__lib_delays.c",
-        "name": null
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "HSION",
+                        "value": "00000001"
+                    },
+                    {
+                        "key": "HSEON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "HSEBYP",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "CSSON",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLON",
+                        "value": "01000000"
+                    },
+                    {
+                        "key": "HSITRIM",
+                        "value": "00000080"
+                    }
+                ],
+                "key": "RCC_CR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SW",
+                        "value": "00000002"
+                    },
+                    {
+                        "key": "HPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PPRE1",
+                        "value": "00000400"
+                    },
+                    {
+                        "key": "PPRE2",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "ADCPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLSRC",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLXTPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "00380000"
+                    },
+                    {
+                        "key": "USBPRE",
+                        "value": "00000000"
+                    },
+                    {
+                        "key": "MCO",
+                        "value": "00000000"
+                    }
+                ],
+                "key": "RCC_CFGR"
+            }
+        ]
     }
 }
