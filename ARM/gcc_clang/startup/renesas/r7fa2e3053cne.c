@@ -139,7 +139,7 @@ void PendSV_Handler(void) WEAK_REF_ATTRIBUTE;
 void SysTick_Handler(void) WEAK_REF_ATTRIBUTE;
 
 /* Vector table. */
-BSP_DONT_REMOVE const exc_ptr_t __VECTOR_TABLE[BSP_CORTEX_VECTOR_TABLE_ENTRIES] BSP_PLACE_IN_SECTION(
+BSP_DONT_REMOVE const exc_ptr_t __Vectors[BSP_CORTEX_VECTOR_TABLE_ENTRIES] BSP_PLACE_IN_SECTION(
     BSP_SECTION_FIXED_VECTORS) =
 {
     (exc_ptr_t) (&g_main_stack[0] + BSP_CFG_STACK_MAIN_BYTES), /*      Initial Stack Pointer     */
