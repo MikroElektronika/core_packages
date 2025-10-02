@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @brief Main function for RENESAS_RA2E3_TEST application.
- 8 @note J-Link V8.30 was used for testing.
+ 8 @note CODEGRIP and Arduino UNO Click Shield were used for testing.
  */
 
 /**
@@ -15,7 +15,7 @@
 #include "mcu.h"
 
 // MIKROBUS_1_AN     P000
-// MIKROBUS_1_RST    P002
+// MIKROBUS_1_RST    P012
 // MIKROBUS_1_CS     P103
 // MIKROBUS_1_SCK    P102
 // MIKROBUS_1_CIPO   P100
@@ -44,7 +44,7 @@
 // LED2 P914
 
 // TODO - change cycle delay here as desired.
-#define DEFINED_CYCLES (50000)
+#define DEFINED_CYCLES (10000)
 
 void pin_toggle(volatile uint16_t *reg, uint16_t mask)
 {
@@ -52,8 +52,8 @@ void pin_toggle(volatile uint16_t *reg, uint16_t mask)
     R_PORT9->PODR_b.PODR14 ^= 1;
     // Read-modify-write toggle
     *reg ^= mask;
-    for (uint32_t i = 0; i < DEFINED_CYCLES; i++) asm("NOP");
-    // Delay_ms(1000);
+    // for (uint32_t i = 0; i < DEFINED_CYCLES; i++) asm("NOP");
+    Delay_ms(1000);
     *reg ^= mask;
 }
 
@@ -64,16 +64,14 @@ int main(void)
     preinit();
     #endif
 
-    // SystemInit();
-
     // ----------- MIKROBUS_1 ----------- //
     // Set AN pin as output low
     R_PORT0->PDR_b.PDR0 = 1;
     R_PORT0->PODR_b.PODR0 = 0;
 
     // Set RST pin as output low
-    R_PORT0->PDR_b.PDR2 = 1;
-    R_PORT0->PODR_b.PODR2 = 0;
+    R_PORT0->PDR_b.PDR12 = 1;
+    R_PORT0->PODR_b.PODR12 = 0;
 
     // Set CS pin as output low
     R_PORT1->PDR_b.PDR3 = 1;
@@ -179,8 +177,8 @@ int main(void)
         pin_toggle((volatile uint16_t*)&R_PORT0->PODR_b, 0x0001);
 
         // Toggle MIKROBUS_1_RST
-        // R_PORT0->PODR_b.PODR2
-        pin_toggle((volatile uint16_t*)&R_PORT0->PODR_b, 0x0004);
+        // R_PORT0->PODR_b.PODR12
+        pin_toggle((volatile uint16_t*)&R_PORT0->PODR_b, 0x1000);
 
         // Toggle MIKROBUS_1_CS
         // R_PORT1->PODR_b.PODR3
@@ -204,15 +202,15 @@ int main(void)
 
         // Toggle MIKROBUS_1_INT
         // R_PORT4->PODR_b.PODR9
-        pin_toggle((volatile uint16_t*)&R_PORT4->PODR_b, 0x0020);
+        pin_toggle((volatile uint16_t*)&R_PORT4->PODR_b, 0x0200);
 
         // Toggle MIKROBUS_1_RX
         // R_PORT1->PODR_b.PODR10
-        pin_toggle((volatile uint16_t*)&R_PORT1->PODR_b, 0x0040);
+        pin_toggle((volatile uint16_t*)&R_PORT1->PODR_b, 0x0400);
 
         // Toggle MIKROBUS_1_TX
         // R_PORT1->PODR_b.PODR9
-        pin_toggle((volatile uint16_t*)&R_PORT1->PODR_b, 0x0020);
+        pin_toggle((volatile uint16_t*)&R_PORT1->PODR_b, 0x0200);
 
         // Toggle MIKROBUS_1_SCL
         // R_PORT0->PODR_b.PODR14
