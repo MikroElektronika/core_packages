@@ -603,12 +603,12 @@
             "unused": "000000fe"
         },
         {
-            "address": "4001e037",
-            "default": "0",
+            "address": "4001e000",
+            "default": "00000000",
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "HCFRQ0",
                     "label": "HOCO Frequency Setting 0",
                     "mask": "3",
@@ -629,7 +629,56 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "000000fc"
+            "unused": "fffffffc"
+        },
+        {
+            "address": "4001e0a5",
+            "default": "00000002",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "HSTS",
+                    "label": "HOCO Wait Time Setting",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "Wait time (s) = 3 / fLOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Wait time (s) = 4 / fLOCO",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Wait time (s) = 5 / fLOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Wait time (s) = 6 / fLOCO",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Wait time (s) = 7 / fLOCO",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Wait time (s) = 8 / fLOCO",
+                            "value": "5"
+                        },
+                        {
+                            "label": "Wait time (s) = 9 / fLOCO",
+                            "value": "6"
+                        },
+                        {
+                            "label": "Wait time (s) = 10 / fLOCO",
+                            "value": "7"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOWTCR",
+            "unused": "fffffff8"
         },
         {
             "address": "4001e038",
