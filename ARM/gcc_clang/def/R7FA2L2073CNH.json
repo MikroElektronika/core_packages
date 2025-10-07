@@ -1,0 +1,654 @@
+{
+    "config_registers": [
+        {
+            "address": "4001e020",
+            "default": "4000404",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "4",
+                    "key": "PCKD",
+                    "label": "Peripheral Module Clock D (PCLKD) Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "6"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "400",
+                    "key": "PCKB",
+                    "label": "Peripheral Module Clock B (PCLKB) Select",
+                    "mask": "700",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "100"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "200"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "300"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "400"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "500"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "600"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "4000000",
+                    "key": "ICK",
+                    "label": "System Clock (ICLK) Select",
+                    "mask": "7000000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "2000000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "3000000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "5000000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "6000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCKDIVCR",
+            "unused": "f8fff8f8"
+        },
+        {
+            "address": "4001e026",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "CKSEL",
+                    "label": "Clock Source Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator (MOSC)",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Sub-clock oscillator (SOSC)",
+                            "value": "4"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCKSCR",
+            "unused": "000000f8"
+        },
+        {
+            "address": "4001e031",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MEMWAIT",
+                    "label": "Memory Wait Cycle Select for Code Flash",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "No wait",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Wait",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MEMWAIT",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e032",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "MOSTP",
+                    "label": "Main Clock Oscillator Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the main clock oscillator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the main clock oscillator",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e036",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HCSTP",
+                    "label": "HOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the HOCO clock ",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the HOCO clock",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e038",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCSTP",
+                    "label": "MOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "MOCO clock is operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO clock is stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOCOCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e03e",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKOSEL",
+                    "label": "Clock Out Source Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HOCO (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "MOSC",
+                            "value": "3"
+                        },
+                        {
+                            "label": "SOSC",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKODIV",
+                    "label": "Clock Output Frequency Division Ratio",
+                    "mask": "70",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "10"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "20"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "30"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "40"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "50"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "60"
+                        },
+                        {
+                            "label": "x1/128",
+                            "value": "70"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKOEN",
+                    "label": "Clock Out Enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Disable clock out",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable clock out",
+                            "value": "80"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CKOCR",
+            "unused": "00000008"
+        },
+        {
+            "address": "4001e0a0",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "OPCM",
+                    "label": "Operating Power Control Mode Select",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "High-speed mode",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Middle-speed mode",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Low-speed mode",
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "OPCMTSF",
+                    "label": "Operating Power Control Mode Transition Status Flag",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Transition completed",
+                            "value": "0"
+                        },
+                        {
+                            "label": "During transition",
+                            "value": "10"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_OPCCR",
+            "unused": "000000ec"
+        },
+        {
+            "address": "4001e0a2",
+            "default": "5",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "MSTS",
+                    "label": "Main Clock Oscillator Wait Time Setting",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "Wait time = 2 cycles (0.25 us)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Wait time = 1024 cycles (128 us)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Wait time = 2048 cycles (256 us)",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Wait time = 4096 cycles (512 us)",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Wait time = 8192 cycles (1024 us)",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Wait time = 16384 cycles (2048 us)",
+                            "value": "5"
+                        },
+                        {
+                            "label": "Wait time = 32768 cycles (4096 us)",
+                            "value": "6"
+                        },
+                        {
+                            "label": "Wait time = 65536 cycles (8192 us)",
+                            "value": "7"
+                        },
+                        {
+                            "label": "Wait time = 131072 cycles (16384 us)",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Wait time = 262144 cycles (32768 us)",
+                            "value": "9"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCWTCR",
+            "unused": "000000f0"
+        },
+        {
+            "address": "4001e0a5",
+            "default": "5",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "HSTS",
+                    "label": "HOCO Wait Time Setting",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "Value after reset.",
+                            "value": "5"
+                        },
+                        {
+                            "label": "Before starting high-speed on-chip oscillator by setting HOCOCR.HCSTP bit, the HSTS[2:0] bits must be set to 011b beforehand. Wait time = 46 cycles (5.75 \u00b5s) Wait time is calculated at MOCO = 8 MHz (typically 0.125 \u00b5s). ",
+                            "value": "3"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOWTCR",
+            "unused": "000000f8"
+        },
+        {
+            "address": "4001e0aa",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SOPCM",
+                    "label": "Sub Operating Power Control Mode Select",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Other than Subosc-speed mode",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Subosc-speed mode",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SOPCMTSF",
+                    "label": "Operating Power Control Mode Transition Status Flag",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Transition completed",
+                            "value": "0"
+                        },
+                        {
+                            "label": "During transition",
+                            "value": "10"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SOPCCR",
+            "unused": "000000ee"
+        },
+        {
+            "address": "4001e413",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MODRV1",
+                    "label": "Main Clock Oscillator Drive Capability 1 Switching",
+                    "mask": "8",
+                    "settings": [
+                        {
+                            "label": "10 MHz to 20 MHz",
+                            "value": "0"
+                        },
+                        {
+                            "label": "1 MHz to 10 MHz",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MOSEL",
+                    "label": "Main Clock Oscillator Switching",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "Resonator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "External clock input",
+                            "value": "40"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOMCR",
+            "unused": "000000b7"
+        },
+        {
+            "address": "4001e480",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "SOSTP",
+                    "label": "Sub Clock Oscillator Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the sub-clock oscillator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the sub-clock oscillator",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SOSCCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e481",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SODRV",
+                    "label": "Sub-Clock Oscillator Drive Capability Switching",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "Normal Mode",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Low Power Mode 1",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Low Power Mode 2",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Low Power Mode 3",
+                            "value": "3"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SOMCR",
+            "unused": "000000fc"
+        },
+        {
+            "address": "4001e490",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LCSTP",
+                    "label": "LOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the LOCO clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the LOCO clock",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LOCOCR",
+            "unused": "000000fe"
+        }
+    ],
+    "core": "M23",
+    "delay_src_path": "delays/m23/__lib_delays.c",
+    "mcu": "R7FA2L2073CNH",
+    "clock": "1"
+}
