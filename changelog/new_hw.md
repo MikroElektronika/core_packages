@@ -1,0 +1,33 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ RA4C1 MCU Support package for GCC & Clang
+  + R7FA4C1BD3CFP
+  + R7FA4C1BD3CFM
+  + R7FA4C1BB3CFP
+  + R7FA4C1BB3CFM
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
