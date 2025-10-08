@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "1",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "7",
@@ -191,7 +191,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2000000",
+                    "init": "0",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "7000000",
@@ -273,7 +273,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "5",
                     "key": "CKSEL",
                     "label": "Clock Source Select",
                     "mask": "7",
@@ -314,7 +314,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLIDIV",
                     "label": "PLL Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -335,7 +335,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "PLSRCSEL",
                     "label": "PLL Clock Source Select",
                     "mask": "10",
@@ -352,7 +352,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "1300",
+                    "init": "2700",
                     "key": "PLLMUL",
                     "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "3f00",
@@ -533,7 +533,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLLSTP",
                     "label": "PLL Stop Control",
                     "mask": "1",
@@ -686,7 +686,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "MCSTP",
                     "label": "MOCO Stop",
                     "mask": "1",
@@ -848,7 +848,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "9",
                     "key": "MSTS",
                     "label": "Main Clock Oscillator Wait Time Setting",
                     "mask": "f",
@@ -997,7 +997,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "SOSTP",
                     "label": "Sub Clock Oscillator Stop",
                     "mask": "1",
@@ -1047,7 +1047,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "LCSTP",
                     "label": "LOCO Stop",
                     "mask": "1",
@@ -1070,5 +1070,5 @@
     "core": "M33EF",
     "delay_src_path": "delays/m33ef/__lib_delays.c",
     "mcu": "R7FA6M5BG3CFC",
-    "clock": "1"
+    "clock": "200"
 }
