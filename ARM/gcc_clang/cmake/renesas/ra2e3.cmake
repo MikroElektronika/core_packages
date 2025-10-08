@@ -2,6 +2,6 @@ if(${MCU_NAME} MATCHES "^R7FA2E3052DFJ$|^R7FA2E3052DFL$|^R7FA2E3052DNE$|^R7FA2E3
     set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/ra2e3/init_clock.c)
-    list(APPEND local_dir_install system/src/renesas/ra2e3/thirdparty/ra2e3)
+    list(APPEND local_dir_install system/src/${vendor}/ra2e3/thirdparty/ra2e3)
     set(${thirdpartyInstall} ra2e3/thirdparty/ra2e3 PARENT_SCOPE)
 endif()
