@@ -2,6 +2,6 @@ if(${MCU_NAME} MATCHES "^R7KA8P1ADLCAB$|^R7KA8P1ADLCAC$|^R7KA8P1ADDCAB$|^R7KA8P1
     set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/r7ka8p1a/init_clock.c)
-    list(APPEND local_dir_install system/src/renesas/r7ka8p1a/thirdparty/r7ka8p1a)
+    list(APPEND local_dir_install system/src/${vendor}/r7ka8p1a/thirdparty/r7ka8p1a)
     set(${thirdpartyInstall} r7ka8p1a/thirdparty/r7ka8p1a PARENT_SCOPE)
 endif()
