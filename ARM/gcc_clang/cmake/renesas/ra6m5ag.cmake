@@ -2,6 +2,6 @@ if(${MCU_NAME} MATCHES "^R7FA6M5AG2CBG$|^R7FA6M5AG2CBM$|^R7FA6M5AG3CBM$|^R7FA6M5
     set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/ra6m5ag/init_clock.c)
-    list(APPEND local_dir_install system/src/renesas/ra6m5ag/thirdparty/ra6m5ag)
+    list(APPEND local_dir_install system/src/${vendor}/ra6m5ag/thirdparty/ra6m5ag)
     set(${thirdpartyInstall} ra6m5ag/thirdparty/ra6m5ag PARENT_SCOPE)
 endif()
