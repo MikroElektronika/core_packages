@@ -49,14 +49,9 @@ extern "C" {
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 // Note: Changed for MikroE implementation.
-//  #include "core_cm33.h"                    /*!< ARM Cortex-M33 processor and core peripherals                             */
+ #include "ra6m5_core_cm33.h"                    /*!< ARM Cortex-M33 processor and core peripherals                             */
 // Note: Changed for MikroE implementation.
-//  #include "system.h"                       /*!< R7FA6M5BH System                                                          */
-#include <stdint.h>
-
-#define __I volatile // Note: Added for MikroE implementation.
-#define __O __I // Note: Added for MikroE implementation.
-#define __IO __I // Note: Added for MikroE implementation.
+// #include "system.h"                       /*!< R7FA6M5BH System                                                          */
 
  #ifndef __IM                              /*!< Fallback for older CMSIS versions                                         */
   #define __IM     __I
@@ -1911,25 +1906,6 @@ typedef struct
 {
     __IOM R_PFS_PORT_PIN_Type PIN[16]; /*!< (@ 0x00000000) Pin Function Selects                                       */
 } R_PFS_PORT_Type;                     /*!< Size = 64 (0x40)                                                          */
-
-/**
- * @brief R_PFS_VLSEL [VLSEL] (VLSEL)
- */
-typedef struct
-{
-    __IM uint8_t RESERVED[389];
-
-    union
-    {
-        __IOM uint8_t VL1SEL;          /*!< (@ 0x00000185) VL1 Select Control Register                                */
-
-        struct
-        {
-            __IOM uint8_t SELVL : 1;   /*!< [0..0] VL1 Voltage Connection Switching Control                           */
-            uint8_t             : 7;
-        } VL1SEL_b;
-    };
-} R_PFS_VLSEL_Type;                    /*!< Size = 390 (0x186)                                                        */
 
 /**
  * @brief R_PMISC_PMSAR [PMSAR] (Port Security Attribution Register)
@@ -5822,9 +5798,9 @@ typedef struct                         /*!< (@ 0x4001B000) R_DEBUG Structure    
             uint32_t                     : 12;
             __IOM uint32_t DBGSTOP_TIM   : 1; /*!< [14..14] Mask bit for RTC, TAU reset/interrupt                            */
             __IOM uint32_t DBGSTOP_SIR   : 1; /*!< [15..15] Mask bit for SAU, IICA, PORT_IRQ0-5 reset/interrupt              */
-            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interupt                                  */
+            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interrupt                                 */
             uint32_t                     : 5;
             __IOM uint32_t DBGSTOP_RPER  : 1; /*!< [24..24] Mask bit for SRAM parity error                                   */
             __IOM uint32_t DBGSTOP_RECCR : 1; /*!< [25..25] Mask bit for SRAM ECC error                                      */
@@ -6018,12 +5994,12 @@ typedef struct                         /*!< (@ 0x40005000) R_DMAC0 Structure    
             __IOM uint16_t DARA : 5;   /*!< [4..0] Destination Address Extended Repeat Area Specifies the
                                         *   extended repeat area on the destination address. For details
                                         *   on the settings.                                                          */
-            __IOM uint16_t DADR : 1;   /*!< [5..5] Destination Address Up2025-07-24 Select After Reload                     */
-            __IOM uint16_t DM   : 2;   /*!< [7..6] Destination Address Up2025-07-24 Mode                                    */
+            __IOM uint16_t DADR : 1;   /*!< [5..5] Destination Address Update Select After Reload                     */
+            __IOM uint16_t DM   : 2;   /*!< [7..6] Destination Address Update Mode                                    */
             __IOM uint16_t SARA : 5;   /*!< [12..8] Source Address Extended Repeat Area Specifies the extended
                                         *   repeat area on the source address. For details on the settings.           */
-            __IOM uint16_t SADR : 1;   /*!< [13..13] Source Address Up2025-07-24 Select After Reload                        */
-            __IOM uint16_t SM   : 2;   /*!< [15..14] Source Address Up2025-07-24 Mode                                       */
+            __IOM uint16_t SADR : 1;   /*!< [13..13] Source Address Update Select After Reload                        */
+            __IOM uint16_t SM   : 2;   /*!< [15..14] Source Address Update Mode                                       */
         } DMAMD_b;
     };
     __IM uint16_t RESERVED1;
@@ -6035,7 +6011,7 @@ typedef struct                         /*!< (@ 0x40005000) R_DMAC0 Structure    
         struct
         {
             __IOM uint32_t DMOFR : 32; /*!< [31..0] Specifies the offset when offset addition is selected
-                                        *   as the address up2025-07-24 mode for transfer source or destination.            */
+                                        *   as the address update mode for transfer source or destination.            */
         } DMOFR_b;
     };
 
@@ -7565,11 +7541,11 @@ typedef struct                         /*!< (@ 0x4001C000) R_FCACHE Structure   
 
     union
     {
-        __IOM uint16_t FCACHEIV;         /*!< (@ 0x00000104) Flash Cache Invali2025-07-24 Register                            */
+        __IOM uint16_t FCACHEIV;         /*!< (@ 0x00000104) Flash Cache Invalidate Register                            */
 
         struct
         {
-            __IOM uint16_t FCACHEIV : 1; /*!< [0..0] Flash Cache Invali2025-07-24 Register                                    */
+            __IOM uint16_t FCACHEIV : 1; /*!< [0..0] Flash Cache Invalidate Register                                    */
             uint16_t                : 15;
         } FCACHEIV_b;
     };
@@ -8266,7 +8242,7 @@ typedef struct                         /*!< (@ 0x40169000) R_GPT0 Structure     
             __IOM uint32_t OAHLD  : 1; /*!< [7..7] GTIOCA Pin Output Setting at the Start/Stop Count                  */
             __IOM uint32_t OAE    : 1; /*!< [8..8] GTIOCA Pin Output Enable                                           */
             __IOM uint32_t OADF   : 2; /*!< [10..9] GTIOCA Pin Disable Value Setting                                  */
-            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invali2025-07-24.(This
+            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -8279,7 +8255,7 @@ typedef struct                         /*!< (@ 0x40169000) R_GPT0 Structure     
             __IOM uint32_t OBHLD  : 1; /*!< [23..23] GTIOCB Pin Output Setting at the Start/Stop Count                */
             __IOM uint32_t OBE    : 1; /*!< [24..24] GTIOCB Pin Output Enable                                         */
             __IOM uint32_t OBDF   : 2; /*!< [26..25] GTIOCB Pin Disable Value Setting                                 */
-            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invali2025-07-24.(This
+            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -12042,14 +12018,10 @@ typedef struct                         /*!< (@ 0x40080000) R_PORT0 Structure    
  * @brief I/O Ports-PFS (R_PFS)
  */
 
-typedef struct                           /*!< (@ 0x40080800) R_PFS Structure                                            */
+typedef struct                         /*!< (@ 0x40080800) R_PFS Structure                                            */
 {
-    union
-    {
-        __IOM R_PFS_PORT_Type  PORT[15]; /*!< (@ 0x00000000) Port [0..14]                                               */
-        __IOM R_PFS_VLSEL_Type VLSEL;    /*!< (@ 0x00000000) VLSEL                                                      */
-    };
-} R_PFS_Type;                            /*!< Size = 960 (0x3c0)                                                        */
+    __IOM R_PFS_PORT_Type PORT[15];    /*!< (@ 0x00000000) Port [0..14]                                               */
+} R_PFS_Type;                          /*!< Size = 960 (0x3c0)                                                        */
 
 /* =========================================================================================================================== */
 /* ================                                          R_PMISC                                          ================ */
@@ -12313,7 +12285,7 @@ typedef struct                         /*!< (@ 0x64000000) R_QSPI Structure     
         {
             uint32_t                : 26;
             __IOM uint32_t QSPI_EXT : 6; /*!< [31..26] BANK Switching AddressWhen accessing from 0x6000_0000
-                                          *   to 0x63FF_FFFF, Addres bus is Set QSPI_EXT[5:0] to high-order
+                                          *   to 0x63FF_FFFF, Address bus is Set QSPI_EXT[5:0] to high-order
                                           *   6bits of SHADDR[31:0]NOTE: Setting 6'h3F is prihibited.                   */
         } SFMCNT1_b;
     };
@@ -14536,11 +14508,11 @@ typedef struct                         /*!< (@ 0x40002000) R_SRAM Structure     
 
     union
     {
-        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Up2025-07-24 Enable Register         */
+        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Update Enable Register         */
 
         struct
         {
-            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Up2025-07-24 Enable                          */
+            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Update Enable                          */
             uint8_t               : 7;
         } ECC1STSEN_b;
     };
@@ -17089,7 +17061,7 @@ typedef struct                         /*!< (@ 0x40090000) R_USB_FS0 Structure  
             __IOM uint16_t BEMPE : 1;  /*!< [10..10] Buffer Empty Interrupt Enable                                    */
             __IOM uint16_t CTRE  : 1;  /*!< [11..11] Control Transfer Stage Transition Interrupt Enable               */
             __IOM uint16_t DVSE  : 1;  /*!< [12..12] Device State Transition Interrupt Enable                         */
-            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Up2025-07-24 Interrupt Enable                             */
+            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Update Interrupt Enable                             */
             __IOM uint16_t RSME  : 1;  /*!< [14..14] Resume Interrupt Enable                                          */
             __IOM uint16_t VBSE  : 1;  /*!< [15..15] VBUS Interrupt Enable                                            */
         } INTENB0_b;
@@ -19458,7 +19430,7 @@ typedef struct                         /*!< (@ 0x40111000) R_USB_HS0 Structure  
             __IOM uint16_t BEMPE : 1;  /*!< [10..10] Buffer Empty Interrupt Enable                                    */
             __IOM uint16_t CTRE  : 1;  /*!< [11..11] Control Transfer Stage Transition Interrupt Enable               */
             __IOM uint16_t DVSE  : 1;  /*!< [12..12] Device State Transition Interrupt Enable                         */
-            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Up2025-07-24 Interrupt Enable                             */
+            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Update Interrupt Enable                             */
             __IOM uint16_t RSME  : 1;  /*!< [14..14] Resume Interrupt Enable                                          */
             __IOM uint16_t VBSE  : 1;  /*!< [15..15] VBUS Interrupt Enable                                            */
         } INTENB0_b;
@@ -21393,14 +21365,6 @@ typedef struct                         /*!< (@ 0x407FC000) R_FLAD Structure     
 /* =========================================================================================================================== */
 /* ================                                           PORT                                            ================ */
 /* =========================================================================================================================== */
-
-/* =========================================================================================================================== */
-/* ================                                           VLSEL                                           ================ */
-/* =========================================================================================================================== */
-
-/* ========================================================  VL1SEL  ========================================================= */
- #define R_PFS_VLSEL_VL1SEL_SELVL_Pos    (0UL)   /*!< SELVL (Bit 0)                                         */
- #define R_PFS_VLSEL_VL1SEL_SELVL_Msk    (0x1UL) /*!< SELVL (Bitfield-Mask: 0x01)                           */
 
 /* =========================================================================================================================== */
 /* ================                                           PMSAR                                           ================ */
