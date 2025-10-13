@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA0L1053CFJ$|^R7FA0L1053CFL$|^R7FA0L1053CNE$|^R7FA0L1053CNH$|^R7FA0L1053CNK$|^R7FA0L1053CSC$")
+    set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ra0l1053/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/ra0l1053/thirdparty/ra0l1053)
+    set(${thirdpartyInstall} ra0l1053/thirdparty/ra0l1053 PARENT_SCOPE)
+endif()

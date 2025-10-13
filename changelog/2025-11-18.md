@@ -1,0 +1,49 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ RA8T2AF MCU Support package for GCC & Clang
+  + R7KA8T2AFDCAB
+  + R7KA8T2AFDCAC
+  + R7KA8T2AFECAB
+  + R7KA8T2AFECAC
+  + R7KA8T2AFECHC
+  + R7KA8T2AFLCAB
+  + R7KA8T2AFLCAC
++ RA8T2J MCU Support package for GCC & Clang
+  + R7KA8T2JFDCAB
+  + R7KA8T2JFDCAC
+  + R7KA8T2JFECAB
+  + R7KA8T2JFECAC
+  + R7KA8T2JFECHC
+  + R7KA8T2JFLCAB
+  + R7KA8T2JFLCAC
++ R7KA8P1J MCU Support package for GCC & Clang
+  + R7KA8P1JFLCAB
+  + R7KA8P1JFLCAC
+  + R7KA8P1JFDCAB
+  + R7KA8P1JFDCAC
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
