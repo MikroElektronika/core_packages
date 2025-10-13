@@ -22,6 +22,9 @@
 #endif
 extern void *__Vectors;                   /* see startup file */
 
+extern uint32_t __bss_start__;
+extern uint32_t __bss_end__;
+
 
 /*----------------------------------------------------------------------------
   Clock Variable definitions
@@ -480,7 +483,7 @@ void SystemInit(void)
         case CLK_PWRCTL_HIRC48EN_Msk:
             CLK_WaitClockReady( CLK_STATUS_HIRC48STB_Msk );
             break;
-        
+
         default:
             break;
         }
@@ -488,6 +491,12 @@ void SystemInit(void)
 
     CLK_SetHCLK(VALUE_CLK_CLKSEL0, VALUE_CLK_CLKDIV0);
     SystemCoreClockUpdate();
+
+    uint32_t *dst = NULL;
+    /* Zero .bss */
+    for (dst = &__bss_start__; dst < &__bss_end__; ) {
+        *dst++ = 0;
+    }
 }
 
 
@@ -602,7 +611,7 @@ void __TZ_set_PRIMASK_NS(uint32_t priMask)
 
 typedef struct
 {
-    uint32_t hclk;   
+    uint32_t hclk;
     uint32_t pclk;
 } CLK_ClocksTypeDef;
 
