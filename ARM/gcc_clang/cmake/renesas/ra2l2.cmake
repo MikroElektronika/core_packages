@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA2L2094CFM$|^R7FA2L2094CFL$|^R7FA2L2094CFJ$|^R7FA2L2094CNE$|^R7FA2L2094CNH$|^R7FA2L2093CFM$|^R7FA2L2093CFL$|^R7FA2L2093CFJ$|^R7FA2L2093CNE$|^R7FA2L2093CNH$|^R7FA2L2074CFM$|^R7FA2L2074CFL$|^R7FA2L2074CFJ$|^R7FA2L2074CNE$|^R7FA2L2074CNH$|^R7FA2L2073CFM$|^R7FA2L2073CFL$|^R7FA2L2073CFJ$|^R7FA2L2073CNE$|^R7FA2L2073CNH$")
+    set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ra2l2/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/ra2l2/thirdparty/ra2l2)
+    set(${thirdpartyInstall} ra2l2/thirdparty/ra2l2 PARENT_SCOPE)
+endif()

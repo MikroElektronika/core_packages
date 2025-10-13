@@ -1,0 +1,133 @@
+{
+    "config_registers": [
+        {
+            "address": "4001e808",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HCSTP",
+                    "label": "HOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the HOCO clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the HOCO clock",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e809",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "MCSTP",
+                    "label": "MOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "MOCO clock is operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO clock is stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOCOCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e80a",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "LCSTP",
+                    "label": "LOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the LOCO clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the LOCO clock",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LOCOCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e80b",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "MOSTP",
+                    "label": "Main Clock Oscillator Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the main clock oscillator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the main clock oscillator",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e80c",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "SOSTP",
+                    "label": "Sub-clock Oscillator Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the sub-clock oscillator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the sub-clock oscillator",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SOSCCR",
+            "unused": "000000fe"
+        }
+    ],
+    "core": "M23",
+    "delay_src_path": "delays/m23/__lib_delays.c",
+    "mcu": "R7FA0L1074CFL",
+    "clock": "1"
+}
