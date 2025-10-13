@@ -5027,12 +5027,12 @@ typedef struct                         /*!< (@ 0x40005000) R_DMAC0 Structure    
             __IOM uint16_t DARA : 5;   /*!< [4..0] Destination Address Extended Repeat Area Specifies the
                                         *   extended repeat area on the destination address. For details
                                         *   on the settings.                                                          */
-            __IOM uint16_t DADR : 1;   /*!< [5..5] Destination Address Up2025-11-10 Select After Reload                     */
-            __IOM uint16_t DM   : 2;   /*!< [7..6] Destination Address Up2025-11-10 Mode                                    */
+            __IOM uint16_t DADR : 1;   /*!< [5..5] Destination Address Update Select After Reload                     */
+            __IOM uint16_t DM   : 2;   /*!< [7..6] Destination Address Update Mode                                    */
             __IOM uint16_t SARA : 5;   /*!< [12..8] Source Address Extended Repeat Area Specifies the extended
                                         *   repeat area on the source address. For details on the settings.           */
-            __IOM uint16_t SADR : 1;   /*!< [13..13] Source Address Up2025-11-10 Select After Reload                        */
-            __IOM uint16_t SM   : 2;   /*!< [15..14] Source Address Up2025-11-10 Mode                                       */
+            __IOM uint16_t SADR : 1;   /*!< [13..13] Source Address Update Select After Reload                        */
+            __IOM uint16_t SM   : 2;   /*!< [15..14] Source Address Update Mode                                       */
         } DMAMD_b;
     };
     __IM uint16_t RESERVED1;
@@ -5044,7 +5044,7 @@ typedef struct                         /*!< (@ 0x40005000) R_DMAC0 Structure    
         struct
         {
             __IOM uint32_t DMOFR : 32; /*!< [31..0] Specifies the offset when offset addition is selected
-                                        *   as the address up2025-11-10 mode for transfer source or destination.            */
+                                        *   as the address update mode for transfer source or destination.            */
         } DMOFR_b;
     };
 
@@ -6254,7 +6254,7 @@ typedef struct                         /*!< (@ 0x407EC000) R_FACI_LP Structure  
 
         struct
         {
-            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Up2025-11-10 Enable                                            */
+            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Update Enable                                            */
             uint16_t                : 7;
             __OM uint16_t FEKEY     : 8; /*!< [15..8] Key Code                                                          */
         } FBKSWCR_b;
@@ -6288,11 +6288,11 @@ typedef struct                         /*!< (@ 0x4001C000) R_FCACHE Structure   
 
     union
     {
-        __IOM uint16_t FCACHEIV;         /*!< (@ 0x00000104) Flash Cache Invali2025-11-10 Register                            */
+        __IOM uint16_t FCACHEIV;         /*!< (@ 0x00000104) Flash Cache Invalidate Register                            */
 
         struct
         {
-            __IOM uint16_t FCACHEIV : 1; /*!< [0..0] Flash Cache Invali2025-11-10 Register                                    */
+            __IOM uint16_t FCACHEIV : 1; /*!< [0..0] Flash Cache Invalidate Register                                    */
             uint16_t                : 15;
         } FCACHEIV_b;
     };
@@ -6989,7 +6989,7 @@ typedef struct                         /*!< (@ 0x40169000) R_GPT0 Structure     
             __IOM uint32_t OAHLD  : 1; /*!< [7..7] GTIOCA Pin Output Setting at the Start/Stop Count                  */
             __IOM uint32_t OAE    : 1; /*!< [8..8] GTIOCA Pin Output Enable                                           */
             __IOM uint32_t OADF   : 2; /*!< [10..9] GTIOCA Pin Disable Value Setting                                  */
-            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invali2025-11-10.(This
+            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -7002,7 +7002,7 @@ typedef struct                         /*!< (@ 0x40169000) R_GPT0 Structure     
             __IOM uint32_t OBHLD  : 1; /*!< [23..23] GTIOCB Pin Output Setting at the Start/Stop Count                */
             __IOM uint32_t OBE    : 1; /*!< [24..24] GTIOCB Pin Output Enable                                         */
             __IOM uint32_t OBDF   : 2; /*!< [26..25] GTIOCB Pin Disable Value Setting                                 */
-            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invali2025-11-10.(This
+            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -11272,11 +11272,11 @@ typedef struct                         /*!< (@ 0x40002000) R_SRAM Structure     
 
     union
     {
-        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Up2025-11-10 Enable Register         */
+        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Update Enable Register         */
 
         struct
         {
-            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Up2025-11-10 Enable                          */
+            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Update Enable                          */
             uint8_t               : 7;
         } ECC1STSEN_b;
     };

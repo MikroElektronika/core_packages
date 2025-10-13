@@ -4801,7 +4801,7 @@ typedef struct                         /*!< (@ 0x407EC000) R_FACI_LP Structure  
 
         struct
         {
-            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Up2025-11-12 Enable                                            */
+            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Update Enable                                            */
             uint16_t                : 7;
             __OM uint16_t FEKEY     : 8; /*!< [15..8] Key Code                                                          */
         } FBKSWCR_b;
@@ -5469,7 +5469,7 @@ typedef struct                         /*!< (@ 0x40078000) R_GPT0 Structure     
             __IOM uint32_t OAHLD  : 1; /*!< [7..7] GTIOCA Pin Output Setting at the Start/Stop Count                  */
             __IOM uint32_t OAE    : 1; /*!< [8..8] GTIOCA Pin Output Enable                                           */
             __IOM uint32_t OADF   : 2; /*!< [10..9] GTIOCA Pin Disable Value Setting                                  */
-            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invali2025-11-12.(This
+            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -5482,7 +5482,7 @@ typedef struct                         /*!< (@ 0x40078000) R_GPT0 Structure     
             __IOM uint32_t OBHLD  : 1; /*!< [23..23] GTIOCB Pin Output Setting at the Start/Stop Count                */
             __IOM uint32_t OBE    : 1; /*!< [24..24] GTIOCB Pin Output Enable                                         */
             __IOM uint32_t OBDF   : 2; /*!< [26..25] GTIOCB Pin Disable Value Setting                                 */
-            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invali2025-11-12.(This
+            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -10836,11 +10836,11 @@ typedef struct                         /*!< (@ 0x40002000) R_SRAM Structure     
 
     union
     {
-        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Up2025-11-12 Enable Register         */
+        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Update Enable Register         */
 
         struct
         {
-            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Up2025-11-12 Enable                          */
+            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Update Enable                          */
             uint8_t               : 7;
         } ECC1STSEN_b;
     };
@@ -13441,7 +13441,7 @@ typedef struct                         /*!< (@ 0x40090000) R_USB_FS0 Structure  
             __IOM uint16_t BEMPE : 1;  /*!< [10..10] Buffer Empty Interrupt Enable                                    */
             __IOM uint16_t CTRE  : 1;  /*!< [11..11] Control Transfer Stage Transition Interrupt Enable               */
             __IOM uint16_t DVSE  : 1;  /*!< [12..12] Device State Transition Interrupt Enable                         */
-            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Up2025-11-12 Interrupt Enable                             */
+            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Update Interrupt Enable                             */
             __IOM uint16_t RSME  : 1;  /*!< [14..14] Resume Interrupt Enable                                          */
             __IOM uint16_t VBSE  : 1;  /*!< [15..15] VBUS Interrupt Enable                                            */
         } INTENB0_b;

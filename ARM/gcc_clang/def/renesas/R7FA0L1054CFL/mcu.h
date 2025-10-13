@@ -3085,7 +3085,7 @@ typedef struct                         /*!< (@ 0x407EC000) R_FACI_LP Structure  
 
         struct
         {
-            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Up2025-11-14 Enable                                            */
+            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Update Enable                                            */
             uint16_t                : 7;
             __OM uint16_t FEKEY     : 8; /*!< [15..8] Key Code                                                          */
         } FBKSWCR_b;
@@ -4655,11 +4655,11 @@ typedef struct                         /*!< (@ 0x40002000) R_SRAM Structure     
 
     union
     {
-        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Up2025-11-14 Enable Register         */
+        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Update Enable Register         */
 
         struct
         {
-            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Up2025-11-14 Enable                          */
+            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Update Enable                          */
             uint8_t               : 7;
         } ECC1STSEN_b;
     };
