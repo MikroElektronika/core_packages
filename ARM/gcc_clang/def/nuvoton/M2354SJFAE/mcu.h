@@ -271,14 +271,10 @@ typedef enum IRQn
 
 /**@}*/ /* end of group CMSIS */
 
-#include "core_armv8mbl.h"                  /* Processor and core peripherals */
+// Note: Changed for MikroE implementation.
+// #include "core_armv8mbl.h"                  /* Processor and core peripherals */
 // Note: Changed for MikroE implementation.
 // #include "system_M2354.h"                   /* System Header */
-#include <stdint.h>
-
-#define __I volatile // Note: Added for MikroE implementation.
-#define __O __I // Note: Added for MikroE implementation.
-#define __IO __I // Note: Added for MikroE implementation.
 #include <stdint.h>
 
 #define __I volatile // Note: Added for MikroE implementation.
@@ -307,8 +303,7 @@ extern void SystemInit(void);
 // #include "bpwm_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "can_reg.h"
-// Note: Changed for MikroE implementation.
-// #include "clk_reg.h"
+#include "clk_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "crc_reg.h"
 // Note: Changed for MikroE implementation.
@@ -319,8 +314,7 @@ extern void SystemInit(void);
 // #include "ebi_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "ecap_reg.h"
-// Note: Changed for MikroE implementation.
-// #include "fmc_reg.h"
+#include "fmc_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "gpio_reg.h"
 // Note: Changed for MikroE implementation.
@@ -333,8 +327,7 @@ extern void SystemInit(void);
 // #include "epwm_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "qei_reg.h"
-// Note: Changed for MikroE implementation.
-// #include "rtc_reg.h"
+#include "rtc_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "sc_reg.h"
 // Note: Changed for MikroE implementation.
@@ -345,8 +338,7 @@ extern void SystemInit(void);
 // #include "qspi_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "spi_reg.h"
-// Note: Changed for MikroE implementation.
-// #include "sys_reg.h"
+#include "sys_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "timer_reg.h"
 // Note: Changed for MikroE implementation.
@@ -1101,10 +1093,8 @@ extern void SystemInit(void);
 /******************************************************************************/
 /*                         Peripheral header files                            */
 /******************************************************************************/
-// Note: Changed for MikroE implementation.
-// #include "sys.h"
-// Note: Changed for MikroE implementation.
-// #include "clk.h"
+#include "sys.h"
+#include "clk.h"
 // Note: Changed for MikroE implementation.
 // #include "dac.h"
 // Note: Changed for MikroE implementation.
@@ -1113,8 +1103,7 @@ extern void SystemInit(void);
 // #include "ebi.h"
 // Note: Changed for MikroE implementation.
 // #include "ecap.h"
-// Note: Changed for MikroE implementation.
-// #include "fmc.h"
+#include "fmc.h"
 // Note: Changed for MikroE implementation.
 // #include "gpio.h"
 // Note: Changed for MikroE implementation.
@@ -1137,8 +1126,7 @@ extern void SystemInit(void);
 // #include "wdt.h"
 // Note: Changed for MikroE implementation.
 // #include "wwdt.h"
-// Note: Changed for MikroE implementation.
-// #include "rtc.h"
+#include "rtc.h"
 // Note: Changed for MikroE implementation.
 // #include "uart.h"
 // Note: Changed for MikroE implementation.

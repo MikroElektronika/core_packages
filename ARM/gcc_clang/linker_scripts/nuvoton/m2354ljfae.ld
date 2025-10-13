@@ -6,10 +6,7 @@ MEMORY
 }
 
 /* Library configurations */
-/* Note: Changed for MikroE implementation. */
-/*
 GROUP(libgcc.a libc.a libm.a libnosys.a)
-*/
 
 /* Linker script to place sections and symbol values. Should be used together
  * with other linker script that defines memory regions FLASH and RAM.
@@ -146,10 +143,6 @@ SECTIONS
 		__data_start__ = .;
 		. = SIZEOF(.stack_dummy);
 		*(vtable)
-
-        /*
-        *(.data*)              Note: Changed for MikroE implementation.
-        */
         *(.data)                 /* .data sections */
         *(.data*)                /* .data* sections */
         *(.Ram)                  /* .Ram sections */

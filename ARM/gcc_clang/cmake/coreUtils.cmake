@@ -82,14 +82,16 @@ endmacro()
 ## Function to deduce chip architecture from current MCU name and CORE
 #############################################################################
 function(find_chip_architecture _chip_architecture)
-    if((${MEMAKE_CORE_NAME} STREQUAL "M0") OR (${MEMAKE_CORE_NAME} STREQUAL "M3") OR
-        (${MEMAKE_CORE_NAME} STREQUAL "M4EF") OR (${MEMAKE_CORE_NAME} STREQUAL "M4DSP") OR
-        (${MEMAKE_CORE_NAME} STREQUAL "M7"))
+    if((${MEMAKE_CORE_NAME} STREQUAL "M0") OR (${MEMAKE_CORE_NAME} STREQUAL "M23") OR
+        (${MEMAKE_CORE_NAME} STREQUAL "M3") OR (${MEMAKE_CORE_NAME} STREQUAL "M4EF") OR
+        (${MEMAKE_CORE_NAME} STREQUAL "M4DSP") OR (${MEMAKE_CORE_NAME} STREQUAL "M7"))
         if(${MEMAKE_MCU_NAME} MATCHES "^STM.*")
             set(${_chip_architecture} "arm" PARENT_SCOPE)
         elseif(${MEMAKE_MCU_NAME} MATCHES "^MK.*")
             set(${_chip_architecture} "arm" PARENT_SCOPE)
         elseif(${MEMAKE_MCU_NAME} MATCHES "^TM4C.*")
+            set(${_chip_architecture} "arm" PARENT_SCOPE)
+        elseif(${MEMAKE_MCU_NAME} MATCHES "^M23.*")
             set(${_chip_architecture} "arm" PARENT_SCOPE)
         else()
             set(${_chip_architecture} "UNSUPPORTED_CHIP_SELECTED_FOR_FOLLOWING_IMPLEMENTATION" PARENT_SCOPE)
@@ -167,20 +169,16 @@ function(get_mcu_vendor vendor)
         set(${vendor} stm PARENT_SCOPE)
     elseif(${MCU_NAME} MATCHES "^(M(C|K)|K(W45|32L)).+$")
         set(${vendor} nxp PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^(TM4C|MSP).+$")
+    elseif(${MCU_NAME} MATCHES "^TM4C.+$")
         set(${vendor} ti PARENT_SCOPE)
     elseif(${MCU_NAME} MATCHES "^(AT)?SAM.+$")
         set(${vendor} sam PARENT_SCOPE)
     elseif(${MCU_NAME} MATCHES "^TMPM.+$")
         set(${vendor} toshiba PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^R7.+$")
+    elseif(${MCU_NAME} MATCHES "^R7F.+$")
         set(${vendor} renesas PARENT_SCOPE)
     elseif(${MCU_NAME} MATCHES "^(M[024]|MINI|NANO|NUC).+$")
         set(${vendor} nuvoton PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^(XMC|CY8C).+$")
-        set(${vendor} infineon PARENT_SCOPE)
-    elseif(${MCU_NAME} MATCHES "^PIC32C.+$")
-        set(${vendor} pic32 PARENT_SCOPE)
     else()
         message(FATAL_ERROR "${MCU_NAME} not supported in GCC by NECTO.")
     endif()
@@ -229,56 +227,30 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
 endfunction()
 
 #############################################################################
-## Function to execute compiler command with provided flag
-#############################################################################
-function(run_compiler_flag flag out_var)
-    execute_process(
-        COMMAND ${CMAKE_C_COMPILER} ${flag}
-        OUTPUT_VARIABLE _out
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-        ERROR_STRIP_TRAILING_WHITESPACE
-    )
-    set(${out_var} "${_out}" PARENT_SCOPE)
-endfunction()
-
-#############################################################################
 ## Function to set appropriate linker flags
 #############################################################################
 function(set_flags flags)
 
-    # Fetch GCC/Clang compiler version
-    run_compiler_flag("--version" GCC_VERSION_STR)
-    # Fetch compiler name
-    string(REGEX MATCH "(arm-none-eabi-gcc|clang)" COMPILER_PASSED "${GCC_VERSION_STR}")
-    string(REGEX MATCH "[0-9]+\\.[0-9]+\\.?[0-9]*" COMPILER_VERSION_PARSED "${GCC_VERSION_STR}")
-    message(STATUS "Compiler: ${COMPILER_PASSED}")
-    message(STATUS "Compiler version: ${COMPILER_VERSION_PARSED}")
-
-    # Set the flag for ignoring incompatible pointer types for GCC compiler version 14.2.1
-    if ((${COMPILER_VERSION_PARSED} VERSION_GREATER_EQUAL "14.2.1") AND (${COMPILER_PASSED} STREQUAL "arm-none-eabi-gcc"))
-        set(POINTER_TYPE_ERROR -Wno-incompatible-pointer-types)
-    endif()
-
     if (${CORE_NAME} STREQUAL "M0")
         if (${MCU_NAME} MATCHES "^STM32F0.+$")
-            set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m0 -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+            set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m0 -mthumb --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
         else()
-            set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m0plus -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+            set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m0plus -mthumb --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
         endif()
     elseif (${CORE_NAME} STREQUAL "M0+")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m0plus -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 PARENT_SCOPE)
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m0plus -mthumb --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M23")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m23 -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -mfloat-abi=soft -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m23 -mthumb --specs=nosys.specs -mfloat-abi=soft -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M3")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m3 -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m3 -mthumb --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M33EF")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m33 -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -mfloat-abi=soft -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m33 -mthumb --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv5-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M4")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M4EF")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M4DSP")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -mfloat-abi=soft -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m4 -mthumb --specs=nosys.specs -mfloat-abi=soft -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     elseif (${CORE_NAME} STREQUAL "M7")
         set(M7_FPU_FLAG -mfpu=fpv5-d16)
         if(${MCU_NAME} MATCHES "^STM32.+$")
@@ -286,9 +258,7 @@ function(set_flags flags)
                 set(M7_FPU_FLAG -mfpu=fpv5-sp-d16)
             endif()
         endif()
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m7 -mthumb ${POINTER_TYPE_ERROR} -mfloat-abi=hard ${M7_FPU_FLAG} --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
-    elseif (${CORE_NAME} STREQUAL "M85")
-        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m85 -mthumb ${POINTER_TYPE_ERROR} --specs=nosys.specs -mfloat-abi=hard -mfpu=fpv4-sp-d16 -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
+        set(${flags} -std=gnu99 -Wl,-Map=output.map,-gc-sections,--print-memory-usage -mcpu=cortex-m7 -mthumb -mfloat-abi=hard ${M7_FPU_FLAG} --specs=nosys.specs -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Wno-int-conversion -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration PARENT_SCOPE)
     else()
         message(FATAL_ERROR "MCU Core not supported.")
     endif()
