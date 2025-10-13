@@ -3,7 +3,7 @@
     "family_uid": "RA4C1",
     "flash": "262144",
     "icon": "images/mcu/renesas.png",
-    "max_speed": "8.0000",
+    "max_speed": "80.000",
     "name": "R7FA4C1BB3CFP",
     "ram": "98304",
     "sdk_config": "{\"MCU_NAME\":\"R7FA4C1BB3CFP\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
