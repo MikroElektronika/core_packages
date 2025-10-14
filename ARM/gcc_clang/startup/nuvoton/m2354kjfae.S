@@ -7,8 +7,6 @@
  * @copyright Copyright (C) 2020 Nuvoton Technology Corp. All rights reserved.
  *****************************************************************************/
 
-
-
     .syntax unified
     .arch   armv8-m.base
 

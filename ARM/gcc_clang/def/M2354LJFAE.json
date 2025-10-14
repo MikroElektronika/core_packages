@@ -2,11 +2,11 @@
     "config_registers": [
         {
             "address": "40000200",
-            "default": "00000000",
+            "default": "00000004",
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000004",
                     "key": "HIRCEN",
                     "label": "Internal high-speed RC oscillator (HIRC 12MHz) Enable",
                     "mask": "00000004",
@@ -91,15 +91,15 @@
                 }
             ],
             "key": "CLK_PWRCTL",
-            "unused": "00000000"
+            "unused": "FFCBC310"
         },
         {
             "address": "40000210",
-            "default": "00000000",
+            "default": "00000002",
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000007",
+                    "init": "00000002",
                     "key": "HCLKSEL",
                     "label": "HCLK Clock Source Selection",
                     "mask": "00000007",
@@ -136,7 +136,7 @@
                 }
             ],
             "key": "CLK_CLKSEL0",
-            "unused": "00000000"
+            "unused": "FFCFFEC0"
         },
         {
             "address": "40000220",
@@ -221,11 +221,11 @@
         },
         {
             "address": "40000240",
-            "default": "00000000",
+            "default": "00000206",
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000006",
                     "key": "FBDIV",
                     "label": "PLL Feedback Divider Control",
                     "mask": "000000FF",
@@ -1258,7 +1258,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000200",
                     "key": "INDIV",
                     "label": "PLL Input Divider Control",
                     "mask": "00003E00",
@@ -1420,11 +1420,11 @@
                 }
             ],
             "key": "CLK_PLLCTL",
-            "unused": "00000000"
+            "unused": "FF740000"
         }
     ],
     "core": "M23",
     "delay_src_path": "delays/m23/__lib_delays.c",
     "mcu": "M2354KJFAE",
-    "clock": "1"
+    "clock": "96"
 }
