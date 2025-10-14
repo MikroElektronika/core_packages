@@ -825,6 +825,42 @@ def updateDevicesFromSdk(dbs, queries):
 
     return
 
+def createErpFamilyUid(device):
+    core_name = None
+    try:
+        data = json.loads(device['sdk_config'])
+        core_name = data.get("CORE_NAME", "")
+    except (json.JSONDecodeError, TypeError):
+        core_name = ""
+    if core_name == '':
+        try:
+            data = json.loads(device['core_info'])
+            core_name = data[0].get("core_name_define", "")
+        except (json.JSONDecodeError, TypeError):
+            core_name = ""
+
+    # Normalize architecture names
+    if core_name.startswith('M') and 'MIPS' not in core_name and 'MICROAPTIV' not in core_name:
+        core_name = 'ARM Cortex-' + core_name.replace('DSP', '').replace('EF', '')
+    elif 'MIPS' in core_name or 'MICROAPTIV' in core_name or '32' in core_name:
+        core_name = 'PIC32'
+    elif '16' in core_name or '18' in core_name:
+        core_name = 'PIC'
+    elif '24' in core_name or '33' in core_name or 'DSPIC' in core_name:
+        core_name = 'dsPIC'
+    elif '64K' in core_name:
+        core_name = 'AVR'
+    elif 'RISCV' in core_name:
+        core_name = 'RISC-V'
+
+    new_family_uid = (
+        device['vendor'].upper() + '_' +
+        core_name.upper().replace(' ', '_').replace('-', '_').replace('+', '_PLUS') + '_' +
+        device['family_uid'].upper().replace('+', '_PLUS').replace(' ', '_')
+    )
+
+    return new_family_uid
+
 def updateDevicesFromCore(dbs, queries):
     allDevicesDirs = os.listdir(queries)
     for eachDeviceDir in allDevicesDirs:
@@ -841,6 +877,8 @@ def updateDevicesFromCore(dbs, queries):
                     collumns = []
                     for eachKey in device.keys():
                         collumns.append(eachKey)
+                        if eachKey == 'family_uid' and 'erp_db' in eachDb:
+                            device[eachKey] = createErpFamilyUid(device)
                         values.append(device[eachKey])
                     insertIntoTable(
                         eachDb,
