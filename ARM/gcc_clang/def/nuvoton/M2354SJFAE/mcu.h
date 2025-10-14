@@ -271,10 +271,8 @@ typedef enum IRQn
 
 /**@}*/ /* end of group CMSIS */
 
-// Note: Changed for MikroE implementation.
-// #include "core_armv8mbl.h"                  /* Processor and core peripherals */
-// Note: Changed for MikroE implementation.
-// #include "system_M2354.h"                   /* System Header */
+#include "core_armv8mbl.h"                  /* Processor and core peripherals */
+#include "system_M2354.h"                   /* System Header */
 #include <stdint.h>
 
 #define __I volatile // Note: Added for MikroE implementation.
@@ -315,8 +313,7 @@ extern void SystemInit(void);
 // Note: Changed for MikroE implementation.
 // #include "ecap_reg.h"
 #include "fmc_reg.h"
-// Note: Changed for MikroE implementation.
-// #include "gpio_reg.h"
+#include "gpio_reg.h"
 // Note: Changed for MikroE implementation.
 // #include "i2c_reg.h"
 // Note: Changed for MikroE implementation.
@@ -1104,8 +1101,7 @@ extern void SystemInit(void);
 // Note: Changed for MikroE implementation.
 // #include "ecap.h"
 #include "fmc.h"
-// Note: Changed for MikroE implementation.
-// #include "gpio.h"
+#include "gpio.h"
 // Note: Changed for MikroE implementation.
 // #include "i2c.h"
 // Note: Changed for MikroE implementation.
