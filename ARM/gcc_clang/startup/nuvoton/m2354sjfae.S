@@ -7,8 +7,6 @@
  * @copyright Copyright (C) 2020 Nuvoton Technology Corp. All rights reserved.
  *****************************************************************************/
 
-
-
     .syntax unified
     .arch   armv8-m.base
 
@@ -334,7 +332,7 @@ Reset_Handler:
     MSR     MSPLIM, R0
 
 #ifndef __START
-#define __START _start
+#define __START main
 #endif
     bl  __START
 
@@ -343,7 +341,8 @@ Reset_Handler:
 
     .align  1
     .thumb_func
-    .weak   HardFault_Handler
+    .weak   ProcessHardFault
+    .set    ProcessHardFault, ProcessHardFaultx
     .type   HardFault_Handler, % function
 
  HardFault_Handler:
@@ -354,7 +353,7 @@ Reset_Handler:
     MRS     R3, MSPLIM
     CMP     R1, R3
     BEQ     .
-    
+
     MRS     R2, PSP
     LDR     R3, =ProcessHardFault
     BLX     R3
@@ -529,6 +528,8 @@ SH_DoCommand:
     BLX    R3                  /* ; Call SH_Return. The return value is in R0 */
     BX     R4                  /* ; Return value = R0 */
     .size  SH_DoCommand, . - SH_DoCommand
+    .weak SH_Return
+    .set SH_Return, Default_Handler
 
     .align  2
     .thumb_func

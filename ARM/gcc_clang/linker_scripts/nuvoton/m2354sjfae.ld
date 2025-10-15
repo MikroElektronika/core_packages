@@ -6,7 +6,6 @@ MEMORY
 }
 
 /* Library configurations */
-/* Note: Changed for MikroE implementation. */
 /*
 GROUP(libgcc.a libc.a libm.a libnosys.a)
 */
@@ -144,12 +143,8 @@ SECTIONS
 	.data : AT (__etext)
 	{
 		__data_start__ = .;
-		. = SIZEOF(.stack_dummy);
+		. += SIZEOF(.stack_dummy);
 		*(vtable)
-
-        /*
-        *(.data*)              Note: Changed for MikroE implementation.
-        */
         *(.data)                 /* .data sections */
         *(.data*)                /* .data* sections */
         *(.Ram)                  /* .Ram sections */

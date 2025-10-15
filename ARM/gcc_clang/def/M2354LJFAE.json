@@ -1,6 +1,2454 @@
 {
+    "config_registers": [
+        {
+            "address": "40000200",
+            "default": "00000004",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "HIRCEN",
+                    "label": "Internal high-speed RC oscillator (HIRC 12MHz) Enable",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "HIRC oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HIRC oscillator ON",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "LIRCEN",
+                    "label": "Internal low-speed RC oscillator (LIRC 32kHz) Enable",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "LIRC oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "LIRC oscillator ON",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HIRC48EN",
+                    "label": "Internal high-speed RC oscillator (HIRC48 48MHz) Enable",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "HIRC48 oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HIRC48 oscillator ON",
+                            "value": "00040000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MIRC1P2MEN",
+                    "label": "Internal medium-speed RC oscillator (MIRC1P2M 1.2MHz) Enable",
+                    "mask": "00100000",
+                    "settings": [
+                        {
+                            "label": "MIRC1P2M oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MIRC1P2M oscillator ON",
+                            "value": "00100000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MIRC",
+                    "label": "Internal medium-speed RC oscillator (MIRC 4MHz) Enable",
+                    "mask": "00200000",
+                    "settings": [
+                        {
+                            "label": "MIRC oscillator OFF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MIRC oscillator ON",
+                            "value": "00200000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CLK_PWRCTL",
+            "unused": "FFCBC310"
+        },
+        {
+            "address": "40000210",
+            "default": "00000002",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "HCLKSEL",
+                    "label": "HCLK Clock Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Clock source from HXT",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clock source from LXT",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Clock source from PLL",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Clock source from LIRC",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Clock source from HIRC48",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Clock source from MIRC",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Clock source from HIRC",
+                            "value": "00000007"
+                        }
+                    ]
+                }
+            ],
+            "key": "CLK_CLKSEL0",
+            "unused": "FFCFFEC0"
+        },
+        {
+            "address": "40000220",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HCLKDIV",
+                    "label": "HCLK Clock Divide Number From HCLK Clock Source",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "HCLKDIV = 0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HCLKDIV = 1",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "HCLKDIV = 2",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "HCLKDIV = 3",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "HCLKDIV = 4",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "HCLKDIV = 5",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "HCLKDIV = 6",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "HCLKDIV = 7",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "HCLKDIV = 8",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "HCLKDIV = 9",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "HCLKDIV = 10",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "HCLKDIV = 11",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "HCLKDIV = 12",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "HCLKDIV = 13",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "HCLKDIV = 14",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "HCLKDIV = 15",
+                            "value": "0000000F"
+                        }
+                    ]
+                }
+            ],
+            "key": "CLK_CLKDIV0",
+            "unused": "00000000"
+        },
+        {
+            "address": "40000240",
+            "default": "00000206",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000006",
+                    "key": "FBDIV",
+                    "label": "PLL Feedback Divider Control",
+                    "mask": "000001FF",
+                    "settings": [
+                        {
+                            "label": "FBDIV = 0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "FBDIV = 1",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "FBDIV = 2",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "FBDIV = 3",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "FBDIV = 4",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "FBDIV = 5",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "FBDIV = 6",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "FBDIV = 7",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "FBDIV = 8",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "FBDIV = 9",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "FBDIV = 10",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "FBDIV = 11",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "FBDIV = 12",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "FBDIV = 13",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "FBDIV = 14",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "FBDIV = 15",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "FBDIV = 16",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "FBDIV = 17",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "FBDIV = 18",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "FBDIV = 19",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "FBDIV = 20",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "FBDIV = 21",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "FBDIV = 22",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "FBDIV = 23",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "FBDIV = 24",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "FBDIV = 25",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "FBDIV = 26",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "FBDIV = 27",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "FBDIV = 28",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "FBDIV = 29",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "FBDIV = 30",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "FBDIV = 31",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "FBDIV = 32",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "FBDIV = 33",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "FBDIV = 34",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "FBDIV = 35",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "FBDIV = 36",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "FBDIV = 37",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "FBDIV = 38",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "FBDIV = 39",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "FBDIV = 40",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "FBDIV = 41",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "FBDIV = 42",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "FBDIV = 43",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "FBDIV = 44",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "FBDIV = 45",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "FBDIV = 46",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "FBDIV = 47",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "FBDIV = 48",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "FBDIV = 49",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "FBDIV = 50",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "FBDIV = 51",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "FBDIV = 52",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "FBDIV = 53",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "FBDIV = 54",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "FBDIV = 55",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "FBDIV = 56",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "FBDIV = 57",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "FBDIV = 58",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "FBDIV = 59",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "FBDIV = 60",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "FBDIV = 61",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "FBDIV = 62",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "FBDIV = 63",
+                            "value": "0000003F"
+                        },
+                        {
+                            "label": "FBDIV = 64",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "FBDIV = 65",
+                            "value": "00000041"
+                        },
+                        {
+                            "label": "FBDIV = 66",
+                            "value": "00000042"
+                        },
+                        {
+                            "label": "FBDIV = 67",
+                            "value": "00000043"
+                        },
+                        {
+                            "label": "FBDIV = 68",
+                            "value": "00000044"
+                        },
+                        {
+                            "label": "FBDIV = 69",
+                            "value": "00000045"
+                        },
+                        {
+                            "label": "FBDIV = 70",
+                            "value": "00000046"
+                        },
+                        {
+                            "label": "FBDIV = 71",
+                            "value": "00000047"
+                        },
+                        {
+                            "label": "FBDIV = 72",
+                            "value": "00000048"
+                        },
+                        {
+                            "label": "FBDIV = 73",
+                            "value": "00000049"
+                        },
+                        {
+                            "label": "FBDIV = 74",
+                            "value": "0000004A"
+                        },
+                        {
+                            "label": "FBDIV = 75",
+                            "value": "0000004B"
+                        },
+                        {
+                            "label": "FBDIV = 76",
+                            "value": "0000004C"
+                        },
+                        {
+                            "label": "FBDIV = 77",
+                            "value": "0000004D"
+                        },
+                        {
+                            "label": "FBDIV = 78",
+                            "value": "0000004E"
+                        },
+                        {
+                            "label": "FBDIV = 79",
+                            "value": "0000004F"
+                        },
+                        {
+                            "label": "FBDIV = 80",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "FBDIV = 81",
+                            "value": "00000051"
+                        },
+                        {
+                            "label": "FBDIV = 82",
+                            "value": "00000052"
+                        },
+                        {
+                            "label": "FBDIV = 83",
+                            "value": "00000053"
+                        },
+                        {
+                            "label": "FBDIV = 84",
+                            "value": "00000054"
+                        },
+                        {
+                            "label": "FBDIV = 85",
+                            "value": "00000055"
+                        },
+                        {
+                            "label": "FBDIV = 86",
+                            "value": "00000056"
+                        },
+                        {
+                            "label": "FBDIV = 87",
+                            "value": "00000057"
+                        },
+                        {
+                            "label": "FBDIV = 88",
+                            "value": "00000058"
+                        },
+                        {
+                            "label": "FBDIV = 89",
+                            "value": "00000059"
+                        },
+                        {
+                            "label": "FBDIV = 90",
+                            "value": "0000005A"
+                        },
+                        {
+                            "label": "FBDIV = 91",
+                            "value": "0000005B"
+                        },
+                        {
+                            "label": "FBDIV = 92",
+                            "value": "0000005C"
+                        },
+                        {
+                            "label": "FBDIV = 93",
+                            "value": "0000005D"
+                        },
+                        {
+                            "label": "FBDIV = 94",
+                            "value": "0000005E"
+                        },
+                        {
+                            "label": "FBDIV = 95",
+                            "value": "0000005F"
+                        },
+                        {
+                            "label": "FBDIV = 96",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "FBDIV = 97",
+                            "value": "00000061"
+                        },
+                        {
+                            "label": "FBDIV = 98",
+                            "value": "00000062"
+                        },
+                        {
+                            "label": "FBDIV = 99",
+                            "value": "00000063"
+                        },
+                        {
+                            "label": "FBDIV = 100",
+                            "value": "00000064"
+                        },
+                        {
+                            "label": "FBDIV = 101",
+                            "value": "00000065"
+                        },
+                        {
+                            "label": "FBDIV = 102",
+                            "value": "00000066"
+                        },
+                        {
+                            "label": "FBDIV = 103",
+                            "value": "00000067"
+                        },
+                        {
+                            "label": "FBDIV = 104",
+                            "value": "00000068"
+                        },
+                        {
+                            "label": "FBDIV = 105",
+                            "value": "00000069"
+                        },
+                        {
+                            "label": "FBDIV = 106",
+                            "value": "0000006A"
+                        },
+                        {
+                            "label": "FBDIV = 107",
+                            "value": "0000006B"
+                        },
+                        {
+                            "label": "FBDIV = 108",
+                            "value": "0000006C"
+                        },
+                        {
+                            "label": "FBDIV = 109",
+                            "value": "0000006D"
+                        },
+                        {
+                            "label": "FBDIV = 110",
+                            "value": "0000006E"
+                        },
+                        {
+                            "label": "FBDIV = 111",
+                            "value": "0000006F"
+                        },
+                        {
+                            "label": "FBDIV = 112",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "FBDIV = 113",
+                            "value": "00000071"
+                        },
+                        {
+                            "label": "FBDIV = 114",
+                            "value": "00000072"
+                        },
+                        {
+                            "label": "FBDIV = 115",
+                            "value": "00000073"
+                        },
+                        {
+                            "label": "FBDIV = 116",
+                            "value": "00000074"
+                        },
+                        {
+                            "label": "FBDIV = 117",
+                            "value": "00000075"
+                        },
+                        {
+                            "label": "FBDIV = 118",
+                            "value": "00000076"
+                        },
+                        {
+                            "label": "FBDIV = 119",
+                            "value": "00000077"
+                        },
+                        {
+                            "label": "FBDIV = 120",
+                            "value": "00000078"
+                        },
+                        {
+                            "label": "FBDIV = 121",
+                            "value": "00000079"
+                        },
+                        {
+                            "label": "FBDIV = 122",
+                            "value": "0000007A"
+                        },
+                        {
+                            "label": "FBDIV = 123",
+                            "value": "0000007B"
+                        },
+                        {
+                            "label": "FBDIV = 124",
+                            "value": "0000007C"
+                        },
+                        {
+                            "label": "FBDIV = 125",
+                            "value": "0000007D"
+                        },
+                        {
+                            "label": "FBDIV = 126",
+                            "value": "0000007E"
+                        },
+                        {
+                            "label": "FBDIV = 127",
+                            "value": "0000007F"
+                        },
+                        {
+                            "label": "FBDIV = 128",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "FBDIV = 129",
+                            "value": "00000081"
+                        },
+                        {
+                            "label": "FBDIV = 130",
+                            "value": "00000082"
+                        },
+                        {
+                            "label": "FBDIV = 131",
+                            "value": "00000083"
+                        },
+                        {
+                            "label": "FBDIV = 132",
+                            "value": "00000084"
+                        },
+                        {
+                            "label": "FBDIV = 133",
+                            "value": "00000085"
+                        },
+                        {
+                            "label": "FBDIV = 134",
+                            "value": "00000086"
+                        },
+                        {
+                            "label": "FBDIV = 135",
+                            "value": "00000087"
+                        },
+                        {
+                            "label": "FBDIV = 136",
+                            "value": "00000088"
+                        },
+                        {
+                            "label": "FBDIV = 137",
+                            "value": "00000089"
+                        },
+                        {
+                            "label": "FBDIV = 138",
+                            "value": "0000008A"
+                        },
+                        {
+                            "label": "FBDIV = 139",
+                            "value": "0000008B"
+                        },
+                        {
+                            "label": "FBDIV = 140",
+                            "value": "0000008C"
+                        },
+                        {
+                            "label": "FBDIV = 141",
+                            "value": "0000008D"
+                        },
+                        {
+                            "label": "FBDIV = 142",
+                            "value": "0000008E"
+                        },
+                        {
+                            "label": "FBDIV = 143",
+                            "value": "0000008F"
+                        },
+                        {
+                            "label": "FBDIV = 144",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "FBDIV = 145",
+                            "value": "00000091"
+                        },
+                        {
+                            "label": "FBDIV = 146",
+                            "value": "00000092"
+                        },
+                        {
+                            "label": "FBDIV = 147",
+                            "value": "00000093"
+                        },
+                        {
+                            "label": "FBDIV = 148",
+                            "value": "00000094"
+                        },
+                        {
+                            "label": "FBDIV = 149",
+                            "value": "00000095"
+                        },
+                        {
+                            "label": "FBDIV = 150",
+                            "value": "00000096"
+                        },
+                        {
+                            "label": "FBDIV = 151",
+                            "value": "00000097"
+                        },
+                        {
+                            "label": "FBDIV = 152",
+                            "value": "00000098"
+                        },
+                        {
+                            "label": "FBDIV = 153",
+                            "value": "00000099"
+                        },
+                        {
+                            "label": "FBDIV = 154",
+                            "value": "0000009A"
+                        },
+                        {
+                            "label": "FBDIV = 155",
+                            "value": "0000009B"
+                        },
+                        {
+                            "label": "FBDIV = 156",
+                            "value": "0000009C"
+                        },
+                        {
+                            "label": "FBDIV = 157",
+                            "value": "0000009D"
+                        },
+                        {
+                            "label": "FBDIV = 158",
+                            "value": "0000009E"
+                        },
+                        {
+                            "label": "FBDIV = 159",
+                            "value": "0000009F"
+                        },
+                        {
+                            "label": "FBDIV = 160",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "FBDIV = 161",
+                            "value": "000000A1"
+                        },
+                        {
+                            "label": "FBDIV = 162",
+                            "value": "000000A2"
+                        },
+                        {
+                            "label": "FBDIV = 163",
+                            "value": "000000A3"
+                        },
+                        {
+                            "label": "FBDIV = 164",
+                            "value": "000000A4"
+                        },
+                        {
+                            "label": "FBDIV = 165",
+                            "value": "000000A5"
+                        },
+                        {
+                            "label": "FBDIV = 166",
+                            "value": "000000A6"
+                        },
+                        {
+                            "label": "FBDIV = 167",
+                            "value": "000000A7"
+                        },
+                        {
+                            "label": "FBDIV = 168",
+                            "value": "000000A8"
+                        },
+                        {
+                            "label": "FBDIV = 169",
+                            "value": "000000A9"
+                        },
+                        {
+                            "label": "FBDIV = 170",
+                            "value": "000000AA"
+                        },
+                        {
+                            "label": "FBDIV = 171",
+                            "value": "000000AB"
+                        },
+                        {
+                            "label": "FBDIV = 172",
+                            "value": "000000AC"
+                        },
+                        {
+                            "label": "FBDIV = 173",
+                            "value": "000000AD"
+                        },
+                        {
+                            "label": "FBDIV = 174",
+                            "value": "000000AE"
+                        },
+                        {
+                            "label": "FBDIV = 175",
+                            "value": "000000AF"
+                        },
+                        {
+                            "label": "FBDIV = 176",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "FBDIV = 177",
+                            "value": "000000B1"
+                        },
+                        {
+                            "label": "FBDIV = 178",
+                            "value": "000000B2"
+                        },
+                        {
+                            "label": "FBDIV = 179",
+                            "value": "000000B3"
+                        },
+                        {
+                            "label": "FBDIV = 180",
+                            "value": "000000B4"
+                        },
+                        {
+                            "label": "FBDIV = 181",
+                            "value": "000000B5"
+                        },
+                        {
+                            "label": "FBDIV = 182",
+                            "value": "000000B6"
+                        },
+                        {
+                            "label": "FBDIV = 183",
+                            "value": "000000B7"
+                        },
+                        {
+                            "label": "FBDIV = 184",
+                            "value": "000000B8"
+                        },
+                        {
+                            "label": "FBDIV = 185",
+                            "value": "000000B9"
+                        },
+                        {
+                            "label": "FBDIV = 186",
+                            "value": "000000BA"
+                        },
+                        {
+                            "label": "FBDIV = 187",
+                            "value": "000000BB"
+                        },
+                        {
+                            "label": "FBDIV = 188",
+                            "value": "000000BC"
+                        },
+                        {
+                            "label": "FBDIV = 189",
+                            "value": "000000BD"
+                        },
+                        {
+                            "label": "FBDIV = 190",
+                            "value": "000000BE"
+                        },
+                        {
+                            "label": "FBDIV = 191",
+                            "value": "000000BF"
+                        },
+                        {
+                            "label": "FBDIV = 192",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "FBDIV = 193",
+                            "value": "000000C1"
+                        },
+                        {
+                            "label": "FBDIV = 194",
+                            "value": "000000C2"
+                        },
+                        {
+                            "label": "FBDIV = 195",
+                            "value": "000000C3"
+                        },
+                        {
+                            "label": "FBDIV = 196",
+                            "value": "000000C4"
+                        },
+                        {
+                            "label": "FBDIV = 197",
+                            "value": "000000C5"
+                        },
+                        {
+                            "label": "FBDIV = 198",
+                            "value": "000000C6"
+                        },
+                        {
+                            "label": "FBDIV = 199",
+                            "value": "000000C7"
+                        },
+                        {
+                            "label": "FBDIV = 200",
+                            "value": "000000C8"
+                        },
+                        {
+                            "label": "FBDIV = 201",
+                            "value": "000000C9"
+                        },
+                        {
+                            "label": "FBDIV = 202",
+                            "value": "000000CA"
+                        },
+                        {
+                            "label": "FBDIV = 203",
+                            "value": "000000CB"
+                        },
+                        {
+                            "label": "FBDIV = 204",
+                            "value": "000000CC"
+                        },
+                        {
+                            "label": "FBDIV = 205",
+                            "value": "000000CD"
+                        },
+                        {
+                            "label": "FBDIV = 206",
+                            "value": "000000CE"
+                        },
+                        {
+                            "label": "FBDIV = 207",
+                            "value": "000000CF"
+                        },
+                        {
+                            "label": "FBDIV = 208",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "FBDIV = 209",
+                            "value": "000000D1"
+                        },
+                        {
+                            "label": "FBDIV = 210",
+                            "value": "000000D2"
+                        },
+                        {
+                            "label": "FBDIV = 211",
+                            "value": "000000D3"
+                        },
+                        {
+                            "label": "FBDIV = 212",
+                            "value": "000000D4"
+                        },
+                        {
+                            "label": "FBDIV = 213",
+                            "value": "000000D5"
+                        },
+                        {
+                            "label": "FBDIV = 214",
+                            "value": "000000D6"
+                        },
+                        {
+                            "label": "FBDIV = 215",
+                            "value": "000000D7"
+                        },
+                        {
+                            "label": "FBDIV = 216",
+                            "value": "000000D8"
+                        },
+                        {
+                            "label": "FBDIV = 217",
+                            "value": "000000D9"
+                        },
+                        {
+                            "label": "FBDIV = 218",
+                            "value": "000000DA"
+                        },
+                        {
+                            "label": "FBDIV = 219",
+                            "value": "000000DB"
+                        },
+                        {
+                            "label": "FBDIV = 220",
+                            "value": "000000DC"
+                        },
+                        {
+                            "label": "FBDIV = 221",
+                            "value": "000000DD"
+                        },
+                        {
+                            "label": "FBDIV = 222",
+                            "value": "000000DE"
+                        },
+                        {
+                            "label": "FBDIV = 223",
+                            "value": "000000DF"
+                        },
+                        {
+                            "label": "FBDIV = 224",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "FBDIV = 225",
+                            "value": "000000E1"
+                        },
+                        {
+                            "label": "FBDIV = 226",
+                            "value": "000000E2"
+                        },
+                        {
+                            "label": "FBDIV = 227",
+                            "value": "000000E3"
+                        },
+                        {
+                            "label": "FBDIV = 228",
+                            "value": "000000E4"
+                        },
+                        {
+                            "label": "FBDIV = 229",
+                            "value": "000000E5"
+                        },
+                        {
+                            "label": "FBDIV = 230",
+                            "value": "000000E6"
+                        },
+                        {
+                            "label": "FBDIV = 231",
+                            "value": "000000E7"
+                        },
+                        {
+                            "label": "FBDIV = 232",
+                            "value": "000000E8"
+                        },
+                        {
+                            "label": "FBDIV = 233",
+                            "value": "000000E9"
+                        },
+                        {
+                            "label": "FBDIV = 234",
+                            "value": "000000EA"
+                        },
+                        {
+                            "label": "FBDIV = 235",
+                            "value": "000000EB"
+                        },
+                        {
+                            "label": "FBDIV = 236",
+                            "value": "000000EC"
+                        },
+                        {
+                            "label": "FBDIV = 237",
+                            "value": "000000ED"
+                        },
+                        {
+                            "label": "FBDIV = 238",
+                            "value": "000000EE"
+                        },
+                        {
+                            "label": "FBDIV = 239",
+                            "value": "000000EF"
+                        },
+                        {
+                            "label": "FBDIV = 240",
+                            "value": "000000F0"
+                        },
+                        {
+                            "label": "FBDIV = 241",
+                            "value": "000000F1"
+                        },
+                        {
+                            "label": "FBDIV = 242",
+                            "value": "000000F2"
+                        },
+                        {
+                            "label": "FBDIV = 243",
+                            "value": "000000F3"
+                        },
+                        {
+                            "label": "FBDIV = 244",
+                            "value": "000000F4"
+                        },
+                        {
+                            "label": "FBDIV = 245",
+                            "value": "000000F5"
+                        },
+                        {
+                            "label": "FBDIV = 246",
+                            "value": "000000F6"
+                        },
+                        {
+                            "label": "FBDIV = 247",
+                            "value": "000000F7"
+                        },
+                        {
+                            "label": "FBDIV = 248",
+                            "value": "000000F8"
+                        },
+                        {
+                            "label": "FBDIV = 249",
+                            "value": "000000F9"
+                        },
+                        {
+                            "label": "FBDIV = 250",
+                            "value": "000000FA"
+                        },
+                        {
+                            "label": "FBDIV = 251",
+                            "value": "000000FB"
+                        },
+                        {
+                            "label": "FBDIV = 252",
+                            "value": "000000FC"
+                        },
+                        {
+                            "label": "FBDIV = 253",
+                            "value": "000000FD"
+                        },
+                        {
+                            "label": "FBDIV = 254",
+                            "value": "000000FE"
+                        },
+                        {
+                            "label": "FBDIV = 255",
+                            "value": "000000FF"
+                        },
+                        {
+                            "label": "FBDIV = 256",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "FBDIV = 257",
+                            "value": "00000101"
+                        },
+                        {
+                            "label": "FBDIV = 258",
+                            "value": "00000102"
+                        },
+                        {
+                            "label": "FBDIV = 259",
+                            "value": "00000103"
+                        },
+                        {
+                            "label": "FBDIV = 260",
+                            "value": "00000104"
+                        },
+                        {
+                            "label": "FBDIV = 261",
+                            "value": "00000105"
+                        },
+                        {
+                            "label": "FBDIV = 262",
+                            "value": "00000106"
+                        },
+                        {
+                            "label": "FBDIV = 263",
+                            "value": "00000107"
+                        },
+                        {
+                            "label": "FBDIV = 264",
+                            "value": "00000108"
+                        },
+                        {
+                            "label": "FBDIV = 265",
+                            "value": "00000109"
+                        },
+                        {
+                            "label": "FBDIV = 266",
+                            "value": "0000010A"
+                        },
+                        {
+                            "label": "FBDIV = 267",
+                            "value": "0000010B"
+                        },
+                        {
+                            "label": "FBDIV = 268",
+                            "value": "0000010C"
+                        },
+                        {
+                            "label": "FBDIV = 269",
+                            "value": "0000010D"
+                        },
+                        {
+                            "label": "FBDIV = 270",
+                            "value": "0000010E"
+                        },
+                        {
+                            "label": "FBDIV = 271",
+                            "value": "0000010F"
+                        },
+                        {
+                            "label": "FBDIV = 272",
+                            "value": "00000110"
+                        },
+                        {
+                            "label": "FBDIV = 273",
+                            "value": "00000111"
+                        },
+                        {
+                            "label": "FBDIV = 274",
+                            "value": "00000112"
+                        },
+                        {
+                            "label": "FBDIV = 275",
+                            "value": "00000113"
+                        },
+                        {
+                            "label": "FBDIV = 276",
+                            "value": "00000114"
+                        },
+                        {
+                            "label": "FBDIV = 277",
+                            "value": "00000115"
+                        },
+                        {
+                            "label": "FBDIV = 278",
+                            "value": "00000116"
+                        },
+                        {
+                            "label": "FBDIV = 279",
+                            "value": "00000117"
+                        },
+                        {
+                            "label": "FBDIV = 280",
+                            "value": "00000118"
+                        },
+                        {
+                            "label": "FBDIV = 281",
+                            "value": "00000119"
+                        },
+                        {
+                            "label": "FBDIV = 282",
+                            "value": "0000011A"
+                        },
+                        {
+                            "label": "FBDIV = 283",
+                            "value": "0000011B"
+                        },
+                        {
+                            "label": "FBDIV = 284",
+                            "value": "0000011C"
+                        },
+                        {
+                            "label": "FBDIV = 285",
+                            "value": "0000011D"
+                        },
+                        {
+                            "label": "FBDIV = 286",
+                            "value": "0000011E"
+                        },
+                        {
+                            "label": "FBDIV = 287",
+                            "value": "0000011F"
+                        },
+                        {
+                            "label": "FBDIV = 288",
+                            "value": "00000120"
+                        },
+                        {
+                            "label": "FBDIV = 289",
+                            "value": "00000121"
+                        },
+                        {
+                            "label": "FBDIV = 290",
+                            "value": "00000122"
+                        },
+                        {
+                            "label": "FBDIV = 291",
+                            "value": "00000123"
+                        },
+                        {
+                            "label": "FBDIV = 292",
+                            "value": "00000124"
+                        },
+                        {
+                            "label": "FBDIV = 293",
+                            "value": "00000125"
+                        },
+                        {
+                            "label": "FBDIV = 294",
+                            "value": "00000126"
+                        },
+                        {
+                            "label": "FBDIV = 295",
+                            "value": "00000127"
+                        },
+                        {
+                            "label": "FBDIV = 296",
+                            "value": "00000128"
+                        },
+                        {
+                            "label": "FBDIV = 297",
+                            "value": "00000129"
+                        },
+                        {
+                            "label": "FBDIV = 298",
+                            "value": "0000012A"
+                        },
+                        {
+                            "label": "FBDIV = 299",
+                            "value": "0000012B"
+                        },
+                        {
+                            "label": "FBDIV = 300",
+                            "value": "0000012C"
+                        },
+                        {
+                            "label": "FBDIV = 301",
+                            "value": "0000012D"
+                        },
+                        {
+                            "label": "FBDIV = 302",
+                            "value": "0000012E"
+                        },
+                        {
+                            "label": "FBDIV = 303",
+                            "value": "0000012F"
+                        },
+                        {
+                            "label": "FBDIV = 304",
+                            "value": "00000130"
+                        },
+                        {
+                            "label": "FBDIV = 305",
+                            "value": "00000131"
+                        },
+                        {
+                            "label": "FBDIV = 306",
+                            "value": "00000132"
+                        },
+                        {
+                            "label": "FBDIV = 307",
+                            "value": "00000133"
+                        },
+                        {
+                            "label": "FBDIV = 308",
+                            "value": "00000134"
+                        },
+                        {
+                            "label": "FBDIV = 309",
+                            "value": "00000135"
+                        },
+                        {
+                            "label": "FBDIV = 310",
+                            "value": "00000136"
+                        },
+                        {
+                            "label": "FBDIV = 311",
+                            "value": "00000137"
+                        },
+                        {
+                            "label": "FBDIV = 312",
+                            "value": "00000138"
+                        },
+                        {
+                            "label": "FBDIV = 313",
+                            "value": "00000139"
+                        },
+                        {
+                            "label": "FBDIV = 314",
+                            "value": "0000013A"
+                        },
+                        {
+                            "label": "FBDIV = 315",
+                            "value": "0000013B"
+                        },
+                        {
+                            "label": "FBDIV = 316",
+                            "value": "0000013C"
+                        },
+                        {
+                            "label": "FBDIV = 317",
+                            "value": "0000013D"
+                        },
+                        {
+                            "label": "FBDIV = 318",
+                            "value": "0000013E"
+                        },
+                        {
+                            "label": "FBDIV = 319",
+                            "value": "0000013F"
+                        },
+                        {
+                            "label": "FBDIV = 320",
+                            "value": "00000140"
+                        },
+                        {
+                            "label": "FBDIV = 321",
+                            "value": "00000141"
+                        },
+                        {
+                            "label": "FBDIV = 322",
+                            "value": "00000142"
+                        },
+                        {
+                            "label": "FBDIV = 323",
+                            "value": "00000143"
+                        },
+                        {
+                            "label": "FBDIV = 324",
+                            "value": "00000144"
+                        },
+                        {
+                            "label": "FBDIV = 325",
+                            "value": "00000145"
+                        },
+                        {
+                            "label": "FBDIV = 326",
+                            "value": "00000146"
+                        },
+                        {
+                            "label": "FBDIV = 327",
+                            "value": "00000147"
+                        },
+                        {
+                            "label": "FBDIV = 328",
+                            "value": "00000148"
+                        },
+                        {
+                            "label": "FBDIV = 329",
+                            "value": "00000149"
+                        },
+                        {
+                            "label": "FBDIV = 330",
+                            "value": "0000014A"
+                        },
+                        {
+                            "label": "FBDIV = 331",
+                            "value": "0000014B"
+                        },
+                        {
+                            "label": "FBDIV = 332",
+                            "value": "0000014C"
+                        },
+                        {
+                            "label": "FBDIV = 333",
+                            "value": "0000014D"
+                        },
+                        {
+                            "label": "FBDIV = 334",
+                            "value": "0000014E"
+                        },
+                        {
+                            "label": "FBDIV = 335",
+                            "value": "0000014F"
+                        },
+                        {
+                            "label": "FBDIV = 336",
+                            "value": "00000150"
+                        },
+                        {
+                            "label": "FBDIV = 337",
+                            "value": "00000151"
+                        },
+                        {
+                            "label": "FBDIV = 338",
+                            "value": "00000152"
+                        },
+                        {
+                            "label": "FBDIV = 339",
+                            "value": "00000153"
+                        },
+                        {
+                            "label": "FBDIV = 340",
+                            "value": "00000154"
+                        },
+                        {
+                            "label": "FBDIV = 341",
+                            "value": "00000155"
+                        },
+                        {
+                            "label": "FBDIV = 342",
+                            "value": "00000156"
+                        },
+                        {
+                            "label": "FBDIV = 343",
+                            "value": "00000157"
+                        },
+                        {
+                            "label": "FBDIV = 344",
+                            "value": "00000158"
+                        },
+                        {
+                            "label": "FBDIV = 345",
+                            "value": "00000159"
+                        },
+                        {
+                            "label": "FBDIV = 346",
+                            "value": "0000015A"
+                        },
+                        {
+                            "label": "FBDIV = 347",
+                            "value": "0000015B"
+                        },
+                        {
+                            "label": "FBDIV = 348",
+                            "value": "0000015C"
+                        },
+                        {
+                            "label": "FBDIV = 349",
+                            "value": "0000015D"
+                        },
+                        {
+                            "label": "FBDIV = 350",
+                            "value": "0000015E"
+                        },
+                        {
+                            "label": "FBDIV = 351",
+                            "value": "0000015F"
+                        },
+                        {
+                            "label": "FBDIV = 352",
+                            "value": "00000160"
+                        },
+                        {
+                            "label": "FBDIV = 353",
+                            "value": "00000161"
+                        },
+                        {
+                            "label": "FBDIV = 354",
+                            "value": "00000162"
+                        },
+                        {
+                            "label": "FBDIV = 355",
+                            "value": "00000163"
+                        },
+                        {
+                            "label": "FBDIV = 356",
+                            "value": "00000164"
+                        },
+                        {
+                            "label": "FBDIV = 357",
+                            "value": "00000165"
+                        },
+                        {
+                            "label": "FBDIV = 358",
+                            "value": "00000166"
+                        },
+                        {
+                            "label": "FBDIV = 359",
+                            "value": "00000167"
+                        },
+                        {
+                            "label": "FBDIV = 360",
+                            "value": "00000168"
+                        },
+                        {
+                            "label": "FBDIV = 361",
+                            "value": "00000169"
+                        },
+                        {
+                            "label": "FBDIV = 362",
+                            "value": "0000016A"
+                        },
+                        {
+                            "label": "FBDIV = 363",
+                            "value": "0000016B"
+                        },
+                        {
+                            "label": "FBDIV = 364",
+                            "value": "0000016C"
+                        },
+                        {
+                            "label": "FBDIV = 365",
+                            "value": "0000016D"
+                        },
+                        {
+                            "label": "FBDIV = 366",
+                            "value": "0000016E"
+                        },
+                        {
+                            "label": "FBDIV = 367",
+                            "value": "0000016F"
+                        },
+                        {
+                            "label": "FBDIV = 368",
+                            "value": "00000170"
+                        },
+                        {
+                            "label": "FBDIV = 369",
+                            "value": "00000171"
+                        },
+                        {
+                            "label": "FBDIV = 370",
+                            "value": "00000172"
+                        },
+                        {
+                            "label": "FBDIV = 371",
+                            "value": "00000173"
+                        },
+                        {
+                            "label": "FBDIV = 372",
+                            "value": "00000174"
+                        },
+                        {
+                            "label": "FBDIV = 373",
+                            "value": "00000175"
+                        },
+                        {
+                            "label": "FBDIV = 374",
+                            "value": "00000176"
+                        },
+                        {
+                            "label": "FBDIV = 375",
+                            "value": "00000177"
+                        },
+                        {
+                            "label": "FBDIV = 376",
+                            "value": "00000178"
+                        },
+                        {
+                            "label": "FBDIV = 377",
+                            "value": "00000179"
+                        },
+                        {
+                            "label": "FBDIV = 378",
+                            "value": "0000017A"
+                        },
+                        {
+                            "label": "FBDIV = 379",
+                            "value": "0000017B"
+                        },
+                        {
+                            "label": "FBDIV = 380",
+                            "value": "0000017C"
+                        },
+                        {
+                            "label": "FBDIV = 381",
+                            "value": "0000017D"
+                        },
+                        {
+                            "label": "FBDIV = 382",
+                            "value": "0000017E"
+                        },
+                        {
+                            "label": "FBDIV = 383",
+                            "value": "0000017F"
+                        },
+                        {
+                            "label": "FBDIV = 384",
+                            "value": "00000180"
+                        },
+                        {
+                            "label": "FBDIV = 385",
+                            "value": "00000181"
+                        },
+                        {
+                            "label": "FBDIV = 386",
+                            "value": "00000182"
+                        },
+                        {
+                            "label": "FBDIV = 387",
+                            "value": "00000183"
+                        },
+                        {
+                            "label": "FBDIV = 388",
+                            "value": "00000184"
+                        },
+                        {
+                            "label": "FBDIV = 389",
+                            "value": "00000185"
+                        },
+                        {
+                            "label": "FBDIV = 390",
+                            "value": "00000186"
+                        },
+                        {
+                            "label": "FBDIV = 391",
+                            "value": "00000187"
+                        },
+                        {
+                            "label": "FBDIV = 392",
+                            "value": "00000188"
+                        },
+                        {
+                            "label": "FBDIV = 393",
+                            "value": "00000189"
+                        },
+                        {
+                            "label": "FBDIV = 394",
+                            "value": "0000018A"
+                        },
+                        {
+                            "label": "FBDIV = 395",
+                            "value": "0000018B"
+                        },
+                        {
+                            "label": "FBDIV = 396",
+                            "value": "0000018C"
+                        },
+                        {
+                            "label": "FBDIV = 397",
+                            "value": "0000018D"
+                        },
+                        {
+                            "label": "FBDIV = 398",
+                            "value": "0000018E"
+                        },
+                        {
+                            "label": "FBDIV = 399",
+                            "value": "0000018F"
+                        },
+                        {
+                            "label": "FBDIV = 400",
+                            "value": "00000190"
+                        },
+                        {
+                            "label": "FBDIV = 401",
+                            "value": "00000191"
+                        },
+                        {
+                            "label": "FBDIV = 402",
+                            "value": "00000192"
+                        },
+                        {
+                            "label": "FBDIV = 403",
+                            "value": "00000193"
+                        },
+                        {
+                            "label": "FBDIV = 404",
+                            "value": "00000194"
+                        },
+                        {
+                            "label": "FBDIV = 405",
+                            "value": "00000195"
+                        },
+                        {
+                            "label": "FBDIV = 406",
+                            "value": "00000196"
+                        },
+                        {
+                            "label": "FBDIV = 407",
+                            "value": "00000197"
+                        },
+                        {
+                            "label": "FBDIV = 408",
+                            "value": "00000198"
+                        },
+                        {
+                            "label": "FBDIV = 409",
+                            "value": "00000199"
+                        },
+                        {
+                            "label": "FBDIV = 410",
+                            "value": "0000019A"
+                        },
+                        {
+                            "label": "FBDIV = 411",
+                            "value": "0000019B"
+                        },
+                        {
+                            "label": "FBDIV = 412",
+                            "value": "0000019C"
+                        },
+                        {
+                            "label": "FBDIV = 413",
+                            "value": "0000019D"
+                        },
+                        {
+                            "label": "FBDIV = 414",
+                            "value": "0000019E"
+                        },
+                        {
+                            "label": "FBDIV = 415",
+                            "value": "0000019F"
+                        },
+                        {
+                            "label": "FBDIV = 416",
+                            "value": "000001A0"
+                        },
+                        {
+                            "label": "FBDIV = 417",
+                            "value": "000001A1"
+                        },
+                        {
+                            "label": "FBDIV = 418",
+                            "value": "000001A2"
+                        },
+                        {
+                            "label": "FBDIV = 419",
+                            "value": "000001A3"
+                        },
+                        {
+                            "label": "FBDIV = 420",
+                            "value": "000001A4"
+                        },
+                        {
+                            "label": "FBDIV = 421",
+                            "value": "000001A5"
+                        },
+                        {
+                            "label": "FBDIV = 422",
+                            "value": "000001A6"
+                        },
+                        {
+                            "label": "FBDIV = 423",
+                            "value": "000001A7"
+                        },
+                        {
+                            "label": "FBDIV = 424",
+                            "value": "000001A8"
+                        },
+                        {
+                            "label": "FBDIV = 425",
+                            "value": "000001A9"
+                        },
+                        {
+                            "label": "FBDIV = 426",
+                            "value": "000001AA"
+                        },
+                        {
+                            "label": "FBDIV = 427",
+                            "value": "000001AB"
+                        },
+                        {
+                            "label": "FBDIV = 428",
+                            "value": "000001AC"
+                        },
+                        {
+                            "label": "FBDIV = 429",
+                            "value": "000001AD"
+                        },
+                        {
+                            "label": "FBDIV = 430",
+                            "value": "000001AE"
+                        },
+                        {
+                            "label": "FBDIV = 431",
+                            "value": "000001AF"
+                        },
+                        {
+                            "label": "FBDIV = 432",
+                            "value": "000001B0"
+                        },
+                        {
+                            "label": "FBDIV = 433",
+                            "value": "000001B1"
+                        },
+                        {
+                            "label": "FBDIV = 434",
+                            "value": "000001B2"
+                        },
+                        {
+                            "label": "FBDIV = 435",
+                            "value": "000001B3"
+                        },
+                        {
+                            "label": "FBDIV = 436",
+                            "value": "000001B4"
+                        },
+                        {
+                            "label": "FBDIV = 437",
+                            "value": "000001B5"
+                        },
+                        {
+                            "label": "FBDIV = 438",
+                            "value": "000001B6"
+                        },
+                        {
+                            "label": "FBDIV = 439",
+                            "value": "000001B7"
+                        },
+                        {
+                            "label": "FBDIV = 440",
+                            "value": "000001B8"
+                        },
+                        {
+                            "label": "FBDIV = 441",
+                            "value": "000001B9"
+                        },
+                        {
+                            "label": "FBDIV = 442",
+                            "value": "000001BA"
+                        },
+                        {
+                            "label": "FBDIV = 443",
+                            "value": "000001BB"
+                        },
+                        {
+                            "label": "FBDIV = 444",
+                            "value": "000001BC"
+                        },
+                        {
+                            "label": "FBDIV = 445",
+                            "value": "000001BD"
+                        },
+                        {
+                            "label": "FBDIV = 446",
+                            "value": "000001BE"
+                        },
+                        {
+                            "label": "FBDIV = 447",
+                            "value": "000001BF"
+                        },
+                        {
+                            "label": "FBDIV = 448",
+                            "value": "000001C0"
+                        },
+                        {
+                            "label": "FBDIV = 449",
+                            "value": "000001C1"
+                        },
+                        {
+                            "label": "FBDIV = 450",
+                            "value": "000001C2"
+                        },
+                        {
+                            "label": "FBDIV = 451",
+                            "value": "000001C3"
+                        },
+                        {
+                            "label": "FBDIV = 452",
+                            "value": "000001C4"
+                        },
+                        {
+                            "label": "FBDIV = 453",
+                            "value": "000001C5"
+                        },
+                        {
+                            "label": "FBDIV = 454",
+                            "value": "000001C6"
+                        },
+                        {
+                            "label": "FBDIV = 455",
+                            "value": "000001C7"
+                        },
+                        {
+                            "label": "FBDIV = 456",
+                            "value": "000001C8"
+                        },
+                        {
+                            "label": "FBDIV = 457",
+                            "value": "000001C9"
+                        },
+                        {
+                            "label": "FBDIV = 458",
+                            "value": "000001CA"
+                        },
+                        {
+                            "label": "FBDIV = 459",
+                            "value": "000001CB"
+                        },
+                        {
+                            "label": "FBDIV = 460",
+                            "value": "000001CC"
+                        },
+                        {
+                            "label": "FBDIV = 461",
+                            "value": "000001CD"
+                        },
+                        {
+                            "label": "FBDIV = 462",
+                            "value": "000001CE"
+                        },
+                        {
+                            "label": "FBDIV = 463",
+                            "value": "000001CF"
+                        },
+                        {
+                            "label": "FBDIV = 464",
+                            "value": "000001D0"
+                        },
+                        {
+                            "label": "FBDIV = 465",
+                            "value": "000001D1"
+                        },
+                        {
+                            "label": "FBDIV = 466",
+                            "value": "000001D2"
+                        },
+                        {
+                            "label": "FBDIV = 467",
+                            "value": "000001D3"
+                        },
+                        {
+                            "label": "FBDIV = 468",
+                            "value": "000001D4"
+                        },
+                        {
+                            "label": "FBDIV = 469",
+                            "value": "000001D5"
+                        },
+                        {
+                            "label": "FBDIV = 470",
+                            "value": "000001D6"
+                        },
+                        {
+                            "label": "FBDIV = 471",
+                            "value": "000001D7"
+                        },
+                        {
+                            "label": "FBDIV = 472",
+                            "value": "000001D8"
+                        },
+                        {
+                            "label": "FBDIV = 473",
+                            "value": "000001D9"
+                        },
+                        {
+                            "label": "FBDIV = 474",
+                            "value": "000001DA"
+                        },
+                        {
+                            "label": "FBDIV = 475",
+                            "value": "000001DB"
+                        },
+                        {
+                            "label": "FBDIV = 476",
+                            "value": "000001DC"
+                        },
+                        {
+                            "label": "FBDIV = 477",
+                            "value": "000001DD"
+                        },
+                        {
+                            "label": "FBDIV = 478",
+                            "value": "000001DE"
+                        },
+                        {
+                            "label": "FBDIV = 479",
+                            "value": "000001DF"
+                        },
+                        {
+                            "label": "FBDIV = 480",
+                            "value": "000001E0"
+                        },
+                        {
+                            "label": "FBDIV = 481",
+                            "value": "000001E1"
+                        },
+                        {
+                            "label": "FBDIV = 482",
+                            "value": "000001E2"
+                        },
+                        {
+                            "label": "FBDIV = 483",
+                            "value": "000001E3"
+                        },
+                        {
+                            "label": "FBDIV = 484",
+                            "value": "000001E4"
+                        },
+                        {
+                            "label": "FBDIV = 485",
+                            "value": "000001E5"
+                        },
+                        {
+                            "label": "FBDIV = 486",
+                            "value": "000001E6"
+                        },
+                        {
+                            "label": "FBDIV = 487",
+                            "value": "000001E7"
+                        },
+                        {
+                            "label": "FBDIV = 488",
+                            "value": "000001E8"
+                        },
+                        {
+                            "label": "FBDIV = 489",
+                            "value": "000001E9"
+                        },
+                        {
+                            "label": "FBDIV = 490",
+                            "value": "000001EA"
+                        },
+                        {
+                            "label": "FBDIV = 491",
+                            "value": "000001EB"
+                        },
+                        {
+                            "label": "FBDIV = 492",
+                            "value": "000001EC"
+                        },
+                        {
+                            "label": "FBDIV = 493",
+                            "value": "000001ED"
+                        },
+                        {
+                            "label": "FBDIV = 494",
+                            "value": "000001EE"
+                        },
+                        {
+                            "label": "FBDIV = 495",
+                            "value": "000001EF"
+                        },
+                        {
+                            "label": "FBDIV = 496",
+                            "value": "000001F0"
+                        },
+                        {
+                            "label": "FBDIV = 497",
+                            "value": "000001F1"
+                        },
+                        {
+                            "label": "FBDIV = 498",
+                            "value": "000001F2"
+                        },
+                        {
+                            "label": "FBDIV = 499",
+                            "value": "000001F3"
+                        },
+                        {
+                            "label": "FBDIV = 500",
+                            "value": "000001F4"
+                        },
+                        {
+                            "label": "FBDIV = 501",
+                            "value": "000001F5"
+                        },
+                        {
+                            "label": "FBDIV = 502",
+                            "value": "000001F6"
+                        },
+                        {
+                            "label": "FBDIV = 503",
+                            "value": "000001F7"
+                        },
+                        {
+                            "label": "FBDIV = 504",
+                            "value": "000001F8"
+                        },
+                        {
+                            "label": "FBDIV = 505",
+                            "value": "000001F9"
+                        },
+                        {
+                            "label": "FBDIV = 506",
+                            "value": "000001FA"
+                        },
+                        {
+                            "label": "FBDIV = 507",
+                            "value": "000001FB"
+                        },
+                        {
+                            "label": "FBDIV = 508",
+                            "value": "000001FC"
+                        },
+                        {
+                            "label": "FBDIV = 509",
+                            "value": "000001FD"
+                        },
+                        {
+                            "label": "FBDIV = 510",
+                            "value": "000001FE"
+                        },
+                        {
+                            "label": "FBDIV = 511",
+                            "value": "000001FF"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000200",
+                    "key": "INDIV",
+                    "label": "PLL Input Divider Control",
+                    "mask": "00003E00",
+                    "settings": [
+                        {
+                            "label": "INDIV = 0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "INDIV = 1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "INDIV = 2",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "INDIV = 3",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "INDIV = 4",
+                            "value": "00000800"
+                        },
+                        {
+                            "label": "INDIV = 5",
+                            "value": "00000A00"
+                        },
+                        {
+                            "label": "INDIV = 6",
+                            "value": "00000C00"
+                        },
+                        {
+                            "label": "INDIV = 7",
+                            "value": "00000E00"
+                        },
+                        {
+                            "label": "INDIV = 8",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "INDIV = 9",
+                            "value": "00001200"
+                        },
+                        {
+                            "label": "INDIV = 10",
+                            "value": "00001400"
+                        },
+                        {
+                            "label": "INDIV = 11",
+                            "value": "00001600"
+                        },
+                        {
+                            "label": "INDIV = 12",
+                            "value": "00001800"
+                        },
+                        {
+                            "label": "INDIV = 13",
+                            "value": "00001A00"
+                        },
+                        {
+                            "label": "INDIV = 14",
+                            "value": "00001C00"
+                        },
+                        {
+                            "label": "INDIV = 15",
+                            "value": "00001E00"
+                        },
+                        {
+                            "label": "INDIV = 16",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "INDIV = 17",
+                            "value": "00002200"
+                        },
+                        {
+                            "label": "INDIV = 18",
+                            "value": "00002400"
+                        },
+                        {
+                            "label": "INDIV = 19",
+                            "value": "00002600"
+                        },
+                        {
+                            "label": "INDIV = 20",
+                            "value": "00002800"
+                        },
+                        {
+                            "label": "INDIV = 21",
+                            "value": "00002A00"
+                        },
+                        {
+                            "label": "INDIV = 22",
+                            "value": "00002C00"
+                        },
+                        {
+                            "label": "INDIV = 23",
+                            "value": "00002E00"
+                        },
+                        {
+                            "label": "INDIV = 24",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": "INDIV = 25",
+                            "value": "00003200"
+                        },
+                        {
+                            "label": "INDIV = 26",
+                            "value": "00003400"
+                        },
+                        {
+                            "label": "INDIV = 27",
+                            "value": "00003600"
+                        },
+                        {
+                            "label": "INDIV = 28",
+                            "value": "00003800"
+                        },
+                        {
+                            "label": "INDIV = 29",
+                            "value": "00003A00"
+                        },
+                        {
+                            "label": "INDIV = 30",
+                            "value": "00003C00"
+                        },
+                        {
+                            "label": "INDIV = 31",
+                            "value": "00003E00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OUTDIV",
+                    "label": "PLL Output Divider Control",
+                    "mask": "0000C000",
+                    "settings": [
+                        {
+                            "label": "OUTDIV = 1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "OUTDIV = 2",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "OUTDIV = 3",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "OUTDIV = 4",
+                            "value": "0000C000"
+                        }
+                    ]
+                }
+            ],
+            "key": "CLK_PLLCTL",
+            "unused": "FF740000"
+        }
+    ],
     "core": "M23",
     "delay_src_path": "delays/m23/__lib_delays.c",
-    "mcu": "M2354LJFAE",
-    "clock": "1"
+    "mcu": "M2354KJFAE",
+    "clock": "96"
 }
