@@ -274,6 +274,7 @@ typedef enum IRQn
 #include "core_armv8mbl.h"                  /* Processor and core peripherals */
 #include "system_M2354.h"                   /* System Header */
 #include <stdint.h>
+#include <stddef.h> // Note: Added for MikroE implementation.
 
 #define __I volatile // Note: Added for MikroE implementation.
 #define __O __I // Note: Added for MikroE implementation.
