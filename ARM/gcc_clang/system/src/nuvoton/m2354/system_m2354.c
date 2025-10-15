@@ -47,6 +47,10 @@ extern void *__Vectors;                   /* see startup file */
 extern uint32_t __bss_start__;
 extern uint32_t __bss_end__;
 
+uint32_t SystemCoreClock  = 0;            /*!< System Clock Frequency (Core Clock) */
+uint32_t CyclesPerUs      = 0;            /*!< Cycles per micro second             */
+uint32_t PllClock         = 0;            /*!< PLL Output Clock Frequency          */
+
 /**
  * @brief    Update the Variable SystemCoreClock
  *
