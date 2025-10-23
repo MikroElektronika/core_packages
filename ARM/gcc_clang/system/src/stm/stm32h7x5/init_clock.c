@@ -42,7 +42,33 @@
 #include "core_header.h"
 #include "mcu.h"
 
+void systemEnableFPU()
+{
+    asm(
+       "MOVW R0, #0xED88 \n\t \
+        MOVT R0, #0xE000 \n\t \
+        LDR R1, [R0] \n\t \
+        ORR R1, R1, #0xF00000 \n\t \
+        STR R1, [R0] \n\t \
+        nop \n\t \
+        nop \n\t \
+        nop \n\t \
+        nop \n\t \
+        nop \n\t \
+        nop \n\t \
+        nop \n\t \
+        nop \n\t \
+        nop \n\t \
+        vmrs R0, FPSCR \n\t \
+        MOV R1, #0 \n\t \
+        MOVT R1, #0xC0 \n\t \
+        ORR R0, R0, R1 \n\t \
+        vmsr FPSCR, R0"
+    );
+}
+
 void SystemInit(void)
 {
-
+    // Enable FPU
+    systemEnableFPU();
 }

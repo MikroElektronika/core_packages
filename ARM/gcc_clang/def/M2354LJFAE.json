@@ -2449,6 +2449,6 @@
     ],
     "core": "M23",
     "delay_src_path": "delays/m23/__lib_delays.c",
-    "mcu": "M2354KJFAE",
+    "mcu": "M2354LJFAE",
     "clock": "96"
 }
