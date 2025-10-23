@@ -1,0 +1,18 @@
+{
+    "def_file": "R7FA8M1AHECBD.json",
+    "family_uid": "RA8M1",
+    "flash": "2064384",
+    "icon": "images/mcu/renesas.png",
+    "max_speed": "48.0000",
+    "name": "R7FA8M1AHECBD",
+    "ram": "917504",
+    "sdk_config": "{\"MCU_NAME\":\"R7FA8M1AHECBD\",\"CORE_NAME\":\"M85\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "R7FA8M1AHECBD",
+    "vendor": "Renesas",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ra8m1\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ra8m1\"}"
+}
