@@ -1,0 +1,42 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ R7JA8P1 MCU Support package for GCC & Clang
+  + R7JA8P1JRLSAJ
+  + R7JA8P1JSLSAJ
+  + R7JA8P1JRDSAJ
+  + R7JA8P1JSDSAJ
+  + R7JA8P1KRLSAJ
+  + R7JA8P1KSLSAJ
+  + R7JA8P1KRDSAJ
+  + R7JA8P1KSDSAJ
++ R7JA8T2L MCU Support package for GCC & Clang
+  + R7JA8T2LRDSAJ
+  + R7JA8T2LRLSAJ
+  + R7JA8T2LSDSAJ
+  + R7JA8T2LSLSAJ
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
