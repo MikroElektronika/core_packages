@@ -1,0 +1,46 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ RA8T1 MCU Support package for GCC & Clang
+  + R7FA8T1AFECBD
+  + R7FA8T1AFECFB
+  + R7FA8T1AFECFC
+  + R7FA8T1AFECFP
+  + R7FA8T1AHECBD
+  + R7FA8T1AHECFB
+  + R7FA8T1AHECFC
+  + R7FA8T1AHECFP
++ R7JA8D2 MCU Support package for GCC & Clang
+  + R7JA8D2JRDSAJ
+  + R7JA8D2JRLSAJ
+  + R7JA8D2JSDSAJ
+  + R7JA8D2JSLSAJ
+  + R7JA8D2KRDSAJ
+  + R7JA8D2KRLSAJ
+  + R7JA8D2KSDSAJ
+  + R7JA8D2KSLSAJ
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
