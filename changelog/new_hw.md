@@ -1,0 +1,46 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ R7KA8D2K MCU Support package for GCC & Clang
+  + R7KA8D2KFDCAB
+  + R7KA8D2KFDCAC
+  + R7KA8D2KFLCAB
+  + R7KA8D2KFLCAC
++ RA8M2A MCU Support package for GCC & Clang
+  + R7KA8M2ADLCAB
+  + R7KA8M2ADLCAC
+  + R7KA8M2ADDCAB
+  + R7KA8M2ADDCAC
+  + R7KA8M2ADECAB
+  + R7KA8M2ADECAC
+  + R7KA8M2AFLCAB
+  + R7KA8M2AFLCAC
+  + R7KA8M2AFDCAB
+  + R7KA8M2AFDCAC
+  + R7KA8M2AFECAB
+  + R7KA8M2AFECAC
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
