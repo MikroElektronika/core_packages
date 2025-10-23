@@ -5885,12 +5885,12 @@ typedef struct                         /*!< (@ 0x4000A000) R_DMAC0 Structure    
             __IOM uint16_t DARA : 5;   /*!< [4..0] Destination Address Extended Repeat Area Specifies the
                                         *   extended repeat area on the destination address. For details
                                         *   on the settings.                                                          */
-            __IOM uint16_t DADR : 1;   /*!< [5..5] Destination Address Up2025-11-04 Select After Reload                     */
-            __IOM uint16_t DM   : 2;   /*!< [7..6] Destination Address Up2025-11-04 Mode                                    */
+            __IOM uint16_t DADR : 1;   /*!< [5..5] Destination Address Update Select After Reload                     */
+            __IOM uint16_t DM   : 2;   /*!< [7..6] Destination Address Update Mode                                    */
             __IOM uint16_t SARA : 5;   /*!< [12..8] Source Address Extended Repeat Area Specifies the extended
                                         *   repeat area on the source address. For details on the settings.           */
-            __IOM uint16_t SADR : 1;   /*!< [13..13] Source Address Up2025-11-04 Select After Reload                        */
-            __IOM uint16_t SM   : 2;   /*!< [15..14] Source Address Up2025-11-04 Mode                                       */
+            __IOM uint16_t SADR : 1;   /*!< [13..13] Source Address Update Select After Reload                        */
+            __IOM uint16_t SM   : 2;   /*!< [15..14] Source Address Update Mode                                       */
         } DMAMD_b;
     };
     __IM uint16_t RESERVED1;
@@ -5902,7 +5902,7 @@ typedef struct                         /*!< (@ 0x4000A000) R_DMAC0 Structure    
         struct
         {
             __IOM uint32_t DMOFR : 32; /*!< [31..0] Specifies the offset when offset addition is selected
-                                        *   as the address up2025-11-04 mode for transfer source or destination.            */
+                                        *   as the address update mode for transfer source or destination.            */
         } DMOFR_b;
     };
 
@@ -7468,11 +7468,11 @@ typedef struct                           /*!< (@ 0x4001C100) R_FCACHE Structure 
 
     union
     {
-        __IOM uint16_t FCACHEIV;         /*!< (@ 0x00000004) Flash Cache Invali2025-11-04 Register                            */
+        __IOM uint16_t FCACHEIV;         /*!< (@ 0x00000004) Flash Cache Invalidate Register                            */
 
         struct
         {
-            __IOM uint16_t FCACHEIV : 1; /*!< [0..0] Flash Cache Invali2025-11-04                                             */
+            __IOM uint16_t FCACHEIV : 1; /*!< [0..0] Flash Cache Invalidate                                             */
             uint16_t                : 15;
         } FCACHEIV_b;
     };
@@ -8169,7 +8169,7 @@ typedef struct                         /*!< (@ 0x40322000) R_GPT0 Structure     
             __IOM uint32_t OAHLD  : 1; /*!< [7..7] GTIOCA Pin Output Setting at the Start/Stop Count                  */
             __IOM uint32_t OAE    : 1; /*!< [8..8] GTIOCA Pin Output Enable                                           */
             __IOM uint32_t OADF   : 2; /*!< [10..9] GTIOCA Pin Disable Value Setting                                  */
-            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invali2025-11-04.(This
+            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -8182,7 +8182,7 @@ typedef struct                         /*!< (@ 0x40322000) R_GPT0 Structure     
             __IOM uint32_t OBHLD  : 1; /*!< [23..23] GTIOCB Pin Output Setting at the Start/Stop Count                */
             __IOM uint32_t OBE    : 1; /*!< [24..24] GTIOCB Pin Output Enable                                         */
             __IOM uint32_t OBDF   : 2; /*!< [26..25] GTIOCB Pin Disable Value Setting                                 */
-            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invali2025-11-04.(This
+            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -14213,7 +14213,7 @@ typedef struct                         /*!< (@ 0x40002000) R_SRAM Structure     
             __IOM uint8_t OAD     : 1; /*!< [0..0] Operation after detection for 1-bit ECC error detection            */
             uint8_t               : 1;
             __IOM uint8_t ECCMOD  : 2; /*!< [3..2] ECC Operating Mode Select                                          */
-            __IOM uint8_t E1STSEN : 1; /*!< [4..4] ECC 1-Bit Error Information Up2025-11-04 Enable                          */
+            __IOM uint8_t E1STSEN : 1; /*!< [4..4] ECC 1-Bit Error Information Update Enable                          */
             uint8_t               : 2;
             __IOM uint8_t TSTBYP  : 1; /*!< [7..7] ECC Test Enable / ECC Bypass Select                                */
         } SRAMCR0_b;
@@ -18169,7 +18169,7 @@ typedef struct                         /*!< (@ 0x40250000) R_USB_FS0 Structure  
             __IOM uint16_t BEMPE : 1;  /*!< [10..10] Buffer Empty Interrupt Enable                                    */
             __IOM uint16_t CTRE  : 1;  /*!< [11..11] Control Transfer Stage Transition Interrupt Enable               */
             __IOM uint16_t DVSE  : 1;  /*!< [12..12] Device State Transition Interrupt Enable                         */
-            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Up2025-11-04 Interrupt Enable                             */
+            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Update Interrupt Enable                             */
             __IOM uint16_t RSME  : 1;  /*!< [14..14] Resume Interrupt Enable                                          */
             __IOM uint16_t VBSE  : 1;  /*!< [15..15] VBUS Interrupt Enable                                            */
         } INTENB0_b;
@@ -20728,7 +20728,7 @@ typedef struct                         /*!< (@ 0x40351000) R_USB_HS0 Structure  
             __IOM uint16_t BEMPE : 1;  /*!< [10..10] Buffer Empty Interrupt Enable                                    */
             __IOM uint16_t CTRE  : 1;  /*!< [11..11] Control Transfer Stage Transition Interrupt Enable               */
             __IOM uint16_t DVSE  : 1;  /*!< [12..12] Device State Transition Interrupt Enable                         */
-            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Up2025-11-04 Interrupt Enable                             */
+            __IOM uint16_t SOFE  : 1;  /*!< [13..13] Frame Number Update Interrupt Enable                             */
             __IOM uint16_t RSME  : 1;  /*!< [14..14] Resume Interrupt Enable                                          */
             __IOM uint16_t VBSE  : 1;  /*!< [15..15] VBUS Interrupt Enable                                            */
         } INTENB0_b;

@@ -59,7 +59,7 @@ __STATIC_FORCEINLINE void SCB_EnableICache (void)
 
     __DSB();
     __ISB();
-    SCB->ICIALLU = 0UL;                     /* invali2025-11-12 I-Cache */
+    SCB->ICIALLU = 0UL;                     /* invalidate I-Cache */
     __DSB();
     __ISB();
     SCB->CCR |=  (uint32_t)SCB_CCR_IC_Msk;  /* enable I-Cache */
@@ -79,7 +79,7 @@ __STATIC_FORCEINLINE void SCB_DisableICache (void)
     __DSB();
     __ISB();
     SCB->CCR &= ~(uint32_t)SCB_CCR_IC_Msk;  /* disable I-Cache */
-    SCB->ICIALLU = 0UL;                     /* invali2025-11-12 I-Cache */
+    SCB->ICIALLU = 0UL;                     /* invalidate I-Cache */
     __DSB();
     __ISB();
   #endif
@@ -87,10 +87,10 @@ __STATIC_FORCEINLINE void SCB_DisableICache (void)
 
 
 /**
-  \brief   Invali2025-11-12 I-Cache
-  \details Invali2025-11-12s I-Cache
+  \brief   Invalidate I-Cache
+  \details Invalidates I-Cache
   */
-__STATIC_FORCEINLINE void SCB_Invali2025-11-12ICache (void)
+__STATIC_FORCEINLINE void SCB_InvalidateICache (void)
 {
   #if defined (__ICACHE_PRESENT) && (__ICACHE_PRESENT == 1U)
     __DSB();
@@ -103,14 +103,14 @@ __STATIC_FORCEINLINE void SCB_Invali2025-11-12ICache (void)
 
 
 /**
-  \brief   I-Cache Invali2025-11-12 by address
-  \details Invali2025-11-12s I-Cache for the given address.
-           I-Cache is invali2025-11-12d starting from a 32 byte aligned address in 32 byte granularity.
-           I-Cache memory blocks which are part of given address + given size are invali2025-11-12d.
+  \brief   I-Cache Invalidate by address
+  \details Invalidates I-Cache for the given address.
+           I-Cache is invalidated starting from a 32 byte aligned address in 32 byte granularity.
+           I-Cache memory blocks which are part of given address + given size are invalidated.
   \param[in]   addr    address
   \param[in]   isize   size of memory block (in number of bytes)
 */
-__STATIC_FORCEINLINE void SCB_Invali2025-11-12ICache_by_Addr (volatile void *addr, int32_t isize)
+__STATIC_FORCEINLINE void SCB_InvalidateICache_by_Addr (volatile void *addr, int32_t isize)
 {
   #if defined (__ICACHE_PRESENT) && (__ICACHE_PRESENT == 1U)
     if ( isize > 0 ) {
@@ -150,7 +150,7 @@ __STATIC_FORCEINLINE void SCB_EnableDCache (void)
 
     ccsidr = SCB->CCSIDR;
 
-                                            /* invali2025-11-12 D-Cache */
+                                            /* invalidate D-Cache */
     sets = (uint32_t)(CCSIDR_SETS(ccsidr));
     do {
       ways = (uint32_t)(CCSIDR_WAYS(ccsidr));
@@ -207,9 +207,9 @@ __STATIC_FORCEINLINE void SCB_DisableDCache (void)
        * When local variables are in stack, after disabling the cache, flush the
        * local variables cache line for data consistency.
        */
-      /* Clean and invali2025-11-12 the local variable cache. */
+      /* Clean and invalidate the local variable cache. */
     #if defined(__ICCARM__)
-    /* As we can't align the stack to the cache line size, invali2025-11-12 each of the variables */
+    /* As we can't align the stack to the cache line size, invalidate each of the variables */
       SCB->DCCIMVAC = (uint32_t)&locals.sets;
       SCB->DCCIMVAC = (uint32_t)&locals.ways;
       SCB->DCCIMVAC = (uint32_t)&locals.ccsidr;
@@ -221,7 +221,7 @@ __STATIC_FORCEINLINE void SCB_DisableDCache (void)
     #endif
 
     locals.ccsidr = SCB->CCSIDR;
-                                            /* clean & invali2025-11-12 D-Cache */
+                                            /* clean & invalidate D-Cache */
     locals.sets = (uint32_t)(CCSIDR_SETS(locals.ccsidr));
     do {
       locals.ways = (uint32_t)(CCSIDR_WAYS(locals.ccsidr));
@@ -241,10 +241,10 @@ __STATIC_FORCEINLINE void SCB_DisableDCache (void)
 
 
 /**
-  \brief   Invali2025-11-12 D-Cache
-  \details Invali2025-11-12s D-Cache
+  \brief   Invalidate D-Cache
+  \details Invalidates D-Cache
   */
-__STATIC_FORCEINLINE void SCB_Invali2025-11-12DCache (void)
+__STATIC_FORCEINLINE void SCB_InvalidateDCache (void)
 {
   #if defined (__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
     uint32_t ccsidr;
@@ -256,7 +256,7 @@ __STATIC_FORCEINLINE void SCB_Invali2025-11-12DCache (void)
 
     ccsidr = SCB->CCSIDR;
 
-                                            /* invali2025-11-12 D-Cache */
+                                            /* invalidate D-Cache */
     sets = (uint32_t)(CCSIDR_SETS(ccsidr));
     do {
       ways = (uint32_t)(CCSIDR_WAYS(ccsidr));
@@ -311,10 +311,10 @@ __STATIC_FORCEINLINE void SCB_CleanDCache (void)
 
 
 /**
-  \brief   Clean & Invali2025-11-12 D-Cache
-  \details Cleans and Invali2025-11-12s D-Cache
+  \brief   Clean & Invalidate D-Cache
+  \details Cleans and Invalidates D-Cache
   */
-__STATIC_FORCEINLINE void SCB_CleanInvali2025-11-12DCache (void)
+__STATIC_FORCEINLINE void SCB_CleanInvalidateDCache (void)
 {
   #if defined (__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
     uint32_t ccsidr;
@@ -326,7 +326,7 @@ __STATIC_FORCEINLINE void SCB_CleanInvali2025-11-12DCache (void)
 
     ccsidr = SCB->CCSIDR;
 
-                                            /* clean & invali2025-11-12 D-Cache */
+                                            /* clean & invalidate D-Cache */
     sets = (uint32_t)(CCSIDR_SETS(ccsidr));
     do {
       ways = (uint32_t)(CCSIDR_WAYS(ccsidr));
@@ -346,14 +346,14 @@ __STATIC_FORCEINLINE void SCB_CleanInvali2025-11-12DCache (void)
 
 
 /**
-  \brief   D-Cache Invali2025-11-12 by address
-  \details Invali2025-11-12s D-Cache for the given address.
-           D-Cache is invali2025-11-12d starting from a 32 byte aligned address in 32 byte granularity.
-           D-Cache memory blocks which are part of given address + given size are invali2025-11-12d.
+  \brief   D-Cache Invalidate by address
+  \details Invalidates D-Cache for the given address.
+           D-Cache is invalidated starting from a 32 byte aligned address in 32 byte granularity.
+           D-Cache memory blocks which are part of given address + given size are invalidated.
   \param[in]   addr    address
   \param[in]   dsize   size of memory block (in number of bytes)
 */
-__STATIC_FORCEINLINE void SCB_Invali2025-11-12DCache_by_Addr (volatile void *addr, int32_t dsize)
+__STATIC_FORCEINLINE void SCB_InvalidateDCache_by_Addr (volatile void *addr, int32_t dsize)
 {
   #if defined (__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
     if ( dsize > 0 ) {
@@ -406,14 +406,14 @@ __STATIC_FORCEINLINE void SCB_CleanDCache_by_Addr (volatile void *addr, int32_t 
 
 
 /**
-  \brief   D-Cache Clean and Invali2025-11-12 by address
-  \details Cleans and invali2025-11-12s D_Cache for the given address
-           D-Cache is cleaned and invali2025-11-12d starting from a 32 byte aligned address in 32 byte granularity.
-           D-Cache memory blocks which are part of given address + given size are cleaned and invali2025-11-12d.
+  \brief   D-Cache Clean and Invalidate by address
+  \details Cleans and invalidates D_Cache for the given address
+           D-Cache is cleaned and invalidated starting from a 32 byte aligned address in 32 byte granularity.
+           D-Cache memory blocks which are part of given address + given size are cleaned and invalidated.
   \param[in]   addr    address (aligned to 32-byte boundary)
   \param[in]   dsize   size of memory block (in number of bytes)
 */
-__STATIC_FORCEINLINE void SCB_CleanInvali2025-11-12DCache_by_Addr (volatile void *addr, int32_t dsize)
+__STATIC_FORCEINLINE void SCB_CleanInvalidateDCache_by_Addr (volatile void *addr, int32_t dsize)
 {
   #if defined (__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
     if ( dsize > 0 ) {

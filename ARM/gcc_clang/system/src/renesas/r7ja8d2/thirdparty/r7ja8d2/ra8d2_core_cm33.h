@@ -572,17 +572,17 @@ typedef struct
   __IM  uint32_t MVFR1;                  /*!< Offset: 0x244 (R/ )  Media and VFP Feature Register 1 */
   __IM  uint32_t MVFR2;                  /*!< Offset: 0x248 (R/ )  Media and VFP Feature Register 2 */
         uint32_t RESERVED5[1U];
-  __OM  uint32_t ICIALLU;                /*!< Offset: 0x250 ( /W)  I-Cache Invali2025-11-11 All to PoU */
+  __OM  uint32_t ICIALLU;                /*!< Offset: 0x250 ( /W)  I-Cache Invalidate All to PoU */
         uint32_t RESERVED6[1U];
-  __OM  uint32_t ICIMVAU;                /*!< Offset: 0x258 ( /W)  I-Cache Invali2025-11-11 by MVA to PoU */
-  __OM  uint32_t DCIMVAC;                /*!< Offset: 0x25C ( /W)  D-Cache Invali2025-11-11 by MVA to PoC */
-  __OM  uint32_t DCISW;                  /*!< Offset: 0x260 ( /W)  D-Cache Invali2025-11-11 by Set-way */
+  __OM  uint32_t ICIMVAU;                /*!< Offset: 0x258 ( /W)  I-Cache Invalidate by MVA to PoU */
+  __OM  uint32_t DCIMVAC;                /*!< Offset: 0x25C ( /W)  D-Cache Invalidate by MVA to PoC */
+  __OM  uint32_t DCISW;                  /*!< Offset: 0x260 ( /W)  D-Cache Invalidate by Set-way */
   __OM  uint32_t DCCMVAU;                /*!< Offset: 0x264 ( /W)  D-Cache Clean by MVA to PoU */
   __OM  uint32_t DCCMVAC;                /*!< Offset: 0x268 ( /W)  D-Cache Clean by MVA to PoC */
   __OM  uint32_t DCCSW;                  /*!< Offset: 0x26C ( /W)  D-Cache Clean by Set-way */
-  __OM  uint32_t DCCIMVAC;               /*!< Offset: 0x270 ( /W)  D-Cache Clean and Invali2025-11-11 by MVA to PoC */
-  __OM  uint32_t DCCISW;                 /*!< Offset: 0x274 ( /W)  D-Cache Clean and Invali2025-11-11 by Set-way */
-  __OM  uint32_t BPIALL;                 /*!< Offset: 0x278 ( /W)  Branch Predictor Invali2025-11-11 All */
+  __OM  uint32_t DCCIMVAC;               /*!< Offset: 0x270 ( /W)  D-Cache Clean and Invalidate by MVA to PoC */
+  __OM  uint32_t DCCISW;                 /*!< Offset: 0x274 ( /W)  D-Cache Clean and Invalidate by Set-way */
+  __OM  uint32_t BPIALL;                 /*!< Offset: 0x278 ( /W)  Branch Predictor Invalidate All */
 } SCB_Type;
 
 /** \brief SCB CPUID Register Definitions */
@@ -937,7 +937,7 @@ typedef struct
 #define SCB_STIR_INTID_Pos                  0U                                            /*!< SCB STIR: INTID Position */
 #define SCB_STIR_INTID_Msk                 (0x1FFUL /*<< SCB_STIR_INTID_Pos*/)            /*!< SCB STIR: INTID Mask */
 
-/** \brief SCB D-Cache Invali2025-11-11 by Set-way Register Definitions */
+/** \brief SCB D-Cache Invalidate by Set-way Register Definitions */
 #define SCB_DCISW_WAY_Pos                  30U                                            /*!< SCB DCISW: Way Position */
 #define SCB_DCISW_WAY_Msk                  (3UL << SCB_DCISW_WAY_Pos)                     /*!< SCB DCISW: Way Mask */
 
@@ -951,7 +951,7 @@ typedef struct
 #define SCB_DCCSW_SET_Pos                   5U                                            /*!< SCB DCCSW: Set Position */
 #define SCB_DCCSW_SET_Msk                  (0x1FFUL << SCB_DCCSW_SET_Pos)                 /*!< SCB DCCSW: Set Mask */
 
-/** \brief SCB D-Cache Clean and Invali2025-11-11 by Set-way Register Definitions */
+/** \brief SCB D-Cache Clean and Invalidate by Set-way Register Definitions */
 #define SCB_DCCISW_WAY_Pos                 30U                                            /*!< SCB DCCISW: Way Position */
 #define SCB_DCCISW_WAY_Msk                 (3UL << SCB_DCCISW_WAY_Pos)                    /*!< SCB DCCISW: Way Mask */
 

@@ -34,7 +34,7 @@
  * \note  See the Armv8.1-M Architecture Reference Manual for full details on these PMU events.
  * */
 
-#define ARM_PMU_SW_INCR                              0x0000             /*!< Software up2025-11-04 to the PMU_SWINC register, architecturally executed and condition code check pass */
+#define ARM_PMU_SW_INCR                              0x0000             /*!< Software update to the PMU_SWINC register, architecturally executed and condition code check pass */
 #define ARM_PMU_L1I_CACHE_REFILL                     0x0001             /*!< L1 I-Cache refill */
 #define ARM_PMU_L1D_CACHE_REFILL                     0x0003             /*!< L1 D-Cache refill */
 #define ARM_PMU_L1D_CACHE                            0x0004             /*!< L1 D-Cache access */
