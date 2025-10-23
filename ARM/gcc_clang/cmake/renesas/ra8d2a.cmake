@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7KA8D2ADLCAB$|^R7KA8D2ADLCAC$|^R7KA8D2ADDCAB$|^R7KA8D2ADDCAC$|^R7KA8D2AFLCAB$|^R7KA8D2AFLCAC$|^R7KA8D2AFDCAB$|^R7KA8D2AFDCAC$")
+    set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ra8d2a/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/ra8d2a/thirdparty/ra8d2a)
+    set(${thirdpartyInstall} ra8d2a/thirdparty/ra8d2a PARENT_SCOPE)
+endif()

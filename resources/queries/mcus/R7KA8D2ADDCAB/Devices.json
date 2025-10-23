@@ -1,0 +1,18 @@
+{
+    "def_file": "R7KA8D2ADDCAB.json",
+    "family_uid": "RA8D2",
+    "flash": "524288",
+    "icon": "images/mcu/renesas.png",
+    "max_speed": "1000.000",
+    "name": "R7KA8D2ADDCAB",
+    "ram": "1916928",
+    "sdk_config": "{\"MCU_NAME\":\"R7KA8D2ADDCAB\",\"CORE_NAME\":\"M85\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "R7KA8D2ADDCAB",
+    "vendor": "Renesas",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ra8d2a\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ra8d2a\"}"
+}
