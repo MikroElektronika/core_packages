@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^CY9AF144LBPMC-G-JNE2$|^CY9AF144LBQN-G-AVE2$|^CY9AF144MBBGL-GK9E1$|^CY9AF144MBPMC-G-JNE2$|^CY9AF144MBPMC1-G-JNE2$|^CY9AF144NBBGL-GK9E1$|^CY9AF144NBPMC-G-JNE2$|^CY9AF144NBPQC-G-JNE2$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cy9af144/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/cy9af144/thirdparty/cy9af144)
+    set(${thirdpartyInstall} cy9af144/thirdparty/cy9af144 PARENT_SCOPE)
+endif()
