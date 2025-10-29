@@ -1,0 +1,6 @@
+{
+    "core": "M3",
+    "delay_src_path": "delays/m3/__lib_delays.c",
+    "mcu": "CY9BF322LPMC1-GNE2",
+    "clock": "1"
+}
