@@ -1,0 +1,18 @@
+{
+    "def_file": "CY9BF465LQN-G-AVE2.json",
+    "family_uid": "CY9BFX6XK_L",
+    "flash": "393216",
+    "icon": "images/mcu/infineon.png",
+    "max_speed": "160.000",
+    "name": "CY9BF465LQN-G-AVE2",
+    "ram": "49152",
+    "sdk_config": "{\"MCU_NAME\":\"CY9BF465LQN-G-AVE2\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "CY9BF465LQN-G-AVE2",
+    "vendor": "Infineon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_cy9bf465\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_cy9bf465\"}"
+}

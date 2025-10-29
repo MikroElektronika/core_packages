@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^S6E1C31D0AGN20000$|^S6E1C31D0AGV20000$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/s6e1c31d/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/s6e1c31d/thirdparty/s6e1c31d)
+    set(${thirdpartyInstall} s6e1c31d/thirdparty/s6e1c31d PARENT_SCOPE)
+endif()
