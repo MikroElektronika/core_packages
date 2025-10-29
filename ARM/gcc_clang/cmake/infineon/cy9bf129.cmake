@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^CY9BF129SAPMC-GK7CGE2$|^CY9BF129TABGL-GK7E1$|^CY9BF129TAPMC-GK7CGE2$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cy9bf129/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/cy9bf129/thirdparty/cy9bf129)
+    set(${thirdpartyInstall} cy9bf129/thirdparty/cy9bf129 PARENT_SCOPE)
+endif()
