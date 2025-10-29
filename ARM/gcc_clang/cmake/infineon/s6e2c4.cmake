@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^S6E2C48H0AGV2000A$|^S6E2C48J0AGB1000A$|^S6E2C48J0AGV2000A$|^S6E2C48L0AGL2000A$|^S6E2C49H0AGV2000A$|^S6E2C49J0AGB1000A$|^S6E2C49J0AGV2000A$|^S6E2C49L0AGL2000A$|^S6E2C4AH0AGV2000A$|^S6E2C4AJ0AGB1000A$|^S6E2C4AJ0AGV2000A$|^S6E2C4AL0AGL2000A$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/s6e2c4/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/s6e2c4/thirdparty/s6e2c4)
+    set(${thirdpartyInstall} s6e2c4/thirdparty/s6e2c4 PARENT_SCOPE)
+endif()
