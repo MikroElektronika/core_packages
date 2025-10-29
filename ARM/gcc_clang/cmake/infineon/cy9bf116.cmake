@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^CY9BF116NBGL-GK9E1$|^CY9BF116NPMC-G-JNE2$|^CY9BF116NPQC-G-JNE2$|^CY9BF116RPMC-G-F4FKE1$|^CY9BF116RPMC-G-JNE2$|^CY9BF116SPMC-GK7E1$|^CY9BF116TBGL-G-K5E1$|^CY9BF116TBGL-GK7E1$|^CY9BF116TPMC-GK7FKCGE1$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cy9bf116/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/cy9bf116/thirdparty/cy9bf116)
+    set(${thirdpartyInstall} cy9bf116/thirdparty/cy9bf116 PARENT_SCOPE)
+endif()

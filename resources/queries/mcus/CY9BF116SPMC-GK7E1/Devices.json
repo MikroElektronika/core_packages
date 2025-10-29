@@ -1,0 +1,18 @@
+{
+    "def_file": "CY9BF116SPMC-GK7E1.json",
+    "family_uid": "CY9BFX1XS_T",
+    "flash": "557056",
+    "icon": "images/mcu/infineon.png",
+    "max_speed": "144.000",
+    "name": "CY9BF116SPMC-GK7E1",
+    "ram": "65536",
+    "sdk_config": "{\"MCU_NAME\":\"CY9BF116SPMC-GK7E1\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "CY9BF116SPMC-GK7E1",
+    "vendor": "Infineon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_cy9bf116\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_cy9bf116\"}"
+}
