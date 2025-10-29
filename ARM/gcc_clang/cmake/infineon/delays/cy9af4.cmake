@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^CY9AF421KPMC1-G-JNE2$|^CY9AF421KWQN-G-JNE2$|^CY9AF421LPMC-G-JNE2$|^CY9AF421LPMC1-G-JNE2$|^CY9AF421LWQN-G-JNE2$")
+    list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/6)")
+endif()
