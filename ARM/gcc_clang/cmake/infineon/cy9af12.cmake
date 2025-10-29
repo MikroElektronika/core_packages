@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^CY9AF121KPMC-G-JNE2$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cy9af12/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/cy9af12/thirdparty/cy9af12)
+    set(${thirdpartyInstall} cy9af12/thirdparty/cy9af12 PARENT_SCOPE)
+endif()
