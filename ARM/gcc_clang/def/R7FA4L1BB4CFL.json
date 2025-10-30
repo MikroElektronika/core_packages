@@ -321,168 +321,100 @@
                     "mask": "1f00",
                     "settings": [
                         {
-                            "label": "x10.0",
+                            "label": "x4.0",
                             "value": "700"
                         },
                         {
-                            "label": "x10.5",
+                            "label": "x4.5",
                             "value": "800"
                         },
                         {
-                            "label": "x11.0",
+                            "label": "x5.0",
                             "value": "900"
                         },
                         {
-                            "label": "x11.5",
+                            "label": "x5.5",
                             "value": "a00"
                         },
                         {
-                            "label": "x12.0",
+                            "label": "x6.0",
                             "value": "b00"
                         },
                         {
-                            "label": "x12.5",
+                            "label": "x6.5",
                             "value": "c00"
                         },
                         {
-                            "label": "x13.0",
+                            "label": "x7.0",
                             "value": "d00"
                         },
                         {
-                            "label": "x13.5",
+                            "label": "x7.5",
                             "value": "e00"
                         },
                         {
-                            "label": "x14.0",
+                            "label": "x8.0",
                             "value": "f00"
                         },
                         {
-                            "label": "x14.5",
+                            "label": "x8.5",
                             "value": "1000"
                         },
                         {
-                            "label": "x15.0",
+                            "label": "x9.0",
                             "value": "1100"
                         },
                         {
-                            "label": "x15.5",
+                            "label": "x9.5",
                             "value": "1200"
                         },
                         {
-                            "label": "x16.0",
+                            "label": "x10.0",
                             "value": "1300"
                         },
                         {
-                            "label": "x16.5",
+                            "label": "x10.5",
                             "value": "1400"
                         },
                         {
-                            "label": "x17.0",
+                            "label": "x11.0",
                             "value": "1500"
                         },
                         {
-                            "label": "x17.5",
+                            "label": "x11.5",
                             "value": "1600"
                         },
                         {
-                            "label": "x18.0",
+                            "label": "x12.0",
                             "value": "1700"
                         },
                         {
-                            "label": "x18.5",
+                            "label": "x12.5",
                             "value": "1800"
                         },
                         {
-                            "label": "x19.0",
+                            "label": "x13.0",
                             "value": "1900"
                         },
                         {
-                            "label": "x19.5",
+                            "label": "x13.5",
                             "value": "1a00"
                         },
                         {
-                            "label": "x20.0",
+                            "label": "x14.0",
                             "value": "1b00"
                         },
                         {
-                            "label": "x20.5",
+                            "label": "x14.5",
                             "value": "1c00"
                         },
                         {
-                            "label": "x21.0",
+                            "label": "x15.0",
                             "value": "1d00"
                         },
                         {
-                            "label": "x21.5",
+                            "label": "x15.5",
                             "value": "1e00"
-                        },
-                        {
-                            "label": "x22.0",
-                            "value": "1f00"
-                        },
-                        {
-                            "label": "x22.5",
-                            "value": "2000"
-                        },
-                        {
-                            "label": "x23.0",
-                            "value": "2100"
-                        },
-                        {
-                            "label": "x23.5",
-                            "value": "2200"
-                        },
-                        {
-                            "label": "x24.0",
-                            "value": "2300"
-                        },
-                        {
-                            "label": "x24.5",
-                            "value": "2400"
-                        },
-                        {
-                            "label": "x25.0",
-                            "value": "2500"
-                        },
-                        {
-                            "label": "x25.5",
-                            "value": "2600"
-                        },
-                        {
-                            "label": "x26.0",
-                            "value": "2700"
-                        },
-                        {
-                            "label": "x26.5",
-                            "value": "2800"
-                        },
-                        {
-                            "label": "x27.0",
-                            "value": "2900"
-                        },
-                        {
-                            "label": "x27.5",
-                            "value": "2a00"
-                        },
-                        {
-                            "label": "x28.0",
-                            "value": "2b00"
-                        },
-                        {
-                            "label": "x28.5",
-                            "value": "2c00"
-                        },
-                        {
-                            "label": "x29.0",
-                            "value": "2d00"
-                        },
-                        {
-                            "label": "x29.5",
-                            "value": "2e00"
-                        },
-                        {
-                            "label": "x30.0",
-                            "value": "2f00"
                         }
                     ]
                 }
@@ -514,35 +446,6 @@
             ],
             "key": "SYSTEM_PLLCR",
             "unused": "000000fe"
-        },
-        {
-            "address": "4001e031",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "MEMWAIT",
-                    "label": "Memory Wait Cycle Select for Code Flash",
-                    "mask": "3",
-                    "settings": [
-                        {
-                            "label": "No wait",
-                            "value": "0"
-                        },
-                        {
-                            "label": "One wait",
-                            "value": "1"
-                        },
-                        {
-                            "label": "Two waits",
-                            "value": "2"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_MEMWAIT",
-            "unused": "000000fc"
         },
         {
             "address": "4001e032",
