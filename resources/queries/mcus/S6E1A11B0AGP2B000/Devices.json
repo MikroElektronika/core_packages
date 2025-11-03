@@ -1,0 +1,18 @@
+{
+    "def_file": "S6E1A11B0AGP2B000.json",
+    "family_uid": "S6E1A",
+    "flash": "57400",
+    "icon": "images/mcu/infineon.png",
+    "max_speed": "40.000",
+    "name": "S6E1A11B0AGP2B000",
+    "ram": "6150",
+    "sdk_config": "{\"MCU_NAME\":\"S6E1A11B0AGP2B000\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "S6E1A11B0AGP2B000",
+    "vendor": "Infineon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_s6e1a11b\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_s6e1a11b\"}"
+}

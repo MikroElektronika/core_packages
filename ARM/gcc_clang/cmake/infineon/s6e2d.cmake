@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^S6E2D35J0AGV2000A$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/s6e2d/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/s6e2d/thirdparty/s6e2d)
+    set(${thirdpartyInstall} s6e2d/thirdparty/s6e2d PARENT_SCOPE)
+endif()
