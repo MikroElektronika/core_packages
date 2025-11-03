@@ -1,11 +1,11 @@
 {
     "def_file": "S6E1A12B0AGP20000.json",
     "family_uid": "S6E1A",
-    "flash": "92364800",
+    "flash": "90200",
     "icon": "images/mcu/infineon.png",
     "max_speed": "40.000",
     "name": "S6E1A12B0AGP20000",
-    "ram": "6297600",
+    "ram": "6150",
     "sdk_config": "{\"MCU_NAME\":\"S6E1A12B0AGP20000\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
     "necto_config": "",
     "uid": "S6E1A12B0AGP20000",
