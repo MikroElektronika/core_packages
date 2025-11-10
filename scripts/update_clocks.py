@@ -57,6 +57,10 @@ def index_clocks(es: Elasticsearch, release_details, version, current_hash):
         resp = es.index(index=os.environ['ES_INDEX_TEST'], doc_type=None, id=f'clocks', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
+        doc['_type'] = '_doc'
+        resp = es.index(index=os.environ['ES_INDEX_EXPERIMENTAL'], doc_type=None, id=f'clocks', body=doc)
+        print(f"{resp['result']} {resp['_id']}")
+
         resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=f'clocks', body=doc)
         print(f"{resp['result']} {resp['_id']}")
 
