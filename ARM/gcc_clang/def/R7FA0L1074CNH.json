@@ -23,7 +23,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "SODRV",
                     "label": "Sub-clock Oscillator Drive Capability Switching",
                     "mask": "6",
@@ -132,10 +132,10 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "10",
+                    "init": "2",
                     "key": "HCFRQ1",
                     "label": "HOCO Frequency Setting",
-                    "mask": "38",
+                    "mask": "3",
                     "settings": [
                         {
                             "label": "24 MHz",
@@ -143,13 +143,13 @@
                         },
                         {
                             "label": "32 MHz",
-                            "value": "10"
+                            "value": "2"
                         }
                     ]
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "ffffffc7"
+            "unused": "fffffffc"
         },
         {
             "address": "4001e809",
@@ -257,7 +257,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "3",
+                    "init": "0",
                     "key": "DIV",
                     "label": "High-speed On-chip Oscillator Clock Division Ratio",
                     "mask": "7",
@@ -414,7 +414,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "CKSEL",
                     "label": "FSUB Clock Source Select",
                     "mask": "1",
@@ -464,7 +464,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "WUTMMCK0",
                     "label": "Selection of the operating clock source for the realtime clock, 32-bit interval timer, serial interface UARTA",
                     "mask": "10",
@@ -489,7 +489,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "80",
+                    "init": "c0",
                     "key": "MODE",
                     "label": "Operating Mode Select",
                     "mask": "c0",
@@ -516,5 +516,5 @@
     "core": "M23",
     "delay_src_path": "delays/m23/__lib_delays.c",
     "mcu": "R7FA0L1074CNH",
-    "clock": "1"
+    "clock": "32"
 }
