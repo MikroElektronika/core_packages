@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "4",
+                    "init": "0",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "7",
@@ -43,7 +43,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "400",
+                    "init": "100",
                     "key": "PCKB",
                     "label": "Peripheral Module Clock B (PCLKB) Select",
                     "mask": "700",
@@ -80,7 +80,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "4000000",
+                    "init": "0",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "7000000",
@@ -125,7 +125,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "CKSEL",
                     "label": "Clock Source Select",
                     "mask": "7",
@@ -230,6 +230,39 @@
             ],
             "key": "SYSTEM_HOCOCR",
             "unused": "000000fe"
+        },
+        {
+            "address": "4001e037",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "HCFRQ1",
+                    "label": "HOCO Frequency Setting 1",
+                    "mask": "38",
+                    "settings": [
+                        {
+                            "label": "24 MHz",
+                            "value": "0"
+                        },
+                        {
+                            "label": "32 MHz",
+                            "value": "10"
+                        },
+                        {
+                            "label": "48 MHz",
+                            "value": "20"
+                        },
+                        {
+                            "label": "64 MHz",
+                            "value": "28"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR2",
+            "unused": "ffffffc7"
         },
         {
             "address": "4001e038",
@@ -357,7 +390,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "OPCM",
                     "label": "Operating Power Control Mode Select",
                     "mask": "3",
@@ -375,23 +408,6 @@
                             "value": "3"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "OPCMTSF",
-                    "label": "Operating Power Control Mode Transition Status Flag",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Transition completed",
-                            "value": "0"
-                        },
-                        {
-                            "label": "During transition",
-                            "value": "10"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_OPCCR",
@@ -403,7 +419,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "9",
                     "key": "MSTS",
                     "label": "Main Clock Oscillator Wait Time Setting",
                     "mask": "f",
@@ -497,23 +513,6 @@
                         {
                             "label": "Subosc-speed mode",
                             "value": "1"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SOPCMTSF",
-                    "label": "Operating Power Control Mode Transition Status Flag",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Transition completed",
-                            "value": "0"
-                        },
-                        {
-                            "label": "During transition",
-                            "value": "10"
                         }
                     ]
                 }
@@ -623,7 +622,7 @@
         },
         {
             "address": "4001e490",
-            "default": "0",
+            "default": "1",
             "fields": [
                 {
                     "hidden": false,
@@ -650,5 +649,5 @@
     "core": "M23",
     "delay_src_path": "delays/m23/__lib_delays.c",
     "mcu": "R7FA2L2073CFJ",
-    "clock": "1"
+    "clock": "48"
 }
