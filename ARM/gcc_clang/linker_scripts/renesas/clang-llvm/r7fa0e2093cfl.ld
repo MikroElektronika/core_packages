@@ -2,7 +2,7 @@
 RAM_START = 0x20004000;
 RAM_LENGTH = 0x00004000;
 FLASH_START = 0x00000440;
-FLASH_LENGTH = 0x0000fbc0;
+FLASH_LENGTH = 0x0001fbc0;
 DATA_FLASH_START = 0x40100000;
 DATA_FLASH_LENGTH = 0x00000800;
 OPTION_SETTING_OFS0_START = 0x00000400;
@@ -325,6 +325,16 @@ SECTIONS
     {
         __ddsc_OPTION_SETTING_OSIS_END = . ;
     }  > OPTION_SETTING_OSIS
+
+    .bss :
+    {
+        . = ALIGN(4);
+        __bss_start__ = .;
+        *(.bss*)
+        *(COMMON)
+        . = ALIGN(4);
+        __bss_end__ = .;
+    } > RAM
 }
 
 PROVIDE( __tls_base = ADDR(__ram_tdata$$) );
