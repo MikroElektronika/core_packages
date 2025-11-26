@@ -117,7 +117,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2000",
+                    "init": "1000",
                     "key": "PCKA",
                     "label": "Peripheral Module Clock A (PCLKA) Select",
                     "mask": "7000",
@@ -277,7 +277,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLIDIV",
                     "label": "PLL Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -315,7 +315,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2700",
+                    "init": "1300",
                     "key": "PLLMUL",
                     "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "3f00",
