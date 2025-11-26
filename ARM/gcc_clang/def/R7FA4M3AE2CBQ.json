@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "7",
@@ -43,7 +43,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10",
+                    "init": "20",
                     "key": "PCKC",
                     "label": "Peripheral Module Clock C (PCLKC) Select",
                     "mask": "70",
@@ -80,7 +80,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "100",
+                    "init": "200",
                     "key": "PCKB",
                     "label": "Peripheral Module Clock B (PCLKB) Select",
                     "mask": "700",
@@ -117,7 +117,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2000",
                     "key": "PCKA",
                     "label": "Peripheral Module Clock A (PCLKA) Select",
                     "mask": "7000",
