@@ -602,16 +602,16 @@ void SystemInit(void)
     // Enable MSP monitoring
     R_MPU_SPMON->SP[0].CTL = 1U;
 
-    memcpy(
-        &__ram_from_flash$$Base,
-        &__ram_from_flash$$Load,
-        (uint32_t)&__ram_from_flash$$Limit - (uint32_t)&__ram_from_flash$$Base
-    );
-
     memset(
         &__ram_zero$$Base,
         0,
         (uint32_t)&__ram_zero$$Limit - (uint32_t)&__ram_zero$$Base
+    );
+
+    memcpy(
+        &__ram_from_flash$$Base,
+        &__ram_from_flash$$Load,
+        (uint32_t)&__ram_from_flash$$Limit - (uint32_t)&__ram_from_flash$$Base
     );
 
     int32_t count = __init_array_end - __init_array_start;
