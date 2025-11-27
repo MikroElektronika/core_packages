@@ -2,7 +2,7 @@
     "config_registers": [
         {
             "address": "4001e800",
-            "default": "00",
+            "default": "0",
             "fields": [
                 {
                     "hidden": false,
@@ -12,28 +12,39 @@
                     "mask": "1",
                     "settings": [
                         {
-                            "label": "MODRV bit OFF",
+                            "label": "1 MHz to 10 MHz",
                             "value": "0"
                         },
                         {
-                            "label": "MODRV bit ON",
+                            "label": "10 MHz to 20 MHz",
                             "value": "1"
                         }
                     ]
                 },
                 {
-                    "hidden": true,
-                    "init": "00",
+                    "hidden": false,
+                    "init": "2",
                     "key": "SODRV",
                     "label": "Sub-Clock Oscillator Drive Capability Switching",
-                    "mask": "0",
-                    "settings_array": {
-                        "decrease": false,
-                        "disabled_when_zero": false,
-                        "inverted": false,
-                        "max_value": "3",
-                        "min_value": "0"
-                    }
+                    "mask": "6",
+                    "settings": [
+                        {
+                            "label": "Low Power Mode 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Normal Mode",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Low Power Mode 2",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Low Power Mode 3",
+                            "value": "6"
+                        }
+                    ]
                 },
                 {
                     "hidden": false,
@@ -43,134 +54,296 @@
                     "mask": "10",
                     "settings": [
                         {
-                            "label": "SOSEL bit OFF",
+                            "label": "Port mode",
                             "value": "0"
                         },
                         {
-                            "label": "SOSEL bit ON",
+                            "label": "Resonator",
                             "value": "10"
                         }
                     ]
                 },
                 {
-                    "hidden": true,
-                    "init": "00",
+                    "hidden": false,
+                    "init": "40",
                     "key": "MOSEL",
                     "label": "Main Clock Oscillator Switching",
-                    "mask": "0",
-                    "settings_array": {
-                        "decrease": false,
-                        "disabled_when_zero": false,
-                        "inverted": false,
-                        "max_value": "3",
-                        "min_value": "0"
-                    }
+                    "mask": "c0",
+                    "settings": [
+                        {
+                            "label": "Resonator",
+                            "value": "40"
+                        },
+                        {
+                            "label": "External clock input mode",
+                            "value": "c0"
+                        }
+                    ]
                 }
             ],
-            "key": "SYSC_CMC",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e803",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_SOMRG",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e804",
-            "default": "90",
-            "fields": [],
-            "key": "SYSC_MIOTRM",
-            "unused": "ffffff6f"
-        },
-        {
-            "address": "4001e805",
-            "default": "80",
-            "fields": [],
-            "key": "SYSC_LIOTRM",
-            "unused": "ffffff7f"
+            "key": "SYSTEM_CMC",
+            "unused": "00000020"
         },
         {
             "address": "4001e808",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_HOCOCR",
-            "unused": "ffffffff"
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HCSTP",
+                    "label": "HOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the HOCO clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the HOCO clock",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR",
+            "unused": "000000fe"
         },
         {
-            "address": "4001e809",
-            "default": "01",
-            "fields": [],
-            "key": "SYSC_MOCOCR",
-            "unused": "fffffffe"
-        },
-        {
-            "address": "4001e80a",
-            "default": "01",
-            "fields": [],
-            "key": "SYSC_LOCOCR",
-            "unused": "fffffffe"
-        },
-        {
-            "address": "4001e80b",
-            "default": "01",
-            "fields": [],
-            "key": "SYSC_MOSCCR",
-            "unused": "fffffffe"
-        },
-        {
-            "address": "4001e80c",
-            "default": "01",
-            "fields": [],
-            "key": "SYSC_SOSCCR",
-            "unused": "fffffffe"
-        },
-        {
-            "address": "4001e810",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_OSTC",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e811",
-            "default": "07",
-            "fields": [],
-            "key": "SYSC_OSTS",
-            "unused": "fffffff8"
-        },
-        {
-            "address": "4001e812",
-            "default": "01",
-            "fields": [],
-            "key": "SYSC_OSCSF",
-            "unused": "fffffffe"
-        },
-        {
-            "address": "4001e818",
-            "default": "03",
-            "fields": [],
-            "key": "SYSC_HOCODIV",
+            "address": "4001e037",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "HCFRQ1",
+                    "label": "HOCO Frequency Setting",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "24 MHz",
+                            "value": "0"
+                        },
+                        {
+                            "label": "32 MHz",
+                            "value": "2"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR2",
             "unused": "fffffffc"
         },
         {
+            "address": "4001e809",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "MCSTP",
+                    "label": "MOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "MOCO clock is operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO clock is stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOCOCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e80a",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "LCSTP",
+                    "label": "LOCO Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the LOCO clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the LOCO clock",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LOCOCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e80b",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "MOSTP",
+                    "label": "Main Clock Oscillator Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the main clock oscillator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the main clock oscillator",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e80c",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "SOSTP",
+                    "label": "Sub Clock Oscillator Stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operate the sub-clock oscillator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop the sub-clock oscillator",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SOSCCR",
+            "unused": "000000fe"
+        },
+        {
+            "address": "4001e818",
+            "default": "3",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIV",
+                    "label": "High-speed On-chip Oscillator Clock Division Ratio",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "1/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "1/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "1/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "1/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "1/32",
+                            "value": "5"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCODIV",
+            "unused": "000000f8"
+        },
+        {
             "address": "4001e819",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_MOCODIV",
-            "unused": "ffffffff"
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIV",
+                    "label": "Selection of the Middle-speed On-chip Oscillator Clock Frequency",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "1/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "1/4",
+                            "value": "2"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOCODIV",
+            "unused": "000000fc"
         },
         {
             "address": "4001e81a",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_MOSCDIV",
-            "unused": "ffffffff"
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DIV",
+                    "label": "Selection Division Ratio for the MOSC Clock",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "1/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "1/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "1/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "1/16",
+                            "value": "4"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCDIV",
+            "unused": "000000f8"
         },
         {
             "address": "4001e820",
-            "default": "00",
+            "default": "0",
             "fields": [
                 {
                     "hidden": false,
@@ -180,22 +353,22 @@
                     "mask": "1",
                     "settings": [
                         {
-                            "label": "CKSEL bit OFF",
+                            "label": "HOCO",
                             "value": "0"
                         },
                         {
-                            "label": "CKSEL bit ON",
+                            "label": "MOCO",
                             "value": "1"
                         }
                     ]
                 }
             ],
-            "key": "SYSC_FOCOSCR",
-            "unused": "ffffffff"
+            "key": "SYSTEM_FOCOSCR",
+            "unused": "000000fc"
         },
         {
             "address": "4001e821",
-            "default": "00",
+            "default": "0",
             "fields": [
                 {
                     "hidden": false,
@@ -205,29 +378,47 @@
                     "mask": "1",
                     "settings": [
                         {
-                            "label": "CKSEL bit OFF",
+                            "label": "FOCO",
                             "value": "0"
                         },
                         {
-                            "label": "CKSEL bit ON",
+                            "label": "MOSC",
                             "value": "1"
                         }
                     ]
                 }
             ],
-            "key": "SYSC_FMAINSCR",
-            "unused": "ffffffff"
+            "key": "SYSTEM_FMAINSCR",
+            "unused": "000000fc"
         },
         {
             "address": "4001e822",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_FSUBSCR",
-            "unused": "ffffffff"
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "CKSEL",
+                    "label": "FSUB Clock Source Select",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "SOSC",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_FSUBSCR",
+            "unused": "000000fe"
         },
         {
             "address": "4001e823",
-            "default": "00",
+            "default": "0",
             "fields": [
                 {
                     "hidden": false,
@@ -237,318 +428,76 @@
                     "mask": "1",
                     "settings": [
                         {
-                            "label": "CKSEL bit OFF",
+                            "label": "FMAIN",
                             "value": "0"
                         },
                         {
-                            "label": "CKSEL bit ON",
+                            "label": "FSUB",
                             "value": "1"
                         }
                     ]
                 }
             ],
-            "key": "SYSC_ICLKSCR",
-            "unused": "ffffffff"
+            "key": "SYSTEM_ICLKSCR",
+            "unused": "000000fc"
         },
         {
             "address": "4001e824",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_OSMC",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e830",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_RESF",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e831",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_PORSR",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e840",
-            "default": "19",
+            "default": "0",
             "fields": [
                 {
-                    "hidden": true,
-                    "init": "19",
-                    "key": "LVD1V",
-                    "label": "Voltage Detection 1 Level Select",
-                    "mask": "0",
-                    "settings_array": {
-                        "decrease": false,
-                        "disabled_when_zero": false,
-                        "inverted": false,
-                        "max_value": "31",
-                        "min_value": "0"
-                    }
-                },
-                {
                     "hidden": false,
-                    "init": "0",
-                    "key": "IRQSEL",
-                    "label": "Voltage Monitor 1 Interrupt Type Select",
-                    "mask": "20",
+                    "init": "10",
+                    "key": "WUTMMCK0",
+                    "label": "Selection of the Operating clock source for the Realtime Clock, 32-bit Interval Timer, Serial Interface UARTA",
+                    "mask": "10",
                     "settings": [
                         {
-                            "label": "IRQSEL bit OFF",
+                            "label": "SOSC",
                             "value": "0"
                         },
                         {
-                            "label": "IRQSEL bit ON",
-                            "value": "20"
+                            "label": "LOCO",
+                            "value": "10"
                         }
                     ]
-                },
+                }
+            ],
+            "key": "SYSTEM_OSMC",
+            "unused": "000000ef"
+        },
+        {
+            "address": "407ec20a",
+            "default": "80",
+            "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
-                    "key": "LVD1SEL",
-                    "label": "Operation mode of LVD1",
-                    "mask": "40",
+                    "init": "c0",
+                    "key": "MODE",
+                    "label": "Operating Mode Select",
+                    "mask": "c0",
                     "settings": [
                         {
-                            "label": "LVD1SEL bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "LVD1SEL bit ON",
+                            "label": "Low-speed mode",
                             "value": "40"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "LVD1EN",
-                    "label": "Enabling Operation of LVD1",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "LVD1EN bit OFF",
-                            "value": "0"
                         },
                         {
-                            "label": "LVD1EN bit ON",
+                            "label": "Middle-speed mode",
                             "value": "80"
+                        },
+                        {
+                            "label": "High-speed mode",
+                            "value": "c0"
                         }
                     ]
                 }
             ],
-            "key": "SYSC_LVD1CR",
-            "unused": "ffffffe6"
-        },
-        {
-            "address": "4001e841",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_LVD1MKR",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e843",
-            "default": "02",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "DET",
-                    "label": "Voltage Monitor 1 Voltage Variation Detection Flag",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "DET bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "DET bit ON",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSC_LVD1SR",
-            "unused": "fffffffd"
-        },
-        {
-            "address": "4001e860",
-            "default": "0000",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "FLSTP",
-                    "label": "Flash Mode in Sleep Mode or in Snooze Mode",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "FLSTP bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "FLSTP bit ON",
-                            "value": "80"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "FWKUP",
-                    "label": "Setting for Starting the High-speed On-chip Oscillator at the times of release from Software Standby Mode and of Transitions to Snooze Mode",
-                    "mask": "100",
-                    "settings": [
-                        {
-                            "label": "FWKUP bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "FWKUP bit ON",
-                            "value": "100"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "RTCLPC",
-                    "label": "SOSC Setting in Software Standby Mode or in Snooze Mode",
-                    "mask": "200",
-                    "settings": [
-                        {
-                            "label": "RTCLPC bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "RTCLPC bit ON",
-                            "value": "200"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SSBY",
-                    "label": "Software Standby Mode Select",
-                    "mask": "8000",
-                    "settings": [
-                        {
-                            "label": "SSBY bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "SSBY bit ON",
-                            "value": "8000"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSC_SBYCR",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e862",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_PSMCR",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e863",
-            "default": "00",
-            "fields": [],
-            "key": "SYSC_SYOCDCR",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001e8fe",
-            "default": "0000",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PRC0",
-                    "label": "Enable writing to the registers related to the clock generation circuit",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "PRC0 bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "PRC0 bit ON",
-                            "value": "1"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PRC1",
-                    "label": "Enable writing to the registers related to the low power modes",
-                    "mask": "2",
-                    "settings": [
-                        {
-                            "label": "PRC1 bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "PRC1 bit ON",
-                            "value": "2"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PRC3",
-                    "label": "Enable writing to the registers related to the LVD",
-                    "mask": "8",
-                    "settings": [
-                        {
-                            "label": "PRC3 bit OFF",
-                            "value": "0"
-                        },
-                        {
-                            "label": "PRC3 bit ON",
-                            "value": "8"
-                        }
-                    ]
-                },
-                {
-                    "hidden": true,
-                    "init": "0000",
-                    "key": "PRKEY",
-                    "label": "PRC Key Code",
-                    "mask": "0",
-                    "settings_array": {
-                        "decrease": false,
-                        "disabled_when_zero": false,
-                        "inverted": false,
-                        "max_value": "255",
-                        "min_value": "0"
-                    }
-                }
-            ],
-            "key": "SYSC_PRCR",
-            "unused": "ffffffff"
-        },
-        {
-            "address": "4001ec02",
-            "default": "FFBF",
-            "fields": [],
-            "key": "SYSC_MSTPCRA",
-            "unused": "ffff0040"
+            "key": "SYSTEM_FLMODE",
+            "unused": "0000003f"
         }
     ],
     "core": "M23",
     "delay_src_path": "delays/m23/__lib_delays.c",
     "mcu": "R7FA0E2094CNH",
-    "clock": "1"
+    "clock": "32"
 }
