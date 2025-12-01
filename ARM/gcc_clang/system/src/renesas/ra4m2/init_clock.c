@@ -42,7 +42,6 @@
 #include "core_header.h"
 #include "mcu.h"
 
-
 extern void * __Vectors[];
 
 typedef struct
@@ -347,39 +346,6 @@ const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENT
 // -----------------------------------------------------------------------------------------
 
 /***********************************************************************
- * ID Code Configuration for On-Chip Flash Protection
- * This section places the user-defined 128-bit ID code into a special
- * memory section. These values can be used to lock/unlock the flash.
- *
- * If BSP_FEATURE_BSP_OSIS_PADDING is enabled, each 32-bit word is
- * followed by 0xFFFFFFFF as padding.
- ***********************************************************************/
-#if BSP_FEATURE_FLASH_SUPPORTS_ID_CODE == 1
-
-/** ID code values (4 x 32-bit, optionally padded) */
-BSP_DONT_REMOVE static const uint32_t g_bsp_id_codes[] BSP_PLACE_IN_SECTION(BSP_SECTION_ID_CODE) =
-{
-    BSP_CFG_ID_CODE_LONG_1,
-    #if BSP_FEATURE_BSP_OSIS_PADDING
-    0xFFFFFFFFU,  // Padding after ID code 1
-    #endif
-
-    BSP_CFG_ID_CODE_LONG_2,
-    #if BSP_FEATURE_BSP_OSIS_PADDING
-    0xFFFFFFFFU,  // Padding after ID code 2
-    #endif
-
-    BSP_CFG_ID_CODE_LONG_3,
-    #if BSP_FEATURE_BSP_OSIS_PADDING
-    0xFFFFFFFFU,  // Padding after ID code 3
-    #endif
-
-    BSP_CFG_ID_CODE_LONG_4
-};
-
-#endif  // BSP_FEATURE_FLASH_SUPPORTS_ID_CODE
-
-/***********************************************************************
  * Option Function Select (OFS) Settings
  ***********************************************************************/
 #define OFS_SEQ1                           (0xA001A001 | (1 << 1) | (3 << 2))
@@ -591,16 +557,16 @@ void SystemInit(void)
     // Enable MSP monitoring
     R_MPU_SPMON->SP[0].CTL = 1U;
 
-    memcpy(
-        &__ram_from_flash$$Base,
-        &__ram_from_flash$$Load,
-        (uint32_t)&__ram_from_flash$$Limit - (uint32_t)&__ram_from_flash$$Base
-    );
-
     memset(
         &__ram_zero$$Base,
         0,
         (uint32_t)&__ram_zero$$Limit - (uint32_t)&__ram_zero$$Base
+    );
+
+    memcpy(
+        &__ram_from_flash$$Base,
+        &__ram_from_flash$$Load,
+        (uint32_t)&__ram_from_flash$$Limit - (uint32_t)&__ram_from_flash$$Base
     );
 
     int32_t count = __init_array_end - __init_array_start;
@@ -699,9 +665,7 @@ static void system_clock_configuration() {
 
     Delay_1ms();
 
-    if ( 80000 < FOSC_KHZ_VALUE && 120000 >= FOSC_KHZ_VALUE ) {
-        R_FCACHE->FLWT = 2; // 2 waits
-    } else if ( 40000 < FOSC_KHZ_VALUE ) {
+    if ( 50000 < FOSC_KHZ_VALUE ) {
         R_FCACHE->FLWT = 1; // 1 wait
     } else {
         R_FCACHE->FLWT = 0; // 0 waits
