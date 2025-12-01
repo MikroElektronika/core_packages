@@ -47,14 +47,9 @@ extern "C" {
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 // Note: Changed for MikroE implementation.
-//  #include "core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
+ #include "ra0e2_core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
 // Note: Changed for MikroE implementation.
-//  #include "system.h"                       /*!< R7FA0E209 System                                                          */
-#include <stdint.h>
-
-#define __I volatile // Note: Added for MikroE implementation.
-#define __O __I // Note: Added for MikroE implementation.
-#define __IO __I // Note: Added for MikroE implementation.
+// #include "system.h"                       /*!< R7FA0E209 System                                                          */
 
  #ifndef __IM                              /*!< Fallback for older CMSIS versions                                         */
   #define __IM     __I
@@ -1068,19 +1063,20 @@ typedef struct
 
         struct
         {
-            __IOM uint16_t PODR  : 1;  /*!< [0..0] Port Output Data                                                   */
+            __IOM uint16_t PODR  : 1;  /*!< [0..0] Pmn Output Data                                                    */
             __IM uint16_t  PIDR  : 1;  /*!< [1..1] Pmn State                                                          */
-            __IOM uint16_t PDR   : 1;  /*!< [2..2] PDR                                                                */
+            __IOM uint16_t PDR   : 1;  /*!< [2..2] Pmn Direction                                                      */
             uint16_t             : 1;
-            __IOM uint16_t PCR   : 1;  /*!< [4..4] PCR                                                                */
-            __IOM uint16_t PIM   : 1;  /*!< [5..5] PIM                                                                */
-            __IOM uint16_t NCODR : 1;  /*!< [6..6] NCODR                                                              */
+            __IOM uint16_t PCR   : 1;  /*!< [4..4] Pull-up Control                                                    */
+            __IOM uint16_t PIM   : 1;  /*!< [5..5] Pin Input Buffer Selection                                         */
+            __IOM uint16_t NCODR : 1;  /*!< [6..6] N-channel Open-drain Control                                       */
             uint16_t             : 1;
-            __IOM uint16_t PSEL  : 4;  /*!< [11..8] These bits select the peripheral function. For individual
-                                        *   pin functions, see the associated tables in this chapter.                 */
+            __IOM uint16_t PSEL  : 4;  /*!< [11..8] Peripheral Select.These bits select the peripheral function.
+                                        *   For individual pin functions, see the associated tables
+                                        *   in I/O Ports chapter.                                                     */
             uint16_t            : 2;
             __IOM uint16_t ISEL : 1;   /*!< [14..14] IRQ Input Enable                                                 */
-            __IOM uint16_t PMC  : 1;   /*!< [15..15] Pin mode control                                                 */
+            __IOM uint16_t PMC  : 1;   /*!< [15..15] Pin Mode Control                                                 */
         } PmnPFS_b;
     };
 } R_PFS_PORT_PIN_Type;                 /*!< Size = 2 (0x2)                                                            */
@@ -1481,9 +1477,9 @@ typedef struct                         /*!< (@ 0x4001B000) R_DEBUG Structure    
             uint32_t                     : 12;
             __IOM uint32_t DBGSTOP_TIM   : 1; /*!< [14..14] Mask bit for RTC, TAU reset/interrupt                            */
             __IOM uint32_t DBGSTOP_SIR   : 1; /*!< [15..15] Mask bit for SAU, IICA, PORT_IRQ0-5 reset/interrupt              */
-            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interupt                                  */
+            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interrupt                                 */
             uint32_t                     : 5;
             __IOM uint32_t DBGSTOP_RPER  : 1; /*!< [24..24] Mask bit for SRAM parity error                                   */
             __IOM uint32_t DBGSTOP_RECCR : 1; /*!< [25..25] Mask bit for SRAM ECC error                                      */
@@ -2183,7 +2179,7 @@ typedef struct                         /*!< (@ 0x407EC000) R_FACI_LP Structure  
 
         struct
         {
-            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Up2025-07-30 Enable                                            */
+            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Update Enable                                            */
             uint16_t                : 7;
             __OM uint16_t FEKEY     : 8; /*!< [15..8] Key Code                                                          */
         } FBKSWCR_b;
@@ -3709,11 +3705,11 @@ typedef struct                         /*!< (@ 0x40002000) R_SRAM Structure     
 
     union
     {
-        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Up2025-07-30 Enable Register         */
+        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Update Enable Register         */
 
         struct
         {
-            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Up2025-07-30 Enable                          */
+            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Update Enable                          */
             uint8_t               : 7;
         } ECC1STSEN_b;
     };
