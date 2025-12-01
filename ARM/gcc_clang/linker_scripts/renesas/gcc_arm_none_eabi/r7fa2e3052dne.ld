@@ -38,15 +38,14 @@ SECTIONS
 	.data_flash.startof (READONLY) :
 	{
 		__ddsc_DATA_FLASH_START = .;
-
 	} > DATA_FLASH
 
 	/***** RAM memory section allocations ******/
 	.ram.startof :
 	{
 		__ddsc_RAM_START = .;
-
 	} > RAM
+
 	__ram_dtc_vector$$ (NOLOAD) :
 	{
 		__ram_dtc_vector$$Base = .;
