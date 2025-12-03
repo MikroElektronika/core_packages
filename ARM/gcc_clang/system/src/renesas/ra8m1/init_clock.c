@@ -46,15 +46,47 @@ extern void * __Vectors[];
 
 typedef struct
 {
+    uint32_t CPUCLK_Frequency;  // CPU clock frequency in Hz
     uint32_t ICLK_Frequency;    // System clock frequency in Hz
     uint32_t PCLKA_Frequency;   // PCLKA clock frequency in Hz
     uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
+    uint32_t PCLKE_Frequency;   // PCLKE clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
+    uint32_t SPICLK_Frequency;  // SPI clock frequency in Hz
+    uint32_t SCICLK_Frequency;  // SCI clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
-static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
+static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
+
+/* Helper macros for getting SPI and SCI clock sources. */
+#define SCI_SPI_SOURCE_HOCO     (0)
+#define SCI_SPI_SOURCE_MOCO     (1)
+#define SCI_SPI_SOURCE_LOCO     (2)
+#define SCI_SPI_SOURCE_MOSC     (3)
+#define SCI_SPI_SOURCE_SOSC     (4)
+#define SCI_SPI_SOURCE_PLL1P    (5)
+#define SCI_SPI_SOURCE_PLL2P    (6)
+#define SCI_SPI_SOURCE_PLL1Q    (7)
+#define SCI_SPI_SOURCE_PLL1R    (8)
+#define SCI_SPI_SOURCE_PLL2Q    (9)
+#define SCI_SPI_SOURCE_PLL2R    (10)
+#define HOCO_FREQUENCY_MHZ_16   (0)
+#define HOCO_FREQUENCY_MHZ_18   (1)
+#define HOCO_FREQUENCY_MHZ_20   (2)
+#define HOCO_FREQUENCY_MHZ_32   (4)
+#define HOCO_FREQUENCY_MHZ_48   (7)
+#define FREQUENCY_32768HZ       (32768)
+#define FREQUENCY_8MHZ          (8000000)
+#define FREQUENCY_16MHZ         (16000000)
+#define FREQUENCY_18MHZ         (18000000)
+#define FREQUENCY_20MHZ         (20000000)
+#define FREQUENCY_32MHZ         (32000000)
+#define FREQUENCY_48MHZ         (48000000)
+#define PLLMULNF_HALF           (0xC0)
+#define PLLMULNF_TWO_THIRDS     (0x80)
+#define PLLMULNF_ONE_THIRD      (0x40)
 
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
@@ -554,6 +586,123 @@ static void system_clock_configuration();
 // -----------------------------------------------------------------------------------------
 
 /**
+ * @brief Gets PLL subclock values.
+ *
+ * Calculates configured clock frequency for PLL1P, PLL1Q, PLL1R, PLL2P, PLL2Q and PLL2R.
+ *
+ * @return PLL subclock value.
+ */
+uint32_t SYSTEM_GetPLLClocksFrequency( uint32_t pll_config_value, \
+                                        uint32_t hoco_frequency, uint8_t prescaler ) {
+    uint32_t pll_frequency;
+
+    // Get PLL source clock.
+    if ( pll_config_value & R_SYSTEM_PLLCCR_PLSRCSEL_Msk )
+        pll_frequency = hoco_frequency;
+    else
+        // Note: MOSC value used by EK-RA8M1 Board.
+        pll_frequency = FREQUENCY_20MHZ;
+    // Divide PLL source clock based on PLIDIV value.
+    pll_frequency /= ( pll_config_value & R_SYSTEM_PLLCCR_PLIDIV_Msk ) + 1;
+    // Multiply result clock based on PLLMUL value.
+    pll_frequency *= (( pll_config_value & R_SYSTEM_PLLCCR_PLLMUL_Msk )\
+        >> R_SYSTEM_PLLCCR_PLLMUL_Pos ) + 1;
+    // Take into consideration the PLLMULNF part.
+    if ( PLLMULNF_HALF == ( pll_config_value & R_SYSTEM_PLLCCR_PLLMULNF_Msk ))
+        pll_frequency += pll_frequency / 2;
+    else if ( PLLMULNF_TWO_THIRDS == ( pll_config_value & R_SYSTEM_PLLCCR_PLLMULNF_Msk ))
+        pll_frequency += pll_frequency * 2 / 3;
+    else if ( PLLMULNF_ONE_THIRD == ( pll_config_value & R_SYSTEM_PLLCCR_PLLMULNF_Msk ))
+        pll_frequency += pll_frequency / 3;
+
+    return ( pll_frequency / prescaler );
+}
+
+/**
+ * @brief Gets the peripheral clock values for SPI and SCI modules.
+ *
+ * Calculates configured clock frequency for SPI and SCI clocks.
+ *
+ * @return SPI or SCI peripheral clock value.
+ */
+uint32_t SYSTEM_GetSPISCIClocksFrequency ( uint8_t config_value ) {
+    uint32_t hoco_frequency, peripheral_clock;
+    uint8_t prescaler;
+
+    // Get HOCO frequency.
+    if( HOCO_FREQUENCY_MHZ_16 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
+        hoco_frequency = FREQUENCY_16MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_18 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
+        hoco_frequency = FREQUENCY_18MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_20 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
+        hoco_frequency = FREQUENCY_20MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_32 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
+        hoco_frequency = FREQUENCY_32MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_48 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
+        hoco_frequency = FREQUENCY_48MHZ;
+
+    switch ( config_value ) {
+        case SCI_SPI_SOURCE_HOCO:
+            peripheral_clock = hoco_frequency;
+            break;
+        case SCI_SPI_SOURCE_MOCO:
+            peripheral_clock = FREQUENCY_8MHZ;
+            break;
+        case SCI_SPI_SOURCE_LOCO:
+            peripheral_clock = FREQUENCY_32768HZ;
+            break;
+        case SCI_SPI_SOURCE_MOSC:
+            // Note: MOSC value used by EK-RA8M1 Board.
+            peripheral_clock = FREQUENCY_20MHZ;
+            break;
+        case SCI_SPI_SOURCE_SOSC:
+            peripheral_clock = FREQUENCY_32768HZ;
+            break;
+        case SCI_SPI_SOURCE_PLL1P:
+            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVP_Msk ) \
+                >> R_SYSTEM_PLLCCR2_PLODIVP_Pos ) + 1;
+            peripheral_clock = \
+                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
+            break;
+        case SCI_SPI_SOURCE_PLL2P:
+            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVP_Msk ) \
+                >> R_SYSTEM_PLL2CCR2_PL2ODIVP_Pos ) + 1;
+            peripheral_clock = \
+                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
+            break;
+        case SCI_SPI_SOURCE_PLL1Q:
+            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVQ_Msk ) \
+                >> R_SYSTEM_PLLCCR2_PLODIVQ_Pos ) + 1;
+            peripheral_clock = \
+                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
+            break;
+        case SCI_SPI_SOURCE_PLL1R:
+            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVR_Msk ) \
+                >> R_SYSTEM_PLLCCR2_PLODIVR_Pos ) + 1;
+            peripheral_clock = \
+                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
+            break;
+        case SCI_SPI_SOURCE_PLL2Q:
+            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVQ_Msk ) \
+                >> R_SYSTEM_PLL2CCR2_PL2ODIVQ_Pos ) + 1;
+            peripheral_clock = \
+                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
+            break;
+        case SCI_SPI_SOURCE_PLL2R:
+            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVR_Msk ) \
+                >> R_SYSTEM_PLL2CCR2_PL2ODIVR_Pos ) + 1;
+            peripheral_clock = \
+                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
+            break;
+
+        default:
+            break;
+    }
+
+    return peripheral_clock;
+}
+
+/**
  * @brief Gets the system clock values.
  *
  * Calculates configured clock frequency for system clocks which are used by different
@@ -562,34 +711,51 @@ static void system_clock_configuration();
  * @return None
  */
 void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
-    uint32_t prescaler, source_clock;
+    uint32_t source_clock;
+    uint8_t prescaler;
 
-    // Get the frequency of main clock.
-    SYSTEM_Clocks->ICLK_Frequency = FOSC_KHZ_VALUE * 1000;
+    // Get the frequency of CPU clock.
+    SYSTEM_Clocks->CPUCLK_Frequency = FOSC_KHZ_VALUE * 1000;
 
     // Get the source frequency for all clocks.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000000 ) >> 24 ];
-    source_clock = SYSTEM_Clocks->ICLK_Frequency * prescaler;
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR2 & 0xF ) ];
+    source_clock = SYSTEM_Clocks->CPUCLK_Frequency * prescaler;
+
+    // Get FCLK clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF0000000 ) >> 28 ];
+    SYSTEM_Clocks->FCLK_Frequency = source_clock / prescaler;
+
+    // Get the frequency of system clock.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000000 ) >> 24 ];
+    SYSTEM_Clocks->ICLK_Frequency = source_clock / prescaler;
+
+    // Get PCLKE clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF00000 ) >> 20 ];
+    SYSTEM_Clocks->PCLKE_Frequency = source_clock / prescaler;
 
     // Get PCLKA clock frequency.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000 ) >> 12 ];
     SYSTEM_Clocks->PCLKA_Frequency = source_clock / prescaler;
 
     // Get PCLKB clock frequency.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x700 ) >> 8 ];
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF00 ) >> 8 ];
     SYSTEM_Clocks->PCLKB_Frequency = source_clock / prescaler;
 
     // Get PCLKC clock frequency.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x70 ) >> 4 ];
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF0 ) >> 4 ];
     SYSTEM_Clocks->PCLKC_Frequency = source_clock / prescaler;
 
     // Get PCLKD clock frequency.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7 ) ];
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF ) ];
     SYSTEM_Clocks->PCLKD_Frequency = source_clock / prescaler;
 
-    // Get FCLK clock frequency.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
-    SYSTEM_Clocks->FCLK_Frequency = source_clock / prescaler;
+    // Get the source clock of SPI module.
+    SYSTEM_Clocks->SPICLK_Frequency = \
+        SYSTEM_GetSPISCIClocksFrequency( VALUE_SYSTEM_SPICKCR & R_SYSTEM_SPICKCR_CKSEL_Msk );
+
+    // Get the source clock of SCI module.
+    SYSTEM_Clocks->SCICLK_Frequency = \
+        SYSTEM_GetSPISCIClocksFrequency( VALUE_SYSTEM_SCICKCR & R_SYSTEM_SCICKCR_SCICKSEL_Msk );
 }
 
 /**
@@ -656,16 +822,6 @@ void SystemInit(void)
     // Clock setting
     system_clock_configuration();
 
-    // Unlock LVOCR register
-    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_PRC1_UNLOCK;
-
-    /* Set LVOCR according to BSP configuration.
-     * Configure prior to warm start post clock, since OSPI_B may initialize within and begin using I/O. */
-    R_SYSTEM->LVOCR = 0;
-
-    // Lock LVOCR register
-    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
-
     memset(
         &__ram_zero$$Base,
         0,
@@ -724,16 +880,13 @@ static void system_clock_configuration() {
     }
 
     if ( !( VALUE_SYSTEM_HOCOCR & R_SYSTEM_HOCOCR_HCSTP_Msk ) ) {
-        if( 0x2 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ) ) // 20MHz
-        {
+        if ( HOCO_FREQUENCY_MHZ_20 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) {
             R_SYSTEM->FLLCR2_b.FLLCNTL = 0x263;
-        } else if ( 0x1 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ) ) // 18MHz
-        {
+        } else if ( HOCO_FREQUENCY_MHZ_18 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) {
             R_SYSTEM->FLLCR2_b.FLLCNTL = 0x226;
-        } else if (( 0x0 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) || // 16MHz
-            ( 0x4 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 )) ||         // or 32MHz
-            ( 0x7 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ))          // or 48MHz
-        {
+        } else if (( HOCO_FREQUENCY_MHZ_16 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) ||
+            ( HOCO_FREQUENCY_MHZ_32 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 )) ||
+            ( HOCO_FREQUENCY_MHZ_48 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) )) {
             R_SYSTEM->FLLCR2_b.FLLCNTL = 0x1E9;
         }
 
@@ -808,6 +961,20 @@ static void system_clock_configuration() {
     R_SYSTEM->SCICKCR = VALUE_SYSTEM_SCICKCR;
     R_SYSTEM->SPICKCR = VALUE_SYSTEM_SPICKCR;
 
-    // Lock write protection register
+    /* If PLL2 is enabled and PLL1 is not chosen as source clock
+     * or PLL2 is disabled and PLL1 is chosen as clock source.
+     */
+    if (( !( VALUE_SYSTEM_PLL2CR & R_SYSTEM_PLL2CR_PLL2STP_Msk ) && (( VALUE_SYSTEM_SCKSCR & R_SYSTEM_SCKSCR_CKSEL_Msk ) != 0x5 )) || \
+            ( ( VALUE_SYSTEM_PLL2CR & R_SYSTEM_PLL2CR_PLL2STP_Msk ) && (( VALUE_SYSTEM_SCKSCR & R_SYSTEM_SCKSCR_CKSEL_Msk ) == 0x5 ))) {
+        // Unlock LVOCR register
+        R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_PRC1_UNLOCK;
+
+        /* Set LVOCR according to BSP configuration.
+        * Configure prior to warm start post clock
+        * since OSPI_B may initialize within and begin using I/O. */
+        R_SYSTEM->LVOCR = 0;
+    }
+
+    // Lock LVOCR register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
 }
