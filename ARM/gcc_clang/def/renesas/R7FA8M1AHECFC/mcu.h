@@ -14767,7 +14767,17 @@ typedef struct                         /*!< (@ 0x4001E000) R_SYSTEM Structure   
             uint8_t             : 7;
         } HOCOCR_b;
     };
-    __IM uint8_t RESERVED13;
+
+    union
+    {
+        __IOM uint8_t HOCOCR2;          /*!< (@ 0x00000037) High-Speed On-Chip Oscillator Control Register2            */
+
+        struct
+        {
+            __IOM uint8_t HCFRQ0 : 3;   /*!< [0..2] HOCO Frequency Setting 0                                           */
+            uint8_t             : 5;
+        } HOCOCR2_b;
+    };
 
     union
     {
@@ -14827,7 +14837,8 @@ typedef struct                         /*!< (@ 0x4001E000) R_SYSTEM Structure   
 
         struct
         {
-            uint8_t              : 4;
+            __IOM uint8_t CKOSEL : 3;  /*!< [0..2] Clock Out Source Select                                            */
+            uint8_t              : 1;
             __IOM uint8_t CKODIV : 3;  /*!< [6..4] Clock out input frequency Division Select                          */
             __IOM uint8_t CKOEN  : 1;  /*!< [7..7] Clock out enable                                                   */
         } CKOCR_b;
@@ -29907,6 +29918,8 @@ typedef struct                         /*!< (@ 0x27030000) R_OFS_DATAFLASH Struc
  #define R_SYSTEM_OSCSF_PLL2SF_Pos               (6UL)          /*!< PLL2SF (Bit 6)                                        */
  #define R_SYSTEM_OSCSF_PLL2SF_Msk               (0x40UL)       /*!< PLL2SF (Bitfield-Mask: 0x01)                          */
 /* =========================================================  CKOCR  ========================================================= */
+ #define R_SYSTEM_CKOCR_CKOSEL_Pos               (0UL)          /*!< CKODIV (Bit 4)                                        */
+ #define R_SYSTEM_CKOCR_CKOSEL_Msk               (0x7UL)       /*!< CKODIV (Bitfield-Mask: 0x07)                          */
  #define R_SYSTEM_CKOCR_CKODIV_Pos               (4UL)          /*!< CKODIV (Bit 4)                                        */
  #define R_SYSTEM_CKOCR_CKODIV_Msk               (0x70UL)       /*!< CKODIV (Bitfield-Mask: 0x07)                          */
  #define R_SYSTEM_CKOCR_CKOEN_Pos                (7UL)          /*!< CKOEN (Bit 7)                                         */
