@@ -47,14 +47,9 @@ extern "C" {
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 // Note: Changed for MikroE implementation.
-//  #include "core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
+ #include "ra2a2_core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
 // Note: Changed for MikroE implementation.
-//  #include "system.h"                       /*!< R7FA2A2AD System                                                          */
-#include <stdint.h>
-
-#define __I volatile // Note: Added for MikroE implementation.
-#define __O __I // Note: Added for MikroE implementation.
-#define __IO __I // Note: Added for MikroE implementation.
+// #include "system.h"                       /*!< R7FA2A2AD System                                                          */
 
  #ifndef __IM                              /*!< Fallback for older CMSIS versions                                         */
   #define __IM     __I
@@ -3691,9 +3686,9 @@ typedef struct                         /*!< (@ 0x4001B000) R_DEBUG Structure    
             uint32_t                     : 12;
             __IOM uint32_t DBGSTOP_TIM   : 1; /*!< [14..14] Mask bit for RTC, TAU reset/interrupt                            */
             __IOM uint32_t DBGSTOP_SIR   : 1; /*!< [15..15] Mask bit for SAU, IICA, PORT_IRQ0-5 reset/interrupt              */
-            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interupt                                  */
+            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interrupt                                 */
             uint32_t                     : 5;
             __IOM uint32_t DBGSTOP_RPER  : 1; /*!< [24..24] Mask bit for SRAM parity error                                   */
             __IOM uint32_t DBGSTOP_RECCR : 1; /*!< [25..25] Mask bit for SRAM ECC error                                      */
