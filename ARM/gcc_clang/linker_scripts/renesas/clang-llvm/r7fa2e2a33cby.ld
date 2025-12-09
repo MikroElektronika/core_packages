@@ -29,8 +29,6 @@ MEMORY
 
 /* code entry point...need to define to keep crt0 _start out */
 ENTRY(Reset_Handler)
-/* Library configurations */
-GROUP(libgcc.a libc.a libm.a)
 
 SECTIONS
 {
