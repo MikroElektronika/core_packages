@@ -87,7 +87,7 @@ extern void (* __init_array_end[])(void);
 #define BSP_SECTION_ID_CODE                ".id_code"
 #define BSP_SECTION_ROM_REGISTERS          ".rom_registers"
 
-typedef enum e_elc_event_ra2e3
+typedef enum e_elc_event_ra2a1
 {
     ELC_EVENT_NONE                          = (0x0),   // Link disabled
     ELC_EVENT_ICU_IRQ0                      = (0x001), // External pin interrupt 0
@@ -123,28 +123,66 @@ typedef enum e_elc_event_ra2e3
     ELC_EVENT_ADC0_WINDOW_B                 = (0x01F), // Window B Compare match interrupt
     ELC_EVENT_ADC0_COMPARE_MATCH            = (0x020), // Compare match
     ELC_EVENT_ADC0_COMPARE_MISMATCH         = (0x021), // Compare mismatch
+    ELC_EVENT_ACMPHS0_INT                   = (0x022), // High Speed Comparator channel 0 interrupt
+    ELC_EVENT_ACMPLP0_INT                   = (0x023), // Low Power Comparator channel 0 interrupt
+    ELC_EVENT_ACMPLP1_INT                   = (0x024), // Low Power Comparator channel 1 interrupt
+    ELC_EVENT_USBFS_INT                     = (0x025), // USBFS interrupt
+    ELC_EVENT_USBFS_RESUME                  = (0x026), // USBFS resume interrupt
     ELC_EVENT_IIC0_RXI                      = (0x027), // Receive data full
     ELC_EVENT_IIC0_TXI                      = (0x028), // Transmit data empty
     ELC_EVENT_IIC0_TEI                      = (0x029), // Transmit end
     ELC_EVENT_IIC0_ERI                      = (0x02A), // Transfer error
     ELC_EVENT_IIC0_WUI                      = (0x02B), // Wakeup interrupt
+    ELC_EVENT_IIC1_RXI                      = (0x02C), // Receive data full
+    ELC_EVENT_IIC1_TXI                      = (0x02D), // Transmit data empty
+    ELC_EVENT_IIC1_TEI                      = (0x02E), // Transmit end
+    ELC_EVENT_IIC1_ERI                      = (0x02F), // Transfer error
+    ELC_EVENT_CTSU_WRITE                    = (0x030), // Write request interrupt
+    ELC_EVENT_CTSU_READ                     = (0x031), // Measurement data transfer request interrupt
+    ELC_EVENT_CTSU_END                      = (0x032), // Measurement end interrupt
     ELC_EVENT_KEY_INT                       = (0x033), // Key interrupt
     ELC_EVENT_DOC_INT                       = (0x034), // Data operation circuit interrupt
     ELC_EVENT_CAC_FREQUENCY_ERROR           = (0x035), // Frequency error interrupt
     ELC_EVENT_CAC_MEASUREMENT_END           = (0x036), // Measurement end interrupt
     ELC_EVENT_CAC_OVERFLOW                  = (0x037), // Overflow interrupt
+    ELC_EVENT_CAN0_ERROR                    = (0x038), // Error interrupt
+    ELC_EVENT_CAN0_FIFO_RX                  = (0x039), // Receive FIFO interrupt
+    ELC_EVENT_CAN0_FIFO_TX                  = (0x03A), // Transmit FIFO interrupt
+    ELC_EVENT_CAN0_MAILBOX_RX               = (0x03B), // Reception complete interrupt
+    ELC_EVENT_CAN0_MAILBOX_TX               = (0x03C), // Transmission complete interrupt
     ELC_EVENT_IOPORT_EVENT_1                = (0x03D), // Port 1 event
     ELC_EVENT_IOPORT_EVENT_2                = (0x03E), // Port 2 event
     ELC_EVENT_ELC_SOFTWARE_EVENT_0          = (0x03F), // Software event 0
     ELC_EVENT_ELC_SOFTWARE_EVENT_1          = (0x040), // Software event 1
     ELC_EVENT_POEG0_EVENT                   = (0x041), // Port Output disable 0 interrupt
     ELC_EVENT_POEG1_EVENT                   = (0x042), // Port Output disable 1 interrupt
+    ELC_EVENT_SDADC0_ADI                    = (0x043), // End of SD A/D conversion (type 1)
+    ELC_EVENT_SDADC0_SCANEND                = (0x044), // End of SD A/D scan
+    ELC_EVENT_SDADC0_CALIEND                = (0x045), // End of SD A/D A/D calibration
     ELC_EVENT_GPT0_CAPTURE_COMPARE_A        = (0x046), // Capture/Compare match A
     ELC_EVENT_GPT0_CAPTURE_COMPARE_B        = (0x047), // Capture/Compare match B
     ELC_EVENT_GPT0_COMPARE_C                = (0x048), // Compare match C
     ELC_EVENT_GPT0_COMPARE_D                = (0x049), // Compare match D
     ELC_EVENT_GPT0_COUNTER_OVERFLOW         = (0x04A), // Overflow
     ELC_EVENT_GPT0_COUNTER_UNDERFLOW        = (0x04B), // Underflow
+    ELC_EVENT_GPT1_CAPTURE_COMPARE_A        = (0x04C), // Capture/Compare match A
+    ELC_EVENT_GPT1_CAPTURE_COMPARE_B        = (0x04D), // Capture/Compare match B
+    ELC_EVENT_GPT1_COMPARE_C                = (0x04E), // Compare match C
+    ELC_EVENT_GPT1_COMPARE_D                = (0x04F), // Compare match D
+    ELC_EVENT_GPT1_COUNTER_OVERFLOW         = (0x050), // Overflow
+    ELC_EVENT_GPT1_COUNTER_UNDERFLOW        = (0x051), // Underflow
+    ELC_EVENT_GPT2_CAPTURE_COMPARE_A        = (0x052), // Capture/Compare match A
+    ELC_EVENT_GPT2_CAPTURE_COMPARE_B        = (0x053), // Capture/Compare match B
+    ELC_EVENT_GPT2_COMPARE_C                = (0x054), // Compare match C
+    ELC_EVENT_GPT2_COMPARE_D                = (0x055), // Compare match D
+    ELC_EVENT_GPT2_COUNTER_OVERFLOW         = (0x056), // Overflow
+    ELC_EVENT_GPT2_COUNTER_UNDERFLOW        = (0x057), // Underflow
+    ELC_EVENT_GPT3_CAPTURE_COMPARE_A        = (0x058), // Capture/Compare match A
+    ELC_EVENT_GPT3_CAPTURE_COMPARE_B        = (0x059), // Capture/Compare match B
+    ELC_EVENT_GPT3_COMPARE_C                = (0x05A), // Compare match C
+    ELC_EVENT_GPT3_COMPARE_D                = (0x05B), // Compare match D
+    ELC_EVENT_GPT3_COUNTER_OVERFLOW         = (0x05C), // Overflow
+    ELC_EVENT_GPT3_COUNTER_UNDERFLOW        = (0x05D), // Underflow
     ELC_EVENT_GPT4_CAPTURE_COMPARE_A        = (0x05E), // Capture/Compare match A
     ELC_EVENT_GPT4_CAPTURE_COMPARE_B        = (0x05F), // Capture/Compare match B
     ELC_EVENT_GPT4_COMPARE_C                = (0x060), // Compare match C
@@ -163,7 +201,7 @@ typedef enum e_elc_event_ra2e3
     ELC_EVENT_GPT6_COMPARE_D                = (0x06D), // Compare match D
     ELC_EVENT_GPT6_COUNTER_OVERFLOW         = (0x06E), // Overflow
     ELC_EVENT_GPT6_COUNTER_UNDERFLOW        = (0x06F), // Underflow
-    ELC_EVENT_GPT_UVWEDGE                   = (0x070), // UVW edge event
+    ELC_EVENT_OPS_UVW_EDGE                  = (0x070), // UVW edge event
     ELC_EVENT_SCI0_RXI                      = (0x071), // Receive data full
     ELC_EVENT_SCI0_TXI                      = (0x072), // Transmit data empty
     ELC_EVENT_SCI0_TEI                      = (0x073), // Transmit end
@@ -185,29 +223,14 @@ typedef enum e_elc_event_ra2e3
     ELC_EVENT_SPI0_IDLE                     = (0x083), // Idle
     ELC_EVENT_SPI0_ERI                      = (0x084), // Error
     ELC_EVENT_SPI0_TEI                      = (0x085), // Transmission complete event
-    ELC_EVENT_SCI2_RXI                      = (0x08E), // Receive data full
-    ELC_EVENT_SCI2_TXI                      = (0x08F), // Transmit data empty
-    ELC_EVENT_SCI2_TEI                      = (0x090), // Transmit end
-    ELC_EVENT_SCI2_ERI                      = (0x091), // Receive error
-    ELC_EVENT_SCI2_AM                       = (0x092), // Address match event
-    ELC_EVENT_GPT7_CAPTURE_COMPARE_A        = (0x098), // Capture/Compare match A
-    ELC_EVENT_GPT7_CAPTURE_COMPARE_B        = (0x099), // Capture/Compare match B
-    ELC_EVENT_GPT7_COMPARE_C                = (0x09A), // Compare match C
-    ELC_EVENT_GPT7_COMPARE_D                = (0x09B), // Compare match D
-    ELC_EVENT_GPT7_COUNTER_OVERFLOW         = (0x09C), // Overflow
-    ELC_EVENT_GPT7_COUNTER_UNDERFLOW        = (0x09D), // Underflow
-    ELC_EVENT_GPT8_CAPTURE_COMPARE_A        = (0x09E), // Capture/Compare match A
-    ELC_EVENT_GPT8_CAPTURE_COMPARE_B        = (0x09F), // Capture/Compare match B
-    ELC_EVENT_GPT8_COMPARE_C                = (0x0A0), // Compare match C
-    ELC_EVENT_GPT8_COMPARE_D                = (0x0A1), // Compare match D
-    ELC_EVENT_GPT8_COUNTER_OVERFLOW         = (0x0A2), // Overflow
-    ELC_EVENT_GPT8_COUNTER_UNDERFLOW        = (0x0A3), // Underflow
-    ELC_EVENT_GPT9_CAPTURE_COMPARE_A        = (0x0A4), // Capture/Compare match A
-    ELC_EVENT_GPT9_CAPTURE_COMPARE_B        = (0x0A5), // Capture/Compare match B
-    ELC_EVENT_GPT9_COMPARE_C                = (0x0A6), // Compare match C
-    ELC_EVENT_GPT9_COMPARE_D                = (0x0A7), // Compare match D
-    ELC_EVENT_GPT9_COUNTER_OVERFLOW         = (0x0A8), // Overflow
-    ELC_EVENT_GPT9_COUNTER_UNDERFLOW        = (0x0A9)  // Underflow
+    ELC_EVENT_SPI1_RXI                      = (0x086), // Receive buffer full
+    ELC_EVENT_SPI1_TXI                      = (0x087), // Transmit buffer empty
+    ELC_EVENT_SPI1_IDLE                     = (0x088), // Idle
+    ELC_EVENT_SPI1_ERI                      = (0x089), // Error
+    ELC_EVENT_SPI1_TEI                      = (0x08A), // Transmission complete event
+    ELC_EVENT_AES_WRREQ                     = (0x08B), // AES Write Request
+    ELC_EVENT_AES_RDREQ                     = (0x08C), // AES Read Request
+    ELC_EVENT_TRNG_RDREQ                    = (0x08D)  // TRNG Read Request
 } elc_event_t;
 
 typedef elc_event_t bsp_interrupt_event_t;
