@@ -564,7 +564,6 @@ async def upload_release_asset(session, token, repo, release_id, asset_path, ass
             response = requests.post(url, headers=headers, data=file)
             response.raise_for_status()
             print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
-            return response.json()
     else:
         asset_exists = False
         for asset in assets:
@@ -577,7 +576,10 @@ async def upload_release_asset(session, token, repo, release_id, asset_path, ass
                 response = requests.post(url, headers=headers, data=file)
                 response.raise_for_status()
                 print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
-                return response.json()
+
+    # Remove the asset from local drive to avoid reaching the memory limit
+    os.remove(asset_path)
+    return response.json()
 
 async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths, assets):
     """ Package and upload an asset as a release to GitHub """
