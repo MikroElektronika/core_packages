@@ -574,6 +574,7 @@ async def get_all_assets(session, token, repo, release_id):
     return assets
 
 async def upload_release_asset(session, token, repo, asset_path, release_version=None):
+    return
     """ Upload a release asset to GitHub """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
     headers = {'Authorization': f'token {token}', 'Content-Type': 'application/octet-stream'}
@@ -825,7 +826,7 @@ def updateDevicesFromSdk(dbs, queries):
 
     return
 
-def createErpFamilyUid(device):
+def createErpDbInfo(device):
     core_name = None
     try:
         data = json.loads(device['sdk_config'])
@@ -859,7 +860,7 @@ def createErpFamilyUid(device):
         device['family_uid'].upper().replace('+', '_PLUS').replace(' ', '_')
     )
 
-    return new_family_uid
+    return new_family_uid, device['vendor'], core_name
 
 def updateDevicesFromCore(dbs, queries):
     allDevicesDirs = os.listdir(queries)
@@ -878,7 +879,7 @@ def updateDevicesFromCore(dbs, queries):
                     for eachKey in device.keys():
                         collumns.append(eachKey)
                         if eachKey == 'family_uid' and 'erp_db' in eachDb:
-                            device[eachKey] = createErpFamilyUid(device)
+                            device[eachKey], _, _ = createErpDbInfo(device)
                         values.append(device[eachKey])
                     insertIntoTable(
                         eachDb,
@@ -946,6 +947,72 @@ def updateDevicesFromCore(dbs, queries):
                             )
 
     return
+
+def updateERPinfo(erp_db, necto_db):
+    device_vendors = []
+    device_architectures = []
+    device_families = []
+    sql = """
+        SELECT DISTINCT vendor, sdk_config, family_uid, core_info FROM Devices
+    """
+    _, results = read_data_from_db(necto_db, sql)
+    for result in results:
+        necto_device_ifo = {
+            'vendor': result[0],
+            'sdk_config': result[1],
+            'family_uid': result[2],
+            'core_info': result[3]
+        }
+        family_uid, vendor, core_name = createErpDbInfo(necto_device_ifo)
+        vendor_uid = vendor.upper().replace(' ', '_').replace('-', '_')
+        core_uid = f'{vendor_uid}_{core_name.upper().replace(' ', '_').replace('-', '_').replace('+', '_PLUS')}'
+        device_vendors.append({
+            'uid': vendor_uid,
+            'name': vendor
+        })
+        device_architectures.append({
+            'uid': core_uid,
+            'name': core_name,
+            'vendor_uid': vendor_uid
+        })
+        device_families.append({
+            'uid': family_uid,
+            'name': necto_device_ifo['family_uid'],
+            'architecture_uid': core_uid
+        })
+        for row in device_vendors:
+            insertIntoTable(
+                erp_db,
+                'DeviceVendors',
+                [
+                    row['uid'],
+                    row['name']
+                ],
+                'uid', 'name'
+            )
+        for row in device_architectures:
+            insertIntoTable(
+                erp_db,
+                'DeviceArchitectures',
+                [
+                    row['uid'],
+                    row['name'],
+                    row['vendor_uid']
+                ],
+                'uid', 'name', 'vendor_uid'
+            )
+        for row in device_families:
+            insertIntoTable(
+                erp_db,
+                'DeviceFamilies',
+                [
+                    row['uid'],
+                    row['name'],
+                    row['architecture_uid']
+                ],
+                'uid', 'name', 'architecture_uid'
+            )
+
 
 def update_legacy_sdk_support(database):
     # Get the list of all Legacy sdk_uid values
@@ -1164,6 +1231,9 @@ async def main(
     coreQueriesPath = os.path.join(os.getcwd(), 'resources/queries')
     if os.path.exists(os.path.join(coreQueriesPath, 'mcus')):
         updateDevicesFromCore([databaseErp, databaseNecto], os.path.join(coreQueriesPath, 'mcus')) ## If any new mcus were added
+        ## Add information into ERP db needed for the Web Site
+        if databaseErp:
+            updateERPinfo(databaseErp, databaseNecto)
     ## EOF Step 3
 
     ## Step 4 - add missing collumns to tables
