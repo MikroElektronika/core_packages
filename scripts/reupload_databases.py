@@ -67,15 +67,22 @@ def addCollumnToTable(db, tableName, collumnName, collumnType, defaultValue='NoD
     conn.commit()
     conn.close()
 
-def insertIntoTable(db, tableName, values, columns):
+def insertIntoTable(db, tableName, values, columns, update_value=False):
     import sqlite3
+
+    # Condition for ERP database - as we take all the info from necto_db.db
+    # family UID there is not applicable for ERP system, so we need to overwrite it.
+    if update_value:
+        update_ignore = 'UPDATE'
+    else:
+        update_ignore = 'IGNORE'
 
     conn = sqlite3.connect(db)
     cur = conn.cursor()
     numOfItems = ''
     for itemCount in range(1, len(values) + 1):
         numOfItems += '?,'
-    cur.execute(f'INSERT OR IGNORE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
+    cur.execute(f'INSERT OR {update_ignore} INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
     conn.commit()
     conn.close()
 
@@ -948,70 +955,93 @@ def updateDevicesFromCore(dbs, queries):
 
     return
 
-def updateERPinfo(erp_db, necto_db):
+def updateERPinfo(databases):
+    def normalize_uid(value):
+        return value.upper().replace(' ', '_').replace('-', '_').replace('+', '_PLUS')
+
+    # Rows for DeviceVendors table
     device_vendors = []
+    vendors_seen = set()
+    # Rows for DeviceArchitectures table
     device_architectures = []
+    core_seen = set()
+    # Rows for DeviceFamilies table
     device_families = []
-    sql = """
-        SELECT DISTINCT vendor, sdk_config, family_uid, core_info FROM Devices
-    """
-    _, results = read_data_from_db(necto_db, sql)
-    for result in results:
-        necto_device_ifo = {
-            'vendor': result[0],
-            'sdk_config': result[1],
-            'family_uid': result[2],
-            'core_info': result[3]
+    families_seen = set()
+    # Rows for Devices table in ERP database
+    erp_devices_families = []
+
+    sql = """SELECT DISTINCT vendor, sdk_config, family_uid, core_info, uid FROM Devices
+             WHERE uid NOT LIKE '%\\_%' ESCAPE '\\'"""
+    _, results = read_data_from_db(databases[1], sql)
+
+    for vendor, sdk_config, family_uid, core_info, uid in results:
+        necto_device_info = {
+            'vendor': vendor,
+            'sdk_config': sdk_config,
+            'family_uid': family_uid,
+            'core_info': core_info
         }
-        family_uid, vendor, core_name = createErpDbInfo(necto_device_ifo)
-        vendor_uid = vendor.upper().replace(' ', '_').replace('-', '_')
-        core_uid = f'{vendor_uid}_{core_name.upper().replace(' ', '_').replace('-', '_').replace('+', '_PLUS')}'
-        device_vendors.append({
-            'uid': vendor_uid,
-            'name': vendor
+
+        family_uid, vendor_name, core_name = createErpDbInfo(necto_device_info)
+        erp_devices_families.append({
+            'uid': uid,
+            'family_uid': family_uid
         })
-        device_architectures.append({
-            'uid': core_uid,
-            'name': core_name,
-            'vendor_uid': vendor_uid
-        })
-        device_families.append({
-            'uid': family_uid,
-            'name': necto_device_ifo['family_uid'],
-            'architecture_uid': core_uid
-        })
+
+        vendor_uid = normalize_uid(vendor_name)
+        core_uid   = f"{vendor_uid}_{normalize_uid(core_name)}"
+
+        if vendor_uid not in vendors_seen:
+            vendors_seen.add(vendor_uid)
+            device_vendors.append({
+                'uid': vendor_uid,
+                'name': vendor_name
+            })
+        if core_uid not in core_seen:
+            core_seen.add(core_uid)
+            device_architectures.append({
+                'uid': core_uid,
+                'name': core_name,
+                'vendor_uid': vendor_uid
+            })
+        if family_uid not in families_seen:
+            families_seen.add(family_uid)
+            device_families.append({
+                'uid': family_uid,
+                'name': necto_device_info['family_uid'],
+                'architecture_uid': core_uid
+            })
+
+    # Insert data into ERP tables
+    for database in databases:
         for row in device_vendors:
             insertIntoTable(
-                erp_db,
-                'DeviceVendors',
-                [
-                    row['uid'],
-                    row['name']
-                ],
-                'uid', 'name'
+                database, 'DeviceVendors',
+                [row['uid'], row['name']],
+                'uid,name'
             )
         for row in device_architectures:
             insertIntoTable(
-                erp_db,
-                'DeviceArchitectures',
-                [
-                    row['uid'],
-                    row['name'],
-                    row['vendor_uid']
-                ],
-                'uid', 'name', 'vendor_uid'
+                database, 'DeviceArchitectures',
+                [row['uid'], row['name'], row['vendor_uid']],
+                'uid,name,vendor_uid'
             )
         for row in device_families:
             insertIntoTable(
-                erp_db,
-                'DeviceFamilies',
-                [
-                    row['uid'],
-                    row['name'],
-                    row['architecture_uid']
-                ],
-                'uid', 'name', 'architecture_uid'
+                database, 'DeviceFamilies',
+                [row['uid'], row['name'], row['architecture_uid']],
+                'uid,name,architecture_uid'
             )
+    # Overwrite family_uid in Devices table for erp_db to match the newly generated
+    # uid from device_families.
+    for row in erp_devices_families:
+        insertIntoTable(
+            database[0], 'Devices',
+            [row['uid'], row['family_uid']],
+            'uid,family_uid',
+            update_value=True
+        )
 
 
 def update_legacy_sdk_support(database):
@@ -1230,10 +1260,10 @@ async def main(
     ## Always add MCU information stored in CORE repo
     coreQueriesPath = os.path.join(os.getcwd(), 'resources/queries')
     if os.path.exists(os.path.join(coreQueriesPath, 'mcus')):
-        updateDevicesFromCore([databaseErp, databaseNecto], os.path.join(coreQueriesPath, 'mcus')) ## If any new mcus were added
+        updateDevicesFromCore([databaseErp, databaseNecto], os.path.join(coreQueriesPath, 'mcus'))
         ## Add information into ERP db needed for the Web Site
         if databaseErp:
-            updateERPinfo(databaseErp, databaseNecto)
+            updateERPinfo([databaseErp, databaseNecto])
     ## EOF Step 3
 
     ## Step 4 - add missing collumns to tables
