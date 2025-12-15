@@ -47,8 +47,8 @@ extern void * __Vectors[];
 typedef struct
 {
     uint32_t ICLK_Frequency;    // System clock frequency in Hz
-    uint32_t PCLKA_Frequency;   // PCLKA clock frequency in Hz
     uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
+    uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
@@ -66,6 +66,12 @@ static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
 
 #define BSP_STACK_POINTER_MONITOR_NMI_ON_DETECTION  (0xA500U)
 #define BSP_CFG_STACK_MAIN_BYTES                    (0x400)
+
+extern uint32_t __ram_from_flash$$Load;
+extern uint32_t __ram_from_flash$$Base;
+extern uint32_t __ram_from_flash$$Limit;
+extern uint32_t __ram_zero$$Base;
+extern uint32_t __ram_zero$$Limit;
 
 extern void (* __init_array_start[])(void);
 extern void (* __init_array_end[])(void);
@@ -248,13 +254,13 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000000 ) >> 24 ];
     source_clock = SYSTEM_Clocks->ICLK_Frequency * prescaler;
 
-    // Get PCLKA clock frequency.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
-    SYSTEM_Clocks->PCLKA_Frequency = source_clock / prescaler;
-
     // Get PCLKB clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x700 ) >> 8 ];
     SYSTEM_Clocks->PCLKB_Frequency = source_clock / prescaler;
+
+    // Get PCLKD clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7 ) ];
+    SYSTEM_Clocks->PCLKD_Frequency = source_clock / prescaler;
 }
 
 /**
@@ -299,6 +305,18 @@ void SystemInit(void)
 
     // Enable MSP monitoring
     R_MPU_SPMON->SP[0].CTL = 1U;
+
+    memset(
+        &__ram_zero$$Base,
+        0,
+        (uint32_t)&__ram_zero$$Limit - (uint32_t)&__ram_zero$$Base
+    );
+
+    memcpy(
+        &__ram_from_flash$$Base,
+        &__ram_from_flash$$Load,
+        (uint32_t)&__ram_from_flash$$Limit - (uint32_t)&__ram_from_flash$$Base
+    );
 
     int32_t count = __init_array_end - __init_array_start;
     for (int32_t i = 0; i < count; i++)
