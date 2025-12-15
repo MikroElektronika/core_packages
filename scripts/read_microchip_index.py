@@ -126,7 +126,8 @@ def generate_list(item_list, tool_to_mcu_list):
                 # Safely append the item name
                 mcu_to_dfp[mcu].append(name)
 
-            print(f"DFP: {name}")
+            # TODO: uncomment for testing purposes
+            # print(f"DFP: {name}")
     for tool_item in tool_to_mcu_list:
         tool_item['dfps'] = json.dumps(mcu_to_dfp)
 
@@ -187,7 +188,7 @@ def convert_item_to_es_json(input_item):
         devices_section = releases[0].get('atmel:devices', None)
     if devices_section is None:
 
-        print(f"No devices found for item: {atmel_name} version: {version}")
+        print(f"\033[93mNo devices found for item: {atmel_name} version: {version}\033[0m")
         mcus = []  # Set mcus as an empty list if there are no devices
     else:
         # If devices_section exists, extract the devices
