@@ -943,9 +943,9 @@ async def main(token, repo, tag_name):
             await upload_release_asset(session, token, repo, release_id, each_db, assets)
 
     # Uncomment to get specific test database per package
-    for each_package in packages:
-        async with aiohttp.ClientSession() as session:
-            await upload_release_asset(session, token, repo, release_id, f"output/databases/{each_package['name']}.db", assets)
+    # for each_package in packages:
+    #     async with aiohttp.ClientSession() as session:
+    #         await upload_release_asset(session, token, repo, release_id, f"output/databases/{each_package['name']}.db", assets)
 
     # Generate clocks.json
     input_directory = "./"
