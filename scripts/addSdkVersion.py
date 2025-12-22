@@ -95,6 +95,7 @@ def addSdkVersion(database, sdkVersion):
     )
     if not isSdkVersionPresent[enums.dbSync.COUNT.value]:
         SDKsCollumns = 'uid, sdk_development_kit, name, legacy, icon, version, installed'
+        print(f'\033[33mAdding {sdkVersion} to the SDKs table for {database}.\033[0m')
         insertIntoTable(
             database,
             'SDKs',
@@ -127,12 +128,14 @@ def addSdkVersion(database, sdkVersion):
 
 def insertIntoSdk(database, tableName, tableCollumn, sdkUidPrevious, sdkUidNew):
     for eachTable, eachUid in zip(tableName, tableCollumn):
+        print(f'\033[33mUpdating {eachTable} with new {sdkUidNew}.\033[0m')
         allFoundValues = read_data_from_db(
             database, f'SELECT * FROM {eachTable} WHERE sdk_uid = "{sdkUidPrevious}"'
         )
         for eachValue in allFoundValues[enums.dbSync.ELEMENTS.value]:
             formattedMessage = 'Inserted %s into %s table.\n' % (eachValue[enums.dbSync.ELEMENTS.value],eachTable)
-            print(formattedMessage)
+            # TODO - uncomment for debug purposes
+            # print(formattedMessage)
             insertIntoTable(
                 database,
                 eachTable,
