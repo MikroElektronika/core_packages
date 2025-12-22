@@ -545,8 +545,8 @@ async def upload_release_asset(session, token, repo, release_id, asset_path, ass
             delete_url = asset['url']
             if delete_existing:
                 print(f'Deleting existing asset: {asset_name}')
-                delete_response = requests.delete(delete_url, headers=headers)
-                delete_response.raise_for_status()
+                async with session.delete(delete_url, headers=headers) as delete_response:
+                    delete_response.raise_for_status()
                 assets.remove(asset)
                 print(f'\033[91mAsset deleted: {asset_name}\033[0m')
             break
@@ -573,13 +573,16 @@ async def upload_release_asset(session, token, repo, release_id, asset_path, ass
         if not asset_exists:
             with open(asset_path, 'rb') as file:
                 print(f'Uploading new asset: {asset_name}')
-                response = requests.post(url, headers=headers, data=file)
-                response.raise_for_status()
+                async with session.post(url, headers=headers, data=file) as response:
+                    response.raise_for_status()
+                    result = await response.json()
                 print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
 
     # Remove the asset from local drive to avoid reaching the memory limit
-    os.remove(asset_path)
-    return response.json()
+    if os.path.exists(asset_path):
+        print(f'\033[93mRemoved asset {os.path.basename(asset_path)} locally on running machine\033[0m')
+        os.remove(asset_path)
+    return result
 
 async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths, assets):
     """ Package and upload an asset as a release to GitHub """

@@ -565,9 +565,9 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path, delet
                 delete_url = asset['url']
                 if delete_existing:
                     print(f'Deleting existing asset: {asset_name}')
-                    delete_response = requests.delete(delete_url, headers=headers)
-                    delete_response.raise_for_status()
-                    print(f'Asset deleted: {asset_name}')
+                    async with session.delete(delete_url, headers=headers) as delete_response:
+                        delete_response.raise_for_status()
+                    print(f'\033[91mAsset deleted: {asset_name}\033[0m')
                 asset_deleted = True
                 break
 
@@ -578,7 +578,12 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path, delet
         data = await f.read()
     async with session.post(upload_url, headers=headers, data=data) as response:
         result = await response.json()
-    print(f"Upload completed for: {os.path.basename(asset_path)}.")
+    print(f"\033[92mUpload completed for: {os.path.basename(asset_path)}.\033[0m")
+
+    # Remove the asset from local drive to avoid reaching the memory limit
+    if os.path.exists(asset_path):
+        print(f'\033[93mRemoved asset {os.path.basename(asset_path)} locally on running machine\033[0m')
+        os.remove(asset_path)
     return result
 
 def fetch_existing_asset_names(release):
