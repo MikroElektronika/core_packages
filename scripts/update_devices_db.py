@@ -3,8 +3,11 @@ import os, re, sys, \
        sqlite3, json, \
        asyncio, aiohttp, \
        subprocess, aiofiles
+from datetime import datetime
 from pathlib import Path
 from packaging import version
+
+import classes.class_generate_events_json as calendar_events
 
 ## Import utility modules
 ## Append to system path
@@ -251,7 +254,21 @@ def removeDeviceFromDb(dbs, regex, delete_device):
     return
 
 ## Main runner
-async def main(token, repo, index="Test", action="Set sdk_support", regex="", delete_device=False, xc8_specific=False, ai_sdk=False):
+async def main(token, repo, index, action, regex, delete_device, xc8_specific, ai_sdk=False, spreadsheet_link=""):
+    date_to_update = datetime.now().strftime("%Y-%m-%d")
+
+    ## If this is a scheduled run - check in the daily release spreadsheet which regex should be used
+    if regex == 'Spreadsheet Regex':
+        release_spreadsheet = calendar_events.events_json(spreadsheet_link, "NECTO DAILY UPDATE")
+        release_spreadsheet.fetch_data()
+        release_spreadsheet.generate_file(os.path.join(os.path.dirname(__file__), 'releases.json'))
+        with open(os.path.join(os.path.dirname(__file__), 'releases.json'), 'r') as file:
+            data = json.load(file)
+        for release_candidate in data['NECTO DAILY UPDATE']['events']:
+            if date_to_update in release_candidate['start_dt']:
+                ## If match was found, get the sdk_support regex from the spreadsheet
+                regex = release_candidate['regex']
+
     ## Download the database first
     ## Always use latest release
     dbName = 'necto_db_dev'
@@ -306,6 +323,7 @@ if __name__ == "__main__":
     parser.add_argument('delete_device', type=str2bool, help='If True - will remove device from DB completely.', default=False)
     parser.add_argument('xc8_specific', type=str2bool, help='If True - will add {"XC8_SUPPORTED":"TRUE"} to necto_config.', default=False)
     parser.add_argument('--ai_sdk', type=str2bool, help='If True - will add AI_GENERATED field to sdk_config.', default=False)
+    parser.add_argument('--spreadsheet_link', type=str, help='Link to the daily release spreadsheet.', default="")
 
     ## Parse the arguments
     args = parser.parse_args()
@@ -316,6 +334,7 @@ if __name__ == "__main__":
             args.token, args.repo,
             args.index, args.action,
             args.regex, args.delete_device,
-            args.xc8_specific, args.ai_sdk
+            args.xc8_specific, args.ai_sdk,
+            args.spreadsheet_link
         )
     )
