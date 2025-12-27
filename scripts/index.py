@@ -397,7 +397,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 package_name = name_without_extension
                 if 'database' in name_without_extension:
                     package_name = 'database'
-                    if ('dev' in name_without_extension) and ('test' in index_name):
+                    if ('dev' in name_without_extension) and ('test' in index_name or 'experimental' in index_name):
                        print("Database test version.")
                     elif ('dev' not in name_without_extension) and ('live' in index_name):
                        print("Database live version.")
@@ -481,10 +481,13 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                     print(f"{resp["result"]} {resp['_id']}")
                     # Database is indexed as separate ID for both indexes, so skip it in this step
                     if (name_without_extension in always_index) and ('database' not in name_without_extension):
-                        if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
+                        if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ) and ('ES_INDEX_EXPERIMENTAL' in os.environ):
                             if index_name == os.environ['ES_INDEX_TEST']:
                                 resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=name_without_extension, body=doc)
                                 print(f"Indexed to LIVE as well.")
+                                print(f"{resp["result"]} {resp['_id']}")
+                                resp = es.index(index=os.environ['ES_INDEX_EXPERIMENTAL'], doc_type=None, id=name_without_extension, body=doc)
+                                print(f"Indexed to EXPERIMENTAL as well.")
                                 print(f"{resp["result"]} {resp['_id']}")
 
             # Print new version after indexing
