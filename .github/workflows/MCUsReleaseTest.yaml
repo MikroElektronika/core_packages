@@ -13,11 +13,7 @@ on:
         default: "latest"
 
 jobs:
-  cleanup:
-    uses: ./.github/workflows/_cleanup.yml
-
   upload_mcu_assets_test:
-    needs: cleanup
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -64,6 +60,9 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+
+      - name: Clean the image
+        uses: ./.github/actions/aggressive-cleanup
 
       - name: Cache Python packages
         uses: actions/cache@v4

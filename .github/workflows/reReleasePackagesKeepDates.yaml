@@ -9,11 +9,7 @@ on:
           default: "v1.0.10"
 
 jobs:
-  cleanup:
-    uses: ./.github/workflows/_cleanup.yml
-
   re-release-dont-update-dates:
-    needs: cleanup
     runs-on: ubuntu-latest
     steps:
       - name: Authorize Mikroe Actions App
@@ -32,6 +28,9 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+
+      - name: Clean the image
+        uses: ./.github/actions/aggressive-cleanup
 
       - name: Cache Python packages
         uses: actions/cache@v4
