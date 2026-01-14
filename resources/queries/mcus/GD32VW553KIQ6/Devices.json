@@ -1,0 +1,18 @@
+{
+    "def_file": "GD32VW553KIQ6.json",
+    "family_uid": "GD32VW553",
+    "flash": "2097152",
+    "icon": "images/mcu/gigadevice.png",
+    "max_speed": "160.000",
+    "name": "GD32VW553KIQ6",
+    "ram": "327680",
+    "sdk_config": "{\"MCU_NAME\":\"GD32VW553KIQ6\",\"CORE_NAME\":\"RISCV\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "GD32VW553KIQ6",
+    "vendor": "GigaDevice",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm-riscv\": \"riscv_gcc_clang_gd32vw\", \"xpack-riscv-none-embed-gcc\": \"riscv_gcc_clang_gd32vw\"}"
+}
