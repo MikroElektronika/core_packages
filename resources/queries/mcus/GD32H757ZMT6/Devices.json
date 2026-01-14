@@ -1,0 +1,18 @@
+{
+    "def_file": "GD32H757ZMT6.json",
+    "family_uid": "GD32H757",
+    "flash": "3932160",
+    "icon": "images/mcu/gigadevice.png",
+    "max_speed": "600.000",
+    "name": "GD32H757ZMT6",
+    "ram": "1048576",
+    "sdk_config": "{\"MCU_NAME\":\"GD32H757ZMT6\",\"CORE_NAME\":\"M7\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "GD32H757ZMT6",
+    "vendor": "GigaDevice",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_gd32h75\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_gd32h75\"}"
+}

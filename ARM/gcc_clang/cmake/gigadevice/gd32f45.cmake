@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^GD32F450IGH6$|^GD32F450IIH6$|^GD32F450IKH6$|^GD32F450VET6$|^GD32F450VGT6$|^GD32F450VIT6$|^GD32F450VKT6$|^GD32F450ZET6$|^GD32F450ZGT6$|^GD32F450ZIT6$|^GD32F450ZKT6$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/gd32f45/init_clock.c)
+endif()
