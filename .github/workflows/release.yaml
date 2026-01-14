@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Clean the image
+        uses: ./.github/actions/aggressive-cleanup
+
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip

@@ -61,6 +61,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Clean the image
+        uses: ./.github/actions/aggressive-cleanup
+
       - name: Cache Python packages
         uses: actions/cache@v4
         with:
