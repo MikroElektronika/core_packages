@@ -13,7 +13,11 @@ on:
         default: "latest"
 
 jobs:
+  cleanup:
+    uses: ./.github/workflows/_cleanup.yml
+
   upload_mcu_assets_test:
+    needs: cleanup
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -60,31 +64,6 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-
-      # Remove Java (JDKs)
-      # Remove .NET SDKs
-      # Remove Swift toolchain
-      # Remove Haskell (GHC)
-      # Remove Julia
-      # Remove Android SDKs
-      # Remove Azure CLI
-      # Remove PowerShell
-      # Remove CodeQL and other toolcaches
-      - name: Aggressive cleanup
-        run: |
-          df -h
-          sudo rm -rf /usr/lib/jvm
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /usr/share/swift
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/julia*
-          sudo rm -rf /usr/local/lib/android
-          sudo rm -rf /opt/az
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /opt/hostedtoolcache
-          docker system prune -af || true
-          docker builder prune -af || true
-          df -h
 
       - name: Cache Python packages
         uses: actions/cache@v4
