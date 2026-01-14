@@ -561,8 +561,9 @@ async def upload_release_asset(session, token, repo, release_id, asset_path, ass
     if delete_existing:
         with open(asset_path, 'rb') as file:
             print(f'Uploading new asset: {asset_name}')
-            response = requests.post(url, headers=headers, data=file)
-            response.raise_for_status()
+            async with session.post(url, headers=headers, data=file) as response:
+                response.raise_for_status()
+                result = await response.json()
             print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
     else:
         asset_exists = False
