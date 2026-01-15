@@ -581,7 +581,7 @@ async def upload_release_asset(session, token, repo, tag_name, asset_path, delet
     print(f"\033[92mUpload completed for: {os.path.basename(asset_path)}.\033[0m")
 
     # Remove the asset from local drive to avoid reaching the memory limit
-    if os.path.exists(asset_path):
+    if os.path.exists(asset_path) and '.7z' in asset_path:
         print(f'\033[93mRemoved asset {os.path.basename(asset_path)} locally on running machine\033[0m')
         os.remove(asset_path)
     return result
