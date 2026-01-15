@@ -1039,7 +1039,6 @@ async def main(token, repo, tag_name):
         )
         async with aiohttp.ClientSession() as session:
             upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
-        os.remove(os.path.join('./utils', f'database{package_suffix}.7z'))
 
     # Generate document files asset
     archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
