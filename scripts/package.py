@@ -580,7 +580,7 @@ async def upload_release_asset(session, token, repo, release_id, asset_path, ass
                 print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
 
     # Remove the asset from local drive to avoid reaching the memory limit
-    if os.path.exists(asset_path):
+    if os.path.exists(asset_path) and '.7z' in asset_path:
         print(f'\033[93mRemoved asset {os.path.basename(asset_path)} locally on running machine\033[0m')
         os.remove(asset_path)
     return result
@@ -1039,7 +1039,6 @@ async def main(token, repo, tag_name):
         )
         async with aiohttp.ClientSession() as session:
             upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
-        os.remove(os.path.join('./utils', f'database{package_suffix}.7z'))
 
     # Generate document files asset
     archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
