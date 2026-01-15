@@ -601,15 +601,16 @@ def fetch_release_details(repo, token, release_version):
             last_exception = e
             print(f'\033[93mAttempt {attempt} failed:\033[0m {e}')
 
-    # Final fallback attempt (600s timeout)
-    try:
-        print('Final attempt with extended timeout (600s)')
-        response = requests.get(url, headers=api_headers, timeout=600)
-        response.raise_for_status()
+    if attempt == 5:
+        # Final fallback attempt (600s timeout)
+        try:
+            print('Final attempt with extended timeout (600s)')
+            response = requests.get(url, headers=api_headers, timeout=600)
+            response.raise_for_status()
 
-    except requests.exceptions.RequestException as e:
-        print('\033[91mFinal attempt failed too\033[0m')
-        raise last_exception from e
+        except requests.exceptions.RequestException as e:
+            print('\033[91mFinal attempt failed too\033[0m')
+            raise last_exception from e
 
     if "latest" == release_version:
         return utility.get_latest_release(response.json())
