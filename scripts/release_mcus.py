@@ -1074,7 +1074,6 @@ async def main(token, repo, tag_name, live=False):
         )
         async with aiohttp.ClientSession() as session:
             upload_result = await upload_release_asset(session, token, repo, tag_name, archive_path)
-        os.remove(os.path.join('./utils', f'database{package_suffix}.7z'))
 
     # Generate document files asset
     if not live:
