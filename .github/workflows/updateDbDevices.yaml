@@ -239,6 +239,8 @@ jobs:
           if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Test" ]]; then
             echo "Indexing database to TEST."
             python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} "True" "latest" "True" "False"
+            echo "Indexing database to EXPERIMENTAL."
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_EXPERIMENTAL }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} "True" "latest" "True" "False"
           fi
           if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
             echo "Indexing database to LIVE."
