@@ -1,0 +1,6 @@
+{
+    "core": "RISCV",
+    "delay_src_path": "delays/riscv/__lib_delays.c",
+    "mcu": "GD32VW553KIQ6",
+    "clock": "1"
+}

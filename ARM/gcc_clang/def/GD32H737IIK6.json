@@ -1,0 +1,6 @@
+{
+    "core": "M7",
+    "delay_src_path": "delays/m7/__lib_delays.c",
+    "mcu": "GD32H737IIK6",
+    "clock": "1"
+}
