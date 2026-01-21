@@ -116,7 +116,7 @@ if __name__ == "__main__":
                         package_name = f'{indexed_item['source']['name']}.7z'
                     else:
                         package_name = f'{indexed_item['source']['name']}.json'
-                    if indexed_item['source']['name'] == 'database' and 'test' in args.es_index:
+                    if indexed_item['source']['name'] == 'database' and ('test' in args.es_index or 'experimental' in args.es_index):
                         package_name = 'database_dev.7z'
                     # Set gh_package_name only for github assets
                     if 'gh_package_name' not in indexed_item['source'] and 'Device Pack' not in indexed_item['source']['category'] and indexed_item['source']['author'] not in thirdparty_authors:

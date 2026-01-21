@@ -183,9 +183,11 @@ def index_schemas(es: Elasticsearch, release_details, version, index_name, curre
         print(f"{resp['result']} {resp['_id']}")
 
         # Special case - update live index Elasticsearch base as well
-        if 'ES_INDEX_TEST' in os.environ and 'ES_INDEX_LIVE' in os.environ:
+        if 'ES_INDEX_TEST' in os.environ and 'ES_INDEX_LIVE' in os.environ and 'ES_INDEX_EXPERIMENTAL' in os.environ:
             if index_name == os.environ['ES_INDEX_TEST']:
                 resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=f'schemas{test_version}', body=doc)
+                print(f"{resp['result']} {resp['_id']}")
+                resp = es.index(index=os.environ['ES_INDEX_EXPERIMENTAL'], doc_type=None, id=f'schemas{test_version}', body=doc)
                 print(f"{resp['result']} {resp['_id']}")
 
 async def upload_asset(session, token, repo, tag_name, asset_path):
