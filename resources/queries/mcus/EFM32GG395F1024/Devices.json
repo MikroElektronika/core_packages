@@ -1,0 +1,18 @@
+{
+    "def_file": "EFM32GG395F1024.json",
+    "family_uid": "EFM32GG",
+    "flash": "1048576",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "48.000",
+    "name": "EFM32GG395F1024",
+    "ram": "131072",
+    "sdk_config": "{\"MCU_NAME\":\"EFM32GG395F1024\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EFM32GG395F1024",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_efm32gg3\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_efm32gg3\"}"
+}

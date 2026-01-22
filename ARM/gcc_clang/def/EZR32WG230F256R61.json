@@ -1,0 +1,6 @@
+{
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "mcu": "EZR32WG230F256R61",
+    "clock": "1"
+}

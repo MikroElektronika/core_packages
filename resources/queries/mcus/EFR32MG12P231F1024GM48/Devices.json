@@ -1,0 +1,18 @@
+{
+    "def_file": "EFR32MG12P231F1024GM48.json",
+    "family_uid": "EFR32MG12P",
+    "flash": "1048576",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "40.000",
+    "name": "EFR32MG12P231F1024GM48",
+    "ram": "131072",
+    "sdk_config": "{\"MCU_NAME\":\"EFR32MG12P231F1024GM48\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EFR32MG12P231F1024GM48",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_efr32mg12p2\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_efr32mg12p2\"}"
+}

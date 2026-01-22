@@ -1,0 +1,18 @@
+{
+    "def_file": "EFM32PG22C200F128IM40.json",
+    "family_uid": "EFM32PG22",
+    "flash": "131072",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "80.000",
+    "name": "EFM32PG22C200F128IM40",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"EFM32PG22C200F128IM40\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EFM32PG22C200F128IM40",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_efm32pg22\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_efm32pg22\"}"
+}

@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^EFM32PG22C200F128IM32$|^EFM32PG22C200F128IM40$|^EFM32PG22C200F256IM32$|^EFM32PG22C200F256IM40$|^EFM32PG22C200F512IM32$|^EFM32PG22C200F512IM40$|^EFM32PG22C200F64IM32$|^EFM32PG22C200F64IM40$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/efm32pg22/init_clock.c)
+endif()

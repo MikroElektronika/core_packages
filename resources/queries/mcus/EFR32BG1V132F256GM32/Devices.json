@@ -1,0 +1,18 @@
+{
+    "def_file": "EFR32BG1V132F256GM32.json",
+    "family_uid": "EFR32BG1V",
+    "flash": "262144",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "40.000",
+    "name": "EFR32BG1V132F256GM32",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"EFR32BG1V132F256GM32\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EFR32BG1V132F256GM32",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_efr32bg1v\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_efr32bg1v\"}"
+}

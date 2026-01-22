@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MGM111A256V2$|^MGM111E256V2$|^MGM12P02F1024GA$|^MGM12P02F1024GE$|^MGM12P22F1024GA$|^MGM12P22F1024GE$|^MGM12P32F1024GA$|^MGM12P32F1024GE$|^MGM13P02F512GA$|^MGM13P02F512GE$|^MGM13P12F512GA$|^MGM13P12F512GE$|^MGM13S02F512GA$|^MGM13S02F512GN$|^MGM13S12F512GA$|^MGM13S12F512GN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/mgm1/init_clock.c)
+endif()

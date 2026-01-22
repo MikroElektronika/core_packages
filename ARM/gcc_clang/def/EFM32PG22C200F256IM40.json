@@ -1,0 +1,6 @@
+{
+    "core": "M33EF",
+    "delay_src_path": "delays/m33ef/__lib_delays.c",
+    "mcu": "EFM32PG22C200F256IM40",
+    "clock": "1"
+}

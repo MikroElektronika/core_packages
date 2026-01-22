@@ -1,0 +1,18 @@
+{
+    "def_file": "EFM32WG395F128.json",
+    "family_uid": "EFM32WG",
+    "flash": "131072",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "48.000",
+    "name": "EFM32WG395F128",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"EFM32WG395F128\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EFM32WG395F128",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_efm32wg3\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_efm32wg3\"}"
+}

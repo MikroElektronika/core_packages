@@ -1,0 +1,6 @@
+{
+    "core": "M3",
+    "delay_src_path": "delays/m3/__lib_delays.c",
+    "mcu": "EFM32GG840F1024",
+    "clock": "1"
+}

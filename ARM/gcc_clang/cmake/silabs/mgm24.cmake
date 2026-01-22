@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MGM240L022RNF$|^MGM240L022VIF$|^MGM240L022VNF$|^MGM240LA22UIF$|^MGM240LA22VIF$|^MGM240LD22VIF$|^MGM240PA22VNA$|^MGM240PA32VNA$|^MGM240PA32VNN$|^MGM240PB22VNA$|^MGM240PB32VNA$|^MGM240PB32VNN$|^MGM240SA22VNA$|^MGM240SB22VNA$|^MGM240SD22VNA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/mgm24/init_clock.c)
+endif()

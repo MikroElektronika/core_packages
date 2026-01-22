@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^BGM220PC22HNA$|^BGM220PC22WGA$|^BGM220SC12WGA$|^BGM220SC22HNA$|^BGM220SC22WGA$|^BGM220SC23HNA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/bgm22/init_clock.c)
+endif()

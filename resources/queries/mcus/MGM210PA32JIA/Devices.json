@@ -1,0 +1,18 @@
+{
+    "def_file": "MGM210PA32JIA.json",
+    "family_uid": "MGM21",
+    "flash": "1048576",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "38.400",
+    "name": "MGM210PA32JIA",
+    "ram": "98304",
+    "sdk_config": "{\"MCU_NAME\":\"MGM210PA32JIA\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MGM210PA32JIA",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mgm21\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mgm21\"}"
+}

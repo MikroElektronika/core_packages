@@ -1,0 +1,18 @@
+{
+    "def_file": "EFM32JG1B100F256IM32.json",
+    "family_uid": "EFM32JG1B",
+    "flash": "262144",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "40.000",
+    "name": "EFM32JG1B100F256IM32",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"EFM32JG1B100F256IM32\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EFM32JG1B100F256IM32",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_efm32j\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_efm32j\"}"
+}

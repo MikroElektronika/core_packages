@@ -1,0 +1,18 @@
+{
+    "def_file": "MGM260PB32VNA.json",
+    "family_uid": "MGM26",
+    "flash": "3276800",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "80.000",
+    "name": "MGM260PB32VNA",
+    "ram": "524288",
+    "sdk_config": "{\"MCU_NAME\":\"MGM260PB32VNA\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MGM260PB32VNA",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mgm26\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mgm26\"}"
+}
