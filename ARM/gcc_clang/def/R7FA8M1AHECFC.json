@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "3",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "f",
@@ -153,7 +153,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2000",
+                    "init": "3000",
                     "key": "PCKA",
                     "label": "Peripheral Module Clock A (PCLKA) Select",
                     "mask": "f000",
