@@ -2194,6 +2194,51 @@
             "unused": "fffffff0"
         },
         {
+            "address": "4001e054",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "CKDIV",
+                    "label": "SCICLK Clock Division Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "/1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "4"
+                        },
+                        {
+                            "label": "/3",
+                            "value": "5"
+                        },
+                        {
+                            "label": "/5",
+                            "value": "6"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCICKDIVCR",
+            "unused": "fffffff8"
+        },
+        {
             "address": "4001e057",
             "default": "1",
             "fields": [
@@ -2253,6 +2298,51 @@
             ],
             "key": "SYSTEM_SPICKCR",
             "unused": "fffffff0"
+        },
+        {
+            "address": "4001e056",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "CKDIV",
+                    "label": "SPICLK Clock Division Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "/1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "4"
+                        },
+                        {
+                            "label": "/3",
+                            "value": "5"
+                        },
+                        {
+                            "label": "/5",
+                            "value": "6"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SPICKDIVCR",
+            "unused": "fffffff8"
         },
         {
             "address": "4001e0a0",
