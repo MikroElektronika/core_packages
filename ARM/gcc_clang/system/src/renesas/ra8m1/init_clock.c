@@ -59,6 +59,7 @@ typedef struct
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
+static uint8_t SCI_SPI_CLK_PrescTable[] = {1, 2, 4, 6, 8, 3, 5}
 
 /* Helper macros for getting SPI and SCI clock sources. */
 #define SCI_SPI_SOURCE_HOCO     (0)
@@ -752,10 +753,14 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     // Get the source clock of SPI module.
     SYSTEM_Clocks->SPICLK_Frequency = \
         SYSTEM_GetSPISCIClocksFrequency( VALUE_SYSTEM_SPICKCR & R_SYSTEM_SPICKCR_CKSEL_Msk );
+    // Adjust SPICLK based on the SPICKDIVCR value.
+    SYSTEM_Clocks->SPICLK_Frequency /= SCI_SPI_CLK_PrescTable[ SYSTEM_SPICKDIVCR & R_SYSTEM_SPICKDIVCR_CKDIV_Msk ]
 
     // Get the source clock of SCI module.
     SYSTEM_Clocks->SCICLK_Frequency = \
         SYSTEM_GetSPISCIClocksFrequency( VALUE_SYSTEM_SCICKCR & R_SYSTEM_SCICKCR_SCICKSEL_Msk );
+    // Adjust SCICLK based on the SPICKDIVCR value.
+    SYSTEM_Clocks->SCICLK_Frequency /= SCI_SPI_CLK_PrescTable[ SYSTEM_SCICKDIVCR & R_SYSTEM_SCICKDIVCR_CKDIV_Msk ]
 }
 
 /**
@@ -958,8 +963,15 @@ static void system_clock_configuration() {
         R_SYSTEM->CKOCR_b.CKOEN = 1; // Enable clock out
     }
 
-    R_SYSTEM->SCICKCR = VALUE_SYSTEM_SCICKCR;
+    // Set SPICLK parameters
     R_SYSTEM->SPICKCR = VALUE_SYSTEM_SPICKCR;
+    while ( !( R_SYSTEM->SPICKCR_b.CKSRDY ));
+    R_SYSTEM->SPICKDIVCR = SYSTEM_SPICKDIVCR;
+
+    // Set SCICLK parameters
+    R_SYSTEM->SCICKCR = VALUE_SYSTEM_SCICKCR;
+    while ( !( R_SYSTEM->SCICKCR_b.CKSRDY ));
+    R_SYSTEM->SCICKDIVCR = SYSTEM_SCICKDIVCR;
 
     /* If PLL2 is enabled and PLL1 is not chosen as source clock
      * or PLL2 is disabled and PLL1 is chosen as clock source.
