@@ -59,7 +59,7 @@ typedef struct
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
-static uint8_t SCI_SPI_CLK_PrescTable[] = {1, 2, 4, 6, 8, 3, 5}
+static uint8_t SCI_SPI_CLK_PrescTable[] = {1, 2, 4, 6, 8, 3, 5};
 
 /* Helper macros for getting SPI and SCI clock sources. */
 #define SCI_SPI_SOURCE_HOCO     (0)
