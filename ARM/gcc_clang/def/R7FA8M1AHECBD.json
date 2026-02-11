@@ -2138,7 +2138,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "0",
                     "key": "CKSEL",
                     "label": "SCI Clock Source Select",
                     "mask": "f",
@@ -2199,7 +2199,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "0",
                     "key": "CKDIV",
                     "label": "SCICLK Clock Division Select",
                     "mask": "7",
@@ -2244,7 +2244,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "0",
                     "key": "CKSEL",
                     "label": "SPI Clock Source Select",
                     "mask": "f",
@@ -2305,7 +2305,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "0",
                     "key": "CKDIV",
                     "label": "SPICLK Clock Division Select",
                     "mask": "7",
