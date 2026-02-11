@@ -965,16 +965,18 @@ static void system_clock_configuration() {
 
     // Set SPICLK parameters
     R_SYSTEM->SPICKCR_b.CKSREQ = 1;
+    while ( !( R_SYSTEM->SPICKCR_b.CKSRDY ));
     R_SYSTEM->SPICKDIVCR = VALUE_SYSTEM_SPICKDIVCR;
     R_SYSTEM->SPICKCR = VALUE_SYSTEM_SPICKCR;
-    R_SYSTEM->SPICKCR_b.CKSREQ = 1;
+    R_SYSTEM->SPICKCR_b.CKSREQ = 0;
     while ( R_SYSTEM->SPICKCR_b.CKSRDY );
 
     // Set SCICLK parameters
     R_SYSTEM->SCICKCR_b.CKSREQ = 1;
+    while ( !( R_SYSTEM->SCICKCR_b.CKSRDY ));
     R_SYSTEM->SCICKDIVCR = VALUE_SYSTEM_SCICKDIVCR;
     R_SYSTEM->SCICKCR = VALUE_SYSTEM_SCICKCR;
-    R_SYSTEM->SCICKCR_b.CKSREQ = 1;
+    R_SYSTEM->SCICKCR_b.CKSREQ = 0;
     while ( R_SYSTEM->SCICKCR_b.CKSRDY );
 
     /* If PLL2 is enabled and PLL1 is not chosen as source clock
