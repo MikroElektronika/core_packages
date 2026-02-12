@@ -2138,7 +2138,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "5",
                     "key": "CKSEL",
                     "label": "SCI Clock Source Select",
                     "mask": "f",
@@ -2199,7 +2199,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "CKDIV",
                     "label": "SCICLK Clock Division Select",
                     "mask": "7",
@@ -2244,7 +2244,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "5",
                     "key": "CKSEL",
                     "label": "SPI Clock Source Select",
                     "mask": "f",
@@ -2305,7 +2305,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "CKDIV",
                     "label": "SPICLK Clock Division Select",
                     "mask": "7",
@@ -4164,6 +4164,6 @@
     ],
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
-    "mcu": "R7FA8M1AFECFP",
+    "mcu": "R7FA8M1AFECBD",
     "clock": "480"
 }
