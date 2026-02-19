@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "4",
+                    "init": "0",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "7",
@@ -43,7 +43,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "40",
+                    "init": "10",
                     "key": "PCKC",
                     "label": "Peripheral Module Clock C (PCLKC) Select",
                     "mask": "70",
@@ -80,7 +80,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "400",
+                    "init": "100",
                     "key": "PCKB",
                     "label": "Peripheral Module Clock B (PCLKB) Select",
                     "mask": "700",
@@ -117,7 +117,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "4000",
+                    "init": "0",
                     "key": "PCKA",
                     "label": "Peripheral Module Clock A (PCLKA) Select",
                     "mask": "7000",
@@ -154,7 +154,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "4000000",
+                    "init": "0",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "7000000",
@@ -191,7 +191,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "40000000",
+                    "init": "10000000",
                     "key": "FCK",
                     "label": "FlashIF Clock (FCLK) Select",
                     "mask": "70000000",
@@ -236,7 +236,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "5",
                     "key": "CKSEL",
                     "label": "Clock Source Select",
                     "mask": "7",
@@ -277,7 +277,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLIDIV",
                     "label": "PLL Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -298,7 +298,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "PLSRCSEL",
                     "label": "PLL Clock Source Select",
                     "mask": "10",
@@ -315,174 +315,106 @@
                 },
                 {
                     "hidden": false,
-                    "init": "700",
+                    "init": "1300",
                     "key": "PLLMUL",
                     "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "1f00",
                     "settings": [
                         {
-                            "label": "x10.0",
+                            "label": "x4.0",
                             "value": "700"
                         },
                         {
-                            "label": "x10.5",
+                            "label": "x4.5",
                             "value": "800"
                         },
                         {
-                            "label": "x11.0",
+                            "label": "x5.0",
                             "value": "900"
                         },
                         {
-                            "label": "x11.5",
+                            "label": "x5.5",
                             "value": "a00"
                         },
                         {
-                            "label": "x12.0",
+                            "label": "x6.0",
                             "value": "b00"
                         },
                         {
-                            "label": "x12.5",
+                            "label": "x6.5",
                             "value": "c00"
                         },
                         {
-                            "label": "x13.0",
+                            "label": "x7.0",
                             "value": "d00"
                         },
                         {
-                            "label": "x13.5",
+                            "label": "x7.5",
                             "value": "e00"
                         },
                         {
-                            "label": "x14.0",
+                            "label": "x8.0",
                             "value": "f00"
                         },
                         {
-                            "label": "x14.5",
+                            "label": "x8.5",
                             "value": "1000"
                         },
                         {
-                            "label": "x15.0",
+                            "label": "x9.0",
                             "value": "1100"
                         },
                         {
-                            "label": "x15.5",
+                            "label": "x9.5",
                             "value": "1200"
                         },
                         {
-                            "label": "x16.0",
+                            "label": "x10.0",
                             "value": "1300"
                         },
                         {
-                            "label": "x16.5",
+                            "label": "x10.5",
                             "value": "1400"
                         },
                         {
-                            "label": "x17.0",
+                            "label": "x11.0",
                             "value": "1500"
                         },
                         {
-                            "label": "x17.5",
+                            "label": "x11.5",
                             "value": "1600"
                         },
                         {
-                            "label": "x18.0",
+                            "label": "x12.0",
                             "value": "1700"
                         },
                         {
-                            "label": "x18.5",
+                            "label": "x12.5",
                             "value": "1800"
                         },
                         {
-                            "label": "x19.0",
+                            "label": "x13.0",
                             "value": "1900"
                         },
                         {
-                            "label": "x19.5",
+                            "label": "x13.5",
                             "value": "1a00"
                         },
                         {
-                            "label": "x20.0",
+                            "label": "x14.0",
                             "value": "1b00"
                         },
                         {
-                            "label": "x20.5",
+                            "label": "x14.5",
                             "value": "1c00"
                         },
                         {
-                            "label": "x21.0",
+                            "label": "x15.0",
                             "value": "1d00"
                         },
                         {
-                            "label": "x21.5",
+                            "label": "x15.5",
                             "value": "1e00"
-                        },
-                        {
-                            "label": "x22.0",
-                            "value": "1f00"
-                        },
-                        {
-                            "label": "x22.5",
-                            "value": "2000"
-                        },
-                        {
-                            "label": "x23.0",
-                            "value": "2100"
-                        },
-                        {
-                            "label": "x23.5",
-                            "value": "2200"
-                        },
-                        {
-                            "label": "x24.0",
-                            "value": "2300"
-                        },
-                        {
-                            "label": "x24.5",
-                            "value": "2400"
-                        },
-                        {
-                            "label": "x25.0",
-                            "value": "2500"
-                        },
-                        {
-                            "label": "x25.5",
-                            "value": "2600"
-                        },
-                        {
-                            "label": "x26.0",
-                            "value": "2700"
-                        },
-                        {
-                            "label": "x26.5",
-                            "value": "2800"
-                        },
-                        {
-                            "label": "x27.0",
-                            "value": "2900"
-                        },
-                        {
-                            "label": "x27.5",
-                            "value": "2a00"
-                        },
-                        {
-                            "label": "x28.0",
-                            "value": "2b00"
-                        },
-                        {
-                            "label": "x28.5",
-                            "value": "2c00"
-                        },
-                        {
-                            "label": "x29.0",
-                            "value": "2d00"
-                        },
-                        {
-                            "label": "x29.5",
-                            "value": "2e00"
-                        },
-                        {
-                            "label": "x30.0",
-                            "value": "2f00"
                         }
                     ]
                 }
@@ -496,7 +428,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLLSTP",
                     "label": "PLL Stop Control",
                     "mask": "1",
@@ -514,35 +446,6 @@
             ],
             "key": "SYSTEM_PLLCR",
             "unused": "000000fe"
-        },
-        {
-            "address": "4001e031",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "MEMWAIT",
-                    "label": "Memory Wait Cycle Select for Code Flash",
-                    "mask": "3",
-                    "settings": [
-                        {
-                            "label": "No wait",
-                            "value": "0"
-                        },
-                        {
-                            "label": "One wait",
-                            "value": "1"
-                        },
-                        {
-                            "label": "Two waits",
-                            "value": "2"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_MEMWAIT",
-            "unused": "000000fc"
         },
         {
             "address": "4001e032",
@@ -600,7 +503,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "5",
                     "key": "HCFRQ0",
                     "label": "HOCO Frequency Setting 0",
                     "mask": "7",
@@ -761,7 +664,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "OPCM",
                     "label": "Operating Power Control Mode Select",
                     "mask": "3",
@@ -790,7 +693,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "9",
                     "key": "MSTS",
                     "label": "Main Clock Oscillator Wait Time Setting",
                     "mask": "f",
@@ -1007,10 +910,158 @@
             ],
             "key": "SYSTEM_LOCOCR",
             "unused": "000000fe"
+        },
+        {
+            "address": "40097010",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CK",
+                    "label": "UARTA0 operation clock select (fUTA0)",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "fSEL",
+                            "value": "0"
+                        },
+                        {
+                            "label": "fSEL/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "fSEL/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "fSEL/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "fSEL/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "fSEL/32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "fSEL/64",
+                            "value": "6"
+                        },
+                        {
+                            "label": "UARTLCLK",
+                            "value": "8"
+                        },
+                        {
+                            "label": "UARTSCLK",
+                            "value": "9"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SEL",
+                    "label": "fSEL clock select",
+                    "mask": "30",
+                    "settings": [
+                        {
+                            "label": "Stop",
+                            "value": "0"
+                        },
+                        {
+                            "label": "UARTAMCLK",
+                            "value": "10"
+                        },
+                        {
+                            "label": "UARTAHCLK",
+                            "value": "20"
+                        },
+                        {
+                            "label": "UARTAMOCLK",
+                            "value": "30"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_UTA0CK",
+            "unused": "000000c0"
+        },
+        {
+            "address": "40097011",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CK",
+                    "label": "UARTA1 operation clock select (fUTA1)",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "fSEL",
+                            "value": "0"
+                        },
+                        {
+                            "label": "fSEL/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "fSEL/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "fSEL/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "fSEL/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "fSEL/32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "fSEL/64",
+                            "value": "6"
+                        },
+                        {
+                            "label": "UARTLCLK",
+                            "value": "8"
+                        },
+                        {
+                            "label": "UARTSCLK",
+                            "value": "9"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EN",
+                    "label": "UARTA1 clock output function enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Disables CLKA1 output",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enables CLKA1 output",
+                            "value": "80"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_UTA1CK",
+            "unused": "00000070"
         }
     ],
     "core": "M33EF",
     "delay_src_path": "delays/m33ef/__lib_delays.c",
     "mcu": "R7FA4C1BD3CFM",
-    "clock": "1"
+    "clock": "80"
 }
