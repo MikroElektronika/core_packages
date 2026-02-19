@@ -779,23 +779,6 @@
                             "value": "3"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "OPCMTSF",
-                    "label": "Operating Power Control Mode Transition Status Flag",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Transition completed",
-                            "value": "0"
-                        },
-                        {
-                            "label": "During transition",
-                            "value": "10"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_OPCCR",
@@ -876,23 +859,6 @@
                         {
                             "label": "Subosc-speed mode",
                             "value": "1"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SOPCMTSF",
-                    "label": "Operating Power Control Mode Transition Status Flag",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Transition completed",
-                            "value": "0"
-                        },
-                        {
-                            "label": "During transition",
-                            "value": "10"
                         }
                     ]
                 }
