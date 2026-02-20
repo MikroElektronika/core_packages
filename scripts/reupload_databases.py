@@ -1285,6 +1285,30 @@ async def main(
         False
     )
 
+    ## Add new vendor column for NECTO filtering
+    log_step('\033[96mStep 4: Adding extra columns for NECTO database.\033[0m')
+    addCollumnsToTable(
+        databaseNecto, ['vendor'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
+    )
+    allBoardUids = read_data_from_db(
+        databaseNecto, 'SELECT DISTINCT uid FROM Boards'
+    )
+    for boardUid in allBoardUids[enums.dbSync.ELEMENTS.value]:
+        currentBoardDevice = read_data_from_db(
+            databaseNecto, f'SELECT device_uid FROM BoardToDevice WHERE board_uid IS "{boardUid[enums.dbSync.BOARDTODEVICEBOARD.value]}"'
+        )
+        vendor = (read_data_from_db(databaseNecto, f'SELECT vendor FROM Devices WHERE uid=="{currentBoardDevice[1][0][0]}";'))[1][0][0]
+        insertIntoTable(
+            databaseNecto,
+            'Boards',
+            [
+                'gdb_general', ## programer_uid
+                eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
+                '' ## device_support_package
+            ],
+            ProgrammerToDeviceColumns
+        )
+
     ## Step 2 - Update database with new SDK if needed
     ## Add new sdk version
     if 'latest' == release_version_sdk:
@@ -1376,6 +1400,20 @@ async def main(
             addCollumnsToTable(
                 databaseErp, ['pid', 'graphic_tool'], 'Compilers', ['VARCHAR(50)', 'BOOLEAN'], ['NoDefault', 0]
             )
+        elif databaseNecto:
+            ## Add new vendor column for NECTO filtering
+            log_step('\033[96mStep 4: Adding extra columns for NECTO database.\033[0m')
+            addCollumnsToTable(
+                databaseNecto, ['vendor'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
+            )
+            allBoardUids = read_data_from_db(
+                databaseNecto, 'SELECT DISTINCT uid, def_file FROM Boards'
+            )
+            for boardUid in allBoardUids:
+                currentBoardDevice = read_data_from_db(
+                    databaseNecto, f'SELECT * FROM BoardToDevice WHERE board_uid IS "{boardUid}"'
+                )
+                # vendor = getVendorFromDevice(currentBoardDevice)
     ## EOF Step 4
 
     ## Step 5 - select all unique devices from github database
