@@ -1403,20 +1403,6 @@ async def main(
             addCollumnsToTable(
                 databaseErp, ['pid', 'graphic_tool'], 'Compilers', ['VARCHAR(50)', 'BOOLEAN'], ['NoDefault', 0]
             )
-        elif databaseNecto:
-            ## Add new vendor column for NECTO filtering
-            log_step('\033[96mStep 4: Adding extra columns for NECTO database.\033[0m')
-            addCollumnsToTable(
-                databaseNecto, ['vendor'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
-            )
-            allBoardUids = read_data_from_db(
-                databaseNecto, 'SELECT DISTINCT uid, def_file FROM Boards'
-            )
-            for boardUid in allBoardUids:
-                currentBoardDevice = read_data_from_db(
-                    databaseNecto, f'SELECT * FROM BoardToDevice WHERE board_uid IS "{boardUid}"'
-                )
-                # vendor = getVendorFromDevice(currentBoardDevice)
     ## EOF Step 4
 
     ## Step 5 - select all unique devices from github database
