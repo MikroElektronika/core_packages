@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS 'SelectedBoard' (
 	`display`	VARCHAR,
 	`package_uid`	VARCHAR,
 	`installer_package`	Text,
+	`vendor`	Text,
 	FOREIGN KEY(`soldered_device`) REFERENCES `Devices`(`uid`) ON DELETE SET NULL ON UPDATE SET NULL,
 	FOREIGN KEY(`default_device`) REFERENCES `Devices`(`uid`) ON DELETE SET NULL ON UPDATE SET NULL,
 	PRIMARY KEY(`uid`),
