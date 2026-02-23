@@ -81,6 +81,33 @@ def insertIntoTable(db, tableName, values, columns):
     conn.commit()
     conn.close()
 
+# MIKROE boards regex
+MIKROE_REGEX_BOARDS = re.compile(
+    r'^(FUSION_FOR.+|MIKROMEDIA_.+|UNI_CLICKER|EASYPIC.+|EASYMX_.+|CLICKER|'
+    r'FLIP_AND_CLICK_.+|PICPLC16|6LOWPAN|HEXIWEAR|FLOWPAW|QUAIL|EASY.+|UNI_DS|MINI_32)$'
+)
+
+def update_vendor(db, uid, vendor):
+    # Do not update GENERIC boards
+    if uid.startswith('GENERIC'):
+        return
+
+    # Override vendor to MIKROE if uid matches
+    # (for MIKROE boards only)
+    if MIKROE_REGEX_BOARDS.match(str(uid)):
+        vendor = "MIKROE"
+
+    conn = sqlite3.connect(db)
+    cur = conn.cursor()
+
+    cur.execute(
+        "UPDATE Boards SET Vendor = ? WHERE uid = ?",
+        (vendor, uid)
+    )
+
+    conn.commit()
+    conn.close()
+
 def deleteFromTable(db, sql_query):
     try:
         sqliteConnection = sqlite3.connect(db)
@@ -1504,9 +1531,32 @@ async def main(
             fix_icon_names(eachDb, "Displays")
     ## EOF Step 14
 
-    ## Step 15 - if queries are different, add them to new file
+    ## Step 15 - add vendors for all Boards
+    ## Add new vendor column for NECTO filtering
+    if databaseNecto:
+        ## NECTO database only
+        log_step('\033[96mStep 15: Adding vendors for all Boards.\033[0m')
+        addCollumnsToTable(
+            databaseNecto, ['vendor'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
+        )
+        allBoardUids = read_data_from_db(
+            databaseNecto, 'SELECT DISTINCT uid FROM Boards'
+        )
+        for boardUid in allBoardUids[enums.dbSync.ELEMENTS.value]:
+            currentBoardDevice = read_data_from_db(
+                databaseNecto, f'SELECT device_uid FROM BoardToDevice WHERE board_uid IS "{boardUid[enums.dbSync.BOARDTODEVICEBOARD.value]}"'
+            )
+            for device in currentBoardDevice[1]:
+                vendor_list = (read_data_from_db(databaseNecto, f'SELECT vendor FROM Devices WHERE uid=="{device[enums.dbSync.BOARDTODEVICEBOARD.value]}";'))[enums.dbSync.ELEMENTS.value]
+                if len(vendor_list):
+                    vendor = vendor_list[0]
+                    break
+            update_vendor(databaseNecto, boardUid[0], vendor[0])
+    ## EOF Step 15
+
+    ## Step 16 - if queries are different, add them to new file
     if not mcus_only:
-        log_step('\033[96mStep 15: Checking if there are any changes to queries.\033[0m')
+        log_step('\033[96mStep 16: Checking if there are any changes to queries.\033[0m')
         if not compare_hashes(
             os.path.join(os.path.dirname(__file__), 'databases/queries'),
             os.path.join(os.path.dirname(os.getcwd()), 'utils/databases/queries')
@@ -1516,24 +1566,23 @@ async def main(
                 os.path.join(os.getcwd(), 'utils/databases/queries'),
                 os.path.join(os.path.dirname(__file__), 'databases/queries')
             )
-    ## EOF Step 15
-
-    ## Step 16 - re-upload over existing assets
-    if not mcus_only:
-        log_step('\033[96mStep 16: Uploading database archive.\033[0m')
-        archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
-        async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
-        if databaseErp:
-            log_step('\033[96mStep 16: Uploading ERP database file.\033[0m')
-            async with aiohttp.ClientSession() as session:
-                upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
     ## EOF Step 16
 
-    ## Step 17 - overwrite the existing necto_db.db in root with newly generated one
-    log_step(f'\033[96mStep 17: Overwriting {dbName} file.\033[0m')
-    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    ## Step 17 - re-upload over existing assets
+    log_step('\033[96mStep 17: Uploading database archive.\033[0m')
+    archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
+    if databaseErp:
+        log_step('\033[96mStep 16: Uploading ERP database file.\033[0m')
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
     ## EOF Step 17
+
+    ## Step 18 - overwrite the existing necto_db.db in root with newly generated one
+    log_step(f'\033[96mStep 18: Overwriting {dbName} file.\033[0m')
+    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    ## EOF Step 18
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
