@@ -77,7 +77,7 @@ extern void (* __init_array_end[])(void);
 #define BSP_ICU_VECTOR_MAX_ENTRIES    (BSP_VECTOR_TABLE_MAX_ENTRIES - BSP_CORTEX_VECTOR_TABLE_ENTRIES)
 #define BSP_WEAK_REFERENCE            __attribute__((weak))
 
-typedef enum e_elc_event_ra4l1
+typedef enum e_elc_event_ra4c1
 {
     ELC_EVENT_NONE                          = (0x0),   // Link disabled
     ELC_EVENT_ICU_IRQ0                      = (0x001), // External pin interrupt 0
@@ -110,6 +110,9 @@ typedef enum e_elc_event_ra4l1
     ELC_EVENT_ICU_SNOOZE_CANCEL             = (0x02D), // Canceling from Snooze mode
     ELC_EVENT_FCU_FIFERR                    = (0x030), // Flash access error interrupt
     ELC_EVENT_FCU_FRDYI                     = (0x031), // Flash ready interrupt
+    ELC_EVENT_LVD_LVD3                      = (0x035), // EXLVDVBAT monitor interrupt
+    ELC_EVENT_LVD_LVD4                      = (0x036), // RTC monitor interrupt
+    ELC_EVENT_LVD_LVD5                      = (0x037), // EXLVD monitor interrupt
     ELC_EVENT_LVD_LVD1                      = (0x038), // Voltage monitor 1 interrupt
     ELC_EVENT_LVD_LVD2                      = (0x039), // Voltage monitor 2 interrupt
     ELC_EVENT_CGC_MOSC_STOP                 = (0x03B), // Main Clock oscillation stop
@@ -135,29 +138,21 @@ typedef enum e_elc_event_ra4l1
     ELC_EVENT_CAN0_COMFRX                   = (0x065), // Common FIFO receive interrupt
     ELC_EVENT_CAN0_CF_DMAREQ                = (0x066), // Channel  DMA request
     ELC_EVENT_CAN0_RXMB                     = (0x067), // Receive message buffer interrupt
-    ELC_EVENT_USBFS_FIFO_0                  = (0x06B), // DMA/DTC transfer request 0
-    ELC_EVENT_USBFS_FIFO_1                  = (0x06C), // DMA/DTC transfer request 1
-    ELC_EVENT_USBFS_INT                     = (0x06D), // USBFS interrupt
-    ELC_EVENT_USBFS_RESUME                  = (0x06E), // USBFS resume interrupt
     ELC_EVENT_IIC0_RXI                      = (0x073), // Receive data full
     ELC_EVENT_IIC0_TXI                      = (0x074), // Transmit data empty
     ELC_EVENT_IIC0_TEI                      = (0x075), // Transmit end
     ELC_EVENT_IIC0_ERI                      = (0x076), // Transfer error
     ELC_EVENT_IIC0_WUI                      = (0x077), // Wakeup interrupt
-    ELC_EVENT_SSI0_TXI                      = (0x08A), // Transmit data empty
-    ELC_EVENT_SSI0_RXI                      = (0x08B), // Receive data full
-    ELC_EVENT_SSI0_INT                      = (0x08D), // Error interrupt
+    ELC_EVENT_IIC1_RXI                      = (0x078), // Receive data full
+    ELC_EVENT_IIC1_TXI                      = (0x079), // Transmit data empty
+    ELC_EVENT_IIC1_TEI                      = (0x07A), // Transmit end
+    ELC_EVENT_IIC1_ERI                      = (0x07B), // Transfer error
     ELC_EVENT_UARTA0_TXI                    = (0x08E), // UARTA0 transmission transfer end or buffer empty interrupt
     ELC_EVENT_UARTA0_RXI                    = (0x08F), // UARTA0 reception transfer end
     ELC_EVENT_UARTA0_ERRI                   = (0x090), // UARTA0 reception communication error occurrence
     ELC_EVENT_UARTA1_TXI                    = (0x091), // UARTA1 transmission transfer end or buffer empty interrupt
     ELC_EVENT_UARTA1_RXI                    = (0x092), // UARTA1 reception transfer end
     ELC_EVENT_UARTA1_ERRI                   = (0x093), // UARTA1 reception communication error occurrence
-    ELC_EVENT_ACMPLP0_INT                   = (0x094), // Low Power Comparator channel 0 interrupt
-    ELC_EVENT_ACMPLP1_INT                   = (0x095), // Low Power Comparator channel 1 interrupt
-    ELC_EVENT_CTSU_WRITE                    = (0x09A), // Write request interrupt
-    ELC_EVENT_CTSU_READ                     = (0x09B), // Measurement data transfer request interrupt
-    ELC_EVENT_CTSU_END                      = (0x09C), // Measurement end interrupt
     ELC_EVENT_CAC_FREQUENCY_ERROR           = (0x09E), // Frequency error interrupt
     ELC_EVENT_CAC_MEASUREMENT_END           = (0x09F), // Measurement end interrupt
     ELC_EVENT_CAC_OVERFLOW                  = (0x0A0), // Overflow interrupt
@@ -274,22 +269,19 @@ typedef enum e_elc_event_ra4l1
     ELC_EVENT_SPI0_IDLE                     = (0x1C6), // Idle
     ELC_EVENT_SPI0_ERI                      = (0x1C7), // Error
     ELC_EVENT_SPI0_TEI                      = (0x1C8), // Transmission complete event
+    ELC_EVENT_SPI1_RXI                      = (0x1C9), // Receive buffer full
+    ELC_EVENT_SPI1_TXI                      = (0x1CA), // Transmit buffer empty
+    ELC_EVENT_SPI1_IDLE                     = (0x1CB), // Idle
+    ELC_EVENT_SPI1_ERI                      = (0x1CC), // Error
+    ELC_EVENT_SPI1_TEI                      = (0x1CD), // Transmission complete event
     ELC_EVENT_CAN0_MRAM_ERI                 = (0x1D0), // CANFD0 ECC error
+    ELC_EVENT_SPI2_RXI                      = (0x1D1), // Receive buffer full
+    ELC_EVENT_SPI2_TXI                      = (0x1D2), // Transmit buffer empty
+    ELC_EVENT_SPI2_IDLE                     = (0x1D3), // Idle
+    ELC_EVENT_SPI2_ERI                      = (0x1D4), // Error
+    ELC_EVENT_SPI2_TEI                      = (0x1D5), // Transmission complete event
     ELC_EVENT_QSPI_INT                      = (0x1DA), // QSPI interrupt
     ELC_EVENT_DOC_INT                       = (0x1DB), // Data operation circuit interrupt
-    ELC_EVENT_I3C0_RESPONSE                 = (0x1DC), // Response status buffer full
-    ELC_EVENT_I3C0_COMMAND                  = (0x1DD), // Command buffer empty
-    ELC_EVENT_I3C0_IBI                      = (0x1DE), // IBI status buffer full
-    ELC_EVENT_I3C0_RX                       = (0x1DF), // Receive
-    ELC_EVENT_IICB0_RXI                     = (0x1DF), // Receive
-    ELC_EVENT_I3C0_TX                       = (0x1E0), // Transmit
-    ELC_EVENT_IICB0_TXI                     = (0x1E0), // Transmit
-    ELC_EVENT_I3C0_RCV_STATUS               = (0x1E1), // Receive status buffer full
-    ELC_EVENT_I3C0_TEND                     = (0x1E6), // Transmit end
-    ELC_EVENT_IICB0_TEI                     = (0x1E6), // Transmit end
-    ELC_EVENT_I3C0_EEI                      = (0x1E7), // Error
-    ELC_EVENT_IICB0_ERI                     = (0x1E7), // Error
-    ELC_EVENT_I3C0_WU                       = (0x1EC), // Wake-up Condition Detection interrupt
     ELC_EVENT_RSIP_TADI                     = (0x1EE)  // RSIP Tamper Detection
 } elc_event_t;
 
