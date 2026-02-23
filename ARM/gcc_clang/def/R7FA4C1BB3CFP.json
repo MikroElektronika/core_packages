@@ -315,7 +315,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "1300",
+                    "init": "700",
                     "key": "PLLMUL",
                     "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "1f00",
@@ -503,7 +503,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "2",
                     "key": "HCFRQ0",
                     "label": "HOCO Frequency Setting 0",
                     "mask": "7",

@@ -670,6 +670,10 @@ static void system_clock_configuration() {
         // 0 cycles for other modes
         R_FACI_LP->FLDWAITR = 0;
 
+    // Configure UART clock settings.
+    R_UARTA_CK->UTAnCK[0] = VALUE_SYSTEM_UTA0CK;
+    R_UARTA_CK->UTAnCK[1] = VALUE_SYSTEM_UTA1CK;
+
     R_SYSTEM->SCKDIVCR = VALUE_SYSTEM_SCKDIVCR;
 
     if ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOEN_Msk ) {
