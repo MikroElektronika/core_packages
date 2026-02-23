@@ -378,12 +378,6 @@ static void system_clock_configuration() {
         }
     }
 
-    if ( !( VALUE_SYSTEM_SOSCCR & R_SYSTEM_SOSCCR_SOSTP_Msk ) ) {
-        R_SYSTEM->SOSCCR_b.SOSTP = 1; // Stop SOSC
-        R_SYSTEM->SOMCR = VALUE_SYSTEM_SOMCR;
-        R_SYSTEM->SOSCCR_b.SOSTP = 0; // Start SOSC
-    }
-
     R_SYSTEM->LOCOCR = VALUE_SYSTEM_LOCOCR;
 
     R_SYSTEM->MOCOCR = VALUE_SYSTEM_MOCOCR;
