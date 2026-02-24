@@ -23,7 +23,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "SODRV",
                     "label": "Sub-Clock Oscillator Drive Capability Switching",
                     "mask": "6",
@@ -125,6 +125,31 @@
             ],
             "key": "SYSTEM_HOCOCR",
             "unused": "000000fe"
+        },
+        {
+            "address": "4001e037",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "HCFRQ1",
+                    "label": "HOCO Frequency Setting",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "24 MHz",
+                            "value": "0"
+                        },
+                        {
+                            "label": "32 MHz",
+                            "value": "2"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR2",
+            "unused": "fffffffc"
         },
         {
             "address": "4001e809",
@@ -232,7 +257,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "3",
+                    "init": "0",
                     "key": "DIV",
                     "label": "High-speed On-chip Oscillator Clock Division Ratio",
                     "mask": "7",
@@ -389,7 +414,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "CKSEL",
                     "label": "FSUB Clock Source Select",
                     "mask": "1",
@@ -439,7 +464,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "WUTMMCK0",
                     "label": "Selection of the Operating clock source for the Realtime Clock, 32-bit Interval Timer, Serial Interface UARTA",
                     "mask": "10",
@@ -544,35 +569,35 @@
                     "mask": "7",
                     "settings": [
                         {
-                            "label": "value after reset FMAIN (When CKS0.CSEL = 0) FSUB (When CKS0.CSEL = 1) ",
+                            "label": "FMAIN or FSUB",
                             "value": "0"
                         },
                         {
-                            "label": "FMAIN 1/2 (When CKS0.CSEL = 0) FSUB 1/2 (When CKS0.CSEL = 1) ",
+                            "label": "FMAIN/2 or FSUB/2",
                             "value": "1"
                         },
                         {
-                            "label": "FMAIN 1/22 (When CKS0.CSEL = 0) FSUB 1/22 (When CKS0.CSEL = 1) ",
+                            "label": "FMAIN/22 or FSUB/22",
                             "value": "2"
                         },
                         {
-                            "label": "FMAIN 1/23 (When CKS0.CSEL = 0) FSUB 1/23 (When CKS0.CSEL = 1) ",
+                            "label": "FMAIN/23 or FSUB/23",
                             "value": "3"
                         },
                         {
-                            "label": "FMAIN 1/24 (When CKS0.CSEL = 0) FSUB 1/24 (When CKS0.CSEL = 1) ",
+                            "label": "FMAIN/24 or FSUB/24",
                             "value": "4"
                         },
                         {
-                            "label": "FMAIN 1/211 (When CKS0.CSEL = 0) FSUB 1/25 (When CKS0.CSEL = 1) ",
+                            "label": "FMAIN/211 or FSUB/25",
                             "value": "5"
                         },
                         {
-                            "label": "FMAIN 1/212 (When CKS0.CSEL = 0) FSUB 1/26 (When CKS0.CSEL = 1) ",
+                            "label": "FMAIN/212 or FSUB/26",
                             "value": "6"
                         },
                         {
-                            "label": "FMAIN 1/213 (When CKS0.CSEL = 0) FSUB 1/27 (When CKS0.CSEL = 1) ",
+                            "label": "FMAIN/213 or FSUB/27",
                             "value": "7"
                         }
                     ]
@@ -621,7 +646,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "80",
+                    "init": "c0",
                     "key": "MODE",
                     "label": "Operating Mode Select",
                     "mask": "c0",
@@ -648,5 +673,5 @@
     "core": "M23",
     "delay_src_path": "delays/m23/__lib_delays.c",
     "mcu": "R7FA0E1053CNH",
-    "clock": "1"
+    "clock": "32"
 }
