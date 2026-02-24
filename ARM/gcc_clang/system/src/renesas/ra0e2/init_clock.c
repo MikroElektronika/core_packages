@@ -325,6 +325,10 @@ static void system_clock_configuration() {
     // Set MOSCDIV.
     R_SYSTEM->MOSCDIV = VALUE_SYSTEM_MOSCDIV;
 
+    // Configure UART clock settings.
+    R_UARTA_CK->UTAnCK[0] = VALUE_SYSTEM_UTA0CK;
+    R_UARTA_CK->UTAnCK[1] = VALUE_SYSTEM_UTA1CK;
+
     // Lock write protection register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
 }
