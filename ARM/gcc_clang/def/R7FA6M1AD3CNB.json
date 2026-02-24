@@ -1040,14 +1040,6 @@
                             "value": "0"
                         },
                         {
-                            "label": "Prohibited",
-                            "value": "1"
-                        },
-                        {
-                            "label": "Prohibited",
-                            "value": "2"
-                        },
-                        {
                             "label": "Low-speed mode ",
                             "value": "3"
                         }
