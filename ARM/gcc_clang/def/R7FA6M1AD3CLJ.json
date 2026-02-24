@@ -345,7 +345,7 @@
                     "hidden": false,
                     "init": "2f00",
                     "key": "PLLMUL",
-                    "label": "PLL Frequency Multiplication Factor Select   [PLL Frequency Multiplication Factor] = (PLLUMUL+1) / 2   Range: 0x23 - 0x3B   for example       010011: x10.0       010100: x10.5       010101: x11.0          :       011100: x14.5       011101: x15.0       011110: x15.5          :       111010: x29.5       111011: x30.0",
+                    "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "3f00",
                     "settings": [
                         {
