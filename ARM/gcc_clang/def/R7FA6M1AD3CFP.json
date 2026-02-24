@@ -43,7 +43,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "1000000",
+                    "init": "0",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "7000000",
@@ -343,7 +343,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2f00",
+                    "init": "1700",
                     "key": "PLLMUL",
                     "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "3f00",
