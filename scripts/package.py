@@ -10,6 +10,7 @@ import pandas as pd
 from elasticsearch import Elasticsearch
 
 import support as support
+import classes.release_per_vendor as gh_uploader
 
 from pathlib import Path
 
@@ -530,6 +531,7 @@ def update_database(package_name, mcus, db_path):
     return
 
 async def upload_release_asset(session, token, repo, release_id, asset_path, assets, delete_existing=True):
+    return
     """Upload an asset to a specific GitHub release. If the asset exists, delete it first."""
     asset_name = os.path.basename(asset_path)
     url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets'
@@ -780,16 +782,35 @@ def get_version_based_on_hash(package_name, version, hash_value, current_metadat
     # If the package is not found or the hash doesn't match, return the provided version
     return version
 
+def fetch_latest_release_version(repo, token):
+    api_headers = {
+        'Authorization': f'token {token}',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    }
+    url = f'https://api.github.com/repos/{repo}/releases'
+    response = requests.get(url, headers=api_headers)
+    response.raise_for_status()  # Raise an exception for HTTP errors
+    return support.get_latest_release(response.json())
+
 def get_release_id(repo, tag_name, token):
     """Get the release ID for a given tag name."""
-    url = f'https://api.github.com/repos/{repo}/releases/tags/{tag_name}'
     headers = {
         'Authorization': f'token {token}',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
     }
+
+    if 'latest' == tag_name:
+        url = f'https://api.github.com/repos/{repo}/releases'
+    else:
+        url = f'https://api.github.com/repos/{repo}/releases/tags/{tag_name}'
+
     response = requests.get(url, headers=headers)
     response.raise_for_status()
-    return response.json()['id']
+
+    if 'latest' == tag_name:
+        return (support.get_latest_release(response.json()))['id']
+    else:
+        return response.json()['id']
 
 def get_all_release_assets(repo, release_id, token):
     all_assets = []
@@ -917,6 +938,32 @@ async def main(token, repo, tag_name):
     # Get the release ID used to upload assets
     release_id = get_release_id(repo, tag_name, token)
     assets = get_all_release_assets(repo, release_id, token)
+
+    payload = {
+        "version": tag_name,
+        "tag": tag_name,
+        "files": {
+            "arm_mikroc_mkv5xx.7z":
+            {
+                "vendor": "NXP",
+                "path": "/home/strahinja/git/core_packages/output/ARM/mikroC/arm_mikroc_mkv5xx.7z",
+                "compiler": "mikroC"
+            },
+            "arm_gcc_clang_ra4m2.7z": {
+                "vendor": "Renesas",
+                "path": "/home/strahinja/git/core_packages/output/ARM/gcc_clang/arm_gcc_clang_ra4m2.7z",
+                "compiler": "GCC_CLANG"
+            }
+        }
+    }
+
+    uploader = gh_uploader.GitHubReleaseUploader(
+        repo=repo,
+        token=token,
+        dry_run=False,
+    )
+
+    uploader.upload_from_json(payload)
 
     packages = []
     for arch in architectures:
