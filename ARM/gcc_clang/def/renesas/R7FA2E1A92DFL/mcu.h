@@ -47,14 +47,9 @@ extern "C" {
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 // Note: Changed for MikroE implementation.
-//  #include "core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
+ #include "ra2e1_core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
 // Note: Changed for MikroE implementation.
-//  #include "system.h"                       /*!< R7FA2E1A9 System                                                          */
-#include <stdint.h>
-
-#define __I volatile // Note: Added for MikroE implementation.
-#define __O __I // Note: Added for MikroE implementation.
-#define __IO __I // Note: Added for MikroE implementation.
+// #include "system.h"                       /*!< R7FA2E1A9 System                                                          */
 
  #ifndef __IM                              /*!< Fallback for older CMSIS versions                                         */
   #define __IM     __I
@@ -4450,9 +4445,9 @@ typedef struct                         /*!< (@ 0x4001B000) R_DEBUG Structure    
             uint32_t                     : 12;
             __IOM uint32_t DBGSTOP_TIM   : 1; /*!< [14..14] Mask bit for RTC, TAU reset/interrupt                            */
             __IOM uint32_t DBGSTOP_SIR   : 1; /*!< [15..15] Mask bit for SAU, IICA, PORT_IRQ0-5 reset/interrupt              */
-            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interupt                                  */
+            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interrupt                                 */
             uint32_t                     : 5;
             __IOM uint32_t DBGSTOP_RPER  : 1; /*!< [24..24] Mask bit for SRAM parity error                                   */
             __IOM uint32_t DBGSTOP_RECCR : 1; /*!< [25..25] Mask bit for SRAM ECC error                                      */
@@ -5259,7 +5254,7 @@ typedef struct                         /*!< (@ 0x407EC000) R_FACI_LP Structure  
 
         struct
         {
-            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Up2025-08-06 Enable                                            */
+            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Update Enable                                            */
             uint16_t                : 7;
             __OM uint16_t FEKEY     : 8; /*!< [15..8] Key Code                                                          */
         } FBKSWCR_b;
@@ -5971,7 +5966,7 @@ typedef struct                         /*!< (@ 0x40078000) R_GPT0 Structure     
             __IOM uint32_t OAHLD  : 1; /*!< [7..7] GTIOCA Pin Output Setting at the Start/Stop Count                  */
             __IOM uint32_t OAE    : 1; /*!< [8..8] GTIOCA Pin Output Enable                                           */
             __IOM uint32_t OADF   : 2; /*!< [10..9] GTIOCA Pin Disable Value Setting                                  */
-            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invali2025-08-06.(This
+            __IOM uint32_t OAEOCD : 1; /*!< [11..11] GTCCRA Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -5984,7 +5979,7 @@ typedef struct                         /*!< (@ 0x40078000) R_GPT0 Structure     
             __IOM uint32_t OBHLD  : 1; /*!< [23..23] GTIOCB Pin Output Setting at the Start/Stop Count                */
             __IOM uint32_t OBE    : 1; /*!< [24..24] GTIOCB Pin Output Enable                                         */
             __IOM uint32_t OBDF   : 2; /*!< [26..25] GTIOCB Pin Disable Value Setting                                 */
-            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invali2025-08-06.(This
+            __IOM uint32_t OBEOCD : 1; /*!< [27..27] GTCCRB Compare Match Cycle End Output Invalidate.(This
                                         *   bit is only available in GPT324 to GPT329. In GPT320 to
                                         *   GPT323, this bit is read as 0. The write value should be
                                         *   0.)                                                                       */
@@ -9991,11 +9986,11 @@ typedef struct                         /*!< (@ 0x40002000) R_SRAM Structure     
 
     union
     {
-        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Up2025-08-06 Enable Register         */
+        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Update Enable Register         */
 
         struct
         {
-            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Up2025-08-06 Enable                          */
+            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Update Enable                          */
             uint8_t               : 7;
         } ECC1STSEN_b;
     };
