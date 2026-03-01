@@ -14,6 +14,8 @@ import classes.release_per_vendor as gh_uploader
 
 from pathlib import Path
 
+parent_dir = str(Path(__file__).resolve().parent.parent)
+
 def create_table(data, table_out):
     ''' Creates a table with data and saves it to table_out '''
     # Define column names
@@ -664,7 +666,9 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
         install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
 
-        packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location})
+        vendor = gh_uploader.resolve_mcu_vendor(mcuNames, cmake_file, source_dir)
+
+        packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location, 'vendor': vendor})
         package_changed = (version == tag_name.replace("v", ""))
 
         # Mark package for appropriate device and toolchain
@@ -692,6 +696,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         package_to_mcu_json.append({name_without_extension:[mcu_check, entry_name]})
         package_to_mcu_xlsx_full.append([name_without_extension, ','.join(mcu_full_list), entry_name])
         package_to_mcu_json_full.append({name_without_extension: {'mcus': mcu_full_list, 'toolchain': entry_name}})
+
 
     # Create a table with package to mcus
     os.makedirs(f'./output/docs/{arch}', exist_ok=True)
@@ -939,31 +944,12 @@ async def main(token, repo, tag_name):
     release_id = get_release_id(repo, tag_name, token)
     assets = get_all_release_assets(repo, release_id, token)
 
-    payload = {
-        "version": tag_name,
-        "tag": tag_name,
-        "files": {
-            "arm_mikroc_mkv5xx.7z":
-            {
-                "vendor": "NXP",
-                "path": "/home/strahinja/git/core_packages/output/ARM/mikroC/arm_mikroc_mkv5xx.7z",
-                "compiler": "mikroC"
-            },
-            "arm_gcc_clang_ra4m2.7z": {
-                "vendor": "Renesas",
-                "path": "/home/strahinja/git/core_packages/output/ARM/gcc_clang/arm_gcc_clang_ra4m2.7z",
-                "compiler": "GCC_CLANG"
-            }
-        }
-    }
-
     uploader = gh_uploader.GitHubReleaseUploader(
         repo=repo,
         token=token,
-        dry_run=False,
+        tag_name=tag_name,
+        dry_run=True
     )
-
-    uploader.upload_from_json(payload)
 
     packages = []
     for arch in architectures:
@@ -986,9 +972,13 @@ async def main(token, repo, tag_name):
                         packages, current_metadata, db_paths, assets
                     )
 
+    with open('mcu_packages.json', 'w') as file:
+        json.dump(packages, file)
+
+    payload = uploader.build_release_payload_from_packages(packages, 'output')
+
     for each_db in db_paths:
-        async with aiohttp.ClientSession() as session:
-            await upload_release_asset(session, token, repo, release_id, each_db, assets)
+        gh_uploader.append_to_payload(payload, each_db, os.path.join(parent_dir, each_db))
 
     # Uncomment to get specific test database per package
     # for each_package in packages:
@@ -1000,8 +990,7 @@ async def main(token, repo, tag_name):
     output_file = "./output/docs/clocks.json"
     clocksGenerator = GenerateClocks(input_directory, output_file)
     clocksGenerator.generate()
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, output_file, assets)
+    gh_uploader.append_to_payload(payload, 'clocks.json', Path(output_file).resolve())
 
     # Generate schemas.json
     input_directory = "./"
@@ -1010,8 +999,7 @@ async def main(token, repo, tag_name):
     # At the moment we check only for 'board_regex' fields in JSON files
     schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
     schemaGenerator.generate()
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, output_file, assets)
+    gh_uploader.append_to_payload(payload, 'schemas.json', Path(output_file).resolve())
 
     # Generate images package
     archive_path = compress_directory_7z(os.path.join('./resources', 'images'), 'images.7z')
@@ -1025,8 +1013,7 @@ async def main(token, repo, tag_name):
         'resources/images',
         'resources'
     )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'images.7z', Path(str(archive_path)).resolve())
 
     # Generate preinit package
     archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
@@ -1038,8 +1025,7 @@ async def main(token, repo, tag_name):
             hash_directory_contents(archive_path), current_metadata
         )
     )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'preinit.7z', Path(str(archive_path)).resolve())
 
     # Generate unit_test_lib package
     archive_path = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
@@ -1051,8 +1037,7 @@ async def main(token, repo, tag_name):
             hash_directory_contents(archive_path), current_metadata
         )
     )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'unit_test_lib.7z', Path(str(archive_path)).resolve())
 
     # Generate mikroe_utils_common package
     archive_path = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
@@ -1065,8 +1050,7 @@ async def main(token, repo, tag_name):
         ),
         'cmake'
     )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'mikroe_utils_common.7z', Path(str(archive_path)).resolve())
 
     # Generate database packages
     for each_db in db_paths:
@@ -1084,20 +1068,19 @@ async def main(token, repo, tag_name):
             ),
             f'databases'
         )
-        async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+        gh_uploader.append_to_payload(payload, f'database{package_suffix}.7z', Path(str(archive_path)).resolve())
 
     # Generate document files asset
     archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'docs.7z', Path(str(archive_path)).resolve())
 
     new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
     with open('metadata.json', 'w') as f:
         json.dump(new_metadata, f, indent=4)
+    gh_uploader.append_to_payload(payload, 'metadata.json', os.path.join(parent_dir, 'metadata.json'))
 
-    async with aiohttp.ClientSession() as session:
-        await upload_release_asset(session, token, repo, release_id, "metadata.json", assets)
+    ## Final step. Asset upload from created payload.
+    uploader.upload_from_json(payload)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")

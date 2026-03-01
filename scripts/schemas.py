@@ -17,7 +17,7 @@ class GenerateSchemas:
         """Extract relevant data from a JSON file."""
         settings, regexes = None, []
         try:
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
             if "settings" in data:
                 settings = data["settings"]

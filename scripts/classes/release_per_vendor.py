@@ -8,6 +8,8 @@ from typing import Any, Dict, Optional, Tuple
 
 import requests
 
+from pathlib import PurePath
+
 ## Special files, i.e. non vendor specific
 SPECIAL_RELEASE_FILENAMES = {
     "clocks.json",
@@ -15,7 +17,6 @@ SPECIAL_RELEASE_FILENAMES = {
     "database_dev.7z",
     "database_experimental.7z",
     "docs.7z",
-    "dspic_xc16_dspic.7z",
     "erp_db.db",
     "images.7z",
     "metadata.json",
@@ -27,6 +28,48 @@ SPECIAL_RELEASE_FILENAMES = {
     "unit_test_lib.7z",
 }
 
+def append_to_payload(payload, new_object_name, new_object_path):
+    payload["files"][new_object_name] = {
+        "vendor": "CORE",
+        "path": new_object_path,
+        "compiler": "CORE"
+    }
+
+def find_folders_exact(root_path: str, target_folder: str):
+    target = target_folder.lower()
+    matches = []
+
+    for current_root, dirs, _ in os.walk(root_path):
+        for folder in dirs:
+            if folder.lower() == target:
+                matches.append(os.path.join(current_root, folder))
+
+    return matches
+
+def extract_vendor(path):
+    parts = PurePath(path.replace("\\", "/")).parts
+    return parts[parts.index("def") + 1].upper()
+
+def resolve_mcu_vendor(mcus, cmake_file, source_dir):
+    vendor = None
+    mcuNamesVendor = [mcuName for mcuName in mcus[cmake_file]['mcu_names']]
+    if 'gcc_clang' in source_dir:
+        if mcuNamesVendor[0].startswith('GD32'):
+            vendor = 'GIGADEVICE'
+        else:
+            vendor = extract_vendor(find_folders_exact(source_dir, mcuNamesVendor[0])[0])
+    else:
+        if 'PIC' in source_dir or 'AVR' in source_dir or re.search('^CEC.+', mcuNamesVendor[0]):
+            vendor = 'Microchip'
+        elif 'ARM' in source_dir:
+            if re.search('^TM4.+', mcuNamesVendor[0]):
+                vendor = 'TI'
+            elif re.search('^STM32.+', mcuNamesVendor[0]):
+                vendor = 'STM'
+            elif re.search('^MK.+', mcuNamesVendor[0]):
+                vendor = 'NXP'
+
+    return vendor
 
 @dataclass(frozen=True)
 class FileSpec:
@@ -58,6 +101,7 @@ class GitHubReleaseUploader:
         max_retries: int = 5,
         retry_backoff_s: float = 1.5,
         dry_run: bool = False,
+        tag_name: str
     ) -> None:
         self.repo = repo
         self.api_base = api_base.rstrip("/")
@@ -65,6 +109,7 @@ class GitHubReleaseUploader:
         self.max_retries = max_retries
         self.retry_backoff_s = retry_backoff_s
         self.dry_run = dry_run
+        self.tag_name = tag_name
 
         self.session = requests.Session()
         self.session.headers.update(
@@ -82,6 +127,61 @@ class GitHubReleaseUploader:
     # Public API
     # ---------------------------
 
+    def build_release_payload_from_packages(self, packages, output_root):
+        """
+        packages: list of dicts (your old JSON)
+        output_root: e.g. "/home/strahinja/git/core_packages/output"
+        """
+
+        def norm_slashes(p: str) -> str:
+            return (p or "").replace("\\", "/")
+
+        def pick_arch_and_compiler_folder(pkg) -> tuple[str, str]:
+            # install_location example:
+            # %APPLICATION_DATA_DIR%/packages\core\ARM\gcc_clang\arm_gcc_clang_gd32a
+            loc = norm_slashes(pkg.get("install_location", ""))
+            parts = [x for x in loc.split("/") if x]
+
+            # Expect ".../core/<ARCH>/<compiler_folder>/<name>"
+            try:
+                core_i = next(i for i, x in enumerate(parts) if x.lower() == "core")
+                arch = parts[core_i + 1]
+                compiler_folder = parts[core_i + 2]
+                return arch, compiler_folder
+            except Exception:
+                # fallback: infer from name like "arm_gcc_clang_xxx"
+                name = pkg.get("name", "")
+                prefix = name.split("_", 2)
+                arch_guess = prefix[0].upper() if prefix else ""
+                compiler_folder_guess = prefix[1].lower() if len(prefix) > 1 else ""
+                return arch_guess, compiler_folder_guess
+
+        def compiler_label_from_folder(folder: str) -> str:
+            f = (folder or "").lower()
+            if f == "gcc_clang":
+                return "GCC_CLANG"
+            if f == "mikroc":
+                return "mikroC"
+            if f in ("xc8", "xc16", "xc32"):
+                return 'XC'
+            return folder  # last-resort passthrough
+
+        files = {}
+        for pkg in packages:
+            name = pkg["name"]
+            archive = f"{name}.7z"
+
+            arch, compiler_folder = pick_arch_and_compiler_folder(pkg)
+            compiler = compiler_label_from_folder(compiler_folder)
+
+            files[archive] = {
+                "vendor": pkg.get("vendor", ""),
+                "path": f"{output_root}/{arch}/{compiler_folder}/{archive}",
+                "compiler": compiler,
+            }
+
+        return {"version": self.tag_name, "tag": self.tag_name, "files": files}
+
     def upload_from_json(self, payload: Dict[str, Any]) -> None:
         version = str(payload.get("version") or "").strip()
         if not version:
@@ -97,6 +197,7 @@ class GitHubReleaseUploader:
 
         specs = self._parse_files(files_obj)
 
+        log_array = []
         for spec in specs:
             release_name = self._select_release_name(version=version, spec=spec)
             if release_name.startswith(spec.vendor):
@@ -104,7 +205,16 @@ class GitHubReleaseUploader:
             else:
                 tag = f'{spec.compiler}_{version}'
             rel_id, upload_url = self._ensure_release_cached(name=release_name, tag=tag)
-            self._upload_asset(upload_url=upload_url, asset_name=spec.filename, file_path=spec.path)
+            if self.dry_run:
+                msg = f"[DRY RUN] Would upload {spec.filename} to \"{release_name}\""
+                log_array.append(msg)
+                print(msg)
+            else:
+                self._upload_asset(upload_url=upload_url, asset_name=spec.filename, file_path=spec.path)
+
+        if self.dry_run:
+            with open('dry_run_log.txt', 'w') as file:
+                file.write("\n".join(log_array))
 
     # ---------------------------
     # JSON parsing / rules
@@ -232,37 +342,60 @@ class GitHubReleaseUploader:
     def _asset_exists_in_release(self, *, upload_url: str, asset_name: str) -> bool:
         """
         Returns True if asset with given name already exists in the release.
+        Fetches ALL pages of releases (and assets) to avoid missing matches beyond page 1.
         """
 
-        # Find the release that matches this upload_url
         releases_url = f"{self.api_base}/repos/{self.repo}/releases"
-        resp = self._request("GET", releases_url, params={"per_page": 100, "page": 1})
-        releases = resp.json()
+        per_page = 100
+        page = 1
 
         normalized = upload_url.rstrip("/")
         target_release = None
 
-        for r in releases:
-            u = str(r.get("upload_url", "")).split("{")[0].rstrip("/")
-            if u == normalized:
-                target_release = r
+        # ---- paginate releases until we find the one matching upload_url ----
+        while True:
+            resp = self._request("GET", releases_url, params={"per_page": per_page, "page": page})
+            releases = resp.json()
+
+            if not releases:
                 break
 
+            for r in releases:
+                u = str(r.get("upload_url", "")).split("{")[0].rstrip("/")
+                if u == normalized:
+                    target_release = r
+                    break
+
+            if target_release is not None:
+                break
+
+            if len(releases) < per_page:
+                break  # last page
+            page += 1
+
         if not target_release:
-            print(f"Warning: Could not resolve release for upload_url.")
+            print("Warning: Could not resolve release for upload_url.")
             return False
 
         rel_id = int(target_release["id"])
         assets_url = f"{self.api_base}/repos/{self.repo}/releases/{rel_id}/assets"
 
-        assets_resp = self._request("GET", assets_url)
-        assets = assets_resp.json()
+        # ---- paginate assets too (a release can have >100 assets) ----
+        page = 1
+        while True:
+            assets_resp = self._request("GET", assets_url, params={"per_page": per_page, "page": page})
+            assets = assets_resp.json()
 
-        for asset in assets:
-            if str(asset.get("name") or "") == asset_name:
-                return True
+            if not assets:
+                return False
 
-        return False
+            for asset in assets:
+                if str(asset.get("name") or "") == asset_name:
+                    return True
+
+            if len(assets) < per_page:
+                return False  # last page
+            page += 1
 
     # ---------------------------
     # Upload asset (replace if exists)
