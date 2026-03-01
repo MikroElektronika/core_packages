@@ -319,6 +319,19 @@ def getProgDbgAsJson(docLink, saveToFile=False):
 
     with urllib.request.urlopen(docLink) as f:
         html = f.read().decode('utf-8')
+    # For JLink we need only devices, so remove Flash and RAM information
+    # that are causing issues while parsing the csv file
+    # Each Flash and RAM element starts with ", {", so just trim it and
+    # adjust tabulation between data set members
+    if 'JLink' in docLink:
+        html = 'Programmers, Debuggers, ' + html
+        html_lines = html.split('\r\n')
+        html = ''
+        for line in html_lines:
+            if 'Programmers, ' in line:
+                html += line.split(', {')[0].replace('"', '').replace(', ', ',') + '\r\n'
+            elif line.strip() != '':
+                html += 'Segger J-Link,Segger J-Link,' + line.split(', {')[0].replace('"', '').replace(', ', ',') + '\r\n'
     with open(os.path.join(os.path.dirname(__file__), 'devices.txt'), 'w') as devices:
         devices.write(html)
     devices.close()
@@ -329,7 +342,10 @@ def getProgDbgAsJson(docLink, saveToFile=False):
     df = pd.read_csv(os.path.join(os.path.dirname(__file__), "devices.txt"))
     df.replace({np.nan: False}, inplace=True)
     if 'amazonaws' in docLink:
-        data_dict = df.set_index('name').to_dict(orient='index')
+        if 'Codegrip' in docLink:
+            data_dict = df.set_index('name').to_dict(orient='index')
+        else:
+            data_dict = df.set_index('Device').to_dict(orient='index')
     else:
         data_dict = df.set_index('Name').to_dict(orient='index')
     formatted_dict = {mcu.lower(): data for mcu, data in data_dict.items()}
@@ -367,7 +383,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
         if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
             for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()].keys():
-                if re.search('Programmers',eachProgCheckKey, re.IGNORECASE):
+                if re.search('Programmers', eachProgCheckKey, re.IGNORECASE):
                     if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey]:
                         splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey].split('/')
                         for eachProgDebug in splitProgsDebuggers:
@@ -402,6 +418,38 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                 #         device_support_package
                                 #     )
                                 # )
+        else:
+            # Workaround for SEGGER - it has support per device family, not device name
+            # so we need to see if there is any device matching the family
+            for key in progDbgInfo:
+                if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower().startswith(key):
+                    for eachProgCheckKey in progDbgInfo[key].keys():
+                        if re.search('Programmers', eachProgCheckKey, re.IGNORECASE):
+                            if progDbgInfo[key][eachProgCheckKey]:
+                                splitProgsDebuggers = progDbgInfo[key][eachProgCheckKey].split('/')
+                                for eachProgDebug in splitProgsDebuggers:
+                                    progDebugUid = read_data_from_db(
+                                        database,
+                                        f'SELECT uid FROM Programmers WHERE name IS "{eachProgDebug}"'
+                                    )
+                                    if 'package_name' in progDbgInfo[key]:
+                                        device_support_package = f'["{progDbgInfo[key]['package_name']}"]'
+                                        # If there is no Debugger support for Codegrip in csv file, add it but without any codegrip package
+                                        if device_support_package == '["False"]':
+                                            device_support_package = '[""]'
+                                    else:
+                                        device_support_package = ''
+                                    if progDebugUid[enums.dbSync.COUNT.value]:
+                                        insertIntoTable(
+                                            database,
+                                            'ProgrammerToDevice',
+                                            [
+                                                progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value], ## programer_uid
+                                                eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
+                                                device_support_package
+                                            ],
+                                            ProgrammerToDeviceColumns
+                                        )
         # Always add gdb_general
         if addGeneral:
             insertIntoTable(
@@ -421,6 +469,7 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
             #         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
             #     )
             # )
+
     return
 
 def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
@@ -473,6 +522,30 @@ def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                 #         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
                                 #     )
                                 # )
+        else:
+            # Workaround for SEGGER - it has support per device family, not device name
+            # so we need to see if there is any device matching the family
+            for key in progDbgInfo:
+                if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower().startswith(key):
+                    for eachProgCheckKey in progDbgInfo[key].keys():
+                        if re.search('Debuggers',eachProgCheckKey, re.IGNORECASE):
+                            if progDbgInfo[key][eachProgCheckKey]:
+                                splitProgsDebuggers = progDbgInfo[key][eachProgCheckKey].split('/')
+                                for eachProgDebug in splitProgsDebuggers:
+                                    progDebugUid = read_data_from_db(
+                                        database,
+                                        f'SELECT uid FROM Debuggers WHERE name IS "{eachProgDebug}"'
+                                    )
+                                    if progDebugUid[enums.dbSync.COUNT.value]:
+                                        insertIntoTable(
+                                            database,
+                                            'DebuggerToDevice',
+                                            [
+                                                progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value], ## debugger_uid
+                                                eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value] ## device_uid
+                                            ],
+                                            DebuggerToDeviceColumns
+                                        )
         ## Always add gdb_general?
         if addGeneral:
             insertIntoTable(
@@ -1292,7 +1365,7 @@ def log_step(message):
 
 ## Main runner
 async def main(
-    token, repo, doc_codegrip, doc_mikroprog,
+    token, repo, doc_codegrip, doc_mikroprog, doc_jlink,
     release_version="", release_version_sdk="", index="Test", mcus_only=True
 ):
     start = time.perf_counter()
@@ -1446,7 +1519,7 @@ async def main(
             checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
             log_step(f'\033[96mStep 9.2: Adding CODEGRIP packs information into DebuggerToDevice for {databaseErp}.\033[0m')
             checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
-            entranceCheckProg, entranceCheckDebug = True,True
+            entranceCheckProg, entranceCheckDebug = True, True
         log_step(f'\033[96mStep 9.1: Adding CODEGRIP packs information into ProgrammerToDevice for {databaseNecto}.\033[0m')
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
         log_step(f'\033[96mStep 9.2: Adding CODEGRIP packs information into DebuggerToDevice for {databaseNecto}.\033[0m')
@@ -1470,7 +1543,19 @@ async def main(
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
     ## EOF Step 10
 
-    ## Step 11 add microchip info to programmers table
+    ## Step 11 - syncronize programmers for all devices - jlink last
+    if not mcus_only:
+        progDbgAsJson = getProgDbgAsJson(
+            doc_jlink,
+            True
+        )
+        log_step(f'\033[96mStep 11.1: Adding JLink packs information into ProgrammerToDevice for {databaseNecto}.\033[0m')
+        checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
+        log_step(f'\033[96mStep 11.2: Adding JLink packs information into DebuggerToDevice for {databaseNecto}.\033[0m')
+        checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
+    ## EOF Step 11
+
+    ## Step 12 add microchip info to programmers table
     custom_link = 'https://packs.download.microchip.com/index.idx'
     if not mcus_only:
         # Download the index file
@@ -1496,7 +1581,7 @@ async def main(
 
         for eachDb in [databaseErp, databaseNecto]:
             if eachDb:
-                log_step(f'\033[96mStep 11: Adding MCHP packs information into {eachDb}.\033[0m')
+                log_step(f'\033[96mStep 12: Adding MCHP packs information into {eachDb}.\033[0m')
                 ## Add missing columns to programmer table
                 addCollumnsToTable(
                     eachDb, ['installer_package'], 'Programmers', ['Text'], ['NoDefault']
@@ -1505,37 +1590,37 @@ async def main(
                     eachDb, ['device_support_package'], 'ProgrammerToDevice', ['Text'], ['NoDefault']
                 )
                 updateMCHPProgrammers(eachDb, converted_data, json_data_list)
-    ## EOF Step 11
+    ## EOF Step 12
 
-    ## Step 12 - add legacy SDK support for Boards and Cards that should have it
+    ## Step 13 - add legacy SDK support for Boards and Cards that should have it
     if not mcus_only:
         for eachDb in [databaseErp, databaseNecto]:
             if eachDb:
-                log_step(f'\033[96mStep 12: Adding legacy SDK support into {eachDb}.\033[0m')
+                log_step(f'\033[96mStep 13: Adding legacy SDK support into {eachDb}.\033[0m')
                 update_legacy_sdk_support(eachDb)
-    ## EOF Step 12
+    ## EOF Step 13
 
-    ## Step 13 - update families
+    ## Step 14 - update families
     if not mcus_only:
         if databaseErp:
             ## Add information into ERP db needed for the Web Site
-            log_step(f'\033[96mStep 13: Adding ERP-applicable info into databases.\033[0m')
+            log_step(f'\033[96mStep 14: Adding ERP-applicable info into databases.\033[0m')
             update_erp_info(databaseErp, databaseNecto)
-    ## EOF Step 13
-
-    ## Step 14 - update the icon names
-    if not mcus_only:
-        for eachDb in [databaseErp, databaseNecto]:
-            log_step(f'\033[96mStep 14: Checking image names in {eachDb}.\033[0m')
-            fix_icon_names(eachDb, "Boards")
-            fix_icon_names(eachDb, "Displays")
     ## EOF Step 14
 
-    ## Step 15 - add vendors for all Boards
+    ## Step 15 - update the icon names
+    if not mcus_only:
+        for eachDb in [databaseErp, databaseNecto]:
+            log_step(f'\033[96mStep 15: Checking image names in {eachDb}.\033[0m')
+            fix_icon_names(eachDb, "Boards")
+            fix_icon_names(eachDb, "Displays")
+    ## EOF Step 15
+
+    ## Step 16 - add vendors for all Boards
     ## Add new vendor column for NECTO filtering
     if databaseNecto:
         ## NECTO database only
-        log_step('\033[96mStep 15: Adding vendors for all Boards.\033[0m')
+        log_step('\033[96mStep 16: Adding vendors for all Boards.\033[0m')
         addCollumnsToTable(
             databaseNecto, ['vendor'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
         )
@@ -1552,11 +1637,11 @@ async def main(
                     vendor = vendor_list[0]
                     break
             update_vendor(databaseNecto, boardUid[0], vendor[0])
-    ## EOF Step 15
+    ## EOF Step 16
 
-    ## Step 16 - if queries are different, add them to new file
+    ## Step 17 - if queries are different, add them to new file
     if not mcus_only:
-        log_step('\033[96mStep 16: Checking if there are any changes to queries.\033[0m')
+        log_step('\033[96mStep 17: Checking if there are any changes to queries.\033[0m')
         if not compare_hashes(
             os.path.join(os.path.dirname(__file__), 'databases/queries'),
             os.path.join(os.path.dirname(os.getcwd()), 'utils/databases/queries')
@@ -1566,23 +1651,23 @@ async def main(
                 os.path.join(os.getcwd(), 'utils/databases/queries'),
                 os.path.join(os.path.dirname(__file__), 'databases/queries')
             )
-    ## EOF Step 16
+    ## EOF Step 17
 
-    ## Step 17 - re-upload over existing assets
-    log_step('\033[96mStep 17: Uploading database archive.\033[0m')
+    ## Step 18 - re-upload over existing assets
+    log_step('\033[96mStep 18: Uploading database archive.\033[0m')
     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
     if databaseErp:
-        log_step('\033[96mStep 16: Uploading ERP database file.\033[0m')
+        log_step('\033[96mStep 18: Uploading ERP database file.\033[0m')
         async with aiohttp.ClientSession() as session:
             upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
-    ## EOF Step 17
-
-    ## Step 18 - overwrite the existing necto_db.db in root with newly generated one
-    log_step(f'\033[96mStep 18: Overwriting {dbName} file.\033[0m')
-    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## EOF Step 18
+
+    ## Step 19 - overwrite the existing necto_db.db in root with newly generated one
+    log_step(f'\033[96mStep 19: Overwriting {dbName} file.\033[0m')
+    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    ## EOF Step 19
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
@@ -1602,8 +1687,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
-    parser.add_argument('doc_codegrip', type=str, help='Spreadsheet table download link.')
-    parser.add_argument('doc_mikroprog', type=str, help='Spreadsheet table download link.')
+    parser.add_argument('doc_codegrip', type=str, help='CODEGRIP spreadsheet table download link.')
+    parser.add_argument('doc_mikroprog', type=str, help='MikroPROG spreadsheet table download link.')
+    parser.add_argument('doc_jlink', type=str, help='JLink spreadsheet table download link.')
     parser.add_argument('specific_tag', type=str, help='Specific release tag for database update.', default="")
     parser.add_argument('specific_tag_mikrosdk', type=str, help='Specific release tag from mikrosdk for database update.', default="")
     parser.add_argument('index', type=str, help='Index selection - Live/Test.', default="Test")
@@ -1616,7 +1702,7 @@ if __name__ == "__main__":
     asyncio.run(
         main(
             args.token, args.repo,
-            args.doc_codegrip, args.doc_mikroprog,
+            args.doc_codegrip, args.doc_mikroprog, args.doc_jlink,
             args.specific_tag, args.specific_tag_mikrosdk,
             args.index, args.mcus_only
         )
