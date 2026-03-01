@@ -948,7 +948,7 @@ async def main(token, repo, tag_name):
         repo=repo,
         token=token,
         tag_name=tag_name,
-        dry_run=True
+        dry_run=False
     )
 
     packages = []
