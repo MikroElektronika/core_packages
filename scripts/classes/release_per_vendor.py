@@ -1,12 +1,8 @@
 from __future__ import annotations
 
-import os
-import re
-import time
+import os, re, time, json, requests
 from dataclasses import dataclass
 from typing import Any, Dict, Optional, Tuple
-
-import requests
 
 from pathlib import PurePath
 
@@ -28,6 +24,24 @@ SPECIAL_RELEASE_FILENAMES = {
     "unit_test_lib.7z",
 }
 
+def increase_version(version, part="patch"):
+    # Split the version string into major, minor, and patch
+    major, minor, patch = map(int, version.split('.'))
+
+    # Increase the selected part
+    if part == "major":
+        major += 1
+        minor = 0  # Reset minor and patch when major increases
+        patch = 0
+    elif part == "minor":
+        minor += 1
+        patch = 0  # Reset patch when minor increases
+    elif part == "patch":
+        patch += 1
+
+    # Return the new version string
+    return f"{major}.{minor}.{patch}"
+
 def append_to_payload(payload, new_object_name, new_object_path):
     payload["files"][new_object_name] = {
         "vendor": "CORE",
@@ -35,40 +49,8 @@ def append_to_payload(payload, new_object_name, new_object_path):
         "compiler": "CORE"
     }
 
-def find_folders_exact(root_path: str, target_folder: str):
-    target = target_folder.lower()
-    matches = []
-
-    for current_root, dirs, _ in os.walk(root_path):
-        for folder in dirs:
-            if folder.lower() == target:
-                matches.append(os.path.join(current_root, folder))
-
-    return matches
-
-def extract_vendor(path):
-    parts = PurePath(path.replace("\\", "/")).parts
-    return parts[parts.index("def") + 1].upper()
-
-def resolve_mcu_vendor(mcus, cmake_file, source_dir):
-    vendor = None
-    mcuNamesVendor = [mcuName for mcuName in mcus[cmake_file]['mcu_names']]
-    if 'gcc_clang' in source_dir:
-        if mcuNamesVendor[0].startswith('GD32'):
-            vendor = 'GIGADEVICE'
-        else:
-            vendor = extract_vendor(find_folders_exact(source_dir, mcuNamesVendor[0])[0])
-    else:
-        if 'PIC' in source_dir or 'AVR' in source_dir or re.search('^CEC.+', mcuNamesVendor[0]):
-            vendor = 'Microchip'
-        elif 'ARM' in source_dir:
-            if re.search('^TM4.+', mcuNamesVendor[0]):
-                vendor = 'TI'
-            elif re.search('^STM32.+', mcuNamesVendor[0]):
-                vendor = 'STM'
-            elif re.search('^MK.+', mcuNamesVendor[0]):
-                vendor = 'NXP'
-
+def resolve_mcu_vendor(cmake_path):
+    vendor = cmake_path.split(os.sep)[-2].upper()
     return vendor
 
 @dataclass(frozen=True)
@@ -182,7 +164,7 @@ class GitHubReleaseUploader:
 
         return {"version": self.tag_name, "tag": self.tag_name, "files": files}
 
-    def upload_from_json(self, payload: Dict[str, Any]) -> None:
+    def upload_from_json(self, payload: Dict[str, Any], metadata, releases_to_update) -> None:
         version = str(payload.get("version") or "").strip()
         if not version:
             raise ValueError("JSON payload must contain non-empty 'version'.")
@@ -197,20 +179,93 @@ class GitHubReleaseUploader:
 
         specs = self._parse_files(files_obj)
 
+        releases_info = {}
+
         log_array = []
         for spec in specs:
-            release_name = self._select_release_name(version=version, spec=spec)
+            release_version, release_name = self._select_release_name(version=version, spec=spec, releases_to_update=releases_to_update.split('|'))
             if release_name.startswith(spec.vendor):
-                tag = f'{spec.vendor}_{spec.compiler}_{version}'
+                tag = f'{spec.vendor}_{spec.compiler}_{release_version}'
+            elif release_name.startswith('Release'):
+                general_release_name = release_name
+                tag = release_version
             else:
-                tag = f'{spec.compiler}_{version}'
-            rel_id, upload_url = self._ensure_release_cached(name=release_name, tag=tag)
+                tag = f'{spec.compiler}_{release_version}'
+
+            # Group assets by releases
+            if release_name not in releases_info:
+                releases_info[release_name] = {
+                    'assets': [],
+                    'tag': tag,
+                    'upload_url': '',
+                    'release_id': ''
+                }
+            releases_info[release_name]['assets'].append(
+                {
+                    'asset_name': spec.filename,
+                    'path': spec.path
+                })
+
+        # Create releases if they are not already present
+        for release_name in releases_info:
+            print(f'Fetching existing Release information for {release_name}...')
+            rel_id, upload_url = self._ensure_release_cached(name=release_name, tag=releases_info[release_name]['tag'])
+            releases_info[release_name]['upload_url'] = upload_url
+            releases_info[release_name]['release_id'] = rel_id
+
+        # Upload assets to corresponding release if they are not already there
+        for release_name in releases_info:
+            # Release with general files will be processed in the end
+            # as it require different approach with removing assets
+            if release_name == general_release_name:
+                continue
+            print(f'Processing packages for {release_name}.')
+            existing_assets = self._get_all_release_assets(releases_info[release_name]['release_id'])
+            existing_asset_names = [asset['name'] for asset in existing_assets]
+            for asset in releases_info[release_name]['assets']:
+                # Map appropriate release name with the asset in metadata for proper indexing afterwards
+                for metadata_asset in metadata:
+                    if metadata_asset['name'] == asset['asset_name'].replace('.7z', ''):
+                        metadata_asset['release_tag'] = releases_info[release_name]['tag']
+                        break
+                if asset['asset_name'] not in existing_asset_names:
+                    if self.dry_run:
+                        msg = f"[DRY RUN] Would upload {asset['asset_name']} to \"{release_name}\""
+                        log_array.append(msg)
+                        print(msg)
+                    else:
+                        self._upload_asset(
+                            upload_url = releases_info[release_name]['upload_url'],
+                            asset_name = asset['asset_name'],
+                            file_path = asset['path'])
+                else:
+                    print(f"\033[34mAsset already exists in release -> skipping: {asset['asset_name']}\033[0m")
+
+        # Update metadata file with release name info
+        with open('metadata.json', 'w') as f:
+            json.dump(metadata, f, indent=4)
+
+        # Finally, handle general release
+        print(f'Processing packages for {general_release_name}.')
+        existing_assets = self._get_all_release_assets(releases_info[general_release_name]['release_id'])
+        existing_asset_names = [asset['name'] for asset in existing_assets]
+        for asset in releases_info[general_release_name]['assets']:
+            # Always upload/reupload assets for general release
             if self.dry_run:
-                msg = f"[DRY RUN] Would upload {spec.filename} to \"{release_name}\""
+                msg = f"[DRY RUN] Would upload {asset['asset_name']} to \"{general_release_name}\""
                 log_array.append(msg)
                 print(msg)
-            else:
-                self._upload_asset(upload_url=upload_url, asset_name=spec.filename, file_path=spec.path)
+            if asset['asset_name'] in existing_asset_names:
+                print(f"\033[33mAsset already exists in release -> deleting: {asset['asset_name']}\033[0m")
+                self._delete_asset_by_name_for_upload_url(
+                    upload_url = releases_info[general_release_name]['upload_url'],
+                    asset_name = asset['asset_name'],
+                )
+
+            self._upload_asset(
+                upload_url = releases_info[general_release_name]['upload_url'],
+                asset_name = asset['asset_name'],
+                file_path = asset['path'])
 
         if self.dry_run:
             with open('dry_run_log.txt', 'w') as file:
@@ -219,7 +274,6 @@ class GitHubReleaseUploader:
     # ---------------------------
     # JSON parsing / rules
     # ---------------------------
-
     def _parse_files(self, files_obj: Dict[str, Any]) -> list[FileSpec]:
         out: list[FileSpec] = []
         for filename, meta in files_obj.items():
@@ -243,18 +297,24 @@ class GitHubReleaseUploader:
             out.append(FileSpec(filename=filename, vendor=vendor, path=path, compiler=compiler_str))
         return out
 
-    def _select_release_name(self, *, version: str, spec: FileSpec) -> str:
+    def _select_release_name(self, *, version: str, spec: FileSpec, releases_to_update: list) -> str:
         if spec.filename in SPECIAL_RELEASE_FILENAMES:
-            return f"Release {version}"
+            return version, f"Release {version}"
 
         compiler = (spec.compiler or "").strip()
         if not compiler:
-            compiler = self._infer_compiler_from_filename(spec.filename) or "UNKNOWN"
+            compiler = self._infer_compiler_from_filename(spec.filename) or 'UNKNOWN'
 
         if self._is_gcc_or_clang(compiler, spec.filename):
-            return f"{spec.vendor} MCU Support packages for GCC & Clang {version}"
+            release_name = f'{spec.vendor} MCU Support packages for GCC & Clang'
+        else:
+            release_name = f'MCU Support packages for {compiler}'
 
-        return f"MCU Support packages for {compiler} {version}"
+        # If this release is requested to be updated - increase the version
+        if release_name in releases_to_update:
+            version = 'v' + increase_version(version.replace('v', ''), part='patch')
+
+        return version, f"{release_name} {version}"
 
     def _infer_compiler_from_filename(self, filename: str) -> Optional[str]:
         s = filename.lower()
@@ -280,7 +340,6 @@ class GitHubReleaseUploader:
     # ---------------------------
     # Release ensure + caching
     # ---------------------------
-
     def _ensure_release_cached(self, *, name: str, tag: str) -> Tuple[int, str]:
         cached = self._release_cache.get(name)
         if cached:
@@ -312,12 +371,13 @@ class GitHubReleaseUploader:
             "draft": False,
             "prerelease": False,
             "generate_release_notes": False,
+            "make_latest": "false",
         }
         resp = self._request("POST", url, json=body)
         rel = resp.json()
         rel_id = int(rel["id"])
         upload_url = str(rel["upload_url"]).split("{")[0]
-        print(f"Created release: {name} (id={rel_id})")
+        print(f"\033[34mCreated release: {name} (id={rel_id})\033[0m")
         return rel_id, upload_url
 
     def _find_release_by_name(self, name: str) -> Optional[Dict[str, Any]]:
@@ -339,86 +399,40 @@ class GitHubReleaseUploader:
                 return None
             page += 1
 
-    def _asset_exists_in_release(self, *, upload_url: str, asset_name: str) -> bool:
-        """
-        Returns True if asset with given name already exists in the release.
-        Fetches ALL pages of releases (and assets) to avoid missing matches beyond page 1.
-        """
-
-        releases_url = f"{self.api_base}/repos/{self.repo}/releases"
+    def _get_all_release_assets(self, release_id: int):
+        all_assets = []
+        url = f"https://api.github.com/repos/{self.repo}/releases/{release_id}/assets"
+        page = 1
         per_page = 100
-        page = 1
 
-        normalized = upload_url.rstrip("/")
-        target_release = None
-
-        # ---- paginate releases until we find the one matching upload_url ----
         while True:
-            resp = self._request("GET", releases_url, params={"per_page": per_page, "page": page})
-            releases = resp.json()
-
-            if not releases:
-                break
-
-            for r in releases:
-                u = str(r.get("upload_url", "")).split("{")[0].rstrip("/")
-                if u == normalized:
-                    target_release = r
-                    break
-
-            if target_release is not None:
-                break
-
-            if len(releases) < per_page:
-                break  # last page
-            page += 1
-
-        if not target_release:
-            print("Warning: Could not resolve release for upload_url.")
-            return False
-
-        rel_id = int(target_release["id"])
-        assets_url = f"{self.api_base}/repos/{self.repo}/releases/{rel_id}/assets"
-
-        # ---- paginate assets too (a release can have >100 assets) ----
-        page = 1
-        while True:
-            assets_resp = self._request("GET", assets_url, params={"per_page": per_page, "page": page})
-            assets = assets_resp.json()
+            resp = requests.get(
+                url,
+                headers=self.session.headers,          # or just self.headers
+                params={"per_page": per_page, "page": page},
+                timeout=30,
+            )
+            resp.raise_for_status()
+            assets = resp.json()
 
             if not assets:
-                return False
+                break
 
-            for asset in assets:
-                if str(asset.get("name") or "") == asset_name:
-                    return True
+            all_assets.extend(assets)
 
             if len(assets) < per_page:
-                return False  # last page
+                break
+
             page += 1
 
-    # ---------------------------
-    # Upload asset (replace if exists)
-    # ---------------------------
+        return all_assets
 
+    # ---------------------------
+    # Upload asset
+    # ---------------------------
     def _upload_asset(self, *, upload_url: str, asset_name: str, file_path: str) -> None:
-        """
-        Upload asset only if it does NOT already exist in the release.
-        If it exists -> print and skip.
-        """
-
         size = os.path.getsize(file_path)
 
-        if self.dry_run:
-            print(f"[DRY RUN] Would upload {asset_name} ({size} bytes)")
-            return
-
-        # First check if asset already exists
-        if self._asset_exists_in_release(upload_url=upload_url, asset_name=asset_name):
-            print(f"Asset already exists in release → skipping: {asset_name}")
-            return
-
-        # Upload if not present
         with open(file_path, "rb") as f:
             params = {"name": asset_name}
             headers = {"Content-Type": "application/octet-stream"}
@@ -431,7 +445,7 @@ class GitHubReleaseUploader:
                 data=f,
             )
 
-        print(f"Uploaded: {asset_name} ({size} bytes)")
+        print(f"\033[32mUploaded: {asset_name} ({size} bytes)\033[0m")
 
     def _delete_asset_by_name_for_upload_url(self, *, upload_url: str, asset_name: str) -> bool:
         """
@@ -451,7 +465,7 @@ class GitHubReleaseUploader:
                 break
 
         if not target_release:
-            print(f"Warning: could not locate release for upload_url; cannot replace {asset_name}")
+            print(f"\033[33mWarning: Could not locate release for upload_url; cannot replace {asset_name}\033[0m")
             return False
 
         rel_id = int(target_release["id"])
@@ -462,7 +476,7 @@ class GitHubReleaseUploader:
             if str(a.get("name") or "") == asset_name:
                 del_url = f"{self.api_base}/repos/{self.repo}/releases/assets/{int(a['id'])}"
                 self._request("DELETE", del_url)
-                print(f"Deleted existing asset: {asset_name}")
+                print(f"\033[31mDeleted existing asset: {asset_name}\033[0m")
                 return True
 
         return False
@@ -500,16 +514,3 @@ class GitHubReleaseUploader:
         assert last_exc is not None
         raise last_exc
 
-
-# ---------------------------
-# Example usage
-# ---------------------------
-# if __name__ == "__main__":
-#     with open("upload_map.json", "r", encoding="utf-8") as f:
-#         payload = json.load(f)
-#     uploader = GitHubReleaseUploader(
-#         repo="YOUR_ORG/YOUR_REPO",
-#         token=os.environ["GITHUB_TOKEN"],
-#         dry_run=False,
-#     )
-#     uploader.upload_from_json(payload)

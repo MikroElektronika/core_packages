@@ -7,6 +7,8 @@ import support as support
 import read_microchip_index as MCHP
 import read_codegrip_index as CODEGRIP
 
+from packaging.version import Version
+
 # Gets latest release headers from repository
 def get_headers(api, token):
     if api:
@@ -25,17 +27,18 @@ def fetch_release_details(repo, token, release_version):
     url = f'https://api.github.com/repos/{repo}/releases'
     response = requests.get(url, headers=api_headers)
     response.raise_for_status()  # Raise an exception for HTTP errors
+    latest_release = support.get_latest_release(repo, api_headers)
     if "latest" == release_version:
-        return support.get_latest_release(response.json()), support.get_previous_release(response.json(), True)
+        return latest_release, support.get_previous_release(latest_release, response.json(), True)
     else:
         release_check = None
         release_check = support.get_specified_release(response.json(), release_version)
         if release_check:
-            return release_check, support.get_previous_release(response.json(), True)
+            return release_check, support.get_previous_release(latest_release, response.json(), True)
         else:
             ## Always fallback to latest release
             print("WARNING: Falling back to LATEST release.")
-            return support.get_latest_release(response.json()), support.get_previous_release(response.json(), True)
+            return latest_release, support.get_previous_release(latest_release, response.json(), True)
 
 # Function to fetch content as JSON from the link
 def fetch_json_data(download_link, token):
@@ -100,7 +103,7 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
     db_version = None
     for eachHit in response['hits']['hits']:
         if not 'name' in eachHit['_source']:
-            continue ## TODO - Check newly created bare metal package (is it created correctly)
+            continue
         name = eachHit['_source']['name']
         if name == 'database':
             db_version = eachHit['_source']['version']
@@ -234,18 +237,21 @@ def increment_version(version):
     major, minor, patch = map(int, version.split('.'))
     return f"{major}.{minor}.{patch + 1}"
 
-def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_file=False):
-    # Search query to use
-    query_search = {
-        "size": 5000,
-        "query": {
-            "match_all": {}
-        }
-    }
-
+def check_version_and_hash(es: Elasticsearch, index_name, metadata_content, token, asset, is_file=False):
     search_es_name = asset
     if asset.endswith('_dev'):
         search_es_name = asset[:-4]
+
+    # Search query to use
+    query_search = {
+        "query": {
+            "term": {
+                "name": {
+                    "value": f"{search_es_name}"
+                }
+            }
+        }
+    }
 
     # Search the base with provided query
     num_of_retries = 1
@@ -269,14 +275,21 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
                 index_hash = eachHit['_source']['hash']
             if 'version' in eachHit['_source']:
                 indexed_version = eachHit['_source']['version']
+            url = eachHit['_source']['download_link']
 
+    uploaded_asset_hash = None
     os.makedirs(os.path.join(os.getcwd(), 'output/tmp', asset), exist_ok=True)
     if is_file:
         support.download_file_from_link(url, os.path.join(os.getcwd(), 'output/tmp', asset, f'{asset}.json'), token)
-    else:
-        support.extract_archive_from_url(url, os.path.join(os.getcwd(), 'output/tmp', asset), token)
-    uploaded_asset_hash = hash_directory_contents(os.path.join(os.getcwd(), 'output/tmp', asset))
-    shutil.rmtree(os.path.join(os.getcwd(), 'output/tmp', asset))
+        uploaded_asset_hash = hash_directory_contents(os.path.join(os.getcwd(), 'output/tmp', asset))
+        shutil.rmtree(os.path.join(os.getcwd(), 'output/tmp', asset))
+
+    uploaded_asset_version = indexed_version
+    for metadata_asset in metadata_content:
+        if metadata_asset['name'] == asset:
+            if not uploaded_asset_hash:
+                uploaded_asset_hash = metadata_asset['hash']
+            uploaded_asset_version = metadata_asset['version']
 
     new_version = indexed_version
     if not new_version:
@@ -293,16 +306,19 @@ def check_version_and_hash(es: Elasticsearch, index_name, url, token, asset, is_
     else:
         new_version = '1.0.0'
 
+    # If version in metadata is bigger than calculated - pick the metadata asset version
+    new_version = max([uploaded_asset_version, new_version], key=lambda t: Version(t.lstrip("v")))
+
     return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed, indexed_version
 
 # Function to index release details into Elasticsearch
-def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, force, update_database=False, db_version=None, keep_previous_date=False):
+def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, repo, force, update_database=False, db_version=None, keep_previous_date=False):
     # Get all currently indexed items
     indexed_items = fetch_current_indexed_packages(es, index_name)
     # Iterate over each asset in the release and previous release
     metadata_content = []
     for each_release_details in release_details:
-        if each_release_details:  ## TODO - hotfix for test index - check this
+        if each_release_details:
             metadata_asset = next((a for a in each_release_details['assets'] if a['name'] == "metadata.json"), None)
             metadata_download_url = metadata_asset['url']
             metadata_content.append(fetch_json_data(metadata_download_url, token)[0])
@@ -318,183 +334,193 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
     # If you specifically want the 'Z' at the end instead of the offset
     published_at = current_time.isoformat().replace('+00:00', 'Z')
 
-    for asset in release_details[0].get('assets', []):
-        # Do not index metadata or docs
-        if asset['name'] == 'metadata.json' or asset['name'] == 'docs.7z':
-            continue
+    release_tags = [release_details[0]['tag_name']]
+    for metadata_asset in metadata_content[0]:
+        if 'release_tag' in metadata_asset and metadata_asset['release_tag'] not in release_tags:
+            release_tags.append(metadata_asset['release_tag'])
 
-        update_package = True
-        name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
-
-        always_index = [
-            'clocks',
-            'schemas',
-            'images',
-            'preinit',
-            'database',
-            'database_dev'
-        ]
-
-        if update_database:
-            if name_without_extension not in always_index:
+    for release_tag in release_tags:
+        print(f'\033[33mProcessing assets for: {release_details[0]['name']}\033[0m')
+        release_details = fetch_release_details(repo, token, release_tag)
+        for asset in release_details[0].get('assets', []):
+            # Do not index metadata or docs
+            if asset['name'] == 'metadata.json' or asset['name'] == 'docs.7z':
                 continue
 
-        doc = None
-        if name_without_extension == "clocks":
-            current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, 'clocks', True)
-            doc = {
-                'name': "clocks",
-                'display_name' : "Clocks file",
-                'author' : "MIKROE",
-                'hidden' : True,
-                'type' : "mcu_clocks",
-                'hash' : current_hash,
-                'version' : new_version,
-                'created_at': asset['created_at'],
-                'updated_at': asset['updated_at'],
-                'category': "MCU Package",
-                'download_link': asset['browser_download_url'],
-                'download_link_api': asset['url'],
-                'package_changed' : check_version,
-                'install_location' : "%APPLICATION_DATA_DIR%/clocks.json",
-                'gh_package_name': "clocks.json"
-            }
-        elif "schemas" in name_without_extension:
-            current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, 'schemas', True)
-            suffix = ''
-            if 'test' in name_without_extension:
-                suffix = '_test'
-            doc = {
-                'name': f"schemas{suffix}",
-                'display_name' : f"schemas{suffix} file",
-                'author' : "MIKROE",
-                'hidden' : True,
-                'type' : "mcu_schemas",
-                'hash' : current_hash,
-                'version' : new_version,
-                'created_at': asset['created_at'],
-                'updated_at': asset['updated_at'],
-                'category': "MCU Package",
-                'download_link': asset['browser_download_url'],
-                'download_link_api': asset['url'],
-                'package_changed' : check_version,
-                'install_location' : f"%APPLICATION_DATA_DIR%/schemas{suffix}.json",
-                'gh_package_name': f"schemas{suffix}.json"
-            }
-        else:
-            metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
-            if len(metadata_content) > 1:
-                previous_metadata_item = find_item_by_name(metadata_content[1], name_without_extension)
-            else:
-                previous_metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
+            update_package = True
+            name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
 
-            if metadata_item:
-                if previous_metadata_item:
-                    update_package = metadata_item['hash'] != previous_metadata_item['hash']
-                else:
-                    update_package = True
+            always_index = [
+                'clocks',
+                'schemas',
+                'images',
+                'preinit',
+                'database',
+                'database_dev'
+            ]
 
-                package_name = name_without_extension
-                if 'database' in name_without_extension:
-                    package_name = 'database'
-                    if ('dev' in name_without_extension) and ('test' in index_name):
-                       print("Database test version.")
-                    elif ('dev' not in name_without_extension) and ('live' in index_name):
-                       print("Database live version.")
-                    else:
-                        continue
+            if update_database:
+                if name_without_extension not in always_index:
+                    continue
 
-                current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, asset['url'], token, name_without_extension)
-
-                publish_date = published_at
-
-                current_version = metadata_item['version']
-                if index_hash and current_hash:
-                    if not existed:
-                        update_package = True
-                    else:
-                        if current_hash == index_hash:
-                            update_package = False
-                        else:
-                            update_package = True
-                            current_version = new_version
-
+            doc = None
+            if name_without_extension == "clocks":
+                current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, metadata_content[0], token, 'clocks', is_file=True)
                 doc = {
-                    'name': package_name,
-                    'display_name' : metadata_item['display_name'],
+                    'name': "clocks",
+                    'display_name' : "Clocks file",
                     'author' : "MIKROE",
-                    'hidden' : metadata_item['hidden'],
-                    'type' : metadata_item['type'],
-                    'version' : current_version,
+                    'hidden' : True,
+                    'type' : "mcu_clocks",
+                    'hash' : current_hash,
+                    'version' : new_version,
                     'created_at': asset['created_at'],
                     'updated_at': asset['updated_at'],
-                    'published_at': publish_date,
-                    'hash': current_hash,
-                    'category': metadata_item['category'],
+                    'category': "MCU Package",
                     'download_link': asset['browser_download_url'],
                     'download_link_api': asset['url'],
-                    'package_changed' : update_package or force,
-                    'install_location' : metadata_item['install_location'],
-                    'gh_package_name': os.path.splitext(os.path.basename(asset['name']))[0]
+                    'package_changed' : check_version,
+                    'install_location' : "%APPLICATION_DATA_DIR%/clocks.json",
+                    'gh_package_name': "clocks.json"
                 }
-                if metadata_item['type'] == 'mcu':
-                    doc.update(
-                        {
-                            'compilers': metadata_item['compilers'],
-                            'dependencies': [
-                                'preinit',
-                                'unit_test_lib',
-                                'mikroe_utils_common'
-                            ],
-                            'mcus': support.fetch_mcu_list(
-                                name_without_extension,
-                                mcu_check_list
-                            )
-                        }
-                    )
+            elif "schemas" in name_without_extension:
+                current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, metadata_content[0], token, 'schemas', is_file=True)
+                suffix = ''
+                if 'test' in name_without_extension:
+                    suffix = '_test'
+                doc = {
+                    'name': f"schemas{suffix}",
+                    'display_name' : f"schemas{suffix} file",
+                    'author' : "MIKROE",
+                    'hidden' : True,
+                    'type' : "mcu_schemas",
+                    'hash' : current_hash,
+                    'version' : new_version,
+                    'created_at': asset['created_at'],
+                    'updated_at': asset['updated_at'],
+                    'category': "MCU Package",
+                    'download_link': asset['browser_download_url'],
+                    'download_link_api': asset['url'],
+                    'package_changed' : check_version,
+                    'install_location' : f"%APPLICATION_DATA_DIR%/schemas{suffix}.json",
+                    'gh_package_name': f"schemas{suffix}.json"
+                }
+            else:
+                metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
+                if len(metadata_content) > 1:
+                    previous_metadata_item = find_item_by_name(metadata_content[1], name_without_extension)
+                else:
+                    previous_metadata_item = find_item_by_name(metadata_content[0], name_without_extension)
 
-        # Update the database version
-        if 'package_name' in locals():
-            if ('database' == package_name):
-                if doc:
-                    doc['version'] = increase_version(db_version, part="patch")
+                if metadata_item:
+                    if previous_metadata_item:
+                        update_package = metadata_item['hash'] != previous_metadata_item['hash']
+                    else:
+                        update_package = True
 
-        # Index the document
-        if doc:
-            # If requested to keep previous date, only update the hash value
-            if keep_previous_date:
-                for item in indexed_items:
-                    if item['name'] == name_without_extension:
-                        hash_new = doc['hash']
-                        doc = item
-                        doc['hash'] = hash_new
-                        break
-            # Kibana v8 requires _type to be in body in order to have doc_type defined
-            doc['_type'] = '_doc'
-            if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)) or keep_previous_date:
-                if update_database:
-                    if name_without_extension in always_index:
+                    package_name = name_without_extension
+                    if 'database' in name_without_extension:
+                        package_name = 'database'
+                        if ('dev' in name_without_extension) and ('test' in index_name):
+                            print("Database test version.")
+                        elif ('dev' not in name_without_extension) and ('live' in index_name):
+                            print("Database live version.")
+                        else:
+                            continue
+
+                    current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, metadata_content[0], token, name_without_extension)
+
+                    publish_date = published_at
+
+                    current_version = metadata_item['version']
+                    if index_hash and current_hash:
+                        if not existed:
+                            update_package = True
+                        else:
+                            if current_hash == index_hash:
+                                update_package = False
+                            else:
+                                update_package = True
+                                current_version = new_version
+
+                    doc = {
+                        'name': package_name,
+                        'display_name' : metadata_item['display_name'],
+                        'author' : "MIKROE",
+                        'hidden' : metadata_item['hidden'],
+                        'type' : metadata_item['type'],
+                        'version' : current_version,
+                        'created_at': asset['created_at'],
+                        'updated_at': asset['updated_at'],
+                        'published_at': publish_date,
+                        'hash': current_hash,
+                        'category': metadata_item['category'],
+                        'download_link': asset['browser_download_url'],
+                        'download_link_api': asset['url'],
+                        'package_changed' : update_package or force,
+                        'install_location' : metadata_item['install_location'],
+                        'gh_package_name': os.path.splitext(os.path.basename(asset['name']))[0]
+                    }
+                    if metadata_item['type'] == 'mcu':
+                        doc.update(
+                            {
+                                'compilers': metadata_item['compilers'],
+                                'dependencies': [
+                                    'preinit',
+                                    'unit_test_lib',
+                                    'mikroe_utils_common'
+                                ],
+                                'mcus': support.fetch_mcu_list(
+                                    name_without_extension,
+                                    mcu_check_list
+                                )
+                            }
+                        )
+
+            # Always update the database version
+            if 'package_name' in locals():
+                if ('database' == package_name):
+                    if doc:
+                        doc['version'] = increase_version(current_version, part="patch")
+
+            # Index the document
+            if doc:
+                # If requested to keep previous date, only update the hash value
+                if keep_previous_date:
+                    for item in indexed_items:
+                        if item['name'] == name_without_extension:
+                            hash_new = doc['hash']
+                            doc = item
+                            doc['hash'] = hash_new
+                            break
+                # Kibana v8 requires _type to be in body in order to have doc_type defined
+                doc['_type'] = '_doc'
+                if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)) or keep_previous_date:
+                    if update_database:
+                        if name_without_extension in always_index:
+                            resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
+                            print(f"{resp["result"]} {resp['_id']}")
+                    else:
                         resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
                         print(f"{resp["result"]} {resp['_id']}")
+                        # Database is indexed as separate ID for both indexes, so skip it in this step
+                        if (name_without_extension in always_index) and ('database' not in name_without_extension):
+                            if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
+                                if index_name == os.environ['ES_INDEX_TEST']:
+                                    resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=name_without_extension, body=doc)
+                                    print(f"Indexed to LIVE as well.")
+                                    print(f"{resp["result"]} {resp['_id']}")
                 else:
-                    resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
-                    print(f"{resp["result"]} {resp['_id']}")
-                    # Database is indexed as separate ID for both indexes, so skip it in this step
-                    if (name_without_extension in always_index) and ('database' not in name_without_extension):
-                        if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
-                            if index_name == os.environ['ES_INDEX_TEST']:
-                                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=name_without_extension, body=doc)
-                                print(f"Indexed to LIVE as well.")
-                                print(f"{resp["result"]} {resp['_id']}")
+                    print(f'\033[34mNothing to update for {name_without_extension}\033[0m')
 
-            # Print new version after indexing
-            if previous_version != doc['version'] and True == doc['package_changed']:
-                print(f"\033[95mVersion for asset {name_without_extension} has been updated from {previous_version} to {doc['version']}")
-            elif keep_previous_date:
-                if name_without_extension not in always_index:
-                    print(f'\033[95mKept the release date for asset {doc['name']} as {doc['published_at']} with the {doc['version']} version. New hash is {doc['hash']}\033[0m')
-                else:
-                    print(f'\033[95mUpdated hash for {doc['name']} to be {doc['hash']}\033[0m')
+                # Print new version after indexing
+                if previous_version != doc['version'] and True == doc['package_changed']:
+                    print(f"\033[95mVersion for asset {name_without_extension} has been updated from {previous_version} to {doc['version']}\033[0m")
+                elif keep_previous_date:
+                    if name_without_extension not in always_index:
+                        print(f'\033[95mKept the release date for asset {doc['name']} as {doc['published_at']} with the {doc['version']} version. New hash is {doc['hash']}\033[0m')
+                    else:
+                        print(f'\033[95mUpdated hash for {doc['name']} to be {doc['hash']}\033[0m')
 
 
 def is_release_latest(repo, token, release_version):
@@ -502,7 +528,7 @@ def is_release_latest(repo, token, release_version):
     url = f'https://api.github.com/repos/{repo}/releases'
     response = requests.get(url, headers=api_headers)
     response.raise_for_status()  # Raise an exception for HTTP errors
-    latest_release = support.get_latest_release(response.json())
+    latest_release = support.get_latest_release(repo, api_headers)
     if 'latest' == release_version:
         return None, True
     else:
@@ -536,7 +562,8 @@ def promote_to_latest(releases, repo, token, release_version):
         raise Exception(f"Failed to update release {selected_release['name']}: {response_1.status_code} - {response_1.text}")
 
     # Step 2: Set the current latest release to prerelease
-    latest_release = support.get_latest_release(releases)
+    api_headers = get_headers(True, token)
+    latest_release = support.get_latest_release(repo, api_headers)
     data_latest_release = {
         "prerelease": True
     }
@@ -685,7 +712,7 @@ if __name__ == '__main__':
     index_release_to_elasticsearch(
         es, args.select_index,
         fetch_release_details(args.repo, args.token, args.release_version),
-        args.token, args.force_index,
+        args.token, args.repo, args.force_index,
         args.update_database,
         db_version,
         args.keep_previous_dates
