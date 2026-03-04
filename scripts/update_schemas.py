@@ -95,11 +95,34 @@ def get_headers(api, token):
 def fetch_release_details(repo, token, release_version):
     api_headers = get_headers(True, token)
     url = f'https://api.github.com/repos/{repo}/releases'
-    response = requests.get(url, headers=api_headers)
-    response.raise_for_status()  # Raise an exception for HTTP errors
-    response.close()
+    responce_acquired = False
+
+    # First: 5 fast attempts (10s timeout)
+    for attempt in range(1, 6):
+        try:
+            print(f'GitHub API attempt {attempt}/5 (timeout=10s)')
+            response = requests.get(url, headers=api_headers, timeout=10)
+            response.raise_for_status()
+            responce_acquired = True
+            break
+
+        except requests.exceptions.RequestException as e:
+            last_exception = e
+            print(f'\033[93mAttempt {attempt} failed:\033[0m {e}')
+
+    if not responce_acquired:
+        # Final fallback attempt (600s timeout)
+        try:
+            print('Final attempt with extended timeout (600s)')
+            response = requests.get(url, headers=api_headers, timeout=600)
+            response.raise_for_status()
+
+        except requests.exceptions.RequestException as e:
+            print('\033[91mFinal attempt failed too\033[0m')
+            raise last_exception from e
+
     if "latest" == release_version:
-        return support.get_latest_release(response.json())
+        return support.get_latest_release(repo, api_headers)
     else:
         release_check = support.get_specified_release(response.json(), release_version)
         if release_check:
@@ -107,7 +130,7 @@ def fetch_release_details(repo, token, release_version):
         else:
             # Always fallback to latest release
             print("WARNING: Falling back to LATEST release.")
-            return support.get_latest_release(response.json())
+            return support.get_latest_release(repo, api_headers)
 
 def fetch_current_indexed_version(es: Elasticsearch, index_name, package_name):
     query_search = {

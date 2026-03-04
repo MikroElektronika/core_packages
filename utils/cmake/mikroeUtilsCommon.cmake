@@ -511,3 +511,25 @@ function(has_enough_memory check_value)
     # Display success message
     message(STATUS "MEMORY_CHECK: ${MCU_NAME} has enough memory for '${LIBRARY_NAME}' library.")
 endfunction()
+
+#############################################################################
+## Function to fetch LVGL version
+#############################################################################
+function (lvgl_version_fetch version)
+    if(NOT DEFINED NECTO_LVGL_VERSION)
+        set(${version} "8.3.5" PARENT_SCOPE)
+    else()
+        set(${version} ${NECTO_LVGL_VERSION} PARENT_SCOPE)
+    endif()
+endfunction()
+
+#############################################################################
+## Function to resolve LVGL dependency based on version
+#############################################################################
+function(lvgl_dependency_resolve library)
+    if(NECTO_LVGL_VERSION STREQUAL "8.3.5")
+        set(${library} "MikroSDK.LVGL" PARENT_SCOPE)
+    else()
+        set(${library} "lvgl" PARENT_SCOPE)
+    endif()
+endfunction()
