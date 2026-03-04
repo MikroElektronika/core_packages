@@ -11,7 +11,7 @@ class GenerateClocks:
         self.output_file = output_file
 
     def extract_data_from_json(self, file_path):
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
 
         if "config_registers" in data:

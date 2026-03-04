@@ -643,7 +643,7 @@ def fetch_release_details(repo, token, release_version):
             raise last_exception from e
 
     if "latest" == release_version:
-        return utility.get_latest_release(response.json())
+        return utility.get_latest_release(repo, api_headers)
     else:
         release_check = None
         release_check = utility.get_specified_release(response.json(), release_version)
@@ -652,7 +652,7 @@ def fetch_release_details(repo, token, release_version):
         else:
             ## Always fallback to latest release
             print("WARNING: Falling back to LATEST release.")
-            return utility.get_latest_release(response.json())
+            return utility.get_latest_release(repo, api_headers)
 
 def formRegexQuery(collumn, regexes):
     finalQuery = ''
