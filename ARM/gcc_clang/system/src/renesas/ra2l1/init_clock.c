@@ -340,7 +340,6 @@ static void system_clock_configuration() {
             }
         }
         R_SYSTEM->HOCOCR2 = VALUE_SYSTEM_HOCOCR2;
-        R_SYSTEM->HOCOWTCR = VALUE_SYSTEM_HOCOWTCR;
         R_SYSTEM->HOCOCR_b.HCSTP = 0; // Start HOCO
 
         while ( !( R_SYSTEM->OSCSF_b.HOCOSF ) ) {
