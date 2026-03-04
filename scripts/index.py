@@ -340,8 +340,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             release_tags.append(metadata_asset['release_tag'])
 
     for release_tag in release_tags:
-        print(f'\033[33mProcessing assets for: {release_details[0]['name']}\033[0m')
         release_details = fetch_release_details(repo, token, release_tag)
+        print(f'\033[33mProcessing assets for: {release_details[0]['name']}\033[0m')
         for asset in release_details[0].get('assets', []):
             # Do not index metadata or docs
             if asset['name'] == 'metadata.json' or asset['name'] == 'docs.7z':
