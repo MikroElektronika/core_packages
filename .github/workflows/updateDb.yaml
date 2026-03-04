@@ -45,9 +45,9 @@ jobs:
       - name: Upload new database asset
         run: |
           if [[ ${{ github.event.inputs.release_version }} == "Live" ]]; then
-            python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} "latest" "latest" ${{ secrets.ES_INDEX_LIVE }}
+            python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ secrets.PROG_DEBUG_JLINK }} "latest" "latest" ${{ secrets.ES_INDEX_LIVE }}
           else
-            python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} ${{ secrets.PROG_DEBUG_MIKROPROG }} "latest" "latest" ${{ secrets.ES_INDEX_TEST }}
+            python -u scripts/reupload_databases.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ secrets.PROG_DEBUG_JLINK }} "latest" "latest" ${{ secrets.ES_INDEX_TEST }}
           fi
 
       - name: Add GitHub Actions credentials
