@@ -855,9 +855,6 @@ def get_headers(api, token):
 
 def fetch_latest_release_version(repo, token):
     api_headers = get_headers(True, token)
-    url = f'https://api.github.com/repos/{repo}/releases'
-    response = requests.get(url, headers=api_headers)
-    response.raise_for_status()  # Raise an exception for HTTP errors
     return support.get_latest_release(repo, api_headers)
 
 async def main(token, repo, tag_name, live=False):
@@ -869,8 +866,8 @@ async def main(token, repo, tag_name, live=False):
     current_metadata = fetch_current_metadata(repo, token)
 
     latest_release = fetch_latest_release_version(repo, token)
-    if 'latest' != tag_name:
-        latest_release['tag_name'] = tag_name
+    if 'latest' == tag_name:
+        tag_name = latest_release['tag_name']
 
     # Elasticsearch instance used for fetching indexed items details
     num_of_retries = 1
@@ -1003,7 +1000,7 @@ async def main(token, repo, tag_name, live=False):
         gh_uploader.append_to_payload(payload, 'metadata.json', os.path.join(parent_dir, 'metadata.json'))
 
     ## Final step. Asset upload from created payload.
-    uploader.upload_from_json(payload)
+    uploader.upload_from_json(payload, new_metadata, "")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
