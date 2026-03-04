@@ -5,7 +5,7 @@ on:
     inputs:
       release_version:
         type: string
-        description: Which release version to index (type v1.0.6 for example)
+        description: Which release version to index (type v1.0.6 for example - it should contain metadata with indexing information)
         default: "latest"
       select_index:
         type: choice
