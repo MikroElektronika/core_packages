@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^EFR32MG26B410F3200IM48$|^EFR32MG26B410F3200IM68$|^EFR32MG26B411F3200IM48$|^EFR32MG26B411F3200IM68$|^EFR32MG26B420F3200IM48$|^EFR32MG26B420F3200IM68$|^EFR32MG26B421F3200IM48$|^EFR32MG26B421F3200IM68$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/efr32mg26b4/init_clock.c)
+endif()
