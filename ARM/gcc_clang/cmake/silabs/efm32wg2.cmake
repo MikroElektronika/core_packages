@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^EFM32WG230F128$|^EFM32WG230F256$|^EFM32WG230F64$|^EFM32WG232F128$|^EFM32WG232F256$|^EFM32WG232F64$|^EFM32WG280F128$|^EFM32WG280F256$|^EFM32WG280F64$|^EFM32WG290F128$|^EFM32WG290F256$|^EFM32WG290F64$|^EFM32WG295F128$|^EFM32WG295F256$|^EFM32WG295F64$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/efm32wg2/init_clock.c)
+endif()

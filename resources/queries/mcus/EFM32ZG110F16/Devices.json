@@ -1,0 +1,18 @@
+{
+    "def_file": "EFM32ZG110F16.json",
+    "family_uid": "EFM32ZG",
+    "flash": "16384",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "24.000",
+    "name": "EFM32ZG110F16",
+    "ram": "4096",
+    "sdk_config": "{\"MCU_NAME\":\"EFM32ZG110F16\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EFM32ZG110F16",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_efm32z\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_efm32z\"}"
+}

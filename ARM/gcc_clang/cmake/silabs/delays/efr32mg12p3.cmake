@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^EFR32MG12P332F1024GL125$|^EFR32MG12P332F1024GM48$|^EFR32MG12P332F1024IM48$")
+    list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/4)")
+endif()

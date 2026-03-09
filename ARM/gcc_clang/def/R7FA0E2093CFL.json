@@ -467,6 +467,129 @@
             "unused": "000000ef"
         },
         {
+            "address": "400a3500",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CK",
+                    "label": "UARTA0 Operation Clock Select (fUTA0)",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "fSEL",
+                            "value": "0"
+                        },
+                        {
+                            "label": "fSEL/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "fSEL/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "fSEL/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "fSEL/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "fSEL/32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "fSEL/64",
+                            "value": "6"
+                        },
+                        {
+                            "label": "FSXP",
+                            "value": "8"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SEL",
+                    "label": "fSEL Clock Select",
+                    "mask": "30",
+                    "settings": [
+                        {
+                            "label": "Stop",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOSC",
+                            "value": "10"
+                        },
+                        {
+                            "label": "HOCO",
+                            "value": "20"
+                        },
+                        {
+                            "label": "MOCO",
+                            "value": "30"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_UTA0CK",
+            "unused": "000000c0"
+        },
+        {
+            "address": "400a3501",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CK",
+                    "label": "UARTA1 operation clock select (fUTA1)",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "fSEL",
+                            "value": "0"
+                        },
+                        {
+                            "label": "fSEL/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "fSEL/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "fSEL/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "fSEL/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "fSEL/32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "fSEL/64",
+                            "value": "6"
+                        },
+                        {
+                            "label": "FSXP",
+                            "value": "8"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_UTA1CK",
+            "unused": "000000f0"
+        },
+        {
             "address": "407ec20a",
             "default": "80",
             "fields": [

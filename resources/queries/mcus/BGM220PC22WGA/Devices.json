@@ -1,0 +1,18 @@
+{
+    "def_file": "BGM220PC22WGA.json",
+    "family_uid": "BGM22",
+    "flash": "360448",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "38.400",
+    "name": "BGM220PC22WGA",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"BGM220PC22WGA\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "BGM220PC22WGA",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_bgm22\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_bgm22\"}"
+}

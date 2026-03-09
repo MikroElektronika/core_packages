@@ -1,12 +1,12 @@
-name: Re-Release Without Release Date Updates
+name: Release new version for packages
 
 on:
   workflow_dispatch:
     inputs:
-        tag_name:
-          type: string
-          description: Which release version to repack (v1.0.10 for example)
-          default: "v1.0.10"
+      release_names:
+        type: string
+        description: Which Release to Update? (Type the name of release(s) without version)
+        default: "RENESAS MCU Support packages for GCC & Clang|MCU Support packages for XC"
 
 jobs:
   re-release-dont-update-dates:
@@ -56,7 +56,7 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
           ES_INDEX: ${{ secrets.ES_INDEX_LIVE }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
-        run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.event.inputs.tag_name }}
+        run: python -u scripts/package.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "latest" "--releases_to_update" "${{ github.event.inputs.release_names }}"
 
       ## Left commented out for potential future use.
       # - name: Run Index Script

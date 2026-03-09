@@ -520,6 +520,14 @@ void SystemInit(void)
     SCB->CPACR |= ((3UL << (10*2)) | (3UL << (11*2)));
     SCB->VTOR = (uint32_t) &__Vectors;
 
+    // Unlock VBTCR1 register
+    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
+
+    // Disable VBATT input
+    R_SYSTEM->VBTICTLR_b.VCH0INEN = 0;
+    R_SYSTEM->VBTICTLR_b.VCH1INEN = 0;
+    R_SYSTEM->VBTICTLR_b.VCH2INEN = 0;
+
     // Lock VBTCR1 register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
 

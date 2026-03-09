@@ -1,0 +1,18 @@
+{
+    "def_file": "MGM270SC22SNA.json",
+    "family_uid": "MGM27",
+    "flash": "3276800",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "50.000",
+    "name": "MGM270SC22SNA",
+    "ram": "524288",
+    "sdk_config": "{\"MCU_NAME\":\"MGM270SC22SNA\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MGM270SC22SNA",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mgm27\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mgm27\"}"
+}

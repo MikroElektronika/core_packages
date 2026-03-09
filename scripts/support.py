@@ -1,4 +1,5 @@
 import os, re, io, json, requests, sqlite3
+from packaging.version import Version
 
 class Colors:
     HEADER = '\033[95m'
@@ -11,26 +12,33 @@ class Colors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-def get_previous_release(releases, prerelases=None):
-    ''' Fetch the previously released version '''
-    for counter, release in enumerate(releases):
+def get_previous_release(latest_release, releases, prerelases=None):
+    ''' Fetch the previous latest release '''
+    tags = []
+    for release in releases:
         if not release['draft']:
             if prerelases:
                 if release['prerelease']:
                     continue
-            if counter + 1 < len(releases):
-                return releases[counter + 1]
-            else:
-                return None
+            if release['tag_name'].startswith('v') and latest_release['tag_name'] > release['tag_name']:
+                tags.append(release['tag_name'])
+
+    for release in releases:
+        if release['tag_name'] == max(tags, key=lambda t: Version(t.lstrip("v"))):
+            return release
     return None
 
 def get_specified_release(releases, release_version):
     ''' Fetch the latest released version '''
     return next((release for release in releases if release_version == release['tag_name']), None)
 
-def get_latest_release(releases):
-    ''' Fetch the latest released version '''
-    return next((release for release in releases if not release['prerelease'] and not release['draft']), None)
+def get_latest_release(repo, api_headers):
+    ''' Fetch the version that is labeled as "latest" '''
+    url = f"https://api.github.com/repos/{repo}/releases/latest"
+    resp = requests.get(url, headers=api_headers, timeout=30)
+    resp.raise_for_status()
+    latest_release = resp.json()
+    return latest_release
 
 def determine_archive_type(byte_stream):
     '''

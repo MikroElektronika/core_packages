@@ -1,0 +1,18 @@
+{
+    "def_file": "MGM220PC22HNA.json",
+    "family_uid": "MGM22",
+    "flash": "524288",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "76.800",
+    "name": "MGM220PC22HNA",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"MGM220PC22HNA\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MGM220PC22HNA",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mgm22\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mgm22\"}"
+}

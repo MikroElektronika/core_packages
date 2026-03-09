@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MGM210L022JIF$|^MGM210L022JNF$|^MGM210LA22JIF$|^MGM210LA22JNF$|^MGM210P022JIA$|^MGM210P032JIA$|^MGM210PA22JIA$|^MGM210PA32JIA$|^MGM210PB22JIA$|^MGM210PB32JIA$|^MGM211LA02JNF$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/mgm21/init_clock.c)
+endif()
