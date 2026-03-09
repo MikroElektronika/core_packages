@@ -1,0 +1,39 @@
+{
+    "device_uid": "EFR32BG1B232F128GJ43",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_ARM_BOARD"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "clang-llvm",
+                    "gcc_arm_none_eabi"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "46/QFN"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.17.4+"
+            }
+        }
+    ]
+}

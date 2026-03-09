@@ -1,0 +1,18 @@
+{
+    "def_file": "EZR32WG330F128R67.json",
+    "family_uid": "EZR32WG",
+    "flash": "131072",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "48.000",
+    "name": "EZR32WG330F128R67",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"EZR32WG330F128R67\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EZR32WG330F128R67",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ezr32wg330f1\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ezr32wg330f1\"}"
+}

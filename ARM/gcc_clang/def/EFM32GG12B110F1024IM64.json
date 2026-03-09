@@ -1,0 +1,6 @@
+{
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "mcu": "EFM32GG12B110F1024IM64",
+    "clock": "1"
+}

@@ -47,14 +47,9 @@ extern "C" {
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 // Note: Changed for MikroE implementation.
-//  #include "core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
+ #include "ra0e1_core_cm23.h"                    /*!< ARM Cortex-M23 processor and core peripherals                             */
 // Note: Changed for MikroE implementation.
-//  #include "system.h"                       /*!< R7FA0E107 System                                                          */
-#include <stdint.h>
-
-#define __I volatile // Note: Added for MikroE implementation.
-#define __O __I // Note: Added for MikroE implementation.
-#define __IO __I // Note: Added for MikroE implementation.
+// #include "system.h"                       /*!< R7FA0E107 System                                                          */
 
  #ifndef __IM                              /*!< Fallback for older CMSIS versions                                         */
   #define __IM     __I
@@ -1068,19 +1063,18 @@ typedef struct
 
         struct
         {
-            __IOM uint16_t PODR  : 1;  /*!< [0..0] Port Output Data                                                   */
+            __IOM uint16_t PODR  : 1;  /*!< [0..0] Pmn Output Data                                                    */
             __IM uint16_t  PIDR  : 1;  /*!< [1..1] Pmn State                                                          */
-            __IOM uint16_t PDR   : 1;  /*!< [2..2] PDR                                                                */
+            __IOM uint16_t PDR   : 1;  /*!< [2..2] Pmn Direction                                                      */
             uint16_t             : 1;
-            __IOM uint16_t PCR   : 1;  /*!< [4..4] PCR                                                                */
-            __IOM uint16_t PIM   : 1;  /*!< [5..5] PIM                                                                */
-            __IOM uint16_t NCODR : 1;  /*!< [6..6] NCODR                                                              */
+            __IOM uint16_t PCR   : 1;  /*!< [4..4] Pull-up Control                                                    */
+            __IOM uint16_t PIM   : 1;  /*!< [5..5] Pin Input Buffer Selection                                         */
+            __IOM uint16_t NCODR : 1;  /*!< [6..6] N-channel Open-drain Control                                       */
             uint16_t             : 1;
-            __IOM uint16_t PSEL  : 4;  /*!< [11..8] These bits select the peripheral function. For individual
-                                        *   pin functions, see the associated tables in this chapter.                 */
-            uint16_t            : 2;
-            __IOM uint16_t ISEL : 1;   /*!< [14..14] IRQ Input Enable                                                 */
-            __IOM uint16_t PMC  : 1;   /*!< [15..15] Pin mode control                                                 */
+            __IOM uint16_t PSEL  : 4;  /*!< [11..8] Peripheral Select                                                 */
+            uint16_t             : 2;
+            __IOM uint16_t ISEL  : 1;  /*!< [14..14] IRQ Input Enable                                                 */
+            __IOM uint16_t PMC   : 1;  /*!< [15..15] Pin Mode Control                                                 */
         } PmnPFS_b;
     };
 } R_PFS_PORT_PIN_Type;                 /*!< Size = 2 (0x2)                                                            */
@@ -1481,9 +1475,9 @@ typedef struct                         /*!< (@ 0x4001B000) R_DEBUG Structure    
             uint32_t                     : 12;
             __IOM uint32_t DBGSTOP_TIM   : 1; /*!< [14..14] Mask bit for RTC, TAU reset/interrupt                            */
             __IOM uint32_t DBGSTOP_SIR   : 1; /*!< [15..15] Mask bit for SAU, IICA, PORT_IRQ0-5 reset/interrupt              */
-            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interupt                                  */
+            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interrupt                                 */
             uint32_t                     : 5;
             __IOM uint32_t DBGSTOP_RPER  : 1; /*!< [24..24] Mask bit for SRAM parity error                                   */
             __IOM uint32_t DBGSTOP_RECCR : 1; /*!< [25..25] Mask bit for SRAM ECC error                                      */
@@ -2183,7 +2177,7 @@ typedef struct                         /*!< (@ 0x407EC000) R_FACI_LP Structure  
 
         struct
         {
-            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Up2025-08-07 Enable                                            */
+            __IOM uint16_t BKSWUPEN : 1; /*!< [0..0] Bank Swap Update Enable                                            */
             uint16_t                : 7;
             __OM uint16_t FEKEY     : 8; /*!< [15..8] Key Code                                                          */
         } FBKSWCR_b;
@@ -2491,14 +2485,14 @@ typedef struct                         /*!< (@ 0x40006000) R_ICU Structure      
         {
             __IOM uint32_t IWDTED : 1;     /*!< [0..0] IWDT Interrupt Software Standby/Snooze Mode Returns Enable         */
             __IOM uint32_t LVD1ED : 1;     /*!< [1..1] LVD1 Interrupt Software Standby/Snooze Mode Returns Enable         */
-            __IOM uint32_t IRQ0ED : 1;     /*!< [2..2] IRQ0ED                                                             */
-            __IOM uint32_t IRQ1ED : 1;     /*!< [3..3] IRQ1ED                                                             */
-            __IOM uint32_t IRQ2ED : 1;     /*!< [4..4] IRQ2ED                                                             */
-            __IOM uint32_t IRQ3ED : 1;     /*!< [5..5] IRQ3ED                                                             */
-            __IOM uint32_t IRQ4ED : 1;     /*!< [6..6] IRQ4ED                                                             */
-            __IOM uint32_t IRQ5ED : 1;     /*!< [7..7] IRQ5ED                                                             */
-            __IOM uint32_t IRQ6ED : 1;     /*!< [8..8] IRQ6ED                                                             */
-            __IOM uint32_t IRQ7ED : 1;     /*!< [9..9] IRQ7ED                                                             */
+            __IOM uint32_t IRQ0ED : 1;     /*!< [2..2] IRQ Interrupt Software Standby/Snooze Mode Returns Enable          */
+            __IOM uint32_t IRQ1ED : 1;     /*!< [3..3] IRQ Interrupt Software Standby/Snooze Mode Returns Enable          */
+            __IOM uint32_t IRQ2ED : 1;     /*!< [4..4] IRQ Interrupt Software Standby/Snooze Mode Returns Enable          */
+            __IOM uint32_t IRQ3ED : 1;     /*!< [5..5] IRQ Interrupt Software Standby/Snooze Mode Returns Enable          */
+            __IOM uint32_t IRQ4ED : 1;     /*!< [6..6] IRQ Interrupt Software Standby/Snooze Mode Returns Enable          */
+            __IOM uint32_t IRQ5ED : 1;     /*!< [7..7] IRQ Interrupt Software Standby/Snooze Mode Returns Enable          */
+            __IOM uint32_t IRQ6ED : 1;     /*!< [8..8] IRQ Interrupt Software Standby/Snooze Mode Returns Enable          */
+            __IOM uint32_t IRQ7ED : 1;     /*!< [9..9] IRQ Interrupt Software Standby/Snooze Mode Returns Enable          */
             __IOM uint32_t DTCED  : 1;     /*!< [10..10] DTC Transfer Complete Interrupt Snooze Mode Returns
                                             *   Enable                                                                    */
             uint32_t                 : 7;
@@ -3709,11 +3703,11 @@ typedef struct                         /*!< (@ 0x40002000) R_SRAM Structure     
 
     union
     {
-        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Up2025-08-07 Enable Register         */
+        __IOM uint8_t ECC1STSEN;       /*!< (@ 0x000000C2) ECC 1-Bit Error Information Update Enable Register         */
 
         struct
         {
-            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Up2025-08-07 Enable                          */
+            __IOM uint8_t E1STSEN : 1; /*!< [0..0] ECC 1-Bit Error Information Update Enable                          */
             uint8_t               : 7;
         } ECC1STSEN_b;
     };
@@ -4816,7 +4810,6 @@ typedef struct                         /*!< (@ 0x400A2C00) R_RTC_C Structure    
  #define R_FACI_LP_BASE     0x407EC000UL
  #define R_ICU_BASE         0x40006000UL
  #define R_IICA0_BASE       0x400A3000UL
- #define R_IICA1_BASE       0x400A3008UL
  #define R_IWDT_BASE        0x40044400UL
  #define R_MSTP_BASE        (0x40047000UL - 4UL) /* MSTPCRA is not located in R_MSTP so the base address must be moved so that MSTPCRB is located at 0x40047000. */
  #define R_PCLBUZ_BASE      0x400A3B00UL
@@ -4825,7 +4818,6 @@ typedef struct                         /*!< (@ 0x400A2C00) R_RTC_C Structure    
  #define R_PORT2_BASE       0x400A0040UL
  #define R_PORT3_BASE       0x400A0060UL
  #define R_PORT4_BASE       0x400A0080UL
- #define R_PORT5_BASE       0x400A00A0UL
  #define R_PORT9_BASE       0x400A0120UL
  #define R_PORGA_BASE       0x400A1000UL
  #define R_PFS_BASE         0x400A0200UL
@@ -4860,7 +4852,6 @@ typedef struct                         /*!< (@ 0x400A2C00) R_RTC_C Structure    
  #define R_FACI_LP     ((R_FACI_LP_Type *) R_FACI_LP_BASE)
  #define R_ICU         ((R_ICU_Type *) R_ICU_BASE)
  #define R_IICA0       ((R_IICA0_Type *) R_IICA0_BASE)
- #define R_IICA1       ((R_IICA0_Type *) R_IICA1_BASE)
  #define R_IWDT        ((R_IWDT_Type *) R_IWDT_BASE)
  #define R_MSTP        ((R_MSTP_Type *) R_MSTP_BASE)
  #define R_PCLBUZ      ((R_PCLBUZ_Type *) R_PCLBUZ_BASE)
@@ -4869,7 +4860,6 @@ typedef struct                         /*!< (@ 0x400A2C00) R_RTC_C Structure    
  #define R_PORT2       ((R_PORT0_Type *) R_PORT2_BASE)
  #define R_PORT3       ((R_PORT0_Type *) R_PORT3_BASE)
  #define R_PORT4       ((R_PORT0_Type *) R_PORT4_BASE)
- #define R_PORT5       ((R_PORT0_Type *) R_PORT5_BASE)
  #define R_PORT9       ((R_PORT0_Type *) R_PORT9_BASE)
  #define R_PORGA       ((R_PORGA_Type *) R_PORGA_BASE)
  #define R_PFS         ((R_PFS_Type *) R_PFS_BASE)

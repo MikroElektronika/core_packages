@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^EFR32FG23B010F128GM40$|^EFR32FG23B010F512GM48$|^EFR32FG23B010F512IM40$|^EFR32FG23B010F512IM48$|^EFR32FG23B020F128GM40$|^EFR32FG23B020F512IM40$|^EFR32FG23B020F512IM48$|^EFR32FG23B021F512IM40$|^EFR32FG23B021F512IM48$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/efr32fg23b/init_clock.c)
+endif()

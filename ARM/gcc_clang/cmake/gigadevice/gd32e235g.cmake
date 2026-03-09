@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^GD32E235G4U6TR$|^GD32E235G6U6TR$|^GD32E235G8U6TR$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/gd32e235g/init_clock.c)
+endif()

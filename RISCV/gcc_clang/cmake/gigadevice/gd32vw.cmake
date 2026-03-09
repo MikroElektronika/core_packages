@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^GD32VW553HIQ6$|^GD32VW553HIQ7$|^GD32VW553HMQ6$|^GD32VW553HMQ7$|^GD32VW553KIQ6$|^GD32VW553KIQ7$|^GD32VW553KMQ6$|^GD32VW553KMQ7$")
+    list(APPEND local_list_include system/src/${vendor}/gd32vw/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/gd32vw/thirdparty/gd32vw)
+    set(${thirdpartyInstall} gd32vw/thirdparty/gd32vw PARENT_SCOPE)
+endif()

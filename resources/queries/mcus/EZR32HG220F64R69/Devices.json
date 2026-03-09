@@ -1,0 +1,18 @@
+{
+    "def_file": "EZR32HG220F64R69.json",
+    "family_uid": "EZR32HG",
+    "flash": "65536",
+    "icon": "images/mcu/silabs.png",
+    "max_speed": "25.000",
+    "name": "EZR32HG220F64R69",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"EZR32HG220F64R69\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "EZR32HG220F64R69",
+    "vendor": "Silicon Labs",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ezr32hg2\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ezr32hg2\"}"
+}

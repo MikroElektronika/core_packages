@@ -10,8 +10,11 @@ import pandas as pd
 from elasticsearch import Elasticsearch
 
 import support as support
+import classes.release_per_vendor as gh_uploader
 
 from pathlib import Path
+
+parent_dir = str(Path(__file__).resolve().parent.parent)
 
 def create_table(data, table_out):
     ''' Creates a table with data and saves it to table_out '''
@@ -63,7 +66,7 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
                 if isGCC and 'list(APPEND local_list_include' in line:
 
                     systemPath = line.split()[-1][:-1].replace("${vendor}", vendor)
-                    if 'doc_ds' in systemPath or ('sam' in systemPath and re.search('^(at)?sam.+$', file_name)) or 'renesas' in systemPath or 'nuvoton' in systemPath or 'pic32' in systemPath or ('infineon' in systemPath and 'xmc' not in file_name) or ('ti' in systemPath and 'msp' in file_name):
+                    if 'doc_ds' in systemPath or ('sam' in systemPath and re.search('^(at)?sam.+$', file_name)) or 'renesas' in systemPath or 'nuvoton' in systemPath or 'pic32' in systemPath or ('infineon' in systemPath and 'xmc' not in file_name) or ('ti' in systemPath and 'msp' in file_name) or ('gigadevice' in systemPath and 'gd32vw' in file_name):
                         systemPath = os.path.dirname(systemPath)
                     systemPath = os.path.join(source_dir, systemPath)
                     paths[file_name]['files'].add(systemPath)
@@ -417,7 +420,7 @@ def compress_directory_7z(base_output_dir, entry_name, arch=None):
 
     # Execute the command
     try:
-        subprocess.run(command, check=True)
+        subprocess.run(command, check=True, capture_output=True)
         print(f"Archive created successfully: {archive_name}")
         return archive_name
     except subprocess.CalledProcessError as e:
@@ -529,59 +532,8 @@ def update_database(package_name, mcus, db_path):
 
     return
 
-async def upload_release_asset(session, token, repo, release_id, asset_path, assets, delete_existing=True):
-    """Upload an asset to a specific GitHub release. If the asset exists, delete it first."""
-    asset_name = os.path.basename(asset_path)
-    url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets'
-    headers = {
-        'Authorization': f'token {token}',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
-    }
-
-    # Check if the asset already exists
-    for asset in assets:
-        if asset['name'] == asset_name:
-            # If the asset exists, delete it
-            delete_url = asset['url']
-            if delete_existing:
-                print(f'Deleting existing asset: {asset_name}')
-                delete_response = requests.delete(delete_url, headers=headers)
-                delete_response.raise_for_status()
-                assets.remove(asset)
-                print(f'\033[91mAsset deleted: {asset_name}\033[0m')
-            break
-
-    # Upload the new asset
-    url = f'https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={os.path.basename(asset_path)}'
-    headers = {
-        'Authorization': f'token {token}',
-        'Content-Type': 'application/x-7z-compressed',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
-    }
-    if delete_existing:
-        with open(asset_path, 'rb') as file:
-            print(f'Uploading new asset: {asset_name}')
-            response = requests.post(url, headers=headers, data=file)
-            response.raise_for_status()
-            print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
-            return response.json()
-    else:
-        asset_exists = False
-        for asset in assets:
-            if asset['name'] == asset_name:
-                asset_exists = True
-                break
-        if not asset_exists:
-            with open(asset_path, 'rb') as file:
-                print(f'Uploading new asset: {asset_name}')
-                response = requests.post(url, headers=headers, data=file)
-                response.raise_for_status()
-                print(f'\033[92mUploaded asset: {os.path.basename(asset_path)} to release ID: {release_id}\033[0m')
-                return response.json()
-
-async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, tag_name, packages, current_metadata, db_paths, assets):
+async def package_asset(source_dir, output_dir, arch, entry_name, tag_name, packages, current_metadata, db_paths):
     """ Package and upload an asset as a release to GitHub """
-    release_id = get_release_id(repo, tag_name, token)
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
     package_to_mcu_json = []
@@ -641,14 +593,6 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         archiveName = os.path.basename(archive_path)
 
         shutil.rmtree(base_output_dir)
-        # Upload archive
-        upload_result= ""
-        async with aiohttp.ClientSession() as session:
-            upload_tasks = [upload_release_asset(session, token, repo, release_id, archive_path, assets)]
-            results = await asyncio.gather(*upload_tasks, return_exceptions=True)
-            for result in results:
-                upload_result = result
-            print("All uploads completed.")
 
         # Determine the version based on the hash
         version = get_version_based_on_hash(archiveName, tag_name.replace("v", ""), archiveHash, current_metadata)
@@ -656,8 +600,9 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
         install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
 
-        packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location})
-        package_changed = (version == tag_name.replace("v", ""))
+        vendor = gh_uploader.resolve_mcu_vendor(data['cmake_file_path'])
+
+        packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location, 'vendor': vendor})
 
         # Mark package for appropriate device and toolchain
         for each_db in db_paths:
@@ -684,6 +629,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, token, repo, t
         package_to_mcu_json.append({name_without_extension:[mcu_check, entry_name]})
         package_to_mcu_xlsx_full.append([name_without_extension, ','.join(mcu_full_list), entry_name])
         package_to_mcu_json_full.append({name_without_extension: {'mcus': mcu_full_list, 'toolchain': entry_name}})
+
 
     # Create a table with package to mcus
     os.makedirs(f'./output/docs/{arch}', exist_ok=True)
@@ -728,8 +674,9 @@ def fetch_current_metadata(repo, token):
     headers = {'Authorization': f'token {token}'}
     response = requests.get(url, headers=headers)
     releases = response.json()
+    latest_release = support.get_latest_release(repo, headers)
     if len(releases) > 1:
-        previous_release = support.get_previous_release(releases)
+        previous_release = support.get_previous_release(latest_release, releases)
         if not previous_release:
             print_line_number('Error when fetching previous release version', inspect.currentframe().f_lineno)
             exit(-1)
@@ -774,39 +721,35 @@ def get_version_based_on_hash(package_name, version, hash_value, current_metadat
     # If the package is not found or the hash doesn't match, return the provided version
     return version
 
+def fetch_latest_release_version(repo, token):
+    api_headers = {
+        'Authorization': f'token {token}',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    }
+    url = f'https://api.github.com/repos/{repo}/releases'
+    response = requests.get(url, headers=api_headers)
+    response.raise_for_status()  # Raise an exception for HTTP errors
+    return support.get_latest_release(repo, api_headers)
+
 def get_release_id(repo, tag_name, token):
     """Get the release ID for a given tag name."""
-    url = f'https://api.github.com/repos/{repo}/releases/tags/{tag_name}'
     headers = {
         'Authorization': f'token {token}',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
     }
+
+    if 'latest' == tag_name:
+        url = f'https://api.github.com/repos/{repo}/releases'
+    else:
+        url = f'https://api.github.com/repos/{repo}/releases/tags/{tag_name}'
+
     response = requests.get(url, headers=headers)
     response.raise_for_status()
-    return response.json()['id']
 
-def get_all_release_assets(repo, release_id, token):
-    all_assets = []
-    headers = {
-        'Authorization': f'token {token}',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
-    }
-    page = 1
-    while True:
-        url = f'https://api.github.com/repos/{repo}/releases/{release_id}/assets?page={page}&per_page=30'
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        assets = response.json()
-
-        # If no more assets, break out of loop
-        if not assets:
-            break
-
-        all_assets += (asset for asset in assets)
-
-        page += 1
-
-    return all_assets
+    if 'latest' == tag_name:
+        return (support.get_latest_release(repo, headers))['id']
+    else:
+        return response.json()['id']
 
 def fetch_elasticsearch_data(index_name):
     # Elasticsearch instance used for indexing
@@ -854,27 +797,17 @@ def fetch_elasticsearch_data(index_name):
 def update_metadata(current_metadata, new_files, version):
     """ Update the metadata with the new files """
     updated_metadata = []
-    print(f"Update metadata: {current_metadata}")
-    print(f"New files: {new_files}")
     current_files_dict = {item['name']: item for item in current_metadata}
 
+    print(f"Updating metadata objects version to {version}.")
     for new_file in new_files:
-        name = new_file['name']
-        if name in current_files_dict:
-            if 'database' == name:
-                print(f"Update version to: {version}")
-                db_version = fetch_elasticsearch_data(os.environ['ES_INDEX_LIVE'])
-                if not db_version:
-                    db_version = version
-                new_file['version'] = db_version
-            else:
-                if new_file['hash'] != current_files_dict[name]['hash']:
-                    # Increment version
-                    print(f"Update version to: {version}")
-                    new_file['version'] = version
+        if 'database' == new_file['name']:
+            db_version = fetch_elasticsearch_data(os.environ['ES_INDEX_LIVE'])
+            if not db_version:
+                db_version = version
+            new_file['version'] = db_version
         else:
-            # If it's a new file, set the initial version
-            new_file['version'] = "1.0.0"
+            new_file['version'] = version
 
         updated_metadata.append(new_file)
 
@@ -901,64 +834,69 @@ def append_package(packages, package, display_name, version, install=None, categ
         "install_location": f"%APPLICATION_DATA_DIR%/{install_location}"
     })
 
-async def main(token, repo, tag_name):
+async def main(token, repo, tag_name, releases_to_update):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
     db_paths = ['necto_db.db', 'necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
 
-    # Get the release ID used to upload assets
-    release_id = get_release_id(repo, tag_name, token)
-    assets = get_all_release_assets(repo, release_id, token)
+    # Fetch the tag version if "latest" was provided
+    if 'latest' == tag_name:
+        headers = {'Authorization': f'token {token}'}
+        tag_name = support.get_latest_release(repo, headers)['tag_name']
 
-    packages = []
-    for arch in architectures:
-        root_source_directory = f"./{arch}"
-        root_output_directory = f"./output/{arch}"
-        # List directories directly under the root source directory
-        with os.scandir(root_source_directory) as entries:
-            print(entries)
-            for entry in entries:
-                print(root_source_directory)
-                print(entry)
-                if entry.is_dir():
-                    source_directory = os.path.join(root_source_directory, entry.name)
-                    output_directory = os.path.join(root_output_directory, entry.name)
+    uploader = gh_uploader.GitHubReleaseUploader(
+        repo=repo,
+        token=token,
+        tag_name=tag_name,
+        dry_run=False
+    )
 
-                    print(f"Processing {source_directory} to {output_directory}")
-                    await package_asset(
-                        source_directory, output_directory, arch, entry.name,
-                        token, repo, tag_name,
-                        packages, current_metadata, db_paths, assets
-                    )
+    if not os.path.exists('mcu_packages.json'):
+        packages = []
+        for arch in architectures:
+            root_source_directory = f"./{arch}"
+            root_output_directory = f"./output/{arch}"
+            # List directories directly under the root source directory
+            with os.scandir(root_source_directory) as entries:
+                print(entries)
+                for entry in entries:
+                    print(root_source_directory)
+                    print(entry)
+                    if entry.is_dir():
+                        source_directory = os.path.join(root_source_directory, entry.name)
+                        output_directory = os.path.join(root_output_directory, entry.name)
+
+                        print(f"\033[34mProcessing {source_directory} to {output_directory}\033[0m")
+                        await package_asset(
+                            source_directory, output_directory, arch, entry.name,
+                            tag_name, packages, current_metadata, db_paths
+                        )
+        with open('mcu_packages.json', 'w') as file:
+            json.dump(packages, file)
+    else:
+        with open('mcu_packages.json', 'r') as file:
+            packages = json.load(file)
+
+    payload = uploader.build_release_payload_from_packages(packages, 'output')
 
     for each_db in db_paths:
-        async with aiohttp.ClientSession() as session:
-            await upload_release_asset(session, token, repo, release_id, each_db, assets)
-
-    # Uncomment to get specific test database per package
-    # for each_package in packages:
-    #     async with aiohttp.ClientSession() as session:
-    #         await upload_release_asset(session, token, repo, release_id, f"output/databases/{each_package['name']}.db", assets)
+        gh_uploader.append_to_payload(payload, each_db, os.path.join(parent_dir, each_db))
 
     # Generate clocks.json
     input_directory = "./"
     output_file = "./output/docs/clocks.json"
     clocksGenerator = GenerateClocks(input_directory, output_file)
     clocksGenerator.generate()
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, output_file, assets)
+    gh_uploader.append_to_payload(payload, 'clocks.json', Path(output_file).resolve())
 
     # Generate schemas.json
     input_directory = "./"
     output_file = "./output/docs/schemas.json"
-    # TODO - Add regex definitions to the array if needed
-    # At the moment we check only for 'board_regex' fields in JSON files
     schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
     schemaGenerator.generate()
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, output_file, assets)
+    gh_uploader.append_to_payload(payload, 'schemas.json', Path(output_file).resolve())
 
     # Generate images package
     archive_path = compress_directory_7z(os.path.join('./resources', 'images'), 'images.7z')
@@ -972,8 +910,7 @@ async def main(token, repo, tag_name):
         'resources/images',
         'resources'
     )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'images.7z', Path(str(archive_path)).resolve())
 
     # Generate preinit package
     archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
@@ -985,8 +922,7 @@ async def main(token, repo, tag_name):
             hash_directory_contents(archive_path), current_metadata
         )
     )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'preinit.7z', Path(str(archive_path)).resolve())
 
     # Generate unit_test_lib package
     archive_path = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
@@ -998,8 +934,7 @@ async def main(token, repo, tag_name):
             hash_directory_contents(archive_path), current_metadata
         )
     )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'unit_test_lib.7z', Path(str(archive_path)).resolve())
 
     # Generate mikroe_utils_common package
     archive_path = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
@@ -1012,8 +947,7 @@ async def main(token, repo, tag_name):
         ),
         'cmake'
     )
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'mikroe_utils_common.7z', Path(str(archive_path)).resolve())
 
     # Generate database packages
     for each_db in db_paths:
@@ -1031,28 +965,27 @@ async def main(token, repo, tag_name):
             ),
             f'databases'
         )
-        async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
-        os.remove(os.path.join('./utils', f'database{package_suffix}.7z'))
+        gh_uploader.append_to_payload(payload, f'database{package_suffix}.7z', Path(str(archive_path)).resolve())
 
     # Generate document files asset
     archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, release_id, archive_path, assets)
+    gh_uploader.append_to_payload(payload, 'docs.7z', Path(str(archive_path)).resolve())
 
     new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
     with open('metadata.json', 'w') as f:
         json.dump(new_metadata, f, indent=4)
+    gh_uploader.append_to_payload(payload, 'metadata.json', os.path.join(parent_dir, 'metadata.json'))
 
-    async with aiohttp.ClientSession() as session:
-        await upload_release_asset(session, token, repo, release_id, "metadata.json", assets)
+    ## Final step. Asset upload from created payload.
+    uploader.upload_from_json(payload, new_metadata, releases_to_update)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Upload directories as release assets.")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
+    parser.add_argument('--releases_to_update', type=str, help='MCU packages Release names to update.', default="")
     args = parser.parse_args()
     print("Starting the upload process...")
-    asyncio.run(main(args.token, args.repo, args.tag_name))
+    asyncio.run(main(args.token, args.repo, args.tag_name, args.releases_to_update))
     print("Upload process completed.")

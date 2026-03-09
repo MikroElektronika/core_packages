@@ -34,6 +34,8 @@ class events_json():
             ## Handle errors that may occur during the data fetch process
             print(f"Error fetching data: {e}")
 
+        sdk_support_regex = ''
+
         ## Read lines from the temporary file
         with open(os.path.join(os.path.dirname(__file__), 'releases.txt'), 'r') as releases:
             all_releases = releases.readlines()
@@ -67,6 +69,13 @@ class events_json():
                 ## Skip lines with incorrect date format
                 continue
 
+            ## Column with regex for SDK support
+            if 'mikroSDK' in board_name:
+                ## If it is new SDK suport
+                if sdk_support_regex != '':
+                    sdk_support_regex = ''
+                sdk_support_regex = parts[8]
+
             ## Create a dictionary for each event and append to the formatted array
             formatted_array.append(
                 {
@@ -77,7 +86,8 @@ class events_json():
                     "readonly": False,
                     "tz": "Europe/Belgrade",
                     "start_dt": release_date.strftime("%Y-%m-%dT00:00:00"),
-                    "end_dt": (release_date + timedelta(days=1) - timedelta(minutes=1)).strftime("%Y-%m-%dT23:59:00")
+                    "end_dt": (release_date + timedelta(days=1) - timedelta(minutes=1)).strftime("%Y-%m-%dT23:59:00"),
+                    "regex": sdk_support_regex
                 }
             )
 

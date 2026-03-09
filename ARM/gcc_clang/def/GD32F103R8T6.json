@@ -1,0 +1,6 @@
+{
+    "core": "M3",
+    "delay_src_path": "delays/m3/__lib_delays.c",
+    "mcu": "GD32F103R8T6",
+    "clock": "1"
+}

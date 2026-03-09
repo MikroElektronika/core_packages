@@ -1,0 +1,18 @@
+{
+    "def_file": "GD32E505RCT6.json",
+    "family_uid": "GD32E505",
+    "flash": "262144",
+    "icon": "images/mcu/gigadevice.png",
+    "max_speed": "180.000",
+    "name": "GD32E505RCT6",
+    "ram": "98304",
+    "sdk_config": "{\"MCU_NAME\":\"GD32E505RCT6\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "GD32E505RCT6",
+    "vendor": "GigaDevice",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_gd32e505\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_gd32e505\"}"
+}

@@ -1,0 +1,123 @@
+/****************************************************************************
+**
+** Copyright (C) 2025 MikroElektronika d.o.o.
+** Contact: https://www.mikroe.com/contact
+**
+** This file is part of the mikroSDK package
+**
+** Commercial License Usage
+**
+** Licensees holding valid commercial NECTO compilers AI licenses may use this
+** file in accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and The MikroElektronika Company.
+** For licensing terms and conditions see
+** https://www.mikroe.com/legal/software-license-agreement.
+** For further information use the contact form at
+** https://www.mikroe.com/contact.
+**
+**
+** GNU Lesser General Public License Usage
+**
+** Alternatively, this file may be used for
+** non-commercial projects under the terms of the GNU Lesser
+** General Public License version 3 as published by the Free Software
+** Foundation: https://www.gnu.org/licenses/lgpl-3.0.html.
+**
+** The above copyright notice and this permission notice shall be
+** included in all copies or substantial portions of the Software.
+**
+** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+** OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+** DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+** OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+** OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+**
+****************************************************************************/
+/*!
+* @file  interrupts_mcu.h
+* @brief EFR32BG22C112F352GM32 MCU specific interrupt per module definitions.
+*/
+
+#ifndef _INTERRUPTS_MCU_H_
+#define _INTERRUPTS_MCU_H_
+
+// Interrupt table
+static const int INTERRUPTS_CRYPTOACC = 16;
+static const int INTERRUPTS_TRNG = 17;
+static const int INTERRUPTS_PKE = 18;
+static const int INTERRUPTS_SMU_SECURE = 19;
+static const int INTERRUPTS_SMU_S_PRIVILEGED = 20;
+static const int INTERRUPTS_SMU_NS_PRIVILEGED = 21;
+static const int INTERRUPTS_EMU = 22;
+static const int INTERRUPTS_TIMER0 = 23;
+static const int INTERRUPTS_TIMER1 = 24;
+static const int INTERRUPTS_TIMER2 = 25;
+static const int INTERRUPTS_TIMER3 = 26;
+static const int INTERRUPTS_TIMER4 = 27;
+static const int INTERRUPTS_RTCC = 28;
+static const int INTERRUPTS_USART0_RX = 29;
+static const int INTERRUPTS_USART0_TX = 30;
+static const int INTERRUPTS_USART1_RX = 31;
+static const int INTERRUPTS_USART1_TX = 32;
+static const int INTERRUPTS_ICACHE0 = 33;
+static const int INTERRUPTS_BURTC = 34;
+static const int INTERRUPTS_LETIMER0 = 35;
+static const int INTERRUPTS_SYSCFG = 36;
+static const int INTERRUPTS_LDMA = 37;
+static const int INTERRUPTS_LFXO = 38;
+static const int INTERRUPTS_LFRCO = 39;
+static const int INTERRUPTS_ULFRCO = 40;
+static const int INTERRUPTS_GPIO_ODD = 41;
+static const int INTERRUPTS_GPIO_EVEN = 42;
+static const int INTERRUPTS_I2C0 = 43;
+static const int INTERRUPTS_I2C1 = 44;
+static const int INTERRUPTS_EMUDG = 45;
+static const int INTERRUPTS_EMUSE = 46;
+static const int INTERRUPTS_AGC = 47;
+static const int INTERRUPTS_BUFC = 48;
+static const int INTERRUPTS_FRC_PRI = 49;
+static const int INTERRUPTS_FRC = 50;
+static const int INTERRUPTS_MODEM = 51;
+static const int INTERRUPTS_PROTIMER = 52;
+static const int INTERRUPTS_RAC_RSM = 53;
+static const int INTERRUPTS_RAC_SEQ = 54;
+static const int INTERRUPTS_RDMAILBOX = 55;
+static const int INTERRUPTS_RFSENSE = 56;
+static const int INTERRUPTS_PRORTC = 57;
+static const int INTERRUPTS_SYNTH = 58;
+static const int INTERRUPTS_WDOG0 = 59;
+static const int INTERRUPTS_HFXO0 = 60;
+static const int INTERRUPTS_HFRCO0 = 61;
+static const int INTERRUPTS_CMU = 62;
+static const int INTERRUPTS_AES = 63;
+static const int INTERRUPTS_IADC = 64;
+static const int INTERRUPTS_MSC = 65;
+static const int INTERRUPTS_DPLL0 = 66;
+static const int INTERRUPTS_PDM = 67;
+static const int INTERRUPTS_SW0 = 68;
+static const int INTERRUPTS_SW1 = 69;
+static const int INTERRUPTS_SW2 = 70;
+static const int INTERRUPTS_SW3 = 71;
+static const int INTERRUPTS_KERNEL0 = 72;
+static const int INTERRUPTS_KERNEL1 = 73;
+static const int INTERRUPTS_M33CTI0 = 74;
+static const int INTERRUPTS_M33CTI1 = 75;
+static const int INTERRUPTS_EMUEFP = 76;
+static const int INTERRUPTS_DCDC = 77;
+static const int INTERRUPTS_EUART0_RX = 78;
+static const int INTERRUPTS_EUART0_TX = 79;
+// EOF Interrupt table
+
+// Interrupt addresses
+// No interrupt registers for EFR32BG22C112F352GM32.
+// EOF Interrupt addresses
+
+// Interrupt register bit values
+// No interrupt bits for EFR32BG22C112F352GM32.
+// EOF Interrupt register bit values
+
+#endif // _INTERRUPTS_MCU_H_
+// ------------------------------------------------------------------------- END

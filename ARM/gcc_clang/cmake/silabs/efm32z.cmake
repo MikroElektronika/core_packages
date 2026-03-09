@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^EFM32ZG108F16$|^EFM32ZG108F32$|^EFM32ZG108F4$|^EFM32ZG108F8$|^EFM32ZG110F16$|^EFM32ZG110F32$|^EFM32ZG110F4$|^EFM32ZG110F8$|^EFM32ZG210F16$|^EFM32ZG210F32$|^EFM32ZG210F4$|^EFM32ZG210F8$|^EFM32ZG222F16$|^EFM32ZG222F32$|^EFM32ZG222F4$|^EFM32ZG222F8$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/efm32z/init_clock.c)
+endif()

@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MGM260PB22VNA$|^MGM260PB32VNA$|^MGM260PB32VNN$|^MGM260PD22VNA$|^MGM260PD32VNA$|^MGM260PD32VNN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/mgm26/init_clock.c)
+endif()

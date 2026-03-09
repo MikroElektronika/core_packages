@@ -2,8 +2,10 @@
 .vscode
 metadata.json
 output
+venv
 __pycache__
 *.7z
 **/*/necto_db.db
 tmp
 scripts/databases
+scripts/*.db

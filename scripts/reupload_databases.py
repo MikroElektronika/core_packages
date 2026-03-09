@@ -28,6 +28,8 @@ import read_microchip_index as MCHP
 entranceCheckProg = True
 entranceCheckDebug = True
 
+START_TIME = time.perf_counter()
+
 mcuCardCheckList = [
     'CARD', 'SIBRAIN', 'MICROMOD', 'PIM'
 ]
@@ -76,6 +78,33 @@ def insertIntoTable(db, tableName, values, columns):
     for itemCount in range(1, len(values) + 1):
         numOfItems += '?,'
     cur.execute(f'INSERT OR IGNORE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
+    conn.commit()
+    conn.close()
+
+# MIKROE boards regex
+MIKROE_REGEX_BOARDS = re.compile(
+    r'^(FUSION_FOR.+|MIKROMEDIA_.+|UNI_CLICKER|EASYPIC.+|EASYMX_.+|CLICKER|'
+    r'FLIP_AND_CLICK_.+|PICPLC16|6LOWPAN|HEXIWEAR|FLOWPAW|QUAIL|EASY.+|UNI_DS|MINI_32)$'
+)
+
+def update_vendor(db, uid, vendor):
+    # Do not update GENERIC boards
+    if uid.startswith('GENERIC'):
+        return
+
+    # Override vendor to MIKROE if uid matches
+    # (for MIKROE boards only)
+    if MIKROE_REGEX_BOARDS.match(str(uid)):
+        vendor = "MIKROE"
+
+    conn = sqlite3.connect(db)
+    cur = conn.cursor()
+
+    cur.execute(
+        "UPDATE Boards SET Vendor = ? WHERE uid = ?",
+        (vendor, uid)
+    )
+
     conn.commit()
     conn.close()
 
@@ -275,7 +304,8 @@ def checkDevicePackages(database, allDevicesGithub):
                             ],
                             boardToDeviceColumns
                         )
-                        print("Added %s/%s/%s to database BoardToDevice table.\n" % ((boardValues[enums.dbSync.BOARDTODEVICEBOARD.value], boardValues[enums.dbSync.BOARDTODEVICEDEVICE.value], packageString)))
+                        # TODO - uncomment for testing purposes
+                        # print("Added %s/%s/%s to database BoardToDevice table.\n" % ((boardValues[enums.dbSync.BOARDTODEVICEBOARD.value], boardValues[enums.dbSync.BOARDTODEVICEDEVICE.value], packageString)))
     return
 
 def clearDevicePackages(database):
@@ -289,6 +319,19 @@ def getProgDbgAsJson(docLink, saveToFile=False):
 
     with urllib.request.urlopen(docLink) as f:
         html = f.read().decode('utf-8')
+    # For JLink we need only devices, so remove Flash and RAM information
+    # that are causing issues while parsing the csv file
+    # Each Flash and RAM element starts with ", {", so just trim it and
+    # adjust tabulation between data set members
+    if 'JLink' in docLink:
+        html = 'Programmers, Debuggers, ' + html
+        html_lines = html.split('\r\n')
+        html = ''
+        for line in html_lines:
+            if 'Programmers, ' in line:
+                html += line.split(', {')[0].replace('"', '').replace(', ', ',') + '\r\n'
+            elif line.strip() != '':
+                html += 'Segger J-Link,Segger J-Link,' + line.split(', {')[0].replace('"', '').replace(', ', ',') + '\r\n'
     with open(os.path.join(os.path.dirname(__file__), 'devices.txt'), 'w') as devices:
         devices.write(html)
     devices.close()
@@ -299,7 +342,10 @@ def getProgDbgAsJson(docLink, saveToFile=False):
     df = pd.read_csv(os.path.join(os.path.dirname(__file__), "devices.txt"))
     df.replace({np.nan: False}, inplace=True)
     if 'amazonaws' in docLink:
-        data_dict = df.set_index('name').to_dict(orient='index')
+        if 'Codegrip' in docLink:
+            data_dict = df.set_index('name').to_dict(orient='index')
+        else:
+            data_dict = df.set_index('Device').to_dict(orient='index')
     else:
         data_dict = df.set_index('Name').to_dict(orient='index')
     formatted_dict = {mcu.lower(): data for mcu, data in data_dict.items()}
@@ -331,12 +377,13 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                 database,
                 f'DELETE FROM ProgrammerToDevice WHERE programer_uid="{eachProgUid}"'
             )
-            print("Removed %s from database ProgrammerToDevice table.\n" % eachProgUid)
+            # TODO - uncomment for testing purposes
+            # print("Removed %s from database ProgrammerToDevice table.\n" % eachProgUid)
 
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
         if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
             for eachProgCheckKey in progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()].keys():
-                if re.search('Programmers',eachProgCheckKey, re.IGNORECASE):
+                if re.search('Programmers', eachProgCheckKey, re.IGNORECASE):
                     if progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey]:
                         splitProgsDebuggers = progDbgInfo[eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower()][eachProgCheckKey].split('/')
                         for eachProgDebug in splitProgsDebuggers:
@@ -362,14 +409,47 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                     ],
                                     ProgrammerToDeviceColumns
                                 )
-                                print(
-                                    "Added %s/%s/%s to database ProgrammerToDevice table.\n" %
-                                    (
-                                        progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value],
-                                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value],
-                                        device_support_package
+                                # TODO - uncomment for testing purposes
+                                # print(
+                                #     "Added %s/%s/%s to database ProgrammerToDevice table.\n" %
+                                #     (
+                                #         progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value],
+                                #         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value],
+                                #         device_support_package
+                                #     )
+                                # )
+        else:
+            # Workaround for SEGGER - it has support per device family, not device name
+            # so we need to see if there is any device matching the family
+            for key in progDbgInfo:
+                if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower().startswith(key):
+                    for eachProgCheckKey in progDbgInfo[key].keys():
+                        if re.search('Programmers', eachProgCheckKey, re.IGNORECASE):
+                            if progDbgInfo[key][eachProgCheckKey]:
+                                splitProgsDebuggers = progDbgInfo[key][eachProgCheckKey].split('/')
+                                for eachProgDebug in splitProgsDebuggers:
+                                    progDebugUid = read_data_from_db(
+                                        database,
+                                        f'SELECT uid FROM Programmers WHERE name IS "{eachProgDebug}"'
                                     )
-                                )
+                                    if 'package_name' in progDbgInfo[key]:
+                                        device_support_package = f'["{progDbgInfo[key]['package_name']}"]'
+                                        # If there is no Debugger support for Codegrip in csv file, add it but without any codegrip package
+                                        if device_support_package == '["False"]':
+                                            device_support_package = '[""]'
+                                    else:
+                                        device_support_package = ''
+                                    if progDebugUid[enums.dbSync.COUNT.value]:
+                                        insertIntoTable(
+                                            database,
+                                            'ProgrammerToDevice',
+                                            [
+                                                progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value], ## programer_uid
+                                                eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value], ## device_uid
+                                                device_support_package
+                                            ],
+                                            ProgrammerToDeviceColumns
+                                        )
         # Always add gdb_general
         if addGeneral:
             insertIntoTable(
@@ -382,12 +462,14 @@ def checkProgrammerToDevice(database, devices, progDbgInfo, addGeneral=False):
                 ],
                 ProgrammerToDeviceColumns
             )
-            print(
-                "Added gdb_general/%s to database ProgrammerToDevice table.\n" %
-                (
-                    eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
-                )
-            )
+            # TODO - uncomment for testing purposes
+            # print(
+            #     "Added gdb_general/%s to database ProgrammerToDevice table.\n" %
+            #     (
+            #         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
+            #     )
+            # )
+
     return
 
 def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
@@ -408,7 +490,8 @@ def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
                 database,
                 f'DELETE FROM DebuggerToDevice WHERE debugger_uid="{eachProgUid}"'
             )
-            print("Removed %s from database DebuggerToDevice table.\n" % eachProgUid)
+            # TODO - uncomment for testing purposes
+            # print("Removed %s from database DebuggerToDevice table.\n" % eachProgUid)
 
     for eachDevice in devices[enums.dbSync.ELEMENTS.value]:
         if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower() in progDbgInfo:
@@ -431,13 +514,38 @@ def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
                                     ],
                                     DebuggerToDeviceColumns
                                 )
-                                print(
-                                    "Added %s/%s to database DebuggerToDevice table.\n" %
-                                    (
-                                        progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value],
-                                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
+                                # TODO - uncomment for testing purposes
+                                # print(
+                                #     "Added %s/%s to database DebuggerToDevice table.\n" %
+                                #     (
+                                #         progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value],
+                                #         eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
+                                #     )
+                                # )
+        else:
+            # Workaround for SEGGER - it has support per device family, not device name
+            # so we need to see if there is any device matching the family
+            for key in progDbgInfo:
+                if eachDevice[enums.dbSync.DEVICETOPACKAGEDEF.value].replace('.json', '').lower().startswith(key):
+                    for eachProgCheckKey in progDbgInfo[key].keys():
+                        if re.search('Debuggers',eachProgCheckKey, re.IGNORECASE):
+                            if progDbgInfo[key][eachProgCheckKey]:
+                                splitProgsDebuggers = progDbgInfo[key][eachProgCheckKey].split('/')
+                                for eachProgDebug in splitProgsDebuggers:
+                                    progDebugUid = read_data_from_db(
+                                        database,
+                                        f'SELECT uid FROM Debuggers WHERE name IS "{eachProgDebug}"'
                                     )
-                                )
+                                    if progDebugUid[enums.dbSync.COUNT.value]:
+                                        insertIntoTable(
+                                            database,
+                                            'DebuggerToDevice',
+                                            [
+                                                progDebugUid[enums.dbSync.ELEMENTS.value][0][enums.dbSync.PROGRAMMERTODEVICEPROGRAMMER.value], ## debugger_uid
+                                                eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value] ## device_uid
+                                            ],
+                                            DebuggerToDeviceColumns
+                                        )
         ## Always add gdb_general?
         if addGeneral:
             insertIntoTable(
@@ -449,7 +557,8 @@ def checkDebuggerToDevice(database, devices, progDbgInfo, addGeneral=False):
                 ],
                 DebuggerToDeviceColumns
             )
-            print("Added gdb_general/%s to database ProgrammerToDevice table.\n" % eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value])
+            # TODO - uncomment for testing purposes
+            # print("Added gdb_general/%s to database ProgrammerToDevice table.\n" % eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value])
     return
 
 def addCollumnsToTable(db, collumns, table, types, defaultValues=None):
@@ -461,54 +570,8 @@ def addCollumnsToTable(db, collumns, table, types, defaultValues=None):
                            [enums.dbSync.COUNT.value] \
                            [enums.dbSync.COUNT.value]:
             addCollumnToTable(db, table, eachCollumn, eachType, defaultValue)
-            print("Added %s collumn (type %s) to %s table. (Default value - %s)\n" % (eachCollumn, eachType, table, defaultValue))
-    return
-
-def update_families(database, allDevicesGithub):
-    familyId = 1 ## Location of family_uid in collumns
-    sdkConfigId = 7 ## Location of sdk_config in collumns
-    with open(os.path.join(os.path.dirname(__file__), 'families.json'), 'r') as file:
-        familiesJson = json.load(file)
-    file.close()
-    if allDevicesGithub[enums.dbSync.COUNT.value]:
-        for eachDevice in allDevicesGithub[enums.dbSync.ELEMENTS.value]:
-            fullDevice = read_data_from_db(
-                database, f'SELECT * FROM Devices WHERE uid IS "{eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]}"'
-            )
-            for eachFamily in familiesJson['Familije']:
-                newFamilyName = None
-                familyCheck = eachFamily['Name']
-                if 'Kinetis' in eachFamily['Name']:
-                    familyCheck = eachFamily['Name'].replace(' ', '_')
-                if familyCheck.lower() == fullDevice[1][0][familyId].lower():
-                    if re.search('STM32|^MK.+', fullDevice[1][0][0]):
-                        core_name = None
-                        if fullDevice[1][0][sdkConfigId]:
-                            sdkConfigFull = json.loads(fullDevice[1][0][sdkConfigId])
-                            core_name = sdkConfigFull.get('CORE_NAME')
-                        if core_name:
-                            if core_name.endswith('EF'):
-                                core_name = core_name[:-2]
-                            if core_name.endswith('DSP'):
-                                core_name = core_name[:-3]
-                            if re.search(core_name, eachFamily['Architecture']):
-                                newFamilyName = f'{eachFamily['Vendor']}_{eachFamily['Architecture']}_{eachFamily['Name']}'
-                            else:
-                                continue
-                        else:
-                            continue
-                    else:
-                        newFamilyName = f'{eachFamily['Vendor']}_{eachFamily['Architecture']}_{eachFamily['Name']}'
-                if newFamilyName:
-                    print('Updated %s with new family value.\n' % eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value])
-                    updateTableCollumn(
-                        database,
-                        'Devices',
-                        'family_uid',
-                        newFamilyName.upper().replace(' ', '_').replace('-', '_'),
-                        'uid',
-                        eachDevice[enums.dbSync.DEVICETOPACKAGEUID.value]
-                    )
+            # TODO - uncomment for testing purposes
+            # print("Added %s collumn (type %s) to %s table. (Default value - %s)\n" % (eachCollumn, eachType, table, defaultValue))
     return
 
 def compress_directory_7z(base_output_dir, entry_name, arch=None):
@@ -626,10 +689,34 @@ def get_headers(api, token):
 def fetch_release_details(repo, token, release_version):
     api_headers = get_headers(True, token)
     url = f'https://api.github.com/repos/{repo}/releases'
-    response = requests.get(url, headers=api_headers)
-    response.raise_for_status()  # Raise an exception for HTTP errors
+    responce_acquired = False
+
+    # First: 5 fast attempts (10s timeout)
+    for attempt in range(1, 6):
+        try:
+            print(f'GitHub API attempt {attempt}/5 (timeout=10s)')
+            response = requests.get(url, headers=api_headers, timeout=10)
+            response.raise_for_status()
+            responce_acquired = True
+            break
+
+        except requests.exceptions.RequestException as e:
+            last_exception = e
+            print(f'\033[93mAttempt {attempt} failed:\033[0m {e}')
+
+    if not responce_acquired:
+        # Final fallback attempt (600s timeout)
+        try:
+            print('Final attempt with extended timeout (600s)')
+            response = requests.get(url, headers=api_headers, timeout=600)
+            response.raise_for_status()
+
+        except requests.exceptions.RequestException as e:
+            print('\033[91mFinal attempt failed too\033[0m')
+            raise last_exception from e
+
     if "latest" == release_version:
-        return utility.get_latest_release(response.json())
+        return utility.get_latest_release(repo, api_headers)
     else:
         release_check = None
         release_check = utility.get_specified_release(response.json(), release_version)
@@ -638,7 +725,7 @@ def fetch_release_details(repo, token, release_version):
         else:
             ## Always fallback to latest release
             print("WARNING: Falling back to LATEST release.")
-            return utility.get_latest_release(response.json())
+            return utility.get_latest_release(repo, api_headers)
 
 def formRegexQuery(collumn, regexes):
     finalQuery = ''
@@ -825,7 +912,7 @@ def updateDevicesFromSdk(dbs, queries):
 
     return
 
-def createErpFamilyUid(device):
+def createErpDbInfo(device):
     core_name = None
     try:
         data = json.loads(device['sdk_config'])
@@ -859,7 +946,7 @@ def createErpFamilyUid(device):
         device['family_uid'].upper().replace('+', '_PLUS').replace(' ', '_')
     )
 
-    return new_family_uid
+    return new_family_uid, device['vendor'], core_name
 
 def updateDevicesFromCore(dbs, queries):
     allDevicesDirs = os.listdir(queries)
@@ -878,7 +965,7 @@ def updateDevicesFromCore(dbs, queries):
                     for eachKey in device.keys():
                         collumns.append(eachKey)
                         if eachKey == 'family_uid' and 'erp_db' in eachDb:
-                            device[eachKey] = createErpFamilyUid(device)
+                            device[eachKey], _, _ = createErpDbInfo(device)
                         values.append(device[eachKey])
                     insertIntoTable(
                         eachDb,
@@ -947,6 +1034,202 @@ def updateDevicesFromCore(dbs, queries):
 
     return
 
+def updateMCHPProgrammers(eachDb, converted_data, json_data_list):
+    programmersColumns = 'uid,hidden,name,icon,installed,description,installer_package'
+    debuggersColumns = 'uid,hidden,name,icon,description'
+    progToDeviceColumns = 'programer_uid,device_uid,device_support_package'
+    debuggerToDeviceColumns = 'debugger_uid,device_uid'
+
+    ## Add all tools found in microchip index file to programmers table
+    counter = 1
+    for prog_item in converted_data:
+        print("%sProg item number %s/%s : %s" % (utility.Colors.OKGREEN, counter, len(converted_data), prog_item['display_name']))
+        time.sleep(3)
+        counter += 1
+        # TODO: uncomment for testing purposes
+        # print("%sInserting %s into Programmers table" % (utility.Colors.OKCYAN, prog_item['uid']))
+        dfpsMap = json.loads(prog_item['dfps'])
+        insertIntoTable(
+            eachDb,
+            'Programmers',
+            [
+                prog_item['uid'],
+                prog_item['hidden'],
+                prog_item['display_name'],
+                prog_item['icon'],
+                prog_item['installed'],
+                prog_item['description'],
+                prog_item['installer_package']
+            ],
+            programmersColumns
+        )
+        # TODO: uncomment for testing purposes
+        # print(f"Inserting {prog_item['uid']} into Debuggers table")
+        dfpsMap = json.loads(prog_item['dfps'])
+        insertIntoTable(
+            eachDb,
+            'Debuggers',
+            [
+                prog_item['uid'],
+                prog_item['hidden'],
+                prog_item['display_name'],
+                prog_item['icon'],
+                prog_item['description']
+            ],
+            debuggersColumns
+        )
+        ## Add MCU to Programmer mapping found in microchip index file
+        missingMcuDfp = []
+        for mcu in prog_item['mcus']:
+
+            ## DebuggerToDevice Section
+            has_debug = False
+            element_found = False
+            if mcu in json_data_list:
+                for each_sub_element in json_data_list[mcu]:
+                    if re.search(prog_item['uid'], each_sub_element['root_folder'], re.IGNORECASE):
+                        for each_support in each_sub_element['support']:
+                            if each_support.endswith('d'):
+                                element_found = True
+                                if each_sub_element['support'][each_support].lower() != 'no':
+                                    has_debug = True
+                                    break
+                    if element_found:
+                        break
+            ## EOF DebuggerToDevice Section
+
+            # TODO: uncomment for testing purposes
+            # print(f"Inserting {mcu.upper()}:{prog_item['uid']} into ProgrammerToDevice table")
+            if mcu in dfpsMap:
+                exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu.upper()}.json\"")
+                if not exists:
+                    exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu}.json\"")
+                if exists:
+                    for mcu_uid in uid_list:
+                        insertIntoTable(
+                            eachDb,
+                            'ProgrammerToDevice',
+                            [
+                                prog_item['uid'],
+                                mcu_uid[0],
+                                json.dumps(dfpsMap[mcu])
+                            ],
+                            progToDeviceColumns
+                        )
+                        if has_debug:
+                            # TODO: uncomment for testing purposes
+                            # print(f"Inserting {mcu.upper()}:{prog_item['uid']} into DebuggerToDevice table")
+                            insertIntoTable(
+                                eachDb,
+                                'DebuggerToDevice',
+                                [
+                                    prog_item['uid'],
+                                    mcu_uid[0]
+                                ],
+                                debuggerToDeviceColumns
+                            )
+            else:
+                missingMcuDfp.append(mcu)
+        print("%sFollowing MCUs do not have DFP: %s" % (utility.Colors.WARNING, missingMcuDfp))
+
+def update_erp_info(erpDb, nectoDb):
+    def normalize_uid(value):
+        return value.upper().replace(' ', '_').replace('-', '_').replace('+', '_PLUS')
+
+    # Rows for DeviceVendors table
+    device_vendors = []
+    vendors_seen = set()
+    # Rows for DeviceArchitectures table
+    device_architectures = []
+    core_seen = set()
+    # Rows for DeviceFamilies table
+    device_families = []
+    families_seen = set()
+    # Rows for Devices table in ERP database
+    erp_devices_families = []
+
+    # Fetch info about all MCUs in the database
+    sql = """SELECT DISTINCT vendor, sdk_config, family_uid, core_info, uid FROM Devices
+             WHERE uid NOT LIKE '%\\_%' ESCAPE '\\'"""
+    _, results = read_data_from_db(nectoDb, sql)
+
+    for vendor, sdk_config, family_uid, core_info, uid in results:
+        necto_device_info = {
+            'vendor': vendor,
+            'sdk_config': sdk_config,
+            'family_uid': family_uid,
+            'core_info': core_info
+        }
+
+        # Fetch data needed for ERP database
+        family_uid, vendor_name, core_name = createErpDbInfo(necto_device_info)
+        erp_devices_families.append({
+            'uid': uid,
+            'family_uid': family_uid
+        })
+
+        vendor_uid = normalize_uid(vendor_name)
+        core_uid   = f"{vendor_uid}_{normalize_uid(core_name)}"
+
+        # Data for DeviceVendors table
+        if vendor_uid not in vendors_seen:
+            vendors_seen.add(vendor_uid)
+            device_vendors.append({
+                'uid': vendor_uid,
+                'name': vendor_name
+            })
+
+        # Data for DeviceArchitectures table
+        if core_uid not in core_seen:
+            core_seen.add(core_uid)
+            device_architectures.append({
+                'uid': core_uid,
+                'name': core_name,
+                'vendor_uid': vendor_uid
+            })
+
+        # Data for DeviceFamilies table
+        if family_uid not in families_seen:
+            families_seen.add(family_uid)
+            device_families.append({
+                'uid': family_uid,
+                'name': necto_device_info['family_uid'],
+                'architecture_uid': core_uid
+            })
+
+    # Insert data into ERP tables
+    for database in [erpDb, nectoDb]:
+        for row in device_vendors:
+            insertIntoTable(
+                database, 'DeviceVendors',
+                [row['uid'], row['name']],
+                'uid,name'
+            )
+        for row in device_architectures:
+            insertIntoTable(
+                database, 'DeviceArchitectures',
+                [row['uid'], row['name'], row['vendor_uid']],
+                'uid,name,vendor_uid'
+            )
+        for row in device_families:
+            insertIntoTable(
+                database, 'DeviceFamilies',
+                [row['uid'], row['name'], row['architecture_uid']],
+                'uid,name,architecture_uid'
+            )
+
+    # Condition for ERP database - as we take all the info from necto_db.db
+    # family_uid there isn't applicable for ERP system, so we need to overwrite it.
+    for row in erp_devices_families:
+        updateTableCollumn(
+            erpDb,
+            'Devices',
+            'family_uid',
+            row['family_uid'],
+            'uid',
+            row['uid']
+        )
+
 def update_legacy_sdk_support(database):
     # Get the list of all Legacy sdk_uid values
     sql = """
@@ -984,7 +1267,8 @@ def update_legacy_sdk_support(database):
             for card_device_uid in current_card_device_uids:
                 if device_uid.lower() in card_device_uid.lower():
                     insertIntoTable(database, 'SDKToDevice', [card_device_uid, sdk_uid], 'device_uid, sdk_uid')
-                    print(f"Added {sdk_uid} support for {card_device_uid}")
+                    # TODO - uncomment for testing purposes
+                    # print(f"Added {sdk_uid} support for {card_device_uid}")
 
         # Get all Boards that don't have current legacy SDK support,
         # but that have Devices with this legacy SDK support
@@ -1002,7 +1286,8 @@ def update_legacy_sdk_support(database):
         board_uids = [row[0] for row in results]
         for board_uid in board_uids:
             insertIntoTable(database, 'SDKToBoard', [board_uid, sdk_uid], 'board_uid, sdk_uid')
-            print(f"Added {sdk_uid} support for {board_uid}")
+            # TODO - uncomment for testing purposes
+            # print(f"Added {sdk_uid} support for {board_uid}")
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
@@ -1071,11 +1356,19 @@ def fix_icon_names(db, tableName):
                     eachElement[0]
                 )
 
+def log_step(message):
+    elapsed = time.perf_counter() - START_TIME
+    total = int(elapsed)
+    minutes = total // 60
+    seconds = total % 60
+    print(f'\033[0m[{minutes:02d}:{seconds:02d}] {message}')
+
 ## Main runner
 async def main(
-    token, repo, doc_codegrip, doc_mikroprog,
+    token, repo, doc_codegrip, doc_mikroprog, doc_jlink,
     release_version="", release_version_sdk="", index="Test", mcus_only=True
 ):
+    start = time.perf_counter()
     global entranceCheckProg
     global entranceCheckDebug
     ## Step 1 - download the database first
@@ -1085,6 +1378,7 @@ async def main(
     if 'Live' == index:
         dbName = 'necto_db'
         dbPackageName = 'database'
+    log_step('\033[96mStep 1: Downloading the database.\033[0m')
     databaseNecto, databaseErp = downloadDb(
         ## Always download database from latest release
         f'https://github.com/MikroElektronika/core_packages/releases/latest/download/{dbPackageName}.7z',
@@ -1098,6 +1392,7 @@ async def main(
 
     for eachDb in [databaseNecto, databaseErp]:
         if eachDb:
+            log_step(f'\033[96mStep 2: Checking if {release_version_sdk} is present in {eachDb}.\033[0m')
             sdkVersionUidNew, sdkVersionUidPrevious = sdk.addSdkVersion(eachDb, release_version_sdk.replace('mikroSDK-', ''))
     ## Make sure to check if it exists already, so as not to add again
     if sdkVersionUidNew:
@@ -1152,6 +1447,7 @@ async def main(
             jsonFile = json.load(open(sdkMetadataPath, 'r'))['packages']
             for eachDb in [databaseErp, databaseNecto]:
                 if eachDb:
+                    log_step(f'\033[96mStep 3.1: Adding info for new Boards into {eachDb}.\033[0m')
                     addCollumnsToTable(
                         eachDb, ['installer_package'], 'Boards', ['Text'], ['NoDefault']
                     )
@@ -1163,12 +1459,14 @@ async def main(
     ## Always add MCU information stored in CORE repo
     coreQueriesPath = os.path.join(os.getcwd(), 'resources/queries')
     if os.path.exists(os.path.join(coreQueriesPath, 'mcus')):
-        updateDevicesFromCore([databaseErp, databaseNecto], os.path.join(coreQueriesPath, 'mcus')) ## If any new mcus were added
+        log_step(f'\033[96mStep 3.2: Adding info for new Devices into {[databaseErp, databaseNecto]}.\033[0m')
+        updateDevicesFromCore([databaseErp, databaseNecto], os.path.join(coreQueriesPath, 'mcus'))
     ## EOF Step 3
 
     ## Step 4 - add missing collumns to tables
     if not mcus_only:
         if databaseErp:
+            log_step('\033[96mStep 4: Adding extra columns for ERP database.\033[0m')
             addCollumnsToTable(
                 databaseErp, ['pid'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
             )
@@ -1178,28 +1476,37 @@ async def main(
             addCollumnsToTable(
                 databaseErp, ['pid', 'graphic_tool'], 'Compilers', ['VARCHAR(50)', 'BOOLEAN'], ['NoDefault', 0]
             )
+    ## EOF Step 4
 
     ## Step 5 - select all unique devices from github database
     if not mcus_only:
+        log_step('\033[96mStep 5: Fetching all unique devices from the database.\033[0m')
         allDevicesGithub = read_data_from_db(
             databaseNecto, 'SELECT DISTINCT uid, def_file FROM Devices'
         )
+    ## EOF Step 5
 
-    ## Step 6 - add any missing mcu device details
+    ## Step 6 - add any missing MCU device details
     if not mcus_only:
         for eachDb in [databaseNecto, databaseErp]:
             if eachDb:
+                log_step(f'\033[96mStep 6: Adding missing DeviceDetails rows to {eachDb}.\033[0m')
                 checkDeviceDetails(eachDb, allDevicesGithub)
+    ## EOF Step 6
 
     ## Step 7 - add any missing package_uid to BoardToDevice
     if not mcus_only:
         if databaseErp:
+            log_step(f'\033[96mStep 7: Adding missing BoardToDevice rows to {databaseErp}.\033[0m')
             checkDevicePackages(databaseErp, allDevicesGithub)
+    ## EOF Step 7
 
     ## Step 8 - clear any empty rows from BoardToDevice
     if not mcus_only:
         if databaseErp:
+            log_step(f'\033[96mStep 8: Clearing empty BoardToDevice rows in {databaseErp}.\033[0m')
             clearDevicePackages(databaseErp)
+    ## EOF Step 8
 
     ## Step 9 - synchronize programmers for all devices - CODEGRIP first
     if not mcus_only:
@@ -1208,11 +1515,16 @@ async def main(
             True
         )
         if databaseErp:
+            log_step(f'\033[96mStep 9.1: Adding CODEGRIP packs information into ProgrammerToDevice for {databaseErp}.\033[0m')
             checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
+            log_step(f'\033[96mStep 9.2: Adding CODEGRIP packs information into DebuggerToDevice for {databaseErp}.\033[0m')
             checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
-            entranceCheckProg, entranceCheckDebug = True,True
+            entranceCheckProg, entranceCheckDebug = True, True
+        log_step(f'\033[96mStep 9.1: Adding CODEGRIP packs information into ProgrammerToDevice for {databaseNecto}.\033[0m')
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
+        log_step(f'\033[96mStep 9.2: Adding CODEGRIP packs information into DebuggerToDevice for {databaseNecto}.\033[0m')
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
+    ## EOF Step 9
 
     ## Step 10 - syncronize programmers for all devices - mikroProg next
     if not mcus_only:
@@ -1221,22 +1533,34 @@ async def main(
             True
         )
         if databaseErp:
+            log_step(f'\033[96mStep 10.1: Adding MikroProg packs information into ProgrammerToDevice for {databaseErp}.\033[0m')
             checkProgrammerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, True)
+            log_step(f'\033[96mStep 10.2: Adding MikroProg packs information into DebuggerToDevice for {databaseErp}.\033[0m')
             checkDebuggerToDevice(databaseErp, allDevicesGithub, progDbgAsJson, False)
+        log_step(f'\033[96mStep 10.1: Adding MikroProg packs information into ProgrammerToDevice for {databaseNecto}.\033[0m')
         checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
+        log_step(f'\033[96mStep 10.2: Adding MikroProg packs information into DebuggerToDevice for {databaseNecto}.\033[0m')
         checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
+    ## EOF Step 10
 
-    ## Step 11 add microchip info to programmers table
+    ## Step 11 - syncronize programmers for all devices - jlink last
+    if not mcus_only:
+        progDbgAsJson = getProgDbgAsJson(
+            doc_jlink,
+            True
+        )
+        log_step(f'\033[96mStep 11.1: Adding JLink packs information into ProgrammerToDevice for {databaseNecto}.\033[0m')
+        checkProgrammerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, True)
+        log_step(f'\033[96mStep 11.2: Adding JLink packs information into DebuggerToDevice for {databaseNecto}.\033[0m')
+        checkDebuggerToDevice(databaseNecto, allDevicesGithub, progDbgAsJson, False)
+    ## EOF Step 11
+
+    ## Step 12 add microchip info to programmers table
     custom_link = 'https://packs.download.microchip.com/index.idx'
     if not mcus_only:
         # Download the index file
         xml_content = MCHP.download_index_file(custom_link)
         converted_data, item_list_unused = MCHP.convert_idx_to_json(xml_content)
-
-        programmersColumns = 'uid,hidden,name,icon,installed,description,installer_package'
-        debuggersColumns = 'uid,hidden,name,icon,description'
-        progToDeviceColumns = 'programer_uid,device_uid,device_support_package'
-        debuggerToDeviceColumns = 'debugger_uid,device_uid'
 
         ## Fetch all DFP TP packs from Microchips website
         dfp_links = fetch_latest_package_links(xmltodict.parse(xml_content))
@@ -1257,6 +1581,7 @@ async def main(
 
         for eachDb in [databaseErp, databaseNecto]:
             if eachDb:
+                log_step(f'\033[96mStep 12: Adding MCHP packs information into {eachDb}.\033[0m')
                 ## Add missing columns to programmer table
                 addCollumnsToTable(
                     eachDb, ['installer_package'], 'Programmers', ['Text'], ['NoDefault']
@@ -1264,113 +1589,59 @@ async def main(
                 addCollumnsToTable(
                     eachDb, ['device_support_package'], 'ProgrammerToDevice', ['Text'], ['NoDefault']
                 )
-                ## Add all tools found in microchip index file to programmers table
-                counter = 1
-                for prog_item in converted_data:
-                    print("\n%sProg item number %s/%s : %s" % (utility.Colors.OKGREEN, counter, len(converted_data), prog_item['display_name']))
-                    time.sleep(3)
-                    counter += 1
-                    print("%sInserting %s into Programmers table" % (utility.Colors.OKCYAN, prog_item['uid']))
-                    dfpsMap = json.loads(prog_item['dfps'])
-                    insertIntoTable(
-                        eachDb,
-                        'Programmers',
-                        [
-                            prog_item['uid'],
-                            prog_item['hidden'],
-                            prog_item['display_name'],
-                            prog_item['icon'],
-                            prog_item['installed'],
-                            prog_item['description'],
-                            prog_item['installer_package']
-                        ],
-                        programmersColumns
-                    )
-                    print(f"Inserting {prog_item['uid']} into Debuggers table")
-                    dfpsMap = json.loads(prog_item['dfps'])
-                    insertIntoTable(
-                        eachDb,
-                        'Debuggers',
-                        [
-                            prog_item['uid'],
-                            prog_item['hidden'],
-                            prog_item['display_name'],
-                            prog_item['icon'],
-                            prog_item['description']
-                        ],
-                        debuggersColumns
-                    )
-                    ## Add MCU to Programmer mapping found in microchip index file
-                    missingMcuDfp = []
-                    for mcu in prog_item['mcus']:
+                updateMCHPProgrammers(eachDb, converted_data, json_data_list)
+    ## EOF Step 12
 
-                        ## DebuggerToDevice Section
-                        has_debug = False
-                        element_found = False
-                        if mcu in json_data_list:
-                            for each_sub_element in json_data_list[mcu]:
-                                if re.search(prog_item['uid'], each_sub_element['root_folder'], re.IGNORECASE):
-                                    for each_support in each_sub_element['support']:
-                                        if each_support.endswith('d'):
-                                            element_found = True
-                                            if each_sub_element['support'][each_support].lower() != 'no':
-                                                has_debug = True
-                                                break
-                                if element_found:
-                                    break
-                        ## EOF DebuggerToDevice Section
-
-                        print(f"Inserting {mcu.upper()}:{prog_item['uid']} into ProgrammerToDevice table")
-                        if mcu in dfpsMap:
-                            exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu.upper()}.json\"")
-                            if not exists:
-                                exists, uid_list = read_data_from_db(eachDb, f"SELECT uid FROM Devices WHERE def_file = \"{mcu}.json\"")
-                            if exists:
-                                for mcu_uid in uid_list:
-                                    insertIntoTable(
-                                        eachDb,
-                                        'ProgrammerToDevice',
-                                        [
-                                            prog_item['uid'],
-                                            mcu_uid[0],
-                                            json.dumps(dfpsMap[mcu])
-                                        ],
-                                        progToDeviceColumns
-                                    )
-                                    if has_debug:
-                                        print(f"Inserting {mcu.upper()}:{prog_item['uid']} into DebuggerToDevice table")
-                                        insertIntoTable(
-                                            eachDb,
-                                            'DebuggerToDevice',
-                                            [
-                                                prog_item['uid'],
-                                                mcu_uid[0]
-                                            ],
-                                            debuggerToDeviceColumns
-                                        )
-                        else:
-                            missingMcuDfp.append(mcu)
-                    print("%sFollowing MCUs do not have DFP: %s" % (utility.Colors.WARNING, missingMcuDfp))
-
-    ## Step 12 - add legacy SDK support for Boards and Cards that should have it
+    ## Step 13 - add legacy SDK support for Boards and Cards that should have it
     if not mcus_only:
         for eachDb in [databaseErp, databaseNecto]:
             if eachDb:
+                log_step(f'\033[96mStep 13: Adding legacy SDK support into {eachDb}.\033[0m')
                 update_legacy_sdk_support(eachDb)
+    ## EOF Step 13
 
-    ## Step 13 - update families
+    ## Step 14 - update families
     if not mcus_only:
         if databaseErp:
-            update_families(databaseErp, allDevicesGithub)
+            ## Add information into ERP db needed for the Web Site
+            log_step(f'\033[96mStep 14: Adding ERP-applicable info into databases.\033[0m')
+            update_erp_info(databaseErp, databaseNecto)
+    ## EOF Step 14
 
-    ## Step 14 - update the icon names
+    ## Step 15 - update the icon names
     if not mcus_only:
         for eachDb in [databaseErp, databaseNecto]:
+            log_step(f'\033[96mStep 15: Checking image names in {eachDb}.\033[0m')
             fix_icon_names(eachDb, "Boards")
             fix_icon_names(eachDb, "Displays")
+    ## EOF Step 15
 
-    ## Step 15 - if queries are different, add them to new file
+    ## Step 16 - add vendors for all Boards
+    ## Add new vendor column for NECTO filtering
+    if databaseNecto:
+        ## NECTO database only
+        log_step('\033[96mStep 16: Adding vendors for all Boards.\033[0m')
+        addCollumnsToTable(
+            databaseNecto, ['vendor'], 'Boards', ['VARCHAR(50)'], ['NoDefault']
+        )
+        allBoardUids = read_data_from_db(
+            databaseNecto, 'SELECT DISTINCT uid FROM Boards'
+        )
+        for boardUid in allBoardUids[enums.dbSync.ELEMENTS.value]:
+            currentBoardDevice = read_data_from_db(
+                databaseNecto, f'SELECT device_uid FROM BoardToDevice WHERE board_uid IS "{boardUid[enums.dbSync.BOARDTODEVICEBOARD.value]}"'
+            )
+            for device in currentBoardDevice[1]:
+                vendor_list = (read_data_from_db(databaseNecto, f'SELECT vendor FROM Devices WHERE uid=="{device[enums.dbSync.BOARDTODEVICEBOARD.value]}";'))[enums.dbSync.ELEMENTS.value]
+                if len(vendor_list):
+                    vendor = vendor_list[0]
+                    break
+            update_vendor(databaseNecto, boardUid[0], vendor[0])
+    ## EOF Step 16
+
+    ## Step 17 - if queries are different, add them to new file
     if not mcus_only:
+        log_step('\033[96mStep 17: Checking if there are any changes to queries.\033[0m')
         if not compare_hashes(
             os.path.join(os.path.dirname(__file__), 'databases/queries'),
             os.path.join(os.path.dirname(os.getcwd()), 'utils/databases/queries')
@@ -1380,18 +1651,23 @@ async def main(
                 os.path.join(os.getcwd(), 'utils/databases/queries'),
                 os.path.join(os.path.dirname(__file__), 'databases/queries')
             )
+    ## EOF Step 17
 
-    ## Step 16 - re-upload over existing assets
-    if not mcus_only:
-        archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
+    ## Step 18 - re-upload over existing assets
+    log_step('\033[96mStep 18: Uploading database archive.\033[0m')
+    archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
+    if databaseErp:
+        log_step('\033[96mStep 18: Uploading ERP database file.\033[0m')
         async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
-        if databaseErp:
-            async with aiohttp.ClientSession() as session:
-                upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
+            upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
+    ## EOF Step 18
 
-    ## Step 17 - overwrite the existing necto_db.db in root with newly generated one
+    ## Step 19 - overwrite the existing necto_db.db in root with newly generated one
+    log_step(f'\033[96mStep 19: Overwriting {dbName} file.\033[0m')
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    ## EOF Step 19
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
@@ -1411,8 +1687,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
-    parser.add_argument('doc_codegrip', type=str, help='Spreadsheet table download link.')
-    parser.add_argument('doc_mikroprog', type=str, help='Spreadsheet table download link.')
+    parser.add_argument('doc_codegrip', type=str, help='CODEGRIP spreadsheet table download link.')
+    parser.add_argument('doc_mikroprog', type=str, help='MikroPROG spreadsheet table download link.')
+    parser.add_argument('doc_jlink', type=str, help='JLink spreadsheet table download link.')
     parser.add_argument('specific_tag', type=str, help='Specific release tag for database update.', default="")
     parser.add_argument('specific_tag_mikrosdk', type=str, help='Specific release tag from mikrosdk for database update.', default="")
     parser.add_argument('index', type=str, help='Index selection - Live/Test.', default="Test")
@@ -1425,7 +1702,7 @@ if __name__ == "__main__":
     asyncio.run(
         main(
             args.token, args.repo,
-            args.doc_codegrip, args.doc_mikroprog,
+            args.doc_codegrip, args.doc_mikroprog, args.doc_jlink,
             args.specific_tag, args.specific_tag_mikrosdk,
             args.index, args.mcus_only
         )

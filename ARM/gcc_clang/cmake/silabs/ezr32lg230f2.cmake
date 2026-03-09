@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^EZR32LG230F256R55$|^EZR32LG230F256R60$|^EZR32LG230F256R61$|^EZR32LG230F256R63$|^EZR32LG230F256R67$|^EZR32LG230F256R68$|^EZR32LG230F256R69$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ezr32lg230f2/init_clock.c)
+endif()
