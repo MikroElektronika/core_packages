@@ -284,6 +284,9 @@ void SystemInit(void)
     // BSP clock init start
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
 
+    // Enable the flash prefetch buffer
+    R_FACI_LP->PFBER = 1;
+
     // Clock setting
     system_clock_configuration();
 
@@ -371,9 +374,8 @@ static void system_clock_configuration() {
         R_SYSTEM->MOMCR = VALUE_SYSTEM_MOMCR;
         R_SYSTEM->MOSCWTCR = VALUE_SYSTEM_MOSCWTCR;
         R_SYSTEM->MOSCCR_b.MOSTP = 0; // Start XTAL
-        uint8_t check = R_SYSTEM->MOSCCR; // Read MOSTP
 
-        while ( !( R_SYSTEM->OSCSF_b.MOSCSF ) ) {
+        while ( R_SYSTEM->OSCSF_b.MOSCSF ) {
             // Wait for XTAL to stabilize
         }
     }
@@ -390,11 +392,7 @@ static void system_clock_configuration() {
 
 
     // Set number of memory wait cycles
-    if ( 32000 < FOSC_KHZ_VALUE ){
-        R_SYSTEM->MEMWAIT = 1;
-    } else {
-        R_SYSTEM->MEMWAIT = 0;
-    }
+    R_SYSTEM->MEMWAIT = 0;
 
     // Set the PRCR.PRC0 bit to 1 (write enabled) before rewriting SCKDIVCR register
     R_SYSTEM->PRCR_b.PRC0 = 1;
