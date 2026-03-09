@@ -327,4 +327,5 @@ SECTIONS
     {
         __ddsc_OPTION_SETTING_OSIS_END = . ;
     }  > OPTION_SETTING_OSIS
+
 }

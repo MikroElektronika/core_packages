@@ -346,12 +346,11 @@ SECTIONS
     {
         __ddsc_OPTION_SETTING_OSIS_END = . ;
     }  > OPTION_SETTING_OSIS
-}
 
+}
 PROVIDE( __tls_base = ADDR(__ram_tdata$$) );
 PROVIDE( __tdata_source = LOADADDR(__ram_tdata$$) );
 PROVIDE( __tdata_size = SIZEOF(__ram_tdata$$) );
 PROVIDE( __tbss_offset = ADDR(__ram_tbss$$) - ADDR(__ram_tdata$$) );
 PROVIDE( __tbss_size = SIZEOF(__ram_tbss$$) );
 PROVIDE( __arm32_tls_tcb_offset = 8 );
-
