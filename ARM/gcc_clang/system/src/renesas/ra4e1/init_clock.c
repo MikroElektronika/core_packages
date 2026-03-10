@@ -603,6 +603,18 @@ static void system_clock_configuration() {
         R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
     }
 
+    if ( !( VALUE_SYSTEM_PLL2CR & R_SYSTEM_PLL2CR_PLL2STP_Msk ) ) {
+        R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL is stopped
+        R_SYSTEM->PLL2CCR = (uint16_t) VALUE_SYSTEM_PLL2CCR;
+        R_SYSTEM->PLL2CR_b.PLL2STP = 0; // PLL is operating
+
+        while ( !( R_SYSTEM->OSCSF_b.PLL2SF ) ) {
+            // Wait for PLL to stabilize
+        }
+    } else {
+        R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL is stopped
+    }
+
     R_SYSTEM->LOCOCR = VALUE_SYSTEM_LOCOCR;
 
     R_SYSTEM->MOCOCR = VALUE_SYSTEM_MOCOCR;
