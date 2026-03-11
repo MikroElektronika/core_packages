@@ -333,7 +333,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "CKSEL",
-                    "label": "Clock Source SelectSelecting the system clock source faster than 32MHz(system clock source > 32MHz ) is prohibit when SCKDIVCR.ICK[2:0] bits select the division-by-1 and MEMWAIT.MEMWAIT =0.",
+                    "label": "Clock Source Select",
                     "mask": "7",
                     "settings": [
                         {
@@ -372,7 +372,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLLSTP",
                     "label": "PLL Stop Control",
                     "mask": "1",
@@ -397,7 +397,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "4",
+                    "init": "40",
                     "key": "PLODIV",
                     "label": "PLL Output Frequency Division Ratio Select",
                     "mask": "c0",
@@ -418,174 +418,106 @@
                 },
                 {
                     "hidden": false,
-                    "init": "7",
+                    "init": "b",
                     "key": "PLLMUL",
                     "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "1f",
                     "settings": [
                         {
-                            "label": "x10.0",
+                            "label": "x8",
                             "value": "7"
                         },
                         {
-                            "label": "x10.5",
+                            "label": "x9",
                             "value": "8"
                         },
                         {
-                            "label": "x11.0",
+                            "label": "x10",
                             "value": "9"
                         },
                         {
-                            "label": "x11.5",
+                            "label": "x11",
                             "value": "a"
                         },
                         {
-                            "label": "x12.0",
+                            "label": "x12",
                             "value": "b"
                         },
                         {
-                            "label": "x12.5",
+                            "label": "x13",
                             "value": "c"
                         },
                         {
-                            "label": "x13.0",
+                            "label": "x14",
                             "value": "d"
                         },
                         {
-                            "label": "x13.5",
+                            "label": "x15",
                             "value": "e"
                         },
                         {
-                            "label": "x14.0",
+                            "label": "x16",
                             "value": "f"
                         },
                         {
-                            "label": "x14.5",
+                            "label": "x17",
                             "value": "10"
                         },
                         {
-                            "label": "x15.0",
+                            "label": "x18",
                             "value": "11"
                         },
                         {
-                            "label": "x15.5",
+                            "label": "x19",
                             "value": "12"
                         },
                         {
-                            "label": "x16.0",
+                            "label": "x20",
                             "value": "13"
                         },
                         {
-                            "label": "x16.5",
+                            "label": "x21",
                             "value": "14"
                         },
                         {
-                            "label": "x17.0",
+                            "label": "x22",
                             "value": "15"
                         },
                         {
-                            "label": "x17.5",
+                            "label": "x23",
                             "value": "16"
                         },
                         {
-                            "label": "x18.0",
+                            "label": "x24",
                             "value": "17"
                         },
                         {
-                            "label": "x18.5",
+                            "label": "x25",
                             "value": "18"
                         },
                         {
-                            "label": "x19.0",
+                            "label": "x26",
                             "value": "19"
                         },
                         {
-                            "label": "x19.5",
+                            "label": "x27",
                             "value": "1a"
                         },
                         {
-                            "label": "x20.0",
+                            "label": "x28",
                             "value": "1b"
                         },
                         {
-                            "label": "x20.5",
+                            "label": "x29",
                             "value": "1c"
                         },
                         {
-                            "label": "x21.0",
+                            "label": "x30",
                             "value": "1d"
                         },
                         {
-                            "label": "x21.5",
+                            "label": "x31",
                             "value": "1e"
-                        },
-                        {
-                            "label": "x22.0",
-                            "value": "1f"
-                        },
-                        {
-                            "label": "x22.5",
-                            "value": "20"
-                        },
-                        {
-                            "label": "x23.0",
-                            "value": "21"
-                        },
-                        {
-                            "label": "x23.5",
-                            "value": "22"
-                        },
-                        {
-                            "label": "x24.0",
-                            "value": "23"
-                        },
-                        {
-                            "label": "x24.5",
-                            "value": "24"
-                        },
-                        {
-                            "label": "x25.0",
-                            "value": "25"
-                        },
-                        {
-                            "label": "x25.5",
-                            "value": "26"
-                        },
-                        {
-                            "label": "x26.0",
-                            "value": "27"
-                        },
-                        {
-                            "label": "x26.5",
-                            "value": "28"
-                        },
-                        {
-                            "label": "x27.0",
-                            "value": "29"
-                        },
-                        {
-                            "label": "x27.5",
-                            "value": "2a"
-                        },
-                        {
-                            "label": "x28.0",
-                            "value": "2b"
-                        },
-                        {
-                            "label": "x28.5",
-                            "value": "2c"
-                        },
-                        {
-                            "label": "x29.0",
-                            "value": "2d"
-                        },
-                        {
-                            "label": "x29.5",
-                            "value": "2e"
-                        },
-                        {
-                            "label": "x30.0",
-                            "value": "2f"
                         }
                     ]
                 }
@@ -601,7 +533,7 @@
                     "hidden": false,
                     "init": "1",
                     "key": "MEMWAIT",
-                    "label": "Memory Wait Cycle SelectNote: Writing 0 to the MEMWAIT is prohibited when SCKDIVCR.ICK selects division by 1 and SCKSCR.CKSEL[2:0] bits select thesystem clock source that is faster than 32 MHz (ICLK > 32 MHz).",
+                    "label": "Memory Wait Cycle Select",
                     "mask": "1",
                     "settings": [
                         {
@@ -707,7 +639,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "MCSTP",
                     "label": "MOCO Stop",
                     "mask": "1",
@@ -951,7 +883,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "SOSTP",
                     "label": "Sub-Clock Oscillator Stop",
                     "mask": "1",
@@ -1009,7 +941,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "LCSTP",
                     "label": "LOCO Stop",
                     "mask": "1",
