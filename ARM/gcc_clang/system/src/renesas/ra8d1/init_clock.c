@@ -89,6 +89,8 @@ static uint8_t SCI_SPI_CLK_PrescTable[] = {1, 2, 4, 6, 8, 3, 5};
 #define PLLMULNF_TWO_THIRDS     (0x80)
 #define PLLMULNF_ONE_THIRD      (0x40)
 
+#define R_SYSTEM_CKOCR_CKOSEL_Msk (0x3)
+
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
 #define BSP_PRV_PRCR_PRC1_UNLOCK                      ((BSP_PRV_PRCR_KEY) | 0x2U)
@@ -907,7 +909,6 @@ static void system_clock_configuration() {
 
         R_SYSTEM->FLLCR1_b.FLLEN = 0x1;
 
-        R_SYSTEM->HOCOCR2 = VALUE_SYSTEM_HOCOCR2;
         R_SYSTEM->HOCOCR_b.HCSTP = 0; // Start HOCO
 
         while ( !( R_SYSTEM->OSCSF_b.HOCOSF ) ) {
