@@ -69,11 +69,11 @@ static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
 #define BSP_STACK_POINTER_MONITOR_NMI_ON_DETECTION    (0xA500U)
 #define BSP_CFG_STACK_MAIN_BYTES (0x400)
 
-extern uint32_t __etext;
-extern uint32_t __data_start__;
-extern uint32_t __data_end__;
-extern uint32_t __bss_start__;
-extern uint32_t __bss_end__;
+extern uint32_t __ram_from_flash$$Load;
+extern uint32_t __ram_from_flash$$Base;
+extern uint32_t __ram_from_flash$$Limit;
+extern uint32_t __ram_zero$$Base;
+extern uint32_t __ram_zero$$Limit;
 
 extern void (* __init_array_start[])(void);
 extern void (* __init_array_end[])(void);
@@ -689,8 +689,17 @@ void SystemInit(void)
     // Enable MSP monitoring
     R_MPU_SPMON->SP[0].CTL = 1U;
 
-    memset(&__bss_start__, 0U, ((uint32_t) &__bss_end__ - (uint32_t) &__bss_start__));
-    memcpy(&__data_start__, &__etext, ((uint32_t) &__data_end__ - (uint32_t) &__data_start__));
+    memset(
+        &__ram_zero$$Base,
+        0,
+        (uint32_t)&__ram_zero$$Limit - (uint32_t)&__ram_zero$$Base
+    );
+
+    memcpy(
+        &__ram_from_flash$$Base,
+        &__ram_from_flash$$Load,
+        (uint32_t)&__ram_from_flash$$Limit - (uint32_t)&__ram_from_flash$$Base
+    );
 
     int32_t count = __init_array_end - __init_array_start;
     for (int32_t i = 0; i < count; i++)
@@ -784,7 +793,11 @@ static void system_clock_configuration() {
 
     R_SYSTEM->SCKSCR = VALUE_SYSTEM_SCKSCR;
 
-    Delay_1ms();
+    Delay_ms(1);
+
+    R_SYSTEM->SCKDIVCR2 = VALUE_SYSTEM_SCKDIVCR2;
+
+    Delay_ms(1);
 
     if ( 80000 < FOSC_KHZ_VALUE && 120000 >= FOSC_KHZ_VALUE ) {
         R_FCACHE->FLWT = 2; // 2 waits
