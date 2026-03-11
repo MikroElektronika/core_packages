@@ -514,8 +514,6 @@ void SystemInit(void)
     // Clock setting
     system_clock_configuration();
 
-    FSP_HARDWARE_REGISTER_WAIT(R_SYSTEM->OSCSF_b.MOSCSF, 1U);
-
     R_FCACHE->FCACHEIV = 1U;
     FSP_HARDWARE_REGISTER_WAIT(R_FCACHE->FCACHEIV, 0U);
 
@@ -594,7 +592,7 @@ static void system_clock_configuration() {
         R_SYSTEM->MOSCCR_b.MOSTP = 0; // Start XTAL
         uint8_t check = R_SYSTEM->MOSCCR; // Read MOSTP
 
-        while ( !( R_SYSTEM->OSCSF_b.MOSCSF ) ) {
+        while ( ( R_SYSTEM->OSCSF_b.MOSCSF ) ) {
             // Wait for XTAL to stabilize
         }
 

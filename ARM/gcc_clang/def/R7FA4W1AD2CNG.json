@@ -558,7 +558,7 @@
                     "hidden": false,
                     "init": "0",
                     "key": "MOSTP",
-                    "label": "Main Clock Oscillator StopNote: MOMCR register must be set before setting MOSTP to 0.",
+                    "label": "Main Clock Oscillator Stop",
                     "mask": "1",
                     "settings": [
                         {
