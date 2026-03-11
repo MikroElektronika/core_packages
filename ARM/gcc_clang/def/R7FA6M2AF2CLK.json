@@ -562,7 +562,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLLSTP",
                     "label": "PLL Stop Control",
                     "mask": "1",
@@ -977,184 +977,52 @@
         },
         {
             "address": "4001e0a5",
-            "default": "2",
+            "default": "00000002",
             "fields": [
                 {
                     "hidden": false,
                     "init": "7",
                     "key": "HSTS",
-                    "label": "HOCO wait time settingWaiting time (sec) = setting of the HSTS[2:0] bits/fLOCO(Trimmed) + 3/fLOC(Untrimmed) ",
+                    "label": "HOCO Wait Time Setting",
                     "mask": "7",
                     "settings": [
                         {
-                            "label": "x10.0",
+                            "label": "Wait time (s) = 3 / fLOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Wait time (s) = 4 / fLOCO",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Wait time (s) = 5 / fLOCO",
                             "value": "2"
                         },
                         {
-                            "label": "x10.5",
+                            "label": "Wait time (s) = 6 / fLOCO",
                             "value": "3"
                         },
                         {
-                            "label": "x11.0",
+                            "label": "Wait time (s) = 7 / fLOCO",
                             "value": "4"
                         },
                         {
-                            "label": "x11.5",
+                            "label": "Wait time (s) = 8 / fLOCO",
                             "value": "5"
                         },
                         {
-                            "label": "x12.0",
+                            "label": "Wait time (s) = 9 / fLOCO",
                             "value": "6"
                         },
                         {
-                            "label": "x12.5",
+                            "label": "Wait time (s) = 10 / fLOCO",
                             "value": "7"
-                        },
-                        {
-                            "label": "x13.0",
-                            "value": "8"
-                        },
-                        {
-                            "label": "x13.5",
-                            "value": "9"
-                        },
-                        {
-                            "label": "x14.0",
-                            "value": "a"
-                        },
-                        {
-                            "label": "x14.5",
-                            "value": "b"
-                        },
-                        {
-                            "label": "x15.0",
-                            "value": "c"
-                        },
-                        {
-                            "label": "x15.5",
-                            "value": "d"
-                        },
-                        {
-                            "label": "x16.0",
-                            "value": "e"
-                        },
-                        {
-                            "label": "x16.5",
-                            "value": "f"
-                        },
-                        {
-                            "label": "x17.0",
-                            "value": "10"
-                        },
-                        {
-                            "label": "x17.5",
-                            "value": "11"
-                        },
-                        {
-                            "label": "x18.0",
-                            "value": "12"
-                        },
-                        {
-                            "label": "x18.5",
-                            "value": "13"
-                        },
-                        {
-                            "label": "x19.0",
-                            "value": "14"
-                        },
-                        {
-                            "label": "x19.5",
-                            "value": "15"
-                        },
-                        {
-                            "label": "x20.0",
-                            "value": "16"
-                        },
-                        {
-                            "label": "x20.5",
-                            "value": "17"
-                        },
-                        {
-                            "label": "x21.0",
-                            "value": "18"
-                        },
-                        {
-                            "label": "x21.5",
-                            "value": "19"
-                        },
-                        {
-                            "label": "x22.0",
-                            "value": "1a"
-                        },
-                        {
-                            "label": "x22.5",
-                            "value": "1b"
-                        },
-                        {
-                            "label": "x23.0",
-                            "value": "1c"
-                        },
-                        {
-                            "label": "x23.5",
-                            "value": "1d"
-                        },
-                        {
-                            "label": "x24.0",
-                            "value": "1e"
-                        },
-                        {
-                            "label": "x24.5",
-                            "value": "1f"
-                        },
-                        {
-                            "label": "x25.0",
-                            "value": "20"
-                        },
-                        {
-                            "label": "x25.5",
-                            "value": "21"
-                        },
-                        {
-                            "label": "x26.0",
-                            "value": "22"
-                        },
-                        {
-                            "label": "x26.5",
-                            "value": "23"
-                        },
-                        {
-                            "label": "x27.0",
-                            "value": "24"
-                        },
-                        {
-                            "label": "x27.5",
-                            "value": "25"
-                        },
-                        {
-                            "label": "x28.0",
-                            "value": "26"
-                        },
-                        {
-                            "label": "x28.5",
-                            "value": "27"
-                        },
-                        {
-                            "label": "x29.0",
-                            "value": "28"
-                        },
-                        {
-                            "label": "x29.5",
-                            "value": "29"
-                        },
-                        {
-                            "label": "x30.0",
-                            "value": "2a"
                         }
                     ]
                 }
             ],
             "key": "SYSTEM_HOCOWTCR",
-            "unused": "000000f8"
+            "unused": "fffffff8"
         },
         {
             "address": "4001e0a0",
