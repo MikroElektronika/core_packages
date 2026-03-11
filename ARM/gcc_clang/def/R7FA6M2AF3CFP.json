@@ -343,7 +343,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2f00",
+                    "init": "1700",
                     "key": "PLLMUL",
                     "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "3f00",
@@ -533,7 +533,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLIDIV",
                     "label": "PLL Input Frequency Division Ratio Select",
                     "mask": "3",
