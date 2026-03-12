@@ -147,6 +147,9 @@ def fetch_current_indexed_version(es: Elasticsearch, index_name, package_name):
 def initialize_es():
     num_of_retries = 1
     print("Trying to connect to ES.")
+    os.environ['ES_HOST'] = 'https://api.mikroe.com/elasticsearch'
+    os.environ['ES_USER'] = 'sw-github'
+    os.environ['ES_PASSWORD'] = 'iZMbHtLW670wRAjWFUZxTBmiZXpt7T'
     while True:
         es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
         if es.ping():

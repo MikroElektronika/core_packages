@@ -567,7 +567,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "3B00",
+                    "init": "4F00",
                     "key": "PLLMUL",
                     "label": "PLL1 Frequency Multiplication Factor Select",
                     "mask": "ff00",
@@ -2609,5 +2609,5 @@
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
     "mcu": "R7FA8E2AFDCBD",
-    "clock": "360"
+    "clock": "480"
 }
