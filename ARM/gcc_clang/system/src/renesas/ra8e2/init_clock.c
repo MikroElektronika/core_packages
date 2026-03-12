@@ -876,7 +876,7 @@ static void system_clock_configuration() {
 
     // Get source clock
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR2 & 0xF ) ];
-    source_clock = FOSC_KHZ_VALUE * 1000 * prescaler;
+    source_clock = FOSC_KHZ_VALUE * prescaler;
     // Get prescaler for ICLK
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000000 ) >> 24 ];
 
