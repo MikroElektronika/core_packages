@@ -500,7 +500,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "3",
                     "key": "PLIDIV",
                     "label": "PLL1 Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -516,6 +516,10 @@
                         {
                             "label": "/3",
                             "value": "2"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "3"
                         }
                     ]
                 },
@@ -563,7 +567,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "4F00",
+                    "init": "3B00",
                     "key": "PLLMUL",
                     "label": "PLL1 Frequency Multiplication Factor Select",
                     "mask": "ff00",
@@ -2588,5 +2592,5 @@
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
     "mcu": "R7FA8T1AHECFP",
-    "clock": "480"
+    "clock": "360"
 }
