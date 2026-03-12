@@ -1121,7 +1121,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "MOSTP",
                     "label": "Main Clock Oscillator Stop",
                     "mask": "1",
