@@ -89,6 +89,8 @@ static uint8_t SCI_SPI_CLK_PrescTable[] = {1, 2, 4, 6, 8, 3, 5};
 #define PLLMULNF_TWO_THIRDS     (0x80)
 #define PLLMULNF_ONE_THIRD      (0x40)
 
+#define R_SYSTEM_CKOCR_CKOSEL_Msk (0x3)
+
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
 #define BSP_PRV_PRCR_PRC1_UNLOCK                      ((BSP_PRV_PRCR_KEY) | 0x2U)
@@ -794,6 +796,9 @@ void SystemInit(void)
 // -----------------------------------------------------------------------------------------
 
 static void system_clock_configuration() {
+    uint8_t prescaler;
+    uint32_t source_clock;
+
     // Unlock write protection register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
 
@@ -806,7 +811,7 @@ static void system_clock_configuration() {
         R_SYSTEM->MOSCWTCR = VALUE_SYSTEM_MOSCWTCR;
         R_SYSTEM->MOSCCR_b.MOSTP = 0; // Start XTAL
 
-        while ( !( R_SYSTEM->OSCSF_b.MOSCSF ) ) {
+        while ( ( R_SYSTEM->OSCSF_b.MOSCSF ) ) {
             // Wait for XTAL to stabilize
         }
     }
@@ -830,7 +835,6 @@ static void system_clock_configuration() {
 
         R_SYSTEM->FLLCR1_b.FLLEN = 0x1;
 
-        R_SYSTEM->HOCOCR2 = VALUE_SYSTEM_HOCOCR2;
         R_SYSTEM->HOCOCR_b.HCSTP = 0; // Start HOCO
 
         while ( !( R_SYSTEM->OSCSF_b.HOCOSF ) ) {
@@ -868,15 +872,21 @@ static void system_clock_configuration() {
 
     R_SYSTEM->MOCOCR = VALUE_SYSTEM_MOCOCR;
 
-    if ( 240000 < FOSC_KHZ_VALUE )
+    // Get source clock
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR2 & 0xF ) ];
+    source_clock = FOSC_KHZ_VALUE * 1000 * prescaler;
+    // Get prescaler for ICLK
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000000 ) >> 24 ];
+
+    if ( 240000 < ( source_clock / prescaler ))
         R_FCACHE->FLWT = 5; // 5 waits
-    else if ( 192000 < FOSC_KHZ_VALUE )
+    else if ( 192000 < ( source_clock / prescaler ))
         R_FCACHE->FLWT = 4; // 4 waits
-    else if ( 144000 < FOSC_KHZ_VALUE )
+    else if ( 144000 < ( source_clock / prescaler ))
         R_FCACHE->FLWT = 3; // 3 waits
-    else if ( 96000 < FOSC_KHZ_VALUE )
+    else if ( 96000 < ( source_clock / prescaler ))
         R_FCACHE->FLWT = 2; // 2 waits
-    else if ( 48000 < FOSC_KHZ_VALUE )
+    else if ( 48000 < ( source_clock / prescaler ))
         R_FCACHE->FLWT = 1; // 1 wait
     else
         R_FCACHE->FLWT = 0; // 0 waits

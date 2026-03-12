@@ -500,7 +500,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "3",
                     "key": "PLIDIV",
                     "label": "PLL1 Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -525,7 +525,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "PLSRCSEL",
                     "label": "PLL1 Clock Source Select",
                     "mask": "10",
@@ -567,7 +567,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "4700",
+                    "init": "3B00",
                     "key": "PLLMUL",
                     "label": "PLL1 Frequency Multiplication Factor Select",
                     "mask": "ff00",
@@ -1353,7 +1353,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "PL2SRCSEL",
                     "label": "PLL2 Clock Source Select",
                     "mask": "10",
@@ -1395,7 +1395,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "5F00",
+                    "init": "3B00",
                     "key": "PLL2MUL",
                     "label": "PLL2 Frequency Multiplication Factor Select",
                     "mask": "ff00",
