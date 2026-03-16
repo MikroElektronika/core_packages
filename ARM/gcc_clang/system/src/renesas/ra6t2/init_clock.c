@@ -700,12 +700,6 @@ static void system_clock_configuration() {
         }
     }
 
-    if ( !( VALUE_SYSTEM_SOSCCR & R_SYSTEM_SOSCCR_SOSTP_Msk ) ) {
-        R_SYSTEM->SOSCCR_b.SOSTP = 1; // Stop SOSC
-        R_SYSTEM->SOMCR = VALUE_SYSTEM_SOMCR;
-        R_SYSTEM->SOSCCR_b.SOSTP = 0; // Start SOSC
-    }
-
     if ( !( VALUE_SYSTEM_HOCOCR & R_SYSTEM_HOCOCR_HCSTP_Msk ) ) {
         if( 0x2 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ) ) // 20MHz
         {
@@ -721,7 +715,6 @@ static void system_clock_configuration() {
         R_SYSTEM->FLLCR1_b.FLLEN = 0x1;
 
         R_SYSTEM->HOCOCR2 = VALUE_SYSTEM_HOCOCR2;
-        R_SYSTEM->HOCOWTCR = VALUE_SYSTEM_HOCOWTCR;
         R_SYSTEM->HOCOCR_b.HCSTP = 0; // Start HOCO
 
         while ( !( R_SYSTEM->OSCSF_b.HOCOSF ) ) {
