@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+ * Copyright (c) 2020 - 2026 Renesas Electronics Corporation and/or its affiliates
 *
 * SPDX-License-Identifier: BSD-3-Clause
  *
@@ -46,14 +46,9 @@ extern "C" {
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 // Note: Changed for MikroE implementation.
-//  #include "core_cm4.h"                     /*!< ARM Cortex-M4 processor and core peripherals                              */
+ #include "ra4w1_core_cm4.h"                     /*!< ARM Cortex-M4 processor and core peripherals                              */
 // Note: Changed for MikroE implementation.
-//  #include "system.h"                       /*!< R7FA4W1AD System                                                          */
-#include <stdint.h>
-
-#define __I volatile // Note: Added for MikroE implementation.
-#define __O __I // Note: Added for MikroE implementation.
-#define __IO __I // Note: Added for MikroE implementation.
+// #include "system.h"                       /*!< R7FA4W1AD System                                                          */
 
  #ifndef __IM                              /*!< Fallback for older CMSIS versions                                         */
   #define __IM     __I
@@ -1462,25 +1457,6 @@ typedef struct
 {
     __IOM R_PFS_PORT_PIN_Type PIN[16]; /*!< (@ 0x00000000) Pin Function Selects                                       */
 } R_PFS_PORT_Type;                     /*!< Size = 64 (0x40)                                                          */
-
-/**
- * @brief R_PFS_VLSEL [VLSEL] (VLSEL)
- */
-typedef struct
-{
-    __IM uint8_t RESERVED[389];
-
-    union
-    {
-        __IOM uint8_t VL1SEL;          /*!< (@ 0x00000185) VL1 Select Control Register                                */
-
-        struct
-        {
-            __IOM uint8_t SELVL : 1;   /*!< [0..0] VL1 Voltage Connection Switching Control                           */
-            uint8_t             : 7;
-        } VL1SEL_b;
-    };
-} R_PFS_VLSEL_Type;                    /*!< Size = 390 (0x186)                                                        */
 
 /**
  * @brief R_PMISC_PMSAR [PMSAR] (Port Security Attribution Register)
@@ -4620,9 +4596,9 @@ typedef struct                         /*!< (@ 0x4001B000) R_DEBUG Structure    
             uint32_t                     : 12;
             __IOM uint32_t DBGSTOP_TIM   : 1; /*!< [14..14] Mask bit for RTC, TAU reset/interrupt                            */
             __IOM uint32_t DBGSTOP_SIR   : 1; /*!< [15..15] Mask bit for SAU, IICA, PORT_IRQ0-5 reset/interrupt              */
-            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interupt                                  */
-            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interupt                                  */
+            __IOM uint32_t DBGSTOP_LVD0  : 1; /*!< [16..16] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD1  : 1; /*!< [17..17] Mask bit for LVD reset/interrupt                                 */
+            __IOM uint32_t DBGSTOP_LVD2  : 1; /*!< [18..18] Mask bit for LVD reset/interrupt                                 */
             uint32_t                     : 5;
             __IOM uint32_t DBGSTOP_RPER  : 1; /*!< [24..24] Mask bit for SRAM parity error                                   */
             __IOM uint32_t DBGSTOP_RECCR : 1; /*!< [25..25] Mask bit for SRAM ECC error                                      */
@@ -8815,14 +8791,10 @@ typedef struct                         /*!< (@ 0x40040000) R_PORT0 Structure    
  * @brief I/O Ports-PFS (R_PFS)
  */
 
-typedef struct                           /*!< (@ 0x40040800) R_PFS Structure                                            */
+typedef struct                         /*!< (@ 0x40040800) R_PFS Structure                                            */
 {
-    union
-    {
-        __IOM R_PFS_PORT_Type  PORT[15]; /*!< (@ 0x00000000) Port [0..14]                                               */
-        __IOM R_PFS_VLSEL_Type VLSEL;    /*!< (@ 0x00000000) VLSEL                                                      */
-    };
-} R_PFS_Type;                            /*!< Size = 960 (0x3c0)                                                        */
+    __IOM R_PFS_PORT_Type PORT[15];    /*!< (@ 0x00000000) Port [0..14]                                               */
+} R_PFS_Type;                          /*!< Size = 960 (0x3c0)                                                        */
 
 /* =========================================================================================================================== */
 /* ================                                          R_PMISC                                          ================ */
@@ -10352,9 +10324,8 @@ typedef struct                         /*!< (@ 0x40082000) R_SLCDC Structure    
 
         struct
         {
-            __IOM uint8_t VLCD   : 5;  /*!< [4..0] Reference Voltage(Contrast Adjustment) Select                      */
-            uint8_t              : 2;
-            __IOM uint8_t MDSET2 : 1;  /*!< [7..7] Reference Voltage Selection                                        */
+            __IOM uint8_t VLCD : 5;    /*!< [4..0] Reference Voltage(Contrast Adjustment) Select                      */
+            uint8_t            : 3;
         } VLCD_b;
     };
     __IM uint8_t RESERVED[252];
@@ -14728,14 +14699,6 @@ typedef struct                          /*!< (@ 0x40084000) R_AGTX0 Structure   
 /* =========================================================================================================================== */
 
 /* =========================================================================================================================== */
-/* ================                                           VLSEL                                           ================ */
-/* =========================================================================================================================== */
-
-/* ========================================================  VL1SEL  ========================================================= */
- #define R_PFS_VLSEL_VL1SEL_SELVL_Pos    (0UL)   /*!< SELVL (Bit 0)                                         */
- #define R_PFS_VLSEL_VL1SEL_SELVL_Msk    (0x1UL) /*!< SELVL (Bitfield-Mask: 0x01)                           */
-
-/* =========================================================================================================================== */
 /* ================                                           PMSAR                                           ================ */
 /* =========================================================================================================================== */
 
@@ -18712,8 +18675,6 @@ typedef struct                          /*!< (@ 0x40084000) R_AGTX0 Structure   
  #define R_SLCDC_LCDC0_LCDC_Pos      (0UL)    /*!< LCDC (Bit 0)                                          */
  #define R_SLCDC_LCDC0_LCDC_Msk      (0x3fUL) /*!< LCDC (Bitfield-Mask: 0x3f)                            */
 /* =========================================================  VLCD  ========================================================== */
- #define R_SLCDC_VLCD_MDSET2_Pos     (7UL)    /*!< MDSET2 (Bit 7)                                        */
- #define R_SLCDC_VLCD_MDSET2_Msk     (0x80UL) /*!< MDSET2 (Bitfield-Mask: 0x01)                          */
  #define R_SLCDC_VLCD_VLCD_Pos       (0UL)    /*!< VLCD (Bit 0)                                          */
  #define R_SLCDC_VLCD_VLCD_Msk       (0x1fUL) /*!< VLCD (Bitfield-Mask: 0x1f)                            */
 /* ==========================================================  SEG  ========================================================== */
