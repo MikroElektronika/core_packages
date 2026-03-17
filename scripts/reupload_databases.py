@@ -57,6 +57,16 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
+def column_exists(db, table_name, column_name):
+    try:
+        with sqlite3.connect(db) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"PRAGMA table_info({table_name})")
+            columns = [row[1] for row in cursor.fetchall()]
+            return column_name in columns
+    except sqlite3.Error:
+        return False
+
 def addCollumnToTable(db, tableName, collumnName, collumnType, defaultValue='NoDefault'):
     import sqlite3
 
@@ -912,6 +922,18 @@ def updateDevicesFromSdk(dbs, queries):
 
     return
 
+def createErpDbpSyncInfo(db, table):
+    currentData = read_data_from_db(db, f'SELECT DISTINCT name FROM {table};')
+    if not column_exists(db, table, 'dbp_uid'):
+        addCollumnToTable(db, table, 'dbp_uid', 'TEXT', 'NoDefault')
+    for name in currentData[1]:
+        dbp_uid = name[0]
+        dbp_uid = re.sub(r"\+", "_PLUS", dbp_uid)
+        dbp_uid = re.sub(r"\s+", "_", dbp_uid)
+        if table == 'DeviceArchitectures':
+            dbp_uid = re.sub(r"\-", "_", dbp_uid)
+        updateTableCollumn(db, table, 'dbp_uid', dbp_uid.upper(), 'name', name[0])
+
 def createErpDbInfo(device):
     core_name = None
     try:
@@ -1653,21 +1675,29 @@ async def main(
             )
     ## EOF Step 17
 
-    ## Step 18 - re-upload over existing assets
-    log_step('\033[96mStep 18: Uploading database archive.\033[0m')
+    ## STEP 18 - Add dbp_uid field values to ERP db - sync with DBP
+    log_step(f'\033[96mStep 18: Updating ERP database for DBP sync if needed.\033[0m')
+    if databaseErp:
+        createErpDbpSyncInfo(db=databaseErp, table='DeviceVendors')
+        createErpDbpSyncInfo(db=databaseErp, table='DeviceFamilies')
+        createErpDbpSyncInfo(db=databaseErp, table='DeviceArchitectures')
+    ## EOF Step 18
+
+    ## Step 19 - re-upload over existing assets
+    log_step('\033[96mStep 19: Uploading database archive.\033[0m')
     archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
     async with aiohttp.ClientSession() as session:
         upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
     if databaseErp:
-        log_step('\033[96mStep 18: Uploading ERP database file.\033[0m')
+        log_step('\033[96mStep 19: Uploading ERP database file.\033[0m')
         async with aiohttp.ClientSession() as session:
             upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
-    ## EOF Step 18
-
-    ## Step 19 - overwrite the existing necto_db.db in root with newly generated one
-    log_step(f'\033[96mStep 19: Overwriting {dbName} file.\033[0m')
-    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## EOF Step 19
+
+    ## Step 20 - overwrite the existing necto_db.db in root with newly generated one
+    log_step(f'\033[96mStep 20: Overwriting {dbName} file.\033[0m')
+    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    ## EOF Step 20
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
