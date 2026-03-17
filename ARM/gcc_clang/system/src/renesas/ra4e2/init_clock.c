@@ -48,6 +48,7 @@ typedef struct
 {
     uint32_t ICLK_Frequency;    // System clock frequency in Hz
     uint32_t PCLKA_Frequency;   // PCLKA clock frequency in Hz
+    uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
@@ -466,6 +467,10 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     // Get PCLKA clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
     SYSTEM_Clocks->PCLKA_Frequency = source_clock / prescaler;
+
+    // Get PCLKB clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x700 ) >> 8 ];
+    SYSTEM_Clocks->PCLKB_Frequency = source_clock / prescaler;
 
     // Get PCLKC clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x70 ) >> 4 ];
