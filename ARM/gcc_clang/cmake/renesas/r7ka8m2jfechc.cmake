@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7KA8M2JFECHC$")
+    set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${CORE_DIR}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${CORE_DIR}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/r7ka8m2jfechc/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/r7ka8m2jfechc/thirdparty/r7ka8m2jfechc)
+    set(${thirdpartyInstall} r7ka8m2jfechc/thirdparty/r7ka8m2jfechc PARENT_SCOPE)
+endif()

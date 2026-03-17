@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA2E1A52DBV$|^R7FA2E1A53CBV$|^R7FA2E1A72DBV$|^R7FA2E1A73CBV$|^R7FA2E1A92DBV$|^R7FA2E1A93CBV$")
+    set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ra2e1a_bv/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/ra2e1a_bv/thirdparty/ra2e1a_bv)
+    set(${thirdpartyInstall} ra2e1a_bv/thirdparty/ra2e1a_bv PARENT_SCOPE)
+endif()

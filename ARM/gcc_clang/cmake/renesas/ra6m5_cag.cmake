@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA6M5BF3CAG$|^R7FA6M5BG3CAG$|^R7FA6M5BH3CAG$")
+    set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ra6m5_cag/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/ra6m5_cag/thirdparty/ra6m5_cag)
+    set(${thirdpartyInstall} ra6m5_cag/thirdparty/ra6m5_cag PARENT_SCOPE)
+endif()
