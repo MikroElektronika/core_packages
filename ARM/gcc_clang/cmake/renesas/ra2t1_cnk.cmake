@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7FA2T1073CNK$|^R7FA2T1074CNK$")
+    set(${linkerScript} linker_scripts/${vendor}/${TOOLCHAIN_ID}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.c PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ra2t1_cnk/init_clock.c)
+    list(APPEND local_dir_install system/src/${vendor}/ra2t1_cnk/thirdparty/ra2t1_cnk)
+    set(${thirdpartyInstall} ra2t1_cnk/thirdparty/ra2t1_cnk PARENT_SCOPE)
+endif()

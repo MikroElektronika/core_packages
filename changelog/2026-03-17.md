@@ -42,8 +42,6 @@ Support added for following hardware:
   + EFR32MG1P732F256IM32
 + EFR32MR MCU Support package for GCC & Clang
   + EFR32MR21A020F512IM32
-+ RA0E3 MCU Support package for GCC & Clang
-  + R7FA0E3034ZSD
 
 ---
 
