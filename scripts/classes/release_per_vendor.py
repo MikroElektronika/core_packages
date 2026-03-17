@@ -198,7 +198,8 @@ class GitHubReleaseUploader:
                     'assets': [],
                     'tag': tag,
                     'upload_url': '',
-                    'release_id': ''
+                    'release_id': '',
+                    'release_version': release_version.replace('v', '')
                 }
             releases_info[release_name]['assets'].append(
                 {
@@ -227,6 +228,7 @@ class GitHubReleaseUploader:
                 for metadata_asset in metadata:
                     if metadata_asset['name'] == asset['asset_name'].replace('.7z', ''):
                         metadata_asset['release_tag'] = releases_info[release_name]['tag']
+                        metadata_asset['version'] = releases_info[release_name]['release_version']
                         break
                 if asset['asset_name'] not in existing_asset_names:
                     if self.dry_run:
