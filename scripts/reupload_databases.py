@@ -57,6 +57,16 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
+def column_exists(db, table_name, column_name):
+    try:
+        with sqlite3.connect(db) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"PRAGMA table_info({table_name})")
+            columns = [row[1] for row in cursor.fetchall()]
+            return column_name in columns
+    except sqlite3.Error:
+        return False
+
 def addCollumnToTable(db, tableName, collumnName, collumnType, defaultValue='NoDefault'):
     import sqlite3
 
@@ -912,6 +922,18 @@ def updateDevicesFromSdk(dbs, queries):
 
     return
 
+def createErpDbpSyncInfo(db, table):
+    currentData = read_data_from_db(db, f'SELECT DISTINCT name FROM {table};')
+    if not column_exists(db, table, 'dbp_uid'):
+        addCollumnToTable(db, table, 'dbp_uid', 'TEXT', 'NoDefault')
+    for name in currentData[1]:
+        dbp_uid = name[0]
+        dbp_uid = re.sub(r"\+", "_PLUS", dbp_uid)
+        dbp_uid = re.sub(r"\s+", "_", dbp_uid)
+        if table == 'DeviceArchitectures':
+            dbp_uid = re.sub(r"\-", "_", dbp_uid)
+        updateTableCollumn(db, table, 'dbp_uid', dbp_uid.upper(), 'name', name[0])
+
 def createErpDbInfo(device):
     core_name = None
     try:
@@ -1668,6 +1690,14 @@ async def main(
     log_step(f'\033[96mStep 19: Overwriting {dbName} file.\033[0m')
     shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
     ## EOF Step 19
+
+    ## STEP 20 - Add dbp_uid field values to ERP db - sync with DBP
+    if databaseErp:
+        createErpDbpSyncInfo(db=databaseErp, table='DeviceVendors')
+        createErpDbpSyncInfo(db=databaseErp, table='DeviceFamilies')
+        createErpDbpSyncInfo(db=databaseErp, table='DeviceArchitectures')
+    ## EOF Step 20
+
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
