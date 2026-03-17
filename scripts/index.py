@@ -437,7 +437,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                         if not existed:
                             update_package = True
                         else:
-                            if current_hash != index_hash or new_version != current_version:
+                            if current_hash != index_hash or new_version != previous_version:
                                 update_package = True
                                 current_version = new_version
                             else:
