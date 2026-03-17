@@ -1675,29 +1675,29 @@ async def main(
             )
     ## EOF Step 17
 
-    ## Step 18 - re-upload over existing assets
-    log_step('\033[96mStep 18: Uploading database archive.\033[0m')
-    archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
-    async with aiohttp.ClientSession() as session:
-        upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
-    if databaseErp:
-        log_step('\033[96mStep 18: Uploading ERP database file.\033[0m')
-        async with aiohttp.ClientSession() as session:
-            upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
-    ## EOF Step 18
-
-    ## Step 19 - overwrite the existing necto_db.db in root with newly generated one
-    log_step(f'\033[96mStep 19: Overwriting {dbName} file.\033[0m')
-    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
-    ## EOF Step 19
-
-    ## STEP 20 - Add dbp_uid field values to ERP db - sync with DBP
+    ## STEP 18 - Add dbp_uid field values to ERP db - sync with DBP
+    log_step(f'\033[96mStep 18: Updating ERP database for DBP sync if needed.\033[0m')
     if databaseErp:
         createErpDbpSyncInfo(db=databaseErp, table='DeviceVendors')
         createErpDbpSyncInfo(db=databaseErp, table='DeviceFamilies')
         createErpDbpSyncInfo(db=databaseErp, table='DeviceArchitectures')
-    ## EOF Step 20
+    ## EOF Step 18
 
+    ## Step 19 - re-upload over existing assets
+    log_step('\033[96mStep 19: Uploading database archive.\033[0m')
+    archive_path = compress_directory_7z(os.path.join(os.path.dirname(__file__), 'databases'), f'{dbPackageName}.7z')
+    async with aiohttp.ClientSession() as session:
+        upload_result = await upload_release_asset(session, token, repo, archive_path, release_version)
+    if databaseErp:
+        log_step('\033[96mStep 19: Uploading ERP database file.\033[0m')
+        async with aiohttp.ClientSession() as session:
+            upload_result = await upload_release_asset(session, token, repo, databaseErp, release_version)
+    ## EOF Step 19
+
+    ## Step 20 - overwrite the existing necto_db.db in root with newly generated one
+    log_step(f'\033[96mStep 20: Overwriting {dbName} file.\033[0m')
+    shutil.copy2(databaseNecto, os.path.join(os.getcwd(), f'{dbName}.db'))
+    ## EOF Step 20
     ## ------------------------------------------------------------------------------------ ##
 ## EOF Main runner
 
