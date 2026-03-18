@@ -463,7 +463,7 @@ SECTIONS
   *(.data_flash_noinit)
       __data_flash_noinit$$Limit = . ;
   }  > DATA_FLASH
-  .data_flash.endof ALIGN(.,1024) (READONLY) : 
+  .data_flash.endof ALIGN(.,512) (READONLY) : 
   {
        __ddsc_DATA_FLASH_END = . ;
       
@@ -667,7 +667,7 @@ SECTIONS
   *(.itcm)
       __itcm_zero$$Limit = . ;
   }  > ITCM
-  .itcm.endof ALIGN(.,8192) : 
+  .itcm.endof ALIGN(.,512) : 
   {
        __ddsc_ITCM_END = . ;
       
@@ -700,7 +700,7 @@ SECTIONS
   *(.dtcm)
       __dtcm_zero$$Limit = . ;
   }  > DTCM
-  .dtcm.endof ALIGN(.,8192) : 
+  .dtcm.endof ALIGN(.,512) : 
   {
        __ddsc_DTCM_END = . ;
       
@@ -767,14 +767,14 @@ SECTIONS
   KEEP(*(.stack?*))
       __ram_thread_stack$$Limit = . ;
   }  > RAM
-  .ram.endof ALIGN(.,8192) : 
+  .ram.endof ALIGN(.,512) : 
   {
        __ddsc_RAM_END = . ;
       
   }  > RAM
-  .ram.flat_nsc ALIGN(.,8192) : 
+  .ram.flat_nsc ALIGN(.,512) : 
   {
-       __sau_ddsc_RAM_NSC = . ;
+       __ddsc_RAM_NSC = . ;
       
   }  > RAM
 
@@ -849,14 +849,14 @@ SECTIONS
   *(.gnu.linkonce.armexidx.*)
        __exidx_end = . ;
   }  > FLASH
-  .flash.endof ALIGN(.,32768) (READONLY) : 
+  .flash.endof ALIGN(.,512) (READONLY) : 
   {
        __ddsc_FLASH_END = . ;
       
   }  > FLASH
-  .flash.flat_nsc ALIGN(.,32768) (READONLY) : 
+  .flash.flat_nsc ALIGN(.,512) (READONLY) : 
   {
-       __sau_ddsc_FLASH_NSC = . ;
+       __ddsc_FLASH_NSC = . ;
       
   }  > FLASH
 

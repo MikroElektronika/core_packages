@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "3",
+                    "init": "2",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "f",
@@ -112,7 +112,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "300",
+                    "init": "400",
                     "key": "PCKB",
                     "label": "Peripheral Module Clock B (PCLKB) Select",
                     "mask": "f00",
@@ -218,7 +218,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "20000",
+                    "init": "30000",
                     "key": "BCK",
                     "label": "External Bus Clock (BCLK) Select",
                     "mask": "f0000",
@@ -271,7 +271,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "1000000",
+                    "init": "2000000",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "f000000",
@@ -324,7 +324,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "30000000",
                     "key": "MRPCK",
                     "label": "MRAM Clock (MRPCLK) Select",
                     "mask": "f0000000",
@@ -438,7 +438,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "20",
                     "key": "CPUCK1",
                     "label": "CPU1 Clock (CPUCLK1) Select",
                     "mask": "f0",
@@ -1096,7 +1096,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "SCICKSEL",
                     "label": "SCI Clock (SCICLK) Source Select",
                     "mask": "f",
@@ -1144,40 +1144,6 @@
                         {
                             "label": "PLL2R",
                             "value": "a"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SCICKSREQ",
-                    "label": "SCI Clock (SCICLK) Switching Request",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "No request",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Request switching",
-                            "value": "40"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SCICKSRDY",
-                    "label": "SCI Clock (SCICLK) Switching Ready state flag",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "Impossible to switch",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Possible to switch",
-                            "value": "80"
                         }
                     ]
                 }
@@ -1298,40 +1264,6 @@
                             "value": "a"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SPICKSREQ",
-                    "label": "SPI Clock (SPICLK) Switching Request",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "No request",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Request switching",
-                            "value": "40"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SPICKSRDY",
-                    "label": "SPI clock (SPICLK) Switching Ready State Flag",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "Impossible to switch",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Possible to switch",
-                            "value": "80"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_SPICKCR",
@@ -1351,18 +1283,6 @@
                         {
                             "label": "High-speed mode",
                             "value": "0"
-                        },
-                        {
-                            "label": "Prohibited",
-                            "value": "1"
-                        },
-                        {
-                            "label": "Prohibited",
-                            "value": "2"
-                        },
-                        {
-                            "label": "Prohibited",
-                            "value": "3"
                         }
                     ]
                 }
@@ -1433,7 +1353,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "2",
                     "key": "PLIDIV",
                     "label": "PLL1 Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -1454,7 +1374,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "PLSRCSEL",
                     "label": "PLL1 Clock Source Select",
                     "mask": "10",
@@ -1496,174 +1416,1054 @@
                 },
                 {
                     "hidden": false,
-                    "init": "5F00",
+                    "init": "7700",
                     "key": "PLLMUL",
                     "label": "PLL1 Frequency Multiplication Factor Select",
                     "mask": "1ff00",
                     "settings": [
                         {
-                            "label": "x10.0",
+                            "label": "x40",
                             "value": "2700"
                         },
                         {
-                            "label": "x10.5",
+                            "label": "x41",
                             "value": "2800"
                         },
                         {
-                            "label": "x11.0",
+                            "label": "x42",
                             "value": "2900"
                         },
                         {
-                            "label": "x11.5",
+                            "label": "x43",
                             "value": "2a00"
                         },
                         {
-                            "label": "x12.0",
+                            "label": "x44",
                             "value": "2b00"
                         },
                         {
-                            "label": "x12.5",
+                            "label": "x45",
                             "value": "2c00"
                         },
                         {
-                            "label": "x13.0",
+                            "label": "x46",
                             "value": "2d00"
                         },
                         {
-                            "label": "x13.5",
+                            "label": "x47",
                             "value": "2e00"
                         },
                         {
-                            "label": "x14.0",
+                            "label": "x48",
                             "value": "2f00"
                         },
                         {
-                            "label": "x14.5",
+                            "label": "x49",
                             "value": "3000"
                         },
                         {
-                            "label": "x15.0",
+                            "label": "x50",
                             "value": "3100"
                         },
                         {
-                            "label": "x15.5",
+                            "label": "x51",
                             "value": "3200"
                         },
                         {
-                            "label": "x16.0",
+                            "label": "x52",
                             "value": "3300"
                         },
                         {
-                            "label": "x16.5",
+                            "label": "x53",
                             "value": "3400"
                         },
                         {
-                            "label": "x17.0",
+                            "label": "x54",
                             "value": "3500"
                         },
                         {
-                            "label": "x17.5",
+                            "label": "x55",
                             "value": "3600"
                         },
                         {
-                            "label": "x18.0",
+                            "label": "x56",
                             "value": "3700"
                         },
                         {
-                            "label": "x18.5",
+                            "label": "x57",
                             "value": "3800"
                         },
                         {
-                            "label": "x19.0",
+                            "label": "x58",
                             "value": "3900"
                         },
                         {
-                            "label": "x19.5",
+                            "label": "x59",
                             "value": "3a00"
                         },
                         {
-                            "label": "x20.0",
+                            "label": "x60",
                             "value": "3b00"
                         },
                         {
-                            "label": "x20.5",
+                            "label": "x61",
                             "value": "3c00"
                         },
                         {
-                            "label": "x21.0",
+                            "label": "x62",
                             "value": "3d00"
                         },
                         {
-                            "label": "x21.5",
+                            "label": "x63",
                             "value": "3e00"
                         },
                         {
-                            "label": "x22.0",
+                            "label": "x64",
                             "value": "3f00"
                         },
                         {
-                            "label": "x22.5",
+                            "label": "x65",
                             "value": "4000"
                         },
                         {
-                            "label": "x23.0",
+                            "label": "x66",
                             "value": "4100"
                         },
                         {
-                            "label": "x23.5",
+                            "label": "x67",
                             "value": "4200"
                         },
                         {
-                            "label": "x24.0",
+                            "label": "x68",
                             "value": "4300"
                         },
                         {
-                            "label": "x24.5",
+                            "label": "x69",
                             "value": "4400"
                         },
                         {
-                            "label": "x25.0",
+                            "label": "x70",
                             "value": "4500"
                         },
                         {
-                            "label": "x25.5",
+                            "label": "x71",
                             "value": "4600"
                         },
                         {
-                            "label": "x26.0",
+                            "label": "x72",
                             "value": "4700"
                         },
                         {
-                            "label": "x26.5",
+                            "label": "x73",
                             "value": "4800"
                         },
                         {
-                            "label": "x27.0",
+                            "label": "x74",
                             "value": "4900"
                         },
                         {
-                            "label": "x27.5",
+                            "label": "x75",
                             "value": "4a00"
                         },
                         {
-                            "label": "x28.0",
+                            "label": "x76",
                             "value": "4b00"
                         },
                         {
-                            "label": "x28.5",
+                            "label": "x77",
                             "value": "4c00"
                         },
                         {
-                            "label": "x29.0",
+                            "label": "x78",
                             "value": "4d00"
                         },
                         {
-                            "label": "x29.5",
+                            "label": "x79",
                             "value": "4e00"
                         },
                         {
-                            "label": "x30.0",
+                            "label": "x80",
                             "value": "4f00"
+                        },
+                        {
+                            "label": "x81",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "x82",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "x83",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "x84",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "x85",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "x86",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "x87",
+                            "value": "5600"
+                        },
+                        {
+                            "label": "x88",
+                            "value": "5700"
+                        },
+                        {
+                            "label": "x89",
+                            "value": "5800"
+                        },
+                        {
+                            "label": "x90",
+                            "value": "5900"
+                        },
+                        {
+                            "label": "x91",
+                            "value": "5a00"
+                        },
+                        {
+                            "label": "x92",
+                            "value": "5b00"
+                        },
+                        {
+                            "label": "x93",
+                            "value": "5c00"
+                        },
+                        {
+                            "label": "x94",
+                            "value": "5d00"
+                        },
+                        {
+                            "label": "x95",
+                            "value": "5e00"
+                        },
+                        {
+                            "label": "x96",
+                            "value": "5f00"
+                        },
+                        {
+                            "label": "x97",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "x98",
+                            "value": "6100"
+                        },
+                        {
+                            "label": "x99",
+                            "value": "6200"
+                        },
+                        {
+                            "label": "x100",
+                            "value": "6300"
+                        },
+                        {
+                            "label": "x101",
+                            "value": "6400"
+                        },
+                        {
+                            "label": "x102",
+                            "value": "6500"
+                        },
+                        {
+                            "label": "x103",
+                            "value": "6600"
+                        },
+                        {
+                            "label": "x104",
+                            "value": "6700"
+                        },
+                        {
+                            "label": "x105",
+                            "value": "6800"
+                        },
+                        {
+                            "label": "x106",
+                            "value": "6900"
+                        },
+                        {
+                            "label": "x107",
+                            "value": "6a00"
+                        },
+                        {
+                            "label": "x108",
+                            "value": "6b00"
+                        },
+                        {
+                            "label": "x109",
+                            "value": "6c00"
+                        },
+                        {
+                            "label": "x110",
+                            "value": "6d00"
+                        },
+                        {
+                            "label": "x111",
+                            "value": "6e00"
+                        },
+                        {
+                            "label": "x112",
+                            "value": "6f00"
+                        },
+                        {
+                            "label": "x113",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "x114",
+                            "value": "7100"
+                        },
+                        {
+                            "label": "x115",
+                            "value": "7200"
+                        },
+                        {
+                            "label": "x116",
+                            "value": "7300"
+                        },
+                        {
+                            "label": "x117",
+                            "value": "7400"
+                        },
+                        {
+                            "label": "x118",
+                            "value": "7500"
+                        },
+                        {
+                            "label": "x119",
+                            "value": "7600"
+                        },
+                        {
+                            "label": "x120",
+                            "value": "7700"
+                        },
+                        {
+                            "label": "x121",
+                            "value": "7800"
+                        },
+                        {
+                            "label": "x122",
+                            "value": "7900"
+                        },
+                        {
+                            "label": "x123",
+                            "value": "7a00"
+                        },
+                        {
+                            "label": "x124",
+                            "value": "7b00"
+                        },
+                        {
+                            "label": "x125",
+                            "value": "7c00"
+                        },
+                        {
+                            "label": "x126",
+                            "value": "7d00"
+                        },
+                        {
+                            "label": "x127",
+                            "value": "7e00"
+                        },
+                        {
+                            "label": "x128",
+                            "value": "7f00"
+                        },
+                        {
+                            "label": "x129",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "x130",
+                            "value": "8100"
+                        },
+                        {
+                            "label": "x131",
+                            "value": "8200"
+                        },
+                        {
+                            "label": "x132",
+                            "value": "8300"
+                        },
+                        {
+                            "label": "x133",
+                            "value": "8400"
+                        },
+                        {
+                            "label": "x134",
+                            "value": "8500"
+                        },
+                        {
+                            "label": "x135",
+                            "value": "8600"
+                        },
+                        {
+                            "label": "x136",
+                            "value": "8700"
+                        },
+                        {
+                            "label": "x137",
+                            "value": "8800"
+                        },
+                        {
+                            "label": "x138",
+                            "value": "8900"
+                        },
+                        {
+                            "label": "x139",
+                            "value": "8a00"
+                        },
+                        {
+                            "label": "x140",
+                            "value": "8b00"
+                        },
+                        {
+                            "label": "x141",
+                            "value": "8c00"
+                        },
+                        {
+                            "label": "x142",
+                            "value": "8d00"
+                        },
+                        {
+                            "label": "x143",
+                            "value": "8e00"
+                        },
+                        {
+                            "label": "x144",
+                            "value": "8f00"
+                        },
+                        {
+                            "label": "x145",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "x146",
+                            "value": "9100"
+                        },
+                        {
+                            "label": "x147",
+                            "value": "9200"
+                        },
+                        {
+                            "label": "x148",
+                            "value": "9300"
+                        },
+                        {
+                            "label": "x149",
+                            "value": "9400"
+                        },
+                        {
+                            "label": "x150",
+                            "value": "9500"
+                        },
+                        {
+                            "label": "x151",
+                            "value": "9600"
+                        },
+                        {
+                            "label": "x152",
+                            "value": "9700"
+                        },
+                        {
+                            "label": "x153",
+                            "value": "9800"
+                        },
+                        {
+                            "label": "x154",
+                            "value": "9900"
+                        },
+                        {
+                            "label": "x155",
+                            "value": "9a00"
+                        },
+                        {
+                            "label": "x156",
+                            "value": "9b00"
+                        },
+                        {
+                            "label": "x157",
+                            "value": "9c00"
+                        },
+                        {
+                            "label": "x158",
+                            "value": "9d00"
+                        },
+                        {
+                            "label": "x159",
+                            "value": "9e00"
+                        },
+                        {
+                            "label": "x160",
+                            "value": "9f00"
+                        },
+                        {
+                            "label": "x161",
+                            "value": "a000"
+                        },
+                        {
+                            "label": "x162",
+                            "value": "a100"
+                        },
+                        {
+                            "label": "x163",
+                            "value": "a200"
+                        },
+                        {
+                            "label": "x164",
+                            "value": "a300"
+                        },
+                        {
+                            "label": "x165",
+                            "value": "a400"
+                        },
+                        {
+                            "label": "x166",
+                            "value": "a500"
+                        },
+                        {
+                            "label": "x167",
+                            "value": "a600"
+                        },
+                        {
+                            "label": "x168",
+                            "value": "a700"
+                        },
+                        {
+                            "label": "x169",
+                            "value": "a800"
+                        },
+                        {
+                            "label": "x170",
+                            "value": "a900"
+                        },
+                        {
+                            "label": "x171",
+                            "value": "aa00"
+                        },
+                        {
+                            "label": "x172",
+                            "value": "ab00"
+                        },
+                        {
+                            "label": "x173",
+                            "value": "ac00"
+                        },
+                        {
+                            "label": "x174",
+                            "value": "ad00"
+                        },
+                        {
+                            "label": "x175",
+                            "value": "ae00"
+                        },
+                        {
+                            "label": "x176",
+                            "value": "af00"
+                        },
+                        {
+                            "label": "x177",
+                            "value": "b000"
+                        },
+                        {
+                            "label": "x178",
+                            "value": "b100"
+                        },
+                        {
+                            "label": "x179",
+                            "value": "b200"
+                        },
+                        {
+                            "label": "x180",
+                            "value": "b300"
+                        },
+                        {
+                            "label": "x181",
+                            "value": "b400"
+                        },
+                        {
+                            "label": "x182",
+                            "value": "b500"
+                        },
+                        {
+                            "label": "x183",
+                            "value": "b600"
+                        },
+                        {
+                            "label": "x184",
+                            "value": "b700"
+                        },
+                        {
+                            "label": "x185",
+                            "value": "b800"
+                        },
+                        {
+                            "label": "x186",
+                            "value": "b900"
+                        },
+                        {
+                            "label": "x187",
+                            "value": "ba00"
+                        },
+                        {
+                            "label": "x188",
+                            "value": "bb00"
+                        },
+                        {
+                            "label": "x189",
+                            "value": "bc00"
+                        },
+                        {
+                            "label": "x190",
+                            "value": "bd00"
+                        },
+                        {
+                            "label": "x191",
+                            "value": "be00"
+                        },
+                        {
+                            "label": "x192",
+                            "value": "bf00"
+                        },
+                        {
+                            "label": "x193",
+                            "value": "c000"
+                        },
+                        {
+                            "label": "x194",
+                            "value": "c100"
+                        },
+                        {
+                            "label": "x195",
+                            "value": "c200"
+                        },
+                        {
+                            "label": "x196",
+                            "value": "c300"
+                        },
+                        {
+                            "label": "x197",
+                            "value": "c400"
+                        },
+                        {
+                            "label": "x198",
+                            "value": "c500"
+                        },
+                        {
+                            "label": "x199",
+                            "value": "c600"
+                        },
+                        {
+                            "label": "x200",
+                            "value": "c700"
+                        },
+                        {
+                            "label": "x201",
+                            "value": "c800"
+                        },
+                        {
+                            "label": "x202",
+                            "value": "c900"
+                        },
+                        {
+                            "label": "x203",
+                            "value": "ca00"
+                        },
+                        {
+                            "label": "x204",
+                            "value": "cb00"
+                        },
+                        {
+                            "label": "x205",
+                            "value": "cc00"
+                        },
+                        {
+                            "label": "x206",
+                            "value": "cd00"
+                        },
+                        {
+                            "label": "x207",
+                            "value": "ce00"
+                        },
+                        {
+                            "label": "x208",
+                            "value": "cf00"
+                        },
+                        {
+                            "label": "x209",
+                            "value": "d000"
+                        },
+                        {
+                            "label": "x210",
+                            "value": "d100"
+                        },
+                        {
+                            "label": "x211",
+                            "value": "d200"
+                        },
+                        {
+                            "label": "x212",
+                            "value": "d300"
+                        },
+                        {
+                            "label": "x213",
+                            "value": "d400"
+                        },
+                        {
+                            "label": "x214",
+                            "value": "d500"
+                        },
+                        {
+                            "label": "x215",
+                            "value": "d600"
+                        },
+                        {
+                            "label": "x216",
+                            "value": "d700"
+                        },
+                        {
+                            "label": "x217",
+                            "value": "d800"
+                        },
+                        {
+                            "label": "x218",
+                            "value": "d900"
+                        },
+                        {
+                            "label": "x219",
+                            "value": "da00"
+                        },
+                        {
+                            "label": "x220",
+                            "value": "db00"
+                        },
+                        {
+                            "label": "x221",
+                            "value": "dc00"
+                        },
+                        {
+                            "label": "x222",
+                            "value": "dd00"
+                        },
+                        {
+                            "label": "x223",
+                            "value": "de00"
+                        },
+                        {
+                            "label": "x224",
+                            "value": "df00"
+                        },
+                        {
+                            "label": "x225",
+                            "value": "e000"
+                        },
+                        {
+                            "label": "x226",
+                            "value": "e100"
+                        },
+                        {
+                            "label": "x227",
+                            "value": "e200"
+                        },
+                        {
+                            "label": "x228",
+                            "value": "e300"
+                        },
+                        {
+                            "label": "x229",
+                            "value": "e400"
+                        },
+                        {
+                            "label": "x230",
+                            "value": "e500"
+                        },
+                        {
+                            "label": "x231",
+                            "value": "e600"
+                        },
+                        {
+                            "label": "x232",
+                            "value": "e700"
+                        },
+                        {
+                            "label": "x233",
+                            "value": "e800"
+                        },
+                        {
+                            "label": "x234",
+                            "value": "e900"
+                        },
+                        {
+                            "label": "x235",
+                            "value": "ea00"
+                        },
+                        {
+                            "label": "x236",
+                            "value": "eb00"
+                        },
+                        {
+                            "label": "x237",
+                            "value": "ec00"
+                        },
+                        {
+                            "label": "x238",
+                            "value": "ed00"
+                        },
+                        {
+                            "label": "x239",
+                            "value": "ee00"
+                        },
+                        {
+                            "label": "x240",
+                            "value": "ef00"
+                        },
+                        {
+                            "label": "x241",
+                            "value": "f000"
+                        },
+                        {
+                            "label": "x242",
+                            "value": "f100"
+                        },
+                        {
+                            "label": "x243",
+                            "value": "f200"
+                        },
+                        {
+                            "label": "x244",
+                            "value": "f300"
+                        },
+                        {
+                            "label": "x245",
+                            "value": "f400"
+                        },
+                        {
+                            "label": "x246",
+                            "value": "f500"
+                        },
+                        {
+                            "label": "x247",
+                            "value": "f600"
+                        },
+                        {
+                            "label": "x248",
+                            "value": "f700"
+                        },
+                        {
+                            "label": "x249",
+                            "value": "f800"
+                        },
+                        {
+                            "label": "x250",
+                            "value": "f900"
+                        },
+                        {
+                            "label": "x251",
+                            "value": "fa00"
+                        },
+                        {
+                            "label": "x252",
+                            "value": "fb00"
+                        },
+                        {
+                            "label": "x253",
+                            "value": "fc00"
+                        },
+                        {
+                            "label": "x254",
+                            "value": "fd00"
+                        },
+                        {
+                            "label": "x255",
+                            "value": "fe00"
+                        },
+                        {
+                            "label": "x256",
+                            "value": "ff00"
+                        },
+                        {
+                            "label": "x257",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "x258",
+                            "value": "10100"
+                        },
+                        {
+                            "label": "x259",
+                            "value": "10200"
+                        },
+                        {
+                            "label": "x260",
+                            "value": "10300"
+                        },
+                        {
+                            "label": "x261",
+                            "value": "10400"
+                        },
+                        {
+                            "label": "x262",
+                            "value": "10500"
+                        },
+                        {
+                            "label": "x263",
+                            "value": "10600"
+                        },
+                        {
+                            "label": "x264",
+                            "value": "10700"
+                        },
+                        {
+                            "label": "x265",
+                            "value": "10800"
+                        },
+                        {
+                            "label": "x266",
+                            "value": "10900"
+                        },
+                        {
+                            "label": "x267",
+                            "value": "10a00"
+                        },
+                        {
+                            "label": "x268",
+                            "value": "10b00"
+                        },
+                        {
+                            "label": "x269",
+                            "value": "10c00"
+                        },
+                        {
+                            "label": "x270",
+                            "value": "10d00"
+                        },
+                        {
+                            "label": "x271",
+                            "value": "10e00"
+                        },
+                        {
+                            "label": "x272",
+                            "value": "10f00"
+                        },
+                        {
+                            "label": "x273",
+                            "value": "11000"
+                        },
+                        {
+                            "label": "x274",
+                            "value": "11100"
+                        },
+                        {
+                            "label": "x275",
+                            "value": "11200"
+                        },
+                        {
+                            "label": "x276",
+                            "value": "11300"
+                        },
+                        {
+                            "label": "x277",
+                            "value": "11400"
+                        },
+                        {
+                            "label": "x278",
+                            "value": "11500"
+                        },
+                        {
+                            "label": "x279",
+                            "value": "11600"
+                        },
+                        {
+                            "label": "x280",
+                            "value": "11700"
+                        },
+                        {
+                            "label": "x281",
+                            "value": "11800"
+                        },
+                        {
+                            "label": "x282",
+                            "value": "11900"
+                        },
+                        {
+                            "label": "x283",
+                            "value": "11a00"
+                        },
+                        {
+                            "label": "x284",
+                            "value": "11b00"
+                        },
+                        {
+                            "label": "x285",
+                            "value": "11c00"
+                        },
+                        {
+                            "label": "x286",
+                            "value": "11d00"
+                        },
+                        {
+                            "label": "x287",
+                            "value": "11e00"
+                        },
+                        {
+                            "label": "x288",
+                            "value": "11f00"
+                        },
+                        {
+                            "label": "x289",
+                            "value": "12000"
+                        },
+                        {
+                            "label": "x290",
+                            "value": "12100"
+                        },
+                        {
+                            "label": "x291",
+                            "value": "12200"
+                        },
+                        {
+                            "label": "x292",
+                            "value": "12300"
+                        },
+                        {
+                            "label": "x293",
+                            "value": "12400"
+                        },
+                        {
+                            "label": "x294",
+                            "value": "12500"
+                        },
+                        {
+                            "label": "x295",
+                            "value": "12600"
+                        },
+                        {
+                            "label": "x296",
+                            "value": "12700"
+                        },
+                        {
+                            "label": "x297",
+                            "value": "12800"
+                        },
+                        {
+                            "label": "x298",
+                            "value": "12900"
+                        },
+                        {
+                            "label": "x299",
+                            "value": "12a00"
+                        },
+                        {
+                            "label": "x300",
+                            "value": "12b00"
                         }
                     ]
                 }
@@ -1677,7 +2477,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "PL2IDIV",
                     "label": "PLL2 Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -1698,7 +2498,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "PL2SRCSEL",
                     "label": "PLL2 Clock Source Select",
                     "mask": "10",
@@ -1740,174 +2540,1054 @@
                 },
                 {
                     "hidden": false,
-                    "init": "5F00",
+                    "init": "7700",
                     "key": "PLL2MUL",
                     "label": "PLL2 Frequency Multiplication Factor Select",
                     "mask": "1ff00",
                     "settings": [
                         {
-                            "label": "x10.0",
+                            "label": "x40",
                             "value": "2700"
                         },
                         {
-                            "label": "x10.5",
+                            "label": "x41",
                             "value": "2800"
                         },
                         {
-                            "label": "x11.0",
+                            "label": "x42",
                             "value": "2900"
                         },
                         {
-                            "label": "x11.5",
+                            "label": "x43",
                             "value": "2a00"
                         },
                         {
-                            "label": "x12.0",
+                            "label": "x44",
                             "value": "2b00"
                         },
                         {
-                            "label": "x12.5",
+                            "label": "x45",
                             "value": "2c00"
                         },
                         {
-                            "label": "x13.0",
+                            "label": "x46",
                             "value": "2d00"
                         },
                         {
-                            "label": "x13.5",
+                            "label": "x47",
                             "value": "2e00"
                         },
                         {
-                            "label": "x14.0",
+                            "label": "x48",
                             "value": "2f00"
                         },
                         {
-                            "label": "x14.5",
+                            "label": "x49",
                             "value": "3000"
                         },
                         {
-                            "label": "x15.0",
+                            "label": "x50",
                             "value": "3100"
                         },
                         {
-                            "label": "x15.5",
+                            "label": "x51",
                             "value": "3200"
                         },
                         {
-                            "label": "x16.0",
+                            "label": "x52",
                             "value": "3300"
                         },
                         {
-                            "label": "x16.5",
+                            "label": "x53",
                             "value": "3400"
                         },
                         {
-                            "label": "x17.0",
+                            "label": "x54",
                             "value": "3500"
                         },
                         {
-                            "label": "x17.5",
+                            "label": "x55",
                             "value": "3600"
                         },
                         {
-                            "label": "x18.0",
+                            "label": "x56",
                             "value": "3700"
                         },
                         {
-                            "label": "x18.5",
+                            "label": "x57",
                             "value": "3800"
                         },
                         {
-                            "label": "x19.0",
+                            "label": "x58",
                             "value": "3900"
                         },
                         {
-                            "label": "x19.5",
+                            "label": "x59",
                             "value": "3a00"
                         },
                         {
-                            "label": "x20.0",
+                            "label": "x60",
                             "value": "3b00"
                         },
                         {
-                            "label": "x20.5",
+                            "label": "x61",
                             "value": "3c00"
                         },
                         {
-                            "label": "x21.0",
+                            "label": "x62",
                             "value": "3d00"
                         },
                         {
-                            "label": "x21.5",
+                            "label": "x63",
                             "value": "3e00"
                         },
                         {
-                            "label": "x22.0",
+                            "label": "x64",
                             "value": "3f00"
                         },
                         {
-                            "label": "x22.5",
+                            "label": "x65",
                             "value": "4000"
                         },
                         {
-                            "label": "x23.0",
+                            "label": "x66",
                             "value": "4100"
                         },
                         {
-                            "label": "x23.5",
+                            "label": "x67",
                             "value": "4200"
                         },
                         {
-                            "label": "x24.0",
+                            "label": "x68",
                             "value": "4300"
                         },
                         {
-                            "label": "x24.5",
+                            "label": "x69",
                             "value": "4400"
                         },
                         {
-                            "label": "x25.0",
+                            "label": "x70",
                             "value": "4500"
                         },
                         {
-                            "label": "x25.5",
+                            "label": "x71",
                             "value": "4600"
                         },
                         {
-                            "label": "x26.0",
+                            "label": "x72",
                             "value": "4700"
                         },
                         {
-                            "label": "x26.5",
+                            "label": "x73",
                             "value": "4800"
                         },
                         {
-                            "label": "x27.0",
+                            "label": "x74",
                             "value": "4900"
                         },
                         {
-                            "label": "x27.5",
+                            "label": "x75",
                             "value": "4a00"
                         },
                         {
-                            "label": "x28.0",
+                            "label": "x76",
                             "value": "4b00"
                         },
                         {
-                            "label": "x28.5",
+                            "label": "x77",
                             "value": "4c00"
                         },
                         {
-                            "label": "x29.0",
+                            "label": "x78",
                             "value": "4d00"
                         },
                         {
-                            "label": "x29.5",
+                            "label": "x79",
                             "value": "4e00"
                         },
                         {
-                            "label": "x30.0",
+                            "label": "x80",
                             "value": "4f00"
+                        },
+                        {
+                            "label": "x81",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "x82",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "x83",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "x84",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "x85",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "x86",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "x87",
+                            "value": "5600"
+                        },
+                        {
+                            "label": "x88",
+                            "value": "5700"
+                        },
+                        {
+                            "label": "x89",
+                            "value": "5800"
+                        },
+                        {
+                            "label": "x90",
+                            "value": "5900"
+                        },
+                        {
+                            "label": "x91",
+                            "value": "5a00"
+                        },
+                        {
+                            "label": "x92",
+                            "value": "5b00"
+                        },
+                        {
+                            "label": "x93",
+                            "value": "5c00"
+                        },
+                        {
+                            "label": "x94",
+                            "value": "5d00"
+                        },
+                        {
+                            "label": "x95",
+                            "value": "5e00"
+                        },
+                        {
+                            "label": "x96",
+                            "value": "5f00"
+                        },
+                        {
+                            "label": "x97",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "x98",
+                            "value": "6100"
+                        },
+                        {
+                            "label": "x99",
+                            "value": "6200"
+                        },
+                        {
+                            "label": "x100",
+                            "value": "6300"
+                        },
+                        {
+                            "label": "x101",
+                            "value": "6400"
+                        },
+                        {
+                            "label": "x102",
+                            "value": "6500"
+                        },
+                        {
+                            "label": "x103",
+                            "value": "6600"
+                        },
+                        {
+                            "label": "x104",
+                            "value": "6700"
+                        },
+                        {
+                            "label": "x105",
+                            "value": "6800"
+                        },
+                        {
+                            "label": "x106",
+                            "value": "6900"
+                        },
+                        {
+                            "label": "x107",
+                            "value": "6a00"
+                        },
+                        {
+                            "label": "x108",
+                            "value": "6b00"
+                        },
+                        {
+                            "label": "x109",
+                            "value": "6c00"
+                        },
+                        {
+                            "label": "x110",
+                            "value": "6d00"
+                        },
+                        {
+                            "label": "x111",
+                            "value": "6e00"
+                        },
+                        {
+                            "label": "x112",
+                            "value": "6f00"
+                        },
+                        {
+                            "label": "x113",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "x114",
+                            "value": "7100"
+                        },
+                        {
+                            "label": "x115",
+                            "value": "7200"
+                        },
+                        {
+                            "label": "x116",
+                            "value": "7300"
+                        },
+                        {
+                            "label": "x117",
+                            "value": "7400"
+                        },
+                        {
+                            "label": "x118",
+                            "value": "7500"
+                        },
+                        {
+                            "label": "x119",
+                            "value": "7600"
+                        },
+                        {
+                            "label": "x120",
+                            "value": "7700"
+                        },
+                        {
+                            "label": "x121",
+                            "value": "7800"
+                        },
+                        {
+                            "label": "x122",
+                            "value": "7900"
+                        },
+                        {
+                            "label": "x123",
+                            "value": "7a00"
+                        },
+                        {
+                            "label": "x124",
+                            "value": "7b00"
+                        },
+                        {
+                            "label": "x125",
+                            "value": "7c00"
+                        },
+                        {
+                            "label": "x126",
+                            "value": "7d00"
+                        },
+                        {
+                            "label": "x127",
+                            "value": "7e00"
+                        },
+                        {
+                            "label": "x128",
+                            "value": "7f00"
+                        },
+                        {
+                            "label": "x129",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "x130",
+                            "value": "8100"
+                        },
+                        {
+                            "label": "x131",
+                            "value": "8200"
+                        },
+                        {
+                            "label": "x132",
+                            "value": "8300"
+                        },
+                        {
+                            "label": "x133",
+                            "value": "8400"
+                        },
+                        {
+                            "label": "x134",
+                            "value": "8500"
+                        },
+                        {
+                            "label": "x135",
+                            "value": "8600"
+                        },
+                        {
+                            "label": "x136",
+                            "value": "8700"
+                        },
+                        {
+                            "label": "x137",
+                            "value": "8800"
+                        },
+                        {
+                            "label": "x138",
+                            "value": "8900"
+                        },
+                        {
+                            "label": "x139",
+                            "value": "8a00"
+                        },
+                        {
+                            "label": "x140",
+                            "value": "8b00"
+                        },
+                        {
+                            "label": "x141",
+                            "value": "8c00"
+                        },
+                        {
+                            "label": "x142",
+                            "value": "8d00"
+                        },
+                        {
+                            "label": "x143",
+                            "value": "8e00"
+                        },
+                        {
+                            "label": "x144",
+                            "value": "8f00"
+                        },
+                        {
+                            "label": "x145",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "x146",
+                            "value": "9100"
+                        },
+                        {
+                            "label": "x147",
+                            "value": "9200"
+                        },
+                        {
+                            "label": "x148",
+                            "value": "9300"
+                        },
+                        {
+                            "label": "x149",
+                            "value": "9400"
+                        },
+                        {
+                            "label": "x150",
+                            "value": "9500"
+                        },
+                        {
+                            "label": "x151",
+                            "value": "9600"
+                        },
+                        {
+                            "label": "x152",
+                            "value": "9700"
+                        },
+                        {
+                            "label": "x153",
+                            "value": "9800"
+                        },
+                        {
+                            "label": "x154",
+                            "value": "9900"
+                        },
+                        {
+                            "label": "x155",
+                            "value": "9a00"
+                        },
+                        {
+                            "label": "x156",
+                            "value": "9b00"
+                        },
+                        {
+                            "label": "x157",
+                            "value": "9c00"
+                        },
+                        {
+                            "label": "x158",
+                            "value": "9d00"
+                        },
+                        {
+                            "label": "x159",
+                            "value": "9e00"
+                        },
+                        {
+                            "label": "x160",
+                            "value": "9f00"
+                        },
+                        {
+                            "label": "x161",
+                            "value": "a000"
+                        },
+                        {
+                            "label": "x162",
+                            "value": "a100"
+                        },
+                        {
+                            "label": "x163",
+                            "value": "a200"
+                        },
+                        {
+                            "label": "x164",
+                            "value": "a300"
+                        },
+                        {
+                            "label": "x165",
+                            "value": "a400"
+                        },
+                        {
+                            "label": "x166",
+                            "value": "a500"
+                        },
+                        {
+                            "label": "x167",
+                            "value": "a600"
+                        },
+                        {
+                            "label": "x168",
+                            "value": "a700"
+                        },
+                        {
+                            "label": "x169",
+                            "value": "a800"
+                        },
+                        {
+                            "label": "x170",
+                            "value": "a900"
+                        },
+                        {
+                            "label": "x171",
+                            "value": "aa00"
+                        },
+                        {
+                            "label": "x172",
+                            "value": "ab00"
+                        },
+                        {
+                            "label": "x173",
+                            "value": "ac00"
+                        },
+                        {
+                            "label": "x174",
+                            "value": "ad00"
+                        },
+                        {
+                            "label": "x175",
+                            "value": "ae00"
+                        },
+                        {
+                            "label": "x176",
+                            "value": "af00"
+                        },
+                        {
+                            "label": "x177",
+                            "value": "b000"
+                        },
+                        {
+                            "label": "x178",
+                            "value": "b100"
+                        },
+                        {
+                            "label": "x179",
+                            "value": "b200"
+                        },
+                        {
+                            "label": "x180",
+                            "value": "b300"
+                        },
+                        {
+                            "label": "x181",
+                            "value": "b400"
+                        },
+                        {
+                            "label": "x182",
+                            "value": "b500"
+                        },
+                        {
+                            "label": "x183",
+                            "value": "b600"
+                        },
+                        {
+                            "label": "x184",
+                            "value": "b700"
+                        },
+                        {
+                            "label": "x185",
+                            "value": "b800"
+                        },
+                        {
+                            "label": "x186",
+                            "value": "b900"
+                        },
+                        {
+                            "label": "x187",
+                            "value": "ba00"
+                        },
+                        {
+                            "label": "x188",
+                            "value": "bb00"
+                        },
+                        {
+                            "label": "x189",
+                            "value": "bc00"
+                        },
+                        {
+                            "label": "x190",
+                            "value": "bd00"
+                        },
+                        {
+                            "label": "x191",
+                            "value": "be00"
+                        },
+                        {
+                            "label": "x192",
+                            "value": "bf00"
+                        },
+                        {
+                            "label": "x193",
+                            "value": "c000"
+                        },
+                        {
+                            "label": "x194",
+                            "value": "c100"
+                        },
+                        {
+                            "label": "x195",
+                            "value": "c200"
+                        },
+                        {
+                            "label": "x196",
+                            "value": "c300"
+                        },
+                        {
+                            "label": "x197",
+                            "value": "c400"
+                        },
+                        {
+                            "label": "x198",
+                            "value": "c500"
+                        },
+                        {
+                            "label": "x199",
+                            "value": "c600"
+                        },
+                        {
+                            "label": "x200",
+                            "value": "c700"
+                        },
+                        {
+                            "label": "x201",
+                            "value": "c800"
+                        },
+                        {
+                            "label": "x202",
+                            "value": "c900"
+                        },
+                        {
+                            "label": "x203",
+                            "value": "ca00"
+                        },
+                        {
+                            "label": "x204",
+                            "value": "cb00"
+                        },
+                        {
+                            "label": "x205",
+                            "value": "cc00"
+                        },
+                        {
+                            "label": "x206",
+                            "value": "cd00"
+                        },
+                        {
+                            "label": "x207",
+                            "value": "ce00"
+                        },
+                        {
+                            "label": "x208",
+                            "value": "cf00"
+                        },
+                        {
+                            "label": "x209",
+                            "value": "d000"
+                        },
+                        {
+                            "label": "x210",
+                            "value": "d100"
+                        },
+                        {
+                            "label": "x211",
+                            "value": "d200"
+                        },
+                        {
+                            "label": "x212",
+                            "value": "d300"
+                        },
+                        {
+                            "label": "x213",
+                            "value": "d400"
+                        },
+                        {
+                            "label": "x214",
+                            "value": "d500"
+                        },
+                        {
+                            "label": "x215",
+                            "value": "d600"
+                        },
+                        {
+                            "label": "x216",
+                            "value": "d700"
+                        },
+                        {
+                            "label": "x217",
+                            "value": "d800"
+                        },
+                        {
+                            "label": "x218",
+                            "value": "d900"
+                        },
+                        {
+                            "label": "x219",
+                            "value": "da00"
+                        },
+                        {
+                            "label": "x220",
+                            "value": "db00"
+                        },
+                        {
+                            "label": "x221",
+                            "value": "dc00"
+                        },
+                        {
+                            "label": "x222",
+                            "value": "dd00"
+                        },
+                        {
+                            "label": "x223",
+                            "value": "de00"
+                        },
+                        {
+                            "label": "x224",
+                            "value": "df00"
+                        },
+                        {
+                            "label": "x225",
+                            "value": "e000"
+                        },
+                        {
+                            "label": "x226",
+                            "value": "e100"
+                        },
+                        {
+                            "label": "x227",
+                            "value": "e200"
+                        },
+                        {
+                            "label": "x228",
+                            "value": "e300"
+                        },
+                        {
+                            "label": "x229",
+                            "value": "e400"
+                        },
+                        {
+                            "label": "x230",
+                            "value": "e500"
+                        },
+                        {
+                            "label": "x231",
+                            "value": "e600"
+                        },
+                        {
+                            "label": "x232",
+                            "value": "e700"
+                        },
+                        {
+                            "label": "x233",
+                            "value": "e800"
+                        },
+                        {
+                            "label": "x234",
+                            "value": "e900"
+                        },
+                        {
+                            "label": "x235",
+                            "value": "ea00"
+                        },
+                        {
+                            "label": "x236",
+                            "value": "eb00"
+                        },
+                        {
+                            "label": "x237",
+                            "value": "ec00"
+                        },
+                        {
+                            "label": "x238",
+                            "value": "ed00"
+                        },
+                        {
+                            "label": "x239",
+                            "value": "ee00"
+                        },
+                        {
+                            "label": "x240",
+                            "value": "ef00"
+                        },
+                        {
+                            "label": "x241",
+                            "value": "f000"
+                        },
+                        {
+                            "label": "x242",
+                            "value": "f100"
+                        },
+                        {
+                            "label": "x243",
+                            "value": "f200"
+                        },
+                        {
+                            "label": "x244",
+                            "value": "f300"
+                        },
+                        {
+                            "label": "x245",
+                            "value": "f400"
+                        },
+                        {
+                            "label": "x246",
+                            "value": "f500"
+                        },
+                        {
+                            "label": "x247",
+                            "value": "f600"
+                        },
+                        {
+                            "label": "x248",
+                            "value": "f700"
+                        },
+                        {
+                            "label": "x249",
+                            "value": "f800"
+                        },
+                        {
+                            "label": "x250",
+                            "value": "f900"
+                        },
+                        {
+                            "label": "x251",
+                            "value": "fa00"
+                        },
+                        {
+                            "label": "x252",
+                            "value": "fb00"
+                        },
+                        {
+                            "label": "x253",
+                            "value": "fc00"
+                        },
+                        {
+                            "label": "x254",
+                            "value": "fd00"
+                        },
+                        {
+                            "label": "x255",
+                            "value": "fe00"
+                        },
+                        {
+                            "label": "x256",
+                            "value": "ff00"
+                        },
+                        {
+                            "label": "x257",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "x258",
+                            "value": "10100"
+                        },
+                        {
+                            "label": "x259",
+                            "value": "10200"
+                        },
+                        {
+                            "label": "x260",
+                            "value": "10300"
+                        },
+                        {
+                            "label": "x261",
+                            "value": "10400"
+                        },
+                        {
+                            "label": "x262",
+                            "value": "10500"
+                        },
+                        {
+                            "label": "x263",
+                            "value": "10600"
+                        },
+                        {
+                            "label": "x264",
+                            "value": "10700"
+                        },
+                        {
+                            "label": "x265",
+                            "value": "10800"
+                        },
+                        {
+                            "label": "x266",
+                            "value": "10900"
+                        },
+                        {
+                            "label": "x267",
+                            "value": "10a00"
+                        },
+                        {
+                            "label": "x268",
+                            "value": "10b00"
+                        },
+                        {
+                            "label": "x269",
+                            "value": "10c00"
+                        },
+                        {
+                            "label": "x270",
+                            "value": "10d00"
+                        },
+                        {
+                            "label": "x271",
+                            "value": "10e00"
+                        },
+                        {
+                            "label": "x272",
+                            "value": "10f00"
+                        },
+                        {
+                            "label": "x273",
+                            "value": "11000"
+                        },
+                        {
+                            "label": "x274",
+                            "value": "11100"
+                        },
+                        {
+                            "label": "x275",
+                            "value": "11200"
+                        },
+                        {
+                            "label": "x276",
+                            "value": "11300"
+                        },
+                        {
+                            "label": "x277",
+                            "value": "11400"
+                        },
+                        {
+                            "label": "x278",
+                            "value": "11500"
+                        },
+                        {
+                            "label": "x279",
+                            "value": "11600"
+                        },
+                        {
+                            "label": "x280",
+                            "value": "11700"
+                        },
+                        {
+                            "label": "x281",
+                            "value": "11800"
+                        },
+                        {
+                            "label": "x282",
+                            "value": "11900"
+                        },
+                        {
+                            "label": "x283",
+                            "value": "11a00"
+                        },
+                        {
+                            "label": "x284",
+                            "value": "11b00"
+                        },
+                        {
+                            "label": "x285",
+                            "value": "11c00"
+                        },
+                        {
+                            "label": "x286",
+                            "value": "11d00"
+                        },
+                        {
+                            "label": "x287",
+                            "value": "11e00"
+                        },
+                        {
+                            "label": "x288",
+                            "value": "11f00"
+                        },
+                        {
+                            "label": "x289",
+                            "value": "12000"
+                        },
+                        {
+                            "label": "x290",
+                            "value": "12100"
+                        },
+                        {
+                            "label": "x291",
+                            "value": "12200"
+                        },
+                        {
+                            "label": "x292",
+                            "value": "12300"
+                        },
+                        {
+                            "label": "x293",
+                            "value": "12400"
+                        },
+                        {
+                            "label": "x294",
+                            "value": "12500"
+                        },
+                        {
+                            "label": "x295",
+                            "value": "12600"
+                        },
+                        {
+                            "label": "x296",
+                            "value": "12700"
+                        },
+                        {
+                            "label": "x297",
+                            "value": "12800"
+                        },
+                        {
+                            "label": "x298",
+                            "value": "12900"
+                        },
+                        {
+                            "label": "x299",
+                            "value": "12a00"
+                        },
+                        {
+                            "label": "x300",
+                            "value": "12b00"
                         }
                     ]
                 }
@@ -1946,7 +3626,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "3",
+                    "init": "a",
                     "key": "MODRV0",
                     "label": "Main Clock Oscillator Drive Capability 0 Switching",
                     "mask": "e",
@@ -2065,5 +3745,5 @@
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
     "mcu": "R7JA8M2JRLSAJ",
-    "clock": "480"
+    "clock": "960"
 }
