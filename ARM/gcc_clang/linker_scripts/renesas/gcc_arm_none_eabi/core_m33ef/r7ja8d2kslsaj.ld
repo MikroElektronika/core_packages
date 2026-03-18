@@ -4,7 +4,7 @@
   FLASH_START = 0x02000000;
   FLASH_LENGTH = 0x00100000;
   SIP_FLASH_START = 0x08000000;
-  SIP_FLASH_LENGTH = 0x00400000;
+  SIP_FLASH_LENGTH = 0x00800000;
   DATA_FLASH_START = 0x27000000;
   DATA_FLASH_LENGTH = 0x00000000;
   SDRAM_START = 0x68000000;
@@ -331,14 +331,14 @@ SECTIONS
   *(.sip_flash_noinit)
       __sip_flash_noinit$$Limit = . ;
   }  > SIP_FLASH
-  .sip_flash.endof ALIGN(.,32768) (READONLY) : 
+  .sip_flash.endof ALIGN(.,512) (READONLY) : 
   {
        __ddsc_SIP_FLASH_END = . ;
       
   }  > SIP_FLASH
-  .sip_flash.flat_nsc ALIGN(.,32768) (READONLY) : 
+  .sip_flash.flat_nsc ALIGN(.,512) (READONLY) : 
   {
-       __sau_ddsc_SIP_FLASH_NSC = . ;
+       __ddsc_SIP_FLASH_NSC = . ;
       
   }  > SIP_FLASH
 
@@ -430,7 +430,7 @@ SECTIONS
   *(.data_flash_noinit)
       __data_flash_noinit$$Limit = . ;
   }  > DATA_FLASH
-  .data_flash.endof ALIGN(.,1024) (READONLY) : 
+  .data_flash.endof ALIGN(.,512) (READONLY) : 
   {
        __ddsc_DATA_FLASH_END = . ;
       
@@ -590,7 +590,7 @@ SECTIONS
   *(.ctcm)
       __ctcm_zero$$Limit = . ;
   }  > CTCM
-  .ctcm.endof ALIGN(.,8192) : 
+  .ctcm.endof ALIGN(.,512) : 
   {
        __ddsc_CTCM_END = . ;
       
@@ -623,7 +623,7 @@ SECTIONS
   *(.stcm)
       __stcm_zero$$Limit = . ;
   }  > STCM
-  .stcm.endof ALIGN(.,8192) : 
+  .stcm.endof ALIGN(.,512) : 
   {
        __ddsc_STCM_END = . ;
       
@@ -686,14 +686,14 @@ SECTIONS
   KEEP(*(.stack?*))
       __ram_thread_stack$$Limit = . ;
   }  > RAM
-  .ram.endof ALIGN(.,8192) : 
+  .ram.endof ALIGN(.,512) : 
   {
        __ddsc_RAM_END = . ;
       
   }  > RAM
-  .ram.flat_nsc ALIGN(.,8192) : 
+  .ram.flat_nsc ALIGN(.,512) : 
   {
-       __sau_ddsc_RAM_NSC = . ;
+       __ddsc_RAM_NSC = . ;
       
   }  > RAM
 
@@ -768,14 +768,14 @@ SECTIONS
   *(.gnu.linkonce.armexidx.*)
        __exidx_end = . ;
   }  > FLASH
-  .flash.endof ALIGN(.,32768) (READONLY) : 
+  .flash.endof ALIGN(.,512) (READONLY) : 
   {
        __ddsc_FLASH_END = . ;
       
   }  > FLASH
-  .flash.flat_nsc ALIGN(.,32768) (READONLY) : 
+  .flash.flat_nsc ALIGN(.,512) (READONLY) : 
   {
-       __sau_ddsc_FLASH_NSC = . ;
+       __ddsc_FLASH_NSC = . ;
       
   }  > FLASH
 

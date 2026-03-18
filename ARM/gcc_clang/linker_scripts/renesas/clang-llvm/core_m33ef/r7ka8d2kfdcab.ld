@@ -461,7 +461,7 @@ SECTIONS
   *(.data_flash_noinit)
       __data_flash_noinit$$Limit = . ;
   }  > DATA_FLASH
-  .data_flash.endof ALIGN(.,1024) : 
+  .data_flash.endof ALIGN(.,512) : 
   {
        __ddsc_DATA_FLASH_END = . ;
       
@@ -669,7 +669,7 @@ SECTIONS
   *(.ctcm)
       __ctcm_zero$$Limit = . ;
   }  > CTCM
-  .ctcm.endof ALIGN(.,8192) : 
+  .ctcm.endof ALIGN(.,512) : 
   {
        __ddsc_CTCM_END = . ;
       
@@ -702,7 +702,7 @@ SECTIONS
   *(.stcm)
       __stcm_zero$$Limit = . ;
   }  > STCM
-  .stcm.endof ALIGN(.,8192) : 
+  .stcm.endof ALIGN(.,512) : 
   {
        __ddsc_STCM_END = . ;
       
@@ -784,14 +784,14 @@ SECTIONS
   KEEP(*(.stack?*))
       __ram_thread_stack$$Limit = . ;
   }  > RAM
-  .ram.endof ALIGN(.,8192) : 
+  .ram.endof ALIGN(.,512) : 
   {
        __ddsc_RAM_END = . ;
       
   }  > RAM
-  .ram.flat_nsc ALIGN(.,8192) : 
+  .ram.flat_nsc ALIGN(.,512) : 
   {
-       __sau_ddsc_RAM_NSC = . ;
+       __ddsc_RAM_NSC = . ;
       
   }  > RAM
 
@@ -866,14 +866,14 @@ SECTIONS
        __exidx_start = . ;
        __exidx_end = . ;
   }  > FLASH
-  .flash.endof ALIGN(.,32768) : 
+  .flash.endof ALIGN(.,512) : 
   {
        __ddsc_FLASH_END = . ;
       
   }  > FLASH
-  .flash.flat_nsc ALIGN(.,32768) : 
+  .flash.flat_nsc ALIGN(.,512) : 
   {
-       __sau_ddsc_FLASH_NSC = . ;
+       __ddsc_FLASH_NSC = . ;
       
   }  > FLASH
 
