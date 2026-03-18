@@ -650,6 +650,7 @@ const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENT
 #define BSP_CFG_OPTION_SETTING_OFS1_SEL  (0)
 #endif
 
+#ifdef CORE_CM85
 #if defined BSP_CFG_OPTION_SETTING_OFS0 && !BSP_TZ_NONSECURE_BUILD
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_ofs0")\
         g_bsp_cfg_option_setting_ofs0[] = {BSP_CFG_OPTION_SETTING_OFS0};
@@ -729,6 +730,7 @@ BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_data
 #if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_SAMR && !BSP_TZ_NONSECURE_BUILD
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_data_flash_samr")\
         g_bsp_cfg_option_setting_data_flash_samr[] = {BSP_CFG_OPTION_SETTING_DATA_FLASH_SAMR};
+#endif
 #endif
 
 // -----------------------------------------------------------------------------------------
@@ -936,6 +938,7 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
  */
 void SystemInit(void)
 {
+    #ifdef CORE_CM85
     /* Enable the instruction cache, branch prediction, and the branch cache
      * (required for Low Overhead Branch (LOB) extension). See sections 6.5, 6.6
      * and 6.7 in the Arm Cortex-M85 Processor Technical Reference Manual
@@ -969,25 +972,16 @@ void SystemInit(void)
         __DSB();
         __ISB();
     }
+    #endif
 
     // Set-up FPU settings
     SCB->CPACR |= (0xF << 20);
     SCB->VTOR = (uint32_t) &__Vectors;
 
-    // BSP clock init start
-    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
-
-    /* Enable the flash cache and don't disable it while running from flash.
-     * On these MCUs, the flash cache does not need to be disabled when
-     * adjusting the operating power mode. */
-    R_FCACHE->FCACHEIV = 1U;
-    FSP_HARDWARE_REGISTER_WAIT(R_FCACHE->FCACHEIV, 0U);
-
-    // Enable flash cache
-    R_FCACHE->FCACHEE = 1U;
-
-    // Clock setting
+    #ifdef CORE_CM85
+    // Clock setting - initialize only once for primary core
     system_clock_configuration();
+    #endif
 
     memset(
         &__ram_zero$$Base,
@@ -1026,8 +1020,6 @@ static void system_clock_configuration() {
     // Unlock write protection register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
 
-    R_SYSTEM->OPCCR = VALUE_SYSTEM_OPCCR;
-
     if ( !( VALUE_SYSTEM_MOSCCR & R_SYSTEM_MOSCCR_MOSTP_Msk ) ) {
         // Main oscillator selected
         R_SYSTEM->MOSCCR_b.MOSTP = 1; // Stop XTAL
@@ -1048,18 +1040,17 @@ static void system_clock_configuration() {
 
     if ( !( VALUE_SYSTEM_HOCOCR & R_SYSTEM_HOCOCR_HCSTP_Msk ) ) {
         if ( HOCO_FREQUENCY_MHZ_20 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) {
-            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x263;
+            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x262;
         } else if ( HOCO_FREQUENCY_MHZ_18 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) {
-            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x226;
+            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x225;
         } else if (( HOCO_FREQUENCY_MHZ_16 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) ||
             ( HOCO_FREQUENCY_MHZ_32 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 )) ||
             ( HOCO_FREQUENCY_MHZ_48 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) )) {
-            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x1E9;
+            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x1E8;
         }
 
         R_SYSTEM->FLLCR1_b.FLLEN = 0x1;
 
-        R_SYSTEM->HOCOCR2 = VALUE_SYSTEM_HOCOCR2;
         R_SYSTEM->HOCOCR_b.HCSTP = 0; // Start HOCO
 
         while ( !( R_SYSTEM->OSCSF_b.HOCOSF ) ) {
@@ -1096,19 +1087,6 @@ static void system_clock_configuration() {
     R_SYSTEM->LOCOCR = VALUE_SYSTEM_LOCOCR;
 
     R_SYSTEM->MOCOCR = VALUE_SYSTEM_MOCOCR;
-
-    if ( 240000 < FOSC_KHZ_VALUE )
-        R_FCACHE->FLWT = 5; // 5 waits
-    else if ( 192000 < FOSC_KHZ_VALUE )
-        R_FCACHE->FLWT = 4; // 4 waits
-    else if ( 144000 < FOSC_KHZ_VALUE )
-        R_FCACHE->FLWT = 3; // 3 waits
-    else if ( 96000 < FOSC_KHZ_VALUE )
-        R_FCACHE->FLWT = 2; // 2 waits
-    else if ( 48000 < FOSC_KHZ_VALUE )
-        R_FCACHE->FLWT = 1; // 1 wait
-    else
-        R_FCACHE->FLWT = 0; // 0 waits
 
     R_SYSTEM->SCKDIVCR = VALUE_SYSTEM_SCKDIVCR;
 
