@@ -46,16 +46,18 @@ extern void * __Vectors[];
 
 typedef struct
 {
-    uint32_t CPUCLK_Frequency;  // CPU clock frequency in Hz
-    uint32_t ICLK_Frequency;    // System clock frequency in Hz
-    uint32_t PCLKA_Frequency;   // PCLKA clock frequency in Hz
-    uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
-    uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
-    uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
-    uint32_t PCLKE_Frequency;   // PCLKE clock frequency in Hz
-    uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
-    uint32_t SPICLK_Frequency;  // SPI clock frequency in Hz
-    uint32_t SCICLK_Frequency;  // SCI clock frequency in Hz
+    uint32_t CPU0CLK_Frequency;  // CPU0 clock frequency in Hz
+    uint32_t CPU1CLK_Frequency;  // CPU1 clock frequency in Hz
+    uint32_t MRICLK_Frequency;   // MRAM bus clock frequency in Hz
+    uint32_t MRPCLK_Frequency;   // MRAM clock frequency in Hz
+    uint32_t ICLK_Frequency;     // System clock frequency in Hz
+    uint32_t PCLKA_Frequency;    // PCLKA clock frequency in Hz
+    uint32_t PCLKB_Frequency;    // PCLKB clock frequency in Hz
+    uint32_t PCLKC_Frequency;    // PCLKC clock frequency in Hz
+    uint32_t PCLKD_Frequency;    // PCLKD clock frequency in Hz
+    uint32_t PCLKE_Frequency;    // PCLKE clock frequency in Hz
+    uint32_t SPICLK_Frequency;   // SPI clock frequency in Hz
+    uint32_t SCICLK_Frequency;   // SCI clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
@@ -79,15 +81,22 @@ static uint8_t SCI_SPI_CLK_PrescTable[] = {1, 2, 4, 6, 8, 3, 5};
 #define HOCO_FREQUENCY_MHZ_32   (4)
 #define HOCO_FREQUENCY_MHZ_48   (7)
 #define FREQUENCY_32768HZ       (32768)
+#define BSP_PRV_HZ_PER_MHZ      (1000000)
 #define FREQUENCY_8MHZ          (8000000)
 #define FREQUENCY_16MHZ         (16000000)
 #define FREQUENCY_18MHZ         (18000000)
 #define FREQUENCY_20MHZ         (20000000)
 #define FREQUENCY_32MHZ         (32000000)
 #define FREQUENCY_48MHZ         (48000000)
+#define FREQUENCY_100MHZ        (100000000)
 #define PLLMULNF_HALF           (0xC0)
 #define PLLMULNF_TWO_THIRDS     (0x80)
 #define PLLMULNF_ONE_THIRD      (0x40)
+#define BSP_PRV_MRCPFB_LIMIT    (0x65)
+
+/* Key codes for MRAM registers. */
+#define BSP_PRV_MRCFREQ_KEY     (0x1E000000)
+#define BSP_PRV_MREFREQ_KEY     (0xE1000000)
 
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
@@ -96,12 +105,22 @@ static uint8_t SCI_SPI_CLK_PrescTable[] = {1, 2, 4, 6, 8, 3, 5};
 #define BSP_PRV_STACK_LIMIT                           ((uint32_t) __Vectors[0] - BSP_CFG_STACK_MAIN_BYTES)
 #define BSP_PRV_STACK_TOP                             ((uint32_t) __Vectors[0])
 
+/* Key code for writing to SRAM registers. */
+#define BSP_PRV_SRAM_UNLOCK                     (0xA500U | 0x1U)
+#define BSP_PRV_SRAM_LOCK                       (0xA500U | 0x0U)
+
 #define BSP_PRV_PRCR_UNLOCK                     ((BSP_PRV_PRCR_KEY) | 0x3U)
 #define BSP_PRV_PRCR_LOCK                       ((BSP_PRV_PRCR_KEY) | 0x0U)
 
 #define BSP_STACK_POINTER_MONITOR_NMI_ON_DETECTION    (0xA500U)
 #define BSP_CFG_STACK_MAIN_BYTES                      (0x400)
 #define CCR_CACHE_ENABLE                              (0x000E0201)
+
+/* Dual core helper macros */
+#define BSP_PARTITION_FLASH_CPU1_S_START              (0x02080000)
+#define BSP_CPU1ACTCSR_KEY_CODE                       (0xA5)
+#define R_CPU_CTRL_CPU1ACTCSR_KEY_Pos                 (8UL)
+#define R_CPU_CTRL_CPU1ACTCSR_ACTREQ_Msk              (0x1UL)
 
 extern uint32_t __ram_from_flash$$Load;
 extern uint32_t __ram_from_flash$$Base;
@@ -668,15 +687,15 @@ const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENT
 #endif
 
 #ifdef CORE_CM85
-#if defined BSP_CFG_OPTION_SETTING_OFS0 && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_OFS0
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_ofs0")\
         g_bsp_cfg_option_setting_ofs0[] = {BSP_CFG_OPTION_SETTING_OFS0};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_OFS2 && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_OFS2
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_ofs2")\
         g_bsp_cfg_option_setting_ofs2[] = {BSP_CFG_OPTION_SETTING_OFS2};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_DUALSEL && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_DUALSEL
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_dualsel")\
         g_bsp_cfg_option_setting_dualsel[] = {BSP_CFG_OPTION_SETTING_DUALSEL};
 #endif
@@ -696,55 +715,55 @@ BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_bps"
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_pbps")\
         g_bsp_cfg_option_setting_pbps[] = {BSP_CFG_OPTION_SETTING_PBPS};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_OFS1_SEC && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_OFS1_SEC
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_ofs1_sec")\
         g_bsp_cfg_option_setting_ofs1_sec[] = {BSP_CFG_OPTION_SETTING_OFS1_SEC};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_BANKSEL_SEC && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_BANKSEL_SEC
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_banksel_sec")\
         g_bsp_cfg_option_setting_banksel_sec[] = {BSP_CFG_OPTION_SETTING_BANKSEL_SEC};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_BPS_SEC && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_BPS_SEC
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_bps_sec")\
         g_bsp_cfg_option_setting_bps_sec[] = {BSP_CFG_OPTION_SETTING_BPS_SEC};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_PBPS_SEC && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_PBPS_SEC
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_pbps_sec")\
         g_bsp_cfg_option_setting_pbps_sec[] = {BSP_CFG_OPTION_SETTING_PBPS_SEC};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_OFS1_SEL && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_OFS1_SEL
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_ofs1_sel")\
         g_bsp_cfg_option_setting_ofs1_sel[] = {BSP_CFG_OPTION_SETTING_OFS1_SEL};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_BANKSEL_SEL && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_BANKSEL_SEL
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_banksel_sel")\
         g_bsp_cfg_option_setting_banksel_sel[] = {BSP_CFG_OPTION_SETTING_BANKSEL_SEL};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_BPS_SEL && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_BPS_SEL
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_bps_sel")\
         g_bsp_cfg_option_setting_bps_sel[] = {BSP_CFG_OPTION_SETTING_BPS_SEL};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL0 && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL0
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_data_flash_fsblctrl0")\
         g_bsp_cfg_option_setting_data_flash_fsblctrl0[] = {BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL0};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL1 && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL1
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_data_flash_fsblctrl1")\
         g_bsp_cfg_option_setting_data_flash_fsblctrl1[] = {BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL1};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL2 && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL2
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_data_flash_fsblctrl2")\
         g_bsp_cfg_option_setting_data_flash_fsblctrl2[] = {BSP_CFG_OPTION_SETTING_DATA_FLASH_FSBLCTRL2};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_SACC0 && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_SACC0
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_data_flash_sacc0")\
         g_bsp_cfg_option_setting_data_flash_sacc0[] = {BSP_CFG_OPTION_SETTING_DATA_FLASH_SACC0};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_SACC1 && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_SACC1
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_data_flash_sacc1")\
         g_bsp_cfg_option_setting_data_flash_sacc1[] = {BSP_CFG_OPTION_SETTING_DATA_FLASH_SACC1};
 #endif
-#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_SAMR && !BSP_TZ_NONSECURE_BUILD
+#if defined BSP_CFG_OPTION_SETTING_DATA_FLASH_SAMR
 BSP_DONT_REMOVE static const uint32_t BSP_PLACE_IN_SECTION(".option_setting_data_flash_samr")\
         g_bsp_cfg_option_setting_data_flash_samr[] = {BSP_CFG_OPTION_SETTING_DATA_FLASH_SAMR};
 #endif
@@ -896,16 +915,24 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     uint32_t source_clock;
     uint8_t prescaler;
 
-    // Get the frequency of CPU clock.
-    SYSTEM_Clocks->CPUCLK_Frequency = FOSC_KHZ_VALUE * 1000;
+    // Get the frequency of CPU0 clock.
+    SYSTEM_Clocks->CPU0CLK_Frequency = FOSC_KHZ_VALUE * 1000;
 
     // Get the source frequency for all clocks.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR2 & 0xF ) ];
-    source_clock = SYSTEM_Clocks->CPUCLK_Frequency * prescaler;
+    source_clock = SYSTEM_Clocks->CPU0CLK_Frequency * prescaler;
 
-    // Get FCLK clock frequency.
+    // Get CPU1 clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR2 & 0xF0 ) >> 4 ];
+    SYSTEM_Clocks->CPU1CLK_Frequency = source_clock / prescaler;
+
+    // Get MRICLK clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000 ) >> 28 ];
+    SYSTEM_Clocks->MRICLK_Frequency = source_clock / prescaler;
+
+    // Get MRPCLK clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF0000000 ) >> 28 ];
-    SYSTEM_Clocks->FCLK_Frequency = source_clock / prescaler;
+    SYSTEM_Clocks->MRPCLK_Frequency = source_clock / prescaler;
 
     // Get the frequency of system clock.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000000 ) >> 24 ];
@@ -993,12 +1020,10 @@ void SystemInit(void)
 
     // Set-up FPU settings
     SCB->CPACR |= (0xF << 20);
+    // Setup vector table
     SCB->VTOR = (uint32_t) &__Vectors;
 
-    #ifdef CORE_CM85
-    // Clock setting - initialize only once for primary core
     system_clock_configuration();
-    #endif
 
     memset(
         &__ram_zero$$Base,
@@ -1029,13 +1054,76 @@ void SystemInit(void)
             R_ICU->IELSR[i] = (uint32_t) g_interrupt_event_link_select[i];
         }
     }
+
+    #ifdef CORE_CM85
+    // Setup secondary CPU vector table.
+    R_CPU_CTRL->CPU1INITVTOR = (uint32_t) BSP_PARTITION_FLASH_CPU1_S_START;
+
+    /*
+     * When debugging multicore projects, CPU1 may already be activated by the debugger
+     * with CPU1WAITCR set to 1. This allows the debugger to connect to CPU1 prior
+     * to it being started by CPU0. If this is the case, then the secondary core must
+     * be started by clearing CPU1WAITCR.
+     */
+    R_CPU_CTRL->CPU1WAITCR = 0;
+
+    // Activate secondary CPU by setting key code and activation request in CPU1ACTCSR
+    R_CPU_CTRL->CPU1ACTCSR = (BSP_CPU1ACTCSR_KEY_CODE << R_CPU_CTRL_CPU1ACTCSR_KEY_Pos) |
+                                R_CPU_CTRL_CPU1ACTCSR_ACTREQ_Msk;
+    #endif
 }
 
 // -----------------------------------------------------------------------------------------
 
+void bsp_prv_set_wait_state_frequency( SYSTEM_ClocksTypeDef system_clocks )
+{
+    uint32_t freq_mhz;
+
+    // Set Code MRAM wait states
+    if ( system_clocks.MRICLK_Frequency <= FREQUENCY_32768HZ )
+    {
+        // When under the minimum set MRCFREQ to 0
+        freq_mhz = 0;
+    }
+    else
+    {
+        // Round up the result when converting to MHz
+        freq_mhz = ( system_clocks.MRICLK_Frequency + BSP_PRV_HZ_PER_MHZ - 1 ) / BSP_PRV_HZ_PER_MHZ;
+    }
+
+    // Write MRCFREQ
+    while ( freq_mhz != R_MRMS->MRCFREQ )
+    {
+        R_MRMS->MRCFREQ = BSP_PRV_MRCFREQ_KEY | freq_mhz;
+    }
+
+    // Set Extra MRAM wait states
+    if ( system_clocks.MRPCLK_Frequency <= FREQUENCY_32768HZ )
+    {
+        // When under the minimum set MREFREQ to 0
+        freq_mhz = 0;
+    }
+    else
+    {
+        // Round up the result when converting to MHz
+        freq_mhz = ( system_clocks.MRPCLK_Frequency + BSP_PRV_HZ_PER_MHZ - 1 ) / BSP_PRV_HZ_PER_MHZ;
+    }
+
+    /* Write MREFREQ */
+    while ( freq_mhz != R_MRMS->MREFREQ )
+    {
+        R_MRMS->MREFREQ = BSP_PRV_MREFREQ_KEY | freq_mhz;
+    }
+}
+
 static void system_clock_configuration() {
+    // Clock setting - initialize only once for primary core
+    #ifdef CORE_CM85
     // Unlock write protection register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
+
+    SYSTEM_ClocksTypeDef system_clocks;
+    SYSTEM_GetClocksFrequency( &system_clocks );
 
     if ( !( VALUE_SYSTEM_MOSCCR & R_SYSTEM_MOSCCR_MOSTP_Msk ) ) {
         // Main oscillator selected
@@ -1049,36 +1137,65 @@ static void system_clock_configuration() {
         }
     }
 
+    R_SYSTEM->LOCOCR = VALUE_SYSTEM_LOCOCR;
+
+    R_SYSTEM->MOCOCR = VALUE_SYSTEM_MOCOCR;
+
     if ( !( VALUE_SYSTEM_SOSCCR & R_SYSTEM_SOSCCR_SOSTP_Msk ) ) {
         R_SYSTEM->SOSCCR_b.SOSTP = 1; // Stop SOSC
         R_SYSTEM->SOMCR = VALUE_SYSTEM_SOMCR;
         R_SYSTEM->SOSCCR_b.SOSTP = 0; // Start SOSC
     }
 
-    if ( !( VALUE_SYSTEM_HOCOCR & R_SYSTEM_HOCOCR_HCSTP_Msk ) ) {
-        if ( HOCO_FREQUENCY_MHZ_20 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) {
-            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x262;
-        } else if ( HOCO_FREQUENCY_MHZ_18 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) {
-            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x225;
-        } else if (( HOCO_FREQUENCY_MHZ_16 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) ) ||
-            ( HOCO_FREQUENCY_MHZ_32 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 )) ||
-            ( HOCO_FREQUENCY_MHZ_48 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ) )) {
-            R_SYSTEM->FLLCR2_b.FLLCNTL = 0x1E8;
-        }
-
-        R_SYSTEM->FLLCR1_b.FLLEN = 0x1;
-
-        R_SYSTEM->HOCOCR_b.HCSTP = 0; // Start HOCO
-
-        while ( !( R_SYSTEM->OSCSF_b.HOCOSF ) ) {
-            // Wait for HOCO to stabilize
-        }
+    if ( !( VALUE_SYSTEM_PLL2CR & R_SYSTEM_PLL2CR_PLL2STP_Msk ) ) {
+        R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL is stopped
+        R_SYSTEM->PLL2CCR = (uint16_t) VALUE_SYSTEM_PLL2CCR;
+        R_SYSTEM->PLL2CCR2 = (uint16_t) VALUE_SYSTEM_PLL2CCR2;
+        R_SYSTEM->PLL2CR_b.PLL2STP = 0; // PLL is operating
+    } else {
+        R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL is stopped
     }
 
     if ( !( VALUE_SYSTEM_PLLCR & R_SYSTEM_PLLCR_PLLSTP_Msk ) ) {
         R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
         R_SYSTEM->PLLCCR = (uint16_t) VALUE_SYSTEM_PLLCCR;
         R_SYSTEM->PLLCCR2 = (uint16_t) VALUE_SYSTEM_PLLCCR2;
+
+        /*
+         * Do not access the CM85 ITCM, DTCM, I-Cache, or D-Cache during voltage scaling change.
+         * Disable CM85 I-Cache allocations and invalidate for later coherence.
+         */
+        __DSB();
+        __ISB();
+        SCB->CCR &= ~(uint32_t)SCB_CCR_IC_Msk;  // Disable I-Cache
+        SCB->ICIALLU = 0UL;                     // invalidate I-Cache
+        __DSB();
+        __ISB();
+
+        /*
+         * Disable CM85 I-Cache and D-Cache lookups and allocations.
+         * D-Cache should already be clean and allocations disabled, so no cache maintenance required.
+         */
+        MEMSYSCTL->MSCR &= ~(MEMSYSCTL_MSCR_ICACTIVE_Msk | MEMSYSCTL_MSCR_DCACTIVE_Msk);
+        __DSB();
+        __ISB();
+
+        // Always set not high VSCR_1 (non-default), change before enabling PLL.
+        R_SYSTEM->VSCR_b.VSCM = 0x1U;
+        FSP_HARDWARE_REGISTER_WAIT(R_SYSTEM->VSCR_b.VSCMTSF, 0U);
+
+        // Re-enable CM85 I-Cache and D-Cache lookups and allow allocations per CCR.xC (TZ banked) bits.
+        MEMSYSCTL->MSCR |= (MEMSYSCTL_MSCR_ICACTIVE_Msk | MEMSYSCTL_MSCR_DCACTIVE_Msk);
+        __DSB();
+        __ISB();
+
+        SCB->ICIALLU = 0UL; // Invalidate I-Cache
+        __DSB();
+        __ISB();
+        SCB->CCR |= (uint32_t)SCB_CCR_IC_Msk;  // enable I-Cache
+        __DSB();
+        __ISB();
+
         R_SYSTEM->PLLCR_b.PLLSTP = 0; // PLL is operating
 
         while ( !( R_SYSTEM->OSCSF_b.PLLSF ) ) {
@@ -1088,32 +1205,55 @@ static void system_clock_configuration() {
         R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
     }
 
-    if ( !( VALUE_SYSTEM_PLL2CR & R_SYSTEM_PLL2CR_PLL2STP_Msk ) ) {
-        R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL is stopped
-        R_SYSTEM->PLL2CCR = (uint16_t) VALUE_SYSTEM_PLL2CCR;
-        R_SYSTEM->PLL2CCR2 = (uint16_t) VALUE_SYSTEM_PLL2CCR2;
-        R_SYSTEM->PLL2CR_b.PLL2STP = 0; // PLL is operating
+    // Clear MRAM pre-fetch buffer, see 54.4.3 Frequency Change Procedure for MRAM.
+    R_MRMS->MRCPFB = 0x00;
+    (void) R_MRMS->MRCPFB;
+    (void) R_MRMS->MRCPFB;
+    (void) R_MRMS->MRCPFB;
 
-        while ( !( R_SYSTEM->OSCSF_b.PLL2SF ) ) {
-            // Wait for PLL to stabilize
-        }
-    } else {
-        R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL is stopped
-    }
+    /*
+     * In order to avoid a system clock (momentarily) higher than expected,
+     * the order of switching the clock and dividers must be so that the frequency
+     * of the clock goes lower, instead of higher, before being correct.
+     */
 
-    R_SYSTEM->LOCOCR = VALUE_SYSTEM_LOCOCR;
-
-    R_SYSTEM->MOCOCR = VALUE_SYSTEM_MOCOCR;
+    /*
+     * MOCO is the source clock after reset. If the new source clock is faster than
+     * the current source clock, then set the clock dividers before switching to
+     * the new source clock.
+     */
+    if (( FOSC_KHZ_VALUE * 1000 ) > FREQUENCY_8MHZ )
+        /*
+         * New source clock will be faster so set wait state frequency before changing
+         * clock frequency according to Frequency Change Procedure.
+         */
+        bsp_prv_set_wait_state_frequency( system_clocks );
 
     R_SYSTEM->SCKDIVCR = VALUE_SYSTEM_SCKDIVCR;
-
+    R_SYSTEM->SCKDIVCR2 = VALUE_SYSTEM_SCKDIVCR2;
     R_SYSTEM->SCKSCR = VALUE_SYSTEM_SCKSCR;
 
-    Delay_ms(1);
+    // Do not enable Prefetch Buffer when MRAM read frequency is set to 100MHz or less
+    if ( R_MRMS->MRCFREQ_b.MRCMHZ >= BSP_PRV_MRCPFB_LIMIT )
+        R_MRMS->MRCPFB = 0x01;
 
-    R_SYSTEM->SCKDIVCR2 = VALUE_SYSTEM_SCKDIVCR2;
+    // Devices with TrustZone version 2 have a separate non-secure register for SRAM register protection
+    R_SRAM->SRAMPRCR = BSP_PRV_SRAM_UNLOCK;
+    /*
+     * Execute data memory barrier before and after setting the wait states,
+     * See "Note of write to SRAMCR0, SRAMCR1 and SRAMECCRGN0 registers"
+     * in the SRAM section of the relevant hardware manual */
+    __DMB();
+    if ( system_clocks.ICLK_Frequency > FREQUENCY_100MHZ )
+        R_SRAM->SRAMWTSC = 1;
+    else
+        R_SRAM->SRAMWTSC = 0;
+    __DMB();
 
-    Delay_ms(1);
+    R_SRAM->SRAMPRCR = BSP_PRV_SRAM_LOCK;
+
+    // Set Main Stack Pointer Limit
+    asm volatile ("MSR msplim, %0" : : "r" (BSP_PRV_STACK_LIMIT));
 
     if ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOEN_Msk ) {
         R_SYSTEM->CKOCR = VALUE_SYSTEM_CKOCR & ( R_SYSTEM_CKOCR_CKODIV_Msk | R_SYSTEM_CKOCR_CKOSEL_Msk );
@@ -1152,4 +1292,5 @@ static void system_clock_configuration() {
 
     // Lock LVOCR register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
+    #endif
 }
