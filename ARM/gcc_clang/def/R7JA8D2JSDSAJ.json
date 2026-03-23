@@ -664,7 +664,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "7",
+                    "init": "2",
                     "key": "HCFRQ0",
                     "label": "HOCO Frequency Setting 0",
                     "mask": "7",
@@ -1406,7 +1406,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "1",
                     "key": "PLIDIV",
                     "label": "PLL1 Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -1469,7 +1469,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "6300",
+                    "init": "9f00",
                     "key": "PLLMUL",
                     "label": "PLL1 Frequency Multiplication Factor Select",
                     "mask": "1ff00",
@@ -2530,7 +2530,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "1",
                     "key": "PL2IDIV",
                     "label": "PLL2 Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -2593,7 +2593,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "6300",
+                    "init": "9f00",
                     "key": "PLL2MUL",
                     "label": "PLL2 Frequency Multiplication Factor Select",
                     "mask": "1ff00",
