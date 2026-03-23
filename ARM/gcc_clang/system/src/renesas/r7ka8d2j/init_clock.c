@@ -927,7 +927,7 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     SYSTEM_Clocks->CPU1CLK_Frequency = source_clock / prescaler;
 
     // Get MRICLK clock frequency.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000 ) >> 28 ];
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000 ) >> 12 ];
     SYSTEM_Clocks->MRICLK_Frequency = source_clock / prescaler;
 
     // Get MRPCLK clock frequency.
