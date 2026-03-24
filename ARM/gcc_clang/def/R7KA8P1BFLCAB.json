@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "3",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "f",
@@ -271,7 +271,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2000000",
+                    "init": "3000000",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "f000000",
@@ -491,7 +491,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2000",
+                    "init": "3000",
                     "key": "MRICK",
                     "label": "MRAM bus Clock (MRICLK) Select",
                     "mask": "f000",
