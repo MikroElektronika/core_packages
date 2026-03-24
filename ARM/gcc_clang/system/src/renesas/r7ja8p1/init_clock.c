@@ -1223,7 +1223,7 @@ static void system_clock_configuration() {
      * the current source clock, then set the clock dividers before switching to
      * the new source clock.
      */
-    if (( FOSC_KHZ_VALUE * 1000 ) > FREQUENCY_8MHZ )
+    if (( FOSC_KHZ_VALUE * 1000 ) >= FREQUENCY_8MHZ )
         /*
          * New source clock will be faster so set wait state frequency before changing
          * clock frequency according to Frequency Change Procedure.
