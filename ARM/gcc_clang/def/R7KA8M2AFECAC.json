@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "3",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select",
                     "mask": "f",
@@ -271,7 +271,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2000000",
+                    "init": "3000000",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "f000000",
@@ -488,6 +488,59 @@
                             "value": "b0"
                         }
                     ]
+                },
+                {
+                    "hidden": false,
+                    "init": "3000",
+                    "key": "MRICK",
+                    "label": "MRAM bus Clock (MRICLK) Select",
+                    "mask": "f000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "x1/3",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "x1/6",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "x1/12",
+                            "value": "a000"
+                        },
+                        {
+                            "label": "x1/24",
+                            "value": "b000"
+                        }
+                    ]
                 }
             ],
             "key": "SYSTEM_SCKDIVCR2",
@@ -611,7 +664,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "7",
+                    "init": "2",
                     "key": "HCFRQ0",
                     "label": "HOCO Frequency Setting 0",
                     "mask": "7",
@@ -1353,7 +1406,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "1",
                     "key": "PLIDIV",
                     "label": "PLL1 Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -1416,7 +1469,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "4a00",
+                    "init": "bf00",
                     "key": "PLLMUL",
                     "label": "PLL1 Frequency Multiplication Factor Select",
                     "mask": "1ff00",
@@ -2477,7 +2530,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "2",
+                    "init": "1",
                     "key": "PL2IDIV",
                     "label": "PLL2 Input Frequency Division Ratio Select",
                     "mask": "3",
@@ -2540,7 +2593,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "4a00",
+                    "init": "bf00",
                     "key": "PLL2MUL",
                     "label": "PLL2 Frequency Multiplication Factor Select",
                     "mask": "1ff00",
@@ -3745,5 +3798,5 @@
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
     "mcu": "R7KA8M2AFECAC",
-    "clock": "600"
+    "clock": "960"
 }
