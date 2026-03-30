@@ -1,5 +1,11 @@
-import os, re, pytz
+import os, re, pytz, sys
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
+# Time check due to possibility of clock switch
+now = datetime.now(ZoneInfo("Europe/Belgrade"))
+if now.hour != 11:
+    sys.exit(1)
 
 # Path to the folder and the MD file
 folder_path = "changelog"
