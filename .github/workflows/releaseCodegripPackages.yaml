@@ -17,8 +17,6 @@ on:
         type: string
         description: Last date for codegrip releases (better use csv, not spreadsheet to see the date)
         default: "2025-06-13"
-  schedule:
-    - cron: "0 6 12-13 4 *" # 6:00 AM, 12th-13th of June
 
 jobs:
   release-codegrip-packages:
