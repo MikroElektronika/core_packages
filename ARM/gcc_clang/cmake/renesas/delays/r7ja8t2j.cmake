@@ -2,6 +2,6 @@ if(${MCU_NAME} MATCHES "^R7JA8T2JRDSAJ$|^R7JA8T2JRLSAJ$|^R7JA8T2JSDSAJ$|^R7JA8T2
     if(${CORE_NAME} MATCHES "^M85")
         list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/2)")
     elseif(${CORE_NAME} MATCHES "^M33EF")
-        list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/6)")
+        list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/3)")
     endif()
 endif()
