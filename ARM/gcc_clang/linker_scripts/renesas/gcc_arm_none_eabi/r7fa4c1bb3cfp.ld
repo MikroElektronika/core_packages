@@ -65,19 +65,20 @@ SECTIONS
     .qspi_flash.startof  (READONLY) :
     {
         __ddsc_QSPI_FLASH_START = . ;
-    } > QSPI_FLASH
+    }  > QSPI_FLASH
 
     /***** RAM memory section allocations ******/
     .ram.startof  :
     {
         __ddsc_RAM_START = . ;
-    } > RAM
+    }  > RAM
+
     __ram_dtc_vector$$  (NOLOAD) :
     {
         __ram_dtc_vector$$Base = . ;
         *(.fsp_dtc_vector_table)
         __ram_dtc_vector$$Limit = . ;
-    } > RAM
+    }  > RAM
 
     /* ram initialized from qspi_flash */
     __ram_from_qspi_flash$$  :
@@ -88,7 +89,7 @@ SECTIONS
         /* section.ram.code_from_qspi_flash */
         *(.ram_code_from_qspi_flash)
         __ram_from_qspi_flash$$Limit = . ;
-    } > RAM AT > QSPI_FLASH
+    }  > RAM AT > QSPI_FLASH
 
     __qspi_flash_readonly$$  (READONLY) :
     {
@@ -98,7 +99,7 @@ SECTIONS
         /* section.qspi_flash.code */
         *(.qspi_flash_code)
         __qspi_flash_readonly$$Limit = . ;
-    } > QSPI_FLASH
+    }  > QSPI_FLASH
 
     __qspi_flash_noinit$$  (NOLOAD) :
     {
@@ -106,18 +107,18 @@ SECTIONS
         /* section.qspi_flash.noinit */
         *(.qspi_flash_noinit)
         __qspi_flash_noinit$$Limit = . ;
-    } > QSPI_FLASH
+    }  > QSPI_FLASH
 
     .qspi_flash.endof ALIGN(.,512) (READONLY) :
     {
         __ddsc_QSPI_FLASH_END = . ;
-    } > QSPI_FLASH
+    }  > QSPI_FLASH
 
     /***** DATA_FLASH memory section allocations ******/
     .data_flash.startof  (READONLY) :
     {
         __ddsc_DATA_FLASH_START = . ;
-    } > DATA_FLASH
+    }  > DATA_FLASH
 
     /***** RAM memory section allocations ******/
     /* ram initialized from data_flash */
@@ -129,7 +130,7 @@ SECTIONS
         /* section.ram.code_from_data_flash */
         *(.ram_code_from_data_flash)
         __ram_from_data_flash$$Limit = . ;
-    } > RAM AT > DATA_FLASH
+    }  > RAM AT > DATA_FLASH
 
     __data_flash_readonly$$  (READONLY) :
     {
@@ -139,7 +140,7 @@ SECTIONS
         /* section.data_flash.code */
         *(.data_flash_code)
         __data_flash_readonly$$Limit = . ;
-    } > DATA_FLASH
+    }  > DATA_FLASH
 
     __data_flash_noinit$$  (NOLOAD) :
     {
@@ -147,18 +148,18 @@ SECTIONS
         /* section.data_flash.noinit */
         *(.data_flash_noinit)
         __data_flash_noinit$$Limit = . ;
-    } > DATA_FLASH
+    }  > DATA_FLASH
 
     .data_flash.endof ALIGN(.,512) (READONLY) :
     {
         __ddsc_DATA_FLASH_END = . ;
-    } > DATA_FLASH
+    }  > DATA_FLASH
 
     /***** FLASH memory section allocations ******/
     .flash.startof  (READONLY) :
     {
         __ddsc_FLASH_START = . ;
-    } > FLASH
+    }  > FLASH
 
     /* MCU vector table */
     __flash_vectors$$  (READONLY) :
@@ -167,7 +168,7 @@ SECTIONS
         KEEP(*(.fixed_vectors))
         KEEP(*(.application_vectors))
         __flash_vectors$$Limit = . ;
-    } > FLASH
+    }  > FLASH
 
     __flash_noinit$$  (NOLOAD) :
     {
@@ -175,7 +176,7 @@ SECTIONS
         /* section.flash.noinit */
         *(.flash_noinit)
         __flash_noinit$$Limit = . ;
-    } > FLASH
+    }  > FLASH
 
     /***** RAM memory section allocations ******/
     /* ram initialized from flash */
@@ -189,7 +190,7 @@ SECTIONS
         *(.data*)
         *(vtable)
         __ram_from_flash$$Limit = . ;
-    } > RAM AT > FLASH
+    }  > RAM AT > FLASH
 
     /* Non-initialized, non-cached ram */
     __ram_noinit_nocache$$  (NOLOAD) : ALIGN(32)
@@ -198,7 +199,7 @@ SECTIONS
         /* section.ram.noinit_nocache */
         *(.ram_noinit_nocache)
         __ram_noinit_nocache$$Limit = . ;
-    } > RAM
+    }  > RAM
 
     /* Zeroed, non-cached ram */
     __ram_zero_nocache$$  (NOLOAD) :
@@ -208,7 +209,7 @@ SECTIONS
         *(.ram_nocache)
         . = ALIGN(32);
         __ram_zero_nocache$$Limit = . ;
-    } > RAM
+    }  > RAM
 
     /* Non-initialized ram */
     __ram_noinit$$  (NOLOAD) :
@@ -220,7 +221,7 @@ SECTIONS
         *(.ram_noinit)
         *(.noinit)
         __ram_noinit$$Limit = . ;
-    } > RAM
+    }  > RAM
 
     /* Zeroed ram */
     __ram_zero$$  (NOLOAD) :
@@ -230,7 +231,7 @@ SECTIONS
         *(.ram)
         *(.bss*)
         __ram_zero$$Limit = . ;
-    } > RAM
+    }  > RAM
 
     /* Thread Stacks */
     __ram_thread_stack$$  (NOLOAD) : ALIGN(8)
@@ -238,17 +239,17 @@ SECTIONS
         __ram_thread_stack$$Base = . ;
         KEEP(*(.stack?*))
         __ram_thread_stack$$Limit = . ;
-    } > RAM
+    }  > RAM
 
     .ram.endof ALIGN(.,1024) :
     {
         __ddsc_RAM_END = . ;
-    } > RAM
+    }  > RAM
 
     .ram.flat_nsc ALIGN(.,1024) :
     {
         __ddsc_RAM_NSC = . ;
-    } > RAM
+    }  > RAM
 
     __flash_readonly$$  (READONLY) :
     {
@@ -262,7 +263,7 @@ SECTIONS
         KEEP(*(.mcuboot_sce9_key))
         KEEP(*(.version))
         __flash_readonly$$Limit = . ;
-    } > FLASH
+    }  > FLASH
 
     __flash_ctor$$  (READONLY) :
     {
@@ -276,20 +277,20 @@ SECTIONS
         EXCLUDE_FILE (*crtend?.o *crtend.o) *(.dtors)
         *(SORT(.dtors.*))
         *(.dtors)
-    } > FLASH
+    }  > FLASH
 
     __flash_preinit_array$$  (READONLY) :
     {
         __preinit_array_start = . ;
         KEEP(*(.preinit_array))
         __preinit_array_end = . ;
-    } > FLASH
+    }  > FLASH
 
     __flash_.got$$  (READONLY) :
     {
         *(.got.plt)
         *(.got)
-    } > FLASH
+    }  > FLASH
 
     __flash_init_array$$  (READONLY) :
     {
@@ -297,7 +298,7 @@ SECTIONS
         KEEP(*(SORT(.init_array.*)))
         KEEP(*(.init_array))
         __init_array_end = . ;
-    } > FLASH
+    }  > FLASH
 
     __flash_fini_array$$  (READONLY) :
     {
@@ -305,14 +306,14 @@ SECTIONS
         KEEP(*(SORT(.fini_array.*)))
         KEEP(*(.fini_array))
         __fini_array_end = . ;
-    } > FLASH
+    }  > FLASH
 
     /* .ARM.extab sections contain exception unwinding information. */
     __flash_arm.extab$$  (READONLY) :
     {
         *(.ARM.extab*)
         *(.gnu.linkonce.armextab.*)
-    } > FLASH
+    }  > FLASH
 
     /* .ARM.exidx sections contains index entries for section unwinding. */
     __flash_arm.exidx$$  (READONLY) :
@@ -321,23 +322,23 @@ SECTIONS
         *(.ARM.exidx*)
         *(.gnu.linkonce.armexidx.*)
         __exidx_end = . ;
-    } > FLASH
+    }  > FLASH
 
     .flash.endof ALIGN(.,1024) (READONLY) :
     {
         __ddsc_FLASH_END = . ;
-    } > FLASH
+    }  > FLASH
 
     .flash.flat_nsc ALIGN(.,1024) (READONLY) :
     {
         __ddsc_FLASH_NSC = . ;
-    } > FLASH
+    }  > FLASH
 
     /***** OPTION_SETTING_OFS0 memory section allocations ******/
     .option_setting_ofs0.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS0_START = . ;
-    } > OPTION_SETTING_OFS0
+    }  > OPTION_SETTING_OFS0
 
     /* Option Function Select Register 0 */
     __option_setting_ofs0_reg$$  (READONLY) :
@@ -345,18 +346,18 @@ SECTIONS
         __option_setting_ofs0_reg$$Base = . ;
         KEEP(*(.option_setting_ofs0))
         __option_setting_ofs0_reg$$Limit = . ;
-    } > OPTION_SETTING_OFS0
+    }  > OPTION_SETTING_OFS0
 
     .option_setting_ofs0.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS0_END = . ;
-    } > OPTION_SETTING_OFS0
+    }  > OPTION_SETTING_OFS0
 
     /***** OPTION_SETTING_DUALSEL memory section allocations ******/
     .option_setting_dualsel.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_DUALSEL_START = . ;
-    } > OPTION_SETTING_DUALSEL
+    }  > OPTION_SETTING_DUALSEL
 
     /* Dual Mode Select Register */
     __option_setting_dualsel_reg$$  (READONLY) :
@@ -364,18 +365,18 @@ SECTIONS
         __option_setting_dualsel_reg$$Base = . ;
         KEEP(*(.option_setting_dualsel))
         __option_setting_dualsel_reg$$Limit = . ;
-    } > OPTION_SETTING_DUALSEL
+    }  > OPTION_SETTING_DUALSEL
 
     .option_setting_dualsel.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_DUALSEL_END = . ;
-    } > OPTION_SETTING_DUALSEL
+    }  > OPTION_SETTING_DUALSEL
 
     /***** OPTION_SETTING_OFS1 memory section allocations ******/
     .option_setting_ofs1.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS1_START = . ;
-    } > OPTION_SETTING_OFS1
+    }  > OPTION_SETTING_OFS1
 
     /* Option Function Select Register 1 */
     __option_setting_ofs1_reg$$  (READONLY) :
@@ -383,18 +384,18 @@ SECTIONS
         __option_setting_ofs1_reg$$Base = . ;
         KEEP(*(.option_setting_ofs1))
         __option_setting_ofs1_reg$$Limit = . ;
-    } > OPTION_SETTING_OFS1
+    }  > OPTION_SETTING_OFS1
 
     .option_setting_ofs1.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS1_END = . ;
-    } > OPTION_SETTING_OFS1
+    }  > OPTION_SETTING_OFS1
 
     /***** OPTION_SETTING_BANKSEL memory section allocations ******/
     .option_setting_banksel.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BANKSEL_START = . ;
-    } > OPTION_SETTING_BANKSEL
+    }  > OPTION_SETTING_BANKSEL
 
     /* Bank Select Register */
     __option_setting_banksel_reg$$  (READONLY) :
@@ -402,18 +403,18 @@ SECTIONS
         __option_setting_banksel_reg$$Base = . ;
         KEEP(*(.option_setting_banksel))
         __option_setting_banksel_reg$$Limit = . ;
-    } > OPTION_SETTING_BANKSEL
+    }  > OPTION_SETTING_BANKSEL
 
     .option_setting_banksel.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BANKSEL_END = . ;
-    } > OPTION_SETTING_BANKSEL
+    }  > OPTION_SETTING_BANKSEL
 
     /***** OPTION_SETTING_BPS memory section allocations ******/
     .option_setting_bps.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BPS_START = . ;
-    } > OPTION_SETTING_BPS
+    }  > OPTION_SETTING_BPS
 
     /* Block Protect Setting Register */
     __option_setting_bps_reg$$  (READONLY) :
@@ -421,18 +422,18 @@ SECTIONS
         __option_setting_bps_reg$$Base = . ;
         KEEP(*(.option_setting_bps))
         __option_setting_bps_reg$$Limit = . ;
-    } > OPTION_SETTING_BPS
+    }  > OPTION_SETTING_BPS
 
     .option_setting_bps.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BPS_END = . ;
-    } > OPTION_SETTING_BPS
+    }  > OPTION_SETTING_BPS
 
     /***** OPTION_SETTING_PBPS memory section allocations ******/
     .option_setting_pbps.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_PBPS_START = . ;
-    } > OPTION_SETTING_PBPS
+    }  > OPTION_SETTING_PBPS
 
     /* Permanent Block Protect Setting Register */
     __option_setting_pbps_reg$$  (READONLY) :
@@ -440,18 +441,18 @@ SECTIONS
         __option_setting_pbps_reg$$Base = . ;
         KEEP(*(.option_setting_pbps))
         __option_setting_pbps_reg$$Limit = . ;
-    } > OPTION_SETTING_PBPS
+    }  > OPTION_SETTING_PBPS
 
     .option_setting_pbps.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_PBPS_END = . ;
-    } > OPTION_SETTING_PBPS
+    }  > OPTION_SETTING_PBPS
 
     /***** OPTION_SETTING_OFS1_SEC memory section allocations ******/
     .option_setting_ofs1_sec.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS1_SEC_START = . ;
-    } > OPTION_SETTING_OFS1_SEC
+    }  > OPTION_SETTING_OFS1_SEC
 
     /* Option Function Select Register 1 Secure */
     __option_setting_ofs1_sec_reg$$  (READONLY) :
@@ -459,18 +460,18 @@ SECTIONS
         __option_setting_ofs1_sec_reg$$Base = . ;
         KEEP(*(.option_setting_ofs1_sec))
         __option_setting_ofs1_sec_reg$$Limit = . ;
-    } > OPTION_SETTING_OFS1_SEC
+    }  > OPTION_SETTING_OFS1_SEC
 
     .option_setting_ofs1_sec.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS1_SEC_END = . ;
-    } > OPTION_SETTING_OFS1_SEC
+    }  > OPTION_SETTING_OFS1_SEC
 
     /***** OPTION_SETTING_BANKSEL_SEC memory section allocations ******/
     .option_setting_banksel_sec.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BANKSEL_SEC_START = . ;
-    } > OPTION_SETTING_BANKSEL_SEC
+    }  > OPTION_SETTING_BANKSEL_SEC
 
     /* Bank Select Register Secure */
     __option_setting_banksel_sec_reg$$  (READONLY) :
@@ -478,18 +479,18 @@ SECTIONS
         __option_setting_banksel_sec_reg$$Base = . ;
         KEEP(*(.option_setting_banksel_sec))
         __option_setting_banksel_sec_reg$$Limit = . ;
-    } > OPTION_SETTING_BANKSEL_SEC
+    }  > OPTION_SETTING_BANKSEL_SEC
 
     .option_setting_banksel_sec.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BANKSEL_SEC_END = . ;
-    } > OPTION_SETTING_BANKSEL_SEC
+    }  > OPTION_SETTING_BANKSEL_SEC
 
     /***** OPTION_SETTING_BPS_SEC memory section allocations ******/
     .option_setting_bps_sec.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BPS_SEC_START = . ;
-    } > OPTION_SETTING_BPS_SEC
+    }  > OPTION_SETTING_BPS_SEC
 
     /* Block Protect Setting Register Secure */
     __option_setting_bps_sec_reg$$  (READONLY) :
@@ -497,18 +498,18 @@ SECTIONS
         __option_setting_bps_sec_reg$$Base = . ;
         KEEP(*(.option_setting_bps_sec))
         __option_setting_bps_sec_reg$$Limit = . ;
-    } > OPTION_SETTING_BPS_SEC
+    }  > OPTION_SETTING_BPS_SEC
 
     .option_setting_bps_sec.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BPS_SEC_END = . ;
-    } > OPTION_SETTING_BPS_SEC
+    }  > OPTION_SETTING_BPS_SEC
 
     /***** OPTION_SETTING_PBPS_SEC memory section allocations ******/
     .option_setting_pbps_sec.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_PBPS_SEC_START = . ;
-    } > OPTION_SETTING_PBPS_SEC
+    }  > OPTION_SETTING_PBPS_SEC
 
     /* Permanent Block Protect Setting Register Secure */
     __option_setting_pbps_sec_reg$$  (READONLY) :
@@ -516,18 +517,18 @@ SECTIONS
         __option_setting_pbps_sec_reg$$Base = . ;
         KEEP(*(.option_setting_pbps_sec))
         __option_setting_pbps_sec_reg$$Limit = . ;
-    } > OPTION_SETTING_PBPS_SEC
+    }  > OPTION_SETTING_PBPS_SEC
 
     .option_setting_pbps_sec.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_PBPS_SEC_END = . ;
-    } > OPTION_SETTING_PBPS_SEC
+    }  > OPTION_SETTING_PBPS_SEC
 
     /***** OPTION_SETTING_OFS1_SEL memory section allocations ******/
     .option_setting_ofs1_sel.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS1_SEL_START = . ;
-    } > OPTION_SETTING_OFS1_SEL
+    }  > OPTION_SETTING_OFS1_SEL
 
     /* OFS1 Security Attribution */
     __option_setting_ofs1_sel_reg$$  (READONLY) :
@@ -535,18 +536,18 @@ SECTIONS
         __option_setting_ofs1_sel_reg$$Base = . ;
         KEEP(*(.option_setting_ofs1_sel))
         __option_setting_ofs1_sel_reg$$Limit = . ;
-    } > OPTION_SETTING_OFS1_SEL
+    }  > OPTION_SETTING_OFS1_SEL
 
     .option_setting_ofs1_sel.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS1_SEL_END = . ;
-    } > OPTION_SETTING_OFS1_SEL
+    }  > OPTION_SETTING_OFS1_SEL
 
     /***** OPTION_SETTING_BANKSEL_SEL memory section allocations ******/
     .option_setting_banksel_sel.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BANKSEL_SEL_START = . ;
-    } > OPTION_SETTING_BANKSEL_SEL
+    }  > OPTION_SETTING_BANKSEL_SEL
 
     /* Banksel Security Attribution */
     __option_setting_banksel_sel_reg$$  (READONLY) :
@@ -554,18 +555,18 @@ SECTIONS
         __option_setting_banksel_sel_reg$$Base = . ;
         KEEP(*(.option_setting_banksel_sel))
         __option_setting_banksel_sel_reg$$Limit = . ;
-    } > OPTION_SETTING_BANKSEL_SEL
+    }  > OPTION_SETTING_BANKSEL_SEL
 
     .option_setting_banksel_sel.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BANKSEL_SEL_END = . ;
-    } > OPTION_SETTING_BANKSEL_SEL
+    }  > OPTION_SETTING_BANKSEL_SEL
 
     /***** OPTION_SETTING_BPS_SEL memory section allocations ******/
     .option_setting_bps_sel.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BPS_SEL_START = . ;
-    } > OPTION_SETTING_BPS_SEL
+    }  > OPTION_SETTING_BPS_SEL
 
     /* BPS Security Attribution */
     __option_setting_bps_sel_reg$$  (READONLY) :
@@ -573,10 +574,11 @@ SECTIONS
         __option_setting_bps_sel_reg$$Base = . ;
         KEEP(*(.option_setting_bps_sel))
         __option_setting_bps_sel_reg$$Limit = . ;
-    } > OPTION_SETTING_BPS_SEL
+    }  > OPTION_SETTING_BPS_SEL
 
     .option_setting_bps_sel.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_BPS_SEL_END = . ;
-    } > OPTION_SETTING_BPS_SEL
+    }  > OPTION_SETTING_BPS_SEL
+
 }

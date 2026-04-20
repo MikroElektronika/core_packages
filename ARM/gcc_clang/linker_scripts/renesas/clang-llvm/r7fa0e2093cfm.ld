@@ -30,58 +30,9 @@ ENTRY(Reset_Handler)
 SECTIONS
 {
     /***** DATA_FLASH memory section allocations ******/
-    __etext = .;
-
-    /* Initialized data section. */
-    .data :
-    {
-        __data_start__ = .;
-        . = ALIGN(4);
-
-        __Code_In_RAM_Start = .;
-
-        KEEP(*(.code_in_ram*))
-        __Code_In_RAM_End = .;
-
-        *(vtable)
-        /* Don't use *(.data*) because it will place data meant for .data_flash in this section. */
-        *(.data.*)
-        *(.data)
-
-        . = ALIGN(4);
-        /* preinit data */
-        PROVIDE_HIDDEN (__preinit_array_start = .);
-        KEEP(*(.preinit_array))
-        PROVIDE_HIDDEN (__preinit_array_end = .);
-
-        . = ALIGN(4);
-        /* init data */
-        PROVIDE_HIDDEN (__init_array_start = .);
-        KEEP(*(SORT(.init_array.*)))
-        KEEP(*(.init_array))
-        PROVIDE_HIDDEN (__init_array_end = .);
-
-
-        . = ALIGN(4);
-        /* finit data */
-        PROVIDE_HIDDEN (__fini_array_start = .);
-        KEEP(*(SORT(.fini_array.*)))
-        KEEP(*(.fini_array))
-        PROVIDE_HIDDEN (__fini_array_end = .);
-
-        KEEP(*(.jcr*))
-
-        . = ALIGN(4);
-
-        /* All data end */
-        __data_end__ = .;
-
-    } > RAM AT > FLASH
-
     .data_flash.startof  :
     {
         __ddsc_DATA_FLASH_START = . ;
-
     }  > DATA_FLASH
 
     /***** RAM memory section allocations ******/
@@ -93,7 +44,7 @@ SECTIONS
     __ram_dtc_vector$$  (NOLOAD) :
     {
         __ram_dtc_vector$$Base = . ;
-    *(.fsp_dtc_vector_table)
+        *(.fsp_dtc_vector_table)
         __ram_dtc_vector$$Limit = . ;
     }  > RAM
 
@@ -111,18 +62,18 @@ SECTIONS
     __data_flash_readonly$$  :
     {
         __data_flash_readonly$$Base = . ;
-    /* section.data_flash.readonly */
-    *(.data_flash)
-    /* section.data_flash.code */
-    *(.data_flash_code)
+        /* section.data_flash.readonly */
+        *(.data_flash)
+        /* section.data_flash.code */
+        *(.data_flash_code)
         __data_flash_readonly$$Limit = . ;
     }  > DATA_FLASH
 
     __data_flash_noinit$$  (NOLOAD) :
     {
         __data_flash_noinit$$Base = . ;
-    /* section.data_flash.noinit */
-    *(.data_flash_noinit)
+        /* section.data_flash.noinit */
+        *(.data_flash_noinit)
         __data_flash_noinit$$Limit = . ;
     }  > DATA_FLASH
 
@@ -374,21 +325,10 @@ SECTIONS
         __ddsc_OPTION_SETTING_OSIS_END = . ;
     }  > OPTION_SETTING_OSIS
 
-    .bss :
-    {
-        . = ALIGN(4);
-        __bss_start__ = .;
-        *(.bss*)
-        *(COMMON)
-        . = ALIGN(4);
-        __bss_end__ = .;
-    } > RAM
 }
-
 PROVIDE( __tls_base = ADDR(__ram_tdata$$) );
 PROVIDE( __tdata_source = LOADADDR(__ram_tdata$$) );
 PROVIDE( __tdata_size = SIZEOF(__ram_tdata$$) );
 PROVIDE( __tbss_offset = ADDR(__ram_tbss$$) - ADDR(__ram_tdata$$) );
 PROVIDE( __tbss_size = SIZEOF(__ram_tbss$$) );
 PROVIDE( __arm32_tls_tcb_offset = 8 );
-
