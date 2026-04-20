@@ -2,7 +2,7 @@
 RAM_START = 0x20004000;
 RAM_LENGTH = 0x00004000;
 FLASH_START = 0x00000440;
-FLASH_LENGTH = 0x0000fbc0;
+FLASH_LENGTH = 0x00007bc0;
 DATA_FLASH_START = 0x40100000;
 DATA_FLASH_LENGTH = 0x00000400;
 OPTION_SETTING_OFS0_START = 0x00000400;
@@ -13,7 +13,6 @@ OPTION_SETTING_OSIS_START = 0x01010018;
 OPTION_SETTING_OSIS_LENGTH = 0x00000020;
 FLASH_GAP_START = 0x00000000;
 FLASH_GAP_LENGTH = 0x00000400;
-
 MEMORY
 {
     RAM (rwx) : ORIGIN = RAM_START, LENGTH = RAM_LENGTH
@@ -27,61 +26,11 @@ MEMORY
 
 /* code entry point...need to define to keep crt0 _start out */
 ENTRY(Reset_Handler)
-/* Library configurations */
-/* GROUP(libgcc.a libc.a libm.a) */
 
 SECTIONS
 {
     /***** DATA_FLASH memory section allocations ******/
-    __etext = .;
-
-    /* Initialized data section. */
-    .data :
-    {
-        __data_start__ = .;
-        . = ALIGN(4);
-
-        __Code_In_RAM_Start = .;
-
-        KEEP(*(.code_in_ram*))
-        __Code_In_RAM_End = .;
-
-        *(vtable)
-        /* Don't use *(.data*) because it will place data meant for .data_flash in this section. */
-        *(.data.*)
-        *(.data)
-
-        . = ALIGN(4);
-        /* preinit data */
-        PROVIDE_HIDDEN (__preinit_array_start = .);
-        KEEP(*(.preinit_array))
-        PROVIDE_HIDDEN (__preinit_array_end = .);
-
-        . = ALIGN(4);
-        /* init data */
-        PROVIDE_HIDDEN (__init_array_start = .);
-        KEEP(*(SORT(.init_array.*)))
-        KEEP(*(.init_array))
-        PROVIDE_HIDDEN (__init_array_end = .);
-
-
-        . = ALIGN(4);
-        /* finit data */
-        PROVIDE_HIDDEN (__fini_array_start = .);
-        KEEP(*(SORT(.fini_array.*)))
-        KEEP(*(.fini_array))
-        PROVIDE_HIDDEN (__fini_array_end = .);
-
-        KEEP(*(.jcr*))
-
-        . = ALIGN(4);
-
-        /* All data end */
-        __data_end__ = .;
-
-    } > RAM AT > FLASH
-
-    .data_flash.startof   :
+    .data_flash.startof  :
     {
         __ddsc_DATA_FLASH_START = . ;
     }  > DATA_FLASH
@@ -110,7 +59,7 @@ SECTIONS
         __ram_from_data_flash$$Limit = . ;
     }  > RAM AT > DATA_FLASH
 
-    __data_flash_readonly$$   :
+    __data_flash_readonly$$  :
     {
         __data_flash_readonly$$Base = . ;
         /* section.data_flash.readonly */
@@ -128,19 +77,19 @@ SECTIONS
         __data_flash_noinit$$Limit = . ;
     }  > DATA_FLASH
 
-    .data_flash.endof ALIGN(.,512)  :
+    .data_flash.endof ALIGN(.,512) :
     {
         __ddsc_DATA_FLASH_END = . ;
     }  > DATA_FLASH
 
     /***** FLASH memory section allocations ******/
-    .flash.startof   :
+    .flash.startof  :
     {
         __ddsc_FLASH_START = . ;
     }  > FLASH_GAP
 
     /* MCU vector table */
-    __flash_vectors$$   :
+    __flash_vectors$$  :
     {
         __flash_vectors$$Base = . ; _VECTORS = . ;
         KEEP(*(.fixed_vectors))
@@ -149,7 +98,7 @@ SECTIONS
     }  > FLASH_GAP
 
     /* Sections that can be used to fill flash gap */
-    __flash_readonly_gap$$   :
+    __flash_readonly_gap$$  :
     {
         __flash_readonly_gap$$Base = . ;
         /* section.flash.readonly_gap */
@@ -207,8 +156,29 @@ SECTIONS
         __ram_zero$$Limit = . ;
     }  > RAM
 
+    /* Initialized thread local storage */
+    __ram_tdata$$  :
+    {
+        __ram_tdata$$Base = . ;__ram_tdata$$Load = LOADADDR(__ram_tdata$$) ;
+        *(.tdata)
+        *(.tdata.*)
+        *(.gnu.linkonce.td.*)
+        __ram_tdata$$Limit = . ;
+    }  > RAM AT > FLASH
+
+    /* Zeroed thread local storage */
+    __ram_tbss$$  (NOLOAD) :
+    {
+        __ram_tbss$$Base = . ;
+        *(.tbss)
+        *(.tbss.*)
+        *(.gnu.linkonce.tb.*)
+        *(.tcommon)
+        __ram_tbss$$Limit = . ;
+    }  > RAM
+
     /* Thread Stacks */
-    __ram_thread_stack$$  (NOLOAD) : ALIGN(8)
+    __ram_thread_stack$$ ALIGN(.,8) (NOLOAD) :
     {
         __ram_thread_stack$$Base = . ;
         KEEP(*(.stack?*))
@@ -218,10 +188,9 @@ SECTIONS
     .ram.endof ALIGN(.,512) :
     {
         __ddsc_RAM_END = . ;
-
     }  > RAM
 
-    __flash_readonly$$   :
+    __flash_readonly$$  :
     {
         __flash_readonly$$Base = . ;
         /* section.flash.readonly */
@@ -235,7 +204,7 @@ SECTIONS
         __flash_readonly$$Limit = . ;
     }  > FLASH
 
-    __flash_ctor$$   :
+    __flash_ctor$$  :
     {
         *crtbegin.o(.ctors)
         *crtbegin?.o(.ctors)
@@ -249,20 +218,20 @@ SECTIONS
         *(.dtors)
     }  > FLASH
 
-    __flash_preinit_array$$   :
+    __flash_preinit_array$$  :
     {
         __preinit_array_start = . ;
         KEEP(*(.preinit_array))
         __preinit_array_end = . ;
     }  > FLASH
 
-    __flash_.got$$   :
+    __flash_.got$$  :
     {
         *(.got.plt)
         *(.got)
     }  > FLASH
 
-    __flash_init_array$$   :
+    __flash_init_array$$  :
     {
         __init_array_start = . ;
         KEEP(*(SORT(.init_array.*)))
@@ -270,7 +239,7 @@ SECTIONS
         __init_array_end = . ;
     }  > FLASH
 
-    __flash_fini_array$$   :
+    __flash_fini_array$$  :
     {
         __fini_array_start = . ;
         KEEP(*(SORT(.fini_array.*)))
@@ -278,93 +247,88 @@ SECTIONS
         __fini_array_end = . ;
     }  > FLASH
 
-    /* .ARM.extab sections contain exception unwinding information. */
-    __flash_arm.extab$$   :
+    /* Discard exception tables */
+    /DISCARD/  :
     {
         *(.ARM.extab*)
         *(.gnu.linkonce.armextab.*)
-    }  > FLASH
-
-    /* .ARM.exidx sections contains index entries for section unwinding. */
-    __flash_arm.exidx$$   :
-    {
-        __exidx_start = . ;
         *(.ARM.exidx*)
         *(.gnu.linkonce.armexidx.*)
+    }  > FLASH
+
+    /* Dummy section to hold required exidx labels */
+    __flash_arm.exidx$$  :
+    {
+        __exidx_start = . ;
         __exidx_end = . ;
     }  > FLASH
 
-    .flash.endof ALIGN(.,512)  :
+    .flash.endof ALIGN(.,512) :
     {
         __ddsc_FLASH_END = . ;
     }  > FLASH
 
     /***** OPTION_SETTING_OFS0 memory section allocations ******/
-    .option_setting_ofs0.startof   :
+    .option_setting_ofs0.startof  :
     {
         __ddsc_OPTION_SETTING_OFS0_START = . ;
     }  > OPTION_SETTING_OFS0
 
     /* Option Function Select Register 0 */
-    __option_setting_ofs0_reg$$   :
+    __option_setting_ofs0_reg$$  :
     {
         __option_setting_ofs0_reg$$Base = . ;
         KEEP(*(.option_setting_ofs0))
         __option_setting_ofs0_reg$$Limit = . ;
     }  > OPTION_SETTING_OFS0
-    .option_setting_ofs0.endof   :
+
+    .option_setting_ofs0.endof  :
     {
         __ddsc_OPTION_SETTING_OFS0_END = . ;
-
     }  > OPTION_SETTING_OFS0
 
     /***** OPTION_SETTING_OFS1 memory section allocations ******/
-    .option_setting_ofs1.startof   :
+    .option_setting_ofs1.startof  :
     {
         __ddsc_OPTION_SETTING_OFS1_START = . ;
-
     }  > OPTION_SETTING_OFS1
 
     /* Option Function Select Register 1 */
-    __option_setting_ofs1_reg$$   :
+    __option_setting_ofs1_reg$$  :
     {
         __option_setting_ofs1_reg$$Base = . ;
         KEEP(*(.option_setting_ofs1))
         __option_setting_ofs1_reg$$Limit = . ;
     }  > OPTION_SETTING_OFS1
 
-    .option_setting_ofs1.endof   :
+    .option_setting_ofs1.endof  :
     {
-       __ddsc_OPTION_SETTING_OFS1_END = . ;
+        __ddsc_OPTION_SETTING_OFS1_END = . ;
     }  > OPTION_SETTING_OFS1
 
     /***** OPTION_SETTING_OSIS memory section allocations ******/
-    .option_setting_osis.startof   :
+    .option_setting_osis.startof  :
     {
-       __ddsc_OPTION_SETTING_OSIS_START = . ;
+        __ddsc_OPTION_SETTING_OSIS_START = . ;
     }  > OPTION_SETTING_OSIS
 
     /* OCD/Serial Programmer ID setting register */
-    __option_setting_osis_reg$$   :
+    __option_setting_osis_reg$$  :
     {
         __option_setting_osis_reg$$Base = . ;
         KEEP(*(.option_setting_osis))
         __option_setting_osis_reg$$Limit = . ;
     }  > OPTION_SETTING_OSIS
 
-    .option_setting_osis.endof   :
+    .option_setting_osis.endof  :
     {
-       __ddsc_OPTION_SETTING_OSIS_END = . ;
+        __ddsc_OPTION_SETTING_OSIS_END = . ;
     }  > OPTION_SETTING_OSIS
 
-    .bss :
-    {
-        . = ALIGN(4);
-        __bss_start__ = .;
-        *(.bss*)
-        *(COMMON)
-        . = ALIGN(4);
-        __bss_end__ = .;
-    } > RAM
-
 }
+PROVIDE( __tls_base = ADDR(__ram_tdata$$) );
+PROVIDE( __tdata_source = LOADADDR(__ram_tdata$$) );
+PROVIDE( __tdata_size = SIZEOF(__ram_tdata$$) );
+PROVIDE( __tbss_offset = ADDR(__ram_tbss$$) - ADDR(__ram_tdata$$) );
+PROVIDE( __tbss_size = SIZEOF(__ram_tbss$$) );
+PROVIDE( __arm32_tls_tcb_offset = 8 );

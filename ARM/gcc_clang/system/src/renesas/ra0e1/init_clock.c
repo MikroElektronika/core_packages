@@ -58,11 +58,11 @@ typedef struct
 #define BSP_PRV_PRCR_UNLOCK ((BSP_PRV_PRCR_KEY) | 0x3U)
 #define BSP_PRV_PRCR_LOCK   ((BSP_PRV_PRCR_KEY) | 0x0U)
 
-extern uint32_t __etext;
-extern uint32_t __data_start__;
-extern uint32_t __data_end__;
-extern uint32_t __bss_start__;
-extern uint32_t __bss_end__;
+extern uint32_t __ram_from_flash$$Load;
+extern uint32_t __ram_from_flash$$Base;
+extern uint32_t __ram_from_flash$$Limit;
+extern uint32_t __ram_zero$$Base;
+extern uint32_t __ram_zero$$Limit;
 
 extern void (* __init_array_start[])(void);
 extern void (* __init_array_end[])(void);
@@ -205,8 +205,17 @@ void SystemInit(void)
     // Clock setting
     system_clock_configuration();
 
-    memset(&__bss_start__, 0U, ((uint32_t) &__bss_end__ - (uint32_t) &__bss_start__));
-    memcpy(&__data_start__, &__etext, ((uint32_t) &__data_end__ - (uint32_t) &__data_start__));
+    memset(
+        &__ram_zero$$Base,
+        0,
+        (uint32_t)&__ram_zero$$Limit - (uint32_t)&__ram_zero$$Base
+    );
+
+    memcpy(
+        &__ram_from_flash$$Base,
+        &__ram_from_flash$$Load,
+        (uint32_t)&__ram_from_flash$$Limit - (uint32_t)&__ram_from_flash$$Base
+    );
 
     int32_t count = __init_array_end - __init_array_start;
     for (int32_t i = 0; i < count; i++)

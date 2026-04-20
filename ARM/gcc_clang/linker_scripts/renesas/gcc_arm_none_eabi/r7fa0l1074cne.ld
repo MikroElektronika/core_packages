@@ -13,7 +13,6 @@ OPTION_SETTING_OSIS_START = 0x01010018;
 OPTION_SETTING_OSIS_LENGTH = 0x00000020;
 FLASH_GAP_START = 0x00000000;
 FLASH_GAP_LENGTH = 0x00000400;
-
 MEMORY
 {
     RAM (rwx) : ORIGIN = RAM_START, LENGTH = RAM_LENGTH
@@ -33,54 +32,6 @@ GROUP(libgcc.a libc.a libm.a)
 SECTIONS
 {
     /***** DATA_FLASH memory section allocations ******/
-    __etext = .;
-
-    /* Initialized data section. */
-    .data :
-    {
-        __data_start__ = .;
-        . = ALIGN(4);
-
-        __Code_In_RAM_Start = .;
-
-        KEEP(*(.code_in_ram*))
-        __Code_In_RAM_End = .;
-
-        *(vtable)
-        /* Don't use *(.data*) because it will place data meant for .data_flash in this section. */
-        *(.data.*)
-        *(.data)
-
-        . = ALIGN(4);
-        /* preinit data */
-        PROVIDE_HIDDEN (__preinit_array_start = .);
-        KEEP(*(.preinit_array))
-        PROVIDE_HIDDEN (__preinit_array_end = .);
-
-        . = ALIGN(4);
-        /* init data */
-        PROVIDE_HIDDEN (__init_array_start = .);
-        KEEP(*(SORT(.init_array.*)))
-        KEEP(*(.init_array))
-        PROVIDE_HIDDEN (__init_array_end = .);
-
-
-        . = ALIGN(4);
-        /* finit data */
-        PROVIDE_HIDDEN (__fini_array_start = .);
-        KEEP(*(SORT(.fini_array.*)))
-        KEEP(*(.fini_array))
-        PROVIDE_HIDDEN (__fini_array_end = .);
-
-        KEEP(*(.jcr*))
-
-        . = ALIGN(4);
-
-        /* All data end */
-        __data_end__ = .;
-
-    } > RAM AT > FLASH
-
     .data_flash.startof  (READONLY) :
     {
         __ddsc_DATA_FLASH_START = . ;
@@ -218,7 +169,6 @@ SECTIONS
     .ram.endof ALIGN(.,512) :
     {
         __ddsc_RAM_END = . ;
-
     }  > RAM
 
     __flash_readonly$$  (READONLY) :
@@ -312,17 +262,16 @@ SECTIONS
         KEEP(*(.option_setting_ofs0))
         __option_setting_ofs0_reg$$Limit = . ;
     }  > OPTION_SETTING_OFS0
+
     .option_setting_ofs0.endof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS0_END = . ;
-
     }  > OPTION_SETTING_OFS0
 
     /***** OPTION_SETTING_OFS1 memory section allocations ******/
     .option_setting_ofs1.startof  (READONLY) :
     {
         __ddsc_OPTION_SETTING_OFS1_START = . ;
-
     }  > OPTION_SETTING_OFS1
 
     /* Option Function Select Register 1 */
@@ -335,13 +284,13 @@ SECTIONS
 
     .option_setting_ofs1.endof  (READONLY) :
     {
-       __ddsc_OPTION_SETTING_OFS1_END = . ;
+        __ddsc_OPTION_SETTING_OFS1_END = . ;
     }  > OPTION_SETTING_OFS1
 
     /***** OPTION_SETTING_OSIS memory section allocations ******/
     .option_setting_osis.startof  (READONLY) :
     {
-       __ddsc_OPTION_SETTING_OSIS_START = . ;
+        __ddsc_OPTION_SETTING_OSIS_START = . ;
     }  > OPTION_SETTING_OSIS
 
     /* OCD/Serial Programmer ID setting register */
@@ -354,17 +303,7 @@ SECTIONS
 
     .option_setting_osis.endof  (READONLY) :
     {
-       __ddsc_OPTION_SETTING_OSIS_END = . ;
+        __ddsc_OPTION_SETTING_OSIS_END = . ;
     }  > OPTION_SETTING_OSIS
-
-    .bss :
-    {
-        . = ALIGN(4);
-        __bss_start__ = .;
-        *(.bss*)
-        *(COMMON)
-        . = ALIGN(4);
-        __bss_end__ = .;
-    } > RAM
 
 }
