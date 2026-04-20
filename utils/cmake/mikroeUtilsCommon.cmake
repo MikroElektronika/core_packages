@@ -533,3 +533,20 @@ function(lvgl_dependency_resolve library)
         set(${library} "lvgl" PARENT_SCOPE)
     endif()
 endfunction()
+
+#############################################################################
+## Macro to define if NECTO Studio is connected to a remote board
+#############################################################################
+macro(is_pd_setup var_name)
+    if(NOT DEFINED ${var_name})
+        set(${var_name} 0)
+    else()
+        if(${${var_name}})
+            set(${var_name} 1)
+        else()
+            set(${var_name} 0)
+        endif()
+    endif()
+endmacro()
+
+is_pd_setup(IS_PD_SETUP)
