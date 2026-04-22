@@ -1,3 +1,8 @@
+# Include CMake for click boards (if exists) to achieve automatic Mikrobus detection fo PD boards.
+if(EXISTS ${CMAKE_CURRENT_BINARY_DIR}/mikroeUtilsClicks.cmake)
+    include(${CMAKE_CURRENT_BINARY_DIR}/mikroeUtilsClicks.cmake)
+endif()
+
 #############################################################################
 ## Function to find the packages with better error message handling.
 #############################################################################
