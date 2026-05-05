@@ -99,5 +99,10 @@ WHERE
         )
         OR (Devices.flash LIKE '%%2%')
         OR (Devices.max_speed LIKE '%%2%')
-        OR (pin_count LIKE '%%2%')
+        OR (
+            COALESCE(
+                SUBSTR(DeviceToPackage.package_uid, 0, INSTR(DeviceToPackage.package_uid, '/')),
+                ''
+            ) LIKE '%%2%'
+        )
     ) --
