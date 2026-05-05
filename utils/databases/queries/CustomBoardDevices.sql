@@ -61,6 +61,11 @@ WHERE
         OR (CAST(CAST(Devices.ram AS INTEGER) / 1024 / 1024 /1024 AS TEXT)  LIKE '%%2%') 
         OR (Devices.flash LIKE '%%2%')
         OR (Devices.max_speed LIKE '%%2%')
-        OR (pin_count LIKE '%%2%')
+        OR (
+            COALESCE(
+                SUBSTR(DeviceToPackage.package_uid, 0, INSTR(DeviceToPackage.package_uid, '/')),
+                ''
+            ) LIKE '%%2%'
+        )
     )
 ORDER BY Devices.uid
