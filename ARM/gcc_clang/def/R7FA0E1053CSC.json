@@ -489,7 +489,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "3",
                     "key": "CK",
                     "label": "UARTA0 Operation Clock Select (fUTA0)",
                     "mask": "f",
@@ -530,7 +530,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "20",
                     "key": "SEL",
                     "label": "fSEL Clock Select",
                     "mask": "30",
