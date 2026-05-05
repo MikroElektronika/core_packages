@@ -48,7 +48,21 @@ typedef struct
 {
     uint32_t ICLK_Frequency;    // System clock frequency in Hz
     uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
+    uint32_t UARTA0_Frequency;    // FSEL clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
+
+static uint8_t UARTAPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
+
+/* Helper macros for getting UARTA speed. */
+#define LOCO_FREQUENCY       32768
+#define MOCO_FREQUENCY       8000000
+#define MOSC_FREQUENCY       24000000
+#define HOCO_FREQUENCY_24MHZ 24000000
+#define HOCO_FREQUENCY_32MHZ 32000000
+#define UARTA_SOURCE_MOSC    0x1
+#define UARTA_SOURCE_HOCO    0x2
+#define UARTA_SOURCE_MOCO    0x3
+#define UARTA_SOURCE_LOCO    0x8
 
 /* Helper macros for setting speed. */
 #define BSP_PRV_OPERATING_MODE_MIDDLE_SPEED (2)
@@ -182,11 +196,27 @@ static void system_clock_configuration();
  * @return None
  */
 void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
+    uint8_t uarta0_presc = UARTAPrescTable[ R_UARTA_CK->UTAnCK[0] & R_UARTA_CK_UTAnCK_CK_Msk ];
+    uint8_t uarta0_source = ( R_UARTA_CK->UTAnCK[0] & R_UARTA_CK_UTAnCK_SEL_Msk ) >> R_UARTA_CK_UTAnCK_SEL_Pos;
+
     // Get the frequency of main clock.
     SYSTEM_Clocks->ICLK_Frequency = FOSC_KHZ_VALUE * 1000;
 
     // Get PCLKB clock frequency.
     SYSTEM_Clocks->PCLKB_Frequency = FOSC_KHZ_VALUE * 1000;
+
+    // Get FSEL clock frequency.
+    if ( UARTA_SOURCE_LOCO == R_UARTA_CK->UTAnCK[0] & R_UARTA_CK_UTAnCK_CK_Msk )
+        SYSTEM_Clocks->UARTA0_Frequency = LOCO_FREQUENCY;
+    else if ( UARTA_SOURCE_MOSC == uarta0_source )
+        SYSTEM_Clocks->UARTA0_Frequency = MOSC_FREQUENCY / uarta0_presc;
+    else if ( UARTA_SOURCE_HOCO == uarta0_source )
+        if ( VALUE_SYSTEM_HOCOCR2 )
+            SYSTEM_Clocks->UARTA0_Frequency = HOCO_FREQUENCY_32MHZ / uarta0_presc;
+        else
+            SYSTEM_Clocks->UARTA0_Frequency = HOCO_FREQUENCY_24MHZ / uarta0_presc;
+    else if ( UARTA_SOURCE_MOCO == uarta0_source )
+        SYSTEM_Clocks->UARTA0_Frequency = MOCO_FREQUENCY / uarta0_presc;
 }
 
 /**
