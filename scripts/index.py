@@ -477,11 +477,11 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                             }
                         )
 
-            # Always update the database version
+            # Always update the database version based on the version in elasticsearch
             if 'package_name' in locals():
                 if ('database' == package_name):
                     if doc:
-                        doc['version'] = increase_version(current_version, part="patch")
+                        doc['version'] = increase_version(previous_version, part="patch")
 
             # Index the document
             if doc:
