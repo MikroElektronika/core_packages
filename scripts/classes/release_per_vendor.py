@@ -183,14 +183,14 @@ class GitHubReleaseUploader:
 
         log_array = []
         for spec in specs:
-            release_version, release_name = self._select_release_name(version=version, spec=spec, releases_to_update=releases_to_update.split('|'))
+            release_name = self._select_release_name(version=version, spec=spec)
             if release_name.startswith(spec.vendor):
-                tag = f'{spec.vendor}_{spec.compiler}_{release_version}'
+                tag = f'{spec.vendor}_{spec.compiler}_{version}'
             elif release_name.startswith('Release'):
                 general_release_name = release_name
-                tag = release_version
+                tag = version
             else:
-                tag = f'{spec.compiler}_{release_version}'
+                tag = f'{spec.compiler}_{version}'
 
             # Group assets by releases
             if release_name not in releases_info:
@@ -199,7 +199,7 @@ class GitHubReleaseUploader:
                     'tag': tag,
                     'upload_url': '',
                     'release_id': '',
-                    'release_version': release_version.replace('v', '')
+                    'release_version': version.replace('v', '')
                 }
             releases_info[release_name]['assets'].append(
                 {
@@ -208,9 +208,43 @@ class GitHubReleaseUploader:
                 })
 
         # Create releases if they are not already present
-        for release_name in releases_info:
-            print(f'Fetching existing Release information for {release_name}...')
-            rel_id, upload_url = self._ensure_release_cached(name=release_name, tag=releases_info[release_name]['tag'])
+        for original_release_name in list(releases_info.keys()):
+            release_name = original_release_name
+            base_release_name = release_name.replace(f' {version}', '')
+
+            if base_release_name in releases_to_update:
+                print(f'Creating new Release for {base_release_name}...')
+
+                current_version = version
+
+                while True:
+                    new_version = 'v' + increase_version(current_version.replace('v', ''), part='patch')
+                    new_release_name = release_name.replace(current_version, new_version)
+
+                    releases_info[new_release_name] = releases_info[release_name].copy()
+                    del releases_info[release_name]
+
+                    release_name = new_release_name
+                    releases_info[release_name]['tag'] = releases_info[release_name]['tag'].replace(current_version, new_version)
+                    current_version = new_version
+                    releases_info[release_name]['release_version'] = new_version.replace('v', '')
+
+                    rel_id, upload_url, existing = self._ensure_release_cached(
+                        name=release_name,
+                        tag=releases_info[release_name]['tag']
+                    )
+
+                    if existing is None:
+                        break
+
+            else:
+                print(f'Fetching existing Release information for {release_name}...')
+
+                rel_id, upload_url, existing = self._ensure_release_cached(
+                    name=release_name,
+                    tag=releases_info[release_name]['tag']
+                )
+
             releases_info[release_name]['upload_url'] = upload_url
             releases_info[release_name]['release_id'] = rel_id
 
@@ -299,9 +333,9 @@ class GitHubReleaseUploader:
             out.append(FileSpec(filename=filename, vendor=vendor, path=path, compiler=compiler_str))
         return out
 
-    def _select_release_name(self, *, version: str, spec: FileSpec, releases_to_update: list) -> str:
+    def _select_release_name(self, *, version: str, spec: FileSpec) -> str:
         if spec.filename in SPECIAL_RELEASE_FILENAMES:
-            return version, f"Release {version}"
+            return f"Release {version}"
 
         compiler = (spec.compiler or "").strip()
         if not compiler:
@@ -312,11 +346,7 @@ class GitHubReleaseUploader:
         else:
             release_name = f'MCU Support packages for {compiler}'
 
-        # If this release is requested to be updated - increase the version
-        if release_name in releases_to_update:
-            version = 'v' + increase_version(version.replace('v', ''), part='patch')
-
-        return version, f"{release_name} {version}"
+        return f"{release_name} {version}"
 
     def _infer_compiler_from_filename(self, filename: str) -> Optional[str]:
         s = filename.lower()
@@ -347,9 +377,9 @@ class GitHubReleaseUploader:
         if cached:
             return cached
 
-        rel_id, upload_url = self._ensure_release(name=name, tag=tag)
+        rel_id, upload_url, existed = self._ensure_release(name=name, tag=tag)
         self._release_cache[name] = (rel_id, upload_url)
-        return rel_id, upload_url
+        return rel_id, upload_url, existed
 
     def _ensure_release(self, *, name: str, tag: str) -> Tuple[int, str]:
         """
@@ -360,11 +390,11 @@ class GitHubReleaseUploader:
         if existing:
             rel_id = int(existing["id"])
             upload_url = str(existing["upload_url"]).split("{")[0]
-            return rel_id, upload_url
+            return rel_id, upload_url, existing
 
         if self.dry_run:
             print(f"[DRY RUN] Would create release: name={name!r}, tag={tag!r}")
-            return 0, "https://uploads.github.com/fake"
+            return 0, "https://uploads.github.com/fake", existing
 
         url = f"{self.api_base}/repos/{self.repo}/releases"
         body = {
@@ -380,7 +410,7 @@ class GitHubReleaseUploader:
         rel_id = int(rel["id"])
         upload_url = str(rel["upload_url"]).split("{")[0]
         print(f"\033[34mCreated release: {name} (id={rel_id})\033[0m")
-        return rel_id, upload_url
+        return rel_id, upload_url, existing
 
     def _find_release_by_name(self, name: str) -> Optional[Dict[str, Any]]:
         url = f"{self.api_base}/repos/{self.repo}/releases"

@@ -788,21 +788,23 @@ def fetch_elasticsearch_data(index_name):
         num_of_retries += 1
 
     for eachHit in response['hits']['hits']:
-        if eachHit['_id'] == 'database':
-            if eachHit['_source']['name'] == 'database':
-                return eachHit['_source']['version']
-
+        if 'database' in eachHit['_id']:
+            return eachHit['_source']['version']
     return None
 
-def update_metadata(current_metadata, new_files, version):
+def update_metadata(new_files, version):
     """ Update the metadata with the new files """
     updated_metadata = []
-    current_files_dict = {item['name']: item for item in current_metadata}
 
     print(f"Updating metadata objects version to {version}.")
     for new_file in new_files:
         if 'database' == new_file['name']:
             db_version = fetch_elasticsearch_data(os.environ['ES_INDEX_LIVE'])
+            if not db_version:
+                db_version = version
+            new_file['version'] = db_version
+        elif 'database_dev' == new_file['name']:
+            db_version = fetch_elasticsearch_data(os.environ['ES_INDEX_TEST'])
             if not db_version:
                 db_version = version
             new_file['version'] = db_version
@@ -971,7 +973,7 @@ async def main(token, repo, tag_name, releases_to_update):
     archive_path = compress_directory_7z(os.path.join('./output', 'docs'), 'docs.7z')
     gh_uploader.append_to_payload(payload, 'docs.7z', Path(str(archive_path)).resolve())
 
-    new_metadata = update_metadata(current_metadata, packages, tag_name.replace("v", ""))
+    new_metadata = update_metadata(packages, tag_name.replace("v", ""))
     with open('metadata.json', 'w') as f:
         json.dump(new_metadata, f, indent=4)
     gh_uploader.append_to_payload(payload, 'metadata.json', os.path.join(parent_dir, 'metadata.json'))
