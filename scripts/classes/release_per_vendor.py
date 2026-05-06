@@ -225,9 +225,8 @@ class GitHubReleaseUploader:
                     del releases_info[release_name]
 
                     release_name = new_release_name
+                    releases_info[release_name]['tag'] = releases_info[release_name]['tag'].replace(current_version, new_version)
                     current_version = new_version
-
-                    releases_info[release_name]['tag'] = releases_info[release_name]['tag'].replace(version, new_version)
                     releases_info[release_name]['release_version'] = new_version.replace('v', '')
 
                     rel_id, upload_url, existing = self._ensure_release_cached(
