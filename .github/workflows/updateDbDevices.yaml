@@ -35,9 +35,6 @@ on:
         type: boolean
         description: AI generated SDK? (only used for "Set sdk_support" option)
         default: false
-  schedule:
-      - cron: "0 4 8 1 *"  # 08.01.2026 for RA6M4 SDK release
-      - cron: "0 4 24 12 *"  # 24.12.2025 for workflow test
 
 jobs:
   Update_Devices_in_Dev_Database:
