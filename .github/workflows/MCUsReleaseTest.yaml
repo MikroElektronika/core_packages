@@ -94,6 +94,56 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: python -u scripts/release_mcus.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ github.event.inputs.release_version }}
 
+  update_and_upload_new_database:
+    runs-on: ubuntu-latest
+    needs: upload_mcu_assets_test
+
+    permissions:
+      pull-requests: write
+      contents: write
+      packages: write
+      actions: read
+
+    steps:
+      - name: Authorize Mikroe Actions App
+        uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ vars.MIKROE_ACTIONS }}
+          private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
+
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.inputs.release_branch }}
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Add GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Cache Python packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements/shared.txt
+          pip install -r scripts/requirements/databases.txt
+          pip install -r scripts/requirements/support.txt
+          sudo apt-get install p7zip-full
+
       - name: Update and upload new database
         run: |
           python -u scripts/reupload_databases.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ secrets.PROG_DEBUG_JLINK }} ${{ github.event.inputs.release_version }} "latest" "Test"
