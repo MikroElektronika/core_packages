@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^AT32F457RCT7$|^AT32F457RET7$|^AT32F457VCT7$|^AT32F457VET7$|^AT32F457ZCT7$|^AT32F457ZET7$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/at32f457/init_clock.c)
+endif()

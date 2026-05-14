@@ -1,0 +1,18 @@
+{
+    "def_file": "APM32F091VC.json",
+    "family_uid": "APM32F091",
+    "flash": "262144",
+    "icon": "images/mcu/geehy.png",
+    "max_speed": "48.000",
+    "name": "APM32F091VC",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"APM32F091VC\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "APM32F091VC",
+    "vendor": "Geehy",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_apm32f09\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_apm32f09\"}"
+}

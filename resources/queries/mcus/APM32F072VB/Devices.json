@@ -1,0 +1,18 @@
+{
+    "def_file": "APM32F072VB.json",
+    "family_uid": "APM32F072",
+    "flash": "131072",
+    "icon": "images/mcu/geehy.png",
+    "max_speed": "48.000",
+    "name": "APM32F072VB",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"APM32F072VB\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "APM32F072VB",
+    "vendor": "Geehy",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_apm32f07\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_apm32f07\"}"
+}

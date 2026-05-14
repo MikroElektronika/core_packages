@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^APM32F445CC$|^APM32F445CE$|^APM32F445RC$|^APM32F445RE$|^APM32F445VC$|^APM32F445VE$|^APM32F446RG$|^APM32F446VG$")
+    list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/4)")
+endif()

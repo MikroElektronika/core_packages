@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^AT32A403ACCT7$|^AT32A403ACCU7$|^AT32A403ACET7$|^AT32A403ACEU7$|^AT32A403ACGT7$|^AT32A403ACGU7$|^AT32A403ARCT7$|^AT32A403ARET7$|^AT32A403ARGT7$|^AT32A403AVCT7$|^AT32A403AVET7$|^AT32A403AVGT7$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/at32a40/init_clock.c)
+endif()

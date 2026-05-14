@@ -1,0 +1,18 @@
+{
+    "def_file": "APM32F402CB.json",
+    "family_uid": "APM32F402",
+    "flash": "131072",
+    "icon": "images/mcu/geehy.png",
+    "max_speed": "120.000",
+    "name": "APM32F402CB",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"APM32F402CB\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "APM32F402CB",
+    "vendor": "Geehy",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_apm32f402\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_apm32f402\"}"
+}
