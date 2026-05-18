@@ -1,0 +1,6 @@
+{
+    "core": "M0+",
+    "delay_src_path": "delays/M0+/__lib_delays.c",
+    "mcu": "AT32L021K6U7-4",
+    "clock": "1"
+}

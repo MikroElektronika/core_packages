@@ -1,0 +1,18 @@
+{
+    "def_file": "AT32L021G4U7.json",
+    "family_uid": "AT32L021",
+    "flash": "16384",
+    "icon": "images/mcu/arterytek.png",
+    "max_speed": "80.000",
+    "name": "AT32L021G4U7",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"AT32L021G4U7\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "AT32L021G4U7",
+    "vendor": "ArteryTek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_at32l021g\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_at32l021g\"}"
+}

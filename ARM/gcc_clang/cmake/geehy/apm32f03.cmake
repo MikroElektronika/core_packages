@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^APM32F030C6$|^APM32F030C8$|^APM32F030CC$|^APM32F030F4$|^APM32F030F6$|^APM32F030F8$|^APM32F030G4$|^APM32F030G6$|^APM32F030G8$|^APM32F030K6$|^APM32F030K8$|^APM32F030R8$|^APM32F030RC$|^APM32F035C8$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/apm32f03/init_clock.c)
+endif()

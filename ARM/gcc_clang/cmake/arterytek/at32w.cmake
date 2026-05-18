@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^AT32WB415CCU7_7$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.s PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/at32w/init_clock.c)
+endif()

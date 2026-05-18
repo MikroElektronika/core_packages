@@ -1,0 +1,18 @@
+{
+    "def_file": "APM32F423CG.json",
+    "family_uid": "APM32F425",
+    "flash": "1048576",
+    "icon": "images/mcu/geehy.png",
+    "max_speed": "192.000",
+    "name": "APM32F423CG",
+    "ram": "397312",
+    "sdk_config": "{\"MCU_NAME\":\"APM32F423CG\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "APM32F423CG",
+    "vendor": "Geehy",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_apm32f42\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_apm32f42\"}"
+}

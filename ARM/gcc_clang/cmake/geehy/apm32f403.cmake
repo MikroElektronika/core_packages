@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^APM32F403CB$|^APM32F403RB$|^APM32F403TB$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/apm32f403/init_clock.c)
+endif()

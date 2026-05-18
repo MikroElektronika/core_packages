@@ -1,0 +1,18 @@
+{
+    "def_file": "AT32F426K8U7-4.json",
+    "family_uid": "AT32F426",
+    "flash": "65536",
+    "icon": "images/mcu/arterytek.png",
+    "max_speed": "180.000",
+    "name": "AT32F426K8U7-4",
+    "ram": "20480",
+    "sdk_config": "{\"MCU_NAME\":\"AT32F426K8U7_4\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "AT32F426K8U7-4",
+    "vendor": "ArteryTek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_at32f426\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_at32f426\"}"
+}

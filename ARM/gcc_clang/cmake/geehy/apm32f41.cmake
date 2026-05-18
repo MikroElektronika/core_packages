@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^APM32F411CC$|^APM32F411CE$|^APM32F411RC$|^APM32F411RE$|^APM32F411VC$|^APM32F411VE$|^APM32F415RG$|^APM32F415VG$|^APM32F415ZG$|^APM32F417IE$|^APM32F417IG$|^APM32F417VE$|^APM32F417VG$|^APM32F417ZE$|^APM32F417ZG$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/apm32f41/init_clock.c)
+endif()
