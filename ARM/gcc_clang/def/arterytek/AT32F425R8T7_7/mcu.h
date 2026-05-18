@@ -51,6 +51,8 @@ extern "C" {
   *      devices, you can define the device in your toolchain compiler preprocessor.
   */
 
+#define AT32F425R8T7_7 // Note: Added for MikroE implementation.
+
 #if !defined (AT32F425R8T7)   && !defined (AT32F425R8T7_7) && !defined (AT32F425C8T7)   && \
     !defined (AT32F425C8U7)   && !defined (AT32F425K8T7)   && !defined (AT32F425K8U7_4) && \
     !defined (AT32F425F8P7)   && !defined (AT32F425G8U7)   && !defined (AT32F425R6T7)   && \

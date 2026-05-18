@@ -51,6 +51,8 @@ extern "C" {
   *      devices, you can define the device in your toolchain compiler preprocessor.
   */
 
+#define AT32WB415CCU7_7 // Note: Added for MikroE implementation.
+
 #if !defined (AT32WB415CCU7_7)
 
     #error "Please select first the target device used in your application (in at32wb415.h file)"
