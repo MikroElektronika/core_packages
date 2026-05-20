@@ -1701,6 +1701,51 @@
             "unused": "00000030"
         },
         {
+            "address": "4001e078",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "I3CCKSEL",
+                    "label": "I3C clock (I3CCLK) Source Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "MOCO (Value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "PLL1P",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2P",
+                            "value": "6"
+                        },
+                        {
+                            "label": "PLL1Q",
+                            "value": "7"
+                        },
+                        {
+                            "label": "PLL1R",
+                            "value": "8"
+                        },
+                        {
+                            "label": "PLL2Q",
+                            "value": "9"
+                        },
+                        {
+                            "label": "PLL2R",
+                            "value": "a"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_I3CCKCR",
+            "unused": "000000f0"
+        },
+        {
             "address": "4001e0a0",
             "default": "0",
             "fields": [

@@ -756,6 +756,47 @@
             "unused": "00000008"
         },
         {
+            "address": "4001e079",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "I3CCKSEL",
+                    "label": "I3C clock (I3CCLK) Source Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Sub-clock oscillator",
+                            "value": "4"
+                        },
+                        {
+                            "label": "PLL",
+                            "value": "5"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_I3CCKCR",
+            "unused": "000000f8"
+        },
+        {
             "address": "4001e0a0",
             "default": "1",
             "fields": [
