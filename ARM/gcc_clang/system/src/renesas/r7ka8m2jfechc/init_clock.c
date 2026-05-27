@@ -50,6 +50,8 @@ typedef struct
 {
     uint32_t CPU0CLK_Frequency;  // CPU0 clock frequency in Hz
     uint32_t CPU1CLK_Frequency;  // CPU1 clock frequency in Hz
+    uint32_t MRICLK_Frequency;   // MRAM bus clock frequency in Hz
+    uint32_t MRPCLK_Frequency;   // MRAM clock frequency in Hz
     uint32_t ICLK_Frequency;     // System clock frequency in Hz
     uint32_t PCLKA_Frequency;    // PCLKA clock frequency in Hz
     uint32_t PCLKB_Frequency;    // PCLKB clock frequency in Hz
@@ -964,6 +966,14 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     // Get CPU1 clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR2 & 0xF0 ) >> 4 ];
     SYSTEM_Clocks->CPU1CLK_Frequency = source_clock / prescaler;
+
+    // Get MRICLK clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR2 & 0xF000 ) >> 12 ];
+    SYSTEM_Clocks->MRICLK_Frequency = source_clock / prescaler;
+
+    // Get MRPCLK clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF0000000 ) >> 28 ];
+    SYSTEM_Clocks->MRPCLK_Frequency = source_clock / prescaler;
 
     // Get the frequency of system clock.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000000 ) >> 24 ];
