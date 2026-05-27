@@ -66,21 +66,14 @@ static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
 #define I3C_SOURCE_XTAL         (3)
 #define I3C_SOURCE_SUBCLK       (4)
 #define I3C_SOURCE_PLL          (5)
-#define HOCO_FREQUENCY_MHZ_24   (4)
-#define HOCO_FREQUENCY_MHZ_32   (5)
-#define HOCO_FREQUENCY_MHZ_40   (6)
-#define HOCO_FREQUENCY_MHZ_48   (0)
-#define HOCO_FREQUENCY_MHZ_64   (1)
-#define HOCO_FREQUENCY_MHZ_80   (2)
+#define HOCO_FREQUENCY_MHZ_16   (0)
+#define HOCO_FREQUENCY_MHZ_18   (1)
+#define HOCO_FREQUENCY_MHZ_20   (2)
 #define FREQUENCY_32768HZ       (32768)
 #define FREQUENCY_8MHZ          (8000000)
+#define FREQUENCY_16MHZ         (16000000)
+#define FREQUENCY_18MHZ         (18000000)
 #define FREQUENCY_20MHZ         (20000000)
-#define FREQUENCY_24MHZ         (24000000)
-#define FREQUENCY_32MHZ         (32000000)
-#define FREQUENCY_40MHZ         (40000000)
-#define FREQUENCY_48MHZ         (48000000)
-#define FREQUENCY_64MHZ         (64000000)
-#define FREQUENCY_80MHZ         (80000000)
 
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
@@ -482,13 +475,13 @@ static void system_clock_configuration();
 uint32_t SYSTEM_GetPLLFrequency( uint32_t hoco_frequency ) {
     uint32_t pll_frequency;
     float pll_multiplicator;
-    uint8_t PLLPrescTable[ 3 ] = { 1, 4, 6 };
+    uint8_t PLLPrescTable[ 3 ] = { 1, 2, 3 };
 
     // Get PLL source clock.
     if ( VALUE_SYSTEM_PLLCCR & R_SYSTEM_PLLCCR_PLSRCSEL_Msk )
         pll_frequency = hoco_frequency;
     else
-        // Note: MOSC value used by EK-RA8M1 Board.
+        // Note: MOSC value used by EK-RA4E2 Board.
         pll_frequency = FREQUENCY_20MHZ;
 
     // Divide PLL source clock based on PLIDIV value.
@@ -542,32 +535,33 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     SYSTEM_Clocks->FCLK_Frequency = source_clock / prescaler;
 
     // Get HOCO frequency.
-    if( HOCO_FREQUENCY_MHZ_24 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
-        hoco_frequency = FREQUENCY_24MHZ;
-    else if ( HOCO_FREQUENCY_MHZ_32 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
-        hoco_frequency = FREQUENCY_32MHZ;
-    else if ( HOCO_FREQUENCY_MHZ_40 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
-        hoco_frequency = FREQUENCY_40MHZ;
-    else if ( HOCO_FREQUENCY_MHZ_48 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
-        hoco_frequency = FREQUENCY_48MHZ;
-    else if ( HOCO_FREQUENCY_MHZ_64 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
-        hoco_frequency = FREQUENCY_64MHZ;
-    else if ( HOCO_FREQUENCY_MHZ_80 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
-        hoco_frequency = FREQUENCY_80MHZ;
+    if( HOCO_FREQUENCY_MHZ_16 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_16MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_18 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_18MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_20 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_20MHZ;
 
+    // Get I3C clock frequency.
     switch ( VALUE_SYSTEM_I3CCKCR & R_SYSTEM_I3CCKCR_I3CCKSEL_Msk ) {
         case I3C_SOURCE_HOCO:
             SYSTEM_Clocks->I3CCK_Frequeincy = hoco_frequency;
+            break;
         case I3C_SOURCE_MOCO:
             SYSTEM_Clocks->I3CCK_Frequeincy = FREQUENCY_8MHZ;
+            break;
         case I3C_SOURCE_LOCO:
             SYSTEM_Clocks->I3CCK_Frequeincy = FREQUENCY_32768HZ;
+            break;
         case I3C_SOURCE_XTAL:
             SYSTEM_Clocks->I3CCK_Frequeincy = FREQUENCY_20MHZ;
+            break;
         case I3C_SOURCE_SUBCLK:
             SYSTEM_Clocks->I3CCK_Frequeincy = FREQUENCY_32768HZ;
+            break;
         case I3C_SOURCE_PLL:
             SYSTEM_Clocks->I3CCK_Frequeincy = SYSTEM_GetPLLFrequency( hoco_frequency );
+            break;
 
         default:
             break;

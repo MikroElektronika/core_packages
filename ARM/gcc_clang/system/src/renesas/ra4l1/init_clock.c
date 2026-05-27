@@ -553,7 +553,7 @@ uint32_t SYSTEM_GetPLLFrequency( uint32_t hoco_frequency ) {
     if ( VALUE_SYSTEM_PLLCCR & R_SYSTEM_PLLCCR_PLSRCSEL_Msk )
         pll_frequency = hoco_frequency;
     else
-        // Note: MOSC value used by EK-RA8M1 Board.
+        // Note: MOSC value used by EK-RA4L1 Board.
         pll_frequency = FREQUENCY_20MHZ;
 
     // Divide PLL source clock based on PLIDIV value.
@@ -624,19 +624,26 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     else if ( HOCO_FREQUENCY_MHZ_80 == ( VALUE_SYSTEM_HOCOCR2 & 0x7 ))
         hoco_frequency = FREQUENCY_80MHZ;
 
+    // Get I3C clock frequency.
     switch ( VALUE_SYSTEM_I3CCKCR & R_SYSTEM_I3CCKCR_I3CCKSEL_Msk ) {
         case I3C_SOURCE_HOCO:
             SYSTEM_Clocks->I3CCK_Frequeincy = hoco_frequency;
+            break;
         case I3C_SOURCE_MOCO:
             SYSTEM_Clocks->I3CCK_Frequeincy = FREQUENCY_8MHZ;
+            break;
         case I3C_SOURCE_LOCO:
             SYSTEM_Clocks->I3CCK_Frequeincy = FREQUENCY_32768HZ;
+            break;
         case I3C_SOURCE_XTAL:
             SYSTEM_Clocks->I3CCK_Frequeincy = FREQUENCY_20MHZ;
+            break;
         case I3C_SOURCE_SUBCLK:
             SYSTEM_Clocks->I3CCK_Frequeincy = FREQUENCY_32768HZ;
+            break;
         case I3C_SOURCE_PLL:
             SYSTEM_Clocks->I3CCK_Frequeincy = SYSTEM_GetPLLFrequency( hoco_frequency );
+            break;
 
         default:
             break;
