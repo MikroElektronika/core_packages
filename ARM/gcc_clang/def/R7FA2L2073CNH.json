@@ -262,8 +262,7 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "ffffffc7",
-            "label": "Other"
+            "unused": "ffffffc7"
         },
         {
             "address": "4001e038",
