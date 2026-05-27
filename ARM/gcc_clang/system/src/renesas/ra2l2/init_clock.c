@@ -39,19 +39,39 @@
  * @brief Mikroe clock initialization API.
  */
 
-#include "core_header.h"
+#include <string.h>
 #include "mcu.h"
+#include "delays.h"
+#include "core_header.h"
 
 extern void * __Vectors[];
 
 typedef struct
 {
     uint32_t ICLK_Frequency;    // System clock frequency in Hz
-    uint32_t PCLKA_Frequency;   // PCLKA clock frequency in Hz
-    uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
+    uint32_t PCLKB_Frequency;   // PCLKA clock frequency in Hz
+    uint32_t PCLKD_Frequency;   // PCLKB clock frequency in Hz
+    uint32_t UARTA0_Frequency;  // FSEL0 clock frequency in Hz
+    uint32_t UARTA1_Frequency;  // FSEL1 clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
+
+/* Helper macros for getting UARTA speed. */
+#define LOCO_FREQUENCY          32768
+#define MOCO_FREQUENCY          8000000
+#define MOSC_FREQUENCY          24000000
+#define HOCO_FREQUENCY_24MHZ    24000000
+#define HOCO_FREQUENCY_32MHZ    32000000
+#define HOCO_FREQUENCY_48MHZ    48000000
+#define HOCO_FREQUENCY_64MHZ    64000000
+#define UARTA_SOURCE_MOSC       0x1
+#define UARTA_SOURCE_HOCO       0x2
+#define UARTA_SOURCE_MOCO       0x3
+#define UARTA_SOURCE_LOCO       0x8
+#define HOCOCR2_HCFRQ1_32MHZ    10
+#define HOCOCR2_HCFRQ1_48MHZ    20
+#define HOCOCR2_HCFRQ1_64MHZ    28
 
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                            (0xA500U)
@@ -274,6 +294,10 @@ static void system_clock_configuration();
  */
 void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     uint32_t prescaler, source_clock;
+    uint8_t uarta0_presc = ClockPrescTable[ R_UARTA_CK->UTAnCK[0] & R_UARTA_CK_UTAnCK_CK_Msk ];
+    uint8_t uarta0_source = ( R_UARTA_CK->UTAnCK[0] & R_UARTA_CK_UTAnCK_SEL_Msk ) >> R_UARTA_CK_UTAnCK_SEL_Pos;
+    uint8_t uarta1_presc = ClockPrescTable[ R_UARTA_CK->UTAnCK[1] & R_UARTA_CK_UTAnCK_CK_Msk ];
+    uint8_t uarta1_source = ( R_UARTA_CK->UTAnCK[0] & R_UARTA_CK_UTAnCK_SEL_Msk ) >> R_UARTA_CK_UTAnCK_SEL_Pos;
 
     // Get the frequency of main clock.
     SYSTEM_Clocks->ICLK_Frequency = FOSC_KHZ_VALUE * 1000;
@@ -283,12 +307,48 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     source_clock = SYSTEM_Clocks->ICLK_Frequency * prescaler;
 
     // Get PCLKA clock frequency.
-    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
-    SYSTEM_Clocks->PCLKA_Frequency = source_clock / prescaler;
-
-    // Get PCLKB clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x700 ) >> 8 ];
     SYSTEM_Clocks->PCLKB_Frequency = source_clock / prescaler;
+
+    // Get PCLKB clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7 ) ];
+    SYSTEM_Clocks->PCLKD_Frequency = source_clock / prescaler;
+
+    // Get futa0 clock frequency.
+    if ( UARTA_SOURCE_LOCO == R_UARTA_CK->UTAnCK[0] & R_UARTA_CK_UTAnCK_CK_Msk )
+        SYSTEM_Clocks->UARTA0_Frequency = LOCO_FREQUENCY;
+    else if ( UARTA_SOURCE_MOSC == uarta0_source )
+        SYSTEM_Clocks->UARTA0_Frequency = MOSC_FREQUENCY / uarta0_presc;
+    else if ( UARTA_SOURCE_HOCO == uarta0_source )
+        if ( VALUE_SYSTEM_HOCOCR2 )
+            if ( VALUE_SYSTEM_HOCOCR2 == HOCOCR2_HCFRQ1_32MHZ )
+                SYSTEM_Clocks->UARTA0_Frequency = HOCO_FREQUENCY_32MHZ / uarta0_presc;
+            else if ( VALUE_SYSTEM_HOCOCR2 == HOCOCR2_HCFRQ1_48MHZ )
+                SYSTEM_Clocks->UARTA0_Frequency = HOCO_FREQUENCY_48MHZ / uarta0_presc;
+            else if ( VALUE_SYSTEM_HOCOCR2 == HOCOCR2_HCFRQ1_64MHZ )
+                SYSTEM_Clocks->UARTA0_Frequency = HOCO_FREQUENCY_64MHZ / uarta0_presc;
+        else
+            SYSTEM_Clocks->UARTA0_Frequency = HOCO_FREQUENCY_24MHZ / uarta0_presc;
+    else if ( UARTA_SOURCE_MOCO == uarta0_source )
+        SYSTEM_Clocks->UARTA0_Frequency = MOCO_FREQUENCY / uarta0_presc;
+
+    // Get futa1 clock frequency.
+    if ( UARTA_SOURCE_LOCO == R_UARTA_CK->UTAnCK[1] & R_UARTA_CK_UTAnCK_CK_Msk )
+        SYSTEM_Clocks->UARTA1_Frequency = LOCO_FREQUENCY;
+    else if ( UARTA_SOURCE_MOSC == uarta1_source )
+        SYSTEM_Clocks->UARTA1_Frequency = MOSC_FREQUENCY / uarta1_presc;
+    else if ( UARTA_SOURCE_HOCO == uarta1_source )
+        if ( VALUE_SYSTEM_HOCOCR2 )
+            if ( VALUE_SYSTEM_HOCOCR2 == HOCOCR2_HCFRQ1_32MHZ )
+                SYSTEM_Clocks->UARTA1_Frequency = HOCO_FREQUENCY_32MHZ / uarta1_presc;
+            else if ( VALUE_SYSTEM_HOCOCR2 == HOCOCR2_HCFRQ1_48MHZ )
+                SYSTEM_Clocks->UARTA1_Frequency = HOCO_FREQUENCY_48MHZ / uarta1_presc;
+            else if ( VALUE_SYSTEM_HOCOCR2 == HOCOCR2_HCFRQ1_64MHZ )
+                SYSTEM_Clocks->UARTA1_Frequency = HOCO_FREQUENCY_64MHZ / uarta1_presc;
+        else
+            SYSTEM_Clocks->UARTA1_Frequency = HOCO_FREQUENCY_24MHZ / uarta1_presc;
+    else if ( UARTA_SOURCE_MOCO == uarta1_source )
+        SYSTEM_Clocks->UARTA1_Frequency = MOCO_FREQUENCY / uarta1_presc;
 }
 
 /**
@@ -430,6 +490,10 @@ static void system_clock_configuration() {
         R_SYSTEM->CKOCR = VALUE_SYSTEM_CKOCR & ( R_SYSTEM_CKOCR_CKODIV_Msk | R_SYSTEM_CKOCR_CKOSEL_Msk );
         R_SYSTEM->CKOCR_b.CKOEN = 1; // Enable clock out
     }
+
+    // Configure UART clock settings.
+    R_UARTA_CK->UTAnCK[0] = VALUE_SYSTEM_UTA0CK;
+    R_UARTA_CK->UTAnCK[1] = VALUE_SYSTEM_UTA1CK;
 
     // Lock write protection register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;

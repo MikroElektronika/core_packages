@@ -228,6 +228,7 @@
                 }
             ],
             "key": "SYSTEM_SCKDIVCR",
+            "label": "System Clock Division Control Register",
             "unused": "88ff8888"
         },
         {
@@ -269,6 +270,7 @@
                 }
             ],
             "key": "SYSTEM_SCKSCR",
+            "label": "System Clock Source Control Register",
             "unused": "000000f8"
         },
         {
@@ -420,6 +422,7 @@
                 }
             ],
             "key": "SYSTEM_PLLCCR",
+            "label": "PLL Clock Control Register",
             "unused": "0000e0ec"
         },
         {
@@ -445,7 +448,38 @@
                 }
             ],
             "key": "SYSTEM_PLLCR",
+            "label": "PLL Control Register",
             "unused": "000000fe"
+        },
+        {
+            "address": "4001e031",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MEMWAIT",
+                    "label": "Memory Wait Cycle Select for Code Flash",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "No wait",
+                            "value": "0"
+                        },
+                        {
+                            "label": "One wait",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Two waits",
+                            "value": "2"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MEMWAIT",
+            "label": "Memory Wait Cycle Control Register for Code Flash",
+            "unused": "000000fc"
         },
         {
             "address": "4001e032",
@@ -470,6 +504,7 @@
                 }
             ],
             "key": "SYSTEM_MOSCCR",
+            "label": "Main Clock Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -484,7 +519,7 @@
                     "mask": "1",
                     "settings": [
                         {
-                            "label": "Operate the HOCO clock ",
+                            "label": "Operate the HOCO clock",
                             "value": "0"
                         },
                         {
@@ -495,6 +530,7 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR",
+            "label": "High-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -536,6 +572,7 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
+            "label": "High-Speed On-Chip Oscillator Control Register 2",
             "unused": "000000f8"
         },
         {
@@ -561,6 +598,7 @@
                 }
             ],
             "key": "SYSTEM_MOCOCR",
+            "label": "Middle-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -656,7 +694,50 @@
                 }
             ],
             "key": "SYSTEM_CKOCR",
+            "label": "Clock Out Control Register",
             "unused": "00000008"
+        },
+        {
+            "address": "4001e079",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "I3CCKSEL",
+                    "label": "I3C clock (I3CCLK) Source Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Sub-clock oscillator",
+                            "value": "4"
+                        },
+                        {
+                            "label": "PLL",
+                            "value": "5"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_I3CCKCR",
+            "label": "I3C Clock Control Register",
+            "unused": "000000f8"
         },
         {
             "address": "4001e0a0",
@@ -682,26 +763,10 @@
                             "value": "3"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "OPCMTSF",
-                    "label": "Operating Power Control Mode Transition Status Flag",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Transition completed",
-                            "value": "0"
-                        },
-                        {
-                            "label": "During transition",
-                            "value": "10"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_OPCCR",
+            "label": "Operating Power Control Register",
             "unused": "000000ec"
         },
         {
@@ -759,6 +824,7 @@
                 }
             ],
             "key": "SYSTEM_MOSCWTCR",
+            "label": "Main Clock Oscillator Wait Control Register",
             "unused": "000000f0"
         },
         {
@@ -781,26 +847,10 @@
                             "value": "1"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SOPCMTSF",
-                    "label": "Operating Power Control Mode Transition Status Flag",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Transition completed",
-                            "value": "0"
-                        },
-                        {
-                            "label": "During transition",
-                            "value": "10"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_SOPCCR",
+            "label": "Sub Operating Power Control Register",
             "unused": "000000ee"
         },
         {
@@ -843,6 +893,7 @@
                 }
             ],
             "key": "SYSTEM_MOMCR",
+            "label": "Main Clock Oscillator Mode Oscillation Control Register",
             "unused": "000000b7"
         },
         {
@@ -868,6 +919,7 @@
                 }
             ],
             "key": "SYSTEM_SOSCCR",
+            "label": "Sub-Clock Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -901,6 +953,7 @@
                 }
             ],
             "key": "SYSTEM_SOMCR",
+            "label": "Sub-Clock Oscillator Mode Control Register",
             "unused": "000000fc"
         },
         {
@@ -926,7 +979,158 @@
                 }
             ],
             "key": "SYSTEM_LOCOCR",
+            "label": "Low-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
+        },
+        {
+            "address": "40097010",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "CK",
+                    "label": "UARTA0 operation clock select (fUTA0)",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "fSEL",
+                            "value": "0"
+                        },
+                        {
+                            "label": "fSEL/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "fSEL/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "fSEL/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "fSEL/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "fSEL/32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "fSEL/64",
+                            "value": "6"
+                        },
+                        {
+                            "label": "UARTLCLK",
+                            "value": "8"
+                        },
+                        {
+                            "label": "UARTSCLK",
+                            "value": "9"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "SEL",
+                    "label": "fSEL clock select",
+                    "mask": "30",
+                    "settings": [
+                        {
+                            "label": "Stop",
+                            "value": "0"
+                        },
+                        {
+                            "label": "UARTAMCLK",
+                            "value": "10"
+                        },
+                        {
+                            "label": "UARTAHCLK",
+                            "value": "20"
+                        },
+                        {
+                            "label": "UARTAMOCLK",
+                            "value": "30"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_UTA0CK",
+            "label": "UARTA Clock Select Register 0",
+            "unused": "000000c0"
+        },
+        {
+            "address": "40097011",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "CK",
+                    "label": "UARTA1 operation clock select (fUTA1)",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "fSEL",
+                            "value": "0"
+                        },
+                        {
+                            "label": "fSEL/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "fSEL/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "fSEL/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "fSEL/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "fSEL/32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "fSEL/64",
+                            "value": "6"
+                        },
+                        {
+                            "label": "UARTLCLK",
+                            "value": "8"
+                        },
+                        {
+                            "label": "UARTSCLK",
+                            "value": "9"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EN",
+                    "label": "UARTA1 clock output function enable",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Disables CLKA1 output",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enables CLKA1 output",
+                            "value": "80"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_UTA1CK",
+            "label": "UARTA Clock Select Register 1",
+            "unused": "00000070"
         }
     ],
     "core": "M33EF",
