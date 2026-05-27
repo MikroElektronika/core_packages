@@ -9,4 +9,3 @@ __pycache__
 tmp
 scripts/databases
 scripts/*.db
-.venv
