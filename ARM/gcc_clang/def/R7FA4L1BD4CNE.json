@@ -228,6 +228,7 @@
                 }
             ],
             "key": "SYSTEM_SCKDIVCR",
+            "label": "System Clock Division Control Register",
             "unused": "88ff8888"
         },
         {
@@ -269,6 +270,7 @@
                 }
             ],
             "key": "SYSTEM_SCKSCR",
+            "label": "System Clock Source Control Register",
             "unused": "000000f8"
         },
         {
@@ -420,6 +422,7 @@
                 }
             ],
             "key": "SYSTEM_PLLCCR",
+            "label": "PLL Clock Control Register",
             "unused": "0000e0ec"
         },
         {
@@ -445,6 +448,7 @@
                 }
             ],
             "key": "SYSTEM_PLLCR",
+            "label": "PLL Control Register",
             "unused": "000000fe"
         },
         {
@@ -474,6 +478,7 @@
                 }
             ],
             "key": "SYSTEM_MEMWAIT",
+            "label": "Memory Wait Cycle Control Register for Code Flash",
             "unused": "000000fc"
         },
         {
@@ -499,6 +504,7 @@
                 }
             ],
             "key": "SYSTEM_MOSCCR",
+            "label": "Main Clock Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -513,7 +519,7 @@
                     "mask": "1",
                     "settings": [
                         {
-                            "label": "Operate the HOCO clock ",
+                            "label": "Operate the HOCO clock",
                             "value": "0"
                         },
                         {
@@ -524,6 +530,7 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR",
+            "label": "High-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -565,6 +572,7 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
+            "label": "High-Speed On-Chip Oscillator Control Register 2",
             "unused": "000000f8"
         },
         {
@@ -590,6 +598,7 @@
                 }
             ],
             "key": "SYSTEM_MOCOCR",
+            "label": "Middle-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -685,6 +694,7 @@
                 }
             ],
             "key": "SYSTEM_CKOCR",
+            "label": "Clock Out Control Register",
             "unused": "00000008"
         },
         {
@@ -726,6 +736,7 @@
                 }
             ],
             "key": "SYSTEM_I3CCKCR",
+            "label": "I3C Clock Control Register",
             "unused": "000000f8"
         },
         {
@@ -752,26 +763,10 @@
                             "value": "3"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "OPCMTSF",
-                    "label": "Operating Power Control Mode Transition Status Flag",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Transition completed",
-                            "value": "0"
-                        },
-                        {
-                            "label": "During transition",
-                            "value": "10"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_OPCCR",
+            "label": "Operating Power Control Register",
             "unused": "000000ec"
         },
         {
@@ -829,6 +824,7 @@
                 }
             ],
             "key": "SYSTEM_MOSCWTCR",
+            "label": "Main Clock Oscillator Wait Control Register",
             "unused": "000000f0"
         },
         {
@@ -851,26 +847,10 @@
                             "value": "1"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SOPCMTSF",
-                    "label": "Operating Power Control Mode Transition Status Flag",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Transition completed",
-                            "value": "0"
-                        },
-                        {
-                            "label": "During transition",
-                            "value": "10"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_SOPCCR",
+            "label": "Sub Operating Power Control Register",
             "unused": "000000ee"
         },
         {
@@ -913,6 +893,7 @@
                 }
             ],
             "key": "SYSTEM_MOMCR",
+            "label": "Main Clock Oscillator Mode Oscillation Control Register",
             "unused": "000000b7"
         },
         {
@@ -938,6 +919,7 @@
                 }
             ],
             "key": "SYSTEM_SOSCCR",
+            "label": "Sub-Clock Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -971,6 +953,7 @@
                 }
             ],
             "key": "SYSTEM_SOMCR",
+            "label": "Sub-Clock Oscillator Mode Control Register",
             "unused": "000000fc"
         },
         {
@@ -996,6 +979,7 @@
                 }
             ],
             "key": "SYSTEM_LOCOCR",
+            "label": "Low-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -1004,7 +988,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "CK",
                     "label": "UARTA0 operation clock select (fUTA0)",
                     "mask": "f",
@@ -1049,7 +1033,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "20",
                     "key": "SEL",
                     "label": "fSEL clock select",
                     "mask": "30",
@@ -1074,6 +1058,7 @@
                 }
             ],
             "key": "SYSTEM_UTA0CK",
+            "label": "UARTA Clock Select Register 0",
             "unused": "000000c0"
         },
         {
@@ -1082,7 +1067,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "CK",
                     "label": "UARTA1 operation clock select (fUTA1)",
                     "mask": "f",
@@ -1144,6 +1129,7 @@
                 }
             ],
             "key": "SYSTEM_UTA1CK",
+            "label": "UARTA Clock Select Register 1",
             "unused": "00000070"
         }
     ],

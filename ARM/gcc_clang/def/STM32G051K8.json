@@ -1682,13 +1682,6 @@
             "unused": "00c0808c"
         },
         {
-            "address": "40021014",
-            "default": "00000000",
-            "fields": [],
-            "key": "RCC_CRRCR",
-            "unused": "fffffe00"
-        },
-        {
             "address": "4002105c",
             "default": "00000000",
             "fields": [

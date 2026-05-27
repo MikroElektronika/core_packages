@@ -1,7 +1,7 @@
 {
     "config_registers": [
         {
-            "address": "54020c00",
+            "address": "44020c00",
             "default": "0000002b",
             "fields": [
                 {
@@ -382,7 +382,7 @@
             "unused": "ffffffd4"
         },
         {
-            "address": "54020c14",
+            "address": "44020c14",
             "default": "00000",
             "fields": [
                 {
@@ -406,7 +406,7 @@
             "unused": "ffffffff"
         },
         {
-            "address": "54020c1c",
+            "address": "44020c1c",
             "default": "00000000",
             "fields": [
                 {
@@ -672,7 +672,7 @@
             "unused": "ffffffff"
         },
         {
-            "address": "54020c20",
+            "address": "44020c20",
             "default": "00000000",
             "fields": [
                 {
@@ -978,7 +978,7 @@
             "unused": "ffffffff"
         },
         {
-            "address": "54020cf0",
+            "address": "44020cf0",
             "default": "00000000",
             "fields": [
                 {

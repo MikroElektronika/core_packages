@@ -39,8 +39,10 @@
  * @brief Mikroe clock initialization API.
  */
 
-#include "core_header.h"
+#include <string.h>
 #include "mcu.h"
+#include "delays.h"
+#include "core_header.h"
 
 extern void * __Vectors[];
 
@@ -48,8 +50,8 @@ typedef struct
 {
     uint32_t ICLK_Frequency;    // System clock frequency in Hz
     uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
-    uint32_t UARTA0_Frequency;    // FSEL0 clock frequency in Hz
-    uint32_t UARTA1_Frequency;    // FSEL1 clock frequency in Hz
+    uint32_t UARTA0_Frequency;  // FSEL0 clock frequency in Hz
+    uint32_t UARTA1_Frequency;  // FSEL1 clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t UARTAPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
