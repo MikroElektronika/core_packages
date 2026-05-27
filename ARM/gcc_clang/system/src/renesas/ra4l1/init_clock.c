@@ -39,7 +39,7 @@
  * @brief Mikroe clock initialization API.
  */
 
- #include <string.h>
+#include <string.h>
 #include "delays.h"
 #include "core_header.h"
 #include "mcu.h"
@@ -55,8 +55,8 @@ typedef struct
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
     uint32_t I3CCK_Frequeincy;  // I3C clock frequency in Hz
-    uint32_t UARTA0_Frequency;    // FSEL0 clock frequency in Hz
-    uint32_t UARTA1_Frequency;    // FSEL1 clock frequency in Hz
+    uint32_t UARTA0_Frequency;  // FSEL0 clock frequency in Hz
+    uint32_t UARTA1_Frequency;  // FSEL1 clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };

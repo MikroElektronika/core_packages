@@ -54,8 +54,8 @@ typedef struct
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
-    uint32_t UARTA0_Frequency;    // FSEL0 clock frequency in Hz
-    uint32_t UARTA1_Frequency;    // FSEL1 clock frequency in Hz
+    uint32_t UARTA0_Frequency;  // FSEL0 clock frequency in Hz
+    uint32_t UARTA1_Frequency;  // FSEL1 clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
