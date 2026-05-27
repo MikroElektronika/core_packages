@@ -50,7 +50,7 @@ typedef struct
 {
     uint32_t ICLK_Frequency;    // System clock frequency in Hz
     uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
-    uint32_t UARTA0_Frequency;    // FSEL clock frequency in Hz
+    uint32_t UARTA0_Frequency;  // FSEL clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t UARTAPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
