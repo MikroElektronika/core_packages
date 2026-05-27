@@ -398,6 +398,7 @@
                 }
             ],
             "key": "SYSTEM_SCKDIVCR",
+            "label": "System Clock Division Control Register",
             "unused": "00f00000"
         },
         {
@@ -455,6 +456,7 @@
                 }
             ],
             "key": "SYSTEM_SCKDIVCR2",
+            "label": "System Clock Division Control Register 2",
             "unused": "000000f0"
         },
         {
@@ -492,6 +494,7 @@
                 }
             ],
             "key": "SYSTEM_SCKSCR",
+            "label": "System Clock Source Control Register",
             "unused": "000000f8"
         },
         {
@@ -1088,6 +1091,7 @@
                 }
             ],
             "key": "SYSTEM_PLLCCR",
+            "label": "PLL Clock Control Register",
             "unused": "0000002c"
         },
         {
@@ -1113,6 +1117,7 @@
                 }
             ],
             "key": "SYSTEM_PLLCR",
+            "label": "PLL Control Register",
             "unused": "000000fe"
         },
         {
@@ -1138,6 +1143,7 @@
                 }
             ],
             "key": "SYSTEM_MOSCCR",
+            "label": "Main Clock Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -1163,6 +1169,7 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR",
+            "label": "High-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -1200,6 +1207,7 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
+            "label": "High-Speed On-Chip Oscillator Control Register2",
             "unused": "000000f8"
         },
         {
@@ -1225,6 +1233,7 @@
                 }
             ],
             "key": "SYSTEM_MOCOCR",
+            "label": "Middle-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -1320,6 +1329,7 @@
                 }
             ],
             "key": "SYSTEM_CKOCR",
+            "label": "Clock Out Control Register",
             "unused": "00000008"
         },
         {
@@ -1916,6 +1926,7 @@
                 }
             ],
             "key": "SYSTEM_PLL2CCR",
+            "label": "PLL2 Clock Control Register",
             "unused": "0000002c"
         },
         {
@@ -1941,6 +1952,7 @@
                 }
             ],
             "key": "SYSTEM_PLL2CR",
+            "label": "PLL2 Control Register",
             "unused": "000000fe"
         },
         {
@@ -2052,6 +2064,7 @@
                 }
             ],
             "key": "SYSTEM_PLLCCR2",
+            "label": "PLL Clock Control Register 2",
             "unused": "0000f000"
         },
         {
@@ -2163,6 +2176,7 @@
                 }
             ],
             "key": "SYSTEM_PLL2CCR2",
+            "label": "PLL2 Clock Control Register 2",
             "unused": "0000f000"
         },
         {
@@ -2208,6 +2222,7 @@
                 }
             ],
             "key": "SYSTEM_SCICKDIVCR",
+            "label": "SCI clock Division control register",
             "unused": "000000f8"
         },
         {
@@ -2269,6 +2284,7 @@
                 }
             ],
             "key": "SYSTEM_SCICKCR",
+            "label": "SCI clock control register",
             "unused": "00000030"
         },
         {
@@ -2314,6 +2330,7 @@
                 }
             ],
             "key": "SYSTEM_SPICKDIVCR",
+            "label": "SPI clock Division control register",
             "unused": "000000f8"
         },
         {
@@ -2375,7 +2392,54 @@
                 }
             ],
             "key": "SYSTEM_SPICKCR",
+            "label": "SPI clock control register",
             "unused": "00000030"
+        },
+        {
+            "address": "4001e078",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "I3CCKSEL",
+                    "label": "I3C clock (I3CCLK) Source Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "MOCO (Value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "PLL1P",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2P",
+                            "value": "6"
+                        },
+                        {
+                            "label": "PLL1Q",
+                            "value": "7"
+                        },
+                        {
+                            "label": "PLL1R",
+                            "value": "8"
+                        },
+                        {
+                            "label": "PLL2Q",
+                            "value": "9"
+                        },
+                        {
+                            "label": "PLL2R",
+                            "value": "a"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_I3CCKCR",
+            "label": "I3C clock control register",
+            "unused": "000000f0"
         },
         {
             "address": "4001e0a0",
@@ -2400,6 +2464,7 @@
                 }
             ],
             "key": "SYSTEM_OPCCR",
+            "label": "Operating Power Control Register",
             "unused": "000000ec"
         },
         {
@@ -2457,6 +2522,7 @@
                 }
             ],
             "key": "SYSTEM_MOSCWTCR",
+            "label": "Main Clock Oscillator Wait Control Register",
             "unused": "000000f0"
         },
         {
@@ -2482,6 +2548,7 @@
                 }
             ],
             "key": "SYSTEM_LOCOCR",
+            "label": "Low-Speed On-Chip Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -2528,6 +2595,7 @@
                 }
             ],
             "key": "SYSTEM_MOMCR",
+            "label": "Main Clock Oscillator Mode Oscillation Control Register",
             "unused": "000000b1"
         },
         {
@@ -2553,6 +2621,7 @@
                 }
             ],
             "key": "SYSTEM_SOSCCR",
+            "label": "Sub-Clock Oscillator Control Register",
             "unused": "000000fe"
         },
         {
@@ -2603,6 +2672,7 @@
                 }
             ],
             "key": "SYSTEM_SOMCR",
+            "label": "Sub-Clock Oscillator Mode Control Register",
             "unused": "000000bc"
         }
     ],
