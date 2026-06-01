@@ -13,7 +13,8 @@
                     "label": "All of program memory code protected",
                     "value": "ON,_CP_ON_0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "RCIO,_RCIO_OSC_1",
@@ -52,7 +53,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC_1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF,_OSCS_OFF_1",
@@ -67,7 +69,8 @@
                     "label": "Oscillator system clock switch option is enabled (Oscillator switching is enabled)",
                     "value": "ON,_OSCS_ON_1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF,_PWRT_OFF_2",
@@ -82,7 +85,8 @@
                     "label": "PWRT enabled",
                     "value": "ON,_PWRT_ON_2"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON,_BOR_ON_2",
@@ -97,7 +101,8 @@
                     "label": "Brown-out Reset disabled",
                     "value": "OFF,_BOR_OFF_2"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "25,_BORV_25_2",
@@ -120,7 +125,8 @@
                     "label": "VBOR set to 4.5V",
                     "value": "45,_BORV_45_2"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON,_WDT_ON_3",
@@ -135,7 +141,8 @@
                     "label": "WDT disabled (control is placed on the SWDTEN bit)",
                     "value": "OFF,_WDT_OFF_3"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "128,_WDTPS_128_3",
@@ -174,7 +181,8 @@
                     "label": "1:1",
                     "value": "1,_WDTPS_1_3"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "ON,_STVR_ON_6",
@@ -189,7 +197,8 @@
                     "label": "Stack Full/Underflow will not cause RESET",
                     "value": "OFF,_STVR_OFF_6"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         }
     ],
     "mcu": "PIC18C658",

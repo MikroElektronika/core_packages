@@ -924,7 +924,8 @@
                 }
             ],
             "key": "CONFIG4",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG4"
         },
         {
             "address": "0000ABFA",
@@ -1350,7 +1351,8 @@
                 }
             ],
             "key": "CONFIG3",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG3"
         },
         {
             "address": "0000ABFC",
@@ -1402,11 +1404,11 @@
                     "mask": "00000008",
                     "settings": [
                         {
-                        "label": "BOR Disabled [When BOREN=0]",
+                            "label": "BOR Disabled [When BOREN=0]",
                             "value": "00000000"
                         },
                         {
-                        "label": "BOR Enabled [When BOREN=1]",
+                            "label": "BOR Enabled [When BOREN=1]",
                             "value": "00000008"
                         }
                     ]
@@ -1560,7 +1562,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2"
         },
         {
             "address": "0000ABFE",
@@ -1819,7 +1822,8 @@
                 }
             ],
             "key": "CONFIG1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG1"
         }
     ],
     "dma": {

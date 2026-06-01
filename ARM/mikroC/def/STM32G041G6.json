@@ -115,7 +115,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock control register"
         },
         {
             "address": "40021008",
@@ -304,7 +305,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock configuration register"
         },
         {
             "address": "4002100C",
@@ -646,7 +648,8 @@
                 }
             ],
             "key": "RCC_PLLSYSCFGR",
-            "unused": "00C0808C"
+            "unused": "00C0808C",
+            "label": "PLL configuration register"
         },
         {
             "address": "40021054",
@@ -721,7 +724,8 @@
                 }
             ],
             "key": "RCC_CCIPR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Peripherals independent clock configuration"
         },
         {
             "address": "4002105C",
@@ -805,7 +809,8 @@
                 }
             ],
             "key": "RCC_BDCR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Rtc domain control register"
         },
         {
             "address": "40021060",
@@ -830,7 +835,8 @@
                 }
             ],
             "key": "RCC_CSR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Control/status register"
         },
         {
             "address": "40007000",
@@ -855,7 +861,8 @@
                 }
             ],
             "key": "PWR_CR1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         }
     ],
     "core": "M0",

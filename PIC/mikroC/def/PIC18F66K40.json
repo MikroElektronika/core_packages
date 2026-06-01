@@ -190,7 +190,8 @@
                 }
             ],
             "key": "CONFIG1L",
-            "unused": "88"
+            "unused": "88",
+            "label": "CONFIG1L"
         },
         {
             "address": "300001",
@@ -249,7 +250,8 @@
                 }
             ],
             "key": "CONFIG1H",
-            "unused": "D6"
+            "unused": "D6",
+            "label": "CONFIG1H"
         },
         {
             "address": "300002",
@@ -333,7 +335,8 @@
                 }
             ],
             "key": "CONFIG2L",
-            "unused": "1C"
+            "unused": "1C",
+            "label": "CONFIG2L"
         },
         {
             "address": "300003",
@@ -451,7 +454,8 @@
                 }
             ],
             "key": "CONFIG2H",
-            "unused": "40"
+            "unused": "40",
+            "label": "CONFIG2H"
         },
         {
             "address": "300004",
@@ -621,7 +625,8 @@
                 }
             ],
             "key": "CONFIG3L",
-            "unused": "80"
+            "unused": "80",
+            "label": "CONFIG3L"
         },
         {
             "address": "300005",
@@ -691,7 +696,8 @@
                 }
             ],
             "key": "CONFIG3H",
-            "unused": "C0"
+            "unused": "C0",
+            "label": "CONFIG3H"
         },
         {
             "address": "300006",
@@ -767,7 +773,8 @@
                 }
             ],
             "key": "CONFIG4L",
-            "unused": "0"
+            "unused": "0",
+            "label": "CONFIG4L"
         },
         {
             "address": "300007",
@@ -860,7 +867,8 @@
                 }
             ],
             "key": "CONFIG4H",
-            "unused": "C8"
+            "unused": "C8",
+            "label": "CONFIG4H"
         },
         {
             "address": "300008",
@@ -902,16 +910,16 @@
                 }
             ],
             "key": "CONFIG5L",
-            "unused": "FC"
+            "unused": "FC",
+            "label": "CONFIG5L"
         },
         {
             "address": "300009",
             "default": "FF",
-            "fields": [
-                
-            ],
+            "fields": [],
             "key": "CONFIG5H",
-            "unused": "FF"
+            "unused": "FF",
+            "label": "CONFIG5H"
         },
         {
             "address": "30000A",
@@ -987,7 +995,8 @@
                 }
             ],
             "key": "CONFIG6L",
-            "unused": "0"
+            "unused": "0",
+            "label": "CONFIG6L"
         },
         {
             "address": "30000B",
@@ -1012,7 +1021,8 @@
                 }
             ],
             "key": "CONFIG6H",
-            "unused": "FD"
+            "unused": "FD",
+            "label": "CONFIG6H"
         }
     ],
     "core": "P18",

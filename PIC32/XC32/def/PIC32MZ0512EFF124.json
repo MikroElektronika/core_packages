@@ -13,7 +13,8 @@
                     "label": "MII Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -28,7 +29,8 @@
                     "label": "Default Ethernet I/O",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -43,7 +45,8 @@
                     "label": "Allow only one reconfiguration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -58,7 +61,8 @@
                     "label": "Allow only one reconfiguration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -73,7 +77,8 @@
                     "label": "Allow only one reconfiguration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -88,7 +93,8 @@
                     "label": "Controlled by the USB Module",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "DIV_8",
@@ -127,7 +133,8 @@
                     "label": "8x Divider",
                     "value": "DIV_8"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "RANGE_34_68_MHZ",
@@ -158,7 +165,8 @@
                     "label": "34-68 MHz Input",
                     "value": "RANGE_34_68_MHZ"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "PLL_FRC",
@@ -173,7 +181,8 @@
                     "label": "FRC is input to the System PLL",
                     "value": "PLL_FRC"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "MUL_128",
@@ -692,7 +701,8 @@
                     "label": "PLL Multiply by 128",
                     "value": "MUL_128"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "DIV_32",
@@ -719,7 +729,8 @@
                     "label": "32x Divider",
                     "value": "DIV_32"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "FREQ_24MHZ",
@@ -734,7 +745,8 @@
                     "label": "USB PLL input is 24 MHz",
                     "value": "FREQ_24MHZ"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "FRCDIV",
@@ -761,7 +773,8 @@
                     "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
                     "value": "FRCDIV"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "WIN_127_128",
@@ -800,7 +813,8 @@
                     "label": "Window/Interval value is 127/128 counter value",
                     "value": "WIN_127_128"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "ON",
@@ -815,7 +829,8 @@
                     "label": "Enable SOSC",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "ON",
@@ -830,7 +845,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -849,7 +865,8 @@
                     "label": "Primary osc disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -864,7 +881,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "CSECME",
@@ -887,7 +905,8 @@
                     "label": "Clock Switch Enabled, FSCM Enabled",
                     "value": "CSECME"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "PS1048576",
@@ -978,7 +997,8 @@
                     "label": "1:1048576",
                     "value": "PS1048576"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "STOP",
@@ -993,7 +1013,8 @@
                     "label": "WDT stops during Flash programming",
                     "value": "STOP"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "NORMAL",
@@ -1008,7 +1029,8 @@
                     "label": "Watchdog Timer is in non-Window mode",
                     "value": "NORMAL"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "ON",
@@ -1023,7 +1045,8 @@
                     "label": "WDT Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "WINSZ_25",
@@ -1046,7 +1069,8 @@
                     "label": "Window size is 25%",
                     "value": "WINSZ_25"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "DMT31",
@@ -1149,7 +1173,8 @@
                     "label": "2^31 (2147483648)",
                     "value": "DMT31"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "ON",
@@ -1164,7 +1189,8 @@
                     "label": "Deadman Timer is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -1179,7 +1205,8 @@
                     "label": "Debugger is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "ON",
@@ -1194,7 +1221,8 @@
                     "label": "JTAG Port Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "ICS_PGx1",
@@ -1209,7 +1237,8 @@
                     "label": "Communicate on PGEC1/PGED1",
                     "value": "ICS_PGx1"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "ON",
@@ -1224,7 +1253,8 @@
                     "label": "Trace features in the CPU are enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "MIPS32",
@@ -1239,7 +1269,8 @@
                     "label": "Boot code and Exception code is MIPS32",
                     "value": "MIPS32"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF_UNLOCKED",
@@ -1262,7 +1293,8 @@
                     "label": "ECC and Dynamic ECC are disabled (ECCCON bits are writable)",
                     "value": "OFF_UNLOCKED"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF",
@@ -1277,7 +1309,8 @@
                     "label": "Flash is powered down when the device is in Sleep mode",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "PG_ALL",
@@ -1316,7 +1349,8 @@
                     "label": "Allow CPU access to all permission regions",
                     "value": "PG_ALL"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "MCLR_NORM",
@@ -1331,7 +1365,8 @@
                     "label": "MCLR pin generates a normal system Reset",
                     "value": "MCLR_NORM"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "GAIN_LEVEL_3",
@@ -1354,7 +1389,8 @@
                     "label": "Gain level 3 (Highest)",
                     "value": "GAIN_LEVEL_3"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "ON",
@@ -1369,7 +1405,8 @@
                     "label": "Boost the kick start of the oscillator",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "GAIN_LEVEL_3",
@@ -1392,7 +1429,8 @@
                     "label": "Gain level 3 (Highest)",
                     "value": "GAIN_LEVEL_3"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "ON",
@@ -1407,7 +1445,8 @@
                     "label": "Boost the kick start of the oscillator",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "NORMAL",
@@ -1422,7 +1461,8 @@
                     "label": "Normal EJTAG functionality",
                     "value": "NORMAL"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF",
@@ -1437,7 +1477,8 @@
                     "label": "Protection Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCP0"
         }
     ],
     "mcu": "PIC32MZ0512EFF124",

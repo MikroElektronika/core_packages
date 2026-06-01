@@ -170,7 +170,8 @@
                 }
             ],
             "key": "CONFIG",
-            "unused": "00003FA0"
+            "unused": "00003FA0",
+            "label": "CONFIG"
         }
     ],
     "core": "P16",

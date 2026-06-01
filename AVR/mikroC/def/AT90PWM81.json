@@ -53,67 +53,67 @@
             "nmb_text": "13",
             "text1": {
                 "mask": "0x80",
-            "text": "PSC2 Reset Behavior; [PSC2RB=0]",
+                "text": "PSC2 Reset Behavior; [PSC2RB=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=4.4 V; [BODLEVEL=011]",
+                "text": "Brown-out detection level at VCC=4.4 V; [BODLEVEL=011]",
                 "value": "0x03"
             },
             "text11": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=4.2 V; [BODLEVEL=010]",
+                "text": "Brown-out detection level at VCC=4.2 V; [BODLEVEL=010]",
                 "value": "0x02"
             },
             "text12": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=2.8 V; [BODLEVEL=001]",
+                "text": "Brown-out detection level at VCC=2.8 V; [BODLEVEL=001]",
                 "value": "0x01"
             },
             "text13": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=2.6 V; [BODLEVEL=000]",
+                "text": "Brown-out detection level at VCC=2.6 V; [BODLEVEL=000]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "PSC1 Reset Behavior; [PSC2RBA=0]",
+                "text": "PSC1 Reset Behavior; [PSC2RBA=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "PSC0 Reset Behavior; [PSC0RB=0]",
+                "text": "PSC0 Reset Behavior; [PSC0RB=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "PSCOUT Reset Value; [PSCRV=0]",
+                "text": "PSCOUT Reset Value; [PSCRV=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x08",
-            "text": "PSC INPUT Reset Behavior; [PSCINRB=0]",
+                "text": "PSC INPUT Reset Behavior; [PSCINRB=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x07",
-            "text": "Brown-out detection disabled; [BODLEVEL=111]",
+                "text": "Brown-out detection disabled; [BODLEVEL=111]",
                 "value": "0x07"
             },
             "text7": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=4.5 V; [BODLEVEL=110]",
+                "text": "Brown-out detection level at VCC=4.5 V; [BODLEVEL=110]",
                 "value": "0x06"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=101]",
+                "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=101]",
                 "value": "0x05"
             },
             "text9": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=100]",
+                "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=100]",
                 "value": "0x04"
             }
         },
@@ -162,56 +162,56 @@
             "nmb_text": "10",
             "text1": {
                 "mask": "0x80",
-            "text": "Reset Disabled (Enable PC6 as i/o pin); [RSTDISBL=0]",
+                "text": "Reset Disabled (Enable PC6 as i/o pin); [RSTDISBL=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x01",
-            "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
+                "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Debug Wire enable; [DWEN=0]",
+                "text": "Debug Wire enable; [DWEN=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "text": "Watch-dog Timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x08",
-            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=128 words; Boot start address=$0F80; [BOOTSZ=11]",
+                "text": "Boot Flash section size=128 words; Boot start address=$0F80; [BOOTSZ=11]",
                 "value": "0x06"
             },
             "text7": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=256 words; Boot start address=$0F00; [BOOTSZ=10]",
+                "text": "Boot Flash section size=256 words; Boot start address=$0F00; [BOOTSZ=10]",
                 "value": "0x04"
             },
             "text8": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=512 words; Boot start address=$0E00; [BOOTSZ=01]",
+                "text": "Boot Flash section size=512 words; Boot start address=$0E00; [BOOTSZ=01]",
                 "value": "0x02"
             },
             "text9": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=1024 words; Boot start address=$0C00; [BOOTSZ=00] ; default value",
+                "text": "Boot Flash section size=1024 words; Boot start address=$0C00; [BOOTSZ=00] ; default value",
                 "value": "0x00"
             }
         },
-    "list": "[LOW:HIGH:EXTENDED]",
+        "list": "[LOW:HIGH:EXTENDED]",
         "low": {
             "fuse0": {
                 "default": "0",
@@ -257,292 +257,292 @@
             "nmb_text": "58",
             "text1": {
                 "mask": "0x80",
-            "text": "Divide clock by 8 internally; [CKDIV8=0]",
+                "text": "Divide clock by 8 internally; [CKDIV8=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x3F",
-            "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 258CK/14CK+65 ms; [CKSEL=1000 SUT=01]",
+                "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 258CK/14CK+65 ms; [CKSEL=1000 SUT=01]",
                 "value": "0x18"
             },
             "text11": {
                 "mask": "0x3F",
-            "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 1KCK/14CK+0 ms; [CKSEL=1000 SUT=10]",
+                "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 1KCK/14CK+0 ms; [CKSEL=1000 SUT=10]",
                 "value": "0x28"
             },
             "text12": {
                 "mask": "0x3F",
-            "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 1KCK/14CK+4.1 ms; [CKSEL=1000 SUT=11]",
+                "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 1KCK/14CK+4.1 ms; [CKSEL=1000 SUT=11]",
                 "value": "0x38"
             },
             "text13": {
                 "mask": "0x3F",
-            "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 1KCK/14CK+65 ms; [CKSEL=1001 SUT=00]",
+                "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 1KCK/14CK+65 ms; [CKSEL=1001 SUT=00]",
                 "value": "0x09"
             },
             "text14": {
                 "mask": "0x3F",
-            "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 16KCK/14CK+0 ms; [CKSEL=1001 SUT=01]",
+                "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 16KCK/14CK+0 ms; [CKSEL=1001 SUT=01]",
                 "value": "0x19"
             },
             "text15": {
                 "mask": "0x3F",
-            "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 16KCK/14CK+4.1 ms; [CKSEL=1001 SUT=10]",
+                "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 16KCK/14CK+4.1 ms; [CKSEL=1001 SUT=10]",
                 "value": "0x29"
             },
             "text16": {
                 "mask": "0x3F",
-            "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 16KCK/14CK+65 ms;  [CKSEL=1001 SUT=11]",
+                "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 16KCK/14CK+65 ms;  [CKSEL=1001 SUT=11]",
                 "value": "0x39"
             },
             "text17": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: RC8; SUT: 258CK/14CK+4.1 ms; [CKSEL=1010 SUT=00]",
+                "text": "XOSC3-8MHz, PLLin: RC8; SUT: 258CK/14CK+4.1 ms; [CKSEL=1010 SUT=00]",
                 "value": "0x0A"
             },
             "text18": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: RC8; SUT: 258CK/14CK+65 ms; [CKSEL=1010 SUT=01]",
+                "text": "XOSC3-8MHz, PLLin: RC8; SUT: 258CK/14CK+65 ms; [CKSEL=1010 SUT=01]",
                 "value": "0x1A"
             },
             "text19": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: RC8; SUT: 1KCK/14CK+0 ms; [CKSEL=1010 SUT=10]",
+                "text": "XOSC3-8MHz, PLLin: RC8; SUT: 1KCK/14CK+0 ms; [CKSEL=1010 SUT=10]",
                 "value": "0x2A"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Clock output on PORTD0; [CKOUT=0]",
+                "text": "Clock output on PORTD0; [CKOUT=0]",
                 "value": "0x00"
             },
             "text20": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: RC8; SUT: 1KCK/14CK+4.1 ms; [CKSEL=1010 SUT=11]",
+                "text": "XOSC3-8MHz, PLLin: RC8; SUT: 1KCK/14CK+4.1 ms; [CKSEL=1010 SUT=11]",
                 "value": "0x3A"
             },
             "text21": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: RC8; SUT: 1KCK/14CK+65 ms;  [CKSEL=1011 SUT=00]",
+                "text": "XOSC3-8MHz, PLLin: RC8; SUT: 1KCK/14CK+65 ms;  [CKSEL=1011 SUT=00]",
                 "value": "0x0B"
             },
             "text22": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: RC8; SUT: 16KCK/14CK+0 ms; [CKSEL=1011 SUT=01]",
+                "text": "XOSC3-8MHz, PLLin: RC8; SUT: 16KCK/14CK+0 ms; [CKSEL=1011 SUT=01]",
                 "value": "0x1B"
             },
             "text23": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: RC8; SUT: 16KCK/14CK+4.1 ms; [CKSEL=1011 SUT=10]",
+                "text": "XOSC3-8MHz, PLLin: RC8; SUT: 16KCK/14CK+4.1 ms; [CKSEL=1011 SUT=10]",
                 "value": "0x2B"
             },
             "text24": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: RC8; SUT: 16KCK/14CK+65 ms;  [CKSEL=1011 SUT=11]",
+                "text": "XOSC3-8MHz, PLLin: RC8; SUT: 16KCK/14CK+65 ms;  [CKSEL=1011 SUT=11]",
                 "value": "0x3B"
             },
             "text25": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 258CK/14CK+4.1 ms; [CKSEL=1100 SUT=00]",
+                "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 258CK/14CK+4.1 ms; [CKSEL=1100 SUT=00]",
                 "value": "0x0C"
             },
             "text26": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 258CK/14CK+65 ms;  [CKSEL=1100 SUT=01]",
+                "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 258CK/14CK+65 ms;  [CKSEL=1100 SUT=01]",
                 "value": "0x1C"
             },
             "text27": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 1KCK/14CK+0 ms; [CKSEL=1100 SUT=10]",
+                "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 1KCK/14CK+0 ms; [CKSEL=1100 SUT=10]",
                 "value": "0x2C"
             },
             "text28": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 1KCK/14CK+4.1 ms; [CKSEL=1100 SUT=11]",
+                "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 1KCK/14CK+4.1 ms; [CKSEL=1100 SUT=11]",
                 "value": "0x3C"
             },
             "text29": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 1KCK/14CK+65 ms;  [CKSEL=1101 SUT=00]",
+                "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 1KCK/14CK+65 ms;  [CKSEL=1101 SUT=00]",
                 "value": "0x0D"
             },
             "text3": {
                 "mask": "0x3F",
-            "text": "Ext. CK, PLLin: RC8; SUT: 6CK/14CK+0ms; [CKSEL=0000 SUT=00]",
+                "text": "Ext. CK, PLLin: RC8; SUT: 6CK/14CK+0ms; [CKSEL=0000 SUT=00]",
                 "value": "0x00"
             },
             "text30": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 16KCK/14CK+0 ms; [CKSEL=1101 SUT=01]",
+                "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 16KCK/14CK+0 ms; [CKSEL=1101 SUT=01]",
                 "value": "0x1D"
             },
             "text31": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 16KCK/14CK+4.1 ms; [CKSEL=1101 SUT=10]",
+                "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 16KCK/14CK+4.1 ms; [CKSEL=1101 SUT=10]",
                 "value": "0x2D"
             },
             "text32": {
                 "mask": "0x3F",
-            "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 16KCK/14CK+65 ms;  [CKSEL=1101 SUT=11]",
+                "text": "XOSC3-8MHz, PLLin: XOSC; SUT: 16KCK/14CK+65 ms;  [CKSEL=1101 SUT=11]",
                 "value": "0x3D"
             },
             "text33": {
                 "mask": "0x3F",
-            "text": "XOSC8-16MHz, PLLin: RC8; SUT: 258CK/14CK+4.1 ms; [CKSEL=1110 SUT=00]",
+                "text": "XOSC8-16MHz, PLLin: RC8; SUT: 258CK/14CK+4.1 ms; [CKSEL=1110 SUT=00]",
                 "value": "0x0E"
             },
             "text34": {
                 "mask": "0x3F",
-            "text": "XOSC8-16MHz, PLLin: RC8; SUT: 258CK/14CK+65 ms;  [CKSEL=1110 SUT=01]",
+                "text": "XOSC8-16MHz, PLLin: RC8; SUT: 258CK/14CK+65 ms;  [CKSEL=1110 SUT=01]",
                 "value": "0x1E"
             },
             "text35": {
                 "mask": "0x3F",
-            "text": "XOSC8-16MHz, PLLin: RC8; SUT: 1KCK/14CK+0 ms; [CKSEL=1110 SUT=10]",
+                "text": "XOSC8-16MHz, PLLin: RC8; SUT: 1KCK/14CK+0 ms; [CKSEL=1110 SUT=10]",
                 "value": "0x2E"
             },
             "text36": {
                 "mask": "0x3F",
-            "text": "XOSC8-16MHz, PLLin: RC8; SUT: 1KCK/14CK+4.1 ms; [CKSEL=1110 SUT=11]",
+                "text": "XOSC8-16MHz, PLLin: RC8; SUT: 1KCK/14CK+4.1 ms; [CKSEL=1110 SUT=11]",
                 "value": "0x3E"
             },
             "text37": {
                 "mask": "0x3F",
-            "text": "XOSC8-16MHz, PLLin: RC8; SUT: 1KCK/14CK+65 ms; [CKSEL=1111 SUT=00]",
+                "text": "XOSC8-16MHz, PLLin: RC8; SUT: 1KCK/14CK+65 ms; [CKSEL=1111 SUT=00]",
                 "value": "0x0F"
             },
             "text38": {
                 "mask": "0x3F",
-            "text": "XOSC8-16MHz, PLLin: RC8; SUT: 16KCK/14CK+0 ms; [CKSEL=1111 SUT=01]",
+                "text": "XOSC8-16MHz, PLLin: RC8; SUT: 16KCK/14CK+0 ms; [CKSEL=1111 SUT=01]",
                 "value": "0x1F"
             },
             "text39": {
                 "mask": "0x3F",
-            "text": "XOSC8-16MHz, PLLin: RC8; SUT: 16KCK/14CK+4.1 ms; [CKSEL=1111 SUT=10]",
+                "text": "XOSC8-16MHz, PLLin: RC8; SUT: 16KCK/14CK+4.1 ms; [CKSEL=1111 SUT=10]",
                 "value": "0x2F"
             },
             "text4": {
                 "mask": "0x3F",
-            "text": "Ext. CK, PLLin: RC8; SUT:6 CK/14CK+4.1 ms; [CKSEL=0000 SUT=01]",
+                "text": "Ext. CK, PLLin: RC8; SUT:6 CK/14CK+4.1 ms; [CKSEL=0000 SUT=01]",
                 "value": "0x10"
             },
             "text40": {
                 "mask": "0x3F",
-            "text": "XOSC8-16MHz, PLLin: RC8; SUT: 16KCK/14CK+65 ms;  [CKSEL=1111 SUT=11]",
+                "text": "XOSC8-16MHz, PLLin: RC8; SUT: 16KCK/14CK+65 ms;  [CKSEL=1111 SUT=11]",
                 "value": "0x3F"
             },
             "text41": {
                 "mask": "0x3F",
-            "text": "WD128 KHz; SUT: 1KCK/14CK+0 ms; [CKSEL=0011 SUT=00]",
+                "text": "WD128 KHz; SUT: 1KCK/14CK+0 ms; [CKSEL=0011 SUT=00]",
                 "value": "0x03"
             },
             "text42": {
                 "mask": "0x3F",
-            "text": "WD128 KHz; SUT: 1KCK/14CK+4.1 ms; [CKSEL=0011 SUT=01]",
+                "text": "WD128 KHz; SUT: 1KCK/14CK+4.1 ms; [CKSEL=0011 SUT=01]",
                 "value": "0x13"
             },
             "text43": {
                 "mask": "0x3F",
-            "text": "WD128 KHz; SUT: 1KCK/14CK+65 ms; [CKSEL=0011 SUT=10]",
+                "text": "WD128 KHz; SUT: 1KCK/14CK+65 ms; [CKSEL=0011 SUT=10]",
                 "value": "0x23"
             },
             "text44": {
                 "mask": "0x3F",
-            "text": "WD128 KHz; SUT: 16KCK/14CK+0 ms; [CKSEL=0011 SUT=11]",
+                "text": "WD128 KHz; SUT: 16KCK/14CK+0 ms; [CKSEL=0011 SUT=11]",
                 "value": "0x33"
             },
             "text45": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: RC8; SUT: 1KCK/14CK+0 ms; [CKSEL=0001 SUT=00]",
+                "text": "PLL/4, PLLin: RC8; SUT: 1KCK/14CK+0 ms; [CKSEL=0001 SUT=00]",
                 "value": "0x01"
             },
             "text46": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: RC8; SUT: 1KCK/14CK+4 ms;   [CKSEL=0001 SUT=01]",
+                "text": "PLL/4, PLLin: RC8; SUT: 1KCK/14CK+4 ms;   [CKSEL=0001 SUT=01]",
                 "value": "0x11"
             },
             "text47": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: RC8; SUT: 1KCK/14CK+64 ms;   [CKSEL=0001 SUT=10]",
+                "text": "PLL/4, PLLin: RC8; SUT: 1KCK/14CK+64 ms;   [CKSEL=0001 SUT=10]",
                 "value": "0x21"
             },
             "text48": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: Ext. CK; SUT: 16KCK/14CK+0 ms; [CKSEL=0101 SUT=00]",
+                "text": "PLL/4, PLLin: Ext. CK; SUT: 16KCK/14CK+0 ms; [CKSEL=0101 SUT=00]",
                 "value": "0x05"
             },
             "text49": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: Ext. CK; SUT: 16KCK/14CK+4 ms; [CKSEL=0101 SUT=01]",
+                "text": "PLL/4, PLLin: Ext. CK; SUT: 16KCK/14CK+4 ms; [CKSEL=0101 SUT=01]",
                 "value": "0x15"
             },
             "text5": {
                 "mask": "0x3F",
-            "text": "Ext. CK, PLLin: RC8; SUT:6 CK/14CK+65 ms; [CKSEL=0000 SUT=10]",
+                "text": "Ext. CK, PLLin: RC8; SUT:6 CK/14CK+65 ms; [CKSEL=0000 SUT=10]",
                 "value": "0x20"
             },
             "text50": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: Ext. CK; SUT: 16KCK/14CK+4 ms; [CKSEL=0101 SUT=10]",
+                "text": "PLL/4, PLLin: Ext. CK; SUT: 16KCK/14CK+4 ms; [CKSEL=0101 SUT=10]",
                 "value": "0x25"
             },
             "text51": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: Ext. CK; SUT: 16KCK/14CK+64 ms; [CKSEL=0101 SUT=11]",
+                "text": "PLL/4, PLLin: Ext. CK; SUT: 16KCK/14CK+64 ms; [CKSEL=0101 SUT=11]",
                 "value": "0x35"
             },
             "text52": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: XOSC; SUT: 1KCK/14CK+0 ms; [CKSEL=0100 SUT=00]",
+                "text": "PLL/4, PLLin: XOSC; SUT: 1KCK/14CK+0 ms; [CKSEL=0100 SUT=00]",
                 "value": "0x04"
             },
             "text53": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: XOSC; SUT: 1KCK/14CK+4 ms;   [CKSEL=0100 SUT=01]",
+                "text": "PLL/4, PLLin: XOSC; SUT: 1KCK/14CK+4 ms;   [CKSEL=0100 SUT=01]",
                 "value": "0x14"
             },
             "text54": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: XOSC; SUT: 1KCK/14CK+64 ms;   [CKSEL=0100 SUT=10]",
+                "text": "PLL/4, PLLin: XOSC; SUT: 1KCK/14CK+64 ms;   [CKSEL=0100 SUT=10]",
                 "value": "0x24"
             },
             "text55": {
                 "mask": "0x3F",
-            "text": "PLL/4, PLLin: XOSC; SUT: 16KCK/14CK+0 ms;   [CKSEL=0100 SUT=11]",
+                "text": "PLL/4, PLLin: XOSC; SUT: 16KCK/14CK+0 ms;   [CKSEL=0100 SUT=11]",
                 "value": "0x34"
             },
             "text56": {
                 "mask": "0x3F",
-            "text": "RC 1 MHz; SUT: 1KCK/14CK+0 ms; [CKSEL=0110 SUT=00]",
+                "text": "RC 1 MHz; SUT: 1KCK/14CK+0 ms; [CKSEL=0110 SUT=00]",
                 "value": "0x06"
             },
             "text57": {
                 "mask": "0x3F",
-            "text": "RC 1 MHz; SUT: 1KCK/14CK+4.1 ms; [CKSEL=0110 SUT=01]",
+                "text": "RC 1 MHz; SUT: 1KCK/14CK+4.1 ms; [CKSEL=0110 SUT=01]",
                 "value": "0x16"
             },
             "text58": {
                 "mask": "0x3F",
-            "text": "RC 1 MHz; SUT: 1KCK/14CK+65 ms;  [CKSEL=0110 SUT=10]",
+                "text": "RC 1 MHz; SUT: 1KCK/14CK+65 ms;  [CKSEL=0110 SUT=10]",
                 "value": "0x26"
             },
             "text6": {
                 "mask": "0x3F",
-            "text": "RC8 MHz, PLLin: RC8; SUT: 6CK/14CK+0ms; [CKSEL=0010 SUT=00]",
+                "text": "RC8 MHz, PLLin: RC8; SUT: 6CK/14CK+0ms; [CKSEL=0010 SUT=00]",
                 "value": "0x02"
             },
             "text7": {
                 "mask": "0x3F",
-            "text": "RC8 MHz, PLLin: RC8; SUT: 6CK/14CK+4.1 ms; [CKSEL=0010 SUT=01]",
+                "text": "RC8 MHz, PLLin: RC8; SUT: 6CK/14CK+4.1 ms; [CKSEL=0010 SUT=01]",
                 "value": "0x12"
             },
             "text8": {
                 "mask": "0x3F",
-            "text": "RC8 MHz, PLLin: RC8; SUT: 6CK/14CK+65 ms;  [CKSEL=0010 SUT=10]; default value",
+                "text": "RC8 MHz, PLLin: RC8; SUT: 6CK/14CK+65 ms;  [CKSEL=0010 SUT=10]; default value",
                 "value": "0x22"
             },
             "text9": {
                 "mask": "0x3F",
-            "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 258CK/14CK+4.1 ms; [CKSEL=1000 SUT=00]",
+                "text": "XOSC.9-3MHz, PLLin: RC8; SUT: 258CK/14CK+4.1 ms; [CKSEL=1000 SUT=00]",
                 "value": "0x08"
             }
         }
@@ -652,167 +652,167 @@
     "core": "LTE64K",
     "delay_src_path": "delays/lte64k/__lib_delays.c",
     "package": {
-    "packages": "[SOIC]",
+        "packages": "[SOIC]",
         "qfn32": {
             "nmb_pin": "32",
             "pin1": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin10": {
-            "name": "[PE2:PSCIN0:ACMP0M:XTAL2]"
+                "name": "[PE2:PSCIN0:ACMP0M:XTAL2]"
             },
             "pin11": {
-            "name": "[PD1:PSCOUT00:PSCIN0B]"
+                "name": "[PD1:PSCOUT00:PSCIN0B]"
             },
             "pin12": {
-            "name": "[PD2:ADC0:ACMP0]"
+                "name": "[PD2:ADC0:ACMP0]"
             },
             "pin13": {
-            "name": "[PD3:ADC1:ACMP1_OUT]"
+                "name": "[PD3:ADC1:ACMP1_OUT]"
             },
             "pin14": {
-            "name": "[PB3:PSCOUT01:ADC2:ACMP1M]"
+                "name": "[PB3:PSCOUT01:ADC2:ACMP1M]"
             },
             "pin15": {
-            "name": "[PB4:ADC3:ACMPM:MOSI]"
+                "name": "[PB4:ADC3:ACMPM:MOSI]"
             },
             "pin16": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin17": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin18": {
-            "name": "[PD4:PSCIN2:ACMP2M:ADC4]"
+                "name": "[PD4:PSCIN2:ACMP2M:ADC4]"
             },
             "pin19": {
-            "name": "[PB5:ADC5:INT1:ACMP1:SCK]"
+                "name": "[PB5:ADC5:INT1:ACMP1:SCK]"
             },
             "pin2": {
-            "name": "[PD0:ACMP2_OUT_A:SS:CLKO]"
+                "name": "[PD0:ACMP2_OUT_A:SS:CLKO]"
             },
             "pin20": {
-            "name": "[AVCC]"
+                "name": "[AVCC]"
             },
             "pin21": {
-            "name": "[AGND]"
+                "name": "[AGND]"
             },
             "pin22": {
-            "name": "[AREF:ADC6]"
+                "name": "[AREF:ADC6]"
             },
             "pin23": {
-            "name": "[PD5:AMP0-:ADC7]"
+                "name": "[PD5:AMP0-:ADC7]"
             },
             "pin24": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin25": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin26": {
-            "name": "[PD6:AMP0+]"
+                "name": "[PD6:AMP0+]"
             },
             "pin27": {
-            "name": "[PB6:ADC8:ACMP2:MISO]"
+                "name": "[PB6:ADC8:ACMP2:MISO]"
             },
             "pin28": {
-            "name": "[PD7:ADC10:PSCIN0A]"
+                "name": "[PD7:ADC10:PSCIN0A]"
             },
             "pin29": {
-            "name": "[PB7:ADC9:ICP1:PSCOUT22]"
+                "name": "[PB7:ADC9:ICP1:PSCOUT22]"
             },
             "pin3": {
-            "name": "[PB1:PSCOUT20]"
+                "name": "[PB1:PSCOUT20]"
             },
             "pin30": {
-            "name": "[PB0:ACMP2_OUT:T1:PSCOUT23]"
+                "name": "[PB0:ACMP2_OUT:T1:PSCOUT23]"
             },
             "pin31": {
-            "name": "[PE0:RESET:OCD:INT2]"
+                "name": "[PE0:RESET:OCD:INT2]"
             },
             "pin32": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin4": {
-            "name": "[PB2:INT0:PSCOUT21]"
+                "name": "[PB2:INT0:PSCOUT21]"
             },
             "pin5": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin6": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin7": {
-            "name": "[PE1:ACMP0_OUT:PSCIN2:XTAL1]"
+                "name": "[PE1:ACMP0_OUT:PSCIN2:XTAL1]"
             },
             "pin8": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin9": {
-            "name": "[NC]"
+                "name": "[NC]"
             }
         },
         "so_20": {
             "nmb_pin": "20",
             "pin1": {
-            "name": "[PB0:ACMP2_OUT:T1:PSCOUT23]"
+                "name": "[PB0:ACMP2_OUT:T1:PSCOUT23]"
             },
             "pin10": {
-            "name": "[PD2:ADC0:ACMP0]"
+                "name": "[PD2:ADC0:ACMP0]"
             },
             "pin11": {
-            "name": "[PB3:PSCOUT01:ADC2:ACMP1M]"
+                "name": "[PB3:PSCOUT01:ADC2:ACMP1M]"
             },
             "pin12": {
-            "name": "[PB4:ADC3:ACMPM:MOSI]"
+                "name": "[PB4:ADC3:ACMPM:MOSI]"
             },
             "pin13": {
-            "name": "[PB5:ADC5:INT1:ACMP1:SCK]"
+                "name": "[PB5:ADC5:INT1:ACMP1:SCK]"
             },
             "pin14": {
-            "name": "[AVCC]"
+                "name": "[AVCC]"
             },
             "pin15": {
-            "name": "[AGND]"
+                "name": "[AGND]"
             },
             "pin16": {
-            "name": "[AREF:ADC6]"
+                "name": "[AREF:ADC6]"
             },
             "pin17": {
-            "name": "[PD5:AMP0-:ADC7]"
+                "name": "[PD5:AMP0-:ADC7]"
             },
             "pin18": {
-            "name": "[PD6:AMP0+]"
+                "name": "[PD6:AMP0+]"
             },
             "pin19": {
-            "name": "[PB6:ADC8:ACMP2:MISO]"
+                "name": "[PB6:ADC8:ACMP2:MISO]"
             },
             "pin2": {
-            "name": "[PE0:RESET:OCD:INT2]"
+                "name": "[PE0:RESET:OCD:INT2]"
             },
             "pin20": {
-            "name": "[PB7:ADC9:ICP1:PSCOUT22]"
+                "name": "[PB7:ADC9:ICP1:PSCOUT22]"
             },
             "pin3": {
-            "name": "[PB1:PSCOUT20]"
+                "name": "[PB1:PSCOUT20]"
             },
             "pin4": {
-            "name": "[PB2:INT0:PSCOUT21]"
+                "name": "[PB2:INT0:PSCOUT21]"
             },
             "pin5": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin6": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin7": {
-            "name": "[PE1:ACMP0_OUT:PSCIN2:XTAL1]"
+                "name": "[PE1:ACMP0_OUT:PSCIN2:XTAL1]"
             },
             "pin8": {
-            "name": "[PE2:PSCIN0:ACMP0M:XTAL2]"
+                "name": "[PE2:PSCIN0:ACMP0M:XTAL2]"
             },
             "pin9": {
-            "name": "[PD1:PSCOUT00:PSCIN0B]"
+                "name": "[PD1:PSCOUT00:PSCIN0B]"
             }
         }
     },
@@ -1236,7 +1236,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -1371,7 +1372,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         },
         {
             "address": "820002",
@@ -1505,7 +1507,8 @@
                 }
             ],
             "key": "EXTENDED",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "EXTENDED"
         }
     ],
     "avr_core": "avr4"

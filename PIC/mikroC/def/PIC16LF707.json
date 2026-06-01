@@ -220,7 +220,8 @@
                 }
             ],
             "key": "CONFIG",
-            "unused": "00000880"
+            "unused": "00000880",
+            "label": "CONFIG"
         },
         {
             "address": "00002008",
@@ -253,7 +254,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2"
         }
     ],
     "core": "P16",

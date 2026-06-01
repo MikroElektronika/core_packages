@@ -37,7 +37,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_WDT_ON",
@@ -52,7 +53,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -67,7 +69,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -82,7 +85,8 @@
                     "label": "Internal",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_BODEN_ON",
@@ -97,7 +101,8 @@
                     "label": "BOR disabled",
                     "value": "OFF,_BODEN_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -112,7 +117,8 @@
                     "label": "All memory is code protected",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "25,_VBOR_25",
@@ -135,7 +141,8 @@
                     "label": "VBOR set to 4.5V",
                     "value": "45,_VBOR_45"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         }
     ],
     "mcu": "PIC16C717",

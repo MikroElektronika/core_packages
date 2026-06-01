@@ -33,7 +33,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -48,7 +49,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -63,7 +65,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -86,7 +89,8 @@
                     "label": "All memory is code protected",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -101,7 +105,8 @@
                     "label": "Master Clear disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC12CE673",

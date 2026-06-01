@@ -537,7 +537,8 @@
                 }
             ],
             "key": "CONFIG1",
-            "unused": "F11C"
+            "unused": "F11C",
+            "label": "CONFIG1"
         },
         {
             "address": "8008",
@@ -689,7 +690,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "C078"
+            "unused": "C078",
+            "label": "CONFIG2"
         },
         {
             "address": "8009",
@@ -873,7 +875,8 @@
                 }
             ],
             "key": "CONFIG3",
-            "unused": "C080"
+            "unused": "C080",
+            "label": "CONFIG3"
         }
     ],
     "core": "P16_Enh",

@@ -218,7 +218,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "C0F00C40"
+            "unused": "C0F00C40",
+            "label": "Clock control register"
         },
         {
             "address": "58024410",
@@ -658,7 +659,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "00030000"
+            "unused": "00030000",
+            "label": "Rcc clock configuration"
         },
         {
             "address": "58024418",
@@ -785,7 +787,8 @@
                 }
             ],
             "key": "RCC_D1CFGR",
-            "unused": "FFFFF080"
+            "unused": "FFFFF080",
+            "label": "Rcc domain 1 clock configuration"
         },
         {
             "address": "5802441C",
@@ -851,7 +854,8 @@
                 }
             ],
             "key": "RCC_D2CFGR",
-            "unused": "FFFFF88F"
+            "unused": "FFFFF88F",
+            "label": "Rcc domain 2 clock configuration"
         },
         {
             "address": "58024420",
@@ -888,7 +892,8 @@
                 }
             ],
             "key": "RCC_D3CFGR",
-            "unused": "FFFFFF8F"
+            "unused": "FFFFFF8F",
+            "label": "Rcc domain 3 clock configuration"
         },
         {
             "address": "58024428",
@@ -1704,7 +1709,8 @@
                 }
             ],
             "key": "RCC_PLLCKSELR",
-            "unused": "FC0C0C0C"
+            "unused": "FC0C0C0C",
+            "label": "Rcc plls clock source selection"
         },
         {
             "address": "5802442C",
@@ -1991,7 +1997,8 @@
                 }
             ],
             "key": "RCC_PLLCFGR",
-            "unused": "FE00F000"
+            "unused": "FE00F000",
+            "label": "Rcc plls configuration"
         },
         {
             "address": "58024430",
@@ -5355,7 +5362,8 @@
                 }
             ],
             "key": "RCC_PLL1DIVR",
-            "unused": "80800000"
+            "unused": "80800000",
+            "label": "Rcc pll1 dividers configuration"
         },
         {
             "address": "58024438",
@@ -8971,7 +8979,8 @@
                 }
             ],
             "key": "RCC_PLL2DIVR",
-            "unused": "80800000"
+            "unused": "80800000",
+            "label": "Rcc pll2 dividers configuration"
         },
         {
             "address": "58024440",
@@ -12587,7 +12596,8 @@
                 }
             ],
             "key": "RCC_PLL3DIVR",
-            "unused": "80800000"
+            "unused": "80800000",
+            "label": "Rcc pll3 dividers configuration"
         },
         {
             "address": "58024470",
@@ -12688,7 +12698,8 @@
                 }
             ],
             "key": "RCC_BDCR",
-            "unused": "FFFE7C80"
+            "unused": "FFFE7C80",
+            "label": "Rcc backup domain control"
         },
         {
             "address": "58024474",
@@ -12713,7 +12724,8 @@
                 }
             ],
             "key": "RCC_CSR",
-            "unused": "FFFFFFFC"
+            "unused": "FFFFFFFC",
+            "label": "Rcc clock control and status"
         },
         {
             "address": "58024818",
@@ -12742,7 +12754,8 @@
                 }
             ],
             "key": "PWR_D3CR",
-            "unused": "FFFF1FFF"
+            "unused": "FFFF1FFF",
+            "label": "Other"
         }
     ],
     "core": "M7",

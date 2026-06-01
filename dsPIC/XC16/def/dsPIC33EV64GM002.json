@@ -13,7 +13,8 @@
                     "label": "Boot Segment may be written",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "DISABLED",
@@ -32,7 +33,8 @@
                     "label": "No Protection (other than BWRP)",
                     "value": "DISABLED"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "OFF",
@@ -47,7 +49,8 @@
                     "label": "No Boot Segment",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "OFF",
@@ -62,7 +65,8 @@
                     "label": "General Segment may be written",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "DISABLED",
@@ -81,7 +85,8 @@
                     "label": "No Protection (other than GWRP)",
                     "value": "DISABLED"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "OFF",
@@ -96,7 +101,8 @@
                     "label": "Configuration Segment may be written",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "DISABLED",
@@ -119,7 +125,8 @@
                     "label": "No Protection (other than CWRP)",
                     "value": "DISABLED"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "DISABLE",
@@ -134,7 +141,8 @@
                     "label": "Disable Alternate Vector Table",
                     "value": "DISABLE"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "BSLIM",
@@ -145,7 +153,8 @@
                     "label": "Boot Segment Flash Page Address Limit (0-0x1FFF)",
                     "value": "BSLIM"
                 }
-            ]
+            ],
+            "label_group": "FBSLIM"
         },
         {
             "init": "FRCDIVN",
@@ -180,7 +189,8 @@
                     "label": "Internal Fast RC (FRC) Oscillator with postscaler",
                     "value": "FRCDIVN"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "ON",
@@ -195,7 +205,8 @@
                     "label": "Start up device with FRC,then automatically switch to user selected oscillator source",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "NONE",
@@ -218,7 +229,8 @@
                     "label": "Primary Oscillator disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "OFF",
@@ -233,7 +245,8 @@
                     "label": "OSC2 is clock output",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "ON",
@@ -248,7 +261,8 @@
                     "label": "Allow Only One reconfiguration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "CSECME",
@@ -267,7 +281,8 @@
                     "label": "Both Clock Switching and Fail-safe Clock Monitor are disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "ON",
@@ -282,7 +297,8 @@
                     "label": "Clock switch to PLL source will wait until the PLL lock signal is valid",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "PS32768",
@@ -353,7 +369,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PR128",
@@ -368,7 +385,8 @@
                     "label": "1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "ON",
@@ -391,7 +409,8 @@
                     "label": "WDT Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "OFF",
@@ -406,7 +425,8 @@
                     "label": "Watchdog timer in Non-Window Mode",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WIN25",
@@ -429,7 +449,8 @@
                     "label": "WDT Window is 25% of WDT period",
                     "value": "WIN25"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "ON",
@@ -444,7 +465,8 @@
                     "label": "BOR is Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "PGD1",
@@ -467,7 +489,8 @@
                     "label": "Communicate on PGEC1 and PGED1",
                     "value": "PGD1"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         },
         {
             "init": "DMTIVTL",
@@ -478,7 +501,8 @@
                     "label": "Lower 16 bits of 32 bit DMT window interval (0-0xFFFF)",
                     "value": "DMTIVTL"
                 }
-            ]
+            ],
+            "label_group": "FDMTINTVL"
         },
         {
             "init": "DMTIVTH",
@@ -489,7 +513,8 @@
                     "label": "Upper 16 bits of 32 bit DMT window interval (0-0xFFFF)",
                     "value": "DMTIVTH"
                 }
-            ]
+            ],
+            "label_group": "FDMTINTVH"
         },
         {
             "init": "DMTCNTL",
@@ -500,7 +525,8 @@
                     "label": "Lower 16 bits of 32 bit DMT instruction count time-out value (0-0xFFFF)",
                     "value": "DMTCNTL"
                 }
-            ]
+            ],
+            "label_group": "FDMTCNTL"
         },
         {
             "init": "DMTCNTH",
@@ -511,7 +537,8 @@
                     "label": "Upper 16 bits of 32 bit DMT instruction count time-out value (0-0xFFFF)",
                     "value": "DMTCNTH"
                 }
-            ]
+            ],
+            "label_group": "FDMTCNTH"
         },
         {
             "init": "ENABLE",
@@ -526,7 +553,8 @@
                     "label": "Dead Man Timer is Enabled and cannot be disabled by software",
                     "value": "ENABLE"
                 }
-            ]
+            ],
+            "label_group": "FDMT"
         },
         {
             "init": "ON",
@@ -541,7 +569,8 @@
                     "label": "Certain PWM registers may only be written after key sequence",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FDEVOPT"
         },
         {
             "init": "OFF",
@@ -556,7 +585,8 @@
                     "label": "I2C1 mapped to SDA1/SCL1 pins",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FDEVOPT"
         },
         {
             "init": "NONE",
@@ -595,7 +625,8 @@
                     "label": "Not Assigned",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "FALTREG"
         },
         {
             "init": "NONE",
@@ -634,7 +665,8 @@
                     "label": "Not Assigned",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "FALTREG"
         }
     ],
     "mcu": "dsPIC33EV64GM002",

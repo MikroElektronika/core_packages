@@ -13,7 +13,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "ON",
@@ -28,7 +29,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "ON",
@@ -43,7 +45,8 @@
                     "label": "Disabled in hardware",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "1",
@@ -58,7 +61,8 @@
                     "label": "2.0V",
                     "value": "0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF",
@@ -73,7 +77,8 @@
                     "label": "Program memory is code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "FRCDIV",
@@ -112,7 +117,8 @@
                     "label": "Fast RC Oscillator (FRC)",
                     "value": "FRC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "LOW",
@@ -127,7 +133,8 @@
                     "label": "Digital (SCLKI) mode",
                     "value": "DIG"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -142,7 +149,8 @@
                     "label": "CLKO output disabled on the RA6 pin",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -157,7 +165,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "NOPLL",
@@ -212,7 +221,8 @@
                     "label": "96 MHz PLL selected; No divide - Oscillator used directly (4 MHz input)",
                     "value": "NODIV"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "NONE",
@@ -235,7 +245,8 @@
                     "label": "External clock mode selected",
                     "value": "EC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "CSDCMD",
@@ -254,7 +265,8 @@
                     "label": "Clock switching is enabled, fail safe clock monitor is enabled",
                     "value": "CSECME"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "WPFP255",
@@ -1285,7 +1297,8 @@
                     "label": "Write Protect Program Flash Page 255",
                     "value": "WPFP255"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "WPDIS",
@@ -1300,7 +1313,8 @@
                     "label": "Enabled",
                     "value": "WPEN"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         },
         {
             "init": "WPENDMEM",
@@ -1315,7 +1329,8 @@
                     "label": "write Protect from page 0 to WPFP",
                     "value": "WPSTARTMEM"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         },
         {
             "init": "WPCFGDIS",
@@ -1330,7 +1345,8 @@
                     "label": "Enabled",
                     "value": "WPCFGEN"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         },
         {
             "init": "T5G",
@@ -1345,7 +1361,8 @@
                     "label": "TMR5 Gate is driven by the T3G input",
                     "value": "T3G"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "DEFAULT",
@@ -1360,7 +1377,8 @@
                     "label": "C1INA and C3INA are all re-mapped to pin RA5",
                     "value": "RA5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "ON",
@@ -1375,7 +1393,8 @@
                     "label": "Address Shifting disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "MM",
@@ -1398,7 +1417,8 @@
                     "label": "20-bit address bus",
                     "value": "XM20"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "16",
@@ -1413,7 +1433,8 @@
                     "label": "8-bit external bus mode",
                     "value": "8"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -1428,7 +1449,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "ON",
@@ -1443,7 +1465,8 @@
                     "label": "the IOLOCK bit can be set and cleared using the unlock sequence",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "SYSX2",
@@ -1458,7 +1481,8 @@
                     "label": "Divide-by-1 (System clock must be 6 MHz)",
                     "value": "SYSX1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "MSK7",
@@ -1473,7 +1497,8 @@
                     "label": "5 Bit address masking mode",
                     "value": "MSK5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "MSK7",
@@ -1488,7 +1513,8 @@
                     "label": "5 bit address masking mode",
                     "value": "MSK5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "PS25_0",
@@ -1511,7 +1537,8 @@
                     "label": "Watch Dog Timer Window Width is 75 percent",
                     "value": "PS75_0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "FRC",
@@ -1534,7 +1561,8 @@
                     "label": "Use FOSC/4 when system clock is not INTOSC/LPRC and device is not in Sleep; otherwise, use INTOSC/LPRC",
                     "value": "SYS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "32768",
@@ -1605,7 +1633,8 @@
                     "label": "1:1",
                     "value": "1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "SWDTDIS",
@@ -1628,7 +1657,8 @@
                     "label": "WDT disabled in hardware; SWDTEN bit disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "WDTSTD",
@@ -1643,7 +1673,8 @@
                     "label": "Windowed WDT enabled",
                     "value": "WDTWIN"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "128",
@@ -1658,7 +1689,8 @@
                     "label": "WDT prescaler ratio of 1:32",
                     "value": "32"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -1673,7 +1705,8 @@
                     "label": "Retention controlled by SRETEN during Sleep",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "ON",
@@ -1688,7 +1721,8 @@
                     "label": "VBAT BOR is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "ON",
@@ -1703,7 +1737,8 @@
                     "label": "BOR disabled in Deep Sleep (does not affect operation in non-Deep Sleep modes)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "ON",
@@ -1718,7 +1753,8 @@
                     "label": "Deep Sleep operation is always disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "DSWDTPS1F",
@@ -1853,7 +1889,8 @@
                     "label": "1:32 (1 mS)",
                     "value": "DSWDTPS0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG8L"
         },
         {
             "init": "ON",
@@ -1868,7 +1905,8 @@
                     "label": "DSWDT Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG8H"
         },
         {
             "init": "LPRC",
@@ -1883,7 +1921,8 @@
                     "label": "DSWDT uses SOSC as reference clock",
                     "value": "SOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG8H"
         }
     ],
     "mcu": "PIC18F86J99",

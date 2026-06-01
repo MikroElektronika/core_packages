@@ -533,7 +533,8 @@
                     "label": "Highest Page (same as page 130)",
                     "value": "WPFP511"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPDIS",
@@ -548,7 +549,8 @@
                     "label": "Segmented code protection disabled",
                     "value": "WPDIS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPCFGDIS",
@@ -563,7 +565,8 @@
                     "label": "Last page(at the top of program memory) and Flash configuration words are not protected",
                     "value": "WPCFGDIS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPENDMEM",
@@ -578,7 +581,8 @@
                     "label": "Write Protect from WPFP to the last page of memory",
                     "value": "WPENDMEM"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "NONE",
@@ -601,7 +605,8 @@
                     "label": "Primary oscillator disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PRI",
@@ -616,7 +621,8 @@
                     "label": "Use Default SCL2/SDA2 pins for I2C2",
                     "value": "PRI"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -631,7 +637,8 @@
                     "label": "Write RP Registers Once",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -646,7 +653,8 @@
                     "label": "OSCO functions as CLKO (FOSC/2)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "CSDCMD",
@@ -665,7 +673,8 @@
                     "label": "Both Clock Switching and Fail-safe Clock Monitor are disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "FRCDIV",
@@ -700,7 +709,8 @@
                     "label": "Fast RC oscillator with Postscaler (FRCDIV)",
                     "value": "FRCDIV"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -715,7 +725,8 @@
                     "label": "IESO mode (Two-speed start-up) enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PS32768",
@@ -786,7 +797,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PR128",
@@ -801,7 +813,8 @@
                     "label": "Prescaler ratio of 1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -816,7 +829,8 @@
                     "label": "Standard Watchdog Timer is enabled,(Windowed-mode is disabled)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -831,7 +845,8 @@
                     "label": "Watchdog Timer is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PGx1",
@@ -850,7 +865,8 @@
                     "label": "Emulator functions are shared with PGEC1/PGED1",
                     "value": "PGx1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -861,7 +877,8 @@
                     "label": "Device resets into Operational mode",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -876,7 +893,8 @@
                     "label": "Writes to program memory are allowed",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -891,7 +909,8 @@
                     "label": "Code protection is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -906,7 +925,8 @@
                     "label": "JTAG port is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         }
     ],
     "mcu": "PIC24FJ192GA110",

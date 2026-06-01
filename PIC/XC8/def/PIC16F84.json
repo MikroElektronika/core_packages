@@ -21,7 +21,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -36,7 +37,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -51,7 +53,8 @@
                     "label": "Power-up Timer is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -66,7 +69,8 @@
                     "label": "All program memory is code protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16F84",

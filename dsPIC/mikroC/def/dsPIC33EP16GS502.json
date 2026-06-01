@@ -925,7 +925,8 @@
                 }
             ],
             "key": "FSEC",
-            "unused": "00007010"
+            "unused": "00007010",
+            "label": "FSEC"
         },
         {
             "address": "2B90",
@@ -982,7 +983,8 @@
                 }
             ],
             "key": "FBSLIM",
-            "unused": "0000E000"
+            "unused": "0000E000",
+            "label": "FBSLIM"
         },
         {
             "address": "2B98",
@@ -1044,7 +1046,8 @@
                 }
             ],
             "key": "FOSCSEL",
-            "unused": "0000FF78"
+            "unused": "0000FF78",
+            "label": "FOSCSEL"
         },
         {
             "address": "2B9C",
@@ -1149,7 +1152,8 @@
                 }
             ],
             "key": "FOSC",
-            "unused": "0000FE18"
+            "unused": "0000FE18",
+            "label": "FOSC"
         },
         {
             "address": "2BA0",
@@ -1314,7 +1318,8 @@
                 }
             ],
             "key": "FWDT",
-            "unused": "0000FC00"
+            "unused": "0000FC00",
+            "label": "FWDT"
         },
         {
             "address": "2BA4",
@@ -1335,7 +1340,8 @@
                 }
             ],
             "key": "FPOR",
-            "unused": "0000FFFE"
+            "unused": "0000FFFE",
+            "label": "FPOR"
         },
         {
             "address": "2BA8",
@@ -1419,7 +1425,8 @@
                 }
             ],
             "key": "FICD",
-            "unused": "00007F5C"
+            "unused": "00007F5C",
+            "label": "FICD"
         },
         {
             "address": "2BAC",
@@ -1508,7 +1515,8 @@
                 }
             ],
             "key": "FDEVOPT",
-            "unused": "0000FFA2"
+            "unused": "0000FFA2",
+            "label": "FDEVOPT"
         },
         {
             "address": "2BB0",
@@ -1598,7 +1606,8 @@
                 }
             ],
             "key": "FALTREG",
-            "unused": "0000FF88"
+            "unused": "0000FF88",
+            "label": "FALTREG"
         }
     ],
     "dma": {

@@ -23,16 +23,16 @@
             "nmb_text": "2",
             "text1": {
                 "mask": "0x02",
-            "text": "On-Chip Debug Enabled; [OCDEN=0]",
+                "text": "On-Chip Debug Enabled; [OCDEN=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x01",
-            "text": "JTAG Interface Enabled; [JTAGEN=0]",
+                "text": "JTAG Interface Enabled; [JTAGEN=0]",
                 "value": "0x00"
             }
         },
-    "list": "[LOW:HIGH]",
+        "list": "[LOW:HIGH]",
         "low": {
             "fuse0": {
                 "default": "1",
@@ -78,67 +78,67 @@
             "nmb_text": "13",
             "text1": {
                 "mask": "0x80",
-            "text": "Watchdog timer always on; [WDTON=0]",
+                "text": "Watchdog timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x07",
-            "text": "CKSEL; Start-up time: 14 CK + 62.5 ms;  [CKSEL=0 SUT=10]",
+                "text": "CKSEL; Start-up time: 14 CK + 62.5 ms;  [CKSEL=0 SUT=10]",
                 "value": "0x04"
             },
             "text11": {
                 "mask": "0x07",
-            "text": "CKSEL; Start-up time: 14 CK + 0 ms;   [CKSEL=1 SUT=00]",
+                "text": "CKSEL; Start-up time: 14 CK + 0 ms;   [CKSEL=1 SUT=00]",
                 "value": "0x01"
             },
             "text12": {
                 "mask": "0x07",
-            "text": "CKSEL; Start-up time: 14 CK + 3.9 ms; [CKSEL=1 SUT=01]",
+                "text": "CKSEL; Start-up time: 14 CK + 3.9 ms; [CKSEL=1 SUT=01]",
                 "value": "0x03"
             },
             "text13": {
                 "mask": "0x07",
-            "text": "CKSEL; Start-up time: 14 CK + 62.5 ms;  [CKSEL=1 SUT=10]",
+                "text": "CKSEL; Start-up time: 14 CK + 62.5 ms;  [CKSEL=1 SUT=10]",
                 "value": "0x05"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x30",
-            "text": "Boot Flash section size=256 words; Boot start address=$4F00; [BOOTSZ=11]",
+                "text": "Boot Flash section size=256 words; Boot start address=$4F00; [BOOTSZ=11]",
                 "value": "0x30"
             },
             "text4": {
                 "mask": "0x30",
-            "text": "Boot Flash section size=512 words; Boot start address=$4E00; [BOOTSZ=10]",
+                "text": "Boot Flash section size=512 words; Boot start address=$4E00; [BOOTSZ=10]",
                 "value": "0x20"
             },
             "text5": {
                 "mask": "0x30",
-            "text": "Boot Flash section size=1024 words; Boot start address=$4C00; [BOOTSZ=01]",
+                "text": "Boot Flash section size=1024 words; Boot start address=$4C00; [BOOTSZ=01]",
                 "value": "0x10"
             },
             "text6": {
                 "mask": "0x30",
-            "text": "Boot Flash section size=2048 words; Boot start address=$4800; [BOOTSZ=00] ; default value",
+                "text": "Boot Flash section size=2048 words; Boot start address=$4800; [BOOTSZ=00] ; default value",
                 "value": "0x00"
             },
             "text7": {
                 "mask": "0x08",
-            "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
+                "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
                 "value": "0x00"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "CKSEL; Start-up time: 14 CK + 0 ms;   [CKSEL=0 SUT=00]",
+                "text": "CKSEL; Start-up time: 14 CK + 0 ms;   [CKSEL=0 SUT=00]",
                 "value": "0x00"
             },
             "text9": {
                 "mask": "0x07",
-            "text": "CKSEL; Start-up time: 14 CK + 3.9 ms; [CKSEL=0 SUT=01]",
+                "text": "CKSEL; Start-up time: 14 CK + 3.9 ms; [CKSEL=0 SUT=01]",
                 "value": "0x02"
             }
         }
@@ -266,151 +266,151 @@
         "lqfp": {
             "nmb_pin": "48",
             "pin1": {
-            "name": "[SGND]"
+                "name": "[SGND]"
             },
             "pin10": {
-            "name": "[PA5:INT1:PCINT5]"
+                "name": "[PA5:INT1:PCINT5]"
             },
             "pin11": {
-            "name": "[PA6:INT2:PCINT6]"
+                "name": "[PA6:INT2:PCINT6]"
             },
             "pin12": {
-            "name": "[PA7:INT3:PCINT7]"
+                "name": "[PA7:INT3:PCINT7]"
             },
             "pin13": {
-            "name": "['RESET]"
+                "name": "['RESET]"
             },
             "pin14": {
-            "name": "[XTAL1]"
+                "name": "[XTAL1]"
             },
             "pin15": {
-            "name": "[XTAL2]"
+                "name": "[XTAL2]"
             },
             "pin16": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin17": {
-            "name": "[PB0:TDO:PCINT8]"
+                "name": "[PB0:TDO:PCINT8]"
             },
             "pin18": {
-            "name": "[PB1:TDI:PCINT9]"
+                "name": "[PB1:TDI:PCINT9]"
             },
             "pin19": {
-            "name": "[PB2:TMS:PCINT10]"
+                "name": "[PB2:TMS:PCINT10]"
             },
             "pin2": {
-            "name": "[PA0:ADC0:PCINT0]"
+                "name": "[PA0:ADC0:PCINT0]"
             },
             "pin20": {
-            "name": "[PB3:TCK:PCINT11]"
+                "name": "[PB3:TCK:PCINT11]"
             },
             "pin21": {
-            "name": "[PB4:PCINT12]"
+                "name": "[PB4:PCINT12]"
             },
             "pin22": {
-            "name": "[PB5:PCINT13]"
+                "name": "[PB5:PCINT13]"
             },
             "pin23": {
-            "name": "[SCL]"
+                "name": "[SCL]"
             },
             "pin24": {
-            "name": "[SDA]"
+                "name": "[SDA]"
             },
             "pin25": {
-            "name": "[PB6:OC0A:PCINT14]"
+                "name": "[PB6:OC0A:PCINT14]"
             },
             "pin26": {
-            "name": "[PB7:OC0B:PCINT15]"
+                "name": "[PB7:OC0B:PCINT15]"
             },
             "pin27": {
-            "name": "[PD0:T0]"
+                "name": "[PD0:T0]"
             },
             "pin28": {
-            "name": "[PD1]"
+                "name": "[PD1]"
             },
             "pin29": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin3": {
-            "name": "[PA1:ADC1:PCINT1]"
+                "name": "[PA1:ADC1:PCINT1]"
             },
             "pin30": {
-            "name": "[PC0]"
+                "name": "[PC0]"
             },
             "pin31": {
-            "name": "[BATT]"
+                "name": "[BATT]"
             },
             "pin32": {
-            "name": "[OPC]"
+                "name": "[OPC]"
             },
             "pin33": {
-            "name": "[OC]"
+                "name": "[OC]"
             },
             "pin34": {
-            "name": "[VFET]"
+                "name": "[VFET]"
             },
             "pin35": {
-            "name": "[OD]"
+                "name": "[OD]"
             },
             "pin36": {
-            "name": "[PVT]"
+                "name": "[PVT]"
             },
             "pin37": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin38": {
-            "name": "[PV4]"
+                "name": "[PV4]"
             },
             "pin39": {
-            "name": "[PV3]"
+                "name": "[PV3]"
             },
             "pin4": {
-            "name": "[PA2:ADC2:PCINT2]"
+                "name": "[PA2:ADC2:PCINT2]"
             },
             "pin40": {
-            "name": "[PV2]"
+                "name": "[PV2]"
             },
             "pin41": {
-            "name": "[PV1]"
+                "name": "[PV1]"
             },
             "pin42": {
-            "name": "[NV]"
+                "name": "[NV]"
             },
             "pin43": {
-            "name": "[VREF]"
+                "name": "[VREF]"
             },
             "pin44": {
-            "name": "[VREFGND]"
+                "name": "[VREFGND]"
             },
             "pin45": {
-            "name": "[PPI]"
+                "name": "[PPI]"
             },
             "pin46": {
-            "name": "[PI]"
+                "name": "[PI]"
             },
             "pin47": {
-            "name": "[NI]"
+                "name": "[NI]"
             },
             "pin48": {
-            "name": "[NNI]"
+                "name": "[NNI]"
             },
             "pin5": {
-            "name": "[PA3:ADC3:PCINT3]"
+                "name": "[PA3:ADC3:PCINT3]"
             },
             "pin6": {
-            "name": "[VREG]"
+                "name": "[VREG]"
             },
             "pin7": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin8": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin9": {
-            "name": "[PA4:ADC4:INT0:PCINT4]"
+                "name": "[PA4:ADC4:INT0:PCINT4]"
             }
         },
-    "packages": "[LQFP]"
+        "packages": "[LQFP]"
     },
     "ram": {
         "max_addr": "0x08FF",
@@ -676,7 +676,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -718,7 +719,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         }
     ],
     "avr_core": "avr5"

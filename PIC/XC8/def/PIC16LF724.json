@@ -37,7 +37,8 @@
                     "label": "LP oscillator: Low-power crystal on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_WDT_ON",
@@ -52,7 +53,8 @@
                     "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF,_PWRT_DIS",
@@ -67,7 +69,8 @@
                     "label": "PWRT enabled",
                     "value": "ON,_PWRT_EN"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_MCLR_EN",
@@ -82,7 +85,8 @@
                     "label": "RE3/MCLR pin function is MCLR",
                     "value": "ON,_MCLR_EN"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -97,7 +101,8 @@
                     "label": "Program memory code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_BOR_ON",
@@ -116,7 +121,8 @@
                     "label": "BOR disabled",
                     "value": "OFF,_BOR_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "19,_BORV_1_9",
@@ -131,7 +137,8 @@
                     "label": "Brown-out Reset Voltage (VBOR) set to 2.5 V nominal",
                     "value": "25,_BORV_2_5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_PLL_EN",
@@ -146,7 +153,8 @@
                     "label": "INTOSC Frequency is 500 kHz",
                     "value": "OFF,_PLL_DIS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -161,7 +169,8 @@
                     "label": "In-Circuit Debugger enabled, RB6/ICSPCLK and RB7/ICSPDAT are dedicated to the debugger",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         }
     ],
     "mcu": "PIC16LF724",

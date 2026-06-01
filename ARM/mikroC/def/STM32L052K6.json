@@ -23,7 +23,8 @@
                 }
             ],
             "key": "RCC_CRRCR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock recovery rc register"
         },
         {
             "address": "40021000",
@@ -175,7 +176,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock control register"
         },
         {
             "address": "4002100C",
@@ -472,7 +474,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock configuration register"
         },
         {
             "address": "40007000",
@@ -501,7 +504,8 @@
                 }
             ],
             "key": "PWR_CR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         }
     ],
     "core": "M0",

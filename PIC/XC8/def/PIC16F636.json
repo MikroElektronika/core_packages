@@ -37,7 +37,8 @@
                     "label": "LP oscillator: Low-power crystal on RA5/T1CKI/OSC1/CLKIN and RA4/T1G/OSC2/CLKOUT",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -52,7 +53,8 @@
                     "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -67,7 +69,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -82,7 +85,8 @@
                     "label": "MCLR pin function is alternate function, MCLR function is internally disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -97,7 +101,8 @@
                     "label": "Program memory is external read and write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -112,7 +117,8 @@
                     "label": "Data memory is external read protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_BOD_ON",
@@ -135,7 +141,8 @@
                     "label": "BOD and SBODEN disabled",
                     "value": "OFF,_BOD_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -150,7 +157,8 @@
                     "label": "Internal External Switchover mode disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -165,7 +173,8 @@
                     "label": "Fail-Safe Clock Monitor disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF,_WUREN_OFF",
@@ -180,7 +189,8 @@
                     "label": "Wake-up and Reset enabled",
                     "value": "ON,_WUREN_ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16F636",

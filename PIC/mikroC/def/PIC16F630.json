@@ -257,7 +257,8 @@
                 }
             ],
             "key": "CONFIG",
-            "unused": "00000E00"
+            "unused": "00000E00",
+            "label": "CONFIG"
         }
     ],
     "core": "P16",

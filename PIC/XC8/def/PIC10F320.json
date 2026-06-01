@@ -13,7 +13,8 @@
                     "label": "EC: CLKIN function enabled",
                     "value": "EC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -36,7 +37,8 @@
                     "label": "Brown-out Reset disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -59,7 +61,8 @@
                     "label": "WDT disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -74,7 +77,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -89,7 +93,8 @@
                     "label": "MCLR pin function is digital input, MCLR internally tied to VDD",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -104,7 +109,8 @@
                     "label": "Program memory code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -119,7 +125,8 @@
                     "label": "High-voltage on MCLR/VPP must be used for programming",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -134,7 +141,8 @@
                     "label": "BOR disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "LO,_BORV_24",
@@ -149,7 +157,8 @@
                     "label": "Brown-out Reset Voltage (Vbor), high trip point selected.",
                     "value": "HI,_BORV_27"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -172,7 +181,8 @@
                     "label": "000h to 0FFh write protected, no addresses may be modified by PMCON control",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC10F320",

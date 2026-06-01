@@ -13,7 +13,8 @@
                     "label": "General segment may be written",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "OFF",
@@ -28,7 +29,8 @@
                     "label": "No protection",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "FRCDIV",
@@ -67,7 +69,8 @@
                     "label": "8 MHz FRC oscillator with divide-by-N (FRCDIV)",
                     "value": "FRCDIV"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "ON",
@@ -82,7 +85,8 @@
                     "label": "Internal External Switchover mode enabled (Two-Speed Start-up enabled)",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "NONE",
@@ -105,7 +109,8 @@
                     "label": "Primary oscillator disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "OFF",
@@ -120,7 +125,8 @@
                     "label": "CLKO output signal active on the OSCO pin; primary oscillator must be disabled or configured for the External Clock mode (EC) for the CLKO to be active (POSCMD<1:0>)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "HS",
@@ -139,7 +145,8 @@
                     "label": "Primary oscillator/external clock input frequency greater than 8 MHz",
                     "value": "HS"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "SOSCHP",
@@ -154,7 +161,8 @@
                     "label": "Secondary oscillator configured for high-power operation",
                     "value": "SOSCHP"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "CSDCMD",
@@ -173,7 +181,8 @@
                     "label": "Clock switching is disabled, Fail-Safe Clock Monitor is disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "PS32768",
@@ -244,7 +253,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PR128",
@@ -259,7 +269,8 @@
                     "label": "WDT prescaler ratio of 1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "OFF",
@@ -274,7 +285,8 @@
                     "label": "Standard WDT selected; windowed WDT disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "ON",
@@ -289,7 +301,8 @@
                     "label": "WDT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "BOR3",
@@ -312,7 +325,8 @@
                     "label": "Brown-out Reset enabled in hardware; SBOREN bit disabled",
                     "value": "BOR3"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "ON",
@@ -327,7 +341,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "18V",
@@ -350,7 +365,8 @@
                     "label": "Brown-out Reset set to lowest voltage (1.8V)",
                     "value": "18V"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "ON",
@@ -365,7 +381,8 @@
                     "label": "MCLR pin enabled; RA5 input pin disabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "PGx2",
@@ -380,7 +397,8 @@
                     "label": "PGC2/PGD2 are used for programming the device",
                     "value": "PGx2"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         },
         {
             "init": "DSWDTPSF",
@@ -451,7 +469,8 @@
                     "label": "1:2,147,483,648 (25.7 Days)",
                     "value": "DSWDTPSF"
                 }
-            ]
+            ],
+            "label_group": "FDS"
         },
         {
             "init": "ON",
@@ -466,7 +485,8 @@
                     "label": "Deep Sleep BOR enabled in Deep Sleep",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FDS"
         },
         {
             "init": "ON",
@@ -481,7 +501,8 @@
                     "label": "DSWDT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FDS"
         }
     ],
     "mcu": "PIC24F04KA200",

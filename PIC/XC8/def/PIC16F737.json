@@ -37,7 +37,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_WDT_ON",
@@ -52,7 +53,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -67,7 +69,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_MCLR_ON",
@@ -82,7 +85,8 @@
                     "label": "MCLR/VPP/RE3 pin function is digital input only, MCLR gated to '1'",
                     "value": "OFF,_MCLR_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_BOREN_1",
@@ -97,7 +101,8 @@
                     "label": "Disabled",
                     "value": "OFF,_BOREN_0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "20,_VBOR_2_0",
@@ -120,7 +125,8 @@
                     "label": "VBOR set to 4.5V",
                     "value": "45,_VBOR_4_5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -135,7 +141,8 @@
                     "label": "In-Circuit Debugger enabled, RB6 and RB7 are dedicated to the debugger",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "RC1,_CCP2_RC1",
@@ -150,7 +157,8 @@
                     "label": "CCP2 is on RB3",
                     "value": "RB3,_CCP2_RB3"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -165,7 +173,8 @@
                     "label": "0000h to 0FFFh code-protected",
                     "value": "ON,_CP_ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -180,7 +189,8 @@
                     "label": "Fail-Safe Clock Monitor disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -195,7 +205,8 @@
                     "label": "Internal External Switchover mode disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON,_BORSEN_1",
@@ -210,7 +221,8 @@
                     "label": "Disabled",
                     "value": "OFF,_BORSEN_0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         }
     ],
     "mcu": "PIC16F737",

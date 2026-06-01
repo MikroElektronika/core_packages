@@ -82,7 +82,8 @@
                 }
             ],
             "key": "SYSTEM_CMC",
-            "unused": "00000020"
+            "unused": "00000020",
+            "label": "Clock operation mode control register"
         },
         {
             "address": "4001e808",
@@ -107,7 +108,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "High-speed on-chip oscillator control register"
         },
         {
             "address": "4001e037",
@@ -132,7 +134,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "fffffffc"
+            "unused": "fffffffc",
+            "label": "Other"
         },
         {
             "address": "4001e809",
@@ -157,7 +160,8 @@
                 }
             ],
             "key": "SYSTEM_MOCOCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Middle-speed on-chip oscillator control register"
         },
         {
             "address": "4001e80a",
@@ -182,7 +186,8 @@
                 }
             ],
             "key": "SYSTEM_LOCOCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Low-speed on-chip oscillator control register"
         },
         {
             "address": "4001e80b",
@@ -207,7 +212,8 @@
                 }
             ],
             "key": "SYSTEM_MOSCCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Main clock oscillator control register"
         },
         {
             "address": "4001e80c",
@@ -232,7 +238,8 @@
                 }
             ],
             "key": "SYSTEM_SOSCCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Sub-clock oscillator control register"
         },
         {
             "address": "4001e818",
@@ -273,7 +280,8 @@
                 }
             ],
             "key": "SYSTEM_HOCODIV",
-            "unused": "000000f8"
+            "unused": "000000f8",
+            "label": "High-speed on-chip oscillator frequency select register"
         },
         {
             "address": "4001e819",
@@ -302,7 +310,8 @@
                 }
             ],
             "key": "SYSTEM_MOCODIV",
-            "unused": "000000fc"
+            "unused": "000000fc",
+            "label": "Middle-speed on-chip oscillator frequency select register"
         },
         {
             "address": "4001e81a",
@@ -339,7 +348,8 @@
                 }
             ],
             "key": "SYSTEM_MOSCDIV",
-            "unused": "000000f8"
+            "unused": "000000f8",
+            "label": "Mosc clock division register"
         },
         {
             "address": "4001e820",
@@ -364,7 +374,8 @@
                 }
             ],
             "key": "SYSTEM_FOCOSCR",
-            "unused": "000000fc"
+            "unused": "000000fc",
+            "label": "Foco clock source control register"
         },
         {
             "address": "4001e821",
@@ -389,7 +400,8 @@
                 }
             ],
             "key": "SYSTEM_FMAINSCR",
-            "unused": "000000fc"
+            "unused": "000000fc",
+            "label": "Fmain clock source control register"
         },
         {
             "address": "4001e822",
@@ -414,7 +426,8 @@
                 }
             ],
             "key": "SYSTEM_FSUBSCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Fsub clock source control register"
         },
         {
             "address": "4001e823",
@@ -439,7 +452,8 @@
                 }
             ],
             "key": "SYSTEM_ICLKSCR",
-            "unused": "000000fc"
+            "unused": "000000fc",
+            "label": "Iclk clock source control register"
         },
         {
             "address": "4001e824",
@@ -464,7 +478,8 @@
                 }
             ],
             "key": "SYSTEM_OSMC",
-            "unused": "000000ef"
+            "unused": "000000ef",
+            "label": "Subsystem clock supply mode control register"
         },
         {
             "address": "400a3500",
@@ -538,7 +553,8 @@
                 }
             ],
             "key": "SYSTEM_UTA0CK",
-            "unused": "000000c0"
+            "unused": "000000c0",
+            "label": "Uarta clock select register 0"
         },
         {
             "address": "400a3501",
@@ -587,7 +603,8 @@
                 }
             ],
             "key": "SYSTEM_UTA1CK",
-            "unused": "000000f0"
+            "unused": "000000f0",
+            "label": "Uarta clock select register 1"
         },
         {
             "address": "407ec20a",
@@ -616,7 +633,8 @@
                 }
             ],
             "key": "SYSTEM_FLMODE",
-            "unused": "0000003f"
+            "unused": "0000003f",
+            "label": "Flash operating mode control register"
         }
     ],
     "core": "M23",

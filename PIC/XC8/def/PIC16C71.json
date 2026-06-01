@@ -21,7 +21,8 @@
                     "label": "HS oscillator",
                     "value": "HS,_HS_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_WDT_ON",
@@ -36,7 +37,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -51,7 +53,8 @@
                     "label": "PWRT disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -66,7 +69,8 @@
                     "label": "Code protection on",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         }
     ],
     "mcu": "PIC16C71",

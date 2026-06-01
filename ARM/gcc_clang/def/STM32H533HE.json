@@ -379,7 +379,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "ffffffd4"
+            "unused": "ffffffd4",
+            "label": "Rcc clock control register"
         },
         {
             "address": "44020c14",
@@ -403,7 +404,8 @@
                 }
             ],
             "key": "RCC_CRRCR",
-            "unused": "ffffffff"
+            "unused": "ffffffff",
+            "label": "Rcc clock recovery rc register"
         },
         {
             "address": "44020c1c",
@@ -669,7 +671,8 @@
                 }
             ],
             "key": "RCC_CFGR1",
-            "unused": "ffffffff"
+            "unused": "ffffffff",
+            "label": "Rcc clock configuration register1"
         },
         {
             "address": "44020c20",
@@ -975,7 +978,8 @@
                 }
             ],
             "key": "RCC_CFGR2",
-            "unused": "ffffffff"
+            "unused": "ffffffff",
+            "label": "Rcc cpu domain clock configuration register 2"
         },
         {
             "address": "44020cf0",
@@ -1442,7 +1446,8 @@
                 }
             ],
             "key": "RCC_BDCR",
-            "unused": "ffffffff"
+            "unused": "ffffffff",
+            "label": "Rcc backup domain control register"
         }
     ],
     "core": "M33EF",

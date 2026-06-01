@@ -13,7 +13,8 @@
                     "label": "WDT disabled (control is placed on SWDTEN bit)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "ON",
@@ -28,7 +29,8 @@
                     "label": "Reset on stack overflow/underflow disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "ON",
@@ -43,7 +45,8 @@
                     "label": "Instruction set extension and Indexed Addressing mode disabled (Legacy mode)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "OFF",
@@ -58,7 +61,8 @@
                     "label": "Background debugger enabled; RB6 and RB7 are dedicated to In-Circuit Debug",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "OFF",
@@ -73,7 +77,8 @@
                     "label": "Program memory is code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "ECPLL",
@@ -112,7 +117,8 @@
                     "label": "Internal oscillator, port function on RA6 and RA7",
                     "value": "INTOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -127,7 +133,8 @@
                     "label": "Fail-Safe Clock Monitor enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -142,7 +149,8 @@
                     "label": "Two-Speed Start-up enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "32768",
@@ -213,7 +221,8 @@
                     "label": "1:1",
                     "value": "1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "ON",
@@ -228,7 +237,8 @@
                     "label": "Address shifting disabled, address on external bus reflects the PC value",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "MM",
@@ -251,7 +261,8 @@
                     "label": "Extended Microcontroller mode - 20-bit Address mode",
                     "value": "XM20"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "16",
@@ -266,7 +277,8 @@
                     "label": "8-bit external bus mode",
                     "value": "8"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "OFF",
@@ -281,7 +293,8 @@
                     "label": "Wait states on the external bus are enabled and selected by MEMCON<5:4>",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "DEFAULT",
@@ -296,7 +309,8 @@
                     "label": "ECCP2/P2A is multiplexed with RE7 in Microcontroller mode or with RB3 in Extended Microcontroller mode",
                     "value": "ALTERNATE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "DEFAULT",
@@ -311,7 +325,8 @@
                     "label": "ECCP1 outputs (P1B/P1C) are multiplexed with RH7 and RH6; ECCP3 outputs (P3B/P3C) are multiplexed with RH5 and RH4",
                     "value": "ALTERNATE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "DEFAULT",
@@ -326,7 +341,8 @@
                     "label": "PMP port pins not connected to EMB (PORTA, PORTF and PORTH)",
                     "value": "ALTERNATE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "MSK7",
@@ -341,7 +357,8 @@
                     "label": "5-Bit Address Masking mode enable",
                     "value": "MSK5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         }
     ],
     "mcu": "PIC18F86J11",

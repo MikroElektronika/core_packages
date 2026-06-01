@@ -265,7 +265,8 @@
                 }
             ],
             "key": "CONFIG1H",
-            "unused": "30"
+            "unused": "30",
+            "label": "CONFIG1H"
         },
         {
             "address": "300002",
@@ -340,7 +341,8 @@
                 }
             ],
             "key": "CONFIG2L",
-            "unused": "E0"
+            "unused": "E0",
+            "label": "CONFIG2L"
         },
         {
             "address": "300003",
@@ -438,7 +440,8 @@
                 }
             ],
             "key": "CONFIG2H",
-            "unused": "E0"
+            "unused": "E0",
+            "label": "CONFIG2H"
         },
         {
             "address": "300005",
@@ -452,11 +455,11 @@
                     "mask": "2",
                     "settings": [
                         {
-                            "label": "PORTB\u003c4",
+                            "label": "PORTB<4",
                             "value": "2"
                         },
                         {
-                            "label": "PORTB\u003c4:0\u003e pins are configured as digital I/O on Reset",
+                            "label": "PORTB<4:0> pins are configured as digital I/O on Reset",
                             "value": "0"
                         }
                     ]
@@ -497,7 +500,8 @@
                 }
             ],
             "key": "CONFIG3H",
-            "unused": "79"
+            "unused": "79",
+            "label": "CONFIG3H"
         },
         {
             "address": "300006",
@@ -594,7 +598,8 @@
                 }
             ],
             "key": "CONFIG4L",
-            "unused": "0A"
+            "unused": "0A",
+            "label": "CONFIG4L"
         },
         {
             "address": "300008",
@@ -670,7 +675,8 @@
                 }
             ],
             "key": "CONFIG5L",
-            "unused": "0"
+            "unused": "0",
+            "label": "CONFIG5L"
         },
         {
             "address": "300009",
@@ -712,7 +718,8 @@
                 }
             ],
             "key": "CONFIG5H",
-            "unused": "3F"
+            "unused": "3F",
+            "label": "CONFIG5H"
         },
         {
             "address": "30000A",
@@ -788,7 +795,8 @@
                 }
             ],
             "key": "CONFIG6L",
-            "unused": "0"
+            "unused": "0",
+            "label": "CONFIG6L"
         },
         {
             "address": "30000B",
@@ -847,7 +855,8 @@
                 }
             ],
             "key": "CONFIG6H",
-            "unused": "1F"
+            "unused": "1F",
+            "label": "CONFIG6H"
         },
         {
             "address": "30000C",
@@ -923,7 +932,8 @@
                 }
             ],
             "key": "CONFIG7L",
-            "unused": "0"
+            "unused": "0",
+            "label": "CONFIG7L"
         },
         {
             "address": "30000D",
@@ -948,7 +958,8 @@
                 }
             ],
             "key": "CONFIG7H",
-            "unused": "BF"
+            "unused": "BF",
+            "label": "CONFIG7H"
         }
     ],
     "core": "P18",

@@ -49,81 +49,81 @@
             "nmb_text": "15",
             "text1": {
                 "mask": "0x0C",
-            "text": "Disabled; [ACTIVE=00]",
+                "text": "Disabled; [ACTIVE=00]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0xE0",
-            "text": "4.3 V; [LVL=111]",
+                "text": "4.3 V; [LVL=111]",
                 "value": "0xE0"
             },
             "text11": {
                 "mask": "0x10",
-            "text": "1kHz sampling frequency; [SAMPLFREQ=0]",
+                "text": "1kHz sampling frequency; [SAMPLFREQ=0]",
                 "value": "0x00"
             },
             "text12": {
                 "mask": "0x10",
-            "text": "125Hz sampling frequency; [SAMPLFREQ=1]",
+                "text": "125Hz sampling frequency; [SAMPLFREQ=1]",
                 "value": "0x10"
             },
             "text13": {
                 "mask": "0x03",
-            "text": "Disabled; [SLEEP=00]",
+                "text": "Disabled; [SLEEP=00]",
                 "value": "0x00"
             },
             "text14": {
                 "mask": "0x03",
-            "text": "Enabled; [SLEEP=01]",
+                "text": "Enabled; [SLEEP=01]",
                 "value": "0x01"
             },
             "text15": {
                 "mask": "0x03",
-            "text": "Sampled; [SLEEP=10]",
+                "text": "Sampled; [SLEEP=10]",
                 "value": "0x02"
             },
             "text2": {
                 "mask": "0x0C",
-            "text": "Enabled; [ACTIVE=01]",
+                "text": "Enabled; [ACTIVE=01]",
                 "value": "0x04"
             },
             "text3": {
                 "mask": "0x0C",
-            "text": "Sampled; [ACTIVE=10]",
+                "text": "Sampled; [ACTIVE=10]",
                 "value": "0x08"
             },
             "text4": {
                 "mask": "0x0C",
-            "text": "Enabled with wake-up halted until BOD is ready; [ACTIVE=11]",
+                "text": "Enabled with wake-up halted until BOD is ready; [ACTIVE=11]",
                 "value": "0x0C"
             },
             "text5": {
                 "mask": "0xE0",
-            "text": "1.8 V; [LVL=000]",
+                "text": "1.8 V; [LVL=000]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0xE0",
-            "text": "2.15 V; [LVL=001]",
+                "text": "2.15 V; [LVL=001]",
                 "value": "0x20"
             },
             "text7": {
                 "mask": "0xE0",
-            "text": "2.51 V; [LVL=010]",
+                "text": "2.51 V; [LVL=010]",
                 "value": "0x40"
             },
             "text8": {
                 "mask": "0xE0",
-            "text": "2.87 V; [LVL=011]",
+                "text": "2.87 V; [LVL=011]",
                 "value": "0x60"
             },
             "text9": {
                 "mask": "0xE0",
-            "text": "3.94 V; [LVL=110]",
+                "text": "3.94 V; [LVL=110]",
                 "value": "0xC0"
             }
         },
-    "list": "[BODCFG:OSCCFG:SYSCFG0:SYSCFG1:TCD0CFG:WDTCFG]",
+        "list": "[BODCFG:OSCCFG:SYSCFG0:SYSCFG1:TCD0CFG:WDTCFG]",
         "osccfg": {
             "fuse0": {
                 "default": "0",
@@ -144,17 +144,17 @@
             "nmb_text": "3",
             "text1": {
                 "mask": "0x03",
-            "text": "16 MHz; [FREQSEL=01]",
+                "text": "16 MHz; [FREQSEL=01]",
                 "value": "0x01"
             },
             "text2": {
                 "mask": "0x03",
-            "text": "20 MHz; [FREQSEL=10]",
+                "text": "20 MHz; [FREQSEL=10]",
                 "value": "0x02"
             },
             "text3": {
                 "mask": "0x80",
-            "text": "Oscillator Lock; [OSCLOCK=0]",
+                "text": "Oscillator Lock; [OSCLOCK=0]",
                 "value": "0x00"
             }
         },
@@ -188,42 +188,42 @@
             "nmb_text": "8",
             "text1": {
                 "mask": "0xC0",
-            "text": "The CRC is performed on the entire Flash (boot, application code and application data section).; [CRCSRC=00]",
+                "text": "The CRC is performed on the entire Flash (boot, application code and application data section).; [CRCSRC=00]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0xC0",
-            "text": "The CRC is performed on the boot section of Flash; [CRCSRC=01]",
+                "text": "The CRC is performed on the boot section of Flash; [CRCSRC=01]",
                 "value": "0x40"
             },
             "text3": {
                 "mask": "0xC0",
-            "text": "The CRC is performed on the boot and application code section of Flash; [CRCSRC=10]",
+                "text": "The CRC is performed on the boot and application code section of Flash; [CRCSRC=10]",
                 "value": "0x80"
             },
             "text4": {
                 "mask": "0xC0",
-            "text": "Disable CRC.; [CRCSRC=11]",
+                "text": "Disable CRC.; [CRCSRC=11]",
                 "value": "0xC0"
             },
             "text5": {
                 "mask": "0x01",
-            "text": "EEPROM Save; [EESAVE=0]",
+                "text": "EEPROM Save; [EESAVE=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x0C",
-            "text": "GPIO mode; [RSTPINCFG=00]",
+                "text": "GPIO mode; [RSTPINCFG=00]",
                 "value": "0x00"
             },
             "text7": {
                 "mask": "0x0C",
-            "text": "UPDI mode; [RSTPINCFG=01]",
+                "text": "UPDI mode; [RSTPINCFG=01]",
                 "value": "0x04"
             },
             "text8": {
                 "mask": "0x0C",
-            "text": "Reset mode; [RSTPINCFG=10]",
+                "text": "Reset mode; [RSTPINCFG=10]",
                 "value": "0x08"
             }
         },
@@ -247,42 +247,42 @@
             "nmb_text": "8",
             "text1": {
                 "mask": "0x07",
-            "text": "0 ms; [SUT=000]",
+                "text": "0 ms; [SUT=000]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x07",
-            "text": "1 ms; [SUT=001]",
+                "text": "1 ms; [SUT=001]",
                 "value": "0x01"
             },
             "text3": {
                 "mask": "0x07",
-            "text": "2 ms; [SUT=010]",
+                "text": "2 ms; [SUT=010]",
                 "value": "0x02"
             },
             "text4": {
                 "mask": "0x07",
-            "text": "4 ms; [SUT=011]",
+                "text": "4 ms; [SUT=011]",
                 "value": "0x03"
             },
             "text5": {
                 "mask": "0x07",
-            "text": "8 ms; [SUT=100]",
+                "text": "8 ms; [SUT=100]",
                 "value": "0x04"
             },
             "text6": {
                 "mask": "0x07",
-            "text": "16 ms; [SUT=101]",
+                "text": "16 ms; [SUT=101]",
                 "value": "0x05"
             },
             "text7": {
                 "mask": "0x07",
-            "text": "32 ms; [SUT=110]",
+                "text": "32 ms; [SUT=110]",
                 "value": "0x06"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "64 ms; [SUT=111]",
+                "text": "64 ms; [SUT=111]",
                 "value": "0x07"
             }
         },
@@ -331,42 +331,42 @@
             "nmb_text": "8",
             "text1": {
                 "mask": "0x01",
-            "text": "Compare A Default Output Value; [CMPA=0]",
+                "text": "Compare A Default Output Value; [CMPA=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x10",
-            "text": "Compare A Output Enable; [CMPAEN=0]",
+                "text": "Compare A Output Enable; [CMPAEN=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x02",
-            "text": "Compare B Default Output Value; [CMPB=0]",
+                "text": "Compare B Default Output Value; [CMPB=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x20",
-            "text": "Compare B Output Enable; [CMPBEN=0]",
+                "text": "Compare B Output Enable; [CMPBEN=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x04",
-            "text": "Compare C Default Output Value; [CMPC=0]",
+                "text": "Compare C Default Output Value; [CMPC=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x40",
-            "text": "Compare C Output Enable; [CMPCEN=0]",
+                "text": "Compare C Output Enable; [CMPCEN=0]",
                 "value": "0x00"
             },
             "text7": {
                 "mask": "0x08",
-            "text": "Compare D Default Output Value; [CMPD=0]",
+                "text": "Compare D Default Output Value; [CMPD=0]",
                 "value": "0x00"
             },
             "text8": {
                 "mask": "0x80",
-            "text": "Compare D Output Enable; [CMPDEN=0]",
+                "text": "Compare D Output Enable; [CMPDEN=0]",
                 "value": "0x00"
             }
         },
@@ -415,122 +415,122 @@
             "nmb_text": "24",
             "text1": {
                 "mask": "0x0F",
-            "text": "Watch-Dog timer Off; [PERIOD=0000]",
+                "text": "Watch-Dog timer Off; [PERIOD=0000]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x0F",
-            "text": "2K cycles (2.0s); [PERIOD=1001]",
+                "text": "2K cycles (2.0s); [PERIOD=1001]",
                 "value": "0x09"
             },
             "text11": {
                 "mask": "0x0F",
-            "text": "4K cycles (4.1s); [PERIOD=1010]",
+                "text": "4K cycles (4.1s); [PERIOD=1010]",
                 "value": "0x0A"
             },
             "text12": {
                 "mask": "0x0F",
-            "text": "8K cycles (8.2s); [PERIOD=1011]",
+                "text": "8K cycles (8.2s); [PERIOD=1011]",
                 "value": "0x0B"
             },
             "text13": {
                 "mask": "0xF0",
-            "text": "Window mode off; [WINDOW=0000]",
+                "text": "Window mode off; [WINDOW=0000]",
                 "value": "0x00"
             },
             "text14": {
                 "mask": "0xF0",
-            "text": "8 cycles (8ms); [WINDOW=0001]",
+                "text": "8 cycles (8ms); [WINDOW=0001]",
                 "value": "0x10"
             },
             "text15": {
                 "mask": "0xF0",
-            "text": "16 cycles (16ms); [WINDOW=0010]",
+                "text": "16 cycles (16ms); [WINDOW=0010]",
                 "value": "0x20"
             },
             "text16": {
                 "mask": "0xF0",
-            "text": "32 cycles (32ms); [WINDOW=0011]",
+                "text": "32 cycles (32ms); [WINDOW=0011]",
                 "value": "0x30"
             },
             "text17": {
                 "mask": "0xF0",
-            "text": "64 cycles (64ms); [WINDOW=0100]",
+                "text": "64 cycles (64ms); [WINDOW=0100]",
                 "value": "0x40"
             },
             "text18": {
                 "mask": "0xF0",
-            "text": "128 cycles (0.128s); [WINDOW=0101]",
+                "text": "128 cycles (0.128s); [WINDOW=0101]",
                 "value": "0x50"
             },
             "text19": {
                 "mask": "0xF0",
-            "text": "256 cycles (0.256s); [WINDOW=0110]",
+                "text": "256 cycles (0.256s); [WINDOW=0110]",
                 "value": "0x60"
             },
             "text2": {
                 "mask": "0x0F",
-            "text": "8 cycles (8ms); [PERIOD=0001]",
+                "text": "8 cycles (8ms); [PERIOD=0001]",
                 "value": "0x01"
             },
             "text20": {
                 "mask": "0xF0",
-            "text": "512 cycles (0.512s); [WINDOW=0111]",
+                "text": "512 cycles (0.512s); [WINDOW=0111]",
                 "value": "0x70"
             },
             "text21": {
                 "mask": "0xF0",
-            "text": "1K cycles (1.0s); [WINDOW=1000]",
+                "text": "1K cycles (1.0s); [WINDOW=1000]",
                 "value": "0x80"
             },
             "text22": {
                 "mask": "0xF0",
-            "text": "2K cycles (2.0s); [WINDOW=1001]",
+                "text": "2K cycles (2.0s); [WINDOW=1001]",
                 "value": "0x90"
             },
             "text23": {
                 "mask": "0xF0",
-            "text": "4K cycles (4.1s); [WINDOW=1010]",
+                "text": "4K cycles (4.1s); [WINDOW=1010]",
                 "value": "0xA0"
             },
             "text24": {
                 "mask": "0xF0",
-            "text": "8K cycles (8.2s); [WINDOW=1011]",
+                "text": "8K cycles (8.2s); [WINDOW=1011]",
                 "value": "0xB0"
             },
             "text3": {
                 "mask": "0x0F",
-            "text": "16 cycles (16ms); [PERIOD=0010]",
+                "text": "16 cycles (16ms); [PERIOD=0010]",
                 "value": "0x02"
             },
             "text4": {
                 "mask": "0x0F",
-            "text": "32 cycles (32ms); [PERIOD=0011]",
+                "text": "32 cycles (32ms); [PERIOD=0011]",
                 "value": "0x03"
             },
             "text5": {
                 "mask": "0x0F",
-            "text": "64 cycles (64ms); [PERIOD=0100]",
+                "text": "64 cycles (64ms); [PERIOD=0100]",
                 "value": "0x04"
             },
             "text6": {
                 "mask": "0x0F",
-            "text": "128 cycles (0.128s); [PERIOD=0101]",
+                "text": "128 cycles (0.128s); [PERIOD=0101]",
                 "value": "0x05"
             },
             "text7": {
                 "mask": "0x0F",
-            "text": "256 cycles (0.256s); [PERIOD=0110]",
+                "text": "256 cycles (0.256s); [PERIOD=0110]",
                 "value": "0x06"
             },
             "text8": {
                 "mask": "0x0F",
-            "text": "512 cycles (0.512s); [PERIOD=0111]",
+                "text": "512 cycles (0.512s); [PERIOD=0111]",
                 "value": "0x07"
             },
             "text9": {
                 "mask": "0x0F",
-            "text": "1K cycles (1.0s); [PERIOD=1000]",
+                "text": "1K cycles (1.0s); [PERIOD=1000]",
                 "value": "0x08"
             }
         }
@@ -927,7 +927,8 @@
                 }
             ],
             "key": "WDTCFG",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "WDTCFG"
         },
         {
             "address": "00820001",
@@ -1019,7 +1020,8 @@
                 }
             ],
             "key": "BODCFG",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "BODCFG"
         },
         {
             "address": "00820002",
@@ -1048,7 +1050,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "0000007C",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -1069,14 +1071,16 @@
                 }
             ],
             "key": "OSCCFG",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "OSCCFG"
         },
         {
             "address": "00820003",
             "default": "000000FF",
-        "fields": [],
+            "fields": [],
             "key": "reserved",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "reserved"
         },
         {
             "address": "00820004",
@@ -1220,7 +1224,8 @@
                 }
             ],
             "key": "TCD0CFG",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "TCD0CFG"
         },
         {
             "address": "00820005",
@@ -1249,7 +1254,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "00000002",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -1278,7 +1283,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "00000030",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -1307,7 +1312,8 @@
                 }
             ],
             "key": "SYSCFG0",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "SYSCFG0"
         },
         {
             "address": "00820006",
@@ -1356,7 +1362,8 @@
                 }
             ],
             "key": "SYSCFG1",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "SYSCFG1"
         }
     ],
     "avr_core": "avrxmega3",

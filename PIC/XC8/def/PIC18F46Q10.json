@@ -33,7 +33,8 @@
                     "label": "EC (external clock) above 8 MHz; PFM set to high power",
                     "value": "ECH"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "EXTOSC",
@@ -68,7 +69,8 @@
                     "label": "EXTOSC operating per FEXTOSC bits (device manufacturing default)",
                     "value": "EXTOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "OFF",
@@ -83,7 +85,8 @@
                     "label": "CLKOUT function is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "ON",
@@ -98,7 +101,8 @@
                     "label": "Writing to NOSC and NDIV is allowed",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "ON",
@@ -113,7 +117,8 @@
                     "label": "Fail-Safe Clock Monitor enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "EXTMCLR",
@@ -128,7 +133,8 @@
                     "label": "If LVP = 0, MCLR pin (RE3) is an input; If LVP =1, MCLR pin (RE3) is MCLR",
                     "value": "INTMCLR"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "OFF",
@@ -143,7 +149,8 @@
                     "label": "Power up timer disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "OFF",
@@ -158,7 +165,8 @@
                     "label": "Low power BOR is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "SBORDIS",
@@ -181,7 +189,8 @@
                     "label": "Brown-out Reset disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "VBOR_190",
@@ -204,7 +213,8 @@
                     "label": "Brown-out Reset Voltage (VBOR) set to 2.85V",
                     "value": "VBOR_285"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "OFF",
@@ -219,7 +229,8 @@
                     "label": "ZCD always enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "ON",
@@ -234,7 +245,8 @@
                     "label": "PPSLOCK bit can be set and cleared repeatedly (subject to the unlock sequence)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "ON",
@@ -249,7 +261,8 @@
                     "label": "Stack full/underflow will not cause Reset",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "OFF",
@@ -264,7 +277,8 @@
                     "label": "Extended Instruction Set and Indexed Addressing Mode enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "WDTCPS_31",
@@ -399,7 +413,8 @@
                     "label": "Divider ratio 1:65536; software control of WDTPS",
                     "value": "WDTCPS_31"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "ON",
@@ -422,7 +437,8 @@
                     "label": "WDT always enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "WDTCWS_7",
@@ -461,7 +477,8 @@
                     "label": "window always open (100%); software control; keyed access not required",
                     "value": "WDTCWS_7"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "SC",
@@ -480,7 +497,8 @@
                     "label": "Software Control",
                     "value": "SC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "OFF",
@@ -495,7 +513,8 @@
                     "label": "Block 0 (000800-003FFFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -510,7 +529,8 @@
                     "label": "Block 1 (004000-007FFFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -525,7 +545,8 @@
                     "label": "Block 2 (008000-00BFFFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -540,7 +561,8 @@
                     "label": "Block 3 (00C000-00FFFFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -555,7 +577,8 @@
                     "label": "Configuration registers (300000-30000Bh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         },
         {
             "init": "OFF",
@@ -570,7 +593,8 @@
                     "label": "Boot Block (000000-0007FFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         },
         {
             "init": "OFF",
@@ -585,7 +609,8 @@
                     "label": "Data EEPROM write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         },
         {
             "init": "ON",
@@ -600,7 +625,8 @@
                     "label": "Scanner module is available for use, SCANMD bit can control the module",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         },
         {
             "init": "ON",
@@ -615,7 +641,8 @@
                     "label": "Low voltage programming enabled. MCLR/VPP pin function is MCLR. MCLRE configuration bit is ignored",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         },
         {
             "init": "OFF",
@@ -630,7 +657,8 @@
                     "label": "UserNVM code protection enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -645,7 +673,8 @@
                     "label": "DataNVM code protection enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -660,7 +689,8 @@
                     "label": "Block 0 (000800-003FFFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -675,7 +705,8 @@
                     "label": "Block 1 (004000-007FFFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -690,7 +721,8 @@
                     "label": "Block 2 (008000-00BFFFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -705,7 +737,8 @@
                     "label": "Block 3 (00C000-00FFFFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -720,7 +753,8 @@
                     "label": "Boot Block (000000-0007FFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         }
     ],
     "mcu": "PIC18F46Q10",

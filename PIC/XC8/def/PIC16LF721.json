@@ -21,7 +21,8 @@
                     "label": "INTOSCIO oscillator: I/O function on RA4/CLKO pin, I/O function on RA5/CLKI",
                     "value": "INTOSCIO,_INTOSC_NOCLKOUT"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON,_WDTEN_ON",
@@ -36,7 +37,8 @@
                     "label": "WDT enabled",
                     "value": "ON,_WDTEN_ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -51,7 +53,8 @@
                     "label": "PWRT disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -66,7 +69,8 @@
                     "label": "RA3/MCLR/VPP pin function is digital input; MCLR internally disabled; Weak pull-up disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -81,7 +85,8 @@
                     "label": "Code protection off",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -100,7 +105,8 @@
                     "label": "Brown-out Reset enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -115,7 +121,8 @@
                     "label": "INTOSC Frequency is 16 MHz (32x)",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -138,7 +145,8 @@
                     "label": "0h to FFFh of flash memory write protected, no address may be modified",
                     "value": "FULL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         }
     ],
     "mcu": "PIC16LF721",

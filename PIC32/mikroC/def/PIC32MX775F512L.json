@@ -140,7 +140,8 @@
                 }
             ],
             "key": "DEVCFG3",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCFG3"
         },
         {
             "address": "1FC02FF4",
@@ -329,7 +330,8 @@
                 }
             ],
             "key": "DEVCFG2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCFG2"
         },
         {
             "address": "1FC02FF8",
@@ -610,7 +612,8 @@
                 }
             ],
             "key": "DEVCFG1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCFG1"
         },
         {
             "address": "1FC02FFC",
@@ -1224,7 +1227,8 @@
                 }
             ],
             "key": "DEVCFG0",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCFG0"
         }
     ],
     "icd": {

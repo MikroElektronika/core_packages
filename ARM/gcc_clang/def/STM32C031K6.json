@@ -214,7 +214,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "fff0c01f"
+            "unused": "fff0c01f",
+            "label": "Rcc clock control register"
         },
         {
             "address": "40021004",
@@ -743,7 +744,8 @@
                 }
             ],
             "key": "RCC_ICSCR",
-            "unused": "ffff8000"
+            "unused": "ffff8000",
+            "label": "Rcc internal clock source calibration register"
         },
         {
             "address": "40021008",
@@ -998,7 +1000,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "888880c0"
+            "unused": "888880c0",
+            "label": "Rcc clock configuration register"
         },
         {
             "address": "4002105c",
@@ -1167,7 +1170,8 @@
                 }
             ],
             "key": "RCC_CSR1",
-            "unused": "fcfe7c90"
+            "unused": "fcfe7c90",
+            "label": "Rcc control/status register 1"
         },
         {
             "address": "40021060",
@@ -1209,7 +1213,8 @@
                 }
             ],
             "key": "RCC_CSR2",
-            "unused": "017ffffc"
+            "unused": "017ffffc",
+            "label": "Rcc control/status register 2"
         }
     ],
     "core": "M0EF",

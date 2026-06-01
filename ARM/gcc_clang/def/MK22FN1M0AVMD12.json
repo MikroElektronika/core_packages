@@ -57,7 +57,8 @@
                 }
             ],
             "key": "OSC_CR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Osc control register"
         },
         {
             "address": "40047000",
@@ -107,7 +108,8 @@
                 }
             ],
             "key": "SIM_SOPT1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "System options register 1"
         },
         {
             "address": "40048004",
@@ -207,7 +209,8 @@
                 }
             ],
             "key": "SIM_SOPT2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "System options register 2"
         },
         {
             "address": "40048044",
@@ -507,7 +510,8 @@
                 }
             ],
             "key": "SIM_CLKDIV1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "System clock divider register 1"
         },
         {
             "address": "40064000",
@@ -611,7 +615,8 @@
                 }
             ],
             "key": "MCG_C1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Mcg control 1 register"
         },
         {
             "address": "40064001",
@@ -691,7 +696,8 @@
                 }
             ],
             "key": "MCG_C2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Mcg control 2 register"
         },
         {
             "address": "40064003",
@@ -733,7 +739,8 @@
                 }
             ],
             "key": "MCG_C4",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Mcg control 4 register"
         },
         {
             "address": "40064004",
@@ -867,7 +874,8 @@
                 }
             ],
             "key": "MCG_C5",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Mcg control 5 register"
         },
         {
             "address": "40064005",
@@ -1029,7 +1037,8 @@
                 }
             ],
             "key": "MCG_C6",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Mcg control 6 register"
         },
         {
             "address": "40064008",
@@ -1078,7 +1087,8 @@
                 }
             ],
             "key": "MCG_SC",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Mcg status and control register"
         },
         {
             "address": "4006400C",
@@ -1107,7 +1117,8 @@
                 }
             ],
             "key": "MCG_C7",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Mcg control 7 register"
         },
         {
             "address": "40048048",
@@ -1173,7 +1184,8 @@
                 }
             ],
             "key": "SIM_CLKDIV2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "System clock divider register 2"
         },
         {
             "address": "40052000",
@@ -1198,7 +1210,8 @@
                 }
             ],
             "key": "WDOG_STCTRLH",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Watchdog status and control register high"
         },
         {
             "address": "00020000",
@@ -1260,7 +1273,8 @@
                 }
             ],
             "key": "MCG_MODE",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "00000408",
@@ -1282,7 +1296,8 @@
                 }
             ],
             "key": "FPROT0",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Non-volatile p-flash protection 1 - low register"
         },
         {
             "address": "00000409",
@@ -1304,7 +1319,8 @@
                 }
             ],
             "key": "FPROT1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Non-volatile p-flash protection 1 - high register"
         },
         {
             "address": "0000040A",
@@ -1326,7 +1342,8 @@
                 }
             ],
             "key": "FPROT2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Non-volatile p-flash protection 0 - low register"
         },
         {
             "address": "0000040B",
@@ -1348,7 +1365,8 @@
                 }
             ],
             "key": "FPROT3",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Non-volatile p-flash protection 0 - high register"
         },
         {
             "address": "0000040C",
@@ -1456,7 +1474,8 @@
                 }
             ],
             "key": "FSEC",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Non-volatile flash security register"
         },
         {
             "address": "0000040D",
@@ -1515,7 +1534,8 @@
                 }
             ],
             "key": "FOPT",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Non-volatile flash option register"
         },
         {
             "address": "0000040E",
@@ -1537,7 +1557,8 @@
                 }
             ],
             "key": "FEPROT",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Non-volatile eeram protection register"
         },
         {
             "address": "0000040F",
@@ -1559,7 +1580,8 @@
                 }
             ],
             "key": "FDPROT",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Non-volatile d-flash protection register"
         }
     ],
     "core": "M4EF",

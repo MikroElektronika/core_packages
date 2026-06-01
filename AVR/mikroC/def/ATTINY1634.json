@@ -38,27 +38,27 @@
             "nmb_text": "5",
             "text1": {
                 "mask": "0x18",
-            "text": "Sampled; [BODPD=01]",
+                "text": "Sampled; [BODPD=01]",
                 "value": "0x08"
             },
             "text2": {
                 "mask": "0x18",
-            "text": "Enabled; [BODPD=10]",
+                "text": "Enabled; [BODPD=10]",
                 "value": "0x10"
             },
             "text3": {
                 "mask": "0x18",
-            "text": "Disabled; [BODPD=11]",
+                "text": "Disabled; [BODPD=11]",
                 "value": "0x18"
             },
             "text4": {
                 "mask": "0x06",
-            "text": "BOD mode of operation when the device is active or idle; [BODACT=0]",
+                "text": "BOD mode of operation when the device is active or idle; [BODACT=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x01",
-            "text": "Self Programming enable; [SELFPRGEN=0]",
+                "text": "Self Programming enable; [SELFPRGEN=0]",
                 "value": "0x00"
             }
         },
@@ -107,46 +107,46 @@
             "nmb_text": "8",
             "text1": {
                 "mask": "0x80",
-            "text": "Reset Disabled (Enable PC2 as i/o pin); [RSTDISBL=0]",
+                "text": "Reset Disabled (Enable PC2 as i/o pin); [RSTDISBL=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Debug Wire enable; [DWEN=0]",
+                "text": "Debug Wire enable; [DWEN=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "text": "Watch-dog Timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x08",
-            "text": "Preserve EEPROM through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x07",
-            "text": "Brown-out detection at VCC=4.3 V; [BODLEVEL=100]",
+                "text": "Brown-out detection at VCC=4.3 V; [BODLEVEL=100]",
                 "value": "0x04"
             },
             "text7": {
                 "mask": "0x07",
-            "text": "Brown-out detection at VCC=2.7 V; [BODLEVEL=101]",
+                "text": "Brown-out detection at VCC=2.7 V; [BODLEVEL=101]",
                 "value": "0x05"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "Brown-out detection at VCC=1.8 V; [BODLEVEL=111]",
+                "text": "Brown-out detection at VCC=1.8 V; [BODLEVEL=111]",
                 "value": "0x07"
             }
         },
-    "list": "[EXTENDED:HIGH:LOW]",
+        "list": "[EXTENDED:HIGH:LOW]",
         "low": {
             "fuse0": {
                 "default": "0",
@@ -187,87 +187,87 @@
             "nmb_text": "17",
             "text1": {
                 "mask": "0x80",
-            "text": "Divide clock by 8 internally; [CKDIV8=0]",
+                "text": "Divide clock by 8 internally; [CKDIV8=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x1F",
-            "text": "Ext. Ceramic Res. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK/16 CK + 16 ms; [CKSEL=010 SUT=11]",
+                "text": "Ext. Ceramic Res. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK/16 CK + 16 ms; [CKSEL=010 SUT=11]",
                 "value": "0x1A"
             },
             "text11": {
                 "mask": "0x1F",
-            "text": "Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16 K CK/16 CK + 16 ms; [CKSEL=011 SUT=01]",
+                "text": "Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16 K CK/16 CK + 16 ms; [CKSEL=011 SUT=01]",
                 "value": "0x0B"
             },
             "text12": {
                 "mask": "0x1F",
-            "text": "Ext. Ceramic Res. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/16 CK + 16 ms; [CKSEL=100 SUT=01]",
+                "text": "Ext. Ceramic Res. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/16 CK + 16 ms; [CKSEL=100 SUT=01]",
                 "value": "0x0C"
             },
             "text13": {
                 "mask": "0x1F",
-            "text": "Ext. Ceramic Res. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK/16 CK + 16 ms; [CKSEL=100 SUT=11]",
+                "text": "Ext. Ceramic Res. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK/16 CK + 16 ms; [CKSEL=100 SUT=11]",
                 "value": "0x1C"
             },
             "text14": {
                 "mask": "0x1F",
-            "text": "Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16 K CK/16 CK + 16 ms; [CKSEL=101 SUT=01]",
+                "text": "Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16 K CK/16 CK + 16 ms; [CKSEL=101 SUT=01]",
                 "value": "0x0D"
             },
             "text15": {
                 "mask": "0x1F",
-            "text": "Ext. Ceramic Res. 8.0- MHz; Start-up time PWRDWN/RESET: 258 CK/16 CK + 16 ms; [CKSEL=110 SUT=01]",
+                "text": "Ext. Ceramic Res. 8.0- MHz; Start-up time PWRDWN/RESET: 258 CK/16 CK + 16 ms; [CKSEL=110 SUT=01]",
                 "value": "0x0E"
             },
             "text16": {
                 "mask": "0x1F",
-            "text": "Ext. Ceramic Res. 8.0- MHz; Start-up time PWRDWN/RESET: 1K CK/16 CK + 16 ms; [CKSEL=110 SUT=11]",
+                "text": "Ext. Ceramic Res. 8.0- MHz; Start-up time PWRDWN/RESET: 1K CK/16 CK + 16 ms; [CKSEL=110 SUT=11]",
                 "value": "0x1E"
             },
             "text17": {
                 "mask": "0x1F",
-            "text": "Ext. Crystal Osc. 8.0- MHz; Start-up time PWRDWN/RESET: 16 K CK/16 CK + 16 ms; [CKSEL=111 SUT=01]",
+                "text": "Ext. Crystal Osc. 8.0- MHz; Start-up time PWRDWN/RESET: 16 K CK/16 CK + 16 ms; [CKSEL=111 SUT=01]",
                 "value": "0x0F"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Clock output on PORTC2; [CKOUT=0]",
+                "text": "Clock output on PORTC2; [CKOUT=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x1F",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/16 CK + 16 ms; [CKSEL=000 SUT=00]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/16 CK + 16 ms; [CKSEL=000 SUT=00]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x1F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/16 CK + 16 ms; [CKSEL=010 SUT=00]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/16 CK + 16 ms; [CKSEL=010 SUT=00]",
                 "value": "0x02"
             },
             "text5": {
                 "mask": "0x1F",
-            "text": "Int. ULP Osc. 32 kHz; Start-up time PWRDWN/RESET: 6 CK/16 CK + 16 ms; [CKSEL=100 SUT=00]",
+                "text": "Int. ULP Osc. 32 kHz; Start-up time PWRDWN/RESET: 6 CK/16 CK + 16 ms; [CKSEL=100 SUT=00]",
                 "value": "0x04"
             },
             "text6": {
                 "mask": "0x1F",
-            "text": "Ext. Ceramic Res. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/16 CK + 16 ms; [CKSEL=000 SUT=01]",
+                "text": "Ext. Ceramic Res. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/16 CK + 16 ms; [CKSEL=000 SUT=01]",
                 "value": "0x08"
             },
             "text7": {
                 "mask": "0x1F",
-            "text": "Ext. Ceramic Res. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK/16 CK + 16 ms; [CKSEL=000 SUT=11]",
+                "text": "Ext. Ceramic Res. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK/16 CK + 16 ms; [CKSEL=000 SUT=11]",
                 "value": "0x18"
             },
             "text8": {
                 "mask": "0x1F",
-            "text": "Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16 K CK/16 CK + 16 ms; [CKSEL=001 SUT=01]",
+                "text": "Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16 K CK/16 CK + 16 ms; [CKSEL=001 SUT=01]",
                 "value": "0x09"
             },
             "text9": {
                 "mask": "0x1F",
-            "text": "Ext. Ceramic Res. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/16 CK + 16 ms; [CKSEL=010 SUT=01]",
+                "text": "Ext. Ceramic Res. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/16 CK + 16 ms; [CKSEL=010 SUT=01]",
                 "value": "0x0A"
             }
         }
@@ -689,7 +689,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "00000020",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -727,7 +727,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -841,7 +842,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         },
         {
             "address": "820002",
@@ -908,7 +910,8 @@
                 }
             ],
             "key": "EXTENDED",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "EXTENDED"
         }
     ],
     "avr_core": "avr35"

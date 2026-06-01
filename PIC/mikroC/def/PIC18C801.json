@@ -179,7 +179,8 @@
                 }
             ],
             "key": "CONFIG1H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG1H"
         },
         {
             "address": "00300002",
@@ -221,7 +222,8 @@
                 }
             ],
             "key": "CONFIG2L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2L"
         },
         {
             "address": "00300003",
@@ -287,7 +289,8 @@
                 }
             ],
             "key": "CONFIG2H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2H"
         },
         {
             "address": "00300006",
@@ -329,7 +332,8 @@
                 }
             ],
             "key": "CONFIG4L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG4L"
         }
     ],
     "core": "P18",

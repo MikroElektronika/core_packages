@@ -21,7 +21,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -36,7 +37,8 @@
                     "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -51,7 +53,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_BOREN_ON,_BODEN_ON",
@@ -66,7 +69,8 @@
                     "label": "BOR disabled",
                     "value": "OFF,_BOREN_OFF,_BODEN_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "40,_VBOR_40",
@@ -81,7 +85,8 @@
                     "label": "VBOR set to 2.5V",
                     "value": "25,_VBOR_25"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -96,7 +101,8 @@
                     "label": "Program memory code protection is enabled",
                     "value": "ON,_CP_ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16F716",

@@ -21,7 +21,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -36,7 +37,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -51,7 +53,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -70,7 +73,8 @@
                     "label": "All memory is code protected",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_BODEN_ON",
@@ -85,7 +89,8 @@
                     "label": "BOR disabled",
                     "value": "OFF,_BODEN_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16C621A",
