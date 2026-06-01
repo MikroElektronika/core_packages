@@ -14,6 +14,7 @@
  **********************************************************************************************************************/
 // Note: Changed for MikroE implementation.
 // #include "bsp_api.h"
+extern void SystemInit(void);
 
 // Note: Added for MikroE implementation.
 #include <stdint.h>

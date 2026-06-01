@@ -1200,7 +1200,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "000000f8"
+            "unused": "000000f8",
+            "label": "Other"
         },
         {
             "address": "4001e038",
@@ -2351,6 +2352,67 @@
             ],
             "key": "SYSTEM_SPICKCR",
             "unused": "00000030"
+        },
+        {
+            "address": "4001e078",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "I3CCKSEL",
+                    "label": "I3C clock (I3CCLK) Source Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Sub-clock oscillator",
+                            "value": "4"
+                        },
+                        {
+                            "label": "PLL1P",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2P",
+                            "value": "6"
+                        },
+                        {
+                            "label": "PLL1Q",
+                            "value": "7"
+                        },
+                        {
+                            "label": "PLL1R",
+                            "value": "8"
+                        },
+                        {
+                            "label": "PLL2Q",
+                            "value": "9"
+                        },
+                        {
+                            "label": "PLL2R",
+                            "value": "a"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_I3CCKCR",
+            "unused": "000000f0"
         },
         {
             "address": "4001e0a0",

@@ -917,7 +917,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "4",
                     "key": "CK",
                     "label": "UARTA0 operation clock select (fUTA0)",
                     "mask": "f",
@@ -962,7 +962,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "20",
                     "key": "SEL",
                     "label": "fSEL clock select",
                     "mask": "30",
@@ -995,7 +995,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "4",
                     "key": "CK",
                     "label": "UARTA1 operation clock select (fUTA1)",
                     "mask": "f",
