@@ -57,7 +57,7 @@ typedef struct
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
     uint32_t SPICLK_Frequency;  // SPI clock frequency in Hz
     uint32_t SCICLK_Frequency;  // SCI clock frequency in Hz
-    uint32_t I3CCK_Frequeincy;  // I3C clock frequency in Hz
+    uint32_t I3CCK_Frequency;  // I3C clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
@@ -841,7 +841,7 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     SYSTEM_Clocks->SCICLK_Frequency /= SCI_SPI_CLK_PrescTable[ VALUE_SYSTEM_SCICKDIVCR & R_SYSTEM_SCICKDIVCR_CKDIV_Msk ];
 
     // Get I3C clock frequency.
-    SYSTEM_Clocks->I3CCK_Frequeincy = SYSTEM_GetI3CClockFrequency( hoco_frequency );
+    SYSTEM_Clocks->I3CCK_Frequency = SYSTEM_GetI3CClockFrequency( hoco_frequency );
 }
 
 /**
