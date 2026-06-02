@@ -889,7 +889,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10",
+                    "init": "70",
                     "key": "PLODIVQ",
                     "label": "PLL1 Output Frequency Division Ratio Select for output clock Q",
                     "mask": "f0",
@@ -1344,7 +1344,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "7",
                     "key": "I3CCKSEL",
                     "label": "I3C Clock (I3CCLK) Source Select",
                     "mask": "f",
@@ -3867,6 +3867,6 @@
     ],
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
-    "mcu": "R7JA8M2JRDSAJ",
+    "mcu": "R7KA8M2JFLCAC",
     "clock": "960"
 }

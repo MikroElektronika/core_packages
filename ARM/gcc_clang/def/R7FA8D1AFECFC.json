@@ -1208,7 +1208,7 @@
             ],
             "key": "SYSTEM_HOCOCR2",
             "unused": "000000f8",
-            "label": "Other"
+            "label": "High-speed on-chip oscillator control register2"
         },
         {
             "address": "4001e038",
@@ -1990,7 +1990,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10",
+                    "init": "70",
                     "key": "PLODIVQ",
                     "label": "PLL1 Output Frequency Division Ratio Select for output clock Q",
                     "mask": "f0",
@@ -2401,7 +2401,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "7",
                     "key": "I3CCKSEL",
                     "label": "I3C clock (I3CCLK) Source Select",
                     "mask": "f",

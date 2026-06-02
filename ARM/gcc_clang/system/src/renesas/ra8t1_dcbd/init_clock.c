@@ -95,11 +95,7 @@ static uint8_t SCI_SPI_CLK_PrescTable[] = { 1, 2, 4, 6, 8, 3, 5 };
 #define R_SYSTEM_CKOCR_CKOSEL_Msk (0x3)
 
 /* Helper macros for getting I3C source clock. */
-#define I3C_SOURCE_HOCO         (0)
 #define I3C_SOURCE_MOCO         (1)
-#define I3C_SOURCE_LOCO         (2)
-#define I3C_SOURCE_MOSC         (3)
-#define I3C_SOURCE_SOSC         (4)
 #define I3C_SOURCE_PLL1P        (5)
 #define I3C_SOURCE_PLL2P        (6)
 #define I3C_SOURCE_PLL1Q        (7)
@@ -705,20 +701,8 @@ uint32_t SYSTEM_GetI3CClockFrequency ( uint32_t hoco_frequency ) {
     uint8_t prescaler;
 
     switch ( VALUE_SYSTEM_I3CCKCR & R_SYSTEM_I3CCKCR_I3CCKSEL_Msk ) {
-        case I3C_SOURCE_HOCO:
-            peripheral_clock = hoco_frequency;
-            break;
         case I3C_SOURCE_MOCO:
             peripheral_clock = FREQUENCY_8MHZ;
-            break;
-        case I3C_SOURCE_LOCO:
-            peripheral_clock = FREQUENCY_32768HZ;
-            break;
-        case I3C_SOURCE_MOSC:
-            peripheral_clock = FREQUENCY_20MHZ;
-            break;
-        case I3C_SOURCE_SOSC:
-            peripheral_clock = FREQUENCY_32768HZ;
             break;
         case I3C_SOURCE_PLL1P:
             prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVP_Msk ) \

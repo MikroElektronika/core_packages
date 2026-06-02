@@ -251,6 +251,55 @@
                 },
                 {
                     "hidden": false,
+                    "init": "100000",
+                    "key": "PCKE",
+                    "label": "Peripheral Module Clock E (PCLKE) Select",
+                    "mask": "f00000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "300000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "500000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "600000"
+                        },
+                        {
+                            "label": "x1/3",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "x1/6",
+                            "value": "900000"
+                        },
+                        {
+                            "label": "x1/12",
+                            "value": "a00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
                     "init": "1000000",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
@@ -426,19 +475,19 @@
                             "value": "0"
                         },
                         {
-                            "label": "MOCO (Value after reset)",
+                            "label": "MOCO",
                             "value": "1"
                         },
                         {
-                            "label": "Main clock oscillator (MOSC)",
+                            "label": "MOSC",
                             "value": "3"
                         },
                         {
-                            "label": "Sub-clock oscillator (SOSC)",
+                            "label": "SOSC",
                             "value": "4"
                         },
                         {
-                            "label": "PLL1 output clock P (PLL1P)",
+                            "label": "PLL1P",
                             "value": "5"
                         }
                     ]
@@ -502,7 +551,7 @@
                     "mask": "c0",
                     "settings": [
                         {
-                            "label": "0.00 (Value after reset)",
+                            "label": "0.00",
                             "value": "0"
                         },
                         {
@@ -527,168 +576,516 @@
                     "mask": "ff00",
                     "settings": [
                         {
-                            "label": "x10.0",
-                            "value": "1900"
-                        },
-                        {
-                            "label": "x10.5",
-                            "value": "1a00"
-                        },
-                        {
-                            "label": "x11.0",
-                            "value": "1b00"
-                        },
-                        {
-                            "label": "x11.5",
-                            "value": "1c00"
-                        },
-                        {
-                            "label": "x12.0",
-                            "value": "1d00"
-                        },
-                        {
-                            "label": "x12.5",
-                            "value": "1e00"
-                        },
-                        {
-                            "label": "x13.0",
-                            "value": "1f00"
-                        },
-                        {
-                            "label": "x13.5",
-                            "value": "2000"
-                        },
-                        {
-                            "label": "x14.0",
-                            "value": "2100"
-                        },
-                        {
-                            "label": "x14.5",
-                            "value": "2200"
-                        },
-                        {
-                            "label": "x15.0",
-                            "value": "2300"
-                        },
-                        {
-                            "label": "x15.5",
-                            "value": "2400"
-                        },
-                        {
-                            "label": "x16.0",
-                            "value": "2500"
-                        },
-                        {
-                            "label": "x16.5",
-                            "value": "2600"
-                        },
-                        {
-                            "label": "x17.0",
-                            "value": "2700"
-                        },
-                        {
-                            "label": "x17.5",
-                            "value": "2800"
-                        },
-                        {
-                            "label": "x18.0",
-                            "value": "2900"
-                        },
-                        {
-                            "label": "x18.5",
-                            "value": "2a00"
-                        },
-                        {
-                            "label": "x19.0",
-                            "value": "2b00"
-                        },
-                        {
-                            "label": "x19.5",
-                            "value": "2c00"
-                        },
-                        {
-                            "label": "x20.0",
-                            "value": "2d00"
-                        },
-                        {
-                            "label": "x20.5",
-                            "value": "2e00"
-                        },
-                        {
-                            "label": "x21.0",
-                            "value": "2f00"
-                        },
-                        {
-                            "label": "x21.5",
-                            "value": "3000"
-                        },
-                        {
-                            "label": "x22.0",
-                            "value": "3100"
-                        },
-                        {
-                            "label": "x22.5",
-                            "value": "3200"
-                        },
-                        {
-                            "label": "x23.0",
-                            "value": "3300"
-                        },
-                        {
-                            "label": "x23.5",
+                            "label": "53",
                             "value": "3400"
                         },
                         {
-                            "label": "x24.0",
+                            "label": "54",
                             "value": "3500"
                         },
                         {
-                            "label": "x24.5",
+                            "label": "55",
                             "value": "3600"
                         },
                         {
-                            "label": "x25.0",
+                            "label": "56",
                             "value": "3700"
                         },
                         {
-                            "label": "x25.5",
+                            "label": "57",
                             "value": "3800"
                         },
                         {
-                            "label": "x26.0",
+                            "label": "58",
                             "value": "3900"
                         },
                         {
-                            "label": "x26.5",
-                            "value": "3a00"
+                            "label": "59",
+                            "value": "3A00"
                         },
                         {
-                            "label": "x27.0",
-                            "value": "3b00"
+                            "label": "60",
+                            "value": "3B00"
                         },
                         {
-                            "label": "x27.5",
-                            "value": "3c00"
+                            "label": "61",
+                            "value": "3C00"
                         },
                         {
-                            "label": "x28.0",
-                            "value": "3d00"
+                            "label": "62",
+                            "value": "3D00"
                         },
                         {
-                            "label": "x28.5",
-                            "value": "3e00"
+                            "label": "63",
+                            "value": "3E00"
                         },
                         {
-                            "label": "x29.0",
-                            "value": "3f00"
+                            "label": "64",
+                            "value": "3F00"
                         },
                         {
-                            "label": "x29.5",
+                            "label": "65",
                             "value": "4000"
                         },
                         {
-                            "label": "x30.0",
+                            "label": "66",
                             "value": "4100"
+                        },
+                        {
+                            "label": "67",
+                            "value": "4200"
+                        },
+                        {
+                            "label": "68",
+                            "value": "4300"
+                        },
+                        {
+                            "label": "69",
+                            "value": "4400"
+                        },
+                        {
+                            "label": "70",
+                            "value": "4500"
+                        },
+                        {
+                            "label": "71",
+                            "value": "4600"
+                        },
+                        {
+                            "label": "72",
+                            "value": "4700"
+                        },
+                        {
+                            "label": "73",
+                            "value": "4800"
+                        },
+                        {
+                            "label": "74",
+                            "value": "4900"
+                        },
+                        {
+                            "label": "75",
+                            "value": "4A00"
+                        },
+                        {
+                            "label": "76",
+                            "value": "4B00"
+                        },
+                        {
+                            "label": "77",
+                            "value": "4C00"
+                        },
+                        {
+                            "label": "78",
+                            "value": "4D00"
+                        },
+                        {
+                            "label": "79",
+                            "value": "4E00"
+                        },
+                        {
+                            "label": "80",
+                            "value": "4F00"
+                        },
+                        {
+                            "label": "81",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "82",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "83",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "84",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "85",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "86",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "87",
+                            "value": "5600"
+                        },
+                        {
+                            "label": "88",
+                            "value": "5700"
+                        },
+                        {
+                            "label": "89",
+                            "value": "5800"
+                        },
+                        {
+                            "label": "90",
+                            "value": "5900"
+                        },
+                        {
+                            "label": "91",
+                            "value": "5A00"
+                        },
+                        {
+                            "label": "92",
+                            "value": "5B00"
+                        },
+                        {
+                            "label": "93",
+                            "value": "5C00"
+                        },
+                        {
+                            "label": "94",
+                            "value": "5D00"
+                        },
+                        {
+                            "label": "95",
+                            "value": "5E00"
+                        },
+                        {
+                            "label": "96",
+                            "value": "5F00"
+                        },
+                        {
+                            "label": "97",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "98",
+                            "value": "6100"
+                        },
+                        {
+                            "label": "99",
+                            "value": "6200"
+                        },
+                        {
+                            "label": "100",
+                            "value": "6300"
+                        },
+                        {
+                            "label": "101",
+                            "value": "6400"
+                        },
+                        {
+                            "label": "102",
+                            "value": "6500"
+                        },
+                        {
+                            "label": "103",
+                            "value": "6600"
+                        },
+                        {
+                            "label": "104",
+                            "value": "6700"
+                        },
+                        {
+                            "label": "105",
+                            "value": "6800"
+                        },
+                        {
+                            "label": "106",
+                            "value": "6900"
+                        },
+                        {
+                            "label": "107",
+                            "value": "6A00"
+                        },
+                        {
+                            "label": "108",
+                            "value": "6B00"
+                        },
+                        {
+                            "label": "109",
+                            "value": "6C00"
+                        },
+                        {
+                            "label": "110",
+                            "value": "6D00"
+                        },
+                        {
+                            "label": "111",
+                            "value": "6E00"
+                        },
+                        {
+                            "label": "112",
+                            "value": "6F00"
+                        },
+                        {
+                            "label": "113",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "114",
+                            "value": "7100"
+                        },
+                        {
+                            "label": "115",
+                            "value": "7200"
+                        },
+                        {
+                            "label": "116",
+                            "value": "7300"
+                        },
+                        {
+                            "label": "117",
+                            "value": "7400"
+                        },
+                        {
+                            "label": "118",
+                            "value": "7500"
+                        },
+                        {
+                            "label": "119",
+                            "value": "7600"
+                        },
+                        {
+                            "label": "120",
+                            "value": "7700"
+                        },
+                        {
+                            "label": "121",
+                            "value": "7800"
+                        },
+                        {
+                            "label": "122",
+                            "value": "7900"
+                        },
+                        {
+                            "label": "123",
+                            "value": "7A00"
+                        },
+                        {
+                            "label": "124",
+                            "value": "7B00"
+                        },
+                        {
+                            "label": "125",
+                            "value": "7C00"
+                        },
+                        {
+                            "label": "126",
+                            "value": "7D00"
+                        },
+                        {
+                            "label": "127",
+                            "value": "7E00"
+                        },
+                        {
+                            "label": "128",
+                            "value": "7F00"
+                        },
+                        {
+                            "label": "129",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "130",
+                            "value": "8100"
+                        },
+                        {
+                            "label": "131",
+                            "value": "8200"
+                        },
+                        {
+                            "label": "132",
+                            "value": "8300"
+                        },
+                        {
+                            "label": "133",
+                            "value": "8400"
+                        },
+                        {
+                            "label": "134",
+                            "value": "8500"
+                        },
+                        {
+                            "label": "135",
+                            "value": "8600"
+                        },
+                        {
+                            "label": "136",
+                            "value": "8700"
+                        },
+                        {
+                            "label": "137",
+                            "value": "8800"
+                        },
+                        {
+                            "label": "138",
+                            "value": "8900"
+                        },
+                        {
+                            "label": "139",
+                            "value": "8A00"
+                        },
+                        {
+                            "label": "140",
+                            "value": "8B00"
+                        },
+                        {
+                            "label": "141",
+                            "value": "8C00"
+                        },
+                        {
+                            "label": "142",
+                            "value": "8D00"
+                        },
+                        {
+                            "label": "143",
+                            "value": "8E00"
+                        },
+                        {
+                            "label": "144",
+                            "value": "8F00"
+                        },
+                        {
+                            "label": "145",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "146",
+                            "value": "9100"
+                        },
+                        {
+                            "label": "147",
+                            "value": "9200"
+                        },
+                        {
+                            "label": "148",
+                            "value": "9300"
+                        },
+                        {
+                            "label": "149",
+                            "value": "9400"
+                        },
+                        {
+                            "label": "150",
+                            "value": "9500"
+                        },
+                        {
+                            "label": "151",
+                            "value": "9600"
+                        },
+                        {
+                            "label": "152",
+                            "value": "9700"
+                        },
+                        {
+                            "label": "153",
+                            "value": "9800"
+                        },
+                        {
+                            "label": "154",
+                            "value": "9900"
+                        },
+                        {
+                            "label": "155",
+                            "value": "9A00"
+                        },
+                        {
+                            "label": "156",
+                            "value": "9B00"
+                        },
+                        {
+                            "label": "157",
+                            "value": "9C00"
+                        },
+                        {
+                            "label": "158",
+                            "value": "9D00"
+                        },
+                        {
+                            "label": "159",
+                            "value": "9E00"
+                        },
+                        {
+                            "label": "160",
+                            "value": "9F00"
+                        },
+                        {
+                            "label": "161",
+                            "value": "A000"
+                        },
+                        {
+                            "label": "162",
+                            "value": "A100"
+                        },
+                        {
+                            "label": "163",
+                            "value": "A200"
+                        },
+                        {
+                            "label": "164",
+                            "value": "A300"
+                        },
+                        {
+                            "label": "165",
+                            "value": "A400"
+                        },
+                        {
+                            "label": "166",
+                            "value": "A500"
+                        },
+                        {
+                            "label": "167",
+                            "value": "A600"
+                        },
+                        {
+                            "label": "168",
+                            "value": "A700"
+                        },
+                        {
+                            "label": "169",
+                            "value": "A800"
+                        },
+                        {
+                            "label": "170",
+                            "value": "A900"
+                        },
+                        {
+                            "label": "171",
+                            "value": "AA00"
+                        },
+                        {
+                            "label": "172",
+                            "value": "AB00"
+                        },
+                        {
+                            "label": "173",
+                            "value": "AC00"
+                        },
+                        {
+                            "label": "174",
+                            "value": "AD00"
+                        },
+                        {
+                            "label": "175",
+                            "value": "AE00"
+                        },
+                        {
+                            "label": "176",
+                            "value": "AF00"
+                        },
+                        {
+                            "label": "177",
+                            "value": "B000"
+                        },
+                        {
+                            "label": "178",
+                            "value": "B100"
+                        },
+                        {
+                            "label": "179",
+                            "value": "B200"
+                        },
+                        {
+                            "label": "180",
+                            "value": "B300"
                         }
                     ]
                 }
@@ -787,23 +1184,23 @@
                     "mask": "7",
                     "settings": [
                         {
-                            "label": "16MHz",
+                            "label": "16 MHz",
                             "value": "0"
                         },
                         {
-                            "label": "18MHz",
+                            "label": "18 MHz",
                             "value": "1"
                         },
                         {
-                            "label": "20MHz",
+                            "label": "20 MHz",
                             "value": "2"
                         },
                         {
-                            "label": "32MHz",
+                            "label": "32 MHz",
                             "value": "4"
                         },
                         {
-                            "label": "48MHz",
+                            "label": "48 MHz",
                             "value": "7"
                         }
                     ]
@@ -811,7 +1208,7 @@
             ],
             "key": "SYSTEM_HOCOCR2",
             "unused": "000000f8",
-            "label": "Other"
+            "label": "High-speed on-chip oscillator control register2"
         },
         {
             "address": "4001e038",
@@ -855,7 +1252,7 @@
                             "value": "0"
                         },
                         {
-                            "label": "MOCO (Value after reset)",
+                            "label": "MOCO",
                             "value": "1"
                         },
                         {
@@ -947,7 +1344,7 @@
                     "mask": "3",
                     "settings": [
                         {
-                            "label": "1/1 (Value after reset)",
+                            "label": "1/1",
                             "value": "0"
                         },
                         {
@@ -989,7 +1386,7 @@
                     "mask": "c0",
                     "settings": [
                         {
-                            "label": "0.00 (Value after reset)",
+                            "label": "0.00",
                             "value": "0"
                         },
                         {
@@ -1014,168 +1411,516 @@
                     "mask": "ff00",
                     "settings": [
                         {
-                            "label": "x10.0",
-                            "value": "1900"
-                        },
-                        {
-                            "label": "x10.5",
-                            "value": "1a00"
-                        },
-                        {
-                            "label": "x11.0",
-                            "value": "1b00"
-                        },
-                        {
-                            "label": "x11.5",
-                            "value": "1c00"
-                        },
-                        {
-                            "label": "x12.0",
-                            "value": "1d00"
-                        },
-                        {
-                            "label": "x12.5",
-                            "value": "1e00"
-                        },
-                        {
-                            "label": "x13.0",
-                            "value": "1f00"
-                        },
-                        {
-                            "label": "x13.5",
-                            "value": "2000"
-                        },
-                        {
-                            "label": "x14.0",
-                            "value": "2100"
-                        },
-                        {
-                            "label": "x14.5",
-                            "value": "2200"
-                        },
-                        {
-                            "label": "x15.0",
-                            "value": "2300"
-                        },
-                        {
-                            "label": "x15.5",
-                            "value": "2400"
-                        },
-                        {
-                            "label": "x16.0",
-                            "value": "2500"
-                        },
-                        {
-                            "label": "x16.5",
-                            "value": "2600"
-                        },
-                        {
-                            "label": "x17.0",
-                            "value": "2700"
-                        },
-                        {
-                            "label": "x17.5",
-                            "value": "2800"
-                        },
-                        {
-                            "label": "x18.0",
-                            "value": "2900"
-                        },
-                        {
-                            "label": "x18.5",
-                            "value": "2a00"
-                        },
-                        {
-                            "label": "x19.0",
-                            "value": "2b00"
-                        },
-                        {
-                            "label": "x19.5",
-                            "value": "2c00"
-                        },
-                        {
-                            "label": "x20.0",
-                            "value": "2d00"
-                        },
-                        {
-                            "label": "x20.5",
-                            "value": "2e00"
-                        },
-                        {
-                            "label": "x21.0",
-                            "value": "2f00"
-                        },
-                        {
-                            "label": "x21.5",
-                            "value": "3000"
-                        },
-                        {
-                            "label": "x22.0",
-                            "value": "3100"
-                        },
-                        {
-                            "label": "x22.5",
-                            "value": "3200"
-                        },
-                        {
-                            "label": "x23.0",
-                            "value": "3300"
-                        },
-                        {
-                            "label": "x23.5",
+                            "label": "53",
                             "value": "3400"
                         },
                         {
-                            "label": "x24.0",
+                            "label": "54",
                             "value": "3500"
                         },
                         {
-                            "label": "x24.5",
+                            "label": "55",
                             "value": "3600"
                         },
                         {
-                            "label": "x25.0",
+                            "label": "56",
                             "value": "3700"
                         },
                         {
-                            "label": "x25.5",
+                            "label": "57",
                             "value": "3800"
                         },
                         {
-                            "label": "x26.0",
+                            "label": "58",
                             "value": "3900"
                         },
                         {
-                            "label": "x26.5",
-                            "value": "3a00"
+                            "label": "59",
+                            "value": "3A00"
                         },
                         {
-                            "label": "x27.0",
-                            "value": "3b00"
+                            "label": "60",
+                            "value": "3B00"
                         },
                         {
-                            "label": "x27.5",
-                            "value": "3c00"
+                            "label": "61",
+                            "value": "3C00"
                         },
                         {
-                            "label": "x28.0",
-                            "value": "3d00"
+                            "label": "62",
+                            "value": "3D00"
                         },
                         {
-                            "label": "x28.5",
-                            "value": "3e00"
+                            "label": "63",
+                            "value": "3E00"
                         },
                         {
-                            "label": "x29.0",
-                            "value": "3f00"
+                            "label": "64",
+                            "value": "3F00"
                         },
                         {
-                            "label": "x29.5",
+                            "label": "65",
                             "value": "4000"
                         },
                         {
-                            "label": "x30.0",
+                            "label": "66",
                             "value": "4100"
+                        },
+                        {
+                            "label": "67",
+                            "value": "4200"
+                        },
+                        {
+                            "label": "68",
+                            "value": "4300"
+                        },
+                        {
+                            "label": "69",
+                            "value": "4400"
+                        },
+                        {
+                            "label": "70",
+                            "value": "4500"
+                        },
+                        {
+                            "label": "71",
+                            "value": "4600"
+                        },
+                        {
+                            "label": "72",
+                            "value": "4700"
+                        },
+                        {
+                            "label": "73",
+                            "value": "4800"
+                        },
+                        {
+                            "label": "74",
+                            "value": "4900"
+                        },
+                        {
+                            "label": "75",
+                            "value": "4A00"
+                        },
+                        {
+                            "label": "76",
+                            "value": "4B00"
+                        },
+                        {
+                            "label": "77",
+                            "value": "4C00"
+                        },
+                        {
+                            "label": "78",
+                            "value": "4D00"
+                        },
+                        {
+                            "label": "79",
+                            "value": "4E00"
+                        },
+                        {
+                            "label": "80",
+                            "value": "4F00"
+                        },
+                        {
+                            "label": "81",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "82",
+                            "value": "5100"
+                        },
+                        {
+                            "label": "83",
+                            "value": "5200"
+                        },
+                        {
+                            "label": "84",
+                            "value": "5300"
+                        },
+                        {
+                            "label": "85",
+                            "value": "5400"
+                        },
+                        {
+                            "label": "86",
+                            "value": "5500"
+                        },
+                        {
+                            "label": "87",
+                            "value": "5600"
+                        },
+                        {
+                            "label": "88",
+                            "value": "5700"
+                        },
+                        {
+                            "label": "89",
+                            "value": "5800"
+                        },
+                        {
+                            "label": "90",
+                            "value": "5900"
+                        },
+                        {
+                            "label": "91",
+                            "value": "5A00"
+                        },
+                        {
+                            "label": "92",
+                            "value": "5B00"
+                        },
+                        {
+                            "label": "93",
+                            "value": "5C00"
+                        },
+                        {
+                            "label": "94",
+                            "value": "5D00"
+                        },
+                        {
+                            "label": "95",
+                            "value": "5E00"
+                        },
+                        {
+                            "label": "96",
+                            "value": "5F00"
+                        },
+                        {
+                            "label": "97",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "98",
+                            "value": "6100"
+                        },
+                        {
+                            "label": "99",
+                            "value": "6200"
+                        },
+                        {
+                            "label": "100",
+                            "value": "6300"
+                        },
+                        {
+                            "label": "101",
+                            "value": "6400"
+                        },
+                        {
+                            "label": "102",
+                            "value": "6500"
+                        },
+                        {
+                            "label": "103",
+                            "value": "6600"
+                        },
+                        {
+                            "label": "104",
+                            "value": "6700"
+                        },
+                        {
+                            "label": "105",
+                            "value": "6800"
+                        },
+                        {
+                            "label": "106",
+                            "value": "6900"
+                        },
+                        {
+                            "label": "107",
+                            "value": "6A00"
+                        },
+                        {
+                            "label": "108",
+                            "value": "6B00"
+                        },
+                        {
+                            "label": "109",
+                            "value": "6C00"
+                        },
+                        {
+                            "label": "110",
+                            "value": "6D00"
+                        },
+                        {
+                            "label": "111",
+                            "value": "6E00"
+                        },
+                        {
+                            "label": "112",
+                            "value": "6F00"
+                        },
+                        {
+                            "label": "113",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "114",
+                            "value": "7100"
+                        },
+                        {
+                            "label": "115",
+                            "value": "7200"
+                        },
+                        {
+                            "label": "116",
+                            "value": "7300"
+                        },
+                        {
+                            "label": "117",
+                            "value": "7400"
+                        },
+                        {
+                            "label": "118",
+                            "value": "7500"
+                        },
+                        {
+                            "label": "119",
+                            "value": "7600"
+                        },
+                        {
+                            "label": "120",
+                            "value": "7700"
+                        },
+                        {
+                            "label": "121",
+                            "value": "7800"
+                        },
+                        {
+                            "label": "122",
+                            "value": "7900"
+                        },
+                        {
+                            "label": "123",
+                            "value": "7A00"
+                        },
+                        {
+                            "label": "124",
+                            "value": "7B00"
+                        },
+                        {
+                            "label": "125",
+                            "value": "7C00"
+                        },
+                        {
+                            "label": "126",
+                            "value": "7D00"
+                        },
+                        {
+                            "label": "127",
+                            "value": "7E00"
+                        },
+                        {
+                            "label": "128",
+                            "value": "7F00"
+                        },
+                        {
+                            "label": "129",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "130",
+                            "value": "8100"
+                        },
+                        {
+                            "label": "131",
+                            "value": "8200"
+                        },
+                        {
+                            "label": "132",
+                            "value": "8300"
+                        },
+                        {
+                            "label": "133",
+                            "value": "8400"
+                        },
+                        {
+                            "label": "134",
+                            "value": "8500"
+                        },
+                        {
+                            "label": "135",
+                            "value": "8600"
+                        },
+                        {
+                            "label": "136",
+                            "value": "8700"
+                        },
+                        {
+                            "label": "137",
+                            "value": "8800"
+                        },
+                        {
+                            "label": "138",
+                            "value": "8900"
+                        },
+                        {
+                            "label": "139",
+                            "value": "8A00"
+                        },
+                        {
+                            "label": "140",
+                            "value": "8B00"
+                        },
+                        {
+                            "label": "141",
+                            "value": "8C00"
+                        },
+                        {
+                            "label": "142",
+                            "value": "8D00"
+                        },
+                        {
+                            "label": "143",
+                            "value": "8E00"
+                        },
+                        {
+                            "label": "144",
+                            "value": "8F00"
+                        },
+                        {
+                            "label": "145",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "146",
+                            "value": "9100"
+                        },
+                        {
+                            "label": "147",
+                            "value": "9200"
+                        },
+                        {
+                            "label": "148",
+                            "value": "9300"
+                        },
+                        {
+                            "label": "149",
+                            "value": "9400"
+                        },
+                        {
+                            "label": "150",
+                            "value": "9500"
+                        },
+                        {
+                            "label": "151",
+                            "value": "9600"
+                        },
+                        {
+                            "label": "152",
+                            "value": "9700"
+                        },
+                        {
+                            "label": "153",
+                            "value": "9800"
+                        },
+                        {
+                            "label": "154",
+                            "value": "9900"
+                        },
+                        {
+                            "label": "155",
+                            "value": "9A00"
+                        },
+                        {
+                            "label": "156",
+                            "value": "9B00"
+                        },
+                        {
+                            "label": "157",
+                            "value": "9C00"
+                        },
+                        {
+                            "label": "158",
+                            "value": "9D00"
+                        },
+                        {
+                            "label": "159",
+                            "value": "9E00"
+                        },
+                        {
+                            "label": "160",
+                            "value": "9F00"
+                        },
+                        {
+                            "label": "161",
+                            "value": "A000"
+                        },
+                        {
+                            "label": "162",
+                            "value": "A100"
+                        },
+                        {
+                            "label": "163",
+                            "value": "A200"
+                        },
+                        {
+                            "label": "164",
+                            "value": "A300"
+                        },
+                        {
+                            "label": "165",
+                            "value": "A400"
+                        },
+                        {
+                            "label": "166",
+                            "value": "A500"
+                        },
+                        {
+                            "label": "167",
+                            "value": "A600"
+                        },
+                        {
+                            "label": "168",
+                            "value": "A700"
+                        },
+                        {
+                            "label": "169",
+                            "value": "A800"
+                        },
+                        {
+                            "label": "170",
+                            "value": "A900"
+                        },
+                        {
+                            "label": "171",
+                            "value": "AA00"
+                        },
+                        {
+                            "label": "172",
+                            "value": "AB00"
+                        },
+                        {
+                            "label": "173",
+                            "value": "AC00"
+                        },
+                        {
+                            "label": "174",
+                            "value": "AD00"
+                        },
+                        {
+                            "label": "175",
+                            "value": "AE00"
+                        },
+                        {
+                            "label": "176",
+                            "value": "AF00"
+                        },
+                        {
+                            "label": "177",
+                            "value": "B000"
+                        },
+                        {
+                            "label": "178",
+                            "value": "B100"
+                        },
+                        {
+                            "label": "179",
+                            "value": "B200"
+                        },
+                        {
+                            "label": "180",
+                            "value": "B300"
                         }
                     ]
                 }
@@ -1230,7 +1975,7 @@
                             "value": "3"
                         },
                         {
-                            "label": "1/6 (Value after reset)",
+                            "label": "1/6",
                             "value": "5"
                         },
                         {
@@ -1245,7 +1990,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10",
+                    "init": "70",
                     "key": "PLODIVQ",
                     "label": "PLL1 Output Frequency Division Ratio Select for output clock Q",
                     "mask": "f0",
@@ -1267,7 +2012,7 @@
                             "value": "40"
                         },
                         {
-                            "label": "1/6 (Value after reset)",
+                            "label": "1/6",
                             "value": "50"
                         },
                         {
@@ -1304,7 +2049,7 @@
                             "value": "400"
                         },
                         {
-                            "label": "1/6 (Value after reset)",
+                            "label": "1/6",
                             "value": "500"
                         },
                         {
@@ -1342,7 +2087,7 @@
                             "value": "3"
                         },
                         {
-                            "label": "1/6 (Value after reset)",
+                            "label": "1/6",
                             "value": "5"
                         },
                         {
@@ -1379,7 +2124,7 @@
                             "value": "40"
                         },
                         {
-                            "label": "1/6 (Value after reset)",
+                            "label": "1/6",
                             "value": "50"
                         },
                         {
@@ -1416,7 +2161,7 @@
                             "value": "400"
                         },
                         {
-                            "label": "1/6 (Value after reset)",
+                            "label": "1/6",
                             "value": "500"
                         },
                         {
@@ -1446,7 +2191,7 @@
                     "mask": "7",
                     "settings": [
                         {
-                            "label": "1/1 (Value after reset)",
+                            "label": "1/1",
                             "value": "0"
                         },
                         {
@@ -1496,7 +2241,7 @@
                             "value": "0"
                         },
                         {
-                            "label": "MOCO (Value after reset)",
+                            "label": "MOCO",
                             "value": "1"
                         },
                         {
@@ -1536,40 +2281,6 @@
                             "value": "a"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SCICKSREQ",
-                    "label": "SCI clock (SCICLK) Switching Request",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "No request",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Request switching",
-                            "value": "40"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SCICKSRDY",
-                    "label": "SCI clock (SCICLK) Switching Ready state flag",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "Impossible to Switch",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Possible to Switch",
-                            "value": "80"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_SCICKCR",
@@ -1588,7 +2299,7 @@
                     "mask": "7",
                     "settings": [
                         {
-                            "label": "1/1 (Value after reset)",
+                            "label": "1/1",
                             "value": "0"
                         },
                         {
@@ -1638,7 +2349,7 @@
                             "value": "0"
                         },
                         {
-                            "label": "MOCO (Value after reset)",
+                            "label": "MOCO",
                             "value": "1"
                         },
                         {
@@ -1678,40 +2389,6 @@
                             "value": "a"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SPICKSREQ",
-                    "label": "SPI clock (SPICLK) Switching Request",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "No request",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Request switching",
-                            "value": "40"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SPICKSRDY",
-                    "label": "SPI clock (SPICLK) Switching Ready state flag",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "Impossible to Switch",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Possible to Switch",
-                            "value": "80"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_SPICKCR",
@@ -1724,7 +2401,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "7",
                     "key": "I3CCKSEL",
                     "label": "I3C clock (I3CCLK) Source Select",
                     "mask": "f",
