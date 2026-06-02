@@ -13,7 +13,8 @@
                     "label": "Boot Segment may be written",
                     "value": "BWRP_OFF"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "NO_BOOT_CODE",
@@ -40,7 +41,8 @@
                     "label": "No Boot Segment",
                     "value": "NO_BOOT_CODE"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "GWRP_OFF",
@@ -55,7 +57,8 @@
                     "label": "General Segment may be written",
                     "value": "GWRP_OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "GSS_OFF",
@@ -74,7 +77,8 @@
                     "label": "Disabled",
                     "value": "GSS_OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "PRIOSC_PLL",
@@ -97,7 +101,8 @@
                     "label": "Primary Oscillator (HS, EC) w/ PLL",
                     "value": "PRIOSC_PLL"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "PRIOSC_OFF",
@@ -116,7 +121,8 @@
                     "label": "Primary Oscillator Disabled",
                     "value": "PRIOSC_OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "OSC2_CLKO",
@@ -131,7 +137,8 @@
                     "label": "OSCO pin has clock out function",
                     "value": "OSC2_CLKO"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "FRC_HI_RANGE",
@@ -146,7 +153,8 @@
                     "label": "High Range",
                     "value": "FRC_HI_RANGE"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "CSW_FSCM_OFF",
@@ -165,7 +173,8 @@
                     "label": "Sw Disabled, Mon Disabled",
                     "value": "CSW_FSCM_OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "WDTPOST_PS32768",
@@ -236,7 +245,8 @@
                     "label": "1:32,768",
                     "value": "WDTPOST_PS32768"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WDTPRE_PR128",
@@ -251,7 +261,8 @@
                     "label": "1:128",
                     "value": "WDTPRE_PR128"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WINDIS_OFF",
@@ -266,7 +277,8 @@
                     "label": "Non-Window mode",
                     "value": "WINDIS_OFF"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "FWDTEN_ON",
@@ -281,7 +293,8 @@
                     "label": "Enable",
                     "value": "FWDTEN_ON"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PWRT_128",
@@ -320,7 +333,8 @@
                     "label": "128ms",
                     "value": "PWRT_128"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "ICS_PGD",
@@ -343,7 +357,8 @@
                     "label": "Use PGC/EMUC and PGD/EMUD",
                     "value": "ICS_PGD"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         }
     ],
     "mcu": "dsPIC30F2020",

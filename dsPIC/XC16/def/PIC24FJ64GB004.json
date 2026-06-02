@@ -69,7 +69,8 @@
                     "label": "1:2,147,483,648 (25.7 days)",
                     "value": "DSWDTPSF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "LPRC",
@@ -84,7 +85,8 @@
                     "label": "DSWDT uses Low Power RC Oscillator (LPRC)",
                     "value": "LPRC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "SOSC",
@@ -99,7 +101,8 @@
                     "label": "RTCC uses Secondary Oscillator (SOSC)",
                     "value": "SOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "ON",
@@ -114,7 +117,8 @@
                     "label": "BOR enabled in Deep Sleep",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "ON",
@@ -129,7 +133,8 @@
                     "label": "DSWDT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "WPFP63",
@@ -312,7 +317,8 @@
                     "label": "Highest Page (same as page 42)",
                     "value": "WPFP63"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "SOSC",
@@ -331,7 +337,8 @@
                     "label": "SOSC pins in Default (high drive-strength) Oscillator Mode",
                     "value": "SOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "LEG",
@@ -346,7 +353,8 @@
                     "label": "Default regulator start-up time used",
                     "value": "LEG"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPDIS",
@@ -361,7 +369,8 @@
                     "label": "Segmented code protection disabled",
                     "value": "WPDIS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPCFGDIS",
@@ -376,7 +385,8 @@
                     "label": "Last page and Flash Configuration words are unprotected",
                     "value": "WPCFGDIS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPENDMEM",
@@ -391,7 +401,8 @@
                     "label": "Write Protect from WPFP to the last page of memory",
                     "value": "WPENDMEM"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "XT",
@@ -414,7 +425,8 @@
                     "label": "Primary Oscillator disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PRI",
@@ -429,7 +441,8 @@
                     "label": "Use default SCL1/SDA1 pins for I2C1",
                     "value": "PRI"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -444,7 +457,8 @@
                     "label": "Once set, the IOLOCK bit cannot be cleared",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -459,7 +473,8 @@
                     "label": "OSCO pin functions as clock output (CLKO)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "CSDCMD",
@@ -478,7 +493,8 @@
                     "label": "Sw Disabled, Mon Disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PRI",
@@ -513,7 +529,8 @@
                     "label": "Fast RC Oscillator with Postscaler (FRCDIV)",
                     "value": "FRCDIV"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -528,7 +545,8 @@
                     "label": "96 MHz PLL Startup is enabled automatically on start-up",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "DIV12",
@@ -567,7 +585,8 @@
                     "label": "Oscillator input divided by 12 (48 MHz input)",
                     "value": "DIV12"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -582,7 +601,8 @@
                     "label": "IESO mode (Two-Speed Start-up) enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PS32768",
@@ -653,7 +673,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PR128",
@@ -668,7 +689,8 @@
                     "label": "Prescaler ratio of 1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -683,7 +705,8 @@
                     "label": "Standard Watchdog Timer enabled,(Windowed-mode is disabled)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -698,7 +721,8 @@
                     "label": "Watchdog Timer is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PGx1",
@@ -717,7 +741,8 @@
                     "label": "Emulator functions are shared with PGEC1/PGED1",
                     "value": "PGx1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -732,7 +757,8 @@
                     "label": "Writes to program memory are allowed",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -747,7 +773,8 @@
                     "label": "Code protection is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -762,7 +789,8 @@
                     "label": "JTAG port is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         }
     ],
     "mcu": "PIC24FJ64GB004",

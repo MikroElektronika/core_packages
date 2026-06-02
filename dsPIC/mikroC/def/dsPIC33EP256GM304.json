@@ -273,20 +273,18 @@
         {
             "address": "0002ABEC",
             "default": "00000000",
-            "fields": [
-
-            ],
+            "fields": [],
             "key": "Reserved",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Reserved"
         },
         {
             "address": "0002ABEE",
             "default": "00000000",
-            "fields": [
-
-            ],
+            "fields": [],
             "key": "Reserved",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Reserved"
         },
         {
             "address": "0002ABF0",
@@ -383,7 +381,8 @@
                 }
             ],
             "key": "FICD",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FICD"
         },
         {
             "address": "0002ABF2",
@@ -467,7 +466,8 @@
                 }
             ],
             "key": "FPOR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FPOR"
         },
         {
             "address": "0002ABF4",
@@ -616,7 +616,8 @@
                 }
             ],
             "key": "FWDT",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FWDT"
         },
         {
             "address": "0002ABF6",
@@ -704,7 +705,8 @@
                 }
             ],
             "key": "FOSC",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FOSC"
         },
         {
             "address": "0002ABF8",
@@ -779,7 +781,8 @@
                 }
             ],
             "key": "FOSCSEL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FOSCSEL"
         },
         {
             "address": "0002ABFA",
@@ -821,25 +824,24 @@
                 }
             ],
             "key": "FGS",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FGS"
         },
         {
             "address": "0002ABFC",
             "default": "00000000",
-            "fields": [
-
-            ],
+            "fields": [],
             "key": "Reserved",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Reserved"
         },
         {
             "address": "0002ABFE",
             "default": "00000000",
-            "fields": [
-
-            ],
+            "fields": [],
             "key": "Reserved",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Reserved"
         }
     ],
     "dma": {

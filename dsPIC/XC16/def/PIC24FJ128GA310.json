@@ -133,7 +133,8 @@
                     "label": "1:68719476736 (25.7 Days)",
                     "value": "DSWDTPS1F"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "LPRC",
@@ -148,7 +149,8 @@
                     "label": "DSWDT uses LPRC as reference clock",
                     "value": "LPRC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -163,7 +165,8 @@
                     "label": "DSBOR Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -178,7 +181,8 @@
                     "label": "DSWDT Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -193,7 +197,8 @@
                     "label": "Deep Sleep is controlled by the register bit DSEN",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "WPFP127",
@@ -712,7 +717,8 @@
                     "label": "Page 127 (0x1FC00)",
                     "value": "WPFP127"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "ON",
@@ -727,7 +733,8 @@
                     "label": "VBAT BOR enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "ON",
@@ -742,7 +749,8 @@
                     "label": "SOSC circuit selected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "PS25_0",
@@ -765,7 +773,8 @@
                     "label": "Watch Dog Timer Window Width is 25 percent",
                     "value": "PS25_0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "ON",
@@ -780,7 +789,8 @@
                     "label": "Brown-out Reset Enable",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPDIS",
@@ -795,7 +805,8 @@
                     "label": "Disabled",
                     "value": "WPDIS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPCFGDIS",
@@ -810,7 +821,8 @@
                     "label": "Disabled",
                     "value": "WPCFGDIS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WPENDMEM",
@@ -825,7 +837,8 @@
                     "label": "Write Protect from WPFP to the last page of memory",
                     "value": "WPENDMEM"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "HS",
@@ -848,7 +861,8 @@
                     "label": "Primary Oscillator Disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "EN",
@@ -863,7 +877,8 @@
                     "label": "BOR Enabled [When BOREN=1]",
                     "value": "EN"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -878,7 +893,8 @@
                     "label": "Once set, the IOLOCK bit cannot be cleared",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -893,7 +909,8 @@
                     "label": "OSCO/CLKO/RC15 functions as CLKO (FOSC/2)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "CSDCMD",
@@ -912,7 +929,8 @@
                     "label": "Clock switching and Fail-Safe Clock Monitor are disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "FRC",
@@ -947,7 +965,8 @@
                     "label": "Fast RC Oscillator with Postscaler (FRCDIV)",
                     "value": "FRCDIV"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "DLT_AV_DLT_CV",
@@ -970,7 +989,8 @@
                     "label": "Voltage reference input, ADC =RA9/RA10 Comparator =RA9,RA10",
                     "value": "DLT_AV_DLT_CV"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -985,7 +1005,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PS32768",
@@ -1056,7 +1077,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PR128",
@@ -1071,7 +1093,8 @@
                     "label": "1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "WDT_DIS",
@@ -1094,7 +1117,8 @@
                     "label": "WDT enabled in hardware",
                     "value": "WDT_HW"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -1109,7 +1133,8 @@
                     "label": "Standard Watchdog Timer",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PGx2",
@@ -1128,7 +1153,8 @@
                     "label": "Emulator functions are shared with PGEC1/PGED1",
                     "value": "PGx1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -1143,7 +1169,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -1158,7 +1185,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -1173,7 +1201,8 @@
                     "label": "Code protection is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -1188,7 +1217,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         }
     ],
     "mcu": "PIC24FJ128GA310",

@@ -166,7 +166,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "fc30c0ff"
+            "unused": "fc30c0ff",
+            "label": "Clock control register"
         },
         {
             "address": "40021004",
@@ -695,7 +696,8 @@
                 }
             ],
             "key": "RCC_ICSCR",
-            "unused": "ffff8000"
+            "unused": "ffff8000",
+            "label": "Internal clock sources calibration"
         },
         {
             "address": "40021008",
@@ -1026,7 +1028,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "000080c0"
+            "unused": "000080c0",
+            "label": "Clock configuration register"
         },
         {
             "address": "4002100c",
@@ -1679,7 +1682,8 @@
                 }
             ],
             "key": "RCC_PLLCFGR",
-            "unused": "00c0808c"
+            "unused": "00c0808c",
+            "label": "PLL configuration register"
         },
         {
             "address": "4002105c",
@@ -1856,7 +1860,8 @@
                 }
             ],
             "key": "RCC_BDCR",
-            "unused": "fcfe7c80"
+            "unused": "fcfe7c80",
+            "label": "Rtc domain control register"
         },
         {
             "address": "40021060",
@@ -1898,7 +1903,8 @@
                 }
             ],
             "key": "RCC_CSR",
-            "unused": "017ffffc"
+            "unused": "017ffffc",
+            "label": "Control/status register"
         }
     ],
     "core": "M0",

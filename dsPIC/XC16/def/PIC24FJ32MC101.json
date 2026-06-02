@@ -21,7 +21,8 @@
                     "label": "Primary oscillator disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -36,7 +37,8 @@
                     "label": "I2C mapped to SDA1/SCL1",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -51,7 +53,8 @@
                     "label": "PWM module low side output pins have active-high output polarity",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -66,7 +69,8 @@
                     "label": "Allow Only One Re-configuration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -81,7 +85,8 @@
                     "label": "OSC2 pin has clock out function",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "CSDCMD",
@@ -100,7 +105,8 @@
                     "label": "Clock switching and Fail-Safe Clock Monitor are disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "FRCDIVN",
@@ -135,7 +141,8 @@
                     "label": "Internal Fast RC (FRC) with divide by N",
                     "value": "FRCDIVN"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "WDTWIN25",
@@ -158,7 +165,8 @@
                     "label": "Watchdog Window is 25% of WDT period",
                     "value": "WDTWIN25"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -173,7 +181,8 @@
                     "label": "PWM module pins controlled by PORT register at device Reset",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -188,7 +197,8 @@
                     "label": "Certain PWM registers may only be written after key sequence",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -203,7 +213,8 @@
                     "label": "Start-up device with FRC, then automatically switch to user-selected oscillator source when ready",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PS32768",
@@ -274,7 +285,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PR128",
@@ -289,7 +301,8 @@
                     "label": "Prescaler ratio of 1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -304,7 +317,8 @@
                     "label": "Clock switch to PLL source will wait until the PLL lock signal is valid.",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -319,7 +333,8 @@
                     "label": "Watchdog Timer in Non-Window mode",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -334,7 +349,8 @@
                     "label": "Watchdog timer always enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PGD1",
@@ -353,7 +369,8 @@
                     "label": "Communicate on PGEC1/PGED1",
                     "value": "PGD1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -368,7 +385,8 @@
                     "label": "PWM module high side output pins have active-high output polarity",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -383,7 +401,8 @@
                     "label": "Writes to program memory are allowed",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -398,7 +417,8 @@
                     "label": "General Segment Code protect is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         }
     ],
     "mcu": "PIC24FJ32MC101",

@@ -13,7 +13,8 @@
                     "label": "Allow only one reconfiguration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -28,7 +29,8 @@
                     "label": "Allow only one reconfiguration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "DIV_12",
@@ -67,7 +69,8 @@
                     "label": "12x Divider",
                     "value": "DIV_12"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "MUL_24",
@@ -106,7 +109,8 @@
                     "label": "24x Multiplier",
                     "value": "MUL_24"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "DIV_256",
@@ -145,7 +149,8 @@
                     "label": "PLL Divide by 256",
                     "value": "DIV_256"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "FRCDIV",
@@ -184,7 +189,8 @@
                     "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
                     "value": "FRCDIV"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "ON",
@@ -199,7 +205,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "ON",
@@ -214,7 +221,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -237,7 +245,8 @@
                     "label": "Primary osc disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -252,7 +261,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "DIV_8",
@@ -275,7 +285,8 @@
                     "label": "Pb_Clk is Sys_Clk/8",
                     "value": "DIV_8"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "CSDCMD",
@@ -294,7 +305,8 @@
                     "label": "Clock Switch Disable, FSCM Disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "PS1048576",
@@ -385,7 +397,8 @@
                     "label": "1:1048576",
                     "value": "PS1048576"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -400,7 +413,8 @@
                     "label": "Watchdog Timer is in Non-Window Mode",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "ON",
@@ -415,7 +429,8 @@
                     "label": "WDT Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "WINSZ_25",
@@ -438,7 +453,8 @@
                     "label": "Window Size is 25%",
                     "value": "WINSZ_25"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "ON",
@@ -453,7 +469,8 @@
                     "label": "Debugger is Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "ON",
@@ -468,7 +485,8 @@
                     "label": "JTAG Port Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "ICS_PGx1",
@@ -491,7 +509,8 @@
                     "label": "Communicate on PGEC1/PGED1",
                     "value": "ICS_PGx1"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF",
@@ -630,7 +649,8 @@
                     "label": "Disable",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF",
@@ -645,7 +665,8 @@
                     "label": "Protection Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF",
@@ -660,7 +681,8 @@
                     "label": "Protection Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         }
     ],
     "mcu": "PIC32MX110F016B",

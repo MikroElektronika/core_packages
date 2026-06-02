@@ -21,7 +21,8 @@
                     "label": "LP Oscillator",
                     "value": "LP,_LP_OSC_1H"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF",
@@ -36,7 +37,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "16,_BW_16_BIT_2L",
@@ -51,7 +53,8 @@
                     "label": "8-bit External Bus mode",
                     "value": "8,_BW_8_BIT_2L"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -66,7 +69,8 @@
                     "label": "WDT disabled (control is placed on the SWDTEN bit)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "128",
@@ -105,7 +109,8 @@
                     "label": "1:1",
                     "value": "1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "ON",
@@ -120,7 +125,8 @@
                     "label": "Stack Full/Underflow will not cause RESET",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         }
     ],
     "mcu": "PIC18C801",

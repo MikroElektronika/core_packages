@@ -18,7 +18,7 @@
             "nmb_text": "1",
             "text1": {
                 "mask": "0x01",
-            "text": "Self Programming enable; [SELFPRGEN=0]",
+                "text": "Self Programming enable; [SELFPRGEN=0]",
                 "value": "0x00"
             }
         },
@@ -67,51 +67,51 @@
             "nmb_text": "9",
             "text1": {
                 "mask": "0x80",
-            "text": "Reset Disabled (Enable PC6 as i/o pin); [RSTDISBL=0]",
+                "text": "Reset Disabled (Enable PC6 as i/o pin); [RSTDISBL=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Debug Wire enable; [DWEN=0]",
+                "text": "Debug Wire enable; [DWEN=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "text": "Watch-dog Timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x08",
-            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=100]",
+                "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=100]",
                 "value": "0x04"
             },
             "text7": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=101]",
+                "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=101]",
                 "value": "0x05"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=1.8 V; [BODLEVEL=110]",
+                "text": "Brown-out detection level at VCC=1.8 V; [BODLEVEL=110]",
                 "value": "0x06"
             },
             "text9": {
                 "mask": "0x07",
-            "text": "Brown-out detection disabled; [BODLEVEL=111]",
+                "text": "Brown-out detection disabled; [BODLEVEL=111]",
                 "value": "0x07"
             }
         },
-    "list": "[LOW:HIGH:EXTENDED]",
+        "list": "[LOW:HIGH:EXTENDED]",
         "low": {
             "fuse0": {
                 "default": "0",
@@ -157,287 +157,287 @@
             "nmb_text": "57",
             "text1": {
                 "mask": "0x80",
-            "text": "Divide clock by 8 internally; [CKDIV8=0]",
+                "text": "Divide clock by 8 internally; [CKDIV8=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 128kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms; [CKSEL=0011 SUT=01]",
+                "text": "Int. RC Osc. 128kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms; [CKSEL=0011 SUT=01]",
                 "value": "0x13"
             },
             "text11": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 128kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms;  [CKSEL=0011 SUT=10]",
+                "text": "Int. RC Osc. 128kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms;  [CKSEL=0011 SUT=10]",
                 "value": "0x23"
             },
             "text12": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1K CK/14 CK + 0 ms;   [CKSEL=0100 SUT=00]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1K CK/14 CK + 0 ms;   [CKSEL=0100 SUT=00]",
                 "value": "0x04"
             },
             "text13": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1K CK/14 CK + 4.1 ms; [CKSEL=0100 SUT=01]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1K CK/14 CK + 4.1 ms; [CKSEL=0100 SUT=01]",
                 "value": "0x14"
             },
             "text14": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1K CK/14 CK + 65 ms;  [CKSEL=0100 SUT=10]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1K CK/14 CK + 65 ms;  [CKSEL=0100 SUT=10]",
                 "value": "0x24"
             },
             "text15": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32K CK/14 CK + 0 ms;   [CKSEL=0101 SUT=00]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32K CK/14 CK + 0 ms;   [CKSEL=0101 SUT=00]",
                 "value": "0x05"
             },
             "text16": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32K CK/14 CK + 4.1 ms; [CKSEL=0101 SUT=01]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32K CK/14 CK + 4.1 ms; [CKSEL=0101 SUT=01]",
                 "value": "0x15"
             },
             "text17": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32K CK/14 CK + 65 ms;  [CKSEL=0101 SUT=10]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32K CK/14 CK + 65 ms;  [CKSEL=0101 SUT=10]",
                 "value": "0x25"
             },
             "text18": {
                 "mask": "0x3F",
-            "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms;[CKSEL=0110 SUT=00]",
+                "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms;[CKSEL=0110 SUT=00]",
                 "value": "0x06"
             },
             "text19": {
                 "mask": "0x3F",
-            "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms; [CKSEL=0110 SUT=01]",
+                "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms; [CKSEL=0110 SUT=01]",
                 "value": "0x16"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Clock output on PORTB0; [CKOUT=0]",
+                "text": "Clock output on PORTB0; [CKOUT=0]",
                 "value": "0x00"
             },
             "text20": {
                 "mask": "0x3F",
-            "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;  [CKSEL=0110 SUT=10]",
+                "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;  [CKSEL=0110 SUT=10]",
                 "value": "0x26"
             },
             "text21": {
                 "mask": "0x3F",
-            "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms;[CKSEL=0110 SUT=11]",
+                "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms;[CKSEL=0110 SUT=11]",
                 "value": "0x36"
             },
             "text22": {
                 "mask": "0x3F",
-            "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms; [CKSEL=0111 SUT=00]",
+                "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms; [CKSEL=0111 SUT=00]",
                 "value": "0x07"
             },
             "text23": {
                 "mask": "0x3F",
-            "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;  [CKSEL=0111 SUT=01]",
+                "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;  [CKSEL=0111 SUT=01]",
                 "value": "0x17"
             },
             "text24": {
                 "mask": "0x3F",
-            "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms;[CKSEL=0111 SUT=10]",
+                "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms;[CKSEL=0111 SUT=10]",
                 "value": "0x27"
             },
             "text25": {
                 "mask": "0x3F",
-            "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms; [CKSEL=0111 SUT=11]",
+                "text": "Ext. Full-swing Crystal; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms; [CKSEL=0111 SUT=11]",
                 "value": "0x37"
             },
             "text26": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1000 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1000 SUT=00]",
                 "value": "0x08"
             },
             "text27": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1000 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1000 SUT=01]",
                 "value": "0x18"
             },
             "text28": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1000 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1000 SUT=10]",
                 "value": "0x28"
             },
             "text29": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1000 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1000 SUT=11]",
                 "value": "0x38"
             },
             "text3": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0000 SUT=00]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0000 SUT=00]",
                 "value": "0x00"
             },
             "text30": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1001 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1001 SUT=00]",
                 "value": "0x09"
             },
             "text31": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1001 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1001 SUT=01]",
                 "value": "0x19"
             },
             "text32": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1001 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1001 SUT=10]",
                 "value": "0x29"
             },
             "text33": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1001 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1001 SUT=11]",
                 "value": "0x39"
             },
             "text34": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1010 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1010 SUT=00]",
                 "value": "0x0A"
             },
             "text35": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1010 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1010 SUT=01]",
                 "value": "0x1A"
             },
             "text36": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1010 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1010 SUT=10]",
                 "value": "0x2A"
             },
             "text37": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1010 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1010 SUT=11]",
                 "value": "0x3A"
             },
             "text38": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1011 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1011 SUT=00]",
                 "value": "0x0B"
             },
             "text39": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1011 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1011 SUT=01]",
                 "value": "0x1B"
             },
             "text4": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms; [CKSEL=0000 SUT=01]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms; [CKSEL=0000 SUT=01]",
                 "value": "0x10"
             },
             "text40": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1011 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1011 SUT=10]",
                 "value": "0x2B"
             },
             "text41": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1011 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1011 SUT=11]",
                 "value": "0x3B"
             },
             "text42": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1100 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1100 SUT=00]",
                 "value": "0x0C"
             },
             "text43": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1100 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1100 SUT=01]",
                 "value": "0x1C"
             },
             "text44": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1100 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1100 SUT=10]",
                 "value": "0x2C"
             },
             "text45": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1100 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1100 SUT=11]",
                 "value": "0x3C"
             },
             "text46": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1101 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1101 SUT=00]",
                 "value": "0x0D"
             },
             "text47": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1101 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1101 SUT=01]",
                 "value": "0x1D"
             },
             "text48": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1101 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1101 SUT=10]",
                 "value": "0x2D"
             },
             "text49": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1101 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1101 SUT=11]",
                 "value": "0x3D"
             },
             "text5": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms;  [CKSEL=0000 SUT=10]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms;  [CKSEL=0000 SUT=10]",
                 "value": "0x20"
             },
             "text50": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1110 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1110 SUT=00]",
                 "value": "0x0E"
             },
             "text51": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1110 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1110 SUT=01]",
                 "value": "0x1E"
             },
             "text52": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1110 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1110 SUT=10]",
                 "value": "0x2E"
             },
             "text53": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1110 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1110 SUT=11]",
                 "value": "0x3E"
             },
             "text54": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1111 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1111 SUT=00]",
                 "value": "0x0F"
             },
             "text55": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1111 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1111 SUT=01]",
                 "value": "0x1F"
             },
             "text56": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1111 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1111 SUT=10]",
                 "value": "0x2F"
             },
             "text57": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1111 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1111 SUT=11]",
                 "value": "0x3F"
             },
             "text6": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0010 SUT=00]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0010 SUT=00]",
                 "value": "0x02"
             },
             "text7": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms; [CKSEL=0010 SUT=01]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms; [CKSEL=0010 SUT=01]",
                 "value": "0x12"
             },
             "text8": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms;  [CKSEL=0010 SUT=10]; default value",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms;  [CKSEL=0010 SUT=10]; default value",
                 "value": "0x22"
             },
             "text9": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 128kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0011 SUT=00]",
+                "text": "Int. RC Osc. 128kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0011 SUT=00]",
                 "value": "0x03"
             }
         }
@@ -580,355 +580,355 @@
         "mlf": {
             "nmb_pin": "32",
             "pin1": {
-            "name": "[PD3:PCINT19:OC2B:INT1]",
+                "name": "[PD3:PCINT19:OC2B:INT1]",
                 "text": "INT1,External Interrupt source 1:The PD3 pin can serve as an external interrupt source."
             },
             "pin10": {
-            "name": "[PD6:AIN0:OC0A:PCINT22]",
+                "name": "[PD6:AIN0:OC0A:PCINT22]",
                 "text": "AIN0,Analog Comparator Positive Input.Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator."
             },
             "pin11": {
-            "name": "[PD7:AIN1:PCINT23]",
+                "name": "[PD7:AIN1:PCINT23]",
                 "text": "AIN1,Analog Comparator Negative Input.Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator."
             },
             "pin12": {
-            "name": "[PB0:ICP:CLKO:PCINT0]",
+                "name": "[PB0:ICP:CLKO:PCINT0]",
                 "text": "ICP -Input Capture Pin:The PB0 pin can act as an input capture pin for Timer/Counter1."
             },
             "pin13": {
-            "name": "[PB1:OC1A:PCINT1]",
+                "name": "[PB1:OC1A:PCINT1]",
                 "text": "OC1A,Output compare match output:The PB1 pin can serve as an external output for the Timer/Counter1 compare match A.The PB1 pin has to be configured as an output (DDB1 set (one))to serve this function.The OC1A pin is also the output pin for the PWM mode timer function."
             },
             "pin14": {
-            "name": "[PB2:'SS:OC1B:PCINT2]",
+                "name": "[PB2:'SS:OC1B:PCINT2]",
                 "text": "SS:Slave Select input.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB4.As a slave,the SPI is activated when this pin is driven low.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB4.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB4 bit. OC1B,Output compare match output:The PB2 pin can serve as an external output for the Timer/Counter1 compare match B.The PB2 pin has to be configured as an output (DDB2 set (one))to serve this function.The OC1B pin is also the output pin for the PWM mode timer fu"
             },
             "pin15": {
-            "name": "[PB3:MOSI:OC2A:PCINT3]",
+                "name": "[PB3:MOSI:OC2A:PCINT3]",
                 "text": "MOSI:SPI Master data output,slave data input for SPI channel.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB5.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB5.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB bit."
             },
             "pin16": {
-            "name": "[PB4:MISO:PCINT4]",
+                "name": "[PB4:MISO:PCINT4]",
                 "text": "MISO:Master data Input,Slave data Output pin for SPI channel.When the SPI is enabled as a master,this pin is configured as an input regardless of the setting of DDB6.When the SPI is enabled as a slave,the data direction of this pin is controlled by DDB6.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB6 bit."
             },
             "pin17": {
-            "name": "[PB5:SCK:PCINT5]",
+                "name": "[PB5:SCK:PCINT5]",
                 "text": "SCK:Master clock output,slave clock input pin for SPI channel.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB7.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB7.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB7 bit."
             },
             "pin18": {
-            "name": "[AVCC]"
+                "name": "[AVCC]"
             },
             "pin19": {
-            "name": "[ADC6]"
+                "name": "[ADC6]"
             },
             "pin2": {
-            "name": "[PD4:XCK:T0:PCINT20]",
+                "name": "[PD4:XCK:T0:PCINT20]",
                 "text": "XCK, USART external clock. T0,Timer/Counter0 counter source."
             },
             "pin20": {
-            "name": "[AREF]"
+                "name": "[AREF]"
             },
             "pin21": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin22": {
-            "name": "[ADC7]"
+                "name": "[ADC7]"
             },
             "pin23": {
-            "name": "[PC0:ADC0:PCINT8]",
+                "name": "[PC0:ADC0:PCINT8]",
                 "text": "PC0 can also be used as ADC input Channel 0.Note that ADC input channel 0 uses analog ground."
             },
             "pin24": {
-            "name": "[PC1:ADC1:PCINT9]",
+                "name": "[PC1:ADC1:PCINT9]",
                 "text": "PC1 can also be used as ADC input Channel 1.Note that ADC input channel 1 uses analog ground."
             },
             "pin25": {
-            "name": "[PC2:ADC2:PCINT10]",
+                "name": "[PC2:ADC2:PCINT10]",
                 "text": "PC2 can also be used as ADC input Channel 2.Note that ADC input channel 2 uses analog ground."
             },
             "pin26": {
-            "name": "[PC3:ADC3:PCINT11]",
+                "name": "[PC3:ADC3:PCINT11]",
                 "text": "PC3 can also be used as ADC input Channel 3.Note that ADC input channel 3 uses analog ground."
             },
             "pin27": {
-            "name": "[PC4:ADC4:SDA:PCINT12]",
+                "name": "[PC4:ADC4:SDA:PCINT12]",
                 "text": "SDA,2-wire Serial Interface Data:When the TWEN bit in TWCR is set (one)to enable the 2-wire Serial Interface,pin PC1 is disconnected from the port and becomes the Serial Data I/O pin for the 2-wire Serial Interface.In this mode,there is a spike filter on the pin to suppress spikes shorter than 0 ns on the input signal,and the pin is driven by an open drain driver with slew-rate limitation. PC4 can also be used as ADC input Channel 4.Note that ADC input channel 4 uses digital ground."
             },
             "pin28": {
-            "name": "[PC5:ADC5:SCL:PCINT13]",
+                "name": "[PC5:ADC5:SCL:PCINT13]",
                 "text": "SCL,2-wire Serial Interface Clock:When the TWEN bit in TWCR is set (one)to enable the 2-wire Serial Interface,pin PC1 is disconnected from the port and becomes the Serial Clock I/O pin for the 2-wire Serial Interface.In this mode,there is a spike filter on the pin to suppress spikes shorter than 0 ns on the input signal,and the pin is driven by an open drain driver with slew-rate limitation. PC can also be used as ADC input Channel 5.Note that ADC input channel uses digital ground."
             },
             "pin29": {
-            "name": "[PC6:'RESET:PCINT14]",
+                "name": "[PC6:'RESET:PCINT14]",
                 "text": "RESET, Reset pin: When the RSTDISBL fuse is set,this pin functions as a normal I/O pin,and the part will have to rely on Power-On Reset and Brown-Out Reset as its reset sources.When the RSTDISBL fuse is cleared,the reset circuitry is connected to the pin,and the pin can not be used as an I/O pin. If PC6 is used as a reset pin,DDC6,PORTC6 and PINC6 will all read 0."
             },
             "pin3": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin30": {
-            "name": "[PD0:RXD:PCINT16]",
+                "name": "[PD0:RXD:PCINT16]",
                 "text": "RXD,Receive Data (Data input pin for the USART).When the USART receiver is enabled this pin is configured as an input regardless of the value of DDD0.When the USART forces this pin to be an input,the pull-up can still be controlled by the PORTD0 bit."
             },
             "pin31": {
-            "name": "[PD1:TXD:PCINT17]",
+                "name": "[PD1:TXD:PCINT17]",
                 "text": "TXD,Transmit Data (Data output pin for the USART).When the USART transmitter is enabled,this pin is configured as an output regardless of the value of DDD1."
             },
             "pin32": {
-            "name": "[PD2:INT0:PCINT18]",
+                "name": "[PD2:INT0:PCINT18]",
                 "text": "INT0,External Interrupt source 0:The PD2 pin can serve as an external interrupt source."
             },
             "pin4": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin5": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin6": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin7": {
-            "name": "[PB6:XTAL1:TOSC1:PCINT6]",
+                "name": "[PB6:XTAL1:TOSC1:PCINT6]",
                 "text": "XTAL1:Chipclock oscillator pin 1.Used for all chipclock sources except internal calibratable RC oscillator.When used as a clock pin,the pin can not be used as an I/O pin.When using internal calibratable RC oscillator as chip clock source,PB6 functions as an ordinary I/O pin. TOSC1:Timer Oscillator pin 1.Used only if internal calibratable RC oscillator is selected as chip clock source,and the asynchronous timer is enabled by the correct setting in ASSR.When the AS2 bit in ASSR is set (one)to enable asynchronous clocking of Timer/Counter1,pin PB6 is disconnected from the port,and becomes the input of the inverting oscillator amplifier.In this mode,a crystal oscillator is connected to this pin,and the pin can not be used as an I/O pin. If PB6 is used as a clock pin,DDB6,PORTB6 and PINB6 will all rea"
             },
             "pin8": {
-            "name": "[PB7:XTAL2:TOSC2:PCINT7]",
+                "name": "[PB7:XTAL2:TOSC2:PCINT7]",
                 "text": "XTAL2:Chip clock oscillator pin 2.Used as clock pin for all chip clock sources except internal calibratable RC oscillator and external clock.When used as a clock pin,the pin can not be used as an I/O pin.When using internal calibratable RC oscillator or external clock as chipclock sources,PB7 functions as an ordinary I/O pin. TOSC2:Timer Oscillator pin 2.Used only if internal calibratable RC oscillator is selected as chip clock source,and the asynchronous timer is enabled by the correct setting in ASSR.When the AS2 bit in ASSR is set (one)to enable asynchro- nous clocking of Timer/Counter2,pin PB7 is disconnected from the port,and becomes the inverting output of the oscillator amplifier.In this mode,a crystal oscillator is connected to this pin,and the pin can not be used as an I/O pin. If PB7 is used as a clock pin,DDB7,PORTB7 and PINB7 will all read"
             },
             "pin9": {
-            "name": "[PD5:T1:OC0B:PCINT21]",
+                "name": "[PD5:T1:OC0B:PCINT21]",
                 "text": "T1,Timer/Counter1 counter source."
             }
         },
-    "packages": "[TQFP:MLF:PDIP]",
+        "packages": "[TQFP:MLF:PDIP]",
         "pdip": {
             "nmb_pin": "28",
             "pin1": {
-            "name": "[PC6:'RESET:PCINT14]",
+                "name": "[PC6:'RESET:PCINT14]",
                 "text": "RESET, Reset pin: When the RSTDISBL fuse is set,this pin functions as a normal I/O pin,and the part will have to rely on Power-On Reset and Brown-Out Reset as its reset sources.When the RSTDISBL fuse is cleared,the reset circuitry is connected to the pin,and the pin can not be used as an I/O pin. If PC6 is used as a reset pin,DDC6,PORTC6 and PINC6 will all read 0."
             },
             "pin10": {
-            "name": "[PB7:XTAL2:TOSC2:PCINT7]",
+                "name": "[PB7:XTAL2:TOSC2:PCINT7]",
                 "text": "XTAL2:Chip clock oscillator pin 2.Used as clock pin for all chip clock sources except internal calibratable RC oscillator and external clock.When used as a clock pin,the pin can not be used as an I/O pin.When using internal calibratable RC oscillator or external clock as chipclock sources,PB7 functions as an ordinary I/O pin. TOSC2:Timer Oscillator pin 2.Used only if internal calibratable RC oscillator is selected as chip clock source,and the asynchronous timer is enabled by the correct setting in ASSR.When the AS2 bit in ASSR is set (one)to enable asynchro- nous clocking of Timer/Counter2,pin PB7 is disconnected from the port,and becomes the inverting output of the oscillator amplifier.In this mode,a crystal oscillator is connected to this pin,and the pin can not be used as an I/O pin. If PB7 is used as a clock pin,DDB7,PORTB7 and PINB7 will all read"
             },
             "pin11": {
-            "name": "[PD5:T1:OC0B:PCINT21]",
+                "name": "[PD5:T1:OC0B:PCINT21]",
                 "text": "T1,Timer/Counter1 counter source."
             },
             "pin12": {
-            "name": "[PD6:AIN0:OC0A:PCINT22]",
+                "name": "[PD6:AIN0:OC0A:PCINT22]",
                 "text": "AIN0,Analog Comparator Positive Input.Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator."
             },
             "pin13": {
-            "name": "[PD7:AIN1:PCINT23]",
+                "name": "[PD7:AIN1:PCINT23]",
                 "text": "AIN1,Analog Comparator Negative Input.Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator."
             },
             "pin14": {
-            "name": "[PB0:ICP1:CLKO:PCINT0]",
+                "name": "[PB0:ICP1:CLKO:PCINT0]",
                 "text": "ICP1 -Input Capture Pin1:The PB0 pin can act as an input capture pin for Timer/Counter1."
             },
             "pin15": {
-            "name": "[PB1:OC1A:PCINT1]",
+                "name": "[PB1:OC1A:PCINT1]",
                 "text": "OC1A,Output compare match output:The PB1 pin can serve as an external output for the Timer/Counter1 compare match A.The PB1 pin has to be configured as an output (DDB1 set (one))to serve this function.The OC1A pin is also the output pin for the PWM mode timer function."
             },
             "pin16": {
-            "name": "[PB2:'SS:OC1B:PCINT2]",
+                "name": "[PB2:'SS:OC1B:PCINT2]",
                 "text": "SS:Slave Select input.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB4.As a slave,the SPI is activated when this pin is driven low.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB4.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB4 bit. OC1B,Output compare match output:The PB2 pin can serve as an external output for the Timer/Counter1 compare match B.The PB2 pin has to be configured as an output (DDB2 set (one))to serve this function.The OC1B pin is also the output pin for the PWM mode timer fun"
             },
             "pin17": {
-            "name": "[PB3:MOSI:OC2A:PCINT3]",
+                "name": "[PB3:MOSI:OC2A:PCINT3]",
                 "text": "MOSI:SPI Master data output,slave data input for SPI channel.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB5.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB5.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB bit."
             },
             "pin18": {
-            "name": "[PB4:MISO:PCINT4]",
+                "name": "[PB4:MISO:PCINT4]",
                 "text": "MISO:Master data Input,Slave data Output pin for SPI channel.When the SPI is enabled as a master,this pin is configured as an input regardless of the setting of DDB6.When the SPI is enabled as a slave,the data direction of this pin is controlled by DDB6.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB6 bit."
             },
             "pin19": {
-            "name": "[PB5:SCK:PCINT5]",
+                "name": "[PB5:SCK:PCINT5]",
                 "text": "SCK:Master clock output,slave clock input pin for SPI channel.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB7.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB7.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB7 bit."
             },
             "pin2": {
-            "name": "[PD0:RXD:PCINT16]",
+                "name": "[PD0:RXD:PCINT16]",
                 "text": "RXD,Receive Data (Data input pin for the USART).When the USART receiver is enabled this pin is configured as an input regardless of the value of DDD0.When the USART forces this pin to be an input,the pull-up can still be controlled by the PORTD0 bit."
             },
             "pin20": {
-            "name": "[AVCC]"
+                "name": "[AVCC]"
             },
             "pin21": {
-            "name": "[AREF]"
+                "name": "[AREF]"
             },
             "pin22": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin23": {
-            "name": "[PC0:ADC0:PCINT8]",
+                "name": "[PC0:ADC0:PCINT8]",
                 "text": "PC0 can also be used as ADC input Channel 0.Note that ADC input channel 0 uses analog ground."
             },
             "pin24": {
-            "name": "[PC1:ADC1:PCINT9]",
+                "name": "[PC1:ADC1:PCINT9]",
                 "text": "PC1 can also be used as ADC input Channel 1.Note that ADC input channel 1 uses analog ground."
             },
             "pin25": {
-            "name": "[PC2:ADC2:PCINT10]",
+                "name": "[PC2:ADC2:PCINT10]",
                 "text": "PC2 can also be used as ADC input Channel 2.Note that ADC input channel 2 uses analog ground."
             },
             "pin26": {
-            "name": "[PC3:ADC3:PCINT11]",
+                "name": "[PC3:ADC3:PCINT11]",
                 "text": "PC3 can also be used as ADC input Channel 3.Note that ADC input channel 3 uses analog ground."
             },
             "pin27": {
-            "name": "[PC4:ADC4:SDA:PCINT12]",
+                "name": "[PC4:ADC4:SDA:PCINT12]",
                 "text": "SDA,2-wire Serial Interface Data:When the TWEN bit in TWCR is set (one)to enable the 2-wire Serial Interface,pin PC1 is disconnected from the port and becomes the Serial Data I/O pin for the 2-wire Serial Interface.In this mode,there is a spike filter on the pin to suppress spikes shorter than 0 ns on the input signal,and the pin is driven by an open drain driver with slew-rate limitation. PC4 can also be used as ADC input Channel 4.Note that ADC input channel 4 uses digital ground."
             },
             "pin28": {
-            "name": "[PC5:ADC5:SCL:PCINT13]",
+                "name": "[PC5:ADC5:SCL:PCINT13]",
                 "text": "SCL,2-wire Serial Interface Clock:When the TWEN bit in TWCR is set (one)to enable the 2-wire Serial Interface,pin PC1 is disconnected from the port and becomes the Serial Clock I/O pin for the 2-wire Serial Interface.In this mode,there is a spike filter on the pin to suppress spikes shorter than 0 ns on the input signal,and the pin is driven by an open drain driver with slew-rate limitation. PC can also be used as ADC input Channel 5.Note that ADC input channel uses digital ground."
             },
             "pin3": {
-            "name": "[PD1:TXD:PCINT17]",
+                "name": "[PD1:TXD:PCINT17]",
                 "text": "TXD,Transmit Data (Data output pin for the USART).When the USART transmitter is enabled,this pin is configured as an output regardless of the value of DDD1."
             },
             "pin4": {
-            "name": "[PD2:INT0:PCINT18]",
+                "name": "[PD2:INT0:PCINT18]",
                 "text": "INT0,External Interrupt source 0:The PD2 pin can serve as an external interrupt source."
             },
             "pin5": {
-            "name": "[PD3:PCINT19:OC2B:INT1]",
+                "name": "[PD3:PCINT19:OC2B:INT1]",
                 "text": "INT1,External Interrupt source 1:The PD3 pin can serve as an external interrupt source."
             },
             "pin6": {
-            "name": "[PD4:XCK:T0:PCINT20]",
+                "name": "[PD4:XCK:T0:PCINT20]",
                 "text": "XCK, USART external clock. T0,Timer/Counter0 counter source."
             },
             "pin7": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin8": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin9": {
-            "name": "[PB6:XTAL1:TOSC1:PCINT6]",
+                "name": "[PB6:XTAL1:TOSC1:PCINT6]",
                 "text": "XTAL1:Chipclock oscillator pin 1.Used for all chipclock sources except internal calibratable RC oscillator.When used as a clock pin,the pin can not be used as an I/O pin.When using internal calibratable RC oscillator as chip clock source,PB6 functions as an ordinary I/O pin. TOSC1:Timer Oscillator pin 1.Used only if internal calibratable RC oscillator is selected as chip clock source,and the asynchronous timer is enabled by the correct setting in ASSR.When the AS2 bit in ASSR is set (one)to enable asynchronous clocking of Timer/Counter1,pin PB6 is disconnected from the port,and becomes the input of the inverting oscillator amplifier.In this mode,a crystal oscillator is connected to this pin,and the pin can not be used as an I/O pin. If PB6 is used as a clock pin,DDB6,PORTB6 and PINB6 will all rea"
             }
         },
         "tqfp": {
             "nmb_pin": "32",
             "pin1": {
-            "name": "[PD3:PCINT19:OC2B:INT1]",
+                "name": "[PD3:PCINT19:OC2B:INT1]",
                 "text": "INT1,External Interrupt source 1:The PD3 pin can serve as an external interrupt source."
             },
             "pin10": {
-            "name": "[PD6:AIN0:OC0A:PCINT22]",
+                "name": "[PD6:AIN0:OC0A:PCINT22]",
                 "text": "AIN0,Analog Comparator Positive Input.Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator."
             },
             "pin11": {
-            "name": "[PD7:AIN1:PCINT23]",
+                "name": "[PD7:AIN1:PCINT23]",
                 "text": "AIN1,Analog Comparator Negative Input.Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator."
             },
             "pin12": {
-            "name": "[PB0:ICP1:CLKO:PCINT0]",
+                "name": "[PB0:ICP1:CLKO:PCINT0]",
                 "text": "ICP1 -Input Capture Pin:The PB0 pin can act as an input capture pin for Timer/Counter1."
             },
             "pin13": {
-            "name": "[PB1:OC1A:PCINT1]",
+                "name": "[PB1:OC1A:PCINT1]",
                 "text": "OC1A,Output compare match output:The PB1 pin can serve as an external output for the Timer/Counter1 compare match A.The PB1 pin has to be configured as an output (DDB1 set (one))to serve this function.The OC1A pin is also the output pin for the PWM mode timer function."
             },
             "pin14": {
-            "name": "[PB2:'SS:OC1B:PCINT2]",
+                "name": "[PB2:'SS:OC1B:PCINT2]",
                 "text": "SS:Slave Select input.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB4.As a slave,the SPI is activated when this pin is driven low.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB4.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB4 bit. OC1B,Output compare match output:The PB2 pin can serve as an external output for the Timer/Counter1 compare match B.The PB2 pin has to be configured as an output (DDB2 set (one))to serve this function.The OC1B pin is also the output pin for the PWM mode timer fu"
             },
             "pin15": {
-            "name": "[PB3:MOSI:OC2A:PCINT3]",
+                "name": "[PB3:MOSI:OC2A:PCINT3]",
                 "text": "MOSI:SPI Master data output,slave data input for SPI channel.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB5.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB5.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB bit."
             },
             "pin16": {
-            "name": "[PB4:MISO:PCINT4]",
+                "name": "[PB4:MISO:PCINT4]",
                 "text": "MISO:Master data Input,Slave data Output pin for SPI channel.When the SPI is enabled as a master,this pin is configured as an input regardless of the setting of DDB6.When the SPI is enabled as a slave,the data direction of this pin is controlled by DDB6.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB6 bit."
             },
             "pin17": {
-            "name": "[PB5:SCK:PCINT5]",
+                "name": "[PB5:SCK:PCINT5]",
                 "text": "SCK:Master clock output,slave clock input pin for SPI channel.When the SPI is enabled as a slave,this pin is configured as an input regardless of the setting of DDB7.When the SPI is enabled as a master,the data direction of this pin is controlled by DDB7.When the pin is forced by the SPI to be an input,the pull-up can still be controlled by the PORTB7 bit."
             },
             "pin18": {
-            "name": "[AVCC]"
+                "name": "[AVCC]"
             },
             "pin19": {
-            "name": "[ADC6]"
+                "name": "[ADC6]"
             },
             "pin2": {
-            "name": "[PD4:XCK:T0:PCINT20]",
+                "name": "[PD4:XCK:T0:PCINT20]",
                 "text": "XCK, USART external clock. T0,Timer/Counter0 counter source."
             },
             "pin20": {
-            "name": "[AREF]"
+                "name": "[AREF]"
             },
             "pin21": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin22": {
-            "name": "[ADC7]"
+                "name": "[ADC7]"
             },
             "pin23": {
-            "name": "[PC0:ADC0:PCINT8]",
+                "name": "[PC0:ADC0:PCINT8]",
                 "text": "PC0 can also be used as ADC input Channel 0.Note that ADC input channel 0 uses analog ground."
             },
             "pin24": {
-            "name": "[PC1:ADC1:PCINT9]",
+                "name": "[PC1:ADC1:PCINT9]",
                 "text": "PC1 can also be used as ADC input Channel 1.Note that ADC input channel 1 uses analog ground."
             },
             "pin25": {
-            "name": "[PC2:ADC2:PCINT10]",
+                "name": "[PC2:ADC2:PCINT10]",
                 "text": "PC2 can also be used as ADC input Channel 2.Note that ADC input channel 2 uses analog ground."
             },
             "pin26": {
-            "name": "[PC3:ADC3:PCINT11]",
+                "name": "[PC3:ADC3:PCINT11]",
                 "text": "PC3 can also be used as ADC input Channel 3.Note that ADC input channel 3 uses analog ground."
             },
             "pin27": {
-            "name": "[PC4:ADC4:SDA:PCINT12]",
+                "name": "[PC4:ADC4:SDA:PCINT12]",
                 "text": "SDA,2-wire Serial Interface Data:When the TWEN bit in TWCR is set (one)to enable the 2-wire Serial Interface,pin PC1 is disconnected from the port and becomes the Serial Data I/O pin for the 2-wire Serial Interface.In this mode,there is a spike filter on the pin to suppress spikes shorter than 0 ns on the input signal,and the pin is driven by an open drain driver with slew-rate limitation. PC4 can also be used as ADC input Channel 4.Note that ADC input channel 4 uses digital ground."
             },
             "pin28": {
-            "name": "[PC5:ADC5:SCL:PCINT13]",
+                "name": "[PC5:ADC5:SCL:PCINT13]",
                 "text": "SCL,2-wire Serial Interface Clock:When the TWEN bit in TWCR is set (one)to enable the 2-wire Serial Interface,pin PC1 is disconnected from the port and becomes the Serial Clock I/O pin for the 2-wire Serial Interface.In this mode,there is a spike filter on the pin to suppress spikes shorter than 0 ns on the input signal,and the pin is driven by an open drain driver with slew-rate limitation. PC can also be used as ADC input Channel 5.Note that ADC input channel uses digital ground."
             },
             "pin29": {
-            "name": "[PC6:'RESET:PCINT14]",
+                "name": "[PC6:'RESET:PCINT14]",
                 "text": "RESET, Reset pin: When the RSTDISBL fuse is set,this pin functions as a normal I/O pin,and the part will have to rely on Power-On Reset and Brown-Out Reset as its reset sources.When the RSTDISBL fuse is cleared,the reset circuitry is connected to the pin,and the pin can not be used as an I/O pin. If PC6 is used as a reset pin,DDC6,PORTC6 and PINC6 will all read 0."
             },
             "pin3": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin30": {
-            "name": "[PD0:RXD:PCINT16]",
+                "name": "[PD0:RXD:PCINT16]",
                 "text": "RXD,Receive Data (Data input pin for the USART).When the USART receiver is enabled this pin is configured as an input regardless of the value of DDD0.When the USART forces this pin to be an input,the pull-up can still be controlled by the PORTD0 bit."
             },
             "pin31": {
-            "name": "[PD1:TXD:PCINT17]",
+                "name": "[PD1:TXD:PCINT17]",
                 "text": "TXD,Transmit Data (Data output pin for the USART).When the USART transmitter is enabled,this pin is configured as an output regardless of the value of DDD1."
             },
             "pin32": {
-            "name": "[PD2:INT0:PCINT18]",
+                "name": "[PD2:INT0:PCINT18]",
                 "text": "INT0,External Interrupt source 0:The PD2 pin can serve as an external interrupt source."
             },
             "pin4": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin5": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin6": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin7": {
-            "name": "[PB6:XTAL1:TOSC1:PCINT6]",
+                "name": "[PB6:XTAL1:TOSC1:PCINT6]",
                 "text": "XTAL1:Chipclock oscillator pin 1.Used for all chipclock sources except internal calibratable RC oscillator.When used as a clock pin,the pin can not be used as an I/O pin.When using internal calibratable RC oscillator as chip clock source,PB6 functions as an ordinary I/O pin. TOSC1:Timer Oscillator pin 1.Used only if internal calibratable RC oscillator is selected as chip clock source,and the asynchronous timer is enabled by the correct setting in ASSR.When the AS2 bit in ASSR is set (one)to enable asynchronous clocking of Timer/Counter1,pin PB6 is disconnected from the port,and becomes the input of the inverting oscillator amplifier.In this mode,a crystal oscillator is connected to this pin,and the pin can not be used as an I/O pin. If PB6 is used as a clock pin,DDB6,PORTB6 and PINB6 will all rea"
             },
             "pin8": {
-            "name": "[PB7:XTAL2:TOSC2:PCINT7]",
+                "name": "[PB7:XTAL2:TOSC2:PCINT7]",
                 "text": "XTAL2:Chip clock oscillator pin 2.Used as clock pin for all chip clock sources except internal calibratable RC oscillator and external clock.When used as a clock pin,the pin can not be used as an I/O pin.When using internal calibratable RC oscillator or external clock as chipclock sources,PB7 functions as an ordinary I/O pin. TOSC2:Timer Oscillator pin 2.Used only if internal calibratable RC oscillator is selected as chip clock source,and the asynchronous timer is enabled by the correct setting in ASSR.When the AS2 bit in ASSR is set (one)to enable asynchro- nous clocking of Timer/Counter2,pin PB7 is disconnected from the port,and becomes the inverting output of the oscillator amplifier.In this mode,a crystal oscillator is connected to this pin,and the pin can not be used as an I/O pin. If PB7 is used as a clock pin,DDB7,PORTB7 and PINB7 will all read"
             },
             "pin9": {
-            "name": "[PD5:T1:OC0B:PCINT21]",
+                "name": "[PD5:T1:OC0B:PCINT21]",
                 "text": "T1,Timer/Counter1 counter source."
             }
         }
@@ -1349,7 +1349,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -1467,7 +1468,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         },
         {
             "address": "820002",
@@ -1492,7 +1494,8 @@
                 }
             ],
             "key": "EXTENDED",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "EXTENDED"
         }
     ],
     "avr_core": "avr4"

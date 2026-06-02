@@ -91,7 +91,8 @@
                 }
             ],
             "key": "CLK_PWRCTL",
-            "unused": "FFCBC310"
+            "unused": "FFCBC310",
+            "label": "System power-down control register"
         },
         {
             "address": "40000210",
@@ -136,7 +137,8 @@
                 }
             ],
             "key": "CLK_CLKSEL0",
-            "unused": "FFCFFEC0"
+            "unused": "FFCFFEC0",
+            "label": "Clock source select register 0"
         },
         {
             "address": "40000220",
@@ -217,7 +219,8 @@
                 }
             ],
             "key": "CLK_CLKDIV0",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock divider number register 0"
         },
         {
             "address": "40000240",
@@ -2444,7 +2447,8 @@
                 }
             ],
             "key": "CLK_PLLCTL",
-            "unused": "FF740000"
+            "unused": "FF740000",
+            "label": "Pll control register"
         }
     ],
     "core": "M23",

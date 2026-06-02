@@ -108,7 +108,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock control register"
         },
         {
             "address": "40021004",
@@ -480,7 +481,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock configuration register"
         },
         {
             "address": "4002102C",
@@ -683,7 +685,8 @@
                 }
             ],
             "key": "RCC_CFGR2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock configuration register 2"
         }
     ],
     "core": "M4EF",

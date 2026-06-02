@@ -37,7 +37,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -52,7 +53,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -67,7 +69,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_MCLR_ON",
@@ -82,7 +85,8 @@
                     "label": "RA5/MCLR/VPP pin function is digital I/O, MCLR internally tied to VDD",
                     "value": "OFF,_MCLR_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_BODEN_ON",
@@ -97,7 +101,8 @@
                     "label": "BOR disabled",
                     "value": "OFF,_BODEN_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -112,7 +117,8 @@
                     "label": "RB3/PGM pin has digital I/O function, HV on MCLR must be used for programming",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -127,7 +133,8 @@
                     "label": "Data EE memory locations code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF,_WRT_ENABLE_OFF",
@@ -150,7 +157,8 @@
                     "label": "0000h to 05FFh write-protected, 0600h to 07FFh may be modified by EECON control",
                     "value": "1536,_WRT_ENABLE_1536"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -165,7 +173,8 @@
                     "label": "In-Circuit Debugger enabled, RB6 and RB7 are dedicated to the debugger",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "RB2,_CCP1_RB2",
@@ -180,7 +189,8 @@
                     "label": "CCP1 function on RB3",
                     "value": "RB3,_CCP1_RB3"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -195,7 +205,8 @@
                     "label": "All memory locations code-protected",
                     "value": "ON,_CP_ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16F819",

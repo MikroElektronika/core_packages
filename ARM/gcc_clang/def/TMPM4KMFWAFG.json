@@ -78,7 +78,8 @@
                 }
             ],
             "key": "SYSTEM_CGOSCCR",
-            "unused": "FFFFF0F0"
+            "unused": "FFFFF0F0",
+            "label": "Oscillation control register"
         },
         {
             "address": "40083020",
@@ -1249,19 +1250,19 @@
                     "mask": "1C00000",
                     "settings": [
                         {
-                            "label": "6 < Fosc ≤ 7",
+                            "label": "6 < Fosc \u2264 7",
                             "value": "0"
                         },
                         {
-                            "label": "7 < Fosc ≤ 8",
+                            "label": "7 < Fosc \u2264 8",
                             "value": "400000"
                         },
                         {
-                            "label": "8 < Fosc ≤ 10",
+                            "label": "8 < Fosc \u2264 10",
                             "value": "800000"
                         },
                         {
-                            "label": "10 < Fosc ≤ 12",
+                            "label": "10 < Fosc \u2264 12",
                             "value": "C00000"
                         }
                     ]
@@ -1293,7 +1294,8 @@
                 }
             ],
             "key": "SYSTEM_CGPLL0SEL",
-            "unused": "000000FC"
+            "unused": "000000FC",
+            "label": "Pll selection register 0"
         },
         {
             "address": "40083008",
@@ -1400,7 +1402,8 @@
                 }
             ],
             "key": "SYSTEM_CGSYSCR",
-            "unused": "FFFFF038"
+            "unused": "FFFFF038",
+            "label": "System clock control register"
         }
     ],
     "core": "M4EF",

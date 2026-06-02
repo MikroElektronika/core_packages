@@ -49,7 +49,8 @@
                     "label": "LP oscillator",
                     "value": "LP"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF",
@@ -64,7 +65,8 @@
                     "label": "Oscillator system clock switch option is disabled (main oscillator is source)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF",
@@ -79,7 +81,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -94,7 +97,8 @@
                     "label": "Brown-out Reset disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "20",
@@ -117,7 +121,8 @@
                     "label": "VBOR set to 4.5V",
                     "value": "45"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -132,7 +137,8 @@
                     "label": "WDT disabled (control is placed on the SWDTEN bit)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "32768",
@@ -203,7 +209,8 @@
                     "label": "1:1",
                     "value": "1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "MC",
@@ -226,7 +233,8 @@
                     "label": "Extended Microcontroller mode",
                     "value": "EM"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "OFF",
@@ -241,7 +249,8 @@
                     "label": "Wait selections for table reads and table writes are determined by WAIT1:WAIT0 bits (MEMCOM<5:4>)",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "ON",
@@ -256,7 +265,8 @@
                     "label": "CCP2 is multiplexed with RB3 in Extended Microcontroller, Microprocessor or Microprocessor with Boot Block mode. Or with RE7 in Microcontroller mode.",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "PORTE",
@@ -271,7 +281,8 @@
                     "label": "P1B, P1C are multiplexed with RH7, RH6",
                     "value": "PORTH"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "ON",
@@ -286,7 +297,8 @@
                     "label": "RG5 input enabled, MCLR disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "ON",
@@ -301,7 +313,8 @@
                     "label": "Stack full/underflow will not cause Reset",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "ON",
@@ -316,7 +329,8 @@
                     "label": "Low-voltage ICSP disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -331,7 +345,8 @@
                     "label": "Background debugger enabled. RB6 and RB7 are dedicated to in-circuit debug.",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -346,7 +361,8 @@
                     "label": "Block 0 (000800-003FFFh) code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -361,7 +377,8 @@
                     "label": "Block 1 (004000-007FFFh) code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -376,7 +393,8 @@
                     "label": "Block 2 (008000-00BFFFh) code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -391,7 +409,8 @@
                     "label": "Boot block (000000-0007FFh) code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "OFF",
@@ -406,7 +425,8 @@
                     "label": "Data EEPROM code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "OFF",
@@ -421,7 +441,8 @@
                     "label": "Block 0 (000800-003FFFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -436,7 +457,8 @@
                     "label": "Block 1 (004000-007FFFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -451,7 +473,8 @@
                     "label": "Block 2 (008000-00BFFFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -466,7 +489,8 @@
                     "label": "Configuration registers (300000-3000FFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -481,7 +505,8 @@
                     "label": "Boot block (000000-0007FFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -496,7 +521,8 @@
                     "label": "Data EEPROM write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -511,7 +537,8 @@
                     "label": "Block 0 (000800-003FFFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -526,7 +553,8 @@
                     "label": "Block 1 (004000-007FFFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -541,7 +569,8 @@
                     "label": "Block 2 (008000-00BFFFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -556,7 +585,8 @@
                     "label": "Boot block (000000-0007FFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7H"
         }
     ],
     "mcu": "PIC18F8585",

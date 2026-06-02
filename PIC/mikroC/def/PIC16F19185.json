@@ -848,7 +848,8 @@
                 }
             ],
             "key": "CONFIG1",
-            "unused": "D088"
+            "unused": "D088",
+            "label": "CONFIG1"
         },
         {
             "address": "8008",
@@ -1025,7 +1026,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "C118"
+            "unused": "C118",
+            "label": "CONFIG2"
         },
         {
             "address": "8009",
@@ -1261,7 +1263,8 @@
                 }
             ],
             "key": "CONFIG3",
-            "unused": "C080"
+            "unused": "C080",
+            "label": "CONFIG3"
         },
         {
             "address": "800A",
@@ -1446,7 +1449,8 @@
                 }
             ],
             "key": "CONFIG4",
-            "unused": "D060"
+            "unused": "D060",
+            "label": "CONFIG4"
         },
         {
             "address": "800B",
@@ -1471,7 +1475,8 @@
                 }
             ],
             "key": "CONFIG5",
-            "unused": "FFFE"
+            "unused": "FFFE",
+            "label": "CONFIG5"
         }
     ],
     "core": "P16_Enh",

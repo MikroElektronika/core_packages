@@ -25,7 +25,8 @@
                     "label": "INTOSC oscillator: I/O function on CLKIN pin",
                     "value": "INTOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -40,7 +41,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -55,7 +57,8 @@
                     "label": "MCLR/VPP pin function is digital input",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -70,7 +73,8 @@
                     "label": "Program memory code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -93,7 +97,8 @@
                     "label": "Brown-out Reset disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -108,7 +113,8 @@
                     "label": "CLKOUT function is enabled on the CLKOUT pin",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -123,7 +129,8 @@
                     "label": "Internal External Switch Over mode is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -138,7 +145,8 @@
                     "label": "Fail-Safe Clock Monitor is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -161,7 +169,8 @@
                     "label": "000h to 1FFFh write protected, no addresses may be modified by PMCON control",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -176,7 +185,8 @@
                     "label": "The PPSLOCK bit can be set and cleared repeatedly by software",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -191,7 +201,8 @@
                     "label": "ZCD always enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -206,7 +217,8 @@
                     "label": "4x PLL is enabled when software sets the SPLLEN bit",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -221,7 +233,8 @@
                     "label": "Stack Overflow or Underflow will not cause a Reset",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "LO",
@@ -236,7 +249,8 @@
                     "label": "Brown-out Reset Voltage (Vbor), high trip point selected.",
                     "value": "HI"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -251,7 +265,8 @@
                     "label": "Low-Power BOR is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -266,7 +281,8 @@
                     "label": "In-Circuit Debugger enabled, ICSPCLK and ICSPDAT are dedicated to the debugger",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -281,7 +297,8 @@
                     "label": "High-voltage on MCLR/VPP must be used for programming",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "WDTCPS1F",
@@ -368,7 +385,8 @@
                     "label": "Software Control (WDTPS)",
                     "value": "WDTCPS1F"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "ON",
@@ -391,7 +409,8 @@
                     "label": "WDT disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WDTCWSSW",
@@ -430,7 +449,8 @@
                     "label": "Software WDT window size control (WDTWS bits)",
                     "value": "WDTCWSSW"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "SWC",
@@ -449,7 +469,8 @@
                     "label": "Software control, controlled by WDTCS bits",
                     "value": "SWC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         }
     ],
     "mcu": "PIC16F1615",

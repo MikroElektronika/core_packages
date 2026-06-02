@@ -262,7 +262,8 @@
                 }
             ],
             "key": "RCU_CTL",
-            "unused": "EAF2FF06"
+            "unused": "EAF2FF06",
+            "label": "Control register"
         },
         {
             "address": "40021004",
@@ -647,7 +648,8 @@
                 }
             ],
             "key": "RCU_CFG0",
-            "unused": "C002000C"
+            "unused": "C002000C",
+            "label": "Clock configuration register 0"
         },
         {
             "address": "40021020",
@@ -731,7 +733,8 @@
                 }
             ],
             "key": "RCU_BDCTL",
-            "unused": "FFFF7CFA"
+            "unused": "FFFF7CFA",
+            "label": "Backup domain control register"
         },
         {
             "address": "40021024",
@@ -756,7 +759,8 @@
                 }
             ],
             "key": "RCU_RSTSCK",
-            "unused": "FFFFFFFE"
+            "unused": "FFFFFFFE",
+            "label": "Reset source /clock register"
         },
         {
             "address": "4002102C",
@@ -1059,7 +1063,8 @@
                 }
             ],
             "key": "RCU_CFG1",
-            "unused": "FFF80000"
+            "unused": "FFF80000",
+            "label": "Clock configuration register 1"
         },
         {
             "address": "40021034",
@@ -1092,12 +1097,12 @@
                 }
             ],
             "key": "RCU_DSV",
-            "unused": "FFFFFFFC"
+            "unused": "FFFFFFFC",
+            "label": "Deep sleep mode voltage register"
         }
     ],
     "core": "RISCV",
-    "info": {
-    },
+    "info": {},
     "ivt": [
         {
             "name": "IVT_INT_RESERVED2",

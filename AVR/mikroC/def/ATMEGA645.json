@@ -28,27 +28,27 @@
             "nmb_text": "5",
             "text1": {
                 "mask": "0x06",
-            "text": "Brown-out detection disabled; [BODLEVEL=11]",
+                "text": "Brown-out detection disabled; [BODLEVEL=11]",
                 "value": "0x06"
             },
             "text2": {
                 "mask": "0x06",
-            "text": "Brown-out detection level at VCC=1.8 V; [BODLEVEL=10]",
+                "text": "Brown-out detection level at VCC=1.8 V; [BODLEVEL=10]",
                 "value": "0x04"
             },
             "text3": {
                 "mask": "0x06",
-            "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=01]",
+                "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=01]",
                 "value": "0x02"
             },
             "text4": {
                 "mask": "0x06",
-            "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=00]",
+                "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=00]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x01",
-            "text": "External Reset Disable; [RESERVED=1]",
+                "text": "External Reset Disable; [RESERVED=1]",
                 "value": "0x00"
             }
         },
@@ -97,56 +97,56 @@
             "nmb_text": "10",
             "text1": {
                 "mask": "0x80",
-            "text": "On-Chip Debug Enabled; [OCDEN=0]",
+                "text": "On-Chip Debug Enabled; [OCDEN=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x01",
-            "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
+                "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "JTAG Interface Enabled; [JTAGEN=0]",
+                "text": "JTAG Interface Enabled; [JTAGEN=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "Watchdog timer always on; [WDTON=0]",
+                "text": "Watchdog timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x08",
-            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=512 words; Boot start address=$7E00; [BOOTSZ=11]",
+                "text": "Boot Flash section size=512 words; Boot start address=$7E00; [BOOTSZ=11]",
                 "value": "0x06"
             },
             "text7": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=1024 words; Boot start address=$7C00; [BOOTSZ=10]",
+                "text": "Boot Flash section size=1024 words; Boot start address=$7C00; [BOOTSZ=10]",
                 "value": "0x04"
             },
             "text8": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=2048 words; Boot start address=$7800; [BOOTSZ=01]",
+                "text": "Boot Flash section size=2048 words; Boot start address=$7800; [BOOTSZ=01]",
                 "value": "0x02"
             },
             "text9": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=4096 words; Boot start address=$7000; [BOOTSZ=00] ; default value",
+                "text": "Boot Flash section size=4096 words; Boot start address=$7000; [BOOTSZ=00] ; default value",
                 "value": "0x00"
             }
         },
-    "list": "[LOW:HIGH:EXTENDED]",
+        "list": "[LOW:HIGH:EXTENDED]",
         "low": {
             "fuse0": {
                 "default": "0",
@@ -192,232 +192,232 @@
             "nmb_text": "46",
             "text1": {
                 "mask": "0x80",
-            "text": "Divide clock by 8 internally; [CKDIV8=0]",
+                "text": "Divide clock by 8 internally; [CKDIV8=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 4.1 ms; [CKSEL=0111 SUT=01]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 4.1 ms; [CKSEL=0111 SUT=01]",
                 "value": "0x17"
             },
             "text11": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 65 ms; [CKSEL=0111 SUT=10]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 65 ms; [CKSEL=0111 SUT=10]",
                 "value": "0x27"
             },
             "text12": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 0 ms; [CKSEL=0110 SUT=00]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 0 ms; [CKSEL=0110 SUT=00]",
                 "value": "0x06"
             },
             "text13": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 4.1 ms; [CKSEL=0110 SUT=01]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 4.1 ms; [CKSEL=0110 SUT=01]",
                 "value": "0x16"
             },
             "text14": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 65 ms; [CKSEL=0110 SUT=10]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 65 ms; [CKSEL=0110 SUT=10]",
                 "value": "0x26"
             },
             "text15": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 258 CK + 4.1 ms; [CKSEL=1000 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 258 CK + 4.1 ms; [CKSEL=1000 SUT=00]",
                 "value": "0x08"
             },
             "text16": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 258 CK + 65 ms; [CKSEL=1000 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 258 CK + 65 ms; [CKSEL=1000 SUT=01]",
                 "value": "0x18"
             },
             "text17": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 1K CK + 0 ms; [CKSEL=1000 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 1K CK + 0 ms; [CKSEL=1000 SUT=10]",
                 "value": "0x28"
             },
             "text18": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 1K CK + 4.1 ms; [CKSEL=1000 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 1K CK + 4.1 ms; [CKSEL=1000 SUT=11]",
                 "value": "0x38"
             },
             "text19": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 1K CK + 65 ms; [CKSEL=1001 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 1K CK + 65 ms; [CKSEL=1001 SUT=00]",
                 "value": "0x09"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Clock output on PORTE7; [CKOUT=0]",
+                "text": "Clock output on PORTE7; [CKOUT=0]",
                 "value": "0x00"
             },
             "text20": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 16K CK + 0 ms; [CKSEL=1001 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 16K CK + 0 ms; [CKSEL=1001 SUT=01]",
                 "value": "0x19"
             },
             "text21": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 16K CK + 4.1 ms; [CKSEL=1001 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 16K CK + 4.1 ms; [CKSEL=1001 SUT=10]",
                 "value": "0x29"
             },
             "text22": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 16K CK + 65 ms; [CKSEL=1001 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time: 16K CK + 65 ms; [CKSEL=1001 SUT=11]",
                 "value": "0x39"
             },
             "text23": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 258 CK + 4.1 ms; [CKSEL=1010 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 258 CK + 4.1 ms; [CKSEL=1010 SUT=00]",
                 "value": "0x0A"
             },
             "text24": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 258 CK + 65 ms; [CKSEL=1010 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 258 CK + 65 ms; [CKSEL=1010 SUT=01]",
                 "value": "0x1A"
             },
             "text25": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 1K CK + 0 ms; [CKSEL=1010 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 1K CK + 0 ms; [CKSEL=1010 SUT=10]",
                 "value": "0x2A"
             },
             "text26": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 1K CK + 4.1 ms; [CKSEL=1010 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 1K CK + 4.1 ms; [CKSEL=1010 SUT=11]",
                 "value": "0x3A"
             },
             "text27": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 1K CK + 65 ms; [CKSEL=1011 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 1K CK + 65 ms; [CKSEL=1011 SUT=00]",
                 "value": "0x0B"
             },
             "text28": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 16K CK + 0 ms; [CKSEL=1011 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 16K CK + 0 ms; [CKSEL=1011 SUT=01]",
                 "value": "0x1B"
             },
             "text29": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 16K CK + 4.1 ms; [CKSEL=1011 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 16K CK + 4.1 ms; [CKSEL=1011 SUT=10]",
                 "value": "0x2B"
             },
             "text3": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time: 6 CK + 0 ms; [CKSEL=0000 SUT=00]",
+                "text": "Ext. Clock; Start-up time: 6 CK + 0 ms; [CKSEL=0000 SUT=00]",
                 "value": "0x00"
             },
             "text30": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 16K CK + 65 ms; [CKSEL=1011 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time: 16K CK + 65 ms; [CKSEL=1011 SUT=11]",
                 "value": "0x3B"
             },
             "text31": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 258 CK + 4.1 ms; [CKSEL=1100 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 258 CK + 4.1 ms; [CKSEL=1100 SUT=00]",
                 "value": "0x0C"
             },
             "text32": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 258 CK + 65 ms; [CKSEL=1100 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 258 CK + 65 ms; [CKSEL=1100 SUT=01]",
                 "value": "0x1C"
             },
             "text33": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 1K CK + 0 ms; [CKSEL=1100 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 1K CK + 0 ms; [CKSEL=1100 SUT=10]",
                 "value": "0x2C"
             },
             "text34": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 1K CK + 4.1 ms; [CKSEL=1100 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 1K CK + 4.1 ms; [CKSEL=1100 SUT=11]",
                 "value": "0x3C"
             },
             "text35": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 1K CK + 65 ms; [CKSEL=1101 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 1K CK + 65 ms; [CKSEL=1101 SUT=00]",
                 "value": "0x0D"
             },
             "text36": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 16K CK + 0 ms; [CKSEL=1101 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 16K CK + 0 ms; [CKSEL=1101 SUT=01]",
                 "value": "0x1D"
             },
             "text37": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 16K CK + 4.1 ms; [CKSEL=1101 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 16K CK + 4.1 ms; [CKSEL=1101 SUT=10]",
                 "value": "0x2D"
             },
             "text38": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 16K CK + 65 ms; [CKSEL=1101 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time: 16K CK + 65 ms; [CKSEL=1101 SUT=11]",
                 "value": "0x3D"
             },
             "text39": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 258 CK + 4.1 ms; [CKSEL=1110 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 258 CK + 4.1 ms; [CKSEL=1110 SUT=00]",
                 "value": "0x0E"
             },
             "text4": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time: 6 CK + 4.1 ms; [CKSEL=0000 SUT=01]",
+                "text": "Ext. Clock; Start-up time: 6 CK + 4.1 ms; [CKSEL=0000 SUT=01]",
                 "value": "0x10"
             },
             "text40": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 258 CK + 65 ms; [CKSEL=1110 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 258 CK + 65 ms; [CKSEL=1110 SUT=01]",
                 "value": "0x1E"
             },
             "text41": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 1K CK + 0 ms; [CKSEL=1110 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 1K CK + 0 ms; [CKSEL=1110 SUT=10]",
                 "value": "0x2E"
             },
             "text42": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 1K CK + 4.1 ms; [CKSEL=1110 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 1K CK + 4.1 ms; [CKSEL=1110 SUT=11]",
                 "value": "0x3E"
             },
             "text43": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 1K CK + 65 ms; [CKSEL=1111 SUT=00]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 1K CK + 65 ms; [CKSEL=1111 SUT=00]",
                 "value": "0x0F"
             },
             "text44": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 16K CK + 0 ms; [CKSEL=1111 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 16K CK + 0 ms; [CKSEL=1111 SUT=01]",
                 "value": "0x1F"
             },
             "text45": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 16K CK + 4.1 ms; [CKSEL=1111 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 16K CK + 4.1 ms; [CKSEL=1111 SUT=10]",
                 "value": "0x2F"
             },
             "text46": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 16K CK + 65 ms; [CKSEL=1111 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time: 16K CK + 65 ms; [CKSEL=1111 SUT=11]",
                 "value": "0x3F"
             },
             "text5": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time: 6 CK + 65 ms; [CKSEL=0000 SUT=10]",
+                "text": "Ext. Clock; Start-up time: 6 CK + 65 ms; [CKSEL=0000 SUT=10]",
                 "value": "0x20"
             },
             "text6": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc.; Start-up time: 6 CK + 0 ms; [CKSEL=0010 SUT=00]",
+                "text": "Int. RC Osc.; Start-up time: 6 CK + 0 ms; [CKSEL=0010 SUT=00]",
                 "value": "0x02"
             },
             "text7": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc.; Start-up time: 6 CK + 4.1 ms; [CKSEL=0010 SUT=01]",
+                "text": "Int. RC Osc.; Start-up time: 6 CK + 4.1 ms; [CKSEL=0010 SUT=01]",
                 "value": "0x12"
             },
             "text8": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc.; Start-up time: 6 CK + 65 ms; [CKSEL=0010 SUT=10]",
+                "text": "Int. RC Osc.; Start-up time: 6 CK + 65 ms; [CKSEL=0010 SUT=10]",
                 "value": "0x22"
             },
             "text9": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 0 ms; [CKSEL=0111 SUT=00]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 0 ms; [CKSEL=0111 SUT=00]",
                 "value": "0x07"
             }
         }
@@ -537,54 +537,54 @@
     "core": "LTE64K",
     "delay_src_path": "delays/lte64k/__lib_delays.c",
     "package": {
-    "packages": "[TQFP]",
+        "packages": "[TQFP]",
         "tqfp": {
             "nmb_pin": "64",
             "pin1": {
                 "pin_name": "NC"
             },
             "pin10": {
-            "alt_name": "['SS:PCINT8]",
+                "alt_name": "['SS:PCINT8]",
                 "pin_name": "PB0"
             },
             "pin11": {
-            "alt_name": "[SCK:PCINT9]",
+                "alt_name": "[SCK:PCINT9]",
                 "pin_name": "PB1"
             },
             "pin12": {
-            "alt_name": "[MOSI:PCINT10]",
+                "alt_name": "[MOSI:PCINT10]",
                 "pin_name": "PB2"
             },
             "pin13": {
-            "alt_name": "[MISO:PCINT11]",
+                "alt_name": "[MISO:PCINT11]",
                 "pin_name": "PB3"
             },
             "pin14": {
-            "alt_name": "[OC0A:PCINT12]",
+                "alt_name": "[OC0A:PCINT12]",
                 "pin_name": "PB4"
             },
             "pin15": {
-            "alt_name": "[OC1A:PCINT13]",
+                "alt_name": "[OC1A:PCINT13]",
                 "pin_name": "PB5"
             },
             "pin16": {
-            "alt_name": "[OC1B:PCINT14]",
+                "alt_name": "[OC1B:PCINT14]",
                 "pin_name": "PB6"
             },
             "pin17": {
-            "alt_name": "[OC2A:PCINT15]",
+                "alt_name": "[OC2A:PCINT15]",
                 "pin_name": "PB7"
             },
             "pin18": {
-            "alt_name": "[T1]",
+                "alt_name": "[T1]",
                 "pin_name": "PG3"
             },
             "pin19": {
-            "alt_name": "[T0]",
+                "alt_name": "[T0]",
                 "pin_name": "PG4"
             },
             "pin2": {
-            "alt_name": "[RXD:PCINT0]",
+                "alt_name": "[RXD:PCINT0]",
                 "pin_name": "PE0"
             },
             "pin20": {
@@ -597,19 +597,19 @@
                 "pin_name": "GND"
             },
             "pin23": {
-            "alt_name": "[TOSC2]",
+                "alt_name": "[TOSC2]",
                 "pin_name": "XTAL2"
             },
             "pin24": {
-            "alt_name": "[TOSC1]",
+                "alt_name": "[TOSC1]",
                 "pin_name": "XTAL1"
             },
             "pin25": {
-            "alt_name": "[ICP1]",
+                "alt_name": "[ICP1]",
                 "pin_name": "PD0"
             },
             "pin26": {
-            "alt_name": "[INT0]",
+                "alt_name": "[INT0]",
                 "pin_name": "PD1"
             },
             "pin27": {
@@ -622,7 +622,7 @@
                 "pin_name": "PD4"
             },
             "pin3": {
-            "alt_name": "[TXD:PCINT1]",
+                "alt_name": "[TXD:PCINT1]",
                 "pin_name": "PE1"
             },
             "pin30": {
@@ -656,7 +656,7 @@
                 "pin_name": "PC4"
             },
             "pin4": {
-            "alt_name": "[XCK:AIN0:PCINT2]",
+                "alt_name": "[XCK:AIN0:PCINT2]",
                 "pin_name": "PE2"
             },
             "pin40": {
@@ -690,7 +690,7 @@
                 "pin_name": "PA2"
             },
             "pin5": {
-            "alt_name": "[AIN1:PCINT3]",
+                "alt_name": "[AIN1:PCINT3]",
                 "pin_name": "PE3"
             },
             "pin50": {
@@ -706,39 +706,39 @@
                 "pin_name": "GND"
             },
             "pin54": {
-            "alt_name": "[ADC7:TDI]",
+                "alt_name": "[ADC7:TDI]",
                 "pin_name": "PF7"
             },
             "pin55": {
-            "alt_name": "[ADC6:TD0]",
+                "alt_name": "[ADC6:TD0]",
                 "pin_name": "PF6"
             },
             "pin56": {
-            "alt_name": "[ADC5:TMS]",
+                "alt_name": "[ADC5:TMS]",
                 "pin_name": "PF5"
             },
             "pin57": {
-            "alt_name": "[ADC4:TCK]",
+                "alt_name": "[ADC4:TCK]",
                 "pin_name": "PF4"
             },
             "pin58": {
-            "alt_name": "[ADC3]",
+                "alt_name": "[ADC3]",
                 "pin_name": "PF3"
             },
             "pin59": {
-            "alt_name": "[ADC2]",
+                "alt_name": "[ADC2]",
                 "pin_name": "PF2"
             },
             "pin6": {
-            "alt_name": "[USCK:SCL:PCINT4]",
+                "alt_name": "[USCK:SCL:PCINT4]",
                 "pin_name": "PE4"
             },
             "pin60": {
-            "alt_name": "[ADC1]",
+                "alt_name": "[ADC1]",
                 "pin_name": "PF1"
             },
             "pin61": {
-            "alt_name": "[ADC0]",
+                "alt_name": "[ADC0]",
                 "pin_name": "PF0"
             },
             "pin62": {
@@ -751,15 +751,15 @@
                 "pin_name": "AVCC"
             },
             "pin7": {
-            "alt_name": "[DI:SDA:PCINT5]",
+                "alt_name": "[DI:SDA:PCINT5]",
                 "pin_name": "PE5"
             },
             "pin8": {
-            "alt_name": "[DO:PCINT6]",
+                "alt_name": "[DO:PCINT6]",
                 "pin_name": "PE6"
             },
             "pin9": {
-            "alt_name": "[CLKO:PCINT7]",
+                "alt_name": "[CLKO:PCINT7]",
                 "pin_name": "PE7"
             }
         }
@@ -1138,7 +1138,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -1273,7 +1274,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         },
         {
             "address": "820002",
@@ -1323,7 +1325,8 @@
                 }
             ],
             "key": "EXTENDED",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "EXTENDED"
         }
     ],
     "avr_core": "avr5"

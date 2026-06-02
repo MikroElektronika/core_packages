@@ -105,7 +105,8 @@
                     "label": "HS3 w/PLL 16x",
                     "value": "HS3_PLL16"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "CSW_FSCM_OFF",
@@ -124,7 +125,8 @@
                     "label": "Sw Disabled, Mon Disabled",
                     "value": "CSW_FSCM_OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "WDTPSB_16",
@@ -195,7 +197,8 @@
                     "label": "1:16",
                     "value": "WDTPSB_16"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WDTPSA_512",
@@ -218,7 +221,8 @@
                     "label": "1:512",
                     "value": "WDTPSA_512"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WDT_ON",
@@ -233,7 +237,8 @@
                     "label": "Enabled",
                     "value": "WDT_ON"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PWRT_64",
@@ -256,7 +261,8 @@
                     "label": "64ms",
                     "value": "PWRT_64"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "BORV20",
@@ -279,7 +285,8 @@
                     "label": "Reserved",
                     "value": "BORV20"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "PBOR_ON",
@@ -294,7 +301,8 @@
                     "label": "Enabled",
                     "value": "PBOR_ON"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "PWMxL_ACT_HI",
@@ -309,7 +317,8 @@
                     "label": "Active High",
                     "value": "PWMxL_ACT_HI"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "PWMxH_ACT_HI",
@@ -324,7 +333,8 @@
                     "label": "Active High",
                     "value": "PWMxH_ACT_HI"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "RST_IOPIN",
@@ -339,7 +349,8 @@
                     "label": "Control with PORT/TRIS regs",
                     "value": "RST_IOPIN"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "MCLR_EN",
@@ -354,7 +365,8 @@
                     "label": "Enabled",
                     "value": "MCLR_EN"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "WR_PROTECT_BOOT_OFF",
@@ -369,7 +381,8 @@
                     "label": "Boot Segment Program Memory may be written",
                     "value": "WR_PROTECT_BOOT_OFF"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "NO_BOOT_CODE",
@@ -404,7 +417,8 @@
                     "label": "No Boot Segment",
                     "value": "NO_BOOT_CODE"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "NO_BOOT_EEPROM",
@@ -419,7 +433,8 @@
                     "label": "No Boot EEPROM",
                     "value": "NO_BOOT_EEPROM"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "NO_BOOT_RAM",
@@ -442,7 +457,8 @@
                     "label": "No Boot RAM",
                     "value": "NO_BOOT_RAM"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "WR_PROT_SEC_OFF",
@@ -457,7 +473,8 @@
                     "label": "Disabled",
                     "value": "WR_PROT_SEC_OFF"
                 }
-            ]
+            ],
+            "label_group": "FSS"
         },
         {
             "init": "NO_SEC_CODE",
@@ -492,7 +509,8 @@
                     "label": "No Secure Segment",
                     "value": "NO_SEC_CODE"
                 }
-            ]
+            ],
+            "label_group": "FSS"
         },
         {
             "init": "NO_SEC_EEPROM",
@@ -515,7 +533,8 @@
                     "label": "No Segment Data EEPROM",
                     "value": "NO_SEC_EEPROM"
                 }
-            ]
+            ],
+            "label_group": "FSS"
         },
         {
             "init": "NO_SEC_RAM",
@@ -538,7 +557,8 @@
                     "label": "No Secure RAM",
                     "value": "NO_SEC_RAM"
                 }
-            ]
+            ],
+            "label_group": "FSS"
         },
         {
             "init": "GWRP_OFF",
@@ -553,7 +573,8 @@
                     "label": "Disabled",
                     "value": "GWRP_OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "GSS_OFF",
@@ -572,7 +593,8 @@
                     "label": "Disabled",
                     "value": "GSS_OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "ICS_PGD",
@@ -595,7 +617,8 @@
                     "label": "Use PGC/EMUC and PGD/EMUD",
                     "value": "ICS_PGD"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         }
     ],
     "mcu": "dsPIC30F6010A",

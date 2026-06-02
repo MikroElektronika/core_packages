@@ -47,7 +47,8 @@
                 }
             ],
             "key": "CPUSEL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Cpu clock select"
         },
         {
             "address": "40000409",
@@ -96,7 +97,8 @@
                 }
             ],
             "key": "APBASEL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Apba clock select"
         },
         {
             "address": "4000040A",
@@ -145,7 +147,8 @@
                 }
             ],
             "key": "APBBSEL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Apbb clock select"
         },
         {
             "address": "4000040B",
@@ -194,7 +197,8 @@
                 }
             ],
             "key": "APBCSEL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Apbc clock select"
         },
         {
             "address": "41004004",
@@ -216,7 +220,8 @@
                 }
             ],
             "key": "NVMCTRL_CTRLB",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Control b"
         },
         {
             "address": "40000820",
@@ -300,7 +305,8 @@
                 }
             ],
             "key": "OSC8M",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "8mhz internal oscillator (osc8m) control"
         },
         {
             "address": "40000818",
@@ -434,7 +440,8 @@
                 }
             ],
             "key": "OSC32K",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "32khz internal oscillator (osc32k) control"
         },
         {
             "address": "40000814",
@@ -585,7 +592,8 @@
                 }
             ],
             "key": "XOSC32K",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "32khz external crystal oscillator (xosc32k) control"
         },
         {
             "address": "4000081C",
@@ -641,7 +649,8 @@
                 }
             ],
             "key": "OSCULP32K",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "32khz ultra low power internal oscillator (osculp32k) control"
         },
         {
             "address": "40000810",
@@ -836,7 +845,8 @@
                 }
             ],
             "key": "XOSC",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "External multipurpose crystal oscillator (xosc) control"
         },
         {
             "address": "40000824",
@@ -946,7 +956,8 @@
                 }
             ],
             "key": "DFLLCTRL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dfll48m control"
         },
         {
             "address": "40000844",
@@ -1005,7 +1016,8 @@
                 }
             ],
             "key": "DPLLCTRLA",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dpll control a"
         },
         {
             "address": "4000082C",
@@ -1055,7 +1067,8 @@
                 }
             ],
             "key": "DFLLMUL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dfll48m multiplier"
         },
         {
             "address": "40000848",
@@ -1091,7 +1104,8 @@
                 }
             ],
             "key": "DPLLRATIO",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dpll ratio control"
         },
         {
             "address": "4000084C",
@@ -1239,7 +1253,8 @@
                 }
             ],
             "key": "DPLLCTRLB",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dpll control b"
         },
         {
             "address": "40000828",
@@ -1275,7 +1290,8 @@
                 }
             ],
             "key": "DFLLVAL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dfll48m value"
         },
         {
             "address": "40000C04",
@@ -1430,7 +1446,8 @@
                 }
             ],
             "key": "GENCTRL0",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "11111111",
@@ -1581,7 +1598,8 @@
                 }
             ],
             "key": "GENCTRL1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "22222222",
@@ -1736,7 +1754,8 @@
                 }
             ],
             "key": "GENCTRL2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "33333333",
@@ -1891,7 +1910,8 @@
                 }
             ],
             "key": "GENCTRL3",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "44444444",
@@ -2046,7 +2066,8 @@
                 }
             ],
             "key": "GENCTRL4",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "55555555",
@@ -2201,7 +2222,8 @@
                 }
             ],
             "key": "GENCTRL5",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "66666666",
@@ -2356,7 +2378,8 @@
                 }
             ],
             "key": "GENCTRL6",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "77777777",
@@ -2511,7 +2534,8 @@
                 }
             ],
             "key": "GENCTRL7",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "88888888",
@@ -2666,7 +2690,8 @@
                 }
             ],
             "key": "GENCTRL8",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "40000C08",
@@ -2690,7 +2715,8 @@
                 }
             ],
             "key": "GENDIV",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator division"
         },
         {
             "address": "40000C02",
@@ -2743,7 +2769,8 @@
                 }
             ],
             "key": "CLKCTRL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock control"
         },
         {
             "address": "00000000",
@@ -2768,7 +2795,8 @@
                 }
             ],
             "key": "TEMPLATE",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         }
     ],
     "core": "M0+",

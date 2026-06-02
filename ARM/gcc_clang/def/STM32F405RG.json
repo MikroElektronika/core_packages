@@ -125,7 +125,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock control register"
         },
         {
             "address": "40023804",
@@ -2554,7 +2555,8 @@
                 }
             ],
             "key": "RCC_PLLCFGR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "PLL configuration register"
         },
         {
             "address": "40023808",
@@ -2948,7 +2950,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock configuration register"
         },
         {
             "address": "400FE070",
@@ -2981,7 +2984,8 @@
                 }
             ],
             "key": "SVRANGE",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         }
     ],
     "core": "M4EF",

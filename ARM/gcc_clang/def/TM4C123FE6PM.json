@@ -312,7 +312,8 @@
                 }
             ],
             "key": "RCC",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Run-mode clock configuration"
         },
         {
             "address": "400FE070",
@@ -712,7 +713,8 @@
                 }
             ],
             "key": "RCC2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Run-mode clock configuration 2"
         }
     ],
     "core": "M4EF",

@@ -265,7 +265,8 @@
                 }
             ],
             "key": "SYSTEM_SCKDIVCR",
-            "unused": "88f88888"
+            "unused": "88f88888",
+            "label": "System clock division control register"
         },
         {
             "address": "4001e026",
@@ -306,7 +307,8 @@
                 }
             ],
             "key": "SYSTEM_SCKSCR",
-            "unused": "000000f8"
+            "unused": "000000f8",
+            "label": "System clock source control register"
         },
         {
             "address": "4001e028",
@@ -525,7 +527,8 @@
                 }
             ],
             "key": "SYSTEM_PLLCCR",
-            "unused": "0000c0ec"
+            "unused": "0000c0ec",
+            "label": "Pll clock control register"
         },
         {
             "address": "4001e02a",
@@ -550,7 +553,8 @@
                 }
             ],
             "key": "SYSTEM_PLLCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Pll control register"
         },
         {
             "address": "4001e032",
@@ -575,7 +579,8 @@
                 }
             ],
             "key": "SYSTEM_MOSCCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Main clock oscillator control register"
         },
         {
             "address": "4001e036",
@@ -600,7 +605,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "High-speed on-chip oscillator control register"
         },
         {
             "address": "4001e037",
@@ -629,7 +635,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "000000fc"
+            "unused": "000000fc",
+            "label": "High-speed on-chip oscillator control register 2"
         },
         {
             "address": "4001e038",
@@ -654,7 +661,8 @@
                 }
             ],
             "key": "SYSTEM_MOCOCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Middle-speed on-chip oscillator control register"
         },
         {
             "address": "4001e03e",
@@ -749,7 +757,8 @@
                 }
             ],
             "key": "SYSTEM_CKOCR",
-            "unused": "00000008"
+            "unused": "00000008",
+            "label": "Clock out control register"
         },
         {
             "address": "4001e048",
@@ -968,7 +977,8 @@
                 }
             ],
             "key": "SYSTEM_PLL2CCR",
-            "unused": "0000c0ec"
+            "unused": "0000c0ec",
+            "label": "Pll2 clock control register"
         },
         {
             "address": "4001e04a",
@@ -993,7 +1003,8 @@
                 }
             ],
             "key": "SYSTEM_PLL2CR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Pll2 control register"
         },
         {
             "address": "4001e0a0",
@@ -1018,7 +1029,8 @@
                 }
             ],
             "key": "SYSTEM_OPCCR",
-            "unused": "000000ec"
+            "unused": "000000ec",
+            "label": "Operating power control register"
         },
         {
             "address": "4001e0a2",
@@ -1075,7 +1087,8 @@
                 }
             ],
             "key": "SYSTEM_MOSCWTCR",
-            "unused": "000000f0"
+            "unused": "000000f0",
+            "label": "Main clock oscillator wait control register"
         },
         {
             "address": "4001e0aa",
@@ -1100,7 +1113,8 @@
                 }
             ],
             "key": "SYSTEM_SOPCCR",
-            "unused": "000000ee"
+            "unused": "000000ee",
+            "label": "Sub operating power control register"
         },
         {
             "address": "4001e413",
@@ -1150,7 +1164,8 @@
                 }
             ],
             "key": "SYSTEM_MOMCR",
-            "unused": "0000008f"
+            "unused": "0000008f",
+            "label": "Main clock oscillator mode oscillation control register"
         },
         {
             "address": "4001e480",
@@ -1175,7 +1190,8 @@
                 }
             ],
             "key": "SYSTEM_SOSCCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Sub-clock oscillator control register"
         },
         {
             "address": "4001e481",
@@ -1200,7 +1216,8 @@
                 }
             ],
             "key": "SYSTEM_SOMCR",
-            "unused": "000000fd"
+            "unused": "000000fd",
+            "label": "Sub-clock oscillator mode control register"
         },
         {
             "address": "4001e490",
@@ -1225,7 +1242,8 @@
                 }
             ],
             "key": "SYSTEM_LOCOCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Low-speed on-chip oscillator control register"
         }
     ],
     "core": "M33EF",

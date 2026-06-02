@@ -933,7 +933,8 @@
                 }
             ],
             "key": "FUSEBYTE0",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE0"
         },
         {
             "address": "820001",
@@ -1047,7 +1048,8 @@
                 }
             ],
             "key": "FUSEBYTE1",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE1"
         },
         {
             "address": "820002",
@@ -1118,14 +1120,16 @@
                 }
             ],
             "key": "FUSEBYTE2",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE2"
         },
         {
             "address": "820003",
             "default": "000000FF",
             "fields": [],
             "key": "reserved",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "reserved"
         },
         {
             "address": "820004",
@@ -1205,7 +1209,8 @@
                 }
             ],
             "key": "FUSEBYTE4",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE4"
         },
         {
             "address": "820005",
@@ -1292,7 +1297,8 @@
                 }
             ],
             "key": "FUSEBYTE5",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE5"
         }
     ],
     "avr_core": "avrxmega7",

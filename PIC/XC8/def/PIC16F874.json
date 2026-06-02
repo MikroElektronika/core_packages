@@ -21,7 +21,8 @@
                     "label": "LP oscillator",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -36,7 +37,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -51,7 +53,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -74,7 +77,8 @@
                     "label": "0000h to 0FFFh code protected",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_BODEN_ON",
@@ -89,7 +93,8 @@
                     "label": "BOR disabled",
                     "value": "OFF,_BODEN_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -104,7 +109,8 @@
                     "label": "RB3 is digital I/O, HV on MCLR must be used for programming",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -119,7 +125,8 @@
                     "label": "Data EEPROM memory code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WRT_ENABLE_ON",
@@ -134,7 +141,8 @@
                     "label": "Unprotected program memory may not be written to by EECON control",
                     "value": "OFF,_WRT_ENABLE_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -149,7 +157,8 @@
                     "label": "In-Circuit Debugger enabled, RB6 and RB7 are dedicated to the debugger",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16F874",

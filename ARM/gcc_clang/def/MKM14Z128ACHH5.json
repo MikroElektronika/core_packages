@@ -46,7 +46,8 @@
                 }
             ],
             "key": "SIM_CLKDIV1",
-            "unused": "07FFFFFF"
+            "unused": "07FFFFFF",
+            "label": "System clock divider register 1"
         },
         {
             "address": "40064000",
@@ -166,7 +167,8 @@
                 }
             ],
             "key": "MCG_C1",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "Mcg control 1 register"
         }
     ],
     "core": "M0+",

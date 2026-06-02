@@ -25,26 +25,26 @@
             "nmb_text": "4",
             "text1": {
                 "mask": "0x08",
-            "text": "Self programming enable; [SELFPROGEN=0]",
+                "text": "Self programming enable; [SELFPROGEN=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x04",
-            "text": "Output external clock; [CKOUT=0]",
+                "text": "Output external clock; [CKOUT=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x02",
-            "text": "Watch dog timer always on; [WDTON=0]",
+                "text": "Watch dog timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x01",
-            "text": "Disable external reset; [RSTDISBL=0]",
+                "text": "Disable external reset; [RSTDISBL=0]",
                 "value": "0x00"
             }
         },
-    "list": "[BYTE0]"
+        "list": "[BYTE0]"
     },
     "io": {
         "max_addr": "0x5F",
@@ -328,7 +328,8 @@
                 }
             ],
             "key": "BYTE0",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "BYTE0"
         }
     ],
     "avr_core": "avrtiny"

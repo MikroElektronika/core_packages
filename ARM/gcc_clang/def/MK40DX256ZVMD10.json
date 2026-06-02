@@ -123,7 +123,8 @@
                 }
             ],
             "key": "MCG_C1",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "Mcg control 1 register"
         }
     ],
     "core": "M4",

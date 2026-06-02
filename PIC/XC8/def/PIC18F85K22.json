@@ -13,7 +13,8 @@
                     "label": "Disabled - Controlled by SRETEN bit",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "HIGH",
@@ -28,7 +29,8 @@
                     "label": "LF-INTOSC in Low-power mode during Sleep",
                     "value": "LOW"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "DIG",
@@ -47,7 +49,8 @@
                     "label": "Digital (SCLKI) mode",
                     "value": "DIG"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "OFF",
@@ -62,7 +65,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "HS1",
@@ -125,7 +129,8 @@
                     "label": "LP oscillator",
                     "value": "LP"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "ON",
@@ -140,7 +145,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF",
@@ -155,7 +161,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF",
@@ -170,7 +177,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF",
@@ -185,7 +193,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "SBORDIS",
@@ -208,7 +217,8 @@
                     "label": "Disabled in hardware, SBOREN disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "3",
@@ -231,7 +241,8 @@
                     "label": "3.0V",
                     "value": "0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ZPBORMV",
@@ -254,7 +265,8 @@
                     "label": "BORMV set to low power level",
                     "value": "LOW"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "OFF",
@@ -277,7 +289,8 @@
                     "label": "WDT disabled in hardware; SWDTEN bit disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "1048576",
@@ -368,7 +381,8 @@
                     "label": "1:1",
                     "value": "1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "SOSCREF",
@@ -383,7 +397,8 @@
                     "label": "RTCC uses INTRC",
                     "value": "INTOSCREF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "ON",
@@ -398,7 +413,8 @@
                     "label": "Address shifting disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "MM",
@@ -421,7 +437,8 @@
                     "label": "8-bit address bus",
                     "value": "MM"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "16",
@@ -436,7 +453,8 @@
                     "label": "8-bit external bus mode",
                     "value": "8"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "OFF",
@@ -451,7 +469,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "PORTC",
@@ -466,7 +485,8 @@
                     "label": "RE7-Microcontroller Mode/RB3-All other modes",
                     "value": "PORTBE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "PORTE",
@@ -481,7 +501,8 @@
                     "label": "Enhanced CCP1/3 [P1B/P1C/P3B/P3C] muxed with RH7/RH6/RH5/RH4",
                     "value": "PORTH"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "MSK7",
@@ -496,7 +517,8 @@
                     "label": "5 bit address masking mode",
                     "value": "MSK5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "ON",
@@ -511,7 +533,8 @@
                     "label": "MCLR Disabled, RG5 Enabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "ON",
@@ -526,7 +549,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "BB2K",
@@ -541,7 +565,8 @@
                     "label": "1K word Boot Block size",
                     "value": "BB1K"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -556,7 +581,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -571,7 +597,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -586,7 +613,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -601,7 +629,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -616,7 +645,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -631,7 +661,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "OFF",
@@ -646,7 +677,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "OFF",
@@ -661,7 +693,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -676,7 +709,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -691,7 +725,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -706,7 +741,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -721,7 +757,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -736,7 +773,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -751,7 +789,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -766,7 +805,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -781,7 +821,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -796,7 +837,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -811,7 +853,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -826,7 +869,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7H"
         }
     ],
     "mcu": "PIC18F85K22",

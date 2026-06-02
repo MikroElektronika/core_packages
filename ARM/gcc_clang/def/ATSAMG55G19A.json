@@ -176,7 +176,8 @@
                 }
             ],
             "key": "PMC_SCER",
-            "unused": "ffff003f"
+            "unused": "ffff003f",
+            "label": "System clock enable register"
         },
         {
             "address": "400E0420",
@@ -338,7 +339,8 @@
                 }
             ],
             "key": "CKGR_MOR",
-            "unused": "f8000080"
+            "unused": "f8000080",
+            "label": "Main oscillator register"
         },
         {
             "address": "400E0428",
@@ -30362,7 +30364,8 @@
                 }
             ],
             "key": "CKGR_PLLAR",
-            "unused": "c000c000"
+            "unused": "c000c000",
+            "label": "Plla register"
         },
         {
             "address": "400E042C",
@@ -39986,7 +39989,8 @@
                 }
             ],
             "key": "CKGR_PLLBR",
-            "unused": "d800c000"
+            "unused": "d800c000",
+            "label": "Pllb register"
         },
         {
             "address": "400E0430",
@@ -40094,7 +40098,8 @@
                 }
             ],
             "key": "PMC_MCKR",
-            "unused": "ffffcf8c"
+            "unused": "ffffcf8c",
+            "label": "Master clock register"
         },
         {
             "address": "400E0438",
@@ -40192,7 +40197,8 @@
                 }
             ],
             "key": "PMC_USB",
-            "unused": "fffff0fe"
+            "unused": "fffff0fe",
+            "label": "Usb clock register"
         },
         {
             "address": "400E0440",
@@ -41262,7 +41268,8 @@
                 }
             ],
             "key": "PMC_PCK0",
-            "unused": "fffff008"
+            "unused": "fffff008",
+            "label": "Programmable clock 0 register 0"
         },
         {
             "address": "400E0444",
@@ -42332,7 +42339,8 @@
                 }
             ],
             "key": "PMC_PCK1",
-            "unused": "fffff008"
+            "unused": "fffff008",
+            "label": "Programmable clock 0 register 1"
         },
         {
             "address": "400E0448",
@@ -43402,7 +43410,8 @@
                 }
             ],
             "key": "PMC_PCK2",
-            "unused": "fffff008"
+            "unused": "fffff008",
+            "label": "Programmable clock 0 register 2"
         },
         {
             "address": "400E044C",
@@ -44472,7 +44481,8 @@
                 }
             ],
             "key": "PMC_PCK3",
-            "unused": "fffff008"
+            "unused": "fffff008",
+            "label": "Programmable clock 0 register 3"
         },
         {
             "address": "400E0450",
@@ -45542,7 +45552,8 @@
                 }
             ],
             "key": "PMC_PCK4",
-            "unused": "fffff008"
+            "unused": "fffff008",
+            "label": "Programmable clock 0 register 4"
         },
         {
             "address": "400E0454",
@@ -46612,7 +46623,8 @@
                 }
             ],
             "key": "PMC_PCK5",
-            "unused": "fffff008"
+            "unused": "fffff008",
+            "label": "Programmable clock 0 register 5"
         },
         {
             "address": "400E0458",
@@ -47682,7 +47694,8 @@
                 }
             ],
             "key": "PMC_PCK6",
-            "unused": "fffff008"
+            "unused": "fffff008",
+            "label": "Programmable clock 0 register 6"
         },
         {
             "address": "400E045C",
@@ -48752,7 +48765,8 @@
                 }
             ],
             "key": "PMC_PCK7",
-            "unused": "fffff008"
+            "unused": "fffff008",
+            "label": "Programmable clock 0 register 7"
         },
         {
             "address": "400E0A00",
@@ -48793,7 +48807,8 @@
                 }
             ],
             "key": "EEFC_FMR",
-            "unused": "fafef0fe"
+            "unused": "fafef0fe",
+            "label": "Eefc flash mode register"
         },
         {
             "address": "400E1410",
@@ -48818,7 +48833,8 @@
                 }
             ],
             "key": "SUPC_CR",
-            "unused": "00fffff3"
+            "unused": "00fffff3",
+            "label": "Supply controller control register"
         },
         {
             "address": "400e1418",
@@ -48843,7 +48859,8 @@
                 }
             ],
             "key": "SUPC_MR",
-            "unused": "000f80ff"
+            "unused": "000f80ff",
+            "label": "Supply controller mode register"
         }
     ],
     "core": "M4",

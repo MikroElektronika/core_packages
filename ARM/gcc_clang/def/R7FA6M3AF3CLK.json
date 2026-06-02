@@ -265,7 +265,8 @@
                 }
             ],
             "key": "SYSTEM_SCKDIVCR",
-            "unused": "88f88888"
+            "unused": "88f88888",
+            "label": "System clock division control register"
         },
         {
             "address": "4001e024",
@@ -294,7 +295,8 @@
                 }
             ],
             "key": "SYSTEM_SCKDIVCR2",
-            "unused": "ffffff8f"
+            "unused": "ffffff8f",
+            "label": "System clock division control register 2"
         },
         {
             "address": "4001e026",
@@ -335,7 +337,8 @@
                 }
             ],
             "key": "SYSTEM_SCKSCR",
-            "unused": "fffffff8"
+            "unused": "fffffff8",
+            "label": "System clock source control register"
         },
         {
             "address": "4001e028",
@@ -554,7 +557,8 @@
                 }
             ],
             "key": "SYSTEM_PLLCCR",
-            "unused": "ffffc0ec"
+            "unused": "ffffc0ec",
+            "label": "Pll clock control register"
         },
         {
             "address": "4001e02a",
@@ -579,7 +583,8 @@
                 }
             ],
             "key": "SYSTEM_PLLCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Pll control register"
         },
         {
             "address": "4001e032",
@@ -604,7 +609,8 @@
                 }
             ],
             "key": "SYSTEM_MOSCCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Main clock oscillator control register"
         },
         {
             "address": "4001e480",
@@ -629,7 +635,8 @@
                 }
             ],
             "key": "SYSTEM_SOSCCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Sub-clock oscillator control register"
         },
         {
             "address": "4001e490",
@@ -654,7 +661,8 @@
                 }
             ],
             "key": "SYSTEM_LOCOCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Low-speed on-chip oscillator control register"
         },
         {
             "address": "4001e036",
@@ -679,7 +687,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "High-speed on-chip oscillator control register"
         },
         {
             "address": "4001e000",
@@ -708,7 +717,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "fffffffc"
+            "unused": "fffffffc",
+            "label": "Other"
         },
         {
             "address": "4001e0a5",
@@ -757,7 +767,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOWTCR",
-            "unused": "fffffff8"
+            "unused": "fffffff8",
+            "label": "High-speed on-chip oscillator wait control register"
         },
         {
             "address": "4001e038",
@@ -782,7 +793,8 @@
                 }
             ],
             "key": "SYSTEM_MOCOCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Middle-speed on-chip oscillator control register"
         },
         {
             "address": "4001e0a0",
@@ -807,7 +819,8 @@
                 }
             ],
             "key": "SYSTEM_OPCCR",
-            "unused": "fffffffc"
+            "unused": "fffffffc",
+            "label": "Operating power control register"
         },
         {
             "address": "4001e0a2",
@@ -860,7 +873,8 @@
                 }
             ],
             "key": "SYSTEM_MOSCWTCR",
-            "unused": "fffffff0"
+            "unused": "fffffff0",
+            "label": "Main clock oscillator wait control register"
         },
         {
             "address": "4001e413",
@@ -927,7 +941,8 @@
                 }
             ],
             "key": "SYSTEM_MOMCR",
-            "unused": "ffffff0f"
+            "unused": "ffffff0f",
+            "label": "Main clock oscillator mode oscillation control register"
         },
         {
             "address": "4001e481",
@@ -952,7 +967,8 @@
                 }
             ],
             "key": "SYSTEM_SOMCR",
-            "unused": "ffffffff"
+            "unused": "ffffffff",
+            "label": "Sub clock oscillator mode control register"
         },
         {
             "address": "4001e03e",
@@ -1047,7 +1063,8 @@
                 }
             ],
             "key": "SYSTEM_CKOCR",
-            "unused": "ffffff08"
+            "unused": "ffffff08",
+            "label": "Clock out control register"
         }
     ],
     "core": "M4EF",

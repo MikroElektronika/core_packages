@@ -224,7 +224,8 @@
                 }
             ],
             "key": "CONFIG1L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG1L"
         },
         {
             "address": "00003FF9",
@@ -279,7 +280,8 @@
                 }
             ],
             "key": "CONFIG1H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG1H"
         },
         {
             "address": "00003FFA",
@@ -396,7 +398,8 @@
                 }
             ],
             "key": "CONFIG2L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2L"
         },
         {
             "address": "00003FFB",
@@ -490,7 +493,8 @@
                 }
             ],
             "key": "CONFIG2H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2H"
         },
         {
             "address": "00003FFC",
@@ -639,7 +643,8 @@
                 }
             ],
             "key": "CONFIG3L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG3L"
         },
         {
             "address": "00003FFD",
@@ -694,7 +699,8 @@
                 }
             ],
             "key": "CONFIG3H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG3H"
         },
         {
             "address": "00003FFE",
@@ -794,11 +800,11 @@
                     "mask": "00000040",
                     "settings": [
                         {
-                            "label": "Page WPFP\u003c5:0\u003e through Configuration Words erase/write protected",
+                            "label": "Page WPFP<5:0> through Configuration Words erase/write protected",
                             "value": "00000040"
                         },
                         {
-                            "label": "Page 0 through WPFP\u003c5:0\u003e erase/write protected",
+                            "label": "Page 0 through WPFP<5:0> erase/write protected",
                             "value": "00000000"
                         }
                     ]
@@ -822,7 +828,8 @@
                 }
             ],
             "key": "CONFIG4L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG4L"
         },
         {
             "address": "00003FFF",
@@ -860,7 +867,8 @@
                 }
             ],
             "key": "CONFIG4H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG4H"
         }
     ],
     "core": "P18",

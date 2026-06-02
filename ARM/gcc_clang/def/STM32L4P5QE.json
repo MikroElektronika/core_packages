@@ -1,5 +1,5 @@
 {
-        "config_registers": [
+    "config_registers": [
         {
             "address": "40021000",
             "default": "00000063",
@@ -267,7 +267,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "c0f0f000"
+            "unused": "c0f0f000",
+            "label": "Clock control register"
         },
         {
             "address": "40021004",
@@ -303,7 +304,8 @@
                 }
             ],
             "key": "RCC_ICSCR",
-            "unused": "80000000"
+            "unused": "80000000",
+            "label": "Internal clock sources calibration"
         },
         {
             "address": "40021008",
@@ -501,7 +503,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "80ff4000"
+            "unused": "80ff4000",
+            "label": "Clock configuration register"
         },
         {
             "address": "4002100c",
@@ -1347,7 +1350,8 @@
                 }
             ],
             "key": "RCC_PLLCFGR",
-            "unused": "008c800c"
+            "unused": "008c800c",
+            "label": "PLL configuration register"
         },
         {
             "address": "40021090",
@@ -1488,19 +1492,19 @@
                     "mask": "18",
                     "settings": [
                         {
-                            "label": "‘Xtal mode’ lower driving capability",
+                            "label": "\u2018Xtal mode\u2019 lower driving capability",
                             "value": "0"
                         },
                         {
-                            "label": "‘Xtal mode’ medium low driving capability",
+                            "label": "\u2018Xtal mode\u2019 medium low driving capability",
                             "value": "8"
                         },
                         {
-                            "label": "‘Xtal mode’ medium high driving capability",
+                            "label": "\u2018Xtal mode\u2019 medium high driving capability",
                             "value": "10"
                         },
                         {
-                            "label": "‘Xtal mode’ higher driving capability",
+                            "label": "\u2018Xtal mode\u2019 higher driving capability",
                             "value": "18"
                         }
                     ]
@@ -1541,7 +1545,8 @@
                 }
             ],
             "key": "RCC_BDCR",
-            "unused": "fcfe7c00"
+            "unused": "fcfe7c00",
+            "label": "Bdcr"
         },
         {
             "address": "40021094",
@@ -1625,7 +1630,8 @@
                 }
             ],
             "key": "RCC_CSR",
-            "unused": "007ff0ec"
+            "unused": "007ff0ec",
+            "label": "Csr"
         },
         {
             "address": "40021098",
@@ -1650,7 +1656,8 @@
                 }
             ],
             "key": "RCC_CRRCR",
-            "unused": "ffff007c"
+            "unused": "ffff007c",
+            "label": "Clock recovery rc register"
         }
     ],
     "core": "M4EF",

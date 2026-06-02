@@ -949,7 +949,8 @@
                 }
             ],
             "key": "FSEC",
-            "unused": "00007010"
+            "unused": "00007010",
+            "label": "FSEC"
         },
         {
             "address": "5790",
@@ -1050,7 +1051,8 @@
                 }
             ],
             "key": "FBSLIM",
-            "unused": "0000E000"
+            "unused": "0000E000",
+            "label": "FBSLIM"
         },
         {
             "address": "5798",
@@ -1112,7 +1114,8 @@
                 }
             ],
             "key": "FOSCSEL",
-            "unused": "0000FF78"
+            "unused": "0000FF78",
+            "label": "FOSCSEL"
         },
         {
             "address": "579C",
@@ -1217,7 +1220,8 @@
                 }
             ],
             "key": "FOSC",
-            "unused": "0000FE18"
+            "unused": "0000FE18",
+            "label": "FOSC"
         },
         {
             "address": "57A0",
@@ -1382,7 +1386,8 @@
                 }
             ],
             "key": "FWDT",
-            "unused": "0000FC00"
+            "unused": "0000FC00",
+            "label": "FWDT"
         },
         {
             "address": "57A4",
@@ -1407,7 +1412,8 @@
                 }
             ],
             "key": "FPOR",
-            "unused": "0000FFFE"
+            "unused": "0000FFFE",
+            "label": "FPOR"
         },
         {
             "address": "57A8",
@@ -1457,7 +1463,8 @@
                 }
             ],
             "key": "FICD",
-            "unused": "0000FF7C"
+            "unused": "0000FF7C",
+            "label": "FICD"
         },
         {
             "address": "57BC",
@@ -1482,7 +1489,8 @@
                 }
             ],
             "key": "FDMT",
-            "unused": "0000FFFE"
+            "unused": "0000FFFE",
+            "label": "FDMT"
         },
         {
             "address": "57C0",
@@ -1537,7 +1545,8 @@
                 }
             ],
             "key": "FDEVOPT",
-            "unused": "0000FFF2"
+            "unused": "0000FFF2",
+            "label": "FDEVOPT"
         },
         {
             "address": "57C4",
@@ -1627,7 +1636,8 @@
                 }
             ],
             "key": "FALTREG",
-            "unused": "0000FF88"
+            "unused": "0000FF88",
+            "label": "FALTREG"
         }
     ],
     "dma": {

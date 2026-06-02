@@ -516,7 +516,8 @@
                 }
             ],
             "key": "CONFIG1",
-            "unused": "F104"
+            "unused": "F104",
+            "label": "CONFIG1"
         },
         {
             "address": "8008",
@@ -634,7 +635,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "C1FC"
+            "unused": "C1FC",
+            "label": "CONFIG2"
         }
     ],
     "core": "P16_Enh",

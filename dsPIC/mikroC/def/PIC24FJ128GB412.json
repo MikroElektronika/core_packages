@@ -673,7 +673,8 @@
                 }
             ],
             "key": "FSEC",
-            "unused": "00007010"
+            "unused": "00007010",
+            "label": "FSEC"
         },
         {
             "address": "15790",
@@ -1026,7 +1027,8 @@
                 }
             ],
             "key": "FBSLIM",
-            "unused": "0000E000"
+            "unused": "0000E000",
+            "label": "FBSLIM"
         },
         {
             "address": "15798",
@@ -1145,7 +1147,8 @@
                 }
             ],
             "key": "FOSCSEL",
-            "unused": "0000FF00"
+            "unused": "0000FF00",
+            "label": "FOSCSEL"
         },
         {
             "address": "1579C",
@@ -1267,7 +1270,8 @@
                 }
             ],
             "key": "FOSC",
-            "unused": "0000FF00"
+            "unused": "0000FF00",
+            "label": "FOSC"
         },
         {
             "address": "157A0",
@@ -1474,7 +1478,8 @@
                 }
             ],
             "key": "FWDT",
-            "unused": "00009400"
+            "unused": "00009400",
+            "label": "FWDT"
         },
         {
             "address": "157A4",
@@ -1516,7 +1521,8 @@
                 }
             ],
             "key": "FPOR",
-            "unused": "0000FFFA"
+            "unused": "0000FFFA",
+            "label": "FPOR"
         },
         {
             "address": "157A8",
@@ -1596,7 +1602,8 @@
                 }
             ],
             "key": "FICD",
-            "unused": "00007F5C"
+            "unused": "00007F5C",
+            "label": "FICD"
         },
         {
             "address": "157AC",
@@ -1826,7 +1833,8 @@
                 }
             ],
             "key": "FDS",
-            "unused": "00003F00"
+            "unused": "00003F00",
+            "label": "FDS"
         },
         {
             "address": "157B0",
@@ -1902,7 +1910,8 @@
                 }
             ],
             "key": "FDEVOPT1",
-            "unused": "0000FFE1"
+            "unused": "0000FFE1",
+            "label": "FDEVOPT1"
         }
     ],
     "dma": {

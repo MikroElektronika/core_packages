@@ -136,7 +136,8 @@
                 }
             ],
             "key": "SIM_CHIPCTL",
-            "unused": "FFF0DF03"
+            "unused": "FFF0DF03",
+            "label": "Chip control register"
         },
         {
             "address": "4004800C",
@@ -227,7 +228,8 @@
                 }
             ],
             "key": "SIM_FTMOPT0",
-            "unused": "C0000007"
+            "unused": "C0000007",
+            "label": "Ftm option register 0"
         },
         {
             "address": "40048018",
@@ -369,7 +371,8 @@
                 }
             ],
             "key": "SIM_ADCOPT",
-            "unused": "FFFFC8C8"
+            "unused": "FFFFC8C8",
+            "label": "Adc options register"
         },
         {
             "address": "4004801C",
@@ -512,7 +515,8 @@
                 }
             ],
             "key": "SIM_FTMOPT1",
-            "unused": "FF00FE08"
+            "unused": "FF00FE08",
+            "label": "Ftm option register 1"
         },
         {
             "address": "40048024",
@@ -604,7 +608,8 @@
                 }
             ],
             "key": "SIM_SDID",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "System device identification register"
         },
         {
             "address": "4004804C",
@@ -725,7 +730,8 @@
                 }
             ],
             "key": "SIM_FCFG1",
-            "unused": "00F00FFC"
+            "unused": "00F00FFC",
+            "label": "Flash configuration register 1"
         },
         {
             "address": "40048050",
@@ -749,7 +755,8 @@
                 }
             ],
             "key": "SIM_FCFG2",
-            "unused": "8080FFFF"
+            "unused": "8080FFFF",
+            "label": "Flash configuration register 2"
         },
         {
             "address": "4004806C",
@@ -816,7 +823,8 @@
                 }
             ],
             "key": "SIM_MISCTRL",
-            "unused": "FFF8FF0F"
+            "unused": "FFF8FF0F",
+            "label": "Miscellaneous control register"
         }
     ],
     "core": "M0+",
