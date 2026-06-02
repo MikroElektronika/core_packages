@@ -64,6 +64,7 @@ typedef struct
 
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
 static uint8_t SCI_SPI_CLK_PrescTable[] = {1, 2, 4, 6, 8, 3, 5};
+static uint8_t I3CDividersTable[] = { 1, 2, 4, 6, 8, 3, 5, 10, 16, 32 };
 
 /* Helper macros for getting SPI and SCI clock sources. */
 #define SCI_SPI_SOURCE_HOCO     (0)
@@ -1021,6 +1022,9 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
 
     // Get I3C clock frequency.
     SYSTEM_Clocks->I3CCK_Frequency = SYSTEM_GetI3CClockFrequency( hoco_frequency );
+
+    // Get I3C clock with requested divider.
+    SYSTEM_Clocks->I3CCK_Frequency /= I3CDividersTable[ VALUE_SYSTEM_I3CCKDIVCR & R_SYSTEM_I3CCKDIVCR_I3CCKDIV_Msk ];
 }
 
 /**
