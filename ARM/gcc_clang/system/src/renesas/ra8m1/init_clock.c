@@ -787,7 +787,7 @@ uint32_t SYSTEM_GetI3CClockFrequency ( uint32_t hoco_frequency ) {
  * @return None
  */
 void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
-    uint32_t source_clock;
+    uint32_t source_clock, hoco_frequency;
     uint8_t prescaler;
 
     // Get the frequency of CPU clock.
