@@ -37,7 +37,8 @@
                     "label": "LP oscillator: Low power crystal on RA4/OSC2/CLKOUT and RA5/OSC1/CLKIN",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -52,7 +53,8 @@
                     "label": "WDT disabled",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -67,7 +69,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -82,7 +85,8 @@
                     "label": "RA3/MCLR pin function is digital I/O, MCLR internally tied to VDD",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_BODEN",
@@ -97,7 +101,8 @@
                     "label": "BOD disabled",
                     "value": "OFF,_BODEN_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -112,7 +117,8 @@
                     "label": "Program Memory code protection is enabled",
                     "value": "ON,_CP"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -127,7 +133,8 @@
                     "label": "Data memory code protection is enabled",
                     "value": "ON,_CPD"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16F676",

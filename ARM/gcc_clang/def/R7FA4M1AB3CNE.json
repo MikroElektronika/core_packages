@@ -228,7 +228,8 @@
                 }
             ],
             "key": "SYSTEM_SCKDIVCR",
-            "unused": "88ff8888"
+            "unused": "88ff8888",
+            "label": "System clock division control register"
         },
         {
             "address": "4001e026",
@@ -269,7 +270,8 @@
                 }
             ],
             "key": "SYSTEM_SCKSCR",
-            "unused": "fffffff8"
+            "unused": "fffffff8",
+            "label": "System clock source control register"
         },
         {
             "address": "4001e02b",
@@ -399,7 +401,8 @@
                 }
             ],
             "key": "SYSTEM_PLLCCR2",
-            "unused": "ffffff20"
+            "unused": "ffffff20",
+            "label": "Pll clock control register2"
         },
         {
             "address": "4001e02a",
@@ -424,7 +427,8 @@
                 }
             ],
             "key": "SYSTEM_PLLCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Pll control register"
         },
         {
             "address": "4001e031",
@@ -449,7 +453,8 @@
                 }
             ],
             "key": "SYSTEM_MEMWAIT",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Memory wait cycle control register"
         },
         {
             "address": "4001e032",
@@ -474,7 +479,8 @@
                 }
             ],
             "key": "SYSTEM_MOSCCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Main clock oscillator control register"
         },
         {
             "address": "4001e480",
@@ -499,7 +505,8 @@
                 }
             ],
             "key": "SYSTEM_SOSCCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Sub-clock oscillator control register"
         },
         {
             "address": "4001e490",
@@ -524,7 +531,8 @@
                 }
             ],
             "key": "SYSTEM_LOCOCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Low-speed on-chip oscillator control register"
         },
         {
             "address": "4001e036",
@@ -549,7 +557,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "High-speed on-chip oscillator control register"
         },
         {
             "address": "4001e037",
@@ -582,7 +591,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "ffffffc7"
+            "unused": "ffffffc7",
+            "label": "Other"
         },
         {
             "address": "4001e038",
@@ -607,7 +617,8 @@
                 }
             ],
             "key": "SYSTEM_MOCOCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Middle-speed on-chip oscillator control register"
         },
         {
             "address": "4001e0a2",
@@ -621,50 +632,51 @@
                     "mask": "f",
                     "settings": [
                         {
-                            "label": "Wait time = 2 cycles (0.25 μs)",
+                            "label": "Wait time = 2 cycles (0.25 \u03bcs)",
                             "value": "0"
                         },
                         {
-                            "label": "Wait time = 1024 cycles (128 μs)",
+                            "label": "Wait time = 1024 cycles (128 \u03bcs)",
                             "value": "1"
                         },
                         {
-                            "label": "Wait time = 2048 cycles (256 μs)",
+                            "label": "Wait time = 2048 cycles (256 \u03bcs)",
                             "value": "2"
                         },
                         {
-                            "label": "Wait time = 4096 cycles (512 μs)",
+                            "label": "Wait time = 4096 cycles (512 \u03bcs)",
                             "value": "3"
                         },
                         {
-                            "label": "Wait time = 8192 cycles (1024 μs)",
+                            "label": "Wait time = 8192 cycles (1024 \u03bcs)",
                             "value": "4"
                         },
                         {
-                            "label": "Wait time = 16384 cycles (2048 μs)",
+                            "label": "Wait time = 16384 cycles (2048 \u03bcs)",
                             "value": "5"
                         },
                         {
-                            "label": "Wait time = 32768 cycles (4096 μs)",
+                            "label": "Wait time = 32768 cycles (4096 \u03bcs)",
                             "value": "6"
                         },
                         {
-                            "label": "Wait time = 65536 cycles (8192 μs)",
+                            "label": "Wait time = 65536 cycles (8192 \u03bcs)",
                             "value": "7"
                         },
                         {
-                            "label": "Wait time = 131072 cycles (16384 μs)",
+                            "label": "Wait time = 131072 cycles (16384 \u03bcs)",
                             "value": "8"
                         },
                         {
-                            "label": "Wait time = 262144 cycles (32768 μs)",
+                            "label": "Wait time = 262144 cycles (32768 \u03bcs)",
                             "value": "9"
                         }
                     ]
                 }
             ],
             "key": "SYSTEM_MOSCWTCR",
-            "unused": "fffffff0"
+            "unused": "fffffff0",
+            "label": "Main clock oscillator wait control register"
         },
         {
             "address": "4001e0a5",
@@ -689,7 +701,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOWTCR",
-            "unused": "fffffff8"
+            "unused": "fffffff8",
+            "label": "High-speed on-chip oscillator wait control register"
         },
         {
             "address": "4001e413",
@@ -731,7 +744,8 @@
                 }
             ],
             "key": "SYSTEM_MOMCR",
-            "unused": "ffffffb7"
+            "unused": "ffffffb7",
+            "label": "Main clock oscillator mode oscillation control register"
         },
         {
             "address": "4001e481",
@@ -764,7 +778,8 @@
                 }
             ],
             "key": "SYSTEM_SOMCR",
-            "unused": "fffffffc"
+            "unused": "fffffffc",
+            "label": "Sub clock oscillator mode control register"
         },
         {
             "address": "4001e03e",
@@ -859,7 +874,8 @@
                 }
             ],
             "key": "SYSTEM_CKOCR",
-            "unused": "ffffff08"
+            "unused": "ffffff08",
+            "label": "Clock out control register"
         },
         {
             "address": "4001e0a0",
@@ -892,7 +908,8 @@
                 }
             ],
             "key": "SYSTEM_OPCCR",
-            "unused": "fffffffc"
+            "unused": "fffffffc",
+            "label": "Operating power control register"
         },
         {
             "address": "4001e0d0",
@@ -917,7 +934,8 @@
                 }
             ],
             "key": "SYSTEM_USBCKCR",
-            "unused": "fffffffe"
+            "unused": "fffffffe",
+            "label": "Usb clock control register"
         }
     ],
     "core": "M4EF",

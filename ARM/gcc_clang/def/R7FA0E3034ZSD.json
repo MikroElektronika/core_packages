@@ -23,7 +23,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "High-speed on-chip oscillator control register"
         },
         {
             "address": "4001e037",
@@ -48,7 +49,8 @@
                 }
             ],
             "key": "SYSTEM_HOCOCR2",
-            "unused": "fffffffc"
+            "unused": "fffffffc",
+            "label": "Other"
         },
         {
             "address": "4001e80a",
@@ -73,7 +75,8 @@
                 }
             ],
             "key": "SYSTEM_LOCOCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Low-speed on-chip oscillator control register"
         },
         {
             "address": "4001e818",
@@ -114,7 +117,8 @@
                 }
             ],
             "key": "SYSTEM_HOCODIV",
-            "unused": "000000f8"
+            "unused": "000000f8",
+            "label": "High-speed on-chip oscillator frequency select register"
         },
         {
             "address": "4001e822",
@@ -139,7 +143,8 @@
                 }
             ],
             "key": "SYSTEM_FSUBSCR",
-            "unused": "000000fe"
+            "unused": "000000fe",
+            "label": "Fsub clock source control register"
         },
         {
             "address": "4001e823",
@@ -164,7 +169,8 @@
                 }
             ],
             "key": "SYSTEM_ICLKSCR",
-            "unused": "000000fc"
+            "unused": "000000fc",
+            "label": "Iclk clock source control register"
         },
         {
             "address": "4001e824",
@@ -189,7 +195,8 @@
                 }
             ],
             "key": "SYSTEM_OSMC",
-            "unused": "000000ef"
+            "unused": "000000ef",
+            "label": "Subsystem clock supply mode control register"
         },
         {
             "address": "400a3b01",
@@ -272,7 +279,8 @@
                 }
             ],
             "key": "SYSTEM_CKS0",
-            "unused": "00000070"
+            "unused": "00000070",
+            "label": "Clock out control register 0"
         },
         {
             "address": "407ec20a",
@@ -301,7 +309,8 @@
                 }
             ],
             "key": "SYSTEM_FLMODE",
-            "unused": "0000003f"
+            "unused": "0000003f",
+            "label": "Flash operating mode control register"
         }
     ],
     "core": "M23",

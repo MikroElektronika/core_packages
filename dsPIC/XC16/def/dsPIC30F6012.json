@@ -57,7 +57,8 @@
                     "label": "ECIO w/ PLL 16x",
                     "value": "ECIO_PLL16"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "FRC",
@@ -80,7 +81,8 @@
                     "label": "Primary Oscillator",
                     "value": "PRI"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "CSW_FSCM_OFF",
@@ -99,7 +101,8 @@
                     "label": "Sw Disabled, Mon Disabled",
                     "value": "CSW_FSCM_OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "WDTPSB_16",
@@ -170,7 +173,8 @@
                     "label": "1:16",
                     "value": "WDTPSB_16"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WDTPSA_512",
@@ -193,7 +197,8 @@
                     "label": "1:512",
                     "value": "WDTPSA_512"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WDT_ON",
@@ -208,7 +213,8 @@
                     "label": "Enabled",
                     "value": "WDT_ON"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PWRT_64",
@@ -231,7 +237,8 @@
                     "label": "64ms",
                     "value": "PWRT_64"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "NONE",
@@ -254,7 +261,8 @@
                     "label": "Reserved",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "PBOR_ON",
@@ -269,7 +277,8 @@
                     "label": "Enabled",
                     "value": "PBOR_ON"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "MCLR_EN",
@@ -284,7 +293,8 @@
                     "label": "Enabled",
                     "value": "MCLR_EN"
                 }
-            ]
+            ],
+            "label_group": "FBORPOR"
         },
         {
             "init": "GWRP_OFF",
@@ -299,7 +309,8 @@
                     "label": "Disabled",
                     "value": "GWRP_OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "CODE_PROT_OFF",
@@ -314,7 +325,8 @@
                     "label": "Disabled",
                     "value": "CODE_PROT_OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "ICS_PGD",
@@ -337,7 +349,8 @@
                     "label": "Use PGC/EMUC and PGD/EMUD",
                     "value": "ICS_PGD"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         }
     ],
     "mcu": "dsPIC30F6012",

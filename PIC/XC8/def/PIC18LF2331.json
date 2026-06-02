@@ -53,7 +53,8 @@
                     "label": "LP oscillator",
                     "value": "LP"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "ON",
@@ -68,7 +69,8 @@
                     "label": "Fail-Safe Clock Monitor disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "ON",
@@ -83,7 +85,8 @@
                     "label": "Internal External Switchover mode disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "OFF",
@@ -98,7 +101,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -113,7 +117,8 @@
                     "label": "Brown-out Reset disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "45",
@@ -132,7 +137,8 @@
                     "label": "VBOR set to 4.5V",
                     "value": "45"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -147,7 +153,8 @@
                     "label": "WDT disabled (control is placed on the SWDTEN bit)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "32768",
@@ -218,7 +225,8 @@
                     "label": "1:1",
                     "value": "1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "OFF",
@@ -233,7 +241,8 @@
                     "label": "WDT window enabledbled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "OFF",
@@ -248,7 +257,8 @@
                     "label": "PWM outputs drive active states upon Reset",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "HIGH",
@@ -263,7 +273,8 @@
                     "label": "PWM0, 2, 4 and 6 are active-low",
                     "value": "LOW"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "HIGH",
@@ -278,7 +289,8 @@
                     "label": "PWM1, 3, 5 and 7 are active-low",
                     "value": "LOW"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "ON",
@@ -293,7 +305,8 @@
                     "label": "Standard (legacy) Timer1 oscillator operation",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "ON",
@@ -308,7 +321,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "ON",
@@ -323,7 +337,8 @@
                     "label": "Stack full/underflow will not cause Reset",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "ON",
@@ -338,7 +353,8 @@
                     "label": "Low-voltage ICSP disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -353,7 +369,8 @@
                     "label": "Background debugger enabled; RB6 and RB7 are dedicated to In-Circuit Debug",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -368,7 +385,8 @@
                     "label": "Block 0 (000200-000FFFh) code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -383,7 +401,8 @@
                     "label": "Block 1 (001000-001FFF) code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5L"
         },
         {
             "init": "OFF",
@@ -398,7 +417,8 @@
                     "label": "Boot Block (000000-0001FFh) code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "OFF",
@@ -413,7 +433,8 @@
                     "label": "Data EEPROM code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5H"
         },
         {
             "init": "OFF",
@@ -428,7 +449,8 @@
                     "label": "Block 0 (000200-000FFFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -443,7 +465,8 @@
                     "label": "Block 1 (001000-001FFF) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6L"
         },
         {
             "init": "OFF",
@@ -458,7 +481,8 @@
                     "label": "Configuration registers (300000-3000FFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -473,7 +497,8 @@
                     "label": "Boot Block (000000-0001FFh) write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -488,7 +513,8 @@
                     "label": "Data EEPROM write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6H"
         },
         {
             "init": "OFF",
@@ -503,7 +529,8 @@
                     "label": "Block 0 (000200-000FFFh) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -518,7 +545,8 @@
                     "label": "Block 1 (001000-001FFF) protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7L"
         },
         {
             "init": "OFF",
@@ -533,7 +561,8 @@
                     "label": "Boot Block (000000-0001FFh) not protected from table reads executed in other blocks",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7H"
         }
     ],
     "mcu": "PIC18LF2331",

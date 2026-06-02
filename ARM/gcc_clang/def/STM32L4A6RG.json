@@ -267,7 +267,8 @@
                 }
             ],
             "key": "RCC_CR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock control register"
         },
         {
             "address": "40021008",
@@ -494,7 +495,8 @@
                 }
             ],
             "key": "RCC_CFGR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock configuration register"
         },
         {
             "address": "4002100C",
@@ -700,7 +702,8 @@
                 }
             ],
             "key": "RCC_PLLCFGR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "PLL configuration register"
         },
         {
             "address": "40021094",
@@ -750,7 +753,8 @@
                 }
             ],
             "key": "RCC_CSR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Csr"
         },
         {
             "address": "40007000",
@@ -775,7 +779,8 @@
                 }
             ],
             "key": "PWR_CR1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Other"
         },
         {
             "address": "40021098",
@@ -800,7 +805,8 @@
                 }
             ],
             "key": "RCC_CRRCR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock recovery RC register"
         },
         {
             "address": "40021088",
@@ -833,7 +839,8 @@
                 }
             ],
             "key": "RCC_CCIPR",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Ccipr"
         }
     ],
     "core": "M4EF",

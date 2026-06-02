@@ -37,7 +37,8 @@
                     "label": "LP oscillator: Low-power crystal on RA6/OSC2/CLKOUT/T1OSO and RA7/OSC1/CLKIN/T1OSI",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -52,7 +53,8 @@
                     "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -67,7 +69,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -82,7 +85,8 @@
                     "label": "RE3/MCLR pin function is digital input, MCLR internally tied to VDD",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -97,7 +101,8 @@
                     "label": "Program memory code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -112,7 +117,8 @@
                     "label": "Data memory code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_BOD_ON",
@@ -135,7 +141,8 @@
                     "label": "BOR disabled",
                     "value": "OFF,_BOD_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -150,7 +157,8 @@
                     "label": "Internal/External Switchover mode is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -165,7 +173,8 @@
                     "label": "Fail-Safe Clock Monitor is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -180,7 +189,8 @@
                     "label": "In-Circuit Debugger enabled, RB6/ICSPCLK and RB7/ICSPDAT are dedicated to the debugger",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16F916",

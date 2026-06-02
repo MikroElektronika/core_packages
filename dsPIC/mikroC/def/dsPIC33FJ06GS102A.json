@@ -782,16 +782,16 @@
                 }
             ],
             "key": "FICD",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FICD"
         },
         {
             "address": "00000FF2",
             "default": "00000000",
-            "fields": [
-
-            ],
+            "fields": [],
             "key": "Reserved",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Reserved"
         },
         {
             "address": "00000FF4",
@@ -923,7 +923,8 @@
                 }
             ],
             "key": "FWDT",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FWDT"
         },
         {
             "address": "00000FF6",
@@ -1011,7 +1012,8 @@
                 }
             ],
             "key": "FOSC",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FOSC"
         },
         {
             "address": "00000FF8",
@@ -1069,7 +1071,8 @@
                 }
             ],
             "key": "FOSCSEL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FOSCSEL"
         },
         {
             "address": "00000FFA",
@@ -1111,25 +1114,24 @@
                 }
             ],
             "key": "FGS",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "FGS"
         },
         {
             "address": "00000FFC",
             "default": "00000000",
-            "fields": [
-
-            ],
+            "fields": [],
             "key": "Reserved",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Reserved"
         },
         {
             "address": "00000FFE",
             "default": "00000000",
-            "fields": [
-
-            ],
+            "fields": [],
             "key": "Reserved",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Reserved"
         }
     ],
     "dma": {

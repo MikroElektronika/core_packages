@@ -925,7 +925,8 @@
                 }
             ],
             "key": "FSEC",
-            "unused": "00007010"
+            "unused": "00007010",
+            "label": "FSEC"
         },
         {
             "address": "AF90",
@@ -1114,7 +1115,8 @@
                 }
             ],
             "key": "FBSLIM",
-            "unused": "0000E000"
+            "unused": "0000E000",
+            "label": "FBSLIM"
         },
         {
             "address": "AF98",
@@ -1176,7 +1178,8 @@
                 }
             ],
             "key": "FOSCSEL",
-            "unused": "0000FF78"
+            "unused": "0000FF78",
+            "label": "FOSCSEL"
         },
         {
             "address": "AF9C",
@@ -1281,7 +1284,8 @@
                 }
             ],
             "key": "FOSC",
-            "unused": "0000FE18"
+            "unused": "0000FE18",
+            "label": "FOSC"
         },
         {
             "address": "AFA0",
@@ -1446,7 +1450,8 @@
                 }
             ],
             "key": "FWDT",
-            "unused": "0000FC00"
+            "unused": "0000FC00",
+            "label": "FWDT"
         },
         {
             "address": "AFA4",
@@ -1467,7 +1472,8 @@
                 }
             ],
             "key": "FPOR",
-            "unused": "0000FFFE"
+            "unused": "0000FFFE",
+            "label": "FPOR"
         },
         {
             "address": "AFA8",
@@ -1551,7 +1557,8 @@
                 }
             ],
             "key": "FICD",
-            "unused": "00007F5C"
+            "unused": "00007F5C",
+            "label": "FICD"
         },
         {
             "address": "AFAC",
@@ -1640,7 +1647,8 @@
                 }
             ],
             "key": "FDEVOPT",
-            "unused": "0000FFA2"
+            "unused": "0000FFA2",
+            "label": "FDEVOPT"
         },
         {
             "address": "AFB0",
@@ -1730,16 +1738,16 @@
                 }
             ],
             "key": "FALTREG",
-            "unused": "0000FF88"
+            "unused": "0000FF88",
+            "label": "FALTREG"
         },
         {
             "address": "AFFC",
             "default": "00000000",
-            "fields": [
-
-            ],
+            "fields": [],
             "key": "FBTSEQ",
-            "unused": "00FFFFFF"
+            "unused": "00FFFFFF",
+            "label": "FBTSEQ"
         }
     ],
     "dma": {

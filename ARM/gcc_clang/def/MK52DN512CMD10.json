@@ -206,7 +206,8 @@
                 }
             ],
             "key": "SIM_SOPT2",
-            "unused": "CFC2E40F"
+            "unused": "CFC2E40F",
+            "label": "System options register 2"
         },
         {
             "address": "40048044",
@@ -502,7 +503,8 @@
                 }
             ],
             "key": "SIM_CLKDIV1",
-            "unused": "0000FFFF"
+            "unused": "0000FFFF",
+            "label": "System clock divider register 1"
         },
         {
             "address": "40064000",
@@ -622,7 +624,8 @@
                 }
             ],
             "key": "MCG_C1",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "Mcg control 1 register"
         }
     ],
     "core": "M4",

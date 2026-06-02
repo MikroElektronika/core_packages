@@ -820,7 +820,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2"
         },
         {
             "address": "0000ABFE",
@@ -1080,7 +1081,8 @@
                 }
             ],
             "key": "CONFIG1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG1"
         }
     ],
     "dma": {

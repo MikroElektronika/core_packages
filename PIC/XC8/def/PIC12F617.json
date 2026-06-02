@@ -37,7 +37,8 @@
                     "label": "LP oscillator: Low-power crystal on RA5/T1CKI/OSC1/CLKIN and RA4/AN3/T1G/OSC2/CLKOUT",
                     "value": "LP,_LP_OSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_WDT_ON",
@@ -52,7 +53,8 @@
                     "label": "WDT disabled and can be enabled by SWDTEN bit of the WDTCON register",
                     "value": "OFF,_WDT_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -67,7 +69,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -82,7 +85,8 @@
                     "label": "MCLR pin is alternate function, MCLR function is internally disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -97,7 +101,8 @@
                     "label": "Program memory is external read and write protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "8MHZ",
@@ -112,7 +117,8 @@
                     "label": "4 MHz",
                     "value": "4MHZ"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON,_BOR_ON",
@@ -131,7 +137,8 @@
                     "label": "BOR disabled",
                     "value": "OFF,_BOR_OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -154,7 +161,8 @@
                     "label": "000h to 7FFh write protected, entire program memory is write protected.",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC12F617",

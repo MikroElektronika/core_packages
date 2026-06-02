@@ -13,7 +13,8 @@
                     "label": "Disabled - Controlled by SWDTEN bit",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "ON",
@@ -28,7 +29,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "ON",
@@ -43,7 +45,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "OFF",
@@ -58,7 +61,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "OFF",
@@ -73,7 +77,8 @@
                     "label": "Program memory is code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "ECPLL",
@@ -112,7 +117,8 @@
                     "label": "INTOSC",
                     "value": "INTOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -127,7 +133,8 @@
                     "label": "Secondary Oscillator clock source may not be selected",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "OFF",
@@ -142,7 +149,8 @@
                     "label": "Low-power operation",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -157,7 +165,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -172,7 +181,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "32768",
@@ -243,7 +253,8 @@
                     "label": "1:1",
                     "value": "1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "INTOSCREF",
@@ -258,7 +269,8 @@
                     "label": "DSWDT uses T1OSC/T1CKI",
                     "value": "T1OSCREF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "T1OSCREF",
@@ -273,7 +285,8 @@
                     "label": "RTCC uses INTRC",
                     "value": "INTOSCREF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "ON",
@@ -288,7 +301,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "ON",
@@ -303,7 +317,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "G2",
@@ -374,7 +389,8 @@
                     "label": "1:2 (2.1 ms)",
                     "value": "2"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3L"
         },
         {
             "init": "ON",
@@ -389,7 +405,8 @@
                     "label": "The IOLOCK bit (PPSCON<0>) can be set and cleared as needed",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "MSK7",
@@ -404,7 +421,8 @@
                     "label": "5 Bit address masking mode",
                     "value": "MSK5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         },
         {
             "init": "PAGE_63",
@@ -667,7 +685,8 @@
                     "label": "Write Protect Program Flash Page 63",
                     "value": "PAGE_63"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "PAGE_WPFP",
@@ -682,7 +701,8 @@
                     "label": "Page 0 through WPFP<5:0> erase/write protected",
                     "value": "PAGE_0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -697,7 +717,8 @@
                     "label": "Configuration Words page erase/write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4L"
         },
         {
             "init": "OFF",
@@ -712,7 +733,8 @@
                     "label": "WPFP<5:0>/WPEND region erase/write protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4H"
         }
     ],
     "mcu": "PIC18F46J11",

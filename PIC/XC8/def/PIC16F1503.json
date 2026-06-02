@@ -21,7 +21,8 @@
                     "label": "INTOSC oscillator: I/O function on CLKIN pin",
                     "value": "INTOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -44,7 +45,8 @@
                     "label": "WDT disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -59,7 +61,8 @@
                     "label": "PWRT enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -74,7 +77,8 @@
                     "label": "MCLR/VPP pin function is digital input",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -89,7 +93,8 @@
                     "label": "Program memory code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -112,7 +117,8 @@
                     "label": "Brown-out Reset disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -127,7 +133,8 @@
                     "label": "CLKOUT function is enabled on the CLKOUT pin",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -150,7 +157,8 @@
                     "label": "000h to 1FFFh write protected, no addresses may be modified by EECON control",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -165,7 +173,8 @@
                     "label": "Stack Overflow or Underflow will not cause a Reset",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "LO",
@@ -180,7 +189,8 @@
                     "label": "Brown-out Reset Voltage (Vbor), high trip point selected.",
                     "value": "HI"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -195,7 +205,8 @@
                     "label": "Low-Power BOR is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -210,7 +221,8 @@
                     "label": "High-voltage on MCLR/VPP must be used for programming",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         }
     ],
     "mcu": "PIC16F1503",

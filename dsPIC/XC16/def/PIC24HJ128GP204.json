@@ -13,7 +13,8 @@
                     "label": "Boot Segment may be written",
                     "value": "WRPROTECT_OFF"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "NO_FLASH",
@@ -48,7 +49,8 @@
                     "label": "No Boot program Flash segment",
                     "value": "NO_FLASH"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "NO_RAM",
@@ -71,7 +73,8 @@
                     "label": "No Boot RAM",
                     "value": "NO_RAM"
                 }
-            ]
+            ],
+            "label_group": "FBS"
         },
         {
             "init": "WRPROTECT_OFF",
@@ -86,7 +89,8 @@
                     "label": "Secure segment may be written",
                     "value": "WRPROTECT_OFF"
                 }
-            ]
+            ],
+            "label_group": "FSS"
         },
         {
             "init": "NO_FLASH",
@@ -121,7 +125,8 @@
                     "label": "No Secure Segment",
                     "value": "NO_FLASH"
                 }
-            ]
+            ],
+            "label_group": "FSS"
         },
         {
             "init": "NO_RAM",
@@ -144,7 +149,8 @@
                     "label": "No Secure RAM",
                     "value": "NO_RAM"
                 }
-            ]
+            ],
+            "label_group": "FSS"
         },
         {
             "init": "OFF",
@@ -159,7 +165,8 @@
                     "label": "User program memory is not write-protected",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "OFF",
@@ -178,7 +185,8 @@
                     "label": "User program memory is not code-protected",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "LPRCDIVN",
@@ -217,7 +225,8 @@
                     "label": "Internal Fast RC (FRC) with divide by N",
                     "value": "LPRCDIVN"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "ON",
@@ -232,7 +241,8 @@
                     "label": "Start-up device with FRC, then automatically switch to user-selected oscillator source when ready",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "NONE",
@@ -255,7 +265,8 @@
                     "label": "Primary Oscillator Disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "OFF",
@@ -270,7 +281,8 @@
                     "label": "OSC2 pin has clock out function",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "ON",
@@ -285,7 +297,8 @@
                     "label": "Allow Only One Re-configuration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "CSDCMD",
@@ -304,7 +317,8 @@
                     "label": "Both Clock Switching and Fail-Safe Clock Monitor are disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "PS32768",
@@ -375,7 +389,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PR128",
@@ -390,7 +405,8 @@
                     "label": "1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "OFF",
@@ -405,7 +421,8 @@
                     "label": "Watchdog Timer in Non-Window mode",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "ON",
@@ -420,7 +437,8 @@
                     "label": "Watchdog timer always enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PWR128",
@@ -459,7 +477,8 @@
                     "label": "128ms",
                     "value": "PWR128"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "OFF",
@@ -474,7 +493,8 @@
                     "label": "I2C mapped to SDA1/SCL1 pins",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "PGD1",
@@ -493,7 +513,8 @@
                     "label": "Communicate on PGC1/EMUC1 and PGD1/EMUD1",
                     "value": "PGD1"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         },
         {
             "init": "OFF",
@@ -508,7 +529,8 @@
                     "label": "JTAG is Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         }
     ],
     "mcu": "PIC24HJ128GP204",

@@ -29,7 +29,8 @@
                     "label": "LP (crystal oscillator) optimized for 32.768kHz",
                     "value": "LP"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "EXTOSC",
@@ -64,7 +65,8 @@
                     "label": "HFINTOSC (32 MHz)",
                     "value": "HFINTOSC_32MHz"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -79,7 +81,8 @@
                     "label": "CLKOUT function is disabled; i/o or oscillator function on OSC2",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -94,7 +97,8 @@
                     "label": "The NOSC and NDIV bits cannot be changed by user software",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "HI",
@@ -109,7 +113,8 @@
                     "label": "Internal analog systems are calibrated for operation between VDD = 1.8 - 3.6V",
                     "value": "LO"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -124,7 +129,8 @@
                     "label": "Fail-Safe Clock Monitor disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "EXTMCLR",
@@ -139,7 +145,8 @@
                     "label": "If LVP = 0, MCLR is port-defined function; If LVP = 1, RA3 pin function is MCLR",
                     "value": "INTMCLR"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PWRT_OFF",
@@ -162,7 +169,8 @@
                     "label": "PWRT set at 1 ms",
                     "value": "PWRT_1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -177,7 +185,8 @@
                     "label": "ULPBOR enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -200,7 +209,8 @@
                     "label": "Brown-out Reset enabled, SBOREN bit is ignored",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -215,7 +225,8 @@
                     "label": "DAC Buffer reference range is automatically determined by module hardware",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "LO",
@@ -230,7 +241,8 @@
                     "label": "Brown-out Reset Voltage (VBOR) is set to 2.65V",
                     "value": "HI"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -245,7 +257,8 @@
                     "label": "The PPSLOCKED bit can be set and cleared as needed (unlocking sequence is required)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -260,7 +273,8 @@
                     "label": "Stack Overflow or Underflow will not cause a reset",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -275,7 +289,8 @@
                     "label": "background debugger enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "WDTCPS_31",
@@ -410,7 +425,8 @@
                     "label": "Divider ratio 1:32",
                     "value": "WDTCPS_0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "ON",
@@ -433,7 +449,8 @@
                     "label": "WDT Disabled, SEN is ignored",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "WDTCWS_7",
@@ -472,7 +489,8 @@
                     "label": "window delay = 87.5 percent of time; no software control; keyed access required",
                     "value": "WDTCWS_0"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "SC",
@@ -495,7 +513,8 @@
                     "label": "WDT reference clock is the 31.0 kHz LFINTOSC",
                     "value": "LFINTOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "BB512",
@@ -534,7 +553,8 @@
                     "label": "* half of user program memory",
                     "value": "BB64K"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -549,7 +569,8 @@
                     "label": "Boot Block enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -564,7 +585,8 @@
                     "label": "SAF enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -579,7 +601,8 @@
                     "label": "Application Block is write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -594,7 +617,8 @@
                     "label": "Boot Block is write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -609,7 +633,8 @@
                     "label": "Configuration Register is write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -624,7 +649,8 @@
                     "label": "Data EEPROM is write protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -639,7 +665,8 @@
                     "label": "SAF is write-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "ON",
@@ -654,7 +681,8 @@
                     "label": "High Voltage on MCLR/Vpp must be used for programming",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -669,7 +697,8 @@
                     "label": "Program Flash Memory code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5"
         },
         {
             "init": "OFF",
@@ -684,7 +713,8 @@
                     "label": "Data EEPROM code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5"
         },
         {
             "init": "OFF",
@@ -699,7 +729,8 @@
                     "label": "Programming and Debugging Interface is fully disabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6"
         },
         {
             "init": "MAX",
@@ -714,7 +745,8 @@
                     "label": "maximum value",
                     "value": "MAX"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7"
         },
         {
             "init": "OFF",
@@ -729,7 +761,8 @@
                     "label": "CPU halts after Reset (no user code execution)",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7"
         },
         {
             "init": "OFF",
@@ -744,7 +777,8 @@
                     "label": "The CLB will be automatically configured during device configuration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7"
         }
     ],
     "mcu": "PIC16F13276",

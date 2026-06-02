@@ -674,7 +674,8 @@
                 }
             ],
             "key": "FSEC",
-            "unused": "FF000000"
+            "unused": "FF000000",
+            "label": "FSEC"
         },
         {
             "address": "2AF10",
@@ -697,7 +698,8 @@
                 }
             ],
             "key": "FBSLIM",
-            "unused": "FF000000"
+            "unused": "FF000000",
+            "label": "FBSLIM"
         },
         {
             "address": "2AF18",
@@ -820,7 +822,8 @@
                 }
             ],
             "key": "FOSCSEL",
-            "unused": "FF000000"
+            "unused": "FF000000",
+            "label": "FOSCSEL"
         },
         {
             "address": "2AF1C",
@@ -942,7 +945,8 @@
                 }
             ],
             "key": "FOSC",
-            "unused": "FF000000"
+            "unused": "FF000000",
+            "label": "FOSC"
         },
         {
             "address": "2AF20",
@@ -1149,7 +1153,8 @@
                 }
             ],
             "key": "FWDT",
-            "unused": "FF000000"
+            "unused": "FF000000",
+            "label": "FWDT"
         },
         {
             "address": "2AF24",
@@ -1216,7 +1221,8 @@
                 }
             ],
             "key": "FPOR",
-            "unused": "FF000000"
+            "unused": "FF000000",
+            "label": "FPOR"
         },
         {
             "address": "2AF28",
@@ -1283,7 +1289,8 @@
                 }
             ],
             "key": "FICD",
-            "unused": "FF000000"
+            "unused": "FF000000",
+            "label": "FICD"
         },
         {
             "address": "2AF2C",
@@ -1359,7 +1366,8 @@
                 }
             ],
             "key": "FDEVOPT1",
-            "unused": "FF000000"
+            "unused": "FF000000",
+            "label": "FDEVOPT1"
         }
     ],
     "dma": {

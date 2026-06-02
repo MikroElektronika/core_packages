@@ -735,7 +735,8 @@
                 }
             ],
             "key": "CONFIG4",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG4"
         },
         {
             "address": "000157FA",
@@ -1206,7 +1207,8 @@
                 }
             ],
             "key": "CONFIG3",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG3"
         },
         {
             "address": "000157FC",
@@ -1419,7 +1421,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2"
         },
         {
             "address": "000157FE",
@@ -1683,7 +1686,8 @@
                 }
             ],
             "key": "CONFIG1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG1"
         }
     ],
     "dma": {

@@ -65,7 +65,8 @@
                 }
             ],
             "key": "FICD",
-            "unused": "0000FF5C"
+            "unused": "0000FF5C",
+            "label": "FICD"
         },
         {
             "address": "557F2",
@@ -132,7 +133,8 @@
                 }
             ],
             "key": "FPOR",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FPOR"
         },
         {
             "address": "557F4",
@@ -281,7 +283,8 @@
                 }
             ],
             "key": "FWDT",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FWDT"
         },
         {
             "address": "557F6",
@@ -369,7 +372,8 @@
                 }
             ],
             "key": "FOSC",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FOSC"
         },
         {
             "address": "557F8",
@@ -448,7 +452,8 @@
                 }
             ],
             "key": "FOSCSEL",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FOSCSEL"
         },
         {
             "address": "557FA",
@@ -490,7 +495,8 @@
                 }
             ],
             "key": "FGS",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FGS"
         },
         {
             "address": "800FF8",
@@ -502,13 +508,12 @@
                     "key": "UID0",
                     "label": "USER ID 0",
                     "mask": "0000FFFF",
-                    "settings": [
-
-                    ]
+                    "settings": []
                 }
             ],
             "key": "FUID0",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FUID0"
         },
         {
             "address": "800FFA",
@@ -520,13 +525,12 @@
                     "key": "UID1",
                     "label": "USER ID 1",
                     "mask": "0000FFFF",
-                    "settings": [
-
-                    ]
+                    "settings": []
                 }
             ],
             "key": "FUID1",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FUID1"
         },
         {
             "address": "800FFC",
@@ -538,13 +542,12 @@
                     "key": "UID2",
                     "label": "USER ID 2",
                     "mask": "0000FFFF",
-                    "settings": [
-
-                    ]
+                    "settings": []
                 }
             ],
             "key": "FUID2",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FUID2"
         },
         {
             "address": "800FFE",
@@ -556,13 +559,12 @@
                     "key": "UID3",
                     "label": "USER ID 3",
                     "mask": "0000FFFF",
-                    "settings": [
-
-                    ]
+                    "settings": []
                 }
             ],
             "key": "FUID3",
-            "unused": "FFFF0000"
+            "unused": "FFFF0000",
+            "label": "FUID3"
         }
     ],
     "dma": {

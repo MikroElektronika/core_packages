@@ -126,7 +126,8 @@
                 }
             ],
             "key": "DEVCFG3",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCFG3"
         },
         {
             "address": "1FC0FFC4",
@@ -792,7 +793,8 @@
                 }
             ],
             "key": "DEVCFG2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCFG2"
         },
         {
             "address": "1FC0FFC8",
@@ -1258,7 +1260,8 @@
                 }
             ],
             "key": "DEVCFG1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCFG1"
         },
         {
             "address": "1FC0FFCC",
@@ -1584,7 +1587,8 @@
                 }
             ],
             "key": "DEVCFG0",
-            "unused": "00000800"
+            "unused": "00000800",
+            "label": "DEVCFG0"
         },
         {
             "address": "1FC0FFD0",
@@ -1609,7 +1613,8 @@
                 }
             ],
             "key": "DEVCP3",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCP3"
         },
         {
             "address": "1FC0FFD4",
@@ -1634,7 +1639,8 @@
                 }
             ],
             "key": "DEVCP2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCP2"
         },
         {
             "address": "1FC0FFD8",
@@ -1659,7 +1665,8 @@
                 }
             ],
             "key": "DEVCP1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCP1"
         },
         {
             "address": "1FC0FFDC",
@@ -1684,7 +1691,8 @@
                 }
             ],
             "key": "DEVCP0",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "DEVCP0"
         }
     ],
     "core": "MICROAPTIV_FP",

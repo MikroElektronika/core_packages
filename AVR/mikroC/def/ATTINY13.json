@@ -34,41 +34,41 @@
             "nmb_text": "7",
             "text1": {
                 "mask": "0x10",
-            "text": "Self Programming enable; [SELFPRGEN=0]",
+                "text": "Self Programming enable; [SELFPRGEN=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x08",
-            "text": "Debug Wire enable; [DWEN=0]",
+                "text": "Debug Wire enable; [DWEN=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x06",
-            "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=00]",
+                "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=00]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x06",
-            "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=01]",
+                "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=01]",
                 "value": "0x02"
             },
             "text5": {
                 "mask": "0x06",
-            "text": "Brown-out detection level at VCC=1.8 V; [BODLEVEL=10]",
+                "text": "Brown-out detection level at VCC=1.8 V; [BODLEVEL=10]",
                 "value": "0x04"
             },
             "text6": {
                 "mask": "0x06",
-            "text": "Brown-out detection disabled; [BODLEVEL=11]",
+                "text": "Brown-out detection disabled; [BODLEVEL=11]",
                 "value": "0x06"
             },
             "text7": {
                 "mask": "0x01",
-            "text": "Reset Disabled (Enable PB5 as i/o pin); [RSTDISBL=0]",
+                "text": "Reset Disabled (Enable PB5 as i/o pin); [RSTDISBL=0]",
                 "value": "0x00"
             }
         },
-    "list": "[LOW:HIGH]",
+        "list": "[LOW:HIGH]",
         "low": {
             "fuse0": {
                 "default": "0",
@@ -114,82 +114,82 @@
             "nmb_text": "16",
             "text1": {
                 "mask": "0x80",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 64 ms; [CKSEL=01 SUT=10]",
+                "text": "Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 64 ms; [CKSEL=01 SUT=10]",
                 "value": "0x09"
             },
             "text11": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 0 ms; [CKSEL=10 SUT=00]",
+                "text": "Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 0 ms; [CKSEL=10 SUT=00]",
                 "value": "0x02"
             },
             "text12": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 4 ms; [CKSEL=10 SUT=01]",
+                "text": "Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 4 ms; [CKSEL=10 SUT=01]",
                 "value": "0x06"
             },
             "text13": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 64 ms; [CKSEL=10 SUT=10]; default value",
+                "text": "Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 64 ms; [CKSEL=10 SUT=10]; default value",
                 "value": "0x0A"
             },
             "text14": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 128 kHz; Start-up time: 14 CK + 0 ms; [CKSEL=11 SUT=00]",
+                "text": "Int. RC Osc. 128 kHz; Start-up time: 14 CK + 0 ms; [CKSEL=11 SUT=00]",
                 "value": "0x03"
             },
             "text15": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 128 kHz; Start-up time: 14 CK + 4 ms; [CKSEL=11 SUT=01]",
+                "text": "Int. RC Osc. 128 kHz; Start-up time: 14 CK + 4 ms; [CKSEL=11 SUT=01]",
                 "value": "0x07"
             },
             "text16": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 128 kHz; Start-up time: 14 CK + 64 ms; [CKSEL=11 SUT=10]",
+                "text": "Int. RC Osc. 128 kHz; Start-up time: 14 CK + 64 ms; [CKSEL=11 SUT=10]",
                 "value": "0x0B"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "text": "Watch-dog Timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "Divide clock by 8 internally; [CKDIV8=0]",
+                "text": "Divide clock by 8 internally; [CKDIV8=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x0F",
-            "text": "Ext. Clock; Start-up time: 14 CK + 0 ms; [CKSEL=00 SUT=00]",
+                "text": "Ext. Clock; Start-up time: 14 CK + 0 ms; [CKSEL=00 SUT=00]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x0F",
-            "text": "Ext. Clock; Start-up time: 14 CK + 4 ms; [CKSEL=00 SUT=01]",
+                "text": "Ext. Clock; Start-up time: 14 CK + 4 ms; [CKSEL=00 SUT=01]",
                 "value": "0x04"
             },
             "text7": {
                 "mask": "0x0F",
-            "text": "Ext. Clock; Start-up time: 14 CK + 64 ms; [CKSEL=00 SUT=10]",
+                "text": "Ext. Clock; Start-up time: 14 CK + 64 ms; [CKSEL=00 SUT=10]",
                 "value": "0x08"
             },
             "text8": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 0 ms; [CKSEL=01 SUT=00]",
+                "text": "Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 0 ms; [CKSEL=01 SUT=00]",
                 "value": "0x01"
             },
             "text9": {
                 "mask": "0x0F",
-            "text": "Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 4 ms; [CKSEL=01 SUT=01]",
+                "text": "Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 4 ms; [CKSEL=01 SUT=01]",
                 "value": "0x05"
             }
         }
@@ -249,59 +249,59 @@
     "core": "LTE64K",
     "delay_src_path": "delays/lte64k/__lib_delays.c",
     "package": {
-    "packages": "[PDIP:SOIC]",
+        "packages": "[PDIP:SOIC]",
         "pdip": {
             "nmb_pin": "8",
             "pin1": {
-            "name": "[PCINT5:'RESET:ADC0:PB5]"
+                "name": "[PCINT5:'RESET:ADC0:PB5]"
             },
             "pin2": {
-            "name": "[PCINT3:XTAL1:ADC3:PB3]"
+                "name": "[PCINT3:XTAL1:ADC3:PB3]"
             },
             "pin3": {
-            "name": "[PCINT4:ADC2:PB4]"
+                "name": "[PCINT4:ADC2:PB4]"
             },
             "pin4": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin5": {
-            "name": "[PB0:MOSI:AIN0:OC0A:TXD:PCINT0]"
+                "name": "[PB0:MOSI:AIN0:OC0A:TXD:PCINT0]"
             },
             "pin6": {
-            "name": "[PB1:MISO:INT0:AIN1:OC0B:INT0:RXD:PCINT1]"
+                "name": "[PB1:MISO:INT0:AIN1:OC0B:INT0:RXD:PCINT1]"
             },
             "pin7": {
-            "name": "[PB2:SCK:ADC1:T0:PCINT2]"
+                "name": "[PB2:SCK:ADC1:T0:PCINT2]"
             },
             "pin8": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             }
         },
         "soic": {
             "nmb_pin": "8",
             "pin1": {
-            "name": "[PCINT5:'RESET:ADC0:PB5]"
+                "name": "[PCINT5:'RESET:ADC0:PB5]"
             },
             "pin2": {
-            "name": "[PCINT3:XTAL1:ADC3:PB3]"
+                "name": "[PCINT3:XTAL1:ADC3:PB3]"
             },
             "pin3": {
-            "name": "[PCINT4:ADC2:PB4]"
+                "name": "[PCINT4:ADC2:PB4]"
             },
             "pin4": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin5": {
-            "name": "[PB0:MOSI:AIN0:OC0A:TXD:PCINT0]"
+                "name": "[PB0:MOSI:AIN0:OC0A:TXD:PCINT0]"
             },
             "pin6": {
-            "name": "[PB1:MISO:INT0:AIN1:OC0B:INT0:RXD:PCINT1]"
+                "name": "[PB1:MISO:INT0:AIN1:OC0B:INT0:RXD:PCINT1]"
             },
             "pin7": {
-            "name": "[PB2:SCK:ADC1:T0:PCINT2]"
+                "name": "[PB2:SCK:ADC1:T0:PCINT2]"
             },
             "pin8": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             }
         }
     },
@@ -578,7 +578,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -662,7 +663,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         }
     ],
     "avr_core": "avr25"

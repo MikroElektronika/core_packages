@@ -49,56 +49,56 @@
             "nmb_text": "10",
             "text1": {
                 "mask": "0x80",
-            "text": "AT90S4414/8515 compatibility mode; [S8515C=0]",
+                "text": "AT90S4414/8515 compatibility mode; [S8515C=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x10",
-            "text": "CKOPT fuse (operation dependent of CKSEL fuses); [CKOPT=0]",
+                "text": "CKOPT fuse (operation dependent of CKSEL fuses); [CKOPT=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "text": "Watch-dog Timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x08",
-            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=128 words; Boot start address=$0F80; [BOOTSZ=11]",
+                "text": "Boot Flash section size=128 words; Boot start address=$0F80; [BOOTSZ=11]",
                 "value": "0x06"
             },
             "text6": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=256 words; Boot start address=$0F00; [BOOTSZ=10]",
+                "text": "Boot Flash section size=256 words; Boot start address=$0F00; [BOOTSZ=10]",
                 "value": "0x04"
             },
             "text7": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=512 words; Boot start address=$0E00; [BOOTSZ=01]",
+                "text": "Boot Flash section size=512 words; Boot start address=$0E00; [BOOTSZ=01]",
                 "value": "0x02"
             },
             "text8": {
                 "mask": "0x06",
-            "text": "Boot Flash section size=1024 words; Boot start address=$0C00; [BOOTSZ=00] ; default value",
+                "text": "Boot Flash section size=1024 words; Boot start address=$0C00; [BOOTSZ=00] ; default value",
                 "value": "0x00"
             },
             "text9": {
                 "mask": "0x01",
-            "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
+                "text": "Boot Reset vector Enabled (default address=$0000); [BOOTRST=0]",
                 "value": "0x00"
             }
         },
-    "list": "[LOW:HIGH]",
+        "list": "[LOW:HIGH]",
         "low": {
             "fuse0": {
                 "default": "1",
@@ -144,307 +144,307 @@
             "nmb_text": "61",
             "text1": {
                 "mask": "0xC0",
-            "text": "BOD disabled; [BODLEVEL=11]",
+                "text": "BOD disabled; [BODLEVEL=11]",
                 "value": "0x40"
             },
             "text10": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0010 SUT=00]",
+                "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0010 SUT=00]",
                 "value": "0x02"
             },
             "text11": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0010 SUT=01]",
+                "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0010 SUT=01]",
                 "value": "0x12"
             },
             "text12": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0010 SUT=10]",
+                "text": "Int. RC Osc. 2 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0010 SUT=10]",
                 "value": "0x22"
             },
             "text13": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0011 SUT=00]",
+                "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0011 SUT=00]",
                 "value": "0x03"
             },
             "text14": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0011 SUT=01]",
+                "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0011 SUT=01]",
                 "value": "0x13"
             },
             "text15": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0011 SUT=10]",
+                "text": "Int. RC Osc. 4 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0011 SUT=10]",
                 "value": "0x23"
             },
             "text16": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0100 SUT=00]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0100 SUT=00]",
                 "value": "0x04"
             },
             "text17": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0100 SUT=01]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0100 SUT=01]",
                 "value": "0x14"
             },
             "text18": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0100 SUT=10]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0100 SUT=10]",
                 "value": "0x24"
             },
             "text19": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0101 SUT=00]",
+                "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0101 SUT=00]",
                 "value": "0x05"
             },
             "text2": {
                 "mask": "0xC0",
-            "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=10]",
+                "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=10]",
                 "value": "0x80"
             },
             "text20": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0101 SUT=01]",
+                "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0101 SUT=01]",
                 "value": "0x15"
             },
             "text21": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0101 SUT=10]",
+                "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0101 SUT=10]",
                 "value": "0x25"
             },
             "text22": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0101 SUT=11]",
+                "text": "Ext. RC Osc. 0.1-0.9 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0101 SUT=11]",
                 "value": "0x35"
             },
             "text23": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0110 SUT=00]",
+                "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0110 SUT=00]",
                 "value": "0x06"
             },
             "text24": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0110 SUT=01]",
+                "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0110 SUT=01]",
                 "value": "0x16"
             },
             "text25": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0110 SUT=10]",
+                "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0110 SUT=10]",
                 "value": "0x26"
             },
             "text26": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0110 SUT=11]",
+                "text": "Ext. RC Osc. 0.9-3.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0110 SUT=11]",
                 "value": "0x36"
             },
             "text27": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0111 SUT=00]",
+                "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=0111 SUT=00]",
                 "value": "0x07"
             },
             "text28": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0111 SUT=01]",
+                "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=0111 SUT=01]",
                 "value": "0x17"
             },
             "text29": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0111 SUT=10]",
+                "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=0111 SUT=10]",
                 "value": "0x27"
             },
             "text3": {
                 "mask": "0xC0",
-            "text": "Brown-out detection level at VCC=4.0 V; [BODLEVEL=00]",
+                "text": "Brown-out detection level at VCC=4.0 V; [BODLEVEL=00]",
                 "value": "0x00"
             },
             "text30": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0111 SUT=11]",
+                "text": "Ext. RC Osc. 3.0-8.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0111 SUT=11]",
                 "value": "0x37"
             },
             "text31": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=1000 SUT=00]",
+                "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 0 ms; [CKSEL=1000 SUT=00]",
                 "value": "0x08"
             },
             "text32": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=1000 SUT=01]",
+                "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 4 ms; [CKSEL=1000 SUT=01]",
                 "value": "0x18"
             },
             "text33": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=1000 SUT=10]",
+                "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 18 CK + 64 ms; [CKSEL=1000 SUT=10]",
                 "value": "0x28"
             },
             "text34": {
                 "mask": "0x3F",
-            "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=1000 SUT=11]",
+                "text": "Ext. RC Osc. 8.0-12.0 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=1000 SUT=11]",
                 "value": "0x38"
             },
             "text35": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 4 ms; [CKSEL=1001 SUT=00]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 4 ms; [CKSEL=1001 SUT=00]",
                 "value": "0x09"
             },
             "text36": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 64 ms; [CKSEL=1001 SUT=01]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 1K CK + 64 ms; [CKSEL=1001 SUT=01]",
                 "value": "0x19"
             },
             "text37": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 64 ms; [CKSEL=1001 SUT=10]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time: 32K CK + 64 ms; [CKSEL=1001 SUT=10]",
                 "value": "0x29"
             },
             "text38": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1010 SUT=00]",
+                "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1010 SUT=00]",
                 "value": "0x0A"
             },
             "text39": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1010 SUT=01]",
+                "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1010 SUT=01]",
                 "value": "0x1A"
             },
             "text4": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time: 6 CK + 0 ms; [CKSEL=0000 SUT=00]",
+                "text": "Ext. Clock; Start-up time: 6 CK + 0 ms; [CKSEL=0000 SUT=00]",
                 "value": "0x00"
             },
             "text40": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1010 SUT=10]",
+                "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1010 SUT=10]",
                 "value": "0x2A"
             },
             "text41": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1010 SUT=11]",
+                "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1010 SUT=11]",
                 "value": "0x3A"
             },
             "text42": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1011 SUT=00]",
+                "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1011 SUT=00]",
                 "value": "0x0B"
             },
             "text43": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1011 SUT=01]",
+                "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1011 SUT=01]",
                 "value": "0x1B"
             },
             "text44": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1011 SUT=10]",
+                "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1011 SUT=10]",
                 "value": "0x2B"
             },
             "text45": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 64 ms; [CKSEL=1011 SUT=11]",
+                "text": "Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 64 ms; [CKSEL=1011 SUT=11]",
                 "value": "0x3B"
             },
             "text46": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1100 SUT=00]",
+                "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1100 SUT=00]",
                 "value": "0x0C"
             },
             "text47": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1100 SUT=01]",
+                "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1100 SUT=01]",
                 "value": "0x1C"
             },
             "text48": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1100 SUT=10]",
+                "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1100 SUT=10]",
                 "value": "0x2C"
             },
             "text49": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1100 SUT=11]",
+                "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1100 SUT=11]",
                 "value": "0x3C"
             },
             "text5": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time: 6 CK + 4 ms; [CKSEL=0000 SUT=01]",
+                "text": "Ext. Clock; Start-up time: 6 CK + 4 ms; [CKSEL=0000 SUT=01]",
                 "value": "0x10"
             },
             "text50": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1101 SUT=00]",
+                "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1101 SUT=00]",
                 "value": "0x0D"
             },
             "text51": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1101 SUT=01]",
+                "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1101 SUT=01]",
                 "value": "0x1D"
             },
             "text52": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1101 SUT=10]",
+                "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1101 SUT=10]",
                 "value": "0x2D"
             },
             "text53": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 64 ms; [CKSEL=1101 SUT=11]",
+                "text": "Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 64 ms; [CKSEL=1101 SUT=11]",
                 "value": "0x3D"
             },
             "text54": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1110 SUT=00]",
+                "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 4 ms; [CKSEL=1110 SUT=00]",
                 "value": "0x0E"
             },
             "text55": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1110 SUT=01]",
+                "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 64 ms; [CKSEL=1110 SUT=01]",
                 "value": "0x1E"
             },
             "text56": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1110 SUT=10]",
+                "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 0 ms; [CKSEL=1110 SUT=10]",
                 "value": "0x2E"
             },
             "text57": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1110 SUT=11]",
+                "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 4 ms; [CKSEL=1110 SUT=11]",
                 "value": "0x3E"
             },
             "text58": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1111 SUT=00]",
+                "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 64 ms; [CKSEL=1111 SUT=00]",
                 "value": "0x0F"
             },
             "text59": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1111 SUT=01]",
+                "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 0 ms; [CKSEL=1111 SUT=01]",
                 "value": "0x1F"
             },
             "text6": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time: 6 CK + 64 ms; [CKSEL=0000 SUT=10]",
+                "text": "Ext. Clock; Start-up time: 6 CK + 64 ms; [CKSEL=0000 SUT=10]",
                 "value": "0x20"
             },
             "text60": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1111 SUT=10]",
+                "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 4 ms; [CKSEL=1111 SUT=10]",
                 "value": "0x2F"
             },
             "text61": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 64 ms;[CKSEL=1111 SUT=11]",
+                "text": "Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 64 ms;[CKSEL=1111 SUT=11]",
                 "value": "0x3F"
             },
             "text7": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0001 SUT=00]",
+                "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 0 ms; [CKSEL=0001 SUT=00]",
                 "value": "0x01"
             },
             "text8": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0001 SUT=01]",
+                "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 4 ms; [CKSEL=0001 SUT=01]",
                 "value": "0x11"
             },
             "text9": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0001 SUT=10]; default value",
+                "text": "Int. RC Osc. 1 MHz; Start-up time: 6 CK + 64 ms; [CKSEL=0001 SUT=10]; default value",
                 "value": "0x21"
             }
         }
@@ -542,586 +542,586 @@
         "mlf": {
             "nmb_pin": "44",
             "pin1": {
-            "name": "[PB5:MOSI]",
+                "name": "[PB5:MOSI]",
                 "text": "MOSI: SPI Master data output, slave data input for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB5. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB5. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB5 bit. See the description of the SPI port for further details."
             },
             "pin10": {
-            "name": "[PD4:XCK]"
+                "name": "[PD4:XCK]"
             },
             "pin11": {
-            "name": "[PD5:OC1A]",
-            "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
+                "name": "[PD5:OC1A]",
+                "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
             },
             "pin12": {
-            "name": "[PD6:'WR]",
-                "text": "WR is the external data memory write control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+                "name": "[PD6:'WR]",
+                "text": "WR is the external data memory write control strobe. See \u201cInterface to External SRAM\u201d on page 52 for detailed information."
             },
             "pin13": {
-            "name": "[PD7:'RD]",
-                "text": "RD is the external data memory read control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+                "name": "[PD7:'RD]",
+                "text": "RD is the external data memory read control strobe. See \u201cInterface to External SRAM\u201d on page 52 for detailed information."
             },
             "pin14": {
-            "name": "[XTAL2]"
+                "name": "[XTAL2]"
             },
             "pin15": {
-            "name": "[XTAL1]"
+                "name": "[XTAL1]"
             },
             "pin16": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin17": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin18": {
-            "name": "[PC0:A8]"
+                "name": "[PC0:A8]"
             },
             "pin19": {
-            "name": "[PC1:A9]"
+                "name": "[PC1:A9]"
             },
             "pin2": {
-            "name": "[PB6:MISO]",
+                "name": "[PB6:MISO]",
                 "text": "MISO: Master data input, slave data output pin for SPI channel. When the SPI is enabled as a master, this pin is configured as an input regardless of the setting of DDB6. When the SPI is enabled as a slave, the data direction of this pin is controlled by DDB6. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB6 bit. See the description of the SPI port for further details."
             },
             "pin20": {
-            "name": "[PC2:A10]"
+                "name": "[PC2:A10]"
             },
             "pin21": {
-            "name": "[PC3:A11]"
+                "name": "[PC3:A11]"
             },
             "pin22": {
-            "name": "[PC4:A12]"
+                "name": "[PC4:A12]"
             },
             "pin23": {
-            "name": "[PC5:A13]"
+                "name": "[PC5:A13]"
             },
             "pin24": {
-            "name": "[PC6:A14]"
+                "name": "[PC6:A14]"
             },
             "pin25": {
-            "name": "[PC7:A15]"
+                "name": "[PC7:A15]"
             },
             "pin26": {
-            "name": "[PE2:OC1B]"
+                "name": "[PE2:OC1B]"
             },
             "pin27": {
-            "name": "[PE1:ALE]"
+                "name": "[PE1:ALE]"
             },
             "pin28": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin29": {
-            "name": "[PE0:ICP:INT2]"
+                "name": "[PE0:ICP:INT2]"
             },
             "pin3": {
-            "name": "[PB7:SCK]",
+                "name": "[PB7:SCK]",
                 "text": "SCK: Master clock output, slave clock input pin for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB7. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB7. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB7 bit. See the description of the SPI port for further details."
             },
             "pin30": {
-            "name": "[PA7:AD7]"
+                "name": "[PA7:AD7]"
             },
             "pin31": {
-            "name": "[PA6:AD6]"
+                "name": "[PA6:AD6]"
             },
             "pin32": {
-            "name": "[PA5:AD5]"
+                "name": "[PA5:AD5]"
             },
             "pin33": {
-            "name": "[PA4:AD4]"
+                "name": "[PA4:AD4]"
             },
             "pin34": {
-            "name": "[PA3:AD3]"
+                "name": "[PA3:AD3]"
             },
             "pin35": {
-            "name": "[PA2:AD2]"
+                "name": "[PA2:AD2]"
             },
             "pin36": {
-            "name": "[PA1:AD1]"
+                "name": "[PA1:AD1]"
             },
             "pin37": {
-            "name": "[PA0:AD0]"
+                "name": "[PA0:AD0]"
             },
             "pin38": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin39": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin4": {
-            "name": "['RESET]"
+                "name": "['RESET]"
             },
             "pin40": {
-            "name": "[PB0:OC0:T0]",
+                "name": "[PB0:OC0:T0]",
                 "text": "T0: Timer/Counter0 counter source. See the timer description for further details."
             },
             "pin41": {
-            "name": "[PB1:T1]",
+                "name": "[PB1:T1]",
                 "text": "T1: Timer/Counter1 counter source. See the timer description for further details"
             },
             "pin42": {
-            "name": "[PB2:AIN0]",
-            "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
+                "name": "[PB2:AIN0]",
+                "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
             },
             "pin43": {
-            "name": "[PB3:AIN1]",
-            "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
+                "name": "[PB3:AIN1]",
+                "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
             },
             "pin44": {
-            "name": "[PB4:'SS]",
+                "name": "[PB4:'SS]",
                 "text": "SS: Slave port select input. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB4. As a slave, the SPI is activated when this pin is driven low. When the SPI is enabled as a master, the data direc-tion of this pin is controlled by DDB4. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB4 bit. See the description of the SPI port for further details."
             },
             "pin5": {
-            "name": "[PD0:RXD]",
-                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical “1” in PORTD0 will turn on the internal pull-up."
+                "name": "[PD0:RXD]",
+                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical \u201c1\u201d in PORTD0 will turn on the internal pull-up."
             },
             "pin6": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin7": {
-            "name": "[PD1:TXD]",
+                "name": "[PD1:TXD]",
                 "text": "Transmit Data (data output pin for the UART). When the UART transmitter is enabled, this pin is configured as an output, regardless of the value of DDRD1."
             },
             "pin8": {
-            "name": "[PD2:INT0]",
+                "name": "[PD2:INT0]",
                 "text": "INT0: External Interrupt source 0. The PD2 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
             },
             "pin9": {
-            "name": "[PD3:INT1]",
+                "name": "[PD3:INT1]",
                 "text": "INT1: External Interrupt source 1. The PD3 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
             }
         },
-    "packages": "[TQFP:MLF:PLCC:PDIP]",
+        "packages": "[TQFP:MLF:PLCC:PDIP]",
         "pdip": {
             "nmb_pin": "40",
             "pin1": {
-            "name": "[PB0:OC0:T0]",
+                "name": "[PB0:OC0:T0]",
                 "text": "T0: Timer/Counter0 counter source. See the timer description for further details."
             },
             "pin10": {
-            "name": "[PD0:RXD]",
-                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical “1” in PORTD0 will turn on the internal pull-up."
+                "name": "[PD0:RXD]",
+                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical \u201c1\u201d in PORTD0 will turn on the internal pull-up."
             },
             "pin11": {
-            "name": "[PD1:TXD]",
+                "name": "[PD1:TXD]",
                 "text": "Transmit Data (data output pin for the UART). When the UART transmitter is enabled, this pin is configured as an output, regardless of the value of DDRD1."
             },
             "pin12": {
-            "name": "[PD2:INT0]",
+                "name": "[PD2:INT0]",
                 "text": "INT0: External Interrupt source 0. The PD2 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
             },
             "pin13": {
-            "name": "[PD3:INT1]",
+                "name": "[PD3:INT1]",
                 "text": "INT1: External Interrupt source 1. The PD3 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
             },
             "pin14": {
-            "name": "[PD4:XCK]"
+                "name": "[PD4:XCK]"
             },
             "pin15": {
-            "name": "[PD5:OC1A]",
-            "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
+                "name": "[PD5:OC1A]",
+                "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
             },
             "pin16": {
-            "name": "[PD6:'WR]",
-                "text": "WR is the external data memory write control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+                "name": "[PD6:'WR]",
+                "text": "WR is the external data memory write control strobe. See \u201cInterface to External SRAM\u201d on page 52 for detailed information."
             },
             "pin17": {
-            "name": "[PD7:'RD]",
-                "text": "RD is the external data memory read control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+                "name": "[PD7:'RD]",
+                "text": "RD is the external data memory read control strobe. See \u201cInterface to External SRAM\u201d on page 52 for detailed information."
             },
             "pin18": {
-            "name": "[XTAL2]"
+                "name": "[XTAL2]"
             },
             "pin19": {
-            "name": "[XTAL1]"
+                "name": "[XTAL1]"
             },
             "pin2": {
-            "name": "[PB1:T1]",
+                "name": "[PB1:T1]",
                 "text": "T1: Timer/Counter1 counter source. See the timer description for further details"
             },
             "pin20": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin21": {
-            "name": "[PC0:A8]"
+                "name": "[PC0:A8]"
             },
             "pin22": {
-            "name": "[PC1:A9]"
+                "name": "[PC1:A9]"
             },
             "pin23": {
-            "name": "[PC2:A10]"
+                "name": "[PC2:A10]"
             },
             "pin24": {
-            "name": "[PC3:A11]"
+                "name": "[PC3:A11]"
             },
             "pin25": {
-            "name": "[PC4:A12]"
+                "name": "[PC4:A12]"
             },
             "pin26": {
-            "name": "[PC5:A13]"
+                "name": "[PC5:A13]"
             },
             "pin27": {
-            "name": "[PC6:A14]"
+                "name": "[PC6:A14]"
             },
             "pin28": {
-            "name": "[PC7:A15]"
+                "name": "[PC7:A15]"
             },
             "pin29": {
-            "name": "[PE2:OC1B]"
+                "name": "[PE2:OC1B]"
             },
             "pin3": {
-            "name": "[PB2:AIN0]",
-            "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
+                "name": "[PB2:AIN0]",
+                "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
             },
             "pin30": {
-            "name": "[PE1:ALE]"
+                "name": "[PE1:ALE]"
             },
             "pin31": {
-            "name": "[PE0:ICP:INT2]"
+                "name": "[PE0:ICP:INT2]"
             },
             "pin32": {
-            "name": "[PA7:AD7]"
+                "name": "[PA7:AD7]"
             },
             "pin33": {
-            "name": "[PA6:AD6]"
+                "name": "[PA6:AD6]"
             },
             "pin34": {
-            "name": "[PA5:AD5]"
+                "name": "[PA5:AD5]"
             },
             "pin35": {
-            "name": "[PA4:AD4]"
+                "name": "[PA4:AD4]"
             },
             "pin36": {
-            "name": "[PA3:AD3]"
+                "name": "[PA3:AD3]"
             },
             "pin37": {
-            "name": "[PA2:AD2]"
+                "name": "[PA2:AD2]"
             },
             "pin38": {
-            "name": "[PA1:AD1]"
+                "name": "[PA1:AD1]"
             },
             "pin39": {
-            "name": "[PA0:AD0]"
+                "name": "[PA0:AD0]"
             },
             "pin4": {
-            "name": "[PB3:AIN1]",
-            "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
+                "name": "[PB3:AIN1]",
+                "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
             },
             "pin40": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin5": {
-            "name": "[PB5:MOSI]",
+                "name": "[PB5:MOSI]",
                 "text": "MOSI: SPI Master data output, slave data input for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB5. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB5. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB5 bit. See the description of the SPI port for further details."
             },
             "pin6": {
-            "name": "[PB4:'SS]",
+                "name": "[PB4:'SS]",
                 "text": "SS: Slave port select input. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB4. As a slave, the SPI is activated when this pin is driven low. When the SPI is enabled as a master, the data direc-tion of this pin is controlled by DDB4. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB4 bit. See the description of the SPI port for further details."
             },
             "pin7": {
-            "name": "[PB6:MISO]",
+                "name": "[PB6:MISO]",
                 "text": "MISO: Master data input, slave data output pin for SPI channel. When the SPI is enabled as a master, this pin is configured as an input regardless of the setting of DDB6. When the SPI is enabled as a slave, the data direction of this pin is controlled by DDB6. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB6 bit. See the description of the SPI port for further details."
             },
             "pin8": {
-            "name": "[PB7:SCK]",
+                "name": "[PB7:SCK]",
                 "text": "SCK: Master clock output, slave clock input pin for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB7. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB7. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB7 bit. See the description of the SPI port for further details."
             },
             "pin9": {
-            "name": "['RESET]"
+                "name": "['RESET]"
             }
         },
         "plcc": {
             "nmb_pin": "44",
             "pin1": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin10": {
-            "name": "['RESET]"
+                "name": "['RESET]"
             },
             "pin11": {
-            "name": "[PD0:RXD]",
-                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical “1” in PORTD0 will turn on the internal pull-up."
+                "name": "[PD0:RXD]",
+                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical \u201c1\u201d in PORTD0 will turn on the internal pull-up."
             },
             "pin12": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin13": {
-            "name": "[PD1:TXD]",
+                "name": "[PD1:TXD]",
                 "text": "Transmit Data (data output pin for the UART). When the UART transmitter is enabled, this pin is configured as an output, regardless of the value of DDRD1."
             },
             "pin14": {
-            "name": "[PD2:INT0]",
+                "name": "[PD2:INT0]",
                 "text": "INT0: External Interrupt source 0. The PD2 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
             },
             "pin15": {
-            "name": "[PD3:INT1]",
+                "name": "[PD3:INT1]",
                 "text": "INT1: External Interrupt source 1. The PD3 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
             },
             "pin16": {
-            "name": "[PD4:XCK]"
+                "name": "[PD4:XCK]"
             },
             "pin17": {
-            "name": "[PD5:OC1A]",
-            "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
+                "name": "[PD5:OC1A]",
+                "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
             },
             "pin18": {
-            "name": "[PD6:'WR]",
-                "text": "WR is the external data memory write control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+                "name": "[PD6:'WR]",
+                "text": "WR is the external data memory write control strobe. See \u201cInterface to External SRAM\u201d on page 52 for detailed information."
             },
             "pin19": {
-            "name": "[PD7:'RD]",
-                "text": "RD is the external data memory read control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+                "name": "[PD7:'RD]",
+                "text": "RD is the external data memory read control strobe. See \u201cInterface to External SRAM\u201d on page 52 for detailed information."
             },
             "pin2": {
-            "name": "[PB0:OC0:T0]",
+                "name": "[PB0:OC0:T0]",
                 "text": "T0: Timer/Counter0 counter source. See the timer description for further details."
             },
             "pin20": {
-            "name": "[XTAL2]"
+                "name": "[XTAL2]"
             },
             "pin21": {
-            "name": "[XTAL1]"
+                "name": "[XTAL1]"
             },
             "pin22": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin23": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin24": {
-            "name": "[PC0:A8]"
+                "name": "[PC0:A8]"
             },
             "pin25": {
-            "name": "[PC1:A9]"
+                "name": "[PC1:A9]"
             },
             "pin26": {
-            "name": "[PC2:A10]"
+                "name": "[PC2:A10]"
             },
             "pin27": {
-            "name": "[PC3:A11]"
+                "name": "[PC3:A11]"
             },
             "pin28": {
-            "name": "[PC4:A12]"
+                "name": "[PC4:A12]"
             },
             "pin29": {
-            "name": "[PC5:A13]"
+                "name": "[PC5:A13]"
             },
             "pin3": {
-            "name": "[PB1:T1]",
+                "name": "[PB1:T1]",
                 "text": "T1: Timer/Counter1 counter source. See the timer description for further details"
             },
             "pin30": {
-            "name": "[PC6:A14]"
+                "name": "[PC6:A14]"
             },
             "pin31": {
-            "name": "[PC7:A15]"
+                "name": "[PC7:A15]"
             },
             "pin32": {
-            "name": "[PE2:OC1B]"
+                "name": "[PE2:OC1B]"
             },
             "pin33": {
-            "name": "[PE1:ALE]"
+                "name": "[PE1:ALE]"
             },
             "pin35": {
-            "name": "[PE0:ICP:INT2]"
+                "name": "[PE0:ICP:INT2]"
             },
             "pin36": {
-            "name": "[PA7:AD7]"
+                "name": "[PA7:AD7]"
             },
             "pin37": {
-            "name": "[PA6:AD6]"
+                "name": "[PA6:AD6]"
             },
             "pin38": {
-            "name": "[PA5:AD5]"
+                "name": "[PA5:AD5]"
             },
             "pin39": {
-            "name": "[PA4:AD4]"
+                "name": "[PA4:AD4]"
             },
             "pin4": {
-            "name": "[PB2:AIN0]",
-            "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
+                "name": "[PB2:AIN0]",
+                "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
             },
             "pin40": {
-            "name": "[PA3:AD3]"
+                "name": "[PA3:AD3]"
             },
             "pin41": {
-            "name": "[PA2:AD2]"
+                "name": "[PA2:AD2]"
             },
             "pin42": {
-            "name": "[PA1:AD1]"
+                "name": "[PA1:AD1]"
             },
             "pin43": {
-            "name": "[PA0:AD0]"
+                "name": "[PA0:AD0]"
             },
             "pin44": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin5": {
-            "name": "[PB3:AIN1]",
-            "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
+                "name": "[PB3:AIN1]",
+                "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
             },
             "pin6": {
-            "name": "[PB4:'SS]",
+                "name": "[PB4:'SS]",
                 "text": "SS: Slave port select input. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB4. As a slave, the SPI is activated when this pin is driven low. When the SPI is enabled as a master, the data direc-tion of this pin is controlled by DDB4. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB4 bit. See the description of the SPI port for further details."
             },
             "pin7": {
-            "name": "[PB5:MOSI]",
+                "name": "[PB5:MOSI]",
                 "text": "MOSI: SPI Master data output, slave data input for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB5. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB5. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB5 bit. See the description of the SPI port for further details."
             },
             "pin8": {
-            "name": "[PB6:MISO]",
+                "name": "[PB6:MISO]",
                 "text": "MISO: Master data input, slave data output pin for SPI channel. When the SPI is enabled as a master, this pin is configured as an input regardless of the setting of DDB6. When the SPI is enabled as a slave, the data direction of this pin is controlled by DDB6. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB6 bit. See the description of the SPI port for further details."
             },
             "pin9": {
-            "name": "[PB7:SCK]",
+                "name": "[PB7:SCK]",
                 "text": "SCK: Master clock output, slave clock input pin for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB7. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB7. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB7 bit. See the description of the SPI port for further details."
             }
         },
         "tqfp": {
             "nmb_pin": "44",
             "pin1": {
-            "name": "[PB5:MOSI]",
+                "name": "[PB5:MOSI]",
                 "text": "MOSI: SPI Master data output, slave data input for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB5. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB5. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB5 bit. See the description of the SPI port for further details."
             },
             "pin10": {
-            "name": "[PD4:XCK]"
+                "name": "[PD4:XCK]"
             },
             "pin11": {
-            "name": "[PD5:OC1A]",
-            "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
+                "name": "[PD5:OC1A]",
+                "text": "OC1A: Output compare match output. The PD5 pin can serve as an external output when the Timer/Counter1 compare matches. The PD5 pin has to be configured as an output (DDD5 set [one]) to serve this function. See the Timer/Counter1 description for further details and how to enable the output. The OC1A pin is also the output pin for the PWM mode timer function."
             },
             "pin12": {
-            "name": "[PD6:'WR]",
-                "text": "WR is the external data memory write control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+                "name": "[PD6:'WR]",
+                "text": "WR is the external data memory write control strobe. See \u201cInterface to External SRAM\u201d on page 52 for detailed information."
             },
             "pin13": {
-            "name": "[PD7:'RD]",
-                "text": "RD is the external data memory read control strobe. See “Interface to External SRAM” on page 52 for detailed information."
+                "name": "[PD7:'RD]",
+                "text": "RD is the external data memory read control strobe. See \u201cInterface to External SRAM\u201d on page 52 for detailed information."
             },
             "pin14": {
-            "name": "[XTAL2]"
+                "name": "[XTAL2]"
             },
             "pin15": {
-            "name": "[XTAL1]"
+                "name": "[XTAL1]"
             },
             "pin16": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin17": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin18": {
-            "name": "[PC0:A8]"
+                "name": "[PC0:A8]"
             },
             "pin19": {
-            "name": "[PC1:A9]"
+                "name": "[PC1:A9]"
             },
             "pin2": {
-            "name": "[PB6:MISO]",
+                "name": "[PB6:MISO]",
                 "text": "MISO: Master data input, slave data output pin for SPI channel. When the SPI is enabled as a master, this pin is configured as an input regardless of the setting of DDB6. When the SPI is enabled as a slave, the data direction of this pin is controlled by DDB6. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB6 bit. See the description of the SPI port for further details."
             },
             "pin20": {
-            "name": "[PC2:A10]"
+                "name": "[PC2:A10]"
             },
             "pin21": {
-            "name": "[PC3:A11]"
+                "name": "[PC3:A11]"
             },
             "pin22": {
-            "name": "[PC4:A12]"
+                "name": "[PC4:A12]"
             },
             "pin23": {
-            "name": "[PC5:A13]"
+                "name": "[PC5:A13]"
             },
             "pin24": {
-            "name": "[PC6:A14]"
+                "name": "[PC6:A14]"
             },
             "pin25": {
-            "name": "[PC7:A15]"
+                "name": "[PC7:A15]"
             },
             "pin26": {
-            "name": "[PE2:OC1B]"
+                "name": "[PE2:OC1B]"
             },
             "pin27": {
-            "name": "[PE1:ALE]"
+                "name": "[PE1:ALE]"
             },
             "pin28": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin29": {
-            "name": "[PE0:ICP:INT2]"
+                "name": "[PE0:ICP:INT2]"
             },
             "pin3": {
-            "name": "[PB7:SCK]",
+                "name": "[PB7:SCK]",
                 "text": "SCK: Master clock output, slave clock input pin for SPI channel. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB7. When the SPI is enabled as a master, the data direction of this pin is con-trolled by DDB7. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB7 bit. See the description of the SPI port for further details."
             },
             "pin30": {
-            "name": "[PA7:AD7]"
+                "name": "[PA7:AD7]"
             },
             "pin31": {
-            "name": "[PA6:AD6]"
+                "name": "[PA6:AD6]"
             },
             "pin32": {
-            "name": "[PA5:AD5]"
+                "name": "[PA5:AD5]"
             },
             "pin33": {
-            "name": "[PA4:AD4]"
+                "name": "[PA4:AD4]"
             },
             "pin34": {
-            "name": "[PA3:AD3]"
+                "name": "[PA3:AD3]"
             },
             "pin35": {
-            "name": "[PA2:AD2]"
+                "name": "[PA2:AD2]"
             },
             "pin36": {
-            "name": "[PA1:AD1]"
+                "name": "[PA1:AD1]"
             },
             "pin37": {
-            "name": "[PA0:AD0]"
+                "name": "[PA0:AD0]"
             },
             "pin38": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin39": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin4": {
-            "name": "['RESET]"
+                "name": "['RESET]"
             },
             "pin40": {
-            "name": "[PB0:OC0:T0]",
+                "name": "[PB0:OC0:T0]",
                 "text": "T0: Timer/Counter0 counter source. See the timer description for further details."
             },
             "pin41": {
-            "name": "[PB1:T1]",
+                "name": "[PB1:T1]",
                 "text": "T1: Timer/Counter1 counter source. See the timer description for further details"
             },
             "pin42": {
-            "name": "[PB2:AIN0]",
-            "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
+                "name": "[PB2:AIN0]",
+                "text": "AIN0: Analog Comparator Positive Input. When configured as an input (DDB2 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB2 is cleared [zero]), this pin also serves as the positive input of the on-chip Analog Comparator."
             },
             "pin43": {
-            "name": "[PB3:AIN1]",
-            "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
+                "name": "[PB3:AIN1]",
+                "text": "AIN1: Analog Comparator Negative Input. When configured as an input (DDB3 is cleared [zero]) and with the internal MOS pull-up resistor switched off (PB3 is cleared [zero]), this pin also serves as the negative input of the on-chip Analog Comparator."
             },
             "pin44": {
-            "name": "[PB4:'SS]",
+                "name": "[PB4:'SS]",
                 "text": "SS: Slave port select input. When the SPI is enabled as a slave, this pin is configured as an input regardless of the setting of DDB4. As a slave, the SPI is activated when this pin is driven low. When the SPI is enabled as a master, the data direc-tion of this pin is controlled by DDB4. When the pin is forced to be an input, the pull-up can still be controlled by the PORTB4 bit. See the description of the SPI port for further details."
             },
             "pin5": {
-            "name": "[PD0:RXD]",
-                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical “1” in PORTD0 will turn on the internal pull-up."
+                "name": "[PD0:RXD]",
+                "text": "Receive Data (data input pin for the UART). When the UART receiver is enabled, this pin is configured as an input, regardless of the value of DDRD0. When the UART forces this pin to be an input, a logical \u201c1\u201d in PORTD0 will turn on the internal pull-up."
             },
             "pin6": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin7": {
-            "name": "[PD1:TXD]",
+                "name": "[PD1:TXD]",
                 "text": "Transmit Data (data output pin for the UART). When the UART transmitter is enabled, this pin is configured as an output, regardless of the value of DDRD1."
             },
             "pin8": {
-            "name": "[PD2:INT0]",
+                "name": "[PD2:INT0]",
                 "text": "INT0: External Interrupt source 0. The PD2 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
             },
             "pin9": {
-            "name": "[PD3:INT1]",
+                "name": "[PD3:INT1]",
                 "text": "INT1: External Interrupt source 1. The PD3 pin can serve as an external interrupt source to the MCU. See the interrupt description for further details and how to enable the source."
             }
         }
@@ -1553,7 +1553,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -1688,7 +1689,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         }
     ],
     "avr_core": "avr4"

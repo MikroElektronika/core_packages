@@ -571,7 +571,8 @@
                 }
             ],
             "key": "CONFIG1",
-            "unused": "C118"
+            "unused": "C118",
+            "label": "CONFIG1"
         },
         {
             "address": "8008",
@@ -740,7 +741,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "C078"
+            "unused": "C078",
+            "label": "CONFIG2"
         },
         {
             "address": "8009",
@@ -924,7 +926,8 @@
                 }
             ],
             "key": "CONFIG3",
-            "unused": "C080"
+            "unused": "C080",
+            "label": "CONFIG3"
         }
     ],
     "core": "P16_Enh",

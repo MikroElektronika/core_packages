@@ -21,7 +21,8 @@
                     "label": "Primary oscillator disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PRI",
@@ -36,7 +37,8 @@
                     "label": "Use default SCL1/SDA1 pins",
                     "value": "PRI"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -51,7 +53,8 @@
                     "label": "Once IOLOCK is set, cannot be changed",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "OFF",
@@ -66,7 +69,8 @@
                     "label": "OSC2/CLKO/RC15 functions as CLKO (FOSC/2)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "CSDCMD",
@@ -85,7 +89,8 @@
                     "label": "Clock switching and Fail-Safe Clock Monitor are disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "FRCDIV",
@@ -120,7 +125,8 @@
                     "label": "Fast RC Oscillator with Postscaler (FRCDIV)",
                     "value": "FRCDIV"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "SOSC",
@@ -135,7 +141,8 @@
                     "label": "Default Secondary Oscillator (SOSC)",
                     "value": "SOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "LEG",
@@ -150,7 +157,8 @@
                     "label": "Legacy Wake-up Timer",
                     "value": "LEG"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -165,7 +173,8 @@
                     "label": "IESO mode (Two-Speed Start-up) enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "PS32768",
@@ -236,7 +245,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PR128",
@@ -251,7 +261,8 @@
                     "label": "Prescaler ratio of 1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -266,7 +277,8 @@
                     "label": "Standard Watchdog Timer enabled,(Windowed-mode is disabled)",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -281,7 +293,8 @@
                     "label": "Watchdog Timer is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "PGx1",
@@ -300,7 +313,8 @@
                     "label": "Emulator EMUC1/EMUD1 pins are shared with PGC1/PGD1",
                     "value": "PGx1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -311,7 +325,8 @@
                     "label": "Device resets into Operational mode",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -326,7 +341,8 @@
                     "label": "Writes to program memory are allowed",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -341,7 +357,8 @@
                     "label": "Code protection is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "ON",
@@ -356,7 +373,8 @@
                     "label": "JTAG port is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         }
     ],
     "mcu": "PIC24FJ32GA002",

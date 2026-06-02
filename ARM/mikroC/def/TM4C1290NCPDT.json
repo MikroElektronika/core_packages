@@ -110,7 +110,8 @@
                 }
             ],
             "key": "RSCLKCFG",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Run and sleep mode configuration register"
         },
         {
             "address": "400FE07C",
@@ -220,7 +221,8 @@
                 }
             ],
             "key": "MOSCCTL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Main oscillator control"
         },
         {
             "address": "400FE160",
@@ -273,7 +275,8 @@
                 }
             ],
             "key": "PLLFREQ0",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Pll frequency 0"
         },
         {
             "address": "400FE164",
@@ -309,7 +312,8 @@
                 }
             ],
             "key": "PLLFREQ1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Pll frequency 1"
         }
     ],
     "core": "M4EF",

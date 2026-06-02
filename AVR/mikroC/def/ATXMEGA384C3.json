@@ -8,7 +8,7 @@
         "min_addr": "0x40"
     },
     "fuse": {
-    "list": "[]"
+        "list": "[]"
     },
     "io": {
         "max_addr": "0x3F",
@@ -759,7 +759,8 @@
                 }
             ],
             "key": "FUSEBYTE1",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE1"
         },
         {
             "address": "820002",
@@ -792,7 +793,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "0000001C",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -830,14 +831,16 @@
                 }
             ],
             "key": "FUSEBYTE2",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE2"
         },
         {
             "address": "820003",
             "default": "000000FF",
-        "fields": [],
+            "fields": [],
             "key": "reserved",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "reserved"
         },
         {
             "address": "820004",
@@ -849,7 +852,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "00000001",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -908,7 +911,8 @@
                 }
             ],
             "key": "FUSEBYTE4",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE4"
         },
         {
             "address": "820005",
@@ -995,7 +999,8 @@
                 }
             ],
             "key": "FUSEBYTE5",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE5"
         }
     ],
     "avr_core": "avrxmega6",

@@ -13,7 +13,8 @@
                     "label": "Boot Segment may be written",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "DISABLED",
@@ -32,7 +33,8 @@
                     "label": "No Protection (other than BWRP)",
                     "value": "DISABLED"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "OFF",
@@ -47,7 +49,8 @@
                     "label": "No Boot Segment",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "OFF",
@@ -62,7 +65,8 @@
                     "label": "General Segment may be written",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "DISABLED",
@@ -81,7 +85,8 @@
                     "label": "No Protection (other than GWRP)",
                     "value": "DISABLED"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "OFF",
@@ -96,7 +101,8 @@
                     "label": "Configuration Segment may be written",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "DISABLED",
@@ -119,7 +125,8 @@
                     "label": "No Protection (other than CWRP)",
                     "value": "DISABLED"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "OFF",
@@ -134,7 +141,8 @@
                     "label": "Disabled AIVT",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FSEC"
         },
         {
             "init": "BSLIM",
@@ -145,7 +153,8 @@
                     "label": "Boot Segment Flash page address  limit",
                     "value": "BSLIM"
                 }
-            ]
+            ],
+            "label_group": "FBSLIM"
         },
         {
             "init": "OSCFDIV",
@@ -184,7 +193,8 @@
                     "label": "Oscillator with Divider",
                     "value": "OSCFDIV"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "DISABLED",
@@ -239,7 +249,8 @@
                     "label": "No PLL used; PLLEN bit is not available",
                     "value": "DISABLED"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "ON",
@@ -254,7 +265,8 @@
                     "label": "Start up device with FRC, then switch to user-selected oscillator source",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "NONE",
@@ -277,7 +289,8 @@
                     "label": "Primary Oscillator disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "OFF",
@@ -292,7 +305,8 @@
                     "label": "OSC2 is clock output",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "ON",
@@ -307,7 +321,8 @@
                     "label": "SOSC is used in crystal (SOSCI/SOSCO) mode",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "PLL_PRI",
@@ -322,7 +337,8 @@
                     "label": "PLL is fed by the Primary oscillator",
                     "value": "PLL_PRI"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "ON",
@@ -337,7 +353,8 @@
                     "label": "Allow only one reconfiguration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "CSDCMD",
@@ -356,7 +373,8 @@
                     "label": "Both Clock switching and Fail-safe Clock Monitor are disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "PS32768",
@@ -427,7 +445,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PR128",
@@ -442,7 +461,8 @@
                     "label": "1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "ON",
@@ -465,7 +485,8 @@
                     "label": "WDT Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "OFF",
@@ -480,7 +501,8 @@
                     "label": "Watchdog Timer in Non-Window mode",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WIN25",
@@ -503,7 +525,8 @@
                     "label": "WDT Window is 25% of WDT period",
                     "value": "WIN25"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "WDTCLK",
@@ -518,7 +541,8 @@
                     "label": "WDT clock source is determined by the WDTCLK Configuration bits",
                     "value": "WDTCLK"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "LPRC",
@@ -541,7 +565,8 @@
                     "label": "WDT uses LPRC",
                     "value": "LPRC"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "ON",
@@ -564,7 +589,8 @@
                     "label": "Brown Out Enable Bit",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "OFF",
@@ -579,7 +605,8 @@
                     "label": "No Retention Sleep",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "ENABLE",
@@ -594,7 +621,8 @@
                     "label": "Downside protection enabled using ZPBOR when BOR is inactive",
                     "value": "ENABLE"
                 }
-            ]
+            ],
+            "label_group": "FPOR"
         },
         {
             "init": "PGD1",
@@ -617,7 +645,8 @@
                     "label": "Communicate on PGEC1 and PGED1",
                     "value": "PGD1"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         },
         {
             "init": "ON",
@@ -632,7 +661,8 @@
                     "label": "JTAG is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         },
         {
             "init": "DISABLE",
@@ -647,7 +677,8 @@
                     "label": "C1INC, C2INC, and C3INC are on their standard pin locations",
                     "value": "DISABLE"
                 }
-            ]
+            ],
+            "label_group": "FDEVOPT1"
         },
         {
             "init": "OFF",
@@ -662,7 +693,8 @@
                     "label": "TMPRN pin function is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FDEVOPT1"
         },
         {
             "init": "ON",
@@ -677,7 +709,8 @@
                     "label": "Enable SOSC high power mode (default)",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FDEVOPT1"
         },
         {
             "init": "ALTI2CEN",
@@ -692,7 +725,8 @@
                     "label": "SDA1 and SCL1 on RB9 and RB8",
                     "value": "ALTI2CEN"
                 }
-            ]
+            ],
+            "label_group": "FDEVOPT1"
         }
     ],
     "mcu": "PIC24FJ64GA702",

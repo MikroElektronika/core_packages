@@ -21,7 +21,8 @@
                     "label": "Communicate on PGEC1 and PGED1",
                     "value": "PGD1"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         },
         {
             "init": "ON",
@@ -36,7 +37,8 @@
                     "label": "JTAG is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FICD"
         },
         {
             "init": "PS32768",
@@ -107,7 +109,8 @@
                     "label": "1:32,768",
                     "value": "PS32768"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "PR128",
@@ -122,7 +125,8 @@
                     "label": "1:128",
                     "value": "PR128"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "ON",
@@ -137,7 +141,8 @@
                     "label": "Clock switch to PLL source will wait until the PLL lock signal is valid.",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "Other"
         },
         {
             "init": "ON",
@@ -152,7 +157,8 @@
                     "label": "Watchdog timer always enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FWDT"
         },
         {
             "init": "NONE",
@@ -175,7 +181,8 @@
                     "label": "Primary Oscillator disabled",
                     "value": "NONE"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "OFF",
@@ -190,7 +197,8 @@
                     "label": "OSC2 is clock output",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "ON",
@@ -205,7 +213,8 @@
                     "label": "Allow only one reconfiguration",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "CSDCMD",
@@ -224,7 +233,8 @@
                     "label": "Both Clock switching and Fail-safe Clock Monitor are disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "FOSC"
         },
         {
             "init": "FRCDIVN",
@@ -255,7 +265,8 @@
                     "label": "Internal Fast RC (FRC) Oscillator with postscaler",
                     "value": "FRCDIVN"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "ON",
@@ -270,7 +281,8 @@
                     "label": "Start up device with FRC, then switch to user-selected oscillator source",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "FOSCSEL"
         },
         {
             "init": "OFF",
@@ -285,7 +297,8 @@
                     "label": "General Segment may be written",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "FGS"
         },
         {
             "init": "OFF",
@@ -300,7 +313,8 @@
                     "label": "General Segment Code protect is Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "Other"
         }
     ],
     "mcu": "dsPIC33FJ06GS102A",

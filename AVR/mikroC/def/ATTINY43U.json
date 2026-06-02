@@ -14,7 +14,7 @@
             "nmb_text": "1",
             "text1": {
                 "mask": "0x01",
-            "text": "Self Programming enable; [SELFPRGEN=0]",
+                "text": "Self Programming enable; [SELFPRGEN=0]",
                 "value": "0x00"
             }
         },
@@ -63,71 +63,71 @@
             "nmb_text": "13",
             "text1": {
                 "mask": "0x80",
-            "text": "Reset Disabled (Enable PB7 as i/o pin); [RSTDISBL=0]",
+                "text": "Reset Disabled (Enable PB7 as i/o pin); [RSTDISBL=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=2.2 V; [BODLEVEL=010]",
+                "text": "Brown-out detection level at VCC=2.2 V; [BODLEVEL=010]",
                 "value": "0x02"
             },
             "text11": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=1.9 V; [BODLEVEL=001]",
+                "text": "Brown-out detection level at VCC=1.9 V; [BODLEVEL=001]",
                 "value": "0x01"
             },
             "text12": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=2.0 V; [BODLEVEL=000]",
+                "text": "Brown-out detection level at VCC=2.0 V; [BODLEVEL=000]",
                 "value": "0x00"
             },
             "text13": {
                 "mask": "0x07",
-            "text": "Brown-out detection disabled; [BODLEVEL=111]",
+                "text": "Brown-out detection disabled; [BODLEVEL=111]",
                 "value": "0x07"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Debug Wire enable; [DWEN=0]",
+                "text": "Debug Wire enable; [DWEN=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "text": "Watch-dog Timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x08",
-            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=100]",
+                "text": "Brown-out detection level at VCC=4.3 V; [BODLEVEL=100]",
                 "value": "0x04"
             },
             "text7": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=101]",
+                "text": "Brown-out detection level at VCC=2.7 V; [BODLEVEL=101]",
                 "value": "0x05"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=1.8 V; [BODLEVEL=110]",
+                "text": "Brown-out detection level at VCC=1.8 V; [BODLEVEL=110]",
                 "value": "0x06"
             },
             "text9": {
                 "mask": "0x07",
-            "text": "Brown-out detection level at VCC=2.3 V; [BODLEVEL=011]",
+                "text": "Brown-out detection level at VCC=2.3 V; [BODLEVEL=011]",
                 "value": "0x03"
             }
         },
-    "list": "[LOW:HIGH:EXTENDED]",
+        "list": "[LOW:HIGH:EXTENDED]",
         "low": {
             "fuse0": {
                 "default": "0",
@@ -173,252 +173,252 @@
             "nmb_text": "50",
             "text1": {
                 "mask": "0x80",
-            "text": "Divide clock by 8 internally; [CKDIV8=0]",
+                "text": "Divide clock by 8 internally; [CKDIV8=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms; [CKSEL=0010 SUT=00]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms; [CKSEL=0010 SUT=00]",
                 "value": "0x02"
             },
             "text11": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms; [CKSEL=0010 SUT=01]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms; [CKSEL=0010 SUT=01]",
                 "value": "0x12"
             },
             "text12": {
                 "mask": "0x3F",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms; [CKSEL=0010 SUT=10]; default value",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms; [CKSEL=0010 SUT=10]; default value",
                 "value": "0x22"
             },
             "text13": {
                 "mask": "0x3F",
-            "text": "WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms; [CKSEL=0011 SUT=00]",
+                "text": "WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms; [CKSEL=0011 SUT=00]",
                 "value": "0x03"
             },
             "text14": {
                 "mask": "0x3F",
-            "text": "WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms; [CKSEL=0011 SUT=01]",
+                "text": "WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms; [CKSEL=0011 SUT=01]",
                 "value": "0x13"
             },
             "text15": {
                 "mask": "0x3F",
-            "text": "WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms; [CKSEL=0011 SUT=10]",
+                "text": "WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms; [CKSEL=0011 SUT=10]",
                 "value": "0x23"
             },
             "text16": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1 CK 4 ms; [CKSEL=0100 SUT=00]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1 CK 4 ms; [CKSEL=0100 SUT=00]",
                 "value": "0x04"
             },
             "text17": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1 CK + 64 ms; [CKSEL=0100 SUT=01]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1 CK + 64 ms; [CKSEL=0100 SUT=01]",
                 "value": "0x14"
             },
             "text18": {
                 "mask": "0x3F",
-            "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32 CK + 64 ms; [CKSEL=0100 SUT=10]",
+                "text": "Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32 CK + 64 ms; [CKSEL=0100 SUT=10]",
                 "value": "0x24"
             },
             "text19": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1000 SUT=00]",
+                "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1000 SUT=00]",
                 "value": "0x08"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Clock output on PORTB5; [CKOUT=0]",
+                "text": "Clock output on PORTB5; [CKOUT=0]",
                 "value": "0x00"
             },
             "text20": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1000 SUT=01]",
+                "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1000 SUT=01]",
                 "value": "0x18"
             },
             "text21": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1000 SUT=10]",
+                "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1000 SUT=10]",
                 "value": "0x28"
             },
             "text22": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1000 SUT=11]",
+                "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1000 SUT=11]",
                 "value": "0x38"
             },
             "text23": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1001 SUT=00]",
+                "text": "Ext. Ceramic Res.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1001 SUT=00]",
                 "value": "0x09"
             },
             "text24": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1001 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1001 SUT=01]",
                 "value": "0x19"
             },
             "text25": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1001 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1001 SUT=10]",
                 "value": "0x29"
             },
             "text26": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1001 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1001 SUT=11]",
                 "value": "0x39"
             },
             "text27": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1010 SUT=00]",
+                "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1010 SUT=00]",
                 "value": "0x0A"
             },
             "text28": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1010 SUT=01]",
+                "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1010 SUT=01]",
                 "value": "0x1A"
             },
             "text29": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1010 SUT=10]",
+                "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1010 SUT=10]",
                 "value": "0x2A"
             },
             "text3": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0000 SUT=00]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms;   [CKSEL=0000 SUT=00]",
                 "value": "0x00"
             },
             "text30": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1010 SUT=11]",
+                "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1010 SUT=11]",
                 "value": "0x3A"
             },
             "text31": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1011 SUT=00]",
+                "text": "Ext. Ceramic Res.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1011 SUT=00]",
                 "value": "0x0B"
             },
             "text32": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1011 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1011 SUT=01]",
                 "value": "0x1B"
             },
             "text33": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1011 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1011 SUT=10]",
                 "value": "0x2B"
             },
             "text34": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1011 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1011 SUT=11]",
                 "value": "0x3B"
             },
             "text35": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1100 SUT=00]",
+                "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1100 SUT=00]",
                 "value": "0x0C"
             },
             "text36": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1100 SUT=01]",
+                "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1100 SUT=01]",
                 "value": "0x1C"
             },
             "text37": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1100 SUT=10]",
+                "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1100 SUT=10]",
                 "value": "0x2C"
             },
             "text38": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1100 SUT=11]",
+                "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1100 SUT=11]",
                 "value": "0x3C"
             },
             "text39": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1101 SUT=00]",
+                "text": "Ext. Ceramic Res.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1101 SUT=00]",
                 "value": "0x0D"
             },
             "text4": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms; [CKSEL=0000 SUT=01]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms; [CKSEL=0000 SUT=01]",
                 "value": "0x10"
             },
             "text40": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1101 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1101 SUT=01]",
                 "value": "0x1D"
             },
             "text41": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1101 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1101 SUT=10]",
                 "value": "0x2D"
             },
             "text42": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1101 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1101 SUT=11]",
                 "value": "0x3D"
             },
             "text43": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1110 SUT=00]",
+                "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms; [CKSEL=1110 SUT=00]",
                 "value": "0x0E"
             },
             "text44": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1110 SUT=01]",
+                "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms;  [CKSEL=1110 SUT=01]",
                 "value": "0x1E"
             },
             "text45": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1110 SUT=10]",
+                "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms;   [CKSEL=1110 SUT=10]",
                 "value": "0x2E"
             },
             "text46": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1110 SUT=11]",
+                "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms; [CKSEL=1110 SUT=11]",
                 "value": "0x3E"
             },
             "text47": {
                 "mask": "0x3F",
-            "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1111 SUT=00]",
+                "text": "Ext. Ceramic Res.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms;  [CKSEL=1111 SUT=00]",
                 "value": "0x0F"
             },
             "text48": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1111 SUT=01]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms;   [CKSEL=1111 SUT=01]",
                 "value": "0x1F"
             },
             "text49": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1111 SUT=10]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms; [CKSEL=1111 SUT=10]",
                 "value": "0x2F"
             },
             "text5": {
                 "mask": "0x3F",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms;  [CKSEL=0000 SUT=10]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms;  [CKSEL=0000 SUT=10]",
                 "value": "0x20"
             },
             "text50": {
                 "mask": "0x3F",
-            "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1111 SUT=11]",
+                "text": "Ext. Crystal Osc.; Frequency > 8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms;  [CKSEL=1111 SUT=11]",
                 "value": "0x3F"
             },
             "text6": {
                 "mask": "0x3F",
-            "text": "PLL Clock; Start-up time PWRDWN/RESET: 1K CK/14 CK + 8 ms; [CKSEL=0001 SUT=00]",
+                "text": "PLL Clock; Start-up time PWRDWN/RESET: 1K CK/14 CK + 8 ms; [CKSEL=0001 SUT=00]",
                 "value": "0x01"
             },
             "text7": {
                 "mask": "0x3F",
-            "text": "PLL Clock; Start-up time PWRDWN/RESET: 16K CK/14 CK + 8 ms; [CKSEL=0001 SUT=01]",
+                "text": "PLL Clock; Start-up time PWRDWN/RESET: 16K CK/14 CK + 8 ms; [CKSEL=0001 SUT=01]",
                 "value": "0x11"
             },
             "text8": {
                 "mask": "0x3F",
-            "text": "PLL Clock; Start-up time PWRDWN/RESET: 1K CK/14 CK + 68 ms; [CKSEL=0001 SUT=10]",
+                "text": "PLL Clock; Start-up time PWRDWN/RESET: 1K CK/14 CK + 68 ms; [CKSEL=0001 SUT=10]",
                 "value": "0x21"
             },
             "text9": {
                 "mask": "0x3F",
-            "text": "PLL Clock; Start-up time PWRDWN/RESET: 16K CK/14 CK + 68 ms; [CKSEL=0001 SUT=11]",
+                "text": "PLL Clock; Start-up time PWRDWN/RESET: 16K CK/14 CK + 68 ms; [CKSEL=0001 SUT=11]",
                 "value": "0x31"
             }
         }
@@ -508,80 +508,80 @@
     "core": "LTE64K",
     "delay_src_path": "delays/lte64k/__lib_delays.c",
     "package": {
-    "packages": "[PDIP:SOIC]",
+        "packages": "[PDIP:SOIC]",
         "pdip": {
             "nmb_pin": "20",
             "pin1": {
-            "name": "[MOSI:DI_B:SDA_B:'_OC1A:PCINT8:PB0]",
+                "name": "[MOSI:DI_B:SDA_B:'_OC1A:PCINT8:PB0]",
                 "text": "DI: Data input in USI 3-wire mode. USI 3-wire mode does not override normal port functions., so pin must be configure as an input. SDA: Serial data in USI 2-wire mode. Serial data pin is bi-directional and uses open-col-lector output. The SDA pin is enabled by setting the pin as an output. The pin is pulled low when the PORTB0 or USI shiftregister is zero when DDB0 is set (one). Pull-up is disabled in USI 2-wire mode. OC1A: Inverted Timer/Counter1 PWM Output A: The PB0 pin can serve as an Inverted output for the PWM mode if not used in programming or USI. The PB0 pin has to be configured as an output (DDB0 set (one)) to serve this function. For further reading on PCINT0 please refer to the man"
             },
             "pin10": {
-            "name": "[ADC10:'RESET:PCINT15:PB7]",
-                "text": "ADC10: ADC input channel 10. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter. RESET: External Reset Input is active low and enabled by unprogramming (“1”) the RSTDISBL fuse. Pullup is activated and output driver and digital input are deactivated when the pin is used as the RESET pin. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the pin usage as RESET. Digital input is enabled on pin PB7 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate func"
+                "name": "[ADC10:'RESET:PCINT15:PB7]",
+                "text": "ADC10: ADC input channel 10. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter. RESET: External Reset Input is active low and enabled by unprogramming (\u201c1\u201d) the RSTDISBL fuse. Pullup is activated and output driver and digital input are deactivated when the pin is used as the RESET pin. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the pin usage as RESET. Digital input is enabled on pin PB7 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate func"
             },
             "pin11": {
-            "name": "[ADC6:AIN1:PCINT7:PA7]",
+                "name": "[ADC6:AIN1:PCINT7:PA7]",
                 "text": "AIN1: Analog Comparator Negative Input and ADC6: ADC input channel 6. Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator or analog to digital converter. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the analog comparator.Digital input is enabled on pin PA7 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functi"
             },
             "pin12": {
-            "name": "[ADC5:AIN0:PCINT6:PA6]",
+                "name": "[ADC5:AIN0:PCINT6:PA6]",
                 "text": "AIN0: Analog Comparator Positive Input and ADC5: ADC input channel 5. Configure the port pin as input with the internal pull-up switched off to avoid the digital port function from interfering with the function of the analog comparator or analog to digital converter. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the analog comparator.Digital input is enabled on pin PA6 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate funct"
             },
             "pin13": {
-            "name": "[ADC4:AIN2:PCINT5:PA5]",
+                "name": "[ADC4:AIN2:PCINT5:PA5]",
                 "text": "ADC4/ADC3: ADC input channel 4 and 3. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter."
             },
             "pin14": {
-            "name": "[ADC3:ICP0:PCINT4:PA4]",
+                "name": "[ADC3:ICP0:PCINT4:PA4]",
                 "text": "ADC4/ADC3: ADC input channel 4 and 3. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter."
             },
             "pin15": {
-            "name": "[AVCC]"
+                "name": "[AVCC]"
             },
             "pin16": {
-            "name": "[AGND]"
+                "name": "[AGND]"
             },
             "pin17": {
-            "name": "[AREF:PCINT3:PA3]",
+                "name": "[AREF:PCINT3:PA3]",
                 "text": "AREF: External reference for ADC. Pullup and output driver are disabled on PA3 when the pin is used as an external reference or Internal Voltage Reference (2.56V) with external capacitor at the AREF pin by setting (one) the bit REFS0 in the ADC Multiplexer Selection Register (ADMUX). PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate function do not mask the interrupt. The masking alternate function is the pin usage as an analog refer-ence for the ADC. Digital input is enabled on pin PA3 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate function. Please refer to the manual for further detail"
             },
             "pin18": {
-            "name": "[ADC2:INT1:USCK_A:SCL_A:PCINT2:PA2]"
+                "name": "[ADC2:INT1:USCK_A:SCL_A:PCINT2:PA2]"
             },
             "pin19": {
-            "name": "[ADC1:DO_A:PCINT1:PA1]"
+                "name": "[ADC1:DO_A:PCINT1:PA1]"
             },
             "pin2": {
-            "name": "[MISO:DO_B:OC1A:PCINT9:PB1]",
+                "name": "[MISO:DO_B:OC1A:PCINT9:PB1]",
                 "text": "DO: Data output in USI 3-wire mode. Data output (DO) overrides PORTB1 value and it is driven to the port when the data direction bit DDB1 is set (one). However the PORTB1 bit still controls the pullup, enabling pullup if direction is input and PORTB1 is set(one). OC1A: Output compare match output: The PB1 pin can serve as an output for the Timer/Counter1 compare match A. The PB1 pin has to be configured as an output (DDB3 set (one)) to serve this function. The OC1B pin is also the output pin for the PWM mode timer function if not used in programming or USI. PCINT0: Pin Change Interrupt 0 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate functions are the output compare match out-put OC1A and data output DO in USI 3-wire mode. Digital input is enabled on pin PB4 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functi"
             },
             "pin20": {
-            "name": "[ADC0:DI_A:SDA_A:PCINT0:PA0]"
+                "name": "[ADC0:DI_A:SDA_A:PCINT0:PA0]"
             },
             "pin3": {
-            "name": "[SCK:USCK_B:SCL_B:'OC1B:PCINT10:PB2]",
+                "name": "[SCK:USCK_B:SCL_B:'OC1B:PCINT10:PB2]",
                 "text": "SCK: Clock input or output in USI 3-wire mode. When the SPI is enabled this pin is con-figured"
             },
             "pin4": {
-            "name": "[OC1B:PCINT11:PB3]",
+                "name": "[OC1B:PCINT11:PB3]",
                 "text": "OC1B: Output compare match output: The PB3 pin can serve as an output for the Timer/Counter1 compare match B. The PB3 pin has to be configured as an output (DDB3 set (one)) to serve this function. The OC1B pin is also the output pin for the PWM mode. PCINT0: Pin Change Interrupt 0 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate function is the output compare match output OC1B. Digital input is enabled on pin PB3 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functi"
             },
             "pin5": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin6": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin7": {
-            "name": "[ADC7:XTAL1:PCINT12:'_OC1D:CLKI:PB4]",
+                "name": "[ADC7:XTAL1:PCINT12:'_OC1D:CLKI:PB4]",
                 "text": "ADC7: ADC input channel 7. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the ana-log to digital converter. XTAL1: Chip clock oscillator pin 1. Used for all chip clock sources except internal cali-brateble RC oscillator and PLL clock. When used as a clock pin, the pin can not be used as an I/O pin. When using internal calibratable RC oscillator or PLL clock as chip clock sources, PB4 serves as an ordinary I/O pin. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate functions are the XTAL1 inputs. Digital input is enabled on pin PB4 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functi"
             },
             "pin8": {
-            "name": "[ADC8:XTAL2:PCINT13:OC1D:CKLO:PB5]",
+                "name": "[ADC8:XTAL2:PCINT13:OC1D:CKLO:PB5]",
                 "text": "ADC8: ADC input channel 8. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the ana-log to digital converter. XTAL2: Chip clock oscillator pin 2. Used as clock pin for all chip clock sources except internal calibrateble RC oscillator, external clock and PLL clock. When used as a clock pin, the pin can not be used as an I/O pin. When using internal calibratable RC oscillator, external clock or PLL clock as chip clock sources, PB5 serves as an ordinary I/O pin. PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate functions are the XTAL2 outputs. Digital input is enabled on pin PB5 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate functio"
             },
             "pin9": {
-            "name": "[ADC9:INT0:T0:PCINT14:PB6]",
+                "name": "[ADC9:INT0:T0:PCINT14:PB6]",
                 "text": "ADC9: ADC input channel 9. Configure the port pins as inputs with the internal pull-ups switched off to avoid the digital port function from interfering with the function of the analog to digital converter. INT0: External Interrupt source 0: The PB6 pin can serve as an external interrupt source enabled by setting (one) the bit INT0 in the general input mask register (GIMSK). T0: Timer/Counter0 External Counter Clock Input is enabled by setting (one) the bits CS02 and CS01 in the Timer/Counter0 control register (TCCR0). PCINT1: Pin Change Interrupt 1 pin. Pin change interrupt is enabled on pin when global interrupt is enabled, pin change interrupt is enabled and the alternate functions do not mask the interrupt. The masking alternate functions are the external low level Interrupt source 0 (INT0) and the Timer/Counter0 external counter clock input (T0). Digital input is enabled on pin PB6 also in SLEEP modes, if the pin change interrupt is enabled and not masked by the alternate func"
             }
         }
@@ -969,7 +969,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -1103,7 +1104,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         },
         {
             "address": "820002",
@@ -1128,7 +1130,8 @@
                 }
             ],
             "key": "EXTENDED",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "EXTENDED"
         }
     ],
     "avr_core": "avr25"

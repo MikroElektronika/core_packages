@@ -37,7 +37,8 @@
                     "label": "SRS Priority 7",
                     "value": "PRIORITY_7"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "OFF",
@@ -52,7 +53,8 @@
                     "label": "MII Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -67,7 +69,8 @@
                     "label": "Default Ethernet I/O",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -82,7 +85,8 @@
                     "label": "Controlled by the USB Module",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "ON",
@@ -97,7 +101,8 @@
                     "label": "Controlled by USB Module",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG3"
         },
         {
             "init": "DIV_4",
@@ -136,7 +141,8 @@
                     "label": "12x Divider",
                     "value": "DIV_12"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "MUL_20",
@@ -175,7 +181,8 @@
                     "label": "24x Multiplier",
                     "value": "MUL_24"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "DIV_12",
@@ -214,7 +221,8 @@
                     "label": "12x Divider",
                     "value": "DIV_12"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "OFF",
@@ -229,7 +237,8 @@
                     "label": "Disabled and Bypassed",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "DIV_1",
@@ -268,7 +277,8 @@
                     "label": "PLL Divide by 256",
                     "value": "DIV_256"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG2"
         },
         {
             "init": "FRC",
@@ -307,7 +317,8 @@
                     "label": "Fast RC Osc w/Div-by-N (FRCDIV)",
                     "value": "FRCDIV"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -322,7 +333,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -337,7 +349,8 @@
                     "label": "Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "HS",
@@ -360,7 +373,8 @@
                     "label": "Primary osc disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -375,7 +389,8 @@
                     "label": "Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "DIV_1",
@@ -398,7 +413,8 @@
                     "label": "Pb_Clk is Sys_Clk/8",
                     "value": "DIV_8"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "CSDCMD",
@@ -417,7 +433,8 @@
                     "label": "Clock Switch Disable, FSCM Disabled",
                     "value": "CSDCMD"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "PS1048576",
@@ -508,7 +525,8 @@
                     "label": "1:1048576",
                     "value": "PS1048576"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -523,7 +541,8 @@
                     "label": "WDT Enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG1"
         },
         {
             "init": "OFF",
@@ -538,7 +557,8 @@
                     "label": "Debugger is disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "ICS_PGx2",
@@ -553,7 +573,8 @@
                     "label": "ICE EMUC2/EMUD2 pins shared with PGC2/PGD2",
                     "value": "ICS_PGx2"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF",
@@ -1076,7 +1097,8 @@
                     "label": "Disable",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF",
@@ -1091,7 +1113,8 @@
                     "label": "Protection Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         },
         {
             "init": "OFF",
@@ -1106,7 +1129,8 @@
                     "label": "Protection Disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "DEVCFG0"
         }
     ],
     "mcu": "PIC32MX664F064L",

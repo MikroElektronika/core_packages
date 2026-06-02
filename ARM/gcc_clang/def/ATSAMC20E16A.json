@@ -4,27 +4,28 @@
     "mcu": "ATSAMC20E16A",
     "clock": 4,
     "config_registers": [
-    	{
-        "address": "41004004",
-        "default": "00000000",
-        "fields": [
-            {
-                "hidden": false,
-                "init": "00000000",
-                "key": "RWS",
-                "label": "NVM Read Wait States",
-                "mask": "0000001E",
-                "settings_array": {
-                    "decrease": false,
-                    "disabled_when_zero": false,
-                    "inverted": false,
-                    "max_value": "15",
-                    "min_value": "0"
+        {
+            "address": "41004004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "RWS",
+                    "label": "NVM Read Wait States",
+                    "mask": "0000001E",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
                 }
-            }
-        ],
+            ],
             "key": "NVMCTRL_CTRLB",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Control b"
         },
         {
             "address": "40001414",
@@ -141,7 +142,8 @@
                 }
             ],
             "key": "XOSC32K",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "32khz external crystal oscillator (xosc32k) control"
         },
         {
             "address": "40001416",
@@ -200,7 +202,8 @@
                 }
             ],
             "key": "CFDCTRL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock failure detector control"
         },
         {
             "address": "40001417",
@@ -225,7 +228,8 @@
                 }
             ],
             "key": "EVCTRL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Event control"
         },
         {
             "address": "40001418",
@@ -325,7 +329,8 @@
                 }
             ],
             "key": "OSC32K",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "32khz internal oscillator (osc32k) control"
         },
         {
             "address": "40001410",
@@ -368,7 +373,8 @@
                 }
             ],
             "key": "RTCCTRL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Clock selection"
         },
         {
             "address": "40001010",
@@ -483,7 +489,8 @@
                 }
             ],
             "key": "XOSCCTRL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "External multipurpose crystal oscillator (xosc) control"
         },
         {
             "address": "40001014",
@@ -508,7 +515,8 @@
                 }
             ],
             "key": "OSC48MCTRL",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "48mhz internal oscillator (osc48m) control"
         },
         {
             "address": "40001015",
@@ -589,7 +597,8 @@
                 }
             ],
             "key": "OSC48MDIV",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Osc48m divider"
         },
         {
             "address": "40001016",
@@ -638,7 +647,8 @@
                 }
             ],
             "key": "OSC48MSTUP",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Osc48m startup time"
         },
         {
             "address": "40000408",
@@ -687,7 +697,8 @@
                 }
             ],
             "key": "CPUDIV",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Standby configuration"
         },
         {
             "address": "40001C20",
@@ -786,7 +797,8 @@
                 }
             ],
             "key": "GENCTRL0",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C24",
@@ -882,7 +894,8 @@
                 }
             ],
             "key": "GENCTRL1",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C28",
@@ -981,7 +994,8 @@
                 }
             ],
             "key": "GENCTRL2",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C2C",
@@ -1080,7 +1094,8 @@
                 }
             ],
             "key": "GENCTRL3",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C30",
@@ -1179,7 +1194,8 @@
                 }
             ],
             "key": "GENCTRL4",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C34",
@@ -1278,7 +1294,8 @@
                 }
             ],
             "key": "GENCTRL5",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C38",
@@ -1377,7 +1394,8 @@
                 }
             ],
             "key": "GENCTRL6",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C3C",
@@ -1476,7 +1494,8 @@
                 }
             ],
             "key": "GENCTRL7",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C40",
@@ -1575,7 +1594,8 @@
                 }
             ],
             "key": "GENCTRL8",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Generic clock generator control"
         },
         {
             "address": "40001C80",
@@ -1645,7 +1665,8 @@
                 }
             ],
             "key": "PCHCTRL0",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Peripheral clock control"
         },
         {
             "address": "4000101C",
@@ -1670,7 +1691,8 @@
                 }
             ],
             "key": "DPLLCTRLA",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dpll control"
         },
         {
             "address": "40001020",
@@ -1706,7 +1728,8 @@
                 }
             ],
             "key": "DPLLRATIO",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dpll ratio control"
         },
         {
             "address": "40001024",
@@ -1751,7 +1774,8 @@
                 }
             ],
             "key": "DPLLCTRLB",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Digital core configuration"
         },
         {
             "address": "40001028",
@@ -1780,7 +1804,8 @@
                 }
             ],
             "key": "DPLLPRESC",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "Dpll prescaler"
         }
     ]
 }

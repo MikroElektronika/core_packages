@@ -33,7 +33,8 @@
                     "label": "EC (external clock) above 8 MHz",
                     "value": "ECH"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "EXTOSC",
@@ -64,7 +65,8 @@
                     "label": "EXTOSC operating per FEXTOSC bits (device manufacturing default)",
                     "value": "EXTOSC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1"
         },
         {
             "init": "OFF",
@@ -79,7 +81,8 @@
                     "label": "CLKOUT function is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -94,7 +97,8 @@
                     "label": "PRLOCKED bit can be set and cleared repeatedly",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -109,7 +113,8 @@
                     "label": "Writing to NOSC and NDIV is allowed",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -124,7 +129,8 @@
                     "label": "Disable JTAG Boundary Scan mode, JTAG pins revert to user functions",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -139,7 +145,8 @@
                     "label": "Fail-Safe Clock Monitor enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -154,7 +161,8 @@
                     "label": "FSCM timer will set FSCMP bit and OSFIF interrupt on Primary XTAL failure",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "ON",
@@ -169,7 +177,8 @@
                     "label": "FSCM timer will set FSCMS bit and OSFIF interrupt on Secondary XTAL failure",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2"
         },
         {
             "init": "EXTMCLR",
@@ -184,7 +193,8 @@
                     "label": "If LVP = 0, MCLR pin function is port defined function; If LVP =1, RE3 pin fuction is MCLR",
                     "value": "INTMCLR"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "PWRT_OFF",
@@ -207,7 +217,8 @@
                     "label": "PWRT set at 1ms",
                     "value": "PWRT_1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "ON",
@@ -222,7 +233,8 @@
                     "label": "Interrupt contoller does not use vector table to prioritze interrupts",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "ON",
@@ -237,7 +249,8 @@
                     "label": "IVTLOCKED bit can be cleared and set repeatedly",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "OFF",
@@ -252,7 +265,8 @@
                     "label": "Low-Power BOR enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "SBORDIS",
@@ -275,7 +289,8 @@
                     "label": "Brown-out Reset disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3"
         },
         {
             "init": "VBOR_1P9",
@@ -298,7 +313,8 @@
                     "label": "Brown-out Reset Voltage (VBOR) set to 2.8V",
                     "value": "VBOR_2P85"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -313,7 +329,8 @@
                     "label": "ZCD module is always enabled; ZCDMD and ZCDSEN bits are ignored",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "ON",
@@ -328,7 +345,8 @@
                     "label": "PPSLOCKED bit can be set and cleared repeatedly (subject to the unlock sequence)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "ON",
@@ -343,7 +361,8 @@
                     "label": "Stack full/underflow will not cause Reset",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "ON",
@@ -358,7 +377,8 @@
                     "label": "HV on MCLR/VPP must be used for programming",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "OFF",
@@ -373,7 +393,8 @@
                     "label": "Extended Instruction Set and Indexed Addressing Mode enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG4"
         },
         {
             "init": "WDTCPS_31",
@@ -508,7 +529,8 @@
                     "label": "Divider ratio 1:65536; software control of WDTPS",
                     "value": "WDTCPS_31"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5"
         },
         {
             "init": "ON",
@@ -531,7 +553,8 @@
                     "label": "WDT enabled regardless of sleep; SWDTEN is ignored",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG5"
         },
         {
             "init": "WDTCWS_7",
@@ -570,7 +593,8 @@
                     "label": "window always open (100%); software control; keyed access not required",
                     "value": "WDTCWS_7"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6"
         },
         {
             "init": "SC",
@@ -593,7 +617,8 @@
                     "label": "Software Control",
                     "value": "SC"
                 }
-            ]
+            ],
+            "label_group": "CONFIG6"
         },
         {
             "init": "BBSIZE_512",
@@ -628,7 +653,8 @@
                     "label": "Boot Block size is 32768 words",
                     "value": "BBSIZE_32768"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7"
         },
         {
             "init": "OFF",
@@ -643,7 +669,8 @@
                     "label": "Boot block enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7"
         },
         {
             "init": "OFF",
@@ -658,7 +685,8 @@
                     "label": "SAF enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7"
         },
         {
             "init": "OFF",
@@ -673,7 +701,8 @@
                     "label": "background debugger enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG7"
         },
         {
             "init": "OFF",
@@ -688,7 +717,8 @@
                     "label": "Boot Block Write protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG8"
         },
         {
             "init": "OFF",
@@ -703,7 +733,8 @@
                     "label": "Configuration registers Write protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG8"
         },
         {
             "init": "OFF",
@@ -718,7 +749,8 @@
                     "label": "Data EEPROM Write protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG8"
         },
         {
             "init": "OFF",
@@ -733,7 +765,8 @@
                     "label": "SAF Write Protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG8"
         },
         {
             "init": "OFF",
@@ -748,7 +781,8 @@
                     "label": "Application Block write protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG8"
         },
         {
             "init": "RC5",
@@ -771,7 +805,8 @@
                     "label": "CRC on boot output pin is RC5",
                     "value": "RC5"
                 }
-            ]
+            ],
+            "label_group": "CONFIG9"
         },
         {
             "init": "OFF",
@@ -786,7 +821,8 @@
                     "label": "CRC on boot output pin enabled, selected by BOOTPINSEL<1:0>",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG9"
         },
         {
             "init": "OFF",
@@ -801,7 +837,8 @@
                     "label": "Pin drives only low-going signals",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG9"
         },
         {
             "init": "OFF",
@@ -816,7 +853,8 @@
                     "label": "PFM and Data EEPROM code protection enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG10"
         },
         {
             "init": "OFF",
@@ -831,7 +869,8 @@
                     "label": "CRC on boot will include the boot area of program memory in its calculation",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG11"
         },
         {
             "init": "HALT",
@@ -846,7 +885,8 @@
                     "label": "CRC on boot will allow device to continue code execution regardless of error detection in boot areas",
                     "value": "CONTINUE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG11"
         },
         {
             "init": "OFF",
@@ -861,7 +901,8 @@
                     "label": "CRC on boot will include the application area of program memory in its calculation",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG11"
         },
         {
             "init": "OFF",
@@ -876,7 +917,8 @@
                     "label": "CRC on boot will include the SAF area of program memory in its calculation",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG11"
         },
         {
             "init": "OFF",
@@ -891,7 +933,8 @@
                     "label": "CRC on boot will include data EEPROM in its calculation",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG11"
         },
         {
             "init": "OFF",
@@ -906,7 +949,8 @@
                     "label": "CRC on boot will include the configuration fuses in its calculation",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG11"
         },
         {
             "init": "HALT",
@@ -921,7 +965,8 @@
                     "label": "CRC on boot will allow device to continue code execution regardless of error detection in non-boot areas",
                     "value": "CONTINUE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG11"
         },
         {
             "init": "OFF",
@@ -936,7 +981,8 @@
                     "label": "CRC on boot will run",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG11"
         },
         {
             "init": "hFF",
@@ -1967,7 +2013,8 @@
                     "label": "Bits 31:24 of BCRCPOL are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG12"
         },
         {
             "init": "hFF",
@@ -2998,7 +3045,8 @@
                     "label": "Bits 23:16 of BCRCPOL are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG13"
         },
         {
             "init": "hFF",
@@ -4029,7 +4077,8 @@
                     "label": "Bits 15:8 of BCRCPOL are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG14"
         },
         {
             "init": "hFF",
@@ -5060,7 +5109,8 @@
                     "label": "Bits 7:0 of BCRCPOL are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG15"
         },
         {
             "init": "hFF",
@@ -6091,7 +6141,8 @@
                     "label": "Bits 31:24 of BCRCSEED are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG16"
         },
         {
             "init": "hFF",
@@ -7122,7 +7173,8 @@
                     "label": "Bits 23:16 of BCRCSEED are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG17"
         },
         {
             "init": "hFF",
@@ -8153,7 +8205,8 @@
                     "label": "Bits 15:8 of BCRCSEED are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG18"
         },
         {
             "init": "hFF",
@@ -9184,7 +9237,8 @@
                     "label": "Bits 7:0 of BCRCSEED are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG19"
         },
         {
             "init": "hFF",
@@ -10215,7 +10269,8 @@
                     "label": "Bits 31:24 of BCRCERES are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG20"
         },
         {
             "init": "hFF",
@@ -11246,7 +11301,8 @@
                     "label": "Bits 23:16 of BCRCERES are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG21"
         },
         {
             "init": "hFF",
@@ -12277,7 +12333,8 @@
                     "label": "Bits 15:8 of BCRCERES are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG22"
         },
         {
             "init": "hFF",
@@ -13308,7 +13365,8 @@
                     "label": "Bits 7:0 of BCRCERES are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG23"
         },
         {
             "init": "hFF",
@@ -14339,7 +14397,8 @@
                     "label": "Bits 31:24 of CRCPOL are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG24"
         },
         {
             "init": "hFF",
@@ -15370,7 +15429,8 @@
                     "label": "Bits 23:16 of CRCPOL are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG25"
         },
         {
             "init": "hFF",
@@ -16401,7 +16461,8 @@
                     "label": "Bits 15:8 of CRCPOL are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG26"
         },
         {
             "init": "hFF",
@@ -17432,7 +17493,8 @@
                     "label": "Bits 7:0 of CRCPOL are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG27"
         },
         {
             "init": "hFF",
@@ -18463,7 +18525,8 @@
                     "label": "Bits 31:24 of CRCSEED are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG28"
         },
         {
             "init": "hFF",
@@ -19494,7 +19557,8 @@
                     "label": "Bits 23:16 of CRCSEED are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG29"
         },
         {
             "init": "hFF",
@@ -20525,7 +20589,8 @@
                     "label": "Bits 15:8 of CRCSEED are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG30"
         },
         {
             "init": "hFF",
@@ -21556,7 +21621,8 @@
                     "label": "Bits 7:0 of CRCSEED are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG31"
         },
         {
             "init": "hFF",
@@ -22587,7 +22653,8 @@
                     "label": "Bits 31:24 of CRCERES are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG32"
         },
         {
             "init": "hFF",
@@ -23618,7 +23685,8 @@
                     "label": "Bits 23:16 of CRCERES are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG33"
         },
         {
             "init": "hFF",
@@ -24649,7 +24717,8 @@
                     "label": "Bits 15:8 of CRCERES are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG34"
         },
         {
             "init": "hFF",
@@ -25680,7 +25749,8 @@
                     "label": "Bits 7:0 of CRCERES are 0xFF",
                     "value": "hFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG35"
         }
     ],
     "mcu": "PIC18F57Q83",

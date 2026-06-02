@@ -8,7 +8,7 @@
         "min_addr": "0x60"
     },
     "fuse": {
-    "list": "[LOW]",
+        "list": "[LOW]",
         "low": {
             "fuse0": {
                 "default": "1",
@@ -54,67 +54,67 @@
             "nmb_text": "13",
             "text1": {
                 "mask": "0x80",
-            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "text": "Watch-dog Timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x07",
-            "text": "Start-up time 6 CK/14 CK + 64 ms;  [SUT=100]",
+                "text": "Start-up time 6 CK/14 CK + 64 ms;  [SUT=100]",
                 "value": "0x04"
             },
             "text11": {
                 "mask": "0x07",
-            "text": "Start-up time 6 CK/14 CK + 128 ms; [SUT=101]",
+                "text": "Start-up time 6 CK/14 CK + 128 ms; [SUT=101]",
                 "value": "0x05"
             },
             "text12": {
                 "mask": "0x07",
-            "text": "Start-up time 6 CK/14 CK + 256 ms; [SUT=110]",
+                "text": "Start-up time 6 CK/14 CK + 256 ms; [SUT=110]",
                 "value": "0x06"
             },
             "text13": {
                 "mask": "0x07",
-            "text": "Start-up time 6 CK/14 CK + 512 ms; [SUT=111]; default value",
+                "text": "Start-up time 6 CK/14 CK + 512 ms; [SUT=111]; default value",
                 "value": "0x07"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM memory through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "Debug Wire enable; [DWEN=0]",
+                "text": "Debug Wire enable; [DWEN=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x08",
-            "text": "Self Programming enable; [SELFPRGEN=0]",
+                "text": "Self Programming enable; [SELFPRGEN=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x07",
-            "text": "Start-up time 6 CK/14 CK + 4 ms;   [SUT=000]",
+                "text": "Start-up time 6 CK/14 CK + 4 ms;   [SUT=000]",
                 "value": "0x00"
             },
             "text7": {
                 "mask": "0x07",
-            "text": "Start-up time 6 CK/14 CK + 8 ms;   [SUT=001]",
+                "text": "Start-up time 6 CK/14 CK + 8 ms;   [SUT=001]",
                 "value": "0x01"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "Start-up time 6 CK/14 CK + 16 ms;  [SUT=010]",
+                "text": "Start-up time 6 CK/14 CK + 16 ms;  [SUT=010]",
                 "value": "0x02"
             },
             "text9": {
                 "mask": "0x07",
-            "text": "Start-up time 6 CK/14 CK + 32 ms;  [SUT=011]",
+                "text": "Start-up time 6 CK/14 CK + 32 ms;  [SUT=011]",
                 "value": "0x03"
             }
         }
@@ -229,92 +229,92 @@
     "core": "LTE64K",
     "delay_src_path": "delays/lte64k/__lib_delays.c",
     "package": {
-    "packages": "[TSOP;LGA]",
+        "packages": "[TSOP;LGA]",
         "tsop": {
             "nmb_pin": "28",
             "pin1": {
-            "name": "[PV2]"
+                "name": "[PV2]"
             },
             "pin10": {
-            "name": "[VREG]"
+                "name": "[VREG]"
             },
             "pin11": {
-            "name": "[VREF]"
+                "name": "[VREF]"
             },
             "pin12": {
-            "name": "[VREFGND]"
+                "name": "[VREFGND]"
             },
             "pin13": {
-            "name": "[PI]"
+                "name": "[PI]"
             },
             "pin14": {
-            "name": "[NI]"
+                "name": "[NI]"
             },
             "pin15": {
-            "name": "[PA0]"
+                "name": "[PA0]"
             },
             "pin16": {
-            "name": "[PA1]"
+                "name": "[PA1]"
             },
             "pin17": {
-            "name": "[PA2]"
+                "name": "[PA2]"
             },
             "pin18": {
-            "name": "[PB0]"
+                "name": "[PB0]"
             },
             "pin19": {
-            "name": "[PB1]"
+                "name": "[PB1]"
             },
             "pin2": {
-            "name": "[PV1]"
+                "name": "[PV1]"
             },
             "pin20": {
-            "name": "[PB2]"
+                "name": "[PB2]"
             },
             "pin21": {
-            "name": "[PB3]"
+                "name": "[PB3]"
             },
             "pin22": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin23": {
-            "name": "[VCC]"
+                "name": "[VCC]"
             },
             "pin24": {
-            "name": "[PC0]"
+                "name": "[PC0]"
             },
             "pin25": {
-            "name": "[BATT]"
+                "name": "[BATT]"
             },
             "pin26": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin27": {
-            "name": "[NC]"
+                "name": "[NC]"
             },
             "pin28": {
-            "name": "[OC]"
+                "name": "[OC]"
             },
             "pin3": {
-            "name": "[NV]"
+                "name": "[NV]"
             },
             "pin4": {
-            "name": "[GND]"
+                "name": "[GND]"
             },
             "pin5": {
-            "name": "[VFET]"
+                "name": "[VFET]"
             },
             "pin6": {
-            "name": "[CF1P]"
+                "name": "[CF1P]"
             },
             "pin7": {
-            "name": "[CF1N]"
+                "name": "[CF1N]"
             },
             "pin8": {
-            "name": "[CF2P]"
+                "name": "[CF2P]"
             },
             "pin9": {
-            "name": "[CF2N]"
+                "name": "[CF2N]"
             }
         }
     },
@@ -597,7 +597,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         }
     ],
     "avr_core": "avr4"

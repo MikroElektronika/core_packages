@@ -53,112 +53,112 @@
             "nmb_text": "22",
             "text1": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 8CLK 8ms; [WDWPER=0000]",
+                "text": "Watchdog Window Mode Timeout Period 8CLK 8ms; [WDWPER=0000]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 4KCLK 4s; [WDWPER=1001]",
+                "text": "Watchdog Window Mode Timeout Period 4KCLK 4s; [WDWPER=1001]",
                 "value": "0x90"
             },
             "text11": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 8KCLK 8s; [WDWPER=1010]",
+                "text": "Watchdog Window Mode Timeout Period 8KCLK 8s; [WDWPER=1010]",
                 "value": "0xA0"
             },
             "text12": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 8CLK 8ms; [WDPER=0000]",
+                "text": "Watchdog Timeout Period 8CLK 8ms; [WDPER=0000]",
                 "value": "0x00"
             },
             "text13": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 16CLK 16ms; [WDPER=0001]",
+                "text": "Watchdog Timeout Period 16CLK 16ms; [WDPER=0001]",
                 "value": "0x01"
             },
             "text14": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 32CLK 32ms; [WDPER=0010]",
+                "text": "Watchdog Timeout Period 32CLK 32ms; [WDPER=0010]",
                 "value": "0x02"
             },
             "text15": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 64CLK 64ms; [WDPER=0011]",
+                "text": "Watchdog Timeout Period 64CLK 64ms; [WDPER=0011]",
                 "value": "0x03"
             },
             "text16": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 125CLK 0.125s; [WDPER=0100]",
+                "text": "Watchdog Timeout Period 125CLK 0.125s; [WDPER=0100]",
                 "value": "0x04"
             },
             "text17": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 250CLK 0.25s; [WDPER=0101]",
+                "text": "Watchdog Timeout Period 250CLK 0.25s; [WDPER=0101]",
                 "value": "0x05"
             },
             "text18": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 500CLK 0.5s; [WDPER=0110]",
+                "text": "Watchdog Timeout Period 500CLK 0.5s; [WDPER=0110]",
                 "value": "0x06"
             },
             "text19": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 1KCLK 1s; [WDPER=0111]",
+                "text": "Watchdog Timeout Period 1KCLK 1s; [WDPER=0111]",
                 "value": "0x07"
             },
             "text2": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 16CLK 16ms; [WDWPER=0001]",
+                "text": "Watchdog Window Mode Timeout Period 16CLK 16ms; [WDWPER=0001]",
                 "value": "0x10"
             },
             "text20": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 2KCLK 2s; [WDPER=1000]",
+                "text": "Watchdog Timeout Period 2KCLK 2s; [WDPER=1000]",
                 "value": "0x08"
             },
             "text21": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 4KCLK 4s; [WDPER=1001]",
+                "text": "Watchdog Timeout Period 4KCLK 4s; [WDPER=1001]",
                 "value": "0x09"
             },
             "text22": {
                 "mask": "0x0F",
-            "text": "Watchdog Timeout Period 8KCLK 8s; [WDPER=1010]",
+                "text": "Watchdog Timeout Period 8KCLK 8s; [WDPER=1010]",
                 "value": "0x0A"
             },
             "text3": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 32CLK 32ms; [WDWPER=0010]",
+                "text": "Watchdog Window Mode Timeout Period 32CLK 32ms; [WDWPER=0010]",
                 "value": "0x20"
             },
             "text4": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 64CLK 64ms; [WDWPER=0011]",
+                "text": "Watchdog Window Mode Timeout Period 64CLK 64ms; [WDWPER=0011]",
                 "value": "0x30"
             },
             "text5": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 125CLK 0.125s; [WDWPER=0100]",
+                "text": "Watchdog Window Mode Timeout Period 125CLK 0.125s; [WDWPER=0100]",
                 "value": "0x40"
             },
             "text6": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 250CLK 0.25s; [WDWPER=0101]",
+                "text": "Watchdog Window Mode Timeout Period 250CLK 0.25s; [WDWPER=0101]",
                 "value": "0x50"
             },
             "text7": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 500CLK 0.5s; [WDWPER=0110]",
+                "text": "Watchdog Window Mode Timeout Period 500CLK 0.5s; [WDWPER=0110]",
                 "value": "0x60"
             },
             "text8": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 1KCLK 1s; [WDWPER=0111]",
+                "text": "Watchdog Window Mode Timeout Period 1KCLK 1s; [WDWPER=0111]",
                 "value": "0x70"
             },
             "text9": {
                 "mask": "0xF0",
-            "text": "Watchdog Window Mode Timeout Period 2KCLK 2s; [WDWPER=1000]",
+                "text": "Watchdog Window Mode Timeout Period 2KCLK 2s; [WDWPER=1000]",
                 "value": "0x80"
             }
         },
@@ -192,52 +192,52 @@
             "nmb_text": "10",
             "text1": {
                 "mask": "0x40",
-            "text": "Reset Vector = Boot Loader Reset; [BOOTRST=0]",
+                "text": "Reset Vector = Boot Loader Reset; [BOOTRST=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x03",
-            "text": "BOD Disabled (sleep); [BODPD=11]",
+                "text": "BOD Disabled (sleep); [BODPD=11]",
                 "value": "0x03"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Reset Vector = Application Reset (address 0x0000); [BOOTRST=1]",
+                "text": "Reset Vector = Application Reset (address 0x0000); [BOOTRST=1]",
                 "value": "0x40"
             },
             "text3": {
                 "mask": "0x0C",
-            "text": "Reserved; [BODACT=00]",
+                "text": "Reserved; [BODACT=00]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x0C",
-            "text": "BOD enabled in sampled mode (active); [BODACT=01]",
+                "text": "BOD enabled in sampled mode (active); [BODACT=01]",
                 "value": "0x04"
             },
             "text5": {
                 "mask": "0x0C",
-            "text": "BOD enabled continuously (active); [BODACT=10]",
+                "text": "BOD enabled continuously (active); [BODACT=10]",
                 "value": "0x08"
             },
             "text6": {
                 "mask": "0x0C",
-            "text": "BOD Disabled (active); [BODACT=11]",
+                "text": "BOD Disabled (active); [BODACT=11]",
                 "value": "0x0C"
             },
             "text7": {
                 "mask": "0x03",
-            "text": "Reserved; [BODPD=00]",
+                "text": "Reserved; [BODPD=00]",
                 "value": "0x00"
             },
             "text8": {
                 "mask": "0x03",
-            "text": "BOD enabled in sampled mode (sleep); [BODPD=01]",
+                "text": "BOD enabled in sampled mode (sleep); [BODPD=01]",
                 "value": "0x01"
             },
             "text9": {
                 "mask": "0x03",
-            "text": "BOD enabled continuously (sleep); [BODPD=10]",
+                "text": "BOD enabled continuously (sleep); [BODPD=10]",
                 "value": "0x02"
             }
         },
@@ -266,42 +266,42 @@
             "nmb_text": "8",
             "text1": {
                 "mask": "0x10",
-            "text": "External Reset Disabled; [RSTDISBL=0]",
+                "text": "External Reset Disabled; [RSTDISBL=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x10",
-            "text": "External Reset Enabled; [RSTDISBL=1]",
+                "text": "External Reset Enabled; [RSTDISBL=1]",
                 "value": "0x10"
             },
             "text3": {
                 "mask": "0x0C",
-            "text": "64 of 1kHz ULP oscillator Cycles; [STARTUPTIME=00]",
+                "text": "64 of 1kHz ULP oscillator Cycles; [STARTUPTIME=00]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x0C",
-            "text": "4 of 1kHz ULP oscillator Cycles; [STARTUPTIME=01]",
+                "text": "4 of 1kHz ULP oscillator Cycles; [STARTUPTIME=01]",
                 "value": "0x04"
             },
             "text5": {
                 "mask": "0x0C",
-            "text": "Reserved; [STARTUPTIME=10]",
+                "text": "Reserved; [STARTUPTIME=10]",
                 "value": "0x08"
             },
             "text6": {
                 "mask": "0x0C",
-            "text": "0 of 1kHz ULP oscillator Cycles; [STARTUPTIME=11]",
+                "text": "0 of 1kHz ULP oscillator Cycles; [STARTUPTIME=11]",
                 "value": "0x0C"
             },
             "text7": {
                 "mask": "0x02",
-            "text": "Watchdog Timer locked for modifications; [WDLOCK=0]",
+                "text": "Watchdog Timer locked for modifications; [WDLOCK=0]",
                 "value": "0x00"
             },
             "text8": {
                 "mask": "0x02",
-            "text": "Watchdog Timer not locked; [WDLOCK=1]",
+                "text": "Watchdog Timer not locked; [WDLOCK=1]",
                 "value": "0x02"
             }
         },
@@ -330,51 +330,51 @@
             "nmb_text": "9",
             "text1": {
                 "mask": "0x08",
-            "text": "EEPROM is preserved during chip erase; [EESAVE=0]",
+                "text": "EEPROM is preserved during chip erase; [EESAVE=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x07",
-            "text": "Brown out detection voltage level at 3,2V; [BODLEVEL=000]",
+                "text": "Brown out detection voltage level at 3,2V; [BODLEVEL=000]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x07",
-            "text": "Brown out detection voltage level at 2,9V; [BODLEVEL=001]",
+                "text": "Brown out detection voltage level at 2,9V; [BODLEVEL=001]",
                 "value": "0x01"
             },
             "text4": {
                 "mask": "0x07",
-            "text": "Brown out detection voltage level at 2,7V; [BODLEVEL=010]",
+                "text": "Brown out detection voltage level at 2,7V; [BODLEVEL=010]",
                 "value": "0x02"
             },
             "text5": {
                 "mask": "0x07",
-            "text": "Brown out detection voltage level at 2,4V; [BODLEVEL=011]",
+                "text": "Brown out detection voltage level at 2,4V; [BODLEVEL=011]",
                 "value": "0x03"
             },
             "text6": {
                 "mask": "0x07",
-            "text": "Brown out detection voltage level at 2,2V; [BODLEVEL=100]",
+                "text": "Brown out detection voltage level at 2,2V; [BODLEVEL=100]",
                 "value": "0x04"
             },
             "text7": {
                 "mask": "0x07",
-            "text": "Brown out detection voltage level at 2,0V; [BODLEVEL=101]",
+                "text": "Brown out detection voltage level at 2,0V; [BODLEVEL=101]",
                 "value": "0x05"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "Brown out detection voltage level at 1,8V; [BODLEVEL=110]",
+                "text": "Brown out detection voltage level at 1,8V; [BODLEVEL=110]",
                 "value": "0x06"
             },
             "text9": {
                 "mask": "0x07",
-            "text": "Brown out detection voltage level at 1,6V; [BODLEVEL=111]",
+                "text": "Brown out detection voltage level at 1,6V; [BODLEVEL=111]",
                 "value": "0x07"
             }
         },
-    "list": "[FUSEBYTE1:FUSEBYTE2:FUSEBYTE4:FUSEBYTE5]"
+        "list": "[FUSEBYTE1:FUSEBYTE2:FUSEBYTE4:FUSEBYTE5]"
     },
     "io": {
         "max_addr": "0x5F",
@@ -968,7 +968,8 @@
                 }
             ],
             "key": "FUSEBYTE1",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE1"
         },
         {
             "address": "820002",
@@ -1001,7 +1002,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "0000001C",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -1039,14 +1040,16 @@
                 }
             ],
             "key": "FUSEBYTE2",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE2"
         },
         {
             "address": "820003",
             "default": "000000FF",
-        "fields": [],
+            "fields": [],
             "key": "reserved",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "reserved"
         },
         {
             "address": "820004",
@@ -1058,7 +1061,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "00000001",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -1117,7 +1120,8 @@
                 }
             ],
             "key": "FUSEBYTE4",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE4"
         },
         {
             "address": "820005",
@@ -1204,7 +1208,8 @@
                 }
             ],
             "key": "FUSEBYTE5",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "FUSEBYTE5"
         }
     ],
     "avr_core": "avrxmega4",

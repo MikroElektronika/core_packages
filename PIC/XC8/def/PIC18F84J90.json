@@ -13,7 +13,8 @@
                     "label": "WDT disabled (control is placed on SWDTEN bit)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "ON",
@@ -28,7 +29,8 @@
                     "label": "Reset on stack overflow/underflow disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "ON",
@@ -43,7 +45,8 @@
                     "label": "Instruction set extension and Indexed Addressing mode disabled (Legacy mode)",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "OFF",
@@ -58,7 +61,8 @@
                     "label": "Background debugger enabled; RB6 and RB7 are dedicated to In-Circuit Debug",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1L"
         },
         {
             "init": "OFF",
@@ -73,7 +77,8 @@
                     "label": "Program memory is code-protected",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG1H"
         },
         {
             "init": "ECPLL",
@@ -96,7 +101,8 @@
                     "label": "HS oscillator",
                     "value": "HS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -111,7 +117,8 @@
                     "label": "INTRC enabled as system clock when OSCCON<1:0> = 00",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -126,7 +133,8 @@
                     "label": "Fail-Safe Clock Monitor enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "ON",
@@ -141,7 +149,8 @@
                     "label": "Two-Speed Start-up enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2L"
         },
         {
             "init": "32768",
@@ -212,7 +221,8 @@
                     "label": "1:1",
                     "value": "1"
                 }
-            ]
+            ],
+            "label_group": "CONFIG2H"
         },
         {
             "init": "DEFAULT",
@@ -227,7 +237,8 @@
                     "label": "CCP2 is multiplexed with RE7",
                     "value": "ALTERNATE"
                 }
-            ]
+            ],
+            "label_group": "CONFIG3H"
         }
     ],
     "mcu": "PIC18F84J90",

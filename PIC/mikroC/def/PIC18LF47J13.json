@@ -274,7 +274,8 @@
                 }
             ],
             "key": "CONFIG1L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG1L"
         },
         {
             "address": "0001FFF9",
@@ -329,7 +330,8 @@
                 }
             ],
             "key": "CONFIG1H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG1H"
         },
         {
             "address": "0001FFFA",
@@ -454,7 +456,8 @@
                 }
             ],
             "key": "CONFIG2L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2L"
         },
         {
             "address": "0001FFFB",
@@ -548,7 +551,8 @@
                 }
             ],
             "key": "CONFIG2H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG2H"
         },
         {
             "address": "0001FFFC",
@@ -697,7 +701,8 @@
                 }
             ],
             "key": "CONFIG3L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG3L"
         },
         {
             "address": "0001FFFD",
@@ -786,7 +791,8 @@
                 }
             ],
             "key": "CONFIG3H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG3H"
         },
         {
             "address": "0001FFFE",
@@ -1332,7 +1338,8 @@
                 }
             ],
             "key": "CONFIG4L",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG4L"
         },
         {
             "address": "0001FFFF",
@@ -1363,11 +1370,11 @@
                     "mask": "00000002",
                     "settings": [
                         {
-                            "label": "Pages WPFP\u003c6:0\u003e through Configuration Words erase/write protected",
+                            "label": "Pages WPFP<6:0> through Configuration Words erase/write protected",
                             "value": "00000002"
                         },
                         {
-                            "label": "Pages 0 through WPFP\u003c6:0\u003e erase/write protected",
+                            "label": "Pages 0 through WPFP<6:0> erase/write protected",
                             "value": "00000000"
                         }
                     ]
@@ -1387,7 +1394,8 @@
                 }
             ],
             "key": "CONFIG4H",
-            "unused": "00000000"
+            "unused": "00000000",
+            "label": "CONFIG4H"
         }
     ],
     "core": "P18",

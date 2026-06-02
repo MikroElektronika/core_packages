@@ -48,47 +48,47 @@
             "nmb_text": "9",
             "text1": {
                 "mask": "0x06",
-            "text": "Boot Flash size=128 words; Boot address=$0F80; [BOOTSZ=11]",
+                "text": "Boot Flash size=128 words; Boot address=$0F80; [BOOTSZ=11]",
                 "value": "0x06"
             },
             "text2": {
                 "mask": "0x06",
-            "text": "Boot Flash size=256 words; Boot address=$0F00; [BOOTSZ=10]",
+                "text": "Boot Flash size=256 words; Boot address=$0F00; [BOOTSZ=10]",
                 "value": "0x04"
             },
             "text3": {
                 "mask": "0x06",
-            "text": "Boot Flash size=512 words; Boot address=$0E00; [BOOTSZ=01]",
+                "text": "Boot Flash size=512 words; Boot address=$0E00; [BOOTSZ=01]",
                 "value": "0x02"
             },
             "text4": {
                 "mask": "0x06",
-            "text": "Boot Flash size=1024 words; Boot address=$0C00; [BOOTSZ=00]",
+                "text": "Boot Flash size=1024 words; Boot address=$0C00; [BOOTSZ=00]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x01",
-            "text": "Boot Reset vector Enabled; [BOOTRST=0]",
+                "text": "Boot Reset vector Enabled; [BOOTRST=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0xC0",
-            "text": "Sampled; [BODPD=01]",
+                "text": "Sampled; [BODPD=01]",
                 "value": "0x40"
             },
             "text7": {
                 "mask": "0xC0",
-            "text": "Enabled; [BODPD=10]",
+                "text": "Enabled; [BODPD=10]",
                 "value": "0x80"
             },
             "text8": {
                 "mask": "0xC0",
-            "text": "Disabled; [BODPD=11]",
+                "text": "Disabled; [BODPD=11]",
                 "value": "0xC0"
             },
             "text9": {
                 "mask": "0x30",
-            "text": "BOD mode of operation when the device is active or idle; [BODACT=0]",
+                "text": "BOD mode of operation when the device is active or idle; [BODACT=0]",
                 "value": "0x00"
             }
         },
@@ -137,51 +137,51 @@
             "nmb_text": "9",
             "text1": {
                 "mask": "0x80",
-            "text": "Reset Disabled (Enable PC6 as i/o pin); [RSTDISBL=0]",
+                "text": "Reset Disabled (Enable PC6 as i/o pin); [RSTDISBL=0]",
                 "value": "0x00"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Debug Wire enable; [DWEN=0]",
+                "text": "Debug Wire enable; [DWEN=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x20",
-            "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
+                "text": "Serial program downloading (SPI) enabled; [SPIEN=0]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x10",
-            "text": "Watch-dog Timer always on; [WDTON=0]",
+                "text": "Watch-dog Timer always on; [WDTON=0]",
                 "value": "0x00"
             },
             "text5": {
                 "mask": "0x08",
-            "text": "Preserve EEPROM through the Chip Erase cycle; [EESAVE=0]",
+                "text": "Preserve EEPROM through the Chip Erase cycle; [EESAVE=0]",
                 "value": "0x00"
             },
             "text6": {
                 "mask": "0x07",
-            "text": "Brown-out detection disabled; [BODLEVEL=111]",
+                "text": "Brown-out detection disabled; [BODLEVEL=111]",
                 "value": "0x07"
             },
             "text7": {
                 "mask": "0x07",
-            "text": "Brown-out detection at VCC=4.3 V; [BODLEVEL=100]",
+                "text": "Brown-out detection at VCC=4.3 V; [BODLEVEL=100]",
                 "value": "0x04"
             },
             "text8": {
                 "mask": "0x07",
-            "text": "Brown-out detection at VCC=2.7 V; [BODLEVEL=101]",
+                "text": "Brown-out detection at VCC=2.7 V; [BODLEVEL=101]",
                 "value": "0x05"
             },
             "text9": {
                 "mask": "0x07",
-            "text": "Brown-out detection at VCC=1.8 V; [BODLEVEL=110]",
+                "text": "Brown-out detection at VCC=1.8 V; [BODLEVEL=110]",
                 "value": "0x06"
             }
         },
-    "list": "[EXTENDED:HIGH:LOW]",
+        "list": "[EXTENDED:HIGH:LOW]",
         "low": {
             "fuse0": {
                 "default": "0",
@@ -217,92 +217,92 @@
             "nmb_text": "18",
             "text1": {
                 "mask": "0x80",
-            "text": "Divide clock by 8 internally; [CKDIV8=0]",
+                "text": "Divide clock by 8 internally; [CKDIV8=0]",
                 "value": "0x00"
             },
             "text10": {
                 "mask": "0x33",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0001 SUT=11]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0001 SUT=11]",
                 "value": "0x31"
             },
             "text11": {
                 "mask": "0x33",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 0 ms; [CKSEL=0010 SUT=00]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 0 ms; [CKSEL=0010 SUT=00]",
                 "value": "0x02"
             },
             "text12": {
                 "mask": "0x33",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 4.1 ms; [CKSEL=0010 SUT=01]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 4.1 ms; [CKSEL=0010 SUT=01]",
                 "value": "0x12"
             },
             "text13": {
                 "mask": "0x33",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0010 SUT=10]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0010 SUT=10]",
                 "value": "0x22"
             },
             "text14": {
                 "mask": "0x33",
-            "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0010 SUT=11]",
+                "text": "Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0010 SUT=11]",
                 "value": "0x32"
             },
             "text15": {
                 "mask": "0x33",
-            "text": "Int. ULP Osc. 32kHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 0 ms; [CKSEL=0011 SUT=00]",
+                "text": "Int. ULP Osc. 32kHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 0 ms; [CKSEL=0011 SUT=00]",
                 "value": "0x03"
             },
             "text16": {
                 "mask": "0x33",
-            "text": "Int. ULP Osc. 32kHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 4.1 ms; [CKSEL=0011 SUT=01]",
+                "text": "Int. ULP Osc. 32kHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 4.1 ms; [CKSEL=0011 SUT=01]",
                 "value": "0x13"
             },
             "text17": {
                 "mask": "0x33",
-            "text": "Int. ULP Osc. 32kHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0011 SUT=10]",
+                "text": "Int. ULP Osc. 32kHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0011 SUT=10]",
                 "value": "0x23"
             },
             "text18": {
                 "mask": "0x33",
-            "text": "Int. ULP Osc. 32kHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0011 SUT=11]",
+                "text": "Int. ULP Osc. 32kHz; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0011 SUT=11]",
                 "value": "0x33"
             },
             "text2": {
                 "mask": "0x40",
-            "text": "Clock output on PORTB0; [CKOUT=0]",
+                "text": "Clock output on PORTB0; [CKOUT=0]",
                 "value": "0x00"
             },
             "text3": {
                 "mask": "0x33",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 0 ms; [CKSEL=0000 SUT=00]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 0 ms; [CKSEL=0000 SUT=00]",
                 "value": "0x00"
             },
             "text4": {
                 "mask": "0x33",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 0 ms; [CKSEL=0001 SUT=00]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 0 ms; [CKSEL=0001 SUT=00]",
                 "value": "0x01"
             },
             "text5": {
                 "mask": "0x33",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 4.1 ms; [CKSEL=0000 SUT=01]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 4.1 ms; [CKSEL=0000 SUT=01]",
                 "value": "0x10"
             },
             "text6": {
                 "mask": "0x33",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 4.1 ms; [CKSEL=0001 SUT=01]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 4.1 ms; [CKSEL=0001 SUT=01]",
                 "value": "0x11"
             },
             "text7": {
                 "mask": "0x33",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0000 SUT=10]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0000 SUT=10]",
                 "value": "0x20"
             },
             "text8": {
                 "mask": "0x33",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0000 SUT=11]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0000 SUT=11]",
                 "value": "0x30"
             },
             "text9": {
                 "mask": "0x33",
-            "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0001 SUT=10]",
+                "text": "Ext. Clock; Start-up time PWRDWN/RESET: 6 + 14 CK + 65 ms; [CKSEL=0001 SUT=10]",
                 "value": "0x21"
             }
         }
@@ -672,7 +672,8 @@
                 }
             ],
             "key": "LOW",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "LOW"
         },
         {
             "address": "820001",
@@ -790,7 +791,8 @@
                 }
             ],
             "key": "HIGH",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "HIGH"
         },
         {
             "address": "820002",
@@ -844,7 +846,7 @@
                     "key": "reserved",
                     "label": "reserved",
                     "mask": "00000008",
-                "settings": []
+                    "settings": []
                 },
                 {
                     "hidden": false,
@@ -890,7 +892,8 @@
                 }
             ],
             "key": "EXTENDED",
-            "unused": "FFFFFF00"
+            "unused": "FFFFFF00",
+            "label": "EXTENDED"
         }
     ],
     "avr_core": "avr25"

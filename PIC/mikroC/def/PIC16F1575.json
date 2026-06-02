@@ -558,7 +558,8 @@
                 }
             ],
             "key": "CONFIG1",
-            "unused": "F104"
+            "unused": "F104",
+            "label": "CONFIG1"
         },
         {
             "address": "8008",
@@ -597,11 +598,11 @@
                     "mask": "4",
                     "settings": [
                         {
-                            "label": "PPSLOCKED Bit Can Be Cleared \u0026 Set Once",
+                            "label": "PPSLOCKED Bit Can Be Cleared & Set Once",
                             "value": "4"
                         },
                         {
-                            "label": "PPSLOCKED Bit Can Be Cleared \u0026 Set Repeatedly",
+                            "label": "PPSLOCKED Bit Can Be Cleared & Set Repeatedly",
                             "value": "0"
                         }
                     ]
@@ -710,7 +711,8 @@
                 }
             ],
             "key": "CONFIG2",
-            "unused": "C0F8"
+            "unused": "C0F8",
+            "label": "CONFIG2"
         }
     ],
     "core": "P16_Enh",

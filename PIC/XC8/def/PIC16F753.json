@@ -13,7 +13,8 @@
                     "label": "Internal oscillator mode.  I/O function on RA5/CLKIN",
                     "value": "INT"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -28,7 +29,8 @@
                     "label": "Watchdog Timer disabled",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -43,7 +45,8 @@
                     "label": "Power-up Timer enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "ON",
@@ -58,7 +61,8 @@
                     "label": "MCLR pin is alternate function",
                     "value": "OFF"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -73,7 +77,8 @@
                     "label": "Program memory code protection is enabled",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "EN",
@@ -92,7 +97,8 @@
                     "label": "BOR disabled",
                     "value": "DIS"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -115,7 +121,8 @@
                     "label": "000h to 3FFh self-write protected",
                     "value": "ALL"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         },
         {
             "init": "OFF",
@@ -130,7 +137,8 @@
                     "label": "CLKOUT function enabled.  CLKOUT pin is CLKOUT",
                     "value": "ON"
                 }
-            ]
+            ],
+            "label_group": "CONFIG"
         }
     ],
     "mcu": "PIC16F753",
