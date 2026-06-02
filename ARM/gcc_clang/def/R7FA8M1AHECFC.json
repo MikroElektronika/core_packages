@@ -1957,7 +1957,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10",
+                    "init": "70",
                     "key": "PLODIVQ",
                     "label": "PLL1 Output Frequency Division Ratio Select for output clock Q",
                     "mask": "f0",
@@ -2368,30 +2368,14 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "5",
+                    "init": "7",
                     "key": "I3CCKSEL",
                     "label": "I3C clock (I3CCLK) Source Select",
                     "mask": "f",
                     "settings": [
                         {
-                            "label": "HOCO",
-                            "value": "0"
-                        },
-                        {
                             "label": "MOCO (value after reset)",
                             "value": "1"
-                        },
-                        {
-                            "label": "LOCO",
-                            "value": "2"
-                        },
-                        {
-                            "label": "Main clock oscillator",
-                            "value": "3"
-                        },
-                        {
-                            "label": "Sub-clock oscillator",
-                            "value": "4"
                         },
                         {
                             "label": "PLL1P",
