@@ -724,6 +724,44 @@
             "label": "Clock out control register"
         },
         {
+            "address": "4001e071",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "I3CCKDIV",
+                    "label": "I3C clock (I3CCLK) division select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "/1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "4"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_I3CCKDIVCR",
+            "unused": "000000f8",
+            "label": "I3C Clock Division Control Register"
+        },
+        {
             "address": "4001e079",
             "default": "0",
             "fields": [

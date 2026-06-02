@@ -58,6 +58,7 @@ typedef struct
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
+static uint8_t I3CDividersTable[] = { 1, 2, 4, 6, 8, 3, 5, 10, 16, 32 };
 
 /* Helper macros for getting I3C source clock. */
 #define I3C_SOURCE_HOCO         (0)
@@ -578,6 +579,9 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
         default:
             break;
     }
+
+    // Get I3C clock with requested divider.
+    SYSTEM_Clocks->I3CCK_Frequency /= I3CDividersTable[ VALUE_SYSTEM_I3CCKDIVCR & R_SYSTEM_I3CCKDIVCR_I3CCKDIV_Msk ];
 }
 
 /**
