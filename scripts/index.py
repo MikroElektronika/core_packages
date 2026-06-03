@@ -21,24 +21,52 @@ def get_headers(api, token):
             'Accept': 'application/octet-stream'
         }
 
+def fetch_all_releases(repo, token, api_headers):
+    api_headers = get_headers(True, token)
+    url = f"https://api.github.com/repos/{repo}/releases"
+
+    releases = []
+    params = {
+        "per_page": 100,
+        "page": 1,
+    }
+
+    while True:
+        response = requests.get(url, headers=api_headers, params=params)
+        response.raise_for_status()
+
+        page_releases = response.json()
+        if not page_releases:
+            break
+
+        releases.extend(page_releases)
+
+        if len(page_releases) < params["per_page"]:
+            break
+
+        params["page"] += 1
+
+    return releases
+
 # Function to fetch release details from GitHub
 def fetch_release_details(repo, token, release_version):
     api_headers = get_headers(True, token)
-    url = f'https://api.github.com/repos/{repo}/releases'
-    response = requests.get(url, headers=api_headers)
-    response.raise_for_status()  # Raise an exception for HTTP errors
+
+    # Get all releases with pagination
+    all_releases = fetch_all_releases(repo, token, api_headers)
+
     latest_release = support.get_latest_release(repo, api_headers)
     if "latest" == release_version:
-        return latest_release, support.get_previous_release(latest_release, response.json(), True)
+        return latest_release, support.get_previous_release(latest_release, all_releases, True)
     else:
         release_check = None
-        release_check = support.get_specified_release(response.json(), release_version)
+        release_check = support.get_specified_release(all_releases, release_version)
         if release_check:
-            return release_check, support.get_previous_release(latest_release, response.json(), True)
+            return release_check, support.get_previous_release(latest_release, all_releases, True)
         else:
             ## Always fallback to latest release
             print("WARNING: Falling back to LATEST release.")
-            return latest_release, support.get_previous_release(latest_release, response.json(), True)
+            return latest_release, support.get_previous_release(latest_release, all_releases, True)
 
 # Function to fetch content as JSON from the link
 def fetch_json_data(download_link, token):
@@ -525,14 +553,14 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
 def is_release_latest(repo, token, release_version):
     api_headers = get_headers(True, token)
-    url = f'https://api.github.com/repos/{repo}/releases'
-    response = requests.get(url, headers=api_headers)
-    response.raise_for_status()  # Raise an exception for HTTP errors
+
+    # Get all releases with pagination
+    all_releases = fetch_all_releases(repo, token, api_headers)
     latest_release = support.get_latest_release(repo, api_headers)
     if 'latest' == release_version:
         return None, True
     else:
-        return response.json(), release_version == latest_release['tag_name']
+        return all_releases, release_version == latest_release['tag_name']
 
 def promote_to_latest(releases, repo, token, release_version):
     # Headers for authentication
