@@ -1,0 +1,18 @@
+{
+    "def_file": "A33G526VL.json",
+    "family_uid": "A33G",
+    "flash": "262144",
+    "icon": "images/mcu/abov.png",
+    "max_speed": "75.000",
+    "name": "A33G526VL",
+    "ram": "24576",
+    "sdk_config": "{\"MCU_NAME\":\"A33G526VL\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "A33G526VL",
+    "vendor": "ABOV",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_a33g52\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_a33g52\"}"
+}

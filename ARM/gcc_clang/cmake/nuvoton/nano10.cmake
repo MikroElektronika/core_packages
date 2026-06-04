@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NANO100LC2AN$|^NANO100LD2AN$|^NANO100LD3AN$|^NANO100SC2AN$|^NANO100SD2AN$|^NANO100SD3AN$|^NANO100VD2AN$|^NANO100VD3AN$|^NANO100WE3BN$|^NANO100ZC2AN$|^NANO100ZD2AN$|^NANO100ZD3AN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nano10/init_clock.c)
+endif()

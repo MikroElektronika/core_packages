@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^HT32F50431_32QFN$|^HT32F50431_46QFN$|^HT32F50431_48LQFP$|^HT32F50441_32QFN$|^HT32F50441_46QFN$|^HT32F50441_48LQFP$|^HT32F50442_32QFN$|^HT32F50442_46QFN$|^HT32F50442_48LQFP$|^HT32F50442_64LQFP$|^HT32F50452_32QFN$|^HT32F50452_46QFN$|^HT32F50452_48LQFP$|^HT32F50452_64LQFP$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ht32f504/init_clock.c)
+endif()

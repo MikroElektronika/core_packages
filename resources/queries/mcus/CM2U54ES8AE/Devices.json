@@ -1,0 +1,18 @@
+{
+    "def_file": "CM2U54ES8AE.json",
+    "family_uid": "CM2U51",
+    "flash": "135168",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "40.000",
+    "name": "CM2U54ES8AE",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"CM2U54ES8AE\",\"CORE_NAME\":\"M23\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "CM2U54ES8AE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_cm2u5\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_cm2u5\"}"
+}

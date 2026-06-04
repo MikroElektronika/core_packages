@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M3334KGGAE$|^M3334KIGAE$|^M3334LGAAE$|^M3334LGGAE$|^M3334LIGAE$|^M3334SGAAE$|^M3334SGGAE$|^M3334SIGAE$|^M3334TGAAE$|^M3334TGGAE$|^M3334TIGAE$|^M3334YGAAE$|^M3334YGGAE$|^M3334YIGAE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/m3334/init_clock.c)
+endif()

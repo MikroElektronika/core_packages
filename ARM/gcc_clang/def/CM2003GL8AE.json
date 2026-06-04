@@ -1,0 +1,6 @@
+{
+    "core": "M23",
+    "delay_src_path": "delays/M23/__lib_delays.c",
+    "mcu": "CM2003GL8AE",
+    "clock": "1"
+}

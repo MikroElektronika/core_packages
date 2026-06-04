@@ -1,0 +1,18 @@
+{
+    "def_file": "HF5032S-28SSOP.json",
+    "family_uid": "HF5032",
+    "flash": "31744",
+    "icon": "images/mcu/holtek.png",
+    "max_speed": "20.000",
+    "name": "HF5032S-28SSOP",
+    "ram": "4096",
+    "sdk_config": "{\"MCU_NAME\":\"HF5032S_28SSOP\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HF5032S-28SSOP",
+    "vendor": "Holtek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_hf5032\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_hf5032\"}"
+}

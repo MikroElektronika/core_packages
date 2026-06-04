@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NW32F61242_48LQFP$|^NW32F61242_64LQFP$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nw32f61242/init_clock.c)
+endif()

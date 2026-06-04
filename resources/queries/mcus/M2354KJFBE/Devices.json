@@ -1,0 +1,18 @@
+{
+    "def_file": "M2354KJFBE.json",
+    "family_uid": "M2354",
+    "flash": "2113536",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "96.000",
+    "name": "M2354KJFBE",
+    "ram": "524288",
+    "sdk_config": "{\"MCU_NAME\":\"M2354KJFBE\",\"CORE_NAME\":\"M23\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "M2354KJFBE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_m2354_ae_be\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_m2354_ae_be\"}"
+}

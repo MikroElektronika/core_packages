@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M2L31LD4AE$|^M2L31LE4AE$|^M2L31LG4AE$|^M2L31LGDAE$|^M2L31LIDAE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/m2l31l/init_clock.c)
+endif()

@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M2A23LD5AC$|^M2A23LE5AC$|^M2A23LE5ACU$|^M2A23LG5AC$|^M2A23LG5ACU$|^M2A23NE5ACU$|^M2A23NG5ACU$|^M2A23SD5AC$|^M2A23SE5AC$|^M2A23SE5ACU$|^M2A23SG5AC$|^M2A23SG5ACU$|^M2A23YD5AC$|^M2A23YE5AC$|^M2A23YG5AC$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/m2a23/init_clock.c)
+endif()

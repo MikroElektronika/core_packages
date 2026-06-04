@@ -1,0 +1,18 @@
+{
+    "def_file": "NM1100FBAE.json",
+    "family_uid": "NM1200",
+    "flash": "19968",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "50.000",
+    "name": "NM1100FBAE",
+    "ram": "2048",
+    "sdk_config": "{\"MCU_NAME\":\"NM1100FBAE\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "NM1100FBAE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nm11\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nm11\"}"
+}

@@ -1,0 +1,18 @@
+{
+    "def_file": "HT32F54253-46QFN.json",
+    "family_uid": "HT32F54243/54253",
+    "flash": "130048",
+    "icon": "images/mcu/holtek.png",
+    "max_speed": "60.000",
+    "name": "HT32F54253-46QFN",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"HT32F54253_46QFN\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HT32F54253-46QFN",
+    "vendor": "Holtek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ht32f5425\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ht32f5425\"}"
+}

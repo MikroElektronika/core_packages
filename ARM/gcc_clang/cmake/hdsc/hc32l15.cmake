@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^HC32L150F8$|^HC32L150FA$|^HC32L150J8$|^HC32L150JA$|^HC32L150K8$|^HC32L150KA$|^HC32L156J8$|^HC32L156JA$|^HC32L156K8$|^HC32L156KA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/hc32l15/init_clock.c)
+endif()

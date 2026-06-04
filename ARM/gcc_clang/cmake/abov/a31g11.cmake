@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^A31G111GR$|^A31G111KN$|^A31G111KU$|^A31G111LU$|^A31G112CL$|^A31G112GR$|^A31G112KN$|^A31G112KU$|^A31G112KY$|^A31G112LU$|^A31G112SN$|^A31G112SQ$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/a31g11/init_clock.c)
+endif()

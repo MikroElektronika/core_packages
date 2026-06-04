@@ -1,0 +1,18 @@
+{
+    "def_file": "A31G226MLN.json",
+    "family_uid": "A31G",
+    "flash": "262144",
+    "icon": "images/mcu/abov.png",
+    "max_speed": "48.000",
+    "name": "A31G226MLN",
+    "ram": "20480",
+    "sdk_config": "{\"MCU_NAME\":\"A31G226MLN\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "A31G226MLN",
+    "vendor": "ABOV",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_a31g226\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_a31g226\"}"
+}

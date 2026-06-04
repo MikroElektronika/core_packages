@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MXTX5030_24SSOP$|^MXTX5030_28SSOP$|^MXTX5030_48LQFP$|^MXTX52231_28SSOP$|^MXTX52352_48LQFP$|^MXTX6232_24SSOP$|^MXTX6306_48LQFP$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/mxtx/init_clock.c)
+endif()

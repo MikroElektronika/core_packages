@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^SN32F263X$|^SN32F2641J$|^SN32F265J$|^SN32F267J$|^SN32F268F$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/sn32f26/init_clock.c)
+endif()

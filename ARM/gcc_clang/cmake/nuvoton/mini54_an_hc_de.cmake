@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^MINI54FHC$|^MINI54LAN$|^MINI54QDE$|^MINI54TAN$|^MINI54ZAN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/mini54_an_hc_de/init_clock.c)
+endif()

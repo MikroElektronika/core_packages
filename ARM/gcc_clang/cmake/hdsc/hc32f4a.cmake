@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^HC32F4A0PGHB$|^HC32F4A0PGTB$|^HC32F4A0PIHB$|^HC32F4A0PITB$|^HC32F4A0RGTB$|^HC32F4A0RITB$|^HC32F4A0SGHB$|^HC32F4A0SGTB$|^HC32F4A0SIHB$|^HC32F4A0SITB$|^HC32F4A0TIHB$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/hc32f4a/init_clock.c)
+endif()

@@ -1,0 +1,18 @@
+{
+    "def_file": "HC32F334J8TI.json",
+    "family_uid": "HC32F334",
+    "flash": "71680",
+    "icon": "images/mcu/hdsc.png",
+    "max_speed": "120.000",
+    "name": "HC32F334J8TI",
+    "ram": "36864",
+    "sdk_config": "{\"MCU_NAME\":\"HC32F334J8TI\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HC32F334J8TI",
+    "vendor": "HDSC",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_hc32f3\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_hc32f3\"}"
+}

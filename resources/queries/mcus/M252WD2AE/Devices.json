@@ -1,0 +1,18 @@
+{
+    "def_file": "M252WD2AE.json",
+    "family_uid": "M253",
+    "flash": "69632",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "48.000",
+    "name": "M252WD2AE",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"M252WD2AE\",\"CORE_NAME\":\"M23\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "M252WD2AE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_m252wd2ae\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_m252wd2ae\"}"
+}

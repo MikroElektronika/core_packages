@@ -1,0 +1,18 @@
+{
+    "def_file": "CM3033GL8AE.json",
+    "family_uid": "CM3031",
+    "flash": "270336",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "180.000",
+    "name": "CM3033GL8AE",
+    "ram": "98304",
+    "sdk_config": "{\"MCU_NAME\":\"CM3033GL8AE\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "CM3033GL8AE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_cm3033\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_cm3033\"}"
+}

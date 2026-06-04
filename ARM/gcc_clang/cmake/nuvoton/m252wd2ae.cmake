@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M252WD2AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/m252wd2ae/init_clock.c)
+endif()

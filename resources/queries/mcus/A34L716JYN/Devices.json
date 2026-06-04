@@ -1,0 +1,18 @@
+{
+    "def_file": "A34L716JYN.json",
+    "family_uid": "A34L",
+    "flash": "262144",
+    "icon": "images/mcu/abov.png",
+    "max_speed": "32.000",
+    "name": "A34L716JYN",
+    "ram": "24576",
+    "sdk_config": "{\"MCU_NAME\":\"A34L716JYN\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "A34L716JYN",
+    "vendor": "ABOV",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_a34l\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_a34l\"}"
+}

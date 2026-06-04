@@ -1,0 +1,18 @@
+{
+    "def_file": "MM32F032R6T.json",
+    "family_uid": "MM32F032x6",
+    "flash": "32768",
+    "icon": "images/mcu/mindmotion.png",
+    "max_speed": "72.000",
+    "name": "MM32F032R6T",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"MM32F032R6T\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MM32F032R6T",
+    "vendor": "MindMotion",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mm32f032\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mm32f032\"}"
+}

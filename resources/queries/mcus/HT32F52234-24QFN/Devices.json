@@ -1,0 +1,18 @@
+{
+    "def_file": "HT32F52234-24QFN.json",
+    "family_uid": "HT32F52234/52244",
+    "flash": "32768",
+    "icon": "images/mcu/holtek.png",
+    "max_speed": "40.000",
+    "name": "HT32F52234-24QFN",
+    "ram": "4096",
+    "sdk_config": "{\"MCU_NAME\":\"HT32F52234_24QFN\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HT32F52234-24QFN",
+    "vendor": "Holtek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ht32f5223\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ht32f5223\"}"
+}
