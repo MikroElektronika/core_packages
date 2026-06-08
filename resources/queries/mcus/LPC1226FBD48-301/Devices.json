@@ -1,0 +1,18 @@
+{
+    "def_file": "LPC1226FBD48-301.json",
+    "family_uid": "LPC12",
+    "flash": "98304",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "45.000",
+    "name": "LPC1226FBD48-301",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"LPC1226FBD48_301\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "LPC1226FBD48-301",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_lpc12\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_lpc12\"}"
+}

@@ -1,0 +1,18 @@
+{
+    "def_file": "NUC1262YE4AE.json",
+    "family_uid": "NUC1262",
+    "flash": "137216",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "72.000",
+    "name": "NUC1262YE4AE",
+    "ram": "20480",
+    "sdk_config": "{\"MCU_NAME\":\"NUC1262YE4AE\",\"CORE_NAME\":\"M23\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "NUC1262YE4AE",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nuc126_1_2_3\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nuc126_1_2_3\"}"
+}

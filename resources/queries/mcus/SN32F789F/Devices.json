@@ -1,0 +1,18 @@
+{
+    "def_file": "SN32F789F.json",
+    "family_uid": "SN32F780",
+    "flash": "131072",
+    "icon": "images/mcu/sonix.png",
+    "max_speed": "72.000",
+    "name": "SN32F789F",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"SN32F789F\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "SN32F789F",
+    "vendor": "SONiX",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_sn32f78\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_sn32f78\"}"
+}

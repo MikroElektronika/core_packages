@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M460KGCAE$|^M460LGCAE$|^M460SGCAE$|^M460YGCAE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/m460/init_clock.c)
+endif()

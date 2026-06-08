@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NUC122LC1DN$|^NUC122LD2DN$|^NUC122SC1DN$|^NUC122SD2DN$|^NUC122ZC1DN$|^NUC122ZD2DN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nuc122_dn/init_clock.c)
+endif()

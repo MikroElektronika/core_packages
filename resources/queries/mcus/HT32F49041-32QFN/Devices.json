@@ -1,0 +1,18 @@
+{
+    "def_file": "HT32F49041-32QFN.json",
+    "family_uid": "HT32F49031/49041",
+    "flash": "65536",
+    "icon": "images/mcu/holtek.png",
+    "max_speed": "",
+    "name": "HT32F49041-32QFN",
+    "ram": "20480",
+    "sdk_config": "{\"MCU_NAME\":\"HT32F49041_32QFN\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HT32F49041-32QFN",
+    "vendor": "Holtek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ht32f490\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ht32f490\"}"
+}

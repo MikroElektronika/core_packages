@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^LPC1111FDH20_002$|^LPC1111FHN33_101$|^LPC1111FHN33_102$|^LPC1111FHN33_103$|^LPC1111FHN33_201$|^LPC1111FHN33_202$|^LPC1111FHN33_203$|^LPC1111JHN33_103$|^LPC1111JHN33_203$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/lpc1111/init_clock.c)
+endif()

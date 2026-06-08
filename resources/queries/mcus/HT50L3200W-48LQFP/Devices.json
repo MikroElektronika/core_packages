@@ -1,0 +1,18 @@
+{
+    "def_file": "HT50L3200W-48LQFP.json",
+    "family_uid": "HT50L3200W",
+    "flash": "32768",
+    "icon": "images/mcu/holtek.png",
+    "max_speed": "48.000",
+    "name": "HT50L3200W-48LQFP",
+    "ram": "4096",
+    "sdk_config": "{\"MCU_NAME\":\"HT50L3200W_48LQFP\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HT50L3200W-48LQFP",
+    "vendor": "Holtek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ht50l\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ht50l\"}"
+}

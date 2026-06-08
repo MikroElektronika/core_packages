@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^A34M414RL$|^A34M414VL$|^A34M416RL$|^A34M416VL$|^A34M418RL$|^A34M418VL$|^A34M418YL$|^A34M420RL$|^A34M420VL$|^A34M420YL$|^A34M456RK2N$|^A34M456RL2N$|^A34M456VL2N$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/a34m/init_clock.c)
+endif()

@@ -1,0 +1,6 @@
+{
+    "core": "M4EF",
+    "delay_src_path": "delays/M4EF/__lib_delays.c",
+    "mcu": "A34M414RL",
+    "clock": "1"
+}

@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^M2U51EC2AE$|^M2U51FC2AE$|^M2U51TC2AE$|^M2U51YC2AE$|^M2U51YD3AE$|^M2U54AE4AE$|^M2U54AG6AE$|^M2U54KE4AE$|^M2U54KG6AE$|^M2U54SE4AE$|^M2U54SG6AE$|^M2U54YE4AE$|^M2U54YG6AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/m2u5/init_clock.c)
+endif()

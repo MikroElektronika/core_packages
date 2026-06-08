@@ -1,0 +1,18 @@
+{
+    "def_file": "A31L221FR.json",
+    "family_uid": "A31L",
+    "flash": "16384",
+    "icon": "images/mcu/abov.png",
+    "max_speed": "32.000",
+    "name": "A31L221FR",
+    "ram": "4096",
+    "sdk_config": "{\"MCU_NAME\":\"A31L221FR\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "A31L221FR",
+    "vendor": "ABOV",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_a31l22\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_a31l22\"}"
+}

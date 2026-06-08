@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NM1200LBAE$|^NM1200TBAE$|^NM1200ZBAE$|^NM1220EBK0$|^NM1234D$|^NM1234Y$|^NM1243D48$|^NM1243Y$|^NM1243Y48$|^NM1244D48$|^NM1244Y$|^NM1244Y48$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nm12/init_clock.c)
+endif()

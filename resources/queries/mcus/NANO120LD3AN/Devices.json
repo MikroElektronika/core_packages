@@ -1,0 +1,18 @@
+{
+    "def_file": "NANO120LD3AN.json",
+    "family_uid": "Nano100AN",
+    "flash": "69632",
+    "icon": "images/mcu/nuvoton.png",
+    "max_speed": "32.000",
+    "name": "NANO120LD3AN",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"NANO120LD3AN\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "NANO120LD3AN",
+    "vendor": "Nuvoton",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nano12\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nano12\"}"
+}

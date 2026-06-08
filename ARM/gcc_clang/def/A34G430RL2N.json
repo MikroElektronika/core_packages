@@ -1,0 +1,6 @@
+{
+    "core": "M4",
+    "delay_src_path": "delays/M4/__lib_delays.c",
+    "mcu": "A34G430RL2N",
+    "clock": "1"
+}

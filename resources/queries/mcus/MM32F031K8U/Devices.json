@@ -1,0 +1,18 @@
+{
+    "def_file": "MM32F031K8U.json",
+    "family_uid": "MM32F031x8",
+    "flash": "65536",
+    "icon": "images/mcu/mindmotion.png",
+    "max_speed": "72.000",
+    "name": "MM32F031K8U",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"MM32F031K8U\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MM32F031K8U",
+    "vendor": "MindMotion",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mm32f031\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mm32f031\"}"
+}

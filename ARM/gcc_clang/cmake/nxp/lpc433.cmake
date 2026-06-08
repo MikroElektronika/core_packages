@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^LPC4333FET256$|^LPC4333JBD144$|^LPC4333JET100$|^LPC4333JET256$|^LPC4337FET256$|^LPC4337JBD144$|^LPC4337JET100$|^LPC4337JET256$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/lpc433/init_clock.c)
+endif()

@@ -1,0 +1,6 @@
+{
+    "core": "M3",
+    "delay_src_path": "delays/M3/__lib_delays.c",
+    "mcu": "A33G527VQ",
+    "clock": "1"
+}

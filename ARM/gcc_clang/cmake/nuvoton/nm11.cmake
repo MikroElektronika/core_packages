@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NM1100FBAE$|^NM1100XBAE$|^NM1120EC1AE$|^NM1120FC1AE$|^NM1120XC1AE$|^NM1120ZC1AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nm11/init_clock.c)
+endif()

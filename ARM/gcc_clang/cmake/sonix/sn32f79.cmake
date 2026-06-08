@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^SN32F7951F$|^SN32F7951J$|^SN32F795F$|^SN32F795J$|^SN32F797F$|^SN32F798F$|^SN32F799F$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/sn32f79/init_clock.c)
+endif()

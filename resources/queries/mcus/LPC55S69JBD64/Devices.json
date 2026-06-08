@@ -1,0 +1,18 @@
+{
+    "def_file": "LPC55S69JBD64.json",
+    "family_uid": "LPC55S69",
+    "flash": "655360",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "150.000",
+    "name": "LPC55S69JBD64",
+    "ram": "262144",
+    "sdk_config": "{\"MCU_NAME\":\"LPC55S69JBD64\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "LPC55S69JBD64",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_lpc55s6\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_lpc55s6\"}"
+}

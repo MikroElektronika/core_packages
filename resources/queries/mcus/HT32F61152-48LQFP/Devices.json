@@ -1,0 +1,18 @@
+{
+    "def_file": "HT32F61152-48LQFP.json",
+    "family_uid": "HT32F61152",
+    "flash": "130048",
+    "icon": "images/mcu/holtek.png",
+    "max_speed": "48.000",
+    "name": "HT32F61152-48LQFP",
+    "ram": "16384",
+    "sdk_config": "{\"MCU_NAME\":\"HT32F61152_48LQFP\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HT32F61152-48LQFP",
+    "vendor": "Holtek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ht32f611\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ht32f611\"}"
+}

@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^HC32L072FAUA$|^HC32L072JATA$|^HC32L072KATA$|^HC32L072PATA$|^HC32L073JATA$|^HC32L073KATA$|^HC32L073PATA$")
+    list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/4)")
+endif()

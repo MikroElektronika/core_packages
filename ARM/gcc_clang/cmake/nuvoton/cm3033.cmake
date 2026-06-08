@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^CM3033GJ3AE$|^CM3033GL3AE$|^CM3033GL8AE$|^CM3033GN8AE$|^CM3033HJ3AE$|^CM3033HL3AE$|^CM3033HL8AE$|^CM3033HN8AE$|^CM3033HS8AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cm3033/init_clock.c)
+endif()

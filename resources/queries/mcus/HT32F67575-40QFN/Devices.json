@@ -1,0 +1,18 @@
+{
+    "def_file": "HT32F67575-40QFN.json",
+    "family_uid": "HT32F67575",
+    "flash": "0",
+    "icon": "images/mcu/holtek.png",
+    "max_speed": "64.000",
+    "name": "HT32F67575-40QFN",
+    "ram": "0",
+    "sdk_config": "{\"MCU_NAME\":\"HT32F67575_40QFN\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HT32F67575-40QFN",
+    "vendor": "Holtek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_ht32f67\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_ht32f67\"}"
+}

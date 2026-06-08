@@ -1,0 +1,18 @@
+{
+    "def_file": "NW32F61242-48LQFP.json",
+    "family_uid": "NW32F61242",
+    "flash": "64512",
+    "icon": "images/mcu/holtek.png",
+    "max_speed": "48.000",
+    "name": "NW32F61242-48LQFP",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"NW32F61242_48LQFP\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "NW32F61242-48LQFP",
+    "vendor": "Holtek",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nw32f61242\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nw32f61242\"}"
+}

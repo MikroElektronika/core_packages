@@ -1,0 +1,18 @@
+{
+    "def_file": "MM32W373PFB.json",
+    "family_uid": "MM32W37xB",
+    "flash": "131072",
+    "icon": "images/mcu/mindmotion.png",
+    "max_speed": "96.000",
+    "name": "MM32W373PFB",
+    "ram": "20480",
+    "sdk_config": "{\"MCU_NAME\":\"MM32W373PFB\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MM32W373PFB",
+    "vendor": "MindMotion",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_mm32w\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_mm32w\"}"
+}

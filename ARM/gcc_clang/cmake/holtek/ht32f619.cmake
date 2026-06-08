@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^HT32F61930_48LQFP$|^HT32F61940_48LQFP$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/ht32f619/init_clock.c)
+endif()

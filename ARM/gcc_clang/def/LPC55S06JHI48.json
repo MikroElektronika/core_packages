@@ -1,0 +1,6 @@
+{
+    "core": "M33",
+    "delay_src_path": "delays/M33/__lib_delays.c",
+    "mcu": "LPC55S06JHI48",
+    "clock": "1"
+}

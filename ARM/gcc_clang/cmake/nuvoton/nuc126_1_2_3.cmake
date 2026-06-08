@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NUC1261LE4AE$|^NUC1261LG4AE$|^NUC1261NE4AE$|^NUC1261SE4AE$|^NUC1261SG4AE$|^NUC1262YE4AE$|^NUC1263LD4AE$|^NUC1263LD4CE$|^NUC1263ND4AE$|^NUC1263ND4CE$|^NUC1263SD4AE$|^NUC1263SD4CE$|^NUC1263ZD4AE$|^NUC1263ZD4CE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nuc126_1_2_3/init_clock.c)
+endif()

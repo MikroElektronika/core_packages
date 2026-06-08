@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NUC029CIG1$|^NUC029TAE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nuc029_g1_ae/init_clock.c)
+endif()

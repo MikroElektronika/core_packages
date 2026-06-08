@@ -1,0 +1,6 @@
+{
+    "core": "M33",
+    "delay_src_path": "delays/M33/__lib_delays.c",
+    "mcu": "M3334KGGAE",
+    "clock": "1"
+}

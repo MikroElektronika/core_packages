@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NUC100LD1DN$|^NUC100LD3AN$|^NUC100LD3DN$|^NUC100LE3AN$|^NUC100RD3AN$|^NUC100RD3DN$|^NUC100RE3AN$|^NUC100VD2AN$|^NUC100VD2DN$|^NUC100VD3AN$|^NUC100VD3DN$|^NUC100VE3AN$|^NUC100VE3DE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nuc10/init_clock.c)
+endif()

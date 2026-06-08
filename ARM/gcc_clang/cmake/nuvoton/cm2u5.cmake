@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^CM2U51DL3AE$|^CM2U54EL3AE$|^CM2U54EN8AE$|^CM2U54EQ3AE$|^CM2U54ES8AE$|^CM2U54GL3AE$|^CM2U54GN8AE$|^CM2U54GQ3AE$|^CM2U54GS8AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cm2u5/init_clock.c)
+endif()

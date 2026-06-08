@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^CM2003CF2AE$|^CM2003CF3AE$|^CM2003EJ3AE$|^CM2003EL8AE$|^CM2003GL8AE$|^CM2003GN8AE$|^CM2052EL8AE$|^CM2052EN8AE$|^CM2053EL8AE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cm20/init_clock.c)
+endif()

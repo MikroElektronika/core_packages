@@ -1,0 +1,6 @@
+{
+    "core": "M0",
+    "delay_src_path": "delays/M0/__lib_delays.c",
+    "mcu": "LPC11E37FBD48-501",
+    "clock": "1"
+}

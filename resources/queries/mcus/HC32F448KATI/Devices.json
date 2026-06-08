@@ -1,0 +1,18 @@
+{
+    "def_file": "HC32F448KATI.json",
+    "family_uid": "HC32F448",
+    "flash": "132096",
+    "icon": "images/mcu/hdsc.png",
+    "max_speed": "200.000",
+    "name": "HC32F448KATI",
+    "ram": "69632",
+    "sdk_config": "{\"MCU_NAME\":\"HC32F448KATI\",\"CORE_NAME\":\"M4\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HC32F448KATI",
+    "vendor": "HDSC",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_hc32f44\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_hc32f44\"}"
+}

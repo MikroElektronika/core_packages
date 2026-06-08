@@ -1,0 +1,18 @@
+{
+    "def_file": "LPC5528JEV98.json",
+    "family_uid": "LPC5528",
+    "flash": "524288",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "150.000",
+    "name": "LPC5528JEV98",
+    "ram": "262144",
+    "sdk_config": "{\"MCU_NAME\":\"LPC5528JEV98\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "LPC5528JEV98",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_lpc552\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_lpc552\"}"
+}

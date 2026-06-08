@@ -1,0 +1,6 @@
+{
+    "core": "M0+",
+    "delay_src_path": "delays/M0+/__lib_delays.c",
+    "mcu": "LPC845M301JHI48",
+    "clock": "1"
+}

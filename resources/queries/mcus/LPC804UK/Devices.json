@@ -1,0 +1,18 @@
+{
+    "def_file": "LPC804UK.json",
+    "family_uid": "LPC804",
+    "flash": "32768",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "15.000",
+    "name": "LPC804UK",
+    "ram": "131072",
+    "sdk_config": "{\"MCU_NAME\":\"LPC804UK\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "LPC804UK",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_lpc80\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_lpc80\"}"
+}

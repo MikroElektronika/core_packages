@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^A33G524ML$|^A33G524MM$|^A33G524RL$|^A33G524RM$|^A33G526ML$|^A33G526MM$|^A33G526RL$|^A33G526RM$|^A33G526VL$|^A33G526VQ$|^A33G527MM$|^A33G527RL$|^A33G527VL$|^A33G527VQ$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/a33g52/init_clock.c)
+endif()

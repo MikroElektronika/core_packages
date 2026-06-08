@@ -1,0 +1,18 @@
+{
+    "def_file": "LPC1112FHN33-102.json",
+    "family_uid": "LPC11",
+    "flash": "16384",
+    "icon": "images/mcu/nxp.png",
+    "max_speed": "50.000",
+    "name": "LPC1112FHN33-102",
+    "ram": "2048",
+    "sdk_config": "{\"MCU_NAME\":\"LPC1112FHN33_102\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "LPC1112FHN33-102",
+    "vendor": "NXP",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_lpc1112f\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_lpc1112f\"}"
+}
