@@ -619,7 +619,7 @@ def promote_to_latest(releases, repo, token, release_version):
     return
 
 def index_microchip_packs(es: Elasticsearch, index_name: str):
-    custom_link = 'https://shelf.download.microchip.com'
+    custom_link = 'https://packs.download.microchip.com/index.idx'
     # Download the index file
     xml_content = MCHP.download_index_file(custom_link)
     converted_data, item_list = MCHP.convert_idx_to_json(xml_content)
