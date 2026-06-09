@@ -1606,7 +1606,7 @@ async def main(
     ## EOF Step 11
 
     ## Step 12 add microchip info to programmers table
-    custom_link = 'https://packs.download.microchip.com/index.idx'
+    custom_link = 'https://shelf.download.microchip.com/'
     if not mcus_only:
         # Download the index file
         xml_content = MCHP.download_index_file(custom_link)
