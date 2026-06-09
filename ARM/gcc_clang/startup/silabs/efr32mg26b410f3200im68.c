@@ -26,6 +26,7 @@
 #include <stdbool.h>
 // #include "em_device.h"  // Note: Changed for MikroE implementation.
 #include <stdint.h>
+#include <cmsis_gcc.h>
 
 #define __VECTOR_TABLE_ATTRIBUTE  __attribute__((used, section(".vectors")))
 #define __NO_RETURN               __attribute__((noreturn))
