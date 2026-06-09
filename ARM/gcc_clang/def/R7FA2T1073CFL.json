@@ -238,7 +238,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "20",
+                    "init": "28",
                     "key": "HCFRQ1",
                     "label": "HOCO Frequency Setting 1",
                     "mask": "38",
