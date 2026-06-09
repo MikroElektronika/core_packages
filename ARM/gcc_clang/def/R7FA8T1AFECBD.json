@@ -2206,7 +2206,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "5",
                     "key": "CKSEL",
                     "label": "SCI clock (SCICLK) Source Select",
                     "mask": "f",
@@ -2314,7 +2314,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "5",
                     "key": "CKSEL",
                     "label": "SPI clock (SPICLK) Source Select",
                     "mask": "f",
