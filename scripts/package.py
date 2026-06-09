@@ -668,15 +668,41 @@ def hash_directory_contents(directory):
     combined_hash = hashlib.md5("".join(all_hashes).encode()).hexdigest()
     return combined_hash
 
+def fetch_all_releases(repo, api_headers):
+    url = f"https://api.github.com/repos/{repo}/releases"
+
+    releases = []
+    params = {
+        "per_page": 100,
+        "page": 1,
+    }
+
+    while True:
+        response = requests.get(url, headers=api_headers, params=params)
+        response.raise_for_status()
+
+        page_releases = response.json()
+        if not page_releases:
+            break
+
+        releases.extend(page_releases)
+
+        if len(page_releases) < params["per_page"]:
+            break
+
+        params["page"] += 1
+
+    return releases
+
 def fetch_current_metadata(repo, token):
     """ Fetch the current metadata from the GitHub repository """
-    url = f"https://api.github.com/repos/{repo}/releases"
     headers = {'Authorization': f'token {token}'}
-    response = requests.get(url, headers=headers)
-    releases = response.json()
+    # Get all releases with pagination
+    all_releases = fetch_all_releases(repo, headers)
+
     latest_release = support.get_latest_release(repo, headers)
-    if len(releases) > 1:
-        previous_release = support.get_previous_release(latest_release, releases)
+    if len(all_releases) > 1:
+        previous_release = support.get_previous_release(latest_release, all_releases)
         if not previous_release:
             print_line_number('Error when fetching previous release version', inspect.currentframe().f_lineno)
             exit(-1)
