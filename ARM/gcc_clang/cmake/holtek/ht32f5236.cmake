@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^HT32F52367_46QFN$|^HT32F52367_48LQFP$|^HT32F52367_64LQFP$|^HT32F52367_80LQFP$")
+if(${MCU_NAME} MATCHES "^HT32F52367-46QFN$|^HT32F52367-48LQFP$|^HT32F52367-64LQFP$|^HT32F52367-80LQFP$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/ht32f5236/init_clock.c)

@@ -1,6 +1,0 @@
-{
-    "core": "M4",
-    "delay_src_path": "delays/M4/__lib_delays.c",
-    "mcu": "HT32F49365-64LQFP",
-    "clock": "1"
-}

@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^HT50L3200U_64LQFP$|^HT50L3200W_48LQFP$|^HT50L3200X_48LQFP$")
+if(${MCU_NAME} MATCHES "^HT50L3200U-64LQFP$|^HT50L3200W-48LQFP$|^HT50L3200X-48LQFP$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/ht50l/init_clock.c)
