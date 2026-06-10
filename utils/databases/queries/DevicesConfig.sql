@@ -2,6 +2,7 @@
 WITH device_pin_counts AS (
     SELECT
         dtp.device_uid,
+        dtp.package_uid,
         CAST(
             SUBSTR(dtp.package_uid, 0, INSTR(dtp.package_uid, '/'))
             AS INTEGER
@@ -22,6 +23,7 @@ SELECT
     Devices.*,
     Devices.uid AS item_uid,
     Devices.name AS item_title,
+    device_pin_counts.package_uid AS package_uid,
     COALESCE(device_pin_counts.pin_count, 0) AS pin_count
 FROM
     Devices
