@@ -701,20 +701,13 @@ def fetch_current_metadata(repo, token):
     all_releases = fetch_all_releases(repo, headers)
 
     latest_release = support.get_latest_release(repo, headers)
-    if len(all_releases) > 1:
-        previous_release = support.get_previous_release(latest_release, all_releases)
-        if not previous_release:
-            print_line_number('Error when fetching previous release version', inspect.currentframe().f_lineno)
-            exit(-1)
-        # Print relevant info without the full asset list
-        print(f"Release info:\n{json.dumps({key: val for key, val in previous_release.items() if key != 'assets'}, indent=4)}")
-        for asset in previous_release.get('assets', []):
-            if asset['name'] == 'metadata.json':
-                print("Found metadata.json")
-                metadata_url = asset['url']
-                print("Attempting to download metadata from:", metadata_url)
-                metadata_response = fetch_json_data(metadata_url, token)
-                return metadata_response
+    for asset in latest_release.get('assets', []):
+        if asset['name'] == 'metadata.json':
+            print("Found metadata.json")
+            metadata_url = asset['browser_download_url']
+            print("Attempting to download metadata from:", metadata_url)
+            metadata_response = fetch_json_data(metadata_url, token)
+            return metadata_response
     return []
 
 def get_version_based_on_hash(package_name, version, hash_value, current_metadata):
@@ -888,10 +881,7 @@ async def main(token, repo, tag_name, releases_to_update):
             root_output_directory = f"./output/{arch}"
             # List directories directly under the root source directory
             with os.scandir(root_source_directory) as entries:
-                print(entries)
                 for entry in entries:
-                    print(root_source_directory)
-                    print(entry)
                     if entry.is_dir():
                         source_directory = os.path.join(root_source_directory, entry.name)
                         output_directory = os.path.join(root_output_directory, entry.name)
