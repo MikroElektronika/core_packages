@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^HT32F52220_24SSOP$|^HT32F52220_28SSOP$|^HT32F52220_33QFN$")
+if(${MCU_NAME} MATCHES "^HT32F52220-24SSOP$|^HT32F52220-28SSOP$|^HT32F52220-33QFN$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/ht32f5222/init_clock.c)

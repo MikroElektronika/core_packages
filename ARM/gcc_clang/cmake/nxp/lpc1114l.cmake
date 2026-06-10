@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^LPC1114LVFHI33_303$|^LPC1114LVFHN24_103$|^LPC1114LVFHN24_303$")
+if(${MCU_NAME} MATCHES "^LPC1114LVFHI33-303$|^LPC1114LVFHN24-103$|^LPC1114LVFHN24-303$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/lpc1114l/init_clock.c)
