@@ -1,6 +1,0 @@
-{
-    "core": "M0+",
-    "delay_src_path": "delays/M0+/__lib_delays.c",
-    "mcu": "HT32F61141-32QFN",
-    "clock": "1"
-}

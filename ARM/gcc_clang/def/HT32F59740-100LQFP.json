@@ -1,0 +1,6 @@
+{
+    "core": "M0+",
+    "delay_src_path": "delays/M0+/__lib_delays.c",
+    "mcu": "HT32F59740-100LQFP",
+    "clock": "1"
+}

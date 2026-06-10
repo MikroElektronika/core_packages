@@ -1,4 +1,4 @@
-if(${MCU_NAME} MATCHES "^LPC1114FDH28_102$")
+if(${MCU_NAME} MATCHES "^LPC1114FDH28-102$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
     list(APPEND local_list_include system/src/${vendor}/lpc1114fd/init_clock.c)
