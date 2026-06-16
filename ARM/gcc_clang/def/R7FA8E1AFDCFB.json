@@ -407,7 +407,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "CPUCK",
                     "label": "CPU Clock (CPUCLK) Select",
                     "mask": "f",
