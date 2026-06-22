@@ -16,12 +16,9 @@ SPECIAL_RELEASE_FILENAMES = {
     "erp_db.db",
     "images.7z",
     "metadata.json",
-    "mikroe_utils_common.7z",
     "necto_db.db",
     "necto_db_dev.db",
-    "preinit.7z",
     "schemas.json",
-    "unit_test_lib.7z",
 }
 
 def increase_version(version, part="patch"):
