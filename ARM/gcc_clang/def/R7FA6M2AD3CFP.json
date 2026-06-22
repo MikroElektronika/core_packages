@@ -536,7 +536,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLIDIV",
                     "label": "PLL Input Frequency Division Ratio Select",
                     "mask": "3",
