@@ -930,43 +930,6 @@ async def main(token, repo, tag_name, releases_to_update):
     )
     gh_uploader.append_to_payload(payload, 'images.7z', Path(str(archive_path)).resolve())
 
-    # Generate preinit package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
-    append_package(
-        packages, archive_path,
-        "Preinit library",
-        get_version_based_on_hash(
-            'preinit', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        )
-    )
-    gh_uploader.append_to_payload(payload, 'preinit.7z', Path(str(archive_path)).resolve())
-
-    # Generate unit_test_lib package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
-    append_package(
-        packages, archive_path,
-        "Unit test library",
-        get_version_based_on_hash(
-            'unit_test_lib', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        )
-    )
-    gh_uploader.append_to_payload(payload, 'unit_test_lib.7z', Path(str(archive_path)).resolve())
-
-    # Generate mikroe_utils_common package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
-    append_package(
-        packages, archive_path,
-        "MikroE common utilities",
-        get_version_based_on_hash(
-            'mikroe_utils_common', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        ),
-        'cmake'
-    )
-    gh_uploader.append_to_payload(payload, 'mikroe_utils_common.7z', Path(str(archive_path)).resolve())
-
     # Generate database packages
     for each_db in db_paths:
         shutil.copy(f'./{each_db}', './utils/databases/necto_db.db')
