@@ -83,7 +83,7 @@
     .equ    _MAILBOX_SIZE, 0x0
 #endif
     .globl    _MAILBOX_SIZE
-    
+
     .section .stack
     .align 3
 #ifdef __STACK_SIZE
@@ -238,20 +238,20 @@ __isr_vector:
     .long RSV96_IRQHandler             /* 0x70  0x01C0  112: Reserved */
     .long RSV97_IRQHandler             /* 0x71  0x01C4  113: Reserved */
     .long RSV98_IRQHandler             /* 0x72  0x01C8  114: Reserved */
-    .long I2S_IRQHandler               /* 0x73  0x01CC  115: I2S */    
+    .long I2S_IRQHandler               /* 0x73  0x01CC  115: I2S */
     .long RSV100_IRQHandler            /* 0x74  0x01D0  116: Reserved */
     .long RSV101_IRQHandler            /* 0x75  0x01D4  117: Reserved */
     .long RSV102_IRQHandler            /* 0x76  0x01D8  118: Reserved */
-    .long LPCMP_IRQHandler             /* 0x77  0x01DC  119: LPCMP */    
+    .long LPCMP_IRQHandler             /* 0x77  0x01DC  119: LPCMP */
     .long RSV104_IRQHandler            /* 0x78  0x01E0  120: Reserved */
     .long SPI4_IRQHandler              /* 0x79  0x01E4  121: SPI4 */
     .long RSV106_IRQHandler            /* 0x7A  0x01E8  122: Reserved */
-    .long CAN0_IRQHandler              /* 0x7B  0x01EC  123: CAN0 */    
+    .long CAN0_IRQHandler              /* 0x7B  0x01EC  123: CAN0 */
     .long CAN1_IRQHandler              /* 0x7C  0x01F0  124: CAN1 */
-    .long WUT1_IRQHandler              /* 0x7D  0x01F4  125: Wake up timer 1 */ 
+    .long WUT1_IRQHandler              /* 0x7D  0x01F4  125: Wake up timer 1 */
     .long RSV110_IRQHandler            /* 0x7E  0x01F8  126: Reserved */
-    .long RSV111_IRQHandler            /* 0x7F  0x01FC  127: Reserved */ 
-    .text   
+    .long RSV111_IRQHandler            /* 0x7F  0x01FC  127: Reserved */
+    .text
     .thumb
     .thumb_func
     .align 2
@@ -262,9 +262,10 @@ Reset_Handler:
     mov sp, r0
 
     /* PreInit runs before any RAM initialization. Example usage: DDR setup, etc. */
+    /* Note: Changed for MikroE implementation.
     ldr     r0, =PreInit
     blx     r0
-    cbnz    r0, .SKIPRAMINIT
+    cbnz    r0, .SKIPRAMINIT */
 
 /*     Loop to copy data from read only memory to RAM. The ranges
  *      of copy from/to are specified by following symbols evaluated in
@@ -324,11 +325,11 @@ Reset_Handler:
     /* Note: The linker file must have .data symbols for __X_array_start and __X_array_end */
     /*        where X is {preinit, init, fini}                                             */
     ldr     r0, =__libc_init_array
-    blx     r0  
+    blx     r0
 
     /* Transfer control to user's main program */
     ldr     r0, =main
-    blx     r0 
+    blx     r0
 
 .SPIN:
     /* spin if main ever returns. */
@@ -458,17 +459,17 @@ Reset_Handler:
     def_irq_handler RSV96_IRQHandler             /* 0x70  0x01C0  112: Reserved */
     def_irq_handler RSV97_IRQHandler             /* 0x71  0x01C4  113: Reserved */
     def_irq_handler RSV98_IRQHandler             /* 0x72  0x01C8  114: Reserved */
-    def_irq_handler I2S_IRQHandler               /* 0x73  0x01CC  115: I2S */    
+    def_irq_handler I2S_IRQHandler               /* 0x73  0x01CC  115: I2S */
     def_irq_handler RSV100_IRQHandler            /* 0x74  0x01D0  116: Reserved */
     def_irq_handler RSV101_IRQHandler            /* 0x75  0x01D4  117: Reserved */
     def_irq_handler RSV102_IRQHandler            /* 0x76  0x01D8  118: Reserved */
-    def_irq_handler LPCMP_IRQHandler             /* 0x77  0x01DC  119: LPCMP */    
+    def_irq_handler LPCMP_IRQHandler             /* 0x77  0x01DC  119: LPCMP */
     def_irq_handler RSV104_IRQHandler            /* 0x78  0x01E0  120: Reserved */
     def_irq_handler SPI4_IRQHandler              /* 0x79  0x01E4  121: SPI4 */
     def_irq_handler RSV106_IRQHandler            /* 0x7A  0x01E8  122: Reserved */
-    def_irq_handler CAN0_IRQHandler              /* 0x7B  0x01EC  123: CAN0 */    
+    def_irq_handler CAN0_IRQHandler              /* 0x7B  0x01EC  123: CAN0 */
     def_irq_handler CAN1_IRQHandler              /* 0x7C  0x01F0  124: CAN1 */
-    def_irq_handler WUT1_IRQHandler              /* 0x7D  0x01F4  125: Wake up timer 1 */ 
+    def_irq_handler WUT1_IRQHandler              /* 0x7D  0x01F4  125: Wake up timer 1 */
     def_irq_handler RSV110_IRQHandler            /* 0x7E  0x01F8  126: Reserved */
-    def_irq_handler RSV111_IRQHandler            /* 0x7F  0x01FC  127: Reserved */     
+    def_irq_handler RSV111_IRQHandler            /* 0x7F  0x01FC  127: Reserved */
     .end
