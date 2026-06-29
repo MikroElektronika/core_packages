@@ -729,7 +729,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "2",
                     "key": "I3CCKDIV",
                     "label": "I3C clock (I3CCLK) division select",
                     "mask": "7",
