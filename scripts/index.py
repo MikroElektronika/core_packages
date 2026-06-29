@@ -368,9 +368,6 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             release_tags.append(metadata_asset['release_tag'])
 
     for release_tag in release_tags:
-        if 'RENESAS' not in release_tag:
-            continue
-        update_package = True
         release_details = fetch_release_details(repo, token, release_tag)
         print(f'\033[33mProcessing assets for: {release_details[0]['name']}\033[0m')
         for asset in release_details[0].get('assets', []):
@@ -513,10 +510,6 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 if ('database' == package_name):
                     if doc:
                         doc['version'] = increase_version(previous_version, part="patch")
-
-            doc['version'] = '2.0.5'
-            doc['published_at'] = '2026-05-06T15:03:14Z'
-            doc['download_link'] = doc['download_link'].replace('v2.0.4', 'v2.0.5')
 
             # Index the document
             if doc:
@@ -740,8 +733,8 @@ if __name__ == '__main__':
     )
 
     # Index microchip device family packs
-    # index_microchip_packs(es, args.select_index)
-    # index_codegrip_packs(es, args.select_index, args.doc_codegrip)
+    index_microchip_packs(es, args.select_index)
+    index_codegrip_packs(es, args.select_index, args.doc_codegrip)
 
     # Now index the new release
     index_release_to_elasticsearch(
