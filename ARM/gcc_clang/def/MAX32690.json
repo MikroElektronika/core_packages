@@ -1,0 +1,6 @@
+{
+    "core": "Cortex-M4EF",
+    "delay_src_path": "delays/Cortex-M4EF/__lib_delays.c",
+    "mcu": "MAX32690",
+    "clock": "1"
+}

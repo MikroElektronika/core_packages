@@ -1,0 +1,18 @@
+{
+    "def_file": "TMPM4L1FWUG.json",
+    "family_uid": "TXZ4",
+    "flash": "131072",
+    "icon": "images/mcu/toshiba.png",
+    "max_speed": "80.000",
+    "name": "TMPM4L1FWUG",
+    "ram": "6144",
+    "sdk_config": "{\"MCU_NAME\":\"TMPM4L1FWUG\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "TMPM4L1FWUG",
+    "vendor": "Toshiba",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_tmpm4l\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_tmpm4l\"}"
+}
