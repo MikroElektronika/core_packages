@@ -982,7 +982,7 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
 
     // Get GPTCLK clock frequency.
     SYSTEM_Clocks->GPTCLK_Frequency = \
-        SYSTEM_GetPeriphClocksFrequency( VALUE_SYSTEM_GPTCKCR & R_SYSTEM_GPTCKCR_CKSEL_Msk, hoco_frequency );
+        SYSTEM_GetPeriphClocksFrequency( VALUE_SYSTEM_GPTCKCR & R_SYSTEM_GPTCKCR_GPTCKSEL_Msk, hoco_frequency );
     // Adjust GPTCLK based on the GPTCKDIVCR value.
     SYSTEM_Clocks->GPTCLK_Frequency /= PeriphDividersTable[ VALUE_SYSTEM_GPTCKDIVCR & R_SYSTEM_GPTCKDIVCR_GPTCKDIV_Msk ];
 }
@@ -1293,11 +1293,11 @@ static void system_clock_configuration() {
     while ( R_SYSTEM->SCICKCR_b.CKSRDY );
 
     // Set I3CCLK parameters
-    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 1;
+    R_SYSTEM->I3CCKCR_b.I3CCKSREQ = 1;
     while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
     R_SYSTEM->I3CCKDIVCR = VALUE_SYSTEM_I3CCKDIVCR;
     R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
-    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 0;
+    R_SYSTEM->I3CCKCR_b.I3CCKSREQ = 0;
     while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
 
     // Set GPTCLK parameters

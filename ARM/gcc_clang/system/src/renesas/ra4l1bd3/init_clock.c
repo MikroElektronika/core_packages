@@ -860,11 +860,11 @@ static void system_clock_configuration() {
     R_UARTA_CK->UTAnCK[1] = VALUE_SYSTEM_UTA1CK;
 
     // Set I3CCLK parameters
-    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 1;
+    R_SYSTEM->I3CCKCR_b.I3CCKSREQ = 1;
     while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
     R_SYSTEM->I3CCKDIVCR = VALUE_SYSTEM_I3CCKDIVCR;
     R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
-    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 0;
+    R_SYSTEM->I3CCKCR_b.I3CCKSREQ = 0;
     while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
 
     // Lock write protection register
