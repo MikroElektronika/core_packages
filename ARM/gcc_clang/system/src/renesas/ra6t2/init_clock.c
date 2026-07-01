@@ -573,11 +573,11 @@ static void system_clock_configuration();
 // -----------------------------------------------------------------------------------------
 
 /**
- * @brief Gets PLL subclock values.
+ * @brief Gets PLL clock values.
  *
- * Calculates configured clock frequency for PLL1P, PLL1Q, PLL1R, PLL2P, PLL2Q and PLL2R.
+ * Calculates configured clock frequency for PLL and PLL2.
  *
- * @return PLL subclock value.
+ * @return PLL clock value.
  */
 uint32_t SYSTEM_GetPLLClocksFrequency( uint32_t pll_config_value, \
                                         uint32_t hoco_frequency ) {
