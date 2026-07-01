@@ -1119,7 +1119,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "IICCKSEL",
                     "label": "IIC clock (IICCLK) Source Select",
                     "mask": "7",
@@ -1147,40 +1147,6 @@
                         {
                             "label": "PLL2",
                             "value": "6"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "IICCKSREQ",
-                    "label": "IIC clock (IICCLK) Switching Request",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "No request",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Request switching",
-                            "value": "40"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "IICCKSRDY",
-                    "label": "IIC clock (IICCLK) Switching Ready state flag",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "Impossible to Switch",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Possible to Switch",
-                            "value": "80"
                         }
                     ]
                 }
