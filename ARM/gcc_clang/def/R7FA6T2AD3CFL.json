@@ -495,7 +495,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLLSTP",
                     "label": "PLL Stop Control",
                     "mask": "1",

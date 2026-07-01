@@ -59,6 +59,22 @@ typedef struct
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
+static uint8_t GPT_IIC_CLK_PrescTable[] = { 1, 2, 4, 6, 8 };
+
+#define HOCO_FREQUENCY_MHZ_16   (0)
+#define HOCO_FREQUENCY_MHZ_18   (1)
+#define HOCO_FREQUENCY_MHZ_20   (2)
+#define GPT_IIC_SOURCE_HOCO     (0)
+#define GPT_IIC_SOURCE_MOCO     (1)
+#define GPT_IIC_SOURCE_LOCO     (2)
+#define GPT_IIC_SOURCE_MOSC     (3)
+#define GPT_IIC_SOURCE_PLL      (4)
+#define GPT_IIC_SOURCE_PLL2     (5)
+#define FREQUENCY_32768HZ       (32768)
+#define FREQUENCY_8MHZ          (8000000)
+#define FREQUENCY_16MHZ         (16000000)
+#define FREQUENCY_18MHZ         (18000000)
+#define FREQUENCY_20MHZ         (20000000)
 
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
@@ -557,6 +573,32 @@ static void system_clock_configuration();
 // -----------------------------------------------------------------------------------------
 
 /**
+ * @brief Gets PLL subclock values.
+ *
+ * Calculates configured clock frequency for PLL1P, PLL1Q, PLL1R, PLL2P, PLL2Q and PLL2R.
+ *
+ * @return PLL subclock value.
+ */
+uint32_t SYSTEM_GetPLLClocksFrequency( uint32_t pll_config_value, \
+                                        uint32_t hoco_frequency ) {
+    uint32_t pll_frequency;
+
+    // Get PLL source clock.
+    if ( pll_config_value & R_SYSTEM_PLLCCR_PLSRCSEL_Msk )
+        pll_frequency = hoco_frequency;
+    else
+        // Note: MOSC value used by EK-RA6T2 Board.
+        pll_frequency = FREQUENCY_20MHZ;
+    // Divide PLL source clock based on PLIDIV value.
+    pll_frequency /= ( pll_config_value & R_SYSTEM_PLLCCR_PLIDIV_Msk ) + 1;
+    // Multiply result clock based on PLLMUL value.
+    pll_frequency *= ( float )(((( pll_config_value & R_SYSTEM_PLLCCR_PLLMUL_Msk )\
+        >> R_SYSTEM_PLLCCR_PLLMUL_Pos ) + 1 ) / 2 );
+
+    return pll_frequency;
+}
+
+/**
  * @brief Gets the system clock values.
  *
  * Calculates configured clock frequency for system clocks which are used by different
@@ -565,7 +607,7 @@ static void system_clock_configuration();
  * @return None
  */
 void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
-    uint32_t prescaler, source_clock;
+    uint32_t prescaler, source_clock, hoco_frequency;
 
     // Get the frequency of main clock.
     SYSTEM_Clocks->ICLK_Frequency = FOSC_KHZ_VALUE * 1000;
@@ -593,6 +635,66 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     // Get FCLK clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
     SYSTEM_Clocks->FCLK_Frequency = source_clock / prescaler;
+
+    // Get HOCO frequency.
+    if( HOCO_FREQUENCY_MHZ_16 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_16MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_18 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_18MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_20 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_20MHZ;
+
+    // Get GPTCLK clock frequency.
+    switch( VALUE_SYSTEM_GPTCKCR & R_SYSTEM_GPTCKCR_CKSEL_Msk ) {
+        case GPT_IIC_SOURCE_HOCO:
+            SYSTEM_Clocks->GPTCLK_Frequency = hoco_frequency;
+            break;
+        case GPT_IIC_SOURCE_MOCO:
+            SYSTEM_Clocks->GPTCLK_Frequency = FREQUENCY_8MHZ;
+            break;
+        case GPT_IIC_SOURCE_LOCO:
+            SYSTEM_Clocks->GPTCLK_Frequency = FREQUENCY_32768HZ;
+            break;
+        case GPT_IIC_SOURCE_MOSC:
+            SYSTEM_Clocks->GPTCLK_Frequency = FREQUENCY_20MHZ;
+            break;
+        case GPT_IIC_SOURCE_PLL:
+            SYSTEM_Clocks->GPTCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency );
+            break;
+        case GPT_IIC_SOURCE_PLL2:
+            SYSTEM_Clocks->GPTCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency );
+            break;
+
+        default:
+            break;
+    }
+    SYSTEM_Clocks->GPTCLK_Frequency /= GPT_IIC_CLK_PrescTable[ VALUE_SYSTEM_GPTCKDIVCR & R_SYSTEM_GPTCKDIVCR_GPTCKDIV_Msk ];
+
+    // Get IICCLK clock frequency.
+    switch( VALUE_SYSTEM_IICCKCR & R_SYSTEM_IICCKCR_IICCKSEL_Msk ) {
+        case GPT_IIC_SOURCE_HOCO:
+            SYSTEM_Clocks->IICCLK_Frequency = hoco_frequency;
+            break;
+        case GPT_IIC_SOURCE_MOCO:
+            SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_8MHZ;
+            break;
+        case GPT_IIC_SOURCE_LOCO:
+            SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_32768HZ;
+            break;
+        case GPT_IIC_SOURCE_MOSC:
+            SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_20MHZ;
+            break;
+        case GPT_IIC_SOURCE_PLL:
+            SYSTEM_Clocks->IICCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency );
+            break;
+        case GPT_IIC_SOURCE_PLL2:
+            SYSTEM_Clocks->IICCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency );
+            break;
+
+        default:
+            break;
+    }
+    SYSTEM_Clocks->IICCLK_Frequency /= GPT_IIC_CLK_PrescTable[ VALUE_SYSTEM_IICCKDIVCR & R_SYSTEM_IICCKDIVCR_IICCKDIV_Msk ];
 }
 
 /**
