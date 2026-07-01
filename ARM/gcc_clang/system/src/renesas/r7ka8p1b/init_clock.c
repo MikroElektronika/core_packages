@@ -59,7 +59,8 @@ typedef struct
     uint32_t PCLKD_Frequency;    // PCLKD clock frequency in Hz
     uint32_t SPICLK_Frequency;   // SPI clock frequency in Hz
     uint32_t SCICLK_Frequency;   // SCI clock frequency in Hz
-    uint32_t I3CCK_Frequency;   // I3C clock frequency in Hz
+    uint32_t I3CCLK_Frequency;   // I3C clock frequency in Hz
+    uint32_t GPTCLK_Frequency;   // GPT clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
@@ -1039,10 +1040,10 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     SYSTEM_Clocks->SCICLK_Frequency /= SCI_SPI_CLK_PrescTable[ VALUE_SYSTEM_SCICKDIVCR & R_SYSTEM_SCICKDIVCR_CKDIV_Msk ];
 
     // Get I3C clock frequency.
-    SYSTEM_Clocks->I3CCK_Frequency = SYSTEM_GetI3CClockFrequency( hoco_frequency );
+    SYSTEM_Clocks->I3CCLK_Frequency = SYSTEM_GetI3CClockFrequency( hoco_frequency );
 
     // Get I3C clock with requested divider.
-    SYSTEM_Clocks->I3CCK_Frequency /= I3CDividersTable[ VALUE_SYSTEM_I3CCKDIVCR & R_SYSTEM_I3CCKDIVCR_I3CCKDIV_Msk ];
+    SYSTEM_Clocks->I3CCLK_Frequency /= I3CDividersTable[ VALUE_SYSTEM_I3CCKDIVCR & R_SYSTEM_I3CCKDIVCR_I3CCKDIV_Msk ];
 }
 
 /**
@@ -1357,6 +1358,22 @@ static void system_clock_configuration() {
     R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
     R_SYSTEM->I3CCKCR_b.I3CCKREQ = 0;
     while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
+
+    // Set GPTCLK parameters
+    R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 1;
+    while ( !( R_SYSTEM->GPTCKCR_b.GPTCKSRDY ));
+    R_SYSTEM->GPTCKDIVCR = VALUE_SYSTEM_GPTCKDIVCR;
+    R_SYSTEM->GPTCKCR = VALUE_SYSTEM_GPTCKCR;
+    R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 0;
+    while ( !( R_SYSTEM->GPTCKCR_b.GPTCKSRDY ));
+
+    // Set ADCCLK parameters
+    R_SYSTEM->ADCCKCR_b.CKSREQ = 1;
+    while ( !( R_SYSTEM->ADCCKCR_b.CKSRDY ));
+    R_SYSTEM->ADCCKDIVCR = VALUE_SYSTEM_ADCCKDIVCR;
+    R_SYSTEM->ADCCKCR = VALUE_SYSTEM_ADCCKCR;
+    R_SYSTEM->ADCCKCR_b.CKSREQ = 0;
+    while ( !( R_SYSTEM->ADCCKCR_b.CKSRDY ));
 
     /* If PLL2 is enabled and PLL1 is not chosen as source clock
      * or PLL2 is disabled and PLL1 is chosen as clock source.

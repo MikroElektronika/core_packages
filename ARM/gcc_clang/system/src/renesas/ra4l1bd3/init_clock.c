@@ -54,7 +54,7 @@ typedef struct
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
-    uint32_t I3CCK_Frequency;  // I3C clock frequency in Hz
+    uint32_t I3CCLK_Frequency;  // I3C clock frequency in Hz
     uint32_t UARTA0_Frequency;  // FSEL0 clock frequency in Hz
     uint32_t UARTA1_Frequency;  // FSEL1 clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
@@ -626,17 +626,17 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
 
     switch ( VALUE_SYSTEM_I3CCKCR & R_SYSTEM_I3CCKCR_I3CCKSEL_Msk ) {
         case I3C_SOURCE_HOCO:
-            SYSTEM_Clocks->I3CCK_Frequency = hoco_frequency;
+            SYSTEM_Clocks->I3CCLK_Frequency = hoco_frequency;
         case I3C_SOURCE_MOCO:
-            SYSTEM_Clocks->I3CCK_Frequency = FREQUENCY_8MHZ;
+            SYSTEM_Clocks->I3CCLK_Frequency = FREQUENCY_8MHZ;
         case I3C_SOURCE_LOCO:
-            SYSTEM_Clocks->I3CCK_Frequency = FREQUENCY_32768HZ;
+            SYSTEM_Clocks->I3CCLK_Frequency = FREQUENCY_32768HZ;
         case I3C_SOURCE_XTAL:
-            SYSTEM_Clocks->I3CCK_Frequency = FREQUENCY_20MHZ;
+            SYSTEM_Clocks->I3CCLK_Frequency = FREQUENCY_20MHZ;
         case I3C_SOURCE_SUBCLK:
-            SYSTEM_Clocks->I3CCK_Frequency = FREQUENCY_32768HZ;
+            SYSTEM_Clocks->I3CCLK_Frequency = FREQUENCY_32768HZ;
         case I3C_SOURCE_PLL:
-            SYSTEM_Clocks->I3CCK_Frequency = SYSTEM_GetPLLFrequency( hoco_frequency );
+            SYSTEM_Clocks->I3CCLK_Frequency = SYSTEM_GetPLLFrequency( hoco_frequency );
 
         default:
             break;

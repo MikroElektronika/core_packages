@@ -54,6 +54,8 @@ typedef struct
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
+    uint32_t GPTCLK_Frequency;  // GPT peripheral clock frequency in Hz
+    uint32_t IICCLK_Frequency;  // IIC peripheral clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
@@ -755,6 +757,22 @@ static void system_clock_configuration() {
     }
 
     R_SYSTEM->SCKDIVCR = VALUE_SYSTEM_SCKDIVCR;
+
+    // Set GPTCLK parameters
+    R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 1;
+    while ( !( R_SYSTEM->GPTCKCR_b.GPTCKSRDY ));
+    R_SYSTEM->GPTCKDIVCR = VALUE_SYSTEM_GPTCKDIVCR;
+    R_SYSTEM->GPTCKCR = VALUE_SYSTEM_GPTCKCR;
+    R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 0;
+    while ( !( R_SYSTEM->GPTCKCR_b.GPTCKSRDY ));
+
+    // Set IICLK parameters
+    R_SYSTEM->IICCKCR_b.IICCKSREQ = 1;
+    while ( !( R_SYSTEM->IICCKCR_b.IICCKSRDY ));
+    R_SYSTEM->IICCKDIVCR = VALUE_SYSTEM_IICCKDIVCR;
+    R_SYSTEM->IICCKCR = VALUE_SYSTEM_IICCKCR;
+    R_SYSTEM->IICCKCR_b.IICCKSREQ = 0;
+    while ( !( R_SYSTEM->IICCKCR_b.IICCKSRDY ));
 
     if ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOEN_Msk ) {
         R_SYSTEM->CKOCR = VALUE_SYSTEM_CKOCR & ( R_SYSTEM_CKOCR_CKODIV_Msk | R_SYSTEM_CKOCR_CKOSEL_Msk );
