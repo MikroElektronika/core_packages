@@ -877,7 +877,7 @@ static void system_clock_configuration() {
     R_SYSTEM->GPTCKDIVCR = VALUE_SYSTEM_GPTCKDIVCR;
     R_SYSTEM->GPTCKCR = VALUE_SYSTEM_GPTCKCR;
     R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 0;
-    while ( !( R_SYSTEM->GPTCKCR_b.GPTCKSRDY ));
+    while ( R_SYSTEM->GPTCKCR_b.GPTCKSRDY );
 
     // Set IICLK parameters
     R_SYSTEM->IICCKCR_b.IICCKSREQ = 1;

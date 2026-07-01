@@ -1298,7 +1298,7 @@ static void system_clock_configuration() {
     R_SYSTEM->I3CCKDIVCR = VALUE_SYSTEM_I3CCKDIVCR;
     R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
     R_SYSTEM->I3CCKCR_b.I3CCKSREQ = 0;
-    while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
+    while ( R_SYSTEM->I3CCKCR_b.I3CCKSRDY );
 
     // Set GPTCLK parameters
     R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 1;
@@ -1306,7 +1306,7 @@ static void system_clock_configuration() {
     R_SYSTEM->GPTCKDIVCR = VALUE_SYSTEM_GPTCKDIVCR;
     R_SYSTEM->GPTCKCR = VALUE_SYSTEM_GPTCKCR;
     R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 0;
-    while ( !( R_SYSTEM->GPTCKCR_b.GPTCKSRDY ));
+    while ( R_SYSTEM->GPTCKCR_b.GPTCKSRDY );
 
     // Set ADCCLK parameters
     R_SYSTEM->ADCCKCR_b.CKSREQ = 1;
@@ -1314,7 +1314,7 @@ static void system_clock_configuration() {
     R_SYSTEM->ADCCKDIVCR = VALUE_SYSTEM_ADCCKDIVCR;
     R_SYSTEM->ADCCKCR = VALUE_SYSTEM_ADCCKCR;
     R_SYSTEM->ADCCKCR_b.CKSREQ = 0;
-    while ( !( R_SYSTEM->ADCCKCR_b.CKSRDY ));
+    while ( R_SYSTEM->ADCCKCR_b.CKSRDY );
 
     /* If PLL2 is enabled and PLL1 is not chosen as source clock
      * or PLL2 is disabled and PLL1 is chosen as clock source.
