@@ -2371,6 +2371,222 @@
             "label": "Spi clock control register"
         },
         {
+            "address": "4001e05a",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKDIV",
+                    "label": "Clock Division Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "/1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "4"
+                        },
+                        {
+                            "label": "/3",
+                            "value": "5"
+                        },
+                        {
+                            "label": "/5",
+                            "value": "6"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_ADCCKDIVCR",
+            "unused": "000000f8",
+            "label": "ADC clock Division control register"
+        },
+        {
+            "address": "4001e05b",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKSEL",
+                    "label": "Clock Source Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Sub-clock oscillator",
+                            "value": "4"
+                        },
+                        {
+                            "label": "PLL1P",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2P",
+                            "value": "6"
+                        },
+                        {
+                            "label": "PLL1Q",
+                            "value": "7"
+                        },
+                        {
+                            "label": "PLL1R",
+                            "value": "8"
+                        },
+                        {
+                            "label": "PLL2Q",
+                            "value": "9"
+                        },
+                        {
+                            "label": "PLL2R",
+                            "value": "a"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_ADCCKCR",
+            "unused": "00000030",
+            "label": "ADC clock control register"
+        },
+        {
+            "address": "4001e05c",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKDIV",
+                    "label": "Clock Division Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "/1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "4"
+                        },
+                        {
+                            "label": "/3",
+                            "value": "5"
+                        },
+                        {
+                            "label": "/5",
+                            "value": "6"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_GPTCKDIVCR",
+            "unused": "000000f8",
+            "label": "GPT clock Division control register"
+        },
+        {
+            "address": "4001e05d",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKSEL",
+                    "label": "Clock Source Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Sub-clock oscillator",
+                            "value": "4"
+                        },
+                        {
+                            "label": "PLL1P",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2P",
+                            "value": "6"
+                        },
+                        {
+                            "label": "PLL1Q",
+                            "value": "7"
+                        },
+                        {
+                            "label": "PLL1R",
+                            "value": "8"
+                        },
+                        {
+                            "label": "PLL2Q",
+                            "value": "9"
+                        },
+                        {
+                            "label": "PLL2R",
+                            "value": "a"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_GPTCKCR",
+            "unused": "00000030",
+            "label": "GPT clock control register "
+        },
+        {
             "address": "4001e070",
             "default": "0",
             "fields": [
