@@ -65,21 +65,20 @@ typedef struct
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
-static uint8_t SCI_SPI_CLK_PrescTable[] = { 1, 2, 4, 6, 8, 3, 5 };
-static uint8_t I3CDividersTable[] = { 1, 2, 4, 6, 8, 3, 5, 10, 16, 32 };
+static uint8_t PeriphDividersTable[] = { 1, 2, 4, 6, 8, 3, 5, 10, 16, 32 };
 
-/* Helper macros for getting SPI and SCI clock sources. */
-#define SCI_SPI_SOURCE_HOCO     (0)
-#define SCI_SPI_SOURCE_MOCO     (1)
-#define SCI_SPI_SOURCE_LOCO     (2)
-#define SCI_SPI_SOURCE_MOSC     (3)
-#define SCI_SPI_SOURCE_SOSC     (4)
-#define SCI_SPI_SOURCE_PLL1P    (5)
-#define SCI_SPI_SOURCE_PLL2P    (6)
-#define SCI_SPI_SOURCE_PLL1Q    (7)
-#define SCI_SPI_SOURCE_PLL1R    (8)
-#define SCI_SPI_SOURCE_PLL2Q    (9)
-#define SCI_SPI_SOURCE_PLL2R    (10)
+/* Helper macros for getting SPI, SCI, I3C and GPT clock sources. */
+#define PERIPHERAL_SOURCE_HOCO  (0)
+#define PERIPHERAL_SOURCE_MOCO  (1)
+#define PERIPHERAL_SOURCE_LOCO  (2)
+#define PERIPHERAL_SOURCE_MOSC  (3)
+#define PERIPHERAL_SOURCE_SOSC  (4)
+#define PERIPHERAL_SOURCE_PLL1P (5)
+#define PERIPHERAL_SOURCE_PLL2P (6)
+#define PERIPHERAL_SOURCE_PLL1Q (7)
+#define PERIPHERAL_SOURCE_PLL1R (8)
+#define PERIPHERAL_SOURCE_PLL2Q (9)
+#define PERIPHERAL_SOURCE_PLL2R (10)
 #define HOCO_FREQUENCY_MHZ_16   (0)
 #define HOCO_FREQUENCY_MHZ_18   (1)
 #define HOCO_FREQUENCY_MHZ_20   (2)
@@ -98,15 +97,6 @@ static uint8_t I3CDividersTable[] = { 1, 2, 4, 6, 8, 3, 5, 10, 16, 32 };
 #define PLLMULNF_TWO_THIRDS     (0x80)
 #define PLLMULNF_ONE_THIRD      (0x40)
 #define BSP_PRV_MRCPFB_LIMIT    (0x65)
-
-/* Helper macros for getting I3C source clock. */
-#define I3C_SOURCE_MOCO         (1)
-#define I3C_SOURCE_PLL1P        (5)
-#define I3C_SOURCE_PLL2P        (6)
-#define I3C_SOURCE_PLL1Q        (7)
-#define I3C_SOURCE_PLL1R        (8)
-#define I3C_SOURCE_PLL2Q        (9)
-#define I3C_SOURCE_PLL2R        (10)
 
 /* Key codes for MRAM registers. */
 #define BSP_PRV_MRCFREQ_KEY     (0x1E000000)
@@ -835,123 +825,64 @@ uint32_t SYSTEM_GetPLLClocksFrequency( uint32_t pll_config_value, \
 }
 
 /**
- * @brief Gets the peripheral clock values for SPI and SCI modules.
+ * @brief Gets the peripheral clock values for SPI, SCI, I3C or GPT modules.
  *
- * Calculates configured clock frequency for SPI and SCI clocks.
+ * Calculates configured clock frequency for SPI, SCI, I3C or GPT clocks.
  *
- * @return SPI or SCI peripheral clock value.
+ * @return SPI, SCI, I3C or GPT peripheral clock value.
  */
-uint32_t SYSTEM_GetSPISCIClocksFrequency ( uint8_t config_value, uint32_t hoco_frequency ) {
+uint32_t SYSTEM_GetPeriphClocksFrequency( uint8_t config_value, uint32_t hoco_frequency ) {
     uint32_t peripheral_clock;
     uint8_t prescaler;
 
     switch ( config_value ) {
-        case SCI_SPI_SOURCE_HOCO:
+        case PERIPHERAL_SOURCE_HOCO:
             peripheral_clock = hoco_frequency;
             break;
-        case SCI_SPI_SOURCE_MOCO:
+        case PERIPHERAL_SOURCE_MOCO:
             peripheral_clock = FREQUENCY_8MHZ;
             break;
-        case SCI_SPI_SOURCE_LOCO:
+        case PERIPHERAL_SOURCE_LOCO:
             peripheral_clock = FREQUENCY_32768HZ;
             break;
-        case SCI_SPI_SOURCE_MOSC:
-            // Note: MOSC value used by EK-RA8P1 Board.
+        case PERIPHERAL_SOURCE_MOSC:
+            // Note: MOSC value used by EK-RA8D2 Board.
             peripheral_clock = FREQUENCY_20MHZ;
             break;
-        case SCI_SPI_SOURCE_SOSC:
+        case PERIPHERAL_SOURCE_SOSC:
             peripheral_clock = FREQUENCY_32768HZ;
             break;
-        case SCI_SPI_SOURCE_PLL1P:
+        case PERIPHERAL_SOURCE_PLL1P:
             prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVP_Msk ) \
                 >> R_SYSTEM_PLLCCR2_PLODIVP_Pos ) + 1;
             peripheral_clock = \
                 SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
             break;
-        case SCI_SPI_SOURCE_PLL2P:
+        case PERIPHERAL_SOURCE_PLL2P:
             prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVP_Msk ) \
                 >> R_SYSTEM_PLL2CCR2_PL2ODIVP_Pos ) + 1;
             peripheral_clock = \
                 SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
             break;
-        case SCI_SPI_SOURCE_PLL1Q:
+        case PERIPHERAL_SOURCE_PLL1Q:
             prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVQ_Msk ) \
                 >> R_SYSTEM_PLLCCR2_PLODIVQ_Pos ) + 1;
             peripheral_clock = \
                 SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
             break;
-        case SCI_SPI_SOURCE_PLL1R:
+        case PERIPHERAL_SOURCE_PLL1R:
             prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVR_Msk ) \
                 >> R_SYSTEM_PLLCCR2_PLODIVR_Pos ) + 1;
             peripheral_clock = \
                 SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
             break;
-        case SCI_SPI_SOURCE_PLL2Q:
+        case PERIPHERAL_SOURCE_PLL2Q:
             prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVQ_Msk ) \
                 >> R_SYSTEM_PLL2CCR2_PL2ODIVQ_Pos ) + 1;
             peripheral_clock = \
                 SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
             break;
-        case SCI_SPI_SOURCE_PLL2R:
-            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVR_Msk ) \
-                >> R_SYSTEM_PLL2CCR2_PL2ODIVR_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
-            break;
-
-        default:
-            break;
-    }
-
-    return peripheral_clock;
-}
-
-/**
- * @brief Gets the peripheral clock value for I3C module.
- *
- * Calculates configured clock frequency for I3C clock.
- *
- * @return I3C peripheral clock value.
- */
-uint32_t SYSTEM_GetI3CClockFrequency ( uint32_t hoco_frequency ) {
-    uint32_t peripheral_clock;
-    uint8_t prescaler;
-
-    switch ( VALUE_SYSTEM_I3CCKCR & R_SYSTEM_I3CCKCR_I3CCKSEL_Msk ) {
-        case I3C_SOURCE_MOCO:
-            peripheral_clock = FREQUENCY_8MHZ;
-            break;
-        case I3C_SOURCE_PLL1P:
-            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVP_Msk ) \
-                >> R_SYSTEM_PLLCCR2_PLODIVP_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
-            break;
-        case I3C_SOURCE_PLL2P:
-            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVP_Msk ) \
-                >> R_SYSTEM_PLL2CCR2_PL2ODIVP_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
-            break;
-        case I3C_SOURCE_PLL1Q:
-            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVQ_Msk ) \
-                >> R_SYSTEM_PLLCCR2_PLODIVQ_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
-            break;
-        case I3C_SOURCE_PLL1R:
-            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVR_Msk ) \
-                >> R_SYSTEM_PLLCCR2_PLODIVR_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
-            break;
-        case I3C_SOURCE_PLL2Q:
-            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVQ_Msk ) \
-                >> R_SYSTEM_PLL2CCR2_PL2ODIVQ_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
-            break;
-        case I3C_SOURCE_PLL2R:
+        case PERIPHERAL_SOURCE_PLL2R:
             prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVR_Msk ) \
                 >> R_SYSTEM_PLL2CCR2_PL2ODIVR_Pos ) + 1;
             peripheral_clock = \
@@ -1034,21 +965,27 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
 
     // Get the source clock of SPI module.
     SYSTEM_Clocks->SPICLK_Frequency = \
-        SYSTEM_GetSPISCIClocksFrequency( VALUE_SYSTEM_SPICKCR & R_SYSTEM_SPICKCR_CKSEL_Msk, hoco_frequency );
+        SYSTEM_GetPeriphClocksFrequency( VALUE_SYSTEM_SPICKCR & R_SYSTEM_SPICKCR_CKSEL_Msk, hoco_frequency );
     // Adjust SPICLK based on the SPICKDIVCR value.
-    SYSTEM_Clocks->SPICLK_Frequency /= SCI_SPI_CLK_PrescTable[ VALUE_SYSTEM_SPICKDIVCR & R_SYSTEM_SPICKDIVCR_CKDIV_Msk ];
+    SYSTEM_Clocks->SPICLK_Frequency /= PeriphDividersTable[ VALUE_SYSTEM_SPICKDIVCR & R_SYSTEM_SPICKDIVCR_CKDIV_Msk ];
 
     // Get the source clock of SCI module.
     SYSTEM_Clocks->SCICLK_Frequency = \
-        SYSTEM_GetSPISCIClocksFrequency( VALUE_SYSTEM_SCICKCR & R_SYSTEM_SCICKCR_SCICKSEL_Msk, hoco_frequency );
+        SYSTEM_GetPeriphClocksFrequency( VALUE_SYSTEM_SCICKCR & R_SYSTEM_SCICKCR_SCICKSEL_Msk, hoco_frequency );
     // Adjust SCICLK based on the SPICKDIVCR value.
-    SYSTEM_Clocks->SCICLK_Frequency /= SCI_SPI_CLK_PrescTable[ VALUE_SYSTEM_SCICKDIVCR & R_SYSTEM_SCICKDIVCR_CKDIV_Msk ];
+    SYSTEM_Clocks->SCICLK_Frequency /= PeriphDividersTable[ VALUE_SYSTEM_SCICKDIVCR & R_SYSTEM_SCICKDIVCR_CKDIV_Msk ];
 
     // Get I3C clock frequency.
-    SYSTEM_Clocks->I3CCLK_Frequency = SYSTEM_GetI3CClockFrequency( hoco_frequency );
+    SYSTEM_Clocks->I3CCLK_Frequency = \
+        SYSTEM_GetPeriphClocksFrequency( VALUE_SYSTEM_I3CCKCR & R_SYSTEM_I3CCKCR_I3CCKSEL_Msk, hoco_frequency );
+    // Adjust I3CCLK based on the I3CCKDIVCR value.
+    SYSTEM_Clocks->I3CCLK_Frequency /= PeriphDividersTable[ VALUE_SYSTEM_I3CCKDIVCR & R_SYSTEM_I3CCKDIVCR_I3CCKDIV_Msk ];
 
-    // Get I3C clock with requested divider.
-    SYSTEM_Clocks->I3CCLK_Frequency /= I3CDividersTable[ VALUE_SYSTEM_I3CCKDIVCR & R_SYSTEM_I3CCKDIVCR_I3CCKDIV_Msk ];
+    // Get GPTCLK clock frequency.
+    SYSTEM_Clocks->GPTCLK_Frequency = \
+        SYSTEM_GetPeriphClocksFrequency( VALUE_SYSTEM_GPTCKCR & R_SYSTEM_GPTCKCR_CKSEL_Msk, hoco_frequency );
+    // Adjust GPTCLK based on the GPTCKDIVCR value.
+    SYSTEM_Clocks->GPTCLK_Frequency /= PeriphDividersTable[ VALUE_SYSTEM_GPTCKDIVCR & R_SYSTEM_GPTCKDIVCR_GPTCKDIV_Msk ];
 }
 
 /**

@@ -896,65 +896,6 @@ uint32_t SYSTEM_GetPeriphClocksFrequency( uint8_t config_value, uint32_t hoco_fr
 }
 
 /**
- * @brief Gets the peripheral clock value for I3C module.
- *
- * Calculates configured clock frequency for I3C clock.
- *
- * @return I3C peripheral clock value.
- */
-uint32_t SYSTEM_GetI3CClockFrequency ( uint32_t hoco_frequency ) {
-    uint32_t peripheral_clock;
-    uint8_t prescaler;
-
-    switch ( VALUE_SYSTEM_I3CCKCR & R_SYSTEM_I3CCKCR_I3CCKSEL_Msk ) {
-        case PERIPHERAL_SOURCE_MOCO:
-            peripheral_clock = FREQUENCY_8MHZ;
-            break;
-        case PERIPHERAL_SOURCE_PLL1P:
-            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVP_Msk ) \
-                >> R_SYSTEM_PLLCCR2_PLODIVP_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
-            break;
-        case PERIPHERAL_SOURCE_PLL2P:
-            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVP_Msk ) \
-                >> R_SYSTEM_PLL2CCR2_PL2ODIVP_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
-            break;
-        case PERIPHERAL_SOURCE_PLL1Q:
-            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVQ_Msk ) \
-                >> R_SYSTEM_PLLCCR2_PLODIVQ_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
-            break;
-        case PERIPHERAL_SOURCE_PLL1R:
-            prescaler = (( VALUE_SYSTEM_PLLCCR2 & R_SYSTEM_PLLCCR2_PLODIVR_Msk ) \
-                >> R_SYSTEM_PLLCCR2_PLODIVR_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency, prescaler );
-            break;
-        case PERIPHERAL_SOURCE_PLL2Q:
-            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVQ_Msk ) \
-                >> R_SYSTEM_PLL2CCR2_PL2ODIVQ_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
-            break;
-        case PERIPHERAL_SOURCE_PLL2R:
-            prescaler = (( VALUE_SYSTEM_PLL2CCR2 & R_SYSTEM_PLL2CCR2_PL2ODIVR_Msk ) \
-                >> R_SYSTEM_PLL2CCR2_PL2ODIVR_Pos ) + 1;
-            peripheral_clock = \
-                SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency, prescaler );
-            break;
-
-        default:
-            break;
-    }
-
-    return peripheral_clock;
-}
-
-/**
  * @brief Gets the system clock values.
  *
  * Calculates configured clock frequency for system clocks which are used by different
