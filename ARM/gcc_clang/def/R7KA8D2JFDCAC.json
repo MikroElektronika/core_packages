@@ -271,6 +271,59 @@
                 },
                 {
                     "hidden": false,
+                    "init": "200000",
+                    "key": "PCKE",
+                    "label": "Peripheral Module Clock E (PCLKE) Select",
+                    "mask": "f00000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "300000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "500000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "600000"
+                        },
+                        {
+                            "label": "x1/3",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "x1/6",
+                            "value": "900000"
+                        },
+                        {
+                            "label": "x1/12",
+                            "value": "a00000"
+                        },
+                        {
+                            "label": "x1/24",
+                            "value": "b00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
                     "init": "3000000",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
