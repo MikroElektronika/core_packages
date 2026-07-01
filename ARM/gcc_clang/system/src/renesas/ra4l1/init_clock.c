@@ -870,7 +870,13 @@ static void system_clock_configuration() {
     R_UARTA_CK->UTAnCK[0] = VALUE_SYSTEM_UTA0CK;
     R_UARTA_CK->UTAnCK[1] = VALUE_SYSTEM_UTA1CK;
 
+    // Set I3CCLK parameters
+    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 1;
+    while ( !( R_SYSTEM->SCICKCR_b.I3CCKSRDY ));
+    R_SYSTEM->I3CCKDIVCR = VALUE_SYSTEM_I3CCKDIVCR;
     R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
+    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 0;
+    while ( !( R_SYSTEM->SCICKCR_b.I3CCKSRDY ));
 
     // Lock write protection register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;

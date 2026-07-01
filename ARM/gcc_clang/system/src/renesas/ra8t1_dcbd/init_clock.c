@@ -1051,6 +1051,14 @@ static void system_clock_configuration() {
     R_SYSTEM->SCICKCR_b.CKSREQ = 0;
     while ( R_SYSTEM->SCICKCR_b.CKSRDY );
 
+    // Set I3CCLK parameters
+    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 1;
+    while ( !( R_SYSTEM->SCICKCR_b.I3CCKSRDY ));
+    R_SYSTEM->I3CCKDIVCR = VALUE_SYSTEM_I3CCKDIVCR;
+    R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
+    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 0;
+    while ( !( R_SYSTEM->SCICKCR_b.I3CCKSRDY ));
+
     /* If PLL2 is enabled and PLL1 is not chosen as source clock
      * or PLL2 is disabled and PLL1 is chosen as clock source.
      */
@@ -1064,8 +1072,6 @@ static void system_clock_configuration() {
         * since OSPI_B may initialize within and begin using I/O. */
         R_SYSTEM->LVOCR = 0;
     }
-
-    R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
 
     // Lock LVOCR register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
