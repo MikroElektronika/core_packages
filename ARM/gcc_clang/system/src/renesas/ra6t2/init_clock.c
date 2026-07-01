@@ -863,9 +863,7 @@ static void system_clock_configuration() {
 
     Delay_1ms();
 
-    if ( 80000 < FOSC_KHZ_VALUE && 120000 >= FOSC_KHZ_VALUE ) {
-        R_FCACHE->FLWT = 2; // 2 waits
-    } else if ( 40000 < FOSC_KHZ_VALUE ) {
+    if ( 120000 < FOSC_KHZ_VALUE ) {
         R_FCACHE->FLWT = 1; // 1 wait
     } else {
         R_FCACHE->FLWT = 0; // 0 waits
