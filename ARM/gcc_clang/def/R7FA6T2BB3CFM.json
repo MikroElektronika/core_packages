@@ -1073,40 +1073,6 @@
                             "value": "6"
                         }
                     ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "GPTCKSREQ",
-                    "label": "GPT clock (GPTCLK) Switching Request",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "No request",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Request switching",
-                            "value": "40"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "GPTCKSRDY",
-                    "label": "GPT clock (GPTCLK) Switching Ready state flag",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "Impossible to Switch",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Possible to Switch",
-                            "value": "80"
-                        }
-                    ]
                 }
             ],
             "key": "SYSTEM_GPTCKCR",
