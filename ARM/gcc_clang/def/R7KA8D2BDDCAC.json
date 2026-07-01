@@ -1392,6 +1392,230 @@
             "label": "Spi clock control register"
         },
         {
+            "address": "4001e05a",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "ADCCKDIV",
+                    "label": "ADC Clock (ADCCLK) Division Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "1/1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "1/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "1/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "1/6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "1/8",
+                            "value": "4"
+                        },
+                        {
+                            "label": "1/10",
+                            "value": "7"
+                        },
+                        {
+                            "label": "1/16",
+                            "value": "8"
+                        },
+                        {
+                            "label": "1/32",
+                            "value": "9"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_ADCCKDIVCR",
+            "unused": "000000f0",
+            "label": "ADC Clock Division Control Register"
+        },
+        {
+            "address": "4001e05b",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "ADCCKSEL",
+                    "label": "ADC Clock (ADCCLK) Source Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Sub-clock oscillator",
+                            "value": "4"
+                        },
+                        {
+                            "label": "PLL1P",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2P",
+                            "value": "6"
+                        },
+                        {
+                            "label": "PLL1Q",
+                            "value": "7"
+                        },
+                        {
+                            "label": "PLL1R",
+                            "value": "8"
+                        },
+                        {
+                            "label": "PLL2Q",
+                            "value": "9"
+                        },
+                        {
+                            "label": "PLL2R",
+                            "value": "a"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_ADCCKCR",
+            "unused": "00000030",
+            "label": "ADC Clock Control Register"
+        },
+        {
+            "address": "4001e05c",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "GPTCKDIV",
+                    "label": "GPT Clock (GPTCLK) Division Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "1/1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "1/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "1/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "1/6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "1/8",
+                            "value": "4"
+                        },
+                        {
+                            "label": "1/3",
+                            "value": "5"
+                        },
+                        {
+                            "label": "1/5",
+                            "value": "6"
+                        },
+                        {
+                            "label": "1/10",
+                            "value": "7"
+                        },
+                        {
+                            "label": "1/16",
+                            "value": "8"
+                        },
+                        {
+                            "label": "1/32",
+                            "value": "9"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_GPTCKDIVCR",
+            "unused": "000000f0",
+            "label": "GPT Clock Division Control Register"
+        },
+        {
+            "address": "4001e05d",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "GPTCKSEL",
+                    "label": "GPT Clock (GPTCLK) Source Select",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "PLL1P",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2P",
+                            "value": "6"
+                        },
+                        {
+                            "label": "PLL1Q",
+                            "value": "7"
+                        },
+                        {
+                            "label": "PLL1R",
+                            "value": "8"
+                        },
+                        {
+                            "label": "PLL2Q",
+                            "value": "9"
+                        },
+                        {
+                            "label": "PLL2R",
+                            "value": "a"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_GPTCKCR",
+            "unused": "00000030",
+            "label": "GPT Clock Control Register"
+        },
+        {
             "address": "4001e070",
             "default": "0",
             "fields": [
