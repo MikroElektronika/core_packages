@@ -9,6 +9,8 @@ void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cy
         "   nop \n"
         "   bne loopCycles%= \n"
         : [cycle_num] "+l"(cycle_num)
+        :
+        : "cc"
     );
 }
 
