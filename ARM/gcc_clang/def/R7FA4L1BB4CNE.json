@@ -452,36 +452,6 @@
             "label": "Pll control register"
         },
         {
-            "address": "4001e031",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "MEMWAIT",
-                    "label": "Memory Wait Cycle Select for Code Flash",
-                    "mask": "3",
-                    "settings": [
-                        {
-                            "label": "No wait",
-                            "value": "0"
-                        },
-                        {
-                            "label": "One wait",
-                            "value": "1"
-                        },
-                        {
-                            "label": "Two waits",
-                            "value": "2"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_MEMWAIT",
-            "unused": "000000fc",
-            "label": "Memory wait cycle control register for code flash"
-        },
-        {
             "address": "4001e032",
             "default": "1",
             "fields": [
