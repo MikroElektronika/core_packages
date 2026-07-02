@@ -54,7 +54,6 @@ typedef struct
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
-    uint32_t GPTCLK_Frequency;  // GPT peripheral clock frequency in Hz
     uint32_t IICCLK_Frequency;  // IIC peripheral clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
@@ -644,32 +643,6 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     else if ( HOCO_FREQUENCY_MHZ_20 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
         hoco_frequency = FREQUENCY_20MHZ;
 
-    // Get GPTCLK clock frequency.
-    switch( VALUE_SYSTEM_GPTCKCR & R_SYSTEM_GPTCKCR_CKSEL_Msk ) {
-        case GPT_IIC_SOURCE_HOCO:
-            SYSTEM_Clocks->GPTCLK_Frequency = hoco_frequency;
-            break;
-        case GPT_IIC_SOURCE_MOCO:
-            SYSTEM_Clocks->GPTCLK_Frequency = FREQUENCY_8MHZ;
-            break;
-        case GPT_IIC_SOURCE_LOCO:
-            SYSTEM_Clocks->GPTCLK_Frequency = FREQUENCY_32768HZ;
-            break;
-        case GPT_IIC_SOURCE_MOSC:
-            SYSTEM_Clocks->GPTCLK_Frequency = FREQUENCY_20MHZ;
-            break;
-        case GPT_IIC_SOURCE_PLL:
-            SYSTEM_Clocks->GPTCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency );
-            break;
-        case GPT_IIC_SOURCE_PLL2:
-            SYSTEM_Clocks->GPTCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency );
-            break;
-
-        default:
-            break;
-    }
-    SYSTEM_Clocks->GPTCLK_Frequency /= GPT_IIC_CLK_PrescTable[ VALUE_SYSTEM_GPTCKDIVCR & R_SYSTEM_GPTCKDIVCR_GPTCKDIV_Msk ];
-
     // Get IICCLK clock frequency.
     switch( VALUE_SYSTEM_IICCKCR & R_SYSTEM_IICCKCR_IICCKSEL_Msk ) {
         case GPT_IIC_SOURCE_HOCO:
@@ -870,14 +843,6 @@ static void system_clock_configuration() {
     }
 
     R_SYSTEM->SCKDIVCR = VALUE_SYSTEM_SCKDIVCR;
-
-    // Set GPTCLK parameters
-    R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 1;
-    while ( !( R_SYSTEM->GPTCKCR_b.GPTCKSRDY ));
-    R_SYSTEM->GPTCKDIVCR = VALUE_SYSTEM_GPTCKDIVCR;
-    R_SYSTEM->GPTCKCR = VALUE_SYSTEM_GPTCKCR;
-    R_SYSTEM->GPTCKCR_b.GPTCKSREQ = 0;
-    while ( R_SYSTEM->GPTCKCR_b.GPTCKSRDY );
 
     // Set IICLK parameters
     R_SYSTEM->IICCKCR_b.IICCKSREQ = 1;
