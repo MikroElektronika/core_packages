@@ -1,7 +1,7 @@
 #include "stdint.h"
 #include "core_header.h"
 
-void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cycle_num )
+void __attribute__((noinline, section(".ram_code_from_flash"))) Delay_Cyc(uint32_t cycle_num)
 {
     asm volatile(
         "loopCycles%=: \n"
