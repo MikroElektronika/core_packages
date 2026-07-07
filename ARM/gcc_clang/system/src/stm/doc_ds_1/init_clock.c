@@ -40,6 +40,7 @@
  */
 
 #include "core_header.h"
+#include "stm32c0xx_hal.h"
 #include "stm32c0xx_hal_rcc.h"
 
 #define FLASH_LATENCY_0  0x00       /*!< FLASH Zero wait state */
@@ -56,8 +57,8 @@ typedef struct RCC_ClocksTypeDef {
     uint32_t TPCLK_Frequency;  // TPCLK  clock frequency  in Hz
 } RCC_ClocksTypeDef_t;
 
-extern uint32_t uwTick;
-extern uint32_t uwTickFreq;
+extern __IO uint32_t uwTick;
+extern HAL_TickFreqTypeDef uwTickFreq;
 
 __attribute__ ((interrupt("IRQ"))) void SysTick_Handler(void) {
     uwTick += (uint32_t)uwTickFreq;
