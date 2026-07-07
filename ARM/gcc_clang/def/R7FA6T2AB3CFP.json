@@ -495,7 +495,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLLSTP",
                     "label": "PLL Stop Control",
                     "mask": "1",
@@ -960,6 +960,86 @@
             "key": "SYSTEM_PLL2CR",
             "unused": "000000fe",
             "label": "Pll2 control register"
+        },
+        {
+            "address": "4001e070",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "IICCKDIV",
+                    "label": "IIC clock (IICCLK) Division Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "/1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "4"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_IICCKDIVCR",
+            "unused": "000000f8",
+            "label": "IIC Clock Division Control Register"
+        },
+        {
+            "address": "4001e078",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IICCKSEL",
+                    "label": "IIC clock (IICCLK) Source Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "PLL",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2",
+                            "value": "6"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_IICCKCR",
+            "unused": "00000038",
+            "label": "IIC Clock Control Register"
         },
         {
             "address": "4001e0a0",

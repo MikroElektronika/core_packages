@@ -54,9 +54,26 @@ typedef struct
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
+    uint32_t IICCLK_Frequency;  // IIC peripheral clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
+static uint8_t GPT_IIC_CLK_PrescTable[] = { 1, 2, 4, 6, 8 };
+
+#define HOCO_FREQUENCY_MHZ_16   (0)
+#define HOCO_FREQUENCY_MHZ_18   (1)
+#define HOCO_FREQUENCY_MHZ_20   (2)
+#define GPT_IIC_SOURCE_HOCO     (0)
+#define GPT_IIC_SOURCE_MOCO     (1)
+#define GPT_IIC_SOURCE_LOCO     (2)
+#define GPT_IIC_SOURCE_MOSC     (3)
+#define GPT_IIC_SOURCE_PLL      (4)
+#define GPT_IIC_SOURCE_PLL2     (5)
+#define FREQUENCY_32768HZ       (32768)
+#define FREQUENCY_8MHZ          (8000000)
+#define FREQUENCY_16MHZ         (16000000)
+#define FREQUENCY_18MHZ         (18000000)
+#define FREQUENCY_20MHZ         (20000000)
 
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
@@ -555,6 +572,32 @@ static void system_clock_configuration();
 // -----------------------------------------------------------------------------------------
 
 /**
+ * @brief Gets PLL clock values.
+ *
+ * Calculates configured clock frequency for PLL and PLL2.
+ *
+ * @return PLL clock value.
+ */
+uint32_t SYSTEM_GetPLLClocksFrequency( uint32_t pll_config_value, \
+                                        uint32_t hoco_frequency ) {
+    uint32_t pll_frequency;
+
+    // Get PLL source clock.
+    if ( pll_config_value & R_SYSTEM_PLLCCR_PLSRCSEL_Msk )
+        pll_frequency = hoco_frequency;
+    else
+        // Note: MOSC value used by EK-RA6T2 Board.
+        pll_frequency = FREQUENCY_20MHZ;
+    // Divide PLL source clock based on PLIDIV value.
+    pll_frequency /= ( pll_config_value & R_SYSTEM_PLLCCR_PLIDIV_Msk ) + 1;
+    // Multiply result clock based on PLLMUL value.
+    pll_frequency *= ( float )(((( pll_config_value & R_SYSTEM_PLLCCR_PLLMUL_Msk )\
+        >> R_SYSTEM_PLLCCR_PLLMUL_Pos ) + 1 ) / 2 );
+
+    return pll_frequency;
+}
+
+/**
  * @brief Gets the system clock values.
  *
  * Calculates configured clock frequency for system clocks which are used by different
@@ -563,7 +606,7 @@ static void system_clock_configuration();
  * @return None
  */
 void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
-    uint32_t prescaler, source_clock;
+    uint32_t prescaler, source_clock, hoco_frequency;
 
     // Get the frequency of main clock.
     SYSTEM_Clocks->ICLK_Frequency = FOSC_KHZ_VALUE * 1000;
@@ -591,6 +634,40 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     // Get FCLK clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0x7000 ) >> 12 ];
     SYSTEM_Clocks->FCLK_Frequency = source_clock / prescaler;
+
+    // Get HOCO frequency.
+    if( HOCO_FREQUENCY_MHZ_16 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_16MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_18 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_18MHZ;
+    else if ( HOCO_FREQUENCY_MHZ_20 == ( VALUE_SYSTEM_HOCOCR2 & 0x3 ))
+        hoco_frequency = FREQUENCY_20MHZ;
+
+    // Get IICCLK clock frequency.
+    switch( VALUE_SYSTEM_IICCKCR & R_SYSTEM_IICCKCR_IICCKSEL_Msk ) {
+        case GPT_IIC_SOURCE_HOCO:
+            SYSTEM_Clocks->IICCLK_Frequency = hoco_frequency;
+            break;
+        case GPT_IIC_SOURCE_MOCO:
+            SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_8MHZ;
+            break;
+        case GPT_IIC_SOURCE_LOCO:
+            SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_32768HZ;
+            break;
+        case GPT_IIC_SOURCE_MOSC:
+            SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_20MHZ;
+            break;
+        case GPT_IIC_SOURCE_PLL:
+            SYSTEM_Clocks->IICCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency );
+            break;
+        case GPT_IIC_SOURCE_PLL2:
+            SYSTEM_Clocks->IICCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency );
+            break;
+
+        default:
+            break;
+    }
+    SYSTEM_Clocks->IICCLK_Frequency /= GPT_IIC_CLK_PrescTable[ VALUE_SYSTEM_IICCKDIVCR & R_SYSTEM_IICCKDIVCR_IICCKDIV_Msk ];
 }
 
 /**
@@ -736,6 +813,19 @@ static void system_clock_configuration() {
         R_SYSTEM->PLLCR_b.PLLSTP = 1; // PLL is stopped
     }
 
+    if ( !( VALUE_SYSTEM_PLL2CR & R_SYSTEM_PLL2CR_PLL2STP_Msk ) ) {
+        R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL2 is stopped
+        R_SYSTEM->PLL2CCR = (uint16_t) VALUE_SYSTEM_PLL2CCR;
+        R_SYSTEM->PLL2CCR2 = (uint16_t) VALUE_SYSTEM_PLL2CCR2;
+        R_SYSTEM->PLL2CR_b.PLL2STP = 0; // PLL2 is operating
+
+        while ( !( R_SYSTEM->OSCSF_b.PLL2SF ) ) {
+            // Wait for PLL2 to stabilize
+        }
+    } else {
+        R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL2 is stopped
+    }
+
     R_SYSTEM->LOCOCR = VALUE_SYSTEM_LOCOCR;
 
     R_SYSTEM->MOCOCR = VALUE_SYSTEM_MOCOCR;
@@ -746,15 +836,21 @@ static void system_clock_configuration() {
 
     Delay_1ms();
 
-    if ( 80000 < FOSC_KHZ_VALUE && 120000 >= FOSC_KHZ_VALUE ) {
-        R_FCACHE->FLWT = 2; // 2 waits
-    } else if ( 40000 < FOSC_KHZ_VALUE ) {
+    if ( 120000 < FOSC_KHZ_VALUE ) {
         R_FCACHE->FLWT = 1; // 1 wait
     } else {
         R_FCACHE->FLWT = 0; // 0 waits
     }
 
     R_SYSTEM->SCKDIVCR = VALUE_SYSTEM_SCKDIVCR;
+
+    // Set IICLK parameters
+    R_SYSTEM->IICCKCR_b.IICCKSREQ = 1;
+    while ( !( R_SYSTEM->IICCKCR_b.IICCKSRDY ));
+    R_SYSTEM->IICCKDIVCR = VALUE_SYSTEM_IICCKDIVCR;
+    R_SYSTEM->IICCKCR = VALUE_SYSTEM_IICCKCR;
+    R_SYSTEM->IICCKCR_b.IICCKSREQ = 0;
+    while ( !( R_SYSTEM->IICCKCR_b.IICCKSRDY ));
 
     if ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOEN_Msk ) {
         R_SYSTEM->CKOCR = VALUE_SYSTEM_CKOCR & ( R_SYSTEM_CKOCR_CKODIV_Msk | R_SYSTEM_CKOCR_CKOSEL_Msk );
