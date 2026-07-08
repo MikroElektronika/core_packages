@@ -381,7 +381,6 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             always_index = [
                 'clocks',
                 'schemas',
-                'images',
                 'preinit',
                 'database',
                 'database_dev'
