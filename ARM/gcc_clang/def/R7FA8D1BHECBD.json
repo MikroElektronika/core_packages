@@ -2231,7 +2231,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "SCICKSEL",
                     "label": "SCI clock (SCICLK) Source Select",
                     "mask": "f",
