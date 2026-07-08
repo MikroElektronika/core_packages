@@ -54,6 +54,7 @@ typedef struct
     uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
+    uint32_t PCLKE_Frequency;   // PCLKE clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
     uint32_t SPICLK_Frequency;  // SPI clock frequency in Hz
     uint32_t SCICLK_Frequency;  // SCI clock frequency in Hz
@@ -801,6 +802,11 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000000 ) >> 24 ];
     SYSTEM_Clocks->ICLK_Frequency = source_clock / prescaler;
 
+
+    // Get PCLKE clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF00000 ) >> 20 ];
+    SYSTEM_Clocks->PCLKE_Frequency = source_clock / prescaler;
+
     // Get PCLKA clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000 ) >> 12 ];
     SYSTEM_Clocks->PCLKA_Frequency = source_clock / prescaler;
@@ -1069,7 +1075,7 @@ static void system_clock_configuration() {
     R_SYSTEM->I3CCKDIVCR = VALUE_SYSTEM_I3CCKDIVCR;
     R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
     R_SYSTEM->I3CCKCR_b.I3CCKREQ = 0;
-    while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
+    while ( R_SYSTEM->I3CCKCR_b.I3CCKSRDY );
 
     /* If PLL2 is enabled and PLL1 is not chosen as source clock
      * or PLL2 is disabled and PLL1 is chosen as clock source.
