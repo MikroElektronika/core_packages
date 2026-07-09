@@ -335,7 +335,7 @@ def getProgDbgAsJson(docLink, saveToFile=False):
     # adjust tabulation between data set members
     if 'JLink' in docLink:
         html = 'Programmers, Debuggers, ' + html
-        html_lines = html.split('\r\n')
+        html_lines = html.replace('\r', '').split('\n')
         html = ''
         for line in html_lines:
             if 'Programmers, ' in line:

@@ -916,20 +916,6 @@ async def main(token, repo, tag_name, releases_to_update):
     schemaGenerator.generate()
     gh_uploader.append_to_payload(payload, 'schemas.json', Path(output_file).resolve())
 
-    # Generate images package
-    archive_path = compress_directory_7z(os.path.join('./resources', 'images'), 'images.7z')
-    append_package(
-        packages, archive_path,
-        "NECTO Resources - Images",
-        get_version_based_on_hash(
-            'resources_images', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        ),
-        'resources/images',
-        'resources'
-    )
-    gh_uploader.append_to_payload(payload, 'images.7z', Path(str(archive_path)).resolve())
-
     # Generate preinit package
     archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
     append_package(

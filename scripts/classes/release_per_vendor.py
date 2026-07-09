@@ -14,7 +14,6 @@ SPECIAL_RELEASE_FILENAMES = {
     "database_experimental.7z",
     "docs.7z",
     "erp_db.db",
-    "images.7z",
     "metadata.json",
     "mikroe_utils_common.7z",
     "necto_db.db",
