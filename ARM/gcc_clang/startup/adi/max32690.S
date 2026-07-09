@@ -267,6 +267,11 @@ Reset_Handler:
     blx     r0
     cbnz    r0, .SKIPRAMINIT */
 
+    /* Note: Added for MikroE implementation. */
+    ldr r1, =__load_data
+    ldr r2, =_data
+    ldr r3, =_edata
+
 /*     Loop to copy data from read only memory to RAM. The ranges
  *      of copy from/to are specified by following symbols evaluated in
  *      linker script.

@@ -44,7 +44,7 @@ SECTIONS {
         KEEP(*(.isr_vector))
         *(.text*)    /* program code */
         *(.rodata*)  /* read-only data: "const" */
-	*(.flashprog*)      /* Flash program */
+        *(.flashprog*)      /* Flash program */
 
         KEEP(*(.init))
         KEEP(*(.fini))
@@ -52,7 +52,7 @@ SECTIONS {
         /* C++ Exception handling */
         KEEP(*(.eh_frame*))
         _etext = .;
-    } > SRAM
+    } > FLASH
 
     /* it's used for C++ exception handling      */
     /* we need to keep this to avoid overlapping */
@@ -61,7 +61,7 @@ SECTIONS {
         __exidx_start = .;
         *(.ARM.exidx*)
         __exidx_end = .;
-    } > SRAM
+    } > FLASH
 
     .data :
     {
@@ -91,7 +91,8 @@ SECTIONS {
         PROVIDE_HIDDEN (__fini_array_end = .);
 
         _edata = ALIGN(., 4);
-    } > SRAM AT>SRAM
+    } > SRAM AT > FLASH
+
     __load_data = LOADADDR(.data);
 
     .bss :
@@ -103,14 +104,6 @@ SECTIONS {
         _ebss = ALIGN(., 4);
     } > SRAM
 
-    /* Set stack top to end of RAM, and stack limit move down by
-     * size of stack_dummy section */
-    __StackTop = ORIGIN(SRAM) + LENGTH(SRAM);
-    __StackLimit = __StackTop - SIZEOF(.stack_dummy);
-
-    /* .stack_dummy section doesn't contains any symbols. It is only
-     * used for linker to calculate size of stack sections, and assign
-     * values to stack symbols later */
     .stack_dummy (COPY):
     {
         *(.stack*)
@@ -122,6 +115,9 @@ SECTIONS {
         *(.heap*)
         __HeapLimit = ABSOLUTE(__StackLimit);
     } > SRAM
+
+    __StackTop = ORIGIN(SRAM) + LENGTH(SRAM);
+    __StackLimit = __StackTop - SIZEOF(.stack_dummy);
 
     PROVIDE(__stack = __StackTop);
 
