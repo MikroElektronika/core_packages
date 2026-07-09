@@ -1063,7 +1063,7 @@ static void system_clock_configuration() {
     R_SYSTEM->I3CCKDIVCR = VALUE_SYSTEM_I3CCKDIVCR;
     R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
     R_SYSTEM->I3CCKCR_b.I3CCKREQ = 0;
-    while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
+    while ( R_SYSTEM->I3CCKCR_b.I3CCKSRDY );
 
     /* If PLL2 is enabled and PLL1 is not chosen as source clock
      * or PLL2 is disabled and PLL1 is chosen as clock source.
