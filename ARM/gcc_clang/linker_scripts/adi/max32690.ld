@@ -104,6 +104,14 @@ SECTIONS {
         _ebss = ALIGN(., 4);
     } > SRAM
 
+    /* Set stack top to end of RAM, and stack limit move down by
+     * size of stack_dummy section */
+    __StackTop = ORIGIN(SRAM) + LENGTH(SRAM);
+    __StackLimit = __StackTop - SIZEOF(.stack_dummy);
+
+    /* .stack_dummy section doesn't contain any symbols. It is only
+     * used for linker to calculate size of stack sections, and assign
+     * values to stack symbols later */
     .stack_dummy (COPY):
     {
         *(.stack*)
@@ -115,9 +123,6 @@ SECTIONS {
         *(.heap*)
         __HeapLimit = ABSOLUTE(__StackLimit);
     } > SRAM
-
-    __StackTop = ORIGIN(SRAM) + LENGTH(SRAM);
-    __StackLimit = __StackTop - SIZEOF(.stack_dummy);
 
     PROVIDE(__stack = __StackTop);
 
