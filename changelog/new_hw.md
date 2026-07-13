@@ -1,0 +1,44 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `2026-07-13`
+
+## Changes
+
+- [`2026-07-13`](#2026-07-13)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ AT32F435C MCU Support package for GCC & Clang
+  + AT32F435CCT7
+  + AT32F435CCU7
+  + AT32F435CDT7
+  + AT32F435CDU7
+  + AT32F435CGT7
+  + AT32F435CGU7
+  + AT32F435CMT7
+  + AT32F435CMU7
++ AT32F423C MCU Support package for GCC & Clang
+  + AT32F423C8T7
+  + AT32F423C8U7
+  + AT32F423CBT7
+  + AT32F423CBU7
+  + AT32F423CCT7
+  + AT32F423CCU
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
