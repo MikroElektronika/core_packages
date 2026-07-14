@@ -8,11 +8,11 @@
 
 ---
 
-# `2026-07-13`
+# `2026-07-14`
 
 ## Changes
 
-- [`2026-07-13`](#2026-07-13)
+- [`2026-07-14`](#2026-07-14)
   - [Changes](#changes)
     - [NEW HARDWARE](#new-hardware)
 
@@ -20,22 +20,24 @@
 
 Support added for following hardware:
 
-+ AT32F435C MCU Support package for GCC & Clang
-  + AT32F435CCT7
-  + AT32F435CCU7
-  + AT32F435CDT7
-  + AT32F435CDU7
-  + AT32F435CGT7
-  + AT32F435CGU7
-  + AT32F435CMT7
-  + AT32F435CMU7
-+ AT32F423C MCU Support package for GCC & Clang
-  + AT32F423C8T7
-  + AT32F423C8U7
-  + AT32F423CBT7
-  + AT32F423CBU7
-  + AT32F423CCT7
-  + AT32F423CCU
++ AT32M412 MCU Support package for GCC & Clang
+  + AT32M412C8T7
+  + AT32M412CBT7
+  + AT32M412E8P7
+  + AT32M412EBP7
+  + AT32M412K8T7
+  + AT32M412K8U7-4
+  + AT32M412KBT7
+  + AT32M412KBU7-4
++ AT32F423R MCU Support package for GCC & Clang
+  + AT32F423R8T7
+  + AT32F423R8T7-7
+  + AT32F423RBT7
+  + AT32F423RBT7-7
+  + AT32F423RCT7
+  + AT32F423RCT7-7
++ MAX32690 MCU Support package for GCC & Clang
+  + MAX32690
 
 ---
 
