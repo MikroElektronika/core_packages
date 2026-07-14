@@ -704,7 +704,6 @@ static void system_clock_configuration() {
     if ( !( VALUE_SYSTEM_PLL2CR & R_SYSTEM_PLL2CR_PLL2STP_Msk ) ) {
         R_SYSTEM->PLL2CR_b.PLL2STP = 1; // PLL2 is stopped
         R_SYSTEM->PLL2CCR = (uint16_t) VALUE_SYSTEM_PLL2CCR;
-        R_SYSTEM->PLL2CCR2 = (uint16_t) VALUE_SYSTEM_PLL2CCR2;
         R_SYSTEM->PLL2CR_b.PLL2STP = 0; // PLL2 is operating
 
         while ( !( R_SYSTEM->OSCSF_b.PLL2SF ) ) {
