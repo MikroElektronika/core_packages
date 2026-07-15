@@ -108,12 +108,9 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
     # All package types to check for
     typeCheck = [
         'mcu',
-        'preinit',
         'database',
         'mcu_clocks',
-        'mcu_schemas',
-        'unit_test_lib',
-        'mikroe_utils_common'
+        'mcu_schemas'
     ]
 
     # Search the base with provided query
@@ -381,7 +378,6 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             always_index = [
                 'clocks',
                 'schemas',
-                'preinit',
                 'database',
                 'database_dev'
             ]
