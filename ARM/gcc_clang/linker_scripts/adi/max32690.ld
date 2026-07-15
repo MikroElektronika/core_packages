@@ -31,6 +31,9 @@
  *
  ******************************************************************************/
 
+/* Entry Point */
+ENTRY(Reset_Handler)
+
 MEMORY {
     ROM (rx)   : ORIGIN = 0x00000000, LENGTH = 0x00020000 /* 128 KB ROM */
     FLASH (rx) : ORIGIN = 0x10000000, LENGTH = 0x00300000 /* 3 MB Flash */
