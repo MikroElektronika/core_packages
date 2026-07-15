@@ -1,0 +1,18 @@
+{
+    "def_file": "MAX32690.json",
+    "family_uid": "MAX32690",
+    "flash": "3145728",
+    "icon": "images/mcu/ad.png",
+    "max_speed": "160.000",
+    "name": "MAX32690",
+    "ram": "1048576",
+    "sdk_config": "{\"MCU_NAME\":\"MAX32690\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "MAX32690",
+    "vendor": "Analog Devices",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_max32690\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_max32690\"}"
+}

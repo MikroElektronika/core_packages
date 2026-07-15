@@ -1,0 +1,180 @@
+{
+    "config_registers": [
+        {
+            "address": "40000008",
+            "key": "GCR_CLKCTRL",
+            "default": "00142040",
+            "unused": "FFD0F03F",
+            "label": "Clock Control Register",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SYSCLK_DIV",
+                    "label": "System Oscillator Prescaler",
+                    "mask": "1C0",
+                    "settings": [
+                        {
+                            "label": "SYSCLK / 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSCLK / 2",
+                            "value": "40"
+                        },
+                        {
+                            "label": "SYSCLK / 4",
+                            "value": "80"
+                        },
+                        {
+                            "label": "SYSCLK / 8",
+                            "value": "C0"
+                        },
+                        {
+                            "label": "SYSCLK / 16",
+                            "value": "100"
+                        },
+                        {
+                            "label": "SYSCLK / 32",
+                            "value": "140"
+                        },
+                        {
+                            "label": "SYSCLK / 64",
+                            "value": "180"
+                        },
+                        {
+                            "label": "SYSCLK / 128",
+                            "value": "1C0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "800",
+                    "key": "SYSCLK_SEL",
+                    "label": "System Oscillator Source Select",
+                    "mask": "E00",
+                    "settings": [
+                        {
+                            "label": "60MHz ISO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "32MHz ERFO",
+                            "value": "400"
+                        },
+                        {
+                            "label": "8KHz INRO",
+                            "value": "600"
+                        },
+                        {
+                            "label": "120MHz IPO",
+                            "value": "800"
+                        },
+                        {
+                            "label": "7.3728MHz IBRO",
+                            "value": "A00"
+                        },
+                        {
+                            "label": "32.768KHz ERTCO",
+                            "value": "C00"
+                        },
+                        {
+                            "label": "P0.23 CLKEXT",
+                            "value": "E00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "ERFO_EN",
+                    "label": "32MHz ERFO (External RF Oscillator) Enable",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "ERTCO_EN",
+                    "label": "32.768kHz ERTCO (External RTC Oscillator) Enable",
+                    "mask": "20000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "20000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "ISO_EN",
+                    "label": "60MHz ISO (Internal Secondary Oscillator) Enable",
+                    "mask": "40000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "40000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80000",
+                    "key": "IPO_EN",
+                    "label": "120MHz IPO (Internal Primary Oscillator) Enable",
+                    "mask": "80000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "80000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "IBRO_VS",
+                    "label": "IBRO Voltage Select",
+                    "mask": "200000",
+                    "settings": [
+                        {
+                            "label": "VCORE selected as the IBRO supply",
+                            "value": "0"
+                        },
+                        {
+                            "label": "IBRO supplied using a 1V regulated supply",
+                            "value": "200000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "mcu": "MAX32690",
+    "clock": "120"
+}

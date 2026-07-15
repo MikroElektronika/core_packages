@@ -93,7 +93,7 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
                 if isGCC and 'list(APPEND local_list_include' in line:
 
                     systemPath = line.split()[-1][:-1].replace("${vendor}", vendor)
-                    if 'doc_ds' in systemPath or ('sam' in systemPath and re.search('^(at)?sam.+$', file_name)) or 'renesas' in systemPath or 'nuvoton' in systemPath or 'pic32' in systemPath or ('infineon' in systemPath and 'xmc' not in file_name) or ('ti' in systemPath and 'msp' in file_name) or ('gigadevice' in systemPath and 'gd32vw' in file_name):
+                    if 'doc_ds' in systemPath or ('sam' in systemPath and re.search('^(at)?sam.+$', file_name)) or 'renesas' in systemPath or 'nuvoton' in systemPath or 'pic32' in systemPath or ('infineon' in systemPath and 'xmc' not in file_name) or ('ti' in systemPath and 'msp' in file_name) or ('gigadevice' in systemPath and 'gd32vw' in file_name)  or 'adi' in systemPath:
                         systemPath = os.path.dirname(systemPath)
                     systemPath = os.path.join(source_dir, systemPath)
                     paths[file_name]['files'].add(systemPath)
@@ -966,21 +966,6 @@ async def main(token, repo, tag_name, live=False):
         schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
         schemaGenerator.generate()
         gh_uploader.append_to_payload(payload, 'schemas.json', Path(output_file).resolve())
-
-    # Generate images package
-    if not live:
-        archive_path = compress_directory_7z(os.path.join('./resources', 'images'), 'images.7z')
-        append_package(
-            packages, archive_path,
-            "NECTO Resources - Images",
-            get_version_based_on_hash(
-                'resources_images', (latest_release['tag_name']).replace("v", ""),
-                hash_directory_contents(archive_path), current_metadata
-            ),
-            'resources/images',
-            'resources'
-        )
-        gh_uploader.append_to_payload(payload, 'images.7z', Path(str(archive_path)).resolve())
 
     # Generate preinit package
     if not live:

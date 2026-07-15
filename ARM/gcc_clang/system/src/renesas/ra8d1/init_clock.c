@@ -54,10 +54,11 @@ typedef struct
     uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
     uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
     uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
+    uint32_t PCLKE_Frequency;   // PCLKE clock frequency in Hz
     uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
     uint32_t SPICLK_Frequency;  // SPI clock frequency in Hz
     uint32_t SCICLK_Frequency;  // SCI clock frequency in Hz
-    uint32_t I3CCK_Frequency;  // I3C clock frequency in Hz
+    uint32_t I3CCLK_Frequency;  // I3C clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
@@ -801,6 +802,10 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000000 ) >> 24 ];
     SYSTEM_Clocks->ICLK_Frequency = source_clock / prescaler;
 
+    // Get PCLKE clock frequency.
+    prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF00000 ) >> 20 ];
+    SYSTEM_Clocks->PCLKE_Frequency = source_clock / prescaler;
+
     // Get PCLKA clock frequency.
     prescaler = ClockPrescTable[ ( VALUE_SYSTEM_SCKDIVCR & 0xF000 ) >> 12 ];
     SYSTEM_Clocks->PCLKA_Frequency = source_clock / prescaler;
@@ -842,10 +847,10 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
     SYSTEM_Clocks->SCICLK_Frequency /= SCI_SPI_CLK_PrescTable[ VALUE_SYSTEM_SCICKDIVCR & R_SYSTEM_SCICKDIVCR_CKDIV_Msk ];
 
     // Get I3C clock frequency.
-    SYSTEM_Clocks->I3CCK_Frequency = SYSTEM_GetI3CClockFrequency( hoco_frequency );
+    SYSTEM_Clocks->I3CCLK_Frequency = SYSTEM_GetI3CClockFrequency( hoco_frequency );
 
     // Get I3C clock with requested divider.
-    SYSTEM_Clocks->I3CCK_Frequency /= I3CDividersTable[ VALUE_SYSTEM_I3CCKDIVCR & R_SYSTEM_I3CCKDIVCR_I3CCKDIV_Msk ];
+    SYSTEM_Clocks->I3CCLK_Frequency /= I3CDividersTable[ VALUE_SYSTEM_I3CCKDIVCR & R_SYSTEM_I3CCKDIVCR_I3CCKDIV_Msk ];
 }
 
 /**
@@ -1063,6 +1068,14 @@ static void system_clock_configuration() {
     R_SYSTEM->SCICKCR_b.CKSREQ = 0;
     while ( R_SYSTEM->SCICKCR_b.CKSRDY );
 
+    // Set I3CCLK parameters
+    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 1;
+    while ( !( R_SYSTEM->I3CCKCR_b.I3CCKSRDY ));
+    R_SYSTEM->I3CCKDIVCR = VALUE_SYSTEM_I3CCKDIVCR;
+    R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
+    R_SYSTEM->I3CCKCR_b.I3CCKREQ = 0;
+    while ( R_SYSTEM->I3CCKCR_b.I3CCKSRDY );
+
     /* If PLL2 is enabled and PLL1 is not chosen as source clock
      * or PLL2 is disabled and PLL1 is chosen as clock source.
      */
@@ -1076,8 +1089,6 @@ static void system_clock_configuration() {
         * since OSPI_B may initialize within and begin using I/O. */
         R_SYSTEM->LVOCR = 0;
     }
-
-    R_SYSTEM->I3CCKCR = VALUE_SYSTEM_I3CCKCR;
 
     // Lock LVOCR register
     R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
