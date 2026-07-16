@@ -374,6 +374,7 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
 
             update_package = True
             name_without_extension = os.path.splitext(os.path.basename(asset['name']))[0]
+            package_name = name_without_extension
 
             always_index = [
                 'clocks',
