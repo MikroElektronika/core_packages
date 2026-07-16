@@ -326,10 +326,6 @@ def fetch_json_data(download_link, token):
         print(f"Error fetching JSON data: {e}")
         return None, str(e)  # Return None for data and error message
 
-def functionRegex(value, pattern):
-    c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
-    return c_pattern.search(value) is not None
-
 def copy_schemas(mcus, source_dir, output_dir, base_path):
 
     for mcu in mcus:
@@ -450,16 +446,6 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
-def insertIntoTable(db, tableName, values, columns):
-    conn = sqlite3.connect(db)
-    cur = conn.cursor()
-    numOfItems = ''
-    for itemCount in range(1, len(values) + 1):
-        numOfItems += '?,'
-    cur.execute(f'INSERT OR IGNORE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
-    conn.commit()
-    conn.close()
-
 def updateTable(db, query, newFieldValue):
     try:
         # Connect to existing SQLite database
@@ -474,21 +460,6 @@ def updateTable(db, query, newFieldValue):
     finally:
         # Close connection
         conn.close()
-
-def deleteFromTable(db, sql_query):
-    try:
-        sqliteConnection = sqlite3.connect(db)
-        cursor = sqliteConnection.cursor()
-
-        # Deleting single record now
-        cursor.execute(sql_query)
-        sqliteConnection.commit()
-        cursor.close()
-    except sqlite3.Error as error:
-        print("Failed to delete record from sqlite table", error)
-    finally:
-        if sqliteConnection:
-            sqliteConnection.close()
 
 def update_database(package_name, mcus, db_path):
     installer_package_column = 15
