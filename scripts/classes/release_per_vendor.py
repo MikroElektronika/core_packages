@@ -344,13 +344,13 @@ class GitHubReleaseUploader:
 
         # Find latest tag for each release
         while True:
-            release_name = f"{release_name} {version}"
-            existing = self._find_release_by_name(release_name)
-            if existing:
+            last_release_name = f"{release_name} {version}"
+            existing = self._find_release_by_name(last_release_name)
+            if not existing:
                 break
             version = 'v' + increase_version(version.replace('v', ''), part='patch')
 
-        return release_name
+        return last_release_name
 
     def _infer_compiler_from_filename(self, filename: str) -> Optional[str]:
         s = filename.lower()
