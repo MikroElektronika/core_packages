@@ -326,10 +326,6 @@ def fetch_json_data(download_link, token):
         print(f"Error fetching JSON data: {e}")
         return None, str(e)  # Return None for data and error message
 
-def functionRegex(value, pattern):
-    c_pattern = re.compile(r"\b" + pattern.lower() + r"\b")
-    return c_pattern.search(value) is not None
-
 def copy_schemas(mcus, source_dir, output_dir, base_path):
 
     for mcu in mcus:
@@ -450,16 +446,6 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
-def insertIntoTable(db, tableName, values, columns):
-    conn = sqlite3.connect(db)
-    cur = conn.cursor()
-    numOfItems = ''
-    for itemCount in range(1, len(values) + 1):
-        numOfItems += '?,'
-    cur.execute(f'INSERT OR IGNORE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
-    conn.commit()
-    conn.close()
-
 def updateTable(db, query, newFieldValue):
     try:
         # Connect to existing SQLite database
@@ -474,21 +460,6 @@ def updateTable(db, query, newFieldValue):
     finally:
         # Close connection
         conn.close()
-
-def deleteFromTable(db, sql_query):
-    try:
-        sqliteConnection = sqlite3.connect(db)
-        cursor = sqliteConnection.cursor()
-
-        # Deleting single record now
-        cursor.execute(sql_query)
-        sqliteConnection.commit()
-        cursor.close()
-    except sqlite3.Error as error:
-        print("Failed to delete record from sqlite table", error)
-    finally:
-        if sqliteConnection:
-            sqliteConnection.close()
 
 def update_database(package_name, mcus, db_path):
     installer_package_column = 15
@@ -607,16 +578,6 @@ async def package_asset(source_dir, output_dir, arch, entry_name, tag_name, pack
         # Mark package for appropriate device and toolchain
         for each_db in db_paths:
             update_database(name_without_extension, mcuNames, each_db)
-
-        # Then create a specific database used as asset later
-        os.makedirs('./output/databases/', exist_ok=True)
-        shutil.copy('build_test.db', f'./output/databases/{name_without_extension}.db')
-        for eachMcu in mcuNames[cmake_file]['mcu_names']:
-            updateTable(
-                f'./output/databases/{name_without_extension}.db',
-                f'''UPDATE Devices SET sdk_support = ? WHERE uid = "{eachMcu.upper()}"''',
-                1  ## Set to 1 to use for automated build tests
-            )
 
         mcu_check = None
         mcu_full_list = []
@@ -915,43 +876,6 @@ async def main(token, repo, tag_name, releases_to_update):
     schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
     schemaGenerator.generate()
     gh_uploader.append_to_payload(payload, 'schemas.json', Path(output_file).resolve())
-
-    # Generate preinit package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'preinit'), 'preinit.7z')
-    append_package(
-        packages, archive_path,
-        "Preinit library",
-        get_version_based_on_hash(
-            'preinit', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        )
-    )
-    gh_uploader.append_to_payload(payload, 'preinit.7z', Path(str(archive_path)).resolve())
-
-    # Generate unit_test_lib package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'unit_test_lib'), 'unit_test_lib.7z')
-    append_package(
-        packages, archive_path,
-        "Unit test library",
-        get_version_based_on_hash(
-            'unit_test_lib', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        )
-    )
-    gh_uploader.append_to_payload(payload, 'unit_test_lib.7z', Path(str(archive_path)).resolve())
-
-    # Generate mikroe_utils_common package
-    archive_path = compress_directory_7z(os.path.join('./utils', 'cmake'), 'mikroe_utils_common.7z')
-    append_package(
-        packages, archive_path,
-        "MikroE common utilities",
-        get_version_based_on_hash(
-            'mikroe_utils_common', tag_name.replace("v", ""),
-            hash_directory_contents(archive_path), current_metadata
-        ),
-        'cmake'
-    )
-    gh_uploader.append_to_payload(payload, 'mikroe_utils_common.7z', Path(str(archive_path)).resolve())
 
     # Generate database packages
     for each_db in db_paths:

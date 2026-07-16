@@ -15,12 +15,9 @@ SPECIAL_RELEASE_FILENAMES = {
     "docs.7z",
     "erp_db.db",
     "metadata.json",
-    "mikroe_utils_common.7z",
     "necto_db.db",
     "necto_db_dev.db",
-    "preinit.7z",
     "schemas.json",
-    "unit_test_lib.7z",
 }
 
 def increase_version(version, part="patch"):
@@ -179,10 +176,12 @@ class GitHubReleaseUploader:
         specs = self._parse_files(files_obj)
 
         releases_info = {}
+        processed_release_names = {}
 
         log_array = []
         for spec in specs:
-            release_name = self._select_release_name(version=version, spec=spec)
+            version = str(payload.get("version") or "").strip()
+            release_name, version = self._select_release_name(version=version, spec=spec, processed_release_names=processed_release_names)
             if release_name.startswith(spec.vendor):
                 tag = f'{spec.vendor}_{spec.compiler}_{version}'
             elif release_name.startswith('Release'):
@@ -209,7 +208,8 @@ class GitHubReleaseUploader:
         # Create releases if they are not already present
         for original_release_name in list(releases_info.keys()):
             release_name = original_release_name
-            base_release_name = release_name.replace(f' {version}', '')
+            version = releases_info[release_name]['release_version']
+            base_release_name = release_name.replace(f' v{version}', '')
 
             if base_release_name in releases_to_update:
                 print(f'Creating new Release for {base_release_name}...')
@@ -332,9 +332,9 @@ class GitHubReleaseUploader:
             out.append(FileSpec(filename=filename, vendor=vendor, path=path, compiler=compiler_str))
         return out
 
-    def _select_release_name(self, *, version: str, spec: FileSpec) -> str:
+    def _select_release_name(self, *, version: str, spec: FileSpec, processed_release_names: dict) -> str:
         if spec.filename in SPECIAL_RELEASE_FILENAMES:
-            return f"Release {version}"
+            return f"Release {version}", version
 
         compiler = (spec.compiler or "").strip()
         if not compiler:
@@ -345,7 +345,26 @@ class GitHubReleaseUploader:
         else:
             release_name = f'MCU Support packages for {compiler}'
 
-        return f"{release_name} {version}"
+        # If release is already processed - find latest release version
+        if release_name in processed_release_names:
+            version = processed_release_names[release_name]
+            last_release_name = f"{release_name} {version}"
+
+        # Find latest Release name for each release
+        previous_version = version
+        while release_name not in processed_release_names:
+            last_release_name = f"{release_name} {version}"
+            existing = self._find_release_by_name(last_release_name)
+            if not existing:
+                version = previous_version
+                processed_release_names[release_name] = version
+                last_release_name = f"{release_name} {version}"
+                print(f'\033[33mLatest release for {release_name}: {version}\033[0m')
+                break
+            previous_version = version
+            version = 'v' + increase_version(version.replace('v', ''), part='patch')
+
+        return last_release_name, version
 
     def _infer_compiler_from_filename(self, filename: str) -> Optional[str]:
         s = filename.lower()
