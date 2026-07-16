@@ -669,16 +669,6 @@ async def package_asset(source_dir, output_dir, arch, entry_name, packages, curr
         for each_db in db_paths:
             update_database(name_without_extension, mcuNames, each_db)
 
-        # Then create a specific database used as asset later
-        os.makedirs('./output/databases/', exist_ok=True)
-        shutil.copy('build_test.db', f'./output/databases/{name_without_extension}.db')
-        for eachMcu in mcuNames[cmake_file]['mcu_names']:
-            updateTable(
-                f'./output/databases/{name_without_extension}.db',
-                f'''UPDATE Devices SET sdk_support = ? WHERE uid = "{eachMcu.upper()}"''',
-                1  ## Set to 1 to use for automated build tests
-            )
-
         mcu_check = None
         mcu_full_list = []
         for each_pack in mcuNames:

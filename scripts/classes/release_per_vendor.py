@@ -342,7 +342,15 @@ class GitHubReleaseUploader:
         else:
             release_name = f'MCU Support packages for {compiler}'
 
-        return f"{release_name} {version}"
+        # Find latest tag for each release
+        while True:
+            release_name = f"{release_name} {version}"
+            existing = self._find_release_by_name(release_name)
+            if existing:
+                break
+            version = 'v' + increase_version(version.replace('v', ''), part='patch')
+
+        return release_name
 
     def _infer_compiler_from_filename(self, filename: str) -> Optional[str]:
         s = filename.lower()
