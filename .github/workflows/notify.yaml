@@ -3,10 +3,6 @@ name: Notify Core Release Mattermost
 on:
   workflow_dispatch:
 
-  schedule:
-    - cron: "0 11 * * 1-5"  # 11:00 AM, Monday through Friday
-      timezone: "Europe/Belgrade"
-
 jobs:
   notify:
     runs-on: ubuntu-latest
