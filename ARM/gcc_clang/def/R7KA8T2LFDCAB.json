@@ -909,7 +909,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "7",
+                    "init": "1",
                     "key": "PLODIVP",
                     "label": "PLL1 Output Frequency Division Ratio Select for output clock P",
                     "mask": "f",
@@ -942,7 +942,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10",
+                    "init": "70",
                     "key": "PLODIVQ",
                     "label": "PLL1 Output Frequency Division Ratio Select for output clock Q",
                     "mask": "f0",
