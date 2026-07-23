@@ -48,27 +48,28 @@ extern void * __Vectors[];
 
 typedef struct
 {
-    uint32_t ICLK_Frequency;    // System clock frequency in Hz
-    uint32_t PCLKA_Frequency;   // PCLKA clock frequency in Hz
-    uint32_t PCLKB_Frequency;   // PCLKB clock frequency in Hz
-    uint32_t PCLKC_Frequency;   // PCLKC clock frequency in Hz
-    uint32_t PCLKD_Frequency;   // PCLKD clock frequency in Hz
-    uint32_t FCLK_Frequency;    // Flash interface clock frequency in Hz
-    uint32_t IICCLK_Frequency;  // IIC peripheral clock frequency in Hz
+    uint32_t ICLK_Frequency;        // System clock frequency in Hz
+    uint32_t PCLKA_Frequency;       // PCLKA clock frequency in Hz
+    uint32_t PCLKB_Frequency;       // PCLKB clock frequency in Hz
+    uint32_t PCLKC_Frequency;       // PCLKC clock frequency in Hz
+    uint32_t PCLKD_Frequency;       // PCLKD clock frequency in Hz
+    uint32_t FCLK_Frequency;        // Flash interface clock frequency in Hz
+    uint32_t IICCLK_Frequency;      // IIC peripheral clock frequency in Hz
+    uint32_t SCISPICLK_Frequency;   // SCISPI peripheral clock frequency in Hz
 } SYSTEM_ClocksTypeDef;
 
 static uint8_t ClockPrescTable[ 7 ] = { 1, 2, 4, 8, 16, 32, 64 };
-static uint8_t GPT_IIC_CLK_PrescTable[] = { 1, 2, 4, 6, 8 };
+static uint8_t PeripheralCLKPrescTable[] = { 1, 2, 4, 6, 8 };
 
 #define HOCO_FREQUENCY_MHZ_16   (0)
 #define HOCO_FREQUENCY_MHZ_18   (1)
 #define HOCO_FREQUENCY_MHZ_20   (2)
-#define GPT_IIC_SOURCE_HOCO     (0)
-#define GPT_IIC_SOURCE_MOCO     (1)
-#define GPT_IIC_SOURCE_LOCO     (2)
-#define GPT_IIC_SOURCE_MOSC     (3)
-#define GPT_IIC_SOURCE_PLL      (4)
-#define GPT_IIC_SOURCE_PLL2     (5)
+#define PERIPEHRAL_SOURCE_HOCO  (0)
+#define PERIPEHRAL_SOURCE_MOCO  (1)
+#define PERIPEHRAL_SOURCE_LOCO  (2)
+#define PERIPEHRAL_SOURCE_MOSC  (3)
+#define PERIPEHRAL_SOURCE_PLL   (4)
+#define PERIPEHRAL_SOURCE_PLL2  (5)
 #define FREQUENCY_32768HZ       (32768)
 #define FREQUENCY_8MHZ          (8000000)
 #define FREQUENCY_16MHZ         (16000000)
@@ -645,29 +646,55 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
 
     // Get IICCLK clock frequency.
     switch( VALUE_SYSTEM_IICCKCR & R_SYSTEM_IICCKCR_IICCKSEL_Msk ) {
-        case GPT_IIC_SOURCE_HOCO:
+        case PERIPEHRAL_SOURCE_HOCO:
             SYSTEM_Clocks->IICCLK_Frequency = hoco_frequency;
             break;
-        case GPT_IIC_SOURCE_MOCO:
+        case PERIPEHRAL_SOURCE_MOCO:
             SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_8MHZ;
             break;
-        case GPT_IIC_SOURCE_LOCO:
+        case PERIPEHRAL_SOURCE_LOCO:
             SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_32768HZ;
             break;
-        case GPT_IIC_SOURCE_MOSC:
+        case PERIPEHRAL_SOURCE_MOSC:
             SYSTEM_Clocks->IICCLK_Frequency = FREQUENCY_20MHZ;
             break;
-        case GPT_IIC_SOURCE_PLL:
+        case PERIPEHRAL_SOURCE_PLL:
             SYSTEM_Clocks->IICCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency );
             break;
-        case GPT_IIC_SOURCE_PLL2:
+        case PERIPEHRAL_SOURCE_PLL2:
             SYSTEM_Clocks->IICCLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency );
             break;
 
         default:
             break;
     }
-    SYSTEM_Clocks->IICCLK_Frequency /= GPT_IIC_CLK_PrescTable[ VALUE_SYSTEM_IICCKDIVCR & R_SYSTEM_IICCKDIVCR_IICCKDIV_Msk ];
+    SYSTEM_Clocks->IICCLK_Frequency /= PeripheralCLKPrescTable[ VALUE_SYSTEM_IICCKDIVCR & R_SYSTEM_IICCKDIVCR_IICCKDIV_Msk ];
+
+    // Get SCISPICLK clock frequency.
+    switch( VALUE_SYSTEM_SCISPICKCR & R_SYSTEM_SCISPICKCR_SCISPICKSEL_Msk ) {
+        case PERIPEHRAL_SOURCE_HOCO:
+            SYSTEM_Clocks->SCISPICLK_Frequency = hoco_frequency;
+            break;
+        case PERIPEHRAL_SOURCE_MOCO:
+            SYSTEM_Clocks->SCISPICLK_Frequency = FREQUENCY_8MHZ;
+            break;
+        case PERIPEHRAL_SOURCE_LOCO:
+            SYSTEM_Clocks->SCISPICLK_Frequency = FREQUENCY_32768HZ;
+            break;
+        case PERIPEHRAL_SOURCE_MOSC:
+            SYSTEM_Clocks->SCISPICLK_Frequency = FREQUENCY_20MHZ;
+            break;
+        case PERIPEHRAL_SOURCE_PLL:
+            SYSTEM_Clocks->SCISPICLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLLCCR, hoco_frequency );
+            break;
+        case PERIPEHRAL_SOURCE_PLL2:
+            SYSTEM_Clocks->SCISPICLK_Frequency = SYSTEM_GetPLLClocksFrequency( VALUE_SYSTEM_PLL2CCR, hoco_frequency );
+            break;
+
+        default:
+            break;
+    }
+    SYSTEM_Clocks->SCISPICLK_Frequency /= PeripheralCLKPrescTable[ VALUE_SYSTEM_SCISPICKDIVCR & R_SYSTEM_SCISPICKDIVCR_SCISPICKDIV_Msk ];
 }
 
 /**
@@ -850,6 +877,14 @@ static void system_clock_configuration() {
     R_SYSTEM->IICCKCR = VALUE_SYSTEM_IICCKCR;
     R_SYSTEM->IICCKCR_b.IICCKSREQ = 0;
     while ( R_SYSTEM->IICCKCR_b.IICCKSRDY );
+
+    // Set SCISPICLK parameters
+    R_SYSTEM->SCISPICKCR_b.SCISPICKSREQ = 1;
+    while ( !( R_SYSTEM->SCISPICKCR_b.SCISPICKSRDY ));
+    R_SYSTEM->SCISPICKDIVCR = VALUE_SYSTEM_SCISPICKDIVCR;
+    R_SYSTEM->SCISPICKCR = VALUE_SYSTEM_SCISPICKCR;
+    R_SYSTEM->SCISPICKCR_b.SCISPICKSREQ = 0;
+    while ( R_SYSTEM->SCISPICKCR_b.SCISPICKSRDY );
 
     if ( VALUE_SYSTEM_CKOCR & R_SYSTEM_CKOCR_CKOEN_Msk ) {
         R_SYSTEM->CKOCR = VALUE_SYSTEM_CKOCR & ( R_SYSTEM_CKOCR_CKODIV_Msk | R_SYSTEM_CKOCR_CKOSEL_Msk );
