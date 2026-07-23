@@ -962,6 +962,44 @@
             "label": "Pll2 control register"
         },
         {
+            "address": "4001e06d",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SCISPICKDIV",
+                    "label": "SCI SPI Clock (SCISPICLK) Division Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "\u2215 1 (value after reset)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "\u2215 2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "\u2215 4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "\u2215 6",
+                            "value": "3"
+                        },
+                        {
+                            "label": "\u2215 8",
+                            "value": "4"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCISPICKDIVCR",
+            "unused": "000000f8",
+            "label": "SCI SPI Clock Division Control Register"
+        },
+        {
             "address": "4001e070",
             "default": "1",
             "fields": [
@@ -998,6 +1036,48 @@
             "key": "SYSTEM_IICCKDIVCR",
             "unused": "000000f8",
             "label": "IIC Clock Division Control Register"
+        },
+        {
+            "address": "4001e075",
+            "default": "1",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SCISPICKSEL",
+                    "label": "SCI SPI Clock (SCISPICLK) Source Select",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO (value after reset)",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LOCO",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Main clock oscillator",
+                            "value": "3"
+                        },
+                        {
+                            "label": "PLL",
+                            "value": "5"
+                        },
+                        {
+                            "label": "PLL2",
+                            "value": "6"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCISPICKCR",
+            "unused": "00000038",
+            "label": "SCI SPI Clock Control Register"
         },
         {
             "address": "4001e078",
