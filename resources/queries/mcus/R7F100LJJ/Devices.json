@@ -1,0 +1,18 @@
+{
+    "def_file": "R7F100LJJ.json",
+    "family_uid": "L23",
+    "flash": "262144",
+    "icon": "images/mcu/renesas.png",
+    "max_speed": "32.000",
+    "name": "R7F100LJJ",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"R7F100LJJ\",\"CORE_NAME\":\"RL78\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "R7F100LJJ",
+    "vendor": "Renesas",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"llvm-rl78-elf\": \"rl78_llvm_l23\"}"
+}

@@ -1,0 +1,38 @@
+{
+    "device_uid": "R7F101GEE",
+    "tables": [
+        {
+            "BoardToDevice": {
+                "board_uid": [
+                    "GENERIC_RL78_BOARD"
+                ]
+            }
+        },
+        {
+            "CompilerToDevice": {
+                "compiler_uid": [
+                    "llvm-rl78-elf"
+                ]
+            }
+        },
+        {
+            "DeviceToPackage": {
+                "package_uid": [
+                    "40/HWQFN"
+                ]
+            }
+        },
+        {
+            "DeviceToSocket": {
+                "socket_uid": [
+                    "NONE"
+                ]
+            }
+        },
+        {
+            "SDKToDevice": {
+                "sdk_uid": "2.18.3+"
+            }
+        }
+    ]
+}
