@@ -5,7 +5,7 @@
 ;;*/
 ;;/***********************************************************************************************************************
 ;;* File Name    : start.S
-;;* Description  : 
+;;* Description  :
 ;;***********************************************************************************************************************/
 ;;/***********************************************************************************************************************
 ;;* History : DD.MM.YYYY Version  Description
@@ -50,7 +50,7 @@ ___dso_handle:
     .extern __bss
     .extern __edata
     .extern _bsp_init_hardware /*! external Sub-routine to initialise Hardware*/
-    .extern _main 
+    .extern _main
     .extern __stack
 
     .include "r_bsp_config.inc"
@@ -75,7 +75,7 @@ _PowerON_Reset:
     call    !!_bsp_init_system
     nop
 
-/* load data section from ROM to RAM */    
+/* load data section from ROM to RAM */
 ;; block move to initialize .data
 
     mov     es, #LOW(HIGHW(__romdatastart))
