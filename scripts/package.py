@@ -148,7 +148,7 @@ def extract_mcu_names(file_name, source_dir, regex):
                     mcu_name = os.path.splitext(file)[0]
                     if regex_pattern.match(mcu_name):
                         mcus[file_name]['mcu_names'].add(mcu_name)
-                        if 'gcc_clang' in source_dir or 'XC32' in source_dir:
+                        if 'gcc_clang' in source_dir or 'XC32' in source_dir or 'LLVM' in source_dir:
                             isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config, core_info FROM Devices WHERE name IS "{mcu_name}"')
                             if isPresent:
                                 if readData[0][1] == None:
@@ -249,7 +249,7 @@ def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
         shutil.copy(fallback_config_path, os.path.join(output_dir, "cmake"))
     if os.path.exists(install_headers_path):
         shutil.copy(install_headers_path, os.path.join(output_dir, "cmake"))
-    if 'gcc_clang' in source_dir:
+    if 'gcc_clang' in source_dir or 'LLVM' in source_dir:
         mcuFileName = find_first_matching_mcu_name(source_dir, regex)
         delays_cmake_dir = os.path.join(os.path.dirname(cmake_file), 'delays')
         delay_relative_path = os.path.relpath(delays_cmake_dir, start=source_dir)
@@ -555,7 +555,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, tag_name, pack
         if entry_name == "gcc_clang":
             compilers = ['GCC', 'Clang']
             compiler = "GCC & Clang"
-        elif "XC" in entry_name:
+        elif "XC" in entry_name or "LLVM" in entry_name:
             compilers = [entry_name]
             compiler = entry_name
 
@@ -818,7 +818,7 @@ def append_package(packages, package, display_name, version, install=None, categ
 
 async def main(token, repo, tag_name, releases_to_update):
     """ Main function to orchestrate packaging and uploading assets """
-    architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR"]
+    architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR", "RL78"]
     db_paths = ['necto_db.db', 'necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
