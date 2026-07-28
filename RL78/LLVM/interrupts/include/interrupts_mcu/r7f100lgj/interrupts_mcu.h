@@ -45,7 +45,6 @@
 #define _INTERRUPTS_MCU_H_
 
 // Interrupt table
-{INTERRUPTS_PLACEHOLDER}
 // EOF Interrupt table
 
 // Interrupt addresses

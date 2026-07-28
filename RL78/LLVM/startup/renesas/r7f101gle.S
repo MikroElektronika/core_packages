@@ -5,7 +5,7 @@
 ;;*/
 ;;/***********************************************************************************************************************
 ;;* File Name    : start.S
-;;* Description  :
+;;* Description  : 
 ;;***********************************************************************************************************************/
 ;;/***********************************************************************************************************************
 ;;* History : DD.MM.YYYY Version  Description
@@ -43,17 +43,21 @@ ___dso_handle:
     #define LOW(x)   x
 #endif
 
-    .extern _bsp_init_system /*! external Sub-routine to initialise BSP*/
+    /*Note: Changed for MikroE implementation.*/
+    .extern _SystemInit /*! external Sub-routine to initialise System*/
+    //    .extern _bsp_init_system /*! external Sub-routine to initialise BSP*/
     .extern __data
     .extern __mdata
     .extern __ebss
     .extern __bss
     .extern __edata
-    .extern _bsp_init_hardware /*! external Sub-routine to initialise Hardware*/
-    .extern _main
+    /*Note: Changed for MikroE implementation.*/
+    //    .extern _bsp_init_hardware /*! external Sub-routine to initialise Hardware*/
+    .extern _main 
     .extern __stack
 
-    .include "r_bsp_config.inc"
+    /*Note: Changed for MikroE implementation.*/
+    //    .include "r_bsp_config.inc"
 
     .text
 
@@ -72,10 +76,12 @@ _PowerON_Reset:
     movw sp,#__stack /* Set stack pointer */
 
 /* call the bsp initialiser */
-    call    !!_bsp_init_system
+    /*Note: Changed for MikroE implementation.*/
+    call    !!_SystemInit
+    //    call    !!_bsp_init_system
     nop
 
-/* load data section from ROM to RAM */
+/* load data section from ROM to RAM */    
 ;; block move to initialize .data
 
     mov     es, #LOW(HIGHW(__romdatastart))
@@ -148,7 +154,8 @@ _bss_zero_done:
 #endif
 
 /* call the hardware initialiser */
-    call    !!_bsp_init_hardware
+    /*Note: Changed for MikroE implementation.*/
+    //    call    !!_bsp_init_hardware
     nop
 
     call    !!__rl78_init
