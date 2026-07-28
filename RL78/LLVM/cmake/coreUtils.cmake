@@ -86,7 +86,7 @@ function(get_mcu_vendor vendor)
     if(${MCU_NAME} MATCHES "^R7F.+$")
         set(${vendor} renesas PARENT_SCOPE)
     else()
-        message(FATAL_ERROR "${MCU_NAME} not supported in GCC by NECTO.")
+        message(FATAL_ERROR "${MCU_NAME} not supported in LLVM by NECTO.")
     endif()
 
 endfunction()
