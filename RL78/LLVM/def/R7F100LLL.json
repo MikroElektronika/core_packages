@@ -1,0 +1,6 @@
+{
+    "core": "RL78",
+    "delay_src_path": "delays/l23/__lib_delays.c",
+    "mcu": "R7F100LLL",
+    "clock": "1"
+}
