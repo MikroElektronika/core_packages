@@ -1,5 +1,5 @@
 {
-    "device_uid": "TMPM4L1FWUG",
+    "device_uid": "TMPM4L2FYAQG",
     "tables": [
         {
             "BoardToDevice": {
@@ -19,7 +19,7 @@
         {
             "DeviceToPackage": {
                 "package_uid": [
-                    "44/LQFP"
+                    "48/VQFN"
                 ]
             }
         },
