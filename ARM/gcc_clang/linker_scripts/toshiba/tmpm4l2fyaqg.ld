@@ -1,18 +1,18 @@
 /*
 ******************************************************************************
 **
-** @file        : tmpm4l4fyaug.ld
+** @file        : tmpm4l2fwdug.ld
 ** @author      : Ivan Ruzavin (MikroE)
-** @brief       : Linker script for tmpm4l4fyaug Device
-**                256Kbytes FLASH
-**                24Kbytes RAM
+** @brief       : Linker script for tmpm4l2fwdug Device
+**                128Kbytes FLASH
+**                6Kbytes RAM
 *
 **                Set heap size, stack size and stack location according
 **                to application requirements.
 **
 **                Set memory bank area and size if external memory is used
 **
-**  Target      : TOSHIBA TMPM4L4FYAUG
+**  Target      : TOSHIBA TMPM4L2FWDUG
 **
 **  Distribution: The file is distributed as is, without any warranty
 **                of any kind.

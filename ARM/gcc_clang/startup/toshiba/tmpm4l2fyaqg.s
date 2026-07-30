@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file      tmpm4l1fwug.s
+  * @file      tmpm4l2fyaqg.s
   * @author    Ivan Ruzavin (MikroE)
-  * @brief     tmpm4l1fwug device vector table for GCC/CLANG based toolchains.
+  * @brief     tmpm4l2fyaqg device vector table for GCC/CLANG based toolchains.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,

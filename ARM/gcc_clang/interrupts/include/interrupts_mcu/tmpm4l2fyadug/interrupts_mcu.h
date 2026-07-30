@@ -38,7 +38,7 @@
 ****************************************************************************/
 /*!
 * @file  interrupts_mcu.h
-* @brief TMPM4L2FWDUG MCU specific interrupt per module definitions.
+* @brief TMPM4L2FYADUG MCU specific interrupt per module definitions.
 */
 
 #ifndef _INTERRUPTS_MCU_H_
@@ -106,11 +106,11 @@ static const int INTERRUPTS_INTFLCRDY = 57;
 // EOF Interrupt table
 
 // Interrupt addresses
-// No interrupt registers for TMPM4L2FWDUG.
+// No interrupt registers for TMPM4L2FYADUG.
 // EOF Interrupt addresses
 
 // Interrupt register bit values
-// No interrupt bits for TMPM4L2FWDUG.
+// No interrupt bits for TMPM4L2FYADUG.
 // EOF Interrupt register bit values
 
 #endif // _INTERRUPTS_MCU_H_

@@ -1333,74 +1333,70 @@
                 {
                     "hidden": false,
                     "init": "0",
-                    "key": "PLLREFSEL",
-                    "label": "Select PLL reference clock (Fpllref)",
-                    "mask": "38",
+                    "key": "PRCK",
+                    "label": "Prescaler clock for the peripheral functions (FT0h)",
+                    "mask": "F00",
                     "settings": [
                         {
-                            "label": "Fpllref = Fosc",
+                            "label": "FT0h = Fc",
                             "value": "0"
                         },
                         {
-                            "label": "Fpllref = Fosc / 2",
-                            "value": "8"
+                            "label": "FT0h = Fc / 2",
+                            "value": "100"
                         },
                         {
-                            "label": "Fpllref = Fosc / 3",
-                            "value": "10"
+                            "label": "FT0h = Fc / 4",
+                            "value": "200"
                         },
                         {
-                            "label": "Fpllref = Fosc / 4",
-                            "value": "18"
+                            "label": "FT0h = Fc / 8",
+                            "value": "300"
+                        },
+                        {
+                            "label": "FT0h = Fc / 16",
+                            "value": "400"
+                        },
+                        {
+                            "label": "FT0h = Fc / 32",
+                            "value": "500"
+                        },
+                        {
+                            "label": "FT0h = Fc / 64",
+                            "value": "600"
+                        },
+                        {
+                            "label": "FT0h = Fc / 128",
+                            "value": "700"
+                        },
+                        {
+                            "label": "FT0h = Fc / 256",
+                            "value": "800"
+                        },
+                        {
+                            "label": "FT0h = Fc / 512",
+                            "value": "900"
                         }
                     ]
                 },
                 {
                     "hidden": false,
                     "init": "0",
-                    "key": "PRCK",
-                    "label": "Prescaler clock for the peripheral functions (FT0)",
-                    "mask": "F00",
+                    "key": "MCKSEL",
+                    "label": "Middle-speed system clock and prescaler settings (Fsysm and FT0m)",
+                    "mask": "C0",
                     "settings": [
                         {
-                            "label": "FT0 = Fc",
+                            "label": "Fsysm = Fsysh and FT0m = FT0h",
                             "value": "0"
                         },
                         {
-                            "label": "FT0 = Fc / 2",
-                            "value": "100"
+                            "label": "Fsysm = Fsysh / 2 and FT0m = FT0h / 2",
+                            "value": "40"
                         },
                         {
-                            "label": "FT0 = Fc / 4",
-                            "value": "200"
-                        },
-                        {
-                            "label": "FT0 = Fc / 8",
-                            "value": "300"
-                        },
-                        {
-                            "label": "FT0 = Fc / 16",
-                            "value": "400"
-                        },
-                        {
-                            "label": "FT0 = Fc / 32",
-                            "value": "500"
-                        },
-                        {
-                            "label": "FT0 = Fc / 64",
-                            "value": "600"
-                        },
-                        {
-                            "label": "FT0 = Fc / 128",
-                            "value": "700"
-                        },
-                        {
-                            "label": "FT0 = Fc / 256",
-                            "value": "800"
-                        },
-                        {
-                            "label": "FT0 = Fc / 512",
-                            "value": "900"
+                            "label": "Fsysm = Fsysh / 4 and FT0m = FT0h / 4",
+                            "value": "80"
                         }
                     ]
                 }
@@ -1412,6 +1408,6 @@
     ],
     "core": "M4EF",
     "delay_src_path": "delays/m4ef/__lib_delays.c",
-    "mcu": "TMPM4L4FYAUG",
+    "mcu": "TMPM4L2FWADUG",
     "clock": 80
 }

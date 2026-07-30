@@ -1,9 +1,9 @@
 /*
 ******************************************************************************
 **
-** @file        : tmpm4l1fwug.ld
+** @file        : tmpm4l2fwdug.ld
 ** @author      : Ivan Ruzavin (MikroE)
-** @brief       : Linker script for tmpm4l1fwug Device
+** @brief       : Linker script for tmpm4l2fwdug Device
 **                128Kbytes FLASH
 **                6Kbytes RAM
 *
@@ -12,7 +12,7 @@
 **
 **                Set memory bank area and size if external memory is used
 **
-**  Target      : TOSHIBA TMPM4L1FWUG
+**  Target      : TOSHIBA TMPM4L2FWDUG
 **
 **  Distribution: The file is distributed as is, without any warranty
 **                of any kind.
@@ -39,8 +39,8 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
-  SRAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 6K
-  FLASH    (rx)    : ORIGIN = 0x0000000,   LENGTH = 128K
+  SRAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 32K
+  FLASH    (rx)    : ORIGIN = 0x0000000,   LENGTH = 256K
 }
 
 _estack = ORIGIN(SRAM) + LENGTH(SRAM);    /* end of SRAM */
