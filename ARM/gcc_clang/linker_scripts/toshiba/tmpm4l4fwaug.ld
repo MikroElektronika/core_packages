@@ -40,7 +40,7 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 MEMORY
 {
   SRAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 32K
-  FLASH    (rx)    : ORIGIN = 0x0000000,   LENGTH = 256K
+  FLASH    (rx)    : ORIGIN = 0x0000000,   LENGTH = 128K
 }
 
 _estack = ORIGIN(SRAM) + LENGTH(SRAM);    /* end of SRAM */

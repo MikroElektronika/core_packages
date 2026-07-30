@@ -46,17 +46,15 @@
 #define SIWDEN_Val (0x00000000UL) /* SIWD Disable */
 #define SIWDCR_Val (0x000000B1UL) /* SIWD Disable code */
 
-#define CGSYSCR_MCKSEL_OFFSET   6
 #define CGSYSCR_PRCK_OFFSET     8
 
+#define CGSYSCR_GEAR_MASK       0x3
+#define CGSYSCR_PRCK_MASK       0xF00
 #define CGPLL0SEL_PLL0ON_MASK   0x1
 #define CGPLL0SEL_PLL0SEL_MASK  0x2
-#define CGSYSCR_GEAR_MASK       0x3
-#define CGOSCCR_EOSCEN_MASK     0x60
-#define CGSYSCR_MCKSEL_MASK     0xC0
-#define CGOSCCR_OSCSEL_MASK     0x100
-#define CGSYSCR_PRCK_MASK       0xF00
 #define CGPLL0SEL_PLL0SET_MASK  0xFFFFFF00
+#define CGOSCCR_EOSCEN_MASK     0x6
+#define CGOSCCR_OSCSEL_MASK     0x100
 
 extern uint32_t __data_load__;
 extern uint32_t __data_start__;
@@ -66,37 +64,27 @@ extern uint32_t __bss_end__;
 
 typedef struct
 {
-    uint32_t CG_FC_Frequency;       // System frequency.
-    uint32_t CG_FSYSH_Frequency;    // High-speed system clock.
-    uint32_t CG_FSYSM_Frequency;    // Middle-speed system clock.
-    uint32_t CG_FT0H_Frequency;     // High-speed system prescaler clock.
-    uint32_t CG_FT0M_Frequency;     // Middle-speed system prescaler clock.
+    uint32_t CG_FC_Frequency;   // System frequency.
+    uint32_t CG_FSYS_Frequency; // System clock.
+    uint32_t CG_FT0_Frequency;  // Prescaler clock.
 } CG_ClocksTypeDef;
 
-static uint8_t FSYSH_Prescaler_Table[ 5 ] = { 1, 2, 4, 8, 16 };
-static uint8_t FSYSM_Prescaler_Table[ 3 ] = { 1, 2, 4 };
-static uint16_t FT0H_Prescaler_Table[ 10 ] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
+static uint8_t FSYS_Prescaler_Table[ 5 ] = { 1, 2, 4, 8, 16 };
+static uint16_t FT0_Prescaler_Table[ 10 ] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
 
 void CG_GetClocksFrequency( CG_ClocksTypeDef *CG_Clocks )
 {
-    uint8_t fsysh_prescaler = FSYSH_Prescaler_Table[ VALUE_SYSTEM_CGSYSCR & CGSYSCR_GEAR_MASK ];
-    uint16_t ft0h_prescaler = FT0H_Prescaler_Table[( VALUE_SYSTEM_CGSYSCR & CGSYSCR_PRCK_MASK ) \
+    uint8_t fsys_prescaler = FSYS_Prescaler_Table[ VALUE_SYSTEM_CGSYSCR & CGSYSCR_GEAR_MASK ];
+    uint16_t ft0_prescaler = FT0_Prescaler_Table[( VALUE_SYSTEM_CGSYSCR & CGSYSCR_PRCK_MASK ) \
                                                         >> CGSYSCR_PRCK_OFFSET ];
-    uint8_t fsysm_prescaler = FSYSM_Prescaler_Table[( VALUE_SYSTEM_CGSYSCR & CGSYSCR_MCKSEL_MASK ) \
-                                                        >> CGSYSCR_MCKSEL_OFFSET ];
 
     /* System frequency is always the same as general clock value. */
     CG_Clocks->CG_FC_Frequency = ( uint32_t )FOSC_KHZ_VALUE * 1000;
+    /* Get system clock. */
+    CG_Clocks->CG_FSYS_Frequency = CG_Clocks->CG_FC_Frequency / fsys_prescaler;
 
-    /* Get high-speed system clock. */
-    CG_Clocks->CG_FSYSH_Frequency = CG_Clocks->CG_FC_Frequency / fsysh_prescaler;
-
-    /* Get high-speed system prescaler clock. */
-    CG_Clocks->CG_FT0H_Frequency = CG_Clocks->CG_FSYSH_Frequency / ft0h_prescaler;
-
-    /* Get middle-speed system clock and middle-speed system prescaler clock. */
-    CG_Clocks->CG_FSYSM_Frequency = CG_Clocks->CG_FSYSH_Frequency / fsysm_prescaler;
-    CG_Clocks->CG_FT0M_Frequency = CG_Clocks->CG_FT0H_Frequency / fsysm_prescaler;
+    /* Get system prescaler clock. */
+    CG_Clocks->CG_FT0_Frequency = CG_Clocks->CG_FSYS_Frequency / ft0_prescaler;
 }
 
 /**
