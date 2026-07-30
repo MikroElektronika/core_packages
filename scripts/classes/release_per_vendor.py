@@ -217,7 +217,7 @@ class GitHubReleaseUploader:
                 current_version = version
 
                 while True:
-                    new_version = 'v' + increase_version(current_version.replace('v', ''), part='patch')
+                    new_version = increase_version(current_version.replace('v', ''), part='patch')
                     new_release_name = release_name.replace(current_version, new_version)
 
                     releases_info[new_release_name] = releases_info[release_name].copy()
