@@ -39,11 +39,11 @@
             },
             {
                 "key": "FPLLIDIV",
-                "value": "DIV_3"
+                "value": "DIV_6"
             },
             {
                 "key": "FPLLRNG",
-                "value": "RANGE_8_16_MHZ"
+                "value": "RANGE_13_26_MHZ"
             },
             {
                 "key": "FPLLICLK",
