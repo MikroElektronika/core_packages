@@ -397,7 +397,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00180000",
                     "key": "MULA",
                     "label": "PLLA Multiplier",
                     "mask": "07FF0000",
@@ -668,7 +668,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000001",
                     "key": "DIVA",
                     "label": "PLLA Front End Divider",
                     "mask": "000000FF",
@@ -1727,7 +1727,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000100",
                     "key": "MDIV",
                     "label": "Host Clock Division",
                     "mask": "00000300",
@@ -1793,7 +1793,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000002",
                     "key": "CSS",
                     "label": "Host Clock Source Selection",
                     "mask": "00000003",
@@ -12736,7 +12736,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000600",
                     "key": "FWS",
                     "label": "Flash Wait State",
                     "mask": "00000f00",
@@ -12832,5 +12832,5 @@
     "core": "M7",
     "delay_src_path": "delays/m7/__lib_delays.c",
     "mcu": "ATSAMS70Q20B",
-    "clock": 12
+    "clock": 300
 }
