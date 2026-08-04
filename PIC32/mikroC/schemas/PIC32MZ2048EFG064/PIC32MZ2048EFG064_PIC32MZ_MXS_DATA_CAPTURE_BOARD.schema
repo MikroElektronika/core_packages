@@ -41,7 +41,7 @@
                     },
                     {
                         "key": "FPLLIDIV",
-                        "value": "00000002"
+                        "value": "00000005"
                     },
                     {
                         "key": "FPLLRNG",
@@ -226,7 +226,7 @@
                     },
                     {
                         "key": "FPLLRNG",
-                        "value": "00000020"
+                        "value": "00000030"
                     },
                     {
                         "key": "FPLLICLK",
@@ -403,11 +403,11 @@
                     },
                     {
                         "key": "FPLLIDIV",
-                        "value": "00000002"
+                        "value": "00000005"
                     },
                     {
                         "key": "FPLLRNG",
-                        "value": "00000020"
+                        "value": "00000030"
                     },
                     {
                         "key": "FPLLICLK",
@@ -584,11 +584,11 @@
                     },
                     {
                         "key": "FPLLIDIV",
-                        "value": "00000002"
+                        "value": "00000005"
                     },
                     {
                         "key": "FPLLRNG",
-                        "value": "00000020"
+                        "value": "00000030"
                     },
                     {
                         "key": "FPLLICLK",
@@ -765,11 +765,11 @@
                     },
                     {
                         "key": "FPLLIDIV",
-                        "value": "00000002"
+                        "value": "00000005"
                     },
                     {
                         "key": "FPLLRNG",
-                        "value": "00000020"
+                        "value": "00000030"
                     },
                     {
                         "key": "FPLLICLK",
@@ -946,11 +946,11 @@
                     },
                     {
                         "key": "FPLLIDIV",
-                        "value": "00000002"
+                        "value": "00000005"
                     },
                     {
                         "key": "FPLLRNG",
-                        "value": "00000020"
+                        "value": "00000030"
                     },
                     {
                         "key": "FPLLICLK",
@@ -1127,11 +1127,11 @@
                     },
                     {
                         "key": "FPLLIDIV",
-                        "value": "00000002"
+                        "value": "00000005"
                     },
                     {
                         "key": "FPLLRNG",
-                        "value": "00000020"
+                        "value": "00000030"
                     },
                     {
                         "key": "FPLLICLK",
@@ -1308,11 +1308,11 @@
                     },
                     {
                         "key": "FPLLIDIV",
-                        "value": "00000002"
+                        "value": "00000005"
                     },
                     {
                         "key": "FPLLRNG",
-                        "value": "00000020"
+                        "value": "00000030"
                     },
                     {
                         "key": "FPLLICLK",
