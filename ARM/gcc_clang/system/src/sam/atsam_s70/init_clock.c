@@ -1,33 +1,44 @@
-/**
- * \file
- *
- * \brief System configuration file for ATSAMV71J21B
- *
- * Copyright (c) 2019 Microchip Technology Inc.
- *
- * \license_start
- *
- * \page License
- *
- * SPDX-License-Identifier: Apache-2.0
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * \license_stop
- *
+/****************************************************************************
+**
+** Copyright (C) ${COPYRIGHT_YEAR_MIKROE} MikroElektronika d.o.o.
+** Contact: https://www.mikroe.com/contact
+**
+** Commercial License Usage
+**
+** Licensees holding valid commercial NECTO compilers AI licenses may use this
+** file in accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and The MikroElektronika Company.
+** For licensing terms and conditions see
+** https://www.mikroe.com/legal/software-license-agreement.
+** For further information use the contact form at
+** https://www.mikroe.com/contact.
+**
+**
+** GNU Lesser General Public License Usage
+**
+** Alternatively, this file may be used for
+** non-commercial projects under the terms of the GNU Lesser
+** General Public License version 3 as published by the Free Software
+** Foundation: https://www.gnu.org/licenses/lgpl-3.0.html.
+**
+** The above copyright notice and this permission notice shall be
+** included in all copies or substantial portions of the Software.
+**
+** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+** OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+** DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+** OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+** OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+**
+****************************************************************************/
+/*!
+ * @file  init_clock.c
+ * @brief Mikroe clock initialization API.
  */
 
-// Note: Changed for MikroE implementation
 #include "mcu.h"
 #include "core_header.h"
 
@@ -43,7 +54,20 @@ extern "C" {
  * Initial system clock frequency. The System RC Oscillator (RCSYS) provides
  *  the source for the main clock at chip startup.
  */
-#define __SYSTEM_CLOCK    (FOSC_KHZ_VALUE * 1000)
+#define __SYSTEM_CLOCK    (FOSC_KHZ_VALUE * 1000UL)
+
+/*
+ * Cortex-M7 cache policy. Instruction cache is recommended at 300 MHz.
+ * Keep data cache disabled until every DMA buffer/descriptor is either placed
+ * in a non-cacheable MPU region or maintained with clean/invalidate operations.
+ */
+#ifndef SYSTEM_ENABLE_ICACHE
+#define SYSTEM_ENABLE_ICACHE    1
+#endif
+
+#ifndef SYSTEM_ENABLE_DCACHE
+#define SYSTEM_ENABLE_DCACHE    0
+#endif
 
 static void _efc_set_flash_wait_cycles()
 {
@@ -99,11 +123,13 @@ static void _pmc_init_sources(void)
         }
         // Disable the Main Crystal oscillator if needed.
         if (CKGR_MOR_MOSCXTEN != (VALUE_CKGR_MOR & CKGR_MOR_MOSCXTEN_Msk)) {
-            PMC->CKGR_MOR &= ~CKGR_MOR_MOSCXTEN_Msk;
+            data = PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN_Msk;
+            PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | data;
         }
         // Disable the Main Crystal oscillator Bypass if needed.
         if (CKGR_MOR_MOSCXTBY != (VALUE_CKGR_MOR & CKGR_MOR_MOSCXTBY_Msk)) {
-            PMC->CKGR_MOR &= ~CKGR_MOR_MOSCXTBY_Msk;
+            data = PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTBY_Msk;
+            PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | data;
         }
         data = PMC->PMC_SR;
     }
@@ -113,7 +139,7 @@ static void _pmc_init_sources(void)
         (CKGR_MOR_MOSCSEL == (VALUE_CKGR_MOR & CKGR_MOR_MOSCSEL_Msk))) {
         if (CKGR_MOR_MOSCXTBY == (VALUE_CKGR_MOR & CKGR_MOR_MOSCXTBY_Msk)) {
             /* Enable Main XTAL oscillator bypass */
-            data = PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN;
+            data = PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN_Msk;
             data |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTBY | CKGR_MOR_MOSCSEL;
             PMC->CKGR_MOR = data;
         } else {
@@ -130,7 +156,8 @@ static void _pmc_init_sources(void)
                 /* Wait until the oscillator selection is done */
         }
         if (CKGR_MOR_MOSCRCEN != (VALUE_CKGR_MOR & CKGR_MOR_MOSCRCEN_Msk)) {
-            PMC->CKGR_MOR &= ~CKGR_MOR_MOSCRCEN_Msk;
+            data = PMC->CKGR_MOR & ~CKGR_MOR_MOSCRCEN_Msk;
+            PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | data;
         }
     }
 
@@ -156,7 +183,7 @@ static void _pmc_init_sources(void)
         data = PMC->PMC_MCKR & ~PMC_MCKR_UPLLDIV_Msk;
         data |= VALUE_PMC_MCKR & PMC_MCKR_UPLLDIV_Msk;
         PMC->PMC_MCKR = data;
-        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY)) {
+        while (PMC_SR_MCKRDY != (PMC->PMC_SR & PMC_SR_MCKRDY_Msk)) {
             /* Wait until master clock is ready */
         }
 	} else {
@@ -391,6 +418,8 @@ static void _pmc_init_generic_clock(void)
 
 uint32_t SystemCoreClock = __SYSTEM_CLOCK;  /*!< System Clock Frequency (Core Clock)*/
 
+void SystemCoreClockUpdate(void);
+
 /**
  * Initialize the system
  *
@@ -409,11 +438,24 @@ void SystemInit(void)
     _pmc_init_usb_clock();
     _pmc_init_generic_clock();
 
-    // Disable Watchdog Timer
+    // The configured clock is now active.
+    SystemCoreClockUpdate();
+
+    // Disable Watchdog Timer.
     WDT->WDT_MR = WDT_MR_WDDIS;
 
-    // Enable Floating Point unit
+    // Enable Floating Point Unit and synchronize the pipeline.
     SCB->CPACR |= ((3UL << 20) | (3UL << 22));
+    __DSB();
+    __ISB();
+
+#if SYSTEM_ENABLE_ICACHE
+    SCB_EnableICache();
+#endif
+
+#if SYSTEM_ENABLE_DCACHE
+    SCB_EnableDCache();
+#endif
 
     return;
 }
@@ -426,7 +468,10 @@ void SystemInit(void)
  */
 void SystemCoreClockUpdate(void)
 {
-    // Not implemented
+    /*
+     * FOSC_KHZ_VALUE is generated from the JSON top-level "clock" value.
+     * For this configuration it is 300000 kHz.
+     */
     SystemCoreClock = __SYSTEM_CLOCK;
     return;
 }
