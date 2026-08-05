@@ -1,0 +1,45 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ TMPM3HP MCU Support package for GCC & Clang
+  + TMPM3HPF10BDFG
+  + TMPM3HPF10BFG
+  + TMPM3HPFDADFG
+  + TMPM3HPFDAFG
+  + TMPM3HPFDFG
+  + TMPM3HPFYADFG
+  + TMPM3HPFYAFG
+  + TMPM3HPFYFG
+  + TMPM3HPFZADFG
+  + TMPM3HPFZAFG
+  + TMPM3HPFZFG
++ TMPM4GN MCU Support package for GCC & Clang
+  + TMPM4GNF10FG
+  + TMPM4GNF15FG
+  + TMPM4GNF20FG
+  + TMPM4GNFDFG
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
