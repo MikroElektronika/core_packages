@@ -1,0 +1,45 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ CMS32M65 MCU Support package for GCC & Clang
+  + CMS32M6510GE16SP
+  + CMS32M6510GE24NA
+  + CMS32M6510GE24SS
+  + CMS32M6512GE24SS
+  + CMS32M6513AGE40NB
+  + CMS32M6513GE40NB
+  + CMS32M6524GE16SB
+  + CMS32M6526CGE24NA
+  + CMS32M6526CGE24SS
+  + CMS32M6526GE16SP
+  + CMS32M6526GE24SS
+  + CMS32M6534EGE40NB
+  + CMS32M6536EGE32FP
+  + CMS32M6536EGE32NA
++ BAT32W MCU Support package for GCC & Clang
+  + BAT32WB35
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
