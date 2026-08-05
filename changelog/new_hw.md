@@ -1,0 +1,45 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ CMS32M5 MCU Support package for GCC & Clang
+  + CMS32M5310
+  + CMS32M5332
+  + CMS32M5333
+  + CMS32M5336
+  + CMS32M5510
+  + CMS32M5512
+  + CMS32M5524
+  + CMS32M5533
+  + CMS32M5710
+  + CMS32M5717
+  + CMS32M5733
+  + CMS32M5736
++ BAT32G139 MCU Support package for GCC & Clang
+  + BAT32G139GK48FA
+  + BAT32G139GK64FB
+  + BAT32G139GK80FA
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
