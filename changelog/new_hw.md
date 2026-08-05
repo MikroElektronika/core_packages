@@ -1,0 +1,46 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ BAT32G137 MCU Support package for GCC & Clang
+  + BAT32G137-A
+  + BAT32G137-AE
+  + BAT32G137GH32FP
+  + BAT32G137GH40NB
+  + BAT32G137GH48FA
+  + BAT32G137GH64FB
++ CMS32C MCU Support package for GCC & Clang
+  + CMS32C020DC20NB
+  + CMS32C020DC24NA
+  + CMS32C020DC24SS
+  + CMS32C030DE32FP
+  + CMS32C030DE32NA
+  + CMS32C030DE32NB
++ BAT32G17 MCU Support package for GCC & Clang
+  + BAT32G179GM100FA
+  + BAT32G179GM64FB
+  + BAT32G179GM80FA
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
