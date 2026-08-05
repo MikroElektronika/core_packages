@@ -1,0 +1,47 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ TMPM37 MCU Support package for GCC & Clang
+  + TMPM370FYDFG
+  + TMPM370FYFG
+  + TMPM372FWFG
+  + TMPM372FWUG
+  + TMPM373FWDUG
+  + TMPM374FWUG
+  + TMPM375FSDMG
+  + TMPM376FDDFG
+  + TMPM376FDFG
+  + TMPM37AFSQG
++ TMPM3HL MCU Support package for GCC & Clang
+  + TMPM3HLF10BUG
+  + TMPM3HLFDAUG
+  + TMPM3HLFDUG
+  + TMPM3HLFYAUG
+  + TMPM3HLFYUG
+  + TMPM3HLFZAUG
+  + TMPM3HLFZUG
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
