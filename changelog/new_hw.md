@@ -1,0 +1,46 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ CMS32L MCU Support package for GCC & Clang
+  + CMS32L031GC20NB
+  + CMS32L031GC20SA
+  + CMS32L051-S
+  + CMS32L051LQ32
+  + CMS32L051LQ48
+  + CMS32L051QN20
+  + CMS32L051QN32
+  + CMS32L051QN40
+  + CMS32L051SS24
+  + CMS32L051TS20
++ BAT32G133 MCU Support package for GCC & Clang
+  + BAT32G133GC20NB
+  + BAT32G133GC20SA
+  + BAT32G133GC24NA
+  + BAT32G133GC24SS
++ CMS32ME MCU Support package for GCC & Clang
+  + CMS32MEBIKE
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
