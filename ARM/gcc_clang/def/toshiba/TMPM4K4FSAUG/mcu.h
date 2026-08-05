@@ -4,9 +4,9 @@
  * @brief   CMSIS Cortex-M4 Core Peripheral Access Layer Header File for the
  *          TOSHIBA 'TMPM4K4B' Device Series
  * @version V1.1.0.0
- * 
+ *
  * DO NOT USE THIS SOFTWARE WITHOUT THE SOFTWARE LICENSE AGREEMENT.
- * 
+ *
   * Copyright(C) Toshiba Electronic Device Solutions Corporation 2025
  *******************************************************************************
  */
@@ -14,7 +14,7 @@
 /** @addtogroup TOSHIBA_TXZplus_MICROCONTROLLER
   * @{
   */
-  
+
 /** @addtogroup TMPM4K4B
   * @{
   */
@@ -144,7 +144,6 @@ typedef enum IRQn
 /* Configuration of the Cortex-M4 Processor and Core Peripherals */
 #define __CM4_REV 0x0001 /*!< Cortex-M4 Core Revision */
 #define __MPU_PRESENT 1 /*!< MPU present or not */
-#define __FPU_PRESENT 0 /*!< FPU present or not */
 #define __FPU_PRESENT 1 /*!< FPU present or not */
 #define __NVIC_PRIO_BITS 4 /*!< Number of Bits used for Priority Levels */
 #define __Vendor_SysTickConfig 0 /*!< Set to 1 if different SysTick Config is used */
@@ -422,7 +421,7 @@ typedef struct
   __I  uint32_t STATUS;            /*!< DMA Status Register                          */
   __O  uint32_t CFG;               /*!< DMA Configuration Register                   */
   __IO uint32_t CTRLBASEPTR;       /*!< DMA Control Data Base Pointer Register       */
-  __I  uint32_t ALTCTRLBASEPTR;    /*!< DMA Channel Alternate Control Data Base 
+  __I  uint32_t ALTCTRLBASEPTR;    /*!< DMA Channel Alternate Control Data Base
 Pointer Register*/
        uint32_t RESERVED0;
   __O  uint32_t CHNLSWREQUEST;     /*!< DMA Channel Software Request Register        */
