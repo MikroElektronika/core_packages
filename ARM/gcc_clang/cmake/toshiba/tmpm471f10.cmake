@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^TMPM471F10$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/tmpm471f10/init_clock.c)
+endif()

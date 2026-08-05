@@ -1,0 +1,18 @@
+{
+    "def_file": "CMS32M5710.json",
+    "family_uid": "CMS32 Series",
+    "flash": "65536",
+    "icon": "images/mcu/cmsemicon.png",
+    "max_speed": "64.000",
+    "name": "CMS32M5710",
+    "ram": "8192",
+    "sdk_config": "{\"MCU_NAME\":\"CMS32M5710\",\"CORE_NAME\":\"M0\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "CMS32M5710",
+    "vendor": "Cmsemicon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_cms32m5\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_cms32m5\"}"
+}
