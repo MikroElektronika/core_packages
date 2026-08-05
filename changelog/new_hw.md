@@ -1,0 +1,45 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ BAT32A23 MCU Support package for GCC & Clang
+  + BAT32A233KC20NB
+  + BAT32A233KC20SA
+  + BAT32A233KC24NA
+  + BAT32A233KC32FP
+  + BAT32A233KC32NA
+  + BAT32A237KE24NA
+  + BAT32A237KH32FP
+  + BAT32A237KH40NB
+  + BAT32A237KH48FA
+  + BAT32A237KH64FB
+  + BAT32A239KK48FA
+  + BAT32A239KK64FB
+  + BAT32A239KK80FA
++ BAT32A6 MCU Support package for GCC & Clang
+  + BAT32A6300KC32NA
+  + BAT32A6700KH48NB
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
