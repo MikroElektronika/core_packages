@@ -1,0 +1,18 @@
+{
+    "def_file": "BAT32G137-AE.json",
+    "family_uid": "BAT32G137-A",
+    "flash": "0",
+    "icon": "images/mcu/cmsemicon.png",
+    "max_speed": "48.000",
+    "name": "BAT32G137-AE",
+    "ram": "0",
+    "sdk_config": "{\"MCU_NAME\":\"BAT32G137_AE\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "BAT32G137-AE",
+    "vendor": "Cmsemicon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_bat32g137\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_bat32g137\"}"
+}
