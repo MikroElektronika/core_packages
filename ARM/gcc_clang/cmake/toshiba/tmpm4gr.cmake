@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^TMPM4GRF10FG$|^TMPM4GRF10XBG$|^TMPM4GRF15FG$|^TMPM4GRF15XBG$|^TMPM4GRF20FG$|^TMPM4GRF20XBG$|^TMPM4GRFDFG$|^TMPM4GRFDXBG$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/tmpm4gr/init_clock.c)
+endif()

@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^BAT32A233KC20NB$|^BAT32A233KC20SA$|^BAT32A233KC24NA$|^BAT32A233KC32FP$|^BAT32A233KC32NA$|^BAT32A237KE24NA$|^BAT32A237KH32FP$|^BAT32A237KH40NB$|^BAT32A237KH48FA$|^BAT32A237KH64FB$|^BAT32A239KK48FA$|^BAT32A239KK64FB$|^BAT32A239KK80FA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/bat32a23/init_clock.c)
+endif()
