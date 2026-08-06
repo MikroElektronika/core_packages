@@ -1,0 +1,18 @@
+{
+    "def_file": "TMPM3H3FUUG.json",
+    "family_uid": "TXZ3",
+    "flash": "98304",
+    "icon": "images/mcu/toshiba.png",
+    "max_speed": "40.000",
+    "name": "TMPM3H3FUUG",
+    "ram": "12288",
+    "sdk_config": "{\"MCU_NAME\":\"TMPM3H3FUUG\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "TMPM3H3FUUG",
+    "vendor": "Toshiba",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_tmpm3h0_3\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_tmpm3h0_3\"}"
+}
