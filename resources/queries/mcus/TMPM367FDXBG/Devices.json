@@ -1,0 +1,18 @@
+{
+    "def_file": "TMPM367FDXBG.json",
+    "family_uid": "TX03",
+    "flash": "524288",
+    "icon": "images/mcu/toshiba.png",
+    "max_speed": "80.000",
+    "name": "TMPM367FDXBG",
+    "ram": "131072",
+    "sdk_config": "{\"MCU_NAME\":\"TMPM367FDXBG\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "TMPM367FDXBG",
+    "vendor": "Toshiba",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_tmpm367_9\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_tmpm367_9\"}"
+}
