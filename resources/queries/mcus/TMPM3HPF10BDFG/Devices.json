@@ -1,0 +1,18 @@
+{
+    "def_file": "TMPM3HPF10BDFG.json",
+    "family_uid": "TXZ+3A",
+    "flash": "1048576",
+    "icon": "images/mcu/toshiba.png",
+    "max_speed": "120.000",
+    "name": "TMPM3HPF10BDFG",
+    "ram": "131072",
+    "sdk_config": "{\"MCU_NAME\":\"TMPM3HPF10BDFG\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "TMPM3HPF10BDFG",
+    "vendor": "Toshiba",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_tmpm3hp\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_tmpm3hp\"}"
+}
