@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^BAT32G179GM100FA$|^BAT32G179GM64FB$|^BAT32G179GM80FA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/bat32g17/init_clock.c)
+endif()
