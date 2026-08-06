@@ -1,0 +1,18 @@
+{
+    "def_file": "BAT32A233KC20NB.json",
+    "family_uid": "BAT32A233",
+    "flash": "0",
+    "icon": "images/mcu/cmsemicon.png",
+    "max_speed": "64.000",
+    "name": "BAT32A233KC20NB",
+    "ram": "0",
+    "sdk_config": "{\"MCU_NAME\":\"BAT32A233KC20NB\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "BAT32A233KC20NB",
+    "vendor": "Cmsemicon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_bat32a23\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_bat32a23\"}"
+}
