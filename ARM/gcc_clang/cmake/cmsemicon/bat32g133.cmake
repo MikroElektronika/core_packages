@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^BAT32G133GC20NB$|^BAT32G133GC20SA$|^BAT32G133GC24NA$|^BAT32G133GC24SS$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/bat32g133/init_clock.c)
+endif()
