@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^BAT32A6300KC32NA$|^BAT32A6700KH48NB$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/bat32a6/init_clock.c)
+endif()

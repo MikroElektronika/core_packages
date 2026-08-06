@@ -1,0 +1,18 @@
+{
+    "def_file": "TMPM3HLFYAUG.json",
+    "family_uid": "TXZ3A+",
+    "flash": "262144",
+    "icon": "images/mcu/toshiba.png",
+    "max_speed": "120.000",
+    "name": "TMPM3HLFYAUG",
+    "ram": "65536",
+    "sdk_config": "{\"MCU_NAME\":\"TMPM3HLFYAUG\",\"CORE_NAME\":\"M3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "TMPM3HLFYAUG",
+    "vendor": "Toshiba",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_tmpm3hl\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_tmpm3hl\"}"
+}
