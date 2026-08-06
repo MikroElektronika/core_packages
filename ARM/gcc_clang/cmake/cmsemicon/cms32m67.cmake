@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^CMS32M6710GH48FA$|^CMS32M6710GH32NB$|^CMS32M6736EGH48NB$|^CMS32M6736EGH48FA$|^CMS32M6734EGH48FA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/cms32m67/init_clock.c)
+endif()
