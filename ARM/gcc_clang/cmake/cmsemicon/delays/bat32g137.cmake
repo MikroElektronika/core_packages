@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^BAT32G137_A$|^BAT32G137_AE$|^BAT32G137GH32FP$|^BAT32G137GH40NB$|^BAT32G137GH48FA$|^BAT32G137GH64FB$")
+    list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/4)")
+endif()

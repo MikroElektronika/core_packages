@@ -1,0 +1,18 @@
+{
+    "def_file": "BAT32G157GK64FB.json",
+    "family_uid": "BAT32G157",
+    "flash": "0",
+    "icon": "images/mcu/cmsemicon.png",
+    "max_speed": "64.000",
+    "name": "BAT32G157GK64FB",
+    "ram": "0",
+    "sdk_config": "{\"MCU_NAME\":\"BAT32G157GK64FB\",\"CORE_NAME\":\"M0+\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "BAT32G157GK64FB",
+    "vendor": "Cmsemicon",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_bat32g15\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_bat32g15\"}"
+}
