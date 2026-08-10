@@ -157,7 +157,7 @@
             "label_group": "FBSLIM"
         },
         {
-            "init": "FRC",
+            "init": "FRCPLL",
             "key": "FNOSC",
             "label": "Oscillator Source Selection",
             "settings": [
@@ -197,7 +197,7 @@
             "label_group": "FOSCSEL"
         },
         {
-            "init": "DISABLED",
+            "init": "PLL4X",
             "key": "PLLMODE",
             "label": "PLL Mode Selection",
             "settings": [
@@ -730,5 +730,5 @@
         }
     ],
     "mcu": "PIC24FJ256GA705",
-    "clock": 4
+    "clock": 16
 }
