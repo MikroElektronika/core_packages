@@ -707,7 +707,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000001",
                     "key": "FNOSC",
                     "label": "Oscillator Source Selection",
                     "mask": "00000007",
@@ -748,7 +748,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000078",
+                    "init": "00000060",
                     "key": "PLLMODE",
                     "label": "PLL Mode Selection",
                     "mask": "00000078",
@@ -2432,5 +2432,5 @@
         "max_addr": "NA",
         "min_addr": "NA"
     },
-    "clock": "4"
+    "clock": "16"
 }
