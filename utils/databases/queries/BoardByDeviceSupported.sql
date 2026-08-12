@@ -82,8 +82,14 @@ AND
     OR Boards.uid LIKE '%%1%'
     OR Boards.category LIKE '%%1%'
 )
--- Supported-boards filter: %4=0 skips; %5 always has at least '' to keep IN() syntactically valid
-AND (%4 = 0 OR Boards.name IN (%5))
+-- Supported-boards filter: %4=0 skips; %5 always has at least '' to keep IN() syntactically valid.
+-- Generic/custom boards are structural fallbacks, not released products, so they're always exempt.
+AND (
+    %4 = 0
+    OR Boards.uid LIKE 'GENERIC_%'
+    OR Boards.uid LIKE 'CUSTOM_BOARD_%'
+    OR Boards.name IN (%5)
+)
 ORDER BY
     Boards.sort_order DESC,
     Boards.name;

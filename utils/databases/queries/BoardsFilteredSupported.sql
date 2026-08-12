@@ -33,8 +33,14 @@ AND (
     %10 = 0
     OR COALESCE(Boards.mikrobus_count, 0) BETWEEN %8 AND %9
 )
--- Supported-boards filter: %11=0 skips; %12 always has at least '' to keep IN() syntactically valid
-AND (%11 = 0 OR Boards.name IN (%12))
+-- Supported-boards filter: %11=0 skips; %12 always has at least '' to keep IN() syntactically valid.
+-- Generic/custom boards are structural fallbacks, not released products, so they're always exempt.
+AND (
+    %11 = 0
+    OR Boards.uid LIKE 'GENERIC_%'
+    OR Boards.uid LIKE 'CUSTOM_BOARD_%'
+    OR Boards.name IN (%12)
+)
 ORDER BY
     CASE
         WHEN EXISTS (

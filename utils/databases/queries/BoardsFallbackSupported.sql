@@ -18,8 +18,14 @@ WHERE
     OR Boards.soldered_device LIKE '%%1%'
     OR Boards.vendor LIKE '%%1%')
 )
--- Supported-boards filter: %2=0 skips; %3 always has at least '' to keep IN() syntactically valid
-AND (%2 = 0 OR Boards.name IN (%3))
+-- Supported-boards filter: %2=0 skips; %3 always has at least '' to keep IN() syntactically valid.
+-- Generic/custom boards are structural fallbacks, not released products, so they're always exempt.
+AND (
+    %2 = 0
+    OR Boards.uid LIKE 'GENERIC_%'
+    OR Boards.uid LIKE 'CUSTOM_BOARD_%'
+    OR Boards.name IN (%3)
+)
 ORDER BY
     CASE
         WHEN EXISTS (
