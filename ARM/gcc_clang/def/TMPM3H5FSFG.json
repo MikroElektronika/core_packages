@@ -1,4 +1,6 @@
 {
+    "config_registers": [
+    ],
     "core": "M3",
     "delay_src_path": "delays/M3/__lib_delays.c",
     "mcu": "TMPM3H5FSFG",
