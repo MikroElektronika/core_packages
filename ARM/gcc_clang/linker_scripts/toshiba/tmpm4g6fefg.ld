@@ -42,19 +42,24 @@ MEMORY
   FLASH  (rx)     : ORIGIN = 0x00000000,   LENGTH = 768K
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
 }
+
 /* Highest address of the user mode stack */
-_estack = ORIGIN(RAM) + LENGTH(RAM); /* end of "RAM" Ram type memory */
+__StackTop = ORIGIN(RAM) + LENGTH(RAM);
+_estack = __StackTop;
 
 /* Sections */
 SECTIONS
 {
-  /* The startup code into "FLASH" Rom type memory */
-  .isr_vector :
+  /* Vector table must be the very first thing in FLASH */
+  .isr_vector ORIGIN(FLASH) :
   {
-    . = ALIGN(4);
-    KEEP(*(.isr_vector)) /* Startup code */
-    . = ALIGN(4);
-  } >FLASH
+      . = ALIGN(4);
+
+      KEEP(*(.vectors))
+      KEEP(*(.isr_vector))
+
+      . = ALIGN(4);
+  } > FLASH
 
   /* The program code and other data into "FLASH" Rom type memory */
   .text :
@@ -71,7 +76,7 @@ SECTIONS
 
     . = ALIGN(4);
     _etext = .;        /* define a global symbols at end of code */
-  } >FLASH
+  } > FLASH
 
   /* Constant data into "FLASH" Rom type memory */
   .rodata :
@@ -80,13 +85,13 @@ SECTIONS
     *(.rodata)         /* .rodata sections (constants, strings, etc.) */
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     . = ALIGN(4);
-  } >FLASH
+  } > FLASH
 
   .ARM.extab   : {
     . = ALIGN(4);
     *(.ARM.extab* .gnu.linkonce.armextab.*)
     . = ALIGN(4);
-  } >FLASH
+  } > FLASH
 
   .ARM : {
     . = ALIGN(4);
@@ -94,7 +99,7 @@ SECTIONS
     *(.ARM.exidx*)
     __exidx_end = .;
     . = ALIGN(4);
-  } >FLASH
+  } > FLASH
 
   .preinit_array     :
   {
@@ -103,7 +108,7 @@ SECTIONS
     KEEP (*(.preinit_array*))
     PROVIDE_HIDDEN (__preinit_array_end = .);
     . = ALIGN(4);
-  } >FLASH
+  } > FLASH
 
   .init_array :
   {
@@ -113,7 +118,7 @@ SECTIONS
     KEEP (*(.init_array*))
     PROVIDE_HIDDEN (__init_array_end = .);
     . = ALIGN(4);
-  } >FLASH
+  } > FLASH
 
   .fini_array :
   {
@@ -123,7 +128,34 @@ SECTIONS
     KEEP (*(.fini_array*))
     PROVIDE_HIDDEN (__fini_array_end = .);
     . = ALIGN(4);
-  } >FLASH
+  } > FLASH
+
+  /* Copy table used by Reset_Handler to initialize RAM sections */
+  .copy.table :
+  {
+    . = ALIGN(4);
+    __copy_table_start__ = .;
+
+    LONG(LOADADDR(.data))
+    LONG(ADDR(.data))
+    LONG(SIZEOF(.data))
+
+    __copy_table_end__ = .;
+    . = ALIGN(4);
+  } > FLASH
+
+  /* Zero table used by Reset_Handler to initialize BSS sections */
+  .zero.table :
+  {
+    . = ALIGN(4);
+    __zero_table_start__ = .;
+
+    LONG(ADDR(.bss))
+    LONG(SIZEOF(.bss))
+
+    __zero_table_end__ = .;
+    . = ALIGN(4);
+  } > FLASH
 
   /* Used by the startup to initialize data */
   _sidata = LOADADDR(.data);

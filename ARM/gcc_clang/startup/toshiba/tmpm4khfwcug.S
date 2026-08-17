@@ -26,7 +26,7 @@
                 .syntax  unified
                 .arch    armv7e-m
 
-                .section .vectors
+                .section .vectors, "a", %progbits
                 .align   2
                 .globl   __Vectors
                 .globl   __Vectors_End
@@ -141,8 +141,7 @@ __Vectors:
                 .long    Interrupt88_Handler                  /*  88 Reserved */
                 .long    INTENC10_Handler                     /*  89 INTENC10 */
                 .long    INTENC11_Handler                     /*  90 INTENC11 */
-
-                .space   (214 * 4)                          /* Interrupts 10 .. 224 are left out */
+                .space   (134 * 4)
 __Vectors_End:
                 .equ     __Vectors_Size, __Vectors_End - __Vectors
                 .size    __Vectors, . - __Vectors
@@ -200,7 +199,7 @@ Reset_Handler:
                 b        .L_loop2
 .L_loop2_done:
 
-                bl       _start
+                bl       main
 
                 .fnend
                 .size    Reset_Handler, . - Reset_Handler

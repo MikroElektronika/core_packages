@@ -68,12 +68,6 @@
 #define PLL0_SETUP_WAIT_LOOPS      2000U
 #define PLL0_STABLE_WAIT_LOOPS     8000U
 
-extern uint32_t __data_load__;
-extern uint32_t __data_start__;
-extern uint32_t __data_end__;
-extern uint32_t __bss_start__;
-extern uint32_t __bss_end__;
-
 typedef struct
 {
     uint32_t CG_FC_Frequency;   // System frequency.
@@ -112,50 +106,13 @@ void CG_GetClocksFrequency( CG_ClocksTypeDef *CG_Clocks )
 }
 
 /**
- * @brief Initialize the data and BSS sections in RAM.
- *
- * This function performs the startup memory initialization typically done
- * before calling main():
- * - Copies the initialized data section (.data) from flash (load address)
- *   to its runtime location in RAM.
- * - Clears the uninitialized data section (.bss) in RAM by setting it to zero.
- *
- * It relies on linker-provided symbols:
- * - __data_load__  : Start of .data in flash
- * - __data_start__ : Start of .data in RAM
- * - __data_end__   : End of .data in RAM
- * - __bss_start__  : Start of .bss in RAM
- * - __bss_end__    : End of .bss in RAM
- *
- * @note This function should be called during system startup,
- *       before global/static variables are accessed.
- */
-static void data_init( void )
-{
-    uint32_t *src = &__data_load__;
-    uint32_t *dst = &__data_start__;
-
-    /* Copy .data. */
-    while ( dst < &__data_end__ ) {
-        *dst++ = *src++;
-    }
-
-    /* Zero .bss. */
-    for ( dst = &__bss_start__; dst < &__bss_end__; ) {
-        *dst++ = 0;
-    }
-}
-
-/**
  * Initialize the system.
  * @param  none
  * @return none
  * @brief  Set-up and initialize the microcontroller system.
  */
-void clockConfig( void )
+void SystemInit( void )
 {
-    data_init();
-
     /* Disable SIWD. */
     TSB_SIWD0->EN = SIWDEN_Val;
     TSB_SIWD0->CR = SIWDCR_Val;
