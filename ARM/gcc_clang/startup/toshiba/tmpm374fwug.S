@@ -1,244 +1,318 @@
-/**************************************************************************//**
- * @file     startup_ARMCM3.s
- * @brief    CMSIS Core Device Startup File for
- *           ARMCM3 Device Series
- * @version  V1.07
- * @date     30. January 2012
- *
- * @note     Version CodeSourcery Sourcery G++ Lite (with CS3)
- * Copyright (C) 2012 ARM Limited. All rights reserved.
- *
- * @par
- * ARM Limited (ARM) is supplying this software for use with Cortex-M
- * processor based microcontrollers.  This file can be freely distributed
- * within development tools that are supporting such ARM based processors.
- *
- * @par
- * THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
- * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
- * ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
- * CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
- *
- ******************************************************************************/
 /*
-//-------- <<< Use Configuration Wizard in Context Menu >>> ------------------
+******************************************************************************
+**
+** @file        : tmpm374fwug.S
+** @author      : Ivan Ruzavin (MikroE)
+** @brief       : Startup file for TMPM374FWUG Device
+**                Core: ARM Cortex-M3
+**
+**  Target      : TOSHIBA TMPM374FWUG
+**
+**  Distribution: The file is distributed as is, without any warranty
+**                of any kind.
+**
+******************************************************************************
+** @attention
+**
+** Copyright (c) ${COPYRIGHT_YEAR_MIKROE} MikroElektronika.
+** All rights reserved.
+**
+** This software is licensed under terms that can be found in the LICENSE file
+** in the root directory of this software component.
+** If no LICENSE file comes with this software, it is provided AS-IS.
+**
+******************************************************************************
 */
 
+                .syntax  unified
+                .arch    armv7-m
 
-/*
-// <h> Stack Configuration
-//   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
-// </h>
-*/
+                .section .vectors
+                .align   2
+                .globl   __Vectors
+                .globl   __Vectors_End
+                .globl   __Vectors_Size
+__Vectors:
+                .long    __StackTop                         /*     Top of Stack */
+                .long    Reset_Handler                      /*     Reset Handler */
+                .long    NMI_Handler                        /* -14 NMI Handler */
+                .long    HardFault_Handler                  /* -13 Hard Fault Handler */
+                .long    MemManage_Handler                  /* -12 MPU Fault Handler */
+                .long    BusFault_Handler                   /* -11 Bus Fault Handler */
+                .long    UsageFault_Handler                 /* -10 Usage Fault Handler */
+                .long    0                                  /*     Reserved */
+                .long    0                                  /*     Reserved */
+                .long    0                                  /*     Reserved */
+                .long    0                                  /*     Reserved */
+                .long    SVC_Handler                        /*  -5 SVCall Handler */
+                .long    DebugMon_Handler                   /*  -4 Debug Monitor Handler */
+                .long    0                                  /*     Reserved */
+                .long    PendSV_Handler                     /*  -2 PendSV Handler */
+                .long    SysTick_Handler                    /*  -1 SysTick Handler */
 
-    .equ    Stack_Size, 0x00000400
-    .section ".stack", "w"
-    .align  3
-    .globl  __cs3_stack_mem
-    .globl  __cs3_stack_size
-__cs3_stack_mem:
-    .if     Stack_Size
-    .space  Stack_Size
-    .endif
-    .size   __cs3_stack_mem,  . - __cs3_stack_mem
-    .set    __cs3_stack_size, . - __cs3_stack_mem
+                /* Interrupts */
+                .long    Interrupt0_Handler                   /*   0 Reserved */
+                .long    Interrupt1_Handler                   /*   1 Reserved */
+                .long    Interrupt2_Handler                   /*   2 Reserved */
+                .long    Interrupt3_Handler                   /*   3 Reserved */
+                .long    Interrupt4_Handler                   /*   4 Reserved */
+                .long    INT5_Handler                         /*   5 INT5 */
+                .long    INTRX0_Handler                       /*   6 INTRX0 */
+                .long    INTTX0_Handler                       /*   7 INTTX0 */
+                .long    INTRX1_Handler                       /*   8 INTRX1 */
+                .long    INTTX1_Handler                       /*   9 INTTX1 */
+                .long    Interrupt10_Handler                  /*  10 Reserved */
+                .long    INTVCNB_Handler                      /*  11 INTVCNB */
+                .long    Interrupt12_Handler                  /*  12 Reserved */
+                .long    INTEMG1_Handler                      /*  13 INTEMG1 */
+                .long    Interrupt14_Handler                  /*  14 Reserved */
+                .long    INTOVV1_Handler                      /*  15 INTOVV1 */
+                .long    Interrupt16_Handler                  /*  16 Reserved */
+                .long    Interrupt17_Handler                  /*  17 Reserved */
+                .long    Interrupt18_Handler                  /*  18 Reserved */
+                .long    INTADBPDB_Handler                    /*  19 INTADBPDB */
+                .long    INTTB00_Handler                      /*  20 INTTB00 */
+                .long    INTTB01_Handler                      /*  21 INTTB01 */
+                .long    INTTB10_Handler                      /*  22 INTTB10 */
+                .long    INTTB11_Handler                      /*  23 INTTB11 */
+                .long    INTTB40_Handler                      /*  24 INTTB40 */
+                .long    INTTB41_Handler                      /*  25 INTTB41 */
+                .long    INTTB50_Handler                      /*  26 INTTB50 */
+                .long    INTTB51_Handler                      /*  27 INTTB51 */
+                .long    Interrupt28_Handler                  /*  28 Reserved */
+                .long    INTPMD1_Handler                      /*  29 INTPMD1 */
+                .long    INTCAP00_Handler                     /*  30 INTCAP00 */
+                .long    Interrupt31_Handler                  /*  31 Reserved */
+                .long    INTCAP10_Handler                     /*  32 INTCAP10 */
+                .long    Interrupt33_Handler                  /*  33 Reserved */
+                .long    INTCAP40_Handler                     /*  34 INTCAP40 */
+                .long    Interrupt35_Handler                  /*  35 Reserved */
+                .long    INTCAP50_Handler                     /*  36 INTCAP50 */
+                .long    Interrupt37_Handler                  /*  37 Reserved */
+                .long    INT6_Handler                         /*  38 INT6 */
+                .long    INT7_Handler                         /*  39 INT7 */
+                .long    Interrupt40_Handler                  /*  40 Reserved */
+                .long    Interrupt41_Handler                  /*  41 Reserved */
+                .long    Interrupt42_Handler                  /*  42 Reserved */
+                .long    INTADBCPA_Handler                    /*  43 INTADBCPA */
+                .long    Interrupt44_Handler                  /*  44 Reserved */
+                .long    INTADBCPB_Handler                    /*  45 INTADBCPB */
+                .long    INTTB20_Handler                      /*  46 INTTB20 */
+                .long    INTTB21_Handler                      /*  47 INTTB21 */
+                .long    INTTB30_Handler                      /*  48 INTTB30 */
+                .long    INTTB31_Handler                      /*  49 INTTB31 */
+                .long    INTCAP20_Handler                     /*  50 INTCAP20 */
+                .long    INTCAP21_Handler                     /*  51 INTCAP21 */
+                .long    INTCAP30_Handler                     /*  52 INTCAP30 */
+                .long    INTCAP31_Handler                     /*  53 INTCAP31 */
+                .long    Interrupt54_Handler                  /*  54 Reserved */
+                .long    INTADBSFT_Handler                    /*  55 INTADBSFT */
+                .long    Interrupt56_Handler                  /*  56 Reserved */
+                .long    INTADBTMR_Handler                    /*  57 INTADBTMR */
+                .long    Interrupt58_Handler                  /*  58 Reserved */
+                .long    Interrupt59_Handler                  /*  59 Reserved */
+                .long    Interrupt60_Handler                  /*  60 Reserved */
+                .long    Interrupt61_Handler                  /*  61 Reserved */
+                .long    Interrupt62_Handler                  /*  62 Reserved */
+                .long    INTENC1_Handler                      /*  63 INTENC1 */
+                .long    INTRX3_Handler                       /*  64 INTRX3 */
+                .long    INTTX3_Handler                       /*  65 INTTX3 */
+                .long    INTTB60_Handler                      /*  66 INTTB60 */
+                .long    INTTB61_Handler                      /*  67 INTTB61 */
+                .long    INTTB70_Handler                      /*  68 INTTB70 */
+                .long    INTTB71_Handler                      /*  69 INTTB71 */
+                .long    INTCAP60_Handler                     /*  70 INTCAP60 */
+                .long    INTCAP61_Handler                     /*  71 INTCAP61 */
+                .long    INTCAP70_Handler                     /*  72 INTCAP70 */
+                .long    INTCAP71_Handler                     /*  73 INTCAP71 */
+                .long    INTC_Handler                         /*  74 INTC */
+                .long    INTD_Handler                         /*  75 INTD */
+                .long    INTE_Handler                         /*  76 INTE */
+                .long    INTF_Handler                         /*  77 INTF */
+
+                .space   (214 * 4)                          /* Interrupts 10 .. 224 are left out */
+__Vectors_End:
+                .equ     __Vectors_Size, __Vectors_End - __Vectors
+                .size    __Vectors, . - __Vectors
 
 
-/*
-// <h> Heap Configuration
-//   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-// </h>
-*/
+                .thumb
+                .section .text
+                .align   2
 
-    .equ    Heap_Size,  0x00000C00
+                .thumb_func
+                .type    Reset_Handler, %function
+                .globl   Reset_Handler
+                .fnstart
+Reset_Handler:
+                bl       SystemInit
 
-    .section ".heap", "w"
-    .align  3
-    .globl  __cs3_heap_start
-    .globl  __cs3_heap_end
-__cs3_heap_start:
-    .if     Heap_Size
-    .space  Heap_Size
-    .endif
-__cs3_heap_end:
+                ldr      r4, =__copy_table_start__
+                ldr      r5, =__copy_table_end__
 
+.L_loop0:
+                cmp      r4, r5
+                bge      .L_loop0_done
+                ldr      r1, [r4]
+                ldr      r2, [r4, #4]
+                ldr      r3, [r4, #8]
 
-/* Vector Table */
+.L_loop0_0:
+                subs     r3, #4
+                ittt     ge
+                ldrge    r0, [r1, r3]
+                strge    r0, [r2, r3]
+                bge      .L_loop0_0
 
-    .section ".cs3.interrupt_vector"
-    .globl  __cs3_interrupt_vector_cortex_m
-    .type   __cs3_interrupt_vector_cortex_m, %object
+                adds     r4, #12
+                b        .L_loop0
+.L_loop0_done:
 
-__cs3_interrupt_vector_cortex_m:
-    .long   __cs3_stack                 /* Top of Stack                 */
-    .long   __cs3_reset                 /* Reset Handler                */
-    .long   NMI_Handler                 /* NMI Handler                  */
-    .long   HardFault_Handler           /* Hard Fault Handler           */
-    .long   MemManage_Handler           /* MPU Fault Handler            */
-    .long   BusFault_Handler            /* Bus Fault Handler            */
-    .long   UsageFault_Handler          /* Usage Fault Handler          */
-    .long   0                           /* Reserved                     */
-    .long   0                           /* Reserved                     */
-    .long   0                           /* Reserved                     */
-    .long   0                           /* Reserved                     */
-    .long   SVC_Handler                 /* SVCall Handler               */
-    .long   DebugMon_Handler            /* Debug Monitor Handler        */
-    .long   0                           /* Reserved                     */
-    .long   PendSV_Handler              /* PendSV Handler               */
-    .long   SysTick_Handler             /* SysTick Handler              */
+                ldr      r3, =__zero_table_start__
+                ldr      r4, =__zero_table_end__
 
-    /* External Interrupts */
-    .long    WDT_IRQHandler        /*  0:  Watchdog Timer            */
-    .long    RTC_IRQHandler        /*  1:  Real Time Clock           */
-    .long    TIM0_IRQHandler       /*  2:  Timer0 / Timer1           */
-    .long    TIM2_IRQHandler       /*  3:  Timer2 / Timer3           */
-    .long    MCIA_IRQHandler       /*  4:  MCIa                      */
-    .long    MCIB_IRQHandler       /*  5:  MCIb                      */
-    .long    UART0_IRQHandler      /*  6:  UART0 - DUT FPGA          */
-    .long    UART1_IRQHandler      /*  7:  UART1 - DUT FPGA          */
-    .long    UART2_IRQHandler      /*  8:  UART2 - DUT FPGA          */
-    .long    UART4_IRQHandler      /*  9:  UART4 - not connected     */
-    .long    AACI_IRQHandler       /* 10: AACI / AC97                */
-    .long    CLCD_IRQHandler       /* 11: CLCD Combined Interrupt    */
-    .long    ENET_IRQHandler       /* 12: Ethernet                   */
-    .long    USBDC_IRQHandler      /* 13: USB Device                 */
-    .long    USBHC_IRQHandler      /* 14: USB Host Controller        */
-    .long    CHLCD_IRQHandler      /* 15: Character LCD              */
-    .long    FLEXRAY_IRQHandler    /* 16: Flexray                    */
-    .long    CAN_IRQHandler        /* 17: CAN                        */
-    .long    LIN_IRQHandler        /* 18: LIN                        */
-    .long    I2C_IRQHandler        /* 19: I2C ADC/DAC                */
-    .long    0                     /* 20: Reserved                   */
-    .long    0                     /* 21: Reserved                   */
-    .long    0                     /* 22: Reserved                   */
-    .long    0                     /* 23: Reserved                   */
-    .long    0                     /* 24: Reserved                   */
-    .long    0                     /* 25: Reserved                   */
-    .long    0                     /* 26: Reserved                   */
-    .long    0                     /* 27: Reserved                   */
-    .long    CPU_CLCD_IRQHandler   /* 28: Reserved - CPU FPGA CLCD   */
-    .long    0                     /* 29: Reserved - CPU FPGA        */
-    .long    UART3_IRQHandler      /* 30: UART3    - CPU FPGA        */
-    .long    SPI_IRQHandler        /* 31: SPI Touchscreen - CPU FPGA */
+.L_loop2:
+                cmp      r3, r4
+                bge      .L_loop2_done
+                ldr      r1, [r3]
+                ldr      r2, [r3, #4]
+                movs     r0, 0
 
-    .size   __cs3_interrupt_vector_cortex_m, . - __cs3_interrupt_vector_cortex_m
+.L_loop2_0:
+                subs     r2, #4
+                itt      ge
+                strge    r0, [r1, r2]
+                bge      .L_loop2_0
 
+                adds     r3, #8
+                b        .L_loop2
+.L_loop2_done:
 
-    .thumb
+                bl       _start
 
+                .fnend
+                .size    Reset_Handler, . - Reset_Handler
 
-/* Reset Handler */
-
-    .section .cs3.reset,"x",%progbits
-    .thumb_func
-    .globl  __cs3_reset_cortex_m
-    .type   __cs3_reset_cortex_m, %function
-__cs3_reset_cortex_m:
-    .fnstart
-    LDR     R0, =SystemInit
-    BLX     R0
-    LDR     R0,=_start
-    BX      R0
-    .pool
-    .cantunwind
-    .fnend
-    .size   __cs3_reset_cortex_m,.-__cs3_reset_cortex_m
-
-    .section ".text"
-
-/* Exception Handlers */
-
-    .weak   NMI_Handler
-    .type   NMI_Handler, %function
-NMI_Handler:
-    B       .
-    .size   NMI_Handler, . - NMI_Handler
-
-    .weak   HardFault_Handler
-    .type   HardFault_Handler, %function
+/* The default macro is not used for HardFault_Handler
+ * because this results in a poor debug illusion.
+ */
+                .thumb_func
+                .type    HardFault_Handler, %function
+                .weak    HardFault_Handler
+                .fnstart
 HardFault_Handler:
-    B       .
-    .size   HardFault_Handler, . - HardFault_Handler
+                b        .
+                .fnend
+                .size    HardFault_Handler, . - HardFault_Handler
 
-    .weak   MemManage_Handler
-    .type   MemManage_Handler, %function
-MemManage_Handler:
-    B       .
-    .size   MemManage_Handler, . - MemManage_Handler
-
-    .weak   BusFault_Handler
-    .type   BusFault_Handler, %function
-BusFault_Handler:
-    B       .
-    .size   BusFault_Handler, . - BusFault_Handler
-
-    .weak   UsageFault_Handler
-    .type   UsageFault_Handler, %function
-UsageFault_Handler:
-    B       .
-    .size   UsageFault_Handler, . - UsageFault_Handler
-
-    .weak   SVC_Handler
-    .type   SVC_Handler, %function
-SVC_Handler:
-    B       .
-    .size   SVC_Handler, . - SVC_Handler
-
-    .weak   DebugMon_Handler
-    .type   DebugMon_Handler, %function
-DebugMon_Handler:
-    B       .
-    .size   DebugMon_Handler, . - DebugMon_Handler
-
-    .weak   PendSV_Handler
-    .type   PendSV_Handler, %function
-PendSV_Handler:
-    B       .
-    .size   PendSV_Handler, . - PendSV_Handler
-
-    .weak   SysTick_Handler
-    .type   SysTick_Handler, %function
-SysTick_Handler:
-    B       .
-    .size   SysTick_Handler, . - SysTick_Handler
-
-
-/* IRQ Handlers */
-
-    .globl  Default_Handler
-    .type   Default_Handler, %function
+                .thumb_func
+                .type    Default_Handler, %function
+                .weak    Default_Handler
+                .fnstart
 Default_Handler:
-    B       .
-    .size   Default_Handler, . - Default_Handler
+                b        .
+                .fnend
+                .size    Default_Handler, . - Default_Handler
 
-    .macro  def_irq_handler handler
-    .weak   \handler
-    .set    \handler, Default_Handler
-    .endm
+/* Macro to define default exception/interrupt handlers.
+ * Default handler are weak symbols with an endless loop.
+ * They can be overwritten by real handlers.
+ */
+                .macro   Set_Default_Handler  Handler_Name
+                .weak    \Handler_Name
+                .set     \Handler_Name, Default_Handler
+                .endm
 
-    def_irq_handler    WDT_IRQHandler
-    def_irq_handler    RTC_IRQHandler
-    def_irq_handler    TIM0_IRQHandler
-    def_irq_handler    TIM2_IRQHandler
-    def_irq_handler    MCIA_IRQHandler
-    def_irq_handler    MCIB_IRQHandler
-    def_irq_handler    UART0_IRQHandler
-    def_irq_handler    UART1_IRQHandler
-    def_irq_handler    UART2_IRQHandler
-    def_irq_handler    UART3_IRQHandler
-    def_irq_handler    UART4_IRQHandler
-    def_irq_handler    AACI_IRQHandler
-    def_irq_handler    CLCD_IRQHandler
-    def_irq_handler    ENET_IRQHandler
-    def_irq_handler    USBDC_IRQHandler
-    def_irq_handler    USBHC_IRQHandler
-    def_irq_handler    CHLCD_IRQHandler
-    def_irq_handler    FLEXRAY_IRQHandler
-    def_irq_handler    CAN_IRQHandler
-    def_irq_handler    LIN_IRQHandler
-    def_irq_handler    I2C_IRQHandler
-    def_irq_handler    CPU_CLCD_IRQHandler
-    def_irq_handler    SPI_IRQHandler
 
-    .end
+/* Default exception/interrupt handler */
+
+                Set_Default_Handler  NMI_Handler
+                Set_Default_Handler  MemManage_Handler
+                Set_Default_Handler  BusFault_Handler
+                Set_Default_Handler  UsageFault_Handler
+                Set_Default_Handler  SVC_Handler
+                Set_Default_Handler  DebugMon_Handler
+                Set_Default_Handler  PendSV_Handler
+                Set_Default_Handler  SysTick_Handler
+
+                Set_Default_Handler  Interrupt0_Handler
+                Set_Default_Handler  Interrupt1_Handler
+                Set_Default_Handler  Interrupt2_Handler
+                Set_Default_Handler  Interrupt3_Handler
+                Set_Default_Handler  Interrupt4_Handler
+                Set_Default_Handler  INT5_Handler
+                Set_Default_Handler  INTRX0_Handler
+                Set_Default_Handler  INTTX0_Handler
+                Set_Default_Handler  INTRX1_Handler
+                Set_Default_Handler  INTTX1_Handler
+                Set_Default_Handler  Interrupt10_Handler
+                Set_Default_Handler  INTVCNB_Handler
+                Set_Default_Handler  Interrupt12_Handler
+                Set_Default_Handler  INTEMG1_Handler
+                Set_Default_Handler  Interrupt14_Handler
+                Set_Default_Handler  INTOVV1_Handler
+                Set_Default_Handler  Interrupt16_Handler
+                Set_Default_Handler  Interrupt17_Handler
+                Set_Default_Handler  Interrupt18_Handler
+                Set_Default_Handler  INTADBPDB_Handler
+                Set_Default_Handler  INTTB00_Handler
+                Set_Default_Handler  INTTB01_Handler
+                Set_Default_Handler  INTTB10_Handler
+                Set_Default_Handler  INTTB11_Handler
+                Set_Default_Handler  INTTB40_Handler
+                Set_Default_Handler  INTTB41_Handler
+                Set_Default_Handler  INTTB50_Handler
+                Set_Default_Handler  INTTB51_Handler
+                Set_Default_Handler  Interrupt28_Handler
+                Set_Default_Handler  INTPMD1_Handler
+                Set_Default_Handler  INTCAP00_Handler
+                Set_Default_Handler  Interrupt31_Handler
+                Set_Default_Handler  INTCAP10_Handler
+                Set_Default_Handler  Interrupt33_Handler
+                Set_Default_Handler  INTCAP40_Handler
+                Set_Default_Handler  Interrupt35_Handler
+                Set_Default_Handler  INTCAP50_Handler
+                Set_Default_Handler  Interrupt37_Handler
+                Set_Default_Handler  INT6_Handler
+                Set_Default_Handler  INT7_Handler
+                Set_Default_Handler  Interrupt40_Handler
+                Set_Default_Handler  Interrupt41_Handler
+                Set_Default_Handler  Interrupt42_Handler
+                Set_Default_Handler  INTADBCPA_Handler
+                Set_Default_Handler  Interrupt44_Handler
+                Set_Default_Handler  INTADBCPB_Handler
+                Set_Default_Handler  INTTB20_Handler
+                Set_Default_Handler  INTTB21_Handler
+                Set_Default_Handler  INTTB30_Handler
+                Set_Default_Handler  INTTB31_Handler
+                Set_Default_Handler  INTCAP20_Handler
+                Set_Default_Handler  INTCAP21_Handler
+                Set_Default_Handler  INTCAP30_Handler
+                Set_Default_Handler  INTCAP31_Handler
+                Set_Default_Handler  Interrupt54_Handler
+                Set_Default_Handler  INTADBSFT_Handler
+                Set_Default_Handler  Interrupt56_Handler
+                Set_Default_Handler  INTADBTMR_Handler
+                Set_Default_Handler  Interrupt58_Handler
+                Set_Default_Handler  Interrupt59_Handler
+                Set_Default_Handler  Interrupt60_Handler
+                Set_Default_Handler  Interrupt61_Handler
+                Set_Default_Handler  Interrupt62_Handler
+                Set_Default_Handler  INTENC1_Handler
+                Set_Default_Handler  INTRX3_Handler
+                Set_Default_Handler  INTTX3_Handler
+                Set_Default_Handler  INTTB60_Handler
+                Set_Default_Handler  INTTB61_Handler
+                Set_Default_Handler  INTTB70_Handler
+                Set_Default_Handler  INTTB71_Handler
+                Set_Default_Handler  INTCAP60_Handler
+                Set_Default_Handler  INTCAP61_Handler
+                Set_Default_Handler  INTCAP70_Handler
+                Set_Default_Handler  INTCAP71_Handler
+                Set_Default_Handler  INTC_Handler
+                Set_Default_Handler  INTD_Handler
+                Set_Default_Handler  INTE_Handler
+                Set_Default_Handler  INTF_Handler
+
+
+                .end

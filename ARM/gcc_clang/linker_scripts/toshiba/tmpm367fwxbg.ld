@@ -1,3 +1,35 @@
+/*
+******************************************************************************
+**
+** @file        : tmpm367fwxbg.ld
+** @author      : Ivan Ruzavin (MikroE)
+** @brief       : Linker script for tmpm367fwxbg Device
+**                128Kbytes FLASH
+**                50Kbytes RAM
+*
+**                Set heap size, stack size and stack location according
+**                to application requirements.
+**
+**                Set memory bank area and size if external memory is used
+**
+**  Target      : TOSHIBA TMPM367FWXBG
+**
+**  Distribution: The file is distributed as is, without any warranty
+**                of any kind.
+**
+******************************************************************************
+** @attention
+**
+** Copyright (c) ${COPYRIGHT_YEAR_MIKROE} MikroElektronika.
+** All rights reserved.
+**
+** This software is licensed under terms that can be found in the LICENSE file
+** in the root directory of this software component.
+** If no LICENSE file comes with this software, it is provided AS-IS.
+**
+******************************************************************************
+*/
+
 /* Entry Point */
 ENTRY(Reset_Handler)
 
@@ -7,8 +39,8 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
+  FLASH  (rx)     : ORIGIN = 0x00000000,   LENGTH = 128K
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 50K
-  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 128K
 }
 
 /* Highest address of the user mode stack */
