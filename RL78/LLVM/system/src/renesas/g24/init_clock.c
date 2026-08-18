@@ -27,6 +27,7 @@
  */
 
 #include <stdint.h>
+#include "core_header.h"
 #include "mcu.h"
 
 #ifndef FOSC_KHZ_VALUE

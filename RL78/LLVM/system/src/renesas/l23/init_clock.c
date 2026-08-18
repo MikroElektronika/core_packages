@@ -27,8 +27,8 @@
  */
 
 #include <stdint.h>
+#include "core_header.h"
 #include "mcu.h"
-
 
 /*
  * RL78/L23 has no stabilization-status flag for HOCO, MOCO or XT1. Renesas BSP
