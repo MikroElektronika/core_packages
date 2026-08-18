@@ -1,6 +1,665 @@
 {
+    "config_registers": [
+        {
+            "address": "000fffa0",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "XT1_MODE",
+                    "label": "Subsystem clock pin / XT1 oscillator mode",
+                    "mask": "36",
+                    "settings": [
+                        {
+                            "label": "Input-port mode / subsystem oscillator unused",
+                            "value": "0"
+                        },
+                        {
+                            "label": "XT1 low-power oscillation 1 (default mode)",
+                            "value": "10"
+                        },
+                        {
+                            "label": "XT1 normal oscillation",
+                            "value": "12"
+                        },
+                        {
+                            "label": "XT1 low-power oscillation 2",
+                            "value": "14"
+                        },
+                        {
+                            "label": "XT1 low-power oscillation 3",
+                            "value": "16"
+                        },
+                        {
+                            "label": "External subsystem clock input",
+                            "value": "30"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "X1_MODE",
+                    "label": "High-speed system clock pin / X1 oscillator mode",
+                    "mask": "c1",
+                    "settings": [
+                        {
+                            "label": "Port mode / high-speed system clock unused",
+                            "value": "0"
+                        },
+                        {
+                            "label": "X1 resonator, 1 MHz to 10 MHz",
+                            "value": "40"
+                        },
+                        {
+                            "label": "X1 resonator, above 10 MHz to 20 MHz",
+                            "value": "41"
+                        },
+                        {
+                            "label": "External high-speed clock, 1 MHz to 10 MHz",
+                            "value": "c0"
+                        },
+                        {
+                            "label": "External high-speed clock, above 10 MHz to 20 MHz",
+                            "value": "c1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CMC",
+            "unused": "00000008",
+            "label": "Clock operation mode control register (XTSEL is applied automatically on 20-32 pin devices)"
+        },
+        {
+            "address": "000fffa1",
+            "default": "c0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HIOSTOP",
+                    "label": "High-speed on-chip oscillator (HOCO) operation",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "HOCO operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HOCO stopped",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MIOEN",
+                    "label": "Middle-speed on-chip oscillator (MOCO) operation",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "MOCO stopped",
+                            "value": "0"
+                        },
+                        {
+                            "label": "MOCO operating",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "40",
+                    "key": "XTSTOP",
+                    "label": "Subsystem clock oscillator operation",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "XT1/external subsystem clock operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "XT1/external subsystem clock stopped",
+                            "value": "40"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "80",
+                    "key": "MSTOP",
+                    "label": "High-speed system clock operation",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "X1/external high-speed clock operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "X1/external high-speed clock stopped",
+                            "value": "80"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CSC",
+            "unused": "0000003c",
+            "label": "Clock operation status/control register (desired post-init state)"
+        },
+        {
+            "address": "000fffa3",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "5",
+                    "key": "OSTS",
+                    "label": "X1 oscillation stabilization time",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "2^8 / fX",
+                            "value": "0"
+                        },
+                        {
+                            "label": "2^9 / fX",
+                            "value": "1"
+                        },
+                        {
+                            "label": "2^10 / fX",
+                            "value": "2"
+                        },
+                        {
+                            "label": "2^11 / fX",
+                            "value": "3"
+                        },
+                        {
+                            "label": "2^13 / fX",
+                            "value": "4"
+                        },
+                        {
+                            "label": "2^15 / fX",
+                            "value": "5"
+                        },
+                        {
+                            "label": "2^17 / fX",
+                            "value": "6"
+                        },
+                        {
+                            "label": "2^18 / fX",
+                            "value": "7"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_OSTS",
+            "unused": "000000f8",
+            "label": "Oscillation stabilization time select register"
+        },
+        {
+            "address": "000fffa4",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCM1",
+                    "label": "Main on-chip oscillator clock (fOCO) source",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "High-speed on-chip oscillator (HOCO / fIH)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Middle-speed on-chip oscillator (MOCO / fIM)",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MCM0",
+                    "label": "Main system clock (fMAIN) source",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Main on-chip oscillator (fOCO)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "High-speed system clock (fMX)",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CSS",
+                    "label": "CPU/peripheral hardware clock (fCLK) source",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "Main system/PLL select clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Subsystem clock (fSUB)",
+                            "value": "40"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CKC",
+            "unused": "000000ae",
+            "label": "System clock control register (status bits are read-only)"
+        },
+        {
+            "address": "000fffa7",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SELLOSC",
+                    "label": "Subsystem clock (fSUB) source",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Subsystem oscillator/external subsystem clock (fSX)",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Low-speed on-chip oscillator (LOCO / fIL)",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_CKSEL",
+            "unused": "000000fe",
+            "label": "Subsystem clock select register"
+        },
+        {
+            "address": "000f007c",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "PFBE",
+                    "label": "Code flash prefetch buffer",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Prefetch buffer disabled",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Prefetch buffer enabled",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_PFBER",
+            "unused": "000000fe",
+            "label": "Prefetch buffer enable register"
+        },
+        {
+            "address": "000f0098",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLLCK",
+                    "label": "PLL clock supply",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "PLL clock not supplied",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL clock supplied",
+                            "value": "2"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_PCKC",
+            "unused": "000000fd",
+            "label": "Peripheral clock control register (PLL clock control field)"
+        },
+        {
+            "address": "000f00a8",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HOCODIV",
+                    "label": "High-speed on-chip oscillator divider",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "HOCO base / 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HOCO base / 2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "HOCO base / 4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "HOCO base / 8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "HOCO base / 16 (32 MHz base only)",
+                            "value": "4"
+                        },
+                        {
+                            "label": "HOCO base / 32 (32 MHz base only)",
+                            "value": "5"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCODIV",
+            "unused": "000000f8",
+            "label": "High-speed on-chip oscillator frequency select register"
+        },
+        {
+            "address": "000f00aa",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "c0",
+                    "key": "FLMODE",
+                    "label": "Flash operation mode",
+                    "mask": "c0",
+                    "settings": [
+                        {
+                            "label": "Flash operation mode 0",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Flash operation mode 1",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Flash operation mode 2 / highest-speed mode",
+                            "value": "c0"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_FLMODE",
+            "unused": "0000003f",
+            "label": "Flash operation mode register"
+        },
+        {
+            "address": "000f00f2",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MOCODIV",
+                    "label": "Middle-speed on-chip oscillator frequency",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "4 MHz",
+                            "value": "0"
+                        },
+                        {
+                            "label": "2 MHz",
+                            "value": "1"
+                        },
+                        {
+                            "label": "1 MHz",
+                            "value": "2"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOCODIV",
+            "unused": "000000fc",
+            "label": "Middle-speed on-chip oscillator frequency select register"
+        },
+        {
+            "address": "000f00f3",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "WUTMMCK0",
+                    "label": "RTC/interval/UART/clock-output operating clock",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Subsystem clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Low-speed on-chip oscillator (LOCO)",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RTCLPC",
+                    "label": "Subsystem clock supply in STOP/HALT",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Supply subsystem clock to peripheral functions",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stop subsystem-clock supply to peripheral functions other than RTC",
+                            "value": "80"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_OSMC",
+            "unused": "0000006f",
+            "label": "Subsystem clock supply mode control register"
+        },
+        {
+            "address": "000f0214",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MOSCDIV",
+                    "label": "High-speed system clock divider",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "fMX / 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "fMX / 2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "fMX / 4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "fMX / 8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "fMX / 16",
+                            "value": "4"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCDIV",
+            "unused": "000000f8",
+            "label": "High-speed system clock division register"
+        },
+        {
+            "address": "000f0215",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "FWKUP",
+                    "label": "HOCO activation at STOP release / SNOOZE transition",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Normal activation",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Fast activation",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_WKUPMD",
+            "unused": "000000fe",
+            "label": "Standby mode release setting register"
+        },
+        {
+            "address": "000f0219",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "FIHSEL",
+                    "label": "High-speed on-chip oscillator selection",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Option-byte selected 24/32 MHz HOCO path",
+                            "value": "0"
+                        },
+                        {
+                            "label": "48 MHz HOCO path (requires compatible option-byte setting)",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HSCLKSEL",
+            "unused": "000000fe",
+            "label": "High-speed clock select register (FIHST is read-only)"
+        },
+        {
+            "address": "000f02e5",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "56",
+                    "key": "PLLCFG",
+                    "label": "PLL multiplication configuration",
+                    "mask": "fe",
+                    "settings": [
+                        {
+                            "label": "PLL x8 configuration",
+                            "value": "4e"
+                        },
+                        {
+                            "label": "PLL x12 configuration",
+                            "value": "56"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DSCON",
+                    "label": "PLL operation",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PLL stopped",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL operating",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_DSCCTL",
+            "unused": "00000000",
+            "label": "PLL control register"
+        },
+        {
+            "address": "000f02e6",
+            "default": "0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CKSELR",
+                    "label": "Main system/PLL select clock source",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Normal main system clock",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL clock",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RDIV",
+                    "label": "PLL output division",
+                    "mask": "6",
+                    "settings": [
+                        {
+                            "label": "PLL output / 2",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL output / 4",
+                            "value": "2"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MCKC",
+            "unused": "000000f8",
+            "label": "Main clock control register (CLSTR is read-only)"
+        }
+    ],
     "core": "RL78",
-    "delay_src_path": "delays/g24/__lib_delays.c",
+    "delay_src_path": "delays/rl78/__lib_delays.c",
     "mcu": "R7F101G8G",
-    "clock": "1"
+    "clock": "48"
 }

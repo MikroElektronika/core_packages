@@ -3,15 +3,15 @@
  * @file    TMPM3HNA.h
  * @brief   CMSIS Cortex-M3 Core Peripheral Access Layer Header File for the
  *          TOSHIBA 'TMPM3HNA' Device Series
- * @version V1.0.2.0
+ * @version V1.1.0.0
  * 
  * DO NOT USE THIS SOFTWARE WITHOUT THE SOFTWARE LICENSE AGREEMENT.
  * 
- * Copyright(C) Toshiba Electronic Device Solutions Corporation 2022
+  * Copyright(C) Toshiba Electronic Device Solutions Corporation 2025
  *******************************************************************************
  */
 
-/** @addtogroup TOSHIBA_TXZ_MICROCONTROLLER
+/** @addtogroup TOSHIBA_TXZplus_MICROCONTROLLER
   * @{
   */
   
@@ -215,15 +215,15 @@ typedef enum IRQn
 /** Processor and Core Peripheral Section */
 
 /* Configuration of the Cortex-M3 Processor and Core Peripherals */
-#define __CM3_REV              0x0201         /*!< Cortex-M3 Core Revision */
-#define __MPU_PRESENT             1           /*!< MPU present or not */
-#define __NVIC_PRIO_BITS          4           /*!< Number of Bits used for Priority Levels */
-#define __Vendor_SysTickConfig    0           /*!< Set to 1 if different SysTick Config is used */
+#define __CM3_REV 0x0201 /*!< Cortex-M3 Core Revision */
+#define __MPU_PRESENT 1 /*!< MPU present or not */
+#define __NVIC_PRIO_BITS 4 /*!< Number of Bits used for Priority Levels */
+#define __Vendor_SysTickConfig 0 /*!< Set to 1 if different SysTick Config is used */
 /** @} */ /* End of group Configuration_of_CMSIS */
 
 #include "core_cm3.h"                       /* Cortex-M3 processor and core peripherals            */
 // Note: Changed for MikroE implementation.
-// #include "system_TMPM3HxA.h"                /* TMPM3HNA System                                      */
+// #include "system_TMPM3HxA.h"                 /* TMPM3HNA System                                      */
 
 /** @addtogroup Device_Peripheral_registers
   * @{
@@ -371,7 +371,7 @@ Pointer Register*/
   */
 typedef struct
 {
-  __IO uint32_t CTL;               /*!< DAC Control Register                         */
+  __IO uint32_t CR;                /*!< DAC Control Register                         */
   __IO uint32_t REG;               /*!< DAC output Register                          */
 } TSB_DA_TypeDef;
 
@@ -413,7 +413,7 @@ typedef struct
 union {
   __O  uint32_t CR2;               /*!< I2C Control Register 2                       */
   __I  uint32_t SR;                /*!< I2C Status Register                          */
-  };
+  } I2C_CR2_SR;
   __IO uint32_t PRS;               /*!< I2C Prescaler clcok setting Register         */
   __IO uint32_t IE;                /*!< I2C Interrupt Enable Register                */
   __IO uint32_t ST;                /*!< I2C Interrupt Register                       */
@@ -455,13 +455,13 @@ typedef struct
   __IO uint32_t MOD0;              /*!< AD Mode Control Register 0                   */
   __IO uint32_t MOD1;              /*!< AD Mode Control Register 1                   */
   __IO uint32_t MOD2;              /*!< AD Mode Control Register 2                   */
-  __IO uint32_t MOD3;              /*!< AD Mode Control Register 3                   */
+       uint32_t RESERVED0;
   __IO uint32_t CMPEN;             /*!< AD Monitoring interrupt permission register  */
   __IO uint32_t CMPCR0;            /*!< AD Monitoring Setting Register 0             */
   __IO uint32_t CMPCR1;            /*!< AD Monitoring Setting Register 1             */
   __IO uint32_t CMP0;              /*!< AD Conversion Result Comparison Register 0   */
   __IO uint32_t CMP1;              /*!< AD Conversion Result Comparison Register 1   */
-       uint32_t RESERVED0[3];
+       uint32_t RESERVED1[3];
   __IO uint32_t PSEL0;             /*!< AD PMD Trigger Program Number Select Register 0*/
   __IO uint32_t PSEL1;             /*!< AD PMD Trigger Program Number Select Register 1*/
   __IO uint32_t PSEL2;             /*!< AD PMD Trigger Program Number Select Register 2*/
@@ -484,7 +484,7 @@ typedef struct
   __IO uint32_t PINTS7;            /*!< AD PMD Trigger Interrupt Select Register 7   */
   __IO uint32_t PREGS;             /*!< AD PMD Trigger Conversion Result Storage Select Register*/
   __IO uint32_t TRM;               /*!< AD Trimming Setting Register                 */
-       uint32_t RESERVED1;
+       uint32_t RESERVED2;
   __IO uint32_t EXAZSEL;           /*!< AD Sampling Time Select Register             */
   __IO uint32_t PSET0;             /*!< AD PMD Trigger Program Register 0            */
   __IO uint32_t PSET1;             /*!< AD PMD Trigger Program Register 1            */
@@ -518,7 +518,7 @@ typedef struct
   __IO uint32_t TSET21;            /*!< AD General purpose Trigger Program Register 21*/
   __IO uint32_t TSET22;            /*!< AD General purpose Trigger Program Register 22*/
   __IO uint32_t TSET23;            /*!< AD General purpose Trigger Program Register 23*/
-       uint32_t RESERVED2[8];
+       uint32_t RESERVED3[8];
   __I  uint32_t REG0;              /*!< AD AD Conversion Result Register 0           */
   __I  uint32_t REG1;              /*!< AD Conversion Result Register 1              */
   __I  uint32_t REG2;              /*!< AD Conversion Result Register 2              */
@@ -1178,9 +1178,7 @@ typedef struct
   __IO uint8_t  IMC076;            /*!< Interrupu Mode Control Register(B) 076       */
   __IO uint8_t  IMC077;            /*!< Interrupu Mode Control Register(B) 077       */
   __IO uint8_t  IMC078;            /*!< Interrupu Mode Control Register(B) 078       */
-  __IO uint8_t  IMC079;            /*!< Interrupu Mode Control Register(B) 079       */
-  __IO uint8_t  IMC080;            /*!< Interrupu Mode Control Register(B) 080       */
-       uint8_t  RESERVED2[13];
+       uint8_t  RESERVED2[15];
   __IO uint8_t  IMC094;            /*!< Interrupu Mode Control Register(B) 094       */
   __IO uint8_t  IMC095;            /*!< Interrupu Mode Control Register(B) 095       */
   __IO uint8_t  IMC096;            /*!< Interrupu Mode Control Register(B) 096       */
@@ -1497,9 +1495,9 @@ typedef struct
 
 
 /* Digital analog converter (DAC) */
-#define TSB_DA0_CTL_EN                            (*((__IO uint32_t *)BITBAND_PERI(&TSB_DA0->CTL,0)))
+#define TSB_DA0_CR_EN                             (*((__IO uint32_t *)BITBAND_PERI(&TSB_DA0->CR,0)))
 
-#define TSB_DA1_CTL_EN                            (*((__IO uint32_t *)BITBAND_PERI(&TSB_DA1->CTL,0)))
+#define TSB_DA1_CR_EN                             (*((__IO uint32_t *)BITBAND_PERI(&TSB_DA1->CR,0)))
 
 
 /* Serial Interface (TSPI) */
@@ -4473,9 +4471,8 @@ typedef struct
 #define TSB_IMN_FLG5_INT172FLG                    (*((__I  uint32_t *)BITBAND_PERI(&TSB_IMN->FLG5,12)))
 #define TSB_IMN_FLG5_INT173FLG                    (*((__I  uint32_t *)BITBAND_PERI(&TSB_IMN->FLG5,13)))
 #define TSB_IMN_FLG5_INT174FLG                    (*((__I  uint32_t *)BITBAND_PERI(&TSB_IMN->FLG5,14)))
-#define TSB_IMN_FLG5_INT175FLG                    (*((__I  uint32_t *)BITBAND_PERI(&TSB_IMN->FLG5,15)))
-#define TSB_IMN_FLG5_INT176FLG                    (*((__I  uint32_t *)BITBAND_PERI(&TSB_IMN->FLG5,16)))
 #define TSB_IMN_FLG5_INT190FLG                    (*((__I  uint32_t *)BITBAND_PERI(&TSB_IMN->FLG5,30)))
+#define TSB_IMN_FLG5_INT191FLG                    (*((__I  uint32_t *)BITBAND_PERI(&TSB_IMN->FLG5,31)))
 #define TSB_IMN_FLG6_INT192FLG                    (*((__I  uint32_t *)BITBAND_PERI(&TSB_IMN->FLG6,0)))
 
 
@@ -4584,4 +4581,4 @@ typedef struct
 #endif  /* __TMPM3HNA_H__ */
 
 /** @} */ /* End of group TMPM3HNA */
-/** @} */ /* End of group TOSHIBA_TXZ_MICROCONTROLLER */
+/** @} */ /* End of group TOSHIBA_TXZplus_MICROCONTROLLER */
