@@ -138,7 +138,7 @@ function(set_flags flags)
     message (INFO "Setting flags for ${CORE_NAME} core and ${MCU_NAME} MCU")
 
     if (${CORE_NAME} STREQUAL "RL78")
-        set(${flags} -fno-builtin -ffunction-sections -fdata-sections -fomit-frame-pointer -mmirror-source-common -mcommon-rom -fno-aligned-allocation -mnear-code -mnear-data -Og -fdiagnostics-parseable-fixits -nostartfiles -fno-strict-aliasing -mcpu=s2 -mdisable-mda PARENT_SCOPE)
+        set(${flags} -Wno-error=int-conversion -Wno-error=incompatible-function-pointer-types -fno-builtin -ffunction-sections -fdata-sections -fomit-frame-pointer -mmirror-source-common -mcommon-rom -fno-aligned-allocation -mnear-code -mnear-data -Og -fdiagnostics-parseable-fixits -nostartfiles -fno-strict-aliasing -mcpu=s2 -mdisable-mda PARENT_SCOPE)
     else()
         message(FATAL_ERROR "MCU Core not supported.")
     endif()
