@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2025 MikroElektronika d.o.o.
+** Copyright (C) ${COPYRIGHT_YEAR} MikroElektronika d.o.o.
 ** Contact: https://www.mikroe.com/contact
 **
 ** This file is part of the mikroSDK package
@@ -38,21 +38,22 @@
 ****************************************************************************/
 /*!
 * @file  interrupts_mcu.h
-* @brief {MCU_NAME} MCU specific interrupt per module definitions.
+* @brief R5F526TFCDFP MCU specific interrupt per module definitions.
 */
 
 #ifndef _INTERRUPTS_MCU_H_
 #define _INTERRUPTS_MCU_H_
 
 // Interrupt table
+
 // EOF Interrupt table
 
 // Interrupt addresses
-// No interrupt registers for {MCU_NAME}.
+// No interrupt registers for R5F526TFCDFP.
 // EOF Interrupt addresses
 
 // Interrupt register bit values
-// No interrupt bits for {MCU_NAME}.
+// No interrupt bits for R5F526TFCDFP.
 // EOF Interrupt register bit values
 
 #endif // _INTERRUPTS_MCU_H_

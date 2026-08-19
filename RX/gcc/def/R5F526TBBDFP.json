@@ -1,0 +1,835 @@
+{
+    "config_registers": [
+        {
+            "address": "00080030",
+            "default": "21011212",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "PCKD",
+                    "label": "Peripheral clock D divider",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "6"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10",
+                    "key": "PCKC",
+                    "label": "Peripheral clock C divider",
+                    "mask": "f0",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "10"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "20"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "30"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "40"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "50"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "60"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "200",
+                    "key": "PCKB",
+                    "label": "Peripheral clock B divider",
+                    "mask": "f00",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "100"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "200"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "300"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "400"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "500"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "600"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "1000",
+                    "key": "PCKA",
+                    "label": "Peripheral clock A divider",
+                    "mask": "f000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "6000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10000",
+                    "key": "BCK",
+                    "label": "External bus clock divider",
+                    "mask": "f0000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "40000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "50000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "60000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "1000000",
+                    "key": "ICK",
+                    "label": "System clock divider",
+                    "mask": "f000000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "2000000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "3000000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "5000000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "6000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20000000",
+                    "key": "FCK",
+                    "label": "Flash clock divider",
+                    "mask": "f0000000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "30000000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "40000000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "50000000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "60000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCKCR",
+            "unused": "00800000",
+            "label": "System clock control register"
+        },
+        {
+            "address": "00080038",
+            "default": "00002011",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2000",
+                    "key": "CFDCK",
+                    "label": "CAN-FD clock divider",
+                    "mask": "f000",
+                    "settings": [
+                        {
+                            "label": "x1/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "x1/2",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "x1/4",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "x1/8",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "x1/16",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "x1/32",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "x1/64",
+                            "value": "6000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCKCR2",
+            "unused": "00000fff",
+            "label": "System clock control register 2"
+        },
+        {
+            "address": "0008003a",
+            "default": "00000400",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "400",
+                    "key": "CKSEL",
+                    "label": "System clock source",
+                    "mask": "700",
+                    "settings": [
+                        {
+                            "label": "LOCO",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HOCO",
+                            "value": "100"
+                        },
+                        {
+                            "label": "Main oscillator",
+                            "value": "200"
+                        },
+                        {
+                            "label": "PLL",
+                            "value": "400"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_SCKCR3",
+            "unused": "fffff8ff",
+            "label": "System clock control register 3"
+        },
+        {
+            "address": "0008003c",
+            "default": "00002f00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLIDIV",
+                    "label": "PLL input clock divider",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/3",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLLSRCSEL",
+                    "label": "PLL clock source",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Main oscillator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HOCO",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2f00",
+                    "key": "STC",
+                    "label": "PLL multiplication factor",
+                    "mask": "3f00",
+                    "settings": [
+                        {
+                            "label": "x10.0",
+                            "value": "1300"
+                        },
+                        {
+                            "label": "x10.5",
+                            "value": "1400"
+                        },
+                        {
+                            "label": "x11.0",
+                            "value": "1500"
+                        },
+                        {
+                            "label": "x11.5",
+                            "value": "1600"
+                        },
+                        {
+                            "label": "x12.0",
+                            "value": "1700"
+                        },
+                        {
+                            "label": "x12.5",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "x13.0",
+                            "value": "1900"
+                        },
+                        {
+                            "label": "x13.5",
+                            "value": "1a00"
+                        },
+                        {
+                            "label": "x14.0",
+                            "value": "1b00"
+                        },
+                        {
+                            "label": "x14.5",
+                            "value": "1c00"
+                        },
+                        {
+                            "label": "x15.0",
+                            "value": "1d00"
+                        },
+                        {
+                            "label": "x15.5",
+                            "value": "1e00"
+                        },
+                        {
+                            "label": "x16.0",
+                            "value": "1f00"
+                        },
+                        {
+                            "label": "x16.5",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "x17.0",
+                            "value": "2100"
+                        },
+                        {
+                            "label": "x17.5",
+                            "value": "2200"
+                        },
+                        {
+                            "label": "x18.0",
+                            "value": "2300"
+                        },
+                        {
+                            "label": "x18.5",
+                            "value": "2400"
+                        },
+                        {
+                            "label": "x19.0",
+                            "value": "2500"
+                        },
+                        {
+                            "label": "x19.5",
+                            "value": "2600"
+                        },
+                        {
+                            "label": "x20.0",
+                            "value": "2700"
+                        },
+                        {
+                            "label": "x20.5",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "x21.0",
+                            "value": "2900"
+                        },
+                        {
+                            "label": "x21.5",
+                            "value": "2a00"
+                        },
+                        {
+                            "label": "x22.0",
+                            "value": "2b00"
+                        },
+                        {
+                            "label": "x22.5",
+                            "value": "2c00"
+                        },
+                        {
+                            "label": "x23.0",
+                            "value": "2d00"
+                        },
+                        {
+                            "label": "x23.5",
+                            "value": "2e00"
+                        },
+                        {
+                            "label": "x24.0",
+                            "value": "2f00"
+                        },
+                        {
+                            "label": "x24.5",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "x25.0",
+                            "value": "3100"
+                        },
+                        {
+                            "label": "x25.5",
+                            "value": "3200"
+                        },
+                        {
+                            "label": "x26.0",
+                            "value": "3300"
+                        },
+                        {
+                            "label": "x26.5",
+                            "value": "3400"
+                        },
+                        {
+                            "label": "x27.0",
+                            "value": "3500"
+                        },
+                        {
+                            "label": "x27.5",
+                            "value": "3600"
+                        },
+                        {
+                            "label": "x28.0",
+                            "value": "3700"
+                        },
+                        {
+                            "label": "x28.5",
+                            "value": "3800"
+                        },
+                        {
+                            "label": "x29.0",
+                            "value": "3900"
+                        },
+                        {
+                            "label": "x29.5",
+                            "value": "3a00"
+                        },
+                        {
+                            "label": "x30.0",
+                            "value": "3b00"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_PLLCR",
+            "unused": "ffffc0ec",
+            "label": "PLL clock control register"
+        },
+        {
+            "address": "0008003e",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "PLLEN",
+                    "label": "PLL stop control",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "PLL operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "PLL stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_PLLCR2",
+            "unused": "fffffffe",
+            "label": "PLL control register"
+        },
+        {
+            "address": "00080046",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MOSTP",
+                    "label": "Main oscillator stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCCR",
+            "unused": "fffffffe",
+            "label": "Main clock oscillator control register"
+        },
+        {
+            "address": "00080048",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "LCSTP",
+                    "label": "LOCO stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_LOCOCR",
+            "unused": "fffffffe",
+            "label": "Low-speed on-chip oscillator control register"
+        },
+        {
+            "address": "00080049",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "ILCSTP",
+                    "label": "IWDT LOCO stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_ILOCOCR",
+            "unused": "fffffffe",
+            "label": "IWDT-dedicated oscillator control register"
+        },
+        {
+            "address": "0008004a",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "HCSTP",
+                    "label": "HOCO stop",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Operating",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR",
+            "unused": "fffffffe",
+            "label": "High-speed on-chip oscillator control register"
+        },
+        {
+            "address": "0008004b",
+            "default": "00000002",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "HCFRQ",
+                    "label": "HOCO frequency",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "16 MHz",
+                            "value": "0"
+                        },
+                        {
+                            "label": "18 MHz",
+                            "value": "1"
+                        },
+                        {
+                            "label": "20 MHz",
+                            "value": "2"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOCR2",
+            "unused": "fffffffc",
+            "label": "High-speed on-chip oscillator frequency register"
+        },
+        {
+            "address": "000800b6",
+            "default": "00000053",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "53",
+                    "key": "MSTS",
+                    "label": "Main oscillator wait time",
+                    "mask": "ff",
+                    "settings": [
+                        {
+                            "label": "Default BSP wait",
+                            "value": "53"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOSCWTCR",
+            "unused": "ffffff00",
+            "label": "Main oscillator wait control register"
+        },
+        {
+            "address": "0008c2ab",
+            "default": "00000020",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "20",
+                    "key": "MODRV2",
+                    "label": "Main oscillator drive capability",
+                    "mask": "30",
+                    "settings": [
+                        {
+                            "label": "Drive 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Drive 1",
+                            "value": "10"
+                        },
+                        {
+                            "label": "Drive 2",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Drive 3",
+                            "value": "30"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MOSEL",
+                    "label": "Main clock source selection",
+                    "mask": "40",
+                    "settings": [
+                        {
+                            "label": "Resonator",
+                            "value": "0"
+                        },
+                        {
+                            "label": "External clock",
+                            "value": "40"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_MOFCR",
+            "unused": "ffffff8f",
+            "label": "Main oscillator forced oscillation control register"
+        },
+        {
+            "address": "0008c2ac",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "1",
+                    "key": "HOCOPCNT",
+                    "label": "HOCO power control",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Power supplied",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Power stopped",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSTEM_HOCOPCR",
+            "unused": "fffffffe",
+            "label": "HOCO power control register"
+        }
+    ],
+    "core": "RXv3",
+    "delay_src_path": "delays/rxv3/__lib_delays.c",
+    "mcu": "R5F526TBBDFP",
+    "clock": "120"
+}
