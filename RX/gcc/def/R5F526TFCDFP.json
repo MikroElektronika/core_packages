@@ -1,0 +1,6 @@
+{
+    "core": "RX",
+    "delay_src_path": "delays/rx/__lib_delays.c",
+    "mcu": "R5F526TFCDFP",
+    "clock": "1"
+}
