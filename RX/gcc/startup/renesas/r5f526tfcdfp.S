@@ -24,7 +24,7 @@
     .global _PowerON_Reset_PC  ;;global Start routine
     .global _PowerON_Reset     ;;for backward compatibility
 
-    .extern _PowerON_Reset_PC_Prg  ;;external Power ON Reset main function in RESETPRG.C
+    .extern _SystemInit  ;;external SystemInit in init_clock.c
     .extern _data
     .extern _mdata
     .extern _ebss
@@ -49,8 +49,8 @@ _PowerON_Reset :
 ;;initialise interrupt stack pointer
     mvtc    #_istack,ISP
 
-;;jump to Power ON Reset main function in RESETPRG.C
-    bra     _PowerON_Reset_PC_Prg
+;;jump to _SystemInit function in RESETPRG.C
+    bra     _SystemInit
 
 ;;init section
     .global __INITSCT
