@@ -67,7 +67,7 @@ typedef struct RCC_ClocksTypeDef {
 } RCC_ClocksTypeDef_t;
 
 extern __IO uint32_t uwTick;
-extern HAL_TickFreqTypeDef uwTickFreq;
+extern uint32_t uwTickFreq;
 
 __attribute__ ((interrupt("IRQ"))) void SysTick_Handler(void) {
     uwTick += (uint32_t)uwTickFreq;
