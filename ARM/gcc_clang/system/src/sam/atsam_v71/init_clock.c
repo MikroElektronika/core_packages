@@ -174,7 +174,10 @@ static void _pmc_init_sources(void)
 
     // If UPLL is enabled.
     if (CKGR_UCKR_UPLLEN == (VALUE_CKGR_UCKR & CKGR_UCKR_UPLLEN_Msk)) {
+        #ifdef VALUE_UTMI_CKTRIM
+        // UTMI_CKTRIM is not present for MCUs of type Jxx.
         UTMI->UTMI_CKTRIM = VALUE_UTMI_CKTRIM;
+        #endif
         // Configure UPLL.
         PMC->CKGR_UCKR = VALUE_CKGR_UCKR;
 	    while (PMC_SR_LOCKU != (PMC->PMC_SR & PMC_SR_LOCKU_Msk)) {
@@ -340,6 +343,8 @@ static void _pmc_init_program_clock(void)
         PMC->PMC_SCDR |= PMC_SCDR_PCK6;
     }
 
+    #ifdef PMC_SCER_PCK7
+    // PCK7 is not present for MCUs of type Jxx.
     if (PMC_SCER_PCK7 == (VALUE_PMC_SCER & PMC_SCER_PCK7_Msk)) {
         PMC->PMC_PCK[7] = VALUE_PMC_PCK7;
         PMC->PMC_SCER |= PMC_SCER_PCK7;
@@ -349,6 +354,7 @@ static void _pmc_init_program_clock(void)
     } else {
         PMC->PMC_SCDR |= PMC_SCDR_PCK7;
     }
+    #endif
 }
 
 /**
@@ -375,6 +381,8 @@ static void _pmc_init_generic_clock(void)
 {
     // Put PMC_PCR register into read mode for GCLK0/I2SC0
     PMC->PMC_PCR = PMC_PCR_PID(69);
+    #ifdef VALUE_PMC_PCR_I2SC0
+    // I2SC0 is not present for MCUs of type Jxx.
     // If GCLK0 is enabled.
     if (PMC_PCR_GCLKEN == (VALUE_PMC_PCR_I2SC0 & PMC_PCR_GCLKEN_Msk)) {
         // Select generic clock for I2SC0.
@@ -393,9 +401,12 @@ static void _pmc_init_generic_clock(void)
             PMC->PMC_PCR = PMC_PCR_CMD | PMC_PCR_PID(69);
         }
     }
+    #endif
 
     // Put PMC_PCR register into read mode for GCLK1/I2SC1
     PMC->PMC_PCR = PMC_PCR_PID(70);
+    #ifdef VALUE_PMC_PCR_I2SC1
+    // I2SC1 is only present for MCUs of type Qxx.
     // If GCLK0 is enabled.
     if (PMC_PCR_GCLKEN == (VALUE_PMC_PCR_I2SC1 & PMC_PCR_GCLKEN_Msk)) {
         // Select generic clock for I2SC1.
@@ -414,6 +425,7 @@ static void _pmc_init_generic_clock(void)
             PMC->PMC_PCR = PMC_PCR_CMD | PMC_PCR_PID(70);
         }
     }
+    #endif
 }
 
 uint32_t SystemCoreClock = __SYSTEM_CLOCK;  /*!< System Clock Frequency (Core Clock)*/
