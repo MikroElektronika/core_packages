@@ -174,7 +174,10 @@ static void _pmc_init_sources(void)
 
     // If UPLL is enabled.
     if (CKGR_UCKR_UPLLEN == (VALUE_CKGR_UCKR & CKGR_UCKR_UPLLEN_Msk)) {
+        #ifdef VALUE_UTMI_CKTRIM
+        // UTMI_CKTRIM register is present only for MCUs of type B.
         UTMI->UTMI_CKTRIM = VALUE_UTMI_CKTRIM;
+        #endif
         // Configure UPLL.
         PMC->CKGR_UCKR = VALUE_CKGR_UCKR;
 	    while (PMC_SR_LOCKU != (PMC->PMC_SR & PMC_SR_LOCKU_Msk)) {
