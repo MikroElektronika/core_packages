@@ -27,6 +27,7 @@
  */
 
 #include <stdint.h>
+#include "core_header.h"
 #include "mcu.h"
 
 #define RX72M_PRCR_UNLOCK_CLOCKS    ( 0xA50BU )
