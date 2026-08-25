@@ -36,7 +36,7 @@
 ****************************************************************************/
 /*!
  * @file  delay_parameters.h
- * @brief Mikroe RL78 LLVM defined delay parameters.
+ * @brief Mikroe RX GCC defined delay parameters.
  */
 
 #ifndef __DELAY_PARAMETERS_H__
