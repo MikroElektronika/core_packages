@@ -350,7 +350,7 @@
         },
         {
             "address": "0008003c",
-            "default": "00002f00",
+            "default": "00001710",
             "fields": [
                 {
                     "hidden": false,
@@ -375,7 +375,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "10",
                     "key": "PLLSRCSEL",
                     "label": "PLL clock source",
                     "mask": "10",
@@ -392,7 +392,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "2f00",
+                    "init": "1700",
                     "key": "STC",
                     "label": "PLL multiplication factor",
                     "mask": "3f00",
@@ -596,11 +596,11 @@
         },
         {
             "address": "00080046",
-            "default": "00000000",
+            "default": "00000001",
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "MOSTP",
                     "label": "Main oscillator stop",
                     "mask": "1",
@@ -674,11 +674,11 @@
         },
         {
             "address": "0008004a",
-            "default": "00000001",
+            "default": "00000000",
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "HCSTP",
                     "label": "HOCO stop",
                     "mask": "1",
@@ -752,11 +752,11 @@
         },
         {
             "address": "0008c2ab",
-            "default": "00000020",
+            "default": "00000000",
             "fields": [
                 {
                     "hidden": false,
-                    "init": "20",
+                    "init": "0",
                     "key": "MODRV2",
                     "label": "Main oscillator drive capability",
                     "mask": "30",
@@ -803,11 +803,11 @@
         },
         {
             "address": "0008c2ac",
-            "default": "00000001",
+            "default": "00000000",
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "HOCOPCNT",
                     "label": "HOCO power control",
                     "mask": "1",

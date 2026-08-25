@@ -25,6 +25,7 @@
     .global _PowerON_Reset     ;;for backward compatibility
 
     .extern _SystemInit  ;;external SystemInit in init_clock.c
+    .extern _main
     .extern _data
     .extern _mdata
     .extern _ebss
@@ -49,8 +50,11 @@ _PowerON_Reset :
 ;;initialise interrupt stack pointer
     mvtc    #_istack,ISP
 
-;;jump to _SystemInit function in RESETPRG.C
-    bra     _SystemInit
+;;jump to _SystemInit function in init_clocks.c
+    bsr.a   _SystemInit
+    bsr.a   __INITSCT
+    bsr.a   _main
+    bra     _exit
 
 ;;init section
     .global __INITSCT
@@ -188,6 +192,9 @@ _exit:
     bra  _loop_here
 _loop_here:
     bra _loop_here
+
+    .section .fvectors, "a"
+    .long    _PowerON_Reset_PC
 
     .text
 

@@ -138,7 +138,7 @@ function(set_flags flags)
     message (INFO "Setting flags for ${CORE_NAME} core and ${MCU_NAME} MCU")
 
     if (${CORE_NAME} STREQUAL "RXv3")
-        set(${flags} -Wno-incompatible-pointer-types -fno-builtin -ffunction-sections -fdata-sections -fomit-frame-pointer -Og -fdiagnostics-parseable-fixits -nostartfiles -fno-strict-aliasing -fno-common -mlittle-endian-data PARENT_SCOPE)
+        set(${flags} -Wno-incompatible-pointer-types -fno-builtin -ffunction-sections -fdata-sections -fomit-frame-pointer -Og -fdiagnostics-parseable-fixits -nostartfiles -fno-strict-aliasing -fno-common -misa=v3 -fpu -mlittle-endian-data PARENT_SCOPE)
     else()
         message(FATAL_ERROR "MCU Core not supported.")
     endif()
