@@ -1,0 +1,18 @@
+{
+    "def_file": "R5F572MNDDFC.json",
+    "family_uid": "RX72M",
+    "flash": "4194304",
+    "icon": "images/mcu/renesas.png",
+    "max_speed": "240.000",
+    "name": "R5F572MNDDFC",
+    "ram": "1048576",
+    "sdk_config": "{\"MCU_NAME\":\"R5F572MNDDFC\",\"CORE_NAME\":\"RXv3\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "R5F572MNDDFC",
+    "vendor": "Renesas",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"rx-elf-gcc\":\"rx_gcc_r5f572mnd\"}"
+}
