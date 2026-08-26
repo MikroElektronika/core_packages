@@ -80,10 +80,6 @@ jobs:
           pip install -r scripts/requirements/support.txt
           sudo apt-get install p7zip-full
 
-      - name: Update database for packaging
-        run: |
-          python -u scripts/reupload_databases.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ secrets.PROG_DEBUG_JLINK }} ${{ github.event.inputs.release_version }} "latest" "Test" "--mcus_only" "True"
-
       - name: Upload MCUs Asset
         env:
           DB_PATH: ${{ secrets.DB_PATH }}
@@ -92,7 +88,12 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
           ES_INDEX: ${{ secrets.ES_INDEX_LIVE }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
-        run: python -u scripts/release_mcus.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ github.event.inputs.release_version }}
+        run: |
+          python -u scripts/release_mcus.py \
+            ${{ steps.app-token.outputs.token }} \
+            ${{ github.repository }} \
+            ${{ github.event.inputs.release_version }} \
+            --database-channel development
 
   update_and_upload_new_database:
     runs-on: ubuntu-latest
@@ -144,9 +145,27 @@ jobs:
           pip install -r scripts/requirements/support.txt
           sudo apt-get install p7zip-full
 
-      - name: Update and upload new database
+      - name: Publish Core query source for the database update
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          python -u scripts/reupload_databases.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ secrets.PROG_DEBUG_JLINK }} ${{ github.event.inputs.release_version }} "latest" "Test"
+          python3 scripts/package_database_update_source.py \
+            --source-ref '${{ github.sha }}' \
+            --output database_update_source.7z
+          tag="$(gh release view --json tagName --jq .tagName)"
+          gh release upload "$tag" database_update_source.7z --clobber
+
+      - name: Update canonical Development database
+        env:
+          GENERAL_PACKAGES_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+        run: |
+          python3 scripts/trigger_general_database_update.py \
+            --channel development \
+            --operation refresh \
+            --core-version '${{ github.event.inputs.release_version }}' \
+            --sdk-version latest \
+            --mcus-only false \
+            --wait
 
       - name: Run Index Script
         env:

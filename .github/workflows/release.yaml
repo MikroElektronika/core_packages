@@ -36,10 +36,6 @@ jobs:
           pip install -r scripts/requirements/release.txt
           pip install -r scripts/requirements/databases.txt
 
-      - name: Update database for packaging
-        run: |
-          python -u scripts/reupload_databases.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ secrets.PROG_DEBUG_JLINK }} "latest" "latest" "Live" "--mcus_only" "True"
-
       - name: Run Release Script
         env:
           DB_PATH: ${{ secrets.DB_PATH }}
@@ -49,3 +45,15 @@ jobs:
           ES_INDEX: ${{ secrets.ES_INDEX_LIVE }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: python -u scripts/package.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ github.ref_name }}
+
+      - name: Trigger Live database refresh
+        env:
+          GENERAL_PACKAGES_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+        run: |
+          python3 scripts/trigger_general_database_update.py \
+            --channel live \
+            --operation refresh \
+            --core-version '${{ github.ref_name }}' \
+            --sdk-version latest \
+            --mcus-only true \
+            --wait

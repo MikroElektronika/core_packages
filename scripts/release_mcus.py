@@ -11,10 +11,12 @@ from elasticsearch import Elasticsearch
 
 import support as support
 import classes.release_per_vendor as gh_uploader
+from database_assets import LEGACY_OUTPUTS, download_database, normalize_channel
 
 from pathlib import Path
 
 parent_dir = str(Path(__file__).resolve().parent.parent)
+DATABASE_LOOKUP_PATH = 'necto_db_dev.db'
 
 def fetch_all_releases(repo, token, api_headers):
     api_headers = get_headers(True, token)
@@ -176,7 +178,7 @@ def extract_mcu_names(file_name, source_dir, regex):
                     if regex_pattern.match(mcu_name):
                         mcus[file_name]['mcu_names'].add(mcu_name)
                         if 'gcc' in source_dir or 'XC32' in source_dir or 'LLVM' in source_dir:
-                            isPresent, readData = read_data_from_db('necto_db_dev.db', f'SELECT sdk_config, core_info FROM Devices WHERE name IS "{mcu_name}"')
+                            isPresent, readData = read_data_from_db(DATABASE_LOOKUP_PATH, f'SELECT sdk_config, core_info FROM Devices WHERE name IS "{mcu_name}"')
                             if isPresent:
                                 if readData[0][1] == None:
                                     configJson = json.loads(readData[0][0])
@@ -877,11 +879,16 @@ def fetch_latest_release_version(repo, token):
     api_headers = get_headers(True, token)
     return support.get_latest_release(repo, api_headers)
 
-async def main(token, repo, tag_name, live=False):
+async def main(token, repo, tag_name, live=False, database_channel='development'):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR", "RL78", "RX"]
 
-    db_paths = ['necto_db_dev.db']
+    normalized_channel = normalize_channel(database_channel)
+    database_path = LEGACY_OUTPUTS[normalized_channel]
+    download_database(normalized_channel, database_path, token=token)
+    global DATABASE_LOOKUP_PATH
+    DATABASE_LOOKUP_PATH = str(database_path)
+    db_paths = [str(database_path)]
 
     current_metadata = fetch_current_metadata(repo, token)
 
@@ -941,9 +948,6 @@ async def main(token, repo, tag_name, live=False):
 
     payload = uploader.build_release_payload_from_packages(packages, 'output')
 
-    for each_db in db_paths:
-        gh_uploader.append_to_payload(payload, each_db, os.path.join(parent_dir, each_db))
-
     # Generate clocks.json
     if not live:
         input_directory = "./"
@@ -959,26 +963,6 @@ async def main(token, repo, tag_name, live=False):
         schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
         schemaGenerator.generate()
         gh_uploader.append_to_payload(payload, 'schemas.json', Path(output_file).resolve())
-
-    # Generate database packages
-    for each_db in db_paths:
-        shutil.copy(f'./{each_db}', './utils/databases/necto_db.db')
-        package_suffix = ''
-        if 'dev' in each_db:
-            package_suffix = '_dev'
-        archive_path = compress_directory_7z(os.path.join('./utils', 'databases'), f'database{package_suffix}.7z')
-        current_db_hash = hash_directory_contents(os.path.join('./utils', 'databases'))
-        append_package(
-            packages, archive_path,
-            "NECTO Database",
-            get_version_based_on_hash(
-                f'database{package_suffix}', (latest_release['tag_name']).replace("v", ""),
-                current_db_hash, current_metadata
-            ),
-            f'databases',
-            hash=current_db_hash
-        )
-        gh_uploader.append_to_payload(payload, f'database{package_suffix}.7z', Path(str(archive_path)).resolve())
 
     # Generate document files asset
     if not live:
@@ -1000,7 +984,12 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
     parser.add_argument("--live", help="Upload only database?", type=bool, default=False)
+    parser.add_argument(
+        "--database-channel",
+        default="development",
+        help="Database snapshot used as the read-only packaging source",
+    )
     args = parser.parse_args()
     print("Starting the upload process...")
-    asyncio.run(main(args.token, args.repo, args.tag_name, args.live))
+    asyncio.run(main(args.token, args.repo, args.tag_name, args.live, args.database_channel))
     print("Upload process completed.")

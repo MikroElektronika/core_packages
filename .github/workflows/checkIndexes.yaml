@@ -13,7 +13,7 @@ on:
       regex:
         type: string
         description: Regex to use when searching for indexed items
-        default: "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|avr|pic|preinit|riscv|schemas|unit_test_lib|.+[device|tool]_support$|^codegrip_pack"
+        default: "arm_gcc_clang|arm_mikroc|clocks|dspic|^images$|mikroe_utils|avr|pic|preinit|riscv|schemas|unit_test_lib|.+[device|tool]_support$|^codegrip_pack"
       fix:
         type: boolean
         description: Fix the broken links with new ones?
@@ -32,7 +32,7 @@ on:
     # - cron: "0 10-16/2 * * 1-5"  # Every 2 hours from 11:00 to 17:00, Monday–Friday
 
 env:
-  GLOBAL_REGEX: "arm_gcc_clang|arm_mikroc|clocks|database|dspic|^images$|mikroe_utils|avr|pic|preinit|riscv|schemas|unit_test_lib|.+[device|tool]_support$|^codegrip_pack"
+  GLOBAL_REGEX: "arm_gcc_clang|arm_mikroc|clocks|dspic|^images$|mikroe_utils|avr|pic|preinit|riscv|schemas|unit_test_lib|.+[device|tool]_support$|^codegrip_pack"
   ES_HOST_LEGACY: ${{ secrets.ES_HOST_LEGACY }}
   ES_USER_LEGACY: ${{ secrets.ES_USER_LEGACY }}
   ES_PASSWORD_LEGACY: ${{ secrets.ES_PASSWORD_LEGACY }}

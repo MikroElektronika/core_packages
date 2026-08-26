@@ -1,4 +1,4 @@
-name: Remove/Update Devices in the Database
+name: Remove/Update Devices in the Canonical Database
 
 on:
   repository_dispatch:
@@ -7,325 +7,96 @@ on:
     inputs:
       select_index:
         type: choice
-        description: Index as test or live
-        options:
-          - Test
-          - Live
-        default: "Test"
+        description: Database channel
+        options: [Development, Experimental, Live]
+        default: Development
       select_action:
         type: choice
-        description: Select what you want to do
-        options:
-          - Set sdk_support
-          - Remove Devices
-        default: "Set SDKToDevice"
+        description: Device update
+        options: [Set sdk_support, Remove Devices]
+        default: Set sdk_support
       regex:
         type: string
-        description: Regex of Device uids to use (type "Spreadsheet Regex" to use spreadsheet regex)
-        default: "PIC32MZ2048EFH144|MCU_CARD_10_FOR_KINETIS_MK60DN512VLQ10"
+        description: Device UID regex, or "Spreadsheet Regex"
+        default: PIC32MZ2048EFH144|MCU_CARD_10_FOR_KINETIS_MK60DN512VLQ10
       delete_device:
         type: boolean
-        description: Remove Device completely? (only used for "Remove Devices" option, clears only sdk_support if not checked)
+        description: Delete matching Devices rows instead of disabling SDK support
         default: false
       xc8_specific:
         type: boolean
-        description: Set XC8 support? (only used for "Set sdk_support" option)
+        description: Add XC8 support to matching devices
         default: false
       AI_generated_sdk:
         type: boolean
-        description: AI generated SDK? (only used for "Set sdk_support" option)
+        description: Mark matching devices as AI-generated SDK
         default: false
 
+permissions:
+  contents: read
+
 jobs:
-  Update_Devices_in_Dev_Database:
-    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.select_index == 'Test' }}
+  update:
     runs-on: ubuntu-latest
     steps:
-      - name: Authorize Mikroe Actions App
-        uses: actions/create-github-app-token@v2
-        id: app-token
-        with:
-          app-id: ${{ vars.MIKROE_ACTIONS }}
-          private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
-
       - name: Checkout code
         uses: actions/checkout@v6
-        with:
-          token: ${{ steps.app-token.outputs.token }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.x'
-
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r scripts/requirements/shared.txt
-          pip install -r scripts/requirements/databases.txt
-          sudo apt-get install p7zip-full
-
-      - name: Upload new database asset
-        run: |
-          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "Test" "${{ github.event.inputs.select_action }}" "${{ github.event.inputs.regex }}" ${{ github.event.inputs.delete_device }} ${{ github.event.inputs.xc8_specific }} "--ai_sdk" ${{ github.event.inputs.AI_generated_sdk }} "--spreadsheet_link" "${{ secrets.RELEASES_SPREADSHEET }}"
-
-      - name: Add GitHub Actions credentials
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-      - name: Commit and Push Changes
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Updating with new dev database";
-            git add necto_db_dev.db
-            git commit -m "Updated necto dev database with latest merged release."
-            git push
-          else
-            echo "No changes made to necto_db_dev.db";
-          fi
-
-      - name: Run Index Script
+      - name: Resolve request and update general_packages
         env:
-          ES_HOST: ${{ secrets.ES_HOST }}
-          ES_USER: ${{ secrets.ES_USER }}
-          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          GENERAL_PACKAGES_TOKEN: ${{ secrets.MIKROE_ACTIONS_KEY }}
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_CHANNEL: ${{ github.event.client_payload.index }}
+          DISPATCH_REGEX: ${{ github.event.client_payload.mcu_regex }}
+          INPUT_CHANNEL: ${{ inputs.select_index }}
+          INPUT_ACTION: ${{ inputs.select_action }}
+          INPUT_REGEX: ${{ inputs.regex }}
+          INPUT_DELETE: ${{ inputs.delete_device }}
+          INPUT_XC8: ${{ inputs.xc8_specific }}
+          INPUT_AI: ${{ inputs.AI_generated_sdk }}
         run: |
-          echo "Indexing database to TEST."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} "True" "latest" "True" "False"
-
-  Update_Devices_in_Live_Database:
-    if: >
-      ((github.event_name == 'workflow_dispatch' && github.event.inputs.select_index == 'Live') ||
-      github.event_name == 'schedule')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Authorize Mikroe Actions App
-        uses: actions/create-github-app-token@v2
-        id: app-token
-        with:
-          app-id: ${{ vars.MIKROE_ACTIONS }}
-          private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
-
-      - name: Checkout code
-        uses: actions/checkout@v6
-        with:
-          token: ${{ steps.app-token.outputs.token }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.x'
-
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r scripts/requirements/shared.txt
-          pip install -r scripts/requirements/databases.txt
-          sudo apt-get install p7zip-full
-
-      - name: Upload new database asset - Scheduled
-        if: ${{ github.event_name == 'schedule' }}
-        run: |
-          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "Live" "Set sdk_support" "Spreadsheet Regex" "False" "False" "--spreadsheet_link" "${{ secrets.RELEASES_SPREADSHEET }}"
-
-      - name: Upload new database asset - Manual Run
-        if: ${{ github.event_name == 'workflow_dispatch' }}
-        run: |
-          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "Live" "${{ github.event.inputs.select_action }}" "${{ github.event.inputs.regex }}" ${{ github.event.inputs.delete_device }} ${{ github.event.inputs.xc8_specific }} "--ai_sdk" ${{ github.event.inputs.AI_generated_sdk }} "--spreadsheet_link" "${{ secrets.RELEASES_SPREADSHEET }}"
-
-      - name: Add GitHub Actions credentials
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-      - name: Commit and Push Changes
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Updating with new live database";
-            git add necto_db.db
-            git commit -m "Updated necto live database with latest merged release."
-            git push
-            curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
-            --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
+          set -euo pipefail
+          if [ "$EVENT_NAME" = repository_dispatch ]; then
+            channel="$DISPATCH_CHANNEL"
+            regex="$DISPATCH_REGEX"
+            action=set-sdk-support
+            delete_device=false
+            xc8=false
+            ai=false
           else
-            echo "No changes made to necto_db.db";
-          fi
-
-      - name: Run Index Script
-        env:
-          ES_HOST: ${{ secrets.ES_HOST }}
-          ES_USER: ${{ secrets.ES_USER }}
-          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        run: |
-          echo "Indexing database to LIVE."
-          python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} "True" "latest" "True" "False"
-
-  Update_Devices_from_SDK:
-    if: ${{ github.event_name == 'repository_dispatch' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Authorize Mikroe Actions App
-        uses: actions/create-github-app-token@v2
-        id: app-token
-        with:
-          app-id: ${{ vars.MIKROE_ACTIONS }}
-          private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
-
-      - name: Checkout code
-        uses: actions/checkout@v6
-        with:
-          token: ${{ steps.app-token.outputs.token }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.x'
-
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r scripts/requirements/shared.txt
-          pip install -r scripts/requirements/databases.txt
-          sudo apt-get install p7zip-full
-
-      - name: Extract payload version
-        id: mikrosdk_payload
-        run: |
-          echo "mcu_regex=${{ github.event.client_payload.mcu_regex }}" >> $GITHUB_OUTPUT
-          echo "index=${{ github.event.client_payload.index }}" >> $GITHUB_OUTPUT
-
-      - name: Upload new database asset
-        run: |
-          python -u scripts/update_devices_db.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ steps.mikrosdk_payload.outputs.index }} "Set sdk_support" "${{ steps.mikrosdk_payload.outputs.mcu_regex }}" "false" "false"
-
-      - name: Add GitHub Actions credentials
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-      - name: Commit and Push Changes
-        run: |
-          if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
-            DB_NAME="necto_db.db"
-          else
-            DB_NAME="necto_db_dev.db"
-          fi
-          STATUS=$(git status --short "$DB_NAME")
-          if [ -z "$STATUS" ]; then
-            echo "No changes made to $DB_NAME";
-          else
-            echo "Updating with new $DB_NAME";
-            echo "test"
-            git pull
-            git add $DB_NAME
-            git commit -m "Updated $DB_NAME with latest merged release."
-            git push
-            if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
-              curl --location --request POST '${{ secrets.ERP_DB_IMPORT_API }}' \
-              --header 'Authorization: Basic ${{ secrets.ERP_DB_IMPORT_KEY }}'
+            channel="$INPUT_CHANNEL"
+            regex="$INPUT_REGEX"
+            if [ "$INPUT_ACTION" = 'Remove Devices' ]; then
+              action=remove-devices
+            else
+              action=set-sdk-support
             fi
+            delete_device="$INPUT_DELETE"
+            xc8="$INPUT_XC8"
+            ai="$INPUT_AI"
           fi
 
-      - name: Run Index Script
-        env:
-          ES_HOST: ${{ secrets.ES_HOST }}
-          ES_USER: ${{ secrets.ES_USER }}
-          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-        run: |
-          if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Test" ]]; then
-            echo "Indexing database to TEST."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} "True" "latest" "True" "False"
-          fi
-          if [[ ${{ steps.mikrosdk_payload.outputs.index }} == "Live" ]]; then
-            echo "Indexing database to LIVE."
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} "True" "latest" "True" "False"
-          fi
-
-  Notify_Database_Update:
-    name: Notify Database Update Summary
-    needs:
-      - Update_Devices_in_Dev_Database
-      - Update_Devices_in_Live_Database
-      - Update_Devices_from_SDK
-    if: always()
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Resolve context
-        id: context
-        run: |
-          # -----------------------------
-          # Detect which job ran
-          # -----------------------------
-          if [[ "${{ needs.Update_Devices_in_Live_Database.result }}" == "success" ]]; then
-            DB_TYPE="Live"
-          elif [[ "${{ needs.Update_Devices_in_Dev_Database.result }}" == "success" ]]; then
-            DB_TYPE="Dev"
-          elif [[ "${{ needs.Update_Devices_from_SDK.result }}" == "success" ]]; then
-            DB_TYPE="${{ github.event.client_payload.index }}"
+          args=(
+            --channel "$channel"
+            --operation devices
+            --device-action "$action"
+            --delete-device "$delete_device"
+            --xc8-specific "$xc8"
+            --ai-sdk "$ai"
+            --wait
+          )
+          if [ "$regex" = 'Spreadsheet Regex' ]; then
+            args+=(--spreadsheet-regex true)
           else
-            echo "No database update job ran successfully."
-            exit 0
+            args+=(--regex "$regex")
           fi
+          python3 scripts/trigger_general_database_update.py "${args[@]}"
 
-          # -----------------------------
-          # Detect trigger type
-          # -----------------------------
-          case "${{ github.event_name }}" in
-            schedule)
-              TRIGGER="Scheduled"
-              ;;
-            workflow_dispatch)
-              TRIGGER="Manual"
-              ;;
-            repository_dispatch)
-              TRIGGER="Repository dispatch"
-              ;;
-            *)
-              TRIGGER="Unknown"
-              ;;
-          esac
-
-          # -----------------------------
-          # Determine update type
-          # -----------------------------
-          if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
-            UPDATE_TYPE="Set SDK Support"
-            REGEX="${{ github.event.client_payload.mcu_regex }}"
-          else
-            UPDATE_TYPE="${{ github.event.inputs.select_action }}"
-            REGEX="${{ github.event.inputs.regex }}"
-          fi
-
-          # Normalize wording
-          if [[ "$UPDATE_TYPE" == "Set sdk_support" ]]; then
-            UPDATE_TYPE="Set SDK Support"
-          elif [[ "$UPDATE_TYPE" == "Remove Devices" ]]; then
-            UPDATE_TYPE="Remove Devices"
-          fi
-
-          # Spreadsheet regex fallback (scheduled runs)
-          if [[ "${{ github.event_name }}" == "schedule" ]]; then
-            REGEX="Spreadsheet Regex"
-          fi
-
-          # Export
-          echo "db_type=$DB_TYPE" >> $GITHUB_OUTPUT
-          echo "trigger=$TRIGGER" >> $GITHUB_OUTPUT
-          echo "update_type=$UPDATE_TYPE" >> $GITHUB_OUTPUT
-          echo "regex=$REGEX" >> $GITHUB_OUTPUT
-
-      - name: Notify Mattermost - Database Update
+      - name: Notify Mattermost
         env:
           MATTERMOST_WEBHOOK_URL_SDK: ${{ secrets.MATTERMOST_WEBHOOK_URL_SDK }}
         run: |
-          MESSAGE="**NECTO Devices Database Update Completed**\n\n\
-          **Database type:** ${{ steps.context.outputs.db_type }}\n\
-          **GitHub trigger:** ${{ steps.context.outputs.trigger }}\n\
-          **Update type:** ${{ steps.context.outputs.update_type }}\n\
-          **Regex:** \`${{ steps.context.outputs.regex }}\`\n"
-
+          MESSAGE="**NECTO Devices Database Update Completed**\n\nThe canonical database was updated in general_packages and channel inheritance was applied automatically."
           curl -X POST -H 'Content-Type: application/json' \
             --data "{\"text\": \"$MESSAGE\"}" \
-            $MATTERMOST_WEBHOOK_URL_SDK
+            "$MATTERMOST_WEBHOOK_URL_SDK"

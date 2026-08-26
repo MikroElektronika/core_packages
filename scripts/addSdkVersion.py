@@ -163,7 +163,7 @@ if __name__ == "__main__":
     ## Step 1 - if links passed, download the database first
     database = downloadDb(
         ## Always download database from latest release
-        'https://github.com/MikroElektronika/core_packages/releases/latest/download/database.7z',
+        'https://github.com/MikroElektronika/general_packages/releases/download/general_packages_assets/database_live.7z',
         False
     )
 
