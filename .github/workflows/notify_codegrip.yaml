@@ -37,6 +37,7 @@ jobs:
           sudo apt-get install p7zip-full
 
       - name: Build Message with Python
+        id: build_message
         env:
           ES_HOST: ${{ secrets.ES_HOST }}
           ES_USER: ${{ secrets.ES_USER }}
@@ -45,6 +46,7 @@ jobs:
           python -u scripts/build_message_codegrip.py "NECTO DAILY UPDATE" ${{ secrets.RELEASES_SPREADSHEET }} ${{ secrets.ES_INDEX_LIVE }}
 
       - name: Send notification to Mattermost - Product Release
+        if: steps.build_message.outputs.has_packages == 'true'
         env:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
         run: |
