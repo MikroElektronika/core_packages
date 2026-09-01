@@ -1,4 +1,3 @@
 if(${MCU_NAME} MATCHES "^R7F100LFL$|^R7F100LGL$|^R7F100LJL$|^R7F100LLL$|^R7F100LML$|^R7F100LPL$|^R7F100LFJ$|^R7F100LGJ$|^R7F100LJJ$|^R7F100LLJ$|^R7F100LMJ$|^R7F100LPJ$|^R7F100LFG$|^R7F100LGG$|^R7F100LJG$|^R7F100LLG$|^R7F100LMG$|^R7F100LPG$|^R7F100LFE$|^R7F100LGE$|^R7F100LJE$|^R7F100LLE$")
-    # # TODO - implement correct values after testing
-    list(APPEND local_list_macros "getClockValue(_clock) (_clock/1000UL/4)")
+    list(APPEND local_list_macros "getClockPresc (16)")
 endif()
