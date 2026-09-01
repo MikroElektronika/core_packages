@@ -1,2713 +1,5433 @@
 {
-    "config_registers": [
-        {
-            "address": "4001e020",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "3",
-                    "key": "PCKD",
-                    "label": "Peripheral Module Clock D (PCLKD) Select",
-                    "mask": "f",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "2"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "3"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "4"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "5"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "6"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "8"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "9"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "30",
-                    "key": "PCKC",
-                    "label": "Peripheral Module Clock C (PCLKC) Select",
-                    "mask": "f0",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "10"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "20"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "30"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "40"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "50"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "60"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "80"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "90"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a0"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "300",
-                    "key": "PCKB",
-                    "label": "Peripheral Module Clock B (PCLKB) Select",
-                    "mask": "f00",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "100"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "200"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "300"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "400"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "500"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "600"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "800"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "900"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a00"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "3000",
-                    "key": "PCKA",
-                    "label": "Peripheral Module Clock A (PCLKA) Select",
-                    "mask": "f000",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1000"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "2000"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "3000"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "4000"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "5000"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "6000"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "8000"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "9000"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "20000",
-                    "key": "BCK",
-                    "label": "External Bus Clock (BCLK) Select",
-                    "mask": "f0000",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "10000"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "20000"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "30000"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "40000"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "50000"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "60000"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "80000"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "90000"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a0000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "100000",
-                    "key": "PCKE",
-                    "label": "Peripheral Module Clock E (PCLKE) Select",
-                    "mask": "f00000",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "100000"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "200000"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "300000"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "400000"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "500000"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "600000"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "800000"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "900000"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a00000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "1000000",
-                    "key": "ICK",
-                    "label": "System Clock (ICLK) Select",
-                    "mask": "f000000",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1000000"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "2000000"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "3000000"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "4000000"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "5000000"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "6000000"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "8000000"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "9000000"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a000000"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "30000000",
-                    "key": "FCK",
-                    "label": "Flash IF Clock (FCLK) Select",
-                    "mask": "f0000000",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "10000000"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "20000000"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "30000000"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "40000000"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "50000000"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "60000000"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "80000000"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "90000000"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a0000000"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SCKDIVCR",
-            "unused": "00000000",
-            "label": "System clock division control register"
-        },
-        {
-            "address": "4001e024",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "CPUCK",
-                    "label": "CPU Clock (CPUCLK) Select",
-                    "mask": "f",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "2"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "3"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "4"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "5"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "6"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "8"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "9"
-                        },
-                        {
-                            "label": "/12",
-                            "value": "a"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SCKDIVCR2",
-            "unused": "fffffff0",
-            "label": "System clock division control register 2"
-        },
-        {
-            "address": "4001e026",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "5",
-                    "key": "CKSEL",
-                    "label": "Clock Source Select",
-                    "mask": "7",
-                    "settings": [
-                        {
-                            "label": "HOCO ",
-                            "value": "0"
-                        },
-                        {
-                            "label": "MOCO",
-                            "value": "1"
-                        },
-                        {
-                            "label": "Main clock oscillator ",
-                            "value": "3"
-                        },
-                        {
-                            "label": "Sub-clock oscillator ",
-                            "value": "4"
-                        },
-                        {
-                            "label": "PLL1P",
-                            "value": "5"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SCKSCR",
-            "unused": "000000f8",
-            "label": "System clock source control register"
-        },
-        {
-            "address": "4001e028",
-            "default": "1300",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "1",
-                    "key": "PLIDIV",
-                    "label": "PLL1 Input Frequency Division Ratio Select",
-                    "mask": "3",
-                    "settings": [
-                        {
-                            "label": "/1 ",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "2"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PLSRCSEL",
-                    "label": "PLL1 Clock Source Select",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Main clock oscillator",
-                            "value": "0"
-                        },
-                        {
-                            "label": "HOCO",
-                            "value": "10"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PLLMULNF",
-                    "label": "PLL1 Frequency Multiplication Fractional Factor Select",
-                    "mask": "c0",
-                    "settings": [
-                        {
-                            "label": "0.00 (Value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "0.33 (1/3)",
-                            "value": "40"
-                        },
-                        {
-                            "label": "0.66 (2/3)",
-                            "value": "80"
-                        },
-                        {
-                            "label": "0.50 (1/2)",
-                            "value": "c0"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "5F00",
-                    "key": "PLLMUL",
-                    "label": "PLL1 Frequency Multiplication Factor Select",
-                    "mask": "ff00",
-                    "settings": [
-                        {
-                            "label": "53",
-                            "value": "3400"
-                        },
-                        {
-                            "label": "54",
-                            "value": "3500"
-                        },
-                        {
-                            "label": "55",
-                            "value": "3600"
-                        },
-                        {
-                            "label": "56",
-                            "value": "3700"
-                        },
-                        {
-                            "label": "57",
-                            "value": "3800"
-                        },
-                        {
-                            "label": "58",
-                            "value": "3900"
-                        },
-                        {
-                            "label": "59",
-                            "value": "3A00"
-                        },
-                        {
-                            "label": "60",
-                            "value": "3B00"
-                        },
-                        {
-                            "label": "61",
-                            "value": "3C00"
-                        },
-                        {
-                            "label": "62",
-                            "value": "3D00"
-                        },
-                        {
-                            "label": "63",
-                            "value": "3E00"
-                        },
-                        {
-                            "label": "64",
-                            "value": "3F00"
-                        },
-                        {
-                            "label": "65",
-                            "value": "4000"
-                        },
-                        {
-                            "label": "66",
-                            "value": "4100"
-                        },
-                        {
-                            "label": "67",
-                            "value": "4200"
-                        },
-                        {
-                            "label": "68",
-                            "value": "4300"
-                        },
-                        {
-                            "label": "69",
-                            "value": "4400"
-                        },
-                        {
-                            "label": "70",
-                            "value": "4500"
-                        },
-                        {
-                            "label": "71",
-                            "value": "4600"
-                        },
-                        {
-                            "label": "72",
-                            "value": "4700"
-                        },
-                        {
-                            "label": "73",
-                            "value": "4800"
-                        },
-                        {
-                            "label": "74",
-                            "value": "4900"
-                        },
-                        {
-                            "label": "75",
-                            "value": "4A00"
-                        },
-                        {
-                            "label": "76",
-                            "value": "4B00"
-                        },
-                        {
-                            "label": "77",
-                            "value": "4C00"
-                        },
-                        {
-                            "label": "78",
-                            "value": "4D00"
-                        },
-                        {
-                            "label": "79",
-                            "value": "4E00"
-                        },
-                        {
-                            "label": "80",
-                            "value": "4F00"
-                        },
-                        {
-                            "label": "81",
-                            "value": "5000"
-                        },
-                        {
-                            "label": "82",
-                            "value": "5100"
-                        },
-                        {
-                            "label": "83",
-                            "value": "5200"
-                        },
-                        {
-                            "label": "84",
-                            "value": "5300"
-                        },
-                        {
-                            "label": "85",
-                            "value": "5400"
-                        },
-                        {
-                            "label": "86",
-                            "value": "5500"
-                        },
-                        {
-                            "label": "87",
-                            "value": "5600"
-                        },
-                        {
-                            "label": "88",
-                            "value": "5700"
-                        },
-                        {
-                            "label": "89",
-                            "value": "5800"
-                        },
-                        {
-                            "label": "90",
-                            "value": "5900"
-                        },
-                        {
-                            "label": "91",
-                            "value": "5A00"
-                        },
-                        {
-                            "label": "92",
-                            "value": "5B00"
-                        },
-                        {
-                            "label": "93",
-                            "value": "5C00"
-                        },
-                        {
-                            "label": "94",
-                            "value": "5D00"
-                        },
-                        {
-                            "label": "95",
-                            "value": "5E00"
-                        },
-                        {
-                            "label": "96",
-                            "value": "5F00"
-                        },
-                        {
-                            "label": "97",
-                            "value": "6000"
-                        },
-                        {
-                            "label": "98",
-                            "value": "6100"
-                        },
-                        {
-                            "label": "99",
-                            "value": "6200"
-                        },
-                        {
-                            "label": "100",
-                            "value": "6300"
-                        },
-                        {
-                            "label": "101",
-                            "value": "6400"
-                        },
-                        {
-                            "label": "102",
-                            "value": "6500"
-                        },
-                        {
-                            "label": "103",
-                            "value": "6600"
-                        },
-                        {
-                            "label": "104",
-                            "value": "6700"
-                        },
-                        {
-                            "label": "105",
-                            "value": "6800"
-                        },
-                        {
-                            "label": "106",
-                            "value": "6900"
-                        },
-                        {
-                            "label": "107",
-                            "value": "6A00"
-                        },
-                        {
-                            "label": "108",
-                            "value": "6B00"
-                        },
-                        {
-                            "label": "109",
-                            "value": "6C00"
-                        },
-                        {
-                            "label": "110",
-                            "value": "6D00"
-                        },
-                        {
-                            "label": "111",
-                            "value": "6E00"
-                        },
-                        {
-                            "label": "112",
-                            "value": "6F00"
-                        },
-                        {
-                            "label": "113",
-                            "value": "7000"
-                        },
-                        {
-                            "label": "114",
-                            "value": "7100"
-                        },
-                        {
-                            "label": "115",
-                            "value": "7200"
-                        },
-                        {
-                            "label": "116",
-                            "value": "7300"
-                        },
-                        {
-                            "label": "117",
-                            "value": "7400"
-                        },
-                        {
-                            "label": "118",
-                            "value": "7500"
-                        },
-                        {
-                            "label": "119",
-                            "value": "7600"
-                        },
-                        {
-                            "label": "120",
-                            "value": "7700"
-                        },
-                        {
-                            "label": "121",
-                            "value": "7800"
-                        },
-                        {
-                            "label": "122",
-                            "value": "7900"
-                        },
-                        {
-                            "label": "123",
-                            "value": "7A00"
-                        },
-                        {
-                            "label": "124",
-                            "value": "7B00"
-                        },
-                        {
-                            "label": "125",
-                            "value": "7C00"
-                        },
-                        {
-                            "label": "126",
-                            "value": "7D00"
-                        },
-                        {
-                            "label": "127",
-                            "value": "7E00"
-                        },
-                        {
-                            "label": "128",
-                            "value": "7F00"
-                        },
-                        {
-                            "label": "129",
-                            "value": "8000"
-                        },
-                        {
-                            "label": "130",
-                            "value": "8100"
-                        },
-                        {
-                            "label": "131",
-                            "value": "8200"
-                        },
-                        {
-                            "label": "132",
-                            "value": "8300"
-                        },
-                        {
-                            "label": "133",
-                            "value": "8400"
-                        },
-                        {
-                            "label": "134",
-                            "value": "8500"
-                        },
-                        {
-                            "label": "135",
-                            "value": "8600"
-                        },
-                        {
-                            "label": "136",
-                            "value": "8700"
-                        },
-                        {
-                            "label": "137",
-                            "value": "8800"
-                        },
-                        {
-                            "label": "138",
-                            "value": "8900"
-                        },
-                        {
-                            "label": "139",
-                            "value": "8A00"
-                        },
-                        {
-                            "label": "140",
-                            "value": "8B00"
-                        },
-                        {
-                            "label": "141",
-                            "value": "8C00"
-                        },
-                        {
-                            "label": "142",
-                            "value": "8D00"
-                        },
-                        {
-                            "label": "143",
-                            "value": "8E00"
-                        },
-                        {
-                            "label": "144",
-                            "value": "8F00"
-                        },
-                        {
-                            "label": "145",
-                            "value": "9000"
-                        },
-                        {
-                            "label": "146",
-                            "value": "9100"
-                        },
-                        {
-                            "label": "147",
-                            "value": "9200"
-                        },
-                        {
-                            "label": "148",
-                            "value": "9300"
-                        },
-                        {
-                            "label": "149",
-                            "value": "9400"
-                        },
-                        {
-                            "label": "150",
-                            "value": "9500"
-                        },
-                        {
-                            "label": "151",
-                            "value": "9600"
-                        },
-                        {
-                            "label": "152",
-                            "value": "9700"
-                        },
-                        {
-                            "label": "153",
-                            "value": "9800"
-                        },
-                        {
-                            "label": "154",
-                            "value": "9900"
-                        },
-                        {
-                            "label": "155",
-                            "value": "9A00"
-                        },
-                        {
-                            "label": "156",
-                            "value": "9B00"
-                        },
-                        {
-                            "label": "157",
-                            "value": "9C00"
-                        },
-                        {
-                            "label": "158",
-                            "value": "9D00"
-                        },
-                        {
-                            "label": "159",
-                            "value": "9E00"
-                        },
-                        {
-                            "label": "160",
-                            "value": "9F00"
-                        },
-                        {
-                            "label": "161",
-                            "value": "A000"
-                        },
-                        {
-                            "label": "162",
-                            "value": "A100"
-                        },
-                        {
-                            "label": "163",
-                            "value": "A200"
-                        },
-                        {
-                            "label": "164",
-                            "value": "A300"
-                        },
-                        {
-                            "label": "165",
-                            "value": "A400"
-                        },
-                        {
-                            "label": "166",
-                            "value": "A500"
-                        },
-                        {
-                            "label": "167",
-                            "value": "A600"
-                        },
-                        {
-                            "label": "168",
-                            "value": "A700"
-                        },
-                        {
-                            "label": "169",
-                            "value": "A800"
-                        },
-                        {
-                            "label": "170",
-                            "value": "A900"
-                        },
-                        {
-                            "label": "171",
-                            "value": "AA00"
-                        },
-                        {
-                            "label": "172",
-                            "value": "AB00"
-                        },
-                        {
-                            "label": "173",
-                            "value": "AC00"
-                        },
-                        {
-                            "label": "174",
-                            "value": "AD00"
-                        },
-                        {
-                            "label": "175",
-                            "value": "AE00"
-                        },
-                        {
-                            "label": "176",
-                            "value": "AF00"
-                        },
-                        {
-                            "label": "177",
-                            "value": "B000"
-                        },
-                        {
-                            "label": "178",
-                            "value": "B100"
-                        },
-                        {
-                            "label": "179",
-                            "value": "B200"
-                        },
-                        {
-                            "label": "180",
-                            "value": "B300"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_PLLCCR",
-            "unused": "0000002c",
-            "label": "Pll clock control register"
-        },
-        {
-            "address": "4001e02a",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PLLSTP",
-                    "label": "PLL1 Stop Control",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "Operate the PLL1",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop the PLL1",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_PLLCR",
-            "unused": "000000fe",
-            "label": "Pll control register"
-        },
-        {
-            "address": "4001e032",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "MOSTP",
-                    "label": "Main Clock Oscillator Stop",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "Main clock oscillator is operating.",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Main clock oscillator is stopped.",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_MOSCCR",
-            "unused": "000000fe",
-            "label": "Main clock oscillator control register"
-        },
-        {
-            "address": "4001e036",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "HCSTP",
-                    "label": "HOCO Stop",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "Operate the HOCO clock",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop the HOCO clock",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_HOCOCR",
-            "unused": "000000fe",
-            "label": "High-speed on-chip oscillator control register"
-        },
-        {
-            "address": "4001e000",
-            "default": "00000000",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "7",
-                    "key": "HCFRQ0",
-                    "label": "HOCO Frequency Setting 0",
-                    "mask": "7",
-                    "settings": [
-                        {
-                            "label": "16 MHz",
-                            "value": "0"
-                        },
-                        {
-                            "label": "18 MHz",
-                            "value": "1"
-                        },
-                        {
-                            "label": "20 MHz",
-                            "value": "2"
-                        },
-                        {
-                            "label": "32 MHz",
-                            "value": "4"
-                        },
-                        {
-                            "label": "48 MHz",
-                            "value": "7"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_HOCOCR2",
-            "unused": "fffffff8",
-            "label": "Other"
-        },
-        {
-            "address": "4001e038",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "MCSTP",
-                    "label": "MOCO Stop",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "Operate the MOCO clock",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop the MOCO clock",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_MOCOCR",
-            "unused": "000000fe",
-            "label": "Middle-speed on-chip oscillator control register"
-        },
-        {
-            "address": "4001e03e",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "CKODIV",
-                    "label": "Clock out input frequency Division Select",
-                    "mask": "70",
-                    "settings": [
-                        {
-                            "label": "/1",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "10"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "20"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "30"
-                        },
-                        {
-                            "label": "/16",
-                            "value": "40"
-                        },
-                        {
-                            "label": "/32",
-                            "value": "50"
-                        },
-                        {
-                            "label": "/64",
-                            "value": "60"
-                        },
-                        {
-                            "label": "/128",
-                            "value": "70"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "CKOEN",
-                    "label": "Clock out enable",
-                    "mask": "80",
-                    "settings": [
-                        {
-                            "label": "Disable clock out",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Enable clock out",
-                            "value": "80"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_CKOCR",
-            "unused": "0000000f",
-            "label": "Clock out control register"
-        },
-        {
-            "address": "4001e048",
-            "default": "1900",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PL2IDIV",
-                    "label": "PLL2 Input Frequency Division Ratio Select",
-                    "mask": "3",
-                    "settings": [
-                        {
-                            "label": "/1 (Value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "2"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "3"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PL2SRCSEL",
-                    "label": "PLL2 Clock Source Select",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Main clock oscillator",
-                            "value": "0"
-                        },
-                        {
-                            "label": "HOCO",
-                            "value": "10"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PLL2MULNF",
-                    "label": "PLL2 Frequency Multiplication Fractional Factor Select ",
-                    "mask": "c0",
-                    "settings": [
-                        {
-                            "label": "0.00 (Value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "0.33 (1/3)",
-                            "value": "40"
-                        },
-                        {
-                            "label": "0.66 (2/3)",
-                            "value": "80"
-                        },
-                        {
-                            "label": "0.50 (1/2)",
-                            "value": "c0"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "5F00",
-                    "key": "PLL2MUL",
-                    "label": "PLL2 Frequency Multiplication Factor Select",
-                    "mask": "ff00",
-                    "settings": [
-                        {
-                            "label": "53",
-                            "value": "3400"
-                        },
-                        {
-                            "label": "54",
-                            "value": "3500"
-                        },
-                        {
-                            "label": "55",
-                            "value": "3600"
-                        },
-                        {
-                            "label": "56",
-                            "value": "3700"
-                        },
-                        {
-                            "label": "57",
-                            "value": "3800"
-                        },
-                        {
-                            "label": "58",
-                            "value": "3900"
-                        },
-                        {
-                            "label": "59",
-                            "value": "3A00"
-                        },
-                        {
-                            "label": "60",
-                            "value": "3B00"
-                        },
-                        {
-                            "label": "61",
-                            "value": "3C00"
-                        },
-                        {
-                            "label": "62",
-                            "value": "3D00"
-                        },
-                        {
-                            "label": "63",
-                            "value": "3E00"
-                        },
-                        {
-                            "label": "64",
-                            "value": "3F00"
-                        },
-                        {
-                            "label": "65",
-                            "value": "4000"
-                        },
-                        {
-                            "label": "66",
-                            "value": "4100"
-                        },
-                        {
-                            "label": "67",
-                            "value": "4200"
-                        },
-                        {
-                            "label": "68",
-                            "value": "4300"
-                        },
-                        {
-                            "label": "69",
-                            "value": "4400"
-                        },
-                        {
-                            "label": "70",
-                            "value": "4500"
-                        },
-                        {
-                            "label": "71",
-                            "value": "4600"
-                        },
-                        {
-                            "label": "72",
-                            "value": "4700"
-                        },
-                        {
-                            "label": "73",
-                            "value": "4800"
-                        },
-                        {
-                            "label": "74",
-                            "value": "4900"
-                        },
-                        {
-                            "label": "75",
-                            "value": "4A00"
-                        },
-                        {
-                            "label": "76",
-                            "value": "4B00"
-                        },
-                        {
-                            "label": "77",
-                            "value": "4C00"
-                        },
-                        {
-                            "label": "78",
-                            "value": "4D00"
-                        },
-                        {
-                            "label": "79",
-                            "value": "4E00"
-                        },
-                        {
-                            "label": "80",
-                            "value": "4F00"
-                        },
-                        {
-                            "label": "81",
-                            "value": "5000"
-                        },
-                        {
-                            "label": "82",
-                            "value": "5100"
-                        },
-                        {
-                            "label": "83",
-                            "value": "5200"
-                        },
-                        {
-                            "label": "84",
-                            "value": "5300"
-                        },
-                        {
-                            "label": "85",
-                            "value": "5400"
-                        },
-                        {
-                            "label": "86",
-                            "value": "5500"
-                        },
-                        {
-                            "label": "87",
-                            "value": "5600"
-                        },
-                        {
-                            "label": "88",
-                            "value": "5700"
-                        },
-                        {
-                            "label": "89",
-                            "value": "5800"
-                        },
-                        {
-                            "label": "90",
-                            "value": "5900"
-                        },
-                        {
-                            "label": "91",
-                            "value": "5A00"
-                        },
-                        {
-                            "label": "92",
-                            "value": "5B00"
-                        },
-                        {
-                            "label": "93",
-                            "value": "5C00"
-                        },
-                        {
-                            "label": "94",
-                            "value": "5D00"
-                        },
-                        {
-                            "label": "95",
-                            "value": "5E00"
-                        },
-                        {
-                            "label": "96",
-                            "value": "5F00"
-                        },
-                        {
-                            "label": "97",
-                            "value": "6000"
-                        },
-                        {
-                            "label": "98",
-                            "value": "6100"
-                        },
-                        {
-                            "label": "99",
-                            "value": "6200"
-                        },
-                        {
-                            "label": "100",
-                            "value": "6300"
-                        },
-                        {
-                            "label": "101",
-                            "value": "6400"
-                        },
-                        {
-                            "label": "102",
-                            "value": "6500"
-                        },
-                        {
-                            "label": "103",
-                            "value": "6600"
-                        },
-                        {
-                            "label": "104",
-                            "value": "6700"
-                        },
-                        {
-                            "label": "105",
-                            "value": "6800"
-                        },
-                        {
-                            "label": "106",
-                            "value": "6900"
-                        },
-                        {
-                            "label": "107",
-                            "value": "6A00"
-                        },
-                        {
-                            "label": "108",
-                            "value": "6B00"
-                        },
-                        {
-                            "label": "109",
-                            "value": "6C00"
-                        },
-                        {
-                            "label": "110",
-                            "value": "6D00"
-                        },
-                        {
-                            "label": "111",
-                            "value": "6E00"
-                        },
-                        {
-                            "label": "112",
-                            "value": "6F00"
-                        },
-                        {
-                            "label": "113",
-                            "value": "7000"
-                        },
-                        {
-                            "label": "114",
-                            "value": "7100"
-                        },
-                        {
-                            "label": "115",
-                            "value": "7200"
-                        },
-                        {
-                            "label": "116",
-                            "value": "7300"
-                        },
-                        {
-                            "label": "117",
-                            "value": "7400"
-                        },
-                        {
-                            "label": "118",
-                            "value": "7500"
-                        },
-                        {
-                            "label": "119",
-                            "value": "7600"
-                        },
-                        {
-                            "label": "120",
-                            "value": "7700"
-                        },
-                        {
-                            "label": "121",
-                            "value": "7800"
-                        },
-                        {
-                            "label": "122",
-                            "value": "7900"
-                        },
-                        {
-                            "label": "123",
-                            "value": "7A00"
-                        },
-                        {
-                            "label": "124",
-                            "value": "7B00"
-                        },
-                        {
-                            "label": "125",
-                            "value": "7C00"
-                        },
-                        {
-                            "label": "126",
-                            "value": "7D00"
-                        },
-                        {
-                            "label": "127",
-                            "value": "7E00"
-                        },
-                        {
-                            "label": "128",
-                            "value": "7F00"
-                        },
-                        {
-                            "label": "129",
-                            "value": "8000"
-                        },
-                        {
-                            "label": "130",
-                            "value": "8100"
-                        },
-                        {
-                            "label": "131",
-                            "value": "8200"
-                        },
-                        {
-                            "label": "132",
-                            "value": "8300"
-                        },
-                        {
-                            "label": "133",
-                            "value": "8400"
-                        },
-                        {
-                            "label": "134",
-                            "value": "8500"
-                        },
-                        {
-                            "label": "135",
-                            "value": "8600"
-                        },
-                        {
-                            "label": "136",
-                            "value": "8700"
-                        },
-                        {
-                            "label": "137",
-                            "value": "8800"
-                        },
-                        {
-                            "label": "138",
-                            "value": "8900"
-                        },
-                        {
-                            "label": "139",
-                            "value": "8A00"
-                        },
-                        {
-                            "label": "140",
-                            "value": "8B00"
-                        },
-                        {
-                            "label": "141",
-                            "value": "8C00"
-                        },
-                        {
-                            "label": "142",
-                            "value": "8D00"
-                        },
-                        {
-                            "label": "143",
-                            "value": "8E00"
-                        },
-                        {
-                            "label": "144",
-                            "value": "8F00"
-                        },
-                        {
-                            "label": "145",
-                            "value": "9000"
-                        },
-                        {
-                            "label": "146",
-                            "value": "9100"
-                        },
-                        {
-                            "label": "147",
-                            "value": "9200"
-                        },
-                        {
-                            "label": "148",
-                            "value": "9300"
-                        },
-                        {
-                            "label": "149",
-                            "value": "9400"
-                        },
-                        {
-                            "label": "150",
-                            "value": "9500"
-                        },
-                        {
-                            "label": "151",
-                            "value": "9600"
-                        },
-                        {
-                            "label": "152",
-                            "value": "9700"
-                        },
-                        {
-                            "label": "153",
-                            "value": "9800"
-                        },
-                        {
-                            "label": "154",
-                            "value": "9900"
-                        },
-                        {
-                            "label": "155",
-                            "value": "9A00"
-                        },
-                        {
-                            "label": "156",
-                            "value": "9B00"
-                        },
-                        {
-                            "label": "157",
-                            "value": "9C00"
-                        },
-                        {
-                            "label": "158",
-                            "value": "9D00"
-                        },
-                        {
-                            "label": "159",
-                            "value": "9E00"
-                        },
-                        {
-                            "label": "160",
-                            "value": "9F00"
-                        },
-                        {
-                            "label": "161",
-                            "value": "A000"
-                        },
-                        {
-                            "label": "162",
-                            "value": "A100"
-                        },
-                        {
-                            "label": "163",
-                            "value": "A200"
-                        },
-                        {
-                            "label": "164",
-                            "value": "A300"
-                        },
-                        {
-                            "label": "165",
-                            "value": "A400"
-                        },
-                        {
-                            "label": "166",
-                            "value": "A500"
-                        },
-                        {
-                            "label": "167",
-                            "value": "A600"
-                        },
-                        {
-                            "label": "168",
-                            "value": "A700"
-                        },
-                        {
-                            "label": "169",
-                            "value": "A800"
-                        },
-                        {
-                            "label": "170",
-                            "value": "A900"
-                        },
-                        {
-                            "label": "171",
-                            "value": "AA00"
-                        },
-                        {
-                            "label": "172",
-                            "value": "AB00"
-                        },
-                        {
-                            "label": "173",
-                            "value": "AC00"
-                        },
-                        {
-                            "label": "174",
-                            "value": "AD00"
-                        },
-                        {
-                            "label": "175",
-                            "value": "AE00"
-                        },
-                        {
-                            "label": "176",
-                            "value": "AF00"
-                        },
-                        {
-                            "label": "177",
-                            "value": "B000"
-                        },
-                        {
-                            "label": "178",
-                            "value": "B100"
-                        },
-                        {
-                            "label": "179",
-                            "value": "B200"
-                        },
-                        {
-                            "label": "180",
-                            "value": "B300"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_PLL2CCR",
-            "unused": "0000002c",
-            "label": "Pll2 clock control register"
-        },
-        {
-            "address": "4001e04a",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "PLL2STP",
-                    "label": "PLL2 Stop Control",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "Operate the PLL2",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop the PLL2.",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_PLL2CR",
-            "unused": "000000fe",
-            "label": "Pll2 control register"
-        },
-        {
-            "address": "4001e04c",
-            "default": "555",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "1",
-                    "key": "PLODIVP",
-                    "label": "PLL1 Output Frequency Division Ratio Select for output clock P",
-                    "mask": "f",
-                    "settings": [
-                        {
-                            "label": "1 / 2 ",
-                            "value": "1"
-                        },
-                        {
-                            "label": "1 / 4",
-                            "value": "3"
-                        },
-                        {
-                            "label": "1 / 6 (Value after reset)",
-                            "value": "5"
-                        },
-                        {
-                            "label": "1 / 8",
-                            "value": "7"
-                        },
-                        {
-                            "label": "1 / 16",
-                            "value": "f"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "70",
-                    "key": "PLODIVQ",
-                    "label": "PLL1 Output Frequency Division Ratio Select for output clock Q",
-                    "mask": "f0",
-                    "settings": [
-                        {
-                            "label": "1 / 2 ",
-                            "value": "10"
-                        },
-                        {
-                            "label": "1 / 3",
-                            "value": "20"
-                        },
-                        {
-                            "label": "1 / 4",
-                            "value": "30"
-                        },
-                        {
-                            "label": "1 / 5",
-                            "value": "40"
-                        },
-                        {
-                            "label": "1 / 6 (Value after reset)",
-                            "value": "50"
-                        },
-                        {
-                            "label": "1 / 8",
-                            "value": "70"
-                        },
-                        {
-                            "label": "1 / 9",
-                            "value": "80"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "100",
-                    "key": "PLODIVR",
-                    "label": "PLL1 Output Frequency Division Ratio Select for output clock R",
-                    "mask": "f00",
-                    "settings": [
-                        {
-                            "label": "1 / 2",
-                            "value": "100"
-                        },
-                        {
-                            "label": "1 / 3",
-                            "value": "200"
-                        },
-                        {
-                            "label": "1 / 4",
-                            "value": "300"
-                        },
-                        {
-                            "label": "1 / 5",
-                            "value": "400"
-                        },
-                        {
-                            "label": "1 / 6 (Value after reset)",
-                            "value": "500"
-                        },
-                        {
-                            "label": "1 / 8",
-                            "value": "700"
-                        },
-                        {
-                            "label": "1 / 9",
-                            "value": "800"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_PLLCCR2",
-            "unused": "0000f000",
-            "label": "Pll clock control register 2"
-        },
-        {
-            "address": "4001e04e",
-            "default": "555",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "1",
-                    "key": "PL2ODIVP",
-                    "label": "PLL2 Output Frequency Division Ratio Select for output clock P",
-                    "mask": "f",
-                    "settings": [
-                        {
-                            "label": "1 / 2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "1 / 4",
-                            "value": "3"
-                        },
-                        {
-                            "label": "1 / 6 (Value after reset)",
-                            "value": "5"
-                        },
-                        {
-                            "label": "1 / 8",
-                            "value": "7"
-                        },
-                        {
-                            "label": "1 / 16",
-                            "value": "f"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "10",
-                    "key": "PL2ODIVQ",
-                    "label": "PLL2 Output Frequency Division Ratio Select for output clock Q",
-                    "mask": "f0",
-                    "settings": [
-                        {
-                            "label": "1 / 2 ",
-                            "value": "10"
-                        },
-                        {
-                            "label": "1 / 3",
-                            "value": "20"
-                        },
-                        {
-                            "label": "1 / 4",
-                            "value": "30"
-                        },
-                        {
-                            "label": "1 / 5",
-                            "value": "40"
-                        },
-                        {
-                            "label": "1 / 6 (Value after reset)",
-                            "value": "50"
-                        },
-                        {
-                            "label": "1 / 8",
-                            "value": "70"
-                        },
-                        {
-                            "label": "1 / 9",
-                            "value": "80"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "100",
-                    "key": "PL2ODIVR",
-                    "label": "PLL2 Output Frequency Division Ratio Select for output clock R",
-                    "mask": "f00",
-                    "settings": [
-                        {
-                            "label": "1 / 2",
-                            "value": "100"
-                        },
-                        {
-                            "label": "1 / 3",
-                            "value": "200"
-                        },
-                        {
-                            "label": "1 / 4",
-                            "value": "300"
-                        },
-                        {
-                            "label": "1 / 5",
-                            "value": "400"
-                        },
-                        {
-                            "label": "1 / 6 (Value after reset)",
-                            "value": "500"
-                        },
-                        {
-                            "label": "1 / 8",
-                            "value": "700"
-                        },
-                        {
-                            "label": "1 / 9",
-                            "value": "800"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_PLL2CCR2",
-            "unused": "0000f000",
-            "label": "Pll2 clock control register 2"
-        },
-        {
-            "address": "4001e054",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "CKDIV",
-                    "label": "SCICLK Clock Division Select",
-                    "mask": "7",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "2"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "3"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "4"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "5"
-                        },
-                        {
-                            "label": "/5",
-                            "value": "6"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SCICKDIVCR",
-            "unused": "fffffff8",
-            "label": "Sci clock division control register"
-        },
-        {
-            "address": "4001e055",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "CKSEL",
-                    "label": "SCI Clock Source Select",
-                    "mask": "f",
-                    "settings": [
-                        {
-                            "label": "HOCO",
-                            "value": "0"
-                        },
-                        {
-                            "label": "MOCO (value after reset)",
-                            "value": "1"
-                        },
-                        {
-                            "label": "LOCO",
-                            "value": "2"
-                        },
-                        {
-                            "label": "Main clock oscillator",
-                            "value": "3"
-                        },
-                        {
-                            "label": "Sub-clock oscillator",
-                            "value": "4"
-                        },
-                        {
-                            "label": "PLL1P",
-                            "value": "5"
-                        },
-                        {
-                            "label": "PLL2P",
-                            "value": "6"
-                        },
-                        {
-                            "label": "PLL1Q",
-                            "value": "7"
-                        },
-                        {
-                            "label": "PLL1R",
-                            "value": "8"
-                        },
-                        {
-                            "label": "PLL2Q",
-                            "value": "9"
-                        },
-                        {
-                            "label": "PLL2R",
-                            "value": "a"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SCICKCR",
-            "unused": "fffffff0",
-            "label": "Sci clock control register"
-        },
-        {
-            "address": "4001e056",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "CKDIV",
-                    "label": "SPICLK Clock Division Select",
-                    "mask": "7",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "2"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "3"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "4"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "5"
-                        },
-                        {
-                            "label": "/5",
-                            "value": "6"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SPICKDIVCR",
-            "unused": "fffffff8",
-            "label": "Spi clock division control register"
-        },
-        {
-            "address": "4001e057",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "CKSEL",
-                    "label": "SPI Clock Source Select",
-                    "mask": "f",
-                    "settings": [
-                        {
-                            "label": "HOCO",
-                            "value": "0"
-                        },
-                        {
-                            "label": "MOCO (value after reset)",
-                            "value": "1"
-                        },
-                        {
-                            "label": "LOCO",
-                            "value": "2"
-                        },
-                        {
-                            "label": "Main clock oscillator",
-                            "value": "3"
-                        },
-                        {
-                            "label": "Sub-clock oscillator",
-                            "value": "4"
-                        },
-                        {
-                            "label": "PLL1P",
-                            "value": "5"
-                        },
-                        {
-                            "label": "PLL2P",
-                            "value": "6"
-                        },
-                        {
-                            "label": "PLL1Q",
-                            "value": "7"
-                        },
-                        {
-                            "label": "PLL1R",
-                            "value": "8"
-                        },
-                        {
-                            "label": "PLL2Q",
-                            "value": "9"
-                        },
-                        {
-                            "label": "PLL2R",
-                            "value": "a"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SPICKCR",
-            "unused": "fffffff0",
-            "label": "Spi clock control register"
-        },
-        {
-            "address": "4001e070",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "I3CCKDIV",
-                    "label": "I3C clock (I3CCLK) Division Select",
-                    "mask": "7",
-                    "settings": [
-                        {
-                            "label": "/1 (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "/2",
-                            "value": "1"
-                        },
-                        {
-                            "label": "/4",
-                            "value": "2"
-                        },
-                        {
-                            "label": "/6",
-                            "value": "3"
-                        },
-                        {
-                            "label": "/8",
-                            "value": "4"
-                        },
-                        {
-                            "label": "/3",
-                            "value": "5"
-                        },
-                        {
-                            "label": "/5",
-                            "value": "6"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_I3CCKDIVCR",
-            "unused": "000000f8",
-            "label": "I3C clock Division control register"
-        },
-        {
-            "address": "4001e078",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "7",
-                    "key": "I3CCKSEL",
-                    "label": "I3C clock (I3CCLK) Source Select",
-                    "mask": "f",
-                    "settings": [
-                        {
-                            "label": "MOCO (value after reset)",
-                            "value": "1"
-                        },
-                        {
-                            "label": "PLL1P",
-                            "value": "5"
-                        },
-                        {
-                            "label": "PLL2P",
-                            "value": "6"
-                        },
-                        {
-                            "label": "PLL1Q",
-                            "value": "7"
-                        },
-                        {
-                            "label": "PLL1R",
-                            "value": "8"
-                        },
-                        {
-                            "label": "PLL2Q",
-                            "value": "9"
-                        },
-                        {
-                            "label": "PLL2R",
-                            "value": "a"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_I3CCKCR",
-            "unused": "000000f0",
-            "label": "I3c clock control register"
-        },
-        {
-            "address": "4001e0a0",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "OPCM",
-                    "label": "Operating Power Control Mode Select",
-                    "mask": "3",
-                    "settings": [
-                        {
-                            "label": "High-speed mode",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Low-speed mode ",
-                            "value": "3"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_OPCCR",
-            "unused": "000000ec",
-            "label": "Operating power control register"
-        },
-        {
-            "address": "4001e0a2",
-            "default": "5",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "9",
-                    "key": "MSTS",
-                    "label": "Main clock oscillator wait time setting",
-                    "mask": "f",
-                    "settings": [
-                        {
-                            "label": "Wait time=    11.4us (3 cycles) / 15.3us (4 cycles)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Wait time=   133.5us (35 cycles)  / 137.3us (36 cycles) ",
-                            "value": "1"
-                        },
-                        {
-                            "label": "Wait time=   255.6us (67 cycles) / 259.4us (68 cycles)",
-                            "value": "2"
-                        },
-                        {
-                            "label": "Wait time=   499.7us (131 cycles) / 503.5us (132 cycles)",
-                            "value": "3"
-                        },
-                        {
-                            "label": "Wait time=   988.0us (259 cycles) / 991.8us (260 cycles)",
-                            "value": "4"
-                        },
-                        {
-                            "label": "Wait time=  2086.6us (547 cycles) (value after reset) / 2090.5us (548 cycles) (value after reset)",
-                            "value": "5"
-                        },
-                        {
-                            "label": "Wait time=  4039.8us (1059 cycles) / 4043.6us (1060 cycles)",
-                            "value": "6"
-                        },
-                        {
-                            "label": "Wait time=  8190.2us (2147 cycles) / 8194.0us (2148 cycles)",
-                            "value": "7"
-                        },
-                        {
-                            "label": "Wait time= 16368.9us (4291 cycles) / 16372.7us (4292 cycles)",
-                            "value": "8"
-                        },
-                        {
-                            "label": "Wait time= 31139.4us (8163 cycles) / 31143.2us (8164 cycles)",
-                            "value": "9"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_MOSCWTCR",
-            "unused": "fffffff0",
-            "label": "Main clock oscillator wait control register"
-        },
-        {
-            "address": "4001e400",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "LCSTP",
-                    "label": "LOCO Stop",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "Operate the LOCO clock",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop the LOCO clock",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_LOCOCR",
-            "unused": "000000fe",
-            "label": "Low-speed on-chip oscillator control register"
-        },
-        {
-            "address": "4001ea50",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "3",
-                    "key": "MODRV0",
-                    "label": "Main Clock Oscillator Drive Capability 0 Switching ",
-                    "mask": "e",
-                    "settings": [
-                        {
-                            "label": "8 MHz",
-                            "value": "0"
-                        },
-                        {
-                            "label": "8 MHz to 24 MHz",
-                            "value": "3"
-                        },
-                        {
-                            "label": "8 MHz to 48 MHz",
-                            "value": "5"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "AGCEN",
-                    "label": "Auto Gain Control Enable",
-                    "mask": "10",
-                    "settings": [
-                        {
-                            "label": "Disable",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Enable",
-                            "value": "10"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "MOSEL",
-                    "label": "Main Clock Oscillator Switching",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "Resonator",
-                            "value": "0"
-                        },
-                        {
-                            "label": "External clock input",
-                            "value": "40"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_MOMCR",
-            "unused": "000000a1",
-            "label": "Main clock oscillator mode oscillation control register"
-        },
-        {
-            "address": "4001ec00",
-            "default": "1",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "1",
-                    "key": "SOSTP",
-                    "label": "Sub-Clock Oscillator Stop",
-                    "mask": "1",
-                    "settings": [
-                        {
-                            "label": "Operate the sub-clock oscillator",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Stop the sub-clock oscillator",
-                            "value": "1"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SOSCCR",
-            "unused": "000000fe",
-            "label": "Sub-clock oscillator control register"
-        },
-        {
-            "address": "4001ec01",
-            "default": "0",
-            "fields": [
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SODRV",
-                    "label": "Sub Clock Oscillator Drive Capability Switching",
-                    "mask": "3",
-                    "settings": [
-                        {
-                            "label": ":Standard(12.5pf) (value after reset)",
-                            "value": "0"
-                        },
-                        {
-                            "label": "Low power mode 1 (9pf)",
-                            "value": "1"
-                        },
-                        {
-                            "label": "Low power mode 2 (7pf) ",
-                            "value": "2"
-                        },
-                        {
-                            "label": "Low power mode 3 (4pf)",
-                            "value": "3"
-                        }
-                    ]
-                },
-                {
-                    "hidden": false,
-                    "init": "0",
-                    "key": "SOSEL",
-                    "label": "Sub Clock Oscillator Switching",
-                    "mask": "40",
-                    "settings": [
-                        {
-                            "label": "Resonator",
-                            "value": "0"
-                        },
-                        {
-                            "label": "External clock input",
-                            "value": "40"
-                        }
-                    ]
-                }
-            ],
-            "key": "SYSTEM_SOMCR",
-            "unused": "000000bc",
-            "label": "Sub clock oscillator mode control register"
-        }
+ "config_registers": [
+  {
+   "address": "4001e020",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "3",
+     "key": "PCKD",
+     "label": "Peripheral Module Clock D (PCLKD) Select",
+     "mask": "f",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1"
+      },
+      {
+       "label": "/4",
+       "value": "2"
+      },
+      {
+       "label": "/8",
+       "value": "3"
+      },
+      {
+       "label": "/16",
+       "value": "4"
+      },
+      {
+       "label": "/32",
+       "value": "5"
+      },
+      {
+       "label": "/64",
+       "value": "6"
+      },
+      {
+       "label": "/3",
+       "value": "8"
+      },
+      {
+       "label": "/6",
+       "value": "9"
+      },
+      {
+       "label": "/12",
+       "value": "a"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "30",
+     "key": "PCKC",
+     "label": "Peripheral Module Clock C (PCLKC) Select",
+     "mask": "f0",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "10"
+      },
+      {
+       "label": "/4",
+       "value": "20"
+      },
+      {
+       "label": "/8",
+       "value": "30"
+      },
+      {
+       "label": "/16",
+       "value": "40"
+      },
+      {
+       "label": "/32",
+       "value": "50"
+      },
+      {
+       "label": "/64",
+       "value": "60"
+      },
+      {
+       "label": "/3",
+       "value": "80"
+      },
+      {
+       "label": "/6",
+       "value": "90"
+      },
+      {
+       "label": "/12",
+       "value": "a0"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "300",
+     "key": "PCKB",
+     "label": "Peripheral Module Clock B (PCLKB) Select",
+     "mask": "f00",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "100"
+      },
+      {
+       "label": "/4",
+       "value": "200"
+      },
+      {
+       "label": "/8",
+       "value": "300"
+      },
+      {
+       "label": "/16",
+       "value": "400"
+      },
+      {
+       "label": "/32",
+       "value": "500"
+      },
+      {
+       "label": "/64",
+       "value": "600"
+      },
+      {
+       "label": "/3",
+       "value": "800"
+      },
+      {
+       "label": "/6",
+       "value": "900"
+      },
+      {
+       "label": "/12",
+       "value": "a00"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "3000",
+     "key": "PCKA",
+     "label": "Peripheral Module Clock A (PCLKA) Select",
+     "mask": "f000",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1000"
+      },
+      {
+       "label": "/4",
+       "value": "2000"
+      },
+      {
+       "label": "/8",
+       "value": "3000"
+      },
+      {
+       "label": "/16",
+       "value": "4000"
+      },
+      {
+       "label": "/32",
+       "value": "5000"
+      },
+      {
+       "label": "/64",
+       "value": "6000"
+      },
+      {
+       "label": "/3",
+       "value": "8000"
+      },
+      {
+       "label": "/6",
+       "value": "9000"
+      },
+      {
+       "label": "/12",
+       "value": "a000"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "20000",
+     "key": "BCK",
+     "label": "External Bus Clock (BCLK) Select",
+     "mask": "f0000",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "10000"
+      },
+      {
+       "label": "/4",
+       "value": "20000"
+      },
+      {
+       "label": "/8",
+       "value": "30000"
+      },
+      {
+       "label": "/16",
+       "value": "40000"
+      },
+      {
+       "label": "/32",
+       "value": "50000"
+      },
+      {
+       "label": "/64",
+       "value": "60000"
+      },
+      {
+       "label": "/3",
+       "value": "80000"
+      },
+      {
+       "label": "/6",
+       "value": "90000"
+      },
+      {
+       "label": "/12",
+       "value": "a0000"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "100000",
+     "key": "PCKE",
+     "label": "Peripheral Module Clock E (PCLKE) Select",
+     "mask": "f00000",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "100000"
+      },
+      {
+       "label": "/4",
+       "value": "200000"
+      },
+      {
+       "label": "/8",
+       "value": "300000"
+      },
+      {
+       "label": "/16",
+       "value": "400000"
+      },
+      {
+       "label": "/32",
+       "value": "500000"
+      },
+      {
+       "label": "/64",
+       "value": "600000"
+      },
+      {
+       "label": "/3",
+       "value": "800000"
+      },
+      {
+       "label": "/6",
+       "value": "900000"
+      },
+      {
+       "label": "/12",
+       "value": "a00000"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "1000000",
+     "key": "ICK",
+     "label": "System Clock (ICLK) Select",
+     "mask": "f000000",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1000000"
+      },
+      {
+       "label": "/4",
+       "value": "2000000"
+      },
+      {
+       "label": "/8",
+       "value": "3000000"
+      },
+      {
+       "label": "/16",
+       "value": "4000000"
+      },
+      {
+       "label": "/32",
+       "value": "5000000"
+      },
+      {
+       "label": "/64",
+       "value": "6000000"
+      },
+      {
+       "label": "/3",
+       "value": "8000000"
+      },
+      {
+       "label": "/6",
+       "value": "9000000"
+      },
+      {
+       "label": "/12",
+       "value": "a000000"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "30000000",
+     "key": "FCK",
+     "label": "Flash IF Clock (FCLK) Select",
+     "mask": "f0000000",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "10000000"
+      },
+      {
+       "label": "/4",
+       "value": "20000000"
+      },
+      {
+       "label": "/8",
+       "value": "30000000"
+      },
+      {
+       "label": "/16",
+       "value": "40000000"
+      },
+      {
+       "label": "/32",
+       "value": "50000000"
+      },
+      {
+       "label": "/64",
+       "value": "60000000"
+      },
+      {
+       "label": "/3",
+       "value": "80000000"
+      },
+      {
+       "label": "/6",
+       "value": "90000000"
+      },
+      {
+       "label": "/12",
+       "value": "a0000000"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SCKDIVCR",
+   "label": "System Clock Division Control Register",
+   "unused": "00000000"
+  },
+  {
+   "address": "4001e024",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "CPUCK",
+     "label": "CPU Clock (CPUCLK) Select",
+     "mask": "f",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1"
+      },
+      {
+       "label": "/4",
+       "value": "2"
+      },
+      {
+       "label": "/8",
+       "value": "3"
+      },
+      {
+       "label": "/16",
+       "value": "4"
+      },
+      {
+       "label": "/32",
+       "value": "5"
+      },
+      {
+       "label": "/64",
+       "value": "6"
+      },
+      {
+       "label": "/3",
+       "value": "8"
+      },
+      {
+       "label": "/6",
+       "value": "9"
+      },
+      {
+       "label": "/12",
+       "value": "a"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SCKDIVCR2",
+   "label": "System Clock Division Control Register 2",
+   "unused": "fffffff0"
+  },
+  {
+   "address": "4001e026",
+   "default": "1",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "5",
+     "key": "CKSEL",
+     "label": "Clock Source Select",
+     "mask": "7",
+     "settings": [
+      {
+       "label": "HOCO ",
+       "value": "0"
+      },
+      {
+       "label": "MOCO",
+       "value": "1"
+      },
+      {
+       "label": "Main clock oscillator ",
+       "value": "3"
+      },
+      {
+       "label": "Sub-clock oscillator ",
+       "value": "4"
+      },
+      {
+       "label": "PLL1P",
+       "value": "5"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SCKSCR",
+   "label": "System Clock Source Control Register",
+   "unused": "000000f8"
+  },
+  {
+   "address": "4001e028",
+   "default": "1300",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "1",
+     "key": "PLIDIV",
+     "label": "PLL1 Input Frequency Division Ratio Select",
+     "mask": "3",
+     "settings": [
+      {
+       "label": "/1 ",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1"
+      },
+      {
+       "label": "/3",
+       "value": "2"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "PLSRCSEL",
+     "label": "PLL1 Clock Source Select",
+     "mask": "10",
+     "settings": [
+      {
+       "label": "Main clock oscillator",
+       "value": "0"
+      },
+      {
+       "label": "HOCO",
+       "value": "10"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "PLLMULNF",
+     "label": "PLL1 Frequency Multiplication Fractional Factor Select",
+     "mask": "c0",
+     "settings": [
+      {
+       "label": "0.00 (Value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "0.33 (1/3)",
+       "value": "40"
+      },
+      {
+       "label": "0.66 (2/3)",
+       "value": "80"
+      },
+      {
+       "label": "0.50 (1/2)",
+       "value": "c0"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "5F00",
+     "key": "PLLMUL",
+     "label": "PLL1 Frequency Multiplication Factor Select",
+     "mask": "ff00",
+     "settings": [
+      {
+       "label": "53",
+       "value": "3400"
+      },
+      {
+       "label": "54",
+       "value": "3500"
+      },
+      {
+       "label": "55",
+       "value": "3600"
+      },
+      {
+       "label": "56",
+       "value": "3700"
+      },
+      {
+       "label": "57",
+       "value": "3800"
+      },
+      {
+       "label": "58",
+       "value": "3900"
+      },
+      {
+       "label": "59",
+       "value": "3A00"
+      },
+      {
+       "label": "60",
+       "value": "3B00"
+      },
+      {
+       "label": "61",
+       "value": "3C00"
+      },
+      {
+       "label": "62",
+       "value": "3D00"
+      },
+      {
+       "label": "63",
+       "value": "3E00"
+      },
+      {
+       "label": "64",
+       "value": "3F00"
+      },
+      {
+       "label": "65",
+       "value": "4000"
+      },
+      {
+       "label": "66",
+       "value": "4100"
+      },
+      {
+       "label": "67",
+       "value": "4200"
+      },
+      {
+       "label": "68",
+       "value": "4300"
+      },
+      {
+       "label": "69",
+       "value": "4400"
+      },
+      {
+       "label": "70",
+       "value": "4500"
+      },
+      {
+       "label": "71",
+       "value": "4600"
+      },
+      {
+       "label": "72",
+       "value": "4700"
+      },
+      {
+       "label": "73",
+       "value": "4800"
+      },
+      {
+       "label": "74",
+       "value": "4900"
+      },
+      {
+       "label": "75",
+       "value": "4A00"
+      },
+      {
+       "label": "76",
+       "value": "4B00"
+      },
+      {
+       "label": "77",
+       "value": "4C00"
+      },
+      {
+       "label": "78",
+       "value": "4D00"
+      },
+      {
+       "label": "79",
+       "value": "4E00"
+      },
+      {
+       "label": "80",
+       "value": "4F00"
+      },
+      {
+       "label": "81",
+       "value": "5000"
+      },
+      {
+       "label": "82",
+       "value": "5100"
+      },
+      {
+       "label": "83",
+       "value": "5200"
+      },
+      {
+       "label": "84",
+       "value": "5300"
+      },
+      {
+       "label": "85",
+       "value": "5400"
+      },
+      {
+       "label": "86",
+       "value": "5500"
+      },
+      {
+       "label": "87",
+       "value": "5600"
+      },
+      {
+       "label": "88",
+       "value": "5700"
+      },
+      {
+       "label": "89",
+       "value": "5800"
+      },
+      {
+       "label": "90",
+       "value": "5900"
+      },
+      {
+       "label": "91",
+       "value": "5A00"
+      },
+      {
+       "label": "92",
+       "value": "5B00"
+      },
+      {
+       "label": "93",
+       "value": "5C00"
+      },
+      {
+       "label": "94",
+       "value": "5D00"
+      },
+      {
+       "label": "95",
+       "value": "5E00"
+      },
+      {
+       "label": "96",
+       "value": "5F00"
+      },
+      {
+       "label": "97",
+       "value": "6000"
+      },
+      {
+       "label": "98",
+       "value": "6100"
+      },
+      {
+       "label": "99",
+       "value": "6200"
+      },
+      {
+       "label": "100",
+       "value": "6300"
+      },
+      {
+       "label": "101",
+       "value": "6400"
+      },
+      {
+       "label": "102",
+       "value": "6500"
+      },
+      {
+       "label": "103",
+       "value": "6600"
+      },
+      {
+       "label": "104",
+       "value": "6700"
+      },
+      {
+       "label": "105",
+       "value": "6800"
+      },
+      {
+       "label": "106",
+       "value": "6900"
+      },
+      {
+       "label": "107",
+       "value": "6A00"
+      },
+      {
+       "label": "108",
+       "value": "6B00"
+      },
+      {
+       "label": "109",
+       "value": "6C00"
+      },
+      {
+       "label": "110",
+       "value": "6D00"
+      },
+      {
+       "label": "111",
+       "value": "6E00"
+      },
+      {
+       "label": "112",
+       "value": "6F00"
+      },
+      {
+       "label": "113",
+       "value": "7000"
+      },
+      {
+       "label": "114",
+       "value": "7100"
+      },
+      {
+       "label": "115",
+       "value": "7200"
+      },
+      {
+       "label": "116",
+       "value": "7300"
+      },
+      {
+       "label": "117",
+       "value": "7400"
+      },
+      {
+       "label": "118",
+       "value": "7500"
+      },
+      {
+       "label": "119",
+       "value": "7600"
+      },
+      {
+       "label": "120",
+       "value": "7700"
+      },
+      {
+       "label": "121",
+       "value": "7800"
+      },
+      {
+       "label": "122",
+       "value": "7900"
+      },
+      {
+       "label": "123",
+       "value": "7A00"
+      },
+      {
+       "label": "124",
+       "value": "7B00"
+      },
+      {
+       "label": "125",
+       "value": "7C00"
+      },
+      {
+       "label": "126",
+       "value": "7D00"
+      },
+      {
+       "label": "127",
+       "value": "7E00"
+      },
+      {
+       "label": "128",
+       "value": "7F00"
+      },
+      {
+       "label": "129",
+       "value": "8000"
+      },
+      {
+       "label": "130",
+       "value": "8100"
+      },
+      {
+       "label": "131",
+       "value": "8200"
+      },
+      {
+       "label": "132",
+       "value": "8300"
+      },
+      {
+       "label": "133",
+       "value": "8400"
+      },
+      {
+       "label": "134",
+       "value": "8500"
+      },
+      {
+       "label": "135",
+       "value": "8600"
+      },
+      {
+       "label": "136",
+       "value": "8700"
+      },
+      {
+       "label": "137",
+       "value": "8800"
+      },
+      {
+       "label": "138",
+       "value": "8900"
+      },
+      {
+       "label": "139",
+       "value": "8A00"
+      },
+      {
+       "label": "140",
+       "value": "8B00"
+      },
+      {
+       "label": "141",
+       "value": "8C00"
+      },
+      {
+       "label": "142",
+       "value": "8D00"
+      },
+      {
+       "label": "143",
+       "value": "8E00"
+      },
+      {
+       "label": "144",
+       "value": "8F00"
+      },
+      {
+       "label": "145",
+       "value": "9000"
+      },
+      {
+       "label": "146",
+       "value": "9100"
+      },
+      {
+       "label": "147",
+       "value": "9200"
+      },
+      {
+       "label": "148",
+       "value": "9300"
+      },
+      {
+       "label": "149",
+       "value": "9400"
+      },
+      {
+       "label": "150",
+       "value": "9500"
+      },
+      {
+       "label": "151",
+       "value": "9600"
+      },
+      {
+       "label": "152",
+       "value": "9700"
+      },
+      {
+       "label": "153",
+       "value": "9800"
+      },
+      {
+       "label": "154",
+       "value": "9900"
+      },
+      {
+       "label": "155",
+       "value": "9A00"
+      },
+      {
+       "label": "156",
+       "value": "9B00"
+      },
+      {
+       "label": "157",
+       "value": "9C00"
+      },
+      {
+       "label": "158",
+       "value": "9D00"
+      },
+      {
+       "label": "159",
+       "value": "9E00"
+      },
+      {
+       "label": "160",
+       "value": "9F00"
+      },
+      {
+       "label": "161",
+       "value": "A000"
+      },
+      {
+       "label": "162",
+       "value": "A100"
+      },
+      {
+       "label": "163",
+       "value": "A200"
+      },
+      {
+       "label": "164",
+       "value": "A300"
+      },
+      {
+       "label": "165",
+       "value": "A400"
+      },
+      {
+       "label": "166",
+       "value": "A500"
+      },
+      {
+       "label": "167",
+       "value": "A600"
+      },
+      {
+       "label": "168",
+       "value": "A700"
+      },
+      {
+       "label": "169",
+       "value": "A800"
+      },
+      {
+       "label": "170",
+       "value": "A900"
+      },
+      {
+       "label": "171",
+       "value": "AA00"
+      },
+      {
+       "label": "172",
+       "value": "AB00"
+      },
+      {
+       "label": "173",
+       "value": "AC00"
+      },
+      {
+       "label": "174",
+       "value": "AD00"
+      },
+      {
+       "label": "175",
+       "value": "AE00"
+      },
+      {
+       "label": "176",
+       "value": "AF00"
+      },
+      {
+       "label": "177",
+       "value": "B000"
+      },
+      {
+       "label": "178",
+       "value": "B100"
+      },
+      {
+       "label": "179",
+       "value": "B200"
+      },
+      {
+       "label": "180",
+       "value": "B300"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_PLLCCR",
+   "label": "PLL Clock Control Register",
+   "unused": "0000002c"
+  },
+  {
+   "address": "4001e02a",
+   "default": "1",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "PLLSTP",
+     "label": "PLL1 Stop Control",
+     "mask": "1",
+     "settings": [
+      {
+       "label": "Operate the PLL1",
+       "value": "0"
+      },
+      {
+       "label": "Stop the PLL1",
+       "value": "1"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_PLLCR",
+   "label": "PLL Control Register",
+   "unused": "000000fe"
+  },
+  {
+   "address": "4001e032",
+   "default": "1",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "MOSTP",
+     "label": "Main Clock Oscillator Stop",
+     "mask": "1",
+     "settings": [
+      {
+       "label": "Main clock oscillator is operating.",
+       "value": "0"
+      },
+      {
+       "label": "Main clock oscillator is stopped.",
+       "value": "1"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_MOSCCR",
+   "label": "Main Clock Oscillator Control Register ",
+   "unused": "000000fe"
+  },
+  {
+   "address": "4001e036",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "HCSTP",
+     "label": "HOCO Stop",
+     "mask": "1",
+     "settings": [
+      {
+       "label": "Operate the HOCO clock",
+       "value": "0"
+      },
+      {
+       "label": "Stop the HOCO clock",
+       "value": "1"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_HOCOCR",
+   "label": "High-Speed On-Chip Oscillator Control Register",
+   "unused": "000000fe"
+  },
+  {
+   "address": "4001e000",
+   "default": "00000000",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "7",
+     "key": "HCFRQ0",
+     "label": "HOCO Frequency Setting 0",
+     "mask": "7",
+     "settings": [
+      {
+       "label": "16 MHz",
+       "value": "0"
+      },
+      {
+       "label": "18 MHz",
+       "value": "1"
+      },
+      {
+       "label": "20 MHz",
+       "value": "2"
+      },
+      {
+       "label": "32 MHz",
+       "value": "4"
+      },
+      {
+       "label": "48 MHz",
+       "value": "7"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_HOCOCR2",
+   "unused": "fffffff8",
+   "label": "High-Speed On-Chip Oscillator Control Register 2"
+  },
+  {
+   "address": "4001e038",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "MCSTP",
+     "label": "MOCO Stop",
+     "mask": "1",
+     "settings": [
+      {
+       "label": "Operate the MOCO clock",
+       "value": "0"
+      },
+      {
+       "label": "Stop the MOCO clock",
+       "value": "1"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_MOCOCR",
+   "label": "Middle-Speed On-Chip Oscillator Control Register",
+   "unused": "000000fe"
+  },
+  {
+   "address": "4001e03e",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "CKODIV",
+     "label": "Clock out input frequency Division Select",
+     "mask": "70",
+     "settings": [
+      {
+       "label": "/1",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "10"
+      },
+      {
+       "label": "/4",
+       "value": "20"
+      },
+      {
+       "label": "/8",
+       "value": "30"
+      },
+      {
+       "label": "/16",
+       "value": "40"
+      },
+      {
+       "label": "/32",
+       "value": "50"
+      },
+      {
+       "label": "/64",
+       "value": "60"
+      },
+      {
+       "label": "/128",
+       "value": "70"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "CKOEN",
+     "label": "Clock out enable",
+     "mask": "80",
+     "settings": [
+      {
+       "label": "Disable clock out",
+       "value": "0"
+      },
+      {
+       "label": "Enable clock out",
+       "value": "80"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_CKOCR",
+   "label": "Clock Out Control Register",
+   "unused": "0000000f"
+  },
+  {
+   "address": "4001e048",
+   "default": "1900",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "PL2IDIV",
+     "label": "PLL2 Input Frequency Division Ratio Select",
+     "mask": "3",
+     "settings": [
+      {
+       "label": "/1 (Value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1"
+      },
+      {
+       "label": "/3",
+       "value": "2"
+      },
+      {
+       "label": "/4",
+       "value": "3"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "PL2SRCSEL",
+     "label": "PLL2 Clock Source Select",
+     "mask": "10",
+     "settings": [
+      {
+       "label": "Main clock oscillator",
+       "value": "0"
+      },
+      {
+       "label": "HOCO",
+       "value": "10"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "PLL2MULNF",
+     "label": "PLL2 Frequency Multiplication Fractional Factor Select ",
+     "mask": "c0",
+     "settings": [
+      {
+       "label": "0.00 (Value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "0.33 (1/3)",
+       "value": "40"
+      },
+      {
+       "label": "0.66 (2/3)",
+       "value": "80"
+      },
+      {
+       "label": "0.50 (1/2)",
+       "value": "c0"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "5F00",
+     "key": "PLL2MUL",
+     "label": "PLL2 Frequency Multiplication Factor Select",
+     "mask": "ff00",
+     "settings": [
+      {
+       "label": "53",
+       "value": "3400"
+      },
+      {
+       "label": "54",
+       "value": "3500"
+      },
+      {
+       "label": "55",
+       "value": "3600"
+      },
+      {
+       "label": "56",
+       "value": "3700"
+      },
+      {
+       "label": "57",
+       "value": "3800"
+      },
+      {
+       "label": "58",
+       "value": "3900"
+      },
+      {
+       "label": "59",
+       "value": "3A00"
+      },
+      {
+       "label": "60",
+       "value": "3B00"
+      },
+      {
+       "label": "61",
+       "value": "3C00"
+      },
+      {
+       "label": "62",
+       "value": "3D00"
+      },
+      {
+       "label": "63",
+       "value": "3E00"
+      },
+      {
+       "label": "64",
+       "value": "3F00"
+      },
+      {
+       "label": "65",
+       "value": "4000"
+      },
+      {
+       "label": "66",
+       "value": "4100"
+      },
+      {
+       "label": "67",
+       "value": "4200"
+      },
+      {
+       "label": "68",
+       "value": "4300"
+      },
+      {
+       "label": "69",
+       "value": "4400"
+      },
+      {
+       "label": "70",
+       "value": "4500"
+      },
+      {
+       "label": "71",
+       "value": "4600"
+      },
+      {
+       "label": "72",
+       "value": "4700"
+      },
+      {
+       "label": "73",
+       "value": "4800"
+      },
+      {
+       "label": "74",
+       "value": "4900"
+      },
+      {
+       "label": "75",
+       "value": "4A00"
+      },
+      {
+       "label": "76",
+       "value": "4B00"
+      },
+      {
+       "label": "77",
+       "value": "4C00"
+      },
+      {
+       "label": "78",
+       "value": "4D00"
+      },
+      {
+       "label": "79",
+       "value": "4E00"
+      },
+      {
+       "label": "80",
+       "value": "4F00"
+      },
+      {
+       "label": "81",
+       "value": "5000"
+      },
+      {
+       "label": "82",
+       "value": "5100"
+      },
+      {
+       "label": "83",
+       "value": "5200"
+      },
+      {
+       "label": "84",
+       "value": "5300"
+      },
+      {
+       "label": "85",
+       "value": "5400"
+      },
+      {
+       "label": "86",
+       "value": "5500"
+      },
+      {
+       "label": "87",
+       "value": "5600"
+      },
+      {
+       "label": "88",
+       "value": "5700"
+      },
+      {
+       "label": "89",
+       "value": "5800"
+      },
+      {
+       "label": "90",
+       "value": "5900"
+      },
+      {
+       "label": "91",
+       "value": "5A00"
+      },
+      {
+       "label": "92",
+       "value": "5B00"
+      },
+      {
+       "label": "93",
+       "value": "5C00"
+      },
+      {
+       "label": "94",
+       "value": "5D00"
+      },
+      {
+       "label": "95",
+       "value": "5E00"
+      },
+      {
+       "label": "96",
+       "value": "5F00"
+      },
+      {
+       "label": "97",
+       "value": "6000"
+      },
+      {
+       "label": "98",
+       "value": "6100"
+      },
+      {
+       "label": "99",
+       "value": "6200"
+      },
+      {
+       "label": "100",
+       "value": "6300"
+      },
+      {
+       "label": "101",
+       "value": "6400"
+      },
+      {
+       "label": "102",
+       "value": "6500"
+      },
+      {
+       "label": "103",
+       "value": "6600"
+      },
+      {
+       "label": "104",
+       "value": "6700"
+      },
+      {
+       "label": "105",
+       "value": "6800"
+      },
+      {
+       "label": "106",
+       "value": "6900"
+      },
+      {
+       "label": "107",
+       "value": "6A00"
+      },
+      {
+       "label": "108",
+       "value": "6B00"
+      },
+      {
+       "label": "109",
+       "value": "6C00"
+      },
+      {
+       "label": "110",
+       "value": "6D00"
+      },
+      {
+       "label": "111",
+       "value": "6E00"
+      },
+      {
+       "label": "112",
+       "value": "6F00"
+      },
+      {
+       "label": "113",
+       "value": "7000"
+      },
+      {
+       "label": "114",
+       "value": "7100"
+      },
+      {
+       "label": "115",
+       "value": "7200"
+      },
+      {
+       "label": "116",
+       "value": "7300"
+      },
+      {
+       "label": "117",
+       "value": "7400"
+      },
+      {
+       "label": "118",
+       "value": "7500"
+      },
+      {
+       "label": "119",
+       "value": "7600"
+      },
+      {
+       "label": "120",
+       "value": "7700"
+      },
+      {
+       "label": "121",
+       "value": "7800"
+      },
+      {
+       "label": "122",
+       "value": "7900"
+      },
+      {
+       "label": "123",
+       "value": "7A00"
+      },
+      {
+       "label": "124",
+       "value": "7B00"
+      },
+      {
+       "label": "125",
+       "value": "7C00"
+      },
+      {
+       "label": "126",
+       "value": "7D00"
+      },
+      {
+       "label": "127",
+       "value": "7E00"
+      },
+      {
+       "label": "128",
+       "value": "7F00"
+      },
+      {
+       "label": "129",
+       "value": "8000"
+      },
+      {
+       "label": "130",
+       "value": "8100"
+      },
+      {
+       "label": "131",
+       "value": "8200"
+      },
+      {
+       "label": "132",
+       "value": "8300"
+      },
+      {
+       "label": "133",
+       "value": "8400"
+      },
+      {
+       "label": "134",
+       "value": "8500"
+      },
+      {
+       "label": "135",
+       "value": "8600"
+      },
+      {
+       "label": "136",
+       "value": "8700"
+      },
+      {
+       "label": "137",
+       "value": "8800"
+      },
+      {
+       "label": "138",
+       "value": "8900"
+      },
+      {
+       "label": "139",
+       "value": "8A00"
+      },
+      {
+       "label": "140",
+       "value": "8B00"
+      },
+      {
+       "label": "141",
+       "value": "8C00"
+      },
+      {
+       "label": "142",
+       "value": "8D00"
+      },
+      {
+       "label": "143",
+       "value": "8E00"
+      },
+      {
+       "label": "144",
+       "value": "8F00"
+      },
+      {
+       "label": "145",
+       "value": "9000"
+      },
+      {
+       "label": "146",
+       "value": "9100"
+      },
+      {
+       "label": "147",
+       "value": "9200"
+      },
+      {
+       "label": "148",
+       "value": "9300"
+      },
+      {
+       "label": "149",
+       "value": "9400"
+      },
+      {
+       "label": "150",
+       "value": "9500"
+      },
+      {
+       "label": "151",
+       "value": "9600"
+      },
+      {
+       "label": "152",
+       "value": "9700"
+      },
+      {
+       "label": "153",
+       "value": "9800"
+      },
+      {
+       "label": "154",
+       "value": "9900"
+      },
+      {
+       "label": "155",
+       "value": "9A00"
+      },
+      {
+       "label": "156",
+       "value": "9B00"
+      },
+      {
+       "label": "157",
+       "value": "9C00"
+      },
+      {
+       "label": "158",
+       "value": "9D00"
+      },
+      {
+       "label": "159",
+       "value": "9E00"
+      },
+      {
+       "label": "160",
+       "value": "9F00"
+      },
+      {
+       "label": "161",
+       "value": "A000"
+      },
+      {
+       "label": "162",
+       "value": "A100"
+      },
+      {
+       "label": "163",
+       "value": "A200"
+      },
+      {
+       "label": "164",
+       "value": "A300"
+      },
+      {
+       "label": "165",
+       "value": "A400"
+      },
+      {
+       "label": "166",
+       "value": "A500"
+      },
+      {
+       "label": "167",
+       "value": "A600"
+      },
+      {
+       "label": "168",
+       "value": "A700"
+      },
+      {
+       "label": "169",
+       "value": "A800"
+      },
+      {
+       "label": "170",
+       "value": "A900"
+      },
+      {
+       "label": "171",
+       "value": "AA00"
+      },
+      {
+       "label": "172",
+       "value": "AB00"
+      },
+      {
+       "label": "173",
+       "value": "AC00"
+      },
+      {
+       "label": "174",
+       "value": "AD00"
+      },
+      {
+       "label": "175",
+       "value": "AE00"
+      },
+      {
+       "label": "176",
+       "value": "AF00"
+      },
+      {
+       "label": "177",
+       "value": "B000"
+      },
+      {
+       "label": "178",
+       "value": "B100"
+      },
+      {
+       "label": "179",
+       "value": "B200"
+      },
+      {
+       "label": "180",
+       "value": "B300"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_PLL2CCR",
+   "label": "PLL2 Clock Control Register",
+   "unused": "0000002c"
+  },
+  {
+   "address": "4001e04a",
+   "default": "1",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "PLL2STP",
+     "label": "PLL2 Stop Control",
+     "mask": "1",
+     "settings": [
+      {
+       "label": "Operate the PLL2",
+       "value": "0"
+      },
+      {
+       "label": "Stop the PLL2.",
+       "value": "1"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_PLL2CR",
+   "label": "PLL2 Control Register",
+   "unused": "000000fe"
+  },
+  {
+   "address": "4001e04c",
+   "default": "555",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "1",
+     "key": "PLODIVP",
+     "label": "PLL1 Output Frequency Division Ratio Select for output clock P",
+     "mask": "f",
+     "settings": [
+      {
+       "label": "1 / 2 ",
+       "value": "1"
+      },
+      {
+       "label": "1 / 4",
+       "value": "3"
+      },
+      {
+       "label": "1 / 6 (Value after reset)",
+       "value": "5"
+      },
+      {
+       "label": "1 / 8",
+       "value": "7"
+      },
+      {
+       "label": "1 / 16",
+       "value": "f"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "10",
+     "key": "PLODIVQ",
+     "label": "PLL1 Output Frequency Division Ratio Select for output clock Q",
+     "mask": "f0",
+     "settings": [
+      {
+       "label": "1 / 2 ",
+       "value": "10"
+      },
+      {
+       "label": "1 / 3",
+       "value": "20"
+      },
+      {
+       "label": "1 / 4",
+       "value": "30"
+      },
+      {
+       "label": "1 / 5",
+       "value": "40"
+      },
+      {
+       "label": "1 / 6 (Value after reset)",
+       "value": "50"
+      },
+      {
+       "label": "1 / 8",
+       "value": "70"
+      },
+      {
+       "label": "1 / 9",
+       "value": "80"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "100",
+     "key": "PLODIVR",
+     "label": "PLL1 Output Frequency Division Ratio Select for output clock R",
+     "mask": "f00",
+     "settings": [
+      {
+       "label": "1 / 2",
+       "value": "100"
+      },
+      {
+       "label": "1 / 3",
+       "value": "200"
+      },
+      {
+       "label": "1 / 4",
+       "value": "300"
+      },
+      {
+       "label": "1 / 5",
+       "value": "400"
+      },
+      {
+       "label": "1 / 6 (Value after reset)",
+       "value": "500"
+      },
+      {
+       "label": "1 / 8",
+       "value": "700"
+      },
+      {
+       "label": "1 / 9",
+       "value": "800"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_PLLCCR2",
+   "label": "PLL Clock Control Register 2",
+   "unused": "0000f000"
+  },
+  {
+   "address": "4001e04e",
+   "default": "555",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "1",
+     "key": "PL2ODIVP",
+     "label": "PLL2 Output Frequency Division Ratio Select for output clock P",
+     "mask": "f",
+     "settings": [
+      {
+       "label": "1 / 2",
+       "value": "1"
+      },
+      {
+       "label": "1 / 4",
+       "value": "3"
+      },
+      {
+       "label": "1 / 6 (Value after reset)",
+       "value": "5"
+      },
+      {
+       "label": "1 / 8",
+       "value": "7"
+      },
+      {
+       "label": "1 / 16",
+       "value": "f"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "10",
+     "key": "PL2ODIVQ",
+     "label": "PLL2 Output Frequency Division Ratio Select for output clock Q",
+     "mask": "f0",
+     "settings": [
+      {
+       "label": "1 / 2 ",
+       "value": "10"
+      },
+      {
+       "label": "1 / 3",
+       "value": "20"
+      },
+      {
+       "label": "1 / 4",
+       "value": "30"
+      },
+      {
+       "label": "1 / 5",
+       "value": "40"
+      },
+      {
+       "label": "1 / 6 (Value after reset)",
+       "value": "50"
+      },
+      {
+       "label": "1 / 8",
+       "value": "70"
+      },
+      {
+       "label": "1 / 9",
+       "value": "80"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "100",
+     "key": "PL2ODIVR",
+     "label": "PLL2 Output Frequency Division Ratio Select for output clock R",
+     "mask": "f00",
+     "settings": [
+      {
+       "label": "1 / 2",
+       "value": "100"
+      },
+      {
+       "label": "1 / 3",
+       "value": "200"
+      },
+      {
+       "label": "1 / 4",
+       "value": "300"
+      },
+      {
+       "label": "1 / 5",
+       "value": "400"
+      },
+      {
+       "label": "1 / 6 (Value after reset)",
+       "value": "500"
+      },
+      {
+       "label": "1 / 8",
+       "value": "700"
+      },
+      {
+       "label": "1 / 9",
+       "value": "800"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_PLL2CCR2",
+   "label": "PLL2 Clock Control Register 2",
+   "unused": "0000f000"
+  },
+  {
+   "address": "4001e054",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "CKDIV",
+     "label": "SCICLK Clock Division Select",
+     "mask": "7",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1"
+      },
+      {
+       "label": "/4",
+       "value": "2"
+      },
+      {
+       "label": "/6",
+       "value": "3"
+      },
+      {
+       "label": "/8",
+       "value": "4"
+      },
+      {
+       "label": "/3",
+       "value": "5"
+      },
+      {
+       "label": "/5",
+       "value": "6"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SCICKDIVCR",
+   "label": "SCI clock Division control register",
+   "unused": "fffffff8"
+  },
+  {
+   "address": "4001e055",
+   "default": "1",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "CKSEL",
+     "label": "SCI Clock Source Select",
+     "mask": "f",
+     "settings": [
+      {
+       "label": "HOCO",
+       "value": "0"
+      },
+      {
+       "label": "MOCO (value after reset)",
+       "value": "1"
+      },
+      {
+       "label": "LOCO",
+       "value": "2"
+      },
+      {
+       "label": "Main clock oscillator",
+       "value": "3"
+      },
+      {
+       "label": "Sub-clock oscillator",
+       "value": "4"
+      },
+      {
+       "label": "PLL1P",
+       "value": "5"
+      },
+      {
+       "label": "PLL2P",
+       "value": "6"
+      },
+      {
+       "label": "PLL1Q",
+       "value": "7"
+      },
+      {
+       "label": "PLL1R",
+       "value": "8"
+      },
+      {
+       "label": "PLL2Q",
+       "value": "9"
+      },
+      {
+       "label": "PLL2R",
+       "value": "a"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SCICKCR",
+   "label": "SCI clock control register",
+   "unused": "fffffff0"
+  },
+  {
+   "address": "4001e056",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "CKDIV",
+     "label": "SPICLK Clock Division Select",
+     "mask": "7",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1"
+      },
+      {
+       "label": "/4",
+       "value": "2"
+      },
+      {
+       "label": "/6",
+       "value": "3"
+      },
+      {
+       "label": "/8",
+       "value": "4"
+      },
+      {
+       "label": "/3",
+       "value": "5"
+      },
+      {
+       "label": "/5",
+       "value": "6"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SPICKDIVCR",
+   "label": "SPI clock Division control register",
+   "unused": "fffffff8"
+  },
+  {
+   "address": "4001e057",
+   "default": "1",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "CKSEL",
+     "label": "SPI Clock Source Select",
+     "mask": "f",
+     "settings": [
+      {
+       "label": "HOCO",
+       "value": "0"
+      },
+      {
+       "label": "MOCO (value after reset)",
+       "value": "1"
+      },
+      {
+       "label": "LOCO",
+       "value": "2"
+      },
+      {
+       "label": "Main clock oscillator",
+       "value": "3"
+      },
+      {
+       "label": "Sub-clock oscillator",
+       "value": "4"
+      },
+      {
+       "label": "PLL1P",
+       "value": "5"
+      },
+      {
+       "label": "PLL2P",
+       "value": "6"
+      },
+      {
+       "label": "PLL1Q",
+       "value": "7"
+      },
+      {
+       "label": "PLL1R",
+       "value": "8"
+      },
+      {
+       "label": "PLL2Q",
+       "value": "9"
+      },
+      {
+       "label": "PLL2R",
+       "value": "a"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SPICKCR",
+   "label": "SPI clock control register ",
+   "unused": "fffffff0"
+  },
+  {
+   "address": "4001e070",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "I3CCKDIV",
+     "label": "I3C clock (I3CCLK) Division Select",
+     "mask": "7",
+     "settings": [
+      {
+       "label": "/1 (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "/2",
+       "value": "1"
+      },
+      {
+       "label": "/4",
+       "value": "2"
+      },
+      {
+       "label": "/6",
+       "value": "3"
+      },
+      {
+       "label": "/8",
+       "value": "4"
+      },
+      {
+       "label": "/3",
+       "value": "5"
+      },
+      {
+       "label": "/5",
+       "value": "6"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_I3CCKDIVCR",
+   "unused": "000000f8",
+   "label": "I3C clock Division control register"
+  },
+  {
+   "address": "4001e078",
+   "default": "1",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "7",
+     "key": "I3CCKSEL",
+     "label": "I3C clock (I3CCLK) Source Select",
+     "mask": "f",
+     "settings": [
+      {
+       "label": "MOCO (value after reset)",
+       "value": "1"
+      },
+      {
+       "label": "PLL1P",
+       "value": "5"
+      },
+      {
+       "label": "PLL2P",
+       "value": "6"
+      },
+      {
+       "label": "PLL1Q",
+       "value": "7"
+      },
+      {
+       "label": "PLL1R",
+       "value": "8"
+      },
+      {
+       "label": "PLL2Q",
+       "value": "9"
+      },
+      {
+       "label": "PLL2R",
+       "value": "a"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_I3CCKCR",
+   "unused": "000000f0",
+   "label": "I3c clock control register"
+  },
+  {
+   "address": "4001e0a0",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "OPCM",
+     "label": "Operating Power Control Mode Select",
+     "mask": "3",
+     "settings": [
+      {
+       "label": "High-speed mode",
+       "value": "0"
+      },
+      {
+       "label": "Low-speed mode ",
+       "value": "3"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_OPCCR",
+   "label": "Operating Power Control Register",
+   "unused": "000000ec"
+  },
+  {
+   "address": "4001e0a2",
+   "default": "5",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "9",
+     "key": "MSTS",
+     "label": "Main clock oscillator wait time setting",
+     "mask": "f",
+     "settings": [
+      {
+       "label": "Wait time=    11.4us (3 cycles) / 15.3us (4 cycles)",
+       "value": "0"
+      },
+      {
+       "label": "Wait time=   133.5us (35 cycles)  / 137.3us (36 cycles) ",
+       "value": "1"
+      },
+      {
+       "label": "Wait time=   255.6us (67 cycles) / 259.4us (68 cycles)",
+       "value": "2"
+      },
+      {
+       "label": "Wait time=   499.7us (131 cycles) / 503.5us (132 cycles)",
+       "value": "3"
+      },
+      {
+       "label": "Wait time=   988.0us (259 cycles) / 991.8us (260 cycles)",
+       "value": "4"
+      },
+      {
+       "label": "Wait time=  2086.6us (547 cycles) (value after reset) / 2090.5us (548 cycles) (value after reset)",
+       "value": "5"
+      },
+      {
+       "label": "Wait time=  4039.8us (1059 cycles) / 4043.6us (1060 cycles)",
+       "value": "6"
+      },
+      {
+       "label": "Wait time=  8190.2us (2147 cycles) / 8194.0us (2148 cycles)",
+       "value": "7"
+      },
+      {
+       "label": "Wait time= 16368.9us (4291 cycles) / 16372.7us (4292 cycles)",
+       "value": "8"
+      },
+      {
+       "label": "Wait time= 31139.4us (8163 cycles) / 31143.2us (8164 cycles)",
+       "value": "9"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_MOSCWTCR",
+   "label": "Main Clock Oscillator Wait Control Register",
+   "unused": "fffffff0"
+  },
+  {
+   "address": "4001e400",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "LCSTP",
+     "label": "LOCO Stop",
+     "mask": "1",
+     "settings": [
+      {
+       "label": "Operate the LOCO clock",
+       "value": "0"
+      },
+      {
+       "label": "Stop the LOCO clock",
+       "value": "1"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_LOCOCR",
+   "label": "Low-Speed On-Chip Oscillator Control Register",
+   "unused": "000000fe"
+  },
+  {
+   "address": "4001ea50",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "3",
+     "key": "MODRV0",
+     "label": "Main Clock Oscillator Drive Capability 0 Switching ",
+     "mask": "e",
+     "settings": [
+      {
+       "label": "8 MHz",
+       "value": "0"
+      },
+      {
+       "label": "8 MHz to 24 MHz",
+       "value": "3"
+      },
+      {
+       "label": "8 MHz to 48 MHz",
+       "value": "5"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "AGCEN",
+     "label": "Auto Gain Control Enable",
+     "mask": "10",
+     "settings": [
+      {
+       "label": "Disable",
+       "value": "0"
+      },
+      {
+       "label": "Enable",
+       "value": "10"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "MOSEL",
+     "label": "Main Clock Oscillator Switching",
+     "mask": "40",
+     "settings": [
+      {
+       "label": "Resonator",
+       "value": "0"
+      },
+      {
+       "label": "External clock input",
+       "value": "40"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_MOMCR",
+   "label": "Main Clock Oscillator Mode Oscillation Control Register",
+   "unused": "000000a1"
+  },
+  {
+   "address": "4001ec00",
+   "default": "1",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "1",
+     "key": "SOSTP",
+     "label": "Sub-Clock Oscillator Stop",
+     "mask": "1",
+     "settings": [
+      {
+       "label": "Operate the sub-clock oscillator",
+       "value": "0"
+      },
+      {
+       "label": "Stop the sub-clock oscillator",
+       "value": "1"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SOSCCR",
+   "label": "Sub-clock oscillator control register",
+   "unused": "000000fe"
+  },
+  {
+   "address": "4001ec01",
+   "default": "0",
+   "fields": [
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "SODRV",
+     "label": "Sub Clock Oscillator Drive Capability Switching",
+     "mask": "3",
+     "settings": [
+      {
+       "label": ":Standard(12.5pf) (value after reset)",
+       "value": "0"
+      },
+      {
+       "label": "Low power mode 1 (9pf)",
+       "value": "1"
+      },
+      {
+       "label": "Low power mode 2 (7pf) ",
+       "value": "2"
+      },
+      {
+       "label": "Low power mode 3 (4pf)",
+       "value": "3"
+      }
+     ]
+    },
+    {
+     "hidden": false,
+     "init": "0",
+     "key": "SOSEL",
+     "label": "Sub Clock Oscillator Switching",
+     "mask": "40",
+     "settings": [
+      {
+       "label": "Resonator",
+       "value": "0"
+      },
+      {
+       "label": "External clock input",
+       "value": "40"
+      }
+     ]
+    }
+   ],
+   "key": "SYSTEM_SOMCR",
+   "label": "Sub Clock Oscillator Mode Control Register",
+   "unused": "000000bc"
+  }
+ ],
+ "trustzone_capable": true,
+ "trustzone": {
+  "trustzone_registers": [
+   {
+    "address": "40008400",
+    "default": "00000000",
+    "fields": [
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "SRAMSABAR0",
+      "label": "SRAM0 Start address of Non-secure region",
+      "mask": "001fe000",
+      "settings": [
+       {
+        "label": "Whole SRAM0 is marked as Non-secure",
+        "value": "00000000"
+       },
+       {
+        "label": "Whole SRAM0 is marked as Secure",
+        "value": "00060000"
+       }
+      ]
+     }
     ],
-    "core": "M85",
-    "delay_src_path": "delays/m85/__lib_delays.c",
-    "mcu": "R7FA8M1AHECBD",
-    "clock": "480"
+    "key": "SYSTEM_SRAMSABAR0",
+    "label": "SRAM Security Attribute Boundary Address Register %s",
+    "unused": "ffe01fff"
+   },
+   {
+    "address": "40008404",
+    "default": "00000000",
+    "fields": [
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "SRAMSABAR1",
+      "label": "SRAM1 Start address of Non-secure region",
+      "mask": "001fe000",
+      "settings": [
+       {
+        "label": "Whole SRAM1 is marked as Non-secure",
+        "value": "00000000"
+       },
+       {
+        "label": "Whole SRAM1 is marked as Secure",
+        "value": "00060000"
+       }
+      ]
+     }
+    ],
+    "key": "SYSTEM_SRAMSABAR1",
+    "label": "SRAM Security Attribute Boundary Address Register %s",
+    "unused": "ffe01fff"
+   },
+   {
+    "address": "40008420",
+    "default": "00007f80",
+    "fields": [
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "STBRAMSABAR",
+      "label": "Standby SRAM Security Attribute Boundary Address between Secure and Non-secure",
+      "mask": "00007f80",
+      "settings": [
+       {
+        "label": "0x2600_0000",
+        "value": "00000000"
+       },
+       {
+        "label": "0x2600_0080",
+        "value": "00000080"
+       },
+       {
+        "label": "0x2600_0100",
+        "value": "00000100"
+       },
+       {
+        "label": "0x2600_0180",
+        "value": "00000180"
+       },
+       {
+        "label": "0x2600_0200",
+        "value": "00000200"
+       },
+       {
+        "label": "0x2600_0280",
+        "value": "00000280"
+       },
+       {
+        "label": "0x2600_0300",
+        "value": "00000300"
+       },
+       {
+        "label": "0x2600_0380",
+        "value": "00000380"
+       },
+       {
+        "label": "0x2600_0400",
+        "value": "00000400"
+       }
+      ]
+     }
+    ],
+    "key": "SYSTEM_STBRAMSABAR",
+    "label": "Standby SRAM Security Attribute Boundary Address Register",
+    "unused": "ffff807f"
+   },
+   {
+    "address": "4001e3d0",
+    "default": "0",
+    "fields": [
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "NONSEC0",
+      "label": "Non-secure Attribute bit 0",
+      "mask": "1",
+      "settings": [
+       {
+        "label": "Secure",
+        "value": "0"
+       },
+       {
+        "label": "Non-secure",
+        "value": "1"
+       }
+      ]
+     },
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "NONSEC1",
+      "label": "Non-secure Attribute bit 1",
+      "mask": "2",
+      "settings": [
+       {
+        "label": "Secure",
+        "value": "0"
+       },
+       {
+        "label": "Non-secure",
+        "value": "2"
+       }
+      ]
+     },
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "NONSEC2",
+      "label": "Non-secure Attribute bit 2",
+      "mask": "4",
+      "settings": [
+       {
+        "label": "Secure",
+        "value": "0"
+       },
+       {
+        "label": "Non-secure",
+        "value": "4"
+       }
+      ]
+     },
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "NONSEC3",
+      "label": "Non-secure Attribute bit 3",
+      "mask": "8",
+      "settings": [
+       {
+        "label": "Secure",
+        "value": "0"
+       },
+       {
+        "label": "Non-secure",
+        "value": "8"
+       }
+      ]
+     },
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "NONSEC4",
+      "label": "Non-secure Attribute bit 4",
+      "mask": "10",
+      "settings": [
+       {
+        "label": "Secure",
+        "value": "0"
+       },
+       {
+        "label": "Non-secure",
+        "value": "10"
+       }
+      ]
+     }
+    ],
+    "key": "SYSTEM_BBFSAR",
+    "label": "Battery Backup Function Security Attribute Register",
+    "unused": "ffffffe0"
+   },
+   {
+    "address": "40204030",
+    "default": "0",
+    "fields": [
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "CFS2",
+      "label": "Code Flash Secure area",
+      "mask": "ff8000",
+      "settings": [
+       {
+        "label": "0 KB",
+        "value": "0"
+       },
+       {
+        "label": "32 KB",
+        "value": "8000"
+       },
+       {
+        "label": "64 KB",
+        "value": "10000"
+       },
+       {
+        "label": "96 KB",
+        "value": "18000"
+       },
+       {
+        "label": "128 KB",
+        "value": "20000"
+       },
+       {
+        "label": "160 KB",
+        "value": "28000"
+       },
+       {
+        "label": "192 KB",
+        "value": "30000"
+       },
+       {
+        "label": "224 KB",
+        "value": "38000"
+       },
+       {
+        "label": "256 KB",
+        "value": "40000"
+       },
+       {
+        "label": "288 KB",
+        "value": "48000"
+       },
+       {
+        "label": "320 KB",
+        "value": "50000"
+       },
+       {
+        "label": "352 KB",
+        "value": "58000"
+       },
+       {
+        "label": "384 KB",
+        "value": "60000"
+       },
+       {
+        "label": "416 KB",
+        "value": "68000"
+       },
+       {
+        "label": "448 KB",
+        "value": "70000"
+       },
+       {
+        "label": "480 KB",
+        "value": "78000"
+       },
+       {
+        "label": "512 KB",
+        "value": "80000"
+       },
+       {
+        "label": "544 KB",
+        "value": "88000"
+       },
+       {
+        "label": "576 KB",
+        "value": "90000"
+       },
+       {
+        "label": "608 KB",
+        "value": "98000"
+       },
+       {
+        "label": "640 KB",
+        "value": "a0000"
+       },
+       {
+        "label": "672 KB",
+        "value": "a8000"
+       },
+       {
+        "label": "704 KB",
+        "value": "b0000"
+       },
+       {
+        "label": "736 KB",
+        "value": "b8000"
+       },
+       {
+        "label": "768 KB",
+        "value": "c0000"
+       },
+       {
+        "label": "800 KB",
+        "value": "c8000"
+       },
+       {
+        "label": "832 KB",
+        "value": "d0000"
+       },
+       {
+        "label": "864 KB",
+        "value": "d8000"
+       },
+       {
+        "label": "896 KB",
+        "value": "e0000"
+       },
+       {
+        "label": "928 KB",
+        "value": "e8000"
+       },
+       {
+        "label": "960 KB",
+        "value": "f0000"
+       },
+       {
+        "label": "992 KB",
+        "value": "f8000"
+       },
+       {
+        "label": "1024 KB",
+        "value": "100000"
+       },
+       {
+        "label": "1056 KB",
+        "value": "108000"
+       },
+       {
+        "label": "1088 KB",
+        "value": "110000"
+       },
+       {
+        "label": "1120 KB",
+        "value": "118000"
+       },
+       {
+        "label": "1152 KB",
+        "value": "120000"
+       },
+       {
+        "label": "1184 KB",
+        "value": "128000"
+       },
+       {
+        "label": "1216 KB",
+        "value": "130000"
+       },
+       {
+        "label": "1248 KB",
+        "value": "138000"
+       },
+       {
+        "label": "1280 KB",
+        "value": "140000"
+       },
+       {
+        "label": "1312 KB",
+        "value": "148000"
+       },
+       {
+        "label": "1344 KB",
+        "value": "150000"
+       },
+       {
+        "label": "1376 KB",
+        "value": "158000"
+       },
+       {
+        "label": "1408 KB",
+        "value": "160000"
+       },
+       {
+        "label": "1440 KB",
+        "value": "168000"
+       },
+       {
+        "label": "1472 KB",
+        "value": "170000"
+       },
+       {
+        "label": "1504 KB",
+        "value": "178000"
+       },
+       {
+        "label": "1536 KB",
+        "value": "180000"
+       },
+       {
+        "label": "1568 KB",
+        "value": "188000"
+       },
+       {
+        "label": "1600 KB",
+        "value": "190000"
+       },
+       {
+        "label": "1632 KB",
+        "value": "198000"
+       },
+       {
+        "label": "1664 KB",
+        "value": "1a0000"
+       },
+       {
+        "label": "1696 KB",
+        "value": "1a8000"
+       },
+       {
+        "label": "1728 KB",
+        "value": "1b0000"
+       },
+       {
+        "label": "1760 KB",
+        "value": "1b8000"
+       },
+       {
+        "label": "1792 KB",
+        "value": "1c0000"
+       },
+       {
+        "label": "1824 KB",
+        "value": "1c8000"
+       },
+       {
+        "label": "1856 KB",
+        "value": "1d0000"
+       },
+       {
+        "label": "1888 KB",
+        "value": "1d8000"
+       },
+       {
+        "label": "1920 KB",
+        "value": "1e0000"
+       },
+       {
+        "label": "1952 KB",
+        "value": "1e8000"
+       },
+       {
+        "label": "1984 KB",
+        "value": "1f0000"
+       },
+       {
+        "label": "2016 KB",
+        "value": "1f8000"
+       },
+       {
+        "label": "2048 KB",
+        "value": "200000"
+       },
+       {
+        "label": "2080 KB",
+        "value": "208000"
+       },
+       {
+        "label": "2112 KB",
+        "value": "210000"
+       },
+       {
+        "label": "2144 KB",
+        "value": "218000"
+       },
+       {
+        "label": "2176 KB",
+        "value": "220000"
+       },
+       {
+        "label": "2208 KB",
+        "value": "228000"
+       },
+       {
+        "label": "2240 KB",
+        "value": "230000"
+       },
+       {
+        "label": "2272 KB",
+        "value": "238000"
+       },
+       {
+        "label": "2304 KB",
+        "value": "240000"
+       },
+       {
+        "label": "2336 KB",
+        "value": "248000"
+       },
+       {
+        "label": "2368 KB",
+        "value": "250000"
+       },
+       {
+        "label": "2400 KB",
+        "value": "258000"
+       },
+       {
+        "label": "2432 KB",
+        "value": "260000"
+       },
+       {
+        "label": "2464 KB",
+        "value": "268000"
+       },
+       {
+        "label": "2496 KB",
+        "value": "270000"
+       },
+       {
+        "label": "2528 KB",
+        "value": "278000"
+       },
+       {
+        "label": "2560 KB",
+        "value": "280000"
+       },
+       {
+        "label": "2592 KB",
+        "value": "288000"
+       },
+       {
+        "label": "2624 KB",
+        "value": "290000"
+       },
+       {
+        "label": "2656 KB",
+        "value": "298000"
+       },
+       {
+        "label": "2688 KB",
+        "value": "2a0000"
+       },
+       {
+        "label": "2720 KB",
+        "value": "2a8000"
+       },
+       {
+        "label": "2752 KB",
+        "value": "2b0000"
+       },
+       {
+        "label": "2784 KB",
+        "value": "2b8000"
+       },
+       {
+        "label": "2816 KB",
+        "value": "2c0000"
+       },
+       {
+        "label": "2848 KB",
+        "value": "2c8000"
+       },
+       {
+        "label": "2880 KB",
+        "value": "2d0000"
+       },
+       {
+        "label": "2912 KB",
+        "value": "2d8000"
+       },
+       {
+        "label": "2944 KB",
+        "value": "2e0000"
+       },
+       {
+        "label": "2976 KB",
+        "value": "2e8000"
+       },
+       {
+        "label": "3008 KB",
+        "value": "2f0000"
+       },
+       {
+        "label": "3040 KB",
+        "value": "2f8000"
+       },
+       {
+        "label": "3072 KB",
+        "value": "300000"
+       },
+       {
+        "label": "3104 KB",
+        "value": "308000"
+       },
+       {
+        "label": "3136 KB",
+        "value": "310000"
+       },
+       {
+        "label": "3168 KB",
+        "value": "318000"
+       },
+       {
+        "label": "3200 KB",
+        "value": "320000"
+       },
+       {
+        "label": "3232 KB",
+        "value": "328000"
+       },
+       {
+        "label": "3264 KB",
+        "value": "330000"
+       },
+       {
+        "label": "3296 KB",
+        "value": "338000"
+       },
+       {
+        "label": "3328 KB",
+        "value": "340000"
+       },
+       {
+        "label": "3360 KB",
+        "value": "348000"
+       },
+       {
+        "label": "3392 KB",
+        "value": "350000"
+       },
+       {
+        "label": "3424 KB",
+        "value": "358000"
+       },
+       {
+        "label": "3456 KB",
+        "value": "360000"
+       },
+       {
+        "label": "3488 KB",
+        "value": "368000"
+       },
+       {
+        "label": "3520 KB",
+        "value": "370000"
+       },
+       {
+        "label": "3552 KB",
+        "value": "378000"
+       },
+       {
+        "label": "3584 KB",
+        "value": "380000"
+       },
+       {
+        "label": "3616 KB",
+        "value": "388000"
+       },
+       {
+        "label": "3648 KB",
+        "value": "390000"
+       },
+       {
+        "label": "3680 KB",
+        "value": "398000"
+       },
+       {
+        "label": "3712 KB",
+        "value": "3a0000"
+       },
+       {
+        "label": "3744 KB",
+        "value": "3a8000"
+       },
+       {
+        "label": "3776 KB",
+        "value": "3b0000"
+       },
+       {
+        "label": "3808 KB",
+        "value": "3b8000"
+       },
+       {
+        "label": "3840 KB",
+        "value": "3c0000"
+       },
+       {
+        "label": "3872 KB",
+        "value": "3c8000"
+       },
+       {
+        "label": "3904 KB",
+        "value": "3d0000"
+       },
+       {
+        "label": "3936 KB",
+        "value": "3d8000"
+       },
+       {
+        "label": "3968 KB",
+        "value": "3e0000"
+       },
+       {
+        "label": "4000 KB",
+        "value": "3e8000"
+       },
+       {
+        "label": "4032 KB",
+        "value": "3f0000"
+       },
+       {
+        "label": "4064 KB",
+        "value": "3f8000"
+       },
+       {
+        "label": "4096 KB",
+        "value": "400000"
+       },
+       {
+        "label": "4128 KB",
+        "value": "408000"
+       },
+       {
+        "label": "4160 KB",
+        "value": "410000"
+       },
+       {
+        "label": "4192 KB",
+        "value": "418000"
+       },
+       {
+        "label": "4224 KB",
+        "value": "420000"
+       },
+       {
+        "label": "4256 KB",
+        "value": "428000"
+       },
+       {
+        "label": "4288 KB",
+        "value": "430000"
+       },
+       {
+        "label": "4320 KB",
+        "value": "438000"
+       },
+       {
+        "label": "4352 KB",
+        "value": "440000"
+       },
+       {
+        "label": "4384 KB",
+        "value": "448000"
+       },
+       {
+        "label": "4416 KB",
+        "value": "450000"
+       },
+       {
+        "label": "4448 KB",
+        "value": "458000"
+       },
+       {
+        "label": "4480 KB",
+        "value": "460000"
+       },
+       {
+        "label": "4512 KB",
+        "value": "468000"
+       },
+       {
+        "label": "4544 KB",
+        "value": "470000"
+       },
+       {
+        "label": "4576 KB",
+        "value": "478000"
+       },
+       {
+        "label": "4608 KB",
+        "value": "480000"
+       },
+       {
+        "label": "4640 KB",
+        "value": "488000"
+       },
+       {
+        "label": "4672 KB",
+        "value": "490000"
+       },
+       {
+        "label": "4704 KB",
+        "value": "498000"
+       },
+       {
+        "label": "4736 KB",
+        "value": "4a0000"
+       },
+       {
+        "label": "4768 KB",
+        "value": "4a8000"
+       },
+       {
+        "label": "4800 KB",
+        "value": "4b0000"
+       },
+       {
+        "label": "4832 KB",
+        "value": "4b8000"
+       },
+       {
+        "label": "4864 KB",
+        "value": "4c0000"
+       },
+       {
+        "label": "4896 KB",
+        "value": "4c8000"
+       },
+       {
+        "label": "4928 KB",
+        "value": "4d0000"
+       },
+       {
+        "label": "4960 KB",
+        "value": "4d8000"
+       },
+       {
+        "label": "4992 KB",
+        "value": "4e0000"
+       },
+       {
+        "label": "5024 KB",
+        "value": "4e8000"
+       },
+       {
+        "label": "5056 KB",
+        "value": "4f0000"
+       },
+       {
+        "label": "5088 KB",
+        "value": "4f8000"
+       },
+       {
+        "label": "5120 KB",
+        "value": "500000"
+       },
+       {
+        "label": "5152 KB",
+        "value": "508000"
+       },
+       {
+        "label": "5184 KB",
+        "value": "510000"
+       },
+       {
+        "label": "5216 KB",
+        "value": "518000"
+       },
+       {
+        "label": "5248 KB",
+        "value": "520000"
+       },
+       {
+        "label": "5280 KB",
+        "value": "528000"
+       },
+       {
+        "label": "5312 KB",
+        "value": "530000"
+       },
+       {
+        "label": "5344 KB",
+        "value": "538000"
+       },
+       {
+        "label": "5376 KB",
+        "value": "540000"
+       },
+       {
+        "label": "5408 KB",
+        "value": "548000"
+       },
+       {
+        "label": "5440 KB",
+        "value": "550000"
+       },
+       {
+        "label": "5472 KB",
+        "value": "558000"
+       },
+       {
+        "label": "5504 KB",
+        "value": "560000"
+       },
+       {
+        "label": "5536 KB",
+        "value": "568000"
+       },
+       {
+        "label": "5568 KB",
+        "value": "570000"
+       },
+       {
+        "label": "5600 KB",
+        "value": "578000"
+       },
+       {
+        "label": "5632 KB",
+        "value": "580000"
+       },
+       {
+        "label": "5664 KB",
+        "value": "588000"
+       },
+       {
+        "label": "5696 KB",
+        "value": "590000"
+       },
+       {
+        "label": "5728 KB",
+        "value": "598000"
+       },
+       {
+        "label": "5760 KB",
+        "value": "5a0000"
+       },
+       {
+        "label": "5792 KB",
+        "value": "5a8000"
+       },
+       {
+        "label": "5824 KB",
+        "value": "5b0000"
+       },
+       {
+        "label": "5856 KB",
+        "value": "5b8000"
+       },
+       {
+        "label": "5888 KB",
+        "value": "5c0000"
+       },
+       {
+        "label": "5920 KB",
+        "value": "5c8000"
+       },
+       {
+        "label": "5952 KB",
+        "value": "5d0000"
+       },
+       {
+        "label": "5984 KB",
+        "value": "5d8000"
+       },
+       {
+        "label": "6016 KB",
+        "value": "5e0000"
+       },
+       {
+        "label": "6048 KB",
+        "value": "5e8000"
+       },
+       {
+        "label": "6080 KB",
+        "value": "5f0000"
+       },
+       {
+        "label": "6112 KB",
+        "value": "5f8000"
+       },
+       {
+        "label": "6144 KB",
+        "value": "600000"
+       },
+       {
+        "label": "6176 KB",
+        "value": "608000"
+       },
+       {
+        "label": "6208 KB",
+        "value": "610000"
+       },
+       {
+        "label": "6240 KB",
+        "value": "618000"
+       },
+       {
+        "label": "6272 KB",
+        "value": "620000"
+       },
+       {
+        "label": "6304 KB",
+        "value": "628000"
+       },
+       {
+        "label": "6336 KB",
+        "value": "630000"
+       },
+       {
+        "label": "6368 KB",
+        "value": "638000"
+       },
+       {
+        "label": "6400 KB",
+        "value": "640000"
+       },
+       {
+        "label": "6432 KB",
+        "value": "648000"
+       },
+       {
+        "label": "6464 KB",
+        "value": "650000"
+       },
+       {
+        "label": "6496 KB",
+        "value": "658000"
+       },
+       {
+        "label": "6528 KB",
+        "value": "660000"
+       },
+       {
+        "label": "6560 KB",
+        "value": "668000"
+       },
+       {
+        "label": "6592 KB",
+        "value": "670000"
+       },
+       {
+        "label": "6624 KB",
+        "value": "678000"
+       },
+       {
+        "label": "6656 KB",
+        "value": "680000"
+       },
+       {
+        "label": "6688 KB",
+        "value": "688000"
+       },
+       {
+        "label": "6720 KB",
+        "value": "690000"
+       },
+       {
+        "label": "6752 KB",
+        "value": "698000"
+       },
+       {
+        "label": "6784 KB",
+        "value": "6a0000"
+       },
+       {
+        "label": "6816 KB",
+        "value": "6a8000"
+       },
+       {
+        "label": "6848 KB",
+        "value": "6b0000"
+       },
+       {
+        "label": "6880 KB",
+        "value": "6b8000"
+       },
+       {
+        "label": "6912 KB",
+        "value": "6c0000"
+       },
+       {
+        "label": "6944 KB",
+        "value": "6c8000"
+       },
+       {
+        "label": "6976 KB",
+        "value": "6d0000"
+       },
+       {
+        "label": "7008 KB",
+        "value": "6d8000"
+       },
+       {
+        "label": "7040 KB",
+        "value": "6e0000"
+       },
+       {
+        "label": "7072 KB",
+        "value": "6e8000"
+       },
+       {
+        "label": "7104 KB",
+        "value": "6f0000"
+       },
+       {
+        "label": "7136 KB",
+        "value": "6f8000"
+       },
+       {
+        "label": "7168 KB",
+        "value": "700000"
+       },
+       {
+        "label": "7200 KB",
+        "value": "708000"
+       },
+       {
+        "label": "7232 KB",
+        "value": "710000"
+       },
+       {
+        "label": "7264 KB",
+        "value": "718000"
+       },
+       {
+        "label": "7296 KB",
+        "value": "720000"
+       },
+       {
+        "label": "7328 KB",
+        "value": "728000"
+       },
+       {
+        "label": "7360 KB",
+        "value": "730000"
+       },
+       {
+        "label": "7392 KB",
+        "value": "738000"
+       },
+       {
+        "label": "7424 KB",
+        "value": "740000"
+       },
+       {
+        "label": "7456 KB",
+        "value": "748000"
+       },
+       {
+        "label": "7488 KB",
+        "value": "750000"
+       },
+       {
+        "label": "7520 KB",
+        "value": "758000"
+       },
+       {
+        "label": "7552 KB",
+        "value": "760000"
+       },
+       {
+        "label": "7584 KB",
+        "value": "768000"
+       },
+       {
+        "label": "7616 KB",
+        "value": "770000"
+       },
+       {
+        "label": "7648 KB",
+        "value": "778000"
+       },
+       {
+        "label": "7680 KB",
+        "value": "780000"
+       },
+       {
+        "label": "7712 KB",
+        "value": "788000"
+       },
+       {
+        "label": "7744 KB",
+        "value": "790000"
+       },
+       {
+        "label": "7776 KB",
+        "value": "798000"
+       },
+       {
+        "label": "7808 KB",
+        "value": "7a0000"
+       },
+       {
+        "label": "7840 KB",
+        "value": "7a8000"
+       },
+       {
+        "label": "7872 KB",
+        "value": "7b0000"
+       },
+       {
+        "label": "7904 KB",
+        "value": "7b8000"
+       },
+       {
+        "label": "7936 KB",
+        "value": "7c0000"
+       },
+       {
+        "label": "7968 KB",
+        "value": "7c8000"
+       },
+       {
+        "label": "8000 KB",
+        "value": "7d0000"
+       },
+       {
+        "label": "8032 KB",
+        "value": "7d8000"
+       },
+       {
+        "label": "8064 KB",
+        "value": "7e0000"
+       },
+       {
+        "label": "8096 KB",
+        "value": "7e8000"
+       },
+       {
+        "label": "8128 KB",
+        "value": "7f0000"
+       },
+       {
+        "label": "8160 KB",
+        "value": "7f8000"
+       },
+       {
+        "label": "8192 KB",
+        "value": "800000"
+       },
+       {
+        "label": "8224 KB",
+        "value": "808000"
+       },
+       {
+        "label": "8256 KB",
+        "value": "810000"
+       },
+       {
+        "label": "8288 KB",
+        "value": "818000"
+       },
+       {
+        "label": "8320 KB",
+        "value": "820000"
+       },
+       {
+        "label": "8352 KB",
+        "value": "828000"
+       },
+       {
+        "label": "8384 KB",
+        "value": "830000"
+       },
+       {
+        "label": "8416 KB",
+        "value": "838000"
+       },
+       {
+        "label": "8448 KB",
+        "value": "840000"
+       },
+       {
+        "label": "8480 KB",
+        "value": "848000"
+       },
+       {
+        "label": "8512 KB",
+        "value": "850000"
+       },
+       {
+        "label": "8544 KB",
+        "value": "858000"
+       },
+       {
+        "label": "8576 KB",
+        "value": "860000"
+       },
+       {
+        "label": "8608 KB",
+        "value": "868000"
+       },
+       {
+        "label": "8640 KB",
+        "value": "870000"
+       },
+       {
+        "label": "8672 KB",
+        "value": "878000"
+       },
+       {
+        "label": "8704 KB",
+        "value": "880000"
+       },
+       {
+        "label": "8736 KB",
+        "value": "888000"
+       },
+       {
+        "label": "8768 KB",
+        "value": "890000"
+       },
+       {
+        "label": "8800 KB",
+        "value": "898000"
+       },
+       {
+        "label": "8832 KB",
+        "value": "8a0000"
+       },
+       {
+        "label": "8864 KB",
+        "value": "8a8000"
+       },
+       {
+        "label": "8896 KB",
+        "value": "8b0000"
+       },
+       {
+        "label": "8928 KB",
+        "value": "8b8000"
+       },
+       {
+        "label": "8960 KB",
+        "value": "8c0000"
+       },
+       {
+        "label": "8992 KB",
+        "value": "8c8000"
+       },
+       {
+        "label": "9024 KB",
+        "value": "8d0000"
+       },
+       {
+        "label": "9056 KB",
+        "value": "8d8000"
+       },
+       {
+        "label": "9088 KB",
+        "value": "8e0000"
+       },
+       {
+        "label": "9120 KB",
+        "value": "8e8000"
+       },
+       {
+        "label": "9152 KB",
+        "value": "8f0000"
+       },
+       {
+        "label": "9184 KB",
+        "value": "8f8000"
+       },
+       {
+        "label": "9216 KB",
+        "value": "900000"
+       },
+       {
+        "label": "9248 KB",
+        "value": "908000"
+       },
+       {
+        "label": "9280 KB",
+        "value": "910000"
+       },
+       {
+        "label": "9312 KB",
+        "value": "918000"
+       },
+       {
+        "label": "9344 KB",
+        "value": "920000"
+       },
+       {
+        "label": "9376 KB",
+        "value": "928000"
+       },
+       {
+        "label": "9408 KB",
+        "value": "930000"
+       },
+       {
+        "label": "9440 KB",
+        "value": "938000"
+       },
+       {
+        "label": "9472 KB",
+        "value": "940000"
+       },
+       {
+        "label": "9504 KB",
+        "value": "948000"
+       },
+       {
+        "label": "9536 KB",
+        "value": "950000"
+       },
+       {
+        "label": "9568 KB",
+        "value": "958000"
+       },
+       {
+        "label": "9600 KB",
+        "value": "960000"
+       },
+       {
+        "label": "9632 KB",
+        "value": "968000"
+       },
+       {
+        "label": "9664 KB",
+        "value": "970000"
+       },
+       {
+        "label": "9696 KB",
+        "value": "978000"
+       },
+       {
+        "label": "9728 KB",
+        "value": "980000"
+       },
+       {
+        "label": "9760 KB",
+        "value": "988000"
+       },
+       {
+        "label": "9792 KB",
+        "value": "990000"
+       },
+       {
+        "label": "9824 KB",
+        "value": "998000"
+       },
+       {
+        "label": "9856 KB",
+        "value": "9a0000"
+       },
+       {
+        "label": "9888 KB",
+        "value": "9a8000"
+       },
+       {
+        "label": "9920 KB",
+        "value": "9b0000"
+       },
+       {
+        "label": "9952 KB",
+        "value": "9b8000"
+       },
+       {
+        "label": "9984 KB",
+        "value": "9c0000"
+       },
+       {
+        "label": "10016 KB",
+        "value": "9c8000"
+       },
+       {
+        "label": "10048 KB",
+        "value": "9d0000"
+       },
+       {
+        "label": "10080 KB",
+        "value": "9d8000"
+       },
+       {
+        "label": "10112 KB",
+        "value": "9e0000"
+       },
+       {
+        "label": "10144 KB",
+        "value": "9e8000"
+       },
+       {
+        "label": "10176 KB",
+        "value": "9f0000"
+       },
+       {
+        "label": "10208 KB",
+        "value": "9f8000"
+       },
+       {
+        "label": "10240 KB",
+        "value": "a00000"
+       },
+       {
+        "label": "10272 KB",
+        "value": "a08000"
+       },
+       {
+        "label": "10304 KB",
+        "value": "a10000"
+       },
+       {
+        "label": "10336 KB",
+        "value": "a18000"
+       },
+       {
+        "label": "10368 KB",
+        "value": "a20000"
+       },
+       {
+        "label": "10400 KB",
+        "value": "a28000"
+       },
+       {
+        "label": "10432 KB",
+        "value": "a30000"
+       },
+       {
+        "label": "10464 KB",
+        "value": "a38000"
+       },
+       {
+        "label": "10496 KB",
+        "value": "a40000"
+       },
+       {
+        "label": "10528 KB",
+        "value": "a48000"
+       },
+       {
+        "label": "10560 KB",
+        "value": "a50000"
+       },
+       {
+        "label": "10592 KB",
+        "value": "a58000"
+       },
+       {
+        "label": "10624 KB",
+        "value": "a60000"
+       },
+       {
+        "label": "10656 KB",
+        "value": "a68000"
+       },
+       {
+        "label": "10688 KB",
+        "value": "a70000"
+       },
+       {
+        "label": "10720 KB",
+        "value": "a78000"
+       },
+       {
+        "label": "10752 KB",
+        "value": "a80000"
+       },
+       {
+        "label": "10784 KB",
+        "value": "a88000"
+       },
+       {
+        "label": "10816 KB",
+        "value": "a90000"
+       },
+       {
+        "label": "10848 KB",
+        "value": "a98000"
+       },
+       {
+        "label": "10880 KB",
+        "value": "aa0000"
+       },
+       {
+        "label": "10912 KB",
+        "value": "aa8000"
+       },
+       {
+        "label": "10944 KB",
+        "value": "ab0000"
+       },
+       {
+        "label": "10976 KB",
+        "value": "ab8000"
+       },
+       {
+        "label": "11008 KB",
+        "value": "ac0000"
+       },
+       {
+        "label": "11040 KB",
+        "value": "ac8000"
+       },
+       {
+        "label": "11072 KB",
+        "value": "ad0000"
+       },
+       {
+        "label": "11104 KB",
+        "value": "ad8000"
+       },
+       {
+        "label": "11136 KB",
+        "value": "ae0000"
+       },
+       {
+        "label": "11168 KB",
+        "value": "ae8000"
+       },
+       {
+        "label": "11200 KB",
+        "value": "af0000"
+       },
+       {
+        "label": "11232 KB",
+        "value": "af8000"
+       },
+       {
+        "label": "11264 KB",
+        "value": "b00000"
+       },
+       {
+        "label": "11296 KB",
+        "value": "b08000"
+       },
+       {
+        "label": "11328 KB",
+        "value": "b10000"
+       },
+       {
+        "label": "11360 KB",
+        "value": "b18000"
+       },
+       {
+        "label": "11392 KB",
+        "value": "b20000"
+       },
+       {
+        "label": "11424 KB",
+        "value": "b28000"
+       },
+       {
+        "label": "11456 KB",
+        "value": "b30000"
+       },
+       {
+        "label": "11488 KB",
+        "value": "b38000"
+       },
+       {
+        "label": "11520 KB",
+        "value": "b40000"
+       },
+       {
+        "label": "11552 KB",
+        "value": "b48000"
+       },
+       {
+        "label": "11584 KB",
+        "value": "b50000"
+       },
+       {
+        "label": "11616 KB",
+        "value": "b58000"
+       },
+       {
+        "label": "11648 KB",
+        "value": "b60000"
+       },
+       {
+        "label": "11680 KB",
+        "value": "b68000"
+       },
+       {
+        "label": "11712 KB",
+        "value": "b70000"
+       },
+       {
+        "label": "11744 KB",
+        "value": "b78000"
+       },
+       {
+        "label": "11776 KB",
+        "value": "b80000"
+       },
+       {
+        "label": "11808 KB",
+        "value": "b88000"
+       },
+       {
+        "label": "11840 KB",
+        "value": "b90000"
+       },
+       {
+        "label": "11872 KB",
+        "value": "b98000"
+       },
+       {
+        "label": "11904 KB",
+        "value": "ba0000"
+       },
+       {
+        "label": "11936 KB",
+        "value": "ba8000"
+       },
+       {
+        "label": "11968 KB",
+        "value": "bb0000"
+       },
+       {
+        "label": "12000 KB",
+        "value": "bb8000"
+       },
+       {
+        "label": "12032 KB",
+        "value": "bc0000"
+       },
+       {
+        "label": "12064 KB",
+        "value": "bc8000"
+       },
+       {
+        "label": "12096 KB",
+        "value": "bd0000"
+       },
+       {
+        "label": "12128 KB",
+        "value": "bd8000"
+       },
+       {
+        "label": "12160 KB",
+        "value": "be0000"
+       },
+       {
+        "label": "12192 KB",
+        "value": "be8000"
+       },
+       {
+        "label": "12224 KB",
+        "value": "bf0000"
+       },
+       {
+        "label": "12256 KB",
+        "value": "bf8000"
+       },
+       {
+        "label": "12288 KB",
+        "value": "c00000"
+       },
+       {
+        "label": "12320 KB",
+        "value": "c08000"
+       },
+       {
+        "label": "12352 KB",
+        "value": "c10000"
+       },
+       {
+        "label": "12384 KB",
+        "value": "c18000"
+       },
+       {
+        "label": "12416 KB",
+        "value": "c20000"
+       },
+       {
+        "label": "12448 KB",
+        "value": "c28000"
+       },
+       {
+        "label": "12480 KB",
+        "value": "c30000"
+       },
+       {
+        "label": "12512 KB",
+        "value": "c38000"
+       },
+       {
+        "label": "12544 KB",
+        "value": "c40000"
+       },
+       {
+        "label": "12576 KB",
+        "value": "c48000"
+       },
+       {
+        "label": "12608 KB",
+        "value": "c50000"
+       },
+       {
+        "label": "12640 KB",
+        "value": "c58000"
+       },
+       {
+        "label": "12672 KB",
+        "value": "c60000"
+       },
+       {
+        "label": "12704 KB",
+        "value": "c68000"
+       },
+       {
+        "label": "12736 KB",
+        "value": "c70000"
+       },
+       {
+        "label": "12768 KB",
+        "value": "c78000"
+       },
+       {
+        "label": "12800 KB",
+        "value": "c80000"
+       },
+       {
+        "label": "12832 KB",
+        "value": "c88000"
+       },
+       {
+        "label": "12864 KB",
+        "value": "c90000"
+       },
+       {
+        "label": "12896 KB",
+        "value": "c98000"
+       },
+       {
+        "label": "12928 KB",
+        "value": "ca0000"
+       },
+       {
+        "label": "12960 KB",
+        "value": "ca8000"
+       },
+       {
+        "label": "12992 KB",
+        "value": "cb0000"
+       },
+       {
+        "label": "13024 KB",
+        "value": "cb8000"
+       },
+       {
+        "label": "13056 KB",
+        "value": "cc0000"
+       },
+       {
+        "label": "13088 KB",
+        "value": "cc8000"
+       },
+       {
+        "label": "13120 KB",
+        "value": "cd0000"
+       },
+       {
+        "label": "13152 KB",
+        "value": "cd8000"
+       },
+       {
+        "label": "13184 KB",
+        "value": "ce0000"
+       },
+       {
+        "label": "13216 KB",
+        "value": "ce8000"
+       },
+       {
+        "label": "13248 KB",
+        "value": "cf0000"
+       },
+       {
+        "label": "13280 KB",
+        "value": "cf8000"
+       },
+       {
+        "label": "13312 KB",
+        "value": "d00000"
+       },
+       {
+        "label": "13344 KB",
+        "value": "d08000"
+       },
+       {
+        "label": "13376 KB",
+        "value": "d10000"
+       },
+       {
+        "label": "13408 KB",
+        "value": "d18000"
+       },
+       {
+        "label": "13440 KB",
+        "value": "d20000"
+       },
+       {
+        "label": "13472 KB",
+        "value": "d28000"
+       },
+       {
+        "label": "13504 KB",
+        "value": "d30000"
+       },
+       {
+        "label": "13536 KB",
+        "value": "d38000"
+       },
+       {
+        "label": "13568 KB",
+        "value": "d40000"
+       },
+       {
+        "label": "13600 KB",
+        "value": "d48000"
+       },
+       {
+        "label": "13632 KB",
+        "value": "d50000"
+       },
+       {
+        "label": "13664 KB",
+        "value": "d58000"
+       },
+       {
+        "label": "13696 KB",
+        "value": "d60000"
+       },
+       {
+        "label": "13728 KB",
+        "value": "d68000"
+       },
+       {
+        "label": "13760 KB",
+        "value": "d70000"
+       },
+       {
+        "label": "13792 KB",
+        "value": "d78000"
+       },
+       {
+        "label": "13824 KB",
+        "value": "d80000"
+       },
+       {
+        "label": "13856 KB",
+        "value": "d88000"
+       },
+       {
+        "label": "13888 KB",
+        "value": "d90000"
+       },
+       {
+        "label": "13920 KB",
+        "value": "d98000"
+       },
+       {
+        "label": "13952 KB",
+        "value": "da0000"
+       },
+       {
+        "label": "13984 KB",
+        "value": "da8000"
+       },
+       {
+        "label": "14016 KB",
+        "value": "db0000"
+       },
+       {
+        "label": "14048 KB",
+        "value": "db8000"
+       },
+       {
+        "label": "14080 KB",
+        "value": "dc0000"
+       },
+       {
+        "label": "14112 KB",
+        "value": "dc8000"
+       },
+       {
+        "label": "14144 KB",
+        "value": "dd0000"
+       },
+       {
+        "label": "14176 KB",
+        "value": "dd8000"
+       },
+       {
+        "label": "14208 KB",
+        "value": "de0000"
+       },
+       {
+        "label": "14240 KB",
+        "value": "de8000"
+       },
+       {
+        "label": "14272 KB",
+        "value": "df0000"
+       },
+       {
+        "label": "14304 KB",
+        "value": "df8000"
+       },
+       {
+        "label": "14336 KB",
+        "value": "e00000"
+       },
+       {
+        "label": "14368 KB",
+        "value": "e08000"
+       },
+       {
+        "label": "14400 KB",
+        "value": "e10000"
+       },
+       {
+        "label": "14432 KB",
+        "value": "e18000"
+       },
+       {
+        "label": "14464 KB",
+        "value": "e20000"
+       },
+       {
+        "label": "14496 KB",
+        "value": "e28000"
+       },
+       {
+        "label": "14528 KB",
+        "value": "e30000"
+       },
+       {
+        "label": "14560 KB",
+        "value": "e38000"
+       },
+       {
+        "label": "14592 KB",
+        "value": "e40000"
+       },
+       {
+        "label": "14624 KB",
+        "value": "e48000"
+       },
+       {
+        "label": "14656 KB",
+        "value": "e50000"
+       },
+       {
+        "label": "14688 KB",
+        "value": "e58000"
+       },
+       {
+        "label": "14720 KB",
+        "value": "e60000"
+       },
+       {
+        "label": "14752 KB",
+        "value": "e68000"
+       },
+       {
+        "label": "14784 KB",
+        "value": "e70000"
+       },
+       {
+        "label": "14816 KB",
+        "value": "e78000"
+       },
+       {
+        "label": "14848 KB",
+        "value": "e80000"
+       },
+       {
+        "label": "14880 KB",
+        "value": "e88000"
+       },
+       {
+        "label": "14912 KB",
+        "value": "e90000"
+       },
+       {
+        "label": "14944 KB",
+        "value": "e98000"
+       },
+       {
+        "label": "14976 KB",
+        "value": "ea0000"
+       },
+       {
+        "label": "15008 KB",
+        "value": "ea8000"
+       },
+       {
+        "label": "15040 KB",
+        "value": "eb0000"
+       },
+       {
+        "label": "15072 KB",
+        "value": "eb8000"
+       },
+       {
+        "label": "15104 KB",
+        "value": "ec0000"
+       },
+       {
+        "label": "15136 KB",
+        "value": "ec8000"
+       },
+       {
+        "label": "15168 KB",
+        "value": "ed0000"
+       },
+       {
+        "label": "15200 KB",
+        "value": "ed8000"
+       },
+       {
+        "label": "15232 KB",
+        "value": "ee0000"
+       },
+       {
+        "label": "15264 KB",
+        "value": "ee8000"
+       },
+       {
+        "label": "15296 KB",
+        "value": "ef0000"
+       },
+       {
+        "label": "15328 KB",
+        "value": "ef8000"
+       },
+       {
+        "label": "15360 KB",
+        "value": "f00000"
+       },
+       {
+        "label": "15392 KB",
+        "value": "f08000"
+       },
+       {
+        "label": "15424 KB",
+        "value": "f10000"
+       },
+       {
+        "label": "15456 KB",
+        "value": "f18000"
+       },
+       {
+        "label": "15488 KB",
+        "value": "f20000"
+       },
+       {
+        "label": "15520 KB",
+        "value": "f28000"
+       },
+       {
+        "label": "15552 KB",
+        "value": "f30000"
+       },
+       {
+        "label": "15584 KB",
+        "value": "f38000"
+       },
+       {
+        "label": "15616 KB",
+        "value": "f40000"
+       },
+       {
+        "label": "15648 KB",
+        "value": "f48000"
+       },
+       {
+        "label": "15680 KB",
+        "value": "f50000"
+       },
+       {
+        "label": "15712 KB",
+        "value": "f58000"
+       },
+       {
+        "label": "15744 KB",
+        "value": "f60000"
+       },
+       {
+        "label": "15776 KB",
+        "value": "f68000"
+       },
+       {
+        "label": "15808 KB",
+        "value": "f70000"
+       },
+       {
+        "label": "15840 KB",
+        "value": "f78000"
+       },
+       {
+        "label": "15872 KB",
+        "value": "f80000"
+       },
+       {
+        "label": "15904 KB",
+        "value": "f88000"
+       },
+       {
+        "label": "15936 KB",
+        "value": "f90000"
+       },
+       {
+        "label": "15968 KB",
+        "value": "f98000"
+       },
+       {
+        "label": "16000 KB",
+        "value": "fa0000"
+       },
+       {
+        "label": "16032 KB",
+        "value": "fa8000"
+       },
+       {
+        "label": "16064 KB",
+        "value": "fb0000"
+       },
+       {
+        "label": "16096 KB",
+        "value": "fb8000"
+       },
+       {
+        "label": "16128 KB",
+        "value": "fc0000"
+       },
+       {
+        "label": "16160 KB",
+        "value": "fc8000"
+       },
+       {
+        "label": "16192 KB",
+        "value": "fd0000"
+       },
+       {
+        "label": "16224 KB",
+        "value": "fd8000"
+       },
+       {
+        "label": "16256 KB",
+        "value": "fe0000"
+       },
+       {
+        "label": "16288 KB",
+        "value": "fe8000"
+       },
+       {
+        "label": "16320 KB",
+        "value": "ff0000"
+       },
+       {
+        "label": "16352 KB",
+        "value": "ff8000"
+       }
+      ]
+     }
+    ],
+    "key": "SYSTEM_CFSAMONA",
+    "label": "Code Flash Security Attribution Monitor Register A",
+    "unused": "ff007fff"
+   },
+   {
+    "address": "40204034",
+    "default": "0",
+    "fields": [
+     {
+      "hidden": false,
+      "init": "0",
+      "key": "DFS",
+      "label": "Data flash Secure area",
+      "mask": "fc00",
+      "settings": [
+       {
+        "label": "0 KB",
+        "value": "0"
+       },
+       {
+        "label": "1 KB",
+        "value": "400"
+       },
+       {
+        "label": "2 KB",
+        "value": "800"
+       },
+       {
+        "label": "3 KB",
+        "value": "c00"
+       },
+       {
+        "label": "4 KB",
+        "value": "1000"
+       },
+       {
+        "label": "5 KB",
+        "value": "1400"
+       },
+       {
+        "label": "6 KB",
+        "value": "1800"
+       },
+       {
+        "label": "7 KB",
+        "value": "1c00"
+       },
+       {
+        "label": "8 KB",
+        "value": "2000"
+       },
+       {
+        "label": "9 KB",
+        "value": "2400"
+       },
+       {
+        "label": "10 KB",
+        "value": "2800"
+       },
+       {
+        "label": "11 KB",
+        "value": "2c00"
+       },
+       {
+        "label": "12 KB",
+        "value": "3000"
+       },
+       {
+        "label": "13 KB",
+        "value": "3400"
+       },
+       {
+        "label": "14 KB",
+        "value": "3800"
+       },
+       {
+        "label": "15 KB",
+        "value": "3c00"
+       },
+       {
+        "label": "16 KB",
+        "value": "4000"
+       },
+       {
+        "label": "17 KB",
+        "value": "4400"
+       },
+       {
+        "label": "18 KB",
+        "value": "4800"
+       },
+       {
+        "label": "19 KB",
+        "value": "4c00"
+       },
+       {
+        "label": "20 KB",
+        "value": "5000"
+       },
+       {
+        "label": "21 KB",
+        "value": "5400"
+       },
+       {
+        "label": "22 KB",
+        "value": "5800"
+       },
+       {
+        "label": "23 KB",
+        "value": "5c00"
+       },
+       {
+        "label": "24 KB",
+        "value": "6000"
+       },
+       {
+        "label": "25 KB",
+        "value": "6400"
+       },
+       {
+        "label": "26 KB",
+        "value": "6800"
+       },
+       {
+        "label": "27 KB",
+        "value": "6c00"
+       },
+       {
+        "label": "28 KB",
+        "value": "7000"
+       },
+       {
+        "label": "29 KB",
+        "value": "7400"
+       },
+       {
+        "label": "30 KB",
+        "value": "7800"
+       },
+       {
+        "label": "31 KB",
+        "value": "7c00"
+       },
+       {
+        "label": "32 KB",
+        "value": "8000"
+       },
+       {
+        "label": "33 KB",
+        "value": "8400"
+       },
+       {
+        "label": "34 KB",
+        "value": "8800"
+       },
+       {
+        "label": "35 KB",
+        "value": "8c00"
+       },
+       {
+        "label": "36 KB",
+        "value": "9000"
+       },
+       {
+        "label": "37 KB",
+        "value": "9400"
+       },
+       {
+        "label": "38 KB",
+        "value": "9800"
+       },
+       {
+        "label": "39 KB",
+        "value": "9c00"
+       },
+       {
+        "label": "40 KB",
+        "value": "a000"
+       },
+       {
+        "label": "41 KB",
+        "value": "a400"
+       },
+       {
+        "label": "42 KB",
+        "value": "a800"
+       },
+       {
+        "label": "43 KB",
+        "value": "ac00"
+       },
+       {
+        "label": "44 KB",
+        "value": "b000"
+       },
+       {
+        "label": "45 KB",
+        "value": "b400"
+       },
+       {
+        "label": "46 KB",
+        "value": "b800"
+       },
+       {
+        "label": "47 KB",
+        "value": "bc00"
+       },
+       {
+        "label": "48 KB",
+        "value": "c000"
+       },
+       {
+        "label": "49 KB",
+        "value": "c400"
+       },
+       {
+        "label": "50 KB",
+        "value": "c800"
+       },
+       {
+        "label": "51 KB",
+        "value": "cc00"
+       },
+       {
+        "label": "52 KB",
+        "value": "d000"
+       },
+       {
+        "label": "53 KB",
+        "value": "d400"
+       },
+       {
+        "label": "54 KB",
+        "value": "d800"
+       },
+       {
+        "label": "55 KB",
+        "value": "dc00"
+       },
+       {
+        "label": "56 KB",
+        "value": "e000"
+       },
+       {
+        "label": "57 KB",
+        "value": "e400"
+       },
+       {
+        "label": "58 KB",
+        "value": "e800"
+       },
+       {
+        "label": "59 KB",
+        "value": "ec00"
+       },
+       {
+        "label": "60 KB",
+        "value": "f000"
+       },
+       {
+        "label": "61 KB",
+        "value": "f400"
+       },
+       {
+        "label": "62 KB",
+        "value": "f800"
+       },
+       {
+        "label": "63 KB",
+        "value": "fc00"
+       }
+      ]
+     }
+    ],
+    "key": "SYSTEM_DFSAMON",
+    "label": "Data Flash Security Attribution Monitor Register",
+    "unused": "ffff03ff"
+   }
+  ],
+  "memory_regions": [
+   {
+    "name": "RAM_NS",
+    "start": "0x32000000",
+    "size": "0x000e0000",
+    "ns_align": "0x00002000"
+   },
+   {
+    "name": "RAM",
+    "start": "0x22000000",
+    "size": "0x000e0000",
+    "nsc_align": "0x00000040"
+   },
+   {
+    "name": "FLASH_NS",
+    "start": "0x12000000",
+    "size": "0x001f8000",
+    "ns_align": "0x00008000"
+   },
+   {
+    "name": "FLASH",
+    "start": "0x02000000",
+    "size": "0x001f8000",
+    "nsc_align": "0x00000040"
+   },
+   {
+    "name": "DATA_FLASH_NS",
+    "start": "0x37000000",
+    "size": "0x00003000",
+    "ns_align": "0x00000400"
+   },
+   {
+    "name": "DATA_FLASH",
+    "start": "0x27000000",
+    "size": "0x00003000"
+   },
+   {
+    "name": "SDRAM",
+    "start": "0x68000000",
+    "size": "0x08000000"
+   },
+   {
+    "name": "OSPI0_CS0",
+    "start": "0x80000000",
+    "size": "0x10000000"
+   },
+   {
+    "name": "OSPI0_CS1",
+    "start": "0x90000000",
+    "size": "0x10000000"
+   },
+   {
+    "name": "OPTION_SETTING_OFS0",
+    "start": "0x0300a100",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_OFS2",
+    "start": "0x0300a104",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_DUALSEL",
+    "start": "0x0300a110",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_OFS1",
+    "start": "0x1300a180",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_BANKSEL",
+    "start": "0x1300a190",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_BPS",
+    "start": "0x1300a1c0",
+    "size": "0x00000010"
+   },
+   {
+    "name": "OPTION_SETTING_PBPS",
+    "start": "0x1300a1e0",
+    "size": "0x00000010"
+   },
+   {
+    "name": "OPTION_SETTING_OFS1_SEC",
+    "start": "0x0300a200",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_BANKSEL_SEC",
+    "start": "0x0300a210",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_BPS_SEC",
+    "start": "0x0300a240",
+    "size": "0x00000010"
+   },
+   {
+    "name": "OPTION_SETTING_PBPS_SEC",
+    "start": "0x0300a260",
+    "size": "0x00000010"
+   },
+   {
+    "name": "OPTION_SETTING_OFS1_SEL",
+    "start": "0x0300a280",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_BANKSEL_SEL",
+    "start": "0x0300a290",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_BPS_SEL",
+    "start": "0x0300a2c0",
+    "size": "0x00000010"
+   },
+   {
+    "name": "OPTION_SETTING_DATA_FLASH_FSBLCTRL0",
+    "start": "0x27030080",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_DATA_FLASH_FSBLCTRL1",
+    "start": "0x27030084",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_DATA_FLASH_FSBLCTRL2",
+    "start": "0x27030088",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_DATA_FLASH_SACC0",
+    "start": "0x2703008c",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_DATA_FLASH_SACC1",
+    "start": "0x27030090",
+    "size": "0x00000004"
+   },
+   {
+    "name": "OPTION_SETTING_DATA_FLASH_SAMR",
+    "start": "0x27030094",
+    "size": "0x00000004"
+   },
+   {
+    "name": "ITCM_NS",
+    "start": "0x10000000",
+    "size": "0x00010000",
+    "ns_align": "0x00002000"
+   },
+   {
+    "name": "ITCM",
+    "start": "0x00000000",
+    "size": "0x00010000"
+   },
+   {
+    "name": "DTCM_NS",
+    "start": "0x30000000",
+    "size": "0x00010000",
+    "ns_align": "0x00002000"
+   },
+   {
+    "name": "DTCM",
+    "start": "0x20000000",
+    "size": "0x00010000"
+   }
+  ],
+  "sau_count": 8
+ },
+ "core": "M85",
+ "delay_src_path": "delays/m85/__lib_delays.c",
+ "mcu": "R7FA8M1AHECBD",
+ "clock": "480"
 }

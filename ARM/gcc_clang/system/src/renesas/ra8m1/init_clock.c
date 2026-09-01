@@ -44,6 +44,46 @@
 #include "delays.h"
 #include "core_header.h"
 
+#ifndef BSP_FEATURE_TZ_NS_OFFSET
+#define BSP_FEATURE_TZ_NS_OFFSET (0x10000000UL)
+#endif
+#ifndef BSP_TZ_CFG_NSC_SIZE
+#define BSP_TZ_CFG_NSC_SIZE (0x00008000UL)
+#endif
+#ifndef BSP_TZ_CFG_FLASH_S_SIZE
+#define BSP_TZ_CFG_FLASH_S_SIZE (0x00100000UL)
+#endif
+#ifndef BSP_TZ_CFG_SRAM_BOUNDARY
+#define BSP_TZ_CFG_SRAM_BOUNDARY (0x22060000UL)
+#endif
+#if defined(_RA_TZ_SECURE)
+#define MIKROE_RA8M1_TZ_SECURE (1)
+#define MIKROE_RA8M1_TZ_NONSECURE (0)
+#define BSP_TZ_SECURE_BUILD (1)
+#define BSP_TZ_NONSECURE_BUILD (0)
+#elif defined(_RA_TZ_NONSECURE)
+#define MIKROE_RA8M1_TZ_SECURE (0)
+#define MIKROE_RA8M1_TZ_NONSECURE (1)
+#define BSP_TZ_SECURE_BUILD (0)
+#define BSP_TZ_NONSECURE_BUILD (1)
+#else
+#define MIKROE_RA8M1_TZ_SECURE (0)
+#define MIKROE_RA8M1_TZ_NONSECURE (0)
+#define BSP_TZ_SECURE_BUILD (0)
+#define BSP_TZ_NONSECURE_BUILD (0)
+#endif
+
+/* NECTO builds MikroC.Core once and links the same prebuilt archive into the
+ * Secure and Non-secure executables. Therefore _RA_TZ_SECURE and
+ * _RA_TZ_NONSECURE are not available while this file is compiled. Detect a
+ * TrustZone-configured project from the generated core_header instead, then
+ * determine the security domain at runtime from the linked vector address. */
+#ifdef BSP_TZ_REG_CFSAMONA
+#define MIKROE_RA8M1_TZ_CONFIGURED (1)
+#else
+#define MIKROE_RA8M1_TZ_CONFIGURED (0)
+#endif
+
 extern void * __Vectors[];
 
 typedef struct
@@ -64,6 +104,10 @@ typedef struct
 static uint8_t ClockPrescTable[] = { 1, 2, 4, 8, 16, 32, 64, 0, 3, 6, 12 };
 static uint8_t SCI_SPI_CLK_PrescTable[] = { 1, 2, 4, 6, 8, 3, 5 };
 static uint8_t I3CDividersTable[] = { 1, 2, 4, 6, 8, 3, 5, 10, 16, 32 };
+
+#if MIKROE_RA8M1_TZ_CONFIGURED
+static void ra8m1_trustzone_secure_init(void);
+#endif
 
 /* Helper macros for getting SPI and SCI clock sources. */
 #define SCI_SPI_SOURCE_HOCO     (0)
@@ -105,7 +149,33 @@ static uint8_t I3CDividersTable[] = { 1, 2, 4, 6, 8, 3, 5, 10, 16, 32 };
 /* Key code for writing PRCR register. */
 #define BSP_PRV_PRCR_KEY                              (0xA500U)
 #define BSP_PRV_PRCR_PRC1_UNLOCK                      ((BSP_PRV_PRCR_KEY) | 0x2U)
+#define BSP_PRV_PRCR_PRC4_UNLOCK                      ((BSP_PRV_PRCR_KEY) | 0x10U)
 #define BSP_PRV_PRCR_LOCK                             ((BSP_PRV_PRCR_KEY) | 0x0U)
+
+/* CMSIS intentionally hides the SAU_Type/SAU macros when a translation unit
+ * is not compiled with -mcmse. NECTO's shared lib_core.a is compiled without
+ * -mcmse, even for a TrustZone project, but programming the SAU registers is
+ * ordinary Secure MMIO and does not require CMSE instructions. Keep a tiny
+ * local SAU view so the shared core can still install the generated security
+ * map before entering the Non-secure image. */
+typedef struct mikroe_ra8m1_sau
+{
+    volatile uint32_t CTRL;
+    const volatile uint32_t TYPE;
+    volatile uint32_t RNR;
+    volatile uint32_t RBAR;
+    volatile uint32_t RLAR;
+    volatile uint32_t SFSR;
+    volatile uint32_t SFAR;
+} mikroe_ra8m1_sau_t;
+
+#define MIKROE_RA8M1_SAU_BASE             (0xE000EDD0UL)
+#define MIKROE_RA8M1_SAU                  ((mikroe_ra8m1_sau_t *) MIKROE_RA8M1_SAU_BASE)
+#define MIKROE_SAU_RBAR_BADDR_Msk         (0xFFFFFFE0UL)
+#define MIKROE_SAU_RLAR_LADDR_Msk         (0xFFFFFFE0UL)
+#define MIKROE_SAU_RLAR_NSC_Msk           (1UL << 1U)
+#define MIKROE_SAU_RLAR_ENABLE_Msk        (1UL << 0U)
+#define MIKROE_SAU_CTRL_ENABLE_Msk        (1UL << 0U)
 #define BSP_PRV_STACK_LIMIT                           ((uint32_t) __Vectors[0] - BSP_CFG_STACK_MAIN_BYTES)
 #define BSP_PRV_STACK_TOP                             ((uint32_t) __Vectors[0])
 
@@ -852,58 +922,69 @@ void SYSTEM_GetClocksFrequency( SYSTEM_ClocksTypeDef * SYSTEM_Clocks ) {
  */
 void SystemInit(void)
 {
-    /* Enable the instruction cache, branch prediction, and the branch cache
-     * (required for Low Overhead Branch (LOB) extension). See sections 6.5, 6.6
-     * and 6.7 in the Arm Cortex-M85 Processor Technical Reference Manual
-     * (Document ID: 101924_0002_05_en, Issue: 05). See section D1.2.9 in the
-     * Armv8-M Architecture Reference Manual (Document number: DDI0553B.w,
-     * Document version: ID07072023)
-     */
-    SCB->CCR = (uint32_t) CCR_CACHE_ENABLE;
-    __DSB();
-    __ISB();
+    /* MikroC.Core is prebuilt only once by NECTO, then linked into both the
+     * Secure and Non-secure ELF. The executable's linked vector address tells
+     * us which alias/domain this particular copy is running from:
+     *   Secure     vectors: 0x02xxxxxx
+     *   Non-secure vectors: 0x12xxxxxx
+     * This avoids relying on _RA_TZ_SECURE/_RA_TZ_NONSECURE while compiling
+     * the shared core archive. */
+    const uint32_t image_is_nonsecure =
+        ((((uint32_t) &__Vectors) & BSP_FEATURE_TZ_NS_OFFSET) != 0U);
 
-    // If Cortex-M85 revision is r1p1 or newer.
-    const uint32_t cpuid          = SCB->CPUID;
-    const uint32_t cpuid_variant  = ((cpuid & SCB_CPUID_VARIANT_Msk) >> SCB_CPUID_VARIANT_Pos);
-    const uint32_t cpuid_revision = ((cpuid & SCB_CPUID_REVISION_Msk) >> SCB_CPUID_REVISION_Pos);
-    if (((cpuid_variant == 1) && (cpuid_revision >= 1)) || (cpuid_variant > 1)) {
-        MEMSYSCTL->MSCR |= MEMSYSCTL_MSCR_FORCEWT_Msk;
+    if (!image_is_nonsecure)
+    {
+        /* Enable the instruction cache, branch prediction, and branch cache.
+         * These are configured once by the Secure image. */
+        SCB->CCR = (uint32_t) CCR_CACHE_ENABLE;
         __DSB();
         __ISB();
-    }
-    else {
-        /* Apply Arm Cortex-M85 errata workarounds for D-Cache.
-         * See erratum 3175626 and 3190818 in the Cortex-M85 AT640 and Cortex-M85
-         * with FPU AT641 Software Developer Errata Notice (Date of issue:
-         * March 07, 2024, Document version: 13.0, Document ID: SDEN-2236668).
-         */
-        MEMSYSCTL->MSCR |= MEMSYSCTL_MSCR_FORCEWT_Msk;
-        __DSB();
-        __ISB();
-        ICB->ACTLR |= (1U << 16U);
-        __DSB();
-        __ISB();
+
+        const uint32_t cpuid          = SCB->CPUID;
+        const uint32_t cpuid_variant  = ((cpuid & SCB_CPUID_VARIANT_Msk) >> SCB_CPUID_VARIANT_Pos);
+        const uint32_t cpuid_revision = ((cpuid & SCB_CPUID_REVISION_Msk) >> SCB_CPUID_REVISION_Pos);
+        if (((cpuid_variant == 1U) && (cpuid_revision >= 1U)) || (cpuid_variant > 1U))
+        {
+            MEMSYSCTL->MSCR |= MEMSYSCTL_MSCR_FORCEWT_Msk;
+            __DSB();
+            __ISB();
+        }
+        else
+        {
+            MEMSYSCTL->MSCR |= MEMSYSCTL_MSCR_FORCEWT_Msk;
+            __DSB();
+            __ISB();
+            ICB->ACTLR |= (1U << 16U);
+            __DSB();
+            __ISB();
+        }
     }
 
-    // Set-up FPU settings
-    SCB->CPACR |= (0xF << 20);
+    /* CPACR and VTOR are banked by security state, so each image initializes
+     * its own copy. Secure init grants Non-secure FP access through NSACR. */
+    SCB->CPACR |= (0xFUL << 20U);
     SCB->VTOR = (uint32_t) &__Vectors;
 
-    // BSP clock init start
-    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
+#if MIKROE_RA8M1_TZ_CONFIGURED
+    if (!image_is_nonsecure)
+    {
+        ra8m1_trustzone_secure_init();
+    }
+#endif
 
-    /* Enable the flash cache and don't disable it while running from flash.
-     * On these MCUs, the flash cache does not need to be disabled when
-     * adjusting the operating power mode. */
-    R_FCACHE->FCACHEIV = 1U;
-    FSP_HARDWARE_REGISTER_WAIT(R_FCACHE->FCACHEIV, 0U);
+    /* Clock, flash-cache and protected peripheral setup are owned by Secure.
+     * The Non-secure image inherits the established clocks and must not touch
+     * the Secure register aliases during its C runtime startup. */
+    if (!image_is_nonsecure)
+    {
+        R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_UNLOCK;
 
-    // Enable flash cache
-    R_FCACHE->FCACHEE = 1U;
+        R_FCACHE->FCACHEIV = 1U;
+        FSP_HARDWARE_REGISTER_WAIT(R_FCACHE->FCACHEIV, 0U);
+        R_FCACHE->FCACHEE = 1U;
 
-    // Clock setting
-    system_clock_configuration();
+        system_clock_configuration();
+    }
 
     memset(
         &__ram_zero$$Base,
@@ -923,20 +1004,119 @@ void SystemInit(void)
         __init_array_start[i]();
     }
 
-    // Pin config
-    R_PMISC->PWPR = 0; // Clear BOWI bit - writing to PFSWE bit enabled
-    R_PMISC->PWPR = 1U << BSP_IO_PWPR_PFSWE_OFFSET; // Set PFSWE bit - writing to PFS register enabled
-
-    for (uint32_t i = 0U; i < (BSP_ICU_VECTOR_MAX_ENTRIES - BSP_FEATURE_ICU_FIXED_IELSR_COUNT); i++)
+    if (!image_is_nonsecure)
     {
-        if (0U != g_interrupt_event_link_select[i])
+        /* A TrustZone Secure image uses the Secure PFS write-protect register.
+         * A normal non-TZ core keeps the legacy PWPR behavior. */
+#if MIKROE_RA8M1_TZ_CONFIGURED
+        R_PMISC->PWPRS = 0U;
+        R_PMISC->PWPRS = 1U << BSP_IO_PWPR_PFSWE_OFFSET;
+#else
+        R_PMISC->PWPR = 0U;
+        R_PMISC->PWPR = 1U << BSP_IO_PWPR_PFSWE_OFFSET;
+#endif
+
+        for (uint32_t i = 0U; i < (BSP_ICU_VECTOR_MAX_ENTRIES - BSP_FEATURE_ICU_FIXED_IELSR_COUNT); i++)
         {
-            R_ICU->IELSR[i] = (uint32_t) g_interrupt_event_link_select[i];
+            if (0U != g_interrupt_event_link_select[i])
+            {
+                R_ICU->IELSR[i] = (uint32_t) g_interrupt_event_link_select[i];
+            }
         }
     }
 }
 
 // -----------------------------------------------------------------------------------------
+
+#if MIKROE_RA8M1_TZ_CONFIGURED
+static void ra8m1_trustzone_secure_init(void)
+{
+    const uint32_t nsc_start = 0x02000000UL + BSP_TZ_CFG_FLASH_S_SIZE - BSP_TZ_CFG_NSC_SIZE;
+    const uint32_t nsc_limit = 0x02000000UL + BSP_TZ_CFG_FLASH_S_SIZE - 1UL;
+
+    MIKROE_RA8M1_SAU->CTRL = 0U;
+
+    /* Region 0: Secure gateway veneers (NSC). */
+    MIKROE_RA8M1_SAU->RNR  = 0U;
+    MIKROE_RA8M1_SAU->RBAR = nsc_start & MIKROE_SAU_RBAR_BADDR_Msk;
+    MIKROE_RA8M1_SAU->RLAR = (nsc_limit & MIKROE_SAU_RLAR_LADDR_Msk) | MIKROE_SAU_RLAR_NSC_Msk | MIKROE_SAU_RLAR_ENABLE_Msk;
+
+    /* Region 1: Non-secure code/ITCM aliases. */
+    MIKROE_RA8M1_SAU->RNR  = 1U;
+    MIKROE_RA8M1_SAU->RBAR = 0x10000000UL & MIKROE_SAU_RBAR_BADDR_Msk;
+    MIKROE_RA8M1_SAU->RLAR = (0x1FFFFFFFUL & MIKROE_SAU_RLAR_LADDR_Msk) | MIKROE_SAU_RLAR_ENABLE_Msk;
+
+    /* Region 2: Non-secure SRAM/DTCM/data-flash aliases. */
+    MIKROE_RA8M1_SAU->RNR  = 2U;
+    MIKROE_RA8M1_SAU->RBAR = 0x30000000UL & MIKROE_SAU_RBAR_BADDR_Msk;
+    MIKROE_RA8M1_SAU->RLAR = (0x3FFFFFFFUL & MIKROE_SAU_RLAR_LADDR_Msk) | MIKROE_SAU_RLAR_ENABLE_Msk;
+
+    /* Region 3: Non-secure peripheral/external aliases. */
+    MIKROE_RA8M1_SAU->RNR  = 3U;
+    MIKROE_RA8M1_SAU->RBAR = 0x50000000UL & MIKROE_SAU_RBAR_BADDR_Msk;
+    MIKROE_RA8M1_SAU->RLAR = (0xDFFFFFFFUL & MIKROE_SAU_RLAR_LADDR_Msk) | MIKROE_SAU_RLAR_ENABLE_Msk;
+
+    /* Security/privilege attribution registers on RA8M1 are protected by
+     * PRCR_S.PRC4. Apply the values generated by NECTO while still Secure. */
+    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_PRC4_UNLOCK;
+
+    /* Match the SRAM TrustZone-filter boundaries generated by NECTO. Prefer
+     * the exact per-register values from core_header.h; retain the older
+     * combined boundary macro as a fallback for older generated projects. */
+#ifdef BSP_TZ_REG_SRAMSABAR0
+    R_CPSCU->SRAMSABAR0 = BSP_TZ_REG_SRAMSABAR0 & R_CPSCU_SRAMSABAR0_SRAMSABAR_Msk;
+#else
+    R_CPSCU->SRAMSABAR0 = BSP_TZ_CFG_SRAM_BOUNDARY & R_CPSCU_SRAMSABAR0_SRAMSABAR_Msk;
+#endif
+#ifdef BSP_TZ_REG_SRAMSABAR1
+    R_CPSCU->SRAMSABAR1 = BSP_TZ_REG_SRAMSABAR1 & R_CPSCU_SRAMSABAR1_SRAMSABAR_Msk;
+#else
+    R_CPSCU->SRAMSABAR1 = BSP_TZ_CFG_SRAM_BOUNDARY & R_CPSCU_SRAMSABAR1_SRAMSABAR_Msk;
+#endif
+
+    /* Apply the Standby SRAM Secure -> Non-secure boundary generated by
+     * NECTO. 0x000 means the boundary is at the first byte; 0x400 places it
+     * immediately after the 1 KiB Standby SRAM window. */
+#ifdef BSP_TZ_REG_STBRAMSABAR
+    R_CPSCU->STBRAMSABAR = BSP_TZ_REG_STBRAMSABAR & R_CPSCU_STBRAMSABAR_STBRAMSABAR_Msk;
+#endif
+
+    /* Complete the security-attribution writes before relocking PRCR. The
+     * volatile readbacks also make the exact hardware-applied values visible
+     * to the demo diagnostics. */
+    __DSB();
+    (void) R_CPSCU->SRAMSABAR0;
+    (void) R_CPSCU->SRAMSABAR1;
+    (void) R_CPSCU->STBRAMSABAR;
+
+    /* Keep peripherals secure by default. This is intentional for the demo:
+     * SPI0 and its GPIO/PFS registers are used only by Secure code. */
+    R_PSCU->PSARB = 0U;
+    R_PSCU->PSARC = 0U;
+    R_PSCU->PSARD = 0U;
+    R_PSCU->PSARE = 0U;
+    R_PSCU->MSSAR = 0U;
+    for (uint32_t i = 0U; i < 15U; ++i)
+    {
+        R_PMISC->PMSAR[i].PMSAR = 0U;
+    }
+    R_SYSTEM->PRCR = (uint16_t) BSP_PRV_PRCR_LOCK;
+
+    /* Permit the NS image to use the floating-point coprocessors. */
+    SCB->NSACR |= (3UL << 10U);
+
+    MIKROE_RA8M1_SAU->CTRL = MIKROE_SAU_CTRL_ENABLE_Msk;
+
+    /* Cortex-M85 requires instruction-cache maintenance after changing SAU
+     * security attribution. Renesas FSP performs the same invalidation in
+     * R_BSP_SAUInit(). */
+#if (__ICACHE_PRESENT == 1U)
+    SCB_InvalidateICache();
+#endif
+    __DSB();
+    __ISB();
+}
+#endif
 
 static void system_clock_configuration() {
     // Unlock write protection register

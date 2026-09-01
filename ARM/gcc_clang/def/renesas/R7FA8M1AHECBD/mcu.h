@@ -19385,7 +19385,20 @@ typedef struct                           /*!< (@ 0x40008000) R_CPSCU Structure  
             uint32_t : 11;
         } SRAMSABAR1_b;
     };
-    __IM uint32_t RESERVED11[126];
+    __IM uint32_t RESERVED11[6];
+
+    union
+    {
+        __IOM uint32_t STBRAMSABAR;       /*!< (@ 0x00000420) Standby SRAM Security Attribute Boundary Address Register */
+
+        struct
+        {
+            uint32_t                    : 7;
+            __IOM uint32_t STBRAMSABAR : 8; /*!< [14..7] Boundary address between Secure and Non-secure Standby SRAM. */
+            uint32_t                    : 17;
+        } STBRAMSABAR_b;
+    };
+    __IM uint32_t RESERVED12[119];
 
     union
     {
@@ -23134,6 +23147,10 @@ typedef struct                         /*!< (@ 0x27030000) R_OFS_DATAFLASH Struc
 /** @addtogroup Device_Peripheral_peripheralAddr
  * @{
  */
+
+ #ifndef BSP_FEATURE_TZ_NS_OFFSET
+  #define BSP_FEATURE_TZ_NS_OFFSET  (0x10000000UL)
+ #endif
 
  #if defined(_RA_TZ_NONSECURE)
   #define BASE_NS_OFFSET         (BSP_FEATURE_TZ_NS_OFFSET)
@@ -31881,6 +31898,9 @@ typedef struct                         /*!< (@ 0x27030000) R_OFS_DATAFLASH Struc
 /* ======================================================  SRAMSABAR1  ======================================================= */
  #define R_CPSCU_SRAMSABAR1_SRAMSABAR_Pos      (13UL)         /*!< SRAMSABAR (Bit 13)                                    */
  #define R_CPSCU_SRAMSABAR1_SRAMSABAR_Msk      (0x1fe000UL)   /*!< SRAMSABAR (Bitfield-Mask: 0xff)                       */
+/* =====================================================  STBRAMSABAR  ====================================================== */
+ #define R_CPSCU_STBRAMSABAR_STBRAMSABAR_Pos   (7UL)          /*!< STBRAMSABAR (Bit 7)                                   */
+ #define R_CPSCU_STBRAMSABAR_STBRAMSABAR_Msk   (0x7f80UL)     /*!< STBRAMSABAR (Bitfield-Mask: 0xff)                     */
 /* ========================================================  TEVTRCR  ======================================================== */
  #define R_CPSCU_TEVTRCR_TEVTE_Pos             (0UL)          /*!< TEVTE (Bit 0)                                         */
  #define R_CPSCU_TEVTRCR_TEVTE_Msk             (0x1UL)        /*!< TEVTE (Bitfield-Mask: 0x01)                           */

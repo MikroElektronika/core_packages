@@ -645,6 +645,27 @@ SECTIONS
 
 	}> FLASH
 
+	/* TrustZone CMSE veneers.  The final 32 KiB of the Secure FLASH
+	 * allocation is the NSC window. */
+	__tz_nsc_start = (FLASH_START < 0x10000000)
+	               ? (FLASH_START + FLASH_LENGTH - 0x8000)
+	               : ALIGN(32);
+	ASSERT((FLASH_START >= 0x10000000) || (. <= __tz_nsc_start), "Secure image overlaps the 32 KiB NSC window")
+
+	.gnu.sgstubs ((FLASH_START < 0x10000000)
+	             ? (FLASH_START + FLASH_LENGTH - 0x8000)
+	             : ALIGN(32)) :
+	{
+		. = ALIGN(32);
+		.gnu.sgstubsBase = .;
+		__ddsc_FLASH_NSC = .;
+		KEEP(*(.gnu.sgstubs*))
+		KEEP(*(.flash_nsc))
+		.gnu.sgstubsLimit = .;
+		. = ALIGN(32);
+	} > FLASH
+	ASSERT((FLASH_START >= 0x10000000) || (.gnu.sgstubsLimit <= (FLASH_START + FLASH_LENGTH)), "NSC veneers overflow Secure flash")
+
 	/***** OPTION_SETTING_OFS0 memory section allocations ******/
 	.option_setting_ofs0.startof :
 	{

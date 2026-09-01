@@ -3,7 +3,10 @@
 
 void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cycle_num )
 {
-    // TODO
+    while ( cycle_num-- )
+    {
+        __asm__ volatile( "nop" );
+    }
 }
 
 void __attribute__( ( noinline ) ) Delay_us( uint32_t time_us )
