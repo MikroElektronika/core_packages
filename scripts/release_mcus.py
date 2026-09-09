@@ -802,7 +802,7 @@ if __name__ == '__main__':
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
-    parser.add_argument("--live", help="Upload MCU packages only (skip clocks, schemas, docs and metadata)", type=bool, default=False)
+    parser.add_argument("--live", help="Upload MCU packages only", type=bool, default=False)
     args = parser.parse_args()
     print("Starting the upload process...")
     asyncio.run(main(args.token, args.repo, args.tag_name, args.live))
