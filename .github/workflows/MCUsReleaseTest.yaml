@@ -27,6 +27,10 @@ jobs:
         with:
           app-id: ${{ vars.MIKROE_ACTIONS }}
           private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
+          owner: MikroElektronika
+          repositories: |
+            core_packages
+            general_packages
 
       - name: Checkout code
         uses: actions/checkout@v6
@@ -76,13 +80,29 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r scripts/requirements/shared.txt
-          pip install -r scripts/requirements/databases.txt
           pip install -r scripts/requirements/support.txt
           sudo apt-get install p7zip-full
-
-      - name: Update database for packaging
+      - name: Download database_dev from general_packages for packaging
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          python -u scripts/reupload_databases.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_TEST }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ secrets.PROG_DEBUG_JLINK }} ${{ github.event.inputs.release_version }} "latest" "Test" "--mcus_only" "True"
+          set -euo pipefail
+          rm -rf .central-db
+          mkdir -p .central-db
+          gh release download --repo MikroElektronika/general_packages --pattern 'database_dev.7z' --dir .central-db
+          7z x -y -o.central-db/content .central-db/database_dev.7z >/dev/null
+          cp .central-db/content/necto_db.db necto_db_dev.db
+
+
+      - name: Publish internal Core queries to latest release
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          set -euo pipefail
+          rm -f core_queries.7z
+          7z a -t7z core_queries.7z ./resources/queries >/dev/null
+          tag="$(gh release view --repo MikroElektronika/core_packages --json tagName --jq .tagName)"
+          gh release upload "$tag" core_queries.7z --clobber --repo MikroElektronika/core_packages
 
       - name: Upload MCUs Asset
         env:
@@ -94,16 +114,12 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: python -u scripts/release_mcus.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ github.event.inputs.release_version }}
 
-  update_and_upload_new_database:
+
+  trigger_general_database_update:
     runs-on: ubuntu-latest
     needs: upload_mcu_assets_test
-
     permissions:
-      pull-requests: write
-      contents: write
-      packages: write
-      actions: read
-
+      contents: read
     steps:
       - name: Authorize Mikroe Actions App
         uses: actions/create-github-app-token@v2
@@ -111,60 +127,22 @@ jobs:
         with:
           app-id: ${{ vars.MIKROE_ACTIONS }}
           private-key: ${{ secrets.MIKROE_ACTIONS_KEY_AUTHORIZE }}
+          owner: MikroElektronika
+          repositories: |
+            general_packages
 
-      - name: Checkout code
-        uses: actions/checkout@v6
-        with:
-          ref: ${{ github.event.inputs.release_branch }}
-          token: ${{ steps.app-token.outputs.token }}
-
-      - name: Add GitHub Actions credentials
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.x'
-
-      - name: Cache Python packages
-        uses: actions/cache@v5
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r scripts/requirements/shared.txt
-          pip install -r scripts/requirements/databases.txt
-          pip install -r scripts/requirements/support.txt
-          sudo apt-get install p7zip-full
-
-      - name: Update and upload new database
-        run: |
-          python -u scripts/reupload_databases.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} ${{ secrets.PROG_DEBUG_MIKROPROG }} ${{ secrets.PROG_DEBUG_JLINK }} ${{ github.event.inputs.release_version }} "latest" "Test"
-
-      - name: Run Index Script
+      - name: Trigger Development database update
         env:
-          ES_HOST: ${{ secrets.ES_HOST }}
-          ES_USER: ${{ secrets.ES_USER }}
-          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
-          ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
-          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-            echo "Indexing to Test."
-            python -u scripts/index.py ${{ github.repository }} ${{ steps.app-token.outputs.token }} ${{ secrets.ES_INDEX_TEST }} ${{ secrets.PROG_DEBUG_CODEGRIP_LIVE }} "False" ${{ github.event.inputs.release_version }} "False" "False"
-
-      - name: Notify Mattermost - Test ready
-        env:
-          MATTERMOST_WEBHOOK_URL_SDK: ${{ secrets.MATTERMOST_WEBHOOK_URL_SDK }}
-        run: |
-          CURRENT_DATE=$(date +'%Y-%m-%d')  # Get current date in YYYY-MM-DD format
-          MESSAGE="**MCU package update ready to test for $CURRENT_DATE.**\n> Test using latest NECTO dev\n  + [LIN](https://software-update.mikroe.com/NECTOStudio7/development/necto/linux/NECTOInstaller.zip)\n  + [MAC](https://software-update.mikroe.com/NECTOStudio7/development/necto/macos/NECTOInstaller.dmg)\n  + [WIN](https://software-update.mikroe.com/NECTOStudio7/development/necto/win/NECTOInstaller.zip)"
-          curl -X POST -H 'Content-Type: application/json' \
-          --data "{\"text\": \"$MESSAGE\"}" \
-          $MATTERMOST_WEBHOOK_URL_SDK
+          gh api --method POST repos/MikroElektronika/general_packages/dispatches \
+            -f event_type=database-update \
+            -f 'client_payload[request_id]=core-${{ github.run_id }}' \
+            -f 'client_payload[source_repo]=${{ github.repository }}' \
+            -f 'client_payload[source_ref]=${{ github.event.inputs.release_branch }}' \
+            -f 'client_payload[channel]=development' \
+            -f 'client_payload[operation]=refresh' \
+            -f 'client_payload[core_release]=latest' \
+            -f 'client_payload[core_version]=${{ github.event.inputs.release_version }}' \
+            -f 'client_payload[sdk_version]=latest' \
+            -F 'client_payload[mcus_only]=true'

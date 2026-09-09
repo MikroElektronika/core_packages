@@ -477,124 +477,6 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
-def insertIntoTable(db, tableName, values, columns):
-    conn = sqlite3.connect(db)
-    cur = conn.cursor()
-    numOfItems = ''
-    for itemCount in range(1, len(values) + 1):
-        numOfItems += '?,'
-    cur.execute(f'INSERT OR IGNORE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
-    conn.commit()
-    conn.close()
-
-def updateTable(db, query, newFieldValue):
-    try:
-        # Connect to existing SQLite database
-        conn = sqlite3.connect(db)
-        cur = conn.cursor()
-        # Update fields in the table with data
-        cur.execute(query, (newFieldValue,))
-        # Commit changes
-        conn.commit()
-    except sqlite3.Error as e:
-        print("SQLite error:", e)
-    finally:
-        # Close connection
-        conn.close()
-
-def deleteFromTable(db, sql_query):
-    try:
-        sqliteConnection = sqlite3.connect(db)
-        cursor = sqliteConnection.cursor()
-
-        # Deleting single record now
-        cursor.execute(sql_query)
-        sqliteConnection.commit()
-        cursor.close()
-    except sqlite3.Error as error:
-        print("Failed to delete record from sqlite table", error)
-    finally:
-        if sqliteConnection:
-            sqliteConnection.close()
-
-def update_database(package_name, mcus, db_path):
-    installer_package_column = 15
-    for each_pack in mcus:
-        for each_mcu in mcus[each_pack]['mcu_names']:
-            ## Replace for MCUs which have different json file names and UID in database
-            each_mcu = re.sub('_', '-', each_mcu)
-            is_present, read_data_compiler = read_data_from_db(db_path, f'SELECT compiler_uid FROM CompilerToDevice WHERE device_uid IS "{each_mcu.replace('dsPIC', 'DSPIC')}"')
-            is_present, read_data = read_data_from_db(db_path, f'SELECT * FROM Devices WHERE uid IS "{each_mcu.upper()}"')
-            counter = 0
-            data_as_list_joined = []
-            while counter != len(read_data):
-                existing_packages = {}
-                if read_data[counter][installer_package_column]:
-                    if 'compiler_flags' not in read_data[counter][installer_package_column]:
-                        existing_packages = json.loads(read_data[counter][installer_package_column])
-                    else:
-                        if read_data[counter][installer_package_column - 1]:
-                            existing_packages = json.loads(read_data[counter][installer_package_column - 1])
-                data_as_list = list(read_data[counter])
-                for each_compiler in list(read_data_compiler):
-                    if 'mchp_xc' in each_compiler[0] and '_xc' in package_name:
-                        existing_packages[each_compiler[0]] = package_name
-                    else:
-                        if not re.search('xc(8|16|32)', package_name):
-                            for each_split_check in package_name.split('_')[1:]:
-                                if re.search(each_split_check, each_compiler[0]):
-                                    existing_packages[each_compiler[0]] = package_name
-                data_as_list[installer_package_column] = existing_packages
-                data_as_list_joined.append(data_as_list)
-                counter += 1
-            for each_list in data_as_list_joined:
-                if is_present:
-                    updateTable(
-                        db_path,
-                        f'''UPDATE Devices SET installer_package = ? WHERE uid = "{each_mcu.upper()}"''',
-                        json.dumps(each_list[installer_package_column])
-                    )
-                else:
-                    raise ValueError("%s does not exist in database!" % each_mcu)
-
-    return
-
-def fetch_existing_asset_names(release):
-    return [asset['name'] for asset in release['assets']]
-
-def fetch_current_indexed_packages(es : Elasticsearch, index_name):
-    # Search query to use
-    query_search = {
-        "size": 5000,
-        "query": {
-            "match_all": {}
-        }
-    }
-
-    # Search the base with provided query
-    num_of_retries = 1
-    while num_of_retries <= 10:
-        try:
-            response = es.search(index=index_name, body=query_search)
-            if not response['timed_out']:
-                break
-        except:
-            print("Executing search query - retry number %i" % num_of_retries)
-        num_of_retries += 1
-
-    all_packages = []
-    for eachHit in response['hits']['hits']:
-        if not 'name' in eachHit['_source']:
-            continue
-        if '_type' in eachHit:
-            if '_doc' == eachHit['_type']:
-                all_packages.append(eachHit['_source'])
-
-    # Sort all_packages alphabetically by the 'name' field
-    all_packages.sort(key=lambda x: x['name'])
-
-    return all_packages
-
 async def package_asset(source_dir, output_dir, arch, entry_name, packages, current_metadata, db_paths, latest_release=None):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
@@ -667,10 +549,6 @@ async def package_asset(source_dir, output_dir, arch, entry_name, packages, curr
         vendor = gh_uploader.resolve_mcu_vendor(data['cmake_file_path'])
 
         packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location, 'vendor': vendor})
-
-        # Mark package for appropriate device and toolchain
-        for each_db in db_paths:
-            update_database(name_without_extension, mcuNames, each_db)
 
         mcu_check = None
         mcu_full_list = []
@@ -774,48 +652,6 @@ def get_version_based_on_hash(package_name, version, hash_value, current_metadat
     # If the package is not found or the hash doesn't match, return the provided version
     return version
 
-def fetch_elasticsearch_data(index_name):
-    # Elasticsearch instance used for indexing
-    num_of_retries = 1
-    print("Trying to connect to ES.")
-    while True:
-        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
-        if es.ping():
-            break
-        # Wait 1 second and try again if connection fails
-        if 10 == num_of_retries:
-            # Exit if it fails 10 times, something is wrong with the server
-            raise ValueError("Connection to ES failed!")
-        print(f"Connection retry: {num_of_retries}")
-        num_of_retries += 1
-
-        time.sleep(1)
-
-    # Search query to use
-    query_search = {
-        "size": 5000,
-        "query": {
-            "match_all": {}
-        }
-    }
-
-    # Search the base with provided query
-    num_of_retries = 1
-    while num_of_retries <= 10:
-        try:
-            response = es.search(index=index_name, body=query_search)
-            if not response['timed_out']:
-                break
-        except:
-            print("Executing search query - retry number %i" % num_of_retries)
-        num_of_retries += 1
-
-    for eachHit in response['hits']['hits']:
-        if eachHit['_id'] == 'database':
-            if eachHit['_source']['name'] == 'database':
-                return eachHit['_source']['version']
-
-    return None
 
 def update_metadata(current_metadata, new_files, version):
     """ Update the metadata with the new files """
@@ -824,13 +660,7 @@ def update_metadata(current_metadata, new_files, version):
 
     print(f"Updating metadata objects version to {version}.")
     for new_file in new_files:
-        if 'database' == new_file['name']:
-            db_version = fetch_elasticsearch_data(os.environ['ES_INDEX_LIVE'])
-            if not db_version:
-                db_version = version
-            new_file['version'] = db_version
-        else:
-            new_file['version'] = version
+        new_file['version'] = version
 
         updated_metadata.append(new_file)
 
@@ -847,8 +677,6 @@ def append_package(packages, package, display_name, version, install=None, categ
         hash_value = hash
     else:
         hash_value = hash_directory_contents(package[:-3])
-    if os.path.basename(package.lower()) == 'database_dev.7z':
-        package_type = 'database'
     packages.append({
         "name": f"{os.path.basename(package.lower())[:-3]}",
         "display_name": display_name,
@@ -880,8 +708,6 @@ def fetch_latest_release_version(repo, token):
 async def main(token, repo, tag_name, live=False):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR", "RL78", "RX"]
-
-    db_paths = ['necto_db_dev.db']
 
     current_metadata = fetch_current_metadata(repo, token)
 
@@ -931,7 +757,7 @@ async def main(token, repo, tag_name, live=False):
                         print(f"\033[34mProcessing {source_directory} to {output_directory}\033[0m")
                         await package_asset(
                             source_directory, output_directory, arch, entry.name,
-                            packages, current_metadata, db_paths, latest_release
+                            packages, current_metadata, latest_release
                         )
         with open('mcu_packages.json', 'w') as file:
             json.dump(packages, file)
@@ -940,9 +766,6 @@ async def main(token, repo, tag_name, live=False):
             packages = json.load(file)
 
     payload = uploader.build_release_payload_from_packages(packages, 'output')
-
-    for each_db in db_paths:
-        gh_uploader.append_to_payload(payload, each_db, os.path.join(parent_dir, each_db))
 
     # Generate clocks.json
     if not live:
@@ -959,26 +782,6 @@ async def main(token, repo, tag_name, live=False):
         schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
         schemaGenerator.generate()
         gh_uploader.append_to_payload(payload, 'schemas.json', Path(output_file).resolve())
-
-    # Generate database packages
-    for each_db in db_paths:
-        shutil.copy(f'./{each_db}', './utils/databases/necto_db.db')
-        package_suffix = ''
-        if 'dev' in each_db:
-            package_suffix = '_dev'
-        archive_path = compress_directory_7z(os.path.join('./utils', 'databases'), f'database{package_suffix}.7z')
-        current_db_hash = hash_directory_contents(os.path.join('./utils', 'databases'))
-        append_package(
-            packages, archive_path,
-            "NECTO Database",
-            get_version_based_on_hash(
-                f'database{package_suffix}', (latest_release['tag_name']).replace("v", ""),
-                current_db_hash, current_metadata
-            ),
-            f'databases',
-            hash=current_db_hash
-        )
-        gh_uploader.append_to_payload(payload, f'database{package_suffix}.7z', Path(str(archive_path)).resolve())
 
     # Generate document files asset
     if not live:
@@ -999,7 +802,7 @@ if __name__ == '__main__':
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
-    parser.add_argument("--live", help="Upload only database?", type=bool, default=False)
+    parser.add_argument("--live", help="Upload MCU packages only", type=bool, default=False)
     args = parser.parse_args()
     print("Starting the upload process...")
     asyncio.run(main(args.token, args.repo, args.tag_name, args.live))
