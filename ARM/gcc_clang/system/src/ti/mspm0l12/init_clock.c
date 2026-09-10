@@ -42,7 +42,66 @@
 #include "core_header.h"
 #include "mcu.h"
 
-void SystemInit(void)
+static inline void clockUpdateRegister(volatile uint32_t *reg,
+                                       uint32_t value,
+                                       uint32_t mask)
 {
+    uint32_t tmp = *reg;
+    tmp = (tmp & ~mask) | (value & mask);
+    *reg = tmp;
+}
 
+void clockConfig(void)
+{
+    uint32_t mclkSourceMask = SYSCTL_MCLKCFG_MDIV_MASK;
+
+#if defined(SYSCTL_MCLKCFG_USEHSCLK_MASK)
+    mclkSourceMask |= SYSCTL_MCLKCFG_USEHSCLK_MASK;
+#endif
+#if defined(SYSCTL_MCLKCFG_USELFCLK_MASK)
+    mclkSourceMask |= SYSCTL_MCLKCFG_USELFCLK_MASK;
+#endif
+
+    /*
+     * MSPM0C1/L-series devices use the calibrated 32 MHz SYSOSC as MCLK.
+     * Clock configuration may survive lower-level resets, so explicitly
+     * restore SYSOSC and remove any MCLK division/source selection.
+     */
+    SYSCTL->SOCLOCK.SYSOSCCFG &= ~SYSCTL_SYSOSCCFG_DISABLE_MASK;
+    clockUpdateRegister(&SYSCTL->SOCLOCK.SYSOSCCFG,
+                        SYSCTL_SYSOSCCFG_FREQ_SYSOSCBASE,
+                        SYSCTL_SYSOSCCFG_FREQ_MASK);
+
+    clockUpdateRegister(&SYSCTL->SOCLOCK.MCLKCFG,
+                        0U,
+                        mclkSourceMask);
+
+#if defined(SYSCTL_CLKSTATUS_HSCLKMUX_MASK) && defined(SYSCTL_CLKSTATUS_HSCLKMUX_SYSOSC)
+    while ((SYSCTL->SOCLOCK.CLKSTATUS & SYSCTL_CLKSTATUS_HSCLKMUX_MASK) !=
+           SYSCTL_CLKSTATUS_HSCLKMUX_SYSOSC) {
+        ;
+    }
+#endif
+
+#if defined(SYSCTL_CLKSTATUS_CURMCLKSEL_MASK) && defined(SYSCTL_CLKSTATUS_CURMCLKSEL_SYSOSC)
+    while ((SYSCTL->SOCLOCK.CLKSTATUS & SYSCTL_CLKSTATUS_CURMCLKSEL_MASK) !=
+           SYSCTL_CLKSTATUS_CURMCLKSEL_SYSOSC) {
+        ;
+    }
+#endif
+
+#if defined(SYSCTL_MCLKCFG_UDIV_MASK) && defined(SYSCTL_MCLKCFG_UDIV_NODIVIDE)
+    clockUpdateRegister(&SYSCTL->SOCLOCK.MCLKCFG,
+                        SYSCTL_MCLKCFG_UDIV_NODIVIDE,
+                        SYSCTL_MCLKCFG_UDIV_MASK);
+#endif
+
+#if defined(SYSCTL_MCLKCFG_FLASHWAIT_MASK) && defined(SYSCTL_MCLKCFG_FLASHWAIT_WAIT0)
+    clockUpdateRegister(&SYSCTL->SOCLOCK.MCLKCFG,
+                        SYSCTL_MCLKCFG_FLASHWAIT_WAIT0,
+                        SYSCTL_MCLKCFG_FLASHWAIT_MASK);
+#endif
+
+    __DSB();
+    __ISB();
 }

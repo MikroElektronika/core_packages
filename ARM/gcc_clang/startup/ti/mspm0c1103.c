@@ -35,7 +35,7 @@
 #include <stdint.h>
 
 /* Entry point for the application. */
-extern void SystemInit(void);
+extern void clockConfig(void);
 extern int  main( void );
 
 extern uint32_t __data_load__;
@@ -171,12 +171,10 @@ void Reset_Handler(void)
         *bs = 0;
         bs++;
     }
-
     /*
-     * System initialization routine can be called here, but it's not
-     * required for MSPM0.
+     * Apply the core clock configuration before application startup.
      */
-    SystemInit();
+    clockConfig();
 
 	//
 	// Initialize virtual tables, along executing init, init_array, constructors
