@@ -36,6 +36,8 @@ _Min_Heap_Size  = 0;      /* required amount of heap  */
 _Min_Stack_Size = 0x80; /* required amount of stack */
 
 /* Specify the memory areas */
+ENTRY(Reset_Handler)
+
 MEMORY
 {
     FLASH           (RX)  : ORIGIN = 0x00000000, LENGTH = 0x0000FFF8
@@ -97,7 +99,8 @@ SECTIONS
     .ramfunc : {
         __ramfunct_load__ = LOADADDR (.ramfunc);
         __ramfunct_start__ = .;
-       *(.ramfunc)
+       *(.ramfunc*)
+       *(.RamFunc*)
        . = ALIGN(0x8);
        __ramfunct_end__ = .;
     } > REGION_TEXT_RAM AT> REGION_TEXT
