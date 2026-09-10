@@ -116,7 +116,20 @@ if __name__ == "__main__":
     if update_present:
         todays_release += todays_update
 
-    with open(os.path.join(os.getcwd(), 'message.txt'), 'w') as file:
-        file.write(header + todays_release + '\n---')
+    # Only create a Mattermost message when there are CODEGRIP packages for today's release
+    has_packages = bool(todays_release.strip())
 
-    print(header + todays_release + '\n---')
+    github_output = os.environ.get('GITHUB_OUTPUT')
+    if github_output:
+        with open(github_output, 'a') as file:
+            file.write(f'has_packages={str(has_packages).lower()}\n')
+
+    if has_packages:
+        message = header + todays_release + '\n---'
+
+        with open(os.path.join(os.getcwd(), 'message.txt'), 'w') as file:
+            file.write(message)
+
+        print(message)
+    else:
+        print("No CODEGRIP packages found for today's release. Mattermost notification will be skipped.")

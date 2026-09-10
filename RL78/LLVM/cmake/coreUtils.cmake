@@ -95,9 +95,9 @@ endfunction()
 ## Function to set appropriate linker, startup and source files
 #############################################################################
 function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScript startupFile thirdpartyInstall)
-    set(local_list_include ${fileListInclude})
-    set(local_list_install ${fileListInstall})
-    set(local_dir_install ${fileDirInclude})
+    set(local_list_include "")
+    set(local_list_install "")
+    set(local_dir_install "")
 
     list(APPEND local_list_install "common/delays.h")
 
@@ -120,10 +120,10 @@ function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScr
         include(${cmakeFile})
     endforeach()
 
-    set(${list} ${local_dir_install} PARENT_SCOPE)
-
-    set(${list} ${local_list_include} PARENT_SCOPE)
-    set(${list} ${local_list_install} PARENT_SCOPE)
+    # Export the resolved lists to the caller.
+    set(${fileDirInclude} ${local_dir_install} PARENT_SCOPE)
+    set(${fileListInclude} ${local_list_include} PARENT_SCOPE)
+    set(${fileListInstall} ${local_list_install} PARENT_SCOPE)
 
     if(NOT thirdpartyInstall)
         set(${thirdpartyInstall} "" PARENT_SCOPE)
@@ -171,7 +171,7 @@ endmacro()
 ## Function to set appropriate values for delay calculations
 #############################################################################
 function(set_delay_parameters delay_parameters)
-    set(local_list_macros ${delay_parameters})
+    set(local_list_macros ${${delay_parameters}})
 
     get_mcu_vendor(vendor)
 
@@ -180,5 +180,5 @@ function(set_delay_parameters delay_parameters)
         include(${cmakeFile})
     endforeach()
 
-    set(${list} ${local_list_macros} PARENT_SCOPE)
+    set(${delay_parameters} ${local_list_macros} PARENT_SCOPE)
 endfunction()

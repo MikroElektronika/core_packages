@@ -1,5 +1,5 @@
 if(${MCU_NAME} MATCHES "^R7F101G6G$|^R7F101G7G$|^R7F101G8G$|^R7F101GAG$|^R7F101GBG$|^R7F101G6E$|^R7F101G7E$|^R7F101G8E$|^R7F101GAE$|^R7F101GBE$|^R7F101GEG$|^R7F101GFG$|^R7F101GGG$|^R7F101GJG$|^R7F101GLG$|^R7F101GEE$|^R7F101GFE$|^R7F101GGE$|^R7F101GJE$|^R7F101GLE$")
     set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
     set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
-    list(APPEND local_list_include system/src/${vendor}/g24/init_clock.c)
+    list(APPEND local_list_include system/src/${vendor}/g24/init_clock.c system/src/${vendor}/g24/vectors.c)
 endif()

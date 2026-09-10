@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^R5F526T9BDFL$|^R5F526T9BDFM$|^R5F526T9BDFN$|^R5F526T9BDFP$|^R5F526T9BDND$|^R5F526T9BDNE$|^R5F526T9BGFL$|^R5F526T9BGFM$|^R5F526T9BGFN$|^R5F526T9BGFP$|^R5F526T9BGND$|^R5F526T9BGNE$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/r5f526t9b/init_clock.c)
+endif()
