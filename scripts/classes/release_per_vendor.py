@@ -9,14 +9,8 @@ from pathlib import PurePath
 ## Special files, i.e. non vendor specific
 SPECIAL_RELEASE_FILENAMES = {
     "clocks.json",
-    "database.7z",
-    "database_dev.7z",
-    "database_experimental.7z",
     "docs.7z",
-    "erp_db.db",
     "metadata.json",
-    "necto_db.db",
-    "necto_db_dev.db",
     "schemas.json",
 }
 

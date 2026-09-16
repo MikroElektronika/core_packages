@@ -5,7 +5,6 @@ from datetime import datetime, timezone
 
 import support as support
 import read_microchip_index as MCHP
-import read_codegrip_index as CODEGRIP
 
 from packaging.version import Version
 
@@ -108,7 +107,6 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
     # All package types to check for
     typeCheck = [
         'mcu',
-        'database',
         'mcu_clocks',
         'mcu_schemas'
     ]
@@ -125,13 +123,10 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
         num_of_retries += 1
 
     checkDict = {}
-    db_version = None
     for eachHit in response['hits']['hits']:
         if not 'name' in eachHit['_source']:
             continue
         name = eachHit['_source']['name']
-        if name == 'database':
-            db_version = eachHit['_source']['version']
         if '_type' in eachHit:
             type = eachHit['_type']
             id = eachHit['_id']
@@ -149,7 +144,6 @@ def remove_duplicate_indexed_files(es : Elasticsearch, index_name):
                 print("Removed %s/%s" % (eachId[1], eachId[0]))
                 response = es.delete(index=index_name, id=eachId[0], doc_type=None)
 
-    return db_version
 
 def resolve_publish_date(es: Elasticsearch, index_name, package_name):
     # Search query to use
@@ -337,7 +331,7 @@ def check_version_and_hash(es: Elasticsearch, index_name, metadata_content, toke
     return uploaded_asset_hash, index_hash, (uploaded_asset_hash != index_hash), new_version, existed, indexed_version
 
 # Function to index release details into Elasticsearch
-def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, repo, force, update_database=False, db_version=None, keep_previous_date=False):
+def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_details, token, repo, force, keep_previous_date=False):
     # Get all currently indexed items
     indexed_items = fetch_current_indexed_packages(es, index_name)
     # Iterate over each asset in the release and previous release
@@ -368,8 +362,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
         release_details = fetch_release_details(repo, token, release_tag)
         print(f'\033[33mProcessing assets for: {release_details[0]['name']}\033[0m')
         for asset in release_details[0].get('assets', []):
-            # Do not index metadata or docs
-            if asset['name'] == 'metadata.json' or asset['name'] == 'docs.7z':
+            # Do not index metadata, docs or queries
+            if asset['name'] in {'metadata.json', 'docs.7z', 'core_queries.7z'}:
                 continue
 
             update_package = True
@@ -379,13 +373,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
             always_index = [
                 'clocks',
                 'schemas',
-                'database',
-                'database_dev'
             ]
 
-            if update_database:
-                if name_without_extension not in always_index:
-                    continue
 
             doc = None
             if name_without_extension == "clocks":
@@ -443,14 +432,6 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                         update_package = True
 
                     package_name = name_without_extension
-                    if 'database' in name_without_extension:
-                        package_name = 'database'
-                        if ('dev' in name_without_extension) and ('test' in index_name):
-                            print("Database test version.")
-                        elif ('dev' not in name_without_extension) and ('live' in index_name):
-                            print("Database live version.")
-                        else:
-                            continue
 
                     current_hash, index_hash, check_version, new_version, existed, previous_version = check_version_and_hash(es, index_name, metadata_content[0], token, name_without_extension)
 
@@ -501,12 +482,6 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                             }
                         )
 
-            # Always update the database version based on the version in elasticsearch
-            if 'package_name' in locals():
-                if ('database' == package_name):
-                    if doc:
-                        doc['version'] = increase_version(previous_version, part="patch")
-
             # Index the document
             if doc:
                 # If requested to keep previous date, only update the hash value
@@ -520,20 +495,14 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_name, release_detai
                 # Kibana v8 requires _type to be in body in order to have doc_type defined
                 doc['_type'] = '_doc'
                 if re.search(r'^.+\.(json|7z)$', asset['name']) and (update_package or force or (name_without_extension in always_index)) or keep_previous_date:
-                    if update_database:
-                        if name_without_extension in always_index:
-                            resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
-                            print(f"{resp["result"]} {resp['_id']}")
-                    else:
-                        resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
-                        print(f"{resp["result"]} {resp['_id']}")
-                        # Database is indexed as separate ID for both indexes, so skip it in this step
-                        if (name_without_extension in always_index) and ('database' not in name_without_extension):
-                            if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
-                                if index_name == os.environ['ES_INDEX_TEST']:
-                                    resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=name_without_extension, body=doc)
-                                    print(f"Indexed to LIVE as well.")
-                                    print(f"{resp["result"]} {resp['_id']}")
+                    resp = es.index(index=index_name, doc_type=None, id=name_without_extension, body=doc)
+                    print(f"{resp["result"]} {resp['_id']}")
+                    if name_without_extension in always_index:
+                        if ('ES_INDEX_TEST' in os.environ) and ('ES_INDEX_LIVE' in os.environ):
+                            if index_name == os.environ['ES_INDEX_TEST']:
+                                resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=name_without_extension, body=doc)
+                                print("Indexed to LIVE as well.")
+                                print(f"{resp["result"]} {resp['_id']}")
                 else:
                     print(f'\033[34mNothing to update for {name_without_extension}\033[0m')
 
@@ -625,50 +594,6 @@ def index_microchip_packs(es: Elasticsearch, index_name: str):
         resp = es.index(index=index_name, doc_type=None, id=eachItem['name'], body=eachItem)
         print(f"{resp["result"]} {resp['_id']}")
 
-def index_codegrip_packs(es: Elasticsearch, index_name, doc_codegrip):
-    package_items = CODEGRIP.convert_item_to_json(doc_codegrip, True)
-
-    # Get the current time in UTC
-    current_time = datetime.now(timezone.utc).replace(microsecond=0)
-    # If you specifically want the 'Z' at the end instead of the offset
-    published_at = current_time.isoformat().replace('+00:00', 'Z')
-    # Get the current date and time in UTC
-    current_date = datetime.now().date()
-
-    for package in package_items:
-        package_release_date = datetime.strptime(package_items[package]['release_date'], "%Y-%m-%dT%H:%M:%SZ").date()
-        package_release_date_time = datetime.strptime(package_items[package]['release_date'], "%Y-%m-%dT%H:%M:%SZ")
-        # Release only for packages with release date lower or equal than current date
-        if package_release_date <= current_date:
-            previous_version, new_version, mcus_to_index = CODEGRIP.get_version(es, index_name, package_items[package]['package_name'], package_items[package]['mcus'], package_items[package]['package_version'])
-            if previous_version != new_version and len(mcus_to_index):
-                doc = {
-                    "name": package_items[package]['package_name'],
-                    "display_name": package_items[package]['display_name'],
-                    "author": "MIKROE",
-                    "hidden": False,
-                    "type": "programmer_dfp",
-                    "version": new_version,
-                    "package_version": package_items[package]['package_version'],
-                    "published_at": package_release_date_time.isoformat().replace('+00:00', 'Z'),
-                    "category": "CODEGRIP Device Pack",
-                    "download_link": package_items[package]['download_link'],
-                    "package_changed": True,
-                    "install_location": package_items[package]['install_location'],
-                    "dependencies": json.loads(package_items[package]['dependencies']),
-                    "mcus": mcus_to_index
-                }
-
-                if previous_version:
-                    doc["published_at"] = published_at
-
-                # Kibana v8 requires _type to be in body in order to have doc_type defined
-                doc['_type'] = '_doc'
-                resp = es.index(index=index_name, doc_type=None, id=package_items[package]['package_name'], body=doc)
-
-                print(f"{resp["result"]} {resp['_id']}")
-                print(f"\033[95mVersion for asset {package_items[package]['package_name']} has been updated from {previous_version} to {new_version}")
-
 if __name__ == '__main__':
     # First, check for arguments passed
     def str2bool(v):
@@ -686,10 +611,8 @@ if __name__ == '__main__':
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("select_index", help="Provided index name")
-    parser.add_argument('doc_codegrip', type=str, help='Spreadsheet table download link.')
     parser.add_argument("force_index", help="If true will update packages even if hash is the same", type=str2bool)
-    parser.add_argument("release_version", help="Selected release version to index to current database", type=str)
-    parser.add_argument("update_database", help="If true will update database.7z", type=str2bool)
+    parser.add_argument("release_version", help="Selected Core release version to index", type=str)
     parser.add_argument("promote_release_to_latest", help="Sets current release as latest", type=str2bool, default=False)
     parser.add_argument("--es_host", help="Elasticsearch host value", default="")
     parser.add_argument("--es_user", help="Elasticsearch username value", default="")
@@ -724,21 +647,16 @@ if __name__ == '__main__':
         time.sleep(1)
 
     # Remove any previous multiple indexes, if any
-    db_version = remove_duplicate_indexed_files(
-        es, args.select_index
-    )
+    remove_duplicate_indexed_files(es, args.select_index)
 
     # Index microchip device family packs
     index_microchip_packs(es, args.select_index)
-    index_codegrip_packs(es, args.select_index, args.doc_codegrip)
 
     # Now index the new release
     index_release_to_elasticsearch(
         es, args.select_index,
         fetch_release_details(args.repo, args.token, args.release_version),
         args.token, args.repo, args.force_index,
-        args.update_database,
-        db_version,
         args.keep_previous_dates
     )
 
