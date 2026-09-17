@@ -1,7 +1,7 @@
 {
     "core": "M0+",
     "delay_src_path": "delays/m0+/__lib_delays.c",
-    "mcu": "ATSAMC21J18A",
+    "mcu": "ATSAMC20G18A",
     "clock": 4,
     "config_registers": [
         {

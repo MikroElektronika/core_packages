@@ -74,7 +74,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "01000000",
                     "key": "PLLON",
                     "label": "PLL enable",
                     "mask": "01000000",
@@ -113,7 +113,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000002",
                     "key": "SW",
                     "label": "System clock Switch",
                     "mask": "00000003",
@@ -279,7 +279,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00100000",
                     "key": "PLLMUL",
                     "label": "PLL multiplication factor",
                     "mask": "003C0000",

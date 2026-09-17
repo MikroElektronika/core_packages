@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000000",
                     "key": "HSION",
                     "label": "Internal high-speed clock enable",
                     "mask": "00000001",
@@ -23,7 +23,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00010000",
                     "key": "HSEON",
                     "label": "External high-speed clock enable",
                     "mask": "00010000",
@@ -74,7 +74,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "01000000",
                     "key": "PLLON",
                     "label": "PLL enable",
                     "mask": "01000000",
@@ -91,7 +91,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "04000000",
                     "key": "PLL2ON",
                     "label": "PLL2 enable",
                     "mask": "04000000",
@@ -147,7 +147,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000002",
                     "key": "SW",
                     "label": "System clock Switch",
                     "mask": "00000003",
@@ -213,7 +213,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000400",
                     "key": "PPRE1",
                     "label": "APB low-speed prescaler (APB1)",
                     "mask": "00000700",
@@ -296,7 +296,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00010000",
                     "key": "PLLSRC",
                     "label": "PLL entry clock source",
                     "mask": "00010000",
@@ -313,7 +313,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00080000",
+                    "init": "001c0000",
                     "key": "PLLMUL",
                     "label": "PLL multiplication factor",
                     "mask": "003C0000",
@@ -421,7 +421,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000004",
                     "key": "PREDIV1",
                     "label": "PREDIV1 division factor",
                     "mask": "0000000F",
@@ -494,7 +494,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000040",
                     "key": "PREDIV2",
                     "label": "PPREDIV2 division factor",
                     "mask": "000000F0",
@@ -567,7 +567,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000600",
                     "key": "PLL2MUL",
                     "label": "PLL2 Multiplication Factor",
                     "mask": "00000F00",
@@ -665,7 +665,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00010000",
                     "key": "PREDIV1SRC",
                     "label": "PREDIV1 entry clock source",
                     "mask": "00010000",
