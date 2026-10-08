@@ -150,6 +150,7 @@ def extract_mcu_names(file_name, source_dir, regex):
                         mcus[file_name]['mcu_names'].add(mcu_name)
                         if 'gcc' in source_dir or 'XC32' in source_dir or 'LLVM' in source_dir:
                             isPresent, readData = read_data_from_db('necto_db.db', f'SELECT sdk_config, core_info FROM Devices WHERE name IS "{mcu_name}"')
+                            # If MCU entry is found in the database
                             if isPresent:
                                 if readData[0][1] == None:
                                     configJson = json.loads(readData[0][0])
@@ -158,6 +159,15 @@ def extract_mcu_names(file_name, source_dir, regex):
                                     configJson = json.loads(readData[0][0])
                                     core_info = json.loads(readData[0][1])
                                     for core in core_info:
+                                        mcus[file_name]['cores'].add(core['core_name_define'])
+                            # If this is the new MCU to be released - read data from json queries
+                            else:
+                                with open(os.path.join('resources/queries/mcus', mcu_name, 'Devices.json'), 'r') as source_json:
+                                    readData = json.load(source_json)
+                                if 'CORE_NAME' in readData['sdk_config']:
+                                    mcus[file_name]['cores'].add(readData['sdk_config']['CORE_NAME'])
+                                else:
+                                    for core in readData['core_info']:
                                         mcus[file_name]['cores'].add(core['core_name_define'])
 
     return mcus
