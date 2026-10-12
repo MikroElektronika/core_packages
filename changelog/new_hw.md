@@ -1,0 +1,43 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `DATE`
+
+## Changes
+
+- [`DATE`](#date)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ R7F100GL MCU Support package for LLVM
+  + R7F100GLF
+  + R7F100GLG
+  + R7F100GLH
+  + R7F100GLJ
+  + R7F100GLK
+  + R7F100GLL
+  + R7F100GLN
++ R5K574M6VW MCU Support package for Renesas RX GCC
+  + R5K574M6V4FB
+  + R5K574M6V4FC
+  + R5K574M6V4FP
+  + R5K574M6W4FB
+  + R5K574M6W4FC
+  + R5K574M6W4FP
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
