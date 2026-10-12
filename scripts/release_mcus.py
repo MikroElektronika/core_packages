@@ -488,7 +488,7 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
-async def package_asset(source_dir, output_dir, arch, entry_name, packages, current_metadata, db_paths, latest_release=None):
+async def package_asset(source_dir, output_dir, arch, entry_name, packages, current_metadata, latest_release):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
