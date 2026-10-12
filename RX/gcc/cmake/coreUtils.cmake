@@ -83,7 +83,7 @@ endmacro()
 #############################################################################
 function(get_mcu_vendor vendor)
 
-    if(${MCU_NAME} MATCHES "^R5F.+$")
+    if(${MCU_NAME} MATCHES "^R5[FK].+$")
         set(${vendor} renesas PARENT_SCOPE)
     else()
         message(FATAL_ERROR "${MCU_NAME} not supported in GCC for Renesas RX by NECTO.")

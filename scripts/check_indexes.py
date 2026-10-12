@@ -4,7 +4,7 @@ import classes.class_gh as gh
 import classes.class_es as es
 
 # Legacy packages for NECTO version 7.0.4 and lower
-legacy_packages = ["clocks", "schemas", "database", "images", "images_sdk"]
+legacy_packages = ["clocks", "schemas", "images", "images_sdk"]
 
 # Thirdparty authors for packages that are used in NECTO
 thirdparty_authors = ["Microchip"]
@@ -116,8 +116,6 @@ if __name__ == "__main__":
                         package_name = f'{indexed_item['source']['name']}.7z'
                     else:
                         package_name = f'{indexed_item['source']['name']}.json'
-                    if indexed_item['source']['name'] == 'database' and 'test' in args.es_index:
-                        package_name = 'database_dev.7z'
                     # Set gh_package_name only for github assets
                     if 'gh_package_name' not in indexed_item['source'] and 'Device Pack' not in indexed_item['source']['category'] and indexed_item['source']['author'] not in thirdparty_authors:
                         indexed_item['source'].update({"gh_package_name": package_name})
