@@ -161,7 +161,7 @@ def extract_mcu_names(file_name, source_dir, regex):
                                     for core in core_info:
                                         mcus[file_name]['cores'].add(core['core_name_define'])
                             # If this is the new MCU to be released - read data from json queries
-                            else:
+                            elif os.path.exists(os.path.join('resources/queries/mcus', mcu_name, 'Devices.json')):
                                 with open(os.path.join('resources/queries/mcus', mcu_name, 'Devices.json'), 'r') as source_json:
                                     readData = json.load(source_json)
                                 if 'CORE_NAME' in readData['sdk_config']:
