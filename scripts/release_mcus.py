@@ -192,9 +192,9 @@ def extract_mcu_names(file_name, source_dir, regex):
                                 with open(os.path.join('resources/queries/mcus', mcu_name, 'Devices.json'), 'r') as source_json:
                                     readData = json.load(source_json)
                                 if 'CORE_NAME' in readData['sdk_config']:
-                                    mcus[file_name]['cores'].add(readData['sdk_config']['CORE_NAME'])
+                                    mcus[file_name]['cores'].add(json.loads(readData['sdk_config'])['CORE_NAME'])
                                 else:
-                                    for core in readData['core_info']:
+                                    for core in json.loads(readData['core_info']):
                                         mcus[file_name]['cores'].add(core['core_name_define'])
 
 
