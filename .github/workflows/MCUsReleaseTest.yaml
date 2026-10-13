@@ -114,6 +114,17 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: python -u scripts/release_mcus.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ github.event.inputs.release_version }}
 
+      - name: Run Index Script
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
+        run: |
+            echo "Indexing to Test."
+            python -u scripts/index.py ${{ github.repository }} ${{ steps.app-token.outputs.token }} ${{ secrets.ES_INDEX_TEST }} "False" ${{ github.event.inputs.release_version }} "False"
+
 
   trigger_general_database_update:
     runs-on: ubuntu-latest
