@@ -8,3 +8,4 @@ pytz
 xmltodict
 packaging
 pandas
+openpyxl
