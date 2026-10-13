@@ -21,7 +21,7 @@
 Support added for following hardware:
 
 + R5F566TF MCU Support package for Renesas RX GCC
-  + R5F566TFADFP
+  + R5F566TFADF
   + R5F566TFAGFP
   + R5F566TFBDFP
   + R5F566TFBGFP
