@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R7F100GFF$|^R7F100GFG$|^R7F100GFH$|^R7F100GFJ$|^R7F100GFK$|^R7F100GFL$|^R7F100GFN$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/r7f100gf/init_clock.c system/src/${vendor}/r7f100gf/vectors.c)
+    list(APPEND local_dir_install system/src/${vendor}/r7f100gf)
+    set(${thirdpartyInstall} "r7f100gf" PARENT_SCOPE)
+endif()
