@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^R5K574N6F4AE$|^R5K574N6F4BD$|^R5K574N6F4BG$|^R5K574N6F4FB$|^R5K574N6F4FC$|^R5K574N6F4FP$")
+    list(APPEND local_list_macros "getClockValue(_clock) ((_clock)/1000UL/3UL)")
+endif()
