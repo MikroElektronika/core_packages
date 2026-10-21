@@ -1,0 +1,7 @@
+if(${MCU_NAME} MATCHES "^R5K574N6C4FB$|^R5K574N6C4FC$|^R5K574N6C4FP$|^R5K574N6D4FB$|^R5K574N6D4FC$|^R5K574N6D4FP$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/r5k574n6cd/init_clock.c system/src/${vendor}/r5k574n6cd/vectors.c)
+    list(APPEND local_dir_install system/src/${vendor}/r5k574n6cd)
+    set(${thirdpartyInstall} "r5k574n6cd" PARENT_SCOPE)
+endif()
