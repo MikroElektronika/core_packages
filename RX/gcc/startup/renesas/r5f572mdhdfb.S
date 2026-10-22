@@ -5,7 +5,7 @@
 ;;*/
 ;;/***********************************************************************************************************************
 ;;* File Name    : reset_program.asm
-;;* Description  : Defines post-reset routines that are used to configure the MCU prior to the main program starting. 
+;;* Description  : Defines post-reset routines that are used to configure the MCU prior to the main program starting.
 ;;*                This is where the program counter starts on power-up or reset.
 ;;***********************************************************************************************************************/
 ;;/***********************************************************************************************************************
@@ -48,6 +48,9 @@ _PowerON_Reset :
 
 ;;initialise interrupt stack pointer
     mvtc    #_istack,ISP
+
+;;switch SP to the user stack (PSW.U = 1)
+    setpsw  u
 
 ;;jump to _SystemInit function in init_clocks.c
     bsr.a   _SystemInit
