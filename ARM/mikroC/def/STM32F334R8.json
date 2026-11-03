@@ -275,7 +275,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "003c0000",
+                    "init": "00380000",
                     "key": "PLLMUL",
                     "label": "PLL multiplication factor (must not exceed 72 MHz)",
                     "mask": "003C0000",
@@ -441,7 +441,7 @@
                         },
                         {
                             "label": "PLL is not divided before MCO",
-                            "value": "10000000"
+                            "value": "80000000"
                         }
                     ]
                 }
