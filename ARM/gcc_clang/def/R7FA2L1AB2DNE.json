@@ -43,7 +43,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "100",
                     "key": "PCKB",
                     "label": "Peripheral Module Clock B (PCLKB) Select",
                     "mask": "700",

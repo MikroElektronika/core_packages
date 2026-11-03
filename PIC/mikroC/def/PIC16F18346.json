@@ -403,7 +403,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "6",
+                    "init": "7",
                     "key": "FEXTOSC",
                     "label": "FEXTOSC External Oscillator mode Selection bits",
                     "mask": "7",

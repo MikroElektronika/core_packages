@@ -2633,5 +2633,5 @@
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
     "mcu": "R7FA8E2AFDCBD",
-    "clock": "480"
+    "clock": "240"
 }

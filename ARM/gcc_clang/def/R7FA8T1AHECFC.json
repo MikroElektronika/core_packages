@@ -2160,7 +2160,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "5",
                     "key": "CKDIV",
                     "label": "SCI clock (SCICLK) Division Select",
                     "mask": "7",
@@ -2268,7 +2268,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "5",
                     "key": "CKDIV",
                     "label": "SPI clock (SPICLK) Division Select",
                     "mask": "7",
