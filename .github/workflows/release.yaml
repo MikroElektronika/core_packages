@@ -74,6 +74,24 @@ jobs:
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: python -u scripts/package.py ${{ steps.app-token.outputs.token }} ${{ github.repository }} ${{ github.ref_name }}
 
+      - name: Build indexing dry-run message
+        env:
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_USER: ${{ secrets.ES_USER }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_EXPERIMENTAL: ${{ secrets.ES_INDEX_EXPERIMENTAL }}
+          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
+        run: |
+          python -u scripts/index.py ${{ github.repository }} ${{ steps.app-token.outputs.token }} \
+            "${{ secrets.ES_INDEX_TEST }}|${{ secrets.ES_INDEX_EXPERIMENTAL }}|${{ secrets.ES_INDEX_LIVE }}" "False" ${{ github.ref_name }} "False" \
+            --dry_run "True"
+
+      - name: Notify Mattermost (core packages info)
+        env:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_CORE_PACKAGES_INFO }}
+        run: python -u scripts/post_mattermost_message.py message.md
+
       - name: Trigger database update in general_packages
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
