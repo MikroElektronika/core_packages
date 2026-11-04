@@ -43,6 +43,27 @@ def resolve_mcu_vendor(cmake_path):
     vendor = cmake_path.split(os.sep)[-2].upper()
     return vendor
 
+def compiler_label_from_folder(folder: str) -> str:
+    f = (folder or "").lower()
+    if f == "gcc_clang":
+        return "GCC_CLANG"
+    if f == "mikroc":
+        return "mikroC"
+    if f in ("xc8", "xc16", "xc32"):
+        return 'XC'
+    return folder  # last-resort passthrough
+
+def is_gcc_or_clang(compiler: str, filename: str = "") -> bool:
+    c = (compiler or "").strip().lower()
+    f = (filename or "").lower()
+    return ("gcc" in c) or ("clang" in c) or ("gcc" in f) or ("clang" in f)
+
+def release_base_name(vendor: str, compiler_folder: str, filename: str = "") -> str:
+    """ Release name (without version) that a package of this vendor and compiler folder is uploaded to. """
+    if is_gcc_or_clang(compiler_label_from_folder(compiler_folder), filename):
+        return f'{vendor} MCU Support packages for GCC & Clang'
+    return f'MCU Support packages for {compiler_label_from_folder(compiler_folder)}'
+
 @dataclass(frozen=True)
 class FileSpec:
     filename: str
@@ -127,16 +148,6 @@ class GitHubReleaseUploader:
                 arch_guess = prefix[0].upper() if prefix else ""
                 compiler_folder_guess = prefix[1].lower() if len(prefix) > 1 else ""
                 return arch_guess, compiler_folder_guess
-
-        def compiler_label_from_folder(folder: str) -> str:
-            f = (folder or "").lower()
-            if f == "gcc_clang":
-                return "GCC_CLANG"
-            if f == "mikroc":
-                return "mikroC"
-            if f in ("xc8", "xc16", "xc32"):
-                return 'XC'
-            return folder  # last-resort passthrough
 
         files = {}
         for pkg in packages:
@@ -249,7 +260,6 @@ class GitHubReleaseUploader:
                 continue
             print(f'Processing packages for {release_name}.')
             existing_assets = self._get_all_release_assets(releases_info[release_name]['release_id'])
-            existing_asset_names = [asset['name'] for asset in existing_assets]
             for asset in releases_info[release_name]['assets']:
                 # Map appropriate release name with the asset in metadata for proper indexing afterwards
                 for metadata_asset in metadata:
@@ -257,18 +267,21 @@ class GitHubReleaseUploader:
                         metadata_asset['release_tag'] = releases_info[release_name]['tag']
                         metadata_asset['version'] = releases_info[release_name]['release_version']
                         break
-                if asset['asset_name'] not in existing_asset_names:
-                    if self.dry_run:
-                        msg = f"[DRY RUN] Would upload {asset['asset_name']} to \"{release_name}\""
-                        log_array.append(msg)
-                        print(msg)
-                    else:
-                        self._upload_asset(
-                            upload_url = releases_info[release_name]['upload_url'],
-                            asset_name = asset['asset_name'],
-                            file_path = asset['path'])
-                else:
-                    print(f"\033[34mAsset already exists in release -> skipping: {asset['asset_name']}\033[0m")
+                # Only changed packages are in the payload: an asset of the same name is the
+                # previous content of this package, so it is replaced.
+                existing_asset = next((item for item in existing_assets if item['name'] == asset['asset_name']), None)
+                if self.dry_run:
+                    msg = f"[DRY RUN] Would {'replace' if existing_asset else 'upload'} {asset['asset_name']} in \"{release_name}\""
+                    log_array.append(msg)
+                    print(msg)
+                    continue
+                if existing_asset:
+                    print(f"\033[33mAsset changed -> replacing: {asset['asset_name']}\033[0m")
+                    self._delete_asset(existing_asset)
+                self._upload_asset(
+                    upload_url = releases_info[release_name]['upload_url'],
+                    asset_name = asset['asset_name'],
+                    file_path = asset['path'])
 
         # Update metadata file with release name info
         with open('metadata.json', 'w') as f:
@@ -277,19 +290,17 @@ class GitHubReleaseUploader:
         # Finally, handle general release
         print(f'Processing packages for {general_release_name}.')
         existing_assets = self._get_all_release_assets(releases_info[general_release_name]['release_id'])
-        existing_asset_names = [asset['name'] for asset in existing_assets]
         for asset in releases_info[general_release_name]['assets']:
             # Always upload/reupload assets for general release
             if self.dry_run:
                 msg = f"[DRY RUN] Would upload {asset['asset_name']} to \"{general_release_name}\""
                 log_array.append(msg)
                 print(msg)
-            if asset['asset_name'] in existing_asset_names:
+                continue
+            existing_asset = next((item for item in existing_assets if item['name'] == asset['asset_name']), None)
+            if existing_asset:
                 print(f"\033[33mAsset already exists in release -> deleting: {asset['asset_name']}\033[0m")
-                self._delete_asset_by_name_for_upload_url(
-                    upload_url = releases_info[general_release_name]['upload_url'],
-                    asset_name = asset['asset_name'],
-                )
+                self._delete_asset(existing_asset)
 
             self._upload_asset(
                 upload_url = releases_info[general_release_name]['upload_url'],
@@ -334,7 +345,7 @@ class GitHubReleaseUploader:
         if not compiler:
             compiler = self._infer_compiler_from_filename(spec.filename) or 'UNKNOWN'
 
-        if self._is_gcc_or_clang(compiler, spec.filename):
+        if is_gcc_or_clang(compiler, spec.filename):
             release_name = f'{spec.vendor} MCU Support packages for GCC & Clang'
         else:
             release_name = f'MCU Support packages for {compiler}'
@@ -375,11 +386,6 @@ class GitHubReleaseUploader:
         if "keil" in s or "armcc" in s:
             return "Keil"
         return None
-
-    def _is_gcc_or_clang(self, compiler: str, filename: str) -> bool:
-        c = compiler.strip().lower()
-        f = filename.lower()
-        return ("gcc" in c) or ("clang" in c) or ("gcc" in f) or ("clang" in f)
 
     # ---------------------------
     # Release ensure + caching
@@ -490,6 +496,10 @@ class GitHubReleaseUploader:
             )
 
         print(f"\033[32mUploaded: {asset_name} ({size} bytes)\033[0m")
+
+    def _delete_asset(self, asset: Dict[str, Any]) -> None:
+        self._request("DELETE", f"{self.api_base}/repos/{self.repo}/releases/assets/{int(asset['id'])}")
+        print(f"\033[31mDeleted existing asset: {asset['name']}\033[0m")
 
     def _delete_asset_by_name_for_upload_url(self, *, upload_url: str, asset_name: str) -> bool:
         """

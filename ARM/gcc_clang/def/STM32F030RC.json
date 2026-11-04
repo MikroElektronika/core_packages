@@ -225,7 +225,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00100000",
+                    "init": "00280000",
                     "key": "PLLMUL",
                     "label": "PLL multiplication factor",
                     "mask": "003C0000",
