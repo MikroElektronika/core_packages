@@ -1902,7 +1902,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLL2STP",
                     "label": "PLL2 Stop Control",
                     "mask": "1",
@@ -2570,7 +2570,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "3",
+                    "init": "6",
                     "key": "MODRV0",
                     "label": "Main Clock Oscillator Drive Capability 0 Switching ",
                     "mask": "e",
@@ -2581,11 +2581,11 @@
                         },
                         {
                             "label": "8 MHz to 24 MHz",
-                            "value": "3"
+                            "value": "6"
                         },
                         {
                             "label": "8 MHz to 48 MHz",
-                            "value": "5"
+                            "value": "a"
                         }
                     ]
                 },

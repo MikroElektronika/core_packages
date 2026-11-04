@@ -36,7 +36,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          python-version: '3.12'
 
       - name: Install Dependencies
         run: |
@@ -50,17 +50,25 @@ jobs:
           ES_HOST: ${{ secrets.ES_HOST }}
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_EXPERIMENTAL: ${{ secrets.ES_INDEX_EXPERIMENTAL }}
+          ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
           if [[ ${{ github.event.inputs.select_index }} == "Live" ]]; then
             echo "Indexing to Live."
             python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_LIVE }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} ${{ github.event.inputs.set_as_latest }} "--keep_previous_dates" ${{ github.event.inputs.keep_dates }}
           else
-            echo "Indexing to Test."
+            echo "Indexing to Test and Experimental."
             if [[ ${{ github.event.inputs.set_as_latest }} ]]; then
               echo "Promote to latest requested, but ignored. Only available for LIVE updates."
             fi
-            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} ${{ secrets.ES_INDEX_TEST }} ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False "--keep_previous_dates" ${{ github.event.inputs.keep_dates }}
+            python -u scripts/index.py ${{ github.repository }} ${{ secrets.GITHUB_TOKEN }} "${{ secrets.ES_INDEX_TEST }}|${{ secrets.ES_INDEX_EXPERIMENTAL }}" ${{ github.event.inputs.force_index }} ${{ github.event.inputs.release_version }} False "--keep_previous_dates" ${{ github.event.inputs.keep_dates }}
           fi
+
+      - name: Notify Mattermost (core packages info)
+        env:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_CORE_PACKAGES_INFO }}
+        run: python -u scripts/post_mattermost_message.py message.md
 
       - name: Send notification to Mattermost
         env:
