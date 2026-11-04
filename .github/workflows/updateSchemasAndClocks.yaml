@@ -12,7 +12,7 @@ on:
         default: "latest"
       select_index:
         type: choice
-        description: Index as test or live (Live indexes only to live, Test indexes to both)
+        description: Index as test or live (Live indexes only to Live, Test indexes to Test, Experimental and Live)
         options:
           - Test
           - Live
@@ -41,7 +41,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.12'
 
       - name: Install Dependencies
         run: |
@@ -75,6 +75,7 @@ jobs:
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
           ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_EXPERIMENTAL: ${{ secrets.ES_INDEX_EXPERIMENTAL }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
           INDEX_TEST="True"
@@ -86,7 +87,7 @@ jobs:
             echo "Uploading and indexing to Live."
             python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ steps.determine-trigger.outputs.run_version }} ${{ secrets.ES_INDEX_LIVE }} "$INDEX_TEST"
           else
-            echo "Uploading and indexing to Test and Live."
+            echo "Uploading and indexing to Test, Experimental and Live."
             python -u scripts/update_schemas.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ steps.determine-trigger.outputs.run_version }} ${{ secrets.ES_INDEX_TEST }} "$INDEX_TEST"
           fi
 
@@ -96,7 +97,14 @@ jobs:
           ES_USER: ${{ secrets.ES_USER }}
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
           ES_INDEX_TEST: ${{ secrets.ES_INDEX_TEST }}
+          ES_INDEX_EXPERIMENTAL: ${{ secrets.ES_INDEX_EXPERIMENTAL }}
           ES_INDEX_LIVE: ${{ secrets.ES_INDEX_LIVE }}
         run: |
-          echo "Uploading and indexing to Test and Live."
+          echo "Uploading and indexing to Test, Experimental and Live."
           python -u scripts/update_clocks.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} "latest"
+
+      - name: Notify Mattermost (core packages info)
+        env:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_CORE_PACKAGES_INFO }}
+        run: python -u scripts/post_mattermost_message.py message.md
+

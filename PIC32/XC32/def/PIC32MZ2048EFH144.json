@@ -185,7 +185,7 @@
             "label_group": "DEVCFG2"
         },
         {
-            "init": "MUL_100",
+            "init": "MUL_50",
             "key": "FPLLMULT",
             "label": "System PLL Multiplier",
             "settings": [

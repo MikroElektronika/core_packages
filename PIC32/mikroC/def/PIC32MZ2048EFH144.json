@@ -226,7 +226,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00006300",
+                    "init": "00003100",
                     "key": "FPLLMULT",
                     "label": "System PLL Multiplier",
                     "mask": "00007F00",
