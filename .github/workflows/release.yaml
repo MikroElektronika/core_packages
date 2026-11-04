@@ -49,8 +49,8 @@ jobs:
           set -euo pipefail
           rm -rf .central-db
           mkdir -p .central-db
-          gh release download --repo MikroElektronika/general_packages --pattern 'database.7z' --dir .central-db
-          7z x -y -o.central-db/content .central-db/database.7z >/dev/null
+          gh release download --repo MikroElektronika/general_packages --pattern 'database_live.7z' --dir .central-db
+          7z x -y -o.central-db/content .central-db/database_live.7z >/dev/null
           cp .central-db/content/necto_db.db necto_db.db
 
 
