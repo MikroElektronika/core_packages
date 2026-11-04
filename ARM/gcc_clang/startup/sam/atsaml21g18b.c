@@ -306,6 +306,9 @@ Reset_Handler(void)
 //    if (__xc32_on_bootstrap)// Note: Changed for MikroE implementation.
 //      __xc32_on_bootstrap();// Note: Changed for MikroE implementation.
 
+    /* Initialize system clock settings */
+    SystemInit(); // Note: Added for MikroE implementation.
+
     /* Branch to application's main function.  See above about arguments. */
     main(0, NULL);
 
