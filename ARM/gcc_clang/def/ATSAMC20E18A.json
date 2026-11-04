@@ -393,7 +393,7 @@
                         },
                         {
                             "label": "The oscillator is enabled.",
-                            "value": "00000001"
+                            "value": "00000002"
                         }
                     ]
                 },

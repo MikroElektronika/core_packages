@@ -10,6 +10,7 @@ import pandas as pd
 from elasticsearch import Elasticsearch
 
 import support as support
+import package_state
 import classes.release_per_vendor as gh_uploader
 
 from pathlib import Path
@@ -488,7 +489,7 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
-async def package_asset(source_dir, output_dir, arch, entry_name, packages, current_metadata, latest_release):
+async def package_asset(source_dir, output_dir, arch, entry_name, packages, current_metadata, latest_release, published_metadata):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -531,35 +532,44 @@ async def package_asset(source_dir, output_dir, arch, entry_name, packages, curr
         # Copy base CMakeLists.txt to every package
         shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
 
-        # Create archive
-        archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
-        compiler = "mikroC"
-        compilers = ['mikroC AI']
-        if entry_name == "gcc_clang":
-            compilers = ['GCC', 'Clang']
-            compiler = "GCC & Clang"
-        elif "XC" in entry_name or "LLVM" in entry_name:
-            compilers = [entry_name]
-            compiler = entry_name
-        elif "gcc" == entry_name:
-            compilers = [entry_name]
-            compiler = "Renesas RX GCC"
-
-        displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
+        # Hash the assembled package first: a package with the published content is not packed again
         archiveHash = hash_directory_contents(base_output_dir)
-        archiveName = os.path.basename(archive_path)
-
-        shutil.rmtree(base_output_dir)
-
-        # Determine the version based on the hash
-        version = get_version_based_on_hash(archiveName, (latest_release['tag_name']).replace("v", ""), archiveHash, current_metadata)
-        # Add to packages list
-        name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
-        install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
-
+        name_without_extension = os.path.basename(base_output_dir)
         vendor = gh_uploader.resolve_mcu_vendor(data['cmake_file_path'])
 
-        packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location, 'vendor': vendor})
+        published = package_state.find_published(published_metadata, name_without_extension)
+        if package_state.is_unchanged(published, archiveHash):
+            print(f"\033[92mUnchanged, not packed: {name_without_extension}\033[0m")
+            shutil.rmtree(base_output_dir)
+            # Keeps its release, version and download link; "unchanged" keeps it out of the upload
+            packages.append({**published, "unchanged": True})
+        else:
+            print(f"\033[93mChanged, packing: {name_without_extension}\033[0m")
+            # Create archive
+            archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
+            compiler = "mikroC"
+            compilers = ['mikroC AI']
+            if entry_name == "gcc_clang":
+                compilers = ['GCC', 'Clang']
+                compiler = "GCC & Clang"
+            elif "XC" in entry_name or "LLVM" in entry_name:
+                compilers = [entry_name]
+                compiler = entry_name
+            elif "gcc" == entry_name:
+                compilers = [entry_name]
+                compiler = "Renesas RX GCC"
+
+            displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
+            archiveName = os.path.basename(archive_path)
+
+            shutil.rmtree(base_output_dir)
+
+            # Determine the version based on the hash
+            version = get_version_based_on_hash(name_without_extension, (latest_release['tag_name']).replace("v", ""), archiveHash, current_metadata)
+            # Add to packages list
+            install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
+
+            packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location, 'vendor': vendor})
 
         mcu_check = None
         mcu_full_list = []
@@ -671,7 +681,9 @@ def update_metadata(current_metadata, new_files, version):
 
     print(f"Updating metadata objects version to {version}.")
     for new_file in new_files:
-        new_file['version'] = version
+        # Unchanged packages keep their published version
+        if not new_file.pop('unchanged', False):
+            new_file['version'] = version
 
         updated_metadata.append(new_file)
 
@@ -721,6 +733,8 @@ async def main(token, repo, tag_name, live=False):
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR", "RL78", "RX"]
 
     current_metadata = fetch_current_metadata(repo, token)
+    # Published state: unchanged packages are neither packed nor uploaded
+    published_metadata = package_state.fetch_published_metadata(repo, token)
 
     latest_release = fetch_latest_release_version(repo, token)
     if 'latest' == tag_name:
@@ -767,7 +781,7 @@ async def main(token, repo, tag_name, live=False):
                         print(f"\033[34mProcessing {source_directory} to {output_directory}\033[0m")
                         await package_asset(
                             source_directory, output_directory, arch, entry.name,
-                            packages, current_metadata, latest_release
+                            packages, current_metadata, latest_release, published_metadata
                         )
         with open('mcu_packages.json', 'w') as file:
             json.dump(packages, file)
@@ -775,7 +789,10 @@ async def main(token, repo, tag_name, live=False):
         with open('mcu_packages.json', 'r') as file:
             packages = json.load(file)
 
-    payload = uploader.build_release_payload_from_packages(packages, 'output')
+    # Only the packed (changed) packages are uploaded
+    changed_packages = [package for package in packages if not package.get('unchanged')]
+    print(f"\033[94m{len(changed_packages)} of {len(packages)} MCU packages changed and were packed.\033[0m")
+    payload = uploader.build_release_payload_from_packages(changed_packages, 'output')
 
     # Generate clocks.json
     if not live:
