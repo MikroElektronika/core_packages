@@ -62,7 +62,7 @@ extern "C" {
  * intermediate clock configuration can violate the flash access time. The
  * configured value (VALUE_EEFC_FMR) is applied once the final clock is active.
  */
-#define EFC_FWS_TRANSITION    (4UL)
+#define EFC_FWS_TRANSITION    (5UL)
 
 /* SAM4S/SA/SD name the flash controller EFC0 (SD devices also have EFC1). */
 #if defined(EFC0) && !defined(EFC)

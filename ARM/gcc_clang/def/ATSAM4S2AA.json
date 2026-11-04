@@ -3296,7 +3296,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000400",
+                    "init": "00000500",
                     "key": "FWS",
                     "label": "Flash Wait State",
                     "mask": "00000F00",
