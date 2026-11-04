@@ -1,7 +1,7 @@
 {
     "config_words": [
         {
-            "init": "ECM",
+            "init": "ECH",
             "key": "FEXTOSC",
             "label": "FEXTOSC External Oscillator mode Selection bits",
             "settings": [

@@ -4,6 +4,7 @@ import argparse, aiohttp, asyncio, hashlib
 from clocks import GenerateClocks
 from elasticsearch import Elasticsearch
 import support as support
+import mattermost_message
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
@@ -59,6 +60,11 @@ def index_clocks(es: Elasticsearch, release_details, version, current_hash):
 
         resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=f'clocks', body=doc)
         print(f"{resp['result']} {resp['_id']}")
+
+        # Everything indexed to Test is indexed to Experimental as well
+        if os.environ.get('ES_INDEX_EXPERIMENTAL'):
+            resp = es.index(index=os.environ['ES_INDEX_EXPERIMENTAL'], doc_type=None, id=f'clocks', body=doc)
+            print(f"{resp['result']} {resp['_id']} (Experimental)")
 
 def increment_version(version):
     major, minor, patch = map(int, version.split('.'))
@@ -286,6 +292,8 @@ def main(token, repo, tag_name):
     if new_version:
         release_details = fetch_release_details(args.repo, args.token, args.tag_name)
         index_clocks(es, release_details, new_version, new_hash)
+        mattermost_message.add_section('Test, Experimental & Live' if os.environ.get('ES_INDEX_EXPERIMENTAL') else 'Test & Live', [mattermost_message.entry_line('UPDATE', f'Clocks file ({new_version})')],
+                                       release_tag=release_details.get('tag_name'))
         print(f"Asset clocks version changed to {new_version}.")
         print(f"Asset clocks hash changed to {new_hash}.")
     else:
