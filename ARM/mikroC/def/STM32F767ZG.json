@@ -147,7 +147,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000004",
+                    "init": "00000008",
                     "key": "PLLM",
                     "label": "Division factor for the main PLLs (PLL, PLLI2S and PLLSAI) input clock",
                     "mask": "0000003F",
@@ -404,7 +404,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00001b00",
+                    "init": "00003600",
                     "key": "PLLN",
                     "label": "Main PLL (PLL) multiplication factor for VCO",
                     "mask": "00007FC0",
@@ -460,7 +460,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "04000000",
+                    "init": "09000000",
                     "key": "PLLQ",
                     "label": "Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks",
                     "mask": "0F000000",
@@ -633,7 +633,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00001000",
+                    "init": "00001400",
                     "key": "PPRE1",
                     "label": "APB low-speed prescaler (APB1)",
                     "mask": "00001C00",

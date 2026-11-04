@@ -1,6 +1,11 @@
 #include "stdint.h"
 #include "core_header.h"
 
+// Delay_Cyc loops per microsecond, split into integer part and 16-bit fraction,
+// so Delay_us needs no runtime 32-bit division (software routine on RL78, ~30 us).
+#define DELAY_US_LOOPS_INT  ( FOSC_KHZ_VALUE / ( 1000UL * getClockPresc ) )
+#define DELAY_US_LOOPS_FRAC ( ( ( FOSC_KHZ_VALUE % ( 1000UL * getClockPresc ) ) << 16 ) / ( 1000UL * getClockPresc ) )
+
 void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cycle_num )
 {
     while ( cycle_num-- )
@@ -11,7 +16,7 @@ void __attribute__( ( noinline, section( ".RamFunc" ) ) ) Delay_Cyc( uint32_t cy
 
 void __attribute__( ( noinline ) ) Delay_us( uint32_t time_us )
 {
-    Delay_Cyc((( time_us * FOSC_KHZ_VALUE ) + ( 1000 * getClockPresc - 1UL )) / 1000 * getClockPresc );
+    Delay_Cyc( ( time_us * DELAY_US_LOOPS_INT ) + ( ( time_us * DELAY_US_LOOPS_FRAC + 0xFFFFUL ) >> 16 ) );
 }
 
 void __attribute__( ( noinline ) ) Delay_ms( uint32_t time_ms )
