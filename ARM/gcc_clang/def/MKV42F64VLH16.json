@@ -310,7 +310,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10000000",
+                    "init": "0",
                     "key": "OUTDIV1",
                     "label": "Clock 1 output divider value",
                     "mask": "F0000000",
@@ -688,7 +688,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000010",
+                    "init": "00000000",
                     "key": "VDIV",
                     "label": "VCO Divider",
                     "mask": "0000001F",

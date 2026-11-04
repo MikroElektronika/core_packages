@@ -391,7 +391,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00005300",
+                    "init": "00005400",
                     "key": "PLLN",
                     "label": "Main PLL (PLL) multiplication factor for VCO",
                     "mask": "00007FC0",
@@ -2490,7 +2490,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "09000000",
+                    "init": "07000000",
                     "key": "PLLQ",
                     "label": "Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks",
                     "mask": "0F000000",
