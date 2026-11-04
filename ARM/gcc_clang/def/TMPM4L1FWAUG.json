@@ -45,7 +45,7 @@
                 {
                     "hidden": false,
                     "init": "0",
-                    "key": "Internal high-speed oscillator2 (IHOSC2EN) operation",
+                    "key": "IHOSC2EN",
                     "label": "IHOSC2 operation",
                     "mask": "8",
                     "settings": [
@@ -55,7 +55,7 @@
                         },
                         {
                             "label": "IHOSC2 is enabled",
-                            "value": "1"
+                            "value": "8"
                         }
                     ]
                 },
