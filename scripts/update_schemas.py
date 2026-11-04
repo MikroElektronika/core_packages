@@ -5,6 +5,7 @@ import os, time, aiofiles, filecmp, \
 
 from elasticsearch import Elasticsearch
 from schemas import GenerateSchemas
+import mattermost_message
 
 def hash_file(filename):
     """Generate MD5 hash of a file."""
@@ -211,6 +212,11 @@ def index_schemas(es: Elasticsearch, release_details, version, index_name, curre
                 resp = es.index(index=os.environ['ES_INDEX_LIVE'], doc_type=None, id=f'schemas{test_version}', body=doc)
                 print(f"{resp['result']} {resp['_id']}")
 
+        # Everything indexed to Test is indexed to Experimental as well
+        if os.environ.get('ES_INDEX_EXPERIMENTAL') and index_name == os.environ.get('ES_INDEX_TEST'):
+            resp = es.index(index=os.environ['ES_INDEX_EXPERIMENTAL'], doc_type=None, id=f'schemas{test_version}', body=doc)
+            print(f"{resp['result']} {resp['_id']} (Experimental)")
+
 async def upload_asset(session, token, repo, tag_name, asset_path):
     """ Upload a release asset to GitHub asynchronously """
     print(f"Preparing to upload asset: {os.path.basename(asset_path)}...")
@@ -375,6 +381,14 @@ if __name__ == '__main__':
     if new_version:
         release_details = fetch_release_details(args.repo, args.token, args.release_version)
         index_schemas(es, release_details, new_version, args.select_index, new_hash, test_version)
+        indexes = mattermost_message.index_label(args.select_index)
+        if args.select_index == os.environ.get('ES_INDEX_TEST'):
+            if os.environ.get('ES_INDEX_EXPERIMENTAL'):
+                indexes += ', Experimental'
+            if 'ES_INDEX_LIVE' in os.environ:
+                indexes += ' & Live'
+        mattermost_message.add_section(indexes, [mattermost_message.entry_line('UPDATE', f'schemas{test_version} file ({new_version})')],
+                                       release_tag=release_details.get('tag_name'))
         print(f"Asset schemas version changed to {new_version}.")
         print(f"Asset schemas hash changed to {new_hash}.")
     else:
