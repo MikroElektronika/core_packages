@@ -468,55 +468,68 @@ async def package_asset(source_dir, output_dir, arch, entry_name, tag_name, pack
     package_to_mcu_xlsx_full = []
     for cmake_file, data in file_paths.items():
         base_output_dir = os.path.join(output_dir, f"{arch.lower()}_{entry_name.lower()}_{cmake_file}") # Subdirectory for this .cmake file
-        # Copy the .cmake file into the package directory
-        copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, data['regex'])
-
-        mcuNames = extract_mcu_names(cmake_file, source_dir, data['regex'])
-        # Copy individual files
-        copy_files(data['files'], base_output_dir, source_dir)
-        # Copy schema directories
-        copy_schemas(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir)
-        copy_interrupts(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir)
-        # Copy defs
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'def')
-        # Copy startups
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'startup')
-        # Copy linker scirpts
-        copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'linker_scripts')
-        # Copy delay files
-        copy_delays(mcuNames[cmake_file]['cores'], source_dir, output_dir, base_output_dir)
-        # Copy std_library to every package
-        std_library_path = os.path.join(source_dir, 'std_library')
-        if os.path.exists(std_library_path):
-            shutil.copytree(std_library_path, os.path.join(base_output_dir, "std_library"), dirs_exist_ok=True)
-        # Copy include to every package
-        include_path = os.path.join(source_dir, 'include')
-        if os.path.exists(include_path):
-            shutil.copytree(include_path, os.path.join(base_output_dir, "include"), dirs_exist_ok=True)
-        # Copy cstdio to every package
-        cstdio_path = os.path.join(source_dir, 'cstdio')
-        if os.path.exists(cstdio_path):
-            shutil.copytree(cstdio_path, os.path.join(base_output_dir, "cstdio"), dirs_exist_ok=True)
-
-        # Copy common to every package
-        shutil.copytree(os.path.join(source_dir, 'common'), os.path.join(base_output_dir, "common"), dirs_exist_ok=True)
-        # Copy base CMakeLists.txt to every package
-        shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
-
-        # Hash the assembled package first: a package with the published content is not packed again
-        archiveHash = hash_directory_contents(base_output_dir)
         name_without_extension = os.path.basename(base_output_dir)
         vendor = gh_uploader.resolve_mcu_vendor(data['cmake_file_path'])
+        mcuNames = extract_mcu_names(cmake_file, source_dir, data['regex'])
         mcu_full_list = sorted({mcu for item in mcuNames.values() for mcu in item["mcu_names"]})
+
+        def assemble():
+            # Copy the .cmake file into the package directory
+            copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, data['regex'])
+            # Copy individual files
+            copy_files(data['files'], base_output_dir, source_dir)
+            # Copy schema directories
+            copy_schemas(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir)
+            copy_interrupts(mcuNames[cmake_file]['mcu_names'], source_dir, output_dir, base_output_dir)
+            # Copy defs
+            copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'def')
+            # Copy startups
+            copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'startup')
+            # Copy linker scirpts
+            copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, 'linker_scripts')
+            # Copy delay files
+            copy_delays(mcuNames[cmake_file]['cores'], source_dir, output_dir, base_output_dir)
+            # Copy std_library to every package
+            std_library_path = os.path.join(source_dir, 'std_library')
+            if os.path.exists(std_library_path):
+                shutil.copytree(std_library_path, os.path.join(base_output_dir, "std_library"), dirs_exist_ok=True)
+            # Copy include to every package
+            include_path = os.path.join(source_dir, 'include')
+            if os.path.exists(include_path):
+                shutil.copytree(include_path, os.path.join(base_output_dir, "include"), dirs_exist_ok=True)
+            # Copy cstdio to every package
+            cstdio_path = os.path.join(source_dir, 'cstdio')
+            if os.path.exists(cstdio_path):
+                shutil.copytree(cstdio_path, os.path.join(base_output_dir, "cstdio"), dirs_exist_ok=True)
+
+            # Copy common to every package
+            shutil.copytree(os.path.join(source_dir, 'common'), os.path.join(base_output_dir, "common"), dirs_exist_ok=True)
+            # Copy base CMakeLists.txt to every package
+            shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
 
         published = package_state.find_published(current_metadata, name_without_extension)
         forced = gh_uploader.release_base_name(vendor, entry_name, name_without_extension) in forced_releases
-        if not forced and package_state.is_unchanged(published, archiveHash):
+
+        if forced_releases and not forced:
+            # Re-release of other releases requested: this package is not touched at all
+            if published:
+                print(f"\033[90mNot requested, skipped: {name_without_extension}\033[0m")
+                packages.append({**published, "mcus": mcu_full_list, "unchanged": True})
+            else:
+                print(f"\033[93mNot requested and not published yet, left for the next release: {name_without_extension}\033[0m")
+            unchanged = True
+        elif not forced and package_state.is_unchanged(published, package_state.virtual_package_hash(assemble, base_output_dir)):
+            # Same content as published (hashed from the sources, nothing copied)
             print(f"\033[92mUnchanged, not packed: {name_without_extension}\033[0m")
-            shutil.rmtree(base_output_dir)
             # Keeps its release, version and download link; "unchanged" keeps it out of the upload
             packages.append({**published, "mcus": mcu_full_list, "unchanged": True})
+            unchanged = True
         else:
+            unchanged = False
+
+        if not unchanged:
+            assemble()
+            archiveHash = hash_directory_contents(base_output_dir)
             print(f"\033[93m{'Re-release requested' if forced else 'Changed'}, packing: {name_without_extension}\033[0m")
             # Create archive
             archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
