@@ -1,7 +1,667 @@
 {
+    "config_registers": [
+        {
+            "address": "400E0400",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK2",
+                    "label": "Programmable Clock 2 Output Enable",
+                    "mask": "00000400",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enables the Programmable Clock 2 output.",
+                            "value": "00000400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK1",
+                    "label": "Programmable Clock 1 Output Enable",
+                    "mask": "00000200",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enables the Programmable Clock 1 output.",
+                            "value": "00000200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK0",
+                    "label": "Programmable Clock 0 Output Enable",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enables the Programmable Clock 0 output.",
+                            "value": "00000100"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_SCER",
+            "unused": "FFFFF8FF",
+            "label": "System clock enable register"
+        },
+        {
+            "address": "400E0420",
+            "default": "00000008",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CFDEN",
+                    "label": "Clock Failure Detector Enable",
+                    "mask": "02000000",
+                    "settings": [
+                        {
+                            "label": "The clock failure detector is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The clock failure detector is enabled.",
+                            "value": "02000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCSEL",
+                    "label": "Main Clock Oscillator Selection",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "The Main RC oscillator is selected.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main crystal oscillator is selected.",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003E00",
+                    "key": "MOSCXTST",
+                    "label": "Main Crystal Oscillator Startup Time (x8 slow clock cycles)",
+                    "mask": "0000FF00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "MOSCRCF",
+                    "label": "Main RC Oscillator Frequency Selection",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "The Fast RC Oscillator frequency is at 8 MHz (default)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Fast RC Oscillator frequency is at 16 MHz",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "The Fast RC Oscillator frequency is at 24 MHz",
+                            "value": "00000020"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "MOSCRCEN",
+                    "label": "Main RC Oscillator Enable",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "The Main RC oscillator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main RC oscillator is enabled.",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "WAITMODE",
+                    "label": "Wait Mode Command (write-only)",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Puts the device in Wait mode.",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTBY",
+                    "label": "Main Crystal Oscillator Bypass",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main crystal oscillator is bypassed. MOSCXTEN must be cleared. An external clock must be connected on XIN.",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTEN",
+                    "label": "Main Crystal Oscillator Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "The Main crystal oscillator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main crystal oscillator is enabled. MOSCXTBY must be cleared.",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "CKGR_MOR",
+            "unused": "FCFF0080",
+            "label": "Main oscillator register"
+        },
+        {
+            "address": "400E0428",
+            "default": "00003F00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MULA",
+                    "label": "PLLA Multiplier (fPLLA = SLCK x (MULA + 1); 731..1463 for 24..48 MHz, 0 = PLLA disabled)",
+                    "mask": "0FFF0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "1463",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00003F00",
+                    "key": "PLLACOUNT",
+                    "label": "PLLA Counter",
+                    "mask": "00003F00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLAEN",
+                    "label": "PLLA Control",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "PLLA is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLA is enabled.",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "CKGR_PLLAR",
+            "unused": "F000C000",
+            "label": "PLLA register"
+        },
+        {
+            "address": "400E0430",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLADIV2",
+                    "label": "PLLA Divisor by 2",
+                    "mask": "00001000",
+                    "settings": [
+                        {
+                            "label": "PLLA clock frequency is divided by 1.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLA clock frequency is divided by 2.",
+                            "value": "00001000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Processor Clock Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "Selected clock divided by 3",
+                            "value": "00000070"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "CSS",
+                    "label": "Master Clock Source Selection",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Slow Clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Clock is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLA Clock is selected",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_MCKR",
+            "unused": "FFFFEF8C",
+            "label": "Master clock register"
+        },
+        {
+            "address": "400E0440",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock 0 Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock 0 Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Slow Clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Clock is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLA Clock is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Master Clock is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK0",
+            "unused": "FFFFFF88",
+            "label": "Programmable clock 0 register"
+        },
+        {
+            "address": "400E0444",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock 1 Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock 1 Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Slow Clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Clock is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLA Clock is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Master Clock is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK1",
+            "unused": "FFFFFF88",
+            "label": "Programmable clock 1 register"
+        },
+        {
+            "address": "400E0448",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock 2 Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock 2 Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Slow Clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Clock is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLA Clock is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Master Clock is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK2",
+            "unused": "FFFFFF88",
+            "label": "Programmable clock 2 register"
+        },
+        {
+            "address": "400E0A00",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "FWS",
+                    "label": "Flash Wait State",
+                    "mask": "00000F00",
+                    "settings": [
+                        {
+                            "label": "1 cycle for Read/Write operations",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "2 cycles for Read/Write operations",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "3 cycles for Read/Write operations",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "4 cycles for Read/Write operations",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "5 cycles for Read/Write operations",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "6 cycles for Read/Write operations",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "7 cycles for Read/Write operations",
+                            "value": "00000600"
+                        }
+                    ]
+                }
+            ],
+            "key": "EEFC_FMR",
+            "unused": "FFFFF0FF",
+            "label": "Eefc flash mode register"
+        },
+        {
+            "address": "400E1410",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "XTALSEL",
+                    "label": "Crystal Oscillator Select",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "No effect (slow clock from the 32 kHz RC oscillator).",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Switches the slow clock to the 32.768 kHz crystal oscillator.",
+                            "value": "00000008"
+                        }
+                    ]
+                }
+            ],
+            "key": "SUPC_CR",
+            "unused": "FFFFFFF7",
+            "label": "Supply controller control register"
+        },
+        {
+            "address": "400E1418",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OSCBYPASS",
+                    "label": "Oscillator Bypass",
+                    "mask": "00100000",
+                    "settings": [
+                        {
+                            "label": "No effect. Clock selection depends on XTALSEL value.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The 32 kHz crystal oscillator is selected and put in bypass mode.",
+                            "value": "00100000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SUPC_MR",
+            "unused": "FFEFFFFF",
+            "label": "Supply controller mode register"
+        }
+    ],
     "mcu": "ATSAMG51G18",
-    "clock": "1",
+    "clock": 24,
     "core": "M4EF",
-    "delay_src_path": "delays/m4ef/__lib_delays.c",
-    "config_registers": []
+    "delay_src_path": "delays/m4ef/__lib_delays.c"
 }

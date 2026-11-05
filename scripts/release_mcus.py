@@ -72,8 +72,10 @@ def find_cmake_files(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
             if file.endswith(".cmake") and not 'delays' in root:
-                if file not in excluded_files:  # Check if the file is not in the excluded list
-                    cmake_files.append(os.path.join(root, file))
+                full_path = os.path.join(root, file)
+                # Skip excluded files and core-only files (they are copied into packages whose cores match)
+                if file not in excluded_files and not is_core_only_cmake(full_path):
+                    cmake_files.append(full_path)
     return cmake_files
 
 def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
@@ -201,74 +203,60 @@ def extract_mcu_names(file_name, source_dir, regex):
 
     return mcus
 
-def find_first_matching_mcu_name(source_dir, regex):
-    """
-    Find and return the filename of the first file that matches a given regex in the specified 'def' directory.
-    """
-    if not regex:
-        return None
+MCU_NAME_CONDITION = re.compile(r'\$\{MCU_NAME\}\s+MATCHES\s+"([^"]*)"')
+CORE_NAME_CONDITION = re.compile(r'\$\{CORE_NAME\}\s+(MATCHES|STREQUAL)\s+"([^"]*)"')
 
-    def_dir = os.path.join(source_dir, 'def')  # Define the path to the 'def' directory
-    regex_pattern = re.compile(regex)  # Compile the regex pattern for efficiency
+def extract_conditions_from_cmake(cmake_file):
+    """
+    Return (mcu_regexes, core_regexes) used in the conditions of a .cmake file.
+    STREQUAL comparisons on CORE_NAME are converted to exact-match regexes.
+    """
+    with open(cmake_file, 'r') as f:
+        content = f.read()
+    mcu_regexes = MCU_NAME_CONDITION.findall(content)
+    core_regexes = [
+        value if operator == 'MATCHES' else f'^{re.escape(value)}$'
+        for operator, value in CORE_NAME_CONDITION.findall(content)
+    ]
+    return mcu_regexes, core_regexes
 
-    # Walk through the directory
-    for root, dirs, files in os.walk(def_dir):
+def is_core_only_cmake(cmake_file):
+    """ True for .cmake files filtered only by CORE_NAME (no MCU_NAME condition), e.g. stm/delays/m7.cmake """
+    mcu_regexes, core_regexes = extract_conditions_from_cmake(cmake_file)
+    return not mcu_regexes and bool(core_regexes)
+
+def cmake_file_applies(cmake_file, mcu_names, cores):
+    """
+    Check whether a .cmake file is needed for a package, mirroring CMake which includes every file from the folder:
+    - files with MCU_NAME conditions apply if any packaged MCU matches one of them
+    - files with only CORE_NAME conditions apply if any packaged core matches one of them
+    """
+    mcu_regexes, core_regexes = extract_conditions_from_cmake(cmake_file)
+    if mcu_regexes:
+        return any(re.search(regex, mcu) for regex in mcu_regexes for mcu in mcu_names)
+    return any(re.search(regex, core) for regex in core_regexes for core in cores)
+
+def copy_applicable_cmake_files(cmake_file, source_dir, output_dir, mcu_names, cores):
+    """
+    Copy additional .cmake files from the vendor folder of cmake_file that the package needs:
+    - every file from the delays folder(s) whose MCU_NAME / CORE_NAME condition matches the package
+    - core-only files from the vendor folder itself (MCU based ones are packages of their own)
+    """
+    vendor_dir = os.path.dirname(cmake_file)
+    for root, dirs, files in os.walk(vendor_dir):
+        is_delays_dir = 'delays' in os.path.relpath(root, start=vendor_dir).split(os.sep)
         for file in files:
-            if file.endswith('.json'):
-                if regex_pattern.search(os.path.splitext(file)[0]):  # Check if the file matches the regex
-                    filename_without_extension = os.path.splitext(file)[0]  # Remove the extension from the filename
-                    return filename_without_extension  # Return just the filename without its path or extension
+            full_path = os.path.join(root, file)
+            if not file.endswith('.cmake') or os.path.samefile(full_path, cmake_file):
+                continue
+            if not is_delays_dir and not is_core_only_cmake(full_path):
+                continue
+            if cmake_file_applies(full_path, mcu_names, cores):
+                dest_file_path = os.path.join(output_dir, os.path.relpath(full_path, start=source_dir))
+                os.makedirs(os.path.dirname(dest_file_path), exist_ok=True)
+                shutil.copy(full_path, dest_file_path)
 
-    return None  # Return None if no matching file is found
-
-def extract_regex_from_cmake(cmake_file):
-    """ Extract regex patterns from a given .cmake file, supporting complex logical conditions. """
-    # Extended regex pattern to capture multiple regex conditions separated by 'OR'
-    regex_pattern = re.compile(r'\$\{MCU_NAME\}\s*MATCHES\s*"(.*?)"')
-    regexes = set()  # Use a set to avoid duplicates if the same regex appears more than once
-
-    with open(cmake_file, 'r') as file:
-        content = file.read()
-
-    # Finding all occurrences of MCU_NAME MATCHES conditions
-    if_conditions = re.findall(r'if\s*\((.*?)\)\s*endif', content, re.DOTALL)
-    for condition in if_conditions:
-        # Extract all regex patterns within the condition
-        matches = regex_pattern.findall(condition)
-        regexes.update(matches)
-
-    return list(regexes)
-
-def copy_files_based_on_regex(source_dir, dest_dir, check_string):
-    """
-    Go through all .cmake files in source_dir, extract regex patterns, and copy files where check_string matches any regex.
-    """
-    if not check_string:
-        return
-
-    fileCopied = False
-    for root, dirs, files in os.walk(source_dir):
-        for file in files:
-            if file.endswith(".cmake"):
-                full_path = os.path.join(root, file)
-                regexes = extract_regex_from_cmake(full_path)
-                for regex in regexes:
-                    if re.match(regex, check_string) and not fileCopied:
-                        # If check_string matches the regex, copy the file
-                        fileCopied = True
-                        dest_file_path = os.path.join(dest_dir, file)
-                        os.makedirs(os.path.dirname(dest_file_path), exist_ok=True)
-                        shutil.copy(full_path, dest_file_path)
-        if not fileCopied and 'STM32' in check_string and 'gcc_clang' in source_dir:
-            if check_string[6] == '7': ## in special grouped case for M7 not covered by single files
-                os.makedirs(dest_dir, exist_ok=True)
-                shutil.copy(os.path.join(root, 'm7.cmake'), os.path.join(dest_dir, 'm7.cmake'))
-            elif check_string[6] == '0': ## in special grouped case for M0 not covered by single files
-                os.makedirs(dest_dir, exist_ok=True)
-                shutil.copy(os.path.join(root, 'm0.cmake'), os.path.join(dest_dir, 'm0.cmake'))
-
-
-def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
+def copy_cmake_files(cmake_file, source_dir, output_dir, mcu_names, cores):
     """ Copy the .cmake file to the output directory maintaining the same folder structure """
     relative_path = os.path.relpath(cmake_file, start=source_dir)
     destination_path = os.path.join(output_dir, relative_path)
@@ -288,12 +276,8 @@ def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
         shutil.copy(fallback_config_path, os.path.join(output_dir, "cmake"))
     if os.path.exists(install_headers_path):
         shutil.copy(install_headers_path, os.path.join(output_dir, "cmake"))
-    if 'gcc' in source_dir or 'LLVM' in source_dir:
-        mcuFileName = find_first_matching_mcu_name(source_dir, regex)
-        delays_cmake_dir = os.path.join(os.path.dirname(cmake_file), 'delays')
-        delay_relative_path = os.path.relpath(delays_cmake_dir, start=source_dir)
-        delay_destination_path = os.path.join(output_dir, delay_relative_path)
-        copy_files_based_on_regex(delays_cmake_dir, delay_destination_path, mcuFileName)
+    # Copy delays and core-only .cmake files needed by the packaged MCUs/cores
+    copy_applicable_cmake_files(cmake_file, source_dir, output_dir, mcu_names, cores)
 
 # Used to check if file exists locally
 def checkFileOnDisk(fileName):
@@ -506,7 +490,7 @@ async def package_asset(source_dir, output_dir, arch, entry_name, packages, curr
 
         def assemble():
             # Copy the .cmake file into the package directory
-            copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, data['regex'])
+            copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, mcuNames[cmake_file]['mcu_names'], mcuNames[cmake_file]['cores'])
             # Copy individual files
             copy_files(data['files'], base_output_dir, source_dir)
             # Copy schema directories
