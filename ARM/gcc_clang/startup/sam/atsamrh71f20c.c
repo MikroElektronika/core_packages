@@ -51,6 +51,7 @@
 #endif
 
 #include "mcu.h" // Note: Added for MikroE implementation.
+#include "cmsis_compiler.h" // Note: Added for MikroE implementation.
 
 extern void SystemInit(); // Note: Added for MikroE implementation.
 // Note: Changed for MikroE implementation.
@@ -74,7 +75,7 @@ extern void SystemInit(); // Note: Added for MikroE implementation.
 #endif /* __XC32_RESET_HANDLER_NAME */
 
 /*
- *  The MPLAB X Simulator does not yet support simulation of programming the 
+ *  The MPLAB X Simulator does not yet support simulation of programming the
  *  GPNVM bits yet. We can remove this once it supports the FRDY bit.
  */
 #ifdef __MPLAB_DEBUGGER_SIMULATOR
@@ -629,7 +630,7 @@ __always_inline __STATIC_INLINE void __attribute__((optimize("-O1"))) fpu_enable
     cpu_irq_restore(flags);
 }
 #endif /* (__ARM_FP==14) || (__ARM_FP==4) */
- 
+
 /* Optional application-provided functions */
 //extern void __attribute__((weak,long_call)) _on_reset(void);// Note: Changed for MikroE implementation.
 //extern void __attribute__((weak,long_call)) _on_bootstrap(void);// Note: Changed for MikroE implementation.
@@ -684,9 +685,9 @@ Reset_Handler(void)
 
 
 
- 
 
-/* this does ECC init for the RH71 and friends.  
+
+/* this does ECC init for the RH71 and friends.
    we do this after the fpu is enabled so we can use fp regs */
      TCM_EccInitialize();
      FlexRAM_EccInitialize();
@@ -714,7 +715,7 @@ Reset_Handler(void)
 #endif /* __XC32_ENABLE_TCM */
 #endif /* (__ITCM_PRESENT==1) */
     /* Initialize data after TCM is enabled */
- 
+
 
 
     /* Data initialization from the XC32 .dinit template */
@@ -744,7 +745,7 @@ Reset_Handler(void)
 #if defined(__XC32_STACK_IN_TCM)
     __pic32c_TCM_StackInit();
 #endif
- 
+
 #ifdef SCB_VTOR_TBLOFF_Msk
     /*  Set the vector-table base address. This may be in flash or TCM.
      *  The __svectors symbol is created by the XC32 linker.
@@ -752,7 +753,7 @@ Reset_Handler(void)
     pSrc = (uint32_t *) & __svectors;
     SCB->VTOR = ((uint32_t) pSrc & SCB_VTOR_TBLOFF_Msk);
 #endif
- 
+
     /* Initialize the C library */
 //    __libc_init_array();// Note: Changed for MikroE implementation.
 
