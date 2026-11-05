@@ -412,6 +412,7 @@ SECTIONS
 	.r_bsp_istack ALIGN(0x4) (NOLOAD) :
 	{
 		KEEP(*(.r_bsp_istack))
+		. += 0x400;         /*  1 KB interrupt stack */
 	} >RAM AT>RAM
 	.istack :
 	{
@@ -420,6 +421,7 @@ SECTIONS
 	.r_bsp_ustack ALIGN(0x4) (NOLOAD) :
 	{
 		KEEP(*(.r_bsp_ustack))
+		. += 0x2000;         /* 8 KB user stack */
 	} >RAM AT>RAM
 	.ustack :
 	{
