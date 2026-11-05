@@ -250,7 +250,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000020",
                     "key": "MOSCRCF",
                     "label": "8/16/24 MHz RC Oscillator Frequency Selection",
                     "mask": "00000070",
@@ -48774,7 +48774,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "00000100",
                     "key": "FWS",
                     "label": "Flash Wait State",
                     "mask": "00000f00",
@@ -48866,5 +48866,5 @@
     "core": "M4",
     "delay_src_path": "delays/m4/__lib_delays.c",
     "mcu": "ATSAMG55G19B",
-    "clock": 8
+    "clock": 24
 }
