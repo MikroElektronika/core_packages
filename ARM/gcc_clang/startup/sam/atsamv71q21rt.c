@@ -716,6 +716,27 @@ Reset_Handler(void)
 
     /* Data initialization from the XC32 .dinit template */
 //    __pic32c_data_initialization();// Note: Changed for MikroE implementation.
+    // Note: Added for MikroE implementation.
+    // Copy the .data initializers from flash (_etext) and zero .bss
+    // (symbols are provided by the MikroE linker scripts).
+    {
+        extern uint32_t _etext;
+        extern uint32_t _srelocate;
+        extern uint32_t _erelocate;
+        extern uint32_t _szero;
+        extern uint32_t _ezero;
+        uint32_t *pDst;
+        const uint32_t *pInit = &_etext;
+
+        if (pInit != &_srelocate) {
+            for (pDst = &_srelocate; pDst < &_erelocate;) {
+                *pDst++ = *pInit++;
+            }
+        }
+        for (pDst = &_szero; pDst < &_ezero;) {
+            *pDst++ = 0UL;
+        }
+    }
     /* Move the stack to Data Tightly Coupled Memory (DTCM) */
 #if defined(__XC32_STACK_IN_TCM)
     __pic32c_TCM_StackInit();
