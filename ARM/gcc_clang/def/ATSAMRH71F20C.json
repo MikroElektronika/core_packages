@@ -1,7 +1,1184 @@
 {
+    "config_registers": [
+        {
+            "address": "40100210",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "TDXTALSEL",
+                    "label": "Timing Domain Crystal Oscillator Select",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Timing domain slow clock: internal 32 kHz RC oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Timing domain slow clock: 32.768 kHz crystal oscillator",
+                            "value": "00000008"
+                        }
+                    ]
+                }
+            ],
+            "key": "SUPC_CR",
+            "unused": "FFFFFFF7",
+            "label": "Supply controller control register"
+        },
+        {
+            "address": "40100218",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OSCBYPASS",
+                    "label": "Oscillator Bypass",
+                    "mask": "00100000",
+                    "settings": [
+                        {
+                            "label": "No effect. Clock selection depends on the value of XTALSEL (SUPC_CR).",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The 32.768 kHz crystal oscillator is bypassed if XTALSEL (SUPC_CR) is set. OSCBYPASS must be set prior to setting XTALSEL.",
+                            "value": "00100000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SUPC_MR",
+            "unused": "FFEFFFFF",
+            "label": "Supply controller mode register"
+        },
+        {
+            "address": "4000C020",
+            "default": "00000008",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CFDEN",
+                    "label": "Clock Failure Detector Enable",
+                    "mask": "02000000",
+                    "settings": [
+                        {
+                            "label": "Clock Failure Detector Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Clock Failure Detector Enable: enabled",
+                            "value": "02000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCSEL",
+                    "label": "Main Clock Oscillator Selection",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "The Main RC oscillator is selected.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The external main oscillator (XIN) is selected.",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTST",
+                    "label": "Main Crystal Oscillator Startup Time",
+                    "mask": "0000FF00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "MOSCRCF",
+                    "label": "Main RC Oscillator Frequency Selection",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "The RC oscillator frequency is at 4 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The RC oscillator frequency is at 8 MHz",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "The RC oscillator frequency is at 10 MHz",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "The RC oscillator frequency is at 12 MHz",
+                            "value": "00000030"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "MOSCRCEN",
+                    "label": "Main RC Oscillator Enable",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Main RC Oscillator Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main RC Oscillator Enable: enabled",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTBY",
+                    "label": "Main Crystal Oscillator Bypass",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main crystal oscillator is bypassed (external clock on XIN). MOSCXTEN must be cleared.",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTEN",
+                    "label": "Main Crystal Oscillator Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Main Crystal Oscillator Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Crystal Oscillator Enable: enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "CKGR_MOR",
+            "unused": "FCFF0084",
+            "label": "Main oscillator register"
+        },
+        {
+            "address": "4000C080",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRA",
+                    "label": "Internal Filter PLL - Select Internal Resistor Value",
+                    "mask": "0000C000",
+                    "settings": [
+                        {
+                            "label": "24 Ohms",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "6 Ohms",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "3 Ohms",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "12 Ohms",
+                            "value": "0000C000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003000",
+                    "key": "SCA",
+                    "label": "Internal Filter PLL - Select Internal Capaticance Value",
+                    "mask": "00003000",
+                    "settings": [
+                        {
+                            "label": "20 pF",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "40 pF",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "30 pF",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "60 pF",
+                            "value": "00003000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "OUTCUR_PLLA",
+                    "label": "PLLA Output Current",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "0.5 mA",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "0.75 mA",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "1 mA",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "1.25 mA",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PLL_CFG",
+            "unused": "FFFF0FF0",
+            "label": "PLL configuration register (PLLA loop filter)"
+        },
+        {
+            "address": "4000C028",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00090000",
+                    "key": "MULA",
+                    "label": "PLLA Multiplier",
+                    "mask": "07FF0000",
+                    "settings": [
+                        {
+                            "label": "The PLLA is disabled (PLLA also disabled if DIVA = 0).",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLA multiplier x2",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "PLLA multiplier x3",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "PLLA multiplier x4",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "PLLA multiplier x5",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "PLLA multiplier x6",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "PLLA multiplier x7",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "PLLA multiplier x8",
+                            "value": "00070000"
+                        },
+                        {
+                            "label": "PLLA multiplier x9",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "PLLA multiplier x10",
+                            "value": "00090000"
+                        },
+                        {
+                            "label": "PLLA multiplier x11",
+                            "value": "000A0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x12",
+                            "value": "000B0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x13",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x14",
+                            "value": "000D0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x15",
+                            "value": "000E0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x16",
+                            "value": "000F0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x17",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "PLLA multiplier x18",
+                            "value": "00110000"
+                        },
+                        {
+                            "label": "PLLA multiplier x19",
+                            "value": "00120000"
+                        },
+                        {
+                            "label": "PLLA multiplier x20",
+                            "value": "00130000"
+                        },
+                        {
+                            "label": "PLLA multiplier x21",
+                            "value": "00140000"
+                        },
+                        {
+                            "label": "PLLA multiplier x22",
+                            "value": "00150000"
+                        },
+                        {
+                            "label": "PLLA multiplier x23",
+                            "value": "00160000"
+                        },
+                        {
+                            "label": "PLLA multiplier x24",
+                            "value": "00170000"
+                        },
+                        {
+                            "label": "PLLA multiplier x25",
+                            "value": "00180000"
+                        },
+                        {
+                            "label": "PLLA multiplier x26",
+                            "value": "00190000"
+                        },
+                        {
+                            "label": "PLLA multiplier x27",
+                            "value": "001A0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x28",
+                            "value": "001B0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x29",
+                            "value": "001C0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x30",
+                            "value": "001D0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x31",
+                            "value": "001E0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x32",
+                            "value": "001F0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x33",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "PLLA multiplier x34",
+                            "value": "00210000"
+                        },
+                        {
+                            "label": "PLLA multiplier x35",
+                            "value": "00220000"
+                        },
+                        {
+                            "label": "PLLA multiplier x36",
+                            "value": "00230000"
+                        },
+                        {
+                            "label": "PLLA multiplier x37",
+                            "value": "00240000"
+                        },
+                        {
+                            "label": "PLLA multiplier x38",
+                            "value": "00250000"
+                        },
+                        {
+                            "label": "PLLA multiplier x39",
+                            "value": "00260000"
+                        },
+                        {
+                            "label": "PLLA multiplier x40",
+                            "value": "00270000"
+                        },
+                        {
+                            "label": "PLLA multiplier x41",
+                            "value": "00280000"
+                        },
+                        {
+                            "label": "PLLA multiplier x42",
+                            "value": "00290000"
+                        },
+                        {
+                            "label": "PLLA multiplier x43",
+                            "value": "002A0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x44",
+                            "value": "002B0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x45",
+                            "value": "002C0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x46",
+                            "value": "002D0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x47",
+                            "value": "002E0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x48",
+                            "value": "002F0000"
+                        },
+                        {
+                            "label": "PLLA multiplier x49",
+                            "value": "00300000"
+                        },
+                        {
+                            "label": "PLLA multiplier x50",
+                            "value": "00310000"
+                        },
+                        {
+                            "label": "PLLA multiplier x51",
+                            "value": "00320000"
+                        },
+                        {
+                            "label": "PLLA multiplier x52",
+                            "value": "00330000"
+                        },
+                        {
+                            "label": "PLLA multiplier x53",
+                            "value": "00340000"
+                        },
+                        {
+                            "label": "PLLA multiplier x54",
+                            "value": "00350000"
+                        },
+                        {
+                            "label": "PLLA multiplier x55",
+                            "value": "00360000"
+                        },
+                        {
+                            "label": "PLLA multiplier x56",
+                            "value": "00370000"
+                        },
+                        {
+                            "label": "PLLA multiplier x57",
+                            "value": "00380000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00004000",
+                    "key": "FREQ_VCO",
+                    "label": "VCO Frequency Configuratio",
+                    "mask": "0000C000",
+                    "settings": [
+                        {
+                            "label": "Frequency range: 40-80 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Frequency range: 70-150 MHz",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "Frequency range: 125-275 MHz",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "Frequency range: 250-450 MHz",
+                            "value": "0000C000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003F00",
+                    "key": "PLLACOUNT",
+                    "label": "PLLA Counter",
+                    "mask": "00003F00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIVA",
+                    "label": "PLLA Front End Divider",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "PLLA is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divider is bypassed (divide by 1) and PLLA is enabled.",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 2.",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 3.",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 4.",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 5.",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 6.",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 7.",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 8.",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 9.",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 10.",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 11.",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 12.",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 13.",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 14.",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 15.",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 16.",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 17.",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 18.",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 19.",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 20.",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 21.",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 22.",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 23.",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 24.",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 25.",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 26.",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 27.",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 28.",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 29.",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 30.",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 31.",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 32.",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 33.",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 34.",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 35.",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 36.",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 37.",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 38.",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 39.",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 40.",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 41.",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 42.",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 43.",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 44.",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 45.",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 46.",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 47.",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 48.",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 49.",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 50.",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 51.",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 52.",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 53.",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 54.",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 55.",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 56.",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 57.",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 58.",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 59.",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 60.",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 61.",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 62.",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 63.",
+                            "value": "0000003F"
+                        },
+                        {
+                            "label": "Divider output is the selected clock divided by 64.",
+                            "value": "00000040"
+                        }
+                    ]
+                }
+            ],
+            "key": "CKGR_PLLAR",
+            "unused": "F8000000",
+            "label": "PLLA register"
+        },
+        {
+            "address": "4000C030",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "MDIV",
+                    "label": "Master Clock Division",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "MCK is FCLK divided by 1.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MCK is FCLK divided by 2.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Processor Clock Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "CSS",
+                    "label": "Master Clock Source Selection",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "MD_SLCK is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLACK is selected",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_MCKR",
+            "unused": "FFFFFE8C",
+            "label": "Master clock register"
+        },
+        {
+            "address": "4000C000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK3",
+                    "label": "Programmable Clock 3 Output Enable",
+                    "mask": "00000800",
+                    "settings": [
+                        {
+                            "label": "Programmable Clock 3 Output Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Programmable Clock 3 Output Enable: enabled",
+                            "value": "00000800"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK2",
+                    "label": "Programmable Clock 2 Output Enable",
+                    "mask": "00000400",
+                    "settings": [
+                        {
+                            "label": "Programmable Clock 2 Output Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Programmable Clock 2 Output Enable: enabled",
+                            "value": "00000400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK1",
+                    "label": "Programmable Clock 1 Output Enable",
+                    "mask": "00000200",
+                    "settings": [
+                        {
+                            "label": "Programmable Clock 1 Output Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Programmable Clock 1 Output Enable: enabled",
+                            "value": "00000200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK0",
+                    "label": "Programmable Clock 0 Output Enable",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "Programmable Clock 0 Output Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Programmable Clock 0 Output Enable: enabled",
+                            "value": "00000100"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_SCER",
+            "unused": "FFFFF0FF",
+            "label": "System clock enable register"
+        },
+        {
+            "address": "4000C040",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock Prescaler",
+                    "mask": "00000FF0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "MD_SLCK is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLACK is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "MCK is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK0",
+            "unused": "FFFFF008",
+            "label": "Programmable clock 0 register"
+        },
+        {
+            "address": "4000C044",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock Prescaler",
+                    "mask": "00000FF0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "MD_SLCK is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLACK is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "MCK is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK1",
+            "unused": "FFFFF008",
+            "label": "Programmable clock 1 register"
+        },
+        {
+            "address": "4000C048",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock Prescaler",
+                    "mask": "00000FF0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "MD_SLCK is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLACK is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "MCK is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK2",
+            "unused": "FFFFF008",
+            "label": "Programmable clock 2 register"
+        },
+        {
+            "address": "4000C04C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock Prescaler",
+                    "mask": "00000FF0",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "MD_SLCK is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLACK is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "MCK is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK3",
+            "unused": "FFFFF008",
+            "label": "Programmable clock 3 register"
+        }
+    ],
     "mcu": "ATSAMRH71F20C",
-    "clock": "1",
+    "clock": 100,
     "core": "M7",
-    "delay_src_path": "delays/m7/__lib_delays.c",
-    "config_registers": []
+    "delay_src_path": "delays/m7/__lib_delays.c"
 }
