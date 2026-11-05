@@ -1,6 +1,744 @@
 {
+    "config_registers": [
+        {
+            "address": "400F001C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PS",
+                    "label": "Power Scaling Configuration Value",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "PS0: normal mode (max 36 MHz, 48 MHz with flash high speed read mode)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PS1: low power mode (max 12 MHz, PLL/DFLL/USB not available)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PS2: high speed flash mode (max 48 MHz)",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ],
+            "key": "BPM_PMCON",
+            "unused": "FFFFFFFC",
+            "label": "Bpm power mode control register"
+        },
+        {
+            "address": "400A0000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "FWS",
+                    "label": "Flash Wait State",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "0 wait states (PS0: <= 18 MHz, PS1: <= 8 MHz, high speed mode: <= 24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1 wait state (PS0: <= 36 MHz, PS1: <= 12 MHz, high speed mode: <= 48 MHz)",
+                            "value": "00000040"
+                        }
+                    ]
+                }
+            ],
+            "key": "HFLASHC_FCR",
+            "unused": "FFFFFFBF",
+            "label": "Flash controller control register"
+        },
+        {
+            "address": "400A0004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "CMD",
+                    "label": "Flash read mode command",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "HSDIS: high speed read mode disabled (normal read mode)",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "HSEN: high speed read mode enabled (required above 36 MHz)",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "A5000000",
+                    "key": "KEY",
+                    "label": "Write protection key",
+                    "mask": "FF000000",
+                    "settings": [
+                        {
+                            "label": "Key",
+                            "value": "A5000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "HFLASHC_FCMD",
+            "unused": "00FFFFC0",
+            "label": "Flash controller command register"
+        },
+        {
+            "address": "400E0820",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OSCEN",
+                    "label": "OSC0 Oscillator Enable",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "OSC0 Oscillator Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "OSC0 Oscillator Enable: enabled",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "MODE",
+                    "label": "OSC0 Oscillator Mode",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "External clock connected on XIN",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Crystal connected to XIN/XOUT",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000006",
+                    "key": "GAIN",
+                    "label": "OSC0 Gain",
+                    "mask": "00000006",
+                    "settings": [
+                        {
+                            "label": "Gain 0 (0.6 - 2 MHz crystal)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Gain 1 (2 - 4 MHz crystal)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Gain 2 (4 - 8 MHz crystal)",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Gain 3 (8 - 16 MHz crystal)",
+                            "value": "00000006"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "AGC",
+                    "label": "OSC0 Automatic Gain Control",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "OSC0 Automatic Gain Control: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "OSC0 Automatic Gain Control: enabled",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000200",
+                    "key": "STARTUP",
+                    "label": "OSC0 Start-up Time (RCSYS cycles)",
+                    "mask": "00000F00",
+                    "settings": [
+                        {
+                            "label": "0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "64",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "128",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "2048",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "4096",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "8192",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "16384",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "32768",
+                            "value": "00000700"
+                        }
+                    ]
+                }
+            ],
+            "key": "SCIF_OSCCTRL0",
+            "unused": "FFFEF0F0",
+            "label": "Scif oscillator 0 control register"
+        },
+        {
+            "address": "400E0848",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "EN",
+                    "label": "RCFAST Oscillator Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "RCFAST Oscillator Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "RCFAST Oscillator Enable: enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000200",
+                    "key": "FRANGE",
+                    "label": "RCFAST Frequency Range",
+                    "mask": "00000300",
+                    "settings": [
+                        {
+                            "label": "4 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "8 MHz",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "12 MHz",
+                            "value": "00000200"
+                        }
+                    ]
+                }
+            ],
+            "key": "SCIF_RCFASTCFG",
+            "unused": "FFFFFCFE",
+            "label": "Scif 4/8/12 MHz RC oscillator configuration register"
+        },
+        {
+            "address": "400E0850",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "EN",
+                    "label": "RC80M Oscillator Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "RC80M Oscillator Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "RC80M Oscillator Enable: enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "SCIF_RC80MCR",
+            "unused": "FFFFFFFE",
+            "label": "Scif 80 MHz RC oscillator register"
+        },
+        {
+            "address": "400E0898",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "CEN",
+                    "label": "GCLK9 Clock Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "GCLK9 Clock Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "GCLK9 Clock Enable: enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000500",
+                    "key": "OSCSEL",
+                    "label": "GCLK9 Clock Source (PLL0 reference, 4 - 16 MHz)",
+                    "mask": "00001F00",
+                    "settings": [
+                        {
+                            "label": "OSC0",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "RC80M",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "RCFAST",
+                            "value": "00000500"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIVEN",
+                    "label": "GCLK9 Divide Enable (fGCLK = fSRC / (2 * (DIV + 1)))",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "GCLK9 Divide Enable (fGCLK = fSRC / (2 * (DIV + 1))): disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "GCLK9 Divide Enable (fGCLK = fSRC / (2 * (DIV + 1))): enabled",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "GCLK9 Division Factor",
+                    "mask": "FFFF0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "65535",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SCIF_GCCTRL9",
+            "unused": "0000E0FC",
+            "label": "Scif generic clock 9 control register"
+        },
+        {
+            "address": "400E0824",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "PLLEN",
+                    "label": "PLL0 Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "PLL0 Enable: disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0 Enable: enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "PLLOSC",
+                    "label": "PLL0 Reference Clock (4 - 16 MHz)",
+                    "mask": "00000006",
+                    "settings": [
+                        {
+                            "label": "OSC0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "GCLK9",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "PLLOPT",
+                    "label": "PLL0 Options",
+                    "mask": "00000038",
+                    "settings": [
+                        {
+                            "label": "VCO 80 - 180 MHz, output not divided, wide bandwidth",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "VCO 160 - 240 MHz, output not divided, wide bandwidth",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "VCO 80 - 180 MHz, output divided by 2, wide bandwidth",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "VCO 160 - 240 MHz, output divided by 2, wide bandwidth",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "VCO 80 - 180 MHz, output not divided, normal bandwidth",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "VCO 160 - 240 MHz, output not divided, normal bandwidth",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "VCO 80 - 180 MHz, output divided by 2, normal bandwidth",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "VCO 160 - 240 MHz, output divided by 2, normal bandwidth",
+                            "value": "00000038"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "PLLDIV",
+                    "label": "PLL0 Division Factor (fVCO = fREF * (PLLMUL + 1) / PLLDIV, or 2 * fREF * (PLLMUL + 1) if 0)",
+                    "mask": "00000F00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00070000",
+                    "key": "PLLMUL",
+                    "label": "PLL0 Multiply Factor",
+                    "mask": "000F0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "2"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "3F000000",
+                    "key": "PLLCOUNT",
+                    "label": "PLL0 Lock Count",
+                    "mask": "3F000000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SCIF_PLL0",
+            "unused": "C0F0F0C0",
+            "label": "Scif pll0 control register"
+        },
+        {
+            "address": "400E0000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "MCSEL",
+                    "label": "Main Clock Select",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "RCSYS (115 kHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "OSC0",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLL0",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "RC80M",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "RCFAST",
+                            "value": "00000005"
+                        }
+                    ]
+                }
+            ],
+            "key": "PM_MCCTRL",
+            "unused": "FFFFFFF8",
+            "label": "Pm main clock control register"
+        },
+        {
+            "address": "400E0004",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPUSEL",
+                    "label": "CPU Clock Select (fmain / 2^(CPUSEL + 1) when divided)",
+                    "mask": "00000007",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPUDIV",
+                    "label": "CPU Division",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "CPU clock equals main clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CPU clock is main clock divided by 2^(CPUSEL + 1)",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "PM_CPUSEL",
+            "unused": "FFFFFF78",
+            "label": "Pm CPU clock select register"
+        },
+        {
+            "address": "400E000C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBSEL",
+                    "label": "PBA Clock Select (fmain / 2^(PBSEL + 1) when divided)",
+                    "mask": "00000007",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBDIV",
+                    "label": "PBA Division",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "PBA clock equals main clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PBA clock is main clock divided by 2^(PBSEL + 1)",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "PM_PBASEL",
+            "unused": "FFFFFF78",
+            "label": "Pm PBA clock select register"
+        },
+        {
+            "address": "400E0010",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBSEL",
+                    "label": "PBB Clock Select (fmain / 2^(PBSEL + 1) when divided)",
+                    "mask": "00000007",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBDIV",
+                    "label": "PBB Division",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "PBB clock equals main clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PBB clock is main clock divided by 2^(PBSEL + 1)",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "PM_PBBSEL",
+            "unused": "FFFFFF78",
+            "label": "Pm PBB clock select register"
+        },
+        {
+            "address": "400E0014",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBSEL",
+                    "label": "PBC Clock Select (fmain / 2^(PBSEL + 1) when divided)",
+                    "mask": "00000007",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBDIV",
+                    "label": "PBC Division",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "PBC clock equals main clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PBC clock is main clock divided by 2^(PBSEL + 1)",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "PM_PBCSEL",
+            "unused": "FFFFFF78",
+            "label": "Pm PBC clock select register"
+        },
+        {
+            "address": "400E0018",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBSEL",
+                    "label": "PBD Clock Select (fmain / 2^(PBSEL + 1) when divided)",
+                    "mask": "00000007",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "7",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBDIV",
+                    "label": "PBD Division",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "PBD clock equals main clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PBD clock is main clock divided by 2^(PBSEL + 1)",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "PM_PBDSEL",
+            "unused": "FFFFFF78",
+            "label": "Pm PBD clock select register"
+        }
+    ],
     "core": "M4EF",
     "delay_src_path": "delays/m4ef/__lib_delays.c",
     "mcu": "ATSAM4LS4AA",
-    "clock": "1"
+    "clock": 48
 }
