@@ -51,6 +51,7 @@
 #endif
 
 #include "mcu.h" // Note: Added for MikroE implementation.
+#include "cmsis_compiler.h" // Note: Added for MikroE implementation.
 
 extern void SystemInit(); // Note: Added for MikroE implementation.
 // Note: Changed for MikroE implementation.
@@ -696,7 +697,7 @@ __always_inline __STATIC_INLINE void __attribute__((optimize("-O1"))) fpu_enable
     cpu_irq_restore(flags);
 }
 #endif /* (__ARM_FP==14) || (__ARM_FP==4) */
- 
+
 /* Optional application-provided functions */
 //extern void __attribute__((weak,long_call)) _on_reset(void);// Note: Changed for MikroE implementation.
 //extern void __attribute__((weak,long_call)) _on_bootstrap(void);// Note: Changed for MikroE implementation.
@@ -752,7 +753,7 @@ Reset_Handler(void)
 
 
 
- 
+
 
 
 
@@ -760,7 +761,7 @@ Reset_Handler(void)
     /* get the right stuff into CMCC    this includes settings and enablement for TCM */
     CMCC_Configure();
 
- 
+
 
 
     /* Data initialization from the XC32 .dinit template */
@@ -786,7 +787,7 @@ Reset_Handler(void)
             *pDst++ = 0UL;
         }
     }
- 
+
 #ifdef SCB_VTOR_TBLOFF_Msk
     /*  Set the vector-table base address. This may be in flash or TCM.
      *  The __svectors symbol is created by the XC32 linker.
@@ -794,7 +795,7 @@ Reset_Handler(void)
     pSrc = (uint32_t *) & __svectors;
     SCB->VTOR = ((uint32_t) pSrc & SCB_VTOR_TBLOFF_Msk);
 #endif
- 
+
     /* Initialize the C library */
 //    __libc_init_array();// Note: Changed for MikroE implementation.
 
