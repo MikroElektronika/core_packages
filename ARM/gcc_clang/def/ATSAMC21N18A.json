@@ -2,7 +2,7 @@
     "core": "M0+",
     "delay_src_path": "delays/m0+/__lib_delays.c",
     "mcu": "ATSAMC21N18A",
-    "clock": 4,
+    "clock": 48,
     "config_registers": [
         {
             "address": "41004004",
@@ -10,7 +10,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000004",
                     "key": "RWS",
                     "label": "NVM Read Wait States",
                     "mask": "0000001E",
@@ -524,7 +524,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0000000B",
+                    "init": "00000000",
                     "key": "DIV",
                     "label": "48MHz Internal Oscillator Divider Selection",
                     "mask": "0000000F",
