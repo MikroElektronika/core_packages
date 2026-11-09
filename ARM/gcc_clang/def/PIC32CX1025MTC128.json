@@ -1,6 +1,678 @@
 {
-    "core": "M4EF",
-    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "config_registers": [
+        {
+            "address": "400531D0",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "TDXTALSEL",
+                    "label": "Timing domain slow clock (TD_SLCK) source",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Embedded 32 kHz RC oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "32.768 kHz crystal oscillator",
+                            "value": "00000008"
+                        }
+                    ]
+                }
+            ],
+            "key": "SUPC_CR",
+            "label": "Supply controller control register",
+            "unused": "FFFFFFF7"
+        },
+        {
+            "address": "400531D8",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OSCBYPASS",
+                    "label": "Slow crystal oscillator bypass",
+                    "mask": "00100000",
+                    "settings": [
+                        {
+                            "label": "No effect (crystal on XIN32/XOUT32)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Bypass: external 32.768 kHz clock on XIN32",
+                            "value": "00100000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SUPC_MR",
+            "label": "Supply controller mode register",
+            "unused": "FFEFFFFF"
+        },
+        {
+            "address": "46800024",
+            "default": "00000008",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CFDEN",
+                    "label": "Clock failure detector",
+                    "mask": "02000000",
+                    "settings": [
+                        {
+                            "label": "The clock failure detector is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The clock failure detector is enabled",
+                            "value": "02000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCSEL",
+                    "label": "Main clock (MAINCK) source",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "Main RC oscillator (12 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main crystal oscillator (12..48 MHz)",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0000FF00",
+                    "key": "MOSCXTST",
+                    "label": "Main crystal oscillator start-up time (x 8 slow clock cycles)",
+                    "mask": "0000FF00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "MOSCRCEN",
+                    "label": "Main RC oscillator enable",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "The main RC oscillator is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The main RC oscillator is enabled",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTBY",
+                    "label": "Main crystal oscillator bypass",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "No effect",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Bypass: external clock on XIN",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTEN",
+                    "label": "Main crystal oscillator enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "The main crystal oscillator is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The main crystal oscillator is enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "CKGR_MOR",
+            "label": "Main oscillator register",
+            "unused": "FCFF00F4"
+        },
+        {
+            "address": "4680000C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "80000000",
+                    "key": "ENLOCK",
+                    "label": "Enable PLL lock",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "80000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ENPLLO1",
+                    "label": "Enable PLLA clock output 1 (PLLACK1)",
+                    "mask": "40000000",
+                    "settings": [
+                        {
+                            "label": "PLLACK1 is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLACK1 is enabled",
+                            "value": "40000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ENPLLO0",
+                    "label": "Enable PLLA clock output 0 (PLLACK0)",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": "PLLACK0 is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLACK0 is enabled",
+                            "value": "20000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ENPLL",
+                    "label": "Enable PLLA",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "PLLA is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLA is enabled",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLMS",
+                    "label": "PLLA reference clock",
+                    "mask": "08000000",
+                    "settings": [
+                        {
+                            "label": "TD_SLCK (timing domain slow clock)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK (main clock)",
+                            "value": "08000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00001000",
+                    "key": "DIVPMC1",
+                    "label": "PLLACK1 divider (PLLACK1 = VCO / (DIVPMC1 + 1))",
+                    "mask": "000FF000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000013",
+                    "key": "DIVPMC0",
+                    "label": "PLLACK0 divider (PLLACK0 = VCO / (DIVPMC0 + 1))",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "PMC_PLLA_CTRL0",
+            "label": "PLLA control register 0 (PMC_PLL_CTRL0, PMC_PLL_UPDT.ID = 0)",
+            "unused": "07F00F00"
+        },
+        {
+            "address": "46800010",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00002FAE",
+                    "key": "MUL",
+                    "label": "PLLA multiplier (VCO = reference x (MUL + 1), 380..600 MHz)",
+                    "mask": "0000FFFF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "32767",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "PMC_PLLA_CTRL1",
+            "label": "PLLA control register 1 (PMC_PLL_CTRL1, PMC_PLL_UPDT.ID = 0)",
+            "unused": "FFFF0000"
+        },
+        {
+            "address": "4680000C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "80000000",
+                    "key": "ENLOCK",
+                    "label": "Enable PLL lock",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "80000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20000000",
+                    "key": "ENPLLO0",
+                    "label": "Enable PLLB clock output (PLLBCK)",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": "PLLBCK is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLBCK is enabled",
+                            "value": "20000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10000000",
+                    "key": "ENPLL",
+                    "label": "Enable PLLB",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "PLLB is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLB is enabled",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "08000000",
+                    "key": "PLLMS",
+                    "label": "PLLB reference clock",
+                    "mask": "08000000",
+                    "settings": [
+                        {
+                            "label": "PLLACK0 (PLLA output 0)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK (main clock)",
+                            "value": "08000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIVPMC0",
+                    "label": "PLLBCK divider (PLLBCK = VCO / (DIVPMC0 + 1))",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "PMC_PLLB_CTRL0",
+            "label": "PLLB control register 0 (PMC_PLL_CTRL0, PMC_PLL_UPDT.ID = 1)",
+            "unused": "47FFFF00"
+        },
+        {
+            "address": "46800010",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "MUL",
+                    "label": "PLLB multiplier (VCO = reference x (MUL + 1), 300..600 MHz)",
+                    "mask": "0000FFFF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "PMC_PLLB_CTRL1",
+            "label": "PLLB control register 1 (PMC_PLL_CTRL1, PMC_PLL_UPDT.ID = 1)",
+            "unused": "FFFF0000"
+        },
+        {
+            "address": "4680002C",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "RATIO_MCK0DIV2",
+                    "label": "MCK0DIV2 clock = MCK0 / 2",
+                    "mask": "04000000",
+                    "settings": [
+                        {
+                            "label": "MCK0DIV2 = MCK0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MCK0DIV2 = MCK0 / 2",
+                            "value": "04000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "01000000",
+                    "key": "RATIO_MCK0DIV",
+                    "label": "MCK0DIV clock (peripheral bus) = MCK0 / 2",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "MCK0DIV = MCK0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MCK0DIV = MCK0 / 2",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Processor (CPU_CLK0) and master clock (MCK0) prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "Selected clock divided by 3",
+                            "value": "00000070"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "CSS",
+                    "label": "Processor (CPU_CLK0) and master clock (MCK0) source",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "MD_SLCK (monitoring domain 32 kHz RC)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK (main clock)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLACK1 (PLLA output 1)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "PLLBCK (PLLB output)",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_CPU_CKR",
+            "label": "CPU clock register (core 0: CPU_CLK0 / MCK0)",
+            "unused": "FAFFFF8C"
+        },
+        {
+            "address": "460E0000",
+            "default": "0C000000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "08000000",
+                    "key": "ALWAYS1",
+                    "label": "Always written to one",
+                    "mask": "08000000",
+                    "settings": [
+                        {
+                            "label": "0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1",
+                            "value": "08000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "04000000",
+                    "key": "CLOE",
+                    "label": "Code loop optimization",
+                    "mask": "04000000",
+                    "settings": [
+                        {
+                            "label": "The opcode loop optimization is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The opcode loop optimization is enabled",
+                            "value": "04000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000700",
+                    "key": "FWS",
+                    "label": "Flash wait states (FWS >= CPU clock x 32 ns)",
+                    "mask": "00000F00",
+                    "settings": [
+                        {
+                            "label": "0 wait states",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1 wait state",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "2 wait states",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "3 wait states",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "4 wait states",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "5 wait states",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "6 wait states",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "7 wait states",
+                            "value": "00000700"
+                        },
+                        {
+                            "label": "8 wait states",
+                            "value": "00000800"
+                        },
+                        {
+                            "label": "9 wait states",
+                            "value": "00000900"
+                        },
+                        {
+                            "label": "10 wait states",
+                            "value": "00000A00"
+                        },
+                        {
+                            "label": "11 wait states",
+                            "value": "00000B00"
+                        },
+                        {
+                            "label": "12 wait states",
+                            "value": "00000C00"
+                        },
+                        {
+                            "label": "13 wait states",
+                            "value": "00000D00"
+                        },
+                        {
+                            "label": "14 wait states",
+                            "value": "00000E00"
+                        },
+                        {
+                            "label": "15 wait states",
+                            "value": "00000F00"
+                        }
+                    ]
+                }
+            ],
+            "key": "SEFC_EEFC_FMR",
+            "label": "Flash mode register (SEFC0 and SEFC1)",
+            "unused": "F3FFF0FF"
+        },
+        {
+            "address": "40050470",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PATCH_BYPASS",
+                    "label": "Flash high-speed patch",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Patch enabled (CPU clock 160 MHz and above)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Patch bypassed (CPU clock below 160 MHz)",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "SFR_FLASH",
+            "label": "Flash memory configuration register",
+            "unused": "FFFFFFFE"
+        }
+    ],
     "mcu": "PIC32CX1025MTC128",
-    "clock": "1"
+    "clock": 198,
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c"
 }
