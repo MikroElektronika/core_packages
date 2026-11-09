@@ -38,6 +38,53 @@
                                else \
                                    asm volatile ("csrw " #reg ", %0" :: "r"(val)); })
 
+#ifdef INTERRUPTS_PLIC_BASE
+/* ------------------------------------------------------------------------- */
+/* Platform-Level Interrupt Controller (HPMicro, Andes D25), machine target 0. */
+/* The startup code dispatches PLIC sources to <NAME>_IRQHandler functions.   */
+/* ------------------------------------------------------------------------- */
+
+#define MSTATUS_MIE (0x00000008UL)
+#define MIE_MEIE    (0x00000800UL)
+
+#define PLIC_PRIORITY(irq) (*(volatile unsigned long *)(INTERRUPTS_PLIC_BASE + 0x4UL * (unsigned long)(irq)))
+#define PLIC_ENABLE(irq)   (*(volatile unsigned long *)(INTERRUPTS_PLIC_BASE + 0x2000UL + 0x4UL * ((unsigned long)(irq) >> 5)))
+#define PLIC_BIT(irq)      (1UL << ((unsigned long)(irq) & 0x1FUL))
+
+void interrupts_enable( void )
+{
+    set_csr( mie, MIE_MEIE );
+    set_csr( mstatus, MSTATUS_MIE );
+}
+
+void interrupts_disable( void )
+{
+    clear_csr( mstatus, MSTATUS_MIE );
+}
+
+void interrupt_enable( int interrupt )
+{
+    if ( ( interrupt <= 0 ) || ( interrupt >= INTERRUPTS_PLIC_SOURCES ) ) {
+        return;
+    }
+    // Priority 0 never interrupts: use the lowest active priority unless one is set.
+    if ( 0 == PLIC_PRIORITY( interrupt ) ) {
+        PLIC_PRIORITY( interrupt ) = 1UL;
+    }
+    PLIC_ENABLE( interrupt ) |= PLIC_BIT( interrupt );
+    set_csr( mie, MIE_MEIE );
+}
+
+void interrupt_disable( int interrupt )
+{
+    if ( ( interrupt <= 0 ) || ( interrupt >= INTERRUPTS_PLIC_SOURCES ) ) {
+        return;
+    }
+    PLIC_ENABLE( interrupt ) &= ~PLIC_BIT( interrupt );
+}
+
+#else // ECLIC (GigaDevice, Nuclei cores)
+
 #define SET_ECLIC_CLICINT_IE(IRQn,val)   (*(volatile unsigned char*)(ECLIC_ADDR_BASE+ECLIC_INT_IE_OFFSET+IRQn*4)=val)
 
 #define SET_ECLIC_CLICINT_ATTR(IRQn,val) (*(volatile unsigned char*)(ECLIC_ADDR_BASE+ECLIC_INT_ATTR_OFFSET+IRQn*4)=val)
@@ -110,6 +157,8 @@ static inline void interrupts_disable_asm( void )
 {
     clear_csr( mstatus, MSTATUS_MIE );
 }
+
+#endif // INTERRUPTS_PLIC_BASE
 
 // ----------------------------------------------------------------------------
 /*

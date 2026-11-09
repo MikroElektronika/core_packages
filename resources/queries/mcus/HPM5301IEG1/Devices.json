@@ -1,0 +1,18 @@
+{
+    "def_file": "HPM5301IEG1.json",
+    "family_uid": "HPM5300",
+    "flash": "1048576",
+    "icon": "images/mcu/hpmicro.png",
+    "max_speed": "480.000",
+    "name": "HPM5301IEG1",
+    "ram": "294912",
+    "sdk_config": "{\"MCU_NAME\":\"HPM5301IEG1\",\"CORE_NAME\":\"RISCV\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "HPM5301IEG1",
+    "vendor": "HPMicro",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm-riscv\": \"riscv_gcc_clang_hpm5301\", \"xpack-riscv-none-embed-gcc\": \"riscv_gcc_clang_hpm5301\"}"
+}

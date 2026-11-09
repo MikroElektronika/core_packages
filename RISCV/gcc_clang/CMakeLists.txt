@@ -17,7 +17,14 @@ endif()
 #include all .cmake files from cmake folder
 
 set(local_list_include "")
-set(vendor "gigadevice")
+set(local_include_dirs "")
+set(local_install_dirs "")
+set(mcu_header_file common/mcu.h)
+if(${MCU_NAME} MATCHES "^HPM.+$")
+    set(vendor "hpmicro")
+else()
+    set(vendor "gigadevice")
+endif()
 file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
 foreach(cmakeFile ${CMAKE_FILES})
     include(${cmakeFile})
@@ -57,15 +64,28 @@ INTERFACE
     $<INSTALL_INTERFACE:include/core>
 )
 
+if(local_include_dirs)
+    target_include_directories(lib_core PRIVATE ${local_include_dirs})
+endif()
+
 add_fosc_macro(lib_core)
 
 core_install(MikroC.Core)
+
+foreach(install_dir ${local_install_dirs})
+    install(
+        DIRECTORY
+            ${install_dir}/
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/include/core
+    )
+endforeach()
 
 install(
     FILES
         common/rcu_typedef.h
         common/delays.h
-        common/mcu.h
+        ${mcu_header_file}
         common/const.h
         common/bits.h
 
