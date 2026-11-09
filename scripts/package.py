@@ -341,6 +341,33 @@ def copy_interrupts(mcus, source_dir, output_dir, base_path):
 
     copy_interrupt_files(source_dir, base_path)
 
+def copy_local_includes(source_file, source_subdir, output_subdir):
+    """
+    Copy files referenced via #include "..." from the same directory as source_file.
+    Used for mikroC def files which include shared MCU family definitions
+    (e.g. MK64FN1M0VLL12.c -> #include "MK64FN1M0XXX12.c").
+    """
+    pending = [source_file]
+    seen = set()
+    while pending:
+        current = pending.pop()
+        if current in seen:
+            continue
+        seen.add(current)
+        try:
+            with open(current, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+        except OSError:
+            continue
+        for include in re.findall(r'^\s*#include\s*"([^"]+)"', content, re.MULTILINE):
+            include_path = os.path.normpath(os.path.join(os.path.dirname(current), include))
+            if not os.path.isfile(include_path) or include_path in seen:
+                continue
+            dest_path = os.path.join(output_subdir, os.path.relpath(include_path, start=source_subdir))
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+            shutil.copy(include_path, dest_path)
+            pending.append(include_path)
+
 def copy_files_from_dir(mcus, source_dir, base_path, subdirectory):
 
     source_subdir = os.path.join(source_dir, subdirectory)
@@ -367,6 +394,9 @@ def copy_files_from_dir(mcus, source_dir, base_path, subdirectory):
                     full_dest_path = os.path.join(output_subdir, relative_path)
                     os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
                     shutil.copy(full_source_path, full_dest_path)
+                    if 'gcc_clang' not in source_subdir:
+                        # mikroC def files may include shared XXX definition files
+                        copy_local_includes(full_source_path, source_subdir, output_subdir)
 
 def copy_delays(cores, source_dir, output_dir, base_path):
 
