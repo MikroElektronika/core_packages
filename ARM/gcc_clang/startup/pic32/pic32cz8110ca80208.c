@@ -21,6 +21,8 @@
 // #include "pic32cz8110ca80208.h"
 #include "mcu.h" // Note: Added for MikroE implementation.
 
+extern void SystemInit(); // Note: Added for MikroE implementation.
+
 /* Initialize segments */
 extern uint32_t _sfixed;
 extern uint32_t _efixed;
@@ -554,6 +556,9 @@ void Reset_Handler(void)
 
         /* Initialize the C library */
         __libc_init_array();
+
+        /* Initialize system clock settings */
+        SystemInit(); // Note: Added for MikroE implementation.
 
         /* Call the optional application-provided _on_bootstrap() function. */
         if (_on_bootstrap) {
