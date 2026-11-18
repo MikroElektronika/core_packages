@@ -3,5 +3,95 @@
     "core": "M33EF",
     "delay_src_path": "delays/m33ef/__lib_delays.c",
     "mcu": "KW45Z41052AFTA",
-    "clock": "1"
+    "clock": "1",
+    "trustzone_capable": true,
+    "trustzone": {
+        "tz_vendor": "nxp",
+        "partition_method": "none",
+        "security_controller": "TRDC",
+        "sau_count": 8,
+        "nvic_itns_count": 3,
+        "nsc_align": "0x20",
+        "memory_regions": [
+            {
+                "name": "FLASH",
+                "start": "0x10000000",
+                "size": "0x00080000",
+                "granularity": "0x2000",
+                "nsc_align": "0x20"
+            },
+            {
+                "name": "FLASH_NS",
+                "start": "0x00000000",
+                "size": "0x00080000"
+            },
+            {
+                "name": "SRAM",
+                "start": "0x30000000",
+                "size": "0x0001C000",
+                "granularity": "0x1000"
+            },
+            {
+                "name": "SRAM_NS",
+                "start": "0x20000000",
+                "size": "0x0001C000"
+            }
+        ],
+        "linker_memory_map": {
+            "secure": [
+                {
+                    "name": "ROM",
+                    "region": "flash",
+                    "base": "secure_start",
+                    "length": "secure_minus_nsc",
+                    "permissions": "rx"
+                },
+                {
+                    "name": "ROM_NSC",
+                    "region": "flash",
+                    "base": "previous_end",
+                    "length": "nsc",
+                    "permissions": "rx"
+                },
+                {
+                    "name": "RAM",
+                    "region": "sram",
+                    "base": "secure_start",
+                    "length": "secure",
+                    "permissions": "rwx"
+                }
+            ],
+            "nonsecure": [
+                {
+                    "name": "ROM",
+                    "region": "flash",
+                    "base": "nonsecure_start",
+                    "length": "nonsecure",
+                    "permissions": "rx"
+                },
+                {
+                    "name": "ROM_NSC",
+                    "region": "flash",
+                    "base": "nsc_ns_alias",
+                    "length": "zero",
+                    "permissions": "rx"
+                },
+                {
+                    "name": "RAM",
+                    "region": "sram",
+                    "base": "nonsecure_start",
+                    "length": "nonsecure",
+                    "permissions": "rwx"
+                }
+            ]
+        },
+        "sau_fixed_ns_regions": [
+            {
+                "base": "0x40000000",
+                "limit": "0x4FFFFFFF",
+                "attr": 2,
+                "label": "Non-secure peripherals"
+            }
+        ]
+    }
 }

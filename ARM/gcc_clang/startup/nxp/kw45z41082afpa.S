@@ -1,14 +1,19 @@
+/* KW45Z41082AFPA: NXP MCUXpresso SDK startup_KW45Z41082.S
+ * (nxp-mcuxpresso/mcux-devices-wireless @ 0ee8242572a7), installed by scripts/nxp_trustzone.py.
+ * Reset_Handler calls SystemInit() (system/src/nxp/<family>/init_clock.c),
+ * copies .data, then branches to _start (newlib crt0 -> main). */
+
 /* ------------------------------------------------------------------------- */
-/*  @file:    startup_KW45Z41053.s                                           */
+/*  @file:    startup_KW45Z41082.s                                           */
 /*  @purpose: CMSIS Cortex-M33 Core Device Startup File                      */
-/*            KW45Z41053                                                     */
-/*  @version: 1.0                                                            */
-/*  @2025-05-16:    2020-5-12                                                      */
-/*  @build:   b240227                                                        */
+/*            KW45Z41082                                                     */
+/*  @version: 2.0                                                            */
+/*  @date:    2024-10-29                                                     */
+/*  @build:   b250520                                                        */
 /* ------------------------------------------------------------------------- */
 /*                                                                           */
 /* Copyright 1997-2016 Freescale Semiconductor, Inc.                         */
-/* Copyright 2016-2024 NXP                                                   */
+/* Copyright 2016-2025 NXP                                                   */
 /* SPDX-License-Identifier: BSD-3-Clause                                     */
 /*****************************************************************************/
 /* Version: GCC for ARM Embedded Processors                                  */
@@ -85,7 +90,7 @@ __isr_vector:
     .long   LPUART0_IRQHandler                              /* Low-Power Universal Asynchronous Receiver/Transmitter 0 interrupt*/
     .long   LPUART1_IRQHandler                              /* Low-Power Universal Asynchronous Receiver/Transmitter 1 interrupt*/
     .long   FLEXIO0_IRQHandler                              /* Flexible Input/Output 0 interrupt*/
-    .long   CAN0_IRQHandler                                 /* Controller Area Network 0 interrupt*/
+    .long   Reserved63_IRQHandler                           /* Reserved interrupt*/
     .long   Reserved64_IRQHandler                           /* Reserved interrupt*/
     .long   Reserved65_IRQHandler                           /* Reserved interrupt*/
     .long   Reserved66_IRQHandler                           /* Reserved interrupt*/
@@ -360,12 +365,26 @@ Reset_Handler:
     ldr    r2, =__data_start__
     ldr    r3, =__data_end__
 
+#ifdef __PERFORMANCE_IMPLEMENTATION
+/* Here are two copies of loop implementations. First one favors performance
+ * and the second one favors code size. Default uses the second one.
+ * Define macro "__PERFORMANCE_IMPLEMENTATION" in project to use the first one */
+    subs    r3, r2
+    ble    .LC1
+.LC0:
+    subs    r3, #4
+    ldr    r0, [r1, r3]
+    str    r0, [r2, r3]
+    bgt    .LC0
+.LC1:
+#else  /* code size implemenation */
 .LC0:
     cmp     r2, r3
     ittt    lt
     ldrlt   r0, [r1], #4
     strlt   r0, [r2], #4
     blt    .LC0
+#endif
 
 #ifdef __STARTUP_CLEAR_BSS
 /*     This part of work usually is done in C library startup code. Otherwise,
@@ -685,15 +704,6 @@ FLEXIO0_IRQHandler:
     bx    r0
     .size FLEXIO0_IRQHandler, . - FLEXIO0_IRQHandler
 
-    .align 1
-    .thumb_func
-    .weak CAN0_IRQHandler
-    .type CAN0_IRQHandler, %function
-CAN0_IRQHandler:
-    ldr   r0,=CAN0_DriverIRQHandler
-    bx    r0
-    .size CAN0_IRQHandler, . - CAN0_IRQHandler
-
 
 /*    Macro to define default handlers. Default handler
  *    will be weak symbol and just dead loops. They can be
@@ -741,7 +751,7 @@ CAN0_IRQHandler:
     def_irq_handler    LPUART0_DriverIRQHandler
     def_irq_handler    LPUART1_DriverIRQHandler
     def_irq_handler    FLEXIO0_DriverIRQHandler
-    def_irq_handler    CAN0_DriverIRQHandler
+    def_irq_handler    Reserved63_IRQHandler
     def_irq_handler    Reserved64_IRQHandler
     def_irq_handler    Reserved65_IRQHandler
     def_irq_handler    Reserved66_IRQHandler
