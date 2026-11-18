@@ -1093,7 +1093,7 @@
                     "init": "0",
                     "key": "LDR",
                     "label": "DPLL Loop Divider Ratio",
-                    "mask": "03FF0000",
+                    "mask": "00000FFF",
                     "settings_array": {
                         "decrease": false,
                         "disabled_when_zero": false,
@@ -1116,7 +1116,7 @@
                     "init": "0",
                     "key": "DIV",
                     "label": "DPLL Clock Divider",
-                    "mask": "000F0000",
+                    "mask": "07FF0000",
                     "settings_array": {
                         "decrease": false,
                         "disabled_when_zero": false,

@@ -156,6 +156,7 @@ SECTIONS
         . = . + STACK_SIZE;
         . = ALIGN(8);
         _estack = .;
+        PROVIDE(_stack = _estack);
     } > ram
 
     . = ALIGN(4);

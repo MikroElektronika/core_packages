@@ -91,7 +91,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000003",
+                    "init": "00000001",
                     "key": "FPLLIDIV",
                     "label": "PLL Input Divider",
                     "mask": "00000007",
@@ -231,10 +231,10 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00010000",
                     "key": "FPLLODIV",
                     "label": "System PLL Output Clock Divider",
-                    "mask": "00000000",
+                    "mask": "00070000",
                     "settings": [
                         {
                             "label": "PLL Divide by 1",

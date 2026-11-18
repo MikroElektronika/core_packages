@@ -475,7 +475,7 @@
                         },
                         {
                             "label": "PLL is not divided before MCO",
-                            "value": "10000000"
+                            "value": "80000000"
                         }
                     ]
                 }

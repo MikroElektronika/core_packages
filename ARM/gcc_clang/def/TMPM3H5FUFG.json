@@ -121,7 +121,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "1800",
+                    "init": "1000",
                     "key": "PLL0SETIM",
                     "label": "PLL0 integer part multiplicator",
                     "mask": "FF00",
@@ -1223,7 +1223,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "100000",
+                    "init": "200000",
                     "key": "PLL0SELD",
                     "label": "PLL0 divider",
                     "mask": "300000",
@@ -1400,5 +1400,5 @@
     "core": "M3",
     "delay_src_path": "delays/m3/__lib_delays.c",
     "mcu": "TMPM3H5FUFG",
-    "clock": "120"
+    "clock": "40"
 }

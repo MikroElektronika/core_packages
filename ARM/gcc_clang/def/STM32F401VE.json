@@ -2670,7 +2670,7 @@
                         },
                         {
                             "label": "HCLK divided by 4 ",
-                            "value": "00002100"
+                            "value": "00002800"
                         },
                         {
                             "label": "HCLK divided by 8 ",
@@ -2678,7 +2678,7 @@
                         },
                         {
                             "label": "HCLK divided by 16 ",
-                            "value": "00003100"
+                            "value": "00003800"
                         }
                     ]
                 },

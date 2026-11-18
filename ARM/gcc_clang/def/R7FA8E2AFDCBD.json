@@ -1935,7 +1935,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLL2STP",
                     "label": "PLL2 Stop Control",
                     "mask": "1",
@@ -2633,5 +2633,5 @@
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
     "mcu": "R7FA8E2AFDCBD",
-    "clock": "480"
+    "clock": "240"
 }

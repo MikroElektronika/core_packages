@@ -275,7 +275,7 @@
                     "init": "00000000",
                     "key": "FPLLODIV",
                     "label": "System PLL Output Clock Divider",
-                    "mask": "00000000",
+                    "mask": "00070000",
                     "settings": [
                         {
                             "label": "PLL Divide by 1",
@@ -322,7 +322,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000002",
+                    "init": "00000003",
                     "key": "FNOSC",
                     "label": "Oscillator Selection Bits",
                     "mask": "00000007",

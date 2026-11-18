@@ -1,0 +1,3 @@
+if(${MCU_NAME} MATCHES "^R7F100GLF$|^R7F100GLG$|^R7F100GLH$|^R7F100GLJ$|^R7F100GLK$|^R7F100GLL$|^R7F100GLN$")
+    list(APPEND local_list_macros "getClockPresc (16UL)")
+endif()

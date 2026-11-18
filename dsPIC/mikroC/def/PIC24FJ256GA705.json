@@ -707,7 +707,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000001",
+                    "init": "00000000",
                     "key": "FNOSC",
                     "label": "Oscillator Source Selection",
                     "mask": "00000007",
@@ -2432,5 +2432,5 @@
         "max_addr": "NA",
         "min_addr": "NA"
     },
-    "clock": "16"
+    "clock": "4"
 }

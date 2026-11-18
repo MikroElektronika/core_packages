@@ -1,0 +1,434 @@
+{
+    "core": "RXv3e",
+    "mcu": "R5K574N6E4AE",
+    "clock": "48",
+    "delay_src_path": "delays/rxv3e/delays.c",
+    "config_registers": [
+        {
+            "key": "SYSTEM_HOCOCR2",
+            "label": "HOCO frequency",
+            "address": "87019037",
+            "default": "7",
+            "unused": "fffffff8",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "7",
+                    "key": "HCFRQ",
+                    "label": "Oscillator frequency",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "16 MHz",
+                            "value": "0"
+                        },
+                        {
+                            "label": "18 MHz",
+                            "value": "1"
+                        },
+                        {
+                            "label": "20 MHz",
+                            "value": "2"
+                        },
+                        {
+                            "label": "32 MHz",
+                            "value": "4"
+                        },
+                        {
+                            "label": "48 MHz",
+                            "value": "7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "SYSTEM_SCKDIVCR",
+            "label": "System and peripheral clock dividers",
+            "address": "87019020",
+            "default": "31222332",
+            "unused": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "2",
+                    "key": "PCKD",
+                    "label": "PCLKD divider",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "6"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "30",
+                    "key": "PCKC",
+                    "label": "PCLKC divider",
+                    "mask": "f0",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "10"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "20"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "30"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "40"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "50"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "60"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "300",
+                    "key": "PCKB",
+                    "label": "PCLKB divider",
+                    "mask": "f00",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "100"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "200"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "300"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "400"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "500"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "600"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "2000",
+                    "key": "PCKA",
+                    "label": "PCLKA divider",
+                    "mask": "f000",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "6000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20000",
+                    "key": "BCK",
+                    "label": "BCLK divider",
+                    "mask": "f0000",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "40000"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "50000"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "60000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "200000",
+                    "key": "PCKE",
+                    "label": "PCLKE divider",
+                    "mask": "f00000",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "300000"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "500000"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "600000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "1000000",
+                    "key": "ICK",
+                    "label": "ICLK divider",
+                    "mask": "f000000",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "2000000"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "3000000"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "5000000"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "6000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "30000000",
+                    "key": "MRPCK",
+                    "label": "MRPCLK divider",
+                    "mask": "f0000000",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "20000000"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "30000000"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "40000000"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "50000000"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "60000000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "SYSTEM_SCKDIVCR2",
+            "label": "CPU and MRAM clock dividers",
+            "address": "87019024",
+            "default": "1000",
+            "unused": "ffff0ff0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CPUCK",
+                    "label": "CPUCLK divider",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "1"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "2"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "3"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "4"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "5"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "6"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "1000",
+                    "key": "MRICK",
+                    "label": "MRICLK divider",
+                    "mask": "f000",
+                    "settings": [
+                        {
+                            "label": "/ 1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "/ 2",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "/ 4",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "/ 8",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "/ 16",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "/ 32",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "/ 64",
+                            "value": "6000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -6,7 +6,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "20000000",
+                    "init": "30000000",
                     "key": "FCK",
                     "label": "Flash IF Clock (FCLK) Select",
                     "mask": "70000000",
@@ -43,7 +43,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1000000",
                     "key": "ICK",
                     "label": "System Clock (ICLK) Select",
                     "mask": "7000000",
@@ -80,7 +80,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10000",
+                    "init": "20000",
                     "key": "BCK",
                     "label": "External Bus Clock (BCLK) Select",
                     "mask": "70000",
@@ -117,7 +117,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "1000",
+                    "init": "2000",
                     "key": "PCKA",
                     "label": "Peripheral Module Clock A (PCLKA) Select ",
                     "mask": "7000",
@@ -154,7 +154,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "200",
+                    "init": "300",
                     "key": "PCKB",
                     "label": "Peripheral Module Clock B (PCLKB) Select",
                     "mask": "700",
@@ -191,7 +191,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "20",
+                    "init": "30",
                     "key": "PCKC",
                     "label": "Peripheral Module Clock C (PCLKC) Select",
                     "mask": "70",
@@ -228,7 +228,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "2",
                     "key": "PCKD",
                     "label": "Peripheral Module Clock D (PCLKD) Select ",
                     "mask": "7",
@@ -346,7 +346,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1700",
+                    "init": "2F00",
                     "key": "PLLMUL",
                     "label": "PLL Frequency Multiplication Factor Select",
                     "mask": "3f00",
@@ -566,7 +566,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "PLLSTP",
                     "label": "PLL Stop Control",
                     "mask": "1",

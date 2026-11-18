@@ -1,6 +1,4663 @@
 {
+    "config_registers": [
+        {
+            "address": "400B0100",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "FREQ",
+                    "label": "SYSOSCCFG.FREQ clock-control field.",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "SYSOSCbase",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSOSC4M",
+                            "value": "1"
+                        },
+                        {
+                            "label": "SYSOSCuser",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "USE4MHZSTOP",
+                    "label": "SYSOSCCFG.USE4MHZSTOP clock-control field.",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "DISABLESTOP",
+                    "label": "SYSOSCCFG.DISABLESTOP clock-control field.",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DISABLE",
+                    "label": "SYSOSCCFG.DISABLE clock-control field.",
+                    "mask": "400",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "BLOCKASYNCALL",
+                    "label": "SYSOSCCFG.BLOCKASYNCALL clock-control field.",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FASTCPUEVENT",
+                    "label": "SYSOSCCFG.FASTCPUEVENT clock-control field.",
+                    "mask": "20000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "20000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSOSCCFG",
+            "unused": "fffcf8fc",
+            "label": "SYSCTL SYSOSCCFG clock configuration register"
+        },
+        {
+            "address": "400B0104",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MDIV",
+                    "label": "MCLKCFG.MDIV clock-control field.",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "5"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "6"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "7"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "9"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "FLASHWAIT",
+                    "label": "MCLKCFG.FLASHWAIT clock-control field.",
+                    "mask": "f00",
+                    "settings": [
+                        {
+                            "label": "Wait0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Wait1",
+                            "value": "100"
+                        },
+                        {
+                            "label": "Wait2",
+                            "value": "200"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "300"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "400"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "500"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "600"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "700"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "800"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "900"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a00"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b00"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c00"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d00"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e00"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "USEMFTICK",
+                    "label": "MCLKCFG.USEMFTICK clock-control field.",
+                    "mask": "1000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "USEHSCLK",
+                    "label": "MCLKCFG.USEHSCLK clock-control field.",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "USELFCLK",
+                    "label": "MCLKCFG.USELFCLK clock-control field.",
+                    "mask": "100000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "100000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "STOPCLKSTBY",
+                    "label": "MCLKCFG.STOPCLKSTBY clock-control field.",
+                    "mask": "200000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "200000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "MCLKDEADCHK",
+                    "label": "MCLKCFG.MCLKDEADCHK clock-control field.",
+                    "mask": "400000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "400000"
+                        }
+                    ]
+                }
+            ],
+            "key": "MCLKCFG",
+            "unused": "ff8ee0f0",
+            "label": "SYSCTL MCLKCFG clock configuration register"
+        },
+        {
+            "address": "400B0108",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HFXTEN",
+                    "label": "HSCLKEN.HFXTEN clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "USEEXTHFCLK",
+                    "label": "HSCLKEN.USEEXTHFCLK clock-control field.",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000"
+                        }
+                    ]
+                }
+            ],
+            "key": "HSCLKEN",
+            "unused": "fffefffe",
+            "label": "SYSCTL HSCLKEN clock configuration register"
+        },
+        {
+            "address": "400B010C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HSCLKSEL",
+                    "label": "HSCLKCFG.HSCLKSEL clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HFCLKclk",
+                            "value": "1"
+                        }
+                    ]
+                }
+            ],
+            "key": "HSCLKCFG",
+            "unused": "fffffffe",
+            "label": "SYSCTL HSCLKCFG clock configuration register"
+        },
+        {
+            "address": "400B0110",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HFXTTIME",
+                    "label": "HFCLKCLKCFG.HFXTTIME clock-control field.",
+                    "mask": "ff",
+                    "settings": [
+                        {
+                            "label": "Minstarttime",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "5"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "6"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "7"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "9"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f"
+                        },
+                        {
+                            "label": "Value 16",
+                            "value": "10"
+                        },
+                        {
+                            "label": "Value 17",
+                            "value": "11"
+                        },
+                        {
+                            "label": "Value 18",
+                            "value": "12"
+                        },
+                        {
+                            "label": "Value 19",
+                            "value": "13"
+                        },
+                        {
+                            "label": "Value 20",
+                            "value": "14"
+                        },
+                        {
+                            "label": "Value 21",
+                            "value": "15"
+                        },
+                        {
+                            "label": "Value 22",
+                            "value": "16"
+                        },
+                        {
+                            "label": "Value 23",
+                            "value": "17"
+                        },
+                        {
+                            "label": "Value 24",
+                            "value": "18"
+                        },
+                        {
+                            "label": "Value 25",
+                            "value": "19"
+                        },
+                        {
+                            "label": "Value 26",
+                            "value": "1a"
+                        },
+                        {
+                            "label": "Value 27",
+                            "value": "1b"
+                        },
+                        {
+                            "label": "Value 28",
+                            "value": "1c"
+                        },
+                        {
+                            "label": "Value 29",
+                            "value": "1d"
+                        },
+                        {
+                            "label": "Value 30",
+                            "value": "1e"
+                        },
+                        {
+                            "label": "Value 31",
+                            "value": "1f"
+                        },
+                        {
+                            "label": "Value 32",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Value 33",
+                            "value": "21"
+                        },
+                        {
+                            "label": "Value 34",
+                            "value": "22"
+                        },
+                        {
+                            "label": "Value 35",
+                            "value": "23"
+                        },
+                        {
+                            "label": "Value 36",
+                            "value": "24"
+                        },
+                        {
+                            "label": "Value 37",
+                            "value": "25"
+                        },
+                        {
+                            "label": "Value 38",
+                            "value": "26"
+                        },
+                        {
+                            "label": "Value 39",
+                            "value": "27"
+                        },
+                        {
+                            "label": "Value 40",
+                            "value": "28"
+                        },
+                        {
+                            "label": "Value 41",
+                            "value": "29"
+                        },
+                        {
+                            "label": "Value 42",
+                            "value": "2a"
+                        },
+                        {
+                            "label": "Value 43",
+                            "value": "2b"
+                        },
+                        {
+                            "label": "Value 44",
+                            "value": "2c"
+                        },
+                        {
+                            "label": "Value 45",
+                            "value": "2d"
+                        },
+                        {
+                            "label": "Value 46",
+                            "value": "2e"
+                        },
+                        {
+                            "label": "Value 47",
+                            "value": "2f"
+                        },
+                        {
+                            "label": "Value 48",
+                            "value": "30"
+                        },
+                        {
+                            "label": "Value 49",
+                            "value": "31"
+                        },
+                        {
+                            "label": "Value 50",
+                            "value": "32"
+                        },
+                        {
+                            "label": "Value 51",
+                            "value": "33"
+                        },
+                        {
+                            "label": "Value 52",
+                            "value": "34"
+                        },
+                        {
+                            "label": "Value 53",
+                            "value": "35"
+                        },
+                        {
+                            "label": "Value 54",
+                            "value": "36"
+                        },
+                        {
+                            "label": "Value 55",
+                            "value": "37"
+                        },
+                        {
+                            "label": "Value 56",
+                            "value": "38"
+                        },
+                        {
+                            "label": "Value 57",
+                            "value": "39"
+                        },
+                        {
+                            "label": "Value 58",
+                            "value": "3a"
+                        },
+                        {
+                            "label": "Value 59",
+                            "value": "3b"
+                        },
+                        {
+                            "label": "Value 60",
+                            "value": "3c"
+                        },
+                        {
+                            "label": "Value 61",
+                            "value": "3d"
+                        },
+                        {
+                            "label": "Value 62",
+                            "value": "3e"
+                        },
+                        {
+                            "label": "Value 63",
+                            "value": "3f"
+                        },
+                        {
+                            "label": "Value 64",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Value 65",
+                            "value": "41"
+                        },
+                        {
+                            "label": "Value 66",
+                            "value": "42"
+                        },
+                        {
+                            "label": "Value 67",
+                            "value": "43"
+                        },
+                        {
+                            "label": "Value 68",
+                            "value": "44"
+                        },
+                        {
+                            "label": "Value 69",
+                            "value": "45"
+                        },
+                        {
+                            "label": "Value 70",
+                            "value": "46"
+                        },
+                        {
+                            "label": "Value 71",
+                            "value": "47"
+                        },
+                        {
+                            "label": "Value 72",
+                            "value": "48"
+                        },
+                        {
+                            "label": "Value 73",
+                            "value": "49"
+                        },
+                        {
+                            "label": "Value 74",
+                            "value": "4a"
+                        },
+                        {
+                            "label": "Value 75",
+                            "value": "4b"
+                        },
+                        {
+                            "label": "Value 76",
+                            "value": "4c"
+                        },
+                        {
+                            "label": "Value 77",
+                            "value": "4d"
+                        },
+                        {
+                            "label": "Value 78",
+                            "value": "4e"
+                        },
+                        {
+                            "label": "Value 79",
+                            "value": "4f"
+                        },
+                        {
+                            "label": "Value 80",
+                            "value": "50"
+                        },
+                        {
+                            "label": "Value 81",
+                            "value": "51"
+                        },
+                        {
+                            "label": "Value 82",
+                            "value": "52"
+                        },
+                        {
+                            "label": "Value 83",
+                            "value": "53"
+                        },
+                        {
+                            "label": "Value 84",
+                            "value": "54"
+                        },
+                        {
+                            "label": "Value 85",
+                            "value": "55"
+                        },
+                        {
+                            "label": "Value 86",
+                            "value": "56"
+                        },
+                        {
+                            "label": "Value 87",
+                            "value": "57"
+                        },
+                        {
+                            "label": "Value 88",
+                            "value": "58"
+                        },
+                        {
+                            "label": "Value 89",
+                            "value": "59"
+                        },
+                        {
+                            "label": "Value 90",
+                            "value": "5a"
+                        },
+                        {
+                            "label": "Value 91",
+                            "value": "5b"
+                        },
+                        {
+                            "label": "Value 92",
+                            "value": "5c"
+                        },
+                        {
+                            "label": "Value 93",
+                            "value": "5d"
+                        },
+                        {
+                            "label": "Value 94",
+                            "value": "5e"
+                        },
+                        {
+                            "label": "Value 95",
+                            "value": "5f"
+                        },
+                        {
+                            "label": "Value 96",
+                            "value": "60"
+                        },
+                        {
+                            "label": "Value 97",
+                            "value": "61"
+                        },
+                        {
+                            "label": "Value 98",
+                            "value": "62"
+                        },
+                        {
+                            "label": "Value 99",
+                            "value": "63"
+                        },
+                        {
+                            "label": "Value 100",
+                            "value": "64"
+                        },
+                        {
+                            "label": "Value 101",
+                            "value": "65"
+                        },
+                        {
+                            "label": "Value 102",
+                            "value": "66"
+                        },
+                        {
+                            "label": "Value 103",
+                            "value": "67"
+                        },
+                        {
+                            "label": "Value 104",
+                            "value": "68"
+                        },
+                        {
+                            "label": "Value 105",
+                            "value": "69"
+                        },
+                        {
+                            "label": "Value 106",
+                            "value": "6a"
+                        },
+                        {
+                            "label": "Value 107",
+                            "value": "6b"
+                        },
+                        {
+                            "label": "Value 108",
+                            "value": "6c"
+                        },
+                        {
+                            "label": "Value 109",
+                            "value": "6d"
+                        },
+                        {
+                            "label": "Value 110",
+                            "value": "6e"
+                        },
+                        {
+                            "label": "Value 111",
+                            "value": "6f"
+                        },
+                        {
+                            "label": "Value 112",
+                            "value": "70"
+                        },
+                        {
+                            "label": "Value 113",
+                            "value": "71"
+                        },
+                        {
+                            "label": "Value 114",
+                            "value": "72"
+                        },
+                        {
+                            "label": "Value 115",
+                            "value": "73"
+                        },
+                        {
+                            "label": "Value 116",
+                            "value": "74"
+                        },
+                        {
+                            "label": "Value 117",
+                            "value": "75"
+                        },
+                        {
+                            "label": "Value 118",
+                            "value": "76"
+                        },
+                        {
+                            "label": "Value 119",
+                            "value": "77"
+                        },
+                        {
+                            "label": "Value 120",
+                            "value": "78"
+                        },
+                        {
+                            "label": "Value 121",
+                            "value": "79"
+                        },
+                        {
+                            "label": "Value 122",
+                            "value": "7a"
+                        },
+                        {
+                            "label": "Value 123",
+                            "value": "7b"
+                        },
+                        {
+                            "label": "Value 124",
+                            "value": "7c"
+                        },
+                        {
+                            "label": "Value 125",
+                            "value": "7d"
+                        },
+                        {
+                            "label": "Value 126",
+                            "value": "7e"
+                        },
+                        {
+                            "label": "Value 127",
+                            "value": "7f"
+                        },
+                        {
+                            "label": "Value 128",
+                            "value": "80"
+                        },
+                        {
+                            "label": "Value 129",
+                            "value": "81"
+                        },
+                        {
+                            "label": "Value 130",
+                            "value": "82"
+                        },
+                        {
+                            "label": "Value 131",
+                            "value": "83"
+                        },
+                        {
+                            "label": "Value 132",
+                            "value": "84"
+                        },
+                        {
+                            "label": "Value 133",
+                            "value": "85"
+                        },
+                        {
+                            "label": "Value 134",
+                            "value": "86"
+                        },
+                        {
+                            "label": "Value 135",
+                            "value": "87"
+                        },
+                        {
+                            "label": "Value 136",
+                            "value": "88"
+                        },
+                        {
+                            "label": "Value 137",
+                            "value": "89"
+                        },
+                        {
+                            "label": "Value 138",
+                            "value": "8a"
+                        },
+                        {
+                            "label": "Value 139",
+                            "value": "8b"
+                        },
+                        {
+                            "label": "Value 140",
+                            "value": "8c"
+                        },
+                        {
+                            "label": "Value 141",
+                            "value": "8d"
+                        },
+                        {
+                            "label": "Value 142",
+                            "value": "8e"
+                        },
+                        {
+                            "label": "Value 143",
+                            "value": "8f"
+                        },
+                        {
+                            "label": "Value 144",
+                            "value": "90"
+                        },
+                        {
+                            "label": "Value 145",
+                            "value": "91"
+                        },
+                        {
+                            "label": "Value 146",
+                            "value": "92"
+                        },
+                        {
+                            "label": "Value 147",
+                            "value": "93"
+                        },
+                        {
+                            "label": "Value 148",
+                            "value": "94"
+                        },
+                        {
+                            "label": "Value 149",
+                            "value": "95"
+                        },
+                        {
+                            "label": "Value 150",
+                            "value": "96"
+                        },
+                        {
+                            "label": "Value 151",
+                            "value": "97"
+                        },
+                        {
+                            "label": "Value 152",
+                            "value": "98"
+                        },
+                        {
+                            "label": "Value 153",
+                            "value": "99"
+                        },
+                        {
+                            "label": "Value 154",
+                            "value": "9a"
+                        },
+                        {
+                            "label": "Value 155",
+                            "value": "9b"
+                        },
+                        {
+                            "label": "Value 156",
+                            "value": "9c"
+                        },
+                        {
+                            "label": "Value 157",
+                            "value": "9d"
+                        },
+                        {
+                            "label": "Value 158",
+                            "value": "9e"
+                        },
+                        {
+                            "label": "Value 159",
+                            "value": "9f"
+                        },
+                        {
+                            "label": "Value 160",
+                            "value": "a0"
+                        },
+                        {
+                            "label": "Value 161",
+                            "value": "a1"
+                        },
+                        {
+                            "label": "Value 162",
+                            "value": "a2"
+                        },
+                        {
+                            "label": "Value 163",
+                            "value": "a3"
+                        },
+                        {
+                            "label": "Value 164",
+                            "value": "a4"
+                        },
+                        {
+                            "label": "Value 165",
+                            "value": "a5"
+                        },
+                        {
+                            "label": "Value 166",
+                            "value": "a6"
+                        },
+                        {
+                            "label": "Value 167",
+                            "value": "a7"
+                        },
+                        {
+                            "label": "Value 168",
+                            "value": "a8"
+                        },
+                        {
+                            "label": "Value 169",
+                            "value": "a9"
+                        },
+                        {
+                            "label": "Value 170",
+                            "value": "aa"
+                        },
+                        {
+                            "label": "Value 171",
+                            "value": "ab"
+                        },
+                        {
+                            "label": "Value 172",
+                            "value": "ac"
+                        },
+                        {
+                            "label": "Value 173",
+                            "value": "ad"
+                        },
+                        {
+                            "label": "Value 174",
+                            "value": "ae"
+                        },
+                        {
+                            "label": "Value 175",
+                            "value": "af"
+                        },
+                        {
+                            "label": "Value 176",
+                            "value": "b0"
+                        },
+                        {
+                            "label": "Value 177",
+                            "value": "b1"
+                        },
+                        {
+                            "label": "Value 178",
+                            "value": "b2"
+                        },
+                        {
+                            "label": "Value 179",
+                            "value": "b3"
+                        },
+                        {
+                            "label": "Value 180",
+                            "value": "b4"
+                        },
+                        {
+                            "label": "Value 181",
+                            "value": "b5"
+                        },
+                        {
+                            "label": "Value 182",
+                            "value": "b6"
+                        },
+                        {
+                            "label": "Value 183",
+                            "value": "b7"
+                        },
+                        {
+                            "label": "Value 184",
+                            "value": "b8"
+                        },
+                        {
+                            "label": "Value 185",
+                            "value": "b9"
+                        },
+                        {
+                            "label": "Value 186",
+                            "value": "ba"
+                        },
+                        {
+                            "label": "Value 187",
+                            "value": "bb"
+                        },
+                        {
+                            "label": "Value 188",
+                            "value": "bc"
+                        },
+                        {
+                            "label": "Value 189",
+                            "value": "bd"
+                        },
+                        {
+                            "label": "Value 190",
+                            "value": "be"
+                        },
+                        {
+                            "label": "Value 191",
+                            "value": "bf"
+                        },
+                        {
+                            "label": "Value 192",
+                            "value": "c0"
+                        },
+                        {
+                            "label": "Value 193",
+                            "value": "c1"
+                        },
+                        {
+                            "label": "Value 194",
+                            "value": "c2"
+                        },
+                        {
+                            "label": "Value 195",
+                            "value": "c3"
+                        },
+                        {
+                            "label": "Value 196",
+                            "value": "c4"
+                        },
+                        {
+                            "label": "Value 197",
+                            "value": "c5"
+                        },
+                        {
+                            "label": "Value 198",
+                            "value": "c6"
+                        },
+                        {
+                            "label": "Value 199",
+                            "value": "c7"
+                        },
+                        {
+                            "label": "Value 200",
+                            "value": "c8"
+                        },
+                        {
+                            "label": "Value 201",
+                            "value": "c9"
+                        },
+                        {
+                            "label": "Value 202",
+                            "value": "ca"
+                        },
+                        {
+                            "label": "Value 203",
+                            "value": "cb"
+                        },
+                        {
+                            "label": "Value 204",
+                            "value": "cc"
+                        },
+                        {
+                            "label": "Value 205",
+                            "value": "cd"
+                        },
+                        {
+                            "label": "Value 206",
+                            "value": "ce"
+                        },
+                        {
+                            "label": "Value 207",
+                            "value": "cf"
+                        },
+                        {
+                            "label": "Value 208",
+                            "value": "d0"
+                        },
+                        {
+                            "label": "Value 209",
+                            "value": "d1"
+                        },
+                        {
+                            "label": "Value 210",
+                            "value": "d2"
+                        },
+                        {
+                            "label": "Value 211",
+                            "value": "d3"
+                        },
+                        {
+                            "label": "Value 212",
+                            "value": "d4"
+                        },
+                        {
+                            "label": "Value 213",
+                            "value": "d5"
+                        },
+                        {
+                            "label": "Value 214",
+                            "value": "d6"
+                        },
+                        {
+                            "label": "Value 215",
+                            "value": "d7"
+                        },
+                        {
+                            "label": "Value 216",
+                            "value": "d8"
+                        },
+                        {
+                            "label": "Value 217",
+                            "value": "d9"
+                        },
+                        {
+                            "label": "Value 218",
+                            "value": "da"
+                        },
+                        {
+                            "label": "Value 219",
+                            "value": "db"
+                        },
+                        {
+                            "label": "Value 220",
+                            "value": "dc"
+                        },
+                        {
+                            "label": "Value 221",
+                            "value": "dd"
+                        },
+                        {
+                            "label": "Value 222",
+                            "value": "de"
+                        },
+                        {
+                            "label": "Value 223",
+                            "value": "df"
+                        },
+                        {
+                            "label": "Value 224",
+                            "value": "e0"
+                        },
+                        {
+                            "label": "Value 225",
+                            "value": "e1"
+                        },
+                        {
+                            "label": "Value 226",
+                            "value": "e2"
+                        },
+                        {
+                            "label": "Value 227",
+                            "value": "e3"
+                        },
+                        {
+                            "label": "Value 228",
+                            "value": "e4"
+                        },
+                        {
+                            "label": "Value 229",
+                            "value": "e5"
+                        },
+                        {
+                            "label": "Value 230",
+                            "value": "e6"
+                        },
+                        {
+                            "label": "Value 231",
+                            "value": "e7"
+                        },
+                        {
+                            "label": "Value 232",
+                            "value": "e8"
+                        },
+                        {
+                            "label": "Value 233",
+                            "value": "e9"
+                        },
+                        {
+                            "label": "Value 234",
+                            "value": "ea"
+                        },
+                        {
+                            "label": "Value 235",
+                            "value": "eb"
+                        },
+                        {
+                            "label": "Value 236",
+                            "value": "ec"
+                        },
+                        {
+                            "label": "Value 237",
+                            "value": "ed"
+                        },
+                        {
+                            "label": "Value 238",
+                            "value": "ee"
+                        },
+                        {
+                            "label": "Value 239",
+                            "value": "ef"
+                        },
+                        {
+                            "label": "Value 240",
+                            "value": "f0"
+                        },
+                        {
+                            "label": "Value 241",
+                            "value": "f1"
+                        },
+                        {
+                            "label": "Value 242",
+                            "value": "f2"
+                        },
+                        {
+                            "label": "Value 243",
+                            "value": "f3"
+                        },
+                        {
+                            "label": "Value 244",
+                            "value": "f4"
+                        },
+                        {
+                            "label": "Value 245",
+                            "value": "f5"
+                        },
+                        {
+                            "label": "Value 246",
+                            "value": "f6"
+                        },
+                        {
+                            "label": "Value 247",
+                            "value": "f7"
+                        },
+                        {
+                            "label": "Value 248",
+                            "value": "f8"
+                        },
+                        {
+                            "label": "Value 249",
+                            "value": "f9"
+                        },
+                        {
+                            "label": "Value 250",
+                            "value": "fa"
+                        },
+                        {
+                            "label": "Value 251",
+                            "value": "fb"
+                        },
+                        {
+                            "label": "Value 252",
+                            "value": "fc"
+                        },
+                        {
+                            "label": "Value 253",
+                            "value": "fd"
+                        },
+                        {
+                            "label": "Value 254",
+                            "value": "fe"
+                        },
+                        {
+                            "label": "Maxstarttime",
+                            "value": "ff"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "HFXTRSEL",
+                    "label": "HFCLKCLKCFG.HFXTRSEL clock-control field.",
+                    "mask": "3000",
+                    "settings": [
+                        {
+                            "label": "Range4To8",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Range8To16",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "Range16To32",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "Range32To48",
+                            "value": "3000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "HFCLKFLTCHK",
+                    "label": "HFCLKCLKCFG.HFCLKFLTCHK clock-control field.",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "HFCLKCLKCFG",
+            "unused": "efffcf00",
+            "label": "SYSCTL HFCLKCLKCFG clock configuration register"
+        },
+        {
+            "address": "400B0114",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "XT1DRIVE",
+                    "label": "LFCLKCFG.XT1DRIVE clock-control field.",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "Lowestdrv",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Lowerdrv",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Higherdrv",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Highestdrv",
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MONITOR",
+                    "label": "LFCLKCFG.MONITOR clock-control field.",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "LOWCAP",
+                    "label": "LFCLKCFG.LOWCAP clock-control field.",
+                    "mask": "100",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "100"
+                        }
+                    ]
+                }
+            ],
+            "key": "LFCLKCFG",
+            "unused": "fffffeec",
+            "label": "SYSCTL LFCLKCFG clock configuration register"
+        },
+        {
+            "address": "400B0138",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EXCLKSRC",
+                    "label": "GENCLKCFG.EXCLKSRC clock-control field.",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "SYSOSC",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Ulpclk",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LFCLK",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Mfpclk",
+                            "value": "3"
+                        },
+                        {
+                            "label": "HFCLK",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EXCLKDIVVAL",
+                    "label": "GENCLKCFG.EXCLKDIVVAL clock-control field.",
+                    "mask": "70",
+                    "settings": [
+                        {
+                            "label": "Div2",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Div4",
+                            "value": "10"
+                        },
+                        {
+                            "label": "Div6",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Div8",
+                            "value": "30"
+                        },
+                        {
+                            "label": "Div10",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Div12",
+                            "value": "50"
+                        },
+                        {
+                            "label": "Div14",
+                            "value": "60"
+                        },
+                        {
+                            "label": "Div16",
+                            "value": "70"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EXCLKDIVEN",
+                    "label": "GENCLKCFG.EXCLKDIVEN clock-control field.",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Passthru",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MFPCLKSRC",
+                    "label": "GENCLKCFG.MFPCLKSRC clock-control field.",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "SYSOSC",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HFCLK",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "HFCLK4MFPCLKDIV",
+                    "label": "GENCLKCFG.HFCLK4MFPCLKDIV clock-control field.",
+                    "mask": "f000",
+                    "settings": [
+                        {
+                            "label": "Div1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Div2",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "Div3",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "Div4",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "Div5",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "Div6",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "Div7",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "Div8",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "Div9",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "Div10",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "Div11",
+                            "value": "a000"
+                        },
+                        {
+                            "label": "Div12",
+                            "value": "b000"
+                        },
+                        {
+                            "label": "Div13",
+                            "value": "c000"
+                        },
+                        {
+                            "label": "Div14",
+                            "value": "d000"
+                        },
+                        {
+                            "label": "Div15",
+                            "value": "e000"
+                        },
+                        {
+                            "label": "Div16",
+                            "value": "f000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FCCSELCLK",
+                    "label": "GENCLKCFG.FCCSELCLK clock-control field.",
+                    "mask": "f0000",
+                    "settings": [
+                        {
+                            "label": "MCLK",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSOSC",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "HFCLK",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "Extclk",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "Fccin",
+                            "value": "70000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FCCTRIGSRC",
+                    "label": "GENCLKCFG.FCCTRIGSRC clock-control field.",
+                    "mask": "100000",
+                    "settings": [
+                        {
+                            "label": "Extpin",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LFCLK",
+                            "value": "100000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FCCLVLTRIG",
+                    "label": "GENCLKCFG.FCCLVLTRIG clock-control field.",
+                    "mask": "200000",
+                    "settings": [
+                        {
+                            "label": "Rise2Rise",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Level",
+                            "value": "200000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "ANACPUMPCFG",
+                    "label": "GENCLKCFG.ANACPUMPCFG clock-control field.",
+                    "mask": "c00000",
+                    "settings": [
+                        {
+                            "label": "Ondemand",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Onactive",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "Onalways",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "c00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FCCTRIGCNT",
+                    "label": "GENCLKCFG.FCCTRIGCNT clock-control field.",
+                    "mask": "1f000000",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "2000000"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "3000000"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "5000000"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "6000000"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "7000000"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "8000000"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "9000000"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a000000"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b000000"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c000000"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d000000"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e000000"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f000000"
+                        },
+                        {
+                            "label": "Value 16",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "Value 17",
+                            "value": "11000000"
+                        },
+                        {
+                            "label": "Value 18",
+                            "value": "12000000"
+                        },
+                        {
+                            "label": "Value 19",
+                            "value": "13000000"
+                        },
+                        {
+                            "label": "Value 20",
+                            "value": "14000000"
+                        },
+                        {
+                            "label": "Value 21",
+                            "value": "15000000"
+                        },
+                        {
+                            "label": "Value 22",
+                            "value": "16000000"
+                        },
+                        {
+                            "label": "Value 23",
+                            "value": "17000000"
+                        },
+                        {
+                            "label": "Value 24",
+                            "value": "18000000"
+                        },
+                        {
+                            "label": "Value 25",
+                            "value": "19000000"
+                        },
+                        {
+                            "label": "Value 26",
+                            "value": "1a000000"
+                        },
+                        {
+                            "label": "Value 27",
+                            "value": "1b000000"
+                        },
+                        {
+                            "label": "Value 28",
+                            "value": "1c000000"
+                        },
+                        {
+                            "label": "Value 29",
+                            "value": "1d000000"
+                        },
+                        {
+                            "label": "Value 30",
+                            "value": "1e000000"
+                        },
+                        {
+                            "label": "Value 31",
+                            "value": "1f000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "GENCLKCFG",
+            "unused": "e0000d08",
+            "label": "SYSCTL GENCLKCFG clock configuration register"
+        },
+        {
+            "address": "400B013C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EXCLKEN",
+                    "label": "GENCLKEN.EXCLKEN clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MFPCLKEN",
+                    "label": "GENCLKEN.MFPCLKEN clock-control field.",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10"
+                        }
+                    ]
+                }
+            ],
+            "key": "GENCLKEN",
+            "unused": "ffffffee",
+            "label": "SYSCTL GENCLKEN clock configuration register"
+        },
+        {
+            "address": "400B0170",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "FREQ",
+                    "label": "SYSOSCTRIMUSER.FREQ clock-control field.",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSOSC16M",
+                            "value": "1"
+                        },
+                        {
+                            "label": "SYSOSC24M",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "CAP",
+                    "label": "SYSOSCTRIMUSER.CAP clock-control field.",
+                    "mask": "70",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "10"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "30"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "50"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "60"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "70"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RESCOARSE",
+                    "label": "SYSOSCTRIMUSER.RESCOARSE clock-control field.",
+                    "mask": "3f00",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "100"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "200"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "300"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "400"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "500"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "600"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "700"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "800"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "900"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a00"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b00"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c00"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d00"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e00"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f00"
+                        },
+                        {
+                            "label": "Value 16",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "Value 17",
+                            "value": "1100"
+                        },
+                        {
+                            "label": "Value 18",
+                            "value": "1200"
+                        },
+                        {
+                            "label": "Value 19",
+                            "value": "1300"
+                        },
+                        {
+                            "label": "Value 20",
+                            "value": "1400"
+                        },
+                        {
+                            "label": "Value 21",
+                            "value": "1500"
+                        },
+                        {
+                            "label": "Value 22",
+                            "value": "1600"
+                        },
+                        {
+                            "label": "Value 23",
+                            "value": "1700"
+                        },
+                        {
+                            "label": "Value 24",
+                            "value": "1800"
+                        },
+                        {
+                            "label": "Value 25",
+                            "value": "1900"
+                        },
+                        {
+                            "label": "Value 26",
+                            "value": "1a00"
+                        },
+                        {
+                            "label": "Value 27",
+                            "value": "1b00"
+                        },
+                        {
+                            "label": "Value 28",
+                            "value": "1c00"
+                        },
+                        {
+                            "label": "Value 29",
+                            "value": "1d00"
+                        },
+                        {
+                            "label": "Value 30",
+                            "value": "1e00"
+                        },
+                        {
+                            "label": "Value 31",
+                            "value": "1f00"
+                        },
+                        {
+                            "label": "Value 32",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "Value 33",
+                            "value": "2100"
+                        },
+                        {
+                            "label": "Value 34",
+                            "value": "2200"
+                        },
+                        {
+                            "label": "Value 35",
+                            "value": "2300"
+                        },
+                        {
+                            "label": "Value 36",
+                            "value": "2400"
+                        },
+                        {
+                            "label": "Value 37",
+                            "value": "2500"
+                        },
+                        {
+                            "label": "Value 38",
+                            "value": "2600"
+                        },
+                        {
+                            "label": "Value 39",
+                            "value": "2700"
+                        },
+                        {
+                            "label": "Value 40",
+                            "value": "2800"
+                        },
+                        {
+                            "label": "Value 41",
+                            "value": "2900"
+                        },
+                        {
+                            "label": "Value 42",
+                            "value": "2a00"
+                        },
+                        {
+                            "label": "Value 43",
+                            "value": "2b00"
+                        },
+                        {
+                            "label": "Value 44",
+                            "value": "2c00"
+                        },
+                        {
+                            "label": "Value 45",
+                            "value": "2d00"
+                        },
+                        {
+                            "label": "Value 46",
+                            "value": "2e00"
+                        },
+                        {
+                            "label": "Value 47",
+                            "value": "2f00"
+                        },
+                        {
+                            "label": "Value 48",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "Value 49",
+                            "value": "3100"
+                        },
+                        {
+                            "label": "Value 50",
+                            "value": "3200"
+                        },
+                        {
+                            "label": "Value 51",
+                            "value": "3300"
+                        },
+                        {
+                            "label": "Value 52",
+                            "value": "3400"
+                        },
+                        {
+                            "label": "Value 53",
+                            "value": "3500"
+                        },
+                        {
+                            "label": "Value 54",
+                            "value": "3600"
+                        },
+                        {
+                            "label": "Value 55",
+                            "value": "3700"
+                        },
+                        {
+                            "label": "Value 56",
+                            "value": "3800"
+                        },
+                        {
+                            "label": "Value 57",
+                            "value": "3900"
+                        },
+                        {
+                            "label": "Value 58",
+                            "value": "3a00"
+                        },
+                        {
+                            "label": "Value 59",
+                            "value": "3b00"
+                        },
+                        {
+                            "label": "Value 60",
+                            "value": "3c00"
+                        },
+                        {
+                            "label": "Value 61",
+                            "value": "3d00"
+                        },
+                        {
+                            "label": "Value 62",
+                            "value": "3e00"
+                        },
+                        {
+                            "label": "Value 63",
+                            "value": "3f00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RESFINE",
+                    "label": "SYSOSCTRIMUSER.RESFINE clock-control field.",
+                    "mask": "f0000",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "40000"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "50000"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "60000"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "70000"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "80000"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "90000"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a0000"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b0000"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c0000"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d0000"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e0000"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "RDIV",
+                    "label": "SYSOSCTRIMUSER.RDIV clock-control field.",
+                    "mask": "1ff00000",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "100000"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "200000"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "300000"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "500000"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "600000"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "700000"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "900000"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a00000"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b00000"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c00000"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d00000"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e00000"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f00000"
+                        },
+                        {
+                            "label": "Value 16",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "Value 17",
+                            "value": "1100000"
+                        },
+                        {
+                            "label": "Value 18",
+                            "value": "1200000"
+                        },
+                        {
+                            "label": "Value 19",
+                            "value": "1300000"
+                        },
+                        {
+                            "label": "Value 20",
+                            "value": "1400000"
+                        },
+                        {
+                            "label": "Value 21",
+                            "value": "1500000"
+                        },
+                        {
+                            "label": "Value 22",
+                            "value": "1600000"
+                        },
+                        {
+                            "label": "Value 23",
+                            "value": "1700000"
+                        },
+                        {
+                            "label": "Value 24",
+                            "value": "1800000"
+                        },
+                        {
+                            "label": "Value 25",
+                            "value": "1900000"
+                        },
+                        {
+                            "label": "Value 26",
+                            "value": "1a00000"
+                        },
+                        {
+                            "label": "Value 27",
+                            "value": "1b00000"
+                        },
+                        {
+                            "label": "Value 28",
+                            "value": "1c00000"
+                        },
+                        {
+                            "label": "Value 29",
+                            "value": "1d00000"
+                        },
+                        {
+                            "label": "Value 30",
+                            "value": "1e00000"
+                        },
+                        {
+                            "label": "Value 31",
+                            "value": "1f00000"
+                        },
+                        {
+                            "label": "Value 32",
+                            "value": "2000000"
+                        },
+                        {
+                            "label": "Value 33",
+                            "value": "2100000"
+                        },
+                        {
+                            "label": "Value 34",
+                            "value": "2200000"
+                        },
+                        {
+                            "label": "Value 35",
+                            "value": "2300000"
+                        },
+                        {
+                            "label": "Value 36",
+                            "value": "2400000"
+                        },
+                        {
+                            "label": "Value 37",
+                            "value": "2500000"
+                        },
+                        {
+                            "label": "Value 38",
+                            "value": "2600000"
+                        },
+                        {
+                            "label": "Value 39",
+                            "value": "2700000"
+                        },
+                        {
+                            "label": "Value 40",
+                            "value": "2800000"
+                        },
+                        {
+                            "label": "Value 41",
+                            "value": "2900000"
+                        },
+                        {
+                            "label": "Value 42",
+                            "value": "2a00000"
+                        },
+                        {
+                            "label": "Value 43",
+                            "value": "2b00000"
+                        },
+                        {
+                            "label": "Value 44",
+                            "value": "2c00000"
+                        },
+                        {
+                            "label": "Value 45",
+                            "value": "2d00000"
+                        },
+                        {
+                            "label": "Value 46",
+                            "value": "2e00000"
+                        },
+                        {
+                            "label": "Value 47",
+                            "value": "2f00000"
+                        },
+                        {
+                            "label": "Value 48",
+                            "value": "3000000"
+                        },
+                        {
+                            "label": "Value 49",
+                            "value": "3100000"
+                        },
+                        {
+                            "label": "Value 50",
+                            "value": "3200000"
+                        },
+                        {
+                            "label": "Value 51",
+                            "value": "3300000"
+                        },
+                        {
+                            "label": "Value 52",
+                            "value": "3400000"
+                        },
+                        {
+                            "label": "Value 53",
+                            "value": "3500000"
+                        },
+                        {
+                            "label": "Value 54",
+                            "value": "3600000"
+                        },
+                        {
+                            "label": "Value 55",
+                            "value": "3700000"
+                        },
+                        {
+                            "label": "Value 56",
+                            "value": "3800000"
+                        },
+                        {
+                            "label": "Value 57",
+                            "value": "3900000"
+                        },
+                        {
+                            "label": "Value 58",
+                            "value": "3a00000"
+                        },
+                        {
+                            "label": "Value 59",
+                            "value": "3b00000"
+                        },
+                        {
+                            "label": "Value 60",
+                            "value": "3c00000"
+                        },
+                        {
+                            "label": "Value 61",
+                            "value": "3d00000"
+                        },
+                        {
+                            "label": "Value 62",
+                            "value": "3e00000"
+                        },
+                        {
+                            "label": "Value 63",
+                            "value": "3f00000"
+                        },
+                        {
+                            "label": "Value 64",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "Value 65",
+                            "value": "4100000"
+                        },
+                        {
+                            "label": "Value 66",
+                            "value": "4200000"
+                        },
+                        {
+                            "label": "Value 67",
+                            "value": "4300000"
+                        },
+                        {
+                            "label": "Value 68",
+                            "value": "4400000"
+                        },
+                        {
+                            "label": "Value 69",
+                            "value": "4500000"
+                        },
+                        {
+                            "label": "Value 70",
+                            "value": "4600000"
+                        },
+                        {
+                            "label": "Value 71",
+                            "value": "4700000"
+                        },
+                        {
+                            "label": "Value 72",
+                            "value": "4800000"
+                        },
+                        {
+                            "label": "Value 73",
+                            "value": "4900000"
+                        },
+                        {
+                            "label": "Value 74",
+                            "value": "4a00000"
+                        },
+                        {
+                            "label": "Value 75",
+                            "value": "4b00000"
+                        },
+                        {
+                            "label": "Value 76",
+                            "value": "4c00000"
+                        },
+                        {
+                            "label": "Value 77",
+                            "value": "4d00000"
+                        },
+                        {
+                            "label": "Value 78",
+                            "value": "4e00000"
+                        },
+                        {
+                            "label": "Value 79",
+                            "value": "4f00000"
+                        },
+                        {
+                            "label": "Value 80",
+                            "value": "5000000"
+                        },
+                        {
+                            "label": "Value 81",
+                            "value": "5100000"
+                        },
+                        {
+                            "label": "Value 82",
+                            "value": "5200000"
+                        },
+                        {
+                            "label": "Value 83",
+                            "value": "5300000"
+                        },
+                        {
+                            "label": "Value 84",
+                            "value": "5400000"
+                        },
+                        {
+                            "label": "Value 85",
+                            "value": "5500000"
+                        },
+                        {
+                            "label": "Value 86",
+                            "value": "5600000"
+                        },
+                        {
+                            "label": "Value 87",
+                            "value": "5700000"
+                        },
+                        {
+                            "label": "Value 88",
+                            "value": "5800000"
+                        },
+                        {
+                            "label": "Value 89",
+                            "value": "5900000"
+                        },
+                        {
+                            "label": "Value 90",
+                            "value": "5a00000"
+                        },
+                        {
+                            "label": "Value 91",
+                            "value": "5b00000"
+                        },
+                        {
+                            "label": "Value 92",
+                            "value": "5c00000"
+                        },
+                        {
+                            "label": "Value 93",
+                            "value": "5d00000"
+                        },
+                        {
+                            "label": "Value 94",
+                            "value": "5e00000"
+                        },
+                        {
+                            "label": "Value 95",
+                            "value": "5f00000"
+                        },
+                        {
+                            "label": "Value 96",
+                            "value": "6000000"
+                        },
+                        {
+                            "label": "Value 97",
+                            "value": "6100000"
+                        },
+                        {
+                            "label": "Value 98",
+                            "value": "6200000"
+                        },
+                        {
+                            "label": "Value 99",
+                            "value": "6300000"
+                        },
+                        {
+                            "label": "Value 100",
+                            "value": "6400000"
+                        },
+                        {
+                            "label": "Value 101",
+                            "value": "6500000"
+                        },
+                        {
+                            "label": "Value 102",
+                            "value": "6600000"
+                        },
+                        {
+                            "label": "Value 103",
+                            "value": "6700000"
+                        },
+                        {
+                            "label": "Value 104",
+                            "value": "6800000"
+                        },
+                        {
+                            "label": "Value 105",
+                            "value": "6900000"
+                        },
+                        {
+                            "label": "Value 106",
+                            "value": "6a00000"
+                        },
+                        {
+                            "label": "Value 107",
+                            "value": "6b00000"
+                        },
+                        {
+                            "label": "Value 108",
+                            "value": "6c00000"
+                        },
+                        {
+                            "label": "Value 109",
+                            "value": "6d00000"
+                        },
+                        {
+                            "label": "Value 110",
+                            "value": "6e00000"
+                        },
+                        {
+                            "label": "Value 111",
+                            "value": "6f00000"
+                        },
+                        {
+                            "label": "Value 112",
+                            "value": "7000000"
+                        },
+                        {
+                            "label": "Value 113",
+                            "value": "7100000"
+                        },
+                        {
+                            "label": "Value 114",
+                            "value": "7200000"
+                        },
+                        {
+                            "label": "Value 115",
+                            "value": "7300000"
+                        },
+                        {
+                            "label": "Value 116",
+                            "value": "7400000"
+                        },
+                        {
+                            "label": "Value 117",
+                            "value": "7500000"
+                        },
+                        {
+                            "label": "Value 118",
+                            "value": "7600000"
+                        },
+                        {
+                            "label": "Value 119",
+                            "value": "7700000"
+                        },
+                        {
+                            "label": "Value 120",
+                            "value": "7800000"
+                        },
+                        {
+                            "label": "Value 121",
+                            "value": "7900000"
+                        },
+                        {
+                            "label": "Value 122",
+                            "value": "7a00000"
+                        },
+                        {
+                            "label": "Value 123",
+                            "value": "7b00000"
+                        },
+                        {
+                            "label": "Value 124",
+                            "value": "7c00000"
+                        },
+                        {
+                            "label": "Value 125",
+                            "value": "7d00000"
+                        },
+                        {
+                            "label": "Value 126",
+                            "value": "7e00000"
+                        },
+                        {
+                            "label": "Value 127",
+                            "value": "7f00000"
+                        },
+                        {
+                            "label": "Value 128",
+                            "value": "8000000"
+                        },
+                        {
+                            "label": "Value 129",
+                            "value": "8100000"
+                        },
+                        {
+                            "label": "Value 130",
+                            "value": "8200000"
+                        },
+                        {
+                            "label": "Value 131",
+                            "value": "8300000"
+                        },
+                        {
+                            "label": "Value 132",
+                            "value": "8400000"
+                        },
+                        {
+                            "label": "Value 133",
+                            "value": "8500000"
+                        },
+                        {
+                            "label": "Value 134",
+                            "value": "8600000"
+                        },
+                        {
+                            "label": "Value 135",
+                            "value": "8700000"
+                        },
+                        {
+                            "label": "Value 136",
+                            "value": "8800000"
+                        },
+                        {
+                            "label": "Value 137",
+                            "value": "8900000"
+                        },
+                        {
+                            "label": "Value 138",
+                            "value": "8a00000"
+                        },
+                        {
+                            "label": "Value 139",
+                            "value": "8b00000"
+                        },
+                        {
+                            "label": "Value 140",
+                            "value": "8c00000"
+                        },
+                        {
+                            "label": "Value 141",
+                            "value": "8d00000"
+                        },
+                        {
+                            "label": "Value 142",
+                            "value": "8e00000"
+                        },
+                        {
+                            "label": "Value 143",
+                            "value": "8f00000"
+                        },
+                        {
+                            "label": "Value 144",
+                            "value": "9000000"
+                        },
+                        {
+                            "label": "Value 145",
+                            "value": "9100000"
+                        },
+                        {
+                            "label": "Value 146",
+                            "value": "9200000"
+                        },
+                        {
+                            "label": "Value 147",
+                            "value": "9300000"
+                        },
+                        {
+                            "label": "Value 148",
+                            "value": "9400000"
+                        },
+                        {
+                            "label": "Value 149",
+                            "value": "9500000"
+                        },
+                        {
+                            "label": "Value 150",
+                            "value": "9600000"
+                        },
+                        {
+                            "label": "Value 151",
+                            "value": "9700000"
+                        },
+                        {
+                            "label": "Value 152",
+                            "value": "9800000"
+                        },
+                        {
+                            "label": "Value 153",
+                            "value": "9900000"
+                        },
+                        {
+                            "label": "Value 154",
+                            "value": "9a00000"
+                        },
+                        {
+                            "label": "Value 155",
+                            "value": "9b00000"
+                        },
+                        {
+                            "label": "Value 156",
+                            "value": "9c00000"
+                        },
+                        {
+                            "label": "Value 157",
+                            "value": "9d00000"
+                        },
+                        {
+                            "label": "Value 158",
+                            "value": "9e00000"
+                        },
+                        {
+                            "label": "Value 159",
+                            "value": "9f00000"
+                        },
+                        {
+                            "label": "Value 160",
+                            "value": "a000000"
+                        },
+                        {
+                            "label": "Value 161",
+                            "value": "a100000"
+                        },
+                        {
+                            "label": "Value 162",
+                            "value": "a200000"
+                        },
+                        {
+                            "label": "Value 163",
+                            "value": "a300000"
+                        },
+                        {
+                            "label": "Value 164",
+                            "value": "a400000"
+                        },
+                        {
+                            "label": "Value 165",
+                            "value": "a500000"
+                        },
+                        {
+                            "label": "Value 166",
+                            "value": "a600000"
+                        },
+                        {
+                            "label": "Value 167",
+                            "value": "a700000"
+                        },
+                        {
+                            "label": "Value 168",
+                            "value": "a800000"
+                        },
+                        {
+                            "label": "Value 169",
+                            "value": "a900000"
+                        },
+                        {
+                            "label": "Value 170",
+                            "value": "aa00000"
+                        },
+                        {
+                            "label": "Value 171",
+                            "value": "ab00000"
+                        },
+                        {
+                            "label": "Value 172",
+                            "value": "ac00000"
+                        },
+                        {
+                            "label": "Value 173",
+                            "value": "ad00000"
+                        },
+                        {
+                            "label": "Value 174",
+                            "value": "ae00000"
+                        },
+                        {
+                            "label": "Value 175",
+                            "value": "af00000"
+                        },
+                        {
+                            "label": "Value 176",
+                            "value": "b000000"
+                        },
+                        {
+                            "label": "Value 177",
+                            "value": "b100000"
+                        },
+                        {
+                            "label": "Value 178",
+                            "value": "b200000"
+                        },
+                        {
+                            "label": "Value 179",
+                            "value": "b300000"
+                        },
+                        {
+                            "label": "Value 180",
+                            "value": "b400000"
+                        },
+                        {
+                            "label": "Value 181",
+                            "value": "b500000"
+                        },
+                        {
+                            "label": "Value 182",
+                            "value": "b600000"
+                        },
+                        {
+                            "label": "Value 183",
+                            "value": "b700000"
+                        },
+                        {
+                            "label": "Value 184",
+                            "value": "b800000"
+                        },
+                        {
+                            "label": "Value 185",
+                            "value": "b900000"
+                        },
+                        {
+                            "label": "Value 186",
+                            "value": "ba00000"
+                        },
+                        {
+                            "label": "Value 187",
+                            "value": "bb00000"
+                        },
+                        {
+                            "label": "Value 188",
+                            "value": "bc00000"
+                        },
+                        {
+                            "label": "Value 189",
+                            "value": "bd00000"
+                        },
+                        {
+                            "label": "Value 190",
+                            "value": "be00000"
+                        },
+                        {
+                            "label": "Value 191",
+                            "value": "bf00000"
+                        },
+                        {
+                            "label": "Value 192",
+                            "value": "c000000"
+                        },
+                        {
+                            "label": "Value 193",
+                            "value": "c100000"
+                        },
+                        {
+                            "label": "Value 194",
+                            "value": "c200000"
+                        },
+                        {
+                            "label": "Value 195",
+                            "value": "c300000"
+                        },
+                        {
+                            "label": "Value 196",
+                            "value": "c400000"
+                        },
+                        {
+                            "label": "Value 197",
+                            "value": "c500000"
+                        },
+                        {
+                            "label": "Value 198",
+                            "value": "c600000"
+                        },
+                        {
+                            "label": "Value 199",
+                            "value": "c700000"
+                        },
+                        {
+                            "label": "Value 200",
+                            "value": "c800000"
+                        },
+                        {
+                            "label": "Value 201",
+                            "value": "c900000"
+                        },
+                        {
+                            "label": "Value 202",
+                            "value": "ca00000"
+                        },
+                        {
+                            "label": "Value 203",
+                            "value": "cb00000"
+                        },
+                        {
+                            "label": "Value 204",
+                            "value": "cc00000"
+                        },
+                        {
+                            "label": "Value 205",
+                            "value": "cd00000"
+                        },
+                        {
+                            "label": "Value 206",
+                            "value": "ce00000"
+                        },
+                        {
+                            "label": "Value 207",
+                            "value": "cf00000"
+                        },
+                        {
+                            "label": "Value 208",
+                            "value": "d000000"
+                        },
+                        {
+                            "label": "Value 209",
+                            "value": "d100000"
+                        },
+                        {
+                            "label": "Value 210",
+                            "value": "d200000"
+                        },
+                        {
+                            "label": "Value 211",
+                            "value": "d300000"
+                        },
+                        {
+                            "label": "Value 212",
+                            "value": "d400000"
+                        },
+                        {
+                            "label": "Value 213",
+                            "value": "d500000"
+                        },
+                        {
+                            "label": "Value 214",
+                            "value": "d600000"
+                        },
+                        {
+                            "label": "Value 215",
+                            "value": "d700000"
+                        },
+                        {
+                            "label": "Value 216",
+                            "value": "d800000"
+                        },
+                        {
+                            "label": "Value 217",
+                            "value": "d900000"
+                        },
+                        {
+                            "label": "Value 218",
+                            "value": "da00000"
+                        },
+                        {
+                            "label": "Value 219",
+                            "value": "db00000"
+                        },
+                        {
+                            "label": "Value 220",
+                            "value": "dc00000"
+                        },
+                        {
+                            "label": "Value 221",
+                            "value": "dd00000"
+                        },
+                        {
+                            "label": "Value 222",
+                            "value": "de00000"
+                        },
+                        {
+                            "label": "Value 223",
+                            "value": "df00000"
+                        },
+                        {
+                            "label": "Value 224",
+                            "value": "e000000"
+                        },
+                        {
+                            "label": "Value 225",
+                            "value": "e100000"
+                        },
+                        {
+                            "label": "Value 226",
+                            "value": "e200000"
+                        },
+                        {
+                            "label": "Value 227",
+                            "value": "e300000"
+                        },
+                        {
+                            "label": "Value 228",
+                            "value": "e400000"
+                        },
+                        {
+                            "label": "Value 229",
+                            "value": "e500000"
+                        },
+                        {
+                            "label": "Value 230",
+                            "value": "e600000"
+                        },
+                        {
+                            "label": "Value 231",
+                            "value": "e700000"
+                        },
+                        {
+                            "label": "Value 232",
+                            "value": "e800000"
+                        },
+                        {
+                            "label": "Value 233",
+                            "value": "e900000"
+                        },
+                        {
+                            "label": "Value 234",
+                            "value": "ea00000"
+                        },
+                        {
+                            "label": "Value 235",
+                            "value": "eb00000"
+                        },
+                        {
+                            "label": "Value 236",
+                            "value": "ec00000"
+                        },
+                        {
+                            "label": "Value 237",
+                            "value": "ed00000"
+                        },
+                        {
+                            "label": "Value 238",
+                            "value": "ee00000"
+                        },
+                        {
+                            "label": "Value 239",
+                            "value": "ef00000"
+                        },
+                        {
+                            "label": "Value 240",
+                            "value": "f000000"
+                        },
+                        {
+                            "label": "Value 241",
+                            "value": "f100000"
+                        },
+                        {
+                            "label": "Value 242",
+                            "value": "f200000"
+                        },
+                        {
+                            "label": "Value 243",
+                            "value": "f300000"
+                        },
+                        {
+                            "label": "Value 244",
+                            "value": "f400000"
+                        },
+                        {
+                            "label": "Value 245",
+                            "value": "f500000"
+                        },
+                        {
+                            "label": "Value 246",
+                            "value": "f600000"
+                        },
+                        {
+                            "label": "Value 247",
+                            "value": "f700000"
+                        },
+                        {
+                            "label": "Value 248",
+                            "value": "f800000"
+                        },
+                        {
+                            "label": "Value 249",
+                            "value": "f900000"
+                        },
+                        {
+                            "label": "Value 250",
+                            "value": "fa00000"
+                        },
+                        {
+                            "label": "Value 251",
+                            "value": "fb00000"
+                        },
+                        {
+                            "label": "Value 252",
+                            "value": "fc00000"
+                        },
+                        {
+                            "label": "Value 253",
+                            "value": "fd00000"
+                        },
+                        {
+                            "label": "Value 254",
+                            "value": "fe00000"
+                        },
+                        {
+                            "label": "Value 255",
+                            "value": "ff00000"
+                        },
+                        {
+                            "label": "Value 256",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "Value 257",
+                            "value": "10100000"
+                        },
+                        {
+                            "label": "Value 258",
+                            "value": "10200000"
+                        },
+                        {
+                            "label": "Value 259",
+                            "value": "10300000"
+                        },
+                        {
+                            "label": "Value 260",
+                            "value": "10400000"
+                        },
+                        {
+                            "label": "Value 261",
+                            "value": "10500000"
+                        },
+                        {
+                            "label": "Value 262",
+                            "value": "10600000"
+                        },
+                        {
+                            "label": "Value 263",
+                            "value": "10700000"
+                        },
+                        {
+                            "label": "Value 264",
+                            "value": "10800000"
+                        },
+                        {
+                            "label": "Value 265",
+                            "value": "10900000"
+                        },
+                        {
+                            "label": "Value 266",
+                            "value": "10a00000"
+                        },
+                        {
+                            "label": "Value 267",
+                            "value": "10b00000"
+                        },
+                        {
+                            "label": "Value 268",
+                            "value": "10c00000"
+                        },
+                        {
+                            "label": "Value 269",
+                            "value": "10d00000"
+                        },
+                        {
+                            "label": "Value 270",
+                            "value": "10e00000"
+                        },
+                        {
+                            "label": "Value 271",
+                            "value": "10f00000"
+                        },
+                        {
+                            "label": "Value 272",
+                            "value": "11000000"
+                        },
+                        {
+                            "label": "Value 273",
+                            "value": "11100000"
+                        },
+                        {
+                            "label": "Value 274",
+                            "value": "11200000"
+                        },
+                        {
+                            "label": "Value 275",
+                            "value": "11300000"
+                        },
+                        {
+                            "label": "Value 276",
+                            "value": "11400000"
+                        },
+                        {
+                            "label": "Value 277",
+                            "value": "11500000"
+                        },
+                        {
+                            "label": "Value 278",
+                            "value": "11600000"
+                        },
+                        {
+                            "label": "Value 279",
+                            "value": "11700000"
+                        },
+                        {
+                            "label": "Value 280",
+                            "value": "11800000"
+                        },
+                        {
+                            "label": "Value 281",
+                            "value": "11900000"
+                        },
+                        {
+                            "label": "Value 282",
+                            "value": "11a00000"
+                        },
+                        {
+                            "label": "Value 283",
+                            "value": "11b00000"
+                        },
+                        {
+                            "label": "Value 284",
+                            "value": "11c00000"
+                        },
+                        {
+                            "label": "Value 285",
+                            "value": "11d00000"
+                        },
+                        {
+                            "label": "Value 286",
+                            "value": "11e00000"
+                        },
+                        {
+                            "label": "Value 287",
+                            "value": "11f00000"
+                        },
+                        {
+                            "label": "Value 288",
+                            "value": "12000000"
+                        },
+                        {
+                            "label": "Value 289",
+                            "value": "12100000"
+                        },
+                        {
+                            "label": "Value 290",
+                            "value": "12200000"
+                        },
+                        {
+                            "label": "Value 291",
+                            "value": "12300000"
+                        },
+                        {
+                            "label": "Value 292",
+                            "value": "12400000"
+                        },
+                        {
+                            "label": "Value 293",
+                            "value": "12500000"
+                        },
+                        {
+                            "label": "Value 294",
+                            "value": "12600000"
+                        },
+                        {
+                            "label": "Value 295",
+                            "value": "12700000"
+                        },
+                        {
+                            "label": "Value 296",
+                            "value": "12800000"
+                        },
+                        {
+                            "label": "Value 297",
+                            "value": "12900000"
+                        },
+                        {
+                            "label": "Value 298",
+                            "value": "12a00000"
+                        },
+                        {
+                            "label": "Value 299",
+                            "value": "12b00000"
+                        },
+                        {
+                            "label": "Value 300",
+                            "value": "12c00000"
+                        },
+                        {
+                            "label": "Value 301",
+                            "value": "12d00000"
+                        },
+                        {
+                            "label": "Value 302",
+                            "value": "12e00000"
+                        },
+                        {
+                            "label": "Value 303",
+                            "value": "12f00000"
+                        },
+                        {
+                            "label": "Value 304",
+                            "value": "13000000"
+                        },
+                        {
+                            "label": "Value 305",
+                            "value": "13100000"
+                        },
+                        {
+                            "label": "Value 306",
+                            "value": "13200000"
+                        },
+                        {
+                            "label": "Value 307",
+                            "value": "13300000"
+                        },
+                        {
+                            "label": "Value 308",
+                            "value": "13400000"
+                        },
+                        {
+                            "label": "Value 309",
+                            "value": "13500000"
+                        },
+                        {
+                            "label": "Value 310",
+                            "value": "13600000"
+                        },
+                        {
+                            "label": "Value 311",
+                            "value": "13700000"
+                        },
+                        {
+                            "label": "Value 312",
+                            "value": "13800000"
+                        },
+                        {
+                            "label": "Value 313",
+                            "value": "13900000"
+                        },
+                        {
+                            "label": "Value 314",
+                            "value": "13a00000"
+                        },
+                        {
+                            "label": "Value 315",
+                            "value": "13b00000"
+                        },
+                        {
+                            "label": "Value 316",
+                            "value": "13c00000"
+                        },
+                        {
+                            "label": "Value 317",
+                            "value": "13d00000"
+                        },
+                        {
+                            "label": "Value 318",
+                            "value": "13e00000"
+                        },
+                        {
+                            "label": "Value 319",
+                            "value": "13f00000"
+                        },
+                        {
+                            "label": "Value 320",
+                            "value": "14000000"
+                        },
+                        {
+                            "label": "Value 321",
+                            "value": "14100000"
+                        },
+                        {
+                            "label": "Value 322",
+                            "value": "14200000"
+                        },
+                        {
+                            "label": "Value 323",
+                            "value": "14300000"
+                        },
+                        {
+                            "label": "Value 324",
+                            "value": "14400000"
+                        },
+                        {
+                            "label": "Value 325",
+                            "value": "14500000"
+                        },
+                        {
+                            "label": "Value 326",
+                            "value": "14600000"
+                        },
+                        {
+                            "label": "Value 327",
+                            "value": "14700000"
+                        },
+                        {
+                            "label": "Value 328",
+                            "value": "14800000"
+                        },
+                        {
+                            "label": "Value 329",
+                            "value": "14900000"
+                        },
+                        {
+                            "label": "Value 330",
+                            "value": "14a00000"
+                        },
+                        {
+                            "label": "Value 331",
+                            "value": "14b00000"
+                        },
+                        {
+                            "label": "Value 332",
+                            "value": "14c00000"
+                        },
+                        {
+                            "label": "Value 333",
+                            "value": "14d00000"
+                        },
+                        {
+                            "label": "Value 334",
+                            "value": "14e00000"
+                        },
+                        {
+                            "label": "Value 335",
+                            "value": "14f00000"
+                        },
+                        {
+                            "label": "Value 336",
+                            "value": "15000000"
+                        },
+                        {
+                            "label": "Value 337",
+                            "value": "15100000"
+                        },
+                        {
+                            "label": "Value 338",
+                            "value": "15200000"
+                        },
+                        {
+                            "label": "Value 339",
+                            "value": "15300000"
+                        },
+                        {
+                            "label": "Value 340",
+                            "value": "15400000"
+                        },
+                        {
+                            "label": "Value 341",
+                            "value": "15500000"
+                        },
+                        {
+                            "label": "Value 342",
+                            "value": "15600000"
+                        },
+                        {
+                            "label": "Value 343",
+                            "value": "15700000"
+                        },
+                        {
+                            "label": "Value 344",
+                            "value": "15800000"
+                        },
+                        {
+                            "label": "Value 345",
+                            "value": "15900000"
+                        },
+                        {
+                            "label": "Value 346",
+                            "value": "15a00000"
+                        },
+                        {
+                            "label": "Value 347",
+                            "value": "15b00000"
+                        },
+                        {
+                            "label": "Value 348",
+                            "value": "15c00000"
+                        },
+                        {
+                            "label": "Value 349",
+                            "value": "15d00000"
+                        },
+                        {
+                            "label": "Value 350",
+                            "value": "15e00000"
+                        },
+                        {
+                            "label": "Value 351",
+                            "value": "15f00000"
+                        },
+                        {
+                            "label": "Value 352",
+                            "value": "16000000"
+                        },
+                        {
+                            "label": "Value 353",
+                            "value": "16100000"
+                        },
+                        {
+                            "label": "Value 354",
+                            "value": "16200000"
+                        },
+                        {
+                            "label": "Value 355",
+                            "value": "16300000"
+                        },
+                        {
+                            "label": "Value 356",
+                            "value": "16400000"
+                        },
+                        {
+                            "label": "Value 357",
+                            "value": "16500000"
+                        },
+                        {
+                            "label": "Value 358",
+                            "value": "16600000"
+                        },
+                        {
+                            "label": "Value 359",
+                            "value": "16700000"
+                        },
+                        {
+                            "label": "Value 360",
+                            "value": "16800000"
+                        },
+                        {
+                            "label": "Value 361",
+                            "value": "16900000"
+                        },
+                        {
+                            "label": "Value 362",
+                            "value": "16a00000"
+                        },
+                        {
+                            "label": "Value 363",
+                            "value": "16b00000"
+                        },
+                        {
+                            "label": "Value 364",
+                            "value": "16c00000"
+                        },
+                        {
+                            "label": "Value 365",
+                            "value": "16d00000"
+                        },
+                        {
+                            "label": "Value 366",
+                            "value": "16e00000"
+                        },
+                        {
+                            "label": "Value 367",
+                            "value": "16f00000"
+                        },
+                        {
+                            "label": "Value 368",
+                            "value": "17000000"
+                        },
+                        {
+                            "label": "Value 369",
+                            "value": "17100000"
+                        },
+                        {
+                            "label": "Value 370",
+                            "value": "17200000"
+                        },
+                        {
+                            "label": "Value 371",
+                            "value": "17300000"
+                        },
+                        {
+                            "label": "Value 372",
+                            "value": "17400000"
+                        },
+                        {
+                            "label": "Value 373",
+                            "value": "17500000"
+                        },
+                        {
+                            "label": "Value 374",
+                            "value": "17600000"
+                        },
+                        {
+                            "label": "Value 375",
+                            "value": "17700000"
+                        },
+                        {
+                            "label": "Value 376",
+                            "value": "17800000"
+                        },
+                        {
+                            "label": "Value 377",
+                            "value": "17900000"
+                        },
+                        {
+                            "label": "Value 378",
+                            "value": "17a00000"
+                        },
+                        {
+                            "label": "Value 379",
+                            "value": "17b00000"
+                        },
+                        {
+                            "label": "Value 380",
+                            "value": "17c00000"
+                        },
+                        {
+                            "label": "Value 381",
+                            "value": "17d00000"
+                        },
+                        {
+                            "label": "Value 382",
+                            "value": "17e00000"
+                        },
+                        {
+                            "label": "Value 383",
+                            "value": "17f00000"
+                        },
+                        {
+                            "label": "Value 384",
+                            "value": "18000000"
+                        },
+                        {
+                            "label": "Value 385",
+                            "value": "18100000"
+                        },
+                        {
+                            "label": "Value 386",
+                            "value": "18200000"
+                        },
+                        {
+                            "label": "Value 387",
+                            "value": "18300000"
+                        },
+                        {
+                            "label": "Value 388",
+                            "value": "18400000"
+                        },
+                        {
+                            "label": "Value 389",
+                            "value": "18500000"
+                        },
+                        {
+                            "label": "Value 390",
+                            "value": "18600000"
+                        },
+                        {
+                            "label": "Value 391",
+                            "value": "18700000"
+                        },
+                        {
+                            "label": "Value 392",
+                            "value": "18800000"
+                        },
+                        {
+                            "label": "Value 393",
+                            "value": "18900000"
+                        },
+                        {
+                            "label": "Value 394",
+                            "value": "18a00000"
+                        },
+                        {
+                            "label": "Value 395",
+                            "value": "18b00000"
+                        },
+                        {
+                            "label": "Value 396",
+                            "value": "18c00000"
+                        },
+                        {
+                            "label": "Value 397",
+                            "value": "18d00000"
+                        },
+                        {
+                            "label": "Value 398",
+                            "value": "18e00000"
+                        },
+                        {
+                            "label": "Value 399",
+                            "value": "18f00000"
+                        },
+                        {
+                            "label": "Value 400",
+                            "value": "19000000"
+                        },
+                        {
+                            "label": "Value 401",
+                            "value": "19100000"
+                        },
+                        {
+                            "label": "Value 402",
+                            "value": "19200000"
+                        },
+                        {
+                            "label": "Value 403",
+                            "value": "19300000"
+                        },
+                        {
+                            "label": "Value 404",
+                            "value": "19400000"
+                        },
+                        {
+                            "label": "Value 405",
+                            "value": "19500000"
+                        },
+                        {
+                            "label": "Value 406",
+                            "value": "19600000"
+                        },
+                        {
+                            "label": "Value 407",
+                            "value": "19700000"
+                        },
+                        {
+                            "label": "Value 408",
+                            "value": "19800000"
+                        },
+                        {
+                            "label": "Value 409",
+                            "value": "19900000"
+                        },
+                        {
+                            "label": "Value 410",
+                            "value": "19a00000"
+                        },
+                        {
+                            "label": "Value 411",
+                            "value": "19b00000"
+                        },
+                        {
+                            "label": "Value 412",
+                            "value": "19c00000"
+                        },
+                        {
+                            "label": "Value 413",
+                            "value": "19d00000"
+                        },
+                        {
+                            "label": "Value 414",
+                            "value": "19e00000"
+                        },
+                        {
+                            "label": "Value 415",
+                            "value": "19f00000"
+                        },
+                        {
+                            "label": "Value 416",
+                            "value": "1a000000"
+                        },
+                        {
+                            "label": "Value 417",
+                            "value": "1a100000"
+                        },
+                        {
+                            "label": "Value 418",
+                            "value": "1a200000"
+                        },
+                        {
+                            "label": "Value 419",
+                            "value": "1a300000"
+                        },
+                        {
+                            "label": "Value 420",
+                            "value": "1a400000"
+                        },
+                        {
+                            "label": "Value 421",
+                            "value": "1a500000"
+                        },
+                        {
+                            "label": "Value 422",
+                            "value": "1a600000"
+                        },
+                        {
+                            "label": "Value 423",
+                            "value": "1a700000"
+                        },
+                        {
+                            "label": "Value 424",
+                            "value": "1a800000"
+                        },
+                        {
+                            "label": "Value 425",
+                            "value": "1a900000"
+                        },
+                        {
+                            "label": "Value 426",
+                            "value": "1aa00000"
+                        },
+                        {
+                            "label": "Value 427",
+                            "value": "1ab00000"
+                        },
+                        {
+                            "label": "Value 428",
+                            "value": "1ac00000"
+                        },
+                        {
+                            "label": "Value 429",
+                            "value": "1ad00000"
+                        },
+                        {
+                            "label": "Value 430",
+                            "value": "1ae00000"
+                        },
+                        {
+                            "label": "Value 431",
+                            "value": "1af00000"
+                        },
+                        {
+                            "label": "Value 432",
+                            "value": "1b000000"
+                        },
+                        {
+                            "label": "Value 433",
+                            "value": "1b100000"
+                        },
+                        {
+                            "label": "Value 434",
+                            "value": "1b200000"
+                        },
+                        {
+                            "label": "Value 435",
+                            "value": "1b300000"
+                        },
+                        {
+                            "label": "Value 436",
+                            "value": "1b400000"
+                        },
+                        {
+                            "label": "Value 437",
+                            "value": "1b500000"
+                        },
+                        {
+                            "label": "Value 438",
+                            "value": "1b600000"
+                        },
+                        {
+                            "label": "Value 439",
+                            "value": "1b700000"
+                        },
+                        {
+                            "label": "Value 440",
+                            "value": "1b800000"
+                        },
+                        {
+                            "label": "Value 441",
+                            "value": "1b900000"
+                        },
+                        {
+                            "label": "Value 442",
+                            "value": "1ba00000"
+                        },
+                        {
+                            "label": "Value 443",
+                            "value": "1bb00000"
+                        },
+                        {
+                            "label": "Value 444",
+                            "value": "1bc00000"
+                        },
+                        {
+                            "label": "Value 445",
+                            "value": "1bd00000"
+                        },
+                        {
+                            "label": "Value 446",
+                            "value": "1be00000"
+                        },
+                        {
+                            "label": "Value 447",
+                            "value": "1bf00000"
+                        },
+                        {
+                            "label": "Value 448",
+                            "value": "1c000000"
+                        },
+                        {
+                            "label": "Value 449",
+                            "value": "1c100000"
+                        },
+                        {
+                            "label": "Value 450",
+                            "value": "1c200000"
+                        },
+                        {
+                            "label": "Value 451",
+                            "value": "1c300000"
+                        },
+                        {
+                            "label": "Value 452",
+                            "value": "1c400000"
+                        },
+                        {
+                            "label": "Value 453",
+                            "value": "1c500000"
+                        },
+                        {
+                            "label": "Value 454",
+                            "value": "1c600000"
+                        },
+                        {
+                            "label": "Value 455",
+                            "value": "1c700000"
+                        },
+                        {
+                            "label": "Value 456",
+                            "value": "1c800000"
+                        },
+                        {
+                            "label": "Value 457",
+                            "value": "1c900000"
+                        },
+                        {
+                            "label": "Value 458",
+                            "value": "1ca00000"
+                        },
+                        {
+                            "label": "Value 459",
+                            "value": "1cb00000"
+                        },
+                        {
+                            "label": "Value 460",
+                            "value": "1cc00000"
+                        },
+                        {
+                            "label": "Value 461",
+                            "value": "1cd00000"
+                        },
+                        {
+                            "label": "Value 462",
+                            "value": "1ce00000"
+                        },
+                        {
+                            "label": "Value 463",
+                            "value": "1cf00000"
+                        },
+                        {
+                            "label": "Value 464",
+                            "value": "1d000000"
+                        },
+                        {
+                            "label": "Value 465",
+                            "value": "1d100000"
+                        },
+                        {
+                            "label": "Value 466",
+                            "value": "1d200000"
+                        },
+                        {
+                            "label": "Value 467",
+                            "value": "1d300000"
+                        },
+                        {
+                            "label": "Value 468",
+                            "value": "1d400000"
+                        },
+                        {
+                            "label": "Value 469",
+                            "value": "1d500000"
+                        },
+                        {
+                            "label": "Value 470",
+                            "value": "1d600000"
+                        },
+                        {
+                            "label": "Value 471",
+                            "value": "1d700000"
+                        },
+                        {
+                            "label": "Value 472",
+                            "value": "1d800000"
+                        },
+                        {
+                            "label": "Value 473",
+                            "value": "1d900000"
+                        },
+                        {
+                            "label": "Value 474",
+                            "value": "1da00000"
+                        },
+                        {
+                            "label": "Value 475",
+                            "value": "1db00000"
+                        },
+                        {
+                            "label": "Value 476",
+                            "value": "1dc00000"
+                        },
+                        {
+                            "label": "Value 477",
+                            "value": "1dd00000"
+                        },
+                        {
+                            "label": "Value 478",
+                            "value": "1de00000"
+                        },
+                        {
+                            "label": "Value 479",
+                            "value": "1df00000"
+                        },
+                        {
+                            "label": "Value 480",
+                            "value": "1e000000"
+                        },
+                        {
+                            "label": "Value 481",
+                            "value": "1e100000"
+                        },
+                        {
+                            "label": "Value 482",
+                            "value": "1e200000"
+                        },
+                        {
+                            "label": "Value 483",
+                            "value": "1e300000"
+                        },
+                        {
+                            "label": "Value 484",
+                            "value": "1e400000"
+                        },
+                        {
+                            "label": "Value 485",
+                            "value": "1e500000"
+                        },
+                        {
+                            "label": "Value 486",
+                            "value": "1e600000"
+                        },
+                        {
+                            "label": "Value 487",
+                            "value": "1e700000"
+                        },
+                        {
+                            "label": "Value 488",
+                            "value": "1e800000"
+                        },
+                        {
+                            "label": "Value 489",
+                            "value": "1e900000"
+                        },
+                        {
+                            "label": "Value 490",
+                            "value": "1ea00000"
+                        },
+                        {
+                            "label": "Value 491",
+                            "value": "1eb00000"
+                        },
+                        {
+                            "label": "Value 492",
+                            "value": "1ec00000"
+                        },
+                        {
+                            "label": "Value 493",
+                            "value": "1ed00000"
+                        },
+                        {
+                            "label": "Value 494",
+                            "value": "1ee00000"
+                        },
+                        {
+                            "label": "Value 495",
+                            "value": "1ef00000"
+                        },
+                        {
+                            "label": "Value 496",
+                            "value": "1f000000"
+                        },
+                        {
+                            "label": "Value 497",
+                            "value": "1f100000"
+                        },
+                        {
+                            "label": "Value 498",
+                            "value": "1f200000"
+                        },
+                        {
+                            "label": "Value 499",
+                            "value": "1f300000"
+                        },
+                        {
+                            "label": "Value 500",
+                            "value": "1f400000"
+                        },
+                        {
+                            "label": "Value 501",
+                            "value": "1f500000"
+                        },
+                        {
+                            "label": "Value 502",
+                            "value": "1f600000"
+                        },
+                        {
+                            "label": "Value 503",
+                            "value": "1f700000"
+                        },
+                        {
+                            "label": "Value 504",
+                            "value": "1f800000"
+                        },
+                        {
+                            "label": "Value 505",
+                            "value": "1f900000"
+                        },
+                        {
+                            "label": "Value 506",
+                            "value": "1fa00000"
+                        },
+                        {
+                            "label": "Value 507",
+                            "value": "1fb00000"
+                        },
+                        {
+                            "label": "Value 508",
+                            "value": "1fc00000"
+                        },
+                        {
+                            "label": "Value 509",
+                            "value": "1fd00000"
+                        },
+                        {
+                            "label": "Value 510",
+                            "value": "1fe00000"
+                        },
+                        {
+                            "label": "Value 511",
+                            "value": "1ff00000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSOSCTRIMUSER",
+            "unused": "e000c08c",
+            "label": "SYSCTL SYSOSCTRIMUSER clock configuration register"
+        },
+        {
+            "address": "400B0210",
+            "default": "2a000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SETUSEFCL",
+                    "label": "SYSOSCFCLCTL.SETUSEFCL clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "True",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SETUSEEXRES",
+                    "label": "SYSOSCFCLCTL.SETUSEEXRES clock-control field.",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "True",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "2a000000",
+                    "key": "KEY",
+                    "label": "SYSOSCFCLCTL.KEY clock-control field.",
+                    "mask": "ff000000",
+                    "settings": [
+                        {
+                            "label": "Value",
+                            "value": "2a000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSOSCFCLCTL",
+            "unused": "00fffffc",
+            "label": "SYSCTL SYSOSCFCLCTL clock configuration register"
+        },
+        {
+            "address": "400B0214",
+            "default": "91000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "STARTLFXT",
+                    "label": "LFXTCTL.STARTLFXT clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "False",
+                            "value": "0"
+                        },
+                        {
+                            "label": "True",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SETUSELFXT",
+                    "label": "LFXTCTL.SETUSELFXT clock-control field.",
+                    "mask": "2",
+                    "settings": [
+                        {
+                            "label": "False",
+                            "value": "0"
+                        },
+                        {
+                            "label": "True",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "91000000",
+                    "key": "KEY",
+                    "label": "LFXTCTL.KEY clock-control field.",
+                    "mask": "ff000000",
+                    "settings": [
+                        {
+                            "label": "Value",
+                            "value": "91000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "LFXTCTL",
+            "unused": "00fffffc",
+            "label": "SYSCTL LFXTCTL clock configuration register"
+        },
+        {
+            "address": "400B0218",
+            "default": "36000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SETUSEEXLF",
+                    "label": "EXLFCTL.SETUSEEXLF clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "True",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "36000000",
+                    "key": "KEY",
+                    "label": "EXLFCTL.KEY clock-control field.",
+                    "mask": "ff000000",
+                    "settings": [
+                        {
+                            "label": "Value",
+                            "value": "36000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "EXLFCTL",
+            "unused": "00fffffe",
+            "label": "SYSCTL EXLFCTL clock configuration register"
+        }
+    ],
     "core": "M0+",
     "delay_src_path": "delays/m0+/__lib_delays.c",
     "mcu": "MSPM0L2228-Q1",
-    "clock": "1"
+    "clock": 32
 }

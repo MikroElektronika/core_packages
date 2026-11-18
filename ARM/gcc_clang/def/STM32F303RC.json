@@ -241,7 +241,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00008000",
+                    "init": "00000000",
                     "key": "PLLSRC",
                     "label": "PLL entry clock source",
                     "mask": "00018000",
@@ -479,7 +479,7 @@
                         },
                         {
                             "label": "PLL is not divided before MCO",
-                            "value": "10000000"
+                            "value": "80000000"
                         }
                     ]
                 }

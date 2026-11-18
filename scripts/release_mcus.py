@@ -10,6 +10,7 @@ import pandas as pd
 from elasticsearch import Elasticsearch
 
 import support as support
+import package_state
 import classes.release_per_vendor as gh_uploader
 
 from pathlib import Path
@@ -71,8 +72,10 @@ def find_cmake_files(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
             if file.endswith(".cmake") and not 'delays' in root:
-                if file not in excluded_files:  # Check if the file is not in the excluded list
-                    cmake_files.append(os.path.join(root, file))
+                full_path = os.path.join(root, file)
+                # Skip excluded files and core-only files (they are copied into packages whose cores match)
+                if file not in excluded_files and not is_core_only_cmake(full_path):
+                    cmake_files.append(full_path)
     return cmake_files
 
 def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
@@ -177,6 +180,7 @@ def extract_mcu_names(file_name, source_dir, regex):
                         mcus[file_name]['mcu_names'].add(mcu_name)
                         if 'gcc' in source_dir or 'XC32' in source_dir or 'LLVM' in source_dir:
                             isPresent, readData = read_data_from_db('necto_db_dev.db', f'SELECT sdk_config, core_info FROM Devices WHERE name IS "{mcu_name}"')
+                            # If MCU entry is found in the database
                             if isPresent:
                                 if readData[0][1] == None:
                                     configJson = json.loads(readData[0][0])
@@ -186,77 +190,73 @@ def extract_mcu_names(file_name, source_dir, regex):
                                     core_info = json.loads(readData[0][1])
                                     for core in core_info:
                                         mcus[file_name]['cores'].add(core['core_name_define'])
+                            # If this is the new MCU to be released - read data from json queries
+                            elif os.path.exists(os.path.join('resources/queries/mcus', mcu_name, 'Devices.json')):
+                                with open(os.path.join('resources/queries/mcus', mcu_name, 'Devices.json'), 'r') as source_json:
+                                    readData = json.load(source_json)
+                                if 'CORE_NAME' in readData['sdk_config']:
+                                    mcus[file_name]['cores'].add(json.loads(readData['sdk_config'])['CORE_NAME'])
+                                else:
+                                    for core in json.loads(readData['core_info']):
+                                        mcus[file_name]['cores'].add(core['core_name_define'])
+
 
     return mcus
 
-def find_first_matching_mcu_name(source_dir, regex):
-    """
-    Find and return the filename of the first file that matches a given regex in the specified 'def' directory.
-    """
-    if not regex:
-        return None
+MCU_NAME_CONDITION = re.compile(r'\$\{MCU_NAME\}\s+MATCHES\s+"([^"]*)"')
+CORE_NAME_CONDITION = re.compile(r'\$\{CORE_NAME\}\s+(MATCHES|STREQUAL)\s+"([^"]*)"')
 
-    def_dir = os.path.join(source_dir, 'def')  # Define the path to the 'def' directory
-    regex_pattern = re.compile(regex)  # Compile the regex pattern for efficiency
+def extract_conditions_from_cmake(cmake_file):
+    """
+    Return (mcu_regexes, core_regexes) used in the conditions of a .cmake file.
+    STREQUAL comparisons on CORE_NAME are converted to exact-match regexes.
+    """
+    with open(cmake_file, 'r') as f:
+        content = f.read()
+    mcu_regexes = MCU_NAME_CONDITION.findall(content)
+    core_regexes = [
+        value if operator == 'MATCHES' else f'^{re.escape(value)}$'
+        for operator, value in CORE_NAME_CONDITION.findall(content)
+    ]
+    return mcu_regexes, core_regexes
 
-    # Walk through the directory
-    for root, dirs, files in os.walk(def_dir):
+def is_core_only_cmake(cmake_file):
+    """ True for .cmake files filtered only by CORE_NAME (no MCU_NAME condition), e.g. stm/delays/m7.cmake """
+    mcu_regexes, core_regexes = extract_conditions_from_cmake(cmake_file)
+    return not mcu_regexes and bool(core_regexes)
+
+def cmake_file_applies(cmake_file, mcu_names, cores):
+    """
+    Check whether a .cmake file is needed for a package, mirroring CMake which includes every file from the folder:
+    - files with MCU_NAME conditions apply if any packaged MCU matches one of them
+    - files with only CORE_NAME conditions apply if any packaged core matches one of them
+    """
+    mcu_regexes, core_regexes = extract_conditions_from_cmake(cmake_file)
+    if mcu_regexes:
+        return any(re.search(regex, mcu) for regex in mcu_regexes for mcu in mcu_names)
+    return any(re.search(regex, core) for regex in core_regexes for core in cores)
+
+def copy_applicable_cmake_files(cmake_file, source_dir, output_dir, mcu_names, cores):
+    """
+    Copy additional .cmake files from the vendor folder of cmake_file that the package needs:
+    - every file from the delays folder(s) whose MCU_NAME / CORE_NAME condition matches the package
+    - core-only files from the vendor folder itself (MCU based ones are packages of their own)
+    """
+    vendor_dir = os.path.dirname(cmake_file)
+    for root, dirs, files in os.walk(vendor_dir):
+        is_delays_dir = 'delays' in os.path.relpath(root, start=vendor_dir).split(os.sep)
         for file in files:
-            if file.endswith('.json'):
-                if regex_pattern.search(os.path.splitext(file)[0]):  # Check if the file matches the regex
-                    filename_without_extension = os.path.splitext(file)[0]  # Remove the extension from the filename
-                    return filename_without_extension  # Return just the filename without its path or extension
+            full_path = os.path.join(root, file)
+            if not file.endswith('.cmake') or os.path.samefile(full_path, cmake_file):
+                continue
+            if not is_delays_dir and not is_core_only_cmake(full_path):
+                continue
+            if cmake_file_applies(full_path, mcu_names, cores):
+                dest_file_path = os.path.join(output_dir, os.path.relpath(full_path, start=source_dir))
+                os.makedirs(os.path.dirname(dest_file_path), exist_ok=True)
+                shutil.copy(full_path, dest_file_path)
 
-    return None  # Return None if no matching file is found
-
-def extract_regex_from_cmake(cmake_file):
-    """ Extract regex patterns from a given .cmake file, supporting complex logical conditions. """
-    # Extended regex pattern to capture multiple regex conditions separated by 'OR'
-    regex_pattern = re.compile(r'\$\{MCU_NAME\}\s*MATCHES\s*"(.*?)"')
-    regexes = set()  # Use a set to avoid duplicates if the same regex appears more than once
-
-    with open(cmake_file, 'r') as file:
-        content = file.read()
-
-    # Finding all occurrences of MCU_NAME MATCHES conditions
-    if_conditions = re.findall(r'if\s*\((.*?)\)\s*endif', content, re.DOTALL)
-    for condition in if_conditions:
-        # Extract all regex patterns within the condition
-        matches = regex_pattern.findall(condition)
-        regexes.update(matches)
-
-    return list(regexes)
-
-def copy_files_based_on_regex(source_dir, dest_dir, check_string):
-    """
-    Go through all .cmake files in source_dir, extract regex patterns, and copy files where check_string matches any regex.
-    """
-    if not check_string:
-        return
-
-    fileCopied = False
-    for root, dirs, files in os.walk(source_dir):
-        for file in files:
-            if file.endswith(".cmake"):
-                full_path = os.path.join(root, file)
-                regexes = extract_regex_from_cmake(full_path)
-                for regex in regexes:
-                    if re.match(regex, check_string) and not fileCopied:
-                        # If check_string matches the regex, copy the file
-                        fileCopied = True
-                        dest_file_path = os.path.join(dest_dir, file)
-                        os.makedirs(os.path.dirname(dest_file_path), exist_ok=True)
-                        shutil.copy(full_path, dest_file_path)
-        if not fileCopied and 'STM32' in check_string and 'gcc_clang' in source_dir:
-            if check_string[6] == '7': ## in special grouped case for M7 not covered by single files
-                os.makedirs(dest_dir, exist_ok=True)
-                shutil.copy(os.path.join(root, 'm7.cmake'), os.path.join(dest_dir, 'm7.cmake'))
-            elif check_string[6] == '0': ## in special grouped case for M0 not covered by single files
-                os.makedirs(dest_dir, exist_ok=True)
-                shutil.copy(os.path.join(root, 'm0.cmake'), os.path.join(dest_dir, 'm0.cmake'))
-
-
-def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
+def copy_cmake_files(cmake_file, source_dir, output_dir, mcu_names, cores):
     """ Copy the .cmake file to the output directory maintaining the same folder structure """
     relative_path = os.path.relpath(cmake_file, start=source_dir)
     destination_path = os.path.join(output_dir, relative_path)
@@ -276,12 +276,8 @@ def copy_cmake_files(cmake_file, source_dir, output_dir, regex):
         shutil.copy(fallback_config_path, os.path.join(output_dir, "cmake"))
     if os.path.exists(install_headers_path):
         shutil.copy(install_headers_path, os.path.join(output_dir, "cmake"))
-    if 'gcc' in source_dir or 'LLVM' in source_dir:
-        mcuFileName = find_first_matching_mcu_name(source_dir, regex)
-        delays_cmake_dir = os.path.join(os.path.dirname(cmake_file), 'delays')
-        delay_relative_path = os.path.relpath(delays_cmake_dir, start=source_dir)
-        delay_destination_path = os.path.join(output_dir, delay_relative_path)
-        copy_files_based_on_regex(delays_cmake_dir, delay_destination_path, mcuFileName)
+    # Copy delays and core-only .cmake files needed by the packaged MCUs/cores
+    copy_applicable_cmake_files(cmake_file, source_dir, output_dir, mcu_names, cores)
 
 # Used to check if file exists locally
 def checkFileOnDisk(fileName):
@@ -377,6 +373,33 @@ def copy_interrupts(mcus, source_dir, base_path):
 
     copy_interrupt_files(source_dir, base_path)
 
+def copy_local_includes(source_file, source_subdir, output_subdir):
+    """
+    Copy files referenced via #include "..." from the same directory as source_file.
+    Used for mikroC def files which include shared MCU family definitions
+    (e.g. MK64FN1M0VLL12.c -> #include "MK64FN1M0XXX12.c").
+    """
+    pending = [source_file]
+    seen = set()
+    while pending:
+        current = pending.pop()
+        if current in seen:
+            continue
+        seen.add(current)
+        try:
+            with open(current, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+        except OSError:
+            continue
+        for include in re.findall(r'^\s*#include\s*"([^"]+)"', content, re.MULTILINE):
+            include_path = os.path.normpath(os.path.join(os.path.dirname(current), include))
+            if not os.path.isfile(include_path) or include_path in seen:
+                continue
+            dest_path = os.path.join(output_subdir, os.path.relpath(include_path, start=source_subdir))
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+            shutil.copy(include_path, dest_path)
+            pending.append(include_path)
+
 def copy_files_from_dir(mcus, source_dir, base_path, subdirectory):
 
     source_subdir = os.path.join(source_dir, subdirectory)
@@ -403,6 +426,9 @@ def copy_files_from_dir(mcus, source_dir, base_path, subdirectory):
                     full_dest_path = os.path.join(output_subdir, relative_path)
                     os.makedirs(os.path.dirname(full_dest_path), exist_ok=True)
                     shutil.copy(full_source_path, full_dest_path)
+                    if 'gcc_clang' not in source_subdir:
+                        # mikroC def files may include shared XXX definition files
+                        copy_local_includes(full_source_path, source_subdir, output_subdir)
 
 def copy_delays(cores, source_dir, output_dir, base_path):
 
@@ -477,125 +503,7 @@ def read_data_from_db(db, sql_query):
     ## Return query results
     return len(results), results
 
-def insertIntoTable(db, tableName, values, columns):
-    conn = sqlite3.connect(db)
-    cur = conn.cursor()
-    numOfItems = ''
-    for itemCount in range(1, len(values) + 1):
-        numOfItems += '?,'
-    cur.execute(f'INSERT OR IGNORE INTO {tableName} ({columns}) VALUES ({numOfItems[:-1]})', values)
-    conn.commit()
-    conn.close()
-
-def updateTable(db, query, newFieldValue):
-    try:
-        # Connect to existing SQLite database
-        conn = sqlite3.connect(db)
-        cur = conn.cursor()
-        # Update fields in the table with data
-        cur.execute(query, (newFieldValue,))
-        # Commit changes
-        conn.commit()
-    except sqlite3.Error as e:
-        print("SQLite error:", e)
-    finally:
-        # Close connection
-        conn.close()
-
-def deleteFromTable(db, sql_query):
-    try:
-        sqliteConnection = sqlite3.connect(db)
-        cursor = sqliteConnection.cursor()
-
-        # Deleting single record now
-        cursor.execute(sql_query)
-        sqliteConnection.commit()
-        cursor.close()
-    except sqlite3.Error as error:
-        print("Failed to delete record from sqlite table", error)
-    finally:
-        if sqliteConnection:
-            sqliteConnection.close()
-
-def update_database(package_name, mcus, db_path):
-    installer_package_column = 15
-    for each_pack in mcus:
-        for each_mcu in mcus[each_pack]['mcu_names']:
-            ## Replace for MCUs which have different json file names and UID in database
-            each_mcu = re.sub('_', '-', each_mcu)
-            is_present, read_data_compiler = read_data_from_db(db_path, f'SELECT compiler_uid FROM CompilerToDevice WHERE device_uid IS "{each_mcu.replace('dsPIC', 'DSPIC')}"')
-            is_present, read_data = read_data_from_db(db_path, f'SELECT * FROM Devices WHERE uid IS "{each_mcu.upper()}"')
-            counter = 0
-            data_as_list_joined = []
-            while counter != len(read_data):
-                existing_packages = {}
-                if read_data[counter][installer_package_column]:
-                    if 'compiler_flags' not in read_data[counter][installer_package_column]:
-                        existing_packages = json.loads(read_data[counter][installer_package_column])
-                    else:
-                        if read_data[counter][installer_package_column - 1]:
-                            existing_packages = json.loads(read_data[counter][installer_package_column - 1])
-                data_as_list = list(read_data[counter])
-                for each_compiler in list(read_data_compiler):
-                    if 'mchp_xc' in each_compiler[0] and '_xc' in package_name:
-                        existing_packages[each_compiler[0]] = package_name
-                    else:
-                        if not re.search('xc(8|16|32)', package_name):
-                            for each_split_check in package_name.split('_')[1:]:
-                                if re.search(each_split_check, each_compiler[0]):
-                                    existing_packages[each_compiler[0]] = package_name
-                data_as_list[installer_package_column] = existing_packages
-                data_as_list_joined.append(data_as_list)
-                counter += 1
-            for each_list in data_as_list_joined:
-                if is_present:
-                    updateTable(
-                        db_path,
-                        f'''UPDATE Devices SET installer_package = ? WHERE uid = "{each_mcu.upper()}"''',
-                        json.dumps(each_list[installer_package_column])
-                    )
-                else:
-                    raise ValueError("%s does not exist in database!" % each_mcu)
-
-    return
-
-def fetch_existing_asset_names(release):
-    return [asset['name'] for asset in release['assets']]
-
-def fetch_current_indexed_packages(es : Elasticsearch, index_name):
-    # Search query to use
-    query_search = {
-        "size": 5000,
-        "query": {
-            "match_all": {}
-        }
-    }
-
-    # Search the base with provided query
-    num_of_retries = 1
-    while num_of_retries <= 10:
-        try:
-            response = es.search(index=index_name, body=query_search)
-            if not response['timed_out']:
-                break
-        except:
-            print("Executing search query - retry number %i" % num_of_retries)
-        num_of_retries += 1
-
-    all_packages = []
-    for eachHit in response['hits']['hits']:
-        if not 'name' in eachHit['_source']:
-            continue
-        if '_type' in eachHit:
-            if '_doc' == eachHit['_type']:
-                all_packages.append(eachHit['_source'])
-
-    # Sort all_packages alphabetically by the 'name' field
-    all_packages.sort(key=lambda x: x['name'])
-
-    return all_packages
-
-async def package_asset(source_dir, output_dir, arch, entry_name, packages, current_metadata, db_paths, latest_release=None):
+async def package_asset(source_dir, output_dir, arch, entry_name, packages, current_metadata, latest_release, published_metadata):
     """ Package and upload an asset as a release to GitHub """
     cmake_files = find_cmake_files(os.path.join(source_dir, "cmake"))
     file_paths = parse_files_for_paths(cmake_files, source_dir, True)
@@ -606,71 +514,76 @@ async def package_asset(source_dir, output_dir, arch, entry_name, packages, curr
 
     for cmake_file, data in file_paths.items():
         base_output_dir = os.path.join(output_dir, f"{arch.lower()}_{entry_name.lower()}_{cmake_file}") # Subdirectory for this .cmake file
-        # Copy the .cmake file into the package directory
-        copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, data['regex'])
-
-        mcuNames = extract_mcu_names(cmake_file, source_dir, data['regex'])
-        # Copy individual files
-        copy_files(data['files'], base_output_dir, source_dir)
-        # Copy schema directories
-        copy_schemas(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir)
-        copy_interrupts(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir)
-        # Copy defs
-        for folder in ['def', 'startup', 'linker_scripts']:
-            copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, folder)
-        # Copy delay files
-        copy_delays(mcuNames[cmake_file]['cores'], source_dir, output_dir, base_output_dir)
-        # Copy std_library to every package
-        std_library_path = os.path.join(source_dir, 'std_library')
-        if os.path.exists(std_library_path):
-            shutil.copytree(std_library_path, os.path.join(base_output_dir, "std_library"), dirs_exist_ok=True)
-        # Copy include to every package
-        include_path = os.path.join(source_dir, 'include')
-        if os.path.exists(include_path):
-            shutil.copytree(include_path, os.path.join(base_output_dir, "include"), dirs_exist_ok=True)
-        # Copy cstdio to every package
-        cstdio_path = os.path.join(source_dir, 'cstdio')
-        if os.path.exists(cstdio_path):
-            shutil.copytree(cstdio_path, os.path.join(base_output_dir, "cstdio"), dirs_exist_ok=True)
-
-        # Copy common to every package
-        shutil.copytree(os.path.join(source_dir, 'common'), os.path.join(base_output_dir, "common"), dirs_exist_ok=True)
-        # Copy base CMakeLists.txt to every package
-        shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
-
-        # Create archive
-        archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
-        compiler = "mikroC"
-        compilers = ['mikroC AI']
-        if entry_name == "gcc_clang":
-            compilers = ['GCC', 'Clang']
-            compiler = "GCC & Clang"
-        elif "XC" in entry_name or "LLVM" in entry_name:
-            compilers = [entry_name]
-            compiler = entry_name
-        elif "gcc" == entry_name:
-            compilers = [entry_name]
-            compiler = "Renesas RX GCC"
-
-        displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
-        archiveHash = hash_directory_contents(base_output_dir)
-        archiveName = os.path.basename(archive_path)
-
-        shutil.rmtree(base_output_dir)
-
-        # Determine the version based on the hash
-        version = get_version_based_on_hash(archiveName, (latest_release['tag_name']).replace("v", ""), archiveHash, current_metadata)
-        # Add to packages list
-        name_without_extension = os.path.splitext(os.path.basename(archiveName))[0]
-        install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
-
+        name_without_extension = os.path.basename(base_output_dir)
         vendor = gh_uploader.resolve_mcu_vendor(data['cmake_file_path'])
+        mcuNames = extract_mcu_names(cmake_file, source_dir, data['regex'])
 
-        packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location, 'vendor': vendor})
+        def assemble():
+            # Copy the .cmake file into the package directory
+            copy_cmake_files(data['cmake_file_path'], source_dir, base_output_dir, mcuNames[cmake_file]['mcu_names'], mcuNames[cmake_file]['cores'])
+            # Copy individual files
+            copy_files(data['files'], base_output_dir, source_dir)
+            # Copy schema directories
+            copy_schemas(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir)
+            copy_interrupts(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir)
+            # Copy defs
+            for folder in ['def', 'startup', 'linker_scripts']:
+                copy_files_from_dir(mcuNames[cmake_file]['mcu_names'], source_dir, base_output_dir, folder)
+            # Copy delay files
+            copy_delays(mcuNames[cmake_file]['cores'], source_dir, output_dir, base_output_dir)
+            # Copy std_library to every package
+            std_library_path = os.path.join(source_dir, 'std_library')
+            if os.path.exists(std_library_path):
+                shutil.copytree(std_library_path, os.path.join(base_output_dir, "std_library"), dirs_exist_ok=True)
+            # Copy include to every package
+            include_path = os.path.join(source_dir, 'include')
+            if os.path.exists(include_path):
+                shutil.copytree(include_path, os.path.join(base_output_dir, "include"), dirs_exist_ok=True)
+            # Copy cstdio to every package
+            cstdio_path = os.path.join(source_dir, 'cstdio')
+            if os.path.exists(cstdio_path):
+                shutil.copytree(cstdio_path, os.path.join(base_output_dir, "cstdio"), dirs_exist_ok=True)
 
-        # Mark package for appropriate device and toolchain
-        for each_db in db_paths:
-            update_database(name_without_extension, mcuNames, each_db)
+            # Copy common to every package
+            shutil.copytree(os.path.join(source_dir, 'common'), os.path.join(base_output_dir, "common"), dirs_exist_ok=True)
+            # Copy base CMakeLists.txt to every package
+            shutil.copy(os.path.join(source_dir, "CMakeLists.txt"), base_output_dir)
+
+        published = package_state.find_published(published_metadata, name_without_extension)
+        # Hashed from the sources first: an unchanged package is not copied together or packed
+        if package_state.is_unchanged(published, package_state.virtual_package_hash(assemble, base_output_dir)):
+            print(f"\033[92mUnchanged, not packed: {name_without_extension}\033[0m")
+            # Keeps its release, version and download link; "unchanged" keeps it out of the upload
+            packages.append({**published, "unchanged": True})
+        else:
+            assemble()
+            archiveHash = hash_directory_contents(base_output_dir)
+            print(f"\033[93mChanged, packing: {name_without_extension}\033[0m")
+            # Create archive
+            archive_path = compress_directory_7z(base_output_dir, entry_name, arch)
+            compiler = "mikroC"
+            compilers = ['mikroC AI']
+            if entry_name == "gcc_clang":
+                compilers = ['GCC', 'Clang']
+                compiler = "GCC & Clang"
+            elif "XC" in entry_name or "LLVM" in entry_name:
+                compilers = [entry_name]
+                compiler = entry_name
+            elif "gcc" == entry_name:
+                compilers = [entry_name]
+                compiler = "Renesas RX GCC"
+
+            displayName = f"{cmake_file.upper()} MCU Support package for {compiler}"
+            archiveName = os.path.basename(archive_path)
+
+            shutil.rmtree(base_output_dir)
+
+            # Determine the version based on the hash
+            version = get_version_based_on_hash(name_without_extension, (latest_release['tag_name']).replace("v", ""), archiveHash, current_metadata)
+            # Add to packages list
+            install_location = os.path.join("%APPLICATION_DATA_DIR%/packages", "core", arch, entry_name, name_without_extension)
+
+            packages.append({"name" : name_without_extension, "display_name": displayName, 'compilers': compilers, "version" : version, "hash" :archiveHash, "vendor" : "MIKROE", "type" : "mcu", "category": "MCU Package", "hidden" : False, 'install_location': install_location, 'vendor': vendor})
 
         mcu_check = None
         mcu_full_list = []
@@ -774,48 +687,6 @@ def get_version_based_on_hash(package_name, version, hash_value, current_metadat
     # If the package is not found or the hash doesn't match, return the provided version
     return version
 
-def fetch_elasticsearch_data(index_name):
-    # Elasticsearch instance used for indexing
-    num_of_retries = 1
-    print("Trying to connect to ES.")
-    while True:
-        es = Elasticsearch([os.environ['ES_HOST']], http_auth=(os.environ['ES_USER'], os.environ['ES_PASSWORD']))
-        if es.ping():
-            break
-        # Wait 1 second and try again if connection fails
-        if 10 == num_of_retries:
-            # Exit if it fails 10 times, something is wrong with the server
-            raise ValueError("Connection to ES failed!")
-        print(f"Connection retry: {num_of_retries}")
-        num_of_retries += 1
-
-        time.sleep(1)
-
-    # Search query to use
-    query_search = {
-        "size": 5000,
-        "query": {
-            "match_all": {}
-        }
-    }
-
-    # Search the base with provided query
-    num_of_retries = 1
-    while num_of_retries <= 10:
-        try:
-            response = es.search(index=index_name, body=query_search)
-            if not response['timed_out']:
-                break
-        except:
-            print("Executing search query - retry number %i" % num_of_retries)
-        num_of_retries += 1
-
-    for eachHit in response['hits']['hits']:
-        if eachHit['_id'] == 'database':
-            if eachHit['_source']['name'] == 'database':
-                return eachHit['_source']['version']
-
-    return None
 
 def update_metadata(current_metadata, new_files, version):
     """ Update the metadata with the new files """
@@ -824,12 +695,8 @@ def update_metadata(current_metadata, new_files, version):
 
     print(f"Updating metadata objects version to {version}.")
     for new_file in new_files:
-        if 'database' == new_file['name']:
-            db_version = fetch_elasticsearch_data(os.environ['ES_INDEX_LIVE'])
-            if not db_version:
-                db_version = version
-            new_file['version'] = db_version
-        else:
+        # Unchanged packages keep their published version
+        if not new_file.pop('unchanged', False):
             new_file['version'] = version
 
         updated_metadata.append(new_file)
@@ -847,8 +714,6 @@ def append_package(packages, package, display_name, version, install=None, categ
         hash_value = hash
     else:
         hash_value = hash_directory_contents(package[:-3])
-    if os.path.basename(package.lower()) == 'database_dev.7z':
-        package_type = 'database'
     packages.append({
         "name": f"{os.path.basename(package.lower())[:-3]}",
         "display_name": display_name,
@@ -881,9 +746,9 @@ async def main(token, repo, tag_name, live=False):
     """ Main function to orchestrate packaging and uploading assets """
     architectures = ["ARM", "RISCV", "PIC32", "PIC", "dsPIC", "AVR", "RL78", "RX"]
 
-    db_paths = ['necto_db_dev.db']
-
     current_metadata = fetch_current_metadata(repo, token)
+    # Published state: unchanged packages are neither packed nor uploaded
+    published_metadata = package_state.fetch_published_metadata(repo, token)
 
     latest_release = fetch_latest_release_version(repo, token)
     if 'latest' == tag_name:
@@ -904,7 +769,6 @@ async def main(token, repo, tag_name, live=False):
         num_of_retries += 1
 
         time.sleep(1)
-    indexed_items = fetch_current_indexed_packages(es, os.environ['ES_INDEX'])
 
     uploader = gh_uploader.GitHubReleaseUploader(
         repo=repo,
@@ -931,7 +795,7 @@ async def main(token, repo, tag_name, live=False):
                         print(f"\033[34mProcessing {source_directory} to {output_directory}\033[0m")
                         await package_asset(
                             source_directory, output_directory, arch, entry.name,
-                            packages, current_metadata, db_paths, latest_release
+                            packages, current_metadata, latest_release, published_metadata
                         )
         with open('mcu_packages.json', 'w') as file:
             json.dump(packages, file)
@@ -939,10 +803,10 @@ async def main(token, repo, tag_name, live=False):
         with open('mcu_packages.json', 'r') as file:
             packages = json.load(file)
 
-    payload = uploader.build_release_payload_from_packages(packages, 'output')
-
-    for each_db in db_paths:
-        gh_uploader.append_to_payload(payload, each_db, os.path.join(parent_dir, each_db))
+    # Only the packed (changed) packages are uploaded
+    changed_packages = [package for package in packages if not package.get('unchanged')]
+    print(f"\033[94m{len(changed_packages)} of {len(packages)} MCU packages changed and were packed.\033[0m")
+    payload = uploader.build_release_payload_from_packages(changed_packages, 'output')
 
     # Generate clocks.json
     if not live:
@@ -959,26 +823,6 @@ async def main(token, repo, tag_name, live=False):
         schemaGenerator = GenerateSchemas(input_directory, output_file, ['board_regex'])
         schemaGenerator.generate()
         gh_uploader.append_to_payload(payload, 'schemas.json', Path(output_file).resolve())
-
-    # Generate database packages
-    for each_db in db_paths:
-        shutil.copy(f'./{each_db}', './utils/databases/necto_db.db')
-        package_suffix = ''
-        if 'dev' in each_db:
-            package_suffix = '_dev'
-        archive_path = compress_directory_7z(os.path.join('./utils', 'databases'), f'database{package_suffix}.7z')
-        current_db_hash = hash_directory_contents(os.path.join('./utils', 'databases'))
-        append_package(
-            packages, archive_path,
-            "NECTO Database",
-            get_version_based_on_hash(
-                f'database{package_suffix}', (latest_release['tag_name']).replace("v", ""),
-                current_db_hash, current_metadata
-            ),
-            f'databases',
-            hash=current_db_hash
-        )
-        gh_uploader.append_to_payload(payload, f'database{package_suffix}.7z', Path(str(archive_path)).resolve())
 
     # Generate document files asset
     if not live:
@@ -999,7 +843,7 @@ if __name__ == '__main__':
     parser.add_argument("token", help="GitHub Token")
     parser.add_argument("repo", help="Repository name, e.g., 'username/repo'")
     parser.add_argument("tag_name", help="Tag name from the release")
-    parser.add_argument("--live", help="Upload only database?", type=bool, default=False)
+    parser.add_argument("--live", help="Upload MCU packages only", type=bool, default=False)
     args = parser.parse_args()
     print("Starting the upload process...")
     asyncio.run(main(args.token, args.repo, args.tag_name, args.live))

@@ -65,7 +65,7 @@
             "label_group": "DEVCFG3"
         },
         {
-            "init": "DIV_4",
+            "init": "DIV_2",
             "key": "FPLLIDIV",
             "label": "PLL Input Divider",
             "settings": [
@@ -201,7 +201,7 @@
             "label_group": "DEVCFG2"
         },
         {
-            "init": "DIV_1",
+            "init": "DIV_2",
             "key": "FPLLODIV",
             "label": "System PLL Output Clock Divider",
             "settings": [

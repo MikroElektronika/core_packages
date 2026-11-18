@@ -1,6 +1,3396 @@
 {
+    "config_registers": [
+        {
+            "address": "400E0400",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK2",
+                    "label": "Programmable Clock 2 Output Enable",
+                    "mask": "00000400",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enables the Programmable Clock 2 output.",
+                            "value": "00000400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK1",
+                    "label": "Programmable Clock 1 Output Enable",
+                    "mask": "00000200",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enables the Programmable Clock 1 output.",
+                            "value": "00000200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PCK0",
+                    "label": "Programmable Clock 0 Output Enable",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enables the Programmable Clock 0 output.",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "UDP",
+                    "label": "USB Device Port Clock Enable",
+                    "mask": "00000080",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enables the USB Device Port clock (48 MHz from PMC_USB).",
+                            "value": "00000080"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_SCER",
+            "unused": "FFFFF87F",
+            "label": "System clock enable register"
+        },
+        {
+            "address": "400E0420",
+            "default": "00000008",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CFDEN",
+                    "label": "Clock Failure Detector Enable",
+                    "mask": "02000000",
+                    "settings": [
+                        {
+                            "label": "The clock failure detector is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The clock failure detector is enabled.",
+                            "value": "02000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCSEL",
+                    "label": "Main Clock Oscillator Selection",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "The Main RC oscillator is selected.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main crystal oscillator is selected.",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003E00",
+                    "key": "MOSCXTST",
+                    "label": "Main Crystal Oscillator Startup Time (x8 slow clock cycles)",
+                    "mask": "0000FF00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "MOSCRCF",
+                    "label": "Main RC Oscillator Frequency Selection",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "The fast RC oscillator frequency is at 4 MHz (default)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The fast RC oscillator frequency is at 8 MHz",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "The fast RC oscillator frequency is at 12 MHz",
+                            "value": "00000020"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000008",
+                    "key": "MOSCRCEN",
+                    "label": "Main RC Oscillator Enable",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "The Main RC oscillator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main RC oscillator is enabled.",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "WAITMODE",
+                    "label": "Wait Mode Command (write-only)",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Puts the device in Wait mode.",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTBY",
+                    "label": "Main Crystal Oscillator Bypass",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "No effect.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main crystal oscillator is bypassed. MOSCXTEN must be cleared. An external clock must be connected on XIN.",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MOSCXTEN",
+                    "label": "Main Crystal Oscillator Enable",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "The Main crystal oscillator is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The Main crystal oscillator is enabled. MOSCXTBY must be cleared.",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "CKGR_MOR",
+            "unused": "FCFF0080",
+            "label": "Main oscillator register"
+        },
+        {
+            "address": "400E0428",
+            "default": "00003F00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00090000",
+                    "key": "MULA",
+                    "label": "PLLA Multiplier",
+                    "mask": "07FF0000",
+                    "settings": [
+                        {
+                            "label": "The PLLA is disabled (PLLA also disabled if DIVA = 0).",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLA input x 2",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "PLLA input x 3",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "PLLA input x 4",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "PLLA input x 5",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "PLLA input x 6",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "PLLA input x 7",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "PLLA input x 8",
+                            "value": "00070000"
+                        },
+                        {
+                            "label": "PLLA input x 9",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "PLLA input x 10",
+                            "value": "00090000"
+                        },
+                        {
+                            "label": "PLLA input x 11",
+                            "value": "000A0000"
+                        },
+                        {
+                            "label": "PLLA input x 12",
+                            "value": "000B0000"
+                        },
+                        {
+                            "label": "PLLA input x 13",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "PLLA input x 14",
+                            "value": "000D0000"
+                        },
+                        {
+                            "label": "PLLA input x 15",
+                            "value": "000E0000"
+                        },
+                        {
+                            "label": "PLLA input x 16",
+                            "value": "000F0000"
+                        },
+                        {
+                            "label": "PLLA input x 17",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "PLLA input x 18",
+                            "value": "00110000"
+                        },
+                        {
+                            "label": "PLLA input x 19",
+                            "value": "00120000"
+                        },
+                        {
+                            "label": "PLLA input x 20",
+                            "value": "00130000"
+                        },
+                        {
+                            "label": "PLLA input x 21",
+                            "value": "00140000"
+                        },
+                        {
+                            "label": "PLLA input x 22",
+                            "value": "00150000"
+                        },
+                        {
+                            "label": "PLLA input x 23",
+                            "value": "00160000"
+                        },
+                        {
+                            "label": "PLLA input x 24",
+                            "value": "00170000"
+                        },
+                        {
+                            "label": "PLLA input x 25",
+                            "value": "00180000"
+                        },
+                        {
+                            "label": "PLLA input x 26",
+                            "value": "00190000"
+                        },
+                        {
+                            "label": "PLLA input x 27",
+                            "value": "001A0000"
+                        },
+                        {
+                            "label": "PLLA input x 28",
+                            "value": "001B0000"
+                        },
+                        {
+                            "label": "PLLA input x 29",
+                            "value": "001C0000"
+                        },
+                        {
+                            "label": "PLLA input x 30",
+                            "value": "001D0000"
+                        },
+                        {
+                            "label": "PLLA input x 31",
+                            "value": "001E0000"
+                        },
+                        {
+                            "label": "PLLA input x 32",
+                            "value": "001F0000"
+                        },
+                        {
+                            "label": "PLLA input x 33",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "PLLA input x 34",
+                            "value": "00210000"
+                        },
+                        {
+                            "label": "PLLA input x 35",
+                            "value": "00220000"
+                        },
+                        {
+                            "label": "PLLA input x 36",
+                            "value": "00230000"
+                        },
+                        {
+                            "label": "PLLA input x 37",
+                            "value": "00240000"
+                        },
+                        {
+                            "label": "PLLA input x 38",
+                            "value": "00250000"
+                        },
+                        {
+                            "label": "PLLA input x 39",
+                            "value": "00260000"
+                        },
+                        {
+                            "label": "PLLA input x 40",
+                            "value": "00270000"
+                        },
+                        {
+                            "label": "PLLA input x 41",
+                            "value": "00280000"
+                        },
+                        {
+                            "label": "PLLA input x 42",
+                            "value": "00290000"
+                        },
+                        {
+                            "label": "PLLA input x 43",
+                            "value": "002A0000"
+                        },
+                        {
+                            "label": "PLLA input x 44",
+                            "value": "002B0000"
+                        },
+                        {
+                            "label": "PLLA input x 45",
+                            "value": "002C0000"
+                        },
+                        {
+                            "label": "PLLA input x 46",
+                            "value": "002D0000"
+                        },
+                        {
+                            "label": "PLLA input x 47",
+                            "value": "002E0000"
+                        },
+                        {
+                            "label": "PLLA input x 48",
+                            "value": "002F0000"
+                        },
+                        {
+                            "label": "PLLA input x 49",
+                            "value": "00300000"
+                        },
+                        {
+                            "label": "PLLA input x 50",
+                            "value": "00310000"
+                        },
+                        {
+                            "label": "PLLA input x 51",
+                            "value": "00320000"
+                        },
+                        {
+                            "label": "PLLA input x 52",
+                            "value": "00330000"
+                        },
+                        {
+                            "label": "PLLA input x 53",
+                            "value": "00340000"
+                        },
+                        {
+                            "label": "PLLA input x 54",
+                            "value": "00350000"
+                        },
+                        {
+                            "label": "PLLA input x 55",
+                            "value": "00360000"
+                        },
+                        {
+                            "label": "PLLA input x 56",
+                            "value": "00370000"
+                        },
+                        {
+                            "label": "PLLA input x 57",
+                            "value": "00380000"
+                        },
+                        {
+                            "label": "PLLA input x 58",
+                            "value": "00390000"
+                        },
+                        {
+                            "label": "PLLA input x 59",
+                            "value": "003A0000"
+                        },
+                        {
+                            "label": "PLLA input x 60",
+                            "value": "003B0000"
+                        },
+                        {
+                            "label": "PLLA input x 61",
+                            "value": "003C0000"
+                        },
+                        {
+                            "label": "PLLA input x 62",
+                            "value": "003D0000"
+                        },
+                        {
+                            "label": "PLLA input x 63",
+                            "value": "003E0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003F00",
+                    "key": "PLLACOUNT",
+                    "label": "PLLA Counter",
+                    "mask": "00003F00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIVA",
+                    "label": "PLLA Front End Divider",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "PLLA is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divider is bypassed (divide by 1).",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 2",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 3",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 4",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 5",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 6",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 7",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 8",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 9",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 10",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 11",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 12",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 13",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 14",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 15",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 16",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 17",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 18",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 19",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 20",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 21",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 22",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 23",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 24",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 25",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 26",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 27",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 28",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 29",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 30",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 31",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 32",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 33",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 34",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 35",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 36",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 37",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 38",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 39",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 40",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 41",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 42",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 43",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 44",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 45",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 46",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 47",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 48",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 49",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 50",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 51",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 52",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 53",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 54",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 55",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 56",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 57",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 58",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 59",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 60",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 61",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 62",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 63",
+                            "value": "0000003F"
+                        },
+                        {
+                            "label": "Divide by 64",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Divide by 65",
+                            "value": "00000041"
+                        },
+                        {
+                            "label": "Divide by 66",
+                            "value": "00000042"
+                        },
+                        {
+                            "label": "Divide by 67",
+                            "value": "00000043"
+                        },
+                        {
+                            "label": "Divide by 68",
+                            "value": "00000044"
+                        },
+                        {
+                            "label": "Divide by 69",
+                            "value": "00000045"
+                        },
+                        {
+                            "label": "Divide by 70",
+                            "value": "00000046"
+                        },
+                        {
+                            "label": "Divide by 71",
+                            "value": "00000047"
+                        },
+                        {
+                            "label": "Divide by 72",
+                            "value": "00000048"
+                        },
+                        {
+                            "label": "Divide by 73",
+                            "value": "00000049"
+                        },
+                        {
+                            "label": "Divide by 74",
+                            "value": "0000004A"
+                        },
+                        {
+                            "label": "Divide by 75",
+                            "value": "0000004B"
+                        },
+                        {
+                            "label": "Divide by 76",
+                            "value": "0000004C"
+                        },
+                        {
+                            "label": "Divide by 77",
+                            "value": "0000004D"
+                        },
+                        {
+                            "label": "Divide by 78",
+                            "value": "0000004E"
+                        },
+                        {
+                            "label": "Divide by 79",
+                            "value": "0000004F"
+                        },
+                        {
+                            "label": "Divide by 80",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Divide by 81",
+                            "value": "00000051"
+                        },
+                        {
+                            "label": "Divide by 82",
+                            "value": "00000052"
+                        },
+                        {
+                            "label": "Divide by 83",
+                            "value": "00000053"
+                        },
+                        {
+                            "label": "Divide by 84",
+                            "value": "00000054"
+                        },
+                        {
+                            "label": "Divide by 85",
+                            "value": "00000055"
+                        },
+                        {
+                            "label": "Divide by 86",
+                            "value": "00000056"
+                        },
+                        {
+                            "label": "Divide by 87",
+                            "value": "00000057"
+                        },
+                        {
+                            "label": "Divide by 88",
+                            "value": "00000058"
+                        },
+                        {
+                            "label": "Divide by 89",
+                            "value": "00000059"
+                        },
+                        {
+                            "label": "Divide by 90",
+                            "value": "0000005A"
+                        },
+                        {
+                            "label": "Divide by 91",
+                            "value": "0000005B"
+                        },
+                        {
+                            "label": "Divide by 92",
+                            "value": "0000005C"
+                        },
+                        {
+                            "label": "Divide by 93",
+                            "value": "0000005D"
+                        },
+                        {
+                            "label": "Divide by 94",
+                            "value": "0000005E"
+                        },
+                        {
+                            "label": "Divide by 95",
+                            "value": "0000005F"
+                        },
+                        {
+                            "label": "Divide by 96",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "Divide by 97",
+                            "value": "00000061"
+                        },
+                        {
+                            "label": "Divide by 98",
+                            "value": "00000062"
+                        },
+                        {
+                            "label": "Divide by 99",
+                            "value": "00000063"
+                        },
+                        {
+                            "label": "Divide by 100",
+                            "value": "00000064"
+                        },
+                        {
+                            "label": "Divide by 101",
+                            "value": "00000065"
+                        },
+                        {
+                            "label": "Divide by 102",
+                            "value": "00000066"
+                        },
+                        {
+                            "label": "Divide by 103",
+                            "value": "00000067"
+                        },
+                        {
+                            "label": "Divide by 104",
+                            "value": "00000068"
+                        },
+                        {
+                            "label": "Divide by 105",
+                            "value": "00000069"
+                        },
+                        {
+                            "label": "Divide by 106",
+                            "value": "0000006A"
+                        },
+                        {
+                            "label": "Divide by 107",
+                            "value": "0000006B"
+                        },
+                        {
+                            "label": "Divide by 108",
+                            "value": "0000006C"
+                        },
+                        {
+                            "label": "Divide by 109",
+                            "value": "0000006D"
+                        },
+                        {
+                            "label": "Divide by 110",
+                            "value": "0000006E"
+                        },
+                        {
+                            "label": "Divide by 111",
+                            "value": "0000006F"
+                        },
+                        {
+                            "label": "Divide by 112",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "Divide by 113",
+                            "value": "00000071"
+                        },
+                        {
+                            "label": "Divide by 114",
+                            "value": "00000072"
+                        },
+                        {
+                            "label": "Divide by 115",
+                            "value": "00000073"
+                        },
+                        {
+                            "label": "Divide by 116",
+                            "value": "00000074"
+                        },
+                        {
+                            "label": "Divide by 117",
+                            "value": "00000075"
+                        },
+                        {
+                            "label": "Divide by 118",
+                            "value": "00000076"
+                        },
+                        {
+                            "label": "Divide by 119",
+                            "value": "00000077"
+                        },
+                        {
+                            "label": "Divide by 120",
+                            "value": "00000078"
+                        },
+                        {
+                            "label": "Divide by 121",
+                            "value": "00000079"
+                        },
+                        {
+                            "label": "Divide by 122",
+                            "value": "0000007A"
+                        },
+                        {
+                            "label": "Divide by 123",
+                            "value": "0000007B"
+                        },
+                        {
+                            "label": "Divide by 124",
+                            "value": "0000007C"
+                        },
+                        {
+                            "label": "Divide by 125",
+                            "value": "0000007D"
+                        },
+                        {
+                            "label": "Divide by 126",
+                            "value": "0000007E"
+                        },
+                        {
+                            "label": "Divide by 127",
+                            "value": "0000007F"
+                        },
+                        {
+                            "label": "Divide by 128",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Divide by 129",
+                            "value": "00000081"
+                        },
+                        {
+                            "label": "Divide by 130",
+                            "value": "00000082"
+                        },
+                        {
+                            "label": "Divide by 131",
+                            "value": "00000083"
+                        },
+                        {
+                            "label": "Divide by 132",
+                            "value": "00000084"
+                        },
+                        {
+                            "label": "Divide by 133",
+                            "value": "00000085"
+                        },
+                        {
+                            "label": "Divide by 134",
+                            "value": "00000086"
+                        },
+                        {
+                            "label": "Divide by 135",
+                            "value": "00000087"
+                        },
+                        {
+                            "label": "Divide by 136",
+                            "value": "00000088"
+                        },
+                        {
+                            "label": "Divide by 137",
+                            "value": "00000089"
+                        },
+                        {
+                            "label": "Divide by 138",
+                            "value": "0000008A"
+                        },
+                        {
+                            "label": "Divide by 139",
+                            "value": "0000008B"
+                        },
+                        {
+                            "label": "Divide by 140",
+                            "value": "0000008C"
+                        },
+                        {
+                            "label": "Divide by 141",
+                            "value": "0000008D"
+                        },
+                        {
+                            "label": "Divide by 142",
+                            "value": "0000008E"
+                        },
+                        {
+                            "label": "Divide by 143",
+                            "value": "0000008F"
+                        },
+                        {
+                            "label": "Divide by 144",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "Divide by 145",
+                            "value": "00000091"
+                        },
+                        {
+                            "label": "Divide by 146",
+                            "value": "00000092"
+                        },
+                        {
+                            "label": "Divide by 147",
+                            "value": "00000093"
+                        },
+                        {
+                            "label": "Divide by 148",
+                            "value": "00000094"
+                        },
+                        {
+                            "label": "Divide by 149",
+                            "value": "00000095"
+                        },
+                        {
+                            "label": "Divide by 150",
+                            "value": "00000096"
+                        },
+                        {
+                            "label": "Divide by 151",
+                            "value": "00000097"
+                        },
+                        {
+                            "label": "Divide by 152",
+                            "value": "00000098"
+                        },
+                        {
+                            "label": "Divide by 153",
+                            "value": "00000099"
+                        },
+                        {
+                            "label": "Divide by 154",
+                            "value": "0000009A"
+                        },
+                        {
+                            "label": "Divide by 155",
+                            "value": "0000009B"
+                        },
+                        {
+                            "label": "Divide by 156",
+                            "value": "0000009C"
+                        },
+                        {
+                            "label": "Divide by 157",
+                            "value": "0000009D"
+                        },
+                        {
+                            "label": "Divide by 158",
+                            "value": "0000009E"
+                        },
+                        {
+                            "label": "Divide by 159",
+                            "value": "0000009F"
+                        },
+                        {
+                            "label": "Divide by 160",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "Divide by 161",
+                            "value": "000000A1"
+                        },
+                        {
+                            "label": "Divide by 162",
+                            "value": "000000A2"
+                        },
+                        {
+                            "label": "Divide by 163",
+                            "value": "000000A3"
+                        },
+                        {
+                            "label": "Divide by 164",
+                            "value": "000000A4"
+                        },
+                        {
+                            "label": "Divide by 165",
+                            "value": "000000A5"
+                        },
+                        {
+                            "label": "Divide by 166",
+                            "value": "000000A6"
+                        },
+                        {
+                            "label": "Divide by 167",
+                            "value": "000000A7"
+                        },
+                        {
+                            "label": "Divide by 168",
+                            "value": "000000A8"
+                        },
+                        {
+                            "label": "Divide by 169",
+                            "value": "000000A9"
+                        },
+                        {
+                            "label": "Divide by 170",
+                            "value": "000000AA"
+                        },
+                        {
+                            "label": "Divide by 171",
+                            "value": "000000AB"
+                        },
+                        {
+                            "label": "Divide by 172",
+                            "value": "000000AC"
+                        },
+                        {
+                            "label": "Divide by 173",
+                            "value": "000000AD"
+                        },
+                        {
+                            "label": "Divide by 174",
+                            "value": "000000AE"
+                        },
+                        {
+                            "label": "Divide by 175",
+                            "value": "000000AF"
+                        },
+                        {
+                            "label": "Divide by 176",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "Divide by 177",
+                            "value": "000000B1"
+                        },
+                        {
+                            "label": "Divide by 178",
+                            "value": "000000B2"
+                        },
+                        {
+                            "label": "Divide by 179",
+                            "value": "000000B3"
+                        },
+                        {
+                            "label": "Divide by 180",
+                            "value": "000000B4"
+                        },
+                        {
+                            "label": "Divide by 181",
+                            "value": "000000B5"
+                        },
+                        {
+                            "label": "Divide by 182",
+                            "value": "000000B6"
+                        },
+                        {
+                            "label": "Divide by 183",
+                            "value": "000000B7"
+                        },
+                        {
+                            "label": "Divide by 184",
+                            "value": "000000B8"
+                        },
+                        {
+                            "label": "Divide by 185",
+                            "value": "000000B9"
+                        },
+                        {
+                            "label": "Divide by 186",
+                            "value": "000000BA"
+                        },
+                        {
+                            "label": "Divide by 187",
+                            "value": "000000BB"
+                        },
+                        {
+                            "label": "Divide by 188",
+                            "value": "000000BC"
+                        },
+                        {
+                            "label": "Divide by 189",
+                            "value": "000000BD"
+                        },
+                        {
+                            "label": "Divide by 190",
+                            "value": "000000BE"
+                        },
+                        {
+                            "label": "Divide by 191",
+                            "value": "000000BF"
+                        },
+                        {
+                            "label": "Divide by 192",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "Divide by 193",
+                            "value": "000000C1"
+                        },
+                        {
+                            "label": "Divide by 194",
+                            "value": "000000C2"
+                        },
+                        {
+                            "label": "Divide by 195",
+                            "value": "000000C3"
+                        },
+                        {
+                            "label": "Divide by 196",
+                            "value": "000000C4"
+                        },
+                        {
+                            "label": "Divide by 197",
+                            "value": "000000C5"
+                        },
+                        {
+                            "label": "Divide by 198",
+                            "value": "000000C6"
+                        },
+                        {
+                            "label": "Divide by 199",
+                            "value": "000000C7"
+                        },
+                        {
+                            "label": "Divide by 200",
+                            "value": "000000C8"
+                        },
+                        {
+                            "label": "Divide by 201",
+                            "value": "000000C9"
+                        },
+                        {
+                            "label": "Divide by 202",
+                            "value": "000000CA"
+                        },
+                        {
+                            "label": "Divide by 203",
+                            "value": "000000CB"
+                        },
+                        {
+                            "label": "Divide by 204",
+                            "value": "000000CC"
+                        },
+                        {
+                            "label": "Divide by 205",
+                            "value": "000000CD"
+                        },
+                        {
+                            "label": "Divide by 206",
+                            "value": "000000CE"
+                        },
+                        {
+                            "label": "Divide by 207",
+                            "value": "000000CF"
+                        },
+                        {
+                            "label": "Divide by 208",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "Divide by 209",
+                            "value": "000000D1"
+                        },
+                        {
+                            "label": "Divide by 210",
+                            "value": "000000D2"
+                        },
+                        {
+                            "label": "Divide by 211",
+                            "value": "000000D3"
+                        },
+                        {
+                            "label": "Divide by 212",
+                            "value": "000000D4"
+                        },
+                        {
+                            "label": "Divide by 213",
+                            "value": "000000D5"
+                        },
+                        {
+                            "label": "Divide by 214",
+                            "value": "000000D6"
+                        },
+                        {
+                            "label": "Divide by 215",
+                            "value": "000000D7"
+                        },
+                        {
+                            "label": "Divide by 216",
+                            "value": "000000D8"
+                        },
+                        {
+                            "label": "Divide by 217",
+                            "value": "000000D9"
+                        },
+                        {
+                            "label": "Divide by 218",
+                            "value": "000000DA"
+                        },
+                        {
+                            "label": "Divide by 219",
+                            "value": "000000DB"
+                        },
+                        {
+                            "label": "Divide by 220",
+                            "value": "000000DC"
+                        },
+                        {
+                            "label": "Divide by 221",
+                            "value": "000000DD"
+                        },
+                        {
+                            "label": "Divide by 222",
+                            "value": "000000DE"
+                        },
+                        {
+                            "label": "Divide by 223",
+                            "value": "000000DF"
+                        },
+                        {
+                            "label": "Divide by 224",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "Divide by 225",
+                            "value": "000000E1"
+                        },
+                        {
+                            "label": "Divide by 226",
+                            "value": "000000E2"
+                        },
+                        {
+                            "label": "Divide by 227",
+                            "value": "000000E3"
+                        },
+                        {
+                            "label": "Divide by 228",
+                            "value": "000000E4"
+                        },
+                        {
+                            "label": "Divide by 229",
+                            "value": "000000E5"
+                        },
+                        {
+                            "label": "Divide by 230",
+                            "value": "000000E6"
+                        },
+                        {
+                            "label": "Divide by 231",
+                            "value": "000000E7"
+                        },
+                        {
+                            "label": "Divide by 232",
+                            "value": "000000E8"
+                        },
+                        {
+                            "label": "Divide by 233",
+                            "value": "000000E9"
+                        },
+                        {
+                            "label": "Divide by 234",
+                            "value": "000000EA"
+                        },
+                        {
+                            "label": "Divide by 235",
+                            "value": "000000EB"
+                        },
+                        {
+                            "label": "Divide by 236",
+                            "value": "000000EC"
+                        },
+                        {
+                            "label": "Divide by 237",
+                            "value": "000000ED"
+                        },
+                        {
+                            "label": "Divide by 238",
+                            "value": "000000EE"
+                        },
+                        {
+                            "label": "Divide by 239",
+                            "value": "000000EF"
+                        },
+                        {
+                            "label": "Divide by 240",
+                            "value": "000000F0"
+                        },
+                        {
+                            "label": "Divide by 241",
+                            "value": "000000F1"
+                        },
+                        {
+                            "label": "Divide by 242",
+                            "value": "000000F2"
+                        },
+                        {
+                            "label": "Divide by 243",
+                            "value": "000000F3"
+                        },
+                        {
+                            "label": "Divide by 244",
+                            "value": "000000F4"
+                        },
+                        {
+                            "label": "Divide by 245",
+                            "value": "000000F5"
+                        },
+                        {
+                            "label": "Divide by 246",
+                            "value": "000000F6"
+                        },
+                        {
+                            "label": "Divide by 247",
+                            "value": "000000F7"
+                        },
+                        {
+                            "label": "Divide by 248",
+                            "value": "000000F8"
+                        },
+                        {
+                            "label": "Divide by 249",
+                            "value": "000000F9"
+                        },
+                        {
+                            "label": "Divide by 250",
+                            "value": "000000FA"
+                        },
+                        {
+                            "label": "Divide by 251",
+                            "value": "000000FB"
+                        },
+                        {
+                            "label": "Divide by 252",
+                            "value": "000000FC"
+                        },
+                        {
+                            "label": "Divide by 253",
+                            "value": "000000FD"
+                        },
+                        {
+                            "label": "Divide by 254",
+                            "value": "000000FE"
+                        },
+                        {
+                            "label": "Divide by 255",
+                            "value": "000000FF"
+                        }
+                    ]
+                }
+            ],
+            "key": "CKGR_PLLAR",
+            "unused": "F800C000",
+            "label": "PLLA register"
+        },
+        {
+            "address": "400E042C",
+            "default": "00003F00",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MULB",
+                    "label": "PLLB Multiplier",
+                    "mask": "07FF0000",
+                    "settings": [
+                        {
+                            "label": "The PLLB is disabled (PLLB also disabled if DIVB = 0).",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLB input x 2",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "PLLB input x 3",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "PLLB input x 4",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "PLLB input x 5",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "PLLB input x 6",
+                            "value": "00050000"
+                        },
+                        {
+                            "label": "PLLB input x 7",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "PLLB input x 8",
+                            "value": "00070000"
+                        },
+                        {
+                            "label": "PLLB input x 9",
+                            "value": "00080000"
+                        },
+                        {
+                            "label": "PLLB input x 10",
+                            "value": "00090000"
+                        },
+                        {
+                            "label": "PLLB input x 11",
+                            "value": "000A0000"
+                        },
+                        {
+                            "label": "PLLB input x 12",
+                            "value": "000B0000"
+                        },
+                        {
+                            "label": "PLLB input x 13",
+                            "value": "000C0000"
+                        },
+                        {
+                            "label": "PLLB input x 14",
+                            "value": "000D0000"
+                        },
+                        {
+                            "label": "PLLB input x 15",
+                            "value": "000E0000"
+                        },
+                        {
+                            "label": "PLLB input x 16",
+                            "value": "000F0000"
+                        },
+                        {
+                            "label": "PLLB input x 17",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "PLLB input x 18",
+                            "value": "00110000"
+                        },
+                        {
+                            "label": "PLLB input x 19",
+                            "value": "00120000"
+                        },
+                        {
+                            "label": "PLLB input x 20",
+                            "value": "00130000"
+                        },
+                        {
+                            "label": "PLLB input x 21",
+                            "value": "00140000"
+                        },
+                        {
+                            "label": "PLLB input x 22",
+                            "value": "00150000"
+                        },
+                        {
+                            "label": "PLLB input x 23",
+                            "value": "00160000"
+                        },
+                        {
+                            "label": "PLLB input x 24",
+                            "value": "00170000"
+                        },
+                        {
+                            "label": "PLLB input x 25",
+                            "value": "00180000"
+                        },
+                        {
+                            "label": "PLLB input x 26",
+                            "value": "00190000"
+                        },
+                        {
+                            "label": "PLLB input x 27",
+                            "value": "001A0000"
+                        },
+                        {
+                            "label": "PLLB input x 28",
+                            "value": "001B0000"
+                        },
+                        {
+                            "label": "PLLB input x 29",
+                            "value": "001C0000"
+                        },
+                        {
+                            "label": "PLLB input x 30",
+                            "value": "001D0000"
+                        },
+                        {
+                            "label": "PLLB input x 31",
+                            "value": "001E0000"
+                        },
+                        {
+                            "label": "PLLB input x 32",
+                            "value": "001F0000"
+                        },
+                        {
+                            "label": "PLLB input x 33",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "PLLB input x 34",
+                            "value": "00210000"
+                        },
+                        {
+                            "label": "PLLB input x 35",
+                            "value": "00220000"
+                        },
+                        {
+                            "label": "PLLB input x 36",
+                            "value": "00230000"
+                        },
+                        {
+                            "label": "PLLB input x 37",
+                            "value": "00240000"
+                        },
+                        {
+                            "label": "PLLB input x 38",
+                            "value": "00250000"
+                        },
+                        {
+                            "label": "PLLB input x 39",
+                            "value": "00260000"
+                        },
+                        {
+                            "label": "PLLB input x 40",
+                            "value": "00270000"
+                        },
+                        {
+                            "label": "PLLB input x 41",
+                            "value": "00280000"
+                        },
+                        {
+                            "label": "PLLB input x 42",
+                            "value": "00290000"
+                        },
+                        {
+                            "label": "PLLB input x 43",
+                            "value": "002A0000"
+                        },
+                        {
+                            "label": "PLLB input x 44",
+                            "value": "002B0000"
+                        },
+                        {
+                            "label": "PLLB input x 45",
+                            "value": "002C0000"
+                        },
+                        {
+                            "label": "PLLB input x 46",
+                            "value": "002D0000"
+                        },
+                        {
+                            "label": "PLLB input x 47",
+                            "value": "002E0000"
+                        },
+                        {
+                            "label": "PLLB input x 48",
+                            "value": "002F0000"
+                        },
+                        {
+                            "label": "PLLB input x 49",
+                            "value": "00300000"
+                        },
+                        {
+                            "label": "PLLB input x 50",
+                            "value": "00310000"
+                        },
+                        {
+                            "label": "PLLB input x 51",
+                            "value": "00320000"
+                        },
+                        {
+                            "label": "PLLB input x 52",
+                            "value": "00330000"
+                        },
+                        {
+                            "label": "PLLB input x 53",
+                            "value": "00340000"
+                        },
+                        {
+                            "label": "PLLB input x 54",
+                            "value": "00350000"
+                        },
+                        {
+                            "label": "PLLB input x 55",
+                            "value": "00360000"
+                        },
+                        {
+                            "label": "PLLB input x 56",
+                            "value": "00370000"
+                        },
+                        {
+                            "label": "PLLB input x 57",
+                            "value": "00380000"
+                        },
+                        {
+                            "label": "PLLB input x 58",
+                            "value": "00390000"
+                        },
+                        {
+                            "label": "PLLB input x 59",
+                            "value": "003A0000"
+                        },
+                        {
+                            "label": "PLLB input x 60",
+                            "value": "003B0000"
+                        },
+                        {
+                            "label": "PLLB input x 61",
+                            "value": "003C0000"
+                        },
+                        {
+                            "label": "PLLB input x 62",
+                            "value": "003D0000"
+                        },
+                        {
+                            "label": "PLLB input x 63",
+                            "value": "003E0000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00003F00",
+                    "key": "PLLBCOUNT",
+                    "label": "PLLB Counter",
+                    "mask": "00003F00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "63",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIVB",
+                    "label": "PLLB Front End Divider",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "PLLB is disabled.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divider is bypassed (divide by 1).",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 2",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 3",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 4",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 5",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 6",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 7",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 8",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 9",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 10",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 11",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 12",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 13",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 14",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 15",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 16",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 17",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 18",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 19",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 20",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 21",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 22",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 23",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 24",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 25",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 26",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 27",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 28",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 29",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 30",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 31",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 32",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 33",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 34",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 35",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 36",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 37",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 38",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 39",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 40",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 41",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 42",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 43",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 44",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 45",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 46",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 47",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 48",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 49",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 50",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 51",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 52",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 53",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 54",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 55",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 56",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 57",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 58",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 59",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 60",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 61",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 62",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 63",
+                            "value": "0000003F"
+                        },
+                        {
+                            "label": "Divide by 64",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Divide by 65",
+                            "value": "00000041"
+                        },
+                        {
+                            "label": "Divide by 66",
+                            "value": "00000042"
+                        },
+                        {
+                            "label": "Divide by 67",
+                            "value": "00000043"
+                        },
+                        {
+                            "label": "Divide by 68",
+                            "value": "00000044"
+                        },
+                        {
+                            "label": "Divide by 69",
+                            "value": "00000045"
+                        },
+                        {
+                            "label": "Divide by 70",
+                            "value": "00000046"
+                        },
+                        {
+                            "label": "Divide by 71",
+                            "value": "00000047"
+                        },
+                        {
+                            "label": "Divide by 72",
+                            "value": "00000048"
+                        },
+                        {
+                            "label": "Divide by 73",
+                            "value": "00000049"
+                        },
+                        {
+                            "label": "Divide by 74",
+                            "value": "0000004A"
+                        },
+                        {
+                            "label": "Divide by 75",
+                            "value": "0000004B"
+                        },
+                        {
+                            "label": "Divide by 76",
+                            "value": "0000004C"
+                        },
+                        {
+                            "label": "Divide by 77",
+                            "value": "0000004D"
+                        },
+                        {
+                            "label": "Divide by 78",
+                            "value": "0000004E"
+                        },
+                        {
+                            "label": "Divide by 79",
+                            "value": "0000004F"
+                        },
+                        {
+                            "label": "Divide by 80",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Divide by 81",
+                            "value": "00000051"
+                        },
+                        {
+                            "label": "Divide by 82",
+                            "value": "00000052"
+                        },
+                        {
+                            "label": "Divide by 83",
+                            "value": "00000053"
+                        },
+                        {
+                            "label": "Divide by 84",
+                            "value": "00000054"
+                        },
+                        {
+                            "label": "Divide by 85",
+                            "value": "00000055"
+                        },
+                        {
+                            "label": "Divide by 86",
+                            "value": "00000056"
+                        },
+                        {
+                            "label": "Divide by 87",
+                            "value": "00000057"
+                        },
+                        {
+                            "label": "Divide by 88",
+                            "value": "00000058"
+                        },
+                        {
+                            "label": "Divide by 89",
+                            "value": "00000059"
+                        },
+                        {
+                            "label": "Divide by 90",
+                            "value": "0000005A"
+                        },
+                        {
+                            "label": "Divide by 91",
+                            "value": "0000005B"
+                        },
+                        {
+                            "label": "Divide by 92",
+                            "value": "0000005C"
+                        },
+                        {
+                            "label": "Divide by 93",
+                            "value": "0000005D"
+                        },
+                        {
+                            "label": "Divide by 94",
+                            "value": "0000005E"
+                        },
+                        {
+                            "label": "Divide by 95",
+                            "value": "0000005F"
+                        },
+                        {
+                            "label": "Divide by 96",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "Divide by 97",
+                            "value": "00000061"
+                        },
+                        {
+                            "label": "Divide by 98",
+                            "value": "00000062"
+                        },
+                        {
+                            "label": "Divide by 99",
+                            "value": "00000063"
+                        },
+                        {
+                            "label": "Divide by 100",
+                            "value": "00000064"
+                        },
+                        {
+                            "label": "Divide by 101",
+                            "value": "00000065"
+                        },
+                        {
+                            "label": "Divide by 102",
+                            "value": "00000066"
+                        },
+                        {
+                            "label": "Divide by 103",
+                            "value": "00000067"
+                        },
+                        {
+                            "label": "Divide by 104",
+                            "value": "00000068"
+                        },
+                        {
+                            "label": "Divide by 105",
+                            "value": "00000069"
+                        },
+                        {
+                            "label": "Divide by 106",
+                            "value": "0000006A"
+                        },
+                        {
+                            "label": "Divide by 107",
+                            "value": "0000006B"
+                        },
+                        {
+                            "label": "Divide by 108",
+                            "value": "0000006C"
+                        },
+                        {
+                            "label": "Divide by 109",
+                            "value": "0000006D"
+                        },
+                        {
+                            "label": "Divide by 110",
+                            "value": "0000006E"
+                        },
+                        {
+                            "label": "Divide by 111",
+                            "value": "0000006F"
+                        },
+                        {
+                            "label": "Divide by 112",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "Divide by 113",
+                            "value": "00000071"
+                        },
+                        {
+                            "label": "Divide by 114",
+                            "value": "00000072"
+                        },
+                        {
+                            "label": "Divide by 115",
+                            "value": "00000073"
+                        },
+                        {
+                            "label": "Divide by 116",
+                            "value": "00000074"
+                        },
+                        {
+                            "label": "Divide by 117",
+                            "value": "00000075"
+                        },
+                        {
+                            "label": "Divide by 118",
+                            "value": "00000076"
+                        },
+                        {
+                            "label": "Divide by 119",
+                            "value": "00000077"
+                        },
+                        {
+                            "label": "Divide by 120",
+                            "value": "00000078"
+                        },
+                        {
+                            "label": "Divide by 121",
+                            "value": "00000079"
+                        },
+                        {
+                            "label": "Divide by 122",
+                            "value": "0000007A"
+                        },
+                        {
+                            "label": "Divide by 123",
+                            "value": "0000007B"
+                        },
+                        {
+                            "label": "Divide by 124",
+                            "value": "0000007C"
+                        },
+                        {
+                            "label": "Divide by 125",
+                            "value": "0000007D"
+                        },
+                        {
+                            "label": "Divide by 126",
+                            "value": "0000007E"
+                        },
+                        {
+                            "label": "Divide by 127",
+                            "value": "0000007F"
+                        },
+                        {
+                            "label": "Divide by 128",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "Divide by 129",
+                            "value": "00000081"
+                        },
+                        {
+                            "label": "Divide by 130",
+                            "value": "00000082"
+                        },
+                        {
+                            "label": "Divide by 131",
+                            "value": "00000083"
+                        },
+                        {
+                            "label": "Divide by 132",
+                            "value": "00000084"
+                        },
+                        {
+                            "label": "Divide by 133",
+                            "value": "00000085"
+                        },
+                        {
+                            "label": "Divide by 134",
+                            "value": "00000086"
+                        },
+                        {
+                            "label": "Divide by 135",
+                            "value": "00000087"
+                        },
+                        {
+                            "label": "Divide by 136",
+                            "value": "00000088"
+                        },
+                        {
+                            "label": "Divide by 137",
+                            "value": "00000089"
+                        },
+                        {
+                            "label": "Divide by 138",
+                            "value": "0000008A"
+                        },
+                        {
+                            "label": "Divide by 139",
+                            "value": "0000008B"
+                        },
+                        {
+                            "label": "Divide by 140",
+                            "value": "0000008C"
+                        },
+                        {
+                            "label": "Divide by 141",
+                            "value": "0000008D"
+                        },
+                        {
+                            "label": "Divide by 142",
+                            "value": "0000008E"
+                        },
+                        {
+                            "label": "Divide by 143",
+                            "value": "0000008F"
+                        },
+                        {
+                            "label": "Divide by 144",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "Divide by 145",
+                            "value": "00000091"
+                        },
+                        {
+                            "label": "Divide by 146",
+                            "value": "00000092"
+                        },
+                        {
+                            "label": "Divide by 147",
+                            "value": "00000093"
+                        },
+                        {
+                            "label": "Divide by 148",
+                            "value": "00000094"
+                        },
+                        {
+                            "label": "Divide by 149",
+                            "value": "00000095"
+                        },
+                        {
+                            "label": "Divide by 150",
+                            "value": "00000096"
+                        },
+                        {
+                            "label": "Divide by 151",
+                            "value": "00000097"
+                        },
+                        {
+                            "label": "Divide by 152",
+                            "value": "00000098"
+                        },
+                        {
+                            "label": "Divide by 153",
+                            "value": "00000099"
+                        },
+                        {
+                            "label": "Divide by 154",
+                            "value": "0000009A"
+                        },
+                        {
+                            "label": "Divide by 155",
+                            "value": "0000009B"
+                        },
+                        {
+                            "label": "Divide by 156",
+                            "value": "0000009C"
+                        },
+                        {
+                            "label": "Divide by 157",
+                            "value": "0000009D"
+                        },
+                        {
+                            "label": "Divide by 158",
+                            "value": "0000009E"
+                        },
+                        {
+                            "label": "Divide by 159",
+                            "value": "0000009F"
+                        },
+                        {
+                            "label": "Divide by 160",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "Divide by 161",
+                            "value": "000000A1"
+                        },
+                        {
+                            "label": "Divide by 162",
+                            "value": "000000A2"
+                        },
+                        {
+                            "label": "Divide by 163",
+                            "value": "000000A3"
+                        },
+                        {
+                            "label": "Divide by 164",
+                            "value": "000000A4"
+                        },
+                        {
+                            "label": "Divide by 165",
+                            "value": "000000A5"
+                        },
+                        {
+                            "label": "Divide by 166",
+                            "value": "000000A6"
+                        },
+                        {
+                            "label": "Divide by 167",
+                            "value": "000000A7"
+                        },
+                        {
+                            "label": "Divide by 168",
+                            "value": "000000A8"
+                        },
+                        {
+                            "label": "Divide by 169",
+                            "value": "000000A9"
+                        },
+                        {
+                            "label": "Divide by 170",
+                            "value": "000000AA"
+                        },
+                        {
+                            "label": "Divide by 171",
+                            "value": "000000AB"
+                        },
+                        {
+                            "label": "Divide by 172",
+                            "value": "000000AC"
+                        },
+                        {
+                            "label": "Divide by 173",
+                            "value": "000000AD"
+                        },
+                        {
+                            "label": "Divide by 174",
+                            "value": "000000AE"
+                        },
+                        {
+                            "label": "Divide by 175",
+                            "value": "000000AF"
+                        },
+                        {
+                            "label": "Divide by 176",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "Divide by 177",
+                            "value": "000000B1"
+                        },
+                        {
+                            "label": "Divide by 178",
+                            "value": "000000B2"
+                        },
+                        {
+                            "label": "Divide by 179",
+                            "value": "000000B3"
+                        },
+                        {
+                            "label": "Divide by 180",
+                            "value": "000000B4"
+                        },
+                        {
+                            "label": "Divide by 181",
+                            "value": "000000B5"
+                        },
+                        {
+                            "label": "Divide by 182",
+                            "value": "000000B6"
+                        },
+                        {
+                            "label": "Divide by 183",
+                            "value": "000000B7"
+                        },
+                        {
+                            "label": "Divide by 184",
+                            "value": "000000B8"
+                        },
+                        {
+                            "label": "Divide by 185",
+                            "value": "000000B9"
+                        },
+                        {
+                            "label": "Divide by 186",
+                            "value": "000000BA"
+                        },
+                        {
+                            "label": "Divide by 187",
+                            "value": "000000BB"
+                        },
+                        {
+                            "label": "Divide by 188",
+                            "value": "000000BC"
+                        },
+                        {
+                            "label": "Divide by 189",
+                            "value": "000000BD"
+                        },
+                        {
+                            "label": "Divide by 190",
+                            "value": "000000BE"
+                        },
+                        {
+                            "label": "Divide by 191",
+                            "value": "000000BF"
+                        },
+                        {
+                            "label": "Divide by 192",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "Divide by 193",
+                            "value": "000000C1"
+                        },
+                        {
+                            "label": "Divide by 194",
+                            "value": "000000C2"
+                        },
+                        {
+                            "label": "Divide by 195",
+                            "value": "000000C3"
+                        },
+                        {
+                            "label": "Divide by 196",
+                            "value": "000000C4"
+                        },
+                        {
+                            "label": "Divide by 197",
+                            "value": "000000C5"
+                        },
+                        {
+                            "label": "Divide by 198",
+                            "value": "000000C6"
+                        },
+                        {
+                            "label": "Divide by 199",
+                            "value": "000000C7"
+                        },
+                        {
+                            "label": "Divide by 200",
+                            "value": "000000C8"
+                        },
+                        {
+                            "label": "Divide by 201",
+                            "value": "000000C9"
+                        },
+                        {
+                            "label": "Divide by 202",
+                            "value": "000000CA"
+                        },
+                        {
+                            "label": "Divide by 203",
+                            "value": "000000CB"
+                        },
+                        {
+                            "label": "Divide by 204",
+                            "value": "000000CC"
+                        },
+                        {
+                            "label": "Divide by 205",
+                            "value": "000000CD"
+                        },
+                        {
+                            "label": "Divide by 206",
+                            "value": "000000CE"
+                        },
+                        {
+                            "label": "Divide by 207",
+                            "value": "000000CF"
+                        },
+                        {
+                            "label": "Divide by 208",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "Divide by 209",
+                            "value": "000000D1"
+                        },
+                        {
+                            "label": "Divide by 210",
+                            "value": "000000D2"
+                        },
+                        {
+                            "label": "Divide by 211",
+                            "value": "000000D3"
+                        },
+                        {
+                            "label": "Divide by 212",
+                            "value": "000000D4"
+                        },
+                        {
+                            "label": "Divide by 213",
+                            "value": "000000D5"
+                        },
+                        {
+                            "label": "Divide by 214",
+                            "value": "000000D6"
+                        },
+                        {
+                            "label": "Divide by 215",
+                            "value": "000000D7"
+                        },
+                        {
+                            "label": "Divide by 216",
+                            "value": "000000D8"
+                        },
+                        {
+                            "label": "Divide by 217",
+                            "value": "000000D9"
+                        },
+                        {
+                            "label": "Divide by 218",
+                            "value": "000000DA"
+                        },
+                        {
+                            "label": "Divide by 219",
+                            "value": "000000DB"
+                        },
+                        {
+                            "label": "Divide by 220",
+                            "value": "000000DC"
+                        },
+                        {
+                            "label": "Divide by 221",
+                            "value": "000000DD"
+                        },
+                        {
+                            "label": "Divide by 222",
+                            "value": "000000DE"
+                        },
+                        {
+                            "label": "Divide by 223",
+                            "value": "000000DF"
+                        },
+                        {
+                            "label": "Divide by 224",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "Divide by 225",
+                            "value": "000000E1"
+                        },
+                        {
+                            "label": "Divide by 226",
+                            "value": "000000E2"
+                        },
+                        {
+                            "label": "Divide by 227",
+                            "value": "000000E3"
+                        },
+                        {
+                            "label": "Divide by 228",
+                            "value": "000000E4"
+                        },
+                        {
+                            "label": "Divide by 229",
+                            "value": "000000E5"
+                        },
+                        {
+                            "label": "Divide by 230",
+                            "value": "000000E6"
+                        },
+                        {
+                            "label": "Divide by 231",
+                            "value": "000000E7"
+                        },
+                        {
+                            "label": "Divide by 232",
+                            "value": "000000E8"
+                        },
+                        {
+                            "label": "Divide by 233",
+                            "value": "000000E9"
+                        },
+                        {
+                            "label": "Divide by 234",
+                            "value": "000000EA"
+                        },
+                        {
+                            "label": "Divide by 235",
+                            "value": "000000EB"
+                        },
+                        {
+                            "label": "Divide by 236",
+                            "value": "000000EC"
+                        },
+                        {
+                            "label": "Divide by 237",
+                            "value": "000000ED"
+                        },
+                        {
+                            "label": "Divide by 238",
+                            "value": "000000EE"
+                        },
+                        {
+                            "label": "Divide by 239",
+                            "value": "000000EF"
+                        },
+                        {
+                            "label": "Divide by 240",
+                            "value": "000000F0"
+                        },
+                        {
+                            "label": "Divide by 241",
+                            "value": "000000F1"
+                        },
+                        {
+                            "label": "Divide by 242",
+                            "value": "000000F2"
+                        },
+                        {
+                            "label": "Divide by 243",
+                            "value": "000000F3"
+                        },
+                        {
+                            "label": "Divide by 244",
+                            "value": "000000F4"
+                        },
+                        {
+                            "label": "Divide by 245",
+                            "value": "000000F5"
+                        },
+                        {
+                            "label": "Divide by 246",
+                            "value": "000000F6"
+                        },
+                        {
+                            "label": "Divide by 247",
+                            "value": "000000F7"
+                        },
+                        {
+                            "label": "Divide by 248",
+                            "value": "000000F8"
+                        },
+                        {
+                            "label": "Divide by 249",
+                            "value": "000000F9"
+                        },
+                        {
+                            "label": "Divide by 250",
+                            "value": "000000FA"
+                        },
+                        {
+                            "label": "Divide by 251",
+                            "value": "000000FB"
+                        },
+                        {
+                            "label": "Divide by 252",
+                            "value": "000000FC"
+                        },
+                        {
+                            "label": "Divide by 253",
+                            "value": "000000FD"
+                        },
+                        {
+                            "label": "Divide by 254",
+                            "value": "000000FE"
+                        },
+                        {
+                            "label": "Divide by 255",
+                            "value": "000000FF"
+                        }
+                    ]
+                }
+            ],
+            "key": "CKGR_PLLBR",
+            "unused": "F800C000",
+            "label": "PLLB register"
+        },
+        {
+            "address": "400E0430",
+            "default": "00000001",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLBDIV2",
+                    "label": "PLLB Divisor by 2",
+                    "mask": "00002000",
+                    "settings": [
+                        {
+                            "label": "PLLB clock frequency is divided by 1.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLB clock frequency is divided by 2.",
+                            "value": "00002000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PLLADIV2",
+                    "label": "PLLA Divisor by 2",
+                    "mask": "00001000",
+                    "settings": [
+                        {
+                            "label": "PLLA clock frequency is divided by 1.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLA clock frequency is divided by 2.",
+                            "value": "00001000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Processor Clock Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "Selected clock divided by 3",
+                            "value": "00000070"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "CSS",
+                    "label": "Master Clock Source Selection",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "Slow Clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Clock is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLA Clock is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "PLLBClock is selected",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_MCKR",
+            "unused": "FFFFCF8C",
+            "label": "Master clock register"
+        },
+        {
+            "address": "400E0438",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "USBDIV",
+                    "label": "Divider for USB Clock",
+                    "mask": "00000F00",
+                    "settings": [
+                        {
+                            "label": "USB clock is the input clock divided by 1.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 2.",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 3.",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 4.",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 5.",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 6.",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 7.",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 8.",
+                            "value": "00000700"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 9.",
+                            "value": "00000800"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 10.",
+                            "value": "00000900"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 11.",
+                            "value": "00000A00"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 12.",
+                            "value": "00000B00"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 13.",
+                            "value": "00000C00"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 14.",
+                            "value": "00000D00"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 15.",
+                            "value": "00000E00"
+                        },
+                        {
+                            "label": "USB clock is the input clock divided by 16.",
+                            "value": "00000F00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "USBS",
+                    "label": "USB Input Clock Selection",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "USB clock input is PLLA.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "USB clock input is PLLB.",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_USB",
+            "unused": "FFFFF0FE",
+            "label": "USB clock register"
+        },
+        {
+            "address": "400E0440",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock 0 Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock 0 Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Slow Clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Clock is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLA Clock is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "PLLB Clock is selected",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Master Clock is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK0",
+            "unused": "FFFFFF88",
+            "label": "Programmable clock 0 register"
+        },
+        {
+            "address": "400E0444",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock 1 Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock 1 Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Slow Clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Clock is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLA Clock is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "PLLB Clock is selected",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Master Clock is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK1",
+            "unused": "FFFFFF88",
+            "label": "Programmable clock 1 register"
+        },
+        {
+            "address": "400E0448",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PRES",
+                    "label": "Programmable Clock 2 Prescaler",
+                    "mask": "00000070",
+                    "settings": [
+                        {
+                            "label": "Selected clock not divided",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "Selected clock divided by 32",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "Selected clock divided by 64",
+                            "value": "00000060"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CSS",
+                    "label": "Programmable Clock 2 Source Selection",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "Slow Clock is selected",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main Clock is selected",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLLA Clock is selected",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "PLLB Clock is selected",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Master Clock is selected",
+                            "value": "00000004"
+                        }
+                    ]
+                }
+            ],
+            "key": "PMC_PCK2",
+            "unused": "FFFFFF88",
+            "label": "Programmable clock 2 register"
+        },
+        {
+            "address": "400E0A00",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000500",
+                    "key": "FWS",
+                    "label": "Flash Wait State",
+                    "mask": "00000F00",
+                    "settings": [
+                        {
+                            "label": "1 cycle for Read/Write operations",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "2 cycles for Read/Write operations",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "3 cycles for Read/Write operations",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "4 cycles for Read/Write operations",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "5 cycles for Read/Write operations",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "6 cycles for Read/Write operations",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "7 cycles for Read/Write operations",
+                            "value": "00000600"
+                        }
+                    ]
+                }
+            ],
+            "key": "EEFC_FMR",
+            "unused": "FFFFF0FF",
+            "label": "Eefc flash mode register (applied to EFC0 and EFC1)"
+        },
+        {
+            "address": "400E1410",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "XTALSEL",
+                    "label": "Crystal Oscillator Select",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "No effect (slow clock from the 32 kHz RC oscillator).",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Switches the slow clock to the 32.768 kHz crystal oscillator.",
+                            "value": "00000008"
+                        }
+                    ]
+                }
+            ],
+            "key": "SUPC_CR",
+            "unused": "FFFFFFF7",
+            "label": "Supply controller control register"
+        },
+        {
+            "address": "400E1418",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "OSCBYPASS",
+                    "label": "Oscillator Bypass",
+                    "mask": "00100000",
+                    "settings": [
+                        {
+                            "label": "No effect. Clock selection depends on XTALSEL value.",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "The 32 kHz crystal oscillator is selected and put in bypass mode.",
+                            "value": "00100000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SUPC_MR",
+            "unused": "FFEFFFFF",
+            "label": "Supply controller mode register"
+        }
+    ],
     "core": "M4EF",
     "delay_src_path": "delays/m4ef/__lib_delays.c",
     "mcu": "ATSAM4SD32BA",
-    "clock": "1"
+    "clock": 120
 }

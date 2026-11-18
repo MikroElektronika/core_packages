@@ -1,6 +1,835 @@
 {
+    "config_registers": [
+        {
+            "address": "400B0100",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "FREQ",
+                    "label": "SYSOSCCFG.FREQ clock-control field.",
+                    "mask": "3",
+                    "settings": [
+                        {
+                            "label": "SYSOSCbase",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSOSC4M",
+                            "value": "1"
+                        },
+                        {
+                            "label": "SYSOSCuser",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "DISABLESTOP",
+                    "label": "SYSOSCCFG.DISABLESTOP clock-control field.",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "DISABLE",
+                    "label": "SYSOSCCFG.DISABLE clock-control field.",
+                    "mask": "400",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "BLOCKASYNCALL",
+                    "label": "SYSOSCCFG.BLOCKASYNCALL clock-control field.",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FASTCPUEVENT",
+                    "label": "SYSOSCCFG.FASTCPUEVENT clock-control field.",
+                    "mask": "20000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "20000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSOSCCFG",
+            "unused": "fffcf9fc",
+            "label": "SYSCTL SYSOSCCFG clock configuration register"
+        },
+        {
+            "address": "400B0104",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MDIV",
+                    "label": "MCLKCFG.MDIV clock-control field.",
+                    "mask": "f",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "1"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "3"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "4"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "5"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "6"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "7"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "8"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "9"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "USEMFTICK",
+                    "label": "MCLKCFG.USEMFTICK clock-control field.",
+                    "mask": "1000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "USEHSCLK",
+                    "label": "MCLKCFG.USEHSCLK clock-control field.",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "USELFCLK",
+                    "label": "MCLKCFG.USELFCLK clock-control field.",
+                    "mask": "100000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "100000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "STOPCLKSTBY",
+                    "label": "MCLKCFG.STOPCLKSTBY clock-control field.",
+                    "mask": "200000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "200000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "MCLKDEADCHK",
+                    "label": "MCLKCFG.MCLKDEADCHK clock-control field.",
+                    "mask": "400000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "400000"
+                        }
+                    ]
+                }
+            ],
+            "key": "MCLKCFG",
+            "unused": "ff8eeff0",
+            "label": "SYSCTL MCLKCFG clock configuration register"
+        },
+        {
+            "address": "400B0108",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "USEEXTHFCLK",
+                    "label": "HSCLKEN.USEEXTHFCLK clock-control field.",
+                    "mask": "10000",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10000"
+                        }
+                    ]
+                }
+            ],
+            "key": "HSCLKEN",
+            "unused": "fffeffff",
+            "label": "SYSCTL HSCLKEN clock configuration register"
+        },
+        {
+            "address": "400B0138",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EXCLKSRC",
+                    "label": "GENCLKCFG.EXCLKSRC clock-control field.",
+                    "mask": "7",
+                    "settings": [
+                        {
+                            "label": "SYSOSC",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Ulpclk",
+                            "value": "1"
+                        },
+                        {
+                            "label": "LFCLK",
+                            "value": "2"
+                        },
+                        {
+                            "label": "Mfpclk",
+                            "value": "3"
+                        },
+                        {
+                            "label": "HFCLK",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EXCLKDIVVAL",
+                    "label": "GENCLKCFG.EXCLKDIVVAL clock-control field.",
+                    "mask": "70",
+                    "settings": [
+                        {
+                            "label": "Div2",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Div4",
+                            "value": "10"
+                        },
+                        {
+                            "label": "Div6",
+                            "value": "20"
+                        },
+                        {
+                            "label": "Div8",
+                            "value": "30"
+                        },
+                        {
+                            "label": "Div10",
+                            "value": "40"
+                        },
+                        {
+                            "label": "Div12",
+                            "value": "50"
+                        },
+                        {
+                            "label": "Div14",
+                            "value": "60"
+                        },
+                        {
+                            "label": "Div16",
+                            "value": "70"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EXCLKDIVEN",
+                    "label": "GENCLKCFG.EXCLKDIVEN clock-control field.",
+                    "mask": "80",
+                    "settings": [
+                        {
+                            "label": "Passthru",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "80"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MFPCLKSRC",
+                    "label": "GENCLKCFG.MFPCLKSRC clock-control field.",
+                    "mask": "200",
+                    "settings": [
+                        {
+                            "label": "SYSOSC",
+                            "value": "0"
+                        },
+                        {
+                            "label": "HFCLK",
+                            "value": "200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "HFCLK4MFPCLKDIV",
+                    "label": "GENCLKCFG.HFCLK4MFPCLKDIV clock-control field.",
+                    "mask": "f000",
+                    "settings": [
+                        {
+                            "label": "Div1",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Div2",
+                            "value": "1000"
+                        },
+                        {
+                            "label": "Div3",
+                            "value": "2000"
+                        },
+                        {
+                            "label": "Div4",
+                            "value": "3000"
+                        },
+                        {
+                            "label": "Div5",
+                            "value": "4000"
+                        },
+                        {
+                            "label": "Div6",
+                            "value": "5000"
+                        },
+                        {
+                            "label": "Div7",
+                            "value": "6000"
+                        },
+                        {
+                            "label": "Div8",
+                            "value": "7000"
+                        },
+                        {
+                            "label": "Div9",
+                            "value": "8000"
+                        },
+                        {
+                            "label": "Div10",
+                            "value": "9000"
+                        },
+                        {
+                            "label": "Div11",
+                            "value": "a000"
+                        },
+                        {
+                            "label": "Div12",
+                            "value": "b000"
+                        },
+                        {
+                            "label": "Div13",
+                            "value": "c000"
+                        },
+                        {
+                            "label": "Div14",
+                            "value": "d000"
+                        },
+                        {
+                            "label": "Div15",
+                            "value": "e000"
+                        },
+                        {
+                            "label": "Div16",
+                            "value": "f000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FCCSELCLK",
+                    "label": "GENCLKCFG.FCCSELCLK clock-control field.",
+                    "mask": "f0000",
+                    "settings": [
+                        {
+                            "label": "MCLK",
+                            "value": "0"
+                        },
+                        {
+                            "label": "SYSOSC",
+                            "value": "10000"
+                        },
+                        {
+                            "label": "HFCLK",
+                            "value": "20000"
+                        },
+                        {
+                            "label": "Extclk",
+                            "value": "30000"
+                        },
+                        {
+                            "label": "Fccin",
+                            "value": "70000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FCCTRIGSRC",
+                    "label": "GENCLKCFG.FCCTRIGSRC clock-control field.",
+                    "mask": "100000",
+                    "settings": [
+                        {
+                            "label": "Extpin",
+                            "value": "0"
+                        },
+                        {
+                            "label": "LFCLK",
+                            "value": "100000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FCCLVLTRIG",
+                    "label": "GENCLKCFG.FCCLVLTRIG clock-control field.",
+                    "mask": "200000",
+                    "settings": [
+                        {
+                            "label": "Rise2Rise",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Level",
+                            "value": "200000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "ANACPUMPCFG",
+                    "label": "GENCLKCFG.ANACPUMPCFG clock-control field.",
+                    "mask": "c00000",
+                    "settings": [
+                        {
+                            "label": "Ondemand",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Onactive",
+                            "value": "400000"
+                        },
+                        {
+                            "label": "Onalways",
+                            "value": "800000"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "c00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "0",
+                    "key": "FCCTRIGCNT",
+                    "label": "GENCLKCFG.FCCTRIGCNT clock-control field.",
+                    "mask": "1f000000",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Value 1",
+                            "value": "1000000"
+                        },
+                        {
+                            "label": "Value 2",
+                            "value": "2000000"
+                        },
+                        {
+                            "label": "Value 3",
+                            "value": "3000000"
+                        },
+                        {
+                            "label": "Value 4",
+                            "value": "4000000"
+                        },
+                        {
+                            "label": "Value 5",
+                            "value": "5000000"
+                        },
+                        {
+                            "label": "Value 6",
+                            "value": "6000000"
+                        },
+                        {
+                            "label": "Value 7",
+                            "value": "7000000"
+                        },
+                        {
+                            "label": "Value 8",
+                            "value": "8000000"
+                        },
+                        {
+                            "label": "Value 9",
+                            "value": "9000000"
+                        },
+                        {
+                            "label": "Value 10",
+                            "value": "a000000"
+                        },
+                        {
+                            "label": "Value 11",
+                            "value": "b000000"
+                        },
+                        {
+                            "label": "Value 12",
+                            "value": "c000000"
+                        },
+                        {
+                            "label": "Value 13",
+                            "value": "d000000"
+                        },
+                        {
+                            "label": "Value 14",
+                            "value": "e000000"
+                        },
+                        {
+                            "label": "Value 15",
+                            "value": "f000000"
+                        },
+                        {
+                            "label": "Value 16",
+                            "value": "10000000"
+                        },
+                        {
+                            "label": "Value 17",
+                            "value": "11000000"
+                        },
+                        {
+                            "label": "Value 18",
+                            "value": "12000000"
+                        },
+                        {
+                            "label": "Value 19",
+                            "value": "13000000"
+                        },
+                        {
+                            "label": "Value 20",
+                            "value": "14000000"
+                        },
+                        {
+                            "label": "Value 21",
+                            "value": "15000000"
+                        },
+                        {
+                            "label": "Value 22",
+                            "value": "16000000"
+                        },
+                        {
+                            "label": "Value 23",
+                            "value": "17000000"
+                        },
+                        {
+                            "label": "Value 24",
+                            "value": "18000000"
+                        },
+                        {
+                            "label": "Value 25",
+                            "value": "19000000"
+                        },
+                        {
+                            "label": "Value 26",
+                            "value": "1a000000"
+                        },
+                        {
+                            "label": "Value 27",
+                            "value": "1b000000"
+                        },
+                        {
+                            "label": "Value 28",
+                            "value": "1c000000"
+                        },
+                        {
+                            "label": "Value 29",
+                            "value": "1d000000"
+                        },
+                        {
+                            "label": "Value 30",
+                            "value": "1e000000"
+                        },
+                        {
+                            "label": "Value 31",
+                            "value": "1f000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "GENCLKCFG",
+            "unused": "e0000d08",
+            "label": "SYSCTL GENCLKCFG clock configuration register"
+        },
+        {
+            "address": "400B013C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "EXCLKEN",
+                    "label": "GENCLKEN.EXCLKEN clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "MFPCLKEN",
+                    "label": "GENCLKEN.MFPCLKEN clock-control field.",
+                    "mask": "10",
+                    "settings": [
+                        {
+                            "label": "Disable",
+                            "value": "0"
+                        },
+                        {
+                            "label": "Enable",
+                            "value": "10"
+                        }
+                    ]
+                }
+            ],
+            "key": "GENCLKEN",
+            "unused": "ffffffee",
+            "label": "SYSCTL GENCLKEN clock configuration register"
+        },
+        {
+            "address": "400B0210",
+            "default": "2a000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SETUSEFCL",
+                    "label": "SYSOSCFCLCTL.SETUSEFCL clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "True",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "2a000000",
+                    "key": "KEY",
+                    "label": "SYSOSCFCLCTL.KEY clock-control field.",
+                    "mask": "ff000000",
+                    "settings": [
+                        {
+                            "label": "Value",
+                            "value": "2a000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSOSCFCLCTL",
+            "unused": "00fffffe",
+            "label": "SYSCTL SYSOSCFCLCTL clock configuration register"
+        },
+        {
+            "address": "400B0218",
+            "default": "36000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0",
+                    "key": "SETUSEEXLF",
+                    "label": "EXLFCTL.SETUSEEXLF clock-control field.",
+                    "mask": "1",
+                    "settings": [
+                        {
+                            "label": "Value 0",
+                            "value": "0"
+                        },
+                        {
+                            "label": "True",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "36000000",
+                    "key": "KEY",
+                    "label": "EXLFCTL.KEY clock-control field.",
+                    "mask": "ff000000",
+                    "settings": [
+                        {
+                            "label": "Value",
+                            "value": "36000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "EXLFCTL",
+            "unused": "00fffffe",
+            "label": "SYSCTL EXLFCTL clock configuration register"
+        }
+    ],
     "core": "M0+",
     "delay_src_path": "delays/m0+/__lib_delays.c",
     "mcu": "MSPM0C1103-Q1",
-    "clock": "1"
+    "clock": 24
 }

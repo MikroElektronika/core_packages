@@ -407,7 +407,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "1",
+                    "init": "0",
                     "key": "CPUCK",
                     "label": "CPU Clock (CPUCLK) Select",
                     "mask": "f",
@@ -1935,7 +1935,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLL2STP",
                     "label": "PLL2 Stop Control",
                     "mask": "1",

@@ -387,7 +387,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00002a00",
+                    "init": "00005400",
                     "key": "PLLN",
                     "label": "Main PLL (PLL) multiplication factor for VCO",
                     "mask": "00007FC0",
@@ -2444,7 +2444,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00010000",
                     "key": "PLLP",
                     "label": "Main PLL (PLL) division factor for main system clock",
                     "mask": "00030000",
@@ -2486,7 +2486,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "04000000",
+                    "init": "07000000",
                     "key": "PLLQ",
                     "label": "Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks",
                     "mask": "0F000000",
@@ -2670,7 +2670,7 @@
                         },
                         {
                             "label": "HCLK divided by 4 ",
-                            "value": "00002100"
+                            "value": "00002800"
                         },
                         {
                             "label": "HCLK divided by 8 ",
@@ -2678,7 +2678,7 @@
                         },
                         {
                             "label": "HCLK divided by 16 ",
-                            "value": "00003100"
+                            "value": "00003800"
                         }
                     ]
                 },

@@ -96,7 +96,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000004",
+                    "init": "00000003",
                     "key": "PSYSDIV",
                     "label": "PLL System Clock Divisor",
                     "mask": "000003FF",
@@ -261,7 +261,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000018",
+                    "init": "00000060",
                     "key": "MINT",
                     "label": "PLL M Integer Value",
                     "mask": "000003FF",
@@ -298,7 +298,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000004",
                     "key": "N",
                     "label": "PLL N Value",
                     "mask": "0000001F",

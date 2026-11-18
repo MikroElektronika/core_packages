@@ -883,7 +883,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "PLL2STP",
                     "label": "PLL2 Stop Control",
                     "mask": "1",
@@ -1509,7 +1509,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "0",
+                    "init": "1",
                     "key": "I3CCKDIV",
                     "label": "I3C clock (I3CCLK) Division Select",
                     "mask": "f",

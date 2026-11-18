@@ -43,7 +43,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "10",
+                    "init": "20",
                     "key": "PCKC",
                     "label": "Peripheral clock C divider",
                     "mask": "f0",

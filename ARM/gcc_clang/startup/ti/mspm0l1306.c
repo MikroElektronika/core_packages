@@ -174,10 +174,8 @@ void Reset_Handler(void)
         *bs = 0;
         bs++;
     }
-
     /*
-     * System initialization routine can be called here, but it's not
-     * required for MSPM0.
+     * Apply the core clock configuration before application startup.
      */
     SystemInit();
 

@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^R7F103G6J$|^R7F103GBJ$|^R7F103GFJ$|^R7F103GGJ$|^R7F103GLJ$|^R7F103G6G$|^R7F103GBG$|^R7F103GFG$|^R7F103GGG$|^R7F103GLG$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/g21/init_clock.c system/src/${vendor}/g21/vectors.c)
+endif()
