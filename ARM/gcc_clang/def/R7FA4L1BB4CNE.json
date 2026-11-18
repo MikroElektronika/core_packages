@@ -1149,6 +1149,266 @@
             "label": "Uarta clock select register 1"
         }
     ],
+    "trustzone_capable": true,
+    "trustzone": {
+        "trustzone_registers": [
+            {
+                "address": "400e0024",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "SS2",
+                        "label": "SRAM Secure + NSC area",
+                        "mask": "1fe000",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "8 KB",
+                                "value": "2000"
+                            },
+                            {
+                                "label": "16 KB",
+                                "value": "4000"
+                            },
+                            {
+                                "label": "24 KB",
+                                "value": "6000"
+                            },
+                            {
+                                "label": "32 KB",
+                                "value": "8000"
+                            },
+                            {
+                                "label": "40 KB",
+                                "value": "a000"
+                            },
+                            {
+                                "label": "48 KB",
+                                "value": "c000"
+                            },
+                            {
+                                "label": "56 KB",
+                                "value": "e000"
+                            },
+                            {
+                                "label": "64 KB",
+                                "value": "10000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_SRAMSABAR0",
+                "label": "SRAM Security Attribution Monitor Register A",
+                "unused": "ffe01fff"
+            },
+            {
+                "address": "400e0018",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "CFS2",
+                        "label": "Code Flash Secure + NSC area",
+                        "mask": "ff8000",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "32 KB",
+                                "value": "8000"
+                            },
+                            {
+                                "label": "64 KB",
+                                "value": "10000"
+                            },
+                            {
+                                "label": "96 KB",
+                                "value": "18000"
+                            },
+                            {
+                                "label": "128 KB",
+                                "value": "20000"
+                            },
+                            {
+                                "label": "160 KB",
+                                "value": "28000"
+                            },
+                            {
+                                "label": "192 KB",
+                                "value": "30000"
+                            },
+                            {
+                                "label": "224 KB",
+                                "value": "38000"
+                            },
+                            {
+                                "label": "256 KB",
+                                "value": "40000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_CFSAMONA",
+                "label": "Code Flash Security Attribution Monitor Register A",
+                "unused": "ff007fff"
+            },
+            {
+                "address": "400e0020",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "DFS",
+                        "label": "Data flash Secure area",
+                        "mask": "fc00",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "1 KB",
+                                "value": "400"
+                            },
+                            {
+                                "label": "2 KB",
+                                "value": "800"
+                            },
+                            {
+                                "label": "3 KB",
+                                "value": "c00"
+                            },
+                            {
+                                "label": "4 KB",
+                                "value": "1000"
+                            },
+                            {
+                                "label": "5 KB",
+                                "value": "1400"
+                            },
+                            {
+                                "label": "6 KB",
+                                "value": "1800"
+                            },
+                            {
+                                "label": "7 KB",
+                                "value": "1c00"
+                            },
+                            {
+                                "label": "8 KB",
+                                "value": "2000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_DFSAMON",
+                "label": "Data Flash Security Attribution Monitor Register",
+                "unused": "ffff03ff"
+            }
+        ],
+        "memory_regions": [
+            {
+                "name": "RAM",
+                "start": "0x20000000",
+                "size": "0x00010000",
+                "ns_align": "0x00002000",
+                "nsc_align": "0x00000400"
+            },
+            {
+                "name": "FLASH",
+                "start": "0x00000000",
+                "size": "0x00040000",
+                "ns_align": "0x00008000",
+                "nsc_align": "0x00000400"
+            },
+            {
+                "name": "DATA_FLASH",
+                "start": "0x08000000",
+                "size": "0x00002000",
+                "ns_align": "0x00000400"
+            },
+            {
+                "name": "QSPI_FLASH",
+                "start": "0x60000000",
+                "size": "0x08000000"
+            },
+            {
+                "name": "OPTION_SETTING_OFS0",
+                "start": "0x0100a100",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_DUALSEL",
+                "start": "0x0100a110",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1",
+                "start": "0x0100a180",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL",
+                "start": "0x0100a190",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS",
+                "start": "0x0100a1c0",
+                "size": "0x0000000c"
+            },
+            {
+                "name": "OPTION_SETTING_PBPS",
+                "start": "0x0100a1e0",
+                "size": "0x0000000c"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1_SEC",
+                "start": "0x0100a200",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL_SEC",
+                "start": "0x0100a210",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS_SEC",
+                "start": "0x0100a240",
+                "size": "0x0000000c"
+            },
+            {
+                "name": "OPTION_SETTING_PBPS_SEC",
+                "start": "0x0100a260",
+                "size": "0x0000000c"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1_SEL",
+                "start": "0x0100a280",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL_SEL",
+                "start": "0x0100a290",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS_SEL",
+                "start": "0x0100a2c0",
+                "size": "0x0000000c"
+            }
+        ],
+        "sau_count": 0
+    },
     "core": "M33EF",
     "delay_src_path": "delays/m33ef/__lib_delays.c",
     "mcu": "R7FA4L1BB4CNE",

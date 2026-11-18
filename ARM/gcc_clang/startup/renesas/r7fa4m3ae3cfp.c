@@ -41,6 +41,22 @@ extern void SystemInit(void);
 #define BSP_CORTEX_VECTOR_TABLE_ENTRIES (16U)
 #define BSP_CFG_STACK_MAIN_BYTES        (0x400)
 
+/* TrustZone build selection. NECTO sets _RA_TZ_SECURE/_RA_TZ_NONSECURE on each executable. */
+#ifndef BSP_TZ_SECURE_BUILD
+ #if defined(_RA_TZ_SECURE)
+  #define BSP_TZ_SECURE_BUILD     (1)
+ #else
+  #define BSP_TZ_SECURE_BUILD     (0)
+ #endif
+#endif
+#ifndef BSP_TZ_NONSECURE_BUILD
+ #if defined(_RA_TZ_NONSECURE)
+  #define BSP_TZ_NONSECURE_BUILD  (1)
+ #else
+  #define BSP_TZ_NONSECURE_BUILD  (0)
+ #endif
+#endif
+
 /***********************************************************************************************************************
  * Macro definitions
  **********************************************************************************************************************/

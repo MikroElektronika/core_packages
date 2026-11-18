@@ -1043,6 +1043,177 @@
             "label": "Low-speed on-chip oscillator control register"
         }
     ],
+    "trustzone_capable": true,
+    "trustzone": {
+        "trustzone_registers": [
+            {
+                "address": "400e0024",
+                "default": "001fe000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "SS2",
+                        "label": "SRAM Secure + NSC area",
+                        "mask": "1fe000",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "8 KB",
+                                "value": "2000"
+                            },
+                            {
+                                "label": "16 KB",
+                                "value": "4000"
+                            },
+                            {
+                                "label": "24 KB",
+                                "value": "6000"
+                            },
+                            {
+                                "label": "32 KB",
+                                "value": "8000"
+                            },
+                            {
+                                "label": "40 KB",
+                                "value": "a000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_SRAMSABAR0",
+                "label": "SRAM Security Attribution Register A",
+                "unused": "ffe01fff"
+            },
+            {
+                "address": "400e0018",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "CFS2",
+                        "label": "Code Flash Secure + NSC area",
+                        "mask": "ff8000",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "32 KB",
+                                "value": "8000"
+                            },
+                            {
+                                "label": "64 KB",
+                                "value": "10000"
+                            },
+                            {
+                                "label": "96 KB",
+                                "value": "18000"
+                            },
+                            {
+                                "label": "128 KB",
+                                "value": "20000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_CFSAMONA",
+                "label": "Code Flash Security Attribution Register A",
+                "unused": "ff007fff"
+            },
+            {
+                "address": "400e0020",
+                "default": "0000fc00",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "DFS",
+                        "label": "Data flash Secure area",
+                        "mask": "fc00",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "1 KB",
+                                "value": "400"
+                            },
+                            {
+                                "label": "2 KB",
+                                "value": "800"
+                            },
+                            {
+                                "label": "3 KB",
+                                "value": "c00"
+                            },
+                            {
+                                "label": "4 KB",
+                                "value": "1000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_DFSAMON",
+                "label": "Data Flash Security Attribution Register",
+                "unused": "ffff03ff"
+            }
+        ],
+        "memory_regions": [
+            {
+                "name": "RAM",
+                "start": "0x20000000",
+                "size": "0x0000a000",
+                "ns_align": "0x00002000",
+                "nsc_align": "0x00000400"
+            },
+            {
+                "name": "FLASH",
+                "start": "0x00000000",
+                "size": "0x00020000",
+                "ns_align": "0x00008000",
+                "nsc_align": "0x00000400"
+            },
+            {
+                "name": "DATA_FLASH",
+                "start": "0x08000000",
+                "size": "0x00001000",
+                "ns_align": "0x00000400"
+            },
+            {
+                "name": "OPTION_SETTING_OFS0",
+                "start": "0x0100a100",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_OSIS",
+                "start": "0x0100a120",
+                "size": "0x00000010"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1_SEC",
+                "start": "0x0100a200",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS_SEC",
+                "start": "0x0100a240",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_PBPS_SEC",
+                "start": "0x0100a260",
+                "size": "0x00000004"
+            }
+        ],
+        "sau_count": 0
+    },
     "core": "M33EF",
     "delay_src_path": "delays/m33ef/__lib_delays.c",
     "mcu": "R7FA4E2B93CBB",

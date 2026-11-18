@@ -1246,6 +1246,436 @@
             "label": "Low-speed on-chip oscillator control register"
         }
     ],
+    "trustzone_capable": true,
+    "trustzone": {
+        "trustzone_registers": [
+            {
+                "address": "400e0024",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "SS2",
+                        "label": "SRAM Secure + NSC area",
+                        "mask": "1fe000",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "8 KB",
+                                "value": "2000"
+                            },
+                            {
+                                "label": "16 KB",
+                                "value": "4000"
+                            },
+                            {
+                                "label": "24 KB",
+                                "value": "6000"
+                            },
+                            {
+                                "label": "32 KB",
+                                "value": "8000"
+                            },
+                            {
+                                "label": "40 KB",
+                                "value": "a000"
+                            },
+                            {
+                                "label": "48 KB",
+                                "value": "c000"
+                            },
+                            {
+                                "label": "56 KB",
+                                "value": "e000"
+                            },
+                            {
+                                "label": "64 KB",
+                                "value": "10000"
+                            },
+                            {
+                                "label": "72 KB",
+                                "value": "12000"
+                            },
+                            {
+                                "label": "80 KB",
+                                "value": "14000"
+                            },
+                            {
+                                "label": "88 KB",
+                                "value": "16000"
+                            },
+                            {
+                                "label": "96 KB",
+                                "value": "18000"
+                            },
+                            {
+                                "label": "104 KB",
+                                "value": "1a000"
+                            },
+                            {
+                                "label": "112 KB",
+                                "value": "1c000"
+                            },
+                            {
+                                "label": "120 KB",
+                                "value": "1e000"
+                            },
+                            {
+                                "label": "128 KB",
+                                "value": "20000"
+                            },
+                            {
+                                "label": "136 KB",
+                                "value": "22000"
+                            },
+                            {
+                                "label": "144 KB",
+                                "value": "24000"
+                            },
+                            {
+                                "label": "152 KB",
+                                "value": "26000"
+                            },
+                            {
+                                "label": "160 KB",
+                                "value": "28000"
+                            },
+                            {
+                                "label": "168 KB",
+                                "value": "2a000"
+                            },
+                            {
+                                "label": "176 KB",
+                                "value": "2c000"
+                            },
+                            {
+                                "label": "184 KB",
+                                "value": "2e000"
+                            },
+                            {
+                                "label": "192 KB",
+                                "value": "30000"
+                            },
+                            {
+                                "label": "200 KB",
+                                "value": "32000"
+                            },
+                            {
+                                "label": "208 KB",
+                                "value": "34000"
+                            },
+                            {
+                                "label": "216 KB",
+                                "value": "36000"
+                            },
+                            {
+                                "label": "224 KB",
+                                "value": "38000"
+                            },
+                            {
+                                "label": "232 KB",
+                                "value": "3a000"
+                            },
+                            {
+                                "label": "240 KB",
+                                "value": "3c000"
+                            },
+                            {
+                                "label": "248 KB",
+                                "value": "3e000"
+                            },
+                            {
+                                "label": "256 KB",
+                                "value": "40000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_SRAMSABAR0",
+                "label": "SRAM Security Attribution Monitor Register A",
+                "unused": "ffe01fff"
+            },
+            {
+                "address": "400e0018",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "CFS2",
+                        "label": "Code Flash Secure + NSC area",
+                        "mask": "ff8000",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "32 KB",
+                                "value": "8000"
+                            },
+                            {
+                                "label": "64 KB",
+                                "value": "10000"
+                            },
+                            {
+                                "label": "96 KB",
+                                "value": "18000"
+                            },
+                            {
+                                "label": "128 KB",
+                                "value": "20000"
+                            },
+                            {
+                                "label": "160 KB",
+                                "value": "28000"
+                            },
+                            {
+                                "label": "192 KB",
+                                "value": "30000"
+                            },
+                            {
+                                "label": "224 KB",
+                                "value": "38000"
+                            },
+                            {
+                                "label": "256 KB",
+                                "value": "40000"
+                            },
+                            {
+                                "label": "288 KB",
+                                "value": "48000"
+                            },
+                            {
+                                "label": "320 KB",
+                                "value": "50000"
+                            },
+                            {
+                                "label": "352 KB",
+                                "value": "58000"
+                            },
+                            {
+                                "label": "384 KB",
+                                "value": "60000"
+                            },
+                            {
+                                "label": "416 KB",
+                                "value": "68000"
+                            },
+                            {
+                                "label": "448 KB",
+                                "value": "70000"
+                            },
+                            {
+                                "label": "480 KB",
+                                "value": "78000"
+                            },
+                            {
+                                "label": "512 KB",
+                                "value": "80000"
+                            },
+                            {
+                                "label": "544 KB",
+                                "value": "88000"
+                            },
+                            {
+                                "label": "576 KB",
+                                "value": "90000"
+                            },
+                            {
+                                "label": "608 KB",
+                                "value": "98000"
+                            },
+                            {
+                                "label": "640 KB",
+                                "value": "a0000"
+                            },
+                            {
+                                "label": "672 KB",
+                                "value": "a8000"
+                            },
+                            {
+                                "label": "704 KB",
+                                "value": "b0000"
+                            },
+                            {
+                                "label": "736 KB",
+                                "value": "b8000"
+                            },
+                            {
+                                "label": "768 KB",
+                                "value": "c0000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_CFSAMONA",
+                "label": "Code Flash Security Attribution Monitor Register A",
+                "unused": "ff007fff"
+            },
+            {
+                "address": "400e0020",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "DFS",
+                        "label": "Data flash Secure area",
+                        "mask": "fc00",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "1 KB",
+                                "value": "400"
+                            },
+                            {
+                                "label": "2 KB",
+                                "value": "800"
+                            },
+                            {
+                                "label": "3 KB",
+                                "value": "c00"
+                            },
+                            {
+                                "label": "4 KB",
+                                "value": "1000"
+                            },
+                            {
+                                "label": "5 KB",
+                                "value": "1400"
+                            },
+                            {
+                                "label": "6 KB",
+                                "value": "1800"
+                            },
+                            {
+                                "label": "7 KB",
+                                "value": "1c00"
+                            },
+                            {
+                                "label": "8 KB",
+                                "value": "2000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_DFSAMON",
+                "label": "Data Flash Security Attribution Monitor Register",
+                "unused": "ffff03ff"
+            }
+        ],
+        "memory_regions": [
+            {
+                "name": "RAM",
+                "start": "0x20000000",
+                "size": "0x00040000",
+                "ns_align": "0x00002000",
+                "nsc_align": "0x00000400"
+            },
+            {
+                "name": "FLASH",
+                "start": "0x00000000",
+                "size": "0x000c0000",
+                "ns_align": "0x00008000",
+                "nsc_align": "0x00000400"
+            },
+            {
+                "name": "DATA_FLASH",
+                "start": "0x08000000",
+                "size": "0x00002000",
+                "ns_align": "0x00000400"
+            },
+            {
+                "name": "QSPI_FLASH",
+                "start": "0x60000000",
+                "size": "0x04000000"
+            },
+            {
+                "name": "OSPI0_CS0",
+                "start": "0x68000000",
+                "size": "0x08000000"
+            },
+            {
+                "name": "OSPI0_CS1",
+                "start": "0x70000000",
+                "size": "0x10000000"
+            },
+            {
+                "name": "OPTION_SETTING_OFS0",
+                "start": "0x0100a100",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_DUALSEL",
+                "start": "0x0100a110",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1",
+                "start": "0x0100a180",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL",
+                "start": "0x0100a190",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS",
+                "start": "0x0100a1c0",
+                "size": "0x0000000c"
+            },
+            {
+                "name": "OPTION_SETTING_PBPS",
+                "start": "0x0100a1e0",
+                "size": "0x0000000c"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1_SEC",
+                "start": "0x0100a200",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL_SEC",
+                "start": "0x0100a210",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS_SEC",
+                "start": "0x0100a240",
+                "size": "0x0000000c"
+            },
+            {
+                "name": "OPTION_SETTING_PBPS_SEC",
+                "start": "0x0100a260",
+                "size": "0x0000000c"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1_SEL",
+                "start": "0x0100a280",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL_SEL",
+                "start": "0x0100a290",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS_SEL",
+                "start": "0x0100a2c0",
+                "size": "0x0000000c"
+            }
+        ],
+        "sau_count": 0
+    },
     "core": "M33EF",
     "delay_src_path": "delays/m33ef/__lib_delays.c",
     "mcu": "R7FA6M4AE2CBQ",

@@ -601,19 +601,19 @@ SECTIONS
     }  > FLASH
 
     /* TrustZone CMSE veneers.
-     * For the Secure image, the final 32 KiB of the Secure FLASH allocation is
-     * the NSC window.  For the Non-secure image, keep the empty SG section at
-     * the current FLASH location.
+     * For the Secure image (FLASH_START == Secure flash base), the final 32 KiB of the
+     * Secure FLASH allocation is the NSC window (BSP_TZ_CFG_NSC_SIZE).  For the
+     * Non-secure image, keep the empty SG section at the current FLASH location.
      *
      * IMPORTANT: keep the output-section syntax deliberately simple here.
      * GNU Arm ld treats .gnu.sgstubs specially when --cmse-implib is used. */
-    __tz_nsc_start = (FLASH_START < 0x10000000)
+    __tz_nsc_start = (FLASH_START == 0x02000000)
                    ? (FLASH_START + FLASH_LENGTH - 0x8000)
                    : ALIGN(32);
-    ASSERT((FLASH_START >= 0x10000000) || (. <= __tz_nsc_start),
+    ASSERT((FLASH_START != 0x02000000) || (. <= __tz_nsc_start),
            "Secure image overlaps the 32 KiB NSC window")
 
-    .gnu.sgstubs ((FLASH_START < 0x10000000)
+    .gnu.sgstubs ((FLASH_START == 0x02000000)
                  ? (FLASH_START + FLASH_LENGTH - 0x8000)
                  : ALIGN(32)) :
     {
@@ -626,7 +626,7 @@ SECTIONS
         . = ALIGN(32);
     }  > FLASH
 
-    ASSERT((FLASH_START >= 0x10000000) ||
+    ASSERT((FLASH_START != 0x02000000) ||
            (.gnu.sgstubsLimit <= (FLASH_START + FLASH_LENGTH)),
            "NSC veneers overflow Secure flash")
 
