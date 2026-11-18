@@ -38,13 +38,13 @@ ENTRY(Reset_Handler)
 _Min_Heap_Size = 0x200;	/* required amount of heap  */
 _Min_Stack_Size = 0x400;	/* required amount of stack */
 
-/* Memories definition */
-MEMORY
-{
-  RAM	(xrw)	: ORIGIN = 0x20000000,	LENGTH = 192K
-  RAM2	(xrw)	: ORIGIN = 0x20030000,	LENGTH = 64K
-  FLASH	(rx)	: ORIGIN = 0x8000000,	LENGTH = 512K
-}
+/* Memories definition
+ * TrustZone (NECTO): the MEMORY block comes from memory_map.ld, which NECTO
+ * generates per target (FileLinker/secure, FileLinker/nonsecure) from the
+ * TrustZone partition. It defines ROM, ROM_NSC, RAM and RAM2; ROM_NSC is
+ * empty in the Non-secure image.
+ */
+INCLUDE memory_map.ld
 
 /* Highest address of the user mode stack */
 _estack = ORIGIN(RAM) + LENGTH(RAM);	/* end of "RAM" Ram type memory */
@@ -58,7 +58,7 @@ SECTIONS
     . = ALIGN(4);
     KEEP(*(.isr_vector)) /* Startup code */
     . = ALIGN(4);
-  } >FLASH
+  } >ROM
 
   /* The program code and other data into "FLASH" Rom type memory */
   .text :
@@ -75,7 +75,7 @@ SECTIONS
 
     . = ALIGN(4);
     _etext = .;        /* define a global symbols at end of code */
-  } >FLASH
+  } >ROM
 
   /* Constant data into "FLASH" Rom type memory */
   .rodata :
@@ -84,14 +84,14 @@ SECTIONS
     *(.rodata)         /* .rodata sections (constants, strings, etc.) */
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     . = ALIGN(4);
-  } >FLASH
+  } >ROM
 
   .ARM.extab : /* The READONLY keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {
     . = ALIGN(4);
     *(.ARM.extab* .gnu.linkonce.armextab.*)
     . = ALIGN(4);
-  } >FLASH
+  } >ROM
   .ARM : /* The READONLY keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {
     . = ALIGN(4);
@@ -99,7 +99,7 @@ SECTIONS
     *(.ARM.exidx*)
     __exidx_end = .;
     . = ALIGN(4);
-  } >FLASH
+  } >ROM
 
   .preinit_array : /* The READONLY keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {
@@ -108,7 +108,7 @@ SECTIONS
     KEEP (*(.preinit_array*))
     PROVIDE_HIDDEN (__preinit_array_end = .);
     . = ALIGN(4);
-  } >FLASH
+  } >ROM
 
   .init_array : /* The READONLY keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {
@@ -118,7 +118,7 @@ SECTIONS
     KEEP (*(.init_array*))
     PROVIDE_HIDDEN (__init_array_end = .);
     . = ALIGN(4);
-  } >FLASH
+  } >ROM
 
   .fini_array : /* The READONLY keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {
@@ -128,7 +128,7 @@ SECTIONS
     KEEP (*(.fini_array*))
     PROVIDE_HIDDEN (__fini_array_end = .);
     . = ALIGN(4);
-  } >FLASH
+  } >ROM
 
   /* Used by the startup to initialize data */
   _sidata = LOADADDR(.data);
@@ -146,7 +146,18 @@ SECTIONS
     . = ALIGN(4);
     _edata = .;        /* define a global symbol at data end */
 
-  } >RAM AT> FLASH
+  } >RAM AT> ROM
+
+  /* TrustZone: Secure Gateway veneers (-mcmse --cmse-implib) in the
+     Non-secure Callable region. Empty in the Non-secure image.
+     ld.lld needs the explicit address; GNU ld needs the dot assignment,
+     otherwise the section has no contents when the veneers are sized and
+     fails with "no address assigned to the veneers output section". */
+  .gnu.sgstubs ORIGIN(ROM_NSC) :
+  {
+    . = ALIGN(32);
+    *(.gnu.sgstubs*)
+  } >ROM_NSC
 
   /* Uninitialized data section into "RAM" Ram type memory */
   . = ALIGN(4);

@@ -2,5 +2,171 @@
     "core": "M33EF",
     "delay_src_path": "delays/m33ef/__lib_delays.c",
     "mcu": "STM32L552VE",
-    "clock": 1
+    "clock": 1,
+    "trustzone_capable": true,
+    "trustzone": {
+        "tz_vendor": "stm32",
+        "partition_method": "stm32_programmer",
+        "page_size": "0x800",
+        "nsc_align": "0x20",
+        "sau_count": 8,
+        "nvic_itns_count": 4,
+        "tzen_value": "0x1",
+        "mpcbb_register": "VCTR",
+        "mpcbb_block_size": "0x100",
+        "memory_regions": [
+            {
+                "name": "FLASH_BANK1",
+                "start": "0x0C000000",
+                "size": "0x00040000",
+                "nsc_align": "0x20"
+            },
+            {
+                "name": "FLASH_BANK1_NS",
+                "start": "0x08000000",
+                "size": "0x00040000"
+            },
+            {
+                "name": "FLASH_BANK2",
+                "start": "0x0C040000",
+                "size": "0x00040000",
+                "nsc_align": "0x20"
+            },
+            {
+                "name": "FLASH_BANK2_NS",
+                "start": "0x08040000",
+                "size": "0x00040000"
+            },
+            {
+                "name": "SRAM1",
+                "start": "0x30000000",
+                "size": "0x00030000"
+            },
+            {
+                "name": "SRAM1_NS",
+                "start": "0x20000000",
+                "size": "0x00030000"
+            },
+            {
+                "name": "SRAM2",
+                "start": "0x30030000",
+                "size": "0x00010000"
+            },
+            {
+                "name": "SRAM2_NS",
+                "start": "0x20030000",
+                "size": "0x00010000"
+            }
+        ],
+        "option_bytes": [
+            {
+                "name": "SECWM1_PSTRT",
+                "source": "regions.flash_bank1.secure_start_page"
+            },
+            {
+                "name": "SECWM1_PEND",
+                "source": "regions.flash_bank1.secure_end_page"
+            },
+            {
+                "name": "SECWM2_PSTRT",
+                "source": "regions.flash_bank2.secure_start_page"
+            },
+            {
+                "name": "SECWM2_PEND",
+                "source": "regions.flash_bank2.secure_end_page"
+            }
+        ],
+        "mpcbb_regions": [
+            {
+                "periph": "GTZC_MPCBB1",
+                "sram_id": "sram1"
+            },
+            {
+                "periph": "GTZC_MPCBB2",
+                "sram_id": "sram2"
+            }
+        ],
+        "linker_memory_map": {
+            "secure": [
+                {
+                    "name": "ROM",
+                    "region": "flash_bank1",
+                    "base": "secure_start",
+                    "length": "secure_minus_nsc",
+                    "permissions": "rx"
+                },
+                {
+                    "name": "ROM_NSC",
+                    "region": "flash_bank1",
+                    "base": "previous_end",
+                    "length": "nsc",
+                    "permissions": "rx"
+                },
+                {
+                    "name": "RAM",
+                    "region": "sram1",
+                    "base": "secure_start",
+                    "length": "secure",
+                    "permissions": "xrw"
+                },
+                {
+                    "name": "RAM2",
+                    "region": "sram2",
+                    "base": "secure_start",
+                    "length": "secure",
+                    "permissions": "xrw"
+                }
+            ],
+            "nonsecure": [
+                {
+                    "name": "ROM",
+                    "region": "flash_bank2",
+                    "base": "nonsecure_start",
+                    "length": "nonsecure",
+                    "permissions": "rx"
+                },
+                {
+                    "name": "ROM_NSC",
+                    "region": "flash_bank1",
+                    "base": "nsc_ns_alias",
+                    "length": "zero",
+                    "permissions": "rx"
+                },
+                {
+                    "name": "RAM",
+                    "region": "sram1",
+                    "base": "nonsecure_start",
+                    "length": "nonsecure",
+                    "permissions": "xrw"
+                },
+                {
+                    "name": "RAM2",
+                    "region": "sram2",
+                    "base": "nonsecure_start",
+                    "length": "nonsecure",
+                    "permissions": "xrw"
+                }
+            ]
+        },
+        "sau_fixed_ns_regions": [
+            {
+                "base": "0x40000000",
+                "limit": "0x4FFFFFFF",
+                "attr": 2,
+                "label": "Non-secure peripherals"
+            },
+            {
+                "base": "0x60000000",
+                "limit": "0x9FFFFFFF",
+                "attr": 2,
+                "label": "External memories (FMC/OCTOSPI)"
+            },
+            {
+                "base": "0x0BF90000",
+                "limit": "0x0BFA8FFF",
+                "attr": 2,
+                "label": "System memory (bootloader, OTP, engi bytes)"
+            }
+        ]
+    }
 }
