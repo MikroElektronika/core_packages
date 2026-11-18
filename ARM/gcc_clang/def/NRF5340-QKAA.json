@@ -1,0 +1,142 @@
+{
+    "config_registers": [
+        {
+            "address": "50005514",
+            "default": "00000001",
+            "key": "CLOCK_HFCLKSRC",
+            "unused": "FFFFFFFE",
+            "label": "Clock source for HFCLK128M/HFCLK64M",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "HFCLK reference",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "HFINT internal RC oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HFXO 32 MHz crystal oscillator",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "50005000",
+            "default": "00000000",
+            "key": "CLOCK_TASKS_HFCLKSTART",
+            "unused": "FFFFFFFE",
+            "label": "Start HFCLK source task",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "TASKS_HFCLKSTART",
+                    "label": "High frequency clock source (TASKS_HFCLKSTART)",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Keep HFINT",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Start the source selected in HFCLKSRC (HFXO)",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "50005558",
+            "default": "00000001",
+            "key": "CLOCK_HFCLKCTRL",
+            "unused": "FFFFFFFC",
+            "label": "HFCLK128M frequency configuration",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "HCLK",
+                    "label": "Application core clock (HCLK)",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "HCLK = 128 MHz (divide by 1)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "HCLK = 64 MHz (divide by 2)",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "50005518",
+            "default": "00000001",
+            "key": "CLOCK_LFCLKSRC",
+            "unused": "FFFFFFFC",
+            "label": "Clock source for the LFCLK",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "SRC",
+                    "label": "LFCLK clock source",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "LFRC 32.768 kHz RC oscillator",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "LFXO 32.768 kHz crystal oscillator (P0.00/P0.01)",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "LFSYNT synthesized from HFCLK",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "50005008",
+            "default": "00000000",
+            "key": "CLOCK_TASKS_LFCLKSTART",
+            "unused": "FFFFFFFE",
+            "label": "Start LFCLK task",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "TASKS_LFCLKSTART",
+                    "label": "Low frequency clock (LFCLK) start",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "LFCLK is not started by SystemInit",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Start LFCLK in SystemInit",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "M33EF",
+    "delay_src_path": "delays/m33ef/__lib_delays.c",
+    "mcu": "NRF5340-QKAA",
+    "clock": "64"
+}
