@@ -1,0 +1,59 @@
+{
+    "config_registers": [
+        {
+            "address": "600C0058",
+            "default": "00000000",
+            "key": "SYSTEM_SYSCLK_CONF",
+            "unused": "FFFFF3FF",
+            "label": "ESP32-C2 CPU clock (SYSTEM_SYSCLK_CONF_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000400",
+                    "key": "SOC_CLK_SEL",
+                    "label": "CPU clock: SYSTEM_SOC_CLK_SEL",
+                    "mask": "00000C00",
+                    "settings": [
+                        {
+                            "label": "XTAL 40 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL 80 MHz / PLL 120 MHz",
+                            "value": "00000400"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "600C0008",
+            "default": "00000000",
+            "key": "SYSTEM_CPU_PER_CONF",
+            "unused": "FFFFFFFC",
+            "label": "ESP32-C2 CPU clock (SYSTEM_CPU_PER_CONF_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "CPUPERIOD_SEL",
+                    "label": "CPU clock: SYSTEM_CPUPERIOD_SEL",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "PLL 80 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL 120 MHz",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "RISCV",
+    "mcu": "ESP8684H2X",
+    "clock": "120"
+}

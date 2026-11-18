@@ -1,0 +1,18 @@
+{
+    "def_file": "ESP32-H2FH4S.json",
+    "family_uid": "ESP32-H2",
+    "flash": "4194304",
+    "icon": "images/mcu/espressif.png",
+    "max_speed": "96.000",
+    "name": "ESP32-H2FH4S",
+    "ram": "315344",
+    "sdk_config": "{\"MCU_NAME\":\"ESP32-H2FH4S\",\"CORE_NAME\":\"RISCV\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ESP32-H2FH4S",
+    "vendor": "Espressif",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm-riscv\": \"riscv_gcc_clang_esp32h2\", \"xpack-riscv-none-embed-gcc\": \"riscv_gcc_clang_esp32h2\"}"
+}

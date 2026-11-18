@@ -1,0 +1,173 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Espressif Systems (Shanghai) CO LTD
+ *
+ * SPDX-License-Identifier: Apache-2.0 OR MIT
+ */
+
+#pragma once
+
+/**
+ * @file regi2c_saradc.h
+ * @brief Register definitions for analog to calibrate initial code for getting a more precise voltage of SAR ADC.
+ *
+ * This file lists register fields of SAR, located on an internal configuration
+ * bus. These definitions are used via macros defined in regi2c_ctrl.h, by
+ * function in adc_ll.h.
+ */
+
+#define I2C_SARADC            0X69
+#define I2C_SARADC_HOSTID     0
+
+#define I2C_SARADC_SAR1       0x10
+#define I2C_SARADC_SAR1_HOSTID 0
+
+#define I2C_SARADC_SAR2       0x11
+#define I2C_SARADC_SAR2_HOSTID 0
+
+#define ADC_SARADC_CAL_DONE_ADDR          0x0
+#define ADC_SARADC_CAL_DONE_ADDR_MSB      0x0
+#define ADC_SARADC_CAL_DONE_ADDR_LSB      0x0
+
+#define ADC_SARADC_POL_SEL_ADDR           0x0
+#define ADC_SARADC_POL_SEL_ADDR_MSB       0x1
+#define ADC_SARADC_POL_SEL_ADDR_LSB       0x1
+
+#define ADC_SARADC_R_FIT_IN_ADDR          0x0
+#define ADC_SARADC_R_FIT_IN_ADDR_MSB      0x4
+#define ADC_SARADC_R_FIT_IN_ADDR_LSB      0x2
+
+#define ADC_SARADC_TEST_EN_IN_ADDR        0x0
+#define ADC_SARADC_TEST_EN_IN_ADDR_MSB    0x6
+#define ADC_SARADC_TEST_EN_IN_ADDR_LSB    0x5
+
+#define ADC_SARADC_DV_EN_IN_ADDR          0x0
+#define ADC_SARADC_DV_EN_IN_ADDR_MSB      0x7
+#define ADC_SARADC_DV_EN_IN_ADDR_LSB      0x7
+
+#define ADC_SARADC_TEST_SEL_IN_ADDR       0x1
+#define ADC_SARADC_TEST_SEL_IN_ADDR_MSB   0x3
+#define ADC_SARADC_TEST_SEL_IN_ADDR_LSB   0x0
+
+#define ADC_SARADC_REF_SEL_IN_ADDR        0x1
+#define ADC_SARADC_REF_SEL_IN_ADDR_MSB    0x5
+#define ADC_SARADC_REF_SEL_IN_ADDR_LSB    0x4
+
+#define ADC_SARADC_VCM_SEL_IN_ADDR        0x1
+#define ADC_SARADC_VCM_SEL_IN_ADDR_MSB    0x7
+#define ADC_SARADC_VCM_SEL_IN_ADDR_LSB    0x6
+
+#define ADC_SARADC_CAL_SEL_ADDR           0x2
+#define ADC_SARADC_CAL_SEL_ADDR_MSB       0x7
+#define ADC_SARADC_CAL_SEL_ADDR_LSB       0x0
+
+#define ADC_SARADC_CAL_SEL_1_ADDR         0x3
+#define ADC_SARADC_CAL_SEL_1_ADDR_MSB     0x7
+#define ADC_SARADC_CAL_SEL_1_ADDR_LSB     0x0
+
+#define ADC_SARADC_SAMP_CLK_ADDR          0x4
+#define ADC_SARADC_SAMP_CLK_ADDR_MSB      0x3
+#define ADC_SARADC_SAMP_CLK_ADDR_LSB      0x0
+
+#define ADC_SARADC_EN_RAW_DATA_ADDR       0x4
+#define ADC_SARADC_EN_RAW_DATA_ADDR_MSB   0x4
+#define ADC_SARADC_EN_RAW_DATA_ADDR_LSB   0x4
+
+#define ADC_SARADC_DC_INIT_0_ADDR         0x5
+#define ADC_SARADC_DC_INIT_0_ADDR_MSB     0x7
+#define ADC_SARADC_DC_INIT_0_ADDR_LSB     0x0
+
+#define ADC_SARADC_DC_INIT_1_ADDR         0x6
+#define ADC_SARADC_DC_INIT_1_ADDR_MSB     0x7
+#define ADC_SARADC_DC_INIT_1_ADDR_LSB     0x0
+
+#define I2C_SARADC_SAR1_INIT_CODE_LSB      0x0
+#define I2C_SARADC_SAR1_INIT_CODE_LSB_MSB  0x7
+#define I2C_SARADC_SAR1_INIT_CODE_LSB_LSB  0x0
+
+#define I2C_SARADC_SAR1_INIT_CODE_MSB      0x1
+#define I2C_SARADC_SAR1_INIT_CODE_MSB_MSB  0x3
+#define I2C_SARADC_SAR1_INIT_CODE_MSB_LSB  0x0
+
+#define ADC_SAR1_SAMPLE_CYCLE_ADDR          0x2
+#define ADC_SAR1_SAMPLE_CYCLE_ADDR_MSB      0x2
+#define ADC_SAR1_SAMPLE_CYCLE_ADDR_LSB      0x0
+
+#define ADC_SAR1_DREF_ADDR                  0x2
+#define ADC_SAR1_DREF_ADDR_MSB              0x6
+#define ADC_SAR1_DREF_ADDR_LSB              0x4
+
+#define ADC_SAR2_INITIAL_CODE_LOW_ADDR      0x3
+#define ADC_SAR2_INITIAL_CODE_LOW_ADDR_MSB  0x7
+#define ADC_SAR2_INITIAL_CODE_LOW_ADDR_LSB  0x0
+
+#define ADC_SAR2_INITIAL_CODE_HIGH_ADDR     0x4
+#define ADC_SAR2_INITIAL_CODE_HIGH_ADDR_MSB 0x3
+#define ADC_SAR2_INITIAL_CODE_HIGH_ADDR_LSB 0x0
+
+#define ADC_SAR2_SAMPLE_CYCLE_ADDR          0x5
+#define ADC_SAR2_SAMPLE_CYCLE_ADDR_MSB      0x2
+#define ADC_SAR2_SAMPLE_CYCLE_ADDR_LSB      0x0
+
+#define ADC_SAR2_DREF_ADDR                  0x5
+#define ADC_SAR2_DREF_ADDR_MSB              0x6
+#define ADC_SAR2_DREF_ADDR_LSB              0x4
+
+#define I2C_SARADC_TSENS_DAC                0x6
+#define I2C_SARADC_TSENS_DAC_MSB            0x3
+#define I2C_SARADC_TSENS_DAC_LSB            0x0
+
+#define ADC_SARADC_DTEST_RTC_ADDR           0x7
+#define ADC_SARADC_DTEST_RTC_ADDR_MSB       0x1
+#define ADC_SARADC_DTEST_RTC_ADDR_LSB       0x0
+
+#define ADC_SARADC_ENT_TSENS_ADDR           0x7
+#define ADC_SARADC_ENT_TSENS_ADDR_MSB       0x2
+#define ADC_SARADC_ENT_TSENS_ADDR_LSB       0x2
+
+#define POWER_GLITCH_XPD_VDET_PERIF         10
+#define POWER_GLITCH_XPD_VDET_PERIF_MSB     0
+#define POWER_GLITCH_XPD_VDET_PERIF_LSB     0
+
+#define POWER_GLITCH_XPD_VDET_VDDPST        10
+#define POWER_GLITCH_XPD_VDET_VDDPST_MSB    1
+#define POWER_GLITCH_XPD_VDET_VDDPST_LSB    1
+
+#define POWER_GLITCH_XPD_VDET_PLLBB         10
+#define POWER_GLITCH_XPD_VDET_PLLBB_MSB     2
+#define POWER_GLITCH_XPD_VDET_PLLBB_LSB     2
+
+#define POWER_GLITCH_XPD_VDET_PLL           10
+#define POWER_GLITCH_XPD_VDET_PLL_MSB       3
+#define POWER_GLITCH_XPD_VDET_PLL_LSB       3
+
+#define POWER_GLITCH_MODE_VDET_PERIF        10
+#define POWER_GLITCH_MODE_VDET_PERIF_MSB    4
+#define POWER_GLITCH_MODE_VDET_PERIF_LSB    4
+
+#define POWER_GLITCH_MODE_VDET_VDDPST       10
+#define POWER_GLITCH_MODE_VDET_VDDPST_MSB   5
+#define POWER_GLITCH_MODE_VDET_VDDPST_LSB   5
+
+#define POWER_GLITCH_MODE_VDET_PLLBB        10
+#define POWER_GLITCH_MODE_VDET_PLLBB_MSB    6
+#define POWER_GLITCH_MODE_VDET_PLLBB_LSB    6
+
+#define POWER_GLITCH_MODE_VDET_PLL          10
+#define POWER_GLITCH_MODE_VDET_PLL_MSB      7
+#define POWER_GLITCH_MODE_VDET_PLL_LSB      7
+
+#define POWER_GLITCH_DREF_VDET_PERIF         11
+#define POWER_GLITCH_DREF_VDET_PERIF_MSB     2
+#define POWER_GLITCH_DREF_VDET_PERIF_LSB     0
+
+#define POWER_GLITCH_DREF_VDET_VDDPST        11
+#define POWER_GLITCH_DREF_VDET_VDDPST_MSB    6
+#define POWER_GLITCH_DREF_VDET_VDDPST_LSB    4
+
+#define POWER_GLITCH_DREF_VDET_PLLBB          12
+#define POWER_GLITCH_DREF_VDET_PLLBB_MSB      2
+#define POWER_GLITCH_DREF_VDET_PLLBB_LSB      0
+
+#define POWER_GLITCH_DREF_VDET_PLL           12
+#define POWER_GLITCH_DREF_VDET_PLL_MSB       6
+#define POWER_GLITCH_DREF_VDET_PLL_LSB       4

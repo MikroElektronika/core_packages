@@ -17,7 +17,14 @@ endif()
 #include all .cmake files from cmake folder
 
 set(local_list_include "")
-set(vendor "gigadevice")
+get_mcu_vendor(vendor)
+
+# Per MCU register header (def/<vendor>/<MCU>/mcu.h, as on ARM); MCUs without one use common/mcu.h
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/def/${vendor}/${MCU_NAME}/mcu.h)
+    set(mcu_header_dir def/${vendor}/${MCU_NAME})
+else()
+    set(mcu_header_dir common)
+endif()
 file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
 foreach(cmakeFile ${CMAKE_FILES})
     include(${cmakeFile})
@@ -45,6 +52,7 @@ core_add_library(lib_core MikroC.Core
 )
 
 target_include_directories(lib_core PRIVATE
+    ${mcu_header_dir}
     common/
     include/
     cstdio/include
@@ -65,7 +73,7 @@ install(
     FILES
         common/rcu_typedef.h
         common/delays.h
-        common/mcu.h
+        ${mcu_header_dir}/mcu.h
         common/const.h
         common/bits.h
 

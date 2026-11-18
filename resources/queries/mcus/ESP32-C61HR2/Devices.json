@@ -1,0 +1,18 @@
+{
+    "def_file": "ESP32-C61HR2.json",
+    "family_uid": "ESP32-C61",
+    "flash": "0",
+    "icon": "images/mcu/espressif.png",
+    "max_speed": "160.000",
+    "name": "ESP32-C61HR2",
+    "ram": "312944",
+    "sdk_config": "{\"MCU_NAME\":\"ESP32-C61HR2\",\"CORE_NAME\":\"RISCV\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ESP32-C61HR2",
+    "vendor": "Espressif",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm-riscv\": \"riscv_gcc_clang_esp32c61\", \"xpack-riscv-none-embed-gcc\": \"riscv_gcc_clang_esp32c61\"}"
+}
