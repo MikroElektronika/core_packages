@@ -2707,6 +2707,31 @@
     ],
     "trustzone_capable": true,
     "trustzone": {
+        "default_partition": {
+            "description": "Default TrustZone partition used by the NECTO RA TrustZone demo (test matrix). secure_size = total Secure bytes including NSC.",
+            "code_flash": {
+                "secure_size": "0x00100000",
+                "nsc_size": "0x00008000"
+            },
+            "data_flash": {
+                "secure_size": "0x00000800"
+            },
+            "sram": {
+                "secure_size": "0x00060000",
+                "nsc_size": "0x00000000"
+            },
+            "standby_ram": {
+                "secure_size": "0x00000400"
+            },
+            "rfp_boundary": "1024,32,2,0,0",
+            "expected_registers": {
+                "SYSTEM_CFSAMONA": "0x00100000",
+                "SYSTEM_DFSAMON": "0x00000800",
+                "SYSTEM_SRAMSABAR0": "0x00060000",
+                "SYSTEM_SRAMSABAR1": "0x00060000",
+                "SYSTEM_STBRAMSABAR": "0x00000400"
+            }
+        },
         "trustzone_registers": [
             {
                 "address": "40008400",
