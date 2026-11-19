@@ -46,6 +46,103 @@
 
 extern void * __Vectors[];
 
+/* >>> MIKROE TrustZone module security attribution (generated) >>> */
+/* One bit per module / clock / VBATT register group: 0 = Secure, 1 = Non-secure.
+ * Registers, masks and reset values: def JSON trustzone.security_attribution
+ * (RA6M4 User's Manual). Written once by SystemInit(), after the clock setup:
+ *   TrustZone project (NECTO defines BSP_TZ_REG_CFSAMONA)
+ *     Secure image      BSP_TZ_REG_<REG> from NECTO; a register NECTO did not
+ *                       generate stays all Secure
+ *     Non-secure image  nothing (only Secure code may write these registers)
+ *   Regular project     everything Secure
+ * Bits outside MASK (reserved / read-only) are written with their reset value,
+ * as the manual requires (1 on RA4/RA6, 0 on RA8). */
+#ifdef BSP_TZ_REG_CFSAMONA
+#define MIKROE_SAR_TZ_PROJECT (1)
+#else
+#define MIKROE_SAR_TZ_PROJECT (0)
+#endif
+#if MIKROE_SAR_TZ_PROJECT && defined(BSP_TZ_REG_PSARB)
+#define MIKROE_SAR_PSARB (BSP_TZ_REG_PSARB)
+#else
+#define MIKROE_SAR_PSARB (0U)
+#endif
+#if MIKROE_SAR_TZ_PROJECT && defined(BSP_TZ_REG_PSARC)
+#define MIKROE_SAR_PSARC (BSP_TZ_REG_PSARC)
+#else
+#define MIKROE_SAR_PSARC (0U)
+#endif
+#if MIKROE_SAR_TZ_PROJECT && defined(BSP_TZ_REG_PSARD)
+#define MIKROE_SAR_PSARD (BSP_TZ_REG_PSARD)
+#else
+#define MIKROE_SAR_PSARD (0U)
+#endif
+#if MIKROE_SAR_TZ_PROJECT && defined(BSP_TZ_REG_PSARE)
+#define MIKROE_SAR_PSARE (BSP_TZ_REG_PSARE)
+#else
+#define MIKROE_SAR_PSARE (0U)
+#endif
+#if MIKROE_SAR_TZ_PROJECT && defined(BSP_TZ_REG_MSSAR)
+#define MIKROE_SAR_MSSAR (BSP_TZ_REG_MSSAR)
+#else
+#define MIKROE_SAR_MSSAR (0U)
+#endif
+#if MIKROE_SAR_TZ_PROJECT && defined(BSP_TZ_REG_CGFSAR)
+#define MIKROE_SAR_CGFSAR (BSP_TZ_REG_CGFSAR)
+#else
+#define MIKROE_SAR_CGFSAR (0U)
+#endif
+#if MIKROE_SAR_TZ_PROJECT && defined(BSP_TZ_REG_BBFSAR)
+#define MIKROE_SAR_BBFSAR (BSP_TZ_REG_BBFSAR)
+#else
+#define MIKROE_SAR_BBFSAR (0U)
+#endif
+
+typedef struct
+{
+    uint32_t address;   /* register address                       */
+    uint32_t mask;      /* module bits (the rest keeps its reset) */
+    uint32_t reset;     /* value after reset                      */
+    uint32_t value;     /* requested module bits                  */
+} mikroe_sar_t;
+
+static const mikroe_sar_t mikroe_sar_table[] =
+{
+    { 0x400E0004UL, 0xFFCC0B06UL, 0xFFFFFFFFUL, MIKROE_SAR_PSARB },  /* Peripheral Security Attribution Register B */
+    { 0x400E0008UL, 0x8000310BUL, 0xFFFFFFFFUL, MIKROE_SAR_PSARC },  /* Peripheral Security Attribution Register C */
+    { 0x400E000CUL, 0x0051F80FUL, 0xFFFFFFFFUL, MIKROE_SAR_PSARD },  /* Peripheral Security Attribution Register D */
+    { 0x400E0010UL, 0xFFC0C007UL, 0xFFFFFFFFUL, MIKROE_SAR_PSARE },  /* Peripheral Security Attribution Register E */
+    { 0x400E0014UL, 0x00000003UL, 0xFFFFFFFFUL, MIKROE_SAR_MSSAR },  /* Module Stop Security Attribution Register */
+    { 0x4001E3C0UL, 0x00031BFDUL, 0xFFFFFFFFUL, MIKROE_SAR_CGFSAR }, /* Clock Generation Function Security Attribute Register */
+    { 0x4001E3D0UL, 0x00FF0007UL, 0x0000FFFFUL, MIKROE_SAR_BBFSAR }, /* Battery Backup Function Security Attribute Register */
+};
+
+#if MIKROE_SAR_TZ_PROJECT
+/* RA4/RA6: the Non-secure image is linked above the Secure + NSC code flash. */
+#define MIKROE_SAR_IMAGE_IS_NONSECURE() (((uint32_t) &__Vectors) >= (((uint32_t) (BSP_TZ_REG_CFSAMONA)) & 0x00FF8000UL))
+#endif
+
+static void mikroe_security_attribution_init(void)
+{
+#if MIKROE_SAR_TZ_PROJECT
+    if (MIKROE_SAR_IMAGE_IS_NONSECURE())
+    {
+        return;
+    }
+#endif
+    /* Security attribution registers are write-protected by PRCR.PRC4. */
+    const uint16_t prcr = (uint16_t) (R_SYSTEM->PRCR & 0x00FFU);
+    R_SYSTEM->PRCR = (uint16_t) (0xA500U | prcr | 0x0010U);
+    for (uint32_t i = 0U; i < (sizeof(mikroe_sar_table) / sizeof(mikroe_sar_table[0])); ++i)
+    {
+        const mikroe_sar_t *r = &mikroe_sar_table[i];
+        *((volatile uint32_t *) r->address) = (r->value & r->mask) | (r->reset & ~r->mask);
+    }
+    __DSB();
+    R_SYSTEM->PRCR = (uint16_t) (0xA500U | prcr);
+}
+/* <<< MIKROE TrustZone module security attribution <<< */
+
 typedef struct
 {
     uint32_t ICLK_Frequency;    // System clock frequency in Hz
@@ -624,6 +721,7 @@ void SystemInit(void)
 
     // Clock setting
     system_clock_configuration();
+    mikroe_security_attribution_init();   /* after the clocks, as FSP */
 
     R_FCACHE->FCACHEIV = 1U;
     FSP_HARDWARE_REGISTER_WAIT(R_FCACHE->FCACHEIV, 0U);

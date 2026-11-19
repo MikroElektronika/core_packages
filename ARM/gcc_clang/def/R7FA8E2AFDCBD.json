@@ -3029,15 +3029,15 @@
                         "hidden": false,
                         "init": "0",
                         "key": "NONSEC0",
-                        "label": "Non-secure Attribute bit 0",
+                        "label": "NONSEC0: VBATT voltage monitor (VBATTMNSELR)",
                         "mask": "1",
                         "settings": [
                             {
-                                "label": "Secure",
+                                "label": "VBATT voltage monitor: Secure",
                                 "value": "0"
                             },
                             {
-                                "label": "Non-secure",
+                                "label": "VBATT voltage monitor: Non-secure",
                                 "value": "1"
                             }
                         ]
@@ -3046,15 +3046,15 @@
                         "hidden": false,
                         "init": "0",
                         "key": "NONSEC1",
-                        "label": "Non-secure Attribute bit 1",
+                        "label": "NONSEC1: VBATT backup enable (VBTBER)",
                         "mask": "2",
                         "settings": [
                             {
-                                "label": "Secure",
+                                "label": "VBATT backup enable: Secure",
                                 "value": "0"
                             },
                             {
-                                "label": "Non-secure",
+                                "label": "VBATT backup enable: Non-secure",
                                 "value": "2"
                             }
                         ]
@@ -3063,15 +3063,15 @@
                         "hidden": false,
                         "init": "0",
                         "key": "NONSEC2",
-                        "label": "Non-secure Attribute bit 2",
+                        "label": "NONSEC2: VBATT input control (VBTICTLR, VBTICTLR2, VBTIMONR)",
                         "mask": "4",
                         "settings": [
                             {
-                                "label": "Secure",
+                                "label": "VBATT input control: Secure",
                                 "value": "0"
                             },
                             {
-                                "label": "Non-secure",
+                                "label": "VBATT input control: Non-secure",
                                 "value": "4"
                             }
                         ]
@@ -3080,15 +3080,15 @@
                         "hidden": false,
                         "init": "0",
                         "key": "NONSEC3",
-                        "label": "Non-secure Attribute bit 3",
+                        "label": "NONSEC3: VBATT power supply control (VBTBPCR1, VBTBPCR2, VBTBPSR)",
                         "mask": "8",
                         "settings": [
                             {
-                                "label": "Secure",
+                                "label": "VBATT power supply control: Secure",
                                 "value": "0"
                             },
                             {
-                                "label": "Non-secure",
+                                "label": "VBATT power supply control: Non-secure",
                                 "value": "8"
                             }
                         ]
@@ -3097,15 +3097,15 @@
                         "hidden": false,
                         "init": "0",
                         "key": "NONSEC4",
-                        "label": "Non-secure Attribute bit 4",
+                        "label": "NONSEC4: VBATT tamper detection (VBTADSR, VBTADCR1, VBTADCR2)",
                         "mask": "10",
                         "settings": [
                             {
-                                "label": "Secure",
+                                "label": "VBATT tamper detection: Secure",
                                 "value": "0"
                             },
                             {
-                                "label": "Non-secure",
+                                "label": "VBATT tamper detection: Non-secure",
                                 "value": "10"
                             }
                         ]
@@ -3480,6 +3480,1363 @@
                 "size": "0x00004000"
             }
         ],
-        "sau_count": 8
+        "sau_count": 8,
+        "security_attribution": [
+            {
+                "address": "40204004",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB31",
+                        "label": "PSARB31: SCI0",
+                        "mask": "80000000",
+                        "settings": [
+                            {
+                                "label": "SCI0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SCI0: Non-secure",
+                                "value": "80000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB30",
+                        "label": "PSARB30: SCI1",
+                        "mask": "40000000",
+                        "settings": [
+                            {
+                                "label": "SCI1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SCI1: Non-secure",
+                                "value": "40000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB29",
+                        "label": "PSARB29: SCI2",
+                        "mask": "20000000",
+                        "settings": [
+                            {
+                                "label": "SCI2: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SCI2: Non-secure",
+                                "value": "20000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB28",
+                        "label": "PSARB28: SCI3",
+                        "mask": "10000000",
+                        "settings": [
+                            {
+                                "label": "SCI3: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SCI3: Non-secure",
+                                "value": "10000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB27",
+                        "label": "PSARB27: SCI4",
+                        "mask": "8000000",
+                        "settings": [
+                            {
+                                "label": "SCI4: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SCI4: Non-secure",
+                                "value": "8000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB22",
+                        "label": "PSARB22: SCI9",
+                        "mask": "400000",
+                        "settings": [
+                            {
+                                "label": "SCI9: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SCI9: Non-secure",
+                                "value": "400000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB19",
+                        "label": "PSARB19: SPI0",
+                        "mask": "80000",
+                        "settings": [
+                            {
+                                "label": "SPI0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SPI0: Non-secure",
+                                "value": "80000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB18",
+                        "label": "PSARB18: SPI1",
+                        "mask": "40000",
+                        "settings": [
+                            {
+                                "label": "SPI1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SPI1: Non-secure",
+                                "value": "40000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB16",
+                        "label": "PSARB16: OSPI",
+                        "mask": "10000",
+                        "settings": [
+                            {
+                                "label": "OSPI: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "OSPI: Non-secure",
+                                "value": "10000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB11",
+                        "label": "PSARB11: USBFS",
+                        "mask": "800",
+                        "settings": [
+                            {
+                                "label": "USBFS: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "USBFS: Non-secure",
+                                "value": "800"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB9",
+                        "label": "PSARB9: IIC0",
+                        "mask": "200",
+                        "settings": [
+                            {
+                                "label": "IIC0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "IIC0: Non-secure",
+                                "value": "200"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARB8",
+                        "label": "PSARB8: IIC1",
+                        "mask": "100",
+                        "settings": [
+                            {
+                                "label": "IIC1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "IIC1: Non-secure",
+                                "value": "100"
+                            }
+                        ]
+                    }
+                ],
+                "key": "PSCU_PSARB",
+                "label": "Peripheral Security Attribution Register B",
+                "unused": "07b2f4ff"
+            },
+            {
+                "address": "40204008",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC31",
+                        "label": "PSARC31: RSIP-E51A",
+                        "mask": "80000000",
+                        "settings": [
+                            {
+                                "label": "RSIP-E51A: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "RSIP-E51A: Non-secure",
+                                "value": "80000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC27",
+                        "label": "PSARC27: CANFD0",
+                        "mask": "8000000",
+                        "settings": [
+                            {
+                                "label": "CANFD0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "CANFD0: Non-secure",
+                                "value": "8000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC26",
+                        "label": "PSARC26: CANFD1",
+                        "mask": "4000000",
+                        "settings": [
+                            {
+                                "label": "CANFD1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "CANFD1: Non-secure",
+                                "value": "4000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC15",
+                        "label": "PSARC15: GLCDC/DRW",
+                        "mask": "8000",
+                        "settings": [
+                            {
+                                "label": "GLCDC/DRW: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GLCDC/DRW: Non-secure",
+                                "value": "8000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC13",
+                        "label": "PSARC13: DOC",
+                        "mask": "2000",
+                        "settings": [
+                            {
+                                "label": "DOC: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "DOC: Non-secure",
+                                "value": "2000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC8",
+                        "label": "PSARC8: SSIE0",
+                        "mask": "100",
+                        "settings": [
+                            {
+                                "label": "SSIE0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SSIE0: Non-secure",
+                                "value": "100"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC7",
+                        "label": "PSARC7: SSIE1",
+                        "mask": "80",
+                        "settings": [
+                            {
+                                "label": "SSIE1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SSIE1: Non-secure",
+                                "value": "80"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC1",
+                        "label": "PSARC1: CRC",
+                        "mask": "2",
+                        "settings": [
+                            {
+                                "label": "CRC: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "CRC: Non-secure",
+                                "value": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARC0",
+                        "label": "PSARC0: CAC",
+                        "mask": "1",
+                        "settings": [
+                            {
+                                "label": "CAC: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "CAC: Non-secure",
+                                "value": "1"
+                            }
+                        ]
+                    }
+                ],
+                "key": "PSCU_PSARC",
+                "label": "Peripheral Security Attribution Register C",
+                "unused": "73ff5e7c"
+            },
+            {
+                "address": "4020400c",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD28",
+                        "label": "PSARD28: ACMPHS0",
+                        "mask": "10000000",
+                        "settings": [
+                            {
+                                "label": "ACMPHS0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "ACMPHS0: Non-secure",
+                                "value": "10000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD27",
+                        "label": "PSARD27: ACMPHS1",
+                        "mask": "8000000",
+                        "settings": [
+                            {
+                                "label": "ACMPHS1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "ACMPHS1: Non-secure",
+                                "value": "8000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD22",
+                        "label": "PSARD22: TSN",
+                        "mask": "400000",
+                        "settings": [
+                            {
+                                "label": "TSN: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "TSN: Non-secure",
+                                "value": "400000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD20",
+                        "label": "PSARD20: DAC120",
+                        "mask": "100000",
+                        "settings": [
+                            {
+                                "label": "DAC120: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "DAC120: Non-secure",
+                                "value": "100000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD16",
+                        "label": "PSARD16: ADC120",
+                        "mask": "10000",
+                        "settings": [
+                            {
+                                "label": "ADC120: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "ADC120: Non-secure",
+                                "value": "10000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD15",
+                        "label": "PSARD15: ADC121",
+                        "mask": "8000",
+                        "settings": [
+                            {
+                                "label": "ADC121: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "ADC121: Non-secure",
+                                "value": "8000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD14",
+                        "label": "PSARD14: POEG0",
+                        "mask": "4000",
+                        "settings": [
+                            {
+                                "label": "POEG0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "POEG0: Non-secure",
+                                "value": "4000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD13",
+                        "label": "PSARD13: POEG1",
+                        "mask": "2000",
+                        "settings": [
+                            {
+                                "label": "POEG1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "POEG1: Non-secure",
+                                "value": "2000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD12",
+                        "label": "PSARD12: POEG2",
+                        "mask": "1000",
+                        "settings": [
+                            {
+                                "label": "POEG2: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "POEG2: Non-secure",
+                                "value": "1000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD11",
+                        "label": "PSARD11: POEG3",
+                        "mask": "800",
+                        "settings": [
+                            {
+                                "label": "POEG3: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "POEG3: Non-secure",
+                                "value": "800"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD5",
+                        "label": "PSARD5: AGT0",
+                        "mask": "20",
+                        "settings": [
+                            {
+                                "label": "AGT0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "AGT0: Non-secure",
+                                "value": "20"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARD4",
+                        "label": "PSARD4: AGT1",
+                        "mask": "10",
+                        "settings": [
+                            {
+                                "label": "AGT1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "AGT1: Non-secure",
+                                "value": "10"
+                            }
+                        ]
+                    }
+                ],
+                "key": "PSCU_PSARD",
+                "label": "Peripheral Security Attribution Register D",
+                "unused": "e7ae07cf"
+            },
+            {
+                "address": "40204010",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE31",
+                        "label": "PSARE31: GPT0",
+                        "mask": "80000000",
+                        "settings": [
+                            {
+                                "label": "GPT0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT0: Non-secure",
+                                "value": "80000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE30",
+                        "label": "PSARE30: GPT1",
+                        "mask": "40000000",
+                        "settings": [
+                            {
+                                "label": "GPT1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT1: Non-secure",
+                                "value": "40000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE29",
+                        "label": "PSARE29: GPT2",
+                        "mask": "20000000",
+                        "settings": [
+                            {
+                                "label": "GPT2: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT2: Non-secure",
+                                "value": "20000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE28",
+                        "label": "PSARE28: GPT3",
+                        "mask": "10000000",
+                        "settings": [
+                            {
+                                "label": "GPT3: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT3: Non-secure",
+                                "value": "10000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE27",
+                        "label": "PSARE27: GPT4",
+                        "mask": "8000000",
+                        "settings": [
+                            {
+                                "label": "GPT4: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT4: Non-secure",
+                                "value": "8000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE26",
+                        "label": "PSARE26: GPT5",
+                        "mask": "4000000",
+                        "settings": [
+                            {
+                                "label": "GPT5: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT5: Non-secure",
+                                "value": "4000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE21",
+                        "label": "PSARE21: GPT10",
+                        "mask": "200000",
+                        "settings": [
+                            {
+                                "label": "GPT10: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT10: Non-secure",
+                                "value": "200000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE20",
+                        "label": "PSARE20: GPT11",
+                        "mask": "100000",
+                        "settings": [
+                            {
+                                "label": "GPT11: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT11: Non-secure",
+                                "value": "100000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE19",
+                        "label": "PSARE19: GPT12",
+                        "mask": "80000",
+                        "settings": [
+                            {
+                                "label": "GPT12: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT12: Non-secure",
+                                "value": "80000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE18",
+                        "label": "PSARE18: GPT13",
+                        "mask": "40000",
+                        "settings": [
+                            {
+                                "label": "GPT13: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "GPT13: Non-secure",
+                                "value": "40000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE9",
+                        "label": "PSARE9: ULPT0",
+                        "mask": "200",
+                        "settings": [
+                            {
+                                "label": "ULPT0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "ULPT0: Non-secure",
+                                "value": "200"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE8",
+                        "label": "PSARE8: ULPT1",
+                        "mask": "100",
+                        "settings": [
+                            {
+                                "label": "ULPT1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "ULPT1: Non-secure",
+                                "value": "100"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE3",
+                        "label": "PSARE3: RTC",
+                        "mask": "8",
+                        "settings": [
+                            {
+                                "label": "RTC: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "RTC: Non-secure",
+                                "value": "8"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE2",
+                        "label": "PSARE2: IWDT",
+                        "mask": "4",
+                        "settings": [
+                            {
+                                "label": "IWDT: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "IWDT: Non-secure",
+                                "value": "4"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "PSARE1",
+                        "label": "PSARE1: WDT",
+                        "mask": "2",
+                        "settings": [
+                            {
+                                "label": "WDT: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "WDT: Non-secure",
+                                "value": "2"
+                            }
+                        ]
+                    }
+                ],
+                "key": "PSCU_PSARE",
+                "label": "Peripheral Security Attribution Register E",
+                "unused": "03c3fcf1"
+            },
+            {
+                "address": "40204014",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "MSSAR31",
+                        "label": "MSSAR31: ELC",
+                        "mask": "80000000",
+                        "settings": [
+                            {
+                                "label": "ELC: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "ELC: Non-secure",
+                                "value": "80000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "MSSAR22",
+                        "label": "MSSAR22: DTC_DMAC",
+                        "mask": "400000",
+                        "settings": [
+                            {
+                                "label": "DTC_DMAC: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "DTC_DMAC: Non-secure",
+                                "value": "400000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "MSSAR15",
+                        "label": "MSSAR15: STBRAMSA",
+                        "mask": "8000",
+                        "settings": [
+                            {
+                                "label": "STBRAMSA: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "STBRAMSA: Non-secure",
+                                "value": "8000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "MSSAR1",
+                        "label": "MSSAR1: SRAM1",
+                        "mask": "2",
+                        "settings": [
+                            {
+                                "label": "SRAM1: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SRAM1: Non-secure",
+                                "value": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "MSSAR0",
+                        "label": "MSSAR0: SRAM0",
+                        "mask": "1",
+                        "settings": [
+                            {
+                                "label": "SRAM0: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SRAM0: Non-secure",
+                                "value": "1"
+                            }
+                        ]
+                    }
+                ],
+                "key": "PSCU_MSSAR",
+                "label": "Module Stop Security Attribution Register",
+                "unused": "7fbf7ffc"
+            },
+            {
+                "address": "4001e3c0",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC26",
+                        "label": "NONSEC26: LCDCLK (LCDCKDIVCR, LCDCKCR)",
+                        "mask": "4000000",
+                        "settings": [
+                            {
+                                "label": "LCDCLK: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "LCDCLK: Non-secure",
+                                "value": "4000000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC22",
+                        "label": "NONSEC22: SPICLK (SPICKDIVCR, SPICKCR)",
+                        "mask": "400000",
+                        "settings": [
+                            {
+                                "label": "SPICLK: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SPICLK: Non-secure",
+                                "value": "400000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC21",
+                        "label": "NONSEC21: SCICLK (SCICKDIVCR, SCICKCR)",
+                        "mask": "200000",
+                        "settings": [
+                            {
+                                "label": "SCICLK: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SCICLK: Non-secure",
+                                "value": "200000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC18",
+                        "label": "NONSEC18: CANFDCLK (CANFDCKDIVCR, CANFDCKCR)",
+                        "mask": "40000",
+                        "settings": [
+                            {
+                                "label": "CANFDCLK: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "CANFDCLK: Non-secure",
+                                "value": "40000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC17",
+                        "label": "NONSEC17: OCTACLK (OCTACKDIVCR, OCTACKCR)",
+                        "mask": "20000",
+                        "settings": [
+                            {
+                                "label": "OCTACLK: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "OCTACLK: Non-secure",
+                                "value": "20000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC16",
+                        "label": "NONSEC16: USBCLK (USBCKDIVCR, USBCKCR)",
+                        "mask": "10000",
+                        "settings": [
+                            {
+                                "label": "USBCLK: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "USBCLK: Non-secure",
+                                "value": "10000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC13",
+                        "label": "NONSEC13: SDCLK (SDCKOCR)",
+                        "mask": "2000",
+                        "settings": [
+                            {
+                                "label": "SDCLK: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SDCLK: Non-secure",
+                                "value": "2000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC12",
+                        "label": "NONSEC12: EBCLK (BCKCR, EBCKOCR)",
+                        "mask": "1000",
+                        "settings": [
+                            {
+                                "label": "EBCLK: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "EBCLK: Non-secure",
+                                "value": "1000"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC11",
+                        "label": "NONSEC11: CLKOUT control (CKOCR)",
+                        "mask": "800",
+                        "settings": [
+                            {
+                                "label": "CLKOUT control: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "CLKOUT control: Non-secure",
+                                "value": "800"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC9",
+                        "label": "NONSEC9: PLL2 (PLL2CCR, PLL2CCR2, PLL2CR)",
+                        "mask": "200",
+                        "settings": [
+                            {
+                                "label": "PLL2: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "PLL2: Non-secure",
+                                "value": "200"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC8",
+                        "label": "NONSEC8: PLL (PLLCCR, PLLCCR2, PLLCR)",
+                        "mask": "100",
+                        "settings": [
+                            {
+                                "label": "PLL: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "PLL: Non-secure",
+                                "value": "100"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC7",
+                        "label": "NONSEC7: SOSC (SOSCCR, SOMCR)",
+                        "mask": "80",
+                        "settings": [
+                            {
+                                "label": "SOSC: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "SOSC: Non-secure",
+                                "value": "80"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC6",
+                        "label": "NONSEC6: oscillation stop detection control (OSTDCR, OSTDSR)",
+                        "mask": "40",
+                        "settings": [
+                            {
+                                "label": "oscillation stop detection control: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "oscillation stop detection control: Non-secure",
+                                "value": "40"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC5",
+                        "label": "NONSEC5: MOSC (MOSCCR, MOSCWTCR, MOMCR, MOSCSCR)",
+                        "mask": "20",
+                        "settings": [
+                            {
+                                "label": "MOSC: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "MOSC: Non-secure",
+                                "value": "20"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC4",
+                        "label": "NONSEC4: LOCO (LOCOCR, LOCOUTCR)",
+                        "mask": "10",
+                        "settings": [
+                            {
+                                "label": "LOCO: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "LOCO: Non-secure",
+                                "value": "10"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC3",
+                        "label": "NONSEC3: MOCO (MOCOCR, MOCOUTCR)",
+                        "mask": "8",
+                        "settings": [
+                            {
+                                "label": "MOCO: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "MOCO: Non-secure",
+                                "value": "8"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC2",
+                        "label": "NONSEC2: HOCO (HOCOCR, HOCOCR2, FLLCR1, FLLCR2, HOCOUTCR, HOCOSCR)",
+                        "mask": "4",
+                        "settings": [
+                            {
+                                "label": "HOCO: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "HOCO: Non-secure",
+                                "value": "4"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC0",
+                        "label": "NONSEC0: system clock control (SCKDIVCR, SCKDIVCR2, SCKSCR)",
+                        "mask": "1",
+                        "settings": [
+                            {
+                                "label": "system clock control: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "system clock control: Non-secure",
+                                "value": "1"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_CGFSAR",
+                "label": "Clock Generation Function Security Attribute Register",
+                "unused": "fb98c402"
+            },
+            {
+                "address": "4001e3d0",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC0",
+                        "label": "NONSEC0: VBATT voltage monitor (VBATTMNSELR)",
+                        "mask": "1",
+                        "settings": [
+                            {
+                                "label": "VBATT voltage monitor: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "VBATT voltage monitor: Non-secure",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC1",
+                        "label": "NONSEC1: VBATT backup enable (VBTBER)",
+                        "mask": "2",
+                        "settings": [
+                            {
+                                "label": "VBATT backup enable: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "VBATT backup enable: Non-secure",
+                                "value": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC2",
+                        "label": "NONSEC2: VBATT input control (VBTICTLR, VBTICTLR2, VBTIMONR)",
+                        "mask": "4",
+                        "settings": [
+                            {
+                                "label": "VBATT input control: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "VBATT input control: Non-secure",
+                                "value": "4"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC3",
+                        "label": "NONSEC3: VBATT power supply control (VBTBPCR1, VBTBPCR2, VBTBPSR)",
+                        "mask": "8",
+                        "settings": [
+                            {
+                                "label": "VBATT power supply control: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "VBATT power supply control: Non-secure",
+                                "value": "8"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC4",
+                        "label": "NONSEC4: VBATT tamper detection (VBTADSR, VBTADCR1, VBTADCR2)",
+                        "mask": "10",
+                        "settings": [
+                            {
+                                "label": "VBATT tamper detection: Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "VBATT tamper detection: Non-secure",
+                                "value": "10"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_BBFSAR",
+                "label": "Battery Backup Function Security Attribute Register",
+                "unused": "ffffffe0"
+            }
+        ]
     }
 }
