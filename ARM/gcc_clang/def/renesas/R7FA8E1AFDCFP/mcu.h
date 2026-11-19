@@ -19952,6 +19952,10 @@ typedef struct                         /*!< (@ 0x27030000) R_OFS_DATAFLASH Struc
  * @{
  */
 
+ #ifndef BSP_FEATURE_TZ_NS_OFFSET
+  #define BSP_FEATURE_TZ_NS_OFFSET  (0x10000000UL)
+ #endif
+
  #if defined(_RA_TZ_NONSECURE)
   #define BASE_NS_OFFSET         (BSP_FEATURE_TZ_NS_OFFSET)
  #else

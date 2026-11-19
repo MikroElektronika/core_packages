@@ -2633,5 +2633,1040 @@
     "core": "M85",
     "delay_src_path": "delays/m85/__lib_delays.c",
     "mcu": "R7FA8E1AFDCFB",
-    "clock": "360"
+    "clock": "360",
+    "trustzone": {
+        "default_partition": {
+            "description": "Default TrustZone partition used by the NECTO RA TrustZone demo (test matrix). secure_size = total Secure bytes including NSC.",
+            "code_flash": {
+                "secure_size": "0x00080000",
+                "nsc_size": "0x00008000"
+            },
+            "data_flash": {
+                "secure_size": "0x00000800"
+            },
+            "sram": {
+                "secure_size": "0x00040000",
+                "nsc_size": "0x00000000"
+            },
+            "rfp_boundary": "512,32,2,0,0",
+            "expected_registers": {
+                "SYSTEM_CFSAMONA": "0x00080000",
+                "SYSTEM_DFSAMON": "0x00000800",
+                "SYSTEM_SRAMSABAR0": "0x000a0000",
+                "SYSTEM_SRAMSABAR1": "0x000a0000"
+            }
+        },
+        "trustzone_registers": [
+            {
+                "address": "40008400",
+                "default": "001fe000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "SRAMSABAR0",
+                        "label": "SRAM Non-secure start (no SRAM0 on this MCU: same as SRAMSABAR1)",
+                        "mask": "1fe000",
+                        "settings": [
+                            {
+                                "label": "384 KB",
+                                "value": "60000"
+                            },
+                            {
+                                "label": "392 KB",
+                                "value": "62000"
+                            },
+                            {
+                                "label": "400 KB",
+                                "value": "64000"
+                            },
+                            {
+                                "label": "408 KB",
+                                "value": "66000"
+                            },
+                            {
+                                "label": "416 KB",
+                                "value": "68000"
+                            },
+                            {
+                                "label": "424 KB",
+                                "value": "6a000"
+                            },
+                            {
+                                "label": "432 KB",
+                                "value": "6c000"
+                            },
+                            {
+                                "label": "440 KB",
+                                "value": "6e000"
+                            },
+                            {
+                                "label": "448 KB",
+                                "value": "70000"
+                            },
+                            {
+                                "label": "456 KB",
+                                "value": "72000"
+                            },
+                            {
+                                "label": "464 KB",
+                                "value": "74000"
+                            },
+                            {
+                                "label": "472 KB",
+                                "value": "76000"
+                            },
+                            {
+                                "label": "480 KB",
+                                "value": "78000"
+                            },
+                            {
+                                "label": "488 KB",
+                                "value": "7a000"
+                            },
+                            {
+                                "label": "496 KB",
+                                "value": "7c000"
+                            },
+                            {
+                                "label": "504 KB",
+                                "value": "7e000"
+                            },
+                            {
+                                "label": "512 KB",
+                                "value": "80000"
+                            },
+                            {
+                                "label": "520 KB",
+                                "value": "82000"
+                            },
+                            {
+                                "label": "528 KB",
+                                "value": "84000"
+                            },
+                            {
+                                "label": "536 KB",
+                                "value": "86000"
+                            },
+                            {
+                                "label": "544 KB",
+                                "value": "88000"
+                            },
+                            {
+                                "label": "552 KB",
+                                "value": "8a000"
+                            },
+                            {
+                                "label": "560 KB",
+                                "value": "8c000"
+                            },
+                            {
+                                "label": "568 KB",
+                                "value": "8e000"
+                            },
+                            {
+                                "label": "576 KB",
+                                "value": "90000"
+                            },
+                            {
+                                "label": "584 KB",
+                                "value": "92000"
+                            },
+                            {
+                                "label": "592 KB",
+                                "value": "94000"
+                            },
+                            {
+                                "label": "600 KB",
+                                "value": "96000"
+                            },
+                            {
+                                "label": "608 KB",
+                                "value": "98000"
+                            },
+                            {
+                                "label": "616 KB",
+                                "value": "9a000"
+                            },
+                            {
+                                "label": "624 KB",
+                                "value": "9c000"
+                            },
+                            {
+                                "label": "632 KB",
+                                "value": "9e000"
+                            },
+                            {
+                                "label": "640 KB",
+                                "value": "a0000"
+                            },
+                            {
+                                "label": "648 KB",
+                                "value": "a2000"
+                            },
+                            {
+                                "label": "656 KB",
+                                "value": "a4000"
+                            },
+                            {
+                                "label": "664 KB",
+                                "value": "a6000"
+                            },
+                            {
+                                "label": "672 KB",
+                                "value": "a8000"
+                            },
+                            {
+                                "label": "680 KB",
+                                "value": "aa000"
+                            },
+                            {
+                                "label": "688 KB",
+                                "value": "ac000"
+                            },
+                            {
+                                "label": "696 KB",
+                                "value": "ae000"
+                            },
+                            {
+                                "label": "704 KB",
+                                "value": "b0000"
+                            },
+                            {
+                                "label": "712 KB",
+                                "value": "b2000"
+                            },
+                            {
+                                "label": "720 KB",
+                                "value": "b4000"
+                            },
+                            {
+                                "label": "728 KB",
+                                "value": "b6000"
+                            },
+                            {
+                                "label": "736 KB",
+                                "value": "b8000"
+                            },
+                            {
+                                "label": "744 KB",
+                                "value": "ba000"
+                            },
+                            {
+                                "label": "752 KB",
+                                "value": "bc000"
+                            },
+                            {
+                                "label": "760 KB",
+                                "value": "be000"
+                            },
+                            {
+                                "label": "768 KB",
+                                "value": "c0000"
+                            },
+                            {
+                                "label": "776 KB",
+                                "value": "c2000"
+                            },
+                            {
+                                "label": "784 KB",
+                                "value": "c4000"
+                            },
+                            {
+                                "label": "792 KB",
+                                "value": "c6000"
+                            },
+                            {
+                                "label": "800 KB",
+                                "value": "c8000"
+                            },
+                            {
+                                "label": "808 KB",
+                                "value": "ca000"
+                            },
+                            {
+                                "label": "816 KB",
+                                "value": "cc000"
+                            },
+                            {
+                                "label": "824 KB",
+                                "value": "ce000"
+                            },
+                            {
+                                "label": "832 KB",
+                                "value": "d0000"
+                            },
+                            {
+                                "label": "840 KB",
+                                "value": "d2000"
+                            },
+                            {
+                                "label": "848 KB",
+                                "value": "d4000"
+                            },
+                            {
+                                "label": "856 KB",
+                                "value": "d6000"
+                            },
+                            {
+                                "label": "864 KB",
+                                "value": "d8000"
+                            },
+                            {
+                                "label": "872 KB",
+                                "value": "da000"
+                            },
+                            {
+                                "label": "880 KB",
+                                "value": "dc000"
+                            },
+                            {
+                                "label": "888 KB",
+                                "value": "de000"
+                            },
+                            {
+                                "label": "896 KB",
+                                "value": "e0000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_SRAMSABAR0",
+                "label": "SRAM Security Attribute Boundary Address Register (n = 0, 1)",
+                "unused": "ffe01fff"
+            },
+            {
+                "address": "40008404",
+                "default": "001fe000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "SRAMSABAR1",
+                        "label": "SRAM1 Start address of Non-secure region",
+                        "mask": "1fe000",
+                        "settings": [
+                            {
+                                "label": "384 KB",
+                                "value": "60000"
+                            },
+                            {
+                                "label": "392 KB",
+                                "value": "62000"
+                            },
+                            {
+                                "label": "400 KB",
+                                "value": "64000"
+                            },
+                            {
+                                "label": "408 KB",
+                                "value": "66000"
+                            },
+                            {
+                                "label": "416 KB",
+                                "value": "68000"
+                            },
+                            {
+                                "label": "424 KB",
+                                "value": "6a000"
+                            },
+                            {
+                                "label": "432 KB",
+                                "value": "6c000"
+                            },
+                            {
+                                "label": "440 KB",
+                                "value": "6e000"
+                            },
+                            {
+                                "label": "448 KB",
+                                "value": "70000"
+                            },
+                            {
+                                "label": "456 KB",
+                                "value": "72000"
+                            },
+                            {
+                                "label": "464 KB",
+                                "value": "74000"
+                            },
+                            {
+                                "label": "472 KB",
+                                "value": "76000"
+                            },
+                            {
+                                "label": "480 KB",
+                                "value": "78000"
+                            },
+                            {
+                                "label": "488 KB",
+                                "value": "7a000"
+                            },
+                            {
+                                "label": "496 KB",
+                                "value": "7c000"
+                            },
+                            {
+                                "label": "504 KB",
+                                "value": "7e000"
+                            },
+                            {
+                                "label": "512 KB",
+                                "value": "80000"
+                            },
+                            {
+                                "label": "520 KB",
+                                "value": "82000"
+                            },
+                            {
+                                "label": "528 KB",
+                                "value": "84000"
+                            },
+                            {
+                                "label": "536 KB",
+                                "value": "86000"
+                            },
+                            {
+                                "label": "544 KB",
+                                "value": "88000"
+                            },
+                            {
+                                "label": "552 KB",
+                                "value": "8a000"
+                            },
+                            {
+                                "label": "560 KB",
+                                "value": "8c000"
+                            },
+                            {
+                                "label": "568 KB",
+                                "value": "8e000"
+                            },
+                            {
+                                "label": "576 KB",
+                                "value": "90000"
+                            },
+                            {
+                                "label": "584 KB",
+                                "value": "92000"
+                            },
+                            {
+                                "label": "592 KB",
+                                "value": "94000"
+                            },
+                            {
+                                "label": "600 KB",
+                                "value": "96000"
+                            },
+                            {
+                                "label": "608 KB",
+                                "value": "98000"
+                            },
+                            {
+                                "label": "616 KB",
+                                "value": "9a000"
+                            },
+                            {
+                                "label": "624 KB",
+                                "value": "9c000"
+                            },
+                            {
+                                "label": "632 KB",
+                                "value": "9e000"
+                            },
+                            {
+                                "label": "640 KB",
+                                "value": "a0000"
+                            },
+                            {
+                                "label": "648 KB",
+                                "value": "a2000"
+                            },
+                            {
+                                "label": "656 KB",
+                                "value": "a4000"
+                            },
+                            {
+                                "label": "664 KB",
+                                "value": "a6000"
+                            },
+                            {
+                                "label": "672 KB",
+                                "value": "a8000"
+                            },
+                            {
+                                "label": "680 KB",
+                                "value": "aa000"
+                            },
+                            {
+                                "label": "688 KB",
+                                "value": "ac000"
+                            },
+                            {
+                                "label": "696 KB",
+                                "value": "ae000"
+                            },
+                            {
+                                "label": "704 KB",
+                                "value": "b0000"
+                            },
+                            {
+                                "label": "712 KB",
+                                "value": "b2000"
+                            },
+                            {
+                                "label": "720 KB",
+                                "value": "b4000"
+                            },
+                            {
+                                "label": "728 KB",
+                                "value": "b6000"
+                            },
+                            {
+                                "label": "736 KB",
+                                "value": "b8000"
+                            },
+                            {
+                                "label": "744 KB",
+                                "value": "ba000"
+                            },
+                            {
+                                "label": "752 KB",
+                                "value": "bc000"
+                            },
+                            {
+                                "label": "760 KB",
+                                "value": "be000"
+                            },
+                            {
+                                "label": "768 KB",
+                                "value": "c0000"
+                            },
+                            {
+                                "label": "776 KB",
+                                "value": "c2000"
+                            },
+                            {
+                                "label": "784 KB",
+                                "value": "c4000"
+                            },
+                            {
+                                "label": "792 KB",
+                                "value": "c6000"
+                            },
+                            {
+                                "label": "800 KB",
+                                "value": "c8000"
+                            },
+                            {
+                                "label": "808 KB",
+                                "value": "ca000"
+                            },
+                            {
+                                "label": "816 KB",
+                                "value": "cc000"
+                            },
+                            {
+                                "label": "824 KB",
+                                "value": "ce000"
+                            },
+                            {
+                                "label": "832 KB",
+                                "value": "d0000"
+                            },
+                            {
+                                "label": "840 KB",
+                                "value": "d2000"
+                            },
+                            {
+                                "label": "848 KB",
+                                "value": "d4000"
+                            },
+                            {
+                                "label": "856 KB",
+                                "value": "d6000"
+                            },
+                            {
+                                "label": "864 KB",
+                                "value": "d8000"
+                            },
+                            {
+                                "label": "872 KB",
+                                "value": "da000"
+                            },
+                            {
+                                "label": "880 KB",
+                                "value": "dc000"
+                            },
+                            {
+                                "label": "888 KB",
+                                "value": "de000"
+                            },
+                            {
+                                "label": "896 KB",
+                                "value": "e0000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_SRAMSABAR1",
+                "label": "SRAM Security Attribute Boundary Address Register (n = 0, 1)",
+                "unused": "ffe01fff"
+            },
+            {
+                "address": "4001e3d0",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC0",
+                        "label": "Non-secure Attribute bit 0",
+                        "mask": "1",
+                        "settings": [
+                            {
+                                "label": "Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "Non-secure",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC1",
+                        "label": "Non-secure Attribute bit 1",
+                        "mask": "2",
+                        "settings": [
+                            {
+                                "label": "Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "Non-secure",
+                                "value": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC2",
+                        "label": "Non-secure Attribute bit 2",
+                        "mask": "4",
+                        "settings": [
+                            {
+                                "label": "Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "Non-secure",
+                                "value": "4"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC3",
+                        "label": "Non-secure Attribute bit 3",
+                        "mask": "8",
+                        "settings": [
+                            {
+                                "label": "Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "Non-secure",
+                                "value": "8"
+                            }
+                        ]
+                    },
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "NONSEC4",
+                        "label": "Non-secure Attribute bit 4",
+                        "mask": "10",
+                        "settings": [
+                            {
+                                "label": "Secure",
+                                "value": "0"
+                            },
+                            {
+                                "label": "Non-secure",
+                                "value": "10"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_BBFSAR",
+                "label": "Battery Backup Function Security Attribute Register",
+                "unused": "ffffffe0"
+            },
+            {
+                "address": "40204030",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "CFS2",
+                        "label": "Code Flash Secure area",
+                        "mask": "ff8000",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "32 KB",
+                                "value": "8000"
+                            },
+                            {
+                                "label": "64 KB",
+                                "value": "10000"
+                            },
+                            {
+                                "label": "96 KB",
+                                "value": "18000"
+                            },
+                            {
+                                "label": "128 KB",
+                                "value": "20000"
+                            },
+                            {
+                                "label": "160 KB",
+                                "value": "28000"
+                            },
+                            {
+                                "label": "192 KB",
+                                "value": "30000"
+                            },
+                            {
+                                "label": "224 KB",
+                                "value": "38000"
+                            },
+                            {
+                                "label": "256 KB",
+                                "value": "40000"
+                            },
+                            {
+                                "label": "288 KB",
+                                "value": "48000"
+                            },
+                            {
+                                "label": "320 KB",
+                                "value": "50000"
+                            },
+                            {
+                                "label": "352 KB",
+                                "value": "58000"
+                            },
+                            {
+                                "label": "384 KB",
+                                "value": "60000"
+                            },
+                            {
+                                "label": "416 KB",
+                                "value": "68000"
+                            },
+                            {
+                                "label": "448 KB",
+                                "value": "70000"
+                            },
+                            {
+                                "label": "480 KB",
+                                "value": "78000"
+                            },
+                            {
+                                "label": "512 KB",
+                                "value": "80000"
+                            },
+                            {
+                                "label": "544 KB",
+                                "value": "88000"
+                            },
+                            {
+                                "label": "576 KB",
+                                "value": "90000"
+                            },
+                            {
+                                "label": "608 KB",
+                                "value": "98000"
+                            },
+                            {
+                                "label": "640 KB",
+                                "value": "a0000"
+                            },
+                            {
+                                "label": "672 KB",
+                                "value": "a8000"
+                            },
+                            {
+                                "label": "704 KB",
+                                "value": "b0000"
+                            },
+                            {
+                                "label": "736 KB",
+                                "value": "b8000"
+                            },
+                            {
+                                "label": "768 KB",
+                                "value": "c0000"
+                            },
+                            {
+                                "label": "800 KB",
+                                "value": "c8000"
+                            },
+                            {
+                                "label": "832 KB",
+                                "value": "d0000"
+                            },
+                            {
+                                "label": "864 KB",
+                                "value": "d8000"
+                            },
+                            {
+                                "label": "896 KB",
+                                "value": "e0000"
+                            },
+                            {
+                                "label": "928 KB",
+                                "value": "e8000"
+                            },
+                            {
+                                "label": "960 KB",
+                                "value": "f0000"
+                            },
+                            {
+                                "label": "992 KB",
+                                "value": "f8000"
+                            },
+                            {
+                                "label": "1024 KB",
+                                "value": "100000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_CFSAMONA",
+                "label": "Code Flash Security Attribution Monitor Register A",
+                "unused": "ff007fff"
+            },
+            {
+                "address": "40204034",
+                "default": "00000000",
+                "fields": [
+                    {
+                        "hidden": false,
+                        "init": "0",
+                        "key": "DFS",
+                        "label": "Data flash Secure area",
+                        "mask": "fc00",
+                        "settings": [
+                            {
+                                "label": "0 KB",
+                                "value": "0"
+                            },
+                            {
+                                "label": "1 KB",
+                                "value": "400"
+                            },
+                            {
+                                "label": "2 KB",
+                                "value": "800"
+                            },
+                            {
+                                "label": "3 KB",
+                                "value": "c00"
+                            },
+                            {
+                                "label": "4 KB",
+                                "value": "1000"
+                            },
+                            {
+                                "label": "5 KB",
+                                "value": "1400"
+                            },
+                            {
+                                "label": "6 KB",
+                                "value": "1800"
+                            },
+                            {
+                                "label": "7 KB",
+                                "value": "1c00"
+                            },
+                            {
+                                "label": "8 KB",
+                                "value": "2000"
+                            },
+                            {
+                                "label": "9 KB",
+                                "value": "2400"
+                            },
+                            {
+                                "label": "10 KB",
+                                "value": "2800"
+                            },
+                            {
+                                "label": "11 KB",
+                                "value": "2c00"
+                            },
+                            {
+                                "label": "12 KB",
+                                "value": "3000"
+                            }
+                        ]
+                    }
+                ],
+                "key": "SYSTEM_DFSAMON",
+                "label": "Data Flash Security Attribution Monitor Register",
+                "unused": "ffff03ff"
+            }
+        ],
+        "memory_regions": [
+            {
+                "name": "RAM_NS",
+                "start": "0x32060000",
+                "size": "0x00080000",
+                "ns_align": "0x00002000"
+            },
+            {
+                "name": "RAM",
+                "start": "0x22060000",
+                "size": "0x00080000",
+                "nsc_align": "0x00000040"
+            },
+            {
+                "name": "FLASH_NS",
+                "start": "0x12000000",
+                "size": "0x00100000",
+                "ns_align": "0x00008000"
+            },
+            {
+                "name": "FLASH",
+                "start": "0x02000000",
+                "size": "0x00100000",
+                "nsc_align": "0x00000040"
+            },
+            {
+                "name": "DATA_FLASH_NS",
+                "start": "0x37000000",
+                "size": "0x00003000",
+                "ns_align": "0x00000400"
+            },
+            {
+                "name": "DATA_FLASH",
+                "start": "0x27000000",
+                "size": "0x00003000"
+            },
+            {
+                "name": "OSPI0_CS0",
+                "start": "0x80000000",
+                "size": "0x10000000"
+            },
+            {
+                "name": "OSPI0_CS1",
+                "start": "0x90000000",
+                "size": "0x10000000"
+            },
+            {
+                "name": "OPTION_SETTING_OFS0",
+                "start": "0x0300a100",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_OFS2",
+                "start": "0x0300a104",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_DUALSEL",
+                "start": "0x0300a110",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1",
+                "start": "0x1300a180",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL",
+                "start": "0x1300a190",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS",
+                "start": "0x1300a1c0",
+                "size": "0x00000010"
+            },
+            {
+                "name": "OPTION_SETTING_PBPS",
+                "start": "0x1300a1e0",
+                "size": "0x00000010"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1_SEC",
+                "start": "0x0300a200",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL_SEC",
+                "start": "0x0300a210",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS_SEC",
+                "start": "0x0300a240",
+                "size": "0x00000010"
+            },
+            {
+                "name": "OPTION_SETTING_PBPS_SEC",
+                "start": "0x0300a260",
+                "size": "0x00000010"
+            },
+            {
+                "name": "OPTION_SETTING_OFS1_SEL",
+                "start": "0x0300a280",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BANKSEL_SEL",
+                "start": "0x0300a290",
+                "size": "0x00000004"
+            },
+            {
+                "name": "OPTION_SETTING_BPS_SEL",
+                "start": "0x0300a2c0",
+                "size": "0x00000010"
+            },
+            {
+                "name": "ITCM_NS",
+                "start": "0x10000000",
+                "size": "0x00004000",
+                "ns_align": "0x00002000"
+            },
+            {
+                "name": "ITCM",
+                "start": "0x00000000",
+                "size": "0x00004000"
+            },
+            {
+                "name": "DTCM_NS",
+                "start": "0x30000000",
+                "size": "0x00004000",
+                "ns_align": "0x00002000"
+            },
+            {
+                "name": "DTCM",
+                "start": "0x20000000",
+                "size": "0x00004000"
+            }
+        ],
+        "sau_count": 8
+    }
 }

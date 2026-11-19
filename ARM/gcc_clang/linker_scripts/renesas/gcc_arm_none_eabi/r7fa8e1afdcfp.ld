@@ -1,46 +1,5 @@
-/* generated memory regions file - do not edit */
-RAM_START = 0x22060000;
-RAM_LENGTH = 0x00080000;
-FLASH_START = 0x02000000;
-FLASH_LENGTH = 0x00100000;
-DATA_FLASH_START = 0x27000000;
-DATA_FLASH_LENGTH = 0x00003000;
-OSPI0_CS0_START = 0x80000000;
-OSPI0_CS0_LENGTH = 0x10000000;
-OSPI0_CS1_START = 0x90000000;
-OSPI0_CS1_LENGTH = 0x10000000;
-OPTION_SETTING_OFS0_START = 0x0300a100;
-OPTION_SETTING_OFS0_LENGTH = 0x00000004;
-OPTION_SETTING_OFS2_START = 0x0300a104;
-OPTION_SETTING_OFS2_LENGTH = 0x00000004;
-OPTION_SETTING_DUALSEL_START = 0x0300a110;
-OPTION_SETTING_DUALSEL_LENGTH = 0x00000004;
-OPTION_SETTING_OFS1_START = 0x1300a180;
-OPTION_SETTING_OFS1_LENGTH = 0x00000004;
-OPTION_SETTING_BANKSEL_START = 0x1300a190;
-OPTION_SETTING_BANKSEL_LENGTH = 0x00000004;
-OPTION_SETTING_BPS_START = 0x1300a1c0;
-OPTION_SETTING_BPS_LENGTH = 0x00000010;
-OPTION_SETTING_PBPS_START = 0x1300a1e0;
-OPTION_SETTING_PBPS_LENGTH = 0x00000010;
-OPTION_SETTING_OFS1_SEC_START = 0x0300a200;
-OPTION_SETTING_OFS1_SEC_LENGTH = 0x00000004;
-OPTION_SETTING_BANKSEL_SEC_START = 0x0300a210;
-OPTION_SETTING_BANKSEL_SEC_LENGTH = 0x00000004;
-OPTION_SETTING_BPS_SEC_START = 0x0300a240;
-OPTION_SETTING_BPS_SEC_LENGTH = 0x00000010;
-OPTION_SETTING_PBPS_SEC_START = 0x0300a260;
-OPTION_SETTING_PBPS_SEC_LENGTH = 0x00000010;
-OPTION_SETTING_OFS1_SEL_START = 0x0300a280;
-OPTION_SETTING_OFS1_SEL_LENGTH = 0x00000004;
-OPTION_SETTING_BANKSEL_SEL_START = 0x0300a290;
-OPTION_SETTING_BANKSEL_SEL_LENGTH = 0x00000004;
-OPTION_SETTING_BPS_SEL_START = 0x0300a2c0;
-OPTION_SETTING_BPS_SEL_LENGTH = 0x00000010;
-ITCM_START = 0x00000000;
-ITCM_LENGTH = 0x00004000;
-DTCM_START = 0x20000000;
-DTCM_LENGTH = 0x00004000;
+INCLUDE memory_map.ld
+
 MEMORY
 {
     RAM (rwx) : ORIGIN = RAM_START, LENGTH = RAM_LENGTH
@@ -464,14 +423,17 @@ SECTIONS
         __ram_thread_stack$$Limit = . ;
     }  > RAM
 
+    __ram_nsc$$ ALIGN(.,1024) :
+    {
+        __ram_nsc$$Base = . ;
+        __ddsc_RAM_NSC = . ;
+        *(.ram_nsc)
+        __ram_nsc$$Limit = . ;
+    }  > RAM
+
     .ram.endof ALIGN(.,512) :
     {
         __ddsc_RAM_END = . ;
-    }  > RAM
-
-    .ram.flat_nsc ALIGN(.,512) :
-    {
-        __ddsc_RAM_NSC = . ;
     }  > RAM
 
     __flash_readonly$$  (READONLY) :
@@ -547,14 +509,39 @@ SECTIONS
         __exidx_end = . ;
     }  > FLASH
 
+    /* TrustZone CMSE veneers.
+     * For the Secure image (FLASH_START == Secure flash base), the final 32 KiB of the
+     * Secure FLASH allocation is the NSC window (BSP_TZ_CFG_NSC_SIZE).  For the
+     * Non-secure image, keep the empty SG section at the current FLASH location.
+     *
+     * IMPORTANT: keep the output-section syntax deliberately simple here.
+     * GNU Arm ld treats .gnu.sgstubs specially when --cmse-implib is used. */
+    __tz_nsc_start = (FLASH_START == 0x02000000)
+                   ? (FLASH_START + FLASH_LENGTH - 0x8000)
+                   : ALIGN(32);
+    ASSERT((FLASH_START != 0x02000000) || (. <= __tz_nsc_start),
+           "Secure image overlaps the 32 KiB NSC window")
+
+    .gnu.sgstubs ((FLASH_START == 0x02000000)
+                 ? (FLASH_START + FLASH_LENGTH - 0x8000)
+                 : ALIGN(32)) :
+    {
+        . = ALIGN(32);
+        .gnu.sgstubsBase = . ;
+        __ddsc_FLASH_NSC = . ;
+        KEEP(*(.gnu.sgstubs*))
+        KEEP(*(.flash_nsc))
+        .gnu.sgstubsLimit = . ;
+        . = ALIGN(32);
+    }  > FLASH
+
+    ASSERT((FLASH_START != 0x02000000) ||
+           (.gnu.sgstubsLimit <= (FLASH_START + FLASH_LENGTH)),
+           "NSC veneers overflow Secure flash")
+
     .flash.endof ALIGN(.,512) (READONLY) :
     {
         __ddsc_FLASH_END = . ;
-    }  > FLASH
-
-    .flash.flat_nsc ALIGN(.,512) (READONLY) :
-    {
-        __ddsc_FLASH_NSC = . ;
     }  > FLASH
 
     /***** OPTION_SETTING_OFS0 memory section allocations ******/
