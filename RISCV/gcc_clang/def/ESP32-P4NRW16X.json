@@ -1,0 +1,63 @@
+{
+    "config_registers": [
+        {
+            "address": "50111040",
+            "default": "00000000",
+            "key": "LP_CLKRST_HP_CLK_CTRL",
+            "unused": "FFFFFFFC",
+            "label": "ESP32-P4 CPU clock (LP_CLKRST_HP_CLK_CTRL_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "HP_ROOT_CLK_SRC_SEL",
+                    "label": "CPU clock: LP_CLKRST_HP_ROOT_CLK_SRC_SEL",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "XTAL 40 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CPLL 400 MHz / 4 = 100 MHz / CPLL 400 MHz / 2 = 200 MHz / CPLL 400 MHz / 1 = 400 MHz",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "500E6004",
+            "default": "00000000",
+            "key": "HP_SYS_CLKRST_ROOT_CLK_CTRL0",
+            "unused": "FFFFE01F",
+            "label": "ESP32-P4 CPU clock (HP_SYS_CLKRST_ROOT_CLK_CTRL0_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPU_CLK_DIV_NUM",
+                    "label": "CPU clock: HP_SYS_CLKRST_REG_CPU_CLK_DIV_NUM",
+                    "mask": "00001FE0",
+                    "settings": [
+                        {
+                            "label": "CPLL 400 MHz / 1 = 400 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CPLL 400 MHz / 2 = 200 MHz",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "CPLL 400 MHz / 4 = 100 MHz",
+                            "value": "00000060"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "RISCV",
+    "mcu": "ESP32-P4NRW16X",
+    "clock": "400"
+}
