@@ -1,0 +1,42 @@
+<p align="center">
+  <img src="http://www.mikroe.com/img/designs/beta/logo_small.png?raw=true" alt="MikroElektronika"/>
+</p>
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
+
+# `2027-03-05`
+
+## Changes
+
+- [`2027-03-05`](#2027-03-05)
+  - [Changes](#changes)
+    - [NEW HARDWARE](#new-hardware)
+
+### NEW HARDWARE
+
+Support added for following hardware:
+
++ ESP32C61 MCU Support package for GCC & Clang
+  + ESP32-C61HF4
+  + ESP32-C61HR2
+  + ESP32-C61HR8
+  + ESP32-C61NF8R8LA
++ ESP32H2 MCU Support package for GCC & Clang
+  + ESP32-H2FH2S
+  + ESP32-H2FH4S
++ ESP32P4 MCU Support package for GCC & Clang
+  + ESP32-P4NRW16X
+  + ESP32-P4NRW32X
++ ESP32S31 MCU Support package for GCC & Clang
+  + ESP32-S31NRV16
+  + ESP32-S31NRV32
+
+---
+
+**[BACK TO PREVIOUS FILE](../changelog.md)**
+
+---
