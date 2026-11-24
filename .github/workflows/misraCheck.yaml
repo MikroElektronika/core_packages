@@ -3,6 +3,8 @@ name: MISRA C:2012 Check
 # Per-repository settings live in plain text files, the workflow itself does not change:
 #   .github/misra/exclude.txt          folders/files to skip
 #   .github/misra/defines.txt          extra NAME=VALUE defines
+#   .github/misra/path_defines.txt     defines for some paths only (mikroC compiler keywords)
+#   .github/misra/path_rewrites.txt    line rewrites of analysis copies (mikroC fixed addresses)
 #   .github/misra/suppressions.txt     cppcheck suppressions for approved deviations (deviations.md)
 #   .github/misra/enforced_rules.txt   rules that are cleared: any finding fails the PR
 #
@@ -10,9 +12,11 @@ name: MISRA C:2012 Check
 #   1. Enforced rules (hard fail)   every finding of an enforced rule in the analysed files
 #   2. Changed lines (warning)      any other MISRA finding on a line the PR adds or changes
 on:
+  # Team plan 2026-11-24: manual runs for now. Pull requests are checked only while they target the
+  # MISRA integration branch; add 'main' here when the per-commit check is switched on for everyone.
+  # (workflow_dispatch only appears in the Actions tab once this file is on the default branch.)
   pull_request:
     branches:
-      - main
       - 'misra/main'
     paths:
       - '**.c'
@@ -64,6 +68,7 @@ jobs:
       - name: Run MISRA analysis
         run: |
           ARGS="--exclude-file .github/misra/exclude.txt --define-file .github/misra/defines.txt"
+          ARGS="$ARGS --path-define-file .github/misra/path_defines.txt --path-rewrite-file .github/misra/path_rewrites.txt"
           ARGS="$ARGS --suppressions-file .github/misra/suppressions.txt"
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             # Only .c files the PR changed, or that include a header it changed

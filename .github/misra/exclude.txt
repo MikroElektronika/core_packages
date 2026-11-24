@@ -1,9 +1,11 @@
 # Vendored copies of Arm CMSIS and vendor HAL drivers (one copy per MCU family).
 thirdparty
 CMSIS
-# Generated mikroC register-definition files (compiler-specific syntax).
-ARM/mikroC/def/
-PIC/mikroC/def/
-dsPIC/mikroC/def/
-AVR/mikroC/def/
-PIC32/mikroC/def/
+# Phase 1 (team plan 2026-11-24): GCC toolchains only. mikroC is MikroE code and will be brought
+# into scope later by deleting the lines below; the analysis mapping for its compiler extensions is
+# ready in path_defines.txt / path_rewrites.txt and covered by proposed deviations D-01..D-03.
+ARM/mikroC/
+PIC/mikroC/
+dsPIC/mikroC/
+AVR/mikroC/
+PIC32/mikroC/

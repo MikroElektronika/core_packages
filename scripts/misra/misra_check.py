@@ -28,7 +28,7 @@ Exclude file format (one entry per line, '#' starts a comment):
     FatFs                               # a bare name (no '/') skips every folder with that name
 """
 
-import argparse, csv, json, os, re, shutil, subprocess, sys, tarfile, tempfile, urllib.request
+import argparse, csv, fnmatch, json, os, re, shutil, subprocess, sys, tarfile, tempfile, urllib.request
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -114,6 +114,79 @@ def read_exclude_file(path):
             if line:
                 entries.append(line.replace('\\', '/'))
     return entries
+
+def read_path_defines(path):
+    """
+    Per-path defines: '<glob> NAME=VALUE [NAME=VALUE ...]' per line, glob relative to the repository root.
+    Used to map compiler-specific keywords (mikroC sfr/sbit/absolute/at...) to standard C for the
+    analysis only, without applying them to every file (e.g. 'at' and 'data' are normal names elsewhere).
+    """
+    rules = []
+    with open(path) as f:
+        for line in f:
+            line = line.split('#', 1)[0].split()
+            if len(line) >= 2:
+                rules.append((line[0], line[1:]))
+    return rules
+
+def defines_for(root, source, path_defines):
+    rel = os.path.relpath(source, root).replace(os.sep, '/')
+    out = []
+    for pattern, defines in path_defines:
+        if fnmatch.fnmatch(rel, pattern):
+            out += defines
+    return out
+
+def read_path_rewrites(path):
+    """
+    Per-path line rewrites: '<glob> s|<regex>|<replacement>|' per line ('#' lines are comments).
+    Matching files are analysed as a rewritten COPY (one line in = one line out, so line numbers
+    stay valid); the repository files are never changed. Used for compiler syntax that a define
+    cannot express, e.g. mikroC 'X absolute 0x80;' -> 'X;'.
+    """
+    rules = []
+    with open(path) as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            glob, expr = line.split(None, 1)
+            delim = expr[1]
+            regex, replacement = expr[2:].split(delim)[:2]
+            rules.append((glob, re.compile(regex), replacement))
+    return rules
+
+def rewrites_for(root, source, path_rewrites):
+    rel = os.path.relpath(source, root).replace(os.sep, '/')
+    return [(r, repl) for glob, r, repl in path_rewrites if fnmatch.fnmatch(rel, glob)]
+
+QUOTED_C_INCLUDE_RE = re.compile(r'^\s*#\s*include\s*"([^"/]+\.c)"', re.MULTILINE)
+
+def write_rewritten_copy(root, source, rewrites, dest_root):
+    """
+    Copy source (and the .c files it includes from its own folder) under dest_root/<repo-relative path>,
+    applying the rewrites line by line. Returns the path of the copy of source.
+    """
+    todo, done, first = [os.path.abspath(source)], set(), None
+    while todo:
+        path = todo.pop()
+        if path in done or not os.path.isfile(path):
+            continue
+        done.add(path)
+        with open(path, newline='', errors='ignore') as f:
+            text = f.read()
+        lines = text.splitlines(keepends=True)
+        for i, line in enumerate(lines):
+            for regex, replacement in rewrites:
+                line = regex.sub(replacement, line)
+            lines[i] = line
+        dest = os.path.join(dest_root, os.path.relpath(path, root))
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        with open(dest, 'w', newline='') as f:
+            f.write(''.join(lines))
+        first = first or dest
+        todo += [os.path.join(os.path.dirname(path), n) for n in QUOTED_C_INCLUDE_RE.findall(text)]
+    return first
 
 def changed_sources(root, ref, files):
     """
@@ -210,7 +283,8 @@ def resolve_include_dirs(source, header_index, prefer, max_headers=400):
                 dirs.append(include_dir)
     return dirs
 
-def check_file(cppcheck, root, source, include_dirs, addon_file, xml_file, defines=(), suppressions=None):
+def check_file(cppcheck, root, source, include_dirs, addon_file, xml_file, defines=(), suppressions=None,
+               rewrites=()):
     # MISRA findings have "style" severity and are hidden unless style is enabled.
     cmd = [cppcheck, f'--addon={addon_file}', '--enable=style', '--std=c99', '--max-configs=1', '--inline-suppr',
            '--suppress=missingInclude', '--suppress=missingIncludeSystem', '--quiet',
@@ -218,12 +292,23 @@ def check_file(cppcheck, root, source, include_dirs, addon_file, xml_file, defin
     cmd += [f'-D{d}' for d in defines]
     if suppressions:
         cmd.append(f'--suppressions-list={suppressions}')
-    cmd += [f'-I{d}' for d in include_dirs]
-    cmd.append(os.path.abspath(source))
     # Every cppcheck process gets its own working directory: the MISRA addon writes a
     # "cppcheck-addon-ctu-file-list" file into the cwd, and parallel runs would overwrite it.
     with tempfile.TemporaryDirectory(prefix='misra_') as cwd:
+        target = os.path.abspath(source)
+        if rewrites:
+            copy_root = os.path.join(cwd, 'src')
+            target = write_rewritten_copy(os.path.abspath(root), source, rewrites, copy_root)
+            include_dirs = [os.path.dirname(os.path.abspath(source))] + list(include_dirs)
+        cmd += [f'-I{d}' for d in include_dirs]
+        cmd.append(target)
         subprocess.run(cmd, cwd=cwd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=CPPCHECK_ENV)
+        if rewrites and os.path.isfile(xml_file):
+            # report findings against the real files, not the rewritten copies
+            with open(xml_file, errors='ignore') as f:
+                text = f.read()
+            with open(xml_file, 'w') as f:
+                f.write(text.replace(copy_root + os.sep, os.path.abspath(root) + os.sep))
     return xml_file
 
 def run_project(cppcheck, compile_commands, out_dir, jobs, rule_texts, defines, suppressions=None):
@@ -245,7 +330,8 @@ def run_project(cppcheck, compile_commands, out_dir, jobs, rule_texts, defines, 
         subprocess.run(cmd, cwd=cwd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=CPPCHECK_ENV)
     return xml_file
 
-def run_cppcheck(cppcheck, root, files, out_dir, jobs, rule_texts, prefer, defines=(), suppressions=None):
+def run_cppcheck(cppcheck, root, files, out_dir, jobs, rule_texts, prefer, defines=(), suppressions=None,
+                 path_defines=(), path_rewrites=()):
     addon = {'script': 'misra.py', 'args': []}
     if rule_texts:
         addon['args'].append(f'--rule-texts={os.path.abspath(rule_texts)}')
@@ -265,8 +351,9 @@ def run_cppcheck(cppcheck, root, files, out_dir, jobs, rule_texts, prefer, defin
         for i, source in enumerate(files):
             xml_file = os.path.join(xml_dir, f'{i}.xml')
             futures[pool.submit(check_file, cppcheck, root, source,
-                                       resolve_include_dirs(source, header_index, prefer), addon_file, xml_file, defines,
-                                       suppressions)] = source
+                                       resolve_include_dirs(source, header_index, prefer), addon_file, xml_file,
+                                       list(defines) + defines_for(root, source, path_defines),
+                                       suppressions, rewrites_for(root, source, path_rewrites))] = source
         for done, future in enumerate(as_completed(futures), 1):
             results.append((futures[future], future.result()))
             if done % 50 == 0 or done == len(files):
@@ -399,6 +486,10 @@ def main():
     parser.add_argument('--define', nargs='*', default=[], metavar='NAME[=VALUE]',
                         help='Extra preprocessor defines for every file, e.g. FLATTEN_ME_LEVEL=FLATTEN_ME_LEVEL_NONE')
     parser.add_argument('--define-file', help='Text file with one NAME[=VALUE] define per line (# comments allowed)')
+    parser.add_argument('--path-define-file',
+                        help="Per-path defines, one '<glob> NAME=VALUE ...' per line (e.g. .github/misra/path_defines.txt)")
+    parser.add_argument('--path-rewrite-file',
+                        help="Per-path line rewrites for analysis copies, '<glob> s|regex|repl|' (e.g. .github/misra/path_rewrites.txt)")
     parser.add_argument('--suppressions-file',
                         help='cppcheck suppressions list for approved deviations (e.g. .github/misra/suppressions.txt)')
     parser.add_argument('--changed-since', metavar='GIT_REF',
@@ -426,6 +517,8 @@ def main():
     if not args.rule_texts:
         args.rule_texts = write_rule_id_texts(os.path.join(out_dir, 'rule_ids.txt'))
     suppressions = os.path.abspath(args.suppressions_file) if args.suppressions_file else None
+    path_defines = read_path_defines(args.path_define_file) if args.path_define_file else []
+    path_rewrites = read_path_rewrites(args.path_rewrite_file) if args.path_rewrite_file else []
     xml_file = os.path.join(out_dir, 'cppcheck.xml')
     if args.project and not args.report_only:
         xml_file = run_project(find_cppcheck(), args.project, out_dir, args.jobs, args.rule_texts, args.define,
@@ -444,7 +537,7 @@ def main():
             sys.exit('No .c files found.')
         print(f'{len(files)} source files ({len(exclude)} exclude entries)')
         xml_file = run_cppcheck(find_cppcheck(), root, files, out_dir, args.jobs, args.rule_texts, args.prefer, args.define,
-                                suppressions)
+                                suppressions, path_defines, path_rewrites)
 
     failed = addon_failures(xml_file)
     if failed:

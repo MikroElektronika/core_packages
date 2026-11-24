@@ -1,0 +1,7 @@
+# Defines applied only to files matching a path glob (relative to the repository root).
+# Format: <glob> NAME=VALUE [NAME=VALUE ...]
+#
+# mikroC definition files use compiler extensions that are not standard C (deviation D-01 in
+# deviations.md). For the analysis only, the memory-space qualifiers are removed and single-bit
+# objects become _Bool. Fixed addresses ('absolute', 'at') are removed in path_rewrites.txt.
+*/mikroC/def/*  sfr= rx= far= data= atomic= io= sbit=_Bool

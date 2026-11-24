@@ -3,3 +3,7 @@
 #   misra-c2012-2.5                      whole repository
 #   misra-c2012-11.4:*/ARM/gcc_clang/system/*
 # Every line must reference a deviation id from deviations.md in a trailing comment.
+# D-02 / D-03 (proposed): mikroC definition files are the compiler's declaration unit for SFRs and
+# constants; they have no header by design, and every object is used by application code only.
+misra-c2012-8.4:*/mikroC/def/*   # D-02
+misra-c2012-8.7:*/mikroC/def/*   # D-03
