@@ -1,0 +1,87 @@
+name: MISRA C:2012 Check
+
+# Per-repository settings live in plain text files, the workflow itself does not change:
+#   .github/misra/exclude.txt          folders/files to skip
+#   .github/misra/defines.txt          extra NAME=VALUE defines
+#   .github/misra/suppressions.txt     cppcheck suppressions for approved deviations (deviations.md)
+#   .github/misra/enforced_rules.txt   rules that are cleared: any finding fails the PR
+#
+# Two checks on a pull request:
+#   1. Enforced rules (hard fail)   every finding of an enforced rule in the analysed files
+#   2. Changed lines (warning)      any other MISRA finding on a line the PR adds or changes
+on:
+  pull_request:
+    branches:
+      - main
+      - 'misra/main'
+    paths:
+      - '**.c'
+      - '**.h'
+      - '.github/misra/**'
+      - 'scripts/misra/**'
+      - '.github/workflows/misraCheck.yaml'
+  workflow_dispatch:   # full scan of everything not excluded (slow: ~18k sources)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: misra-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  misra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0  # full history, needed to diff against the base branch
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Restore cppcheck build
+        id: cppcheck-cache
+        uses: actions/cache/restore@v5
+        with:
+          path: ~/.cache/misra_check
+          key: ${{ runner.os }}-cppcheck-2.16.0
+
+      - name: Build cppcheck (only when not cached)
+        run: python -c "import sys; sys.path.insert(0, 'scripts/misra'); import misra_check; print(misra_check.find_cppcheck())"
+
+      - name: Save cppcheck build
+        if: steps.cppcheck-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v5
+        with:
+          path: ~/.cache/misra_check
+          key: ${{ runner.os }}-cppcheck-2.16.0
+
+      - name: Run MISRA analysis
+        run: |
+          ARGS="--exclude-file .github/misra/exclude.txt --define-file .github/misra/defines.txt"
+          ARGS="$ARGS --suppressions-file .github/misra/suppressions.txt"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # Only .c files the PR changed, or that include a header it changed
+            ARGS="$ARGS --changed-since origin/${{ github.base_ref }}"
+          fi
+          python -u scripts/misra/misra_check.py . -o misra_report $ARGS
+
+      - name: Enforced rules
+        run: python -u scripts/misra/misra_rule.py gate misra_report
+
+      - name: New violations on changed lines
+        if: github.event_name == 'pull_request'
+        # Remove --warn-only once the team agrees new code must be fully clean
+        run: python -u scripts/misra/misra_new_violations.py misra_report/violations.csv origin/${{ github.base_ref }} --warn-only
+
+      - name: Upload MISRA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: misra-report
+          path: misra_report/

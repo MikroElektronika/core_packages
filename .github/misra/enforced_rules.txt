@@ -1,0 +1,4 @@
+# Rules (or cppcheck check ids) that are fully fixed or deviated in this repository.
+# CI fails on ANY finding of these in the files a pull request touches, not only on changed lines.
+# Each rule branch adds its line here in the same PR that clears the rule. One id per line:
+#   <id>        # branch, date

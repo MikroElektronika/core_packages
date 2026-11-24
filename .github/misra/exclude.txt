@@ -1,0 +1,9 @@
+# Vendored copies of Arm CMSIS and vendor HAL drivers (one copy per MCU family).
+thirdparty
+CMSIS
+# Generated mikroC register-definition files (compiler-specific syntax).
+ARM/mikroC/def/
+PIC/mikroC/def/
+dsPIC/mikroC/def/
+AVR/mikroC/def/
+PIC32/mikroC/def/

@@ -1,0 +1,3 @@
+# Extra NAME=VALUE defines applied to every analysed file, one per line.
+# They stand in for values NECTO Studio / CMake provide in a real build.
+# Filled on branch misra/setup-analysis-defines (reduces misra-config and Rule 20.9 noise).

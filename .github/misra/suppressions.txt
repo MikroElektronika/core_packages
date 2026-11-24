@@ -1,0 +1,5 @@
+# cppcheck suppressions for APPROVED deviations only (see deviations.md). Passed as --suppressions-list.
+# Format (cppcheck): <id>[:<file glob>[:<line>]]   e.g.
+#   misra-c2012-2.5                      whole repository
+#   misra-c2012-11.4:*/ARM/gcc_clang/system/*
+# Every line must reference a deviation id from deviations.md in a trailing comment.
