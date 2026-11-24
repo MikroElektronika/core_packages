@@ -1,296 +1,216 @@
-/******************************************************************************
- * @file     gcc_arm.ld
- * @brief    GNU Linker Script for Cortex-M based device
- * @version  V2.1.0
- * @2025-09-22     04. August 2020
- ******************************************************************************/
 /*
- * Copyright (c) 2009-2020 Arm Limited. All rights reserved.
- *
- * SPDX-License-Identifier: Apache-2.0
- *
- * Licensed under the Apache License, Version 2.0 (the License); you may
- * not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an AS IS BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+******************************************************************************
+**
+** @file        : cy8c4146lqs-s255.ld
+** @author      : MikroElektronika
+** @brief       : Linker script for CY8C4146LQS-S255 Device
+**                64K FLASH @ 0x00000000
+**                8K RAM @ 0x20000000
+**                Flash/SRAM sizes from the mtb-pdl-cat2 device header (CY_FLASH_SIZE/CY_SRAM_SIZE).
+**                SFLASH (trims, user rows) and the supervisory ROM are separate address
+**                ranges, nothing has to be reserved in the main flash.
+**
+**                Set heap size, stack size and stack location according
+**                to application requirements.
+**
+**                Set memory bank area and size if external memory is used
+**
+**  Target      : INFINEON CY8C4146LQS-S255
+**
+**  Distribution: The file is distributed as is, without any warranty
+**                of any kind.
+**
+******************************************************************************
+** @attention
+**
+** Copyright (c) ${COPYRIGHT_YEAR_MIKROE} MikroElektronika.
+** All rights reserved.
+**
+** This software is licensed under terms that can be found in the LICENSE file
+** in the root directory of this software component.
+** If no LICENSE file comes with this software, it is provided AS-IS.
+**
+******************************************************************************
+*/
 
-/*
- *-------- <<< Use Configuration Wizard in Context Menu >>> -------------------
- */
-
-/*---------------------- Flash Configuration ----------------------------------
-  <h> Flash Configuration
-    <o0> Flash Base Address <0x0-0xFFFFFFFF:8>
-    <o1> Flash Size (in Bytes) <0x0-0xFFFFFFFF:8>
-  </h>
-  -----------------------------------------------------------------------------*/
-__ROM_BASE = /*TODO*/;
-__ROM_SIZE = /*TODO*/;
-
-/*--------------------- Embedded RAM Configuration ----------------------------
-  <h> RAM Configuration
-    <o0> RAM Base Address    <0x0-0xFFFFFFFF:8>
-    <o1> RAM Size (in Bytes) <0x0-0xFFFFFFFF:8>
-  </h>
- -----------------------------------------------------------------------------*/
-__RAM_BASE = /*TODO*/;
-__RAM_SIZE = /*TODO*/;
-
-/*--------------------- Stack / Heap Configuration ----------------------------
-  <h> Stack / Heap Configuration
-    <o0> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
-    <o1> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-  </h>
-  -----------------------------------------------------------------------------*/
-__STACK_SIZE = /*TODO*/;
-__HEAP_SIZE = /*TODO*/;
-
-/*
- *-------------------- <<< end of configuration section >>> -------------------
- */
-
-MEMORY
-{
-  FLASH (rx)  : ORIGIN = __ROM_BASE, LENGTH = __ROM_SIZE
-  RAM   (rwx) : ORIGIN = __RAM_BASE, LENGTH = __RAM_SIZE
-}
-
-/* Linker script to place sections and symbol values. Should be used together
- * with other linker script that defines memory regions FLASH and RAM.
- * It references following symbols, which must be defined in code:
- *   Reset_Handler : Entry of reset handler
- *
- * It defines following symbols, which code can use without definition:
- *   __exidx_start
- *   __exidx_end
- *   __copy_table_start__
- *   __copy_table_end__
- *   __zero_table_start__
- *   __zero_table_end__
- *   __etext
- *   __data_start__
- *   __preinit_array_start
- *   __preinit_array_end
- *   __init_array_start
- *   __init_array_end
- *   __fini_array_start
- *   __fini_array_end
- *   __data_end__
- *   __bss_start__
- *   __bss_end__
- *   __end__
- *   end
- *   __HeapLimit
- *   __StackLimit
- *   __StackTop
- *   __stack
- */
+/* Entry Point */
 ENTRY(Reset_Handler)
 
+_Min_Heap_Size = 0x200; /* required amount of heap */
+_Min_Stack_Size = 0x400; /* required amount of stack */
+
+/* Memories definition */
+MEMORY
+{
+  FLASH        (rx)    : ORIGIN = 0x00000000,   LENGTH = 64K
+  RAM          (xrw)   : ORIGIN = 0x20000000,   LENGTH = 8K
+}
+
+/* Highest address of the user mode stack */
+__StackTop = ORIGIN(RAM) + LENGTH(RAM);
+_estack = __StackTop;
+
+/* Sections */
 SECTIONS
 {
+  /* Vector table must be the very first thing in FLASH */
+  .isr_vector ORIGIN(FLASH) :
+  {
+    . = ALIGN(4);
+    KEEP(*(.vectors))
+    KEEP(*(.isr_vector))
+    . = ALIGN(4);
+  } > FLASH
+
+  /* The program code and other data into "FLASH" Rom type memory */
   .text :
   {
-    KEEP(*(.vectors))
-    *(.text*)
+    . = ALIGN(4);
+    *(.text)           /* .text sections (code) */
+    *(.text*)          /* .text* sections (code) */
+    *(.glue_7)         /* glue arm to thumb code */
+    *(.glue_7t)        /* glue thumb to arm code */
+    *(.eh_frame)
 
-    KEEP(*(.init))
-    KEEP(*(.fini))
+    KEEP (*(.init))
+    KEEP (*(.fini))
 
-    /* .ctors */
-    *crtbegin.o(.ctors)
-    *crtbegin?.o(.ctors)
-    *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
-    *(SORT(.ctors.*))
-    *(.ctors)
-
-    /* .dtors */
-    *crtbegin.o(.dtors)
-    *crtbegin?.o(.dtors)
-    *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
-    *(SORT(.dtors.*))
-    *(.dtors)
-
-    *(.rodata*)
-
-    KEEP(*(.eh_frame*))
+    . = ALIGN(4);
+    _etext = .;        /* define a global symbols at end of code */
   } > FLASH
 
-  /*
-   * SG veneers:
-   * All SG veneers are placed in the special output section .gnu.sgstubs. Its start address
-   * must be set, either with the command line option --section-start or in a linker script,
-   * to indicate where to place these veneers in memory.
-   */
-/*
-  .gnu.sgstubs :
+  /* Constant data into "FLASH" Rom type memory */
+  .rodata :
   {
-    . = ALIGN(32);
+    . = ALIGN(4);
+    *(.rodata)         /* .rodata sections (constants, strings, etc.) */
+    *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
+    . = ALIGN(4);
   } > FLASH
-*/
+
   .ARM.extab :
   {
+    . = ALIGN(4);
     *(.ARM.extab* .gnu.linkonce.armextab.*)
+    . = ALIGN(4);
   } > FLASH
 
-  __exidx_start = .;
-  .ARM.exidx :
+  .ARM :
   {
-    *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+    . = ALIGN(4);
+    __exidx_start = .;
+    *(.ARM.exidx*)
+    __exidx_end = .;
+    . = ALIGN(4);
   } > FLASH
-  __exidx_end = .;
 
+  .preinit_array :
+  {
+    . = ALIGN(4);
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP (*(.preinit_array*))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
+    . = ALIGN(4);
+  } > FLASH
+
+  .init_array :
+  {
+    . = ALIGN(4);
+    PROVIDE_HIDDEN (__init_array_start = .);
+    KEEP (*(SORT(.init_array.*)))
+    KEEP (*(.init_array*))
+    PROVIDE_HIDDEN (__init_array_end = .);
+    . = ALIGN(4);
+  } > FLASH
+
+  .fini_array :
+  {
+    . = ALIGN(4);
+    PROVIDE_HIDDEN (__fini_array_start = .);
+    KEEP (*(SORT(.fini_array.*)))
+    KEEP (*(.fini_array*))
+    PROVIDE_HIDDEN (__fini_array_end = .);
+    . = ALIGN(4);
+  } > FLASH
+
+  /* Copy table used by Reset_Handler to initialize RAM sections */
   .copy.table :
   {
     . = ALIGN(4);
     __copy_table_start__ = .;
 
-    LONG (__etext)
-    LONG (__data_start__)
-    LONG ((__data_end__ - __data_start__) / 4)
+    LONG(LOADADDR(.data))
+    LONG(ADDR(.data))
+    LONG(SIZEOF(.data))
 
-    /* Add each additional data section here */
-/*
-    LONG (__etext2)
-    LONG (__data2_start__)
-    LONG ((__data2_end__ - __data2_start__) / 4)
-*/
     __copy_table_end__ = .;
+    . = ALIGN(4);
   } > FLASH
 
+  /* Zero table used by Reset_Handler to initialize BSS sections */
   .zero.table :
   {
     . = ALIGN(4);
     __zero_table_start__ = .;
-    /* Add each additional bss section here */
-/*
-    LONG (__bss2_start__)
-    LONG ((__bss2_end__ - __bss2_start__) / 4)
-*/
+
+    LONG(ADDR(.bss))
+    LONG(SIZEOF(.bss))
+
     __zero_table_end__ = .;
+    . = ALIGN(4);
   } > FLASH
 
-  /**
-   * Location counter can end up 2byte aligned with narrow Thumb code but
-   * __etext is assumed by startup code to be the LMA of a section in RAM
-   * which must be 4byte aligned 
-   */
-  __etext = ALIGN (4);
+  /* Used by the startup to initialize data */
+  _sidata = LOADADDR(.data);
 
-  .data : AT (__etext)
-  {
-    __data_start__ = .;
-    *(vtable)
-    *(.data)
-    *(.data.*)
-
-    . = ALIGN(4);
-    /* preinit data */
-    PROVIDE_HIDDEN (__preinit_array_start = .);
-    KEEP(*(.preinit_array))
-    PROVIDE_HIDDEN (__preinit_array_end = .);
-
-    . = ALIGN(4);
-    /* init data */
-    PROVIDE_HIDDEN (__init_array_start = .);
-    KEEP(*(SORT(.init_array.*)))
-    KEEP(*(.init_array))
-    PROVIDE_HIDDEN (__init_array_end = .);
-
-    . = ALIGN(4);
-    /* finit data */
-    PROVIDE_HIDDEN (__fini_array_start = .);
-    KEEP(*(SORT(.fini_array.*)))
-    KEEP(*(.fini_array))
-    PROVIDE_HIDDEN (__fini_array_end = .);
-
-    KEEP(*(.jcr*))
-    . = ALIGN(4);
-    /* All data end */
-    __data_end__ = .;
-
-  } > RAM
-
-  /*
-   * Secondary data section, optional
-   *
-   * Remember to add each additional data section
-   * to the .copy.table above to asure proper
-   * initialization during startup.
-   */
-/*
-  __etext2 = ALIGN (4);
-
-  .data2 : AT (__etext2)
+  /* Initialized data sections into "RAM" Ram type memory */
+  .data :
   {
     . = ALIGN(4);
-    __data2_start__ = .;
-    *(.data2)
-    *(.data2.*)
+    _sdata = .;        /* create a global symbol at data start */
+    *(.data)           /* .data sections */
+    *(.data*)          /* .data* sections */
+    *(.RamFunc)        /* .RamFunc sections */
+    *(.RamFunc*)       /* .RamFunc* sections */
+
     . = ALIGN(4);
-    __data2_end__ = .;
+    _edata = .;        /* define a global symbol at data end */
+  } > RAM AT> FLASH
 
-  } > RAM2
-*/
-
-  .bss :
+  /* Uninitialized data section into "RAM" Ram type memory */
+  . = ALIGN(4);
+  .bss (NOLOAD) :
   {
-    . = ALIGN(4);
-    __bss_start__ = .;
+    /* This is used by the startup in order to initialize the .bss section */
+    _sbss = .;         /* define a global symbol at bss start */
+    __bss_start__ = _sbss;
     *(.bss)
-    *(.bss.*)
+    *(.bss*)
     *(COMMON)
-    . = ALIGN(4);
-    __bss_end__ = .;
-  } > RAM AT > RAM
 
-  /*
-   * Secondary bss section, optional
-   *
-   * Remember to add each additional bss section
-   * to the .zero.table above to asure proper
-   * initialization during startup.
-   */
-/*
-  .bss2 :
-  {
     . = ALIGN(4);
-    __bss2_start__ = .;
-    *(.bss2)
-    *(.bss2.*)
-    . = ALIGN(4);
-    __bss2_end__ = .;
-  } > RAM2 AT > RAM2
-*/
-
-  .heap (COPY) :
-  {
-    . = ALIGN(8);
-    __end__ = .;
-    PROVIDE(end = .);
-    . = . + __HEAP_SIZE;
-    . = ALIGN(8);
-    __HeapLimit = .;
+    _ebss = .;         /* define a global symbol at bss end */
+    __bss_end__ = _ebss;
   } > RAM
 
-  .stack (ORIGIN(RAM) + LENGTH(RAM) - __STACK_SIZE) (COPY) :
+  /* User_heap_stack section, used to check that there is enough "RAM" Ram type memory left */
+  ._user_heap_stack (NOLOAD) :
   {
     . = ALIGN(8);
-    __StackLimit = .;
-    . = . + __STACK_SIZE;
+    PROVIDE ( end = . );
+    PROVIDE ( _end = . );
+    . = . + _Min_Heap_Size;
+    . = . + _Min_Stack_Size;
     . = ALIGN(8);
-    __StackTop = .;
   } > RAM
-  PROVIDE(__stack = __StackTop);
 
-  /* Check if data + heap + stack exceeds RAM limit */
-  ASSERT(__StackLimit >= __HeapLimit, "region RAM overflowed with stack")
+  /* Remove information from the compiler libraries */
+  /DISCARD/ :
+  {
+    libc.a ( * )
+    libm.a ( * )
+    libgcc.a ( * )
+  }
+
+  .ARM.attributes 0 : { *(.ARM.attributes) }
 }
