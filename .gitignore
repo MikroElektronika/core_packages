@@ -10,3 +10,6 @@ tmp
 scripts/databases
 scripts/*.db
 .venv
+# cppcheck temp files left by an interrupted MISRA scan (scripts/misra)
+*.dump
+*.ctu-info

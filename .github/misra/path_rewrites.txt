@@ -1,0 +1,8 @@
+# Line rewrites applied to an analysis COPY of matching files; the repository files are not changed.
+# Format: <glob> s|<regex>|<replacement>|      (Python regex, applied to each line)
+#
+# mikroC fixed-address placement has no standard C form, and a define cannot drop the address:
+#   sfr unsigned char volatile WDTCSR absolute 0x0082;   ->  sfr unsigned char volatile WDTCSR;
+#   sbit  PSA_bit at OPTION_REG.B3;                      ->  sbit  PSA_bit;
+*/mikroC/def/*  s|\s+absolute\s+[^;]*||
+*/mikroC/def/*  s|(\bsbit\b[^;]*?)\s+at\s+[^;]*|\1|
