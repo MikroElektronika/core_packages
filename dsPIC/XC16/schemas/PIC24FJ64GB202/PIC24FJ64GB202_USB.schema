@@ -1,0 +1,153 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "dsPIC/XC16/core/def/PIC24FJ64GB202.json",
+    "flash": 65536,
+    "ram": 8192,
+    "settings": {
+        "clock": "32",
+        "scheme": "PIC24FJ64GB202_USB",
+        "mcu": "PIC24FJ64GB202",
+        "core": "",
+        "delay_src_path": "",
+        "name": null,
+        "config_words": [
+            {
+                "key": "DSWDTPS",
+                "value": "DSWDTPS1F"
+            },
+            {
+                "key": "DSWDTOSC",
+                "value": "LPRC"
+            },
+            {
+                "key": "DSBOREN",
+                "value": "ON"
+            },
+            {
+                "key": "DSWDTEN",
+                "value": "ON"
+            },
+            {
+                "key": "DSSWEN",
+                "value": "ON"
+            },
+            {
+                "key": "PLLDIV",
+                "value": "DIVIDE2"
+            },
+            {
+                "key": "I2C1SEL",
+                "value": "DISABLE"
+            },
+            {
+                "key": "IOL1WAY",
+                "value": "OFF"
+            },
+            {
+                "key": "WPFP",
+                "value": "WPFP127"
+            },
+            {
+                "key": "SOSCSEL",
+                "value": "ON"
+            },
+            {
+                "key": "WDTWIN",
+                "value": "PS25_0"
+            },
+            {
+                "key": "PLLSS",
+                "value": "PLL_PRI"
+            },
+            {
+                "key": "BOREN",
+                "value": "OFF"
+            },
+            {
+                "key": "WPDIS",
+                "value": "WPDIS"
+            },
+            {
+                "key": "WPCFG",
+                "value": "WPCFGDIS"
+            },
+            {
+                "key": "WPEND",
+                "value": "WPENDMEM"
+            },
+            {
+                "key": "POSCMD",
+                "value": "XT"
+            },
+            {
+                "key": "WDTCLK",
+                "value": "LPRC"
+            },
+            {
+                "key": "OSCIOFCN",
+                "value": "OFF"
+            },
+            {
+                "key": "FCKSM",
+                "value": "CSECME"
+            },
+            {
+                "key": "FNOSC",
+                "value": "PRIPLL"
+            },
+            {
+                "key": "ALTRB6",
+                "value": "APPEND"
+            },
+            {
+                "key": "ALTCMPI",
+                "value": "CxINC_RB"
+            },
+            {
+                "key": "WDTCMX",
+                "value": "WDTCLK"
+            },
+            {
+                "key": "IESO",
+                "value": "OFF"
+            },
+            {
+                "key": "WDTPS",
+                "value": "PS32768"
+            },
+            {
+                "key": "FWPSA",
+                "value": "PR128"
+            },
+            {
+                "key": "WINDIS",
+                "value": "OFF"
+            },
+            {
+                "key": "FWDTEN",
+                "value": "OFF"
+            },
+            {
+                "key": "ICS",
+                "value": "PGx1"
+            },
+            {
+                "key": "LPCFG",
+                "value": "OFF"
+            },
+            {
+                "key": "GWRP",
+                "value": "OFF"
+            },
+            {
+                "key": "GCP",
+                "value": "OFF"
+            },
+            {
+                "key": "JTAGEN",
+                "value": "ON"
+            }
+        ]
+    }
+}
