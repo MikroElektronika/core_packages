@@ -1,7 +1,7 @@
 {
     "compiler_flags": "",
     "linker_flags": "",
-    "def_path": "dsPIC/XC16/core/def/dsPIC33EP512MU814.json",
+    "def_path": "dsPIC/XC16/core/def/DSPIC33EP512MU814.json",
     "flash": 524288,
     "ram": 53248,
     "settings": {
