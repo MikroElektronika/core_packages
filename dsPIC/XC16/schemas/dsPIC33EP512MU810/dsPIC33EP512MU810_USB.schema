@@ -7,7 +7,7 @@
     "settings": {
         "clock": "50",
         "scheme": "dsPIC33EP512MU810_USB",
-        "mcu": "dsPIC33EP512MU810",
+        "mcu": "DSPIC33EP512MU810",
         "core": "",
         "delay_src_path": "",
         "name": null,
