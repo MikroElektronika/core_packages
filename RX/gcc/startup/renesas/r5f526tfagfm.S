@@ -50,6 +50,9 @@ _PowerON_Reset :
 ;;initialise interrupt stack pointer
     mvtc    #_istack,ISP
 
+;;switch SP to the user stack (PSW.U = 1)
+    setpsw  u
+
 ;;jump to _SystemInit function in init_clocks.c
     bsr.a   _SystemInit
     bsr.a   __INITSCT

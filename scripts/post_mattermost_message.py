@@ -7,8 +7,8 @@ was packed or indexed) means no post.
 
 import json
 import os
+import subprocess
 import sys
-import urllib.request
 from pathlib import Path
 
 
@@ -21,10 +21,24 @@ def main():
     if not url:
         print('MATTERMOST_WEBHOOK_URL is not set. Skipping Mattermost notification.')
         return
-    payload = json.dumps({'text': message_path.read_text(encoding='utf-8')}).encode('utf-8')
-    request = urllib.request.Request(url, data=payload, headers={'Content-Type': 'application/json'}, method='POST')
-    with urllib.request.urlopen(request, timeout=30) as response:
-        print(f'Mattermost notified ({response.status}).')
+
+    payload_path = message_path.with_name('mattermost_payload.json')
+    payload_path.write_text(json.dumps({'text': message_path.read_text(encoding='utf-8')}), encoding='utf-8')
+
+    # --fail-with-body: non-2xx fails the step and shows Mattermost's reason
+    result = subprocess.run(
+        ['curl', '-sS', '--fail-with-body', '-X', 'POST',
+         '-H', 'Content-Type: application/json',
+         '--data', f'@{payload_path}',
+         '-w', '\nHTTP %{http_code}\n',
+         url],
+        capture_output=True, text=True
+    )
+    print(result.stdout.strip())
+    if result.returncode != 0:
+        print(result.stderr.strip())
+        sys.exit(f'Mattermost notification failed (curl exit code {result.returncode}).')
+    print('Mattermost notified.')
 
 
 if __name__ == '__main__':

@@ -1,6 +1,385 @@
 {
-    "core": "M4EF",
-    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "config_registers": [
+        {
+            "address": "44000A00",
+            "default": "00200005",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "NOSC",
+                    "label": "System clock source (NOSC)",
+                    "mask": "00000F00",
+                    "settings": [
+                        {
+                            "label": "FRC / FRCDIV (internal 8 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "SPLL1 (RFPLL 64 MHz / SPLLPOSTDIV1, needs the 16 MHz crystal)",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "POSC (16 MHz crystal)",
+                            "value": "00000200"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "FRCDIV",
+                    "label": "FRC divider (FRCDIV)",
+                    "mask": "07000000",
+                    "settings": [
+                        {
+                            "label": "FRC / 1 (8 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "FRC / 2 (4 MHz)",
+                            "value": "01000000"
+                        },
+                        {
+                            "label": "FRC / 4 (2 MHz)",
+                            "value": "02000000"
+                        },
+                        {
+                            "label": "FRC / 8 (1 MHz)",
+                            "value": "03000000"
+                        },
+                        {
+                            "label": "FRC / 16 (500 kHz)",
+                            "value": "04000000"
+                        },
+                        {
+                            "label": "FRC / 32 (250 kHz)",
+                            "value": "05000000"
+                        },
+                        {
+                            "label": "FRC / 64 (125 kHz)",
+                            "value": "06000000"
+                        },
+                        {
+                            "label": "FRC / 256 (31.25 kHz)",
+                            "value": "07000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00200000",
+                    "key": "WAKE2SPD",
+                    "label": "Two-speed start-up on wake from Sleep (WAKE2SPD)",
+                    "mask": "00200000",
+                    "settings": [
+                        {
+                            "label": "Selected clock after Sleep",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "FRC until the selected clock is ready",
+                            "value": "00200000"
+                        }
+                    ]
+                }
+            ],
+            "key": "OSCCON",
+            "label": "CRU Oscillator Control Register",
+            "unused": "F8DFF0FF"
+        },
+        {
+            "address": "44000A20",
+            "default": "C0010028",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00000008",
+                    "key": "SPLLPWDN",
+                    "label": "SPLL power down",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "On",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000000",
+                    "key": "SPLLFLOCK",
+                    "label": "SPLL force lock",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "On",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000020",
+                    "key": "SPLLRST",
+                    "label": "SPLL reset",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "On",
+                            "value": "00000020"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "SPLLPOSTDIV1",
+                    "label": "SPLLPOSTDIV1: SPLL1 = 64 MHz RFPLL / n",
+                    "mask": "0000FF00",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "1"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00010000",
+                    "key": "SPLLPOSTDIV2",
+                    "label": "SPLLPOSTDIV2: SPLL2 (ADC charge pump clock, 8-24 MHz) = source / n, 0 = off",
+                    "mask": "000F0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "C0000000",
+                    "key": "SPLL_BYP",
+                    "label": "SPLL2 source (SPLL_BYP)",
+                    "mask": "C0000000",
+                    "settings": [
+                        {
+                            "label": "SPLL3 (RFPLL, needs the 16 MHz crystal)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "POSC (16 MHz crystal)",
+                            "value": "80000000"
+                        },
+                        {
+                            "label": "FRC (8 MHz)",
+                            "value": "C0000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SPLLCON",
+            "label": "CRU System PLL Control Register",
+            "unused": "3FF000C7"
+        },
+        {
+            "address": "44000B30",
+            "default": "00008800",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBDIV",
+                    "label": "PB1 clock divider (PBCLK1 = SYSCLK / (n + 1))",
+                    "mask": "0000007F",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": true,
+                    "init": "00008000",
+                    "key": "PBDIVON",
+                    "label": "PB1 clock output",
+                    "mask": "00008000",
+                    "settings": [
+                        {
+                            "label": "Off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "On",
+                            "value": "00008000"
+                        }
+                    ]
+                }
+            ],
+            "key": "PB1DIV",
+            "label": "CRU PB1 Clock Divisor Control Register",
+            "unused": "FFFF7F80"
+        },
+        {
+            "address": "44000B40",
+            "default": "00008800",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "PBDIV",
+                    "label": "PB2 clock divider (PBCLK2 = SYSCLK / (n + 1))",
+                    "mask": "0000007F",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00008000",
+                    "key": "PBDIVON",
+                    "label": "PB2 clock output",
+                    "mask": "00008000",
+                    "settings": [
+                        {
+                            "label": "Off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "On",
+                            "value": "00008000"
+                        }
+                    ]
+                }
+            ],
+            "key": "PB2DIV",
+            "label": "CRU PB2 Clock Divisor Control Register",
+            "unused": "FFFF7F80"
+        },
+        {
+            "address": "44000B50",
+            "default": "00008809",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000009",
+                    "key": "PBDIV",
+                    "label": "PB3 clock divider (PBCLK3 = SYSCLK / (n + 1)), at most 6.4 MHz",
+                    "mask": "0000007F",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "127",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00008000",
+                    "key": "PBDIVON",
+                    "label": "PB3 clock output",
+                    "mask": "00008000",
+                    "settings": [
+                        {
+                            "label": "Off",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "On",
+                            "value": "00008000"
+                        }
+                    ]
+                }
+            ],
+            "key": "PB3DIV",
+            "label": "CRU PB3 Clock Divisor Control Register",
+            "unused": "FFFF7F80"
+        },
+        {
+            "address": "44012400",
+            "default": "0700010F",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "PFMWS",
+                    "label": "Program flash wait states",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "1 wait state",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "2 wait states",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "PREFEN",
+                    "label": "Predictive prefetch",
+                    "mask": "00000030",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled for CPU instructions",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ADRWS",
+                    "label": "Address setup wait state",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "0 wait states",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1 wait state",
+                            "value": "00000100"
+                        }
+                    ]
+                }
+            ],
+            "key": "CHECON",
+            "label": "PCHE Prefetch Cache Control Register",
+            "unused": "FFFFFEC0"
+        }
+    ],
     "mcu": "PIC32CX5109BZ31048",
-    "clock": "1"
+    "clock": 8,
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c"
 }

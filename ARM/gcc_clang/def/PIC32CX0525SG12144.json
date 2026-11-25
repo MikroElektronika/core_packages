@@ -1,6 +1,129 @@
 {
-    "core": "M4EF",
-    "delay_src_path": "delays/m4ef/__lib_delays.c",
+    "config_registers": [
+        {
+            "address": "4000A408",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "EXT_32K",
+                    "label": "32 kHz clock domain source",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Always-on internal 32 kHz source",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "32KHZ_IN pin (falls back to the internal source without a clock)",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "C32KHZ_SRC",
+                    "label": "Always-on internal 32 kHz source",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Silicon oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Crystal oscillator (once a clock is detected on the crystal pins)",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "XOSEL",
+                    "label": "Crystal oscillator input",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Parallel resonant crystal on XTAL1/XTAL2",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Single-ended 32 kHz clock on XTAL2",
+                            "value": "00000008"
+                        }
+                    ]
+                }
+            ],
+            "key": "VBAT_CLK32_EN",
+            "label": "VBAT 32 kHz Clock Enable Register",
+            "unused": "FFFFFFF1"
+        },
+        {
+            "address": "40080104",
+            "default": "00000004",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIV",
+                    "label": "Processor clock divider (48 MHz PLL)",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "48 MHz (divide by 1)",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "16 MHz (divide by 3)",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "12 MHz (divide by 4)",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "3 MHz (divide by 16)",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "1 MHz (divide by 48)",
+                            "value": "00000030"
+                        }
+                    ]
+                }
+            ],
+            "key": "PROC_CLK_CTRL",
+            "label": "PCR Processor Clock Control Register",
+            "unused": "FFFFFF00"
+        },
+        {
+            "address": "40080108",
+            "default": "000001E0",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "000001E0",
+                    "key": "DIV",
+                    "label": "Slow clock divider (SLOW_CLK = 48 MHz / n, 0 = off; 480 = 100 kHz)",
+                    "mask": "000003FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "1023",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SLOW_CLK_CTRL",
+            "label": "PCR Slow Clock Control Register",
+            "unused": "FFFFFC00"
+        }
+    ],
     "mcu": "PIC32CX0525SG12144",
-    "clock": "1"
+    "clock": 48,
+    "core": "M4EF",
+    "delay_src_path": "delays/m4ef/__lib_delays.c"
 }

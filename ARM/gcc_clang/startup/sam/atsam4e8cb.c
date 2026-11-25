@@ -31,6 +31,8 @@
 // #include "sam4e.h"
 #include "mcu.h" // Note: Added for MikroE implementation.
 
+extern void SystemInit(); // Note: Added for MikroE implementation.
+
 /* Initialize segments */
 extern uint32_t _sfixed;
 extern uint32_t _efixed;
@@ -224,6 +226,9 @@ void Reset_Handler(void)
 
         /* Initialize the C library */
         __libc_init_array();
+
+        /* Initialize system clock settings */
+        SystemInit(); // Note: Added for MikroE implementation.
 
         /* Branch to main function */
         main();
