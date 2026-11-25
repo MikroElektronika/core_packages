@@ -1,6 +1,5 @@
 if(${MCU_NAME} MATCHES "^HPM5301IEG1$")
     list(APPEND local_list_include system/src/${vendor}/hpm5301/init_clock.c)
-    list(APPEND local_include_dirs system/src/${vendor}/hpm5301 system/src/${vendor}/hpm5301/thirdparty/hpm5301)
-    list(APPEND local_install_dirs system/src/${vendor}/hpm5301/thirdparty/hpm5301)
-    set(mcu_header_file system/src/${vendor}/hpm5301/mcu.h)
+    list(APPEND local_dir_install system/src/${vendor}/hpm5301/thirdparty/hpm5301)
+    set(${thirdpartyInstall} hpm5301/thirdparty/hpm5301 PARENT_SCOPE)
 endif()

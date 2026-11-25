@@ -14,31 +14,17 @@ if (${TOOLCHAIN_ID} STREQUAL "clang-llvm-riscv")
     add_compile_definitions("CLANG_RISCV")
 endif()
 
-#include all .cmake files from cmake folder
-
-set(local_list_include "")
+# Vendor specific files: cmake/<vendor>/*.cmake (see core_files_set in coreUtils.cmake)
+core_files_set(fileListInclude fileDirInclude fileListInstall linkerScript startupFile thirdpartyInstall)
 get_mcu_vendor(vendor)
-
-# Per MCU register header (def/<vendor>/<MCU>/mcu.h, as on ARM); MCUs without one use common/mcu.h
-if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/def/${vendor}/${MCU_NAME}/mcu.h)
-    set(mcu_header_dir def/${vendor}/${MCU_NAME})
-else()
-    set(mcu_header_dir common)
-endif()
-file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
-foreach(cmakeFile ${CMAKE_FILES})
-    get_filename_component(vendor_dir ${cmakeFile} DIRECTORY)
-    get_filename_component(vendor ${vendor_dir} NAME)
-    include(${cmakeFile})
-endforeach()
 
 set(MCU_NAME_LOWER "")
 string(TOLOWER ${MCU_NAME} MCU_NAME_LOWER)
 
 core_add_library(lib_core MikroC.Core
-    ${local_list_include}
-    startup/${MCU_NAME_LOWER}.S
-    linker_scripts/${MCU_NAME_LOWER}.ld
+    ${fileListInclude}
+    ${startupFile}
+    ${linkerScript}
 
     common/rcu_typedef.h
     common/delays.h
@@ -54,7 +40,7 @@ core_add_library(lib_core MikroC.Core
 )
 
 target_include_directories(lib_core PRIVATE
-    ${mcu_header_dir}
+    ${fileDirInclude}
     common/
     include/
     cstdio/include
@@ -67,28 +53,27 @@ INTERFACE
     $<INSTALL_INTERFACE:include/core>
 )
 
-if(local_include_dirs)
-    target_include_directories(lib_core PRIVATE ${local_include_dirs})
-endif()
-
 add_fosc_macro(lib_core)
 
 core_install(MikroC.Core)
 
-foreach(install_dir ${local_install_dirs})
-    install(
-        DIRECTORY
-            ${install_dir}/
-        DESTINATION
-            ${CMAKE_INSTALL_PREFIX}/include/core
-    )
-endforeach()
+# NOTE - Backslash at the end is important for DIRECTORY path
+if(thirdpartyInstall)
+    if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/system/src/${vendor}/${thirdpartyInstall})
+        install(
+            DIRECTORY
+                ${CMAKE_CURRENT_LIST_DIR}/system/src/${vendor}/${thirdpartyInstall}/
+            DESTINATION
+                ${CMAKE_INSTALL_PREFIX}/include/core
+        )
+    endif()
+endif()
 
 install(
     FILES
         common/rcu_typedef.h
         common/delays.h
-        ${mcu_header_dir}/mcu.h
+        ${fileListInstall}
         common/const.h
         common/bits.h
 
@@ -104,14 +89,14 @@ install(
 
 install(
     FILES
-        startup/${MCU_NAME_LOWER}.S
+        ${startupFile}
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/../FileStartup
 )
 
 install(
     FILES
-        linker_scripts/${MCU_NAME_LOWER}.ld
+        ${linkerScript}
     DESTINATION
         ${CMAKE_INSTALL_PREFIX}/../FileLinker
 )
