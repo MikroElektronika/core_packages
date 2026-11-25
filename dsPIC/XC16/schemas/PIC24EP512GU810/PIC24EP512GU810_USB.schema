@@ -5,7 +5,7 @@
     "flash": 524288,
     "ram": 53248,
     "settings": {
-        "clock": "50",
+        "clock": "140",
         "scheme": "PIC24EP512GU810_USB",
         "mcu": "PIC24EP512GU810",
         "core": "",
@@ -34,7 +34,7 @@
             },
             {
                 "key": "POSCMD",
-                "value": "XT"
+                "value": "HS"
             },
             {
                 "key": "OSCIOFNC",

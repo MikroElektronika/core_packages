@@ -5,7 +5,7 @@
     "flash": 262144,
     "ram": 28672,
     "settings": {
-        "clock": "50",
+        "clock": "140",
         "scheme": "dsPIC33EP256MU814_USB",
         "mcu": "DSPIC33EP256MU814",
         "core": "",
@@ -34,7 +34,7 @@
             },
             {
                 "key": "POSCMD",
-                "value": "XT"
+                "value": "HS"
             },
             {
                 "key": "OSCIOFNC",
