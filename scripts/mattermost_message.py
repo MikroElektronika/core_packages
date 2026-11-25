@@ -44,7 +44,8 @@ def entry_line(status, display_name, previous_version=None, version=None):
 
 def release_line(status, release_tag, package_count, version):
     ''' "- **UPDATE** [tag](link) - all 42 packages (1.0.4)" for a release indexed as a whole '''
-    return f'- **{status}** [{release_tag}]({REPO_URL}/releases/tag/{release_tag}) - all {package_count} packages ({version})'
+    packages = 'the only package' if package_count == 1 else f'all {package_count} packages'
+    return f'- **{status}** [{release_tag}]({REPO_URL}/releases/tag/{release_tag}) - {packages} ({version})'
 
 
 def add_section(title, lines, dry_run=False, release_tag=None):
