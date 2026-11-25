@@ -1,0 +1,59 @@
+{
+    "config_registers": [
+        {
+            "address": "600960E8",
+            "default": "00000000",
+            "key": "PCR_SYSCLK_CONF",
+            "unused": "FFFCFFFF",
+            "label": "ESP32-C61 CPU clock (PCR_SYSCLK_CONF_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00020000",
+                    "key": "SOC_CLK_SEL",
+                    "label": "CPU clock: PCR_SOC_CLK_SEL",
+                    "mask": "00030000",
+                    "settings": [
+                        {
+                            "label": "XTAL 40 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL_F160M / 2 = 80 MHz / PLL_F160M = 160 MHz",
+                            "value": "00020000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "600960F0",
+            "default": "00000000",
+            "key": "PCR_CPU_FREQ_CONF",
+            "unused": "FFFFFF00",
+            "label": "ESP32-C61 CPU clock (PCR_CPU_FREQ_CONF_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPU_DIV_NUM",
+                    "label": "CPU clock: PCR_CPU_DIV_NUM",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "XTAL 40 MHz / PLL_F160M = 160 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL_F160M / 2 = 80 MHz",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "RISCV",
+    "mcu": "ESP32-C61HR8",
+    "clock": "160"
+}
