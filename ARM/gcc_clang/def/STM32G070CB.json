@@ -98,7 +98,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "01000000",
                     "key": "PLLON",
                     "label": "PLL enable",
                     "mask": "01000000",
@@ -276,7 +276,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000002",
                     "key": "SW",
                     "label": "System clock switch",
                     "mask": "00000007",
@@ -314,7 +314,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "00000002",
                     "key": "PLLSRC",
                     "label": "PLL input clock source",
                     "mask": "00000003",
@@ -376,7 +376,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00001000",
+                    "init": "00000800",
                     "key": "PLLN",
                     "label": "PLL frequency multiplication factor N",
                     "mask": "00007F00",
@@ -540,7 +540,7 @@
                 },
                 {
                     "hidden": false,
-                    "init": "00000000",
+                    "init": "10000000",
                     "key": "PLLREN",
                     "label": "PLLRCLK clock output enable",
                     "mask": "10000000",
@@ -815,7 +815,7 @@
             "fields": [
                 {
                     "hidden": false,
-                    "init": "00000400",
+                    "init": "00000200",
                     "key": "VCORE",
                     "label": "Voltage scaling range selection",
                     "mask": "00000600",
@@ -1570,5 +1570,5 @@
             "min_address": "0xE000ED90"
         }
     ],
-    "clock": "1"
+    "clock": "64"
 }
