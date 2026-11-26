@@ -6,7 +6,9 @@
 ** @brief       : Linker script for XMC4104-F64K64 Device
 **                64K FLASH @ 0x08000000
 **                20K RAM @ 0x1FFFE000
-**                Flash linked to the cached alias 0x08000000 (= 0x0C000000 uncached).
+**                Flash linked to the cached alias 0x08000000 (= 0x0C000000 uncached),
+**                loaded (LMA) at the uncached alias 0x0C000000: the boot ROM and the
+**                flash programmers (J-Link, OpenOCD) only know the flash at 0x0C000000.
 **                RAM = PSRAM + DSRAM1 (contiguous).
 **                .RamFunc at the top of RAM (system bus), stack below it.
 **
@@ -43,6 +45,7 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 MEMORY
 {
   FLASH        (rx)    : ORIGIN = 0x08000000,   LENGTH = 64K
+  FLASH_LOAD   (rx)    : ORIGIN = 0x0C000000,   LENGTH = 64K
   RAM          (xrw)   : ORIGIN = 0x1FFFE000,   LENGTH = 20K
 }
 
@@ -54,16 +57,16 @@ _estack = __StackTop;
 SECTIONS
 {
   /* Vector table must be the very first thing in FLASH */
-  .isr_vector ORIGIN(FLASH) :
+  .isr_vector ORIGIN(FLASH) : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     KEEP(*(.vectors))
     KEEP(*(.isr_vector))
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
   /* The program code and other data into "FLASH" Rom type memory */
-  .text :
+  .text : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     *(.text)           /* .text sections (code) */
@@ -77,43 +80,43 @@ SECTIONS
 
     . = ALIGN(4);
     _etext = .;        /* define a global symbols at end of code */
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
   /* Constant data into "FLASH" Rom type memory */
-  .rodata :
+  .rodata : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     *(.rodata)         /* .rodata sections (constants, strings, etc.) */
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
-  .ARM.extab :
+  .ARM.extab : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     *(.ARM.extab* .gnu.linkonce.armextab.*)
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
-  .ARM :
+  .ARM : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     __exidx_start = .;
     *(.ARM.exidx*)
     __exidx_end = .;
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
-  .preinit_array :
+  .preinit_array : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     PROVIDE_HIDDEN (__preinit_array_start = .);
     KEEP (*(.preinit_array*))
     PROVIDE_HIDDEN (__preinit_array_end = .);
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
-  .init_array :
+  .init_array : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     PROVIDE_HIDDEN (__init_array_start = .);
@@ -121,9 +124,9 @@ SECTIONS
     KEEP (*(.init_array*))
     PROVIDE_HIDDEN (__init_array_end = .);
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
-  .fini_array :
+  .fini_array : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     PROVIDE_HIDDEN (__fini_array_start = .);
@@ -131,10 +134,10 @@ SECTIONS
     KEEP (*(.fini_array*))
     PROVIDE_HIDDEN (__fini_array_end = .);
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
   /* Copy table used by Reset_Handler to initialize RAM sections */
-  .copy.table :
+  .copy.table : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     __copy_table_start__ = .;
@@ -149,10 +152,10 @@ SECTIONS
 
     __copy_table_end__ = .;
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
   /* Zero table used by Reset_Handler to initialize BSS sections */
-  .zero.table :
+  .zero.table : ALIGN_WITH_INPUT
   {
     . = ALIGN(4);
     __zero_table_start__ = .;
@@ -162,7 +165,7 @@ SECTIONS
 
     __zero_table_end__ = .;
     . = ALIGN(4);
-  } > FLASH
+  } > FLASH AT> FLASH_LOAD
 
   /* Used by the startup to initialize data */
   _sidata = LOADADDR(.data);
@@ -177,7 +180,7 @@ SECTIONS
 
     . = ALIGN(4);
     _edata = .;        /* define a global symbol at data end */
-  } > RAM AT> FLASH
+  } > RAM AT> FLASH_LOAD
 
   /* Uninitialized data section into "RAM" Ram type memory */
   . = ALIGN(4);
@@ -214,7 +217,7 @@ SECTIONS
     *(.RamFunc)        /* .RamFunc sections */
     *(.RamFunc*)       /* .RamFunc* sections */
     . = ALIGN(4);
-  } > RAM AT> FLASH
+  } > RAM AT> FLASH_LOAD
   ASSERT(ADDR(.ramfunc) >= 0x20000000, "RamFunc must be in system-bus SRAM")
 
   /* Remove information from the compiler libraries */
