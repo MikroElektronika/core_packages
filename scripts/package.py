@@ -17,6 +17,38 @@ from pathlib import Path
 
 parent_dir = str(Path(__file__).resolve().parent.parent)
 
+# GCC include paths for these vendors point one level too deep in the cmake
+# files, so the parent directory is used instead.
+# Add a new vendor here: the name is matched anywhere in the include path.
+PARENT_DIR_INCLUDE_VENDORS = [
+    'doc_ds',
+    'renesas',
+    'nuvoton',
+    'pic32',
+    'adi',
+    'nordic',
+    'espressif',
+    'hpmicro',
+]
+
+# Same as above, but only when the MCU file name also matches the condition.
+# Format: (keyword in include path, condition on MCU file name)
+PARENT_DIR_INCLUDE_VENDORS_CONDITIONAL = [
+    ('sam',        lambda file_name: re.search('^(at)?sam.+$', file_name)),
+    ('infineon',   lambda file_name: 'xmc' not in file_name),
+    ('ti',         lambda file_name: 'msp' in file_name),
+    ('gigadevice', lambda file_name: 'gd32vw' in file_name),
+]
+
+def use_parent_include_dir(system_path, file_name):
+    ''' Returns True if the parent directory of system_path should be included '''
+    if any(vendor in system_path for vendor in PARENT_DIR_INCLUDE_VENDORS):
+        return True
+    return any(
+        keyword in system_path and condition(file_name)
+        for keyword, condition in PARENT_DIR_INCLUDE_VENDORS_CONDITIONAL
+    )
+
 def create_table(data, table_out):
     ''' Creates a table with data and saves it to table_out '''
     # Define column names
@@ -69,7 +101,7 @@ def parse_files_for_paths(cmake_files, source_dir, isGCC=None):
                 if isGCC and 'list(APPEND local_list_include' in line:
 
                     systemPath = line.split()[-1][:-1].replace("${vendor}", vendor)
-                    if 'doc_ds' in systemPath or ('sam' in systemPath and re.search('^(at)?sam.+$', file_name)) or 'renesas' in systemPath or 'nuvoton' in systemPath or 'pic32' in systemPath or ('infineon' in systemPath and 'xmc' not in file_name) or ('ti' in systemPath and 'msp' in file_name) or ('gigadevice' in systemPath and 'gd32vw' in file_name) or 'adi' in systemPath:
+                    if use_parent_include_dir(systemPath, file_name):
                         systemPath = os.path.dirname(systemPath)
                     systemPath = os.path.join(source_dir, systemPath)
                     paths[file_name]['files'].add(systemPath)
