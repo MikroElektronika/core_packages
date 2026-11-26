@@ -1,6 +1,130 @@
 {
+    "config_registers": [
+        {
+            "address": "4003FF08",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000006",
+                    "key": "FREQ",
+                    "label": "IMO frequency",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "24 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "28 MHz",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "32 MHz",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "36 MHz",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "40 MHz",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "44 MHz",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "48 MHz",
+                            "value": "00000006"
+                        }
+                    ]
+                }
+            ],
+            "key": "CLK_IMO_SELECT",
+            "unused": "00000000",
+            "label": "IMO frequency"
+        },
+        {
+            "address": "40030028",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HFCLK_SEL",
+                    "label": "HFCLK source",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "IMO (internal oscillator)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "EXTCLK (external clock on P0.1)",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "HFCLK_DIV",
+                    "label": "HFCLK divider",
+                    "mask": "0000000C",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "0000000C"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SYSCLK_DIV",
+                    "label": "SYSCLK (CPU) divider",
+                    "mask": "000000C0",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "000000C0"
+                        }
+                    ]
+                }
+            ],
+            "key": "CLK_SELECT",
+            "unused": "00000000",
+            "label": "HFCLK / SYSCLK"
+        }
+    ],
     "core": "M0+",
     "delay_src_path": "delays/m0+/__lib_delays.c",
     "mcu": "CY8C4146LWE-HVS015",
-    "clock": "1"
+    "clock": 48
 }
