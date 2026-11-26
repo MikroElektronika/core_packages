@@ -1,0 +1,207 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc-arm-none-eabi/core/def/R7FA2L2093CFM.json",
+    "flash": 131072,
+    "ram": 16384,
+    "settings": {
+        "clock": "48",
+        "scheme": "R7FA2L2093CFM_USB",
+        "mcu": "R7FA2L2093CFM",
+        "core": "M23",
+        "delay_src_path": "delays/m23/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "PCKD",
+                        "value": "0"
+                    },
+                    {
+                        "key": "PCKB",
+                        "value": "100"
+                    },
+                    {
+                        "key": "ICK",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_SCKDIVCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CKSEL",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_SCKSCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MEMWAIT",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_MEMWAIT"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MOSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_MOSCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HCSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_HOCOCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HCFRQ1",
+                        "value": "20"
+                    }
+                ],
+                "key": "SYSTEM_HOCOCR2"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MCSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_MOCOCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CKOSEL",
+                        "value": "0"
+                    },
+                    {
+                        "key": "CKODIV",
+                        "value": "0"
+                    },
+                    {
+                        "key": "CKOEN",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_CKOCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "OPCM",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_OPCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MSTS",
+                        "value": "9"
+                    }
+                ],
+                "key": "SYSTEM_MOSCWTCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HSTS",
+                        "value": "5"
+                    }
+                ],
+                "key": "SYSTEM_HOCOWTCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SOPCM",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_SOPCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MODRV1",
+                        "value": "0"
+                    },
+                    {
+                        "key": "MOSEL",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_MOMCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SOSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_SOSCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SODRV",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_SOMCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "LCSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_LOCOCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CK",
+                        "value": "3"
+                    },
+                    {
+                        "key": "SEL",
+                        "value": "20"
+                    }
+                ],
+                "key": "SYSTEM_UTA0CK"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CK",
+                        "value": "3"
+                    },
+                    {
+                        "key": "EN",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_UTA1CK"
+            }
+        ]
+    }
+}

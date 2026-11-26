@@ -1,0 +1,18 @@
+#pragma once
+/* Logging is not available in the MikroE core: all ESP-IDF log macros are empty. */
+#define ESP_LOGE(tag, ...) ((void)0)
+#define ESP_LOGW(tag, ...) ((void)0)
+#define ESP_LOGI(tag, ...) ((void)0)
+#define ESP_LOGD(tag, ...) ((void)0)
+#define ESP_LOGV(tag, ...) ((void)0)
+#define ESP_EARLY_LOGE(tag, ...) ((void)0)
+#define ESP_EARLY_LOGW(tag, ...) ((void)0)
+#define ESP_EARLY_LOGI(tag, ...) ((void)0)
+#define ESP_EARLY_LOGD(tag, ...) ((void)0)
+#define ESP_EARLY_LOGV(tag, ...) ((void)0)
+#define ESP_DRAM_LOGE(tag, ...) ((void)0)
+#define ESP_DRAM_LOGW(tag, ...) ((void)0)
+#define ESP_DRAM_LOGI(tag, ...) ((void)0)
+#define ESP_DRAM_LOGD(tag, ...) ((void)0)
+#define ESP_DRAM_LOGV(tag, ...) ((void)0)
+#define ESP_LOG_LEVEL_LOCAL(...) ((void)0)

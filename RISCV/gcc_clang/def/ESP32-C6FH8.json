@@ -1,0 +1,76 @@
+{
+    "config_registers": [
+        {
+            "address": "60096110",
+            "default": "00000000",
+            "key": "PCR_SYSCLK_CONF",
+            "unused": "FFFCFFFF",
+            "label": "ESP32-C6 CPU clock (PCR_SYSCLK_CONF_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00010000",
+                    "key": "SOC_CLK_SEL",
+                    "label": "CPU clock: PCR_SOC_CLK_SEL",
+                    "mask": "00030000",
+                    "settings": [
+                        {
+                            "label": "XTAL 40 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL 480 MHz / 6 = 80 MHz / PLL 480 MHz / 4 = 120 MHz / PLL 480 MHz / 3 = 160 MHz",
+                            "value": "00010000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "60096118",
+            "default": "00000000",
+            "key": "PCR_CPU_FREQ_CONF",
+            "unused": "FFFE00FF",
+            "label": "ESP32-C6 CPU clock (PCR_CPU_FREQ_CONF_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPU_HS_DIV_NUM",
+                    "label": "CPU clock: PCR_CPU_HS_DIV_NUM",
+                    "mask": "0000FF00",
+                    "settings": [
+                        {
+                            "label": "PLL 480 MHz / 4 = 120 MHz / PLL 480 MHz / 3 = 160 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL 480 MHz / 6 = 80 MHz",
+                            "value": "00000100"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPU_HS_120M_FORCE",
+                    "label": "CPU clock: PCR_CPU_HS_120M_FORCE",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "PLL 480 MHz / 6 = 80 MHz / PLL 480 MHz / 3 = 160 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL 480 MHz / 4 = 120 MHz",
+                            "value": "00010000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "RISCV",
+    "mcu": "ESP32-C6FH8",
+    "clock": "160"
+}

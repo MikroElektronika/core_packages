@@ -1,0 +1,67 @@
+{
+    "config_registers": [
+        {
+            "address": "20587000",
+            "default": "00000000",
+            "key": "HP_SYS_CLKRST_SOC_CLK_SEL",
+            "unused": "FFFFFFFC",
+            "label": "ESP32-S31 CPU clock (HP_SYS_CLKRST_SOC_CLK_SEL_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "SOC_CLK_SEL",
+                    "label": "CPU clock: HP_SYS_CLKRST_REG_SOC_CLK_SEL",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "XTAL 40 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CPLL 320 MHz / 4 = 80 MHz / CPLL 320 MHz / 2 = 160 MHz / CPLL 320 MHz",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "PLL_F240M = 240 MHz",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "20587004",
+            "default": "00000000",
+            "key": "HP_SYS_CLKRST_CPU_FREQ_CTRL0",
+            "unused": "FFFFFF00",
+            "label": "ESP32-S31 CPU clock (HP_SYS_CLKRST_CPU_FREQ_CTRL0_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPU_CLK_DIV_NUM",
+                    "label": "CPU clock: HP_SYS_CLKRST_REG_CPU_CLK_DIV_NUM",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "PLL_F240M = 240 MHz / CPLL 320 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "CPLL 320 MHz / 2 = 160 MHz",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "CPLL 320 MHz / 4 = 80 MHz",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "RISCV",
+    "mcu": "ESP32-S31NRV32",
+    "clock": "320"
+}

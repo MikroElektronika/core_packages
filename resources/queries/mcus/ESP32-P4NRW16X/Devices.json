@@ -1,0 +1,18 @@
+{
+    "def_file": "ESP32-P4NRW16X.json",
+    "family_uid": "ESP32-P4",
+    "flash": "0",
+    "icon": "images/mcu/espressif.png",
+    "max_speed": "400.000",
+    "name": "ESP32-P4NRW16X",
+    "ram": "643008",
+    "sdk_config": "{\"MCU_NAME\":\"ESP32-P4NRW16X\",\"CORE_NAME\":\"RISCV\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ESP32-P4NRW16X",
+    "vendor": "Espressif",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm-riscv\": \"riscv_gcc_clang_esp32p4\", \"xpack-riscv-none-embed-gcc\": \"riscv_gcc_clang_esp32p4\"}"
+}

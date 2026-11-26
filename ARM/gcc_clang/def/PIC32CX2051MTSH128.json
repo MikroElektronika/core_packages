@@ -420,9 +420,246 @@
             "unused": "FFFF0000"
         },
         {
+            "address": "4680000C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "80000000",
+                    "key": "ENLOCK",
+                    "label": "Enable PLL lock",
+                    "mask": "80000000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "80000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "20000000",
+                    "key": "ENPLLO0",
+                    "label": "Enable PLLC clock output (PLLCCK)",
+                    "mask": "20000000",
+                    "settings": [
+                        {
+                            "label": "PLLCCK is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLCCK is enabled",
+                            "value": "20000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10000000",
+                    "key": "ENPLL",
+                    "label": "Enable PLLC",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "PLLC is disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLLC is enabled",
+                            "value": "10000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "08000000",
+                    "key": "PLLMS",
+                    "label": "PLLC reference clock",
+                    "mask": "08000000",
+                    "settings": [
+                        {
+                            "label": "PLLACK0 (PLLA output 0, set by the core 0 application)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK (main clock)",
+                            "value": "08000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIVPMC0",
+                    "label": "PLLCCK divider (PLLCCK = VCO / (DIVPMC0 + 1))",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "PMC_PLLC_CTRL0",
+            "label": "PLLC control register 0 (PMC_PLL_CTRL0, PMC_PLL_UPDT.ID = 2)",
+            "unused": "47FFFF00"
+        },
+        {
+            "address": "46800010",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000027",
+                    "key": "MUL",
+                    "label": "PLLC multiplier (VCO = reference x (MUL + 1), 300..600 MHz)",
+                    "mask": "0000FFFF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "PMC_PLLC_CTRL1",
+            "label": "PLLC control register 1 (PMC_PLL_CTRL1, PMC_PLL_UPDT.ID = 2)",
+            "unused": "FFFF0000"
+        },
+        {
             "address": "4680002C",
             "default": "00000001",
             "fields": [
+                {
+                    "hidden": false,
+                    "init": "02000000",
+                    "key": "RATIO_MCK1DIV",
+                    "label": "MCK1DIV clock (core 1 peripheral bus) = MCK1 / 2",
+                    "mask": "02000000",
+                    "settings": [
+                        {
+                            "label": "MCK1DIV = MCK1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MCK1DIV = MCK1 / 2",
+                            "value": "02000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPPRES",
+                    "label": "Core 1 processor (CPU_CLK1) and master clock (MCK1) prescaler",
+                    "mask": "00F00000",
+                    "settings": [
+                        {
+                            "label": "Selected clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Selected clock divided by 2",
+                            "value": "00100000"
+                        },
+                        {
+                            "label": "Selected clock divided by 3",
+                            "value": "00200000"
+                        },
+                        {
+                            "label": "Selected clock divided by 4",
+                            "value": "00300000"
+                        },
+                        {
+                            "label": "Selected clock divided by 5",
+                            "value": "00400000"
+                        },
+                        {
+                            "label": "Selected clock divided by 6",
+                            "value": "00500000"
+                        },
+                        {
+                            "label": "Selected clock divided by 7",
+                            "value": "00600000"
+                        },
+                        {
+                            "label": "Selected clock divided by 8",
+                            "value": "00700000"
+                        },
+                        {
+                            "label": "Selected clock divided by 9",
+                            "value": "00800000"
+                        },
+                        {
+                            "label": "Selected clock divided by 10",
+                            "value": "00900000"
+                        },
+                        {
+                            "label": "Selected clock divided by 11",
+                            "value": "00A00000"
+                        },
+                        {
+                            "label": "Selected clock divided by 12",
+                            "value": "00B00000"
+                        },
+                        {
+                            "label": "Selected clock divided by 13",
+                            "value": "00C00000"
+                        },
+                        {
+                            "label": "Selected clock divided by 14",
+                            "value": "00D00000"
+                        },
+                        {
+                            "label": "Selected clock divided by 15",
+                            "value": "00E00000"
+                        },
+                        {
+                            "label": "Selected clock divided by 16",
+                            "value": "00F00000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00050000",
+                    "key": "CPCSS",
+                    "label": "Core 1 processor (CPU_CLK1) and master clock (MCK1) source",
+                    "mask": "00070000",
+                    "settings": [
+                        {
+                            "label": "MD_SLCK (monitoring domain 32 kHz RC)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "MAINCK (main clock)",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "MCK0 (core 0 master clock)",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "PLLACK1 (PLLA output 1)",
+                            "value": "00030000"
+                        },
+                        {
+                            "label": "PLLBCK (PLLB output)",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "PLLCCK (PLLC output)",
+                            "value": "00050000"
+                        }
+                    ]
+                },
                 {
                     "hidden": false,
                     "init": "00000000",
@@ -525,8 +762,8 @@
                 }
             ],
             "key": "PMC_CPU_CKR",
-            "label": "CPU clock register (core 0: CPU_CLK0 / MCK0)",
-            "unused": "FAFFFF8C"
+            "label": "CPU clock register (core 0: CPU_CLK0 / MCK0, core 1: CPU_CLK1 / MCK1)",
+            "unused": "F808FF8C"
         },
         {
             "address": "460E0000",

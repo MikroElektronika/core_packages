@@ -263,8 +263,22 @@ def bump_version(version):
         return f'v{increment_version(version[1:])}'
     return increment_version(version)
 
+def release_version(release_tag):
+    ''' "INFINEON_GCC_CLANG_v2.0.2" -> "2.0.2", None for a tag without a version '''
+    match = re.search(r'v(\d+\.\d+\.\d+)$', release_tag or '')
+    return match.group(1) if match else None
+
 def plan_package_version(indexed_item, metadata_item, current_hash):
-    ''' (new version, needs indexing) of an MCU package from its indexed document and metadata entry '''
+    '''
+    (new version, needs indexing) of an MCU package from its indexed document and metadata entry.
+    A package that belongs to a vendor release always gets that release's version, so every index
+    shows the same version as GitHub: a misaligned indexed version (lower or higher) is re-planned.
+    '''
+    aligned_version = (release_version(metadata_item['release_tag']) or metadata_item.get('version')) if metadata_item.get('release_tag') else None
+    if aligned_version:
+        indexed_version = indexed_item.get('version') if indexed_item else None
+        changed = not indexed_item or current_hash != indexed_item.get('hash')
+        return aligned_version, changed or aligned_version != indexed_version
     if not indexed_item or not indexed_item.get('version'):
         version = max(['1.0.0', metadata_item.get('version') or '1.0.0'], key=lambda t: Version(t.lstrip('v')))
         return version, True
@@ -302,13 +316,15 @@ def file_doc(asset, name, display_name, doc_type):
 
 def plan_release_indexing(index_name, indexed_items, metadata_content, releases_by_tag, release_tags, mcu_check_list, token, force, keep_previous_date, published_at):
     '''
-    Documents of one index that need (re)indexing: [(doc id, doc, "NEW"/"UPDATE", previous version)].
+    Documents of one index that need (re)indexing, plus how many indexable packages each release holds:
+    ([(doc id, doc, "NEW"/"UPDATE", previous version, release tag)], {release tag: package count}).
     An MCU package is planned when it is not indexed yet, its hash differs from the indexed one or its
     version moved; clocks/schemas when the indexed document points to another upload of the file.
     Everything is planned with force; keep_previous_date re-plans indexed packages with their old dates.
     '''
     indexed_by_name = {item['name']: item for item in indexed_items}
     plan = []
+    release_package_counts = {}
     for release_tag in release_tags:
         release = releases_by_tag.get(release_tag)
         if not release:
@@ -321,6 +337,7 @@ def plan_release_indexing(index_name, indexed_items, metadata_content, releases_
             name = os.path.splitext(os.path.basename(asset['name']))[0]
 
             if name == 'clocks' or 'schemas' in name:
+                release_package_counts[release_tag] = release_package_counts.get(release_tag, 0) + 1
                 doc_id = 'clocks' if name == 'clocks' else f"schemas{'_test' if 'test' in name else ''}"
                 indexed = indexed_by_name.get(doc_id)
                 same_upload = indexed and indexed.get('updated_at') == asset['updated_at'] and indexed.get('download_link') == asset['browser_download_url']
@@ -333,7 +350,7 @@ def plan_release_indexing(index_name, indexed_items, metadata_content, releases_
                 doc['package_changed'] = not same_upload
                 if keep_previous_date and indexed:
                     doc = {**indexed, 'hash': doc['hash']}
-                plan.append((doc_id, doc, 'UPDATE' if indexed else 'NEW', previous_version))
+                plan.append((doc_id, doc, 'UPDATE' if indexed else 'NEW', previous_version, release_tag))
                 continue
 
             metadata_item = find_item_by_name(metadata_content[0], name)
@@ -342,11 +359,14 @@ def plan_release_indexing(index_name, indexed_items, metadata_content, releases_
             # A package is indexed from the release it was last uploaded to (older releases keep older copies)
             if metadata_item.get('release_tag') and metadata_item['release_tag'] != release_tag:
                 continue
+            release_package_counts[release_tag] = release_package_counts.get(release_tag, 0) + 1
             indexed = indexed_by_name.get(name)
             current_hash = metadata_item['hash']
             version, needed = plan_package_version(indexed, metadata_item, current_hash)
             if not (needed or force or (keep_previous_date and indexed)):
                 continue
+            # Same package content, only the indexed version is moved to the release version
+            align_only = bool(indexed) and current_hash == indexed.get('hash') and version != indexed.get('version') and not force
             doc = {
                 'name': name,
                 'display_name': metadata_item['display_name'],
@@ -361,7 +381,7 @@ def plan_release_indexing(index_name, indexed_items, metadata_content, releases_
                 'category': metadata_item['category'],
                 'download_link': asset['browser_download_url'],
                 'download_link_api': asset['url'],
-                'package_changed': needed or force,
+                'package_changed': indexed.get('package_changed', False) if align_only else (needed or force),
                 'install_location': metadata_item['install_location'],
                 'gh_package_name': name
             }
@@ -369,13 +389,37 @@ def plan_release_indexing(index_name, indexed_items, metadata_content, releases_
                 doc.update({
                     'compilers': metadata_item['compilers'],
                     'dependencies': ['preinit', 'unit_test_lib', 'mikroe_utils_common'],
-                    'mcus': support.fetch_mcu_list(name, mcu_check_list)
+                    # docs.7z only knows the packages of the branch that released last; metadata.json knows all
+                    'mcus': support.fetch_mcu_list(name, mcu_check_list) or metadata_item.get('mcus')
                 })
-            # If requested to keep previous date, only update the hash value
+            # If requested to keep previous date, only update the hash value (and align the version)
             if keep_previous_date and indexed:
-                doc = {**indexed, 'hash': current_hash}
-            plan.append((name, doc, 'UPDATE' if indexed else 'NEW', indexed.get('version') if indexed else None))
-    return plan
+                doc = {**indexed, 'hash': current_hash, 'version': version}
+            status = 'ALIGN' if align_only else ('UPDATE' if indexed else 'NEW')
+            plan.append((name, doc, status, indexed.get('version') if indexed else None, release_tag))
+    return plan, release_package_counts
+
+def message_lines(plan, release_package_counts, keep_previous_date):
+    '''
+    Mattermost lines for a plan. A release whose every package is in the plan with one common version
+    is collapsed into a single line (release name + version); other releases list their packages.
+    '''
+    by_release = {}
+    for doc_id, doc, status, previous_version, release_tag in plan:
+        if keep_previous_date and status == 'UPDATE':
+            status = 'HASH'
+        by_release.setdefault(release_tag, []).append((doc_id, doc, status, previous_version))
+
+    lines = []
+    for release_tag, entries in by_release.items():
+        versions = {doc.get('version') for _, doc, _, _ in entries}
+        if len(entries) == release_package_counts.get(release_tag) and len(versions) == 1:
+            statuses = sorted({status for _, _, status, _ in entries})
+            lines.append(mattermost_message.release_line('/'.join(statuses), release_tag, len(entries), versions.pop()))
+            continue
+        for doc_id, doc, status, previous_version in entries:
+            lines.append(mattermost_message.entry_line(status, doc.get('display_name') or doc_id, previous_version, doc.get('version')))
+    return lines
 
 # Function to index release details into Elasticsearch
 def index_release_to_elasticsearch(es : Elasticsearch, index_names, release_details, token, repo, force, keep_previous_date=False, dry_run=False):
@@ -412,16 +456,14 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_names, release_deta
 
     for index_name in index_names:
         indexed_items = fetch_current_indexed_packages(es, index_name)
-        plan = plan_release_indexing(index_name, indexed_items, metadata_content, releases_by_tag, release_tags,
+        plan, release_package_counts = plan_release_indexing(index_name, indexed_items, metadata_content, releases_by_tag, release_tags,
                                      mcu_check_list, token, force, keep_previous_date, published_at)
         label = mattermost_message.index_label(index_name)
         print(f'\033[94m{label}: {len(plan)} package(s) to index\033[0m')
 
-        lines = []
-        for doc_id, doc, status, previous_version in plan:
+        for doc_id, doc, status, previous_version, _ in plan:
             if keep_previous_date and status == 'UPDATE':
                 status = 'HASH'
-            lines.append(mattermost_message.entry_line(status, doc.get('display_name') or doc_id, previous_version, doc.get('version')))
             if dry_run:
                 print(f"[DRY RUN] {status} {doc_id} {previous_version or '-'} -> {doc.get('version')}")
                 continue
@@ -437,7 +479,8 @@ def index_release_to_elasticsearch(es : Elasticsearch, index_names, release_deta
             if previous_version != doc.get('version'):
                 print(f"\033[95mVersion for asset {doc_id} has been updated from {previous_version} to {doc.get('version')}\033[0m")
 
-        mattermost_message.add_section(label, lines, dry_run=dry_run, release_tag=release_details[0]['tag_name'])
+        mattermost_message.add_section(label, message_lines(plan, release_package_counts, keep_previous_date),
+                                       dry_run=dry_run, release_tag=release_details[0]['tag_name'])
 
 
 def is_release_latest(repo, token, release_version):
