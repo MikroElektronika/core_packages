@@ -1,0 +1,18 @@
+{
+    "def_file": "NRF52820-QDAA.json",
+    "family_uid": "nRF52",
+    "flash": "262144",
+    "icon": "images/mcu/nordic.png",
+    "max_speed": "64.000",
+    "name": "NRF52820-QDAA",
+    "ram": "32768",
+    "sdk_config": "{\"MCU_NAME\":\"NRF52820-QDAA\",\"CORE_NAME\":\"M4DSP\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "NRF52820-QDAA",
+    "vendor": "Nordic Semiconductor",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nrf5280_2\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nrf5280_2\"}"
+}

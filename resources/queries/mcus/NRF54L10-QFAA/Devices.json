@@ -1,0 +1,18 @@
+{
+    "def_file": "NRF54L10-QFAA.json",
+    "family_uid": "nRF54L",
+    "flash": "1036288",
+    "icon": "images/mcu/nordic.png",
+    "max_speed": "128.000",
+    "name": "NRF54L10-QFAA",
+    "ram": "196608",
+    "sdk_config": "{\"MCU_NAME\":\"NRF54L10-QFAA\",\"CORE_NAME\":\"M33EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "NRF54L10-QFAA",
+    "vendor": "Nordic Semiconductor",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nrf54l\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nrf54l\"}"
+}
