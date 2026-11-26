@@ -1,5 +1,5 @@
 /*
- * GCC startup file for PIC32CX1025MTC128S1
+ * GCC startup file for core 1 (coprocessor) of the PIC32CX5112MTC128
  *
  * Copyright (c) 2025 Microchip Technology Inc. and its subsidiaries.
  *
@@ -20,7 +20,7 @@
  */
 
 // Note: Changed for MikroE implementation.
-// #include "pic32cx1025mtc128s1.h"
+// #include "pic32cx5112mtc128s1.h" (core 1 view: mcu.h with CORE_CM4_1)
 #include "mcu.h" // Note: Added for MikroE implementation.
 extern void SystemInit(); // Note: Added for MikroE implementation.
 

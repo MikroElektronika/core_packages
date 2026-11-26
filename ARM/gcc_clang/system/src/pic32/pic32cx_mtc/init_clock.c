@@ -47,9 +47,17 @@
  *  - CPU_CLK0 = MCK0 = (MD_SLCK | MAINCK | PLLACK1 | PLLBCK) / PRES, at most 200 MHz.
  *  The three PLLs share PMC_PLL_CTRLx; PMC_PLL_UPDT.ID selects the PLL being accessed.
  *
- * Core 1 (MCK1, CPU_CLK1) is not configured here: its fields of PMC_CPU_CKR, its clock
- * enables and PLLC are left untouched. The S1 device variants are core 1 images, whose clock
- * is owned by the core 0 application, so they only enable the FPU.
+ * Dual-core MTC/MTSH parts (NECTO dual-core projects, like the RA8 dual-core MCUs): one
+ * definition holds the clock registers of both cores and the same file is built per core,
+ * core 1 with CORE_CM4_1 (CORE_CM4_0 or nothing for core 0, MTG and single-core projects).
+ *  - PLLC: PLLACK0 or MAINCK x (MUL + 1) = VCO (300..600 MHz), PLLCCK = VCO / (DIVPMC0 + 1).
+ *  - CPU_CLK1 = MCK1 = (MD_SLCK | MAINCK | MCK0 | PLLACK1 | PLLBCK | PLLCCK) / (CPPRES + 1),
+ *    MCK1DIV = MCK1 or MCK1 / 2 (RATIO_MCK1DIV).
+ *  Core 0 configures every clock, core 1's included, then starts core 1: core 1 has no flash,
+ *  its image is stored at the start of IFLASH1 (core_1_m4ef linker script, programmed with the
+ *  project's merged hex), copied to SRAM1, and core 1 is clocked and released from reset.
+ *  Core 1 only enables its FPU; its clock (SystemCoreClock, delays) comes from
+ *  PIC32CX_MT_CORE1_KHZ (delay_parameters.h, derived from the definition registers).
  */
 
 #include "core_header.h"
@@ -72,18 +80,89 @@ uint32_t SystemCoreClock = __SYSTEM_CLOCK;  /*!< System Clock Frequency (Core Cl
 
 void SystemCoreClockUpdate(void);
 
-#ifdef VALUE_PMC_CPU_CKR
-/* Core 0 image: the clock system is configured here. */
-
+#if !defined(CORE_CM4_1) && defined(VALUE_PMC_PLLA_CTRL0)
 /* PMC_PLL_UPDT.ID values. */
 #define PLL_ID_PLLA             (0UL)
 #define PLL_ID_PLLB             (1UL)
+#define PLL_ID_PLLC             (2UL)
 
 /* Recommended PMC_PLL_ACR values and start-up times (PMC_PLL_UPDT.STUPTIM). */
 #define PLLA_RECOMMENDED_ACR    (0x0F020038UL)
 #define PLLB_RECOMMENDED_ACR    (0x28020038UL)
+#define PLLC_RECOMMENDED_ACR    (0x28020038UL)
 #define PLLA_UPDT_STUPTIM_VAL   (0x02UL)
 #define PLLB_UPDT_STUPTIM_VAL   (0x00UL)
+#define PLLC_UPDT_STUPTIM_VAL   (0x00UL)
+
+/**
+ * \brief Select a PLL for the PMC_PLL_CTRLx/SSR/ACR registers (PMC_PLL_UPDT.ID).
+ *
+ * \param id PLL index (0 = PLLA, 1 = PLLB, 2 = PLLC).
+ * \param update Non-zero to also apply the written PLL settings (PMC_PLL_UPDT.UPDATE).
+ */
+static void _pmc_pll_select(uint32_t id, uint32_t update)
+{
+    uint32_t data = PMC_REGS->PMC_PLL_UPDT & ~(PMC_PLL_UPDT_UPDATE_Msk | PMC_PLL_UPDT_ID_Msk);
+
+    data |= PMC_PLL_UPDT_ID(id);
+    if (update) {
+        data |= PMC_PLL_UPDT_UPDATE_Msk;
+    }
+    PMC_REGS->PMC_PLL_UPDT = data;
+}
+
+/**
+ * \brief Stop a PLL: disable its outputs first, then the PLL itself.
+ *
+ * \param id PLL index (0 = PLLA, 1 = PLLB, 2 = PLLC).
+ */
+static void _pmc_pll_disable(uint32_t id)
+{
+    _pmc_pll_select(id, 0);
+    PMC_REGS->PMC_PLL_CTRL0 &= ~(PMC_PLL_CTRL0_ENPLLO0_Msk | PMC_PLL_CTRL0_ENPLLO1_Msk);
+    _pmc_pll_select(id, 1);
+    PMC_REGS->PMC_PLL_CTRL0 &= ~PMC_PLL_CTRL0_ENPLL_Msk;
+    _pmc_pll_select(id, 1);
+}
+
+/**
+ * \brief Program and start a PLL, then wait for its lock.
+ *
+ * \param id      PLL index (0 = PLLA, 1 = PLLB, 2 = PLLC).
+ * \param ctrl0   PMC_PLL_CTRL0 value: reference (PLLMS), output dividers and output enables.
+ * \param ctrl1   PMC_PLL_CTRL1 value: multiplier (MUL).
+ * \param acr     Recommended PMC_PLL_ACR value of this PLL.
+ * \param stuptim PMC_PLL_UPDT.STUPTIM value of this PLL.
+ */
+static void _pmc_pll_enable(uint32_t id, uint32_t ctrl0, uint32_t ctrl1, uint32_t acr, uint32_t stuptim)
+{
+    uint32_t data;
+
+    // Select the PLL and its start-up time.
+    data = PMC_REGS->PMC_PLL_UPDT & ~PMC_PLL_UPDT_Msk;
+    PMC_REGS->PMC_PLL_UPDT = data | PMC_PLL_UPDT_ID(id) | PMC_PLL_UPDT_STUPTIM(stuptim);
+
+    // Loop filter, integer multiplier, no fractional part and no spread spectrum.
+    PMC_REGS->PMC_PLL_ACR = acr;
+    PMC_REGS->PMC_PLL_SSR = 0;
+    PMC_REGS->PMC_PLL_CTRL1 = ctrl1 & PMC_PLL_CTRL1_MUL_Msk;
+    PMC_REGS->PMC_PLL_CTRL2 = 0;
+    PMC_REGS->PMC_PLL_UPDT |= PMC_PLL_UPDT_UPDATE_Msk;
+
+    // Enable the PLL, its lock detection, its outputs and dividers.
+    data = PMC_REGS->PMC_PLL_CTRL0 & ~PMC_PLL_CTRL0_Msk;
+    data |= PMC_PLL_CTRL0_ENLOCK_Msk | PMC_PLL_CTRL0_ENPLL_Msk | ctrl0;
+    PMC_REGS->PMC_PLL_CTRL0 = data;
+    PMC_REGS->PMC_PLL_UPDT |= PMC_PLL_UPDT_UPDATE_Msk;
+
+    while (0 == (PMC_REGS->PMC_PLL_ISR0 & (PMC_PLL_ISR0_LOCK0_Msk << id))) {
+        /* Wait until the PLL is locked */
+    }
+}
+#endif /* !CORE_CM4_1 && VALUE_PMC_PLLA_CTRL0 */
+
+#if !defined(CORE_CM4_1) && defined(VALUE_PMC_PLLA_CTRL0)
+/* Core 0: the clock system is configured here. */
 
 /*
  * Flash wait states used while the clocks are being switched. The flash access time is 32 ns,
@@ -242,72 +321,6 @@ static void _pmc_init_main_clock(void)
 }
 
 /**
- * \brief Select a PLL for the PMC_PLL_CTRLx/SSR/ACR registers (PMC_PLL_UPDT.ID).
- *
- * \param id PLL index (0 = PLLA, 1 = PLLB).
- * \param update Non-zero to also apply the written PLL settings (PMC_PLL_UPDT.UPDATE).
- */
-static void _pmc_pll_select(uint32_t id, uint32_t update)
-{
-    uint32_t data = PMC_REGS->PMC_PLL_UPDT & ~(PMC_PLL_UPDT_UPDATE_Msk | PMC_PLL_UPDT_ID_Msk);
-
-    data |= PMC_PLL_UPDT_ID(id);
-    if (update) {
-        data |= PMC_PLL_UPDT_UPDATE_Msk;
-    }
-    PMC_REGS->PMC_PLL_UPDT = data;
-}
-
-/**
- * \brief Stop a PLL: disable its outputs first, then the PLL itself.
- *
- * \param id PLL index (0 = PLLA, 1 = PLLB).
- */
-static void _pmc_pll_disable(uint32_t id)
-{
-    _pmc_pll_select(id, 0);
-    PMC_REGS->PMC_PLL_CTRL0 &= ~(PMC_PLL_CTRL0_ENPLLO0_Msk | PMC_PLL_CTRL0_ENPLLO1_Msk);
-    _pmc_pll_select(id, 1);
-    PMC_REGS->PMC_PLL_CTRL0 &= ~PMC_PLL_CTRL0_ENPLL_Msk;
-    _pmc_pll_select(id, 1);
-}
-
-/**
- * \brief Program and start a PLL, then wait for its lock.
- *
- * \param id      PLL index (0 = PLLA, 1 = PLLB).
- * \param ctrl0   PMC_PLL_CTRL0 value: reference (PLLMS), output dividers and output enables.
- * \param ctrl1   PMC_PLL_CTRL1 value: multiplier (MUL).
- * \param acr     Recommended PMC_PLL_ACR value of this PLL.
- * \param stuptim PMC_PLL_UPDT.STUPTIM value of this PLL.
- */
-static void _pmc_pll_enable(uint32_t id, uint32_t ctrl0, uint32_t ctrl1, uint32_t acr, uint32_t stuptim)
-{
-    uint32_t data;
-
-    // Select the PLL and its start-up time.
-    data = PMC_REGS->PMC_PLL_UPDT & ~PMC_PLL_UPDT_Msk;
-    PMC_REGS->PMC_PLL_UPDT = data | PMC_PLL_UPDT_ID(id) | PMC_PLL_UPDT_STUPTIM(stuptim);
-
-    // Loop filter, integer multiplier, no fractional part and no spread spectrum.
-    PMC_REGS->PMC_PLL_ACR = acr;
-    PMC_REGS->PMC_PLL_SSR = 0;
-    PMC_REGS->PMC_PLL_CTRL1 = ctrl1 & PMC_PLL_CTRL1_MUL_Msk;
-    PMC_REGS->PMC_PLL_CTRL2 = 0;
-    PMC_REGS->PMC_PLL_UPDT |= PMC_PLL_UPDT_UPDATE_Msk;
-
-    // Enable the PLL, its lock detection, its outputs and dividers.
-    data = PMC_REGS->PMC_PLL_CTRL0 & ~PMC_PLL_CTRL0_Msk;
-    data |= PMC_PLL_CTRL0_ENLOCK_Msk | PMC_PLL_CTRL0_ENPLL_Msk | ctrl0;
-    PMC_REGS->PMC_PLL_CTRL0 = data;
-    PMC_REGS->PMC_PLL_UPDT |= PMC_PLL_UPDT_UPDATE_Msk;
-
-    while (0 == (PMC_REGS->PMC_PLL_ISR0 & (PMC_PLL_ISR0_LOCK0_Msk << id))) {
-        /* Wait until the PLL is locked */
-    }
-}
-
-/**
  * \brief Initialize PLLA and PLLB. PLLs the configuration does not enable are stopped.
  *
  * The processor runs from MAINCK while this function executes. PLLC is left untouched.
@@ -364,7 +377,141 @@ static void _pmc_init_cpu_clock(void)
         _pmc_wait_mck0_ready();
     }
 }
-#endif /* VALUE_PMC_CPU_CKR */
+#endif /* !CORE_CM4_1 && VALUE_PMC_PLLA_CTRL0 */
+
+#if !defined(CORE_CM4_1) && defined(VALUE_PMC_PLLC_CTRL0)
+/* Dual-core parts, core 0: PLLC, the core 1 clock and the core 1 start-up. */
+
+#define CORE1_CKR_MSK           (PMC_CPU_CKR_CPCSS_Msk | PMC_CPU_CKR_CPPRES_Msk | PMC_CPU_CKR_RATIO_MCK1DIV_Msk)
+
+/**
+ * \brief Wait until the core 1 master clock MCK1 is ready.
+ */
+static void _pmc_wait_mck1_ready(void)
+{
+    while (PMC_SR_CPMCKRDY_Msk != (PMC_REGS->PMC_SR & PMC_SR_CPMCKRDY_Msk)) {
+        /* Wait until the coprocessor master clock is ready */
+    }
+}
+
+/**
+ * \brief Run core 1 from MAINCK while the PLLs are reprogrammed (after a warm reset it may run from one).
+ */
+static void _pmc_core1_switch_to_mainck(void)
+{
+    uint32_t data;
+
+    if (PMC_CPU_CKR_CPCSS_MAINCK != (PMC_REGS->PMC_CPU_CKR & PMC_CPU_CKR_CPCSS_Msk)) {
+        data = PMC_REGS->PMC_CPU_CKR & ~PMC_CPU_CKR_CPCSS_Msk;
+        PMC_REGS->PMC_CPU_CKR = data | PMC_CPU_CKR_CPCSS_MAINCK;
+        _pmc_wait_mck1_ready();
+    }
+}
+
+/**
+ * \brief Initialize PLLC: stopped, then started when the configuration enables it.
+ */
+static void _pmc_init_pllc(void)
+{
+    _pmc_pll_disable(PLL_ID_PLLC);
+
+    if (PMC_PLL_CTRL0_ENPLL_Msk == (VALUE_PMC_PLLC_CTRL0 & PMC_PLL_CTRL0_ENPLL_Msk)) {
+        _pmc_pll_enable(PLL_ID_PLLC,
+                        VALUE_PMC_PLLC_CTRL0 & (PMC_PLL_CTRL0_DIVPMC0_Msk | PMC_PLL_CTRL0_PLLMS_Msk |
+                                                PMC_PLL_CTRL0_ENPLLO0_Msk),
+                        VALUE_PMC_PLLC_CTRL1, PLLC_RECOMMENDED_ACR, PLLC_UPDT_STUPTIM_VAL);
+    }
+}
+
+/**
+ * \brief Initialize the core 1 processor clock (CPU_CLK1) and master clock (MCK1).
+ *
+ * Same sequence as the MPLAB Harmony clock plib: a temporary prescaler (different from the
+ * target one) with MCK1DIV = MCK1 / 2, then the source, then the prescaler and MCK1DIV ratio.
+ * The core 0 fields of PMC_CPU_CKR (CSS, PRES, RATIO_MCK0DIV, RATIO_MCK0DIV2) are kept.
+ */
+static void _pmc_init_cpu1_clock(void)
+{
+    const uint32_t target = VALUE_PMC_CPU_CKR & CORE1_CKR_MSK;
+    const uint32_t ratio = PMC_CPU_CKR_CPPRES_Msk | PMC_CPU_CKR_RATIO_MCK1DIV_Msk;
+    uint32_t dummy;
+    uint32_t data;
+
+    if (PMC_CPU_CKR_CPPRES_CLK_2 == (target & PMC_CPU_CKR_CPPRES_Msk)) {
+        dummy = PMC_CPU_CKR_CPPRES_CLK_3;
+    } else {
+        dummy = PMC_CPU_CKR_CPPRES_CLK_2;
+    }
+    data = PMC_REGS->PMC_CPU_CKR & ~ratio;
+    PMC_REGS->PMC_CPU_CKR = data | dummy | PMC_CPU_CKR_RATIO_MCK1DIV_Msk;
+    _pmc_wait_mck1_ready();
+
+    data = PMC_REGS->PMC_CPU_CKR & ~PMC_CPU_CKR_CPCSS_Msk;
+    PMC_REGS->PMC_CPU_CKR = data | (target & PMC_CPU_CKR_CPCSS_Msk);
+    _pmc_wait_mck1_ready();
+
+    data = PMC_REGS->PMC_CPU_CKR & ~ratio;
+    PMC_REGS->PMC_CPU_CKR = data | (target & ratio);
+    _pmc_wait_mck1_ready();
+}
+
+/**
+ * \brief Hold core 1 in reset with its processor clock stopped (it may run after a warm reset).
+ */
+static void _core1_hold(void)
+{
+    RSTC_REGS->RSTC_MR = RSTC_MR_KEY_PASSWD | (RSTC_REGS->RSTC_MR & ~(RSTC_MR_KEY_Msk | RSTC_MR_CPROCEN_Msk));
+    PMC_REGS->PMC_SCDR = PMC_SCDR_CPKEY_PASSWD | PMC_SCDR_CPCK_Msk;
+}
+
+/* Core 1 image: stored at the start of IFLASH1, run from SRAM1 (address 0 for core 1). */
+#define CORE1_IMAGE_ADDR        (IFLASH1_ADDR)
+
+/**
+ * \brief Check that IFLASH1 holds a core 1 image: its initial stack pointer must lie in core 1's
+ * SRAM1 (0 .. IRAM1_SIZE in its own view) or SRAM2, and its reset handler in SRAM1 (Thumb).
+ * Erased flash (no core 1 project programmed) fails, so core 1 is then left in reset.
+ */
+static uint32_t _core1_image_present(void)
+{
+    const volatile uint32_t *image = (const volatile uint32_t *)CORE1_IMAGE_ADDR;
+    const uint32_t stack = image[0];
+    const uint32_t reset = image[1];
+    const uint32_t stack_ok = ((0U != stack) && (stack <= IRAM1_SIZE)) ||
+                              ((stack > IRAM2_ADDR) && (stack <= (IRAM2_ADDR + IRAM2_SIZE)));
+    const uint32_t reset_ok = (1U == (reset & 1U)) && ((reset & ~1UL) < IRAM1_SIZE);
+
+    return (stack_ok && reset_ok) ? 1U : 0U;
+}
+
+/**
+ * \brief Load the core 1 image into SRAM1 and release core 1.
+ *
+ * The core 1 bus master clock (CPBMCK) and peripherals (CPEREN) are enabled first so that
+ * core 0 can write SRAM1, then core 1 gets its processor clock (CPCK) and leaves reset (CPROCEN).
+ */
+static void _core1_start(void)
+{
+    const volatile uint32_t *source = (const volatile uint32_t *)CORE1_IMAGE_ADDR;
+    volatile uint32_t *destination = (volatile uint32_t *)IRAM1_ADDR;
+    uint32_t index;
+
+    if (0U == _core1_image_present()) {
+        return;
+    }
+
+    PMC_REGS->PMC_SCER = PMC_SCER_CPKEY_PASSWD | PMC_SCER_CPBMCK_Msk;
+    RSTC_REGS->RSTC_MR = RSTC_MR_KEY_PASSWD | (RSTC_REGS->RSTC_MR & ~RSTC_MR_KEY_Msk) | RSTC_MR_CPEREN_Msk;
+
+    for (index = 0U; index < (IRAM1_SIZE / sizeof(uint32_t)); index++) {
+        destination[index] = source[index];
+    }
+    __DSB();
+
+    PMC_REGS->PMC_SCER = PMC_SCER_CPKEY_PASSWD | PMC_SCER_CPCK_Msk;
+    RSTC_REGS->RSTC_MR = RSTC_MR_KEY_PASSWD | (RSTC_REGS->RSTC_MR & ~RSTC_MR_KEY_Msk) | RSTC_MR_CPROCEN_Msk;
+}
+#endif /* !CORE_CM4_1 && VALUE_PMC_PLLC_CTRL0 */
 
 /**
  * Initialize the system
@@ -377,9 +524,15 @@ void SystemInit(void)
     // Keep the default device state after reset
     SystemCoreClock = __SYSTEM_CLOCK;
 
-#ifdef VALUE_PMC_CPU_CKR
+#if !defined(CORE_CM4_1) && defined(VALUE_PMC_PLLA_CTRL0)
     // Disable the watchdogs before the (possibly long) oscillator start-ups.
     _dwdt_disable();
+
+#ifdef VALUE_PMC_PLLC_CTRL0
+    // Dual-core parts: stop core 1 and run it from MAINCK while the PLLs change.
+    _core1_hold();
+    _pmc_core1_switch_to_mainck();
+#endif
 
     // Raise the flash wait states, then run the core from MAINCK while the sources change.
     _sefc_set_flash_wait_states(SEFC_EEFC_FMR_FWS(FLASH_TRANSITION_FWS));
@@ -395,6 +548,16 @@ void SystemInit(void)
     _sefc_set_flash_wait_states(VALUE_SEFC_EEFC_FMR & SEFC_EEFC_FMR_FWS_Msk);
 
     // The configured clock is now active.
+    SystemCoreClockUpdate();
+
+#ifdef VALUE_PMC_PLLC_CTRL0
+    // Dual-core parts: PLLC and the core 1 clock, then load and start core 1.
+    _pmc_init_pllc();
+    _pmc_init_cpu1_clock();
+    _core1_start();
+#endif
+#else
+    // Core 1 (or a part without clock registers): the clocks belong to core 0.
     SystemCoreClockUpdate();
 #endif
 
@@ -419,9 +582,15 @@ void SystemCoreClockUpdate(void)
      * Default core 0 configuration (internal oscillators only):
      * main RC 12 MHz -> PLLB x33 = 396 MHz -> DIVPMC0 /2 = 198 MHz (PLLBCK)
      * -> CPU_CLK0 = MCK0 (PRES /1) = 198000 kHz, MCK0DIV = 99 MHz, 7 flash wait states.
-     * S1 (core 1) images: MCK1 as configured by the core 0 application (240000 kHz).
+     * Core 1 of the dual-core parts (CORE_CM4_1), default configuration set by core 0:
+     * MAINCK 12 MHz (main RC) -> PLLC x40 = 480 MHz -> DIVPMC0 /2 = 240 MHz (PLLCCK)
+     * -> CPU_CLK1 = MCK1 (CPPRES /1) = 240000 kHz (PIC32CX_MT_CORE1_KHZ), MCK1DIV = 120 MHz.
      */
+#if defined(CORE_CM4_1) && defined(PIC32CX_MT_CORE1_KHZ)
+    SystemCoreClock = PIC32CX_MT_CORE1_KHZ * 1000UL;
+#else
     SystemCoreClock = __SYSTEM_CLOCK;
+#endif
     return;
 }
 

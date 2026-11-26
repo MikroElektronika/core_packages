@@ -1,5 +1,5 @@
 /*
- * GCC linker script (sram) for PIC32CX2051MTSH128S1
+ * GCC linker script for core 1 (coprocessor) of the PIC32CX2051MTSH128
  *
  * Copyright (c) 2025 Microchip Technology Inc. and its subsidiaries
  *
@@ -20,7 +20,14 @@
  */
 
 /*------------------------------------------------------------------------------
- *      Linker script for running in internal SRAM on the PIC32CX2051MTSH128S1
+ *      Linker script for core 1 (coprocessor) of the PIC32CX2051MTSH128.
+ *
+ *      Note: Changed for MikroE implementation (dual-core project, core_1_m4ef).
+ *      Core 1 has no flash of its own: it runs from SRAM1 (0x00000000 in the core 1
+ *      view, 32 KB), with data, heap and stack in SRAM2 (0x20088000, 16 KB). The image
+ *      is stored at the start of flash bank 1 (IFLASH1, 0x01100000 in the core 0
+ *      view), which core 0 does not use, so the merged hex of the project programs it
+ *      there; core 0 copies IFLASH1 to SRAM1 and releases core 1 (init_clock.c).
  *----------------------------------------------------------------------------*/
 
 OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
@@ -30,7 +37,9 @@ SEARCH_DIR(.)
 /* Memory Spaces Definitions */
 MEMORY
 {
-    ram (rwx)   : ORIGIN = 0x00000000, LENGTH = 0x00008000 /* ram, 32768K */
+    ram   (rwx) : ORIGIN = 0x00000000, LENGTH = 0x00008000 /* SRAM1: code and data initializers, 32K */
+    ram2  (rwx) : ORIGIN = 0x20088000, LENGTH = 0x00004000 /* SRAM2: data, heap and stack, 16K */
+    image (rx)  : ORIGIN = 0x01100000, LENGTH = 0x00008000 /* IFLASH1 (core 0 view): stored image, copied to SRAM1 */
 }
 
 /* The stack size used by the application. NOTE: you need to adjust according to your application. */
@@ -48,6 +57,7 @@ SECTIONS
         _sfixed = .;
         KEEP(*(.vectors .vectors.*))
         *(.text .text.* .gnu.linkonce.t.*)
+        *(.RamFunc .RamFunc.*)
         *(.glue_7t) *(.glue_7)
         *(.rodata .rodata* .gnu.linkonce.r.*)
         *(.ARM.extab* .gnu.linkonce.armextab.*)
@@ -89,12 +99,22 @@ SECTIONS
 
         . = ALIGN(4);
         _efixed = .;            /* End of text section */
-    } > ram
+    } > ram AT > image
 
+    /* .ARM.exidx is sorted, so has to go in its own output section.  */
+    PROVIDE_HIDDEN (__exidx_start = .);
+    .ARM.exidx :
+    {
+        *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+    } > ram AT > image
+    PROVIDE_HIDDEN (__exidx_end = .);
+
+    /* The .relocate initializers follow the code in the image, so once core 0 has copied the
+       image to SRAM1 they sit at _etext, where the startup code copies them from. */
     . = ALIGN(4);
     _etext = .;
 
-    .relocate : AT (_etext)
+    .relocate : AT (ORIGIN(image) + (_etext - ORIGIN(ram)))
     {
         . = ALIGN(4);
         _srelocate = .;
@@ -102,7 +122,10 @@ SECTIONS
         *(.data .data.*);
         . = ALIGN(4);
         _erelocate = .;
-    } > ram
+    } > ram2
+
+    ASSERT(_etext + SIZEOF(.relocate) <= ORIGIN(ram) + LENGTH(ram),
+           "Core 1 image (code and data initializers) does not fit the 32 KB of SRAM1")
 
     /* .bss section which is used for uninitialized data */
     .bss (NOLOAD) :
@@ -115,7 +138,7 @@ SECTIONS
         . = ALIGN(4);
         _ebss = . ;
         _ezero = .;
-    } > ram
+    } > ram2
 
     /* heap section */
     .heap (NOLOAD):
@@ -125,7 +148,7 @@ SECTIONS
         . = . + HEAP_SIZE;
         . = ALIGN(8);
         _eheap = .;
-    } > ram
+    } > ram2
 
     /* stack section */
     .stack (NOLOAD):
@@ -135,18 +158,9 @@ SECTIONS
         . = . + STACK_SIZE;
         . = ALIGN(8);
         _estack = .;
-    } > ram
-
-    /* .ARM.exidx is sorted, so has to go in its own output section.  */
-    PROVIDE_HIDDEN (__exidx_start = .);
-    .ARM.exidx :
-    {
-        *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-    } > ram
-    PROVIDE_HIDDEN (__exidx_end = .);
+    } > ram2
 
     . = ALIGN(4);
     _end = . ;
-    _ram_end_ = ORIGIN(ram) + LENGTH(ram) - 1 ;
+    _ram_end_ = ORIGIN(ram2) + LENGTH(ram2) - 1 ;
 }
-

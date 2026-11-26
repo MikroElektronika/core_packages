@@ -1,5 +1,5 @@
 /*
- * GCC startup file for PIC32CX2051MTSH128S1
+ * GCC startup file for core 1 (coprocessor) of the PIC32CX1025MTC128
  *
  * Copyright (c) 2025 Microchip Technology Inc. and its subsidiaries.
  *
@@ -20,7 +20,7 @@
  */
 
 // Note: Changed for MikroE implementation.
-// #include "pic32cx2051mtsh128s1.h"
+// #include "pic32cx1025mtc128s1.h" (core 1 view: mcu.h with CORE_CM4_1)
 #include "mcu.h" // Note: Added for MikroE implementation.
 extern void SystemInit(); // Note: Added for MikroE implementation.
 
@@ -123,8 +123,6 @@ void SUPC_WKUP12_Handler  ( void ) __attribute__ ((weak, alias("Dummy_Handler"))
 void SUPC_WKUP13_Handler  ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void SUPC_WKUP14_Handler  ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void SUPC_WKUP15_Handler  ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void EMAFE_SLINK_Handler  ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
-void EMAFE_DATA_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void MEM2MEM1_Handler     ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void TC3_CH0_Handler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void TC3_CH1_Handler      ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
@@ -243,8 +241,8 @@ const DeviceVectors exception_table = {
         .pfnSUPC_WKUP14_Handler        = (void*) SUPC_WKUP14_Handler, /* 73 Supply Controller */
         .pfnSUPC_WKUP15_Handler        = (void*) SUPC_WKUP15_Handler, /* 74 Supply Controller */
         .pvReserved75                  = (void*) (0UL),          /* 75 Reserved */
-        .pfnEMAFE_SLINK_Handler        = (void*) EMAFE_SLINK_Handler, /* 76 Energy Metering Analog Front End */
-        .pfnEMAFE_DATA_Handler         = (void*) EMAFE_DATA_Handler, /* 77 Energy Metering Analog Front End */
+        .pvReserved76                  = (void*) (0UL),          /* 76 Reserved */
+        .pvReserved77                  = (void*) (0UL),          /* 77 Reserved */
         .pfnMEM2MEM1_Handler           = (void*) MEM2MEM1_Handler, /* 78 Memory to Memory */
         .pfnTC3_CH0_Handler            = (void*) TC3_CH0_Handler, /* 79 Timer Counter */
         .pfnTC3_CH1_Handler            = (void*) TC3_CH1_Handler, /* 80 Timer Counter */

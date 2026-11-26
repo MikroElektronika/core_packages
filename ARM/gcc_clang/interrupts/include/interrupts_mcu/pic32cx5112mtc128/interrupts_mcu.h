@@ -52,8 +52,10 @@ static const int INTERRUPTS_RTT = 19;
 static const int INTERRUPTS_DWDT0 = 20;
 static const int INTERRUPTS_DWDT1 = 21;
 static const int INTERRUPTS_PMC = 22;
+#if !defined(CORE_CM4_1) // core 0 only
 static const int INTERRUPTS_SEFC0 = 23;
 static const int INTERRUPTS_SEFC1 = 24;
+#endif
 static const int INTERRUPTS_FLEXCOM0 = 25;
 static const int INTERRUPTS_FLEXCOM1 = 26;
 static const int INTERRUPTS_FLEXCOM2 = 27;
@@ -92,6 +94,7 @@ static const int INTERRUPTS_TC1_C2SEC = 61;
 static const int INTERRUPTS_TC2_C0SEC = 62;
 static const int INTERRUPTS_TC2_C1SEC = 63;
 static const int INTERRUPTS_TC2_C2SEC = 64;
+#if !defined(CORE_CM4_1) // core 0 only
 static const int INTERRUPTS_AES = 65;
 static const int INTERRUPTS_AES_AESSEC = 66;
 static const int INTERRUPTS_AESB = 67;
@@ -104,6 +107,7 @@ static const int INTERRUPTS_ICM = 73;
 static const int INTERRUPTS_ICM_ICMSEC = 74;
 static const int INTERRUPTS_CPKCC = 75;
 static const int INTERRUPTS_MATRIX0 = 76;
+#endif
 static const int INTERRUPTS_MATRIX1 = 77;
 static const int INTERRUPTS_SUPC_WKUP3 = 78;
 static const int INTERRUPTS_SUPC_WKUP4 = 79;
