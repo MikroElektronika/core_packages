@@ -1,199 +1,215 @@
-/*******************************************************************************
-* Copyright 2016, Cypress Semiconductor Corporation. All rights reserved.
-* You may use this file only in accordance with the license, terms, conditions,
-* disclaimers, and limitations in the end user license agreement accompanying
-* the software package with which this file was provided.
-* CYPRESS PROVIDES THIS SOFTWARE "AS IS" AND MAKES NO WARRANTY
-* OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS SOFTWARE,
-* INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-* MERCHANTABILITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR
-* PURPOSE.
-*******************************************************************************/
+/*
+******************************************************************************
+**
+** @file        : s6e1c12c0agv20000.ld
+** @author      : MikroElektronika
+** @brief       : Linker script for S6E1C12C0AGV20000 Device
+**                0x1FFF0 FLASH @ 0x00000000
+**                16K RAM @ 0x20000000
+**                Last 16 bytes of the main flash are reserved (data sheet).
+**                RAM includes the 4K deep standby retention SRAM @ 0x20003000.
+**
+**                Set heap size, stack size and stack location according
+**                to application requirements.
+**
+**                Set memory bank area and size if external memory is used
+**
+**  Target      : INFINEON S6E1C12C0AGV20000
+**
+**  Distribution: The file is distributed as is, without any warranty
+**                of any kind.
+**
+******************************************************************************
+** @attention
+**
+** Copyright (c) ${COPYRIGHT_YEAR_MIKROE} MikroElektronika.
+** All rights reserved.
+**
+** This software is licensed under terms that can be found in the LICENSE file
+** in the root directory of this software component.
+** If no LICENSE file comes with this software, it is provided AS-IS.
+**
+******************************************************************************
+*/
 
-OUTPUT_FORMAT ("elf32-littlearm", "elf32-bigarm", "elf32-littlearm")
-/*ENTRY(main)*/
-SEARCH_DIR(.)
-GROUP(-lgcc -lc)
+/* Entry Point */
+ENTRY(Reset_Handler)
+
+_Min_Heap_Size = 0x200; /* required amount of heap */
+_Min_Stack_Size = 0x400; /* required amount of stack */
+
+/* Memories definition */
 MEMORY
 {
-   ROM   (rx)   : ORIGIN = 0x00000000, LENGTH = 127K
-   RAM   (rwx)  : ORIGIN = 0x20000000, LENGTH = 12K
-   IRAM2 (rwx)  : ORIGIN = 0x20003000, LENGTH = 4K
+  FLASH        (rx)    : ORIGIN = 0x00000000,   LENGTH = 0x1FFF0
+  RAM          (xrw)   : ORIGIN = 0x20000000,   LENGTH = 16K
 }
 
-/* These force the linker to search for particular symbols from
- * the start of the link process and thus ensure the user's
- * overrides are picked up
- */
-EXTERN(__FM_reset_cortex_m)
-EXTERN(__FM_interrupt_vector_cortex_m)
-EXTERN(__FM_start_c main __FM_stack __FM_stack_size __FM_heap_end)
+/* Highest address of the user mode stack */
+__StackTop = ORIGIN(RAM) + LENGTH(RAM);
+_estack = __StackTop;
 
-PROVIDE(__FM_stack = __FM_region_start_ram + __FM_region_size_ram);
-PROVIDE(__FM_stack_size = __FM_region_start_ram + __FM_region_size_ram - _end);
-PROVIDE(__FM_heap_start = _end);
-PROVIDE(__FM_heap_end = __FM_region_start_ram + __FM_region_size_ram);
-
+/* Sections */
 SECTIONS
 {
+  /* Vector table must be the very first thing in FLASH */
+  .isr_vector ORIGIN(FLASH) :
+  {
+    . = ALIGN(4);
+    KEEP(*(.vectors))
+    KEEP(*(.isr_vector))
+    . = ALIGN(4);
+  } > FLASH
+
+  /* The program code and other data into "FLASH" Rom type memory */
   .text :
   {
-    CREATE_OBJECT_SYMBOLS
-    __FM_region_start_ram = .;
-    *(.FM.region-head.RAM)
-    __FM_interrupt_vector = __FM_interrupt_vector_cortex_m;
-    *(.FM.interrupt_vector)
-    /* Make sure we pulled in an interrupt vector.  */
-    ASSERT (. != __FM_interrupt_vector_cortex_m, "No interrupt vector");
-    *(.RAM)
-    *(.RAM.b)
-
-    __FM_reset = __FM_reset_cortex_m;
-    *(.FM.reset)
-    /* Make sure we pulled in some reset code.  */
-    ASSERT (. != __FM_reset, "No reset code");
-
-    *(.text .text.* .gnu.linkonce.t.*)
-    *(.plt)
-    *(.gnu.warning)
-    *(.glue_7t) *(.glue_7) *(.vfp11_veneer)
-
-    *(.rodata .rodata.* .gnu.linkonce.r.*)
-
-    *(.ARM.extab* .gnu.linkonce.armextab.*)
-    *(.gcc_except_table)
-    *(.eh_frame_hdr)
+    . = ALIGN(4);
+    *(.text)           /* .text sections (code) */
+    *(.text*)          /* .text* sections (code) */
+    *(.glue_7)         /* glue arm to thumb code */
+    *(.glue_7t)        /* glue thumb to arm code */
     *(.eh_frame)
 
-    . = ALIGN(4);
-    KEEP(*(.init))
+    KEEP (*(.init))
+    KEEP (*(.fini))
 
     . = ALIGN(4);
-    __preinit_array_start = .;
-    KEEP (*(.preinit_array))
-    __preinit_array_end = .;
+    _etext = .;        /* define a global symbols at end of code */
+  } > FLASH
 
+  /* Constant data into "FLASH" Rom type memory */
+  .rodata :
+  {
     . = ALIGN(4);
-    __init_array_start = .;
+    *(.rodata)         /* .rodata sections (constants, strings, etc.) */
+    *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
+    . = ALIGN(4);
+  } > FLASH
+
+  .ARM.extab :
+  {
+    . = ALIGN(4);
+    *(.ARM.extab* .gnu.linkonce.armextab.*)
+    . = ALIGN(4);
+  } > FLASH
+
+  .ARM :
+  {
+    . = ALIGN(4);
+    __exidx_start = .;
+    *(.ARM.exidx*)
+    __exidx_end = .;
+    . = ALIGN(4);
+  } > FLASH
+
+  .preinit_array :
+  {
+    . = ALIGN(4);
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP (*(.preinit_array*))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
+    . = ALIGN(4);
+  } > FLASH
+
+  .init_array :
+  {
+    . = ALIGN(4);
+    PROVIDE_HIDDEN (__init_array_start = .);
     KEEP (*(SORT(.init_array.*)))
-    KEEP (*(.init_array))
-    __init_array_end = .;
-
-    . = ALIGN(0x4);
-    KEEP (*crtbegin.o(.ctors))
-    KEEP (*(EXCLUDE_FILE (*crtend.o) .ctors))
-    KEEP (*(SORT(.ctors.*)))
-    KEEP (*crtend.o(.ctors))
-
+    KEEP (*(.init_array*))
+    PROVIDE_HIDDEN (__init_array_end = .);
     . = ALIGN(4);
-    KEEP(*(.fini))
+  } > FLASH
 
+  .fini_array :
+  {
     . = ALIGN(4);
-    __fini_array_start = .;
-    KEEP (*(.fini_array))
+    PROVIDE_HIDDEN (__fini_array_start = .);
     KEEP (*(SORT(.fini_array.*)))
-    __fini_array_end = .;
-
-    KEEP (*crtbegin.o(.dtors))
-    KEEP (*(EXCLUDE_FILE (*crtend.o) .dtors))
-    KEEP (*(SORT(.dtors.*)))
-    KEEP (*crtend.o(.dtors))
-
+    KEEP (*(.fini_array*))
+    PROVIDE_HIDDEN (__fini_array_end = .);
     . = ALIGN(4);
-    __FM_regions = .;
-    LONG (0)
-    LONG (__FM_region_init_ram)
-    LONG (__FM_region_start_ram)
-    LONG (__FM_region_init_size_ram)
-    LONG (__FM_region_zero_size_ram)
-  } >RAM
+  } > FLASH
 
-  /* .ARM.exidx is sorted, so has to go in its own output section.  */
-  __exidx_start = .;
-  .ARM.exidx :
+  /* Copy table used by Reset_Handler to initialize RAM sections */
+  .copy.table :
   {
-    *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-  } >RAM
-  __exidx_end = .;
-  .text.align :
-  {
-    . = ALIGN(8);
-    _etext = .;
-  } >RAM
-  __FM_region_size_rom = LENGTH(ROM);
-  __FM_region_num = 1;
+    . = ALIGN(4);
+    __copy_table_start__ = .;
 
+    LONG(LOADADDR(.data))
+    LONG(ADDR(.data))
+    LONG(SIZEOF(.data))
+
+    __copy_table_end__ = .;
+    . = ALIGN(4);
+  } > FLASH
+
+  /* Zero table used by Reset_Handler to initialize BSS sections */
+  .zero.table :
+  {
+    . = ALIGN(4);
+    __zero_table_start__ = .;
+
+    LONG(ADDR(.bss))
+    LONG(SIZEOF(.bss))
+
+    __zero_table_end__ = .;
+    . = ALIGN(4);
+  } > FLASH
+
+  /* Used by the startup to initialize data */
+  _sidata = LOADADDR(.data);
+
+  /* Initialized data sections into "RAM" Ram type memory */
   .data :
   {
-    _sdata = .;
-    __FM_region_start_ram = .;
-    *(.FM.region-head.RAM)
-    KEEP(*(.jcr))
-    *(.got.plt) *(.got)
-    *(.shdata)
-    *(.data .data.* .gnu.linkonce.d.*)
-    *(.RAM)
-    . = ALIGN (8);
-    _edata = .;
-  } >RAM
-  data_size = _edata - _sdata;
-  .bss (NOLOAD):
+    . = ALIGN(4);
+    _sdata = .;        /* create a global symbol at data start */
+    *(.data)           /* .data sections */
+    *(.data*)          /* .data* sections */
+    *(.RamFunc)        /* .RamFunc sections */
+    *(.RamFunc*)       /* .RamFunc* sections */
+
+    . = ALIGN(4);
+    _edata = .;        /* define a global symbol at data end */
+  } > RAM AT> FLASH
+
+  /* Uninitialized data section into "RAM" Ram type memory */
+  . = ALIGN(4);
+  .bss (NOLOAD) :
   {
-    _sbss = .;
-    *(.shbss)
-    *(.bss .bss.* .gnu.linkonce.b.*)
+    /* This is used by the startup in order to initialize the .bss section */
+    _sbss = .;         /* define a global symbol at bss start */
+    __bss_start__ = _sbss;
+    *(.bss)
+    *(.bss*)
     *(COMMON)
-    _ebss = .;
-    *(.RAM.b)
-    . = ALIGN (8);
-    end = .;
-    _end = .;
-    __end = .;
-  } >RAM 
-  bss_size = _ebss - _sbss;
-  .heap :
-  {
-    *(.heap)
-  } >RAM
-  .stack (__FM_stack - __FM_stack_size) :
-  {
-    *(.stack)
-  } >RAM
-  __FM_region_init_ram = LOADADDR (.data);
-  __FM_region_init_size_ram = _edata - __FM_region_start_ram;
-  __FM_region_zero_size_ram = _end - _edata;
-  __FM_region_size_ram = LENGTH(RAM);
-  __FM_region_num = 1;
 
-  .stab 0 (NOLOAD) : { *(.stab) }
-  .stabstr 0 (NOLOAD) : { *(.stabstr) }
-  /* DWARF debug sections.
-   * Symbols in the DWARF debugging sections are relative to the beginning
-   * of the section so we begin them at 0.  */
-  /* DWARF 1 */
-  .debug          0 : { *(.debug) }
-  .line           0 : { *(.line) }
-  /* GNU DWARF 1 extensions */
-  .debug_srcinfo  0 : { *(.debug_srcinfo) }
-  .debug_sfnames  0 : { *(.debug_sfnames) }
-  /* DWARF 1.1 and DWARF 2 */
-  .debug_aranges  0 : { *(.debug_aranges) }
-  .debug_pubnames 0 : { *(.debug_pubnames) }
-  /* DWARF 2 */
-  .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
-  .debug_abbrev   0 : { *(.debug_abbrev) }
-  .debug_line     0 : { *(.debug_line) }
-  .debug_frame    0 : { *(.debug_frame) }
-  .debug_str      0 : { *(.debug_str) }
-  .debug_loc      0 : { *(.debug_loc) }
-  .debug_macinfo  0 : { *(.debug_macinfo) }
-  /* SGI/MIPS DWARF 2 extensions */
-  .debug_weaknames 0 : { *(.debug_weaknames) }
-  .debug_funcnames 0 : { *(.debug_funcnames) }
-  .debug_typenames 0 : { *(.debug_typenames) }
-  .debug_varnames  0 : { *(.debug_varnames) }
+    . = ALIGN(4);
+    _ebss = .;         /* define a global symbol at bss end */
+    __bss_end__ = _ebss;
+  } > RAM
 
-  .note.gnu.arm.ident 0 : { KEEP (*(.note.gnu.arm.ident)) }
-  .ARM.attributes 0 : { KEEP (*(.ARM.attributes)) }
-  /DISCARD/ : { *(.note.GNU-stack) }
+  /* User_heap_stack section, used to check that there is enough "RAM" Ram type memory left */
+  ._user_heap_stack (NOLOAD) :
+  {
+    . = ALIGN(8);
+    PROVIDE ( end = . );
+    PROVIDE ( _end = . );
+    . = . + _Min_Heap_Size;
+    . = . + _Min_Stack_Size;
+    . = ALIGN(8);
+  } > RAM
+
+  /* Remove information from the compiler libraries */
+  /DISCARD/ :
+  {
+    libc.a ( * )
+    libm.a ( * )
+    libgcc.a ( * )
+  }
+
+  .ARM.attributes 0 : { *(.ARM.attributes) }
 }
