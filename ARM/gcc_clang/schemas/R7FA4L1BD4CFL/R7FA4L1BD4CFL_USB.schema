@@ -1,0 +1,245 @@
+{
+    "compiler_flags": "",
+    "linker_flags": "",
+    "def_path": "ARM/gcc-arm-none-eabi/core/def/R7FA4L1BD4CFL.json",
+    "flash": 524288,
+    "ram": 655360,
+    "settings": {
+        "clock": "72",
+        "scheme": "R7FA4L1BD4CFL_USB",
+        "mcu": "R7FA4L1BD4CFL",
+        "core": "M33EF",
+        "delay_src_path": "delays/m33ef/__lib_delays.c",
+        "name": null,
+        "config_registers": [
+            {
+                "fields": [
+                    {
+                        "key": "PCKD",
+                        "value": "0"
+                    },
+                    {
+                        "key": "PCKC",
+                        "value": "10"
+                    },
+                    {
+                        "key": "PCKB",
+                        "value": "100"
+                    },
+                    {
+                        "key": "PCKA",
+                        "value": "0"
+                    },
+                    {
+                        "key": "ICK",
+                        "value": "0"
+                    },
+                    {
+                        "key": "FCK",
+                        "value": "10000000"
+                    }
+                ],
+                "key": "SYSTEM_SCKDIVCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CKSEL",
+                        "value": "5"
+                    }
+                ],
+                "key": "SYSTEM_SCKSCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "PLIDIV",
+                        "value": "1"
+                    },
+                    {
+                        "key": "PLSRCSEL",
+                        "value": "10"
+                    },
+                    {
+                        "key": "PLLMUL",
+                        "value": "b00"
+                    }
+                ],
+                "key": "SYSTEM_PLLCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "PLLSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_PLLCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MOSTP",
+                        "value": "1"
+                    }
+                ],
+                "key": "SYSTEM_MOSCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HCSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_HOCOCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "HCFRQ0",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_HOCOCR2"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MCSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_MOCOCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CKOSEL",
+                        "value": "0"
+                    },
+                    {
+                        "key": "CKODIV",
+                        "value": "0"
+                    },
+                    {
+                        "key": "CKOEN",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_CKOCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "I3CCKDIV",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_I3CCKDIVCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "I3CCKSEL",
+                        "value": "5"
+                    }
+                ],
+                "key": "SYSTEM_I3CCKCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "OPCM",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_OPCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MSTS",
+                        "value": "9"
+                    }
+                ],
+                "key": "SYSTEM_MOSCWTCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SOPCM",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_SOPCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "MODRV1",
+                        "value": "0"
+                    },
+                    {
+                        "key": "MOSEL",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_MOMCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SOSTP",
+                        "value": "1"
+                    }
+                ],
+                "key": "SYSTEM_SOSCCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "SODRV",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_SOMCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "LCSTP",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_LOCOCR"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CK",
+                        "value": "2"
+                    },
+                    {
+                        "key": "SEL",
+                        "value": "20"
+                    }
+                ],
+                "key": "SYSTEM_UTA0CK"
+            },
+            {
+                "fields": [
+                    {
+                        "key": "CK",
+                        "value": "2"
+                    },
+                    {
+                        "key": "EN",
+                        "value": "0"
+                    }
+                ],
+                "key": "SYSTEM_UTA1CK"
+            }
+        ]
+    }
+}
