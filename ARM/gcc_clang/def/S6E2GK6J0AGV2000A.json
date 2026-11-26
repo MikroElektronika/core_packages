@@ -1,6 +1,764 @@
 {
+    "config_registers": [
+        {
+            "address": "40010000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "rcs",
+                    "label": "Master clock source",
+                    "mask": "000000E0",
+                    "settings": [
+                        {
+                            "label": "High-speed CR (4 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Main oscillator (crystal)",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Main PLL",
+                            "value": "00000040"
+                        }
+                    ]
+                }
+            ],
+            "key": "scm_ctl",
+            "unused": "00000000",
+            "label": "System clock mode (SCM_CTL)"
+        },
+        {
+            "address": "40010010",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "bsr",
+                    "label": "HCLK divider",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "/3",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "/16",
+                            "value": "00000006"
+                        }
+                    ]
+                }
+            ],
+            "key": "bsc_psr",
+            "unused": "00000000",
+            "label": "Base clock prescaler (BSC_PSR)"
+        },
+        {
+            "address": "40010014",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "apbc0",
+                    "label": "PCLK0 divider",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ],
+            "key": "apbc0_psr",
+            "unused": "00000000",
+            "label": "APB0 prescaler (APBC0_PSR)"
+        },
+        {
+            "address": "40010018",
+            "default": "00000080",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "apbc1",
+                    "label": "PCLK1 divider",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ],
+            "key": "apbc1_psr",
+            "unused": "00000000",
+            "label": "APB1 prescaler (APBC1_PSR)"
+        },
+        {
+            "address": "4001001C",
+            "default": "00000080",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "apbc2",
+                    "label": "PCLK2 divider",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "00000003"
+                        }
+                    ]
+                }
+            ],
+            "key": "apbc2_psr",
+            "unused": "00000000",
+            "label": "APB2 prescaler (APBC2_PSR)"
+        },
+        {
+            "address": "40010030",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0000000C",
+                    "key": "mowt",
+                    "label": "Main oscillator wait time",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "~500 ns",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "~8 us",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "~16 us",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "~32 us",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "~64 us",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "~128 us",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "~256 us",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "~512 us",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "~1 ms",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "~2 ms",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "~4 ms",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "~8 ms",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "~33 ms",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "~131 ms",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "~524 ms",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "~2 s",
+                            "value": "0000000F"
+                        }
+                    ]
+                }
+            ],
+            "key": "csw_tmr",
+            "unused": "00000000",
+            "label": "Oscillation stabilization wait (CSW_TMR)"
+        },
+        {
+            "address": "40010034",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000010",
+                    "key": "pinc",
+                    "label": "PLL input clock",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Main oscillator (crystal)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "High-speed CR (4 MHz)",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000002",
+                    "key": "powt",
+                    "label": "PLL lock wait time",
+                    "mask": "00000007",
+                    "settings": [
+                        {
+                            "label": "~128 us",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "~256 us",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "~512 us",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "~1 ms",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "~2 ms",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "~4 ms",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "~8 ms",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "~16 ms",
+                            "value": "00000007"
+                        }
+                    ]
+                }
+            ],
+            "key": "psw_tmr",
+            "unused": "00000000",
+            "label": "PLL stabilization wait (PSW_TMR)"
+        },
+        {
+            "address": "40010038",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "pllk",
+                    "label": "PLL input divider K",
+                    "mask": "000000F0",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "/3",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "/5",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "/7",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "/9",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "/10",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "/11",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "/12",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "/13",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "/14",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "/15",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "/16",
+                            "value": "000000F0"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "pllm",
+                    "label": "PLL VCO divider M",
+                    "mask": "0000000F",
+                    "settings": [
+                        {
+                            "label": "/1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "/2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "/3",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "/4",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "/5",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "/6",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "/7",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "/8",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "/9",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "/10",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "/11",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "/12",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "/13",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "/14",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "/15",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "/16",
+                            "value": "0000000F"
+                        }
+                    ]
+                }
+            ],
+            "key": "pll_ctl1",
+            "unused": "00000000",
+            "label": "PLL control 1 (PLL_CTL1)"
+        },
+        {
+            "address": "4001003C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0000002A",
+                    "key": "plln",
+                    "label": "PLL multiplier N",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "x1",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "x2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "x3",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "x4",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "x5",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "x6",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "x7",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "x8",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "x9",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "x10",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "x11",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "x12",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "x13",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "x14",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "x15",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "x16",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "x17",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "x18",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "x19",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "x20",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "x21",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "x22",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "x23",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "x24",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "x25",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "x26",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "x27",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "x28",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "x29",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "x30",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "x31",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "x32",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "x33",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "x34",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "x35",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "x36",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "x37",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "x38",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "x39",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "x40",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "x41",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "x42",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "x43",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "x44",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "x45",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "x46",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "x47",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "x48",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "x49",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "x50",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "x51",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "x52",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "x53",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "x54",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "x55",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "x56",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "x57",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "x58",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "x59",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "x60",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "x61",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "x62",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "x63",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "x64",
+                            "value": "0000003F"
+                        }
+                    ]
+                }
+            ],
+            "key": "pll_ctl2",
+            "unused": "00000000",
+            "label": "PLL control 2 (PLL_CTL2)"
+        }
+    ],
     "core": "M4EF",
     "delay_src_path": "delays/m4ef/__lib_delays.c",
     "mcu": "S6E2GK6J0AGV2000A",
-    "clock": "1"
+    "clock": 172
 }
