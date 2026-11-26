@@ -113,8 +113,10 @@ class GitHubReleaseUploader:
             }
         )
 
-        # Cache: release_name -> (release_id, upload_url_without_template)
-        self._release_cache: Dict[str, Tuple[int, str]] = {}
+        # Cache: release_name -> (release_id, upload_url_without_template, existing_release_or_None)
+        self._release_cache: Dict[str, Tuple[int, str, Optional[Dict[str, Any]]]] = {}
+        # All releases of the repo by name, listed once per run (see _all_releases_by_name)
+        self._releases_by_name: Optional[Dict[str, Dict[str, Any]]] = None
 
     # ---------------------------
     # Public API
@@ -390,16 +392,16 @@ class GitHubReleaseUploader:
     # ---------------------------
     # Release ensure + caching
     # ---------------------------
-    def _ensure_release_cached(self, *, name: str, tag: str) -> Tuple[int, str]:
+    def _ensure_release_cached(self, *, name: str, tag: str) -> Tuple[int, str, Optional[Dict[str, Any]]]:
         cached = self._release_cache.get(name)
         if cached:
             return cached
 
         rel_id, upload_url, existed = self._ensure_release(name=name, tag=tag)
-        self._release_cache[name] = (rel_id, upload_url)
+        self._release_cache[name] = (rel_id, upload_url, existed)
         return rel_id, upload_url, existed
 
-    def _ensure_release(self, *, name: str, tag: str) -> Tuple[int, str]:
+    def _ensure_release(self, *, name: str, tag: str) -> Tuple[int, str, Optional[Dict[str, Any]]]:
         """
         Ensure a release exists with exact matching name. If missing, create it.
         Returns: (release_id, upload_url_without_template)
@@ -427,27 +429,41 @@ class GitHubReleaseUploader:
         rel = resp.json()
         rel_id = int(rel["id"])
         upload_url = str(rel["upload_url"]).split("{")[0]
+        # Keep the listing in sync so later lookups in this run see the new release
+        self._all_releases_by_name()[name] = rel
         print(f"\033[34mCreated release: {name} (id={rel_id})\033[0m")
         return rel_id, upload_url, existing
 
     def _find_release_by_name(self, name: str) -> Optional[Dict[str, Any]]:
+        return self._all_releases_by_name().get(name)
+
+    def _all_releases_by_name(self) -> Dict[str, Dict[str, Any]]:
+        """
+        Lists all releases of the repo once and caches them by name. Every release in the
+        listing carries all of its assets, so the pages are large - listing them again for
+        every lookup made the run slow and prone to broken connections.
+        Release objects are only used for id/upload_url, assets are always fetched fresh.
+        """
+        if self._releases_by_name is not None:
+            return self._releases_by_name
+
         url = f"{self.api_base}/repos/{self.repo}/releases"
         page = 1
         per_page = 100
+        releases_by_name: Dict[str, Dict[str, Any]] = {}
 
         while True:
             resp = self._request("GET", url, params={"per_page": per_page, "page": page})
             releases = resp.json()
-            if not releases:
-                return None
-
             for r in releases:
-                if str(r.get("name") or "") == name:
-                    return r
-
+                # Keep the first (newest) release if names repeat, as the old page scan did
+                releases_by_name.setdefault(str(r.get("name") or ""), r)
             if len(releases) < per_page:
-                return None
+                break
             page += 1
+
+        self._releases_by_name = releases_by_name
+        return releases_by_name
 
     def _get_all_release_assets(self, release_id: int):
         all_assets = []
@@ -558,7 +574,14 @@ class GitHubReleaseUploader:
                 resp.raise_for_status()
                 return resp
 
-            except (requests.Timeout, requests.ConnectionError, requests.HTTPError) as e:
+            except (
+                requests.Timeout,
+                requests.ConnectionError,
+                requests.HTTPError,
+                # Connection dropped while the response body was streamed (e.g. InvalidChunkLength)
+                requests.exceptions.ChunkedEncodingError,
+                requests.exceptions.ContentDecodingError,
+            ) as e:
                 last_exc = e
                 if attempt < self.max_retries:
                     time.sleep(self.retry_backoff_s * (attempt ** 1.2))
