@@ -1,0 +1,3981 @@
+{
+    "config_registers": [
+        {
+            "address": "F40C0000",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00046500",
+                    "key": "RAMP_TIME",
+                    "label": "XTAL ramp-up time (cycles of IRC24M, used only when a PLL references XTAL24M)",
+                    "mask": "000FFFFF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "1048575",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "PLLCTLV2_XTAL",
+            "unused": "FFF00000",
+            "label": "Crystal oscillator (XTAL24M) configuration"
+        },
+        {
+            "address": "F40C0080",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000028",
+                    "key": "MFI",
+                    "label": "PLL0 integer multiplier MFI (16..42, PLL0 = 384..1008 MHz)",
+                    "mask": "0000007F",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "42",
+                        "min_value": "16"
+                    }
+                }
+            ],
+            "key": "PLLCTLV2_PLL0_MFI",
+            "unused": "FFFFFF80",
+            "label": "PLL0 multiplier (fout = 24 MHz x MFI)"
+        },
+        {
+            "address": "F40C0094",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "REFSEL",
+                    "label": "PLL0 reference clock",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "XTAL24M (external 24 MHz crystal)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "IRC24M (internal 24 MHz RC oscillator)",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL0_CONFIG",
+            "unused": "FFFFFFFE",
+            "label": "PLL0 configuration"
+        },
+        {
+            "address": "F40C00C0",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "PLL0_CLK0 divider (1 + DIV/5)",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "Divide by 1.0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divide by 1.2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 1.4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 1.6",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 1.8",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 2.0",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 2.2",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 2.4",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 2.6",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 2.8",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 3.0",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 3.2",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 3.4",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 3.6",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 3.8",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 4.0",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 4.2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 4.4",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 4.6",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 4.8",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 5.0",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 5.2",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 5.4",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 5.6",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 5.8",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 6.0",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 6.2",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 6.4",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 6.6",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 6.8",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 7.0",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 7.2",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 7.4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 7.6",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 7.8",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 8.0",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 8.2",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 8.4",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 8.6",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 8.8",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 9.0",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 9.2",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 9.4",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 9.6",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 9.8",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 10.0",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 10.2",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 10.4",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 10.6",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 10.8",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 11.0",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 11.2",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 11.4",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 11.6",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 11.8",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 12.0",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 12.2",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 12.4",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 12.6",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 12.8",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 13.0",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 13.2",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 13.4",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 13.6",
+                            "value": "0000003F"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL0_DIV0",
+            "unused": "FFFFFFC0",
+            "label": "PLL0 output CLK0 post divider"
+        },
+        {
+            "address": "F40C00C4",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "PLL0_CLK1 divider (1 + DIV/5)",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "Divide by 1.0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divide by 1.2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 1.4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 1.6",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 1.8",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 2.0",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 2.2",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 2.4",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 2.6",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 2.8",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 3.0",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 3.2",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 3.4",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 3.6",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 3.8",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 4.0",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 4.2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 4.4",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 4.6",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 4.8",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 5.0",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 5.2",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 5.4",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 5.6",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 5.8",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 6.0",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 6.2",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 6.4",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 6.6",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 6.8",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 7.0",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 7.2",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 7.4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 7.6",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 7.8",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 8.0",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 8.2",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 8.4",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 8.6",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 8.8",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 9.0",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 9.2",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 9.4",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 9.6",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 9.8",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 10.0",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 10.2",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 10.4",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 10.6",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 10.8",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 11.0",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 11.2",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 11.4",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 11.6",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 11.8",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 12.0",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 12.2",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 12.4",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 12.6",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 12.8",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 13.0",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 13.2",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 13.4",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 13.6",
+                            "value": "0000003F"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL0_DIV1",
+            "unused": "FFFFFFC0",
+            "label": "PLL0 output CLK1 post divider"
+        },
+        {
+            "address": "F40C00C8",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000007",
+                    "key": "DIV",
+                    "label": "PLL0_CLK2 divider (1 + DIV/5)",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "Divide by 1.0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divide by 1.2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 1.4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 1.6",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 1.8",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 2.0",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 2.2",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 2.4",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 2.6",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 2.8",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 3.0",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 3.2",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 3.4",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 3.6",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 3.8",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 4.0",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 4.2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 4.4",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 4.6",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 4.8",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 5.0",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 5.2",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 5.4",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 5.6",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 5.8",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 6.0",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 6.2",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 6.4",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 6.6",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 6.8",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 7.0",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 7.2",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 7.4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 7.6",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 7.8",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 8.0",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 8.2",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 8.4",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 8.6",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 8.8",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 9.0",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 9.2",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 9.4",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 9.6",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 9.8",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 10.0",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 10.2",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 10.4",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 10.6",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 10.8",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 11.0",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 11.2",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 11.4",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 11.6",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 11.8",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 12.0",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 12.2",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 12.4",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 12.6",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 12.8",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 13.0",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 13.2",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 13.4",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 13.6",
+                            "value": "0000003F"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL0_DIV2",
+            "unused": "FFFFFFC0",
+            "label": "PLL0 output CLK2 post divider"
+        },
+        {
+            "address": "F40C0100",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "MFI",
+                    "label": "PLL1 integer multiplier MFI (16..42, PLL1 = 384..1008 MHz)",
+                    "mask": "0000007F",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "42",
+                        "min_value": "16"
+                    }
+                }
+            ],
+            "key": "PLLCTLV2_PLL1_MFI",
+            "unused": "FFFFFF80",
+            "label": "PLL1 multiplier (fout = 24 MHz x MFI)"
+        },
+        {
+            "address": "F40C0114",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "REFSEL",
+                    "label": "PLL1 reference clock",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "XTAL24M (external 24 MHz crystal)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "IRC24M (internal 24 MHz RC oscillator)",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL1_CONFIG",
+            "unused": "FFFFFFFE",
+            "label": "PLL1 configuration"
+        },
+        {
+            "address": "F40C0140",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "PLL1_CLK0 divider (1 + DIV/5)",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "Divide by 1.0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divide by 1.2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 1.4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 1.6",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 1.8",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 2.0",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 2.2",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 2.4",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 2.6",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 2.8",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 3.0",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 3.2",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 3.4",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 3.6",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 3.8",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 4.0",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 4.2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 4.4",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 4.6",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 4.8",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 5.0",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 5.2",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 5.4",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 5.6",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 5.8",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 6.0",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 6.2",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 6.4",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 6.6",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 6.8",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 7.0",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 7.2",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 7.4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 7.6",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 7.8",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 8.0",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 8.2",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 8.4",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 8.6",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 8.8",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 9.0",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 9.2",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 9.4",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 9.6",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 9.8",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 10.0",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 10.2",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 10.4",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 10.6",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 10.8",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 11.0",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 11.2",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 11.4",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 11.6",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 11.8",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 12.0",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 12.2",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 12.4",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 12.6",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 12.8",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 13.0",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 13.2",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 13.4",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 13.6",
+                            "value": "0000003F"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL1_DIV0",
+            "unused": "FFFFFFC0",
+            "label": "PLL1 output CLK0 post divider"
+        },
+        {
+            "address": "F40C0144",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIV",
+                    "label": "PLL1_CLK1 divider (1 + DIV/5)",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "Divide by 1.0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divide by 1.2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 1.4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 1.6",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 1.8",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 2.0",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 2.2",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 2.4",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 2.6",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 2.8",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 3.0",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 3.2",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 3.4",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 3.6",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 3.8",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 4.0",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 4.2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 4.4",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 4.6",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 4.8",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 5.0",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 5.2",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 5.4",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 5.6",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 5.8",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 6.0",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 6.2",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 6.4",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 6.6",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 6.8",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 7.0",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 7.2",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 7.4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 7.6",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 7.8",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 8.0",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 8.2",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 8.4",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 8.6",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 8.8",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 9.0",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 9.2",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 9.4",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 9.6",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 9.8",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 10.0",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 10.2",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 10.4",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 10.6",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 10.8",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 11.0",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 11.2",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 11.4",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 11.6",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 11.8",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 12.0",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 12.2",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 12.4",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 12.6",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 12.8",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 13.0",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 13.2",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 13.4",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 13.6",
+                            "value": "0000003F"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL1_DIV1",
+            "unused": "FFFFFFC0",
+            "label": "PLL1 output CLK1 post divider"
+        },
+        {
+            "address": "F40C0148",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "PLL1_CLK2 divider (1 + DIV/5)",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "Divide by 1.0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divide by 1.2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 1.4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 1.6",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 1.8",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 2.0",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 2.2",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 2.4",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 2.6",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 2.8",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 3.0",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 3.2",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 3.4",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 3.6",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 3.8",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 4.0",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 4.2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 4.4",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 4.6",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 4.8",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 5.0",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 5.2",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 5.4",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 5.6",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 5.8",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 6.0",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 6.2",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 6.4",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 6.6",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 6.8",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 7.0",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 7.2",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 7.4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 7.6",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 7.8",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 8.0",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 8.2",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 8.4",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 8.6",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 8.8",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 9.0",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 9.2",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 9.4",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 9.6",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 9.8",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 10.0",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 10.2",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 10.4",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 10.6",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 10.8",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 11.0",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 11.2",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 11.4",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 11.6",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 11.8",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 12.0",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 12.2",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 12.4",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 12.6",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 12.8",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 13.0",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 13.2",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 13.4",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 13.6",
+                            "value": "0000003F"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL1_DIV2",
+            "unused": "FFFFFFC0",
+            "label": "PLL1 output CLK2 post divider"
+        },
+        {
+            "address": "F40C014C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "0000000A",
+                    "key": "DIV",
+                    "label": "PLL1_CLK3 divider (1 + DIV/5)",
+                    "mask": "0000003F",
+                    "settings": [
+                        {
+                            "label": "Divide by 1.0",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Divide by 1.2",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "Divide by 1.4",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "Divide by 1.6",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "Divide by 1.8",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "Divide by 2.0",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "Divide by 2.2",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "Divide by 2.4",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "Divide by 2.6",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "Divide by 2.8",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "Divide by 3.0",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "Divide by 3.2",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "Divide by 3.4",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "Divide by 3.6",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "Divide by 3.8",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "Divide by 4.0",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "Divide by 4.2",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "Divide by 4.4",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "Divide by 4.6",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "Divide by 4.8",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "Divide by 5.0",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "Divide by 5.2",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "Divide by 5.4",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "Divide by 5.6",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "Divide by 5.8",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "Divide by 6.0",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "Divide by 6.2",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "Divide by 6.4",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "Divide by 6.6",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "Divide by 6.8",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "Divide by 7.0",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "Divide by 7.2",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "Divide by 7.4",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "Divide by 7.6",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "Divide by 7.8",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "Divide by 8.0",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "Divide by 8.2",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "Divide by 8.4",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "Divide by 8.6",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "Divide by 8.8",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "Divide by 9.0",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "Divide by 9.2",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "Divide by 9.4",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "Divide by 9.6",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "Divide by 9.8",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "Divide by 10.0",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "Divide by 10.2",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "Divide by 10.4",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "Divide by 10.6",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "Divide by 10.8",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "Divide by 11.0",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "Divide by 11.2",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "Divide by 11.4",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "Divide by 11.6",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "Divide by 11.8",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "Divide by 12.0",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "Divide by 12.2",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "Divide by 12.4",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "Divide by 12.6",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "Divide by 12.8",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "Divide by 13.0",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "Divide by 13.2",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "Divide by 13.4",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "Divide by 13.6",
+                            "value": "0000003F"
+                        }
+                    ]
+                }
+            ],
+            "key": "PLLCTLV2_PLL1_DIV3",
+            "unused": "FFFFFFC0",
+            "label": "PLL1 output CLK3 post divider"
+        },
+        {
+            "address": "F4001800",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "MUX",
+                    "label": "CPU0 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIV",
+                    "label": "CPU0 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                },
+                {
+                    "hidden": false,
+                    "init": "00020000",
+                    "key": "SUB0_DIV",
+                    "label": "AHB clock divider from CPU0 clock (divide by SUB0_DIV + 1)",
+                    "mask": "000F0000",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "15",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_CPU0",
+            "unused": "FFF0F800",
+            "label": "CPU0 and AHB clock"
+        },
+        {
+            "address": "F4001804",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MUX",
+                    "label": "Machine timer (MCHTMR0) clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Machine timer (MCHTMR0) clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_MCT0",
+            "unused": "FFFFF800",
+            "label": "Machine timer (MCHTMR0) clock"
+        },
+        {
+            "address": "F4001828",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "GPTMR0 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "GPTMR0 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_TMR0",
+            "unused": "FFFFF800",
+            "label": "GPTMR0 clock"
+        },
+        {
+            "address": "F400182C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "GPTMR1 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "GPTMR1 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_TMR1",
+            "unused": "FFFFF800",
+            "label": "GPTMR1 clock"
+        },
+        {
+            "address": "F4001838",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "I2C0 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "I2C0 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_I2C0",
+            "unused": "FFFFF800",
+            "label": "I2C0 clock"
+        },
+        {
+            "address": "F400183C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "I2C1 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "I2C1 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_I2C1",
+            "unused": "FFFFF800",
+            "label": "I2C1 clock"
+        },
+        {
+            "address": "F4001840",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "I2C2 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "I2C2 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_I2C2",
+            "unused": "FFFFF800",
+            "label": "I2C2 clock"
+        },
+        {
+            "address": "F4001844",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "I2C3 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "I2C3 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_I2C3",
+            "unused": "FFFFF800",
+            "label": "I2C3 clock"
+        },
+        {
+            "address": "F4001848",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "SPI0 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "SPI0 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_SPI0",
+            "unused": "FFFFF800",
+            "label": "SPI0 clock"
+        },
+        {
+            "address": "F400184C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "SPI1 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "SPI1 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_SPI1",
+            "unused": "FFFFF800",
+            "label": "SPI1 clock"
+        },
+        {
+            "address": "F4001850",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "SPI2 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "SPI2 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_SPI2",
+            "unused": "FFFFF800",
+            "label": "SPI2 clock"
+        },
+        {
+            "address": "F4001854",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "SPI3 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000003",
+                    "key": "DIV",
+                    "label": "SPI3 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_SPI3",
+            "unused": "FFFFF800",
+            "label": "SPI3 clock"
+        },
+        {
+            "address": "F4001858",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MUX",
+                    "label": "UART0 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "UART0 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_URT0",
+            "unused": "FFFFF800",
+            "label": "UART0 clock"
+        },
+        {
+            "address": "F400185C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MUX",
+                    "label": "UART1 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "UART1 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_URT1",
+            "unused": "FFFFF800",
+            "label": "UART1 clock"
+        },
+        {
+            "address": "F4001860",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MUX",
+                    "label": "UART2 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "UART2 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_URT2",
+            "unused": "FFFFF800",
+            "label": "UART2 clock"
+        },
+        {
+            "address": "F4001864",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MUX",
+                    "label": "UART3 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "UART3 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_URT3",
+            "unused": "FFFFF800",
+            "label": "UART3 clock"
+        },
+        {
+            "address": "F400187C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000300",
+                    "key": "MUX",
+                    "label": "ADC0 analog clock (ANA0) clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000001",
+                    "key": "DIV",
+                    "label": "ADC0 analog clock (ANA0) clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_ANA0",
+            "unused": "FFFFF800",
+            "label": "ADC0 analog clock (ANA0) clock"
+        },
+        {
+            "address": "F400188C",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MUX",
+                    "label": "Reference clock output REF0 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Reference clock output REF0 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_REF0",
+            "unused": "FFFFF800",
+            "label": "Reference clock output REF0 clock"
+        },
+        {
+            "address": "F4001890",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MUX",
+                    "label": "Reference clock output REF1 clock source",
+                    "mask": "00000700",
+                    "settings": [
+                        {
+                            "label": "OSC0_CLK0 (24 MHz)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL0_CLK0",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "PLL0_CLK1",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "PLL0_CLK2",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "PLL1_CLK0",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "PLL1_CLK1",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "PLL1_CLK2",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "PLL1_CLK3",
+                            "value": "00000700"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "DIV",
+                    "label": "Reference clock output REF1 clock divider (divide by DIV + 1)",
+                    "mask": "000000FF",
+                    "settings_array": {
+                        "decrease": false,
+                        "disabled_when_zero": false,
+                        "inverted": false,
+                        "max_value": "255",
+                        "min_value": "0"
+                    }
+                }
+            ],
+            "key": "SYSCTL_CLOCK_REF1",
+            "unused": "FFFFF800",
+            "label": "Reference clock output REF1 clock"
+        },
+        {
+            "address": "F4001C00",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "MUX",
+                    "label": "ADC0 clock source",
+                    "mask": "00000100",
+                    "settings": [
+                        {
+                            "label": "AHB clock",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "ANA0 clock",
+                            "value": "00000100"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSCTL_ADCCLK0",
+            "unused": "FFFFFEFF",
+            "label": "ADC0 clock"
+        },
+        {
+            "address": "F4000800",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": true,
+                    "init": "00000001",
+                    "key": "AHB0",
+                    "label": "AHB bus clock",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000001"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000002",
+                    "key": "LMM0",
+                    "label": "Local memory (ILM/DLM) clock",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000004",
+                    "key": "MCT0",
+                    "label": "Machine timer MCHTMR0 clock",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00000008",
+                    "key": "ROM0",
+                    "label": "Boot ROM clock",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00002000",
+                    "key": "TMR0",
+                    "label": "GPTMR0 clock",
+                    "mask": "00002000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00002000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00004000",
+                    "key": "TMR1",
+                    "label": "GPTMR1 clock",
+                    "mask": "00004000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00004000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00020000",
+                    "key": "I2C0",
+                    "label": "I2C0 clock",
+                    "mask": "00020000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00020000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00040000",
+                    "key": "I2C1",
+                    "label": "I2C1 clock",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00040000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00080000",
+                    "key": "I2C2",
+                    "label": "I2C2 clock",
+                    "mask": "00080000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00080000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00100000",
+                    "key": "I2C3",
+                    "label": "I2C3 clock",
+                    "mask": "00100000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00100000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00200000",
+                    "key": "SPI0",
+                    "label": "SPI0 clock",
+                    "mask": "00200000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00200000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00400000",
+                    "key": "SPI1",
+                    "label": "SPI1 clock",
+                    "mask": "00400000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00400000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00800000",
+                    "key": "SPI2",
+                    "label": "SPI2 clock",
+                    "mask": "00800000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00800000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "01000000",
+                    "key": "SPI3",
+                    "label": "SPI3 clock",
+                    "mask": "01000000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "01000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "02000000",
+                    "key": "URT0",
+                    "label": "UART0 clock",
+                    "mask": "02000000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "02000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "04000000",
+                    "key": "URT1",
+                    "label": "UART1 clock",
+                    "mask": "04000000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "04000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "08000000",
+                    "key": "URT2",
+                    "label": "UART2 clock",
+                    "mask": "08000000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "08000000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "10000000",
+                    "key": "URT3",
+                    "label": "UART3 clock",
+                    "mask": "10000000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "10000000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSCTL_GROUP0_LINK0",
+            "unused": "E0019FF0",
+            "label": "Clock group 0 peripheral links (resources 256-287)"
+        },
+        {
+            "address": "F4000810",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "WDG0",
+                    "label": "Watchdog EWDG0 clock",
+                    "mask": "00000002",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000002"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "WDG1",
+                    "label": "Watchdog EWDG1 clock",
+                    "mask": "00000004",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000004"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "MBX0",
+                    "label": "Mailbox MBX0 clock",
+                    "mask": "00000008",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000008"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "TSNS",
+                    "label": "Temperature sensor clock",
+                    "mask": "00000010",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000010"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000020",
+                    "key": "CRC0",
+                    "label": "CRC clock",
+                    "mask": "00000020",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000020"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000040",
+                    "key": "ADC0",
+                    "label": "ADC0 clock",
+                    "mask": "00000040",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000040"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "ACMP",
+                    "label": "Analog comparator clock",
+                    "mask": "00000400",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00000400"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00002000",
+                    "key": "MOT0",
+                    "label": "Motor system (TRGM, SYNT) clock",
+                    "mask": "00002000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00002000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00020000",
+                    "key": "GPIO",
+                    "label": "GPIO clock",
+                    "mask": "00020000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00020000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00040000",
+                    "key": "HDMA",
+                    "label": "DMA (HDMA) clock",
+                    "mask": "00040000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00040000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "00080000",
+                    "key": "XPI0",
+                    "label": "XPI0 (flash interface) clock",
+                    "mask": "00080000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00080000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "USB0",
+                    "label": "USB0 clock",
+                    "mask": "00100000",
+                    "settings": [
+                        {
+                            "label": "Disabled",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Enabled",
+                            "value": "00100000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SYSCTL_GROUP0_LINK1",
+            "unused": "FFE1DB81",
+            "label": "Clock group 0 peripheral links (resources 288-319)"
+        },
+        {
+            "address": "F4104010",
+            "default": "00000000",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "000004FB",
+                    "key": "VOLT",
+                    "label": "DCDC output voltage",
+                    "mask": "00000FFF",
+                    "settings": [
+                        {
+                            "label": "Keep current setting (VDD_SOC from an external regulator)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "600 mV",
+                            "value": "00000258"
+                        },
+                        {
+                            "label": "625 mV",
+                            "value": "00000271"
+                        },
+                        {
+                            "label": "650 mV",
+                            "value": "0000028A"
+                        },
+                        {
+                            "label": "675 mV",
+                            "value": "000002A3"
+                        },
+                        {
+                            "label": "700 mV",
+                            "value": "000002BC"
+                        },
+                        {
+                            "label": "725 mV",
+                            "value": "000002D5"
+                        },
+                        {
+                            "label": "750 mV",
+                            "value": "000002EE"
+                        },
+                        {
+                            "label": "775 mV",
+                            "value": "00000307"
+                        },
+                        {
+                            "label": "800 mV",
+                            "value": "00000320"
+                        },
+                        {
+                            "label": "825 mV",
+                            "value": "00000339"
+                        },
+                        {
+                            "label": "850 mV",
+                            "value": "00000352"
+                        },
+                        {
+                            "label": "875 mV",
+                            "value": "0000036B"
+                        },
+                        {
+                            "label": "900 mV",
+                            "value": "00000384"
+                        },
+                        {
+                            "label": "925 mV",
+                            "value": "0000039D"
+                        },
+                        {
+                            "label": "950 mV",
+                            "value": "000003B6"
+                        },
+                        {
+                            "label": "975 mV",
+                            "value": "000003CF"
+                        },
+                        {
+                            "label": "1000 mV",
+                            "value": "000003E8"
+                        },
+                        {
+                            "label": "1025 mV",
+                            "value": "00000401"
+                        },
+                        {
+                            "label": "1050 mV",
+                            "value": "0000041A"
+                        },
+                        {
+                            "label": "1075 mV",
+                            "value": "00000433"
+                        },
+                        {
+                            "label": "1100 mV",
+                            "value": "0000044C"
+                        },
+                        {
+                            "label": "1125 mV",
+                            "value": "00000465"
+                        },
+                        {
+                            "label": "1150 mV",
+                            "value": "0000047E"
+                        },
+                        {
+                            "label": "1175 mV",
+                            "value": "00000497"
+                        },
+                        {
+                            "label": "1200 mV",
+                            "value": "000004B0"
+                        },
+                        {
+                            "label": "1225 mV",
+                            "value": "000004C9"
+                        },
+                        {
+                            "label": "1250 mV",
+                            "value": "000004E2"
+                        },
+                        {
+                            "label": "1275 mV",
+                            "value": "000004FB"
+                        },
+                        {
+                            "label": "1300 mV",
+                            "value": "00000514"
+                        },
+                        {
+                            "label": "1325 mV",
+                            "value": "0000052D"
+                        },
+                        {
+                            "label": "1350 mV",
+                            "value": "00000546"
+                        },
+                        {
+                            "label": "1375 mV",
+                            "value": "0000055F"
+                        }
+                    ]
+                }
+            ],
+            "key": "PCFG_DCDC_MODE",
+            "unused": "FFFFF000",
+            "label": "Internal DCDC (VDD_SOC) setting"
+        }
+    ],
+    "core": "RISCV",
+    "delay_src_path": "delays/riscv/__lib_delays.c",
+    "mcu": "HPM5301IEG1",
+    "clock": "480"
+}

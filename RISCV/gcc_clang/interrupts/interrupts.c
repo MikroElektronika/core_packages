@@ -38,6 +38,133 @@
                                else \
                                    asm volatile ("csrw " #reg ", %0" :: "r"(val)); })
 
+#ifdef INTERRUPTS_ESP_MATRIX
+/* ------------------------------------------------------------------------- */
+/* Espressif RISC-V: interrupt matrix + INTC (C2/C3), PLIC (C6/H2) or CLIC    */
+/* (C5/C61/P4/S31). Every enabled source is routed to CPU interrupt line      */
+/* INTERRUPTS_ESP_CPU_LINE; the startup trap entry calls                      */
+/* __esp_interrupt_dispatch(), which calls <SOURCE>_IRQHandler for each       */
+/* pending source routed to that line.                                        */
+/* ------------------------------------------------------------------------- */
+
+#define MSTATUS_MIE (0x00000008UL)
+#define ESP_REG(addr) (*(volatile unsigned long *)(addr))
+#define ESP_MAP(src)  ESP_REG(INTERRUPTS_ESP_MAP_BASE + 4UL * (unsigned long)(src))
+#define ESP_LINE_OFF  (0UL) // CPU line 0 is never enabled: routing a source there disconnects it
+
+extern void ( * const __esp_irq_handlers[] )( void );
+static const unsigned long esp_status_regs[ INTERRUPTS_ESP_STATUS_COUNT ] = INTERRUPTS_ESP_STATUS_REGS;
+
+static void esp_cpu_line_enable( void )
+{
+    const unsigned long line = INTERRUPTS_ESP_CPU_LINE;
+#if defined( INTERRUPTS_ESP_INTC )
+    ESP_REG( INTERRUPTS_ESP_INTERRUPT_CORE0_CPU_INT_TYPE_REG ) &= ~( 1UL << line ); // level
+    ESP_REG( INTERRUPTS_ESP_INTERRUPT_CORE0_CPU_INT_PRI_0_REG + 4UL * line ) = 1UL;
+    ESP_REG( INTERRUPTS_ESP_INTERRUPT_CORE0_CPU_INT_THRESH_REG ) = 1UL;
+    ESP_REG( INTERRUPTS_ESP_INTERRUPT_CORE0_CPU_INT_ENABLE_REG ) |= ( 1UL << line );
+#elif defined( INTERRUPTS_ESP_PLIC )
+    ESP_REG( INTERRUPTS_ESP_PLIC_MXINT_TYPE_REG ) &= ~( 1UL << line ); // level
+    ESP_REG( INTERRUPTS_ESP_PLIC_MXINT0_PRI_REG + 4UL * line ) = 1UL;
+    ESP_REG( INTERRUPTS_ESP_PLIC_MXINT_THRESH_REG ) = 1UL;
+    ESP_REG( INTERRUPTS_ESP_PLIC_MXINT_ENABLE_REG ) |= ( 1UL << line );
+#elif defined( INTERRUPTS_ESP_CLIC )
+    // CLIC control word: CTL (level 1, lower bits set) | ATTR mode = machine, level triggered, not vectored | IE.
+    const unsigned long ctl = ( 1UL << ( 8UL - INTERRUPTS_ESP_NLBITS ) ) | ( ( 1UL << ( 8UL - INTERRUPTS_ESP_NLBITS ) ) - 1UL );
+    ESP_REG( INTERRUPTS_ESP_DR_REG_CLIC_CTRL_BASE + 4UL * ( line + INTERRUPTS_ESP_CLIC_EXT_INTR_NUM_OFFSET ) ) =
+        ( ctl << 24 ) | ( 3UL << 22 ) | ( 1UL << 8 );
+#endif
+}
+
+void __esp_interrupt_dispatch( void )
+{
+    for ( unsigned long reg = 0; reg < INTERRUPTS_ESP_STATUS_COUNT; reg++ ) {
+        unsigned long pending = ESP_REG( esp_status_regs[ reg ] );
+        while ( pending ) {
+            unsigned long bit = __builtin_ctzl( pending );
+            unsigned long source = reg * 32UL + bit;
+            pending &= pending - 1UL;
+            if ( ( source < INTERRUPTS_ESP_SOURCES ) && ( ( ESP_MAP( source ) & 0x3FUL ) == INTERRUPTS_ESP_CPU_LINE ) ) {
+                __esp_irq_handlers[ source ]();
+            }
+        }
+    }
+}
+
+void interrupts_enable( void )
+{
+    set_csr( mstatus, MSTATUS_MIE );
+}
+
+void interrupts_disable( void )
+{
+    clear_csr( mstatus, MSTATUS_MIE );
+}
+
+void interrupt_enable( int interrupt )
+{
+    if ( ( interrupt < 0 ) || ( interrupt >= INTERRUPTS_ESP_SOURCES ) ) {
+        return;
+    }
+    esp_cpu_line_enable();
+    ESP_MAP( interrupt ) = INTERRUPTS_ESP_CPU_LINE;
+}
+
+void interrupt_disable( int interrupt )
+{
+    if ( ( interrupt < 0 ) || ( interrupt >= INTERRUPTS_ESP_SOURCES ) ) {
+        return;
+    }
+    ESP_MAP( interrupt ) = ESP_LINE_OFF;
+}
+
+#elif defined( INTERRUPTS_PLIC_BASE )
+/* ------------------------------------------------------------------------- */
+/* Platform-Level Interrupt Controller (HPMicro, Andes D25), machine target 0. */
+/* The startup code dispatches PLIC sources to <NAME>_IRQHandler functions.   */
+/* ------------------------------------------------------------------------- */
+
+#define MSTATUS_MIE (0x00000008UL)
+#define MIE_MEIE    (0x00000800UL)
+
+#define PLIC_PRIORITY(irq) (*(volatile unsigned long *)(INTERRUPTS_PLIC_BASE + 0x4UL * (unsigned long)(irq)))
+#define PLIC_ENABLE(irq)   (*(volatile unsigned long *)(INTERRUPTS_PLIC_BASE + 0x2000UL + 0x4UL * ((unsigned long)(irq) >> 5)))
+#define PLIC_BIT(irq)      (1UL << ((unsigned long)(irq) & 0x1FUL))
+
+void interrupts_enable( void )
+{
+    set_csr( mie, MIE_MEIE );
+    set_csr( mstatus, MSTATUS_MIE );
+}
+
+void interrupts_disable( void )
+{
+    clear_csr( mstatus, MSTATUS_MIE );
+}
+
+void interrupt_enable( int interrupt )
+{
+    if ( ( interrupt <= 0 ) || ( interrupt >= INTERRUPTS_PLIC_SOURCES ) ) {
+        return;
+    }
+    // Priority 0 never interrupts: use the lowest active priority unless one is set.
+    if ( 0 == PLIC_PRIORITY( interrupt ) ) {
+        PLIC_PRIORITY( interrupt ) = 1UL;
+    }
+    PLIC_ENABLE( interrupt ) |= PLIC_BIT( interrupt );
+    set_csr( mie, MIE_MEIE );
+}
+
+void interrupt_disable( int interrupt )
+{
+    if ( ( interrupt <= 0 ) || ( interrupt >= INTERRUPTS_PLIC_SOURCES ) ) {
+        return;
+    }
+    PLIC_ENABLE( interrupt ) &= ~PLIC_BIT( interrupt );
+}
+
+#else // ECLIC (GigaDevice, Nuclei cores)
+
 #define SET_ECLIC_CLICINT_IE(IRQn,val)   (*(volatile unsigned char*)(ECLIC_ADDR_BASE+ECLIC_INT_IE_OFFSET+IRQn*4)=val)
 
 #define SET_ECLIC_CLICINT_ATTR(IRQn,val) (*(volatile unsigned char*)(ECLIC_ADDR_BASE+ECLIC_INT_ATTR_OFFSET+IRQn*4)=val)
@@ -110,6 +237,8 @@ static inline void interrupts_disable_asm( void )
 {
     clear_csr( mstatus, MSTATUS_MIE );
 }
+
+#endif // INTERRUPTS_ESP_MATRIX / INTERRUPTS_PLIC_BASE / ECLIC
 
 // ----------------------------------------------------------------------------
 /*

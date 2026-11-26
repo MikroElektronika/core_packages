@@ -1,0 +1,74 @@
+/*
+ * SPDX-FileCopyrightText: 2019-2026 Espressif Systems (Shanghai) CO LTD
+ *
+ * SPDX-License-Identifier: Apache-2.0 OR MIT
+ */
+
+#pragma once
+
+#include "../sdkconfig.h"
+#include "soc_caps.h"
+
+// TODO: IDF-5645
+#if CONFIG_IDF_TARGET_ESP32C6
+#include "soc/lp_io_reg.h"
+#include "soc/lp_io_struct.h"
+#include "lp_aon_reg.h"
+#elif CONFIG_IDF_TARGET_ESP32C61
+#include "lp_gpio_reg.h"
+#include "lp_gpio_struct.h"
+#include "lp_aon_reg.h"
+
+// ESP32H2-TODO: IDF-6327
+#elif CONFIG_IDF_TARGET_ESP32H2 || CONFIG_IDF_TARGET_ESP32H21
+#include "lp_aon_reg.h"
+#elif CONFIG_IDF_TARGET_ESP32P4 || CONFIG_IDF_TARGET_ESP32C5
+#include "lp_gpio_reg.h"
+#include "lp_gpio_struct.h"
+#include "lp_iomux_reg.h"
+#include "lp_iomux_struct.h"
+#endif
+
+#if SOC_RTC_TIMER_V1
+#include "soc/rtc_cntl_reg.h"
+#include "soc/rtc_cntl_struct.h"
+#elif SOC_RTC_TIMER_V2
+#include "lp_timer_reg.h"
+#include "lp_timer_struct.h"
+#elif SOC_RTC_TIMER_V3
+#include "soc/rtc_timer_reg.h"
+#include "soc/rtc_timer_struct.h"
+#endif
+
+#if SOC_PMU_SUPPORTED
+#include "pmu_reg.h"
+#endif
+
+#if SOC_LP_I2C_SUPPORTED
+#include "lp_i2c_reg.h"
+#include "lp_i2c_struct.h"
+#endif
+
+#if SOC_ULP_LP_UART_SUPPORTED
+#include "lp_uart_reg.h"
+#include "lp_uart_struct.h"
+#endif
+
+#if __has_include("lp_analog_peri_reg.h")
+#include "lp_analog_peri_reg.h"
+#endif
+
+#if __has_include("lp_clkrst_reg.h")
+#include "lp_clkrst_reg.h"
+#include "lp_clkrst_struct.h"
+#endif
+
+#if __has_include("lp_wdt_reg.h")
+#include "lp_wdt_reg.h"
+#include "lp_wdt_struct.h"
+#endif
+
+#if __has_include("soc/rtc_wdt_reg.h")
+#include "soc/rtc_wdt_reg.h"
+#include "soc/rtc_wdt_struct.h"
+#endif

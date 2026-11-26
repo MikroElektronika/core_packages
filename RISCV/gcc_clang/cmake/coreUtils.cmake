@@ -168,6 +168,12 @@ function(get_mcu_vendor vendor)
         set(${vendor} nxp PARENT_SCOPE)
     elseif(${MCU_NAME} MATCHES "^TM4C.+$")
         set(${vendor} ti PARENT_SCOPE)
+    elseif(${MCU_NAME} MATCHES "^GD32V.+$")
+        set(${vendor} gigadevice PARENT_SCOPE)
+    elseif(${MCU_NAME} MATCHES "^(ESP32-|ESP868).+$")
+        set(${vendor} espressif PARENT_SCOPE)
+    elseif(${MCU_NAME} MATCHES "^HPM.+$")
+        set(${vendor} hpmicro PARENT_SCOPE)
     else()
         message(FATAL_ERROR "${MCU_NAME} not supported in GCC by NECTO.")
     endif()
@@ -176,32 +182,40 @@ endfunction()
 
 #############################################################################
 ## Function to set appropriate linker, startup and source files
+## Same layout as ARM: cmake/<vendor>/*.cmake, startup/<vendor>/<mcu>.S,
+## linker_scripts/<vendor>/<mcu>.ld and def/<vendor>/<MCU>/mcu.h
 #############################################################################
-function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScript startupFile)
+function(core_files_set fileListInclude fileDirInclude fileListInstall linkerScript startupFile thirdpartyInstall)
 
-    set(local_list_include ${fileListInclude})
-    set(local_list_install ${fileListInstall})
-    set(local_dir_install ${fileDirInclude})
-
-    list(APPEND local_list_install "common/delays.h")
+    set(local_list_include "")
+    set(local_list_install "")
+    set(local_dir_install "")
 
     get_mcu_vendor(vendor)
-    list(APPEND local_list_include def/${vendor}/${MCU_NAME}/mcu.h)
-    list(APPEND local_list_install def/${vendor}/${MCU_NAME}/mcu.h)
-
-    list(APPEND local_dir_install system/inc/${vendor})
-    list(APPEND local_dir_install def/${vendor}/${MCU_NAME})
-    set(${list} ${local_dir_install} PARENT_SCOPE)
-
     string(TOLOWER ${MCU_NAME} mcu_match)
 
+    # Default per MCU startup and linker script, vendor cmake files may override these
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    set(${thirdpartyInstall} "" PARENT_SCOPE)
+
+    # Per MCU register header, MCUs without one use common/mcu.h
+    if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/def/${vendor}/${MCU_NAME}/mcu.h)
+        list(APPEND local_dir_install def/${vendor}/${MCU_NAME})
+        list(APPEND local_list_install def/${vendor}/${MCU_NAME}/mcu.h)
+    else()
+        list(APPEND local_list_install common/mcu.h)
+    endif()
+
+    # Only the selected vendor's cmake files are included
     file(GLOB_RECURSE CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${vendor}/*.cmake)
     foreach(cmakeFile ${CMAKE_FILES})
         include(${cmakeFile})
     endforeach()
 
-    set(${list} ${local_list_include} PARENT_SCOPE)
-    set(${list} ${local_list_install} PARENT_SCOPE)
+    set(${fileListInclude} ${local_list_include} PARENT_SCOPE)
+    set(${fileDirInclude} ${local_dir_install} PARENT_SCOPE)
+    set(${fileListInstall} ${local_list_install} PARENT_SCOPE)
 
 endfunction()
 
