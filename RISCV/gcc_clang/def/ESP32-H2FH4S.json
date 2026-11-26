@@ -1,0 +1,63 @@
+{
+    "config_registers": [
+        {
+            "address": "6009610C",
+            "default": "00000000",
+            "key": "PCR_SYSCLK_CONF",
+            "unused": "FFFCFFFF",
+            "label": "ESP32-H2 CPU clock (PCR_SYSCLK_CONF_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00010000",
+                    "key": "SOC_CLK_SEL",
+                    "label": "CPU clock: PCR_SOC_CLK_SEL",
+                    "mask": "00030000",
+                    "settings": [
+                        {
+                            "label": "XTAL 32 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL 96 MHz / 2 = 48 MHz / PLL 96 MHz",
+                            "value": "00010000"
+                        },
+                        {
+                            "label": "FLASH_PLL 64 MHz",
+                            "value": "00030000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "60096114",
+            "default": "00000000",
+            "key": "PCR_CPU_FREQ_CONF",
+            "unused": "FFFFFF00",
+            "label": "ESP32-H2 CPU clock (PCR_CPU_FREQ_CONF_REG)",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "CPU_DIV_NUM",
+                    "label": "CPU clock: PCR_CPU_DIV_NUM",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "XTAL 32 MHz / FLASH_PLL 64 MHz / PLL 96 MHz",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PLL 96 MHz / 2 = 48 MHz",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "RISCV",
+    "mcu": "ESP32-H2FH4S",
+    "clock": "96"
+}

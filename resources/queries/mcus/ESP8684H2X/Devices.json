@@ -1,0 +1,18 @@
+{
+    "def_file": "ESP8684H2X.json",
+    "family_uid": "ESP32-C2",
+    "flash": "2097152",
+    "icon": "images/mcu/espressif.png",
+    "max_speed": "120.000",
+    "name": "ESP8684H2X",
+    "ram": "248688",
+    "sdk_config": "{\"MCU_NAME\":\"ESP8684H2X\",\"CORE_NAME\":\"RISCV\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "ESP8684H2X",
+    "vendor": "Espressif",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm-riscv\": \"riscv_gcc_clang_esp32c2\", \"xpack-riscv-none-embed-gcc\": \"riscv_gcc_clang_esp32c2\"}"
+}
