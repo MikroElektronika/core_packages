@@ -1,0 +1,18 @@
+{
+    "def_file": "NRF52840-CKAA.json",
+    "family_uid": "nRF52",
+    "flash": "1048576",
+    "icon": "images/mcu/nordic.png",
+    "max_speed": "64.000",
+    "name": "NRF52840-CKAA",
+    "ram": "262144",
+    "sdk_config": "{\"MCU_NAME\":\"NRF52840-CKAA\",\"CORE_NAME\":\"M4EF\",\"_MSDK_HAL_LOW_LEVEL_TARGET_\":\"mikroe\",\"_MSDK_ETH_PHY_CHIP_\":\"NULL\"}",
+    "necto_config": "",
+    "uid": "NRF52840-CKAA",
+    "vendor": "Nordic Semiconductor",
+    "compiler_flags": "",
+    "linker_flags": "",
+    "tft_socket": "1",
+    "sdk_support": "0",
+    "installer_package": "{\"clang-llvm\": \"arm_gcc_clang_nrf5283_4\", \"gcc_arm_none_eabi\": \"arm_gcc_clang_nrf5283_4\"}"
+}
