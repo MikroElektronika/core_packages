@@ -160,8 +160,7 @@
 
 #endif
 
-//#include "core_cmInstr.h"                /* Core Instruction Access */  // Note: Changed for MikroE implementation.
-//#include "core_cmFunc.h"                 /* Core Function Access */  // Note: Changed for MikroE implementation.
+#include "cmsis_compiler.h"               /* Core Instruction/Function Access (replaces core_cmInstr.h, core_cmFunc.h) */  // Note: Changed for MikroE implementation.
 
 #ifdef __cplusplus
 }
