@@ -1,0 +1,5 @@
+if(${MCU_NAME} MATCHES "^NRF52832-CIAA$|^NRF52832-QFAA$|^NRF52832-QFAB$|^NRF52833-CJAA$|^NRF52833-QDAA$|^NRF52833-QIAA$|^NRF52840-CKAA$|^NRF52840-QFAA$|^NRF52840-QIAA$")
+    set(${linkerScript} linker_scripts/${vendor}/${mcu_match}.ld PARENT_SCOPE)
+    set(${startupFile} startup/${vendor}/${mcu_match}.S PARENT_SCOPE)
+    list(APPEND local_list_include system/src/${vendor}/nrf52/init_clock.c)
+endif()
