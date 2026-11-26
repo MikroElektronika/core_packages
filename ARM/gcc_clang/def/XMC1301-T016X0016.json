@@ -1,6 +1,2138 @@
 {
+    "config_registers": [
+        {
+            "address": "40010300",
+            "default": "3FF00400",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000100",
+                    "key": "IDIV",
+                    "label": "MCLK divider (IDIV)",
+                    "mask": "0000FF00",
+                    "settings": [
+                        {
+                            "label": "1 (MCLK 32 MHz)",
+                            "value": "00000100"
+                        },
+                        {
+                            "label": "2 (MCLK 16 MHz)",
+                            "value": "00000200"
+                        },
+                        {
+                            "label": "3 (MCLK 10.667 MHz)",
+                            "value": "00000300"
+                        },
+                        {
+                            "label": "4 (MCLK 8 MHz)",
+                            "value": "00000400"
+                        },
+                        {
+                            "label": "5 (MCLK 6.4 MHz)",
+                            "value": "00000500"
+                        },
+                        {
+                            "label": "6 (MCLK 5.333 MHz)",
+                            "value": "00000600"
+                        },
+                        {
+                            "label": "7 (MCLK 4.571 MHz)",
+                            "value": "00000700"
+                        },
+                        {
+                            "label": "8 (MCLK 4 MHz)",
+                            "value": "00000800"
+                        },
+                        {
+                            "label": "9 (MCLK 3.556 MHz)",
+                            "value": "00000900"
+                        },
+                        {
+                            "label": "10 (MCLK 3.2 MHz)",
+                            "value": "00000A00"
+                        },
+                        {
+                            "label": "11 (MCLK 2.909 MHz)",
+                            "value": "00000B00"
+                        },
+                        {
+                            "label": "12 (MCLK 2.667 MHz)",
+                            "value": "00000C00"
+                        },
+                        {
+                            "label": "13 (MCLK 2.462 MHz)",
+                            "value": "00000D00"
+                        },
+                        {
+                            "label": "14 (MCLK 2.286 MHz)",
+                            "value": "00000E00"
+                        },
+                        {
+                            "label": "15 (MCLK 2.133 MHz)",
+                            "value": "00000F00"
+                        },
+                        {
+                            "label": "16 (MCLK 2 MHz)",
+                            "value": "00001000"
+                        },
+                        {
+                            "label": "17 (MCLK 1.882 MHz)",
+                            "value": "00001100"
+                        },
+                        {
+                            "label": "18 (MCLK 1.778 MHz)",
+                            "value": "00001200"
+                        },
+                        {
+                            "label": "19 (MCLK 1.684 MHz)",
+                            "value": "00001300"
+                        },
+                        {
+                            "label": "20 (MCLK 1.6 MHz)",
+                            "value": "00001400"
+                        },
+                        {
+                            "label": "21 (MCLK 1.524 MHz)",
+                            "value": "00001500"
+                        },
+                        {
+                            "label": "22 (MCLK 1.455 MHz)",
+                            "value": "00001600"
+                        },
+                        {
+                            "label": "23 (MCLK 1.391 MHz)",
+                            "value": "00001700"
+                        },
+                        {
+                            "label": "24 (MCLK 1.333 MHz)",
+                            "value": "00001800"
+                        },
+                        {
+                            "label": "25 (MCLK 1.28 MHz)",
+                            "value": "00001900"
+                        },
+                        {
+                            "label": "26 (MCLK 1.231 MHz)",
+                            "value": "00001A00"
+                        },
+                        {
+                            "label": "27 (MCLK 1.185 MHz)",
+                            "value": "00001B00"
+                        },
+                        {
+                            "label": "28 (MCLK 1.143 MHz)",
+                            "value": "00001C00"
+                        },
+                        {
+                            "label": "29 (MCLK 1.103 MHz)",
+                            "value": "00001D00"
+                        },
+                        {
+                            "label": "30 (MCLK 1.067 MHz)",
+                            "value": "00001E00"
+                        },
+                        {
+                            "label": "31 (MCLK 1.032 MHz)",
+                            "value": "00001F00"
+                        },
+                        {
+                            "label": "32 (MCLK 1 MHz)",
+                            "value": "00002000"
+                        },
+                        {
+                            "label": "33 (MCLK 0.97 MHz)",
+                            "value": "00002100"
+                        },
+                        {
+                            "label": "34 (MCLK 0.941 MHz)",
+                            "value": "00002200"
+                        },
+                        {
+                            "label": "35 (MCLK 0.914 MHz)",
+                            "value": "00002300"
+                        },
+                        {
+                            "label": "36 (MCLK 0.889 MHz)",
+                            "value": "00002400"
+                        },
+                        {
+                            "label": "37 (MCLK 0.865 MHz)",
+                            "value": "00002500"
+                        },
+                        {
+                            "label": "38 (MCLK 0.842 MHz)",
+                            "value": "00002600"
+                        },
+                        {
+                            "label": "39 (MCLK 0.821 MHz)",
+                            "value": "00002700"
+                        },
+                        {
+                            "label": "40 (MCLK 0.8 MHz)",
+                            "value": "00002800"
+                        },
+                        {
+                            "label": "41 (MCLK 0.78 MHz)",
+                            "value": "00002900"
+                        },
+                        {
+                            "label": "42 (MCLK 0.762 MHz)",
+                            "value": "00002A00"
+                        },
+                        {
+                            "label": "43 (MCLK 0.744 MHz)",
+                            "value": "00002B00"
+                        },
+                        {
+                            "label": "44 (MCLK 0.727 MHz)",
+                            "value": "00002C00"
+                        },
+                        {
+                            "label": "45 (MCLK 0.711 MHz)",
+                            "value": "00002D00"
+                        },
+                        {
+                            "label": "46 (MCLK 0.696 MHz)",
+                            "value": "00002E00"
+                        },
+                        {
+                            "label": "47 (MCLK 0.681 MHz)",
+                            "value": "00002F00"
+                        },
+                        {
+                            "label": "48 (MCLK 0.667 MHz)",
+                            "value": "00003000"
+                        },
+                        {
+                            "label": "49 (MCLK 0.653 MHz)",
+                            "value": "00003100"
+                        },
+                        {
+                            "label": "50 (MCLK 0.64 MHz)",
+                            "value": "00003200"
+                        },
+                        {
+                            "label": "51 (MCLK 0.627 MHz)",
+                            "value": "00003300"
+                        },
+                        {
+                            "label": "52 (MCLK 0.615 MHz)",
+                            "value": "00003400"
+                        },
+                        {
+                            "label": "53 (MCLK 0.604 MHz)",
+                            "value": "00003500"
+                        },
+                        {
+                            "label": "54 (MCLK 0.593 MHz)",
+                            "value": "00003600"
+                        },
+                        {
+                            "label": "55 (MCLK 0.582 MHz)",
+                            "value": "00003700"
+                        },
+                        {
+                            "label": "56 (MCLK 0.571 MHz)",
+                            "value": "00003800"
+                        },
+                        {
+                            "label": "57 (MCLK 0.561 MHz)",
+                            "value": "00003900"
+                        },
+                        {
+                            "label": "58 (MCLK 0.552 MHz)",
+                            "value": "00003A00"
+                        },
+                        {
+                            "label": "59 (MCLK 0.542 MHz)",
+                            "value": "00003B00"
+                        },
+                        {
+                            "label": "60 (MCLK 0.533 MHz)",
+                            "value": "00003C00"
+                        },
+                        {
+                            "label": "61 (MCLK 0.525 MHz)",
+                            "value": "00003D00"
+                        },
+                        {
+                            "label": "62 (MCLK 0.516 MHz)",
+                            "value": "00003E00"
+                        },
+                        {
+                            "label": "63 (MCLK 0.508 MHz)",
+                            "value": "00003F00"
+                        },
+                        {
+                            "label": "64 (MCLK 0.5 MHz)",
+                            "value": "00004000"
+                        },
+                        {
+                            "label": "65 (MCLK 0.492 MHz)",
+                            "value": "00004100"
+                        },
+                        {
+                            "label": "66 (MCLK 0.485 MHz)",
+                            "value": "00004200"
+                        },
+                        {
+                            "label": "67 (MCLK 0.478 MHz)",
+                            "value": "00004300"
+                        },
+                        {
+                            "label": "68 (MCLK 0.471 MHz)",
+                            "value": "00004400"
+                        },
+                        {
+                            "label": "69 (MCLK 0.464 MHz)",
+                            "value": "00004500"
+                        },
+                        {
+                            "label": "70 (MCLK 0.457 MHz)",
+                            "value": "00004600"
+                        },
+                        {
+                            "label": "71 (MCLK 0.451 MHz)",
+                            "value": "00004700"
+                        },
+                        {
+                            "label": "72 (MCLK 0.444 MHz)",
+                            "value": "00004800"
+                        },
+                        {
+                            "label": "73 (MCLK 0.438 MHz)",
+                            "value": "00004900"
+                        },
+                        {
+                            "label": "74 (MCLK 0.432 MHz)",
+                            "value": "00004A00"
+                        },
+                        {
+                            "label": "75 (MCLK 0.427 MHz)",
+                            "value": "00004B00"
+                        },
+                        {
+                            "label": "76 (MCLK 0.421 MHz)",
+                            "value": "00004C00"
+                        },
+                        {
+                            "label": "77 (MCLK 0.416 MHz)",
+                            "value": "00004D00"
+                        },
+                        {
+                            "label": "78 (MCLK 0.41 MHz)",
+                            "value": "00004E00"
+                        },
+                        {
+                            "label": "79 (MCLK 0.405 MHz)",
+                            "value": "00004F00"
+                        },
+                        {
+                            "label": "80 (MCLK 0.4 MHz)",
+                            "value": "00005000"
+                        },
+                        {
+                            "label": "81 (MCLK 0.395 MHz)",
+                            "value": "00005100"
+                        },
+                        {
+                            "label": "82 (MCLK 0.39 MHz)",
+                            "value": "00005200"
+                        },
+                        {
+                            "label": "83 (MCLK 0.386 MHz)",
+                            "value": "00005300"
+                        },
+                        {
+                            "label": "84 (MCLK 0.381 MHz)",
+                            "value": "00005400"
+                        },
+                        {
+                            "label": "85 (MCLK 0.376 MHz)",
+                            "value": "00005500"
+                        },
+                        {
+                            "label": "86 (MCLK 0.372 MHz)",
+                            "value": "00005600"
+                        },
+                        {
+                            "label": "87 (MCLK 0.368 MHz)",
+                            "value": "00005700"
+                        },
+                        {
+                            "label": "88 (MCLK 0.364 MHz)",
+                            "value": "00005800"
+                        },
+                        {
+                            "label": "89 (MCLK 0.36 MHz)",
+                            "value": "00005900"
+                        },
+                        {
+                            "label": "90 (MCLK 0.356 MHz)",
+                            "value": "00005A00"
+                        },
+                        {
+                            "label": "91 (MCLK 0.352 MHz)",
+                            "value": "00005B00"
+                        },
+                        {
+                            "label": "92 (MCLK 0.348 MHz)",
+                            "value": "00005C00"
+                        },
+                        {
+                            "label": "93 (MCLK 0.344 MHz)",
+                            "value": "00005D00"
+                        },
+                        {
+                            "label": "94 (MCLK 0.34 MHz)",
+                            "value": "00005E00"
+                        },
+                        {
+                            "label": "95 (MCLK 0.337 MHz)",
+                            "value": "00005F00"
+                        },
+                        {
+                            "label": "96 (MCLK 0.333 MHz)",
+                            "value": "00006000"
+                        },
+                        {
+                            "label": "97 (MCLK 0.33 MHz)",
+                            "value": "00006100"
+                        },
+                        {
+                            "label": "98 (MCLK 0.327 MHz)",
+                            "value": "00006200"
+                        },
+                        {
+                            "label": "99 (MCLK 0.323 MHz)",
+                            "value": "00006300"
+                        },
+                        {
+                            "label": "100 (MCLK 0.32 MHz)",
+                            "value": "00006400"
+                        },
+                        {
+                            "label": "101 (MCLK 0.317 MHz)",
+                            "value": "00006500"
+                        },
+                        {
+                            "label": "102 (MCLK 0.314 MHz)",
+                            "value": "00006600"
+                        },
+                        {
+                            "label": "103 (MCLK 0.311 MHz)",
+                            "value": "00006700"
+                        },
+                        {
+                            "label": "104 (MCLK 0.308 MHz)",
+                            "value": "00006800"
+                        },
+                        {
+                            "label": "105 (MCLK 0.305 MHz)",
+                            "value": "00006900"
+                        },
+                        {
+                            "label": "106 (MCLK 0.302 MHz)",
+                            "value": "00006A00"
+                        },
+                        {
+                            "label": "107 (MCLK 0.299 MHz)",
+                            "value": "00006B00"
+                        },
+                        {
+                            "label": "108 (MCLK 0.296 MHz)",
+                            "value": "00006C00"
+                        },
+                        {
+                            "label": "109 (MCLK 0.294 MHz)",
+                            "value": "00006D00"
+                        },
+                        {
+                            "label": "110 (MCLK 0.291 MHz)",
+                            "value": "00006E00"
+                        },
+                        {
+                            "label": "111 (MCLK 0.288 MHz)",
+                            "value": "00006F00"
+                        },
+                        {
+                            "label": "112 (MCLK 0.286 MHz)",
+                            "value": "00007000"
+                        },
+                        {
+                            "label": "113 (MCLK 0.283 MHz)",
+                            "value": "00007100"
+                        },
+                        {
+                            "label": "114 (MCLK 0.281 MHz)",
+                            "value": "00007200"
+                        },
+                        {
+                            "label": "115 (MCLK 0.278 MHz)",
+                            "value": "00007300"
+                        },
+                        {
+                            "label": "116 (MCLK 0.276 MHz)",
+                            "value": "00007400"
+                        },
+                        {
+                            "label": "117 (MCLK 0.274 MHz)",
+                            "value": "00007500"
+                        },
+                        {
+                            "label": "118 (MCLK 0.271 MHz)",
+                            "value": "00007600"
+                        },
+                        {
+                            "label": "119 (MCLK 0.269 MHz)",
+                            "value": "00007700"
+                        },
+                        {
+                            "label": "120 (MCLK 0.267 MHz)",
+                            "value": "00007800"
+                        },
+                        {
+                            "label": "121 (MCLK 0.264 MHz)",
+                            "value": "00007900"
+                        },
+                        {
+                            "label": "122 (MCLK 0.262 MHz)",
+                            "value": "00007A00"
+                        },
+                        {
+                            "label": "123 (MCLK 0.26 MHz)",
+                            "value": "00007B00"
+                        },
+                        {
+                            "label": "124 (MCLK 0.258 MHz)",
+                            "value": "00007C00"
+                        },
+                        {
+                            "label": "125 (MCLK 0.256 MHz)",
+                            "value": "00007D00"
+                        },
+                        {
+                            "label": "126 (MCLK 0.254 MHz)",
+                            "value": "00007E00"
+                        },
+                        {
+                            "label": "127 (MCLK 0.252 MHz)",
+                            "value": "00007F00"
+                        },
+                        {
+                            "label": "128 (MCLK 0.25 MHz)",
+                            "value": "00008000"
+                        },
+                        {
+                            "label": "129 (MCLK 0.248 MHz)",
+                            "value": "00008100"
+                        },
+                        {
+                            "label": "130 (MCLK 0.246 MHz)",
+                            "value": "00008200"
+                        },
+                        {
+                            "label": "131 (MCLK 0.244 MHz)",
+                            "value": "00008300"
+                        },
+                        {
+                            "label": "132 (MCLK 0.242 MHz)",
+                            "value": "00008400"
+                        },
+                        {
+                            "label": "133 (MCLK 0.241 MHz)",
+                            "value": "00008500"
+                        },
+                        {
+                            "label": "134 (MCLK 0.239 MHz)",
+                            "value": "00008600"
+                        },
+                        {
+                            "label": "135 (MCLK 0.237 MHz)",
+                            "value": "00008700"
+                        },
+                        {
+                            "label": "136 (MCLK 0.235 MHz)",
+                            "value": "00008800"
+                        },
+                        {
+                            "label": "137 (MCLK 0.234 MHz)",
+                            "value": "00008900"
+                        },
+                        {
+                            "label": "138 (MCLK 0.232 MHz)",
+                            "value": "00008A00"
+                        },
+                        {
+                            "label": "139 (MCLK 0.23 MHz)",
+                            "value": "00008B00"
+                        },
+                        {
+                            "label": "140 (MCLK 0.229 MHz)",
+                            "value": "00008C00"
+                        },
+                        {
+                            "label": "141 (MCLK 0.227 MHz)",
+                            "value": "00008D00"
+                        },
+                        {
+                            "label": "142 (MCLK 0.225 MHz)",
+                            "value": "00008E00"
+                        },
+                        {
+                            "label": "143 (MCLK 0.224 MHz)",
+                            "value": "00008F00"
+                        },
+                        {
+                            "label": "144 (MCLK 0.222 MHz)",
+                            "value": "00009000"
+                        },
+                        {
+                            "label": "145 (MCLK 0.221 MHz)",
+                            "value": "00009100"
+                        },
+                        {
+                            "label": "146 (MCLK 0.219 MHz)",
+                            "value": "00009200"
+                        },
+                        {
+                            "label": "147 (MCLK 0.218 MHz)",
+                            "value": "00009300"
+                        },
+                        {
+                            "label": "148 (MCLK 0.216 MHz)",
+                            "value": "00009400"
+                        },
+                        {
+                            "label": "149 (MCLK 0.215 MHz)",
+                            "value": "00009500"
+                        },
+                        {
+                            "label": "150 (MCLK 0.213 MHz)",
+                            "value": "00009600"
+                        },
+                        {
+                            "label": "151 (MCLK 0.212 MHz)",
+                            "value": "00009700"
+                        },
+                        {
+                            "label": "152 (MCLK 0.211 MHz)",
+                            "value": "00009800"
+                        },
+                        {
+                            "label": "153 (MCLK 0.209 MHz)",
+                            "value": "00009900"
+                        },
+                        {
+                            "label": "154 (MCLK 0.208 MHz)",
+                            "value": "00009A00"
+                        },
+                        {
+                            "label": "155 (MCLK 0.206 MHz)",
+                            "value": "00009B00"
+                        },
+                        {
+                            "label": "156 (MCLK 0.205 MHz)",
+                            "value": "00009C00"
+                        },
+                        {
+                            "label": "157 (MCLK 0.204 MHz)",
+                            "value": "00009D00"
+                        },
+                        {
+                            "label": "158 (MCLK 0.203 MHz)",
+                            "value": "00009E00"
+                        },
+                        {
+                            "label": "159 (MCLK 0.201 MHz)",
+                            "value": "00009F00"
+                        },
+                        {
+                            "label": "160 (MCLK 0.2 MHz)",
+                            "value": "0000A000"
+                        },
+                        {
+                            "label": "161 (MCLK 0.199 MHz)",
+                            "value": "0000A100"
+                        },
+                        {
+                            "label": "162 (MCLK 0.198 MHz)",
+                            "value": "0000A200"
+                        },
+                        {
+                            "label": "163 (MCLK 0.196 MHz)",
+                            "value": "0000A300"
+                        },
+                        {
+                            "label": "164 (MCLK 0.195 MHz)",
+                            "value": "0000A400"
+                        },
+                        {
+                            "label": "165 (MCLK 0.194 MHz)",
+                            "value": "0000A500"
+                        },
+                        {
+                            "label": "166 (MCLK 0.193 MHz)",
+                            "value": "0000A600"
+                        },
+                        {
+                            "label": "167 (MCLK 0.192 MHz)",
+                            "value": "0000A700"
+                        },
+                        {
+                            "label": "168 (MCLK 0.19 MHz)",
+                            "value": "0000A800"
+                        },
+                        {
+                            "label": "169 (MCLK 0.189 MHz)",
+                            "value": "0000A900"
+                        },
+                        {
+                            "label": "170 (MCLK 0.188 MHz)",
+                            "value": "0000AA00"
+                        },
+                        {
+                            "label": "171 (MCLK 0.187 MHz)",
+                            "value": "0000AB00"
+                        },
+                        {
+                            "label": "172 (MCLK 0.186 MHz)",
+                            "value": "0000AC00"
+                        },
+                        {
+                            "label": "173 (MCLK 0.185 MHz)",
+                            "value": "0000AD00"
+                        },
+                        {
+                            "label": "174 (MCLK 0.184 MHz)",
+                            "value": "0000AE00"
+                        },
+                        {
+                            "label": "175 (MCLK 0.183 MHz)",
+                            "value": "0000AF00"
+                        },
+                        {
+                            "label": "176 (MCLK 0.182 MHz)",
+                            "value": "0000B000"
+                        },
+                        {
+                            "label": "177 (MCLK 0.181 MHz)",
+                            "value": "0000B100"
+                        },
+                        {
+                            "label": "178 (MCLK 0.18 MHz)",
+                            "value": "0000B200"
+                        },
+                        {
+                            "label": "179 (MCLK 0.179 MHz)",
+                            "value": "0000B300"
+                        },
+                        {
+                            "label": "180 (MCLK 0.178 MHz)",
+                            "value": "0000B400"
+                        },
+                        {
+                            "label": "181 (MCLK 0.177 MHz)",
+                            "value": "0000B500"
+                        },
+                        {
+                            "label": "182 (MCLK 0.176 MHz)",
+                            "value": "0000B600"
+                        },
+                        {
+                            "label": "183 (MCLK 0.175 MHz)",
+                            "value": "0000B700"
+                        },
+                        {
+                            "label": "184 (MCLK 0.174 MHz)",
+                            "value": "0000B800"
+                        },
+                        {
+                            "label": "185 (MCLK 0.173 MHz)",
+                            "value": "0000B900"
+                        },
+                        {
+                            "label": "186 (MCLK 0.172 MHz)",
+                            "value": "0000BA00"
+                        },
+                        {
+                            "label": "187 (MCLK 0.171 MHz)",
+                            "value": "0000BB00"
+                        },
+                        {
+                            "label": "188 (MCLK 0.17 MHz)",
+                            "value": "0000BC00"
+                        },
+                        {
+                            "label": "189 (MCLK 0.169 MHz)",
+                            "value": "0000BD00"
+                        },
+                        {
+                            "label": "190 (MCLK 0.168 MHz)",
+                            "value": "0000BE00"
+                        },
+                        {
+                            "label": "191 (MCLK 0.168 MHz)",
+                            "value": "0000BF00"
+                        },
+                        {
+                            "label": "192 (MCLK 0.167 MHz)",
+                            "value": "0000C000"
+                        },
+                        {
+                            "label": "193 (MCLK 0.166 MHz)",
+                            "value": "0000C100"
+                        },
+                        {
+                            "label": "194 (MCLK 0.165 MHz)",
+                            "value": "0000C200"
+                        },
+                        {
+                            "label": "195 (MCLK 0.164 MHz)",
+                            "value": "0000C300"
+                        },
+                        {
+                            "label": "196 (MCLK 0.163 MHz)",
+                            "value": "0000C400"
+                        },
+                        {
+                            "label": "197 (MCLK 0.162 MHz)",
+                            "value": "0000C500"
+                        },
+                        {
+                            "label": "198 (MCLK 0.162 MHz)",
+                            "value": "0000C600"
+                        },
+                        {
+                            "label": "199 (MCLK 0.161 MHz)",
+                            "value": "0000C700"
+                        },
+                        {
+                            "label": "200 (MCLK 0.16 MHz)",
+                            "value": "0000C800"
+                        },
+                        {
+                            "label": "201 (MCLK 0.159 MHz)",
+                            "value": "0000C900"
+                        },
+                        {
+                            "label": "202 (MCLK 0.158 MHz)",
+                            "value": "0000CA00"
+                        },
+                        {
+                            "label": "203 (MCLK 0.158 MHz)",
+                            "value": "0000CB00"
+                        },
+                        {
+                            "label": "204 (MCLK 0.157 MHz)",
+                            "value": "0000CC00"
+                        },
+                        {
+                            "label": "205 (MCLK 0.156 MHz)",
+                            "value": "0000CD00"
+                        },
+                        {
+                            "label": "206 (MCLK 0.155 MHz)",
+                            "value": "0000CE00"
+                        },
+                        {
+                            "label": "207 (MCLK 0.155 MHz)",
+                            "value": "0000CF00"
+                        },
+                        {
+                            "label": "208 (MCLK 0.154 MHz)",
+                            "value": "0000D000"
+                        },
+                        {
+                            "label": "209 (MCLK 0.153 MHz)",
+                            "value": "0000D100"
+                        },
+                        {
+                            "label": "210 (MCLK 0.152 MHz)",
+                            "value": "0000D200"
+                        },
+                        {
+                            "label": "211 (MCLK 0.152 MHz)",
+                            "value": "0000D300"
+                        },
+                        {
+                            "label": "212 (MCLK 0.151 MHz)",
+                            "value": "0000D400"
+                        },
+                        {
+                            "label": "213 (MCLK 0.15 MHz)",
+                            "value": "0000D500"
+                        },
+                        {
+                            "label": "214 (MCLK 0.15 MHz)",
+                            "value": "0000D600"
+                        },
+                        {
+                            "label": "215 (MCLK 0.149 MHz)",
+                            "value": "0000D700"
+                        },
+                        {
+                            "label": "216 (MCLK 0.148 MHz)",
+                            "value": "0000D800"
+                        },
+                        {
+                            "label": "217 (MCLK 0.147 MHz)",
+                            "value": "0000D900"
+                        },
+                        {
+                            "label": "218 (MCLK 0.147 MHz)",
+                            "value": "0000DA00"
+                        },
+                        {
+                            "label": "219 (MCLK 0.146 MHz)",
+                            "value": "0000DB00"
+                        },
+                        {
+                            "label": "220 (MCLK 0.145 MHz)",
+                            "value": "0000DC00"
+                        },
+                        {
+                            "label": "221 (MCLK 0.145 MHz)",
+                            "value": "0000DD00"
+                        },
+                        {
+                            "label": "222 (MCLK 0.144 MHz)",
+                            "value": "0000DE00"
+                        },
+                        {
+                            "label": "223 (MCLK 0.143 MHz)",
+                            "value": "0000DF00"
+                        },
+                        {
+                            "label": "224 (MCLK 0.143 MHz)",
+                            "value": "0000E000"
+                        },
+                        {
+                            "label": "225 (MCLK 0.142 MHz)",
+                            "value": "0000E100"
+                        },
+                        {
+                            "label": "226 (MCLK 0.142 MHz)",
+                            "value": "0000E200"
+                        },
+                        {
+                            "label": "227 (MCLK 0.141 MHz)",
+                            "value": "0000E300"
+                        },
+                        {
+                            "label": "228 (MCLK 0.14 MHz)",
+                            "value": "0000E400"
+                        },
+                        {
+                            "label": "229 (MCLK 0.14 MHz)",
+                            "value": "0000E500"
+                        },
+                        {
+                            "label": "230 (MCLK 0.139 MHz)",
+                            "value": "0000E600"
+                        },
+                        {
+                            "label": "231 (MCLK 0.139 MHz)",
+                            "value": "0000E700"
+                        },
+                        {
+                            "label": "232 (MCLK 0.138 MHz)",
+                            "value": "0000E800"
+                        },
+                        {
+                            "label": "233 (MCLK 0.137 MHz)",
+                            "value": "0000E900"
+                        },
+                        {
+                            "label": "234 (MCLK 0.137 MHz)",
+                            "value": "0000EA00"
+                        },
+                        {
+                            "label": "235 (MCLK 0.136 MHz)",
+                            "value": "0000EB00"
+                        },
+                        {
+                            "label": "236 (MCLK 0.136 MHz)",
+                            "value": "0000EC00"
+                        },
+                        {
+                            "label": "237 (MCLK 0.135 MHz)",
+                            "value": "0000ED00"
+                        },
+                        {
+                            "label": "238 (MCLK 0.134 MHz)",
+                            "value": "0000EE00"
+                        },
+                        {
+                            "label": "239 (MCLK 0.134 MHz)",
+                            "value": "0000EF00"
+                        },
+                        {
+                            "label": "240 (MCLK 0.133 MHz)",
+                            "value": "0000F000"
+                        },
+                        {
+                            "label": "241 (MCLK 0.133 MHz)",
+                            "value": "0000F100"
+                        },
+                        {
+                            "label": "242 (MCLK 0.132 MHz)",
+                            "value": "0000F200"
+                        },
+                        {
+                            "label": "243 (MCLK 0.132 MHz)",
+                            "value": "0000F300"
+                        },
+                        {
+                            "label": "244 (MCLK 0.131 MHz)",
+                            "value": "0000F400"
+                        },
+                        {
+                            "label": "245 (MCLK 0.131 MHz)",
+                            "value": "0000F500"
+                        },
+                        {
+                            "label": "246 (MCLK 0.13 MHz)",
+                            "value": "0000F600"
+                        },
+                        {
+                            "label": "247 (MCLK 0.13 MHz)",
+                            "value": "0000F700"
+                        },
+                        {
+                            "label": "248 (MCLK 0.129 MHz)",
+                            "value": "0000F800"
+                        },
+                        {
+                            "label": "249 (MCLK 0.129 MHz)",
+                            "value": "0000F900"
+                        },
+                        {
+                            "label": "250 (MCLK 0.128 MHz)",
+                            "value": "0000FA00"
+                        },
+                        {
+                            "label": "251 (MCLK 0.127 MHz)",
+                            "value": "0000FB00"
+                        },
+                        {
+                            "label": "252 (MCLK 0.127 MHz)",
+                            "value": "0000FC00"
+                        },
+                        {
+                            "label": "253 (MCLK 0.126 MHz)",
+                            "value": "0000FD00"
+                        },
+                        {
+                            "label": "254 (MCLK 0.126 MHz)",
+                            "value": "0000FE00"
+                        },
+                        {
+                            "label": "255 (MCLK 0.125 MHz)",
+                            "value": "0000FF00"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "FDIV",
+                    "label": "MCLK fractional divider (FDIV/256)",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "0/256",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "1/256",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "2/256",
+                            "value": "00000002"
+                        },
+                        {
+                            "label": "3/256",
+                            "value": "00000003"
+                        },
+                        {
+                            "label": "4/256",
+                            "value": "00000004"
+                        },
+                        {
+                            "label": "5/256",
+                            "value": "00000005"
+                        },
+                        {
+                            "label": "6/256",
+                            "value": "00000006"
+                        },
+                        {
+                            "label": "7/256",
+                            "value": "00000007"
+                        },
+                        {
+                            "label": "8/256",
+                            "value": "00000008"
+                        },
+                        {
+                            "label": "9/256",
+                            "value": "00000009"
+                        },
+                        {
+                            "label": "10/256",
+                            "value": "0000000A"
+                        },
+                        {
+                            "label": "11/256",
+                            "value": "0000000B"
+                        },
+                        {
+                            "label": "12/256",
+                            "value": "0000000C"
+                        },
+                        {
+                            "label": "13/256",
+                            "value": "0000000D"
+                        },
+                        {
+                            "label": "14/256",
+                            "value": "0000000E"
+                        },
+                        {
+                            "label": "15/256",
+                            "value": "0000000F"
+                        },
+                        {
+                            "label": "16/256",
+                            "value": "00000010"
+                        },
+                        {
+                            "label": "17/256",
+                            "value": "00000011"
+                        },
+                        {
+                            "label": "18/256",
+                            "value": "00000012"
+                        },
+                        {
+                            "label": "19/256",
+                            "value": "00000013"
+                        },
+                        {
+                            "label": "20/256",
+                            "value": "00000014"
+                        },
+                        {
+                            "label": "21/256",
+                            "value": "00000015"
+                        },
+                        {
+                            "label": "22/256",
+                            "value": "00000016"
+                        },
+                        {
+                            "label": "23/256",
+                            "value": "00000017"
+                        },
+                        {
+                            "label": "24/256",
+                            "value": "00000018"
+                        },
+                        {
+                            "label": "25/256",
+                            "value": "00000019"
+                        },
+                        {
+                            "label": "26/256",
+                            "value": "0000001A"
+                        },
+                        {
+                            "label": "27/256",
+                            "value": "0000001B"
+                        },
+                        {
+                            "label": "28/256",
+                            "value": "0000001C"
+                        },
+                        {
+                            "label": "29/256",
+                            "value": "0000001D"
+                        },
+                        {
+                            "label": "30/256",
+                            "value": "0000001E"
+                        },
+                        {
+                            "label": "31/256",
+                            "value": "0000001F"
+                        },
+                        {
+                            "label": "32/256",
+                            "value": "00000020"
+                        },
+                        {
+                            "label": "33/256",
+                            "value": "00000021"
+                        },
+                        {
+                            "label": "34/256",
+                            "value": "00000022"
+                        },
+                        {
+                            "label": "35/256",
+                            "value": "00000023"
+                        },
+                        {
+                            "label": "36/256",
+                            "value": "00000024"
+                        },
+                        {
+                            "label": "37/256",
+                            "value": "00000025"
+                        },
+                        {
+                            "label": "38/256",
+                            "value": "00000026"
+                        },
+                        {
+                            "label": "39/256",
+                            "value": "00000027"
+                        },
+                        {
+                            "label": "40/256",
+                            "value": "00000028"
+                        },
+                        {
+                            "label": "41/256",
+                            "value": "00000029"
+                        },
+                        {
+                            "label": "42/256",
+                            "value": "0000002A"
+                        },
+                        {
+                            "label": "43/256",
+                            "value": "0000002B"
+                        },
+                        {
+                            "label": "44/256",
+                            "value": "0000002C"
+                        },
+                        {
+                            "label": "45/256",
+                            "value": "0000002D"
+                        },
+                        {
+                            "label": "46/256",
+                            "value": "0000002E"
+                        },
+                        {
+                            "label": "47/256",
+                            "value": "0000002F"
+                        },
+                        {
+                            "label": "48/256",
+                            "value": "00000030"
+                        },
+                        {
+                            "label": "49/256",
+                            "value": "00000031"
+                        },
+                        {
+                            "label": "50/256",
+                            "value": "00000032"
+                        },
+                        {
+                            "label": "51/256",
+                            "value": "00000033"
+                        },
+                        {
+                            "label": "52/256",
+                            "value": "00000034"
+                        },
+                        {
+                            "label": "53/256",
+                            "value": "00000035"
+                        },
+                        {
+                            "label": "54/256",
+                            "value": "00000036"
+                        },
+                        {
+                            "label": "55/256",
+                            "value": "00000037"
+                        },
+                        {
+                            "label": "56/256",
+                            "value": "00000038"
+                        },
+                        {
+                            "label": "57/256",
+                            "value": "00000039"
+                        },
+                        {
+                            "label": "58/256",
+                            "value": "0000003A"
+                        },
+                        {
+                            "label": "59/256",
+                            "value": "0000003B"
+                        },
+                        {
+                            "label": "60/256",
+                            "value": "0000003C"
+                        },
+                        {
+                            "label": "61/256",
+                            "value": "0000003D"
+                        },
+                        {
+                            "label": "62/256",
+                            "value": "0000003E"
+                        },
+                        {
+                            "label": "63/256",
+                            "value": "0000003F"
+                        },
+                        {
+                            "label": "64/256",
+                            "value": "00000040"
+                        },
+                        {
+                            "label": "65/256",
+                            "value": "00000041"
+                        },
+                        {
+                            "label": "66/256",
+                            "value": "00000042"
+                        },
+                        {
+                            "label": "67/256",
+                            "value": "00000043"
+                        },
+                        {
+                            "label": "68/256",
+                            "value": "00000044"
+                        },
+                        {
+                            "label": "69/256",
+                            "value": "00000045"
+                        },
+                        {
+                            "label": "70/256",
+                            "value": "00000046"
+                        },
+                        {
+                            "label": "71/256",
+                            "value": "00000047"
+                        },
+                        {
+                            "label": "72/256",
+                            "value": "00000048"
+                        },
+                        {
+                            "label": "73/256",
+                            "value": "00000049"
+                        },
+                        {
+                            "label": "74/256",
+                            "value": "0000004A"
+                        },
+                        {
+                            "label": "75/256",
+                            "value": "0000004B"
+                        },
+                        {
+                            "label": "76/256",
+                            "value": "0000004C"
+                        },
+                        {
+                            "label": "77/256",
+                            "value": "0000004D"
+                        },
+                        {
+                            "label": "78/256",
+                            "value": "0000004E"
+                        },
+                        {
+                            "label": "79/256",
+                            "value": "0000004F"
+                        },
+                        {
+                            "label": "80/256",
+                            "value": "00000050"
+                        },
+                        {
+                            "label": "81/256",
+                            "value": "00000051"
+                        },
+                        {
+                            "label": "82/256",
+                            "value": "00000052"
+                        },
+                        {
+                            "label": "83/256",
+                            "value": "00000053"
+                        },
+                        {
+                            "label": "84/256",
+                            "value": "00000054"
+                        },
+                        {
+                            "label": "85/256",
+                            "value": "00000055"
+                        },
+                        {
+                            "label": "86/256",
+                            "value": "00000056"
+                        },
+                        {
+                            "label": "87/256",
+                            "value": "00000057"
+                        },
+                        {
+                            "label": "88/256",
+                            "value": "00000058"
+                        },
+                        {
+                            "label": "89/256",
+                            "value": "00000059"
+                        },
+                        {
+                            "label": "90/256",
+                            "value": "0000005A"
+                        },
+                        {
+                            "label": "91/256",
+                            "value": "0000005B"
+                        },
+                        {
+                            "label": "92/256",
+                            "value": "0000005C"
+                        },
+                        {
+                            "label": "93/256",
+                            "value": "0000005D"
+                        },
+                        {
+                            "label": "94/256",
+                            "value": "0000005E"
+                        },
+                        {
+                            "label": "95/256",
+                            "value": "0000005F"
+                        },
+                        {
+                            "label": "96/256",
+                            "value": "00000060"
+                        },
+                        {
+                            "label": "97/256",
+                            "value": "00000061"
+                        },
+                        {
+                            "label": "98/256",
+                            "value": "00000062"
+                        },
+                        {
+                            "label": "99/256",
+                            "value": "00000063"
+                        },
+                        {
+                            "label": "100/256",
+                            "value": "00000064"
+                        },
+                        {
+                            "label": "101/256",
+                            "value": "00000065"
+                        },
+                        {
+                            "label": "102/256",
+                            "value": "00000066"
+                        },
+                        {
+                            "label": "103/256",
+                            "value": "00000067"
+                        },
+                        {
+                            "label": "104/256",
+                            "value": "00000068"
+                        },
+                        {
+                            "label": "105/256",
+                            "value": "00000069"
+                        },
+                        {
+                            "label": "106/256",
+                            "value": "0000006A"
+                        },
+                        {
+                            "label": "107/256",
+                            "value": "0000006B"
+                        },
+                        {
+                            "label": "108/256",
+                            "value": "0000006C"
+                        },
+                        {
+                            "label": "109/256",
+                            "value": "0000006D"
+                        },
+                        {
+                            "label": "110/256",
+                            "value": "0000006E"
+                        },
+                        {
+                            "label": "111/256",
+                            "value": "0000006F"
+                        },
+                        {
+                            "label": "112/256",
+                            "value": "00000070"
+                        },
+                        {
+                            "label": "113/256",
+                            "value": "00000071"
+                        },
+                        {
+                            "label": "114/256",
+                            "value": "00000072"
+                        },
+                        {
+                            "label": "115/256",
+                            "value": "00000073"
+                        },
+                        {
+                            "label": "116/256",
+                            "value": "00000074"
+                        },
+                        {
+                            "label": "117/256",
+                            "value": "00000075"
+                        },
+                        {
+                            "label": "118/256",
+                            "value": "00000076"
+                        },
+                        {
+                            "label": "119/256",
+                            "value": "00000077"
+                        },
+                        {
+                            "label": "120/256",
+                            "value": "00000078"
+                        },
+                        {
+                            "label": "121/256",
+                            "value": "00000079"
+                        },
+                        {
+                            "label": "122/256",
+                            "value": "0000007A"
+                        },
+                        {
+                            "label": "123/256",
+                            "value": "0000007B"
+                        },
+                        {
+                            "label": "124/256",
+                            "value": "0000007C"
+                        },
+                        {
+                            "label": "125/256",
+                            "value": "0000007D"
+                        },
+                        {
+                            "label": "126/256",
+                            "value": "0000007E"
+                        },
+                        {
+                            "label": "127/256",
+                            "value": "0000007F"
+                        },
+                        {
+                            "label": "128/256",
+                            "value": "00000080"
+                        },
+                        {
+                            "label": "129/256",
+                            "value": "00000081"
+                        },
+                        {
+                            "label": "130/256",
+                            "value": "00000082"
+                        },
+                        {
+                            "label": "131/256",
+                            "value": "00000083"
+                        },
+                        {
+                            "label": "132/256",
+                            "value": "00000084"
+                        },
+                        {
+                            "label": "133/256",
+                            "value": "00000085"
+                        },
+                        {
+                            "label": "134/256",
+                            "value": "00000086"
+                        },
+                        {
+                            "label": "135/256",
+                            "value": "00000087"
+                        },
+                        {
+                            "label": "136/256",
+                            "value": "00000088"
+                        },
+                        {
+                            "label": "137/256",
+                            "value": "00000089"
+                        },
+                        {
+                            "label": "138/256",
+                            "value": "0000008A"
+                        },
+                        {
+                            "label": "139/256",
+                            "value": "0000008B"
+                        },
+                        {
+                            "label": "140/256",
+                            "value": "0000008C"
+                        },
+                        {
+                            "label": "141/256",
+                            "value": "0000008D"
+                        },
+                        {
+                            "label": "142/256",
+                            "value": "0000008E"
+                        },
+                        {
+                            "label": "143/256",
+                            "value": "0000008F"
+                        },
+                        {
+                            "label": "144/256",
+                            "value": "00000090"
+                        },
+                        {
+                            "label": "145/256",
+                            "value": "00000091"
+                        },
+                        {
+                            "label": "146/256",
+                            "value": "00000092"
+                        },
+                        {
+                            "label": "147/256",
+                            "value": "00000093"
+                        },
+                        {
+                            "label": "148/256",
+                            "value": "00000094"
+                        },
+                        {
+                            "label": "149/256",
+                            "value": "00000095"
+                        },
+                        {
+                            "label": "150/256",
+                            "value": "00000096"
+                        },
+                        {
+                            "label": "151/256",
+                            "value": "00000097"
+                        },
+                        {
+                            "label": "152/256",
+                            "value": "00000098"
+                        },
+                        {
+                            "label": "153/256",
+                            "value": "00000099"
+                        },
+                        {
+                            "label": "154/256",
+                            "value": "0000009A"
+                        },
+                        {
+                            "label": "155/256",
+                            "value": "0000009B"
+                        },
+                        {
+                            "label": "156/256",
+                            "value": "0000009C"
+                        },
+                        {
+                            "label": "157/256",
+                            "value": "0000009D"
+                        },
+                        {
+                            "label": "158/256",
+                            "value": "0000009E"
+                        },
+                        {
+                            "label": "159/256",
+                            "value": "0000009F"
+                        },
+                        {
+                            "label": "160/256",
+                            "value": "000000A0"
+                        },
+                        {
+                            "label": "161/256",
+                            "value": "000000A1"
+                        },
+                        {
+                            "label": "162/256",
+                            "value": "000000A2"
+                        },
+                        {
+                            "label": "163/256",
+                            "value": "000000A3"
+                        },
+                        {
+                            "label": "164/256",
+                            "value": "000000A4"
+                        },
+                        {
+                            "label": "165/256",
+                            "value": "000000A5"
+                        },
+                        {
+                            "label": "166/256",
+                            "value": "000000A6"
+                        },
+                        {
+                            "label": "167/256",
+                            "value": "000000A7"
+                        },
+                        {
+                            "label": "168/256",
+                            "value": "000000A8"
+                        },
+                        {
+                            "label": "169/256",
+                            "value": "000000A9"
+                        },
+                        {
+                            "label": "170/256",
+                            "value": "000000AA"
+                        },
+                        {
+                            "label": "171/256",
+                            "value": "000000AB"
+                        },
+                        {
+                            "label": "172/256",
+                            "value": "000000AC"
+                        },
+                        {
+                            "label": "173/256",
+                            "value": "000000AD"
+                        },
+                        {
+                            "label": "174/256",
+                            "value": "000000AE"
+                        },
+                        {
+                            "label": "175/256",
+                            "value": "000000AF"
+                        },
+                        {
+                            "label": "176/256",
+                            "value": "000000B0"
+                        },
+                        {
+                            "label": "177/256",
+                            "value": "000000B1"
+                        },
+                        {
+                            "label": "178/256",
+                            "value": "000000B2"
+                        },
+                        {
+                            "label": "179/256",
+                            "value": "000000B3"
+                        },
+                        {
+                            "label": "180/256",
+                            "value": "000000B4"
+                        },
+                        {
+                            "label": "181/256",
+                            "value": "000000B5"
+                        },
+                        {
+                            "label": "182/256",
+                            "value": "000000B6"
+                        },
+                        {
+                            "label": "183/256",
+                            "value": "000000B7"
+                        },
+                        {
+                            "label": "184/256",
+                            "value": "000000B8"
+                        },
+                        {
+                            "label": "185/256",
+                            "value": "000000B9"
+                        },
+                        {
+                            "label": "186/256",
+                            "value": "000000BA"
+                        },
+                        {
+                            "label": "187/256",
+                            "value": "000000BB"
+                        },
+                        {
+                            "label": "188/256",
+                            "value": "000000BC"
+                        },
+                        {
+                            "label": "189/256",
+                            "value": "000000BD"
+                        },
+                        {
+                            "label": "190/256",
+                            "value": "000000BE"
+                        },
+                        {
+                            "label": "191/256",
+                            "value": "000000BF"
+                        },
+                        {
+                            "label": "192/256",
+                            "value": "000000C0"
+                        },
+                        {
+                            "label": "193/256",
+                            "value": "000000C1"
+                        },
+                        {
+                            "label": "194/256",
+                            "value": "000000C2"
+                        },
+                        {
+                            "label": "195/256",
+                            "value": "000000C3"
+                        },
+                        {
+                            "label": "196/256",
+                            "value": "000000C4"
+                        },
+                        {
+                            "label": "197/256",
+                            "value": "000000C5"
+                        },
+                        {
+                            "label": "198/256",
+                            "value": "000000C6"
+                        },
+                        {
+                            "label": "199/256",
+                            "value": "000000C7"
+                        },
+                        {
+                            "label": "200/256",
+                            "value": "000000C8"
+                        },
+                        {
+                            "label": "201/256",
+                            "value": "000000C9"
+                        },
+                        {
+                            "label": "202/256",
+                            "value": "000000CA"
+                        },
+                        {
+                            "label": "203/256",
+                            "value": "000000CB"
+                        },
+                        {
+                            "label": "204/256",
+                            "value": "000000CC"
+                        },
+                        {
+                            "label": "205/256",
+                            "value": "000000CD"
+                        },
+                        {
+                            "label": "206/256",
+                            "value": "000000CE"
+                        },
+                        {
+                            "label": "207/256",
+                            "value": "000000CF"
+                        },
+                        {
+                            "label": "208/256",
+                            "value": "000000D0"
+                        },
+                        {
+                            "label": "209/256",
+                            "value": "000000D1"
+                        },
+                        {
+                            "label": "210/256",
+                            "value": "000000D2"
+                        },
+                        {
+                            "label": "211/256",
+                            "value": "000000D3"
+                        },
+                        {
+                            "label": "212/256",
+                            "value": "000000D4"
+                        },
+                        {
+                            "label": "213/256",
+                            "value": "000000D5"
+                        },
+                        {
+                            "label": "214/256",
+                            "value": "000000D6"
+                        },
+                        {
+                            "label": "215/256",
+                            "value": "000000D7"
+                        },
+                        {
+                            "label": "216/256",
+                            "value": "000000D8"
+                        },
+                        {
+                            "label": "217/256",
+                            "value": "000000D9"
+                        },
+                        {
+                            "label": "218/256",
+                            "value": "000000DA"
+                        },
+                        {
+                            "label": "219/256",
+                            "value": "000000DB"
+                        },
+                        {
+                            "label": "220/256",
+                            "value": "000000DC"
+                        },
+                        {
+                            "label": "221/256",
+                            "value": "000000DD"
+                        },
+                        {
+                            "label": "222/256",
+                            "value": "000000DE"
+                        },
+                        {
+                            "label": "223/256",
+                            "value": "000000DF"
+                        },
+                        {
+                            "label": "224/256",
+                            "value": "000000E0"
+                        },
+                        {
+                            "label": "225/256",
+                            "value": "000000E1"
+                        },
+                        {
+                            "label": "226/256",
+                            "value": "000000E2"
+                        },
+                        {
+                            "label": "227/256",
+                            "value": "000000E3"
+                        },
+                        {
+                            "label": "228/256",
+                            "value": "000000E4"
+                        },
+                        {
+                            "label": "229/256",
+                            "value": "000000E5"
+                        },
+                        {
+                            "label": "230/256",
+                            "value": "000000E6"
+                        },
+                        {
+                            "label": "231/256",
+                            "value": "000000E7"
+                        },
+                        {
+                            "label": "232/256",
+                            "value": "000000E8"
+                        },
+                        {
+                            "label": "233/256",
+                            "value": "000000E9"
+                        },
+                        {
+                            "label": "234/256",
+                            "value": "000000EA"
+                        },
+                        {
+                            "label": "235/256",
+                            "value": "000000EB"
+                        },
+                        {
+                            "label": "236/256",
+                            "value": "000000EC"
+                        },
+                        {
+                            "label": "237/256",
+                            "value": "000000ED"
+                        },
+                        {
+                            "label": "238/256",
+                            "value": "000000EE"
+                        },
+                        {
+                            "label": "239/256",
+                            "value": "000000EF"
+                        },
+                        {
+                            "label": "240/256",
+                            "value": "000000F0"
+                        },
+                        {
+                            "label": "241/256",
+                            "value": "000000F1"
+                        },
+                        {
+                            "label": "242/256",
+                            "value": "000000F2"
+                        },
+                        {
+                            "label": "243/256",
+                            "value": "000000F3"
+                        },
+                        {
+                            "label": "244/256",
+                            "value": "000000F4"
+                        },
+                        {
+                            "label": "245/256",
+                            "value": "000000F5"
+                        },
+                        {
+                            "label": "246/256",
+                            "value": "000000F6"
+                        },
+                        {
+                            "label": "247/256",
+                            "value": "000000F7"
+                        },
+                        {
+                            "label": "248/256",
+                            "value": "000000F8"
+                        },
+                        {
+                            "label": "249/256",
+                            "value": "000000F9"
+                        },
+                        {
+                            "label": "250/256",
+                            "value": "000000FA"
+                        },
+                        {
+                            "label": "251/256",
+                            "value": "000000FB"
+                        },
+                        {
+                            "label": "252/256",
+                            "value": "000000FC"
+                        },
+                        {
+                            "label": "253/256",
+                            "value": "000000FD"
+                        },
+                        {
+                            "label": "254/256",
+                            "value": "000000FE"
+                        },
+                        {
+                            "label": "255/256",
+                            "value": "000000FF"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00010000",
+                    "key": "PCLKSEL",
+                    "label": "PCLK clock",
+                    "mask": "00010000",
+                    "settings": [
+                        {
+                            "label": "PCLK = MCLK",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "PCLK = 2 x MCLK",
+                            "value": "00010000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "RTCCLKSEL",
+                    "label": "RTC clock",
+                    "mask": "000E0000",
+                    "settings": [
+                        {
+                            "label": "32 kHz standby clock (DCO2)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "32.768 kHz from ERU0.IOUT0",
+                            "value": "00020000"
+                        },
+                        {
+                            "label": "32.768 kHz from ACMP0.OUT",
+                            "value": "00040000"
+                        },
+                        {
+                            "label": "32.768 kHz from ACMP1.OUT",
+                            "value": "00060000"
+                        },
+                        {
+                            "label": "32.768 kHz from ACMP2.OUT",
+                            "value": "00080000"
+                        }
+                    ]
+                },
+                {
+                    "hidden": true,
+                    "init": "3FF00000",
+                    "key": "CNTADJ",
+                    "label": "VDDC settling counter",
+                    "mask": "3FF00000",
+                    "settings": [
+                        {
+                            "label": "1024 DCO1 cycles",
+                            "value": "3FF00000"
+                        }
+                    ]
+                }
+            ],
+            "key": "SCU_CLKCR",
+            "unused": "C0000000",
+            "label": "Clock control (MCLK/PCLK/RTC)"
+        }
+    ],
     "core": "M0",
     "delay_src_path": "delays/m0/__lib_delays.c",
     "mcu": "XMC1301-T016X0016",
-    "clock": "1"
+    "clock": 32
 }

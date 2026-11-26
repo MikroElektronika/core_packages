@@ -1,0 +1,116 @@
+{
+    "config_registers": [
+        {
+            "address": "40000000",
+            "default": "00000000",
+            "key": "CLOCK_TASKS_HFCLKSTART",
+            "unused": "FFFFFFFE",
+            "label": "Start HFCLK crystal oscillator task",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "TASKS_HFCLKSTART",
+                    "label": "High frequency clock source (TASKS_HFCLKSTART)",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "HFCLK from the 16 MHz RC oscillator (HFINT)",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Start the HFXO crystal oscillator",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "40000550",
+            "default": "FFFFFFFF",
+            "key": "CLOCK_XTALFREQ",
+            "unused": "FFFFFF00",
+            "label": "Crystal frequency",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "000000FF",
+                    "key": "XTALFREQ",
+                    "label": "HFXO crystal frequency",
+                    "mask": "000000FF",
+                    "settings": [
+                        {
+                            "label": "16 MHz crystal",
+                            "value": "000000FF"
+                        },
+                        {
+                            "label": "32 MHz crystal (divided by 2)",
+                            "value": "00000000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "40000518",
+            "default": "00000000",
+            "key": "CLOCK_LFCLKSRC",
+            "unused": "FFFFFFFC",
+            "label": "Clock source for the LFCLK",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "SRC",
+                    "label": "LFCLK clock source",
+                    "mask": "00000003",
+                    "settings": [
+                        {
+                            "label": "LFRC 32.768 kHz RC oscillator",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "LFXO 32.768 kHz crystal oscillator",
+                            "value": "00000001"
+                        },
+                        {
+                            "label": "LFCLK synthesized from HFCLK",
+                            "value": "00000002"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "address": "40000008",
+            "default": "00000000",
+            "key": "CLOCK_TASKS_LFCLKSTART",
+            "unused": "FFFFFFFE",
+            "label": "Start LFCLK task",
+            "fields": [
+                {
+                    "hidden": false,
+                    "init": "00000000",
+                    "key": "TASKS_LFCLKSTART",
+                    "label": "Low frequency clock (LFCLK) start",
+                    "mask": "00000001",
+                    "settings": [
+                        {
+                            "label": "LFCLK is not started by SystemInit",
+                            "value": "00000000"
+                        },
+                        {
+                            "label": "Start LFCLK in SystemInit",
+                            "value": "00000001"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "core": "M0",
+    "delay_src_path": "delays/m0/__lib_delays.c",
+    "mcu": "NRF51822-QFAA",
+    "clock": "16"
+}
